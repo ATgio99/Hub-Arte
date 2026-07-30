@@ -98,15 +98,21 @@ export default function Fullscreen({
   const enter = useCallback(async () => {
     const el = ref.current;
     if (!el) return;
-    if (el.requestFullscreen) {
+    // Su mobile (iOS Safari), requestFullscreen non funziona bene.
+    // Usa sempre il fallback CSS su touch devices.
+    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (!isTouch && el.requestFullscreen) {
       try { await el.requestFullscreen(); return; } catch { /* fallback */ }
     }
     setCssFallback(true); setFull(true);
+    // Blocca scroll del body quando in fullscreen CSS
+    document.body.style.overflow = "hidden";
   }, []);
 
   const exit = useCallback(async () => {
     if (document.fullscreenElement) { try { await document.exitFullscreen(); } catch {} }
     setCssFallback(false); setFull(false);
+    document.body.style.overflow = "";
   }, []);
 
   const toggle = useCallback(() => { isFull ? exit() : enter(); }, [isFull, enter, exit]);
@@ -129,6 +135,11 @@ export default function Fullscreen({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [isFull, cssFallback, exit]);
+
+  // Cleanup: ripristina overflow del body quando il componente si smonta
+  useEffect(() => {
+    return () => { document.body.style.overflow = ""; };
+  }, []);
 
   useEffect(() => { onChange?.(isFull); }, [isFull, onChange]);
 

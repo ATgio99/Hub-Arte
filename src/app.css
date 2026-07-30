@@ -947,10 +947,7 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
     max-height: 400px !important;
   }
   /* Stage mappa/grafo: altezza ridotta */
-  .stage[style*="72vh"],
-  .stage[style*="min(72vh"] {
-    height: 50vh !important;
-    max-height: 450px !important;
+      max-height: 450px !important;
   }
   /* Pannello Centri mappa: inline, non in box con scroll */
   .view-split { grid-template-columns: 1fr !important; }
@@ -1006,10 +1003,7 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
     height: 45vh !important;
     max-height: 350px !important;
   }
-  .stage[style*="72vh"],
-  .stage[style*="min(72vh"] {
-    height: 45vh !important;
-    max-height: 350px !important;
+      max-height: 350px !important;
   }
   .kpi-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .grid-works { grid-template-columns: 1fr !important; }
@@ -1050,4 +1044,103 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 .fs-host.is-full .gf-side,
 .fs-host:fullscreen .gf-side {
   top: 110px !important; right: 14px !important; bottom: 100px !important; z-index: 28 !important;
+}
+
+/* ========== FIX FULLSCREEN MOBILE (vero fullscreen, non mezzo schermo) ========== */
+@media (max-width: 900px) {
+  .fs-host.is-full {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
+    background: var(--bg) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    overflow: hidden !important; /* non scrollare tutta la pagina */
+  }
+  /* Il contenuto (stage) scrolla internamente, non la pagina */
+  .fs-host.is-full > .stage,
+  .fs-host.is-full .gf-inner > .stage {
+    flex: 1 !important;
+    min-height: 0 !important; /* permette al flex di restringersi */
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* In fullscreen mobile, view-split è single column */
+  .fs-host.is-full .view-split {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+  .fs-host.is-full .view-split > div:first-child {
+    flex: 1 !important;
+    min-height: 0 !important;
+  }
+  .fs-host.is-full .view-split > div:last-child {
+    display: none !important; /* nascondi pannello laterale in fullscreen mobile */
+  }
+}
+
+/* ========== MOBILE ONLY: mappa, grafo, timeline ========== */
+/* Queste regole si applicano SOLO su schermi <= 900px (mobile/tablet) */
+/* NON toccano il desktop dove la mappa usa min(72vh, 700px) */
+
+@media (max-width: 900px) {
+  /* Mappa: su mobile l'altezza inline viene sovrascritta */
+  .stage[data-testid="map-stage"] {
+    height: 55vh !important;
+    max-height: 400px !important;
+  }
+  /* Pannello Centri: inline senza box su mobile */
+  .view-split { grid-template-columns: 1fr !important; }
+  .view-split > div:last-child .panel {
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+  .view-split > div:last-child .panel > div[style*="maxHeight"],
+  .view-split > div:last-child .panel > div[style*="max-height"] {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  /* Leaflet container su mobile */
+  .leaflet-container { max-width: 100% !important; }
+  /* Fullscreen mobile: vero fullscreen */
+  .fs-host.is-full {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
+    background: var(--bg) !important;
+    overflow: hidden !important;
+  }
+  .fs-host.is-full > .stage,
+  .fs-host.is-full .gf-inner > .stage {
+    flex: 1 !important;
+    min-height: 0 !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Pulsanti fullscreen più piccoli su mobile */
+  .fs-btn-txt { display: none !important; }
+  .fs-btn { padding: 8px !important; }
+  .fs-controls {
+    top: 52px !important;
+    max-width: calc(100vw - 80px) !important;
+    max-height: 60px !important;
+    overflow-y: auto !important;
+    font-size: 11px !important;
+  }
+  .fs-slider {
+    width: calc(100vw - 24px) !important;
+    padding: 8px 12px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .stage[data-testid="map-stage"] {
+    height: 50vh !important;
+    max-height: 350px !important;
+  }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-works { grid-template-columns: 1fr !important; }
 }

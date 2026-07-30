@@ -139,61 +139,55 @@ export async function pushToCloud(user: User): Promise<void> {
   } catch { /* ignore */ }
 }
 
-// ---------- PULL FROM CLOUD (REPLACE cloud → locale) ----------
-// Strategia REPLACE (post-fix):
-//   - Se il cloud HA dati per questo utente → REPLACE il locale (non merge).
-//   - Se il cloud è VUOTO per questo utente → mantieni il locale e, se il
-//     locale ha dati, pusha verso il cloud (così il primo dispositivo
-//     "semina" il cloud per gli altri).
-//   Nota: il merge potrebbe causare contaminazione tra account su browser
-//   condivisi; la REPLACE è più prevedibile.
+// ---------- PULL FROM CLOUD (MERGE union locale + cloud) ----------
+// Strategia MERGE:
+//   - Unisci locale + cloud (union, deduplica).
+//   - Il cloud NON sovrascrive il locale: entrambi contribuiscono.
+//   - Questo è corretto perché:
+//     1. toggleFavorite/toggleStudied pushano immediatamente al cloud
+//     2. signOut pulisce il localStorage (no contaminazione cross-account)
+//     3. Se l'utente aggiunge offline e poi fa sync, il merge preserva i dati locali
 
 export async function pullFromCloud(user: User): Promise<void> {
-  // 1) Favorites — REPLACE
-  console.log("[sync] pullFromCloud: favorites for", user.id);
-  const { data: favRows } = await supabase
+  console.log("[sync] pullFromCloud start for user:", user.id);
+
+  // 1) Favorites — MERGE union
+  const { data: favRows, error: favErr } = await supabase
     .from("user_favorites")
     .select("work_id, type")
     .eq("user_id", user.id);
 
-  if (favRows && favRows.length > 0) {
-    // Il cloud HA dati → REPLACE il locale con quello del cloud.
+  if (favErr) {
+    console.error("[sync] Error fetching favorites:", favErr.message);
+  } else if (favRows && favRows.length > 0) {
+    const localFavs = getFavorites();
     const cloudWorks = favRows.filter(r => r.type === "work").map(r => r.work_id);
     const cloudArtists = favRows.filter(r => r.type === "artist").map(r => r.work_id);
-    console.log(`[sync] favorites: cloud has ${cloudWorks.length} works + ${cloudArtists.length} artists → REPLACE locale`);
-    setFavorites({ works: cloudWorks, artists: cloudArtists });
+    // MERGE: unione senza duplicati
+    const mergedWorks = [...new Set([...localFavs.works, ...cloudWorks])];
+    const mergedArtists = [...new Set([...localFavs.artists, ...cloudArtists])];
+    setFavorites({ works: mergedWorks, artists: mergedArtists });
+    console.log(`[sync] favorites: local ${localFavs.works.length}+${localFavs.artists.length} + cloud ${cloudWorks.length}+${cloudArtists.length} → merge ${mergedWorks.length}+${mergedArtists.length}`);
   } else {
-    // Il cloud è vuoto → mantieni il locale e, se ha dati, pusha al cloud.
-    const localFavs = getFavorites();
-    if (localFavs.works.length > 0 || localFavs.artists.length > 0) {
-      console.log(`[sync] favorites: cloud empty, local has ${localFavs.works.length}+${localFavs.artists.length} → pushToCloud`);
-      await pushToCloud(user);
-    } else {
-      console.log("[sync] favorites: cloud empty, local empty → nothing to do");
-    }
+    console.log("[sync] favorites: cloud empty, keeping local");
   }
 
-  // 2) Studied — REPLACE
-  console.log("[sync] pullFromCloud: studied for", user.id);
-  const { data: studiedRows } = await supabase
+  // 2) Studied — MERGE union
+  const { data: studiedRows, error: studiedErr } = await supabase
     .from("user_studied")
     .select("work_id")
     .eq("user_id", user.id);
 
-  if (studiedRows && studiedRows.length > 0) {
-    // Il cloud HA dati → REPLACE il locale.
-    const cloudStudied = studiedRows.map(r => r.work_id);
-    console.log(`[sync] studied: cloud has ${cloudStudied.length} → REPLACE locale`);
-    setStudied(cloudStudied);
-  } else {
-    // Il cloud è vuoto → mantieni il locale e, se ha dati, pusha al cloud.
+  if (studiedErr) {
+    console.error("[sync] Error fetching studied:", studiedErr.message);
+  } else if (studiedRows && studiedRows.length > 0) {
     const localStudied = getStudied();
-    if (localStudied.length > 0) {
-      console.log(`[sync] studied: cloud empty, local has ${localStudied.length} → pushToCloud`);
-      await pushToCloud(user);
-    } else {
-      console.log("[sync] studied: cloud empty, local empty → nothing to do");
-    }
+    const cloudStudied = studiedRows.map(r => r.work_id);
+    const merged = [...new Set([...localStudied, ...cloudStudied])];
+    setStudied(merged);
+    console.log(`[sync] studied: local ${localStudied.length} + cloud ${cloudStudied.length} → merge ${merged.length}`);
+  } else {
+    console.log("[sync] studied: cloud empty, keeping local");
   }
 
   // 3) Image overrides PRIVATI dell'utente — merge (locale ha precedenza)
