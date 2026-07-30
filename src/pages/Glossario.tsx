@@ -40,7 +40,7 @@ export default function Glossario() {
   return (
     <div className="wrap page">
       <div className="page-head">
-        <div className="page-eyebrow"><span className="sec-num">05</span><span className="eyebrow">{ix.ds.terms.length} voci · {archCount} archetipi</span></div>
+        <div className="page-eyebrow"><span className="sec-num">05</span><span className="eyebrow">Voci · Glossario</span></div>
         <h1 className="page-title">Glossario</h1>
         <p className="page-lead">Terminologia specifica, parti architettoniche e archetipi ricorrenti. Gli <strong style={{ color: "var(--c-term)" }}>archetipi</strong> sono elementi che riemergono nei secoli.</p>
       </div>
