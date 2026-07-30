@@ -149,8 +149,22 @@ export default function Landing() {
         marginTop: 20,
       }}>
         <p style={{ fontSize: 13, color: "var(--ink-dim)", marginBottom: 8 }}>
-          Dati: Wikimedia Commons · Mappe: OpenStreetMap · Hosting: Netlify
+          Dati: Wikimedia Commons · Mappe: OpenStreetMap
         </p>
+        {/* Badge Netlify — richiesto per il Netlify Open Source Plan */}
+        <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer"
+          style={{
+            display: "inline-flex", alignItems: "center", gap: 4,
+            fontSize: 12, color: "var(--ink-dim)", textDecoration: "none",
+            marginBottom: 10, opacity: 0.8,
+          }}
+          title="Hosted on Netlify — Open Source Plan"
+        >
+          <svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+            <path d="M163.35 24.5L32 96v64l131.35 71.5L224 200V56L163.35 24.5zm-2.7 28L192 67v122l-31.35 14.5L64 145.5v-35L160.65 52.5z"/>
+          </svg>
+          Hosted on Netlify
+        </a>
         <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", fontSize: 12 }}>
           <Link to="/legal/privacy" style={{ color: "var(--ink-dim)", textDecoration: "none" }}>Privacy</Link>
           <Link to="/legal/cookie" style={{ color: "var(--ink-dim)", textDecoration: "none" }}>Cookie</Link>
