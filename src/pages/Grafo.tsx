@@ -473,12 +473,19 @@ function GraphSizer({ wrapRef, full, setDims }: { wrapRef: any; full: boolean; s
   useEffect(() => {
     const target = full ? selfRef.current?.parentElement : wrapRef.current;
     if (!target) return;
+    let timeout: any;
     const ro = new ResizeObserver(() => {
-      setDims({ w: target.clientWidth, h: target.clientHeight });
+      // Debounce: aspetta 200ms dopo l'ultimo resize prima di aggiornare
+      // (prevenisce il tremolio del grafo quando il drawer si anima)
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        setDims({ w: target.clientWidth, h: target.clientHeight });
+      }, 200);
     });
     ro.observe(target);
+    // Set iniziale immediato
     setDims({ w: target.clientWidth, h: target.clientHeight });
-    return () => ro.disconnect();
+    return () => { ro.disconnect(); clearTimeout(timeout); };
   }, [full, wrapRef, setDims]);
   return <div ref={selfRef} style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: -1 }} />;
 }

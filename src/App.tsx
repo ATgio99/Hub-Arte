@@ -51,6 +51,7 @@ function useSyncOnLogin() {
 
   useEffect(() => {
     let cleanup: (() => void) | undefined;
+    let pollInterval: any;
 
     (async () => {
       // Scarica sempre gli override globali (anche per anonimi)
@@ -58,15 +59,21 @@ function useSyncOnLogin() {
 
       if (!user) return;
 
-      // Per gli utenti autenticati: PULL dal cloud (NON push — vedi sync.ts).
-      // Il push avviene solo quando l'utente fa azioni esplicite
-      // (toggle preferito, spunta studied, setOverride immagine).
+      // Per gli utenti autenticati: PUSH + PULL (sync completo)
       await fullSync(user);
       cleanup = subscribeToRealtime(user);
+
+      // Polling automatico ogni 30 secondi: scarica eventuali modifiche
+      // fatte da altri dispositivi (il realtime a volte non è affidabile)
+      pollInterval = setInterval(async () => {
+        console.log("[sync] Auto-poll: pulling from cloud...");
+        await pullFromCloud(user);
+      }, 30000);
     })();
 
     return () => {
       if (cleanup) cleanup();
+      if (pollInterval) clearInterval(pollInterval);
     };
   }, [user]);
 }
