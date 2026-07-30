@@ -41,7 +41,7 @@ export default function Legal() {
         <P>
           HUB Art — Atlante Neuronale ("il Servizio") è un atlante di studio di Storia dell'Arte
           che raccoglie opere, artisti, periodi, tecniche, luoghi e connessioni. Il Servizio è
-          accessibile alla URL <code>https://warm-cassata-b06e4d.netlify.app</code>.
+          accessibile alla URL <code>https://hubart.netlify.app</code>.
         </P>
 
         <H2>1. Titolare del trattamento</H2>

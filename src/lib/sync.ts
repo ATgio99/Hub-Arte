@@ -26,8 +26,8 @@
 // ============================================================================
 
 import { supabase } from "./supabase";
-import { getFavorites, setFavorites } from "./favorites";
-import { getStudied, setStudied } from "./studied";
+import { getFavorites, setFavorites, filterTombstoned } from "./favorites";
+import { getStudied, setStudied, filterTombstonedStudied } from "./studied";
 import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "./imageOverrides";
 import type { OverrideMap } from "./imageOverrides";
 import type { User } from "@supabase/supabase-js";
@@ -179,7 +179,7 @@ export async function pushToCloud(user: User): Promise<void> {
 export async function pullFromCloud(user: User): Promise<void> {
   console.log("[sync] pullFromCloud start for user:", user.id);
 
-  // 1) Favorites — MERGE union
+  // 1) Favorites — MERGE union (con filtro tombstones per evitare risveglio)
   const { data: favRows, error: favErr } = await supabase
     .from("user_favorites")
     .select("work_id, type")
@@ -189,8 +189,9 @@ export async function pullFromCloud(user: User): Promise<void> {
     console.error("[sync] Error fetching favorites:", favErr.message);
   } else if (favRows && favRows.length > 0) {
     const localFavs = getFavorites();
-    const cloudWorks = favRows.filter(r => r.type === "work").map(r => r.work_id);
-    const cloudArtists = favRows.filter(r => r.type === "artist").map(r => r.work_id);
+    // Filtra via gli ID eliminati di recente dall'utente (tombstones)
+    const cloudWorks = filterTombstoned("work", favRows.filter(r => r.type === "work").map(r => r.work_id));
+    const cloudArtists = filterTombstoned("artist", favRows.filter(r => r.type === "artist").map(r => r.work_id));
     // MERGE: unione senza duplicati
     const mergedWorks = [...new Set([...localFavs.works, ...cloudWorks])];
     const mergedArtists = [...new Set([...localFavs.artists, ...cloudArtists])];
@@ -200,7 +201,7 @@ export async function pullFromCloud(user: User): Promise<void> {
     console.log("[sync] favorites: cloud empty, keeping local");
   }
 
-  // 2) Studied — MERGE union
+  // 2) Studied — MERGE union (con filtro tombstones)
   const { data: studiedRows, error: studiedErr } = await supabase
     .from("user_studied")
     .select("work_id")
@@ -210,7 +211,8 @@ export async function pullFromCloud(user: User): Promise<void> {
     console.error("[sync] Error fetching studied:", studiedErr.message);
   } else if (studiedRows && studiedRows.length > 0) {
     const localStudied = getStudied();
-    const cloudStudied = studiedRows.map(r => r.work_id);
+    // Filtra via gli ID eliminati di recente dall'utente
+    const cloudStudied = filterTombstonedStudied(studiedRows.map(r => r.work_id));
     const merged = [...new Set([...localStudied, ...cloudStudied])];
     setStudied(merged);
     console.log(`[sync] studied: local ${localStudied.length} + cloud ${cloudStudied.length} → merge ${merged.length}`);
@@ -295,8 +297,12 @@ export function subscribeToRealtime(user: User): (() => void) | undefined {
         if (payload.eventType === "INSERT") {
           const f = getFavorites();
           const list = payload.new.type === "work" ? f.works : f.artists;
-          if (!list.includes(payload.new.work_id)) {
-            list.push(payload.new.work_id);
+          const newId = payload.new.work_id;
+          // Rispetta le tombstones: se l'utente ha eliminato questo ID di recente,
+          // non riaggiungerlo (a meno che non sia passato abbastanza tempo).
+          const filtered = filterTombstoned(payload.new.type, [newId]);
+          if (filtered.length > 0 && !list.includes(newId)) {
+            list.push(newId);
             setFavorites(f);
           }
         } else if (payload.eventType === "DELETE") {
@@ -315,8 +321,11 @@ export function subscribeToRealtime(user: User): (() => void) | undefined {
       (payload) => {
         if (payload.eventType === "INSERT") {
           const ids = getStudied();
-          if (!ids.includes(payload.new.work_id)) {
-            ids.push(payload.new.work_id);
+          const newId = payload.new.work_id;
+          // Rispetta le tombstones
+          const filtered = filterTombstonedStudied([newId]);
+          if (filtered.length > 0 && !ids.includes(newId)) {
+            ids.push(newId);
             setStudied(ids);
           }
         } else if (payload.eventType === "DELETE") {
