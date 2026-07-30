@@ -296,7 +296,7 @@ export default function Legal() {
 
         <H2>Sostieni il progetto</H2>
         <P>
-          HUB Art è gratuito e senza pubblicità. Se ti è utile, considera una donazione per
+          HUB Art è gratuito e senza pubblicità. Se ti è utile, lascia una mancia per
           supportare lo sviluppo e i costi di hosting.
         </P>
         <div style={{ marginTop: 12 }}>
@@ -307,7 +307,7 @@ export default function Legal() {
               background: "#ffdd00", color: "#000", textDecoration: "none",
               border: "1px solid #e6c800",
             }}>
-            ☕ Buy me a coffee
+            ☕ Lascia una mancia
           </a>
         </div>
       </div>

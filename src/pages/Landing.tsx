@@ -204,13 +204,13 @@ export default function Landing() {
           </a>
         </div>
 
-        {/* Donazioni */}
+        {/* Mance */}
         <div style={{
           marginTop: 20, padding: "16px 20px", background: "var(--bg-2)", borderRadius: 12,
           display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 10,
         }}>
           <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: 0, lineHeight: 1.5 }}>
-            HUB Art è gratuito e senza pubblicità. Se ti è utile, considera una donazione 💛
+            HUB Art è gratuito e senza pubblicità. Se ti è utile, lascia una mancia al creatore 💛
           </p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
             <a href="https://www.buymeacoffee.com/ATgio" target="_blank" rel="noopener noreferrer"
@@ -220,7 +220,7 @@ export default function Landing() {
                 background: "#ffdd00", color: "#000", textDecoration: "none",
                 border: "1px solid #e6c800",
               }}>
-              ☕ Buy me a coffee
+              ☕ Lascia una mancia
             </a>
           </div>
         </div>
