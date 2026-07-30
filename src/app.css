@@ -812,3 +812,128 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   border: 1px solid rgba(184,138,46,.45); background: rgba(184,138,46,.08); color: var(--ink-soft);
 }
 .quiz-notice.soft { border-color: var(--line); background: var(--bg-2); }
+
+/* ============================================================================
+   MOBILE FIX — mappa, grafo, timeline, fullscreen
+   Regole per garantire usabilità su schermi piccoli:
+   - Stage (canvas/3D/leaflet) ridotti in altezza
+   - Pannelli di controllo inline senza box (centri mappa, ecc.)
+   - KPI grid a 2 colonne su mobile piccolo
+   - Griglia opere a 1 colonna su mobile piccolo
+   - Fullscreen con scroll verticale, icone non sovrapposte
+   - Pulsante toggle mobile per nascondere/mostrare controlli
+   ============================================================================ */
+
+/* Tablet / mobile largo: altezza stage ridotta */
+@media (max-width: 900px) {
+  .stage,
+  .canvas-stage,
+  .grafo-stage,
+  .mappa-stage,
+  .timeline-stage,
+  .stage-3d {
+    height: 60vh !important;
+    max-height: 60vh;
+  }
+  /* Pannello "Centri" inline senza box (mappa) */
+  .mappa-centri,
+  .panel-centri {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 6px;
+    background: none !important;
+    border: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+  .mappa-centri .panel-item,
+  .panel-centri > * {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  /* Pulsante toggle per nascondere/mostrare controlli su mobile */
+  .mobile-controls-toggle {
+    display: inline-flex !important;
+  }
+}
+
+/* Mobile piccolo */
+@media (max-width: 600px) {
+  .stage,
+  .canvas-stage,
+  .grafo-stage,
+  .mappa-stage,
+  .timeline-stage,
+  .stage-3d {
+    height: 55vh !important;
+    max-height: 55vh;
+  }
+  /* KPI grid 2 colonne */
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+  }
+  .kpi-grid .stat,
+  .kpi-grid > div {
+    padding: 10px 8px;
+  }
+  /* Griglia opere 1 colonna */
+  .grid-works {
+    grid-template-columns: 1fr !important;
+  }
+  /* Fullscreen: scroll verticale abilitato */
+  .fullscreen-mode,
+  .fs-container,
+  .is-fullscreen {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    height: 100vh;
+    max-height: 100vh;
+  }
+  /* Posizionamento icone non sovrapposto in mappa/grafo */
+  .map-icon,
+  .grafo-icon,
+  .leaflet-marker-icon {
+    z-index: 5;
+    transform: translateZ(0);
+  }
+  .map-icon:hover,
+  .grafo-icon:hover {
+    z-index: 20;
+  }
+  /* Nascondi pulsanti secondari in fullscreen su mobile */
+  .fs-secondary-actions {
+    display: none !important;
+  }
+}
+
+/* Pulsante toggle mobile — nascosto su desktop, visibile su mobile */
+.mobile-controls-toggle {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.mobile-controls-toggle.active {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+
+/* Quando i controlli sono nascosti da toggle mobile */
+.mobile-controls-hidden .control-panel,
+.mobile-controls-hidden .filterbar,
+.mobile-controls-hidden .page-head {
+  display: none !important;
+}
+

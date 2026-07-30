@@ -30,7 +30,7 @@ export default function Login() {
     );
   }
 
-  // ---- EXPORT: genera JSON con tutti i dati locali ----
+  // ---- EXPORT: genera JSON con tutti i dati locali e scarica un file ----
   const handleExport = () => {
     const data = {
       favorites: getFavorites(),
@@ -38,15 +38,17 @@ export default function Login() {
       imageOverrides: getOverrides(),
       exportedAt: new Date().toISOString(),
     };
-    const json = JSON.stringify(data);
-    navigator.clipboard.writeText(json).then(() => {
-      setSyncResult("✓ Dati copiati negli appunti! Incollali nella nuova versione.");
-    }).catch(() => {
-      // Fallback: mostra il JSON in un textarea
-      setImportJson(json);
-      setShowImport(true);
-      setSyncResult("Copia il JSON dal campo sotto.");
-    });
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `hubart-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setSyncResult("✓ File JSON scaricato! Conservalo per migrare i tuoi dati.");
   };
 
   // ---- IMPORT: carica JSON nella nuova versione ----
@@ -192,7 +194,7 @@ export default function Login() {
           <div className="smallcaps" style={{ marginBottom: 8 }}>Esporta / Importa dati</div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <button className="btn sm" onClick={handleExport}>
-              📋 Esporta dati
+              💾 Esporta dati (JSON)
             </button>
             <button className="btn sm" onClick={() => setShowImport(!showImport)}>
               {showImport ? "Chiudi import" : "📥 Importa dati"}

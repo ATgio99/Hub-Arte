@@ -23,10 +23,11 @@ import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "../lib/auth";
 import { useData } from "../lib/store";
+import { computeWorkGroups, workGroupMap } from "../lib/data";
 import EditorDrawer from "../components/EditorDrawer";
 import type { Work, Artist, Period, Technique, Term, ArtEvent, Connection } from "../lib/types";
 
-type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" | "connections";
+type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" | "connections" | "complessi";
 
 const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "works", label: "Opere", icon: "🖼️" },
@@ -36,6 +37,7 @@ const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "terms", label: "Termini", icon: "📚" },
   { id: "events", label: "Eventi", icon: "⚡" },
   { id: "connections", label: "Connessioni", icon: "🔗" },
+  { id: "complessi", label: "Complessi", icon: "🏛️" },
 ];
 
 function slugify(s: string): string {
@@ -113,6 +115,7 @@ export default function AdminDatabase() {
       case "terms": arr = ix.ds.terms; break;
       case "events": arr = ix.ds.events; break;
       case "connections": arr = ix.ds.connections; break;
+      case "complessi": arr = []; break; // gestito da ComplessiView
     }
     // Filtro search
     if (!search.trim()) return arr;
@@ -292,7 +295,9 @@ export default function AdminDatabase() {
         <button
           onClick={openNew}
           className="btn gold sm"
-          style={{ whiteSpace: "nowrap" }}
+          style={{ whiteSpace: "nowrap", display: tab === "complessi" ? "none" : "inline-flex" }}
+          disabled={tab === "complessi"}
+          title={tab === "complessi" ? "I complessi sono generati automaticamente dal dataset" : undefined}
         >
           + Nuovo
         </button>
@@ -303,7 +308,10 @@ export default function AdminDatabase() {
         background: "var(--bg)", border: "1px solid var(--line)",
         borderRadius: 10, overflow: "hidden", maxHeight: 540, overflowY: "auto",
       }}>
-        {loadingDb ? (
+        {/* Complessi — render dedicato, PRIMA del check currentData.length === 0 */}
+        {tab === "complessi" ? (
+          <ComplessiView ix={ix} search={search} />
+        ) : loadingDb ? (
           <div style={{ padding: 40, textAlign: "center" }}>
             <div className="spinner" style={{ margin: "0 auto" }} />
           </div>
@@ -549,6 +557,81 @@ export default function AdminDatabase() {
           <li>L'eliminazione rimuove solo dal DB. Se la riga esiste anche nel JSON, riapparirà con i valori originali.</li>
         </ul>
       </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// ComplessiView — mostra i gruppi di opere (complessi/architetture con
+// più opere collegate). Non è una tabella DB: deriva dai metadati delle opere.
+// ============================================================================
+function ComplessiView({ ix, search }: { ix: ReturnType<typeof useData>; search: string }) {
+  const groups = useMemo(() => {
+    const g = computeWorkGroups(ix.ds);
+    // Ordina per numero di opere decrescente
+    return [...g.values()].sort((a, b) => b.works.length - a.works.length);
+  }, [ix.ds]);
+
+  const q = search.trim().toLowerCase();
+  const filtered = useMemo(() => {
+    if (!q) return groups;
+    return groups.filter(g =>
+      (g.name + " " + (g.city ?? "")).toLowerCase().includes(q)
+    );
+  }, [groups, q]);
+
+  return (
+    <div style={{ padding: 16 }}>
+      <div style={{ marginBottom: 12, fontSize: 13, color: "var(--ink-dim)" }}>
+        📊 <b>{groups.length}</b> complessi trovati (raggruppamenti automatici di opere nello stesso edificio/complesso architettonico).
+        {q && <> · Filtrati per "<b>{q}</b>": {filtered.length} risultati.</>}
+      </div>
+
+      {filtered.length === 0 ? (
+        <div style={{ padding: 32, textAlign: "center", color: "var(--ink-dim)", fontSize: 14 }}>
+          Nessun complesso trovato.
+        </div>
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {filtered.map((g, i) => {
+            const key = `${g.city ?? ""}|${g.name.toLowerCase()}|${i}`;
+            const parent = g.parent;
+            return (
+              <div key={key} style={{
+                padding: 14, background: "var(--bg-2)",
+                border: "1px solid var(--line)", borderRadius: 10,
+              }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontWeight: 600, fontSize: 15 }}>{g.name}</div>
+                    <div style={{ fontSize: 11.5, color: "var(--ink-dim)" }}>
+                      {g.city ? <>📍 {g.city} · </> : null}
+                      <b>{g.works.length}</b> opere · capofila: <Link to={`/opera/${parent.id}`} style={{ color: "var(--gold-deep)", textDecoration: "underline" }}>{parent.title}</Link>
+                    </div>
+                  </div>
+                  <span style={{
+                    fontSize: 11, fontWeight: 700, padding: "3px 9px", borderRadius: 4,
+                    background: "rgba(63,138,79,0.15)", color: "#3f8a4f",
+                  }}>
+                    🏛️ complesso
+                  </span>
+                </div>
+                <div style={{ display: "flex", gap: 6, marginTop: 10, flexWrap: "wrap" }}>
+                  {g.works.map((w) => (
+                    <Link key={w.id} to={`/opera/${w.id}`} style={{
+                      fontSize: 12, padding: "3px 8px", borderRadius: 6,
+                      background: "var(--bg)", border: "1px solid var(--line)",
+                      color: "var(--ink-soft)", textDecoration: "none",
+                    }} title={w.title}>
+                      {w.title.length > 38 ? w.title.slice(0, 36) + "…" : w.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

@@ -5,7 +5,8 @@ import { useData, useTimeRange } from "../lib/store";
 import { Section, FilterNote, CountUp } from "../components/ui";
 import { getOverrides, clearAllOverrides, clearOverride, exportOverrides, importOverrides } from "../lib/imageOverrides";
 import { workSortYear } from "../lib/data";
-import { useStudied, clearAllStudied } from "../lib/studied";
+import { useStudied } from "../lib/studied";
+import { useAuth } from "../lib/auth";
 import { useInViewOnce, EASE_OUT, usePrefersReducedMotion } from "../lib/motion";
 
 // ---- Barre orizzontali (clickable) ----------------------------------------
@@ -106,6 +107,7 @@ export default function Dashboard() {
   const ds = ix.ds;
   const { range, bounds, workIn, active } = useTimeRange();
   const studiedIds = useStudied();
+  const { isAdmin } = useAuth();
 
   // opere nell'arco temporale globale: base di TUTTE le statistiche
   const works = useMemo(() => ds.works.filter(workIn), [ds, workIn]);
@@ -312,13 +314,6 @@ export default function Dashboard() {
             Non hai ancora approfondito nessuna opera. Vai sulla scheda di un'opera e premi la spunta ✓ per segnare le opere che hai studiato.
           </p>
         )}
-        {totalStudied > 0 && (
-          <div style={{ marginTop: 16 }}>
-            <button className="btn ghost sm" onClick={() => { if (confirm("Cancellare tutte le spunte di approfondimento?")) clearAllStudied(); }}>
-              Reset approfondite
-            </button>
-          </div>
-        )}
       </Section>
 
       {/* DENSITÀ TEMPORALE — istogramma grande, bin nell'arco evidenziati */}
@@ -386,7 +381,14 @@ export default function Dashboard() {
       )}
 
       <Section eyebrow="Personalizzazioni" title="Immagini personalizzate">
-        <OverridesManager />
+        {isAdmin ? (
+          <OverridesManager />
+        ) : (
+          <p className="muted" style={{ fontSize: 13.5, maxWidth: 640, lineHeight: 1.55 }}>
+            La gestione delle immagini personalizzate è riservata agli amministratori.
+            Se sei un utente e vuoi suggerire una modifica a un'immagine, usa il pulsante “✎ Richiedi modifica” sulla scheda dell'opera.
+          </p>
+        )}
       </Section>
     </div>
   );

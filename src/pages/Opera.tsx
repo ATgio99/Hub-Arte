@@ -128,9 +128,9 @@ export default function Opera() {
           <div className="opera-img card">
             <WorkImage work={w} style={{ width: "100%", height: "100%", objectFit: "contain", background: "var(--bg)" }} />
           </div>
-          {/* Sotto l'immagine: solo ImageEditor + fonte (i pulsanti Modifica/Richiedi sono in alto) */}
+          {/* Sotto l'immagine: solo ImageEditor (solo admin) + fonte (i pulsanti Modifica/Richiedi sono in alto) */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8, gap: 10, flexWrap: "wrap" }}>
-            <ImageEditor workId={w.id} />
+            {isAdmin && <ImageEditor workId={w.id} />}
             {w.image_source && <div className="faint" style={{ fontSize: 11, marginLeft: "auto" }}>fonte immagine: {getOverrides()[w.id] ? "personalizzata" : w.image_source}</div>}
           </div>
         </div>

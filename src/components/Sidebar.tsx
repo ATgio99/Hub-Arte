@@ -3,13 +3,12 @@
 // (home 3D inclusa). Carta semitrasparente con blur, hairline, staccata dai
 // bordi (margine). Voci numerate 01-08 con icona sottile, sottolineatura
 // animata in hover + micro-slide; voce attiva con pallino oro. In basso: slider
-// temporale compatto (TimeRangeSlider del sito classico) + contatori dataset.
+// temporale compatto (TimeRangeSlider del sito classico).
 // Collassabile a sola colonna di icone (desktop). Su mobile: drawer da hamburger.
 // ============================================================================
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { STONES } from "../lib/pages";
-import { useData } from "../lib/store";
 import { useAuth, isAdminEmail } from "../lib/auth";
 import { supabase } from "../lib/supabase";
 import TimeRangeSlider from "./TimeRangeSlider";
@@ -31,13 +30,11 @@ function Icon({ id }: { id: string }) {
   }
 }
 
-function fmt(n: number) { return n.toLocaleString("it-IT"); }
 
 function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
   collapsed: boolean; onToggleCollapse: () => void; isHome: boolean; onNavigate?: () => void;
 }) {
   const loc = useLocation();
-  const { ds } = useData();
   const { user } = useAuth();
   const [pendingReviewCount, setPendingReviewCount] = useState(0);
 
@@ -151,16 +148,10 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
         })}
       </nav>
 
-      {/* slider temporale + contatori dataset */}
+      {/* slider temporale */}
       <div className="sbx-foot">
         <div className="sbx-trs">
           <TimeRangeSlider compact />
-        </div>
-        <div className="sbx-counts" data-testid="sbx-counts">
-          <span><b>{fmt(ds.works.length)}</b> opere</span>
-          <span><b>{fmt(ds.artists.length)}</b> artisti</span>
-          <span><b>{fmt(ds.periods.length)}</b> periodi</span>
-          <span><b>{fmt(ds.connections.length)}</b> legami</span>
         </div>
 
         {/* Voce profilo per UTENTI NORMALI loggati — mostra badge con richieste

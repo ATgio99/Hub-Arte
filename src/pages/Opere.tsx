@@ -48,8 +48,9 @@ export default function Opere() {
       if (studiedFilter === "studied" && !studied.includes(w.id)) return false;
       if (studiedFilter === "not-studied" && studied.includes(w.id)) return false;
       if (qq) {
-        const hay = (w.title + " " + (w.location_city ?? "") + " " + (w.location_place ?? "")).toLowerCase();
-        if (!hay.includes(qq)) return false;
+        const keywords = qq.split(/\s+/).filter(Boolean);
+        const hay = (w.title + " " + (w.location_city ?? "") + " " + (w.location_place ?? "") + " " + (w.type ?? "")).toLowerCase();
+        if (!keywords.every(kw => hay.includes(kw))) return false;
       }
       return true;
     }).sort((a, b) => b.importance - a.importance || (a.year_end ?? 9999) - (b.year_end ?? 9999));

@@ -61,12 +61,13 @@ export function studiedCount(): number {
   return getStudied().length;
 }
 
-export function clearAllStudied() {
+export async function clearAllStudied() {
   persist([]);
-  // Also clear from Supabase
-  supabase.auth.getUser().then(({ data: { user } }) => {
-    if (user) supabase.from("user_studied").delete().eq("user_id", user.id);
-  });
+  // Also clear from Supabase (await instead of .then)
+  const { data: { user } } = await supabase.auth.getUser();
+  if (user) {
+    await supabase.from("user_studied").delete().eq("user_id", user.id);
+  }
 }
 
 /** Hook reattivo: restituisce gli id delle opere approfondite e si aggiorna a ogni toggle. */
