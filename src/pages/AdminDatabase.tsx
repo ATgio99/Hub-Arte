@@ -23,11 +23,10 @@ import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "../lib/auth";
 import { useData } from "../lib/store";
-import { computeWorkGroups, workGroupMap } from "../lib/data";
 import EditorDrawer from "../components/EditorDrawer";
 import type { Work, Artist, Period, Technique, Term, ArtEvent, Connection } from "../lib/types";
 
-type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" | "connections" | "complessi";
+type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" | "connections";
 
 const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "works", label: "Opere", icon: "🖼️" },
@@ -37,7 +36,6 @@ const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "terms", label: "Termini", icon: "📚" },
   { id: "events", label: "Eventi", icon: "⚡" },
   { id: "connections", label: "Connessioni", icon: "🔗" },
-  { id: "complessi", label: "Complessi", icon: "🏛️" },
 ];
 
 function slugify(s: string): string {
@@ -115,7 +113,6 @@ export default function AdminDatabase() {
       case "terms": arr = ix.ds.terms; break;
       case "events": arr = ix.ds.events; break;
       case "connections": arr = ix.ds.connections; break;
-      case "complessi": arr = []; break; // gestito da ComplessiView
     }
     // Filtro search
     if (!search.trim()) return arr;
@@ -295,9 +292,7 @@ export default function AdminDatabase() {
         <button
           onClick={openNew}
           className="btn gold sm"
-          style={{ whiteSpace: "nowrap", display: tab === "complessi" ? "none" : "inline-flex" }}
-          disabled={tab === "complessi"}
-          title={tab === "complessi" ? "I complessi sono generati automaticamente dal dataset" : undefined}
+          style={{ whiteSpace: "nowrap" }}
         >
           + Nuovo
         </button>
@@ -308,10 +303,7 @@ export default function AdminDatabase() {
         background: "var(--bg)", border: "1px solid var(--line)",
         borderRadius: 10, overflow: "hidden", maxHeight: 540, overflowY: "auto",
       }}>
-        {/* Complessi — render dedicato, PRIMA del check currentData.length === 0 */}
-        {tab === "complessi" ? (
-          <ComplessiView ix={ix} search={search} openEdit={openEdit} />
-        ) : loadingDb ? (
+        {loadingDb ? (
           <div style={{ padding: 40, textAlign: "center" }}>
             <div className="spinner" style={{ margin: "0 auto" }} />
           </div>
@@ -540,6 +532,7 @@ export default function AdminDatabase() {
           rowId={editingId}
           open={drawerOpen}
           onClose={closeDrawer}
+          isNew={!!newId}
         />
       )}
 
@@ -562,261 +555,6 @@ export default function AdminDatabase() {
 }
 
 // ============================================================================
-// ComplessiView — mostra i gruppi di opere (complessi/architetture con
-// più opere collegate). Non è una tabella DB: deriva dai metadati delle opere.
-// ============================================================================
-function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData>; search: string; openEdit: (id: string) => void }) {
-  const [showNewForm, setShowNewForm] = useState(false);
-  const [newPlace, setNewPlace] = useState("");
-  const [newCity, setNewCity] = useState("");
-  const [newWorkId, setNewWorkId] = useState("");
-  const [saveMsg, setSaveMsg] = useState<string | null>(null);
-  const [editingGroupName, setEditingGroupName] = useState<string | null>(null);
-  const [editPlaceName, setEditPlaceName] = useState("");
-  const [addWorkToGroup, setAddWorkToGroup] = useState<string | null>(null);
-  const [addWorkId, setAddWorkId] = useState("");
-
-  const groups = useMemo(() => {
-    const g = computeWorkGroups(ix.ds);
-    return [...g.values()].sort((a, b) => b.works.length - a.works.length);
-  }, [ix.ds]);
-
-  const q = search.trim().toLowerCase();
-  const filtered = useMemo(() => {
-    if (!q) return groups;
-    return groups.filter(g =>
-      (g.name + " " + (g.city ?? "")).toLowerCase().includes(q)
-    );
-  }, [groups, q]);
-
-  // Opere senza complesso (per il form "nuovo complesso")
-  const orphanWorks = useMemo(() => {
-    const inGroup = new Set<string>();
-    for (const g of groups) for (const w of g.works) inGroup.add(w.id);
-    return ix.ds.works
-      .filter(w => !inGroup.has(w.id) && w.location_place)
-      .sort((a, b) => a.title.localeCompare(b.title))
-      .slice(0, 200);
-  }, [ix.ds.works, groups]);
-
-  const notifyChanged = () => {
-    window.dispatchEvent(new Event("hubart-works-changed"));
-    try { const bc = new BroadcastChannel("hubart-admin"); bc.postMessage({ type: "changed", ts: Date.now() }); bc.close(); } catch {}
-  };
-
-  const renameComplex = async (oldName: string, cityName: string | null) => {
-    const newName = editPlaceName.trim();
-    if (!newName || newName === oldName) { setEditingGroupName(null); return; }
-    // Trova tutte le opere del gruppo e aggiorna location_place
-    const group = groups.find(g => g.name === oldName && (g.city ?? null) === cityName);
-    if (!group) return;
-    const updates = group.works.map(w =>
-      supabase.from("works").upsert({ id: w.id, location_place: newName, modified_by: null }, { onConflict: "id" })
-    );
-    await Promise.all(updates);
-    setEditingGroupName(null);
-    setEditPlaceName("");
-    notifyChanged();
-  };
-
-  const removeWorkFromComplex = async (workId: string) => {
-    // Rimuove l'opera dal complesso impostando location_place a null
-    if (!confirm("Rimuovere quest'opera dal complesso? Il suo location_place verrà cancellato.")) return;
-    const { error } = await supabase.from("works").upsert({
-      id: workId, location_place: null, modified_by: null,
-    }, { onConflict: "id" });
-    if (error) alert("Errore: " + error.message);
-    else notifyChanged();
-  };
-
-  const addWorkToComplex = async (groupName: string) => {
-    if (!addWorkId.trim()) return;
-    const { error } = await supabase.from("works").upsert({
-      id: addWorkId.trim(), location_place: groupName, modified_by: null,
-    }, { onConflict: "id" });
-    if (error) alert("Errore: " + error.message);
-    else { setAddWorkToGroup(null); setAddWorkId(""); notifyChanged(); }
-  };
-
-  const deleteComplex = async (groupName: string, cityName: string | null) => {
-    if (!confirm(`Eliminare il complesso "${groupName}"? Tutte le opere verranno rimosse dal complesso (location_place cancellato).`)) return;
-    const group = groups.find(g => g.name === groupName && (g.city ?? null) === cityName);
-    if (!group) return;
-    const updates = group.works.map(w =>
-      supabase.from("works").upsert({ id: w.id, location_place: null, modified_by: null }, { onConflict: "id" })
-    );
-    await Promise.all(updates);
-    notifyChanged();
-  };
-
-  return (
-    <div style={{ padding: 16 }}>
-      <div style={{ marginBottom: 12, fontSize: 13, color: "var(--ink-dim)" }}>
-        📊 <b>{groups.length}</b> complessi trovati. Clicca su un'opera per aprirne l'editor completo,
-        o usa i pulsanti per rinominare, aggiungere/rimuovere opere ed eliminare complessi.
-      </div>
-
-      {/* Pulsante nuovo complesso */}
-      <button
-        className="btn gold sm"
-        onClick={() => setShowNewForm(!showNewForm)}
-        style={{ marginBottom: 12 }}
-      >
-        {showNewForm ? "− Annulla" : "+ Crea nuovo complesso"}
-      </button>
-
-      {/* Form nuovo complesso */}
-      {showNewForm && (
-        <div style={{
-          padding: 16, background: "var(--bg-2)", borderRadius: 10,
-          marginBottom: 16, border: "1px solid var(--gold)",
-        }}>
-          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 10 }}>Crea nuovo complesso</div>
-          <p style={{ fontSize: 12, color: "var(--ink-dim)", margin: "0 0 10px" }}>
-            Seleziona un'opera esistente e assegnale un nuovo "Luogo / edificio". Tutte le opere con lo stesso luogo verranno raggruppate automaticamente.
-          </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <select
-              value={newWorkId}
-              onChange={(e) => setNewWorkId(e.target.value)}
-              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
-            >
-              <option value="">— Seleziona un'opera da assegnare al complesso —</option>
-              {orphanWorks.map(w => (
-                <option key={w.id} value={w.id}>{w.title} ({w.location_city || "?"})</option>
-              ))}
-            </select>
-            <input
-              type="text"
-              placeholder="Nome del complesso (es. Basilica di San Francesco)"
-              value={newPlace}
-              onChange={(e) => setNewPlace(e.target.value)}
-              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
-            />
-            <input
-              type="text"
-              placeholder="Città (opzionale, usa quella dell'opera se vuoto)"
-              value={newCity}
-              onChange={(e) => setNewCity(e.target.value)}
-              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
-            />
-            {saveMsg && <div style={{ fontSize: 13, color: saveMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{saveMsg}</div>}
-            <button className="btn gold sm" onClick={createComplex} disabled={!newWorkId || !newPlace.trim()}>
-              💾 Crea complesso
-            </button>
-          </div>
-        </div>
-      )}
-
-      {filtered.length === 0 ? (
-        <div style={{ padding: 32, textAlign: "center", color: "var(--ink-dim)", fontSize: 14 }}>
-          Nessun complesso trovato.
-        </div>
-      ) : (
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          {filtered.map((g, i) => {
-            const key = `${g.city ?? ""}|${g.name.toLowerCase()}|${i}`;
-            const parent = g.parent;
-            return (
-              <div key={key} style={{
-                padding: 14, background: "var(--bg-2)",
-                border: "1px solid var(--line)", borderRadius: 10,
-              }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
-                  <div style={{ minWidth: 0, flex: 1 }}>
-                    {editingGroupName === key ? (
-                      <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                        <input
-                          type="text" value={editPlaceName} onChange={(e) => setEditPlaceName(e.target.value)}
-                          style={{ padding: "5px 8px", border: "1px solid var(--gold)", borderRadius: 4, fontSize: 14, fontFamily: "inherit", flex: 1 }}
-                          autoFocus
-                        />
-                        <button className="btn gold sm" style={{ fontSize: 11, padding: "4px 10px" }} onClick={() => renameComplex(g.name, g.city ?? null)}>Salva</button>
-                        <button className="btn ghost sm" style={{ fontSize: 11, padding: "4px 10px" }} onClick={() => setEditingGroupName(null)}>Annulla</button>
-                      </div>
-                    ) : (
-                      <div style={{ fontWeight: 600, fontSize: 15, cursor: "pointer" }}
-                        onClick={() => { setEditingGroupName(key); setEditPlaceName(g.name); }}
-                        title="Clicca per rinominare">
-                        {g.name}
-                      </div>
-                    )}
-                    <div style={{ fontSize: 11.5, color: "var(--ink-dim)" }}>
-                      {g.city ? <>📍 {g.city} · </> : null}
-                      <b>{g.works.length}</b> opere · capofila: <Link to={`/opera/${parent.id}`} style={{ color: "var(--gold-deep)", textDecoration: "underline" }}>{parent.title}</Link>
-                    </div>
-                  </div>
-                  <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
-                    <button onClick={() => { setEditingGroupName(key); setEditPlaceName(g.name); }}
-                      style={{ background: "none", border: "1px solid var(--line)", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: 12 }}
-                      title="Rinomina complesso">✎</button>
-                    <button onClick={() => setAddWorkToGroup(addWorkToGroup === key ? null : key)}
-                      style={{ background: "none", border: "1px solid var(--line)", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: 12 }}
-                      title="Aggiungi opera al complesso">+</button>
-                    <button onClick={() => deleteComplex(g.name, g.city ?? null)}
-                      style={{ background: "none", border: "1px solid var(--line)", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: 12, color: "#a8483f" }}
-                      title="Elimina complesso">🗑️</button>
-                  </div>
-                </div>
-
-                {/* Form aggiungi opera */}
-                {addWorkToGroup === key && (
-                  <div style={{ marginTop: 10, padding: 10, background: "var(--bg)", borderRadius: 6, border: "1px solid var(--gold)" }}>
-                    <div style={{ fontSize: 12, color: "var(--ink-dim)", marginBottom: 6 }}>Aggiungi un'opera al complesso "{g.name}":</div>
-                    <div style={{ display: "flex", gap: 6 }}>
-                      <select
-                        value={addWorkId}
-                        onChange={(e) => setAddWorkId(e.target.value)}
-                        style={{ flex: 1, padding: "6px 8px", border: "1px solid var(--line)", borderRadius: 4, fontSize: 13, fontFamily: "inherit" }}
-                      >
-                        <option value="">— Seleziona un'opera —</option>
-                        {orphanWorks.map(w => (
-                          <option key={w.id} value={w.id}>{w.title} ({w.location_city || "?"})</option>
-                        ))}
-                      </select>
-                      <button className="btn gold sm" style={{ fontSize: 12, padding: "5px 12px" }} onClick={() => addWorkToComplex(g.name)}>Aggiungi</button>
-                      <button className="btn ghost sm" style={{ fontSize: 12, padding: "5px 12px" }} onClick={() => setAddWorkToGroup(null)}>Annulla</button>
-                    </div>
-                  </div>
-                )}
-
-                {/* Opere del complesso con pulsante rimuovi */}
-                <div style={{ display: "flex", gap: 6, marginTop: 10, flexWrap: "wrap" }}>
-                  {g.works.map((w) => (
-                    <div key={w.id} style={{ display: "flex", alignItems: "center", gap: 2 }}>
-                      <button
-                        onClick={() => openEdit(w.id)}
-                        style={{
-                          fontSize: 12, padding: "4px 10px", borderRadius: "6px 0 0 6px",
-                          background: "var(--bg)", border: "1px solid var(--line)", borderRight: 0,
-                          color: "var(--ink-soft)", cursor: "pointer", fontFamily: "inherit",
-                        }}
-                        title={`Modifica "${w.title}"`}
-                      >
-                        ✎ {w.title.length > 32 ? w.title.slice(0, 30) + "…" : w.title}
-                      </button>
-                      <button
-                        onClick={() => removeWorkFromComplex(w.id)}
-                        style={{
-                          fontSize: 12, padding: "4px 6px", borderRadius: "0 6px 6px 0",
-                          background: "var(--bg)", border: "1px solid var(--line)",
-                          color: "#a8483f", cursor: "pointer", fontFamily: "inherit",
-                        }}
-                        title="Rimuovi dal complesso"
-                      >×</button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ============================================================================
 // GenericEditorDrawer — per tabelle diverse da works (artisti, periodi, ecc.)
 // Architettura a 2 livelli (come EditorDrawer) per evitare perdita di focus.
 // ============================================================================
@@ -829,6 +567,7 @@ function GenericEditorDrawerInner({
   onClose,
   userEmail,
   initialRow,
+  isNew,
 }: {
   table: Tab;
   rowId: string;
@@ -836,6 +575,7 @@ function GenericEditorDrawerInner({
   onClose: () => void;
   userEmail: string | null;
   initialRow: any | null;
+  isNew: boolean;
 }) {
   const [row, setRow] = useState<any>(initialRow ? { ...initialRow } : { id: rowId });
   const [saving, setSaving] = useState(false);
@@ -873,6 +613,33 @@ function GenericEditorDrawerInner({
         payload[k] = v;
       }
       payload.modified_by = userEmail;
+
+      // Validazione minima per nuove righe
+      if (isNew) {
+        if (!payload.id || String(payload.id).trim() === "") {
+          throw new Error("L'ID è obbligatorio per creare una nuova riga.");
+        }
+        // Per le tecniche, richiedi almeno il nome
+        if (table === "techniques" && (!payload.name || String(payload.name).trim() === "")) {
+          throw new Error("Il nome della tecnica è obbligatorio.");
+        }
+        if (table === "works" && (!payload.title || String(payload.title).trim() === "")) {
+          throw new Error("Il titolo dell'opera è obbligatorio.");
+        }
+        if (table === "artists" && (!payload.name || String(payload.name).trim() === "")) {
+          throw new Error("Il nome dell'artista è obbligatorio.");
+        }
+        if (table === "periods" && (!payload.name || String(payload.name).trim() === "")) {
+          throw new Error("Il nome del periodo è obbligatorio.");
+        }
+        if (table === "terms" && (!payload.term || String(payload.term).trim() === "")) {
+          throw new Error("Il termine è obbligatorio.");
+        }
+        if (table === "events" && (!payload.title || String(payload.title).trim() === "")) {
+          throw new Error("Il titolo dell'evento è obbligatorio.");
+        }
+      }
+
       const { error } = await supabase.from(table).upsert(payload, { onConflict: "id" });
       if (error) throw error;
       setOk(true);
@@ -949,10 +716,12 @@ function GenericEditorDrawerInner({
         }}>
           <div>
             <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>
-              {table} · Admin
+              {table} · {isNew ? "NUOVA RIGA" : "Admin"}
             </div>
             <div style={{ fontFamily: "var(--font-display)", fontSize: 16, marginTop: 2 }}>
-              {row.name || row.term || row.title || row.id}
+              {isNew
+                ? `Nuova riga in ${table}`
+                : (row.name || row.term || row.title || row.id)}
             </div>
           </div>
           <button
@@ -981,6 +750,18 @@ function GenericEditorDrawerInner({
             </div>
           )}
 
+          {/* Banner "NUOVA RIGA" se isNew */}
+          {isNew && (
+            <div style={{
+              padding: "10px 12px", background: "rgba(212,160,23,0.1)",
+              color: "var(--gold-deep)", borderRadius: 6, fontSize: 13,
+              border: "1px solid rgba(212,160,23,0.3)",
+            }}>
+              ✨ Stai creando una nuova riga in <b>{table}</b>.
+              Compila almeno i campi obbligatori (ID + nome/titolo) e premi Salva.
+            </div>
+          )}
+
           {fields.map((field) => {
             const value = row[field];
             const isArray = Array.isArray(value);
@@ -988,14 +769,70 @@ function GenericEditorDrawerInner({
             const isNumber = typeof value === "number";
             const isNull = value == null;
 
+            // Campi che dovrebbero essere textarea (testo lungo)
+            const LONG_TEXT_FIELDS = ["definition", "evolution", "analysis", "bio",
+              "summary", "description", "historical_context", "date_text"];
+            const isLongText = LONG_TEXT_FIELDS.includes(field);
+
+            // Campi con select predefiniti
+            const SELECT_OPTIONS: Record<string, string[]> = {
+              "techniques.category": ["pittorica", "scultorea", "architettonica", "musiva", "altra"],
+              "works.type": ["architettura", "pittura", "scultura", "mosaico", "miniatura",
+                "oreficeria", "urbanistica", "tela", "tavola", "polittico", "rilievo",
+                "affresco", "altro"],
+              "works.book": ["1", "2"],
+              "works.importance": ["1", "2", "3"],
+              "works.image_source": ["commons", "wikiart", "museo", "altro"],
+              "periods.type": ["epoca", "corrente", "popolo"],
+              "terms.category": ["architettura", "pittura", "scultura", "iconografia", "generale"],
+              "events.kind": ["politico", "religioso", "culturale", "tecnologico"],
+              "connections.kind": ["influenza", "contaminazione", "rielaborazione",
+                "evoluzione", "contrasto", "committenza", "maestro-allievo"],
+              "connections.source_type": ["period", "artist", "work", "technique", "event", "term"],
+              "connections.target_type": ["period", "artist", "work", "technique", "event", "term"],
+            };
+            const selectKey = `${table}.${field}`;
+            const selectOpts = SELECT_OPTIONS[selectKey];
+
+            // Campi in sola lettura (ID per righe esistenti)
+            const isReadOnlyId = field === "id" && !isNew;
+
             return (
               <div key={field}>
-                <label style={labelStyle}>{field}</label>
-                {isArray ? (
+                <label style={labelStyle}>
+                  {field}
+                  {field === "id" && isNew && <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>}
+                  {(field === "name" || field === "title" || field === "term") && isNew && (
+                    <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>
+                  )}
+                </label>
+                {isReadOnlyId ? (
+                  <input type="text" value={String(value ?? "")} disabled style={{ ...inputStyle, opacity: 0.6, cursor: "not-allowed" }} />
+                ) : selectOpts ? (
+                  <select
+                    value={String(value ?? "")}
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      setRow({ ...row, [field]: isNumber ? Number(v) : v });
+                    }}
+                    style={inputStyle}
+                  >
+                    {selectOpts.map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                ) : isArray ? (
                   <textarea
                     value={value.join("\n")}
                     onChange={(e) => setRow({ ...row, [field]: e.target.value.split("\n").map(s => s.trim()).filter(Boolean) })}
                     style={{ ...inputStyle, minHeight: 60, resize: "vertical", fontFamily: "ui-monospace, monospace", fontSize: 12 }}
+                    placeholder="Un valore per riga"
+                  />
+                ) : isLongText ? (
+                  <textarea
+                    value={String(value ?? "")}
+                    onChange={(e) => setRow({ ...row, [field]: e.target.value || null })}
+                    style={{ ...inputStyle, minHeight: 80, resize: "vertical" }}
                   />
                 ) : isBoolean ? (
                   <select value={String(value)} onChange={(e) => setRow({ ...row, [field]: e.target.value === "true" })} style={inputStyle}>
@@ -1021,19 +858,21 @@ function GenericEditorDrawerInner({
           background: "var(--bg)", display: "flex", gap: 8, justifyContent: "flex-end",
           boxShadow: "0 -4px 12px rgba(0,0,0,0.04)",
         }}>
-          <button
-            className="btn ghost sm"
-            onClick={del}
-            disabled={saving}
-            style={{ marginRight: "auto", color: "#a8483f", borderColor: "#a8483f" }}
-          >🗑️ Elimina</button>
+          {!isNew && (
+            <button
+              className="btn ghost sm"
+              onClick={del}
+              disabled={saving}
+              style={{ marginRight: "auto", color: "#a8483f", borderColor: "#a8483f" }}
+            >🗑️ Elimina</button>
+          )}
           <button className="btn ghost sm" onClick={onClose} disabled={saving}>Annulla</button>
           <button
             className="btn gold sm"
             onClick={save}
             disabled={saving}
           >
-            {saving ? "Salvataggio…" : "💾 Salva"}
+            {saving ? "Salvataggio…" : isNew ? "✨ Crea" : "💾 Salva"}
           </button>
         </div>
       </aside>
@@ -1047,8 +886,47 @@ const GenericEditorDrawerInnerMemo = memo(GenericEditorDrawerInner, (prev, next)
   prev.open === next.open &&
   prev.onClose === next.onClose &&
   prev.userEmail === next.userEmail &&
-  prev.initialRow === next.initialRow
+  prev.initialRow === next.initialRow &&
+  prev.isNew === next.isNew
 );
+
+// Template di default per nuove righe (così l'editor mostra i campi giusti
+// con valori sensati invece di un form vuoto con solo "id").
+const NEW_ROW_TEMPLATES: Record<Tab, () => any> = {
+  works: () => ({
+    id: "", title: "", artist_ids: [], period_id: null, date_text: "",
+    year_start: null, year_end: null, type: "altro", technique_ids: [],
+    materials: [], location_city: null, location_place: null,
+    lat: null, lon: null, book: 1, chapter: 0, page: 0, source_file: "",
+    importance: 2, summary: "", analysis: null, innovations: [], term_ids: [],
+    image_url: "", image_thumb: "", image_source: "commons",
+  }),
+  artists: () => ({
+    id: "", name: "", aka: [], birth: null, death: null,
+    period_ids: [], role: "", bio: "", innovations: [],
+  }),
+  periods: () => ({
+    id: "", name: "", type: "epoca", year_start: 1400, year_end: 1500,
+    regions: [], summary: "", historical_context: "", parent_id: null,
+    key_innovations: [],
+  }),
+  techniques: () => ({
+    id: "", name: "", definition: "", introduced_by: null,
+    first_period_id: null, evolution: "", category: "altra",
+  }),
+  terms: () => ({
+    id: "", term: "", definition: "", category: "generale",
+    period_ids: [], is_archetype: false,
+  }),
+  events: () => ({
+    id: "", year: 1400, year_end: null, title: "", description: "",
+    kind: "culturale", period_id: null,
+  }),
+  connections: () => ({
+    id: "", source_type: "work", source_id: "", target_type: "work",
+    target_id: "", kind: "influenza", description: "",
+  }),
+};
 
 // OUTER: legge ix, congel initialRow quando il drawer è aperto
 function GenericEditorDrawer({
@@ -1056,11 +934,13 @@ function GenericEditorDrawer({
   rowId,
   open,
   onClose,
+  isNew,
 }: {
   table: Tab;
   rowId: string;
   open: boolean;
   onClose: () => void;
+  isNew: boolean;
 }) {
   const ix = useData();
   const { user } = useAuth();
@@ -1069,23 +949,33 @@ function GenericEditorDrawer({
   useEffect(() => {
     if (open) {
       if (!frozenRow) {
-        let arr: any[] = [];
-        switch (table) {
-          case "artists": arr = ix.ds.artists; break;
-          case "periods": arr = ix.ds.periods; break;
-          case "techniques": arr = ix.ds.techniques; break;
-          case "terms": arr = ix.ds.terms; break;
-          case "events": arr = ix.ds.events; break;
-          case "connections": arr = ix.ds.connections; break;
+        // Se è una nuova riga, usa il template precompilato
+        if (isNew) {
+          const template = NEW_ROW_TEMPLATES[table]();
+          // Imposta l'ID placeholder
+          template.id = rowId === "nuovo" ? "" : rowId;
+          setFrozenRow(template);
+        } else {
+          // Altrimenti cerca la riga esistente nel dataset
+          let arr: any[] = [];
+          switch (table) {
+            case "works": arr = ix.ds.works; break;
+            case "artists": arr = ix.ds.artists; break;
+            case "periods": arr = ix.ds.periods; break;
+            case "techniques": arr = ix.ds.techniques; break;
+            case "terms": arr = ix.ds.terms; break;
+            case "events": arr = ix.ds.events; break;
+            case "connections": arr = ix.ds.connections; break;
+          }
+          const existing = arr.find(r => r.id === rowId);
+          setFrozenRow(existing || null);
         }
-        const existing = arr.find(r => r.id === rowId);
-        setFrozenRow(existing || null);
       }
     } else {
       if (frozenRow !== null) setFrozenRow(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, rowId, table, ix]);
+  }, [open, rowId, table, ix, isNew]);
 
   if (!open) return null;
 
@@ -1097,6 +987,7 @@ function GenericEditorDrawer({
       onClose={onClose}
       userEmail={user?.email || null}
       initialRow={frozenRow}
+      isNew={isNew}
     />
   );
 }

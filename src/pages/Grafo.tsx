@@ -248,36 +248,7 @@ export default function Grafo() {
     </div>
   );
 
-  const fsControls = (
-    <>
-      {modeToggle}
-      <div className="panel gf-filters" style={{ background: "transparent", border: 0, padding: 0, margin: 0 }}>
-        <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Livelli</div>
-        {[...NODE_TYPES, "city" as const].map((t) => {
-          const off = hideTypes.has(t);
-          return (
-            <button key={t} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideTypes, t, setHideTypes)}>
-              <span className="dot" style={{ background: NODE_HEX[t] }} />
-              <span className="gf-frow-lab">{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]}</span>
-              <span className="gf-frow-n tnum">{counts[t] ?? 0}</span>
-              <EyeIcon off={off} />
-            </button>
-          );
-        })}
-        <div className="panel-title" style={{ fontSize: 15, margin: "14px 0 8px" }}>Legami</div>
-        {KINDS.map((k) => {
-          const off = hideKinds.has(k);
-          return (
-            <button key={k} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideKinds, k, setHideKinds)}>
-              <span className="dot" style={{ background: KIND_COLOR[k] }} />
-              <span className="gf-frow-lab">{KIND_LABEL[k]}</span>
-              <EyeIcon off={off} />
-            </button>
-          );
-        })}
-      </div>
-    </>
-  );
+  const fsControls = <>{modeToggle}{typeChips}</>;
 
   const renderGraph = (full: boolean) => (
     <div className="stage" ref={!full ? wrapRef : undefined} style={{ height: full ? "100%" : "min(72vh, 700px)", flex: full ? 1 : undefined, border: full ? 0 : undefined, borderRadius: full ? 0 : undefined }} data-testid="graph-stage">
@@ -289,9 +260,7 @@ export default function Grafo() {
           graphData={graph}
           backgroundColor={PAPER}
           showNavInfo={false}
-          cooldownTicks={100}
-          cooldownTime={2000}
-          enablePointerInteraction={true}
+          cooldownTicks={120}
           nodeThreeObject={node3dObject}
           nodeColor={node3dColor}
           linkColor={link3dColor}
@@ -303,7 +272,6 @@ export default function Grafo() {
           }}
           linkOpacity={0.6}
           onEngineTick={setup3d}
-          onEngineStop={() => { /* il motore si ferma da solo dopo cooldown */ }}
           onNodeHover={(n: any) => { setHoverId(n ? n.id : null); }}
           onNodeClick={(n: any) => { setSel(n); }}
           onBackgroundClick={() => setSel(null)}
@@ -314,9 +282,7 @@ export default function Grafo() {
           width={dims.w} height={dims.h}
           graphData={graph}
           backgroundColor={PAPER}
-          cooldownTicks={100}
-          cooldownTime={2000}
-          nodeCanvasObject={node2dDraw}
+          cooldownTicks={120}
           d3VelocityDecay={0.3}
           nodeRelSize={4}
           linkColor={(l: any) => {
@@ -505,27 +471,14 @@ export default function Grafo() {
 function GraphSizer({ wrapRef, full, setDims }: { wrapRef: any; full: boolean; setDims: (d: { w: number; h: number }) => void }) {
   const selfRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (full) {
-      // In fullscreen: dimensioni fisse basate sulla finestra.
-      // NON usare ResizeObserver (causa tremolio del force-graph).
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      setDims({ w: w - (window.innerWidth > 900 ? 320 : 0), h }); // sottrai larghezza drawer se desktop
-      return;
-    }
-    // Modalità normale: usa ResizeObserver con debounce
-    const target = wrapRef.current;
+    const target = full ? selfRef.current?.parentElement : wrapRef.current;
     if (!target) return;
-    let timeout: any;
     const ro = new ResizeObserver(() => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        setDims({ w: target.clientWidth, h: target.clientHeight });
-      }, 300);
+      setDims({ w: target.clientWidth, h: target.clientHeight });
     });
     ro.observe(target);
     setDims({ w: target.clientWidth, h: target.clientHeight });
-    return () => { ro.disconnect(); clearTimeout(timeout); };
+    return () => ro.disconnect();
   }, [full, wrapRef, setDims]);
   return <div ref={selfRef} style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: -1 }} />;
 }

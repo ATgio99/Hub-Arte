@@ -4,7 +4,6 @@
 // ============================================================================
 import { useState } from "react";
 import { useAuth } from "../lib/auth";
-import { supabase } from "../lib/supabase";
 import { fullSync } from "../lib/sync";
 import { getFavorites, setFavorites } from "../lib/favorites";
 import { getStudied, setStudied } from "../lib/studied";
@@ -22,15 +21,6 @@ export default function Login() {
   const [showImport, setShowImport] = useState(false);
   const [importJson, setImportJson] = useState("");
   const [importResult, setImportResult] = useState<string | null>(null);
-  const [showAccount, setShowAccount] = useState(false);
-  const [newEmail, setNewEmail] = useState("");
-  const [emailMsg, setEmailMsg] = useState<string | null>(null);
-  const [oldPassword, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
-  const [pwMsg, setPwMsg] = useState<string | null>(null);
-  const [changingPw, setChangingPw] = useState(false);
-  const [changingEmail, setChangingEmail] = useState(false);
 
   if (loading) {
     return (
@@ -40,7 +30,7 @@ export default function Login() {
     );
   }
 
-  // ---- EXPORT: genera JSON con tutti i dati locali e scarica un file ----
+  // ---- EXPORT: genera JSON con tutti i dati locali ----
   const handleExport = () => {
     const data = {
       favorites: getFavorites(),
@@ -48,17 +38,15 @@ export default function Login() {
       imageOverrides: getOverrides(),
       exportedAt: new Date().toISOString(),
     };
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `hubart-backup-${new Date().toISOString().slice(0, 10)}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    setSyncResult("✓ File JSON scaricato! Conservalo per migrare i tuoi dati.");
+    const json = JSON.stringify(data);
+    navigator.clipboard.writeText(json).then(() => {
+      setSyncResult("✓ Dati copiati negli appunti! Incollali nella nuova versione.");
+    }).catch(() => {
+      // Fallback: mostra il JSON in un textarea
+      setImportJson(json);
+      setShowImport(true);
+      setSyncResult("Copia il JSON dal campo sotto.");
+    });
   };
 
   // ---- IMPORT: carica JSON nella nuova versione ----
@@ -199,85 +187,15 @@ export default function Login() {
           </div>
         )}
 
-        {/* Export / Import / Account */}
+        {/* Export / Import */}
         <div style={{ borderTop: "1px solid var(--line-soft)", paddingTop: 12, marginTop: 4 }}>
-          <div className="smallcaps" style={{ marginBottom: 8 }}>Account, dati e sincronizzazione</div>
+          <div className="smallcaps" style={{ marginBottom: 8 }}>Esporta / Importa dati</div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <button className="btn sm" onClick={handleExport}>
-              💾 Esporta dati (JSON)
+              📋 Esporta dati
             </button>
             <button className="btn sm" onClick={() => setShowImport(!showImport)}>
               {showImport ? "Chiudi import" : "📥 Importa dati"}
-            </button>
-          </div>
-
-          {/* Cambia email — sempre visibile */}
-          <div style={{ marginTop: 12, padding: 14, background: "var(--bg-1)", borderRadius: 10, border: "1px solid var(--line)" }}>
-            <div className="smallcaps" style={{ marginBottom: 8 }}>Cambia email</div>
-            <p style={{ fontSize: 12, color: "var(--ink-dim)", margin: "0 0 8px" }}>
-              Email attuale: <b>{user?.email}</b>
-            </p>
-            <input
-              type="email"
-              value={newEmail}
-              onChange={(e) => setNewEmail(e.target.value)}
-              placeholder="Nuova email"
-              style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, fontFamily: "inherit", marginBottom: 8 }}
-            />
-            {emailMsg && <div style={{ fontSize: 12, marginBottom: 6, color: emailMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{emailMsg}</div>}
-            <button
-              className="btn gold sm"
-              disabled={changingEmail || !newEmail.trim() || newEmail.trim() === user?.email}
-              onClick={async () => {
-                setChangingEmail(true); setEmailMsg(null);
-                const { error } = await supabase.auth.updateUser({ email: newEmail.trim() });
-                setChangingEmail(false);
-                if (error) setEmailMsg("✗ " + error.message);
-                else setEmailMsg("✓ Email aggiornata! Controlla entrambe le caselle email per confermare il cambio.");
-              }}
-            >
-              {changingEmail ? "Invio…" : "Cambia email"}
-            </button>
-          </div>
-
-          {/* Cambia password — sempre visibile, due campi */}
-          <div style={{ marginTop: 12, padding: 14, background: "var(--bg-1)", borderRadius: 10, border: "1px solid var(--line)" }}>
-            <div className="smallcaps" style={{ marginBottom: 8 }}>Cambia password</div>
-            <input
-              type="password"
-              value={newPassword}
-              onChange={(e) => { setNewPassword(e.target.value); setPwMsg(null); }}
-              placeholder="Nuova password (min. 6 caratteri)"
-              style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, fontFamily: "inherit", marginBottom: 8 }}
-            />
-            <input
-              type="password"
-              value={newPasswordConfirm}
-              onChange={(e) => { setNewPasswordConfirm(e.target.value); setPwMsg(null); }}
-              placeholder="Ripeti la nuova password"
-              style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, fontFamily: "inherit", marginBottom: 8 }}
-            />
-            {pwMsg && <div style={{ fontSize: 12, marginBottom: 6, color: pwMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{pwMsg}</div>}
-            <button
-              className="btn gold sm"
-              disabled={changingPw || !newPassword.trim() || newPassword.length < 6}
-              onClick={async () => {
-                if (newPassword !== newPasswordConfirm) {
-                  setPwMsg("✗ Le password non coincidono. Riprova.");
-                  return;
-                }
-                setChangingPw(true); setPwMsg(null);
-                const { error } = await supabase.auth.updateUser({ password: newPassword.trim() });
-                setChangingPw(false);
-                if (error) setPwMsg("✗ " + error.message);
-                else {
-                  setPwMsg("✓ Password aggiornata!");
-                  setNewPassword("");
-                  setNewPasswordConfirm("");
-                }
-              }}
-            >
-              {changingPw ? "Invio…" : "Cambia password"}
             </button>
           </div>
 

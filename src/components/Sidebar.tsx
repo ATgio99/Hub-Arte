@@ -3,12 +3,13 @@
 // (home 3D inclusa). Carta semitrasparente con blur, hairline, staccata dai
 // bordi (margine). Voci numerate 01-08 con icona sottile, sottolineatura
 // animata in hover + micro-slide; voce attiva con pallino oro. In basso: slider
-// temporale compatto (TimeRangeSlider del sito classico).
+// temporale compatto (TimeRangeSlider del sito classico) + contatori dataset.
 // Collassabile a sola colonna di icone (desktop). Su mobile: drawer da hamburger.
 // ============================================================================
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { STONES } from "../lib/pages";
+import { useData } from "../lib/store";
 import { useAuth, isAdminEmail } from "../lib/auth";
 import { supabase } from "../lib/supabase";
 import TimeRangeSlider from "./TimeRangeSlider";
@@ -30,11 +31,13 @@ function Icon({ id }: { id: string }) {
   }
 }
 
+function fmt(n: number) { return n.toLocaleString("it-IT"); }
 
 function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
   collapsed: boolean; onToggleCollapse: () => void; isHome: boolean; onNavigate?: () => void;
 }) {
   const loc = useLocation();
+  const { ds } = useData();
   const { user } = useAuth();
   const [pendingReviewCount, setPendingReviewCount] = useState(0);
 
@@ -148,10 +151,16 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
         })}
       </nav>
 
-      {/* slider temporale */}
+      {/* slider temporale + contatori dataset */}
       <div className="sbx-foot">
         <div className="sbx-trs">
           <TimeRangeSlider compact />
+        </div>
+        <div className="sbx-counts" data-testid="sbx-counts">
+          <span><b>{fmt(ds.works.length)}</b> opere</span>
+          <span><b>{fmt(ds.artists.length)}</b> artisti</span>
+          <span><b>{fmt(ds.periods.length)}</b> periodi</span>
+          <span><b>{fmt(ds.connections.length)}</b> legami</span>
         </div>
 
         {/* Voce profilo per UTENTI NORMALI loggati — mostra badge con richieste
@@ -165,13 +174,14 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               marginTop: 4, padding: "6px 4px",
               textDecoration: "none", color: "var(--ink-dim)", fontSize: 12,
             }}
-            title="Impostazioni, richieste e contributi"
+            title="Vedi il tuo profilo e lo storico delle tue richieste"
             data-testid="sbx-profile"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-2.1 2.6-2.4z" />
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21c1.2-4 4-6 8-6s6.8 2 8 6" />
             </svg>
-            <span>Impostazioni e contributi</span>
+            <span>Impostazioni profilo</span>
             {pendingReviewCount > 0 && (
               <span
                 style={{
@@ -191,7 +201,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
         )}
 
         {/* Voce dashboard per ADMIN loggati — mostra badge con richieste pendenti degli utenti */}
-        {user && isAdminEmail(user.email) && (<>
+        {user && isAdminEmail(user.email) && (
           <Link
             to="/admin"
             onClick={onNavigate}
@@ -223,22 +233,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               </span>
             )}
           </Link>
-          <Link
-            to="/profile"
-            onClick={onNavigate}
-            style={{
-              display: "flex", alignItems: "center", gap: 8,
-              marginTop: 4, padding: "6px 4px",
-              textDecoration: "none", color: "var(--ink-dim)", fontSize: 12,
-            }}
-            title="Impostazioni, richieste e contributi"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-2.1 2.6-2.4z" />
-            </svg>
-            <span>Impostazioni e contributi</span>
-          </Link>
-        </>)}
+        )}
 
         {/* account / sync indicator */}
         <Link to="/login" onClick={onNavigate} className="sbx-account" data-testid="sbx-account"
@@ -314,16 +309,6 @@ export default function Sidebar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [drawer]);
 
-  // Blocca scroll del body quando il drawer è aperto (evita bug su mobile)
-  useEffect(() => {
-    if (drawer) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
-  }, [drawer]);
-
   const toggleCollapse = () => {
     setCollapsed((c) => {
       const n = !c;
@@ -334,14 +319,8 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* hamburger mobile (in alto a sinistra) — nascosto quando il drawer è aperto */}
-      <button
-        className="sbx-burger"
-        onClick={() => setDrawer(true)}
-        data-testid="sbx-burger"
-        aria-label="Apri menù"
-        style={{ display: drawer ? "none" : undefined }}
-      >
+      {/* hamburger mobile (in alto a sinistra) */}
+      <button className="sbx-burger" onClick={() => setDrawer(true)} data-testid="sbx-burger" aria-label="Apri menù">
         <span /><span /><span />
       </button>
 

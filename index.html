@@ -20,10 +20,9 @@
     <style>
       /* iOS safe-area: il body non ha padding, ci pensa .shell3d */
       body { margin: 0; }
-      /* Layout: NON usiamo overflow:hidden su html perché su iOS causa bug
-         di "testo che scompare" durante lo scroll. */
-      html { overscroll-behavior: none; }
-      body { overscroll-behavior: none; -webkit-overflow-scrolling: touch; }
+      /* Prevent iOS bounce overscroll + testo che scompare */
+      html { overflow: hidden; height: 100%; overscroll-behavior: none; }
+      body { overflow: auto; height: 100%; -webkit-overflow-scrolling: touch; overscroll-behavior: none; }
       /* Prevent text selection on UI elements for mobile */
       .chip, .btn, nav a, .dot { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
       /* Better touch targets */

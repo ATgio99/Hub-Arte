@@ -14,26 +14,16 @@ import {
 
 // --- editor immagine personalizzata: URL manuale, anteprima, ripristino ----
 function ImageEditor({ workId }: { workId: string }) {
-  const { isAdmin } = useAuth();
   const [open, setOpen] = useState(false);
   const [url, setUrl] = useState("");
   const [err, setErr] = useState<string | null>(null);
-  const [saving, setSaving] = useState(false);
   const hasOverride = !!getOverrides()[workId];
 
-  const save = async () => {
+  const save = () => {
     const u = url.trim();
     if (!/^https?:\/\/.+/i.test(u)) { setErr("Inserisci un URL valido (http/https)."); return; }
-    setSaving(true);
-    setErr(null);
-    try {
-      await setOverride(workId, u);
-      setOpen(false); setUrl("");
-    } catch (e: any) {
-      setErr(`Errore salvataggio: ${e?.message || "errore sconosciuto"}`);
-    } finally {
-      setSaving(false);
-    }
+    setOverride(workId, u);
+    setOpen(false); setUrl(""); setErr(null);
   };
 
   return (
@@ -53,14 +43,11 @@ function ImageEditor({ workId }: { workId: string }) {
           <div className="smallcaps" style={{ marginBottom: 8 }}>Immagine personalizzata</div>
           <p className="muted" style={{ fontSize: 12.5, lineHeight: 1.5, margin: "0 0 10px" }}>
             Incolla l'URL di un'immagine (es. da Wikimedia Commons: tasto destro sull'immagine → "Copia indirizzo immagine").
-            {isAdmin
-              ? " Sei admin: la modifica sarà visibile a TUTTI gli utenti (override globale)."
-              : " La modifica vale solo su questo browser e puoi sempre ripristinare l'originale."}
+            La modifica vale solo su questo browser e puoi sempre ripristinare l'originale.
           </p>
           <input
             type="url" value={url} onChange={(e) => setUrl(e.target.value)}
             placeholder="https://…" data-testid="img-edit-url"
-            disabled={saving}
             style={{ width: "100%", padding: "9px 11px", border: "1px solid var(--line)", borderRadius: 8, background: "var(--bg)", color: "var(--ink)", fontSize: 13.5 }}
           />
           {/^https?:\/\/.+/i.test(url.trim()) && (
@@ -71,10 +58,8 @@ function ImageEditor({ workId }: { workId: string }) {
           )}
           {err && <div style={{ color: "#a8483f", fontSize: 12.5, marginTop: 8 }}>{err}</div>}
           <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-            <button className="btn gold sm" onClick={save} disabled={saving} data-testid="img-edit-save">
-              {saving ? "Salvataggio…" : "Salva"}
-            </button>
-            <button className="btn ghost sm" onClick={() => { setOpen(false); setErr(null); }} disabled={saving}>Annulla</button>
+            <button className="btn gold sm" onClick={save} data-testid="img-edit-save">Salva</button>
+            <button className="btn ghost sm" onClick={() => { setOpen(false); setErr(null); }}>Annulla</button>
           </div>
         </div>
       )}
@@ -143,9 +128,9 @@ export default function Opera() {
           <div className="opera-img card">
             <WorkImage work={w} style={{ width: "100%", height: "100%", objectFit: "contain", background: "var(--bg)" }} />
           </div>
-          {/* Sotto l'immagine: solo ImageEditor (solo admin) + fonte (i pulsanti Modifica/Richiedi sono in alto) */}
+          {/* Sotto l'immagine: solo ImageEditor + fonte (i pulsanti Modifica/Richiedi sono in alto) */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8, gap: 10, flexWrap: "wrap" }}>
-            {isAdmin && <ImageEditor workId={w.id} />}
+            <ImageEditor workId={w.id} />
             {w.image_source && <div className="faint" style={{ fontSize: 11, marginLeft: "auto" }}>fonte immagine: {getOverrides()[w.id] ? "personalizzata" : w.image_source}</div>}
           </div>
         </div>

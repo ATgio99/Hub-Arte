@@ -36,8 +36,10 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
-    # CSP: permissiva per consentire font, mappe, immagini, auth
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://api.fontshare.com https://unpkg.com; font-src 'self' https://api.fontshare.com; img-src 'self' data: https: blob:; connect-src 'self' https://ddsdvcznziciqdambgom.supabase.co https://*.supabase.co https://*.cartocdn.com https://*.tile.openstreetmap.org wss://*.supabase.co; worker-src 'self' blob:; manifest-src 'self'"
+    # Content-Security-Policy: permissiva perché carichiamo font da Fontshare,
+    # immagini da Wikimedia Commons, tile da OpenStreetMap e auth da Supabase.
+    # Aggiusta se vuoi restringere ulteriormente.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' https://api.fontshare.com; img-src 'self' data: https: blob:; connect-src 'self' https://ddsdvcznziciqdambgom.supabase.co https://*.supabase.co; worker-src 'self' blob:; manifest-src 'self'"
 
 # --- Cache header ---------------------------------------------------------
 # Asset con hash nel filename: cache immutabile 1 anno
