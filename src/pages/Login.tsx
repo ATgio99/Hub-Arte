@@ -27,6 +27,7 @@ export default function Login() {
   const [emailMsg, setEmailMsg] = useState<string | null>(null);
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
   const [pwMsg, setPwMsg] = useState<string | null>(null);
   const [changingPw, setChangingPw] = useState(false);
   const [changingEmail, setChangingEmail] = useState(false);
@@ -198,9 +199,9 @@ export default function Login() {
           </div>
         )}
 
-        {/* Export / Import */}
+        {/* Export / Import / Account */}
         <div style={{ borderTop: "1px solid var(--line-soft)", paddingTop: 12, marginTop: 4 }}>
-          <div className="smallcaps" style={{ marginBottom: 8 }}>Esporta / Importa dati</div>
+          <div className="smallcaps" style={{ marginBottom: 8 }}>Account, dati e sincronizzazione</div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <button className="btn sm" onClick={handleExport}>
               💾 Esporta dati (JSON)
@@ -208,71 +209,77 @@ export default function Login() {
             <button className="btn sm" onClick={() => setShowImport(!showImport)}>
               {showImport ? "Chiudi import" : "📥 Importa dati"}
             </button>
-            <button className="btn sm" onClick={() => { setShowAccount(!showAccount); setEmailMsg(null); setPwMsg(null); }}>
-              {showAccount ? "Chiudi account" : "🔐 Cambia email/password"}
+          </div>
+
+          {/* Cambia email — sempre visibile */}
+          <div style={{ marginTop: 12, padding: 14, background: "var(--bg-1)", borderRadius: 10, border: "1px solid var(--line)" }}>
+            <div className="smallcaps" style={{ marginBottom: 8 }}>Cambia email</div>
+            <p style={{ fontSize: 12, color: "var(--ink-dim)", margin: "0 0 8px" }}>
+              Email attuale: <b>{user?.email}</b>
+            </p>
+            <input
+              type="email"
+              value={newEmail}
+              onChange={(e) => setNewEmail(e.target.value)}
+              placeholder="Nuova email"
+              style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, fontFamily: "inherit", marginBottom: 8 }}
+            />
+            {emailMsg && <div style={{ fontSize: 12, marginBottom: 6, color: emailMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{emailMsg}</div>}
+            <button
+              className="btn gold sm"
+              disabled={changingEmail || !newEmail.trim() || newEmail.trim() === user?.email}
+              onClick={async () => {
+                setChangingEmail(true); setEmailMsg(null);
+                const { error } = await supabase.auth.updateUser({ email: newEmail.trim() });
+                setChangingEmail(false);
+                if (error) setEmailMsg("✗ " + error.message);
+                else setEmailMsg("✓ Email aggiornata! Controlla entrambe le caselle email per confermare il cambio.");
+              }}
+            >
+              {changingEmail ? "Invio…" : "Cambia email"}
             </button>
           </div>
 
-          {/* Cambia email / password */}
-          {showAccount && (
-            <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 16 }}>
-
-              {/* Cambia email */}
-              <div style={{ padding: 14, background: "var(--bg-1)", borderRadius: 10, border: "1px solid var(--line)" }}>
-                <div className="smallcaps" style={{ marginBottom: 8 }}>Cambia email</div>
-                <p style={{ fontSize: 12, color: "var(--ink-dim)", margin: "0 0 8px" }}>
-                  Email attuale: <b>{user?.email}</b>
-                </p>
-                <input
-                  type="email"
-                  value={newEmail}
-                  onChange={(e) => setNewEmail(e.target.value)}
-                  placeholder="Nuova email"
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, fontFamily: "inherit", marginBottom: 8 }}
-                />
-                {emailMsg && <div style={{ fontSize: 12, marginBottom: 6, color: emailMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{emailMsg}</div>}
-                <button
-                  className="btn gold sm"
-                  disabled={changingEmail || !newEmail.trim() || newEmail.trim() === user?.email}
-                  onClick={async () => {
-                    setChangingEmail(true); setEmailMsg(null);
-                    const { error } = await supabase.auth.updateUser({ email: newEmail.trim() });
-                    setChangingEmail(false);
-                    if (error) setEmailMsg("✗ " + error.message);
-                    else setEmailMsg("✓ Email aggiornata! Controlla entrambe le caselle email per confermare il cambio.");
-                  }}
-                >
-                  {changingEmail ? "Invio…" : "Cambia email"}
-                </button>
-              </div>
-
-              {/* Cambia password */}
-              <div style={{ padding: 14, background: "var(--bg-1)", borderRadius: 10, border: "1px solid var(--line)" }}>
-                <div className="smallcaps" style={{ marginBottom: 8 }}>Cambia password</div>
-                <input
-                  type="password"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  placeholder="Nuova password (min. 6 caratteri)"
-                  style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, fontFamily: "inherit", marginBottom: 8 }}
-                />
-                {pwMsg && <div style={{ fontSize: 12, marginBottom: 6, color: pwMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{pwMsg}</div>}
-                <button
-                  className="btn gold sm"
-                  disabled={changingPw || !newPassword.trim() || newPassword.length < 6}
-                  onClick={async () => {
-                    setChangingPw(true); setPwMsg(null);
-                    const { error } = await supabase.auth.updateUser({ password: newPassword.trim() });
-                    setChangingPw(false);
-                    if (error) setPwMsg("✗ " + error.message);
-                    else { setPwMsg("✓ Password aggiornata!"); setNewPassword(""); }
-                  }}
-                >
-                  {changingPw ? "Invio…" : "Cambia password"}
-                </button>
-              </div>
-            </div>
-          )}
+          {/* Cambia password — sempre visibile, due campi */}
+          <div style={{ marginTop: 12, padding: 14, background: "var(--bg-1)", borderRadius: 10, border: "1px solid var(--line)" }}>
+            <div className="smallcaps" style={{ marginBottom: 8 }}>Cambia password</div>
+            <input
+              type="password"
+              value={newPassword}
+              onChange={(e) => { setNewPassword(e.target.value); setPwMsg(null); }}
+              placeholder="Nuova password (min. 6 caratteri)"
+              style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, fontFamily: "inherit", marginBottom: 8 }}
+            />
+            <input
+              type="password"
+              value={newPasswordConfirm}
+              onChange={(e) => { setNewPasswordConfirm(e.target.value); setPwMsg(null); }}
+              placeholder="Ripeti la nuova password"
+              style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, fontFamily: "inherit", marginBottom: 8 }}
+            />
+            {pwMsg && <div style={{ fontSize: 12, marginBottom: 6, color: pwMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{pwMsg}</div>}
+            <button
+              className="btn gold sm"
+              disabled={changingPw || !newPassword.trim() || newPassword.length < 6}
+              onClick={async () => {
+                if (newPassword !== newPasswordConfirm) {
+                  setPwMsg("✗ Le password non coincidono. Riprova.");
+                  return;
+                }
+                setChangingPw(true); setPwMsg(null);
+                const { error } = await supabase.auth.updateUser({ password: newPassword.trim() });
+                setChangingPw(false);
+                if (error) setPwMsg("✗ " + error.message);
+                else {
+                  setPwMsg("✓ Password aggiornata!");
+                  setNewPassword("");
+                  setNewPasswordConfirm("");
+                }
+              }}
+            >
+              {changingPw ? "Invio…" : "Cambia password"}
+            </button>
+          </div>
 
           {showImport && (
             <div style={{ marginTop: 10 }}>

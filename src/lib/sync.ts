@@ -38,19 +38,31 @@ import type { User } from "@supabase/supabase-js";
 
 export async function pullGlobalImageOverrides(): Promise<void> {
   try {
-    const { data, error } = await supabase
+    // Prova prima con il filtro is_global = true (richiede la migration)
+    let { data, error } = await supabase
       .from("image_overrides")
       .select("work_id, url, modified_by, updated_at")
       .eq("is_global", true);
 
+    // Se la colonna is_global non esiste (migration non eseguita),
+    // fallback: scarica tutti gli override e filtra lato client quelli
+    // con modified_by = email admin
     if (error) {
-      // Se la tabella non ha ancora la colonna is_global (pre-migration),
-      // la query fallisce: ignora silenziosamente. L'app continua a funzionare
-      // con gli override privati del localStorage.
-      return;
+      console.log("[sync] is_global column not found, trying fallback...");
+      const res = await supabase
+        .from("image_overrides")
+        .select("work_id, url, modified_by, updated_at");
+      if (res.error) {
+        console.error("[sync] Fallback also failed:", res.error.message);
+        return;
+      }
+      // Filtra lato client: considera globali quelli con modified_by admin
+      data = (res.data || []).filter((r: any) =>
+        r.modified_by && ["hubarte@proton.me", "atgio@proton.me"].includes(r.modified_by.toLowerCase())
+      );
     }
+
     if (!data || data.length === 0) {
-      // Nessun override globale → pulisci il localStorage globale
       setGlobalOverrides({});
       return;
     }

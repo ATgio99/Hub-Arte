@@ -68,24 +68,23 @@ export async function setOverride(workId: string, url: string) {
     map[workId] = { url: cleanUrl, setAt: new Date().toISOString(), isGlobal: true, modifiedBy: user?.email };
     persistGlobal(map);
 
-    // Push su Supabase (upsert con is_global=true)
-    // Elimina eventuali override privati precedenti dello stesso admin per questa opera
     if (user) {
-      await supabase.from("image_overrides")
-        .delete()
-        .eq("user_id", user.id)
-        .eq("work_id", workId)
-        .eq("is_global", false);
-      await supabase.from("image_overrides").upsert(
-        {
-          user_id: user.id,
-          work_id: workId,
-          url: cleanUrl,
-          is_global: true,
-          modified_by: user.email,
-        },
-        { onConflict: "work_id" } // funziona grazie al unique index parziale
-      );
+      // AGGIORNA DIRETTAMENTE la tabella works — tutti gli utenti vedono l'immagine
+      // perché la tabella works ha SELECT pubblica (anon + authenticated)
+      await supabase.from("works").upsert({
+        id: workId,
+        image_url: cleanUrl,
+        image_thumb: cleanUrl,
+        modified_by: user.email,
+      }, { onConflict: "id" });
+
+      // Salva anche in image_overrides per tracciabilità (best effort)
+      try {
+        await supabase.from("image_overrides").upsert(
+          { user_id: user.id, work_id: workId, url: cleanUrl, is_global: true, modified_by: user.email },
+          { onConflict: "work_id" }
+        );
+      } catch { /* ignora se la colonna is_global non esiste */ }
     }
   } else {
     // Override PRIVATO
