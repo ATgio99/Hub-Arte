@@ -89,22 +89,31 @@ export async function pullGlobalImageOverrides(): Promise<void> {
 
 export async function pushToCloud(user: User): Promise<void> {
   const uid = user.id;
+  console.log("[sync] pushToCloud start for user:", uid);
 
-  // 1) Favorites
+  // 1) Favorites — upsert tutti i preferiti locali
   const favs = getFavorites();
   const favRows = [
     ...favs.works.map(work_id => ({ user_id: uid, work_id, type: "work" as const })),
     ...favs.artists.map(work_id => ({ user_id: uid, work_id, type: "artist" as const })),
   ];
   if (favRows.length > 0) {
-    await supabase.from("user_favorites").upsert(favRows, { onConflict: "user_id,work_id,type" });
+    const { error } = await supabase.from("user_favorites").upsert(favRows, { onConflict: "user_id,work_id,type" });
+    if (error) console.error("[sync] Error pushing favorites:", error.message);
+    else console.log("[sync] Pushed", favRows.length, "favorites to cloud");
+  } else {
+    console.log("[sync] No local favorites to push");
   }
 
-  // 2) Studied
+  // 2) Studied — upsert tutti gli approfonditi locali
   const studiedIds = getStudied();
   if (studiedIds.length > 0) {
     const studiedRows = studiedIds.map(work_id => ({ user_id: uid, work_id }));
-    await supabase.from("user_studied").upsert(studiedRows, { onConflict: "user_id,work_id" });
+    const { error } = await supabase.from("user_studied").upsert(studiedRows, { onConflict: "user_id,work_id" });
+    if (error) console.error("[sync] Error pushing studied:", error.message);
+    else console.log("[sync] Pushed", studiedRows.length, "studied to cloud");
+  } else {
+    console.log("[sync] No local studied to push");
   }
 
   // 3) Image overrides PRIVATI (is_global=false)
@@ -235,10 +244,20 @@ export async function pullFromCloud(user: User): Promise<void> {
 // Il push dei dati locali avviene solo quando l'utente fa azioni esplicite
 // (toggle preferito, spunta studied, setOverride).
 
+// ---------- FULL SYNC (push locale → cloud, poi pull cloud → locale) ----------
+// 1. PUSH: spinge tutti i dati locali al cloud (upsert)
+// 2. PULL: scarica dal cloud e fa merge
+// Questo garantisce che se l'utente aggiunge un preferito sul telefono,
+// al sync successivo (manuale o automatico) viene prima spedito al cloud,
+// poi scaricato su tutti i dispositivi.
+
 export async function fullSync(user: User): Promise<void> {
-  // SOLO PULL: scarica i dati dell'utente dal cloud e fa merge col locale.
-  // NON spinge i dati locali al cloud (per evitare contaminazione tra account).
+  console.log("[sync] fullSync start for user:", user.id);
+  // 1. Push dei dati locali al cloud
+  await pushToCloud(user);
+  // 2. Pull dal cloud e merge
   await pullFromCloud(user);
+  console.log("[sync] fullSync complete");
 }
 
 // ---------- REALTIME SUBSCRIPTIONS ----------

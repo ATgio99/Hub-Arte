@@ -726,11 +726,14 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   .sbx-drawer {
     display: flex; left: 0; top: 0; bottom: 0; width: 286px; border-radius: 0 16px 16px 0;
     transform: translateX(-104%); transition: transform .3s cubic-bezier(.2,.7,.2,1);
-    z-index: 159; background: rgba(251,248,241,.97);
+    z-index: 9999; background: rgba(251,248,241,.98);
     padding-top: var(--sat); padding-bottom: var(--sab);
+    box-shadow: 4px 0 24px rgba(0,0,0,.15);
   }
   .sbx-drawer.open { transform: none; }
   .sbx-drawer.on-home { background: rgba(24,17,9,.95); }
+  /* Scrim della sidebar sopra la mappa */
+  .sbx-scrim { z-index: 9998; }
 }
 @media (max-width: 760px) {
   .h3d-hud-tr { display: none; }
@@ -849,80 +852,47 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 }
 
 
-/* Fullscreen: filtri sulla destra, timeline al centro */
-.fs-host.is-full .fs-controls,
-.fs-host:fullscreen .fs-controls {
-  position: absolute;
-  top: 56px;
-  right: 14px;
-  left: auto;
-  transform: none;
-  max-width: 260px;
-  max-height: calc(100vh - 200px);
-  overflow-y: auto;
-  z-index: 40;
-  border-radius: 10px;
-  padding: 10px 12px;
-  background: rgba(251,248,241,.96);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--line);
-  box-shadow: 0 4px 16px rgba(0,0,0,.1);
+
+/* ========== FULLSCREEN CON DRAWER LATERALE ========== */
+.fs-host.is-full {
+  position: fixed; inset: 0; z-index: 1000; background: var(--bg);
+  overflow: hidden;
+}
+.fs-host:fullscreen {
+  background: var(--bg); overflow: hidden;
+}
+.fs-host.is-full .stage,
+.fs-host:fullscreen .stage {
+  flex: 1; min-height: 0; overflow: auto;
+  border: 0; border-radius: 0;
+  -webkit-overflow-scrolling: touch;
+}
+.fs-host.is-full .view-split,
+.fs-host:fullscreen .view-split {
+  display: flex; flex-direction: column; height: 100%;
+}
+.fs-host.is-full .view-split > div:first-child { flex: 1; min-height: 0; }
+.fs-host.is-full .view-split > div:last-child { display: none; }
+.fs-host.is-full .gf-inner,
+.fs-host:fullscreen .gf-inner {
+  display: block; flex: 1; height: 100%;
+}
+.fs-host.is-full .gf-inner > .stage,
+.fs-host:fullscreen .gf-inner > .stage {
+  height: 100% !important; border: 0; border-radius: 0;
+}
+.fs-host.is-full .gf-side,
+.fs-host:fullscreen .gf-side {
+  display: none; /* nascosto, i filtri sono nel drawer */
 }
 
-.fs-host.is-full .fs-slider,
-.fs-host:fullscreen .fs-slider {
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-  left: auto;
-  transform: none;
-  width: 260px;
-  z-index: 40;
-  border-radius: 10px;
-  background: rgba(251,248,241,.96);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--line);
-  box-shadow: 0 4px 16px rgba(0,0,0,.1);
+/* Drawer filtri: stile coerente con sidebar principale */
+.fs-drawer .fs-drawer-controls {
+  display: flex; flex-wrap: wrap; gap: 6px;
 }
-
-/* Pulsante per chiudere filtri/slider in fullscreen — in BASSO a sinistra */
-.fs-close-controls {
-  position: absolute;
-  bottom: 14px;
-  left: 14px;
-  z-index: 50;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(251,248,241,.96);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--line);
-  cursor: pointer;
-  font-size: 12px;
-  color: var(--ink);
-  font-family: inherit;
-  display: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,.1);
-}
-.fs-host.is-full .fs-close-controls,
-.fs-host:fullscreen .fs-close-controls {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* Titolo in fullscreen: non deve essere coperto dal pulsante filtri */
-.fs-host.is-full .fs-title,
-.fs-host:fullscreen .fs-title {
-  top: 18px;
-  left: 18px;
-  z-index: 25;
-}
-
-/* Pannello laterale grafo in fullscreen: sfondo opaco */
-.fs-host.is-full .gf-side .panel,
-.fs-host:fullscreen .gf-side .panel {
-  background: rgba(247,243,236,.97);
-  box-shadow: 0 4px 16px rgba(0,0,0,.1);
+.fs-drawer .fs-drawer-controls .chip,
+.fs-drawer .fs-drawer-controls button {
+  font-size: 12px; padding: "4px 10px";
 }
 
 /* Stage overlay nel grafo: sfondo opaco */
@@ -930,4 +900,14 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 .fs-host:fullscreen .stage-overlay {
   background: rgba(251,248,241,.96);
   backdrop-filter: blur(8px);
+}
+
+/* Mobile: il drawer è a scomparsa con scrim */
+@media (max-width: 900px) {
+  .fs-host.is-full .fs-btn-txt { display: none; }
+  .fs-btn { padding: 8px; top: 10px; right: 10px; }
+}
+
+@media (max-width: 600px) {
+  .grid-works { grid-template-columns: 1fr; }
 }

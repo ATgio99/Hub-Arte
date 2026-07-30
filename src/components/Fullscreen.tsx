@@ -1,8 +1,10 @@
 // ============================================================================
 // Wrapper "Schermo intero" riusabile per le visualizzazioni (rete, timeline,
-// mappa, ...). Usa la Fullscreen API quando disponibile, con fallback CSS
-// position:fixed inset:0. In fullscreen mostra uno slider temporale compatto
-// flottante e un pulsante/Esc per uscire. Transizione fluida.
+// mappa). In fullscreen mostra:
+//   - Pulsante "Esci" in alto a destra (sempre visibile, sopra tutto)
+//   - Drawer laterale a destra (stile sidebar) con filtri e slider temporale
+//   - Drawer apribile/chiudibile con un pulsante hamburger in basso a destra
+//   - Il contenuto occupa tutto lo schermo a sinistra del drawer
 // ============================================================================
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -21,7 +23,6 @@ function ExpandIcon({ on }: { on: boolean }) {
   );
 }
 
-// ---- mini slider compatto flottante ----------------------------------------
 function fmtY(y: number) { return y < 0 ? `${-y} a.C.` : `${y}`; }
 
 function FloatingSlider() {
@@ -29,7 +30,6 @@ function FloatingSlider() {
   const { range, bounds, setRange, reset, active } = useTimeRange();
   const pct = (y: number) => ((y - bounds.min) / (bounds.max - bounds.min)) * 100;
 
-  // mini-istogramma densità opere
   const bins = (() => {
     const N = 44;
     const span = Math.max(1, bounds.max - bounds.min);
@@ -46,9 +46,7 @@ function FloatingSlider() {
   })();
 
   return (
-    <motion.div className="fs-slider" data-testid="fs-slider"
-      initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}
-      transition={{ duration: 0.32, ease: EASE_OUT }}>
+    <div className="fs-slider" data-testid="fs-slider">
       <div className="fs-slider-head">
         <span className="fs-slider-vals tnum">{fmtY(range.min)} – {fmtY(range.max)}</span>
         {active && <button className="trs-reset" onClick={reset} data-testid="fs-trs-reset">tutto</button>}
@@ -71,22 +69,15 @@ function FloatingSlider() {
           value={range.max} aria-label="Anno finale" data-testid="fs-trs-max"
           onChange={(e) => setRange({ min: range.min, max: Math.max(Number(e.target.value), range.min + 10) })} />
       </div>
-    </motion.div>
+    </div>
   );
 }
 
-export interface FullscreenHandle { isFull: boolean; }
-
-/**
- * Avvolge una visualizzazione, aggiungendo un pulsante "Schermo intero" in alto
- * a destra. In fullscreen: sfondo carta a tutto schermo, slider compatto
- * flottante, controlli extra opzionali e uscita con Esc o pulsante.
- */
 export default function Fullscreen({
   children, controls, title, showSlider = true, onChange,
 }: {
   children: ReactNode;
-  controls?: ReactNode;        // controlli essenziali della vista (chip, zoom…)
+  controls?: ReactNode;
   title?: string;
   showSlider?: boolean;
   onChange?: (full: boolean) => void;
@@ -94,18 +85,16 @@ export default function Fullscreen({
   const ref = useRef<HTMLDivElement>(null);
   const [isFull, setFull] = useState(false);
   const [cssFallback, setCssFallback] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(true); // drawer aperto di default
 
   const enter = useCallback(async () => {
     const el = ref.current;
     if (!el) return;
-    // Su mobile (iOS Safari), requestFullscreen non funziona bene.
-    // Usa sempre il fallback CSS su touch devices.
     const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     if (!isTouch && el.requestFullscreen) {
-      try { await el.requestFullscreen(); return; } catch { /* fallback */ }
+      try { await el.requestFullscreen(); setFull(true); setDrawerOpen(true); document.body.style.overflow = "hidden"; return; } catch { /* fallback */ }
     }
-    setCssFallback(true); setFull(true);
-    // Blocca scroll del body quando in fullscreen CSS
+    setCssFallback(true); setFull(true); setDrawerOpen(true);
     document.body.style.overflow = "hidden";
   }, []);
 
@@ -117,7 +106,6 @@ export default function Fullscreen({
 
   const toggle = useCallback(() => { isFull ? exit() : enter(); }, [isFull, enter, exit]);
 
-  // sincronizza con eventi nativi (Esc del browser)
   useEffect(() => {
     const onFs = () => {
       const native = !!document.fullscreenElement && document.fullscreenElement === ref.current;
@@ -128,62 +116,167 @@ export default function Fullscreen({
     return () => document.removeEventListener("fullscreenchange", onFs);
   }, [cssFallback]);
 
-  // Esc per uscire dal fallback CSS (la Fullscreen API gestisce Esc da sola)
   useEffect(() => {
     if (!isFull) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape" && cssFallback) exit(); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && cssFallback) exit();
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [isFull, cssFallback, exit]);
 
-  // Cleanup: ripristina overflow del body quando il componente si smonta
   useEffect(() => {
     return () => { document.body.style.overflow = ""; };
   }, []);
 
   useEffect(() => { onChange?.(isFull); }, [isFull, onChange]);
 
+  if (!isFull) {
+    // Modalità normale: solo pulsante fullscreen
+    return (
+      <div ref={ref} className="fs-host" data-testid="fs-host">
+        <button className="fs-btn" onClick={toggle} data-testid="fs-toggle"
+          aria-label="Schermo intero" title="Schermo intero">
+          <ExpandIcon on={false} />
+          <span className="fs-btn-txt">Schermo intero</span>
+        </button>
+        {children}
+      </div>
+    );
+  }
+
+  // Modalità fullscreen: drawer laterale + contenuto
   return (
-    <div ref={ref} className={`fs-host ${isFull ? "is-full" : ""}`} data-fullscreen={isFull} data-testid="fs-host">
-      <button className="fs-btn" onClick={toggle} data-testid="fs-toggle"
-        aria-label={isFull ? "Esci da schermo intero" : "Schermo intero"}
-        title={isFull ? "Esci (Esc)" : "Schermo intero"}>
-        <ExpandIcon on={isFull} />
-        <span className="fs-btn-txt">{isFull ? "Esci" : "Schermo intero"}</span>
+    <div ref={ref} className="fs-host is-full" data-fullscreen={isFull} data-testid="fs-host">
+      {/* Pulsante ESCI — sempre in alto a destra, sopra tutto */}
+      <button
+        className="fs-exit-btn"
+        onClick={exit}
+        aria-label="Esci da schermo intero"
+        title="Esci (Esc)"
+        style={{
+          position: "fixed", top: 14, right: 14, zIndex: 10000,
+          display: "inline-flex", alignItems: "center", gap: 7,
+          padding: "8px 16px", borderRadius: 999, cursor: "pointer",
+          background: "rgba(251,248,241,.95)", backdropFilter: "blur(8px)",
+          border: "1px solid var(--line)", color: "var(--ink)",
+          fontSize: 13, fontWeight: 600, fontFamily: "inherit",
+          boxShadow: "0 2px 12px rgba(0,0,0,.12)",
+        }}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+        Esci
       </button>
 
-      {isFull && title && <div className="fs-title">{title}</div>}
+      {/* Titolo */}
+      {title && (
+        <div className="fs-title" style={{
+          position: "fixed", top: 18, left: 18, zIndex: 9998,
+          fontFamily: "var(--font-display)", fontSize: 18, color: "var(--ink)",
+          pointerEvents: "none",
+        }}>
+          {title}
+        </div>
+      )}
 
-      {children}
+      {/* Contenuto principale — occupa tutto lo schermo */}
+      <div className="fs-content" style={{
+        position: "absolute", inset: 0, zIndex: 1,
+        display: "flex", flexDirection: "column",
+      }}>
+        {children}
+      </div>
 
+      {/* Drawer laterale destro con filtri e slider */}
       <AnimatePresence>
-        {isFull && controls && (
-          <motion.div className="fs-controls" data-testid="fs-controls"
-            initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.3, ease: EASE_OUT }}>
-            {controls}
-          </motion.div>
+        {drawerOpen && (
+          <motion.aside
+            className="fs-drawer"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 28, stiffness: 300 }}
+            style={{
+              position: "fixed", top: 0, right: 0, bottom: 0, zIndex: 9999,
+              width: "min(320px, 90vw)",
+              background: "rgba(251,248,241,.98)",
+              backdropFilter: "blur(12px)",
+              borderLeft: "1px solid var(--line)",
+              boxShadow: "-8px 0 30px rgba(0,0,0,.12)",
+              overflowY: "auto",
+              display: "flex", flexDirection: "column",
+              paddingTop: 56, // spazio per il pulsante Esci
+            }}
+          >
+            {/* Header drawer */}
+            <div style={{
+              padding: "12px 18px 10px",
+              borderBottom: "1px solid var(--line)",
+              display: "flex", justifyContent: "space-between", alignItems: "center",
+            }}>
+              <span style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                Filtri e impostazioni
+              </span>
+              <button
+                onClick={() => setDrawerOpen(false)}
+                style={{
+                  background: "none", border: 0, cursor: "pointer",
+                  color: "var(--ink-dim)", fontSize: 20, lineHeight: 1,
+                  padding: "2px 6px", borderRadius: 4,
+                }}
+                aria-label="Chiudi filtri"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Corpo drawer — filtri + slider */}
+            <div style={{ padding: "16px 18px 80px", display: "flex", flexDirection: "column", gap: 20 }}>
+              {controls && (
+                <div className="fs-drawer-controls">
+                  {controls}
+                </div>
+              )}
+              {showSlider && <FloatingSlider />}
+            </div>
+          </motion.aside>
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {isFull && showSlider && <FloatingSlider />}
-      </AnimatePresence>
-
-      {/* Pulsante per nascondere/mostrare filtri e slider in fullscreen */}
-      {isFull && (
-        <button
-          className="fs-close-controls"
-          onClick={() => {
-            const ctrls = document.querySelectorAll(".fs-controls, .fs-slider, .gf-side");
-            const anyVisible = Array.from(ctrls).some(el => (el as HTMLElement).style.display !== "none");
-            ctrls.forEach(el => {
-              (el as HTMLElement).style.display = anyVisible ? "none" : "";
-            });
+      {/* Scrim quando il drawer è aperto (su mobile) */}
+      {drawerOpen && (
+        <div
+          onClick={() => setDrawerOpen(false)}
+          style={{
+            position: "fixed", inset: 0, zIndex: 9998,
+            background: "rgba(0,0,0,.2)",
+            pointerEvents: window.innerWidth <= 900 ? "auto" : "none",
           }}
-          title="Mostra/nascondi filtri"
+        />
+      )}
+
+      {/* Pulsante per riaprire il drawer quando è chiuso */}
+      {!drawerOpen && (
+        <button
+          onClick={() => setDrawerOpen(true)}
+          className="fs-open-drawer"
+          style={{
+            position: "fixed", bottom: 14, right: 14, zIndex: 10000,
+            display: "inline-flex", alignItems: "center", gap: 6,
+            padding: "10px 16px", borderRadius: 999, cursor: "pointer",
+            background: "rgba(251,248,241,.95)", backdropFilter: "blur(8px)",
+            border: "1px solid var(--line)", color: "var(--ink)",
+            fontSize: 13, fontWeight: 500, fontFamily: "inherit",
+            boxShadow: "0 2px 12px rgba(0,0,0,.12)",
+          }}
+          aria-label="Apri filtri"
         >
-          ⚙ Filtri
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <path d="M3 12h18M3 6h18M3 18h18" />
+          </svg>
+          Filtri
         </button>
       )}
     </div>
