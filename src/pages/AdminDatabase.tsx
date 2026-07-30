@@ -571,6 +571,10 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
   const [newCity, setNewCity] = useState("");
   const [newWorkId, setNewWorkId] = useState("");
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
+  const [editingGroupName, setEditingGroupName] = useState<string | null>(null);
+  const [editPlaceName, setEditPlaceName] = useState("");
+  const [addWorkToGroup, setAddWorkToGroup] = useState<string | null>(null);
+  const [addWorkId, setAddWorkId] = useState("");
 
   const groups = useMemo(() => {
     const g = computeWorkGroups(ix.ds);
@@ -595,34 +599,61 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
       .slice(0, 200);
   }, [ix.ds.works, groups]);
 
-  const createComplex = async () => {
-    if (!newWorkId || !newPlace.trim()) {
-      setSaveMsg("⚠️ Seleziona un'opera e inserisci un nome per il complesso.");
-      return;
-    }
-    const work = ix.workById.get(newWorkId);
-    if (!work) return;
+  const notifyChanged = () => {
+    window.dispatchEvent(new Event("hubart-works-changed"));
+    try { const bc = new BroadcastChannel("hubart-admin"); bc.postMessage({ type: "changed", ts: Date.now() }); bc.close(); } catch {}
+  };
+
+  const renameComplex = async (oldName: string, cityName: string | null) => {
+    const newName = editPlaceName.trim();
+    if (!newName || newName === oldName) { setEditingGroupName(null); return; }
+    // Trova tutte le opere del gruppo e aggiorna location_place
+    const group = groups.find(g => g.name === oldName && (g.city ?? null) === cityName);
+    if (!group) return;
+    const updates = group.works.map(w =>
+      supabase.from("works").upsert({ id: w.id, location_place: newName, modified_by: null }, { onConflict: "id" })
+    );
+    await Promise.all(updates);
+    setEditingGroupName(null);
+    setEditPlaceName("");
+    notifyChanged();
+  };
+
+  const removeWorkFromComplex = async (workId: string) => {
+    // Rimuove l'opera dal complesso impostando location_place a null
+    if (!confirm("Rimuovere quest'opera dal complesso? Il suo location_place verrà cancellato.")) return;
     const { error } = await supabase.from("works").upsert({
-      id: work.id,
-      location_place: newPlace.trim(),
-      location_city: newCity.trim() || work.location_city,
-      modified_by: ix ? null : null,
+      id: workId, location_place: null, modified_by: null,
     }, { onConflict: "id" });
-    if (error) {
-      setSaveMsg("✗ Errore: " + error.message);
-    } else {
-      setSaveMsg("✓ Complesso creato! L'opera è stata assegnata al nuovo complesso.");
-      setNewPlace(""); setNewCity(""); setNewWorkId(""); setShowNewForm(false);
-      window.dispatchEvent(new Event("hubart-works-changed"));
-      try { const bc = new BroadcastChannel("hubart-admin"); bc.postMessage({ type: "changed", ts: Date.now() }); bc.close(); } catch {}
-    }
+    if (error) alert("Errore: " + error.message);
+    else notifyChanged();
+  };
+
+  const addWorkToComplex = async (groupName: string) => {
+    if (!addWorkId.trim()) return;
+    const { error } = await supabase.from("works").upsert({
+      id: addWorkId.trim(), location_place: groupName, modified_by: null,
+    }, { onConflict: "id" });
+    if (error) alert("Errore: " + error.message);
+    else { setAddWorkToGroup(null); setAddWorkId(""); notifyChanged(); }
+  };
+
+  const deleteComplex = async (groupName: string, cityName: string | null) => {
+    if (!confirm(`Eliminare il complesso "${groupName}"? Tutte le opere verranno rimosse dal complesso (location_place cancellato).`)) return;
+    const group = groups.find(g => g.name === groupName && (g.city ?? null) === cityName);
+    if (!group) return;
+    const updates = group.works.map(w =>
+      supabase.from("works").upsert({ id: w.id, location_place: null, modified_by: null }, { onConflict: "id" })
+    );
+    await Promise.all(updates);
+    notifyChanged();
   };
 
   return (
     <div style={{ padding: 16 }}>
       <div style={{ marginBottom: 12, fontSize: 13, color: "var(--ink-dim)" }}>
-        📊 <b>{groups.length}</b> complessi trovati. Per modificarne uno, clicca su un'opera per aprirne l'editor.
-        Per creare un nuovo complesso, assegna un "Luogo / edificio" a un'opera.
+        📊 <b>{groups.length}</b> complessi trovati. Clicca su un'opera per aprirne l'editor completo,
+        o usa i pulsanti per rinominare, aggiungere/rimuovere opere ed eliminare complessi.
       </div>
 
       {/* Pulsante nuovo complesso */}
@@ -692,34 +723,88 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
                 border: "1px solid var(--line)", borderRadius: 10,
               }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
-                  <div style={{ minWidth: 0 }}>
-                    <div style={{ fontWeight: 600, fontSize: 15 }}>{g.name}</div>
+                  <div style={{ minWidth: 0, flex: 1 }}>
+                    {editingGroupName === key ? (
+                      <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                        <input
+                          type="text" value={editPlaceName} onChange={(e) => setEditPlaceName(e.target.value)}
+                          style={{ padding: "5px 8px", border: "1px solid var(--gold)", borderRadius: 4, fontSize: 14, fontFamily: "inherit", flex: 1 }}
+                          autoFocus
+                        />
+                        <button className="btn gold sm" style={{ fontSize: 11, padding: "4px 10px" }} onClick={() => renameComplex(g.name, g.city ?? null)}>Salva</button>
+                        <button className="btn ghost sm" style={{ fontSize: 11, padding: "4px 10px" }} onClick={() => setEditingGroupName(null)}>Annulla</button>
+                      </div>
+                    ) : (
+                      <div style={{ fontWeight: 600, fontSize: 15, cursor: "pointer" }}
+                        onClick={() => { setEditingGroupName(key); setEditPlaceName(g.name); }}
+                        title="Clicca per rinominare">
+                        {g.name}
+                      </div>
+                    )}
                     <div style={{ fontSize: 11.5, color: "var(--ink-dim)" }}>
                       {g.city ? <>📍 {g.city} · </> : null}
                       <b>{g.works.length}</b> opere · capofila: <Link to={`/opera/${parent.id}`} style={{ color: "var(--gold-deep)", textDecoration: "underline" }}>{parent.title}</Link>
                     </div>
                   </div>
-                  <span style={{
-                    fontSize: 11, fontWeight: 700, padding: "3px 9px", borderRadius: 4,
-                    background: "rgba(63,138,79,0.15)", color: "#3f8a4f",
-                  }}>
-                    🏛️ complesso
-                  </span>
+                  <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
+                    <button onClick={() => { setEditingGroupName(key); setEditPlaceName(g.name); }}
+                      style={{ background: "none", border: "1px solid var(--line)", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: 12 }}
+                      title="Rinomina complesso">✎</button>
+                    <button onClick={() => setAddWorkToGroup(addWorkToGroup === key ? null : key)}
+                      style={{ background: "none", border: "1px solid var(--line)", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: 12 }}
+                      title="Aggiungi opera al complesso">+</button>
+                    <button onClick={() => deleteComplex(g.name, g.city ?? null)}
+                      style={{ background: "none", border: "1px solid var(--line)", borderRadius: 4, padding: "3px 8px", cursor: "pointer", fontSize: 12, color: "#a8483f" }}
+                      title="Elimina complesso">🗑️</button>
+                  </div>
                 </div>
+
+                {/* Form aggiungi opera */}
+                {addWorkToGroup === key && (
+                  <div style={{ marginTop: 10, padding: 10, background: "var(--bg)", borderRadius: 6, border: "1px solid var(--gold)" }}>
+                    <div style={{ fontSize: 12, color: "var(--ink-dim)", marginBottom: 6 }}>Aggiungi un'opera al complesso "{g.name}":</div>
+                    <div style={{ display: "flex", gap: 6 }}>
+                      <select
+                        value={addWorkId}
+                        onChange={(e) => setAddWorkId(e.target.value)}
+                        style={{ flex: 1, padding: "6px 8px", border: "1px solid var(--line)", borderRadius: 4, fontSize: 13, fontFamily: "inherit" }}
+                      >
+                        <option value="">— Seleziona un'opera —</option>
+                        {orphanWorks.map(w => (
+                          <option key={w.id} value={w.id}>{w.title} ({w.location_city || "?"})</option>
+                        ))}
+                      </select>
+                      <button className="btn gold sm" style={{ fontSize: 12, padding: "5px 12px" }} onClick={() => addWorkToComplex(g.name)}>Aggiungi</button>
+                      <button className="btn ghost sm" style={{ fontSize: 12, padding: "5px 12px" }} onClick={() => setAddWorkToGroup(null)}>Annulla</button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Opere del complesso con pulsante rimuovi */}
                 <div style={{ display: "flex", gap: 6, marginTop: 10, flexWrap: "wrap" }}>
                   {g.works.map((w) => (
-                    <button
-                      key={w.id}
-                      onClick={() => openEdit(w.id)}
-                      style={{
-                        fontSize: 12, padding: "4px 10px", borderRadius: 6,
-                        background: "var(--bg)", border: "1px solid var(--line)",
-                        color: "var(--ink-soft)", cursor: "pointer", fontFamily: "inherit",
-                      }}
-                      title={`Modifica "${w.title}"`}
-                    >
-                      ✎ {w.title.length > 38 ? w.title.slice(0, 36) + "…" : w.title}
-                    </button>
+                    <div key={w.id} style={{ display: "flex", alignItems: "center", gap: 2 }}>
+                      <button
+                        onClick={() => openEdit(w.id)}
+                        style={{
+                          fontSize: 12, padding: "4px 10px", borderRadius: "6px 0 0 6px",
+                          background: "var(--bg)", border: "1px solid var(--line)", borderRight: 0,
+                          color: "var(--ink-soft)", cursor: "pointer", fontFamily: "inherit",
+                        }}
+                        title={`Modifica "${w.title}"`}
+                      >
+                        ✎ {w.title.length > 32 ? w.title.slice(0, 30) + "…" : w.title}
+                      </button>
+                      <button
+                        onClick={() => removeWorkFromComplex(w.id)}
+                        style={{
+                          fontSize: 12, padding: "4px 6px", borderRadius: "0 6px 6px 0",
+                          background: "var(--bg)", border: "1px solid var(--line)",
+                          color: "#a8483f", cursor: "pointer", fontFamily: "inherit",
+                        }}
+                        title="Rimuovi dal complesso"
+                      >×</button>
+                    </div>
                   ))}
                 </div>
               </div>

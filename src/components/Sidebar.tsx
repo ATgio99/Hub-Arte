@@ -191,7 +191,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
         )}
 
         {/* Voce dashboard per ADMIN loggati — mostra badge con richieste pendenti degli utenti */}
-        {user && isAdminEmail(user.email) && (
+        {user && isAdminEmail(user.email) && (<>
           <Link
             to="/admin"
             onClick={onNavigate}
@@ -223,7 +223,22 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               </span>
             )}
           </Link>
-        )}
+          <Link
+            to="/profile"
+            onClick={onNavigate}
+            style={{
+              display: "flex", alignItems: "center", gap: 8,
+              marginTop: 4, padding: "6px 4px",
+              textDecoration: "none", color: "var(--ink-dim)", fontSize: 12,
+            }}
+            title="Impostazioni, richieste e contributi"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-2.1 2.6-2.4z" />
+            </svg>
+            <span>Impostazioni e contributi</span>
+          </Link>
+        </>)}
 
         {/* account / sync indicator */}
         <Link to="/login" onClick={onNavigate} className="sbx-account" data-testid="sbx-account"
