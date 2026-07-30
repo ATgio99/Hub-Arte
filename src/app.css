@@ -813,334 +813,36 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 }
 .quiz-notice.soft { border-color: var(--line); background: var(--bg-2); }
 
-/* ============================================================================
-   MOBILE FIX — mappa, grafo, timeline, fullscreen
-   Regole per garantire usabilità su schermi piccoli:
-   - Stage (canvas/3D/leaflet) ridotti in altezza
-   - Pannelli di controllo inline senza box (centri mappa, ecc.)
-   - KPI grid a 2 colonne su mobile piccolo
-   - Griglia opere a 1 colonna su mobile piccolo
-   - Fullscreen con scroll verticale, icone non sovrapposte
-   - Pulsante toggle mobile per nascondere/mostrare controlli
-   ============================================================================ */
+/* ========== MOBILE — regole pulite, un solo blocco ========== */
 
-/* Tablet / mobile largo: altezza stage ridotta */
+/* Su mobile il drawer blocca lo scroll della pagina */
+/* (gestito via JS in Sidebar.tsx, non serve CSS) */
+
 @media (max-width: 900px) {
-  .stage,
-  .canvas-stage,
-  .grafo-stage,
-  .mappa-stage,
-  .timeline-stage,
-  .stage-3d {
-    height: 60vh !important;
-    max-height: 60vh;
-  }
-  /* Pannello "Centri" inline senza box (mappa) */
-  .mappa-centri,
-  .panel-centri {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap;
-    gap: 6px;
-    background: none !important;
-    border: 0 !important;
-    padding: 0 !important;
-    box-shadow: none !important;
-  }
-  .mappa-centri .panel-item,
-  .panel-centri > * {
-    background: var(--bg-2);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 4px 8px;
-    font-size: 12px;
-  }
-  /* Pulsante toggle per nascondere/mostrare controlli su mobile */
-  .mobile-controls-toggle {
-    display: inline-flex !important;
-  }
-}
-
-/* Mobile piccolo */
-@media (max-width: 600px) {
-  .stage,
-  .canvas-stage,
-  .grafo-stage,
-  .mappa-stage,
-  .timeline-stage,
-  .stage-3d {
-    height: 55vh !important;
-    max-height: 55vh;
-  }
-  /* KPI grid 2 colonne */
-  .kpi-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px;
-  }
-  .kpi-grid .stat,
-  .kpi-grid > div {
-    padding: 10px 8px;
-  }
-  /* Griglia opere 1 colonna */
-  .grid-works {
-    grid-template-columns: 1fr !important;
-  }
-  /* Fullscreen: scroll verticale abilitato */
-  .fullscreen-mode,
-  .fs-container,
-  .is-fullscreen {
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch;
-    height: 100vh;
-    max-height: 100vh;
-  }
-  /* Posizionamento icone non sovrapposto in mappa/grafo */
-  .map-icon,
-  .grafo-icon,
-  .leaflet-marker-icon {
-    z-index: 5;
-    transform: translateZ(0);
-  }
-  .map-icon:hover,
-  .grafo-icon:hover {
-    z-index: 20;
-  }
-  /* Nascondi pulsanti secondari in fullscreen su mobile */
-  .fs-secondary-actions {
-    display: none !important;
-  }
-}
-
-/* Pulsante toggle mobile — nascosto su desktop, visibile su mobile */
-.mobile-controls-toggle {
-  display: none;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  font-size: 13px;
-  background: var(--bg-2);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  color: var(--ink);
-  cursor: pointer;
-}
-.mobile-controls-toggle.active {
-  background: var(--gold);
-  color: #fff;
-  border-color: var(--gold);
-}
-
-/* Quando i controlli sono nascosti da toggle mobile */
-.mobile-controls-hidden .control-panel,
-.mobile-controls-hidden .filterbar,
-.mobile-controls-hidden .page-head {
-  display: none !important;
-}
-
-
-/* ========== FIX MOBILE: mappa, grafo, timeline, fullscreen ========== */
-
-/* Mappa: container Leaflet responsive su mobile */
-@media (max-width: 900px) {
-  .leaflet-container {
-    height: 50vh !important;
-    max-height: 400px !important;
-  }
-  /* Stage mappa/grafo: altezza ridotta */
-      max-height: 450px !important;
-  }
-  /* Pannello Centri mappa: inline, non in box con scroll */
-  .view-split { grid-template-columns: 1fr !important; }
-  .view-split > div:last-child .panel {
-    padding: 0 !important;
-    border: 0 !important;
-    background: transparent !important;
-  }
-  .view-split > div:last-child .panel > div[style*="maxHeight"],
-  .view-split > div:last-child .panel > div[style*="max-height"] {
-    max-height: none !important;
-    overflow: visible !important;
-  }
-  /* Fullscreen: controlli più piccoli */
-  .fs-controls {
-    top: 52px !important;
-    max-width: calc(100vw - 80px) !important;
-    max-height: 60px !important;
-    overflow-y: auto !important;
-    padding: 5px 8px !important;
-    font-size: 11px !important;
-  }
-  .fs-slider {
-    width: calc(100vw - 24px) !important;
-    padding: 8px 12px !important;
-  }
-  .fs-slider-track { height: 32px !important; }
-  /* Pulsante fullscreen: solo icona */
-  .fs-btn-txt { display: none !important; }
-  .fs-btn { padding: 8px !important; }
-  /* Pulsante toggle mobile */
-  .fs-mobile-toggle {
-    display: flex !important;
-    position: fixed; bottom: 14px; left: 14px; z-index: 1002;
-    width: 40px; height: 40px; border-radius: 50%;
-    background: rgba(251,248,241,.92); border: 1px solid var(--line);
-    cursor: pointer; font-size: 18px; color: var(--ink);
-    box-shadow: 0 2px 8px rgba(0,0,0,.12); backdrop-filter: blur(6px);
-    align-items: center; justify-content: center;
-  }
-  /* Pannello grafo in fullscreen: a scomparsa */
-  .fs-host.is-full .gf-side,
-  .fs-host:fullscreen .gf-side {
-    width: calc(100vw - 28px) !important;
-    max-width: 320px !important;
-    max-height: 40vh !important;
-    bottom: 80px !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .leaflet-container {
-    height: 45vh !important;
-    max-height: 350px !important;
-  }
-      max-height: 350px !important;
-  }
-  .kpi-grid { grid-template-columns: repeat(2, 1fr) !important; }
-  .grid-works { grid-template-columns: 1fr !important; }
-}
-
-/* Fullscreen: scroll verticale abilitato */
-.fs-host.is-full,
-.fs-host:fullscreen {
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch;
-}
-.fs-host.is-full > .stage,
-.fs-host:fullscreen > .stage,
-.fs-host.is-full .gf-inner > .stage,
-.fs-host:fullscreen .gf-inner > .stage {
-  min-height: 50vh !important;
-  overflow: auto !important;
-}
-/* Timeline in fullscreen: scroll verticale */
-.fs-host.is-full .stage[style*="overflowY"],
-.fs-host:fullscreen .stage[style*="overflowY"] {
-  overflow-y: auto !important;
-  overflow-x: auto !important;
-}
-/* Posizionamento icone fullscreen (non sovrapposte) */
-.fs-host.is-full .fs-btn,
-.fs-host:fullscreen .fs-btn {
-  top: 14px !important; right: 14px !important; z-index: 100 !important;
-}
-.fs-host.is-full .fs-controls,
-.fs-host:fullscreen .fs-controls {
-  top: 60px !important; z-index: 29 !important;
-}
-.fs-host.is-full .fs-slider,
-.fs-host:fullscreen .fs-slider {
-  bottom: 16px !important; z-index: 29 !important;
-}
-.fs-host.is-full .gf-side,
-.fs-host:fullscreen .gf-side {
-  top: 110px !important; right: 14px !important; bottom: 100px !important; z-index: 28 !important;
-}
-
-/* ========== FIX FULLSCREEN MOBILE (vero fullscreen, non mezzo schermo) ========== */
-@media (max-width: 900px) {
+  /* Fullscreen: vero fullscreen su mobile (fallback CSS) */
   .fs-host.is-full {
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 9999 !important;
-    background: var(--bg) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 0 !important;
-    overflow: hidden !important; /* non scrollare tutta la pagina */
-  }
-  /* Il contenuto (stage) scrolla internamente, non la pagina */
-  .fs-host.is-full > .stage,
-  .fs-host.is-full .gf-inner > .stage {
-    flex: 1 !important;
-    min-height: 0 !important; /* permette al flex di restringersi */
-    overflow: auto !important;
-    -webkit-overflow-scrolling: touch;
-  }
-  /* In fullscreen mobile, view-split è single column */
-  .fs-host.is-full .view-split {
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important;
-  }
-  .fs-host.is-full .view-split > div:first-child {
-    flex: 1 !important;
-    min-height: 0 !important;
-  }
-  .fs-host.is-full .view-split > div:last-child {
-    display: none !important; /* nascondi pannello laterale in fullscreen mobile */
-  }
-}
-
-/* ========== MOBILE ONLY: mappa, grafo, timeline ========== */
-/* Queste regole si applicano SOLO su schermi <= 900px (mobile/tablet) */
-/* NON toccano il desktop dove la mappa usa min(72vh, 700px) */
-
-@media (max-width: 900px) {
-  /* Mappa: su mobile l'altezza inline viene sovrascritta */
-  .stage[data-testid="map-stage"] {
-    height: 55vh !important;
-    max-height: 400px !important;
-  }
-  /* Pannello Centri: inline senza box su mobile */
-  .view-split { grid-template-columns: 1fr !important; }
-  .view-split > div:last-child .panel {
-    padding: 0 !important;
-    border: 0 !important;
-    background: transparent !important;
-  }
-  .view-split > div:last-child .panel > div[style*="maxHeight"],
-  .view-split > div:last-child .panel > div[style*="max-height"] {
-    max-height: none !important;
-    overflow: visible !important;
-  }
-  /* Leaflet container su mobile */
-  .leaflet-container { max-width: 100% !important; }
-  /* Fullscreen mobile: vero fullscreen */
-  .fs-host.is-full {
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 9999 !important;
-    background: var(--bg) !important;
-    overflow: hidden !important;
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--bg); overflow: hidden;
+    display: flex; flex-direction: column;
   }
   .fs-host.is-full > .stage,
   .fs-host.is-full .gf-inner > .stage {
-    flex: 1 !important;
-    min-height: 0 !important;
-    overflow: auto !important;
+    flex: 1; min-height: 0; overflow: auto;
     -webkit-overflow-scrolling: touch;
   }
-  /* Pulsanti fullscreen più piccoli su mobile */
-  .fs-btn-txt { display: none !important; }
-  .fs-btn { padding: 8px !important; }
-  .fs-controls {
-    top: 52px !important;
-    max-width: calc(100vw - 80px) !important;
-    max-height: 60px !important;
-    overflow-y: auto !important;
-    font-size: 11px !important;
-  }
-  .fs-slider {
-    width: calc(100vw - 24px) !important;
-    padding: 8px 12px !important;
-  }
+  .fs-host.is-full .view-split { display: flex; flex-direction: column; height: 100%; }
+  .fs-host.is-full .view-split > div:first-child { flex: 1; min-height: 0; }
+  .fs-host.is-full .view-split > div:last-child { display: none; }
+
+  /* Fullscreen: pulsanti più piccoli, centrati, non sovrapposti */
+  .fs-btn-txt { display: none; }
+  .fs-btn { padding: 8px; top: 10px; right: 10px; }
+  .fs-controls { top: 48px; max-width: calc(100vw - 70px); max-height: 50px; overflow-y: auto; font-size: 11px; padding: 5px 8px; }
+  .fs-slider { width: calc(100vw - 24px); padding: 8px 12px; }
+  .fs-slider-track { height: 32px; }
 }
 
 @media (max-width: 600px) {
-  .stage[data-testid="map-stage"] {
-    height: 50vh !important;
-    max-height: 350px !important;
-  }
-  .kpi-grid { grid-template-columns: repeat(2, 1fr) !important; }
-  .grid-works { grid-template-columns: 1fr !important; }
+  /* Griglia opere: 1 colonna */
+  .grid-works { grid-template-columns: 1fr; }
 }
