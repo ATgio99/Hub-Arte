@@ -571,10 +571,10 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
 
   return (
     <>
-      <div className="stage" style={{ overflowX: "auto", overflowY: "hidden", flex: inFullscreen ? 1 : undefined, height: inFullscreen ? "100%" : undefined, border: inFullscreen ? 0 : undefined, borderRadius: inFullscreen ? 0 : undefined }}
+      <div className="stage" style={{ overflowX: "auto", overflowY: inFullscreen ? "auto" : "hidden", flex: inFullscreen ? 1 : undefined, height: inFullscreen ? "100%" : undefined, border: inFullscreen ? 0 : undefined, borderRadius: inFullscreen ? 0 : undefined }}
         ref={scrollRef} data-testid="timeline-stage" onMouseLeave={() => setHover(null)}
         onScroll={(e) => setScrollX((e.target as HTMLElement).scrollLeft)}>
-        <svg width={width} height={Math.max(height, inFullscreen ? 400 : height)} style={{ display: "block", minWidth: "100%" }}>
+        <svg width={width} height={Math.max(height, inFullscreen ? 600 : height)} style={{ display: "block", minWidth: "100%" }}>
           {ticks.map((y) => (
             <g key={y}>
               <line x1={x(y)} y1={48} x2={x(y)} y2={eventsTop - 14 + globalShift} stroke="var(--line-soft)" strokeWidth={1} />

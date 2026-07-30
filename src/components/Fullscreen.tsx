@@ -169,6 +169,23 @@ export default function Fullscreen({
       <AnimatePresence>
         {isFull && showSlider && <FloatingSlider />}
       </AnimatePresence>
+
+      {/* Pulsante per nascondere/mostrare filtri e slider in fullscreen */}
+      {isFull && (
+        <button
+          className="fs-close-controls"
+          onClick={() => {
+            const ctrls = document.querySelectorAll(".fs-controls, .fs-slider, .gf-side");
+            const anyVisible = Array.from(ctrls).some(el => (el as HTMLElement).style.display !== "none");
+            ctrls.forEach(el => {
+              (el as HTMLElement).style.display = anyVisible ? "none" : "";
+            });
+          }}
+          title="Mostra/nascondi filtri"
+        >
+          ⚙ Filtri
+        </button>
+      )}
     </div>
   );
 }
