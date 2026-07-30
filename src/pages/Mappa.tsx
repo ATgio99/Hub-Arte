@@ -7,10 +7,14 @@ import Fullscreen from "../components/Fullscreen";
 import type { Work } from "../lib/types";
 
 // invalida la dimensione della mappa quando si entra/esce dal fullscreen
+// E anche al mount iniziale (Leaflet ha bisogno di sapere le dimensioni reali)
 function Resizer({ trigger }: { trigger: boolean }) {
   const map = useMap();
   useEffect(() => {
-    const t = setTimeout(() => map.invalidateSize(), 260);
+    // Invalida subito al mount
+    map.invalidateSize();
+    // E poi di nuovo dopo 300ms (quando il layout è stabilizzato)
+    const t = setTimeout(() => map.invalidateSize(), 300);
     return () => clearTimeout(t);
   }, [trigger, map]);
   return null;
@@ -27,7 +31,12 @@ function FitBounds({ cities }: { cities: City[] }) {
     const lats = use.map((c) => c.lat), lons = use.map((c) => c.lon);
     const b: [[number, number], [number, number]] =
       [[Math.min(...lats), Math.min(...lons)], [Math.max(...lats), Math.max(...lons)]];
-    setTimeout(() => { map.invalidateSize(); map.fitBounds(b, { padding: [36, 36], maxZoom: 7 }); }, 60);
+    // Invalida PRIMA la dimensione, poi fitta i bounds
+    const t = setTimeout(() => {
+      map.invalidateSize();
+      map.fitBounds(b, { padding: [36, 36], maxZoom: 7 });
+    }, 100);
+    return () => clearTimeout(t);
   }, [cities, map]);
   return null;
 }

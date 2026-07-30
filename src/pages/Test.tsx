@@ -480,9 +480,9 @@ export default function Test() {
     return (
       <div className="wrap page">
         <div className="page-head">
-          <div className="page-eyebrow"><span className="sec-num">06</span><span className="eyebrow">Quiz patente · domande generate dal dataset</span></div>
-          <h1 className="page-title">Mettiti alla prova</h1>
-          <p className="page-lead">Quiz a risposta chiusa costruiti in tempo reale dall'archivio — {ALL_KINDS.length} tipi di domanda, distrattori scelti tra entità affini, banca degli errori e statistiche persistenti. Tutto nel browser, in stile esame di teoria.</p>
+          <div className="page-eyebrow"><span className="sec-num">06</span><span className="eyebrow">Domande generate dal dataset</span></div>
+          <h1 className="page-title">Test</h1>
+          <p className="page-lead">Quiz a risposta chiusa costruiti in tempo reale dall'archivio — {ALL_KINDS.length} tipi di domanda, distrattori scelti tra entità affini, banca degli errori e statistiche persistenti.</p>
         </div>
 
         <div className="quiz-setup">
@@ -614,14 +614,6 @@ export default function Test() {
           )}
 
           <div className="quiz-setup-row">
-            <label className="quiz-field">
-              <span className="filter-label">Manuale</span>
-              <select className="input" value={book} onChange={(e) => setBook(e.target.value)} data-testid="quiz-book">
-                <option value="">Entrambi</option>
-                <option value="1">Libro 1 · Tardoantico → Gotico</option>
-                <option value="2">Libro 2 · Tardogotico → Controriforma</option>
-              </select>
-            </label>
             <div className="quiz-field">
               <span className="filter-label">Preferiti</span>
               <button
@@ -866,11 +858,15 @@ function StatsView({ onBack, drawerWorkId, drawerOpen, closeDrawer, openDrawer }
 }) {
   const stats = loadStats();
   const ix = useData();
+  const reduced = usePrefersReducedMotion();
 
   const totalQ = stats.totalAnswered;
   const totalOk = stats.totalCorrect;
+  const totalWrong = totalQ - totalOk;
   const pct = totalQ > 0 ? Math.round((totalOk / totalQ) * 100) : 0;
   const totalSessions = stats.sessions.length;
+  const avgPct = totalSessions > 0 ? Math.round(stats.sessions.reduce((a, s) => a + s.pct, 0) / totalSessions) : 0;
+  const bestSession = totalSessions > 0 ? Math.max(...stats.sessions.map(s => s.pct)) : 0;
 
   // rate per tipo
   const kindRate = useMemo(() => {
@@ -878,8 +874,10 @@ function StatsView({ onBack, drawerWorkId, drawerOpen, closeDrawer, openDrawer }
       kind,
       label: QUIZ_KIND_LABEL[kind as QuizKind] ?? kind,
       pct: s.asked > 0 ? Math.round((s.correct / s.asked) * 100) : 0,
+      correct: s.correct,
+      wrong: s.asked - s.correct,
       total: s.asked,
-    })).sort((a, b) => b.pct - a.pct);
+    })).sort((a, b) => a.pct - b.pct);
   }, [stats]);
 
   // rate per periodo
@@ -888,13 +886,14 @@ function StatsView({ onBack, drawerWorkId, drawerOpen, closeDrawer, openDrawer }
       pid,
       name: ix.periodById.get(pid)?.name ?? pid,
       pct: s.asked > 0 ? Math.round((s.correct / s.asked) * 100) : 0,
+      correct: s.correct,
+      wrong: s.asked - s.correct,
       total: s.asked,
-    })).sort((a, b) => b.total - a.total).slice(0, 12);
+    })).sort((a, b) => a.pct - b.pct);
   }, [stats, ix]);
 
   // sparkline ultimi 20 quiz
   const spark = stats.sessions.slice(-20);
-  const sparkMax = Math.max(...spark.map(s => s.pct), 1);
 
   // top errori
   const topErrors = useMemo(() => {
@@ -904,105 +903,212 @@ function StatsView({ onBack, drawerWorkId, drawerOpen, closeDrawer, openDrawer }
     }).sort((a, b) => b.n - a.n).slice(0, 10);
   }, [stats]);
 
+  // Andamento tendenza (ultime 5 vs precedenti 5)
+  const trend = useMemo(() => {
+    if (spark.length < 4) return null;
+    const recent = spark.slice(-5);
+    const older = spark.slice(-10, -5);
+    const avgRecent = recent.reduce((a, s) => a + s.pct, 0) / recent.length;
+    const avgOlder = older.length > 0 ? older.reduce((a, s) => a + s.pct, 0) / older.length : avgRecent;
+    return Math.round(avgRecent - avgOlder);
+  }, [spark]);
+
+  const colorForPct = (p: number) => p >= 70 ? "#3f8a4f" : p >= 40 ? "var(--gold)" : "#a8483f";
+
+  const labelStyle: React.CSSProperties = {
+    display: "block", fontSize: 11, fontWeight: 700, color: "var(--ink-dim)",
+    textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4,
+  };
+
   return (
     <div className="wrap page">
       <button className="btn ghost sm" onClick={onBack} style={{ marginBottom: 22 }}>← Torna al quiz</button>
       <div className="page-head">
-        <h1 className="page-title">Le mie statistiche</h1>
+        <div className="page-eyebrow"><span className="sec-num">06</span><span className="eyebrow">Analisi dettagliata</span></div>
+        <h1 className="page-title">Statistiche test</h1>
+        <p className="page-lead">Analisi approfondita delle tue prestazioni: andamento nel tempo, punti di forza e debolezza per tipo di domanda e periodo storico, errori ricorrenti.</p>
       </div>
+      <div className="page-rule" />
 
-      <div className="kpi-grid" style={{ marginBottom: 36 }}>
+      {/* KPI principali — stile Dashboard */}
+      <div className="kpi-grid" style={{ marginBottom: 32 }}>
         <div className="stat">
           <div className="stat-num tnum"><CountUp value={totalSessions} /></div>
           <div className="stat-lab">Sessioni</div>
         </div>
         <div className="stat">
           <div className="stat-num tnum"><CountUp value={totalQ} /></div>
-          <div className="stat-lab">Domande</div>
+          <div className="stat-lab">Domande totali</div>
         </div>
         <div className="stat">
-          <div className="stat-num tnum" style={{ color: pct >= 70 ? "var(--c-technique)" : pct >= 40 ? "var(--gold)" : "var(--c-event)" }}>
+          <div className="stat-num tnum" style={{ color: colorForPct(pct) }}>
             <CountUp value={pct} suffix="%" />
           </div>
-          <div className="stat-lab">Tasso corretto</div>
+          <div className="stat-lab">% corretto globale</div>
+        </div>
+        <div className="stat">
+          <div className="stat-num tnum" style={{ color: "#3f8a4f" }}>
+            <CountUp value={totalOk} />
+          </div>
+          <div className="stat-lab">Corrette</div>
+        </div>
+        <div className="stat">
+          <div className="stat-num tnum" style={{ color: "#a8483f" }}>
+            <CountUp value={totalWrong} />
+          </div>
+          <div className="stat-lab">Errate</div>
+        </div>
+        <div className="stat">
+          <div className="stat-num tnum" style={{ color: "var(--gold-deep)" }}>
+            <CountUp value={stats.bestStreak} />
+          </div>
+          <div className="stat-lab">Miglior streak</div>
         </div>
       </div>
 
+      {/* Barra progresso globale */}
+      <div style={{ marginBottom: 36 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+          <span style={{ fontSize: 13, fontWeight: 600, color: "var(--ink-dim)" }}>Progresso complessivo</span>
+          <span className="tnum" style={{ fontSize: 13, color: colorForPct(pct), fontWeight: 700 }}>{pct}%</span>
+        </div>
+        <div style={{ height: 10, background: "var(--bg-2)", borderRadius: 5, overflow: "hidden" }}>
+          <motion.div
+            initial={reduced ? false : { width: 0 }}
+            animate={{ width: `${pct}%` }}
+            transition={{ duration: 0.8, ease: EASE_OUT }}
+            style={{ height: "100%", borderRadius: 5, background: colorForPct(pct) }}
+          />
+        </div>
+        {trend !== null && (
+          <div style={{ marginTop: 8, fontSize: 12, color: trend > 0 ? "#3f8a4f" : trend < 0 ? "#a8483f" : "var(--ink-dim)" }}>
+            {trend > 0 ? `↗ Tendenza in miglioramento (+${trend}% negli ultimi test)` : trend < 0 ? `↘ Tendenza in calo (${trend}% negli ultimi test)` : "→ Tendenza stabile"}
+          </div>
+        )}
+      </div>
+
+      {/* Andamento sessioni — grafico a barre migliorato */}
       {spark.length > 0 && (
-        <div style={{ marginBottom: 30 }}>
-          <div className="eyebrow" style={{ marginBottom: 8 }}>Andamento</div>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 18, marginBottom: 12 }}>Ultimi quiz</h3>
-          <div className="density" style={{ marginBottom: 20 }}>
-            {spark.map((s, i) => (
-              <i key={i} style={{ height: `${(s.pct / sparkMax) * 100}%`, background: s.pct >= 70 ? "var(--c-technique)" : s.pct >= 40 ? "var(--gold)" : "var(--c-event)" }}
-                title={`${s.pct}% (${s.score}/${s.total})`} />
-            ))}
+        <div style={{ marginBottom: 36, padding: 20, background: "var(--bg-2)", borderRadius: 12 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 16 }}>
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em" }}>Andamento</div>
+              <h3 style={{ fontFamily: "var(--font-display)", fontSize: 18, marginTop: 2 }}>Ultime {spark.length} sessioni</h3>
+            </div>
+            <div style={{ display: "flex", gap: 16, fontSize: 12 }}>
+              <span>Media: <b className="tnum" style={{ color: colorForPct(avgPct) }}>{avgPct}%</b></span>
+              <span>Migliore: <b className="tnum" style={{ color: "#3f8a4f" }}>{bestSession}%</b></span>
+            </div>
+          </div>
+          <div style={{ display: "flex", alignItems: "flex-end", gap: 4, height: 120, padding: "8px 0", borderBottom: "2px solid var(--line)" }}>
+            {spark.map((s, i) => {
+              const h = Math.max(6, (s.pct / 100) * 100);
+              const color = colorForPct(s.pct);
+              return (
+                <div key={i} style={{ flex: 1, minWidth: 8, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}
+                  title={`Sessione ${i + 1}: ${s.score}/${s.total} (${s.pct}%) - ${s.mode}`}>
+                  <div style={{ fontSize: 9, color: "var(--ink-dim)", fontWeight: 600 }}>{s.pct}%</div>
+                  <div style={{ width: "100%", maxWidth: 32, height: h, background: color, borderRadius: "4px 4px 0 0", opacity: 0.85 }} />
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ display: "flex", gap: 16, marginTop: 8, fontSize: 11, color: "var(--ink-dim)" }}>
+            <span><span style={{ display: "inline-block", width: 10, height: 10, background: "#3f8a4f", borderRadius: 2, marginRight: 4, verticalAlign: "middle" }} />≥70%</span>
+            <span><span style={{ display: "inline-block", width: 10, height: 10, background: "var(--gold)", borderRadius: 2, marginRight: 4, verticalAlign: "middle" }} />40-69%</span>
+            <span><span style={{ display: "inline-block", width: 10, height: 10, background: "#a8483f", borderRadius: 2, marginRight: 4, verticalAlign: "middle" }} />&lt;40%</span>
           </div>
         </div>
       )}
 
+      {/* Performance per tipo di domanda — barre orizzontali con dettagli */}
       {kindRate.length > 0 && (
-        <div style={{ marginBottom: 30 }}>
-          <div className="eyebrow" style={{ marginBottom: 8 }}>Per tipo di domanda</div>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 18, marginBottom: 12 }}>Tasso per categoria</h3>
-          <div>
+        <div style={{ marginBottom: 36 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4 }}>Punti di forza e debolezza</div>
+          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 20, marginBottom: 16 }}>Performance per tipo di domanda</h3>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {kindRate.map(k => (
-              <div className="bar-row" key={k.kind}>
-                <span style={{ fontSize: 13 }}>{k.label}</span>
-                <div className="bar-track">
-                  <div className="bar-fill" style={{ width: `${k.pct}%`, background: k.pct >= 70 ? "var(--c-technique)" : k.pct >= 40 ? "var(--gold)" : "var(--c-event)" }} />
+              <div key={k.kind} style={{ padding: "12px 16px", background: "var(--bg-2)", borderRadius: 10 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
+                  <span style={{ fontSize: 14, fontWeight: 500, textTransform: "capitalize" }}>{k.label}</span>
+                  <span className="tnum" style={{ fontSize: 13, color: "var(--ink-dim)" }}>
+                    <b style={{ color: colorForPct(k.pct) }}>{k.pct}%</b> · {k.correct}/{k.total}
+                    <span style={{ color: "#a8483f", marginLeft: 6 }}>({k.wrong} err.)</span>
+                  </span>
                 </div>
-                <span className="tnum">{k.pct}% <span className="faint">({k.total})</span></span>
+                <div style={{ height: 8, background: "var(--bg)", borderRadius: 4, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${k.pct}%`, background: colorForPct(k.pct), borderRadius: 4 }} />
+                </div>
               </div>
             ))}
           </div>
         </div>
       )}
 
+      {/* Performance per periodo storico */}
       {periodRate.length > 0 && (
-        <div style={{ marginBottom: 30 }}>
-          <div className="eyebrow" style={{ marginBottom: 8 }}>Per periodo</div>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 18, marginBottom: 12 }}>Tasso per periodo storico</h3>
-          <div>
+        <div style={{ marginBottom: 36 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4 }}>Copertura storica</div>
+          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 20, marginBottom: 16 }}>Performance per periodo storico</h3>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {periodRate.map(p => (
-              <div className="bar-row" key={p.pid}>
-                <Link className="tlink" to={`/periodo/${p.pid}`} style={{ border: 0, fontSize: 13 }}>{p.name}</Link>
-                <div className="bar-track">
-                  <div className="bar-fill" style={{ width: `${p.pct}%`, background: p.pct >= 70 ? "var(--c-technique)" : p.pct >= 40 ? "var(--gold)" : "var(--c-event)" }} />
+              <div key={p.pid} style={{ padding: "10px 14px", background: "var(--bg-2)", borderRadius: 8 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+                  <Link className="tlink" to={`/periodo/${p.pid}`} style={{ fontSize: 13, fontWeight: 500 }}>{p.name}</Link>
+                  <span className="tnum" style={{ fontSize: 12, color: "var(--ink-dim)" }}>
+                    <b style={{ color: colorForPct(p.pct) }}>{p.pct}%</b> · {p.correct}/{p.total}
+                  </span>
                 </div>
-                <span className="tnum">{p.pct}% <span className="faint">({p.total})</span></span>
+                <div style={{ height: 6, background: "var(--bg)", borderRadius: 3, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${p.pct}%`, background: colorForPct(p.pct), borderRadius: 3 }} />
+                </div>
               </div>
             ))}
           </div>
         </div>
       )}
 
+      {/* Errori più frequenti */}
       {topErrors.length > 0 && (
-        <div style={{ marginBottom: 30 }}>
-          <div className="eyebrow" style={{ marginBottom: 8 }}>Errori</div>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 18, marginBottom: 12 }}>Errori più frequenti</h3>
-          <div>
+        <div style={{ marginBottom: 36 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4 }}>Da ripassare</div>
+          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 20, marginBottom: 16 }}>Errori più frequenti</h3>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {topErrors.map((e, i) => (
-              <div className="review-row" key={i} style={{ borderLeftColor: "var(--c-event)", padding: "10px 16px" }}>
-                <span className="tag" style={{ borderColor: "var(--line)" }}>{e.label}</span>
-                <span className="tnum" style={{ fontSize: 13, marginLeft: 10 }}>{e.n} errori</span>
-                {e.refId && (
-                  <button onClick={() => openDrawer(e.refId)} style={{
-                    background: "none", border: 0, padding: 0, cursor: "pointer",
-                    color: "var(--gold)", fontSize: 12, marginLeft: 8, textDecoration: "underline",
-                  }}>scheda →</button>
-                )}
+              <div key={i} style={{
+                display: "flex", justifyContent: "space-between", alignItems: "center",
+                padding: "10px 14px", background: "rgba(168,72,63,0.06)",
+                borderRadius: 8, border: "1px solid rgba(168,72,63,0.15)",
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <span style={{
+                    fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 4,
+                    background: "#a8483f", color: "#fff",
+                  }}>#{i + 1}</span>
+                  <span style={{ fontSize: 13, textTransform: "capitalize" }}>{e.label}</span>
+                  {e.refId && (
+                    <button onClick={() => openDrawer(e.refId)} style={{
+                      background: "none", border: 0, padding: 0, cursor: "pointer",
+                      color: "var(--gold)", fontSize: 12, textDecoration: "underline",
+                    }}>scheda →</button>
+                  )}
+                </div>
+                <span className="tnum" style={{ fontSize: 14, fontWeight: 700, color: "#a8483f" }}>{e.n}×</span>
               </div>
             ))}
           </div>
         </div>
       )}
 
-      <div style={{ marginTop: 36, display: "flex", gap: 12 }}>
-        <button className="btn ghost" onClick={() => { if (confirm("Cancellare tutte le statistiche quiz?")) { clearStats(); clearErrors(); onBack(); } }}>Reset statistiche</button>
+      {/* Reset */}
+      <div style={{ marginTop: 24, padding: 16, background: "rgba(168,72,63,0.04)", borderRadius: 10, border: "1px solid rgba(168,72,63,0.15)" }}>
+        <div style={{ fontSize: 13, color: "var(--ink-dim)", marginBottom: 8 }}>Cancella definitivamente tutte le statistiche e la banca errori.</div>
+        <button className="btn ghost sm" style={{ color: "#a8483f", borderColor: "#a8483f" }}
+          onClick={() => { if (confirm("Cancellare tutte le statistiche quiz?")) { clearStats(); clearErrors(); onBack(); } }}>
+          🗑️ Reset statistiche
+        </button>
       </div>
 
-      {/* Drawer per statistica errori */}
       <OperaDrawer workId={drawerWorkId} open={drawerOpen} onClose={closeDrawer} />
     </div>
   );

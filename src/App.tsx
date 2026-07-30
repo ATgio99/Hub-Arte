@@ -17,6 +17,7 @@ import Glossario from "./pages/Glossario";
 import Tecniche from "./pages/Tecniche";
 import Test from "./pages/Test";
 import Login from "./pages/Login";
+import Landing from "./pages/Landing";
 import Legal from "./pages/Legal";
 import Suggerisci from "./pages/Suggerisci";
 import SuggerisciModifica from "./pages/SuggerisciModifica";
@@ -50,22 +51,38 @@ function useSyncOnLogin() {
 
   useEffect(() => {
     let cleanup: (() => void) | undefined;
+    let pollInterval: any;
+    let globalPollInterval: any;
 
     (async () => {
       // Scarica sempre gli override globali (anche per anonimi)
       await pullGlobalImageOverrides();
 
-      if (!user) return;
+      if (!user) {
+        // ANONIMO: polla solo i globali ogni 30s (così se l'admin cambia
+        // un'immagine, l'utente anonimo la vede entro 30s)
+        globalPollInterval = setInterval(async () => {
+          await pullGlobalImageOverrides();
+        }, 30000);
+        return;
+      }
 
-      // Per gli utenti autenticati: PULL dal cloud (NON push — vedi sync.ts).
-      // Il push avviene solo quando l'utente fa azioni esplicite
-      // (toggle preferito, spunta studied, setOverride immagine).
+      // Per gli utenti autenticati: PUSH + PULL (sync completo)
       await fullSync(user);
       cleanup = subscribeToRealtime(user);
+
+      // Polling automatico ogni 30 secondi: scarica eventuali modifiche
+      // fatte da altri dispositivi (il realtime a volte non è affidabile)
+      pollInterval = setInterval(async () => {
+        console.log("[sync] Auto-poll: pulling from cloud...");
+        await pullFromCloud(user);
+      }, 30000);
     })();
 
     return () => {
       if (cleanup) cleanup();
+      if (pollInterval) clearInterval(pollInterval);
+      if (globalPollInterval) clearInterval(globalPollInterval);
     };
   }, [user]);
 }
@@ -106,10 +123,9 @@ export default function App() {
 
       <div className="content3d">
         {isHome ? (
-          <Suspense fallback={<div className="h3d-loader" data-testid="h3d-suspense">
-            <div className="spinner" /></div>}>
-            <Home3D />
-          </Suspense>
+          <main className="page-host">
+            <Landing />
+          </main>
         ) : (
           <main className="page-host">
             <PageTransition pathname={loc.pathname}>

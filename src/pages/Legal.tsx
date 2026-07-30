@@ -293,6 +293,23 @@ export default function Legal() {
           <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" className="tlink">Supabase</a>.
           Il codice sorgente del progetto è pubblico su GitHub sotto licenza MIT.
         </P>
+
+        <H2>Sostieni il progetto</H2>
+        <P>
+          HUB Art è gratuito e senza pubblicità. Se ti è utile, considera una donazione per
+          supportare lo sviluppo e i costi di hosting.
+        </P>
+        <div style={{ marginTop: 12 }}>
+          <a href="https://www.buymeacoffee.com/ATgio" target="_blank" rel="noopener noreferrer"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 6,
+              padding: "9px 18px", borderRadius: 999, fontSize: 13, fontWeight: 600,
+              background: "#ffdd00", color: "#000", textDecoration: "none",
+              border: "1px solid #e6c800",
+            }}>
+            ☕ Buy me a coffee
+          </a>
+        </div>
       </div>
     );
   }

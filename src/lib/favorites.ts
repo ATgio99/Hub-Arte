@@ -72,6 +72,16 @@ export function favoritesCount(): number {
   return f.works.length + f.artists.length;
 }
 
+/** Svuota tutti i preferiti (locale + cloud). Async: attende la delete su Supabase. */
+export async function clearAllFavorites() {
+  persist({ works: [], artists: [] });
+  // Also clear from Supabase (await instead of .then)
+  const { data: { user } } = await supabase.auth.getUser();
+  if (user) {
+    await supabase.from("user_favorites").delete().eq("user_id", user.id);
+  }
+}
+
 /** Hook reattivo: restituisce i preferiti correnti e si aggiorna a ogni toggle. */
 export function useFavorites(): Favorites {
   const [favs, setFavs] = useState<Favorites>(() => getFavorites());

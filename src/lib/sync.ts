@@ -29,54 +29,73 @@ import { supabase } from "./supabase";
 import { getFavorites, setFavorites } from "./favorites";
 import { getStudied, setStudied } from "./studied";
 import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "./imageOverrides";
+import type { OverrideMap } from "./imageOverrides";
 import type { User } from "@supabase/supabase-js";
 
 // ---------- PULL GLOBAL IMAGE OVERRIDES (per tutti, anche anonimi) ----------
 // Questa funzione può essere chiamata anche senza utente (utente anonimo).
-// Scarica TUTTI gli override globali (is_global=true) e li salva nel localStorage
+// Scarica TUTTI gli override globali (is_global=true) e fa MERGE nel localStorage
 // sotto la chiave separata "atlante:image-overrides-global".
+//
+// IMPORTANTE: fa MERGE, non REPLACE. Non cancella MAI gli override locali.
+// Motivo: se l'admin fa setOverride e poi il poll parte prima che la INSERT
+// cloud sia visibile (race condition, ritardo di replica, RLS che blocca),
+// il localStorage verrebbe svuotato e l'immagine tornerebbe al default.
+// Il MERGE preserva sempre i dati locali; cloud vince solo su URL diverso.
 
 export async function pullGlobalImageOverrides(): Promise<void> {
   try {
-    const { data, error } = await supabase
+    // Prova prima con il filtro is_global = true (richiede la migration)
+    let { data, error } = await supabase
       .from("image_overrides")
       .select("work_id, url, modified_by, updated_at")
       .eq("is_global", true);
 
+    // Se la colonna is_global non esiste (migration non eseguita),
+    // fallback: scarica tutti gli override e filtra lato client quelli
+    // con modified_by = email admin
     if (error) {
-      // Se la tabella non ha ancora la colonna is_global (pre-migration),
-      // la query fallisce: ignora silenziosamente. L'app continua a funzionare
-      // con gli override privati del localStorage.
-      return;
+      console.log("[sync] is_global column not found, trying fallback...");
+      const res = await supabase
+        .from("image_overrides")
+        .select("work_id, url, modified_by, updated_at");
+      if (res.error) {
+        console.error("[sync] Fallback also failed:", res.error.message);
+        return;
+      }
+      // Filtra lato client: considera globali quelli con modified_by admin
+      data = (res.data || []).filter((r: any) =>
+        r.modified_by && ["hubarte@proton.me", "atgio@proton.me"].includes(r.modified_by.toLowerCase())
+      );
     }
+
     if (!data || data.length === 0) {
-      // Nessun override globale → pulisci il localStorage globale
-      setGlobalOverrides({});
+      // NON cancellare il localStorage! Potrebbe contenere override appena
+      // salvati dall'admin locale che non sono ancora visibili nel cloud
+      // (race condition, ritardo di replica, RLS che blocca la INSERT).
+      console.log("[sync] No global overrides in cloud, keeping local localStorage intact");
       return;
     }
 
-    const map = getGlobalOverrides();
-    const newMap: Record<string, { url: string; setAt: string; isGlobal: boolean; modifiedBy?: string }> = {};
+    // MERGE: cloud vince su conflitti (URL diverso), ma non rimuove mai entry locali
+    const localMap = getGlobalOverrides();
+    const merged: OverrideMap = { ...localMap };
+    let changed = false;
     for (const r of data) {
-      newMap[r.work_id] = {
-        url: r.url,
-        setAt: r.updated_at ?? new Date().toISOString(),
-        isGlobal: true,
-        modifiedBy: r.modified_by ?? undefined,
-      };
-    }
-    // Aggiorna solo se ci sono differenze (per evitare dispatch inutili)
-    const oldKeys = Object.keys(map).sort().join(",");
-    const newKeys = Object.keys(newMap).sort().join(",");
-    if (oldKeys !== newKeys) {
-      setGlobalOverrides(newMap);
-    } else {
-      // Verifica anche che gli URL siano identici
-      let changed = false;
-      for (const k of Object.keys(newMap)) {
-        if (map[k]?.url !== newMap[k].url) { changed = true; break; }
+      const existing = merged[r.work_id];
+      const cloudUrl = r.url;
+      if (!existing || existing.url !== cloudUrl) {
+        merged[r.work_id] = {
+          url: cloudUrl,
+          setAt: r.updated_at ?? new Date().toISOString(),
+          isGlobal: true,
+          modifiedBy: r.modified_by ?? undefined,
+        };
+        changed = true;
       }
-      if (changed) setGlobalOverrides(newMap);
+    }
+    if (changed) {
+      setGlobalOverrides(merged);
     }
   } catch {
     /* ignore */
@@ -89,22 +108,31 @@ export async function pullGlobalImageOverrides(): Promise<void> {
 
 export async function pushToCloud(user: User): Promise<void> {
   const uid = user.id;
+  console.log("[sync] pushToCloud start for user:", uid);
 
-  // 1) Favorites
+  // 1) Favorites — upsert tutti i preferiti locali
   const favs = getFavorites();
   const favRows = [
     ...favs.works.map(work_id => ({ user_id: uid, work_id, type: "work" as const })),
     ...favs.artists.map(work_id => ({ user_id: uid, work_id, type: "artist" as const })),
   ];
   if (favRows.length > 0) {
-    await supabase.from("user_favorites").upsert(favRows, { onConflict: "user_id,work_id,type" });
+    const { error } = await supabase.from("user_favorites").upsert(favRows, { onConflict: "user_id,work_id,type" });
+    if (error) console.error("[sync] Error pushing favorites:", error.message);
+    else console.log("[sync] Pushed", favRows.length, "favorites to cloud");
+  } else {
+    console.log("[sync] No local favorites to push");
   }
 
-  // 2) Studied
+  // 2) Studied — upsert tutti gli approfonditi locali
   const studiedIds = getStudied();
   if (studiedIds.length > 0) {
     const studiedRows = studiedIds.map(work_id => ({ user_id: uid, work_id }));
-    await supabase.from("user_studied").upsert(studiedRows, { onConflict: "user_id,work_id" });
+    const { error } = await supabase.from("user_studied").upsert(studiedRows, { onConflict: "user_id,work_id" });
+    if (error) console.error("[sync] Error pushing studied:", error.message);
+    else console.log("[sync] Pushed", studiedRows.length, "studied to cloud");
+  } else {
+    console.log("[sync] No local studied to push");
   }
 
   // 3) Image overrides PRIVATI (is_global=false)
@@ -139,38 +167,55 @@ export async function pushToCloud(user: User): Promise<void> {
   } catch { /* ignore */ }
 }
 
-// ---------- PULL FROM CLOUD (merge cloud → locale) ----------
+// ---------- PULL FROM CLOUD (MERGE union locale + cloud) ----------
+// Strategia MERGE:
+//   - Unisci locale + cloud (union, deduplica).
+//   - Il cloud NON sovrascrive il locale: entrambi contribuiscono.
+//   - Questo è corretto perché:
+//     1. toggleFavorite/toggleStudied pushano immediatamente al cloud
+//     2. signOut pulisce il localStorage (no contaminazione cross-account)
+//     3. Se l'utente aggiunge offline e poi fa sync, il merge preserva i dati locali
 
 export async function pullFromCloud(user: User): Promise<void> {
-  // 1) Favorites — merge union locale + cloud
-  const { data: favRows } = await supabase
+  console.log("[sync] pullFromCloud start for user:", user.id);
+
+  // 1) Favorites — MERGE union
+  const { data: favRows, error: favErr } = await supabase
     .from("user_favorites")
     .select("work_id, type")
     .eq("user_id", user.id);
 
-  if (favRows && favRows.length > 0) {
+  if (favErr) {
+    console.error("[sync] Error fetching favorites:", favErr.message);
+  } else if (favRows && favRows.length > 0) {
     const localFavs = getFavorites();
     const cloudWorks = favRows.filter(r => r.type === "work").map(r => r.work_id);
     const cloudArtists = favRows.filter(r => r.type === "artist").map(r => r.work_id);
+    // MERGE: unione senza duplicati
     const mergedWorks = [...new Set([...localFavs.works, ...cloudWorks])];
     const mergedArtists = [...new Set([...localFavs.artists, ...cloudArtists])];
     setFavorites({ works: mergedWorks, artists: mergedArtists });
+    console.log(`[sync] favorites: local ${localFavs.works.length}+${localFavs.artists.length} + cloud ${cloudWorks.length}+${cloudArtists.length} → merge ${mergedWorks.length}+${mergedArtists.length}`);
+  } else {
+    console.log("[sync] favorites: cloud empty, keeping local");
   }
-  // Se il cloud NON ha dati per questo utente (nuovo utente), NON facciamo nulla:
-  // il localStorage resta così com'è (vuoto se è un browser pulito, oppure
-  // contiene residui di un vecchio utente che verranno puliti al prossimo logout).
 
-  // 2) Studied — merge union
-  const { data: studiedRows } = await supabase
+  // 2) Studied — MERGE union
+  const { data: studiedRows, error: studiedErr } = await supabase
     .from("user_studied")
     .select("work_id")
     .eq("user_id", user.id);
 
-  if (studiedRows && studiedRows.length > 0) {
+  if (studiedErr) {
+    console.error("[sync] Error fetching studied:", studiedErr.message);
+  } else if (studiedRows && studiedRows.length > 0) {
     const localStudied = getStudied();
     const cloudStudied = studiedRows.map(r => r.work_id);
     const merged = [...new Set([...localStudied, ...cloudStudied])];
     setStudied(merged);
+    console.log(`[sync] studied: local ${localStudied.length} + cloud ${cloudStudied.length} → merge ${merged.length}`);
+  } else {
+    console.log("[sync] studied: cloud empty, keeping local");
   }
 
   // 3) Image overrides PRIVATI dell'utente — merge (locale ha precedenza)
@@ -218,10 +263,20 @@ export async function pullFromCloud(user: User): Promise<void> {
 // Il push dei dati locali avviene solo quando l'utente fa azioni esplicite
 // (toggle preferito, spunta studied, setOverride).
 
+// ---------- FULL SYNC (push locale → cloud, poi pull cloud → locale) ----------
+// 1. PUSH: spinge tutti i dati locali al cloud (upsert)
+// 2. PULL: scarica dal cloud e fa merge
+// Questo garantisce che se l'utente aggiunge un preferito sul telefono,
+// al sync successivo (manuale o automatico) viene prima spedito al cloud,
+// poi scaricato su tutti i dispositivi.
+
 export async function fullSync(user: User): Promise<void> {
-  // SOLO PULL: scarica i dati dell'utente dal cloud e fa merge col locale.
-  // NON spinge i dati locali al cloud (per evitare contaminazione tra account).
+  console.log("[sync] fullSync start for user:", user.id);
+  // 1. Push dei dati locali al cloud
+  await pushToCloud(user);
+  // 2. Pull dal cloud e merge
   await pullFromCloud(user);
+  console.log("[sync] fullSync complete");
 }
 
 // ---------- REALTIME SUBSCRIPTIONS ----------

@@ -48,8 +48,9 @@ export default function Opere() {
       if (studiedFilter === "studied" && !studied.includes(w.id)) return false;
       if (studiedFilter === "not-studied" && studied.includes(w.id)) return false;
       if (qq) {
-        const hay = (w.title + " " + (w.location_city ?? "") + " " + (w.location_place ?? "")).toLowerCase();
-        if (!hay.includes(qq)) return false;
+        const keywords = qq.split(/\s+/).filter(Boolean);
+        const hay = (w.title + " " + (w.location_city ?? "") + " " + (w.location_place ?? "") + " " + (w.type ?? "")).toLowerCase();
+        if (!keywords.every(kw => hay.includes(kw))) return false;
       }
       return true;
     }).sort((a, b) => b.importance - a.importance || (a.year_end ?? 9999) - (b.year_end ?? 9999));
@@ -93,7 +94,7 @@ export default function Opere() {
   return (
     <div className="wrap page">
       <div className="page-head">
-        <div className="page-eyebrow"><span className="sec-num">04</span><span className="eyebrow">Catalogo · {ds.works.length} opere</span></div>
+        <div className="page-eyebrow"><span className="sec-num">04</span><span className="eyebrow">Catalogo · Opere</span></div>
         <h1 className="page-title">Opere</h1>
         <p className="page-lead">Il catalogo completo: ogni scheda raccoglie immagine, datazione, tecniche, terminologia e le connessioni con le altre opere. Usa la barra temporale a sinistra per restringere il periodo.</p>
       </div>

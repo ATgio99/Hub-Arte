@@ -5,7 +5,8 @@ import { useData, useTimeRange } from "../lib/store";
 import { Section, FilterNote, CountUp } from "../components/ui";
 import { getOverrides, clearAllOverrides, clearOverride, exportOverrides, importOverrides } from "../lib/imageOverrides";
 import { workSortYear } from "../lib/data";
-import { useStudied, clearAllStudied } from "../lib/studied";
+import { useStudied } from "../lib/studied";
+import { useAuth } from "../lib/auth";
 import { useInViewOnce, EASE_OUT, usePrefersReducedMotion } from "../lib/motion";
 
 // ---- Barre orizzontali (clickable) ----------------------------------------
@@ -106,6 +107,7 @@ export default function Dashboard() {
   const ds = ix.ds;
   const { range, bounds, workIn, active } = useTimeRange();
   const studiedIds = useStudied();
+  const { isAdmin } = useAuth();
 
   // opere nell'arco temporale globale: base di TUTTE le statistiche
   const works = useMemo(() => ds.works.filter(workIn), [ds, workIn]);
@@ -226,8 +228,11 @@ export default function Dashboard() {
     urbanistica: "var(--rust)", altro: "var(--ink-dim)",
   };
 
-  const totalStudied = studiedIds.length;
-  const totalWorks = ds.works.length;
+  const totalStudied = useMemo(() => {
+    const studiedSet = new Set(studiedIds);
+    return works.filter(w => studiedSet.has(w.id)).length;
+  }, [works, studiedIds]);
+  const totalWorks = works.length;
   const studiedPct = totalWorks > 0 ? Math.round((totalStudied / totalWorks) * 100) : 0;
   const completedPeriods = studiedByPeriod.filter(p => p.pct === 100).length;
 
@@ -235,7 +240,7 @@ export default function Dashboard() {
     { n: works.length, l: "Opere nell'arco" },
     { n: works.filter((w) => w.image_url).length, l: "Con immagine" },
     { n: works.filter((w) => w.lat && w.lon).length, l: "Geolocalizzate" },
-    { n: totalStudied, l: "Approfondite" },
+    { n: totalStudied, l: "Approfondite nell'arco" },
     { n: byType.length, l: "Tipologie" },
     { n: byPeriod.length, l: "Periodi attivi" },
   ];
@@ -266,6 +271,7 @@ export default function Dashboard() {
       <Section eyebrow="Progresso studio" title="Opere approfondite per periodo">
         <p className="muted" style={{ fontSize: 13.5, marginTop: -8, marginBottom: 12, maxWidth: "60ch" }}>
           Spunta le opere come "approfondite" dalla loro scheda (icona ✓). Qui vedi a colpo d'occhio cosa ti manca per ogni periodo.
+          {active && ` I conteggi seguono l'arco temporale selezionato (${range.min}–${range.max}).`}
         </p>
         {/* KPI complessivi */}
         <div style={{ display: "flex", gap: 16, marginBottom: 24, flexWrap: "wrap" }}>
@@ -273,11 +279,11 @@ export default function Dashboard() {
             <div className="stat-num tnum" style={{ color: studiedPct >= 70 ? "var(--c-technique)" : studiedPct >= 30 ? "var(--gold)" : "var(--c-event)" }}>
               <CountUp value={studiedPct} suffix="%" />
             </div>
-            <div className="stat-lab">completamento</div>
+            <div className="stat-lab">completamento nell'arco</div>
           </div>
           <div className="stat" style={{ flex: "1 1 140px", textAlign: "center" }}>
             <div className="stat-num tnum"><CountUp value={totalStudied} />/<CountUp value={totalWorks} /></div>
-            <div className="stat-lab">opere approfondite</div>
+            <div className="stat-lab">opere approfondite nell'arco</div>
           </div>
           <div className="stat" style={{ flex: "1 1 140px", textAlign: "center" }}>
             <div className="stat-num tnum" style={{ color: "var(--c-technique)" }}><CountUp value={completedPeriods} /></div>
@@ -311,13 +317,6 @@ export default function Dashboard() {
           <p className="muted" style={{ textAlign: "center", padding: "20px 0" }}>
             Non hai ancora approfondito nessuna opera. Vai sulla scheda di un'opera e premi la spunta ✓ per segnare le opere che hai studiato.
           </p>
-        )}
-        {totalStudied > 0 && (
-          <div style={{ marginTop: 16 }}>
-            <button className="btn ghost sm" onClick={() => { if (confirm("Cancellare tutte le spunte di approfondimento?")) clearAllStudied(); }}>
-              Reset approfondite
-            </button>
-          </div>
         )}
       </Section>
 
@@ -386,7 +385,14 @@ export default function Dashboard() {
       )}
 
       <Section eyebrow="Personalizzazioni" title="Immagini personalizzate">
-        <OverridesManager />
+        {isAdmin ? (
+          <OverridesManager />
+        ) : (
+          <p className="muted" style={{ fontSize: 13.5, maxWidth: 640, lineHeight: 1.55 }}>
+            La gestione delle immagini personalizzate è riservata agli amministratori.
+            Se sei un utente e vuoi suggerire una modifica a un'immagine, usa il pulsante “✎ Richiedi modifica” sulla scheda dell'opera.
+          </p>
+        )}
       </Section>
     </div>
   );
