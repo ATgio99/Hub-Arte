@@ -17,6 +17,7 @@ import Glossario from "./pages/Glossario";
 import Tecniche from "./pages/Tecniche";
 import Test from "./pages/Test";
 import Login from "./pages/Login";
+import Landing from "./pages/Landing";
 import Legal from "./pages/Legal";
 import Suggerisci from "./pages/Suggerisci";
 import SuggerisciModifica from "./pages/SuggerisciModifica";
@@ -106,10 +107,9 @@ export default function App() {
 
       <div className="content3d">
         {isHome ? (
-          <Suspense fallback={<div className="h3d-loader" data-testid="h3d-suspense">
-            <div className="spinner" /></div>}>
-            <Home3D />
-          </Suspense>
+          <main className="page-host">
+            <Landing />
+          </main>
         ) : (
           <main className="page-host">
             <PageTransition pathname={loc.pathname}>

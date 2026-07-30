@@ -300,6 +300,16 @@ export default function Sidebar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [drawer]);
 
+  // Blocca scroll del body quando il drawer è aperto (evita bug su mobile)
+  useEffect(() => {
+    if (drawer) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [drawer]);
+
   const toggleCollapse = () => {
     setCollapsed((c) => {
       const n = !c;
@@ -310,8 +320,14 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* hamburger mobile (in alto a sinistra) */}
-      <button className="sbx-burger" onClick={() => setDrawer(true)} data-testid="sbx-burger" aria-label="Apri menù">
+      {/* hamburger mobile (in alto a sinistra) — nascosto quando il drawer è aperto */}
+      <button
+        className="sbx-burger"
+        onClick={() => setDrawer(true)}
+        data-testid="sbx-burger"
+        aria-label="Apri menù"
+        style={{ display: drawer ? "none" : undefined }}
+      >
         <span /><span /><span />
       </button>
 

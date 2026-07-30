@@ -310,7 +310,7 @@ export default function AdminDatabase() {
       }}>
         {/* Complessi — render dedicato, PRIMA del check currentData.length === 0 */}
         {tab === "complessi" ? (
-          <ComplessiView ix={ix} search={search} />
+          <ComplessiView ix={ix} search={search} openEdit={openEdit} />
         ) : loadingDb ? (
           <div style={{ padding: 40, textAlign: "center" }}>
             <div className="spinner" style={{ margin: "0 auto" }} />
@@ -565,10 +565,15 @@ export default function AdminDatabase() {
 // ComplessiView — mostra i gruppi di opere (complessi/architetture con
 // più opere collegate). Non è una tabella DB: deriva dai metadati delle opere.
 // ============================================================================
-function ComplessiView({ ix, search }: { ix: ReturnType<typeof useData>; search: string }) {
+function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData>; search: string; openEdit: (id: string) => void }) {
+  const [showNewForm, setShowNewForm] = useState(false);
+  const [newPlace, setNewPlace] = useState("");
+  const [newCity, setNewCity] = useState("");
+  const [newWorkId, setNewWorkId] = useState("");
+  const [saveMsg, setSaveMsg] = useState<string | null>(null);
+
   const groups = useMemo(() => {
     const g = computeWorkGroups(ix.ds);
-    // Ordina per numero di opere decrescente
     return [...g.values()].sort((a, b) => b.works.length - a.works.length);
   }, [ix.ds]);
 
@@ -580,12 +585,97 @@ function ComplessiView({ ix, search }: { ix: ReturnType<typeof useData>; search:
     );
   }, [groups, q]);
 
+  // Opere senza complesso (per il form "nuovo complesso")
+  const orphanWorks = useMemo(() => {
+    const inGroup = new Set<string>();
+    for (const g of groups) for (const w of g.works) inGroup.add(w.id);
+    return ix.ds.works
+      .filter(w => !inGroup.has(w.id) && w.location_place)
+      .sort((a, b) => a.title.localeCompare(b.title))
+      .slice(0, 200);
+  }, [ix.ds.works, groups]);
+
+  const createComplex = async () => {
+    if (!newWorkId || !newPlace.trim()) {
+      setSaveMsg("⚠️ Seleziona un'opera e inserisci un nome per il complesso.");
+      return;
+    }
+    const work = ix.workById.get(newWorkId);
+    if (!work) return;
+    const { error } = await supabase.from("works").upsert({
+      id: work.id,
+      location_place: newPlace.trim(),
+      location_city: newCity.trim() || work.location_city,
+      modified_by: ix ? null : null,
+    }, { onConflict: "id" });
+    if (error) {
+      setSaveMsg("✗ Errore: " + error.message);
+    } else {
+      setSaveMsg("✓ Complesso creato! L'opera è stata assegnata al nuovo complesso.");
+      setNewPlace(""); setNewCity(""); setNewWorkId(""); setShowNewForm(false);
+      window.dispatchEvent(new Event("hubart-works-changed"));
+      try { const bc = new BroadcastChannel("hubart-admin"); bc.postMessage({ type: "changed", ts: Date.now() }); bc.close(); } catch {}
+    }
+  };
+
   return (
     <div style={{ padding: 16 }}>
       <div style={{ marginBottom: 12, fontSize: 13, color: "var(--ink-dim)" }}>
-        📊 <b>{groups.length}</b> complessi trovati (raggruppamenti automatici di opere nello stesso edificio/complesso architettonico).
-        {q && <> · Filtrati per "<b>{q}</b>": {filtered.length} risultati.</>}
+        📊 <b>{groups.length}</b> complessi trovati. Per modificarne uno, clicca su un'opera per aprirne l'editor.
+        Per creare un nuovo complesso, assegna un "Luogo / edificio" a un'opera.
       </div>
+
+      {/* Pulsante nuovo complesso */}
+      <button
+        className="btn gold sm"
+        onClick={() => setShowNewForm(!showNewForm)}
+        style={{ marginBottom: 12 }}
+      >
+        {showNewForm ? "− Annulla" : "+ Crea nuovo complesso"}
+      </button>
+
+      {/* Form nuovo complesso */}
+      {showNewForm && (
+        <div style={{
+          padding: 16, background: "var(--bg-2)", borderRadius: 10,
+          marginBottom: 16, border: "1px solid var(--gold)",
+        }}>
+          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 10 }}>Crea nuovo complesso</div>
+          <p style={{ fontSize: 12, color: "var(--ink-dim)", margin: "0 0 10px" }}>
+            Seleziona un'opera esistente e assegnale un nuovo "Luogo / edificio". Tutte le opere con lo stesso luogo verranno raggruppate automaticamente.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <select
+              value={newWorkId}
+              onChange={(e) => setNewWorkId(e.target.value)}
+              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
+            >
+              <option value="">— Seleziona un'opera da assegnare al complesso —</option>
+              {orphanWorks.map(w => (
+                <option key={w.id} value={w.id}>{w.title} ({w.location_city || "?"})</option>
+              ))}
+            </select>
+            <input
+              type="text"
+              placeholder="Nome del complesso (es. Basilica di San Francesco)"
+              value={newPlace}
+              onChange={(e) => setNewPlace(e.target.value)}
+              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
+            />
+            <input
+              type="text"
+              placeholder="Città (opzionale, usa quella dell'opera se vuoto)"
+              value={newCity}
+              onChange={(e) => setNewCity(e.target.value)}
+              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
+            />
+            {saveMsg && <div style={{ fontSize: 13, color: saveMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{saveMsg}</div>}
+            <button className="btn gold sm" onClick={createComplex} disabled={!newWorkId || !newPlace.trim()}>
+              💾 Crea complesso
+            </button>
+          </div>
+        </div>
+      )}
 
       {filtered.length === 0 ? (
         <div style={{ padding: 32, textAlign: "center", color: "var(--ink-dim)", fontSize: 14 }}>
@@ -618,13 +708,18 @@ function ComplessiView({ ix, search }: { ix: ReturnType<typeof useData>; search:
                 </div>
                 <div style={{ display: "flex", gap: 6, marginTop: 10, flexWrap: "wrap" }}>
                   {g.works.map((w) => (
-                    <Link key={w.id} to={`/opera/${w.id}`} style={{
-                      fontSize: 12, padding: "3px 8px", borderRadius: 6,
-                      background: "var(--bg)", border: "1px solid var(--line)",
-                      color: "var(--ink-soft)", textDecoration: "none",
-                    }} title={w.title}>
-                      {w.title.length > 38 ? w.title.slice(0, 36) + "…" : w.title}
-                    </Link>
+                    <button
+                      key={w.id}
+                      onClick={() => openEdit(w.id)}
+                      style={{
+                        fontSize: 12, padding: "4px 10px", borderRadius: 6,
+                        background: "var(--bg)", border: "1px solid var(--line)",
+                        color: "var(--ink-soft)", cursor: "pointer", fontFamily: "inherit",
+                      }}
+                      title={`Modifica "${w.title}"`}
+                    >
+                      ✎ {w.title.length > 38 ? w.title.slice(0, 36) + "…" : w.title}
+                    </button>
                   ))}
                 </div>
               </div>
