@@ -29,12 +29,19 @@ import { supabase } from "./supabase";
 import { getFavorites, setFavorites } from "./favorites";
 import { getStudied, setStudied } from "./studied";
 import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "./imageOverrides";
+import type { OverrideMap } from "./imageOverrides";
 import type { User } from "@supabase/supabase-js";
 
 // ---------- PULL GLOBAL IMAGE OVERRIDES (per tutti, anche anonimi) ----------
 // Questa funzione può essere chiamata anche senza utente (utente anonimo).
-// Scarica TUTTI gli override globali (is_global=true) e li salva nel localStorage
+// Scarica TUTTI gli override globali (is_global=true) e fa MERGE nel localStorage
 // sotto la chiave separata "atlante:image-overrides-global".
+//
+// IMPORTANTE: fa MERGE, non REPLACE. Non cancella MAI gli override locali.
+// Motivo: se l'admin fa setOverride e poi il poll parte prima che la INSERT
+// cloud sia visibile (race condition, ritardo di replica, RLS che blocca),
+// il localStorage verrebbe svuotato e l'immagine tornerebbe al default.
+// Il MERGE preserva sempre i dati locali; cloud vince solo su URL diverso.
 
 export async function pullGlobalImageOverrides(): Promise<void> {
   try {
@@ -63,32 +70,32 @@ export async function pullGlobalImageOverrides(): Promise<void> {
     }
 
     if (!data || data.length === 0) {
-      setGlobalOverrides({});
+      // NON cancellare il localStorage! Potrebbe contenere override appena
+      // salvati dall'admin locale che non sono ancora visibili nel cloud
+      // (race condition, ritardo di replica, RLS che blocca la INSERT).
+      console.log("[sync] No global overrides in cloud, keeping local localStorage intact");
       return;
     }
 
-    const map = getGlobalOverrides();
-    const newMap: Record<string, { url: string; setAt: string; isGlobal: boolean; modifiedBy?: string }> = {};
+    // MERGE: cloud vince su conflitti (URL diverso), ma non rimuove mai entry locali
+    const localMap = getGlobalOverrides();
+    const merged: OverrideMap = { ...localMap };
+    let changed = false;
     for (const r of data) {
-      newMap[r.work_id] = {
-        url: r.url,
-        setAt: r.updated_at ?? new Date().toISOString(),
-        isGlobal: true,
-        modifiedBy: r.modified_by ?? undefined,
-      };
-    }
-    // Aggiorna solo se ci sono differenze (per evitare dispatch inutili)
-    const oldKeys = Object.keys(map).sort().join(",");
-    const newKeys = Object.keys(newMap).sort().join(",");
-    if (oldKeys !== newKeys) {
-      setGlobalOverrides(newMap);
-    } else {
-      // Verifica anche che gli URL siano identici
-      let changed = false;
-      for (const k of Object.keys(newMap)) {
-        if (map[k]?.url !== newMap[k].url) { changed = true; break; }
+      const existing = merged[r.work_id];
+      const cloudUrl = r.url;
+      if (!existing || existing.url !== cloudUrl) {
+        merged[r.work_id] = {
+          url: cloudUrl,
+          setAt: r.updated_at ?? new Date().toISOString(),
+          isGlobal: true,
+          modifiedBy: r.modified_by ?? undefined,
+        };
+        changed = true;
       }
-      if (changed) setGlobalOverrides(newMap);
+    }
+    if (changed) {
+      setGlobalOverrides(merged);
     }
   } catch {
     /* ignore */

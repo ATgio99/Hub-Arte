@@ -69,22 +69,81 @@ export async function setOverride(workId: string, url: string) {
     persistGlobal(map);
 
     if (user) {
-      // AGGIORNA DIRETTAMENTE la tabella works — tutti gli utenti vedono l'immagine
-      // perché la tabella works ha SELECT pubblica (anon + authenticated)
-      await supabase.from("works").upsert({
-        id: workId,
-        image_url: cleanUrl,
-        image_thumb: cleanUrl,
-        modified_by: user.email,
-      }, { onConflict: "id" });
+      // 1) AGGIORNA DIRETTAMENTE la tabella works — tutti gli utenti vedono
+      //    l'immagine al primo fetch perché works ha SELECT pubblica.
+      //    Usiamo .update() se la riga esiste già (preserva gli altri campi),
+      //    altrimenti .upsert() con tutti i campi obbligatori non fornibili.
+      //    In pratica l'opera esiste già sempre (l'admin la sta modificando),
+      //    quindi UPDATE è la strada corretta e non tocca title/artist_ids ecc.
+      const { error: worksErr } = await supabase
+        .from("works")
+        .update({
+          image_url: cleanUrl,
+          image_thumb: cleanUrl,
+          modified_by: user.email,
+        })
+        .eq("id", workId);
+      if (worksErr) {
+        console.error("[imageOverrides] Errore update works:", worksErr.message);
+      } else {
+        console.log("[imageOverrides] works.image_url aggiornato per", workId);
+      }
 
-      // Salva anche in image_overrides per tracciabilità (best effort)
+      // 2) Salva anche in image_overrides come GLOBALE (per realtime + sync).
+      //    Gestione manuale del conflitto perché l'indice unico è PARTIZIALE
+      //    (where is_global = true) e Supabase JS non supporta conflict target
+      //    parziali. Faccio SELECT -> UPDATE/INSERT.
       try {
-        await supabase.from("image_overrides").upsert(
-          { user_id: user.id, work_id: workId, url: cleanUrl, is_global: true, modified_by: user.email },
-          { onConflict: "work_id" }
-        );
-      } catch { /* ignora se la colonna is_global non esiste */ }
+        const { data: existing, error: selErr } = await supabase
+          .from("image_overrides")
+          .select("id")
+          .eq("work_id", workId)
+          .eq("is_global", true)
+          .maybeSingle();
+
+        // Se la SELECT fallisce perché la colonna is_global non esiste
+        // (migration non eseguita), fallback: upsert semplice con modified_by
+        if (selErr && /is_global/.test(selErr.message)) {
+          console.warn("[imageOverrides] Colonna is_global non trovata, fallback upsert semplice");
+          const { error: upsErr } = await supabase
+            .from("image_overrides")
+            .upsert(
+              { user_id: user.id, work_id: workId, url: cleanUrl, modified_by: user.email },
+              { onConflict: "user_id,work_id" }
+            );
+          if (upsErr) console.error("[imageOverrides] Fallback upsert:", upsErr.message);
+        } else if (existing?.id) {
+          // UPDATE riga esistente
+          const { error: updErr } = await supabase
+            .from("image_overrides")
+            .update({
+              url: cleanUrl,
+              modified_by: user.email,
+              user_id: user.id,
+            })
+            .eq("id", existing.id);
+          if (updErr) console.error("[imageOverrides] Update globale:", updErr.message);
+        } else {
+          // INSERT nuova riga
+          const { error: insErr } = await supabase
+            .from("image_overrides")
+            .insert({
+              user_id: user.id,
+              work_id: workId,
+              url: cleanUrl,
+              is_global: true,
+              modified_by: user.email,
+            });
+          if (insErr) console.error("[imageOverrides] Insert globale:", insErr.message);
+        }
+      } catch (e) {
+        console.error("[imageOverrides] Exception saving global override:", e);
+      }
+      // NON dispatchiamo hubart-works-changed qui: causerebbe un reload
+      // completo del dataset (clearDatasetCache + loadDataset) che lancia
+      // una race condition con il poll dei globali. L'OVERRIDES_EVENT
+      // dispatchato da persistGlobal() è sufficiente per il tab corrente.
+      // Per gli altri tab, ci pensa il realtime subscription.
     }
   } else {
     // Override PRIVATO

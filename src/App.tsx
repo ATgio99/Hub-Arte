@@ -52,12 +52,20 @@ function useSyncOnLogin() {
   useEffect(() => {
     let cleanup: (() => void) | undefined;
     let pollInterval: any;
+    let globalPollInterval: any;
 
     (async () => {
       // Scarica sempre gli override globali (anche per anonimi)
       await pullGlobalImageOverrides();
 
-      if (!user) return;
+      if (!user) {
+        // ANONIMO: polla solo i globali ogni 30s (così se l'admin cambia
+        // un'immagine, l'utente anonimo la vede entro 30s)
+        globalPollInterval = setInterval(async () => {
+          await pullGlobalImageOverrides();
+        }, 30000);
+        return;
+      }
 
       // Per gli utenti autenticati: PUSH + PULL (sync completo)
       await fullSync(user);
@@ -74,6 +82,7 @@ function useSyncOnLogin() {
     return () => {
       if (cleanup) cleanup();
       if (pollInterval) clearInterval(pollInterval);
+      if (globalPollInterval) clearInterval(globalPollInterval);
     };
   }, [user]);
 }
