@@ -614,14 +614,6 @@ export default function Test() {
           )}
 
           <div className="quiz-setup-row">
-            <label className="quiz-field">
-              <span className="filter-label">Manuale</span>
-              <select className="input" value={book} onChange={(e) => setBook(e.target.value)} data-testid="quiz-book">
-                <option value="">Entrambi</option>
-                <option value="1">Libro 1 · Tardoantico → Gotico</option>
-                <option value="2">Libro 2 · Tardogotico → Controriforma</option>
-              </select>
-            </label>
             <div className="quiz-field">
               <span className="filter-label">Preferiti</span>
               <button

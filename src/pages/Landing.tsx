@@ -63,10 +63,16 @@ export default function Landing() {
           </h1>
           <p style={{
             fontSize: "clamp(16px, 3vw, 20px)", color: "var(--ink-soft)",
-            maxWidth: "52ch", margin: "0 auto 24px", lineHeight: 1.55,
+            maxWidth: "52ch", margin: "0 auto 12px", lineHeight: 1.55,
           }}>
             Atlante Neuronale di Storia dell'Arte — uno strumento di studio
             interattivo per esplorare opere, artisti e connessioni.
+          </p>
+          <p style={{
+            fontSize: "clamp(14px, 2.5vw, 16px)", color: "var(--gold-deep)",
+            fontWeight: 600, margin: "0 auto 24px", lineHeight: 1.5,
+          }}>
+            🎓 Gratuito · Open source · Senza pubblicità
           </p>
 
           {/* CTA */}
@@ -120,25 +126,46 @@ export default function Landing() {
         ))}
       </div>
 
-      {/* Features */}
+      {/* Features — card eleganti con bordo oro sottile */}
       <div style={{
-        display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-        gap: 14, maxWidth: 800, margin: "0 auto 40px",
+        display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+        gap: 16, maxWidth: 840, margin: "0 auto 40px",
       }}>
         {features.map((f, i) => (
           <motion.div
             key={f.title}
-            initial={reduced ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: (seen || reduced) ? 1 : 0, y: (seen || reduced) ? 0 : 16 }}
+            initial={reduced ? false : { opacity: 0, y: 20 }}
+            animate={{ opacity: (seen || reduced) ? 1 : 0, y: (seen || reduced) ? 0 : 20 }}
             transition={{ duration: 0.5, ease: EASE_OUT, delay: reduced ? 0 : Math.min(0.2 + i * 0.08, 0.6) }}
             style={{
-              padding: "18px 20px", background: "var(--bg)", border: "1px solid var(--line)",
-              borderRadius: 12,
+              padding: "24px 22px", background: "var(--bg)", border: "1px solid var(--line)",
+              borderRadius: 14, position: "relative", overflow: "hidden",
+              transition: "border-color .2s, box-shadow .2s",
             }}
           >
-            <div style={{ fontSize: 28, marginBottom: 8 }}>{f.icon}</div>
-            <h3 style={{ fontSize: 16, marginBottom: 4, fontFamily: "var(--font-display)" }}>{f.title}</h3>
-            <p style={{ fontSize: 13.5, color: "var(--ink-soft)", lineHeight: 1.5, margin: 0 }}>{f.desc}</p>
+            {/* Linea decorativa oro in alto */}
+            <div style={{
+              position: "absolute", top: 0, left: 0, right: 0, height: 2,
+              background: "linear-gradient(90deg, transparent, var(--gold), transparent)",
+              opacity: 0.5,
+            }} />
+            {/* Icona SVG elegante invece di emoji */}
+            <div style={{
+              width: 40, height: 40, borderRadius: 10, marginBottom: 14,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              background: "rgba(184,138,46,0.1)",
+            }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                {i === 0 && <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></>}
+                {i === 1 && <><circle cx="6" cy="6" r="2" /><circle cx="18" cy="8" r="2" /><circle cx="9" cy="18" r="2" /><path d="M8 7l8 1M8 8l1 8M17 10l-7 7" /></>}
+                {i === 2 && <><path d="M3 12h18" /><circle cx="7" cy="12" r="1.5" /><circle cx="13" cy="12" r="1.5" /><circle cx="19" cy="12" r="1.5" /><path d="M7 12V7M13 12v5M19 12V8" /></>}
+                {i === 3 && <><path d="M9 4L4 6v14l5-2 6 2 5-2V4l-5 2-6-2z" /><path d="M9 4v14M15 6v14" /></>}
+                {i === 4 && <><path d="M9 11l2 2 4-4" /><rect x="4" y="4" width="16" height="16" rx="2" /></>}
+                {i === 5 && <><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z" /><path d="M5 17a3 3 0 0 1 3-3h11" /></>}
+              </svg>
+            </div>
+            <h3 style={{ fontSize: 17, marginBottom: 6, fontFamily: "var(--font-display)" }}>{f.title}</h3>
+            <p style={{ fontSize: 13.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: 0 }}>{f.desc}</p>
           </motion.div>
         ))}
       </div>
@@ -175,6 +202,36 @@ export default function Landing() {
             style={{ color: "var(--ink-dim)", textDecoration: "none" }}>
             GitHub ↗
           </a>
+        </div>
+
+        {/* Donazioni */}
+        <div style={{
+          marginTop: 20, padding: "16px 20px", background: "var(--bg-2)", borderRadius: 12,
+          display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 10,
+        }}>
+          <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: 0, lineHeight: 1.5 }}>
+            HUB Art è gratuito e senza pubblicità. Se ti è utile, considera una donazione 💛
+          </p>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
+            <a href="https://www.buymeacoffee.com/hubart" target="_blank" rel="noopener noreferrer"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 6,
+                padding: "8px 16px", borderRadius: 999, fontSize: 13, fontWeight: 600,
+                background: "#ffdd00", color: "#000", textDecoration: "none",
+                border: "1px solid #e6c800",
+              }}>
+              ☕ Buy me a coffee
+            </a>
+            <a href="https://www.paypal.me/ATgio" target="_blank" rel="noopener noreferrer"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 6,
+                padding: "8px 16px", borderRadius: 999, fontSize: 13, fontWeight: 600,
+                background: "#0070ba", color: "#fff", textDecoration: "none",
+                border: "1px solid #005ea6",
+              }}>
+              💙 PayPal
+            </a>
+          </div>
         </div>
       </div>
     </div>

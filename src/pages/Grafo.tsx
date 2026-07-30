@@ -289,7 +289,9 @@ export default function Grafo() {
           graphData={graph}
           backgroundColor={PAPER}
           showNavInfo={false}
-          cooldownTicks={120}
+          cooldownTicks={100}
+          cooldownTime={2000}
+          enablePointerInteraction={true}
           nodeThreeObject={node3dObject}
           nodeColor={node3dColor}
           linkColor={link3dColor}
@@ -301,6 +303,7 @@ export default function Grafo() {
           }}
           linkOpacity={0.6}
           onEngineTick={setup3d}
+          onEngineStop={() => { /* il motore si ferma da solo dopo cooldown */ }}
           onNodeHover={(n: any) => { setHoverId(n ? n.id : null); }}
           onNodeClick={(n: any) => { setSel(n); }}
           onBackgroundClick={() => setSel(null)}
@@ -311,7 +314,9 @@ export default function Grafo() {
           width={dims.w} height={dims.h}
           graphData={graph}
           backgroundColor={PAPER}
-          cooldownTicks={120}
+          cooldownTicks={100}
+          cooldownTime={2000}
+          nodeCanvasObject={node2dDraw}
           d3VelocityDecay={0.3}
           nodeRelSize={4}
           linkColor={(l: any) => {

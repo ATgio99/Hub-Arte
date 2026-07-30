@@ -428,6 +428,40 @@ export default function LeMieRichieste() {
           {resetting ? "⏳ Azzeramento in corso..." : "🗑️ Azzera tutti i progressi"}
         </button>
       </div>
+
+      {/* Donazioni */}
+      <div style={{
+        marginTop: 24, padding: "20px", background: "var(--bg-2)", borderRadius: 12,
+        textAlign: "center",
+      }}>
+        <h2 style={{ fontSize: 18, marginBottom: 8, fontFamily: "var(--font-display)" }}>
+          Sostieni il progetto
+        </h2>
+        <p style={{ fontSize: 13.5, color: "var(--ink-soft)", margin: "0 0 14px", lineHeight: 1.55 }}>
+          HUB Art è gratuito e senza pubblicità. Se ti è utile, considera una donazione per
+          supportare lo sviluppo e i costi di hosting.
+        </p>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
+          <a href="https://www.buymeacoffee.com/hubart" target="_blank" rel="noopener noreferrer"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 6,
+              padding: "9px 18px", borderRadius: 999, fontSize: 13, fontWeight: 600,
+              background: "#ffdd00", color: "#000", textDecoration: "none",
+              border: "1px solid #e6c800",
+            }}>
+            ☕ Buy me a coffee
+          </a>
+          <a href="https://www.paypal.me/ATgio" target="_blank" rel="noopener noreferrer"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 6,
+              padding: "9px 18px", borderRadius: 999, fontSize: 13, fontWeight: 600,
+              background: "#0070ba", color: "#fff", textDecoration: "none",
+              border: "1px solid #005ea6",
+            }}>
+            💙 PayPal
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
