@@ -213,7 +213,7 @@ export default function Landing() {
             HUB Art è gratuito e senza pubblicità. Se ti è utile, considera una donazione 💛
           </p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
-            <a href="https://www.buymeacoffee.com/hubart" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.buymeacoffee.com/ATgio" target="_blank" rel="noopener noreferrer"
               style={{
                 display: "inline-flex", alignItems: "center", gap: 6,
                 padding: "8px 16px", borderRadius: 999, fontSize: 13, fontWeight: 600,
@@ -221,15 +221,6 @@ export default function Landing() {
                 border: "1px solid #e6c800",
               }}>
               ☕ Buy me a coffee
-            </a>
-            <a href="https://www.paypal.me/ATgio" target="_blank" rel="noopener noreferrer"
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 6,
-                padding: "8px 16px", borderRadius: 999, fontSize: 13, fontWeight: 600,
-                background: "#0070ba", color: "#fff", textDecoration: "none",
-                border: "1px solid #005ea6",
-              }}>
-              💙 PayPal
             </a>
           </div>
         </div>
