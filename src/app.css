@@ -857,12 +857,16 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   right: 14px;
   left: auto;
   transform: none;
-  max-width: 280px;
-  max-height: calc(100vh - 180px);
+  max-width: 260px;
+  max-height: calc(100vh - 200px);
   overflow-y: auto;
   z-index: 40;
   border-radius: 10px;
   padding: 10px 12px;
+  background: rgba(251,248,241,.96);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 16px rgba(0,0,0,.1);
 }
 
 .fs-host.is-full .fs-slider,
@@ -872,20 +876,24 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   right: 14px;
   left: auto;
   transform: none;
-  width: 280px;
+  width: 260px;
   z-index: 40;
   border-radius: 10px;
+  background: rgba(251,248,241,.96);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 16px rgba(0,0,0,.1);
 }
 
-/* Pulsante per chiudere filtri/slider in fullscreen */
+/* Pulsante per chiudere filtri/slider in fullscreen — in BASSO a sinistra */
 .fs-close-controls {
   position: absolute;
-  top: 14px;
+  bottom: 14px;
   left: 14px;
   z-index: 50;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(251,248,241,.92);
+  background: rgba(251,248,241,.96);
   backdrop-filter: blur(8px);
   border: 1px solid var(--line);
   cursor: pointer;
@@ -893,10 +901,33 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   color: var(--ink);
   font-family: inherit;
   display: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
 }
 .fs-host.is-full .fs-close-controls,
 .fs-host:fullscreen .fs-close-controls {
   display: inline-flex;
   align-items: center;
   gap: 4px;
+}
+
+/* Titolo in fullscreen: non deve essere coperto dal pulsante filtri */
+.fs-host.is-full .fs-title,
+.fs-host:fullscreen .fs-title {
+  top: 18px;
+  left: 18px;
+  z-index: 25;
+}
+
+/* Pannello laterale grafo in fullscreen: sfondo opaco */
+.fs-host.is-full .gf-side .panel,
+.fs-host:fullscreen .gf-side .panel {
+  background: rgba(247,243,236,.97);
+  box-shadow: 0 4px 16px rgba(0,0,0,.1);
+}
+
+/* Stage overlay nel grafo: sfondo opaco */
+.fs-host.is-full .stage-overlay,
+.fs-host:fullscreen .stage-overlay {
+  background: rgba(251,248,241,.96);
+  backdrop-filter: blur(8px);
 }
