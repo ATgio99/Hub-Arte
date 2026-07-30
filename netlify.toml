@@ -1,0 +1,87 @@
+# ============================================================================
+# Netlify configuration — HUB Art / Atlante Neuronale
+# ============================================================================
+# Questo file dice a Netlify come buildare e servire il sito.
+# È sufficiente collegare il repo a Netlify: questo file viene letto
+# automaticamente. NON serve configurare nulla nel pannello web.
+# ============================================================================
+
+# --- Build settings -------------------------------------------------------
+[build]
+  # Comando di build (genera la cartella dist/)
+  command = "npm run build"
+
+  # Cartella da pubblicare (output del build)
+  publish = "dist"
+
+  # Directory in cui Netlify installa le dipendenze (default: root)
+  # Lascia il default — il package.json è in root
+
+  # Variabili d'ambiente per il build (none necessarie: Supabase URL/Key
+  # sono hardcoded nel bundle client perché il client Supabase è pubblico
+  # e protetto da RLS)
+
+# --- Node.js version ------------------------------------------------------
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--no-audit --no-fund"
+
+# --- Header di sicurezza (override del public/_headers se necessario) -----
+# Nota: il file public/_headers viene copiato in dist/ dal build e ha la
+# precedenza su queste impostazioni per i pattern sovrapposti.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    # Content-Security-Policy: permissiva perché carichiamo font da Fontshare,
+    # immagini da Wikimedia Commons, tile da OpenStreetMap e auth da Supabase.
+    # Aggiusta se vuoi restringere ulteriormente.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' https://api.fontshare.com; img-src 'self' data: https: blob:; connect-src 'self' https://ddsdvcznziciqdambgom.supabase.co https://*.supabase.co; worker-src 'self' blob:; manifest-src 'self'"
+
+# --- Cache header ---------------------------------------------------------
+# Asset con hash nel filename: cache immutabile 1 anno
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Dataset JSON: cache 1 ora (possono cambiare tra deploy)
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# Texture (pesanti, cambiano raramente): cache 7 giorni
+[[headers]]
+  for = "/textures/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# HTML e manifest: sempre freschi
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# --- SPA redirect (fallback) ----------------------------------------------
+# HUB Art usa HashRouter (URLs tipo /#/opere), quindi il server riceve
+# sempre richiede /index.html — questo redirect NON è strettamente necessario
+# ma è una safety net nel caso in futuro si passi a BrowserRouter.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+  # Escludi file reali (assets, dati, icone) — servili direttamente
+  conditions = {Path = ["!/assets/*", "!/data/*", "!/textures/*", "!/*.png", "!/*.svg", "!/*.jpg", "!/*.json", "!/admin.html", "!/favicon.svg", "!/manifest.json"]}
+
+# --- Plugin opzionali -----------------------------------------------------
+# Nessun plugin necessario: il build è vanilla Vite.

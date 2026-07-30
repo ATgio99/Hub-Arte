@@ -1,0 +1,4426 @@
+[
+  {
+    "id": "abraam",
+    "name": "Abraam",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "bronzista",
+    "bio": "Artefice che, dopo il rimontaggio delle porte di Magdeburgo a Novgorod, inserisce la propria figura tra quelle dei due artefici originari Riquinus e Weissmuth, completando la decorazione con motivi fitomorfi di ispirazione scandinava.",
+    "innovations": []
+  },
+  {
+    "id": "agnolo-bronzino",
+    "name": "Agnolo Bronzino",
+    "aka": [
+      "Agnolo di Cosimo"
+    ],
+    "birth": 1503,
+    "death": 1572,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino, allievo di Pontormo, pittore di corte di Cosimo I de' Medici dal 1539. Maestro della ritrattistica dynastica, capace di veicolare precisi significati politici attraverso una qualità superficiale quasi smaltata e di assoluta perfezione formale.",
+    "innovations": [
+      "superficie cromatica come intarsio di marmi o smalti",
+      "ritratto dynastico di superamento delle inquietudini manieristiche"
+    ]
+  },
+  {
+    "id": "agnolo-di-ventura",
+    "name": "Agnolo di Ventura",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "scultore",
+    "bio": "Scultore senese, autore insieme ad Agostino di Giovanni della Porta Romana di Siena (1327-1328).",
+    "innovations": []
+  },
+  {
+    "id": "agostino-di-duccio",
+    "name": "Agostino di Duccio",
+    "aka": [],
+    "birth": 1418,
+    "death": 1481,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "scultore",
+    "bio": "Scultore fiorentino che lavora insieme a Matteo de' Pasti agli interni del Tempio Malatestiano a Rimini, elaborando un complesso apparato iconografico di soggetti all'antica.",
+    "innovations": []
+  },
+  {
+    "id": "agostino-di-giovanni",
+    "name": "Agostino di Giovanni",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "scultore",
+    "bio": "Scultore senese, autore insieme ad Agnolo di Ventura della Porta Romana di Siena (1327-1328).",
+    "innovations": []
+  },
+  {
+    "id": "albrecht-durer",
+    "name": "Albrecht Dürer",
+    "aka": [
+      "Albrecht Durer",
+      "Alberto Durer"
+    ],
+    "birth": 1471,
+    "death": 1528,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore, incisore",
+    "bio": "Nato a Norimberga (1471-1528), è il massimo rappresentante dell'arte rinascimentale tedesca. Compie due soggiorni in Italia (1494-1495 e 1505-1507) e porta il Rinascimento in Germania attraverso la pittura e soprattutto l'incisione, della quale è il più grande innovatore. Muore il 6 aprile 1528 a Norimberga.",
+    "innovations": [
+      "Prima pubblicazione autonoma di volumi incentrati sulle proprie incisioni (Apocalisse, 1498)",
+      "Elevazione dell'incisione su legno a opera d'arte autonoma, non subordinata al testo",
+      "Sintesi tra tradizione nordica e classicismo rinascimentale italiano",
+      "Autoritratto come affermazione della dignità dell'artista-creatore"
+    ]
+  },
+  {
+    "id": "alessandrd-leopardi",
+    "name": "Alessandro Leopardi",
+    "aka": [],
+    "birth": 1450,
+    "death": 1523,
+    "period_ids": [
+      "rinascimento-fiorentino"
+    ],
+    "role": "scultore",
+    "bio": "Scultore veneziano, su incarico del Consiglio dei Dieci completa il Monumento equestre a Bartolomeo Colleoni di Verrocchio dopo la morte del maestro, aggiungendo i dettagli ornamentali dell'armatura e i lineamenti incisi del condottiero.",
+    "innovations": []
+  },
+  {
+    "id": "alessandro-vittoria",
+    "name": "Alessandro Vittoria",
+    "aka": [],
+    "birth": 1525,
+    "death": 1608,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "scultore",
+    "bio": "Scultore e medaglista di origine trentina, formatosi nella bottega di Jacopo Sansovino a Venezia. Collabora con Palladio in alcune imprese. Realizza le decorazioni a stucco e le statue della Villa Barbaro a Maser.",
+    "innovations": [
+      "approccio pittorico alla scultura con attenzione ai valori tattili e chiaroscurali",
+      "fusione tra architettura palladiana e illusionismo veronese"
+    ]
+  },
+  {
+    "id": "altichiero",
+    "name": "Altichiero",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "scuola-giottesca-veneta"
+    ],
+    "role": "pittore",
+    "bio": "Pittore veronese documentato dal 1369 al 1384, tra gli ultimi esponenti della scuola giottesca veneta. Affresca l'oratorio di San Giorgio a Padova tra il 1379 e il 1384, reinterpretando la lezione di Giotto con una direzione tardogotica.",
+    "innovations": [
+      "preziosità dei dettagli",
+      "toni quasi smaltati dei colori",
+      "delicatezza delle fisionomie di gusto tardogotico",
+      "influsso del Gotico d'Oltralpe"
+    ]
+  },
+  {
+    "id": "ambrogio-da-como",
+    "name": "Ambrogio da Como",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "scultore, architetto",
+    "bio": "Magister lombardo attivo nel XII secolo. Realizza le colonne di granito della cattedrale di San Lorenzo a Genova.",
+    "innovations": []
+  },
+  {
+    "id": "ambrogio-de-predis",
+    "name": "Ambrogio De Predis",
+    "aka": [],
+    "birth": 1455,
+    "death": 1509,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore milanese, collaboratore di Leonardo per i pannelli laterali con angeli cantori del polittico della Vergine delle rocce. Partecipa alla realizzazione della seconda versione della Vergine delle rocce.",
+    "innovations": []
+  },
+  {
+    "id": "ambrogio-di-milano",
+    "name": "Ambrogio di Milano",
+    "aka": [
+      "sant'Ambrogio",
+      "Aurelio Ambrogio"
+    ],
+    "birth": 339,
+    "death": 397,
+    "period_ids": [
+      "arte-paleocristiana",
+      "tarda-antichita"
+    ],
+    "role": "vescovo e committente",
+    "bio": "Vescovo di Milano dal 374, abile amministratore e uomo delle istituzioni proveniente da Treviri. Esercita per vent'anni un'influenza determinante sulle scelte religiose e politiche degli imperatori Graziano (375-383) e Teodosio (379-395). Elabora un proprio linguaggio architettonico che coniuga forme cristiane e modelli romani.",
+    "innovations": [
+      "nuova tipologia basilicale con sacelli angolari",
+      "rielaborazione degli impianti termali romani in chiave cristiana",
+      "battistero ottagonale con simbologia cristiana del numero otto"
+    ]
+  },
+  {
+    "id": "ambrogio-lorenzetti",
+    "name": "Ambrogio Lorenzetti",
+    "aka": [],
+    "birth": null,
+    "death": 1348,
+    "period_ids": [
+      "gotico-senese"
+    ],
+    "role": "pittore",
+    "bio": "Il fratello minore di Pietro, forse allievo anche di Duccio e di Pietro stesso. Lavora fra Siena e Firenze. Muore nel 1348. Realizza il ciclo allegorico del Buono e Cattivo Governo nel Palazzo Pubblico di Siena, prima pittura a soggetto civile della storia dell'arte occidentale.",
+    "innovations": [
+      "pittura civile allegorica",
+      "veduta urbana e paesaggistica",
+      "prospettiva a volo d'uccello",
+      "iconografie politiche complesse",
+      "sensibilità luministica nel paesaggio"
+    ]
+  },
+  {
+    "id": "andrea-bregno",
+    "name": "Andrea Bregno",
+    "aka": [],
+    "birth": 1418,
+    "death": 1503,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "scultore",
+    "bio": "Scultore coautore della transenna marmorea e della cantoria della cappella Sistina.",
+    "innovations": []
+  },
+  {
+    "id": "andrea-del-castagno",
+    "name": "Andrea del Castagno",
+    "aka": [
+      "Andrea di Bartolo di Bargilla"
+    ],
+    "birth": 1421,
+    "death": 1457,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino attivo tra il 1440 e il 1457. Linguaggio caratterizzato da disegno marcato e chiaroscuro che definisce il volume, influenzato sia da Masaccio sia dalla scultura donatelliana.",
+    "innovations": [
+      "monumentalismo scultoreo nella pittura",
+      "indagine psicologica dei personaggi"
+    ]
+  },
+  {
+    "id": "andrea-del-sarto",
+    "name": "Andrea del Sarto",
+    "aka": [
+      "Andrea d'Agnolo"
+    ],
+    "birth": 1486,
+    "death": 1530,
+    "period_ids": [
+      "primo-manierismo-fiorentino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino allievo di Piero di Cosimo, fondatore della 'scuola della Santissima Annunziata' con Pontormo e Rosso Fiorentino. Attivo a Firenze, con soggiorni a Roma, Venezia e in Francia. La sua bottega è il principale laboratorio del primo Manierismo toscano.",
+    "innovations": [
+      "armoniosa corrispondenza di ritmi",
+      "tavolozza carica di astrazioni accese",
+      "attitudini eleganti con torsioni raffinate"
+    ]
+  },
+  {
+    "id": "andrea-della-robbia",
+    "name": "Andrea della Robbia",
+    "aka": [],
+    "birth": 1435,
+    "death": 1525,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "scultore e ceramista",
+    "bio": "Nipote di Luca della Robbia, sviluppa la terracotta invetriata su scala quasi industriale grazie al ricorso a stampi. Realizza i tondi con trovatelli allo Spedale degli Innocenti.",
+    "innovations": [
+      "serializzazione industriale della terracotta invetriata"
+    ]
+  },
+  {
+    "id": "andrea-orcagna",
+    "name": "Andrea Orcagna",
+    "aka": [
+      "Andrea di Cione"
+    ],
+    "birth": 1308,
+    "death": 1368,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "pittore, scultore e architetto",
+    "bio": "Artista fiorentino che tra il 1359 e il 1361 diresse i lavori per i mosaici e il completamento della facciata del duomo di Orvieto.",
+    "innovations": []
+  },
+  {
+    "id": "andrea-palladio",
+    "name": "Andrea Palladio",
+    "aka": [
+      "Andrea di Pietro della Gondola"
+    ],
+    "birth": 1508,
+    "death": 1580,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "architetto",
+    "bio": "Architetto originario di Padova, formatosi a Vicenza nella bottega dei muratori. Lo pseudonimo Palladio (da Pallade Atena) gli viene attribuito dall'umanista Gian Giorgio Trissino. Studia le rovine di Roma. Vince il concorso per il Palazzo del Comune di Vicenza nel 1549. Autore di palazzi, ville e chiese, scrive I quattro libri dell'architettura (1570). Il suo linguaggio dà origine al 'palladianesimo'.",
+    "innovations": [
+      "villa con pronao da tempio greco",
+      "sistema barchessa + corpo centrale",
+      "conciliazione pianta centrale e longitudinale nelle chiese",
+      "serliana come motivo strutturale e decorativo",
+      "teatro stabile ispirato all'antico"
+    ]
+  },
+  {
+    "id": "andrea-pisano",
+    "name": "Andrea Pisano",
+    "aka": [],
+    "birth": 1290,
+    "death": 1349,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "scultore e orafo",
+    "bio": "Scultore fiorentino che successe a Giotto nella direzione dei lavori del campanile di Santa Maria del Fiore a Firenze, realizzando le formelle con Episodi della Genesi e Allegorie delle Arti e delle Scienze.",
+    "innovations": [
+      "formelle narrative in bronzo per porte battistero",
+      "ciclo di formelle per campanile di Firenze"
+    ]
+  },
+  {
+    "id": "andrea-verrocchio",
+    "name": "Andrea Verrocchio",
+    "aka": [
+      "Andrea di Michele di Francesco Cioni",
+      "Andrea di Francesco Cioni"
+    ],
+    "birth": 1435,
+    "death": 1488,
+    "period_ids": [
+      "quattrocento",
+      "rinascimento-fiorentino"
+    ],
+    "role": "scultore, pittore e orafo",
+    "bio": "Artista fiorentino polivalente, guida una delle botteghe più importanti del secondo Quattrocento, formando Botticelli, Perugino, Ghirlandaio e Leonardo. Eccelle soprattutto nella scultura, innovando il busto-ritratto femminile e il monumento equestre.",
+    "innovations": [
+      "busto-ritratto femminile con mani (taglio all'ombelico)",
+      "innovazione compositiva del monumento equestre rispetto a Donatello",
+      "tridimensionalità a tutto tondo con molteplicità di punti di vista"
+    ]
+  },
+  {
+    "id": "anselmo-da-campione",
+    "name": "Anselmo da Campione",
+    "aka": [],
+    "birth": null,
+    "death": 1210,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "scultore e architetto",
+    "bio": "Scultore e architetto attivo nella metà del XII secolo (metà XII - 1210 circa), responsabile dell'apertura dei portali laterali e del rosone della facciata del duomo di Modena nel periodo di primo sviluppo del Gotico in Italia.",
+    "innovations": []
+  },
+  {
+    "id": "antemio-di-tralle",
+    "name": "Antemio di Tralle",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "arte-bizantina",
+      "eta-giustinianea"
+    ],
+    "role": "architetto",
+    "bio": "Architetto e matematico greco-orientale, co-progettista con Isidoro di Mileto della basilica di Santa Sofia a Costantinopoli su commissione di Giustiniano (532-537).",
+    "innovations": [
+      "applicazione di principi matematici all'architettura",
+      "progettazione della cupola su pennacchi triangolari"
+    ]
+  },
+  {
+    "id": "antonello-da-messina",
+    "name": "Antonello da Messina",
+    "aka": [],
+    "birth": 1430,
+    "death": 1479,
+    "period_ids": [
+      "scuola-veneziana"
+    ],
+    "role": "pittore",
+    "bio": "Originario di Messina (1430 circa-1479), mediatore cruciale tra la tradizione fiamminga e la pittura italiana: porta in Italia la tecnica della pittura a olio di derivazione nordica.",
+    "innovations": [
+      "Introduzione della pittura a olio in Italia",
+      "Fusione tra realismo fiammingo e spazialità italiana"
+    ]
+  },
+  {
+    "id": "antonio-da-sangallo-il-giovane",
+    "name": "Antonio da Sangallo il Giovane",
+    "aka": [],
+    "birth": 1484,
+    "death": 1546,
+    "period_ids": [
+      "manierismo",
+      "rinascimento-maturo"
+    ],
+    "role": "architetto",
+    "bio": "Architetto fiorentino, collaboratore di Raffaello nei lavori di San Pietro. Nel 1530 diviene architetto di San Pietro e avvia i lavori di ampliamento di Palazzo Farnese.",
+    "innovations": []
+  },
+  {
+    "id": "antonio-mantegazza",
+    "name": "Antonio Mantegazza",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "quattrocento",
+      "umanesimo-lombardo"
+    ],
+    "role": "scultore",
+    "bio": "Scultore pavese, fratello di Cristoforo Mantegazza. Collabora alla decorazione della facciata della Certosa di Pavia, noto per le forme taglienti e i panneggi simili a carta spiegazzata.",
+    "innovations": []
+  },
+  {
+    "id": "antonio-pollaiolo",
+    "name": "Antonio Pollaiolo",
+    "aka": [
+      "Antonio Benci"
+    ],
+    "birth": 1431,
+    "death": 1498,
+    "period_ids": [
+      "rinascimento-fiorentino"
+    ],
+    "role": "pittore, scultore, orafo e incisore",
+    "bio": "Artista fiorentino polivalente, con il fratello Piero gestisce una delle botteghe più vivaci del secondo Quattrocento. Appassionato studioso di anatomia, rappresenta il movimento e la tensione muscolare con straordinaria efficacia. Tra i primi in Italia a sperimentare l'incisione a bulino.",
+    "innovations": [
+      "studio anatomico dal vero per la resa del dinamismo",
+      "incisione a bulino su lastra metallica in Italia",
+      "tomba papale a tutto tondo (unicum) per Sisto IV",
+      "doppia effigie del defunto nel monumento funebre (Innocenzo VIII)"
+    ]
+  },
+  {
+    "id": "antonio-rossellino",
+    "name": "Antonio Rossellino",
+    "aka": [
+      "Antonio di Matteo Gamberelli"
+    ],
+    "birth": 1427,
+    "death": 1479,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "scultore",
+    "bio": "Scultore fiorentino, fratello minore di Bernardo Rossellino. Collabora con Bernardo nel Monumento funebre del Cardinale del Portogallo in San Miniato al Monte.",
+    "innovations": []
+  },
+  {
+    "id": "ariberto-da-intimiano",
+    "name": "Ariberto da Intimiano",
+    "aka": [],
+    "birth": null,
+    "death": 1045,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "committente, arcivescovo",
+    "bio": "Arcivescovo di Milano dal 1018 al 1045. Commissiona il restauro della chiesa di San Vincenzo a Galliano (consacrata nel 1007) e i relativi affreschi absidali, tra i più importanti del Romanico lombardo.",
+    "innovations": []
+  },
+  {
+    "id": "aristotile-da-sangallo",
+    "name": "Aristotile da Sangallo",
+    "aka": [],
+    "birth": 1481,
+    "death": 1551,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "pittore, scenografo",
+    "bio": "Realizzò nel 1542 una copia a olio della Battaglia di Càscina di Michelangelo.",
+    "innovations": []
+  },
+  {
+    "id": "arnolfo-di-cambio",
+    "name": "Arnolfo di Cambio",
+    "aka": [],
+    "birth": 1240,
+    "death": 1302,
+    "period_ids": [
+      "duecento-italiano",
+      "gotico-italiano",
+      "quattrocento"
+    ],
+    "role": "scultore e architetto",
+    "bio": "Nato a Colle di Val d'Elsa (Siena) tra il 1240 e il 1245, si formò con i Pisano a Siena. Realizzò il ritratto di Carlo I d'Angiò a Roma (1277), la Fontana Minore di Perugia, i cibori di San Paolo fuori le Mura e Santa Cecilia in Trastevere, il monumento funebre di Guillaume de Braye. Progettò il Palazzo Vecchio di Firenze e la cattedrale di Santa Maria del Fiore. Morì tra il 1302 e il 1310.",
+    "innovations": [
+      "ciborio gotico-classicheggiante",
+      "monumento funebre con figura giacente",
+      "architettura civile gotica fiorentina",
+      "progetto originario del duomo di Firenze",
+      "codifica del monumento funerario a catafalco addossato alla parete con baldacchino",
+      "uso di reperti classici integrati nella scultura gotica",
+      "facciata scultorea della cattedrale fiorentina",
+      "realismo del volto ricavato da maschera funeraria"
+    ]
+  },
+  {
+    "id": "baccio-bandinelli",
+    "name": "Baccio Bandinelli",
+    "aka": [],
+    "birth": 1493,
+    "death": 1560,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "scultore",
+    "bio": "Scultore fiorentino, tra i protagonisti della scultura nella Firenze di Cosimo I. Ambizioso rivale di Michelangelo e poi di Cellini, si specializza in statue monumentali anche se raggiunge risultati migliori nei formati minori. Autore delle statue nella parete delle udienze del Salone dei Cinquecento e di ritratti medicei.",
+    "innovations": [
+      "classicismo composto nei ritratti",
+      "scultura monumentale al servizio del potere granducale"
+    ]
+  },
+  {
+    "id": "baccio-pontelli",
+    "name": "Baccio Pontelli",
+    "aka": [],
+    "birth": 1450,
+    "death": 1494,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "architetto",
+    "bio": "Architetto fiorentino, coprogettista della cappella Sistina con Giovannino de' Dolci.",
+    "innovations": []
+  },
+  {
+    "id": "baldassarre-peruzzi",
+    "name": "Baldassarre Peruzzi",
+    "aka": [],
+    "birth": 1481,
+    "death": 1536,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "architetto",
+    "bio": "Architetto senese, progettò la Villa Chigi (Farnesina) sul Tevere per Agostino Chigi.",
+    "innovations": []
+  },
+  {
+    "id": "barisano-da-trani",
+    "name": "Barisano da Trani",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico",
+      "romanico-italiano"
+    ],
+    "role": "scultore, fonditore",
+    "bio": "Scultore bronzista attivo nell'ultimo quarto del XII secolo, autore di più portali bronzei tra cui quello della cattedrale di San Nicola Pellegrino a Trani (1175 circa). La sua arte attinge alla tradizione classica, a quella asiatica e soprattutto all'iconografia bizantina.",
+    "innovations": [
+      "Riutilizzo degli stampi di fusione tra più portali",
+      "Composizione narrativa che si legge dal basso verso l'alto",
+      "bassorilievo con rimandi all'arte decorativa byzantina"
+    ]
+  },
+  {
+    "id": "barthelemy-d-eyck",
+    "name": "Barthélemy d'Eyck",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "pittore",
+    "bio": "Allievo di Jan van Eyck, pittore preferito di Renato d'Angiò, che lo porta con sé a Basilea, a Napoli e infine in Provenza. Dipinge il Trittico dell'Annunciazione di Aix tra il 1443 e il 1445. Muore dopo il 1470.",
+    "innovations": [
+      "fusione tra realismo fiammingo e modellato plastico di matrice italiana in area provenzale"
+    ]
+  },
+  {
+    "id": "bartolomeo-ammannati",
+    "name": "Bartolomeo Ammannati",
+    "aka": [],
+    "birth": 1511,
+    "death": 1592,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "architetto, scultore",
+    "bio": "Scultore e architetto fiorentino, allievo di Bandinelli, attivo a Venezia e Roma prima di stabilirsi a Firenze. Collabora alla trasformazione di Palazzo Pitti e del giardino di Boboli. Vincitore del concorso per la Fontana del Nettuno in piazza della Signoria.",
+    "innovations": [
+      "elegante ordine rustico nel bugnato",
+      "sculture in bronzo di divinità fluviali ispirate agli Ignudi michelangioleschi"
+    ]
+  },
+  {
+    "id": "bartolomeo-colleoni",
+    "name": "Bartolomeo Colleoni",
+    "aka": [],
+    "birth": 1395,
+    "death": 1475,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "committente",
+    "bio": "Condottiero bergamasco, signore di Bergamo, fa costruire la cappella Colleoni come mausoleo e emblema del suo dominio sulla città. Commissiona ad Amadeo sia la cappella che il monumento funebre, e a Verrocchio il monumento equestre in bronzo per Venezia.",
+    "innovations": []
+  },
+  {
+    "id": "beato-angelico",
+    "name": "Beato Angelico",
+    "aka": [
+      "Fra Giovanni da Fiesole",
+      "Guido di Pietro",
+      "Fra Angelico"
+    ],
+    "birth": 1395,
+    "death": 1455,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "pittore e miniatore",
+    "bio": "Frate domenicano e pittore. Nato a Vicchio nel Mugello, si forma a Firenze in ambito gotico e poi entra in contatto con le opere di Masaccio. Realizza il ciclo di affreschi nel convento di San Marco e la cappella Niccolina nel Palazzo Apostolico a Roma.",
+    "innovations": [
+      "luce morbida e mistica senza ombre forti",
+      "integrazione di prospettiva con spiritualita domenicana",
+      "nuova tipologia di sacra conversazione",
+      "simmetria bilaterale come principio compositivo per le scene sacre",
+      "paesaggio semplificato e geometrizzato",
+      "dimensione trascendente del messaggio religioso"
+    ]
+  },
+  {
+    "id": "benedetto-antelami",
+    "name": "Benedetto Antelami",
+    "aka": [],
+    "birth": 1150,
+    "death": 1230,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "scultore e architetto",
+    "bio": "Nato intorno al 1150 probabilmente nella valle d'Intelvi (Como), nella tradizione dei maestri comacini. Visitò il cantiere di Chartres, dove studiò il Portale Reale. Soggiornò a Parma, dove realizzò la maggior parte delle sue opere. Realizzò la Deposizione dalla croce per il duomo di Parma (1178) e il battistero di Parma (iniziato nel 1196).",
+    "innovations": [
+      "passaggio dal Romanico al Gotico nella scultura italiana",
+      "rilievo con ricerca di profondità spaziale",
+      "ciclo dei Mesi come altorilievo narrativo"
+    ]
+  },
+  {
+    "id": "benedetto-briosco",
+    "name": "Benedetto Briosco",
+    "aka": [],
+    "birth": 1460,
+    "death": 1517,
+    "period_ids": [
+      "quattrocento",
+      "umanesimo-lombardo"
+    ],
+    "role": "scultore",
+    "bio": "Scultore milanese, collabora con Amadeo alla facciata della Certosa di Pavia contribuendo all'inserimento di forme rinascimentali classicizzanti.",
+    "innovations": []
+  },
+  {
+    "id": "benozzo-gozzoli",
+    "name": "Benozzo Gozzoli",
+    "aka": [
+      "Benozzo di Lese"
+    ],
+    "birth": 1420,
+    "death": 1497,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino, allievo di Beato Angelico. Noto per il Corteo dei Magi in Palazzo Medici-Riccardi, che esprime la sua vena narrativa e l'attenzione per i dettagli preziosi.",
+    "innovations": [
+      "ritratto dei contemporanei in scene religiose",
+      "paesaggio toscano come sfondo narrativo"
+    ]
+  },
+  {
+    "id": "benvenuto-cellini",
+    "name": "Benvenuto Cellini",
+    "aka": [],
+    "birth": 1500,
+    "death": 1571,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "orafo, scultore",
+    "bio": "Orafo e scultore fiorentino, attivo a Roma (corte di Clemente VII) e poi in Francia. Tornato a Firenze nel 1545, realizza per Cosimo I il Perseo, capolavoro della bronzistica manierista. Grande rivale di Bandinelli.",
+    "innovations": [
+      "bronzistica di altissimo virtuosismo tecnico",
+      "figura aperta a molteplici punti di vista",
+      "combinazione di soggetti mitologici con significati politici"
+    ]
+  },
+  {
+    "id": "berenguer-de-montagu",
+    "name": "Berenguer de Montagu",
+    "aka": [
+      "Berenguer de Montagut"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-spagnolo"
+    ],
+    "role": "architetto",
+    "bio": "Architetto spagnolo progettista della chiesa di Santa Maria del Mar a Barcellona (1329-1383), esempio emblematico del Gotico catalano con la sua ricerca di monumentalità nella semplicità strutturale.",
+    "innovations": [
+      "Gotico catalano a tre navate senza transetto",
+      "volta a raggiera nell'abside"
+    ]
+  },
+  {
+    "id": "bergognone",
+    "name": "Bergognone",
+    "aka": [
+      "Ambrogio da Fossano"
+    ],
+    "birth": 1453,
+    "death": 1523,
+    "period_ids": [
+      "quattrocento",
+      "umanesimo-lombardo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore lombardo attivo a Milano dal 1481 e a Pavia tra il 1488 e il 1495. Decoratore principale della Certosa delle Grazie di Pavia, dimostra profonda conoscenza della pittura di Vincenzo Foppa, con influssi d'Oltralpe e provenzali-liguri.",
+    "innovations": [
+      "composizioni simmetriche monumentali",
+      "carattere intimo e devozionale nelle opere di piccole dimensioni"
+    ]
+  },
+  {
+    "id": "berlinghiero-berlinghieri",
+    "name": "Berlinghiero Berlinghieri",
+    "aka": [
+      "Berlinghiero"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "pittura-romanica-italiana"
+    ],
+    "role": "pittore",
+    "bio": "Pittore attivo a Lucca nella prima metà del XIII secolo. Padre di Bonaventura Berlinghieri. Firma la Madonna col Bambino conservata al Metropolitan Museum di New York, emblema della maniera greca italiana.",
+    "innovations": [
+      "interpretazione della maniera greca con qualità cromatica propria"
+    ]
+  },
+  {
+    "id": "bernardino-luini",
+    "name": "Bernardino Luini",
+    "aka": [],
+    "birth": 1480,
+    "death": 1532,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore",
+    "bio": "Milanese (1480 circa-1532 circa), permeato dalla cultura milanese nel suo complesso: oltre a Leonardo, risente di Zenale, Bramantino e in seguito di Giorgione e Raffaello. Le sue Madonne dolci e popolari sono richiestissime.",
+    "innovations": [
+      "Linguaggio moderno, sereno ed equilibrato del Rinascimento maturo lombardo",
+      "Affreschi a tema profano di grande felicità narrativa"
+    ]
+  },
+  {
+    "id": "bernardino-prevedari",
+    "name": "Bernardino Prevedari",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "incisore",
+    "bio": "Incisore milanese che trasferì su lastra di metallo il disegno di Bramante noto come Incisione Prevedari.",
+    "innovations": []
+  },
+  {
+    "id": "bernardo-buontalenti",
+    "name": "Bernardo Buontalenti",
+    "aka": [],
+    "birth": 1531,
+    "death": 1608,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "architetto",
+    "bio": "Architetto fiorentino, allievo di Vasari. Realizza la Tribuna degli Uffizi e la Grotta Grande nel giardino di Boboli per Francesco I de' Medici. Progetta la villa di Pratolino.",
+    "innovations": [
+      "grotta artificiale con mosaici e stalattiti",
+      "Tribuna a pianta ottagonale con cupola rivestita di madreperla"
+    ]
+  },
+  {
+    "id": "bernardo-daddi",
+    "name": "Bernardo Daddi",
+    "aka": [],
+    "birth": 1290,
+    "death": 1348,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino attivo nella cerchia giottesca, documentato dal 1290 al 1348. Lavora prevalentemente a Firenze nella basilica di Santa Croce.",
+    "innovations": [
+      "narratività pittorica di soggetti agiografici"
+    ]
+  },
+  {
+    "id": "bernardo-di-chiaravalle",
+    "name": "Bernardo di Chiaravalle",
+    "aka": [
+      "San Bernardo"
+    ],
+    "birth": 1090,
+    "death": 1153,
+    "period_ids": [
+      "cistercense"
+    ],
+    "role": "teologo, abate",
+    "bio": "Abate cistercense, dottore della Chiesa. Fonda l'abbazia di Clairvaux (1115) e propugna una concezione ascetica dell'arte religiosa, opponendosi a ogni decorazione figurata nelle chiese monastiche.",
+    "innovations": [
+      "codifica dell'estetica cistercense della sobrietà",
+      "influenza sull'architettura dell'abbazia di Fontenay"
+    ]
+  },
+  {
+    "id": "bernardo-rossellino",
+    "name": "Bernardo Rossellino",
+    "aka": [
+      "Bernardo di Matteo Gamberelli"
+    ],
+    "birth": 1409,
+    "death": 1464,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "scultore e architetto",
+    "bio": "Scultore e architetto fiorentino, ricordato per aver ideato un nuovo modello di monumento funerario improntato ai valori laici dell'umanesimo. Collabora con il fratello Antonio.",
+    "innovations": [
+      "nuovo tipo di monumento funebre umanistico",
+      "tomba ad arcosolio rinascimentale"
+    ]
+  },
+  {
+    "id": "bernardus-gelduinus",
+    "name": "Bernardus Gelduinus",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "scultore",
+    "bio": "Scultore la cui bottega è attiva nel cantiere di Saint-Sernin a Tolosa nell'ultimo decennio dell'XI secolo. Il suo nome è inciso sulla mensa d'altare. Ricorre a una stilizzazione derivata dagli avori e dalle oreficerie ottoniane.",
+    "innovations": [
+      "Riduzione dei piani di modellazione con stilizzazione derivata dagli avori ottoniani"
+    ]
+  },
+  {
+    "id": "bertoldo-di-giovanni",
+    "name": "Bertoldo di Giovanni",
+    "aka": [],
+    "birth": 1420,
+    "death": 1491,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "scultore",
+    "bio": "Scultore fiorentino, allievo di Donatello, maestro dei giovani artisti nella scuola di scultura del giardino di San Marco di Lorenzo il Magnifico.",
+    "innovations": []
+  },
+  {
+    "id": "bicci-di-lorenzo",
+    "name": "Bicci di Lorenzo",
+    "aka": [],
+    "birth": 1373,
+    "death": 1452,
+    "period_ids": [
+      "gotico-cortese"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino di gusto ancora goticizzante, inizia nel 1447 ad affrescare la cappella maggiore della chiesa di San Francesco ad Arezzo su incarico di Francesco Bacci. Aveva lavorato con Domenico Veneziano e Piero della Francesca nella chiesa di Sant'Egidio a Firenze.",
+    "innovations": []
+  },
+  {
+    "id": "bonanno-pisano",
+    "name": "Bonanno Pisano",
+    "aka": [
+      "Bonanno"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "scultore, fonditore, architetto",
+    "bio": "Scultore e fonditore attivo a Pisa nell'ultimo quarto del XII secolo. Realizza la Porta di San Ranieri della cattedrale di Pisa (ca. 1180) e la porta bronzea del duomo di Monreale (1185). Secondo la tradizione dirige i lavori iniziali della torre campanaria.",
+    "innovations": [
+      "cicli cristologici in bronzo fusi in singole formelle",
+      "narratività e morbidezza del modellato bronzeo"
+    ]
+  },
+  {
+    "id": "bonaventura-berlinghieri",
+    "name": "Bonaventura Berlinghieri",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "pittura-romanica-italiana"
+    ],
+    "role": "pittore",
+    "bio": "Pittore lucchese, figlio di Berlinghiero. Nel 1235 firma la pala con San Francesco e storie della sua vita nella chiesa di San Francesco a Pescia, prima tavola agiografica francescana datata.",
+    "innovations": [
+      "prima pala agiografica francescana datata in stile maniera greca"
+    ]
+  },
+  {
+    "id": "bonifacio-bembo",
+    "name": "Bonifacio Bembo",
+    "aka": [],
+    "birth": 1420,
+    "death": 1480,
+    "period_ids": [
+      "tardogotico"
+    ],
+    "role": "pittore",
+    "bio": "Pittore bresciano, massimo esponente della pittura tardogotica lombarda influenzata dalle novità del Rinascimento toscano. Lavora a cavallo tra le signorie dei Visconti e degli Sforza. Dipinge i Tarocchi per Filippo Maria Visconti (1442-1447) e l'Incoronazione di Cristo e Maria per Francesco Sforza (1455-1460).",
+    "innovations": [
+      "mediazione tra eleganza gotica e resa rinascimentale della profondità",
+      "uso del trono scorciato e della figura in secondo piano"
+    ]
+  },
+  {
+    "id": "bramantino",
+    "name": "Bramantino",
+    "aka": [
+      "Bartolomeo Suardi"
+    ],
+    "birth": 1465,
+    "death": 1530,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore, architetto",
+    "bio": "Bartolomeo Suardi detto Bramantino (1465 circa-1530), nato forse a Bergamo, si forma a Milano sotto l'influenza di Donato Bramante. Erede della prospettiva bramantesca e delle istanze romanae e ferraresi, sviluppa un linguaggio formale inquieto e originale. Nel 1525 è nominato pittore e architetto del ducato di Milano.",
+    "innovations": [
+      "Sintesi tra rigore prospettico bramantesco e intensità emotiva",
+      "Linea secca e tagliente come strumento espressivo, non solo formale",
+      "Volumi regolari geometrici applicati alla figura umana"
+    ]
+  },
+  {
+    "id": "cassiodoro",
+    "name": "Flavio Magno Aurelio Cassiodoro",
+    "aka": [
+      "Cassiodoro"
+    ],
+    "birth": 490,
+    "death": 580,
+    "period_ids": [
+      "regno-ostrogoto"
+    ],
+    "role": "ministro e studioso",
+    "bio": "Ministro di Teodorico, poi di Amalasunta, questore, console e magister officiorum. Figura centrale per la cultura del VI secolo, scrive la Variae (lettere regie) e fonda il monastero di Vivarium in Calabria, centro di copia e conservazione dei testi antichi.",
+    "innovations": [
+      "fondazione del monastero-scriptorium di Vivarium",
+      "modello monastico come centro di conservazione della cultura antica",
+      "trasmissione dei testi latini e greci attraverso i monasteri"
+    ]
+  },
+  {
+    "id": "cennino-cennini",
+    "name": "Cennino Cennini",
+    "aka": [],
+    "birth": 1370,
+    "death": 1427,
+    "period_ids": [
+      "gotico-cortese"
+    ],
+    "role": "pittore e trattatista",
+    "bio": "Pittore di scuola giottesca, autore nei primi anni del Quattrocento del Libro dell'arte, nel quale ripercorre le esperienze della pittura toscana trecentesca e attesta che la pittura a olio era nota anche in Italia prima dei fiamminghi.",
+    "innovations": [
+      "documentazione della tecnica pittorica trecentesca",
+      "attestazione dell'uso dell'olio in Italia prima dell'ars nova"
+    ]
+  },
+  {
+    "id": "cesare-da-sesto",
+    "name": "Cesare da Sesto",
+    "aka": [],
+    "birth": 1477,
+    "death": 1523,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore",
+    "bio": "Originario di Sesto Calende (1477-1523), principale diffusore dello stile leonardesco nel Sud Italia grazie a viaggi in Sicilia, Napoli e Roma. Sintetizza l'eredità di Leonardo con il plasticismo raffaellesco e michelangiolesco.",
+    "innovations": [
+      "Sintesi tra sfumato leonardesco e plasticismo romano",
+      "Diffusione del linguaggio leonardesco nell'Italia meridionale"
+    ]
+  },
+  {
+    "id": "cimabue",
+    "name": "Cimabue",
+    "aka": [
+      "Cenni di Pepo"
+    ],
+    "birth": 1240,
+    "death": 1302,
+    "period_ids": [
+      "duecento-italiano",
+      "pittura-romanica-italiana",
+      "trecento-italiano"
+    ],
+    "role": "pittore e mosaicista",
+    "bio": "Pittore fiorentino, considerato da Dante, Ghiberti e Vasari il rinnovatore dell'arte italiana prima di Giotto. Formatosi a Firenze e poi a Roma, dove entra in contatto con artisti locali, sviluppa un linguaggio che supera il bizantinismo pur mantenendone alcune convenzioni. Realizza cicli di affreschi ad Assisi, Maestà e il mosaico absidale del duomo di Pisa.",
+    "innovations": [
+      "monumentalità e voluminosità delle figure nella tradizione greca",
+      "riduzione dell'espressionismo rispetto a Giunta Pisano",
+      "naturalismo del modellato nel Crocifisso di Santa Croce",
+      "costruzione prospettica empirica della Maestà di Santa Trinita",
+      "uso del chiaroscuro per conferire plasticità alle figure"
+    ]
+  },
+  {
+    "id": "claus-sluter",
+    "name": "Claus Sluter",
+    "aka": [],
+    "birth": 1340,
+    "death": 1406,
+    "period_ids": [
+      "gotico-internazionale"
+    ],
+    "role": "scultore",
+    "bio": "Principale scultore fiammingo dell'epoca, attivo nella certosa di Champmol a Digione per i duchi di Borgogna. Il suo stile si avvicina a esiti quasi classici: le poderose figure di profeti si staccano dal pilastro ed emergono a tutto tondo con panneggi ampi e monumentalità lontana dai linearismi tardogotici.",
+    "innovations": [
+      "monumentalità scultorea delle figure",
+      "panneggi ampi e realistici",
+      "avvicinamento ai modelli plastici classici"
+    ]
+  },
+  {
+    "id": "coppo-di-marcovaldo",
+    "name": "Coppo di Marcovaldo",
+    "aka": [],
+    "birth": 1225,
+    "death": 1276,
+    "period_ids": [
+      "duecento-italiano",
+      "pittura-romanica-italiana"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino attivo tra Firenze, Siena e altri centri toscani e umbri. Fatto prigioniero nella battaglia di Montaperti (1260), trascorre alcuni mesi a Siena. Partecipa alla decorazione musiva del battistero di Firenze insieme a Meliore. Precursore del linguaggio innovativo di Cimabue.",
+    "innovations": [
+      "applicazione della maniera greca alla pittura su tavola fiorentina",
+      "gesto affettuoso della Vergine che tiene il piedino del Bambino",
+      "decorazione musiva a carattere drammatico e grottesco per le scene dell'Inferno",
+      "tono drammatico nelle pose e nelle espressioni"
+    ]
+  },
+  {
+    "id": "correggio",
+    "name": "Correggio",
+    "aka": [
+      "Antonio Allegri",
+      "Antonio Allegri detto Correggio"
+    ],
+    "birth": 1489,
+    "death": 1534,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore",
+    "bio": "Antonio Allegri detto Correggio (1489-1534), nato nella cittadina di Correggio a nord di Reggio Emilia. Formatosi a Mantova presso Mantegna e Lorenzo Costa, assimila il classicismo morbido perugino e il tonalismo giorgionesco. A Parma dal 1518 realizza le grandi decorazioni a cupola che prefigurano il Barocco.",
+    "innovations": [
+      "Sfondato illusionistico delle cupole con scorcio da sotto in su (sotto in su)",
+      "Dissoluzione dello spazio architettonico tramite figure in volo e luce",
+      "Luce sovrannaturale come mezzo narrativo e simbolico (es. La Notte)",
+      "Sensualità mitica: declinazione umana e corporea dei soggetti mitologici"
+    ]
+  },
+  {
+    "id": "cosimo-rosselli",
+    "name": "Cosimo Rosselli",
+    "aka": [],
+    "birth": 1439,
+    "death": 1507,
+    "period_ids": [
+      "rinascimento-fiorentino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino, partecipa alla decorazione della cappella Sistina. È il maestro di Piero di Cosimo.",
+    "innovations": []
+  },
+  {
+    "id": "cristoforo-caradosso",
+    "name": "Cristoforo Caradosso",
+    "aka": [],
+    "birth": 1452,
+    "death": 1526,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "orafo, scultore",
+    "bio": "Orafo e scultore lombardo, realizzò la medaglia commemorativa della posa della prima pietra della basilica di San Pietro con il progetto bramantesco.",
+    "innovations": []
+  },
+  {
+    "id": "cristoforo-mantegazza",
+    "name": "Cristoforo Mantegazza",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "quattrocento",
+      "umanesimo-lombardo"
+    ],
+    "role": "scultore",
+    "bio": "Scultore pavese, fratello di Antonio Mantegazza. Lavora alla decorazione della facciata della Certosa di Pavia a partire dal 1473, distinguendosi per le forme taglienti, le linee spezzate e le espressioni marcate.",
+    "innovations": [
+      "stile tagliente e drammatico nella scultura decorativa lombarda"
+    ]
+  },
+  {
+    "id": "cristoforo-rocchi",
+    "name": "Cristoforo Rocchi",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "architetto",
+    "bio": "Architetto pavese, realizzò con Giovan Pietro Fugazza il modello ligneo del duomo di Pavia.",
+    "innovations": []
+  },
+  {
+    "id": "daniele-da-volterra",
+    "name": "Daniele da Volterra",
+    "aka": [
+      "Daniele Ricciarelli"
+    ],
+    "birth": 1509,
+    "death": 1566,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "pittore, scultore",
+    "bio": "Artista di scuola michelangiolesca, ingaggiato per coprire i nudi del Giudizio Universale con panneggi.",
+    "innovations": []
+  },
+  {
+    "id": "desiderio-abate-montecassino",
+    "name": "Desiderio di Montecassino",
+    "aka": [
+      "Papa Vittore III"
+    ],
+    "birth": 1027,
+    "death": 1087,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "committente, abate",
+    "bio": "Abate di Montecassino dal 1058, poi papa Vittore III. Promuove gli affreschi della basilica inferiore di San Clemente a Roma e gli affreschi di Sant'Angelo in Formis, introducendo maestranze bizantine e avviando la riforma pittorica.",
+    "innovations": []
+  },
+  {
+    "id": "desiderio-da-settignano",
+    "name": "Desiderio da Settignano",
+    "aka": [],
+    "birth": 1430,
+    "death": 1464,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "scultore",
+    "bio": "Scultore fiorentino formatosi in ambito donatelliano. Si distingue per eleganza ritmica e propensione per il dettaglio decorativo, specialmente nella raffigurazione dell'infanzia. Iniziatore del busto-ritratto femminile e infantile.",
+    "innovations": [
+      "busto-ritratto femminile e infantile come genere autonomo",
+      "modellato quasi cereo del marmo"
+    ]
+  },
+  {
+    "id": "diotisalvi",
+    "name": "Diotisalvi",
+    "aka": [
+      "Deotisalvi"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "architetto",
+    "bio": "Magister attivo a Pisa nella seconda metà del XII secolo. Progetta e dirige i lavori del battistero di San Giovanni Battista di Pisa dal 1152, primo grande edificio autonomo del complesso pisano.",
+    "innovations": [
+      "battistero circolare a deambulatorio con simbolismo numerico cristiano",
+      "uso dell'oculo compluvium come nel Pantheon"
+    ]
+  },
+  {
+    "id": "domenico-contarini",
+    "name": "Domenico Contarini",
+    "aka": [],
+    "birth": null,
+    "death": 1071,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "committente, doge",
+    "bio": "Doge di Venezia dal 1043 al 1071. Commissiona nel 1063 la ricostruzione della basilica di San Marco sul modello dei Santi Apostoli di Costantinopoli, avviando il cantiere che trasformerà il luogo di culto in emblema della potenza veneziana.",
+    "innovations": []
+  },
+  {
+    "id": "domenico-ghirlandaio",
+    "name": "Domenico Ghirlandaio",
+    "aka": [
+      "Domenico Bigordi"
+    ],
+    "birth": 1449,
+    "death": 1494,
+    "period_ids": [
+      "rinascimento-fiorentino",
+      "rinascimento-maturo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino, figlio di un orafo. Si forma con il padre e poi con Verrocchio. Eccelle nella grande decorazione a fresco con cicli narrativi ambientati in architetture e paesaggi toscani, inserendo i committenti e la società fiorentina nelle scene sacre.",
+    "innovations": [
+      "inserimento realistico di ritratti contemporanei nelle scene sacre",
+      "illusionismo prospettico che proietta lo spazio oltre la parete",
+      "architetture finte come cornici delle scene"
+    ]
+  },
+  {
+    "id": "domenico-veneziano",
+    "name": "Domenico Veneziano",
+    "aka": [],
+    "birth": 1410,
+    "death": 1461,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "pittore",
+    "bio": "Pittore di formazione veneta, attivo a Firenze dalla fine degli anni Trenta del Quattrocento. Introduce una nuova concezione della luce e del colore nella pittura toscana, appresi dalla tradizione fiamminga e veneziana.",
+    "innovations": [
+      "pittura definita dal colore e dalla luce di influenza fiamminga",
+      "nuova tipologia di sacra conversazione con architettura aerea",
+      "sensibilità per la luce come elemento pittorico"
+    ]
+  },
+  {
+    "id": "donatello",
+    "name": "Donatello",
+    "aka": [
+      "Donato di Niccolò di Betto Bardi",
+      "Donato di Niccolo di Betto Bardi"
+    ],
+    "birth": 1386,
+    "death": 1466,
+    "period_ids": [
+      "quattrocento",
+      "umanesimo-fiorentino"
+    ],
+    "role": "scultore",
+    "bio": "Scultore fiorentino (1386-1466), il più innovativo e versatile del primo Rinascimento. Formatosi con Ghiberti e affiancato da Brunelleschi nel viaggio a Roma (1402-1404). Inventa il rilievo schiacciato (stiacciato), realizza il primo nudo maschile rinascimentale in bronzo (David), lavora a Padova e influenza l'arte dell'Italia settentrionale.",
+    "innovations": [
+      "rilievo schiacciato (stiacciato)",
+      "realismo anatomico e psicologico",
+      "scultura in rapporto dinamico con lo spazio",
+      "fusione a cera persa per il San Giovanni Battista di Ghiberti",
+      "David in bronzo, primo nudo rinascimentale",
+      "tecnica dello stiacciato",
+      "primo nudo eroico rinascimentale",
+      "statua equestre bronzea di grandi dimensioni",
+      "policromia e non finito espressivo",
+      "gruppo scultoreo rinascimentale"
+    ]
+  },
+  {
+    "id": "donato-bramante",
+    "name": "Donato Bramante",
+    "aka": [
+      "Donato di Pascuccio di Antonio"
+    ],
+    "birth": 1444,
+    "death": 1514,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "architetto, pittore",
+    "bio": "Nato nei pressi di Urbino, si forma con fra' Carnevale a contatto con Luciano Laurana, Francesco di Giorgio Martini, Piero della Francesca e Leon Battista Alberti. Lavora prima a Milano alla corte di Ludovico il Moro, poi dal 1499 a Roma dove papa Giulio II lo nomina sovrintendente generale delle costruzioni papali.",
+    "innovations": [
+      "Illusionismo prospettico applicato all'architettura (finto coro di Santa Maria presso San Satiro)",
+      "Integrazione di pianta centrale e spazio longitudinale",
+      "Recupero pienamente classicista dell'ordine architettonico (chiostro di Santa Maria della Pace)",
+      "Tipologia del martirium applicata al tempietto di San Pietro in Montorio",
+      "Cortile del Belvedere: progetto urbano su terrazze come spazio scenografico"
+    ]
+  },
+  {
+    "id": "duccio-di-buoninsegna",
+    "name": "Duccio di Buoninsegna",
+    "aka": [
+      "Duccio"
+    ],
+    "birth": 1255,
+    "death": 1319,
+    "period_ids": [
+      "gotico-italiano",
+      "gotico-senese"
+    ],
+    "role": "pittore",
+    "bio": "Nato a Siena intorno al 1255, si forma in ambito cittadino. I documenti attestano i primi pagamenti nel 1278. Forse soggiorna a Firenze dove studia Cimabue. Diventa l'artista più prestigioso di Siena ricevendo importantissime commissioni pubbliche. Muore nel 1318 lasciando debiti.",
+    "innovations": [
+      "vetrata gotica di grande qualità per duomo di Siena",
+      "definizione lineare bidimensionale delle figure",
+      "ricchezza cromatica e uso abbondante dell'oro",
+      "naturalismo nei volti e negli incarnati",
+      "aggiornamento sul linguaggio giottesco nelle scene narrative",
+      "vetrata policroma di grandi dimensioni"
+    ]
+  },
+  {
+    "id": "ecclesio-vescovo-ravenna",
+    "name": "Ecclesio",
+    "aka": [],
+    "birth": null,
+    "death": 532,
+    "period_ids": [
+      "eta-giustinianea"
+    ],
+    "role": "committente ecclesiastico",
+    "bio": "Vescovo di Ravenna dal 521 al 532, iniziatore della costruzione della basilica di San Vitale. Come attestato da una tessera musiva nel presbiterio, fu lui a dare avvio al cantiere che sarebbe poi completato sotto Massimiano.",
+    "innovations": []
+  },
+  {
+    "id": "eginardo",
+    "name": "Eginardo",
+    "aka": [],
+    "birth": 775,
+    "death": 840,
+    "period_ids": [
+      "eta-carolingia"
+    ],
+    "role": "erudito e supervisore artistico",
+    "bio": "Erudito franco, guida dell'accademia palatina dal 796. Supervisore della costruzione della Cappella Palatina di Aquisgrana, autore della Vita di Carlo, biografia di Carlo Magno. Il suo gusto antiquario e il mito di Roma pervadono tutte le opere realizzate per l'imperatore.",
+    "innovations": [
+      "recupero filologico dei modelli antichi nell'arte carolingia",
+      "fusione tra simbolismo imperiale romano e ideologia cristiana"
+    ]
+  },
+  {
+    "id": "elias-di-dereham",
+    "name": "Elias di Dereham",
+    "aka": [
+      "Elias de Dereham"
+    ],
+    "birth": 1160,
+    "death": 1245,
+    "period_ids": [
+      "early-english-gothic"
+    ],
+    "role": "architetto e canonico",
+    "bio": "Canonico, architetto e intellettuale inglese che partecipò ai negoziati per la Magna Charta del 1215 e progettò la cattedrale di Salisbury. Portò a Salisbury la copia più leggibile della Magna Charta Libertatum.",
+    "innovations": [
+      "progettazione cattedrale di Salisbury",
+      "sala capitolare ottagonale"
+    ]
+  },
+  {
+    "id": "eugene-viollet-le-duc",
+    "name": "Eugène Viollet-le-Duc",
+    "aka": [],
+    "birth": 1814,
+    "death": 1879,
+    "period_ids": [
+      "gotico-francese"
+    ],
+    "role": "architetto, restauratore",
+    "bio": "Architetto francese, massimo teorico del restauro ottocentesco. Dirige il restauro di Notre-Dame di Parigi dal 1845 al 1864, ricostruendo la flèche andata distrutta nell'incendio del 2019.",
+    "innovations": [
+      "teoria del restauro in stile",
+      "ricostruzione della flèche di Notre-Dame de Paris"
+    ]
+  },
+  {
+    "id": "famiglia-zavattari",
+    "name": "Famiglia Zavattari",
+    "aka": [
+      "Franceschino Zavattari",
+      "Giovanni Zavattari",
+      "Gregorio Zavattari",
+      "Ambrogio Zavattari"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "tardogotico"
+    ],
+    "role": "pittori",
+    "bio": "Famiglia di pittori lombardi (Franceschino e i figli Giovanni, Gregorio e Ambrogio) che riprende le atmosfere eleganti di Michelino da Besozzo. Realizzano le Storie della regina Teodolinda nel duomo di Monza (1441-1446) per volere di Filippo Maria Visconti, che intendeva legittimare la propria signoria milanese come erede dei Longobardi.",
+    "innovations": [
+      "ciclo narrativo con forte valenza politico-legittimante",
+      "figure quasi senza peso e colori tenui di derivazione michelinesca"
+    ]
+  },
+  {
+    "id": "filarete",
+    "name": "Filarete",
+    "aka": [
+      "Antonio di Pietro Averlino",
+      "Antonio Averlino"
+    ],
+    "birth": 1400,
+    "death": 1469,
+    "period_ids": [
+      "quattrocento",
+      "umanesimo-lombardo"
+    ],
+    "role": "scultore e architetto",
+    "bio": "Scultore e architetto toscano, si forma nella bottega di Ghiberti e lavora a Roma per papa Eugenio IV. Nel 1451 giunge a Milano dove porta il linguaggio architettonico fiorentino alla corte sforzesca. Autore del Trattato di architettura e dell'Ospedale Maggiore di Milano.",
+    "innovations": [
+      "progettazione dell'ospedale a croce con cortili",
+      "piano urbanistico ideale di Sforzinda",
+      "fusione di architettura rinascimentale toscana con decorazione plastica lombarda"
+    ]
+  },
+  {
+    "id": "filippino-lippi",
+    "name": "Filippino Lippi",
+    "aka": [],
+    "birth": 1457,
+    "death": 1504,
+    "period_ids": [
+      "quattrocento",
+      "rinascimento-fiorentino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino, figlio di Filippo Lippi, si forma con Botticelli. Completa la cappella Brancacci lasciata incompiuta da Masaccio. Noto per la vena sperimentale, la gestualità teatrale e le suggestioni romanizzanti.",
+    "innovations": [
+      "fusione di riferimenti classici romani con elementi di pura invenzione",
+      "gestualità teatrale e mimica scenografica",
+      "vena sperimentale e sensibilità scenografica"
+    ]
+  },
+  {
+    "id": "filippo-brunelleschi",
+    "name": "Filippo Brunelleschi",
+    "aka": [],
+    "birth": 1377,
+    "death": 1446,
+    "period_ids": [
+      "gotico-italiano",
+      "quattrocento",
+      "umanesimo-fiorentino"
+    ],
+    "role": "architetto, scultore",
+    "bio": "Architetto e scultore fiorentino (1377-1446), scopritore e codificatore in senso moderno della prospettiva lineare intorno al 1415 con la consulenza del matematico Paolo dal Pozzo Toscanelli. Autore del Crocifisso di Santa Maria Novella e della formella del Sacrificio di Isacco per il concorso del battistero (1401).",
+    "innovations": [
+      "codifica della prospettiva lineare geometrico-matematica",
+      "crocifisso che idealizza e classicizza il modello",
+      "formella con struttura piramidale e gesti dinamici",
+      "cupola ottagonale di Santa Maria del Fiore",
+      "prospettiva lineare",
+      "cupola autoportante a doppia calotta",
+      "modulo geometrico come principio compositivo",
+      "sistema a spina di pesce per muratura in curva"
+    ]
+  },
+  {
+    "id": "filippo-iii-il-buono",
+    "name": "Filippo III il Buono",
+    "aka": [
+      "Filippo il Buono",
+      "Philippe le Bon"
+    ],
+    "birth": 1396,
+    "death": 1467,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "mecenate/committente",
+    "bio": "Duca di Borgogna e conte delle Fiandre dal 1419 alla morte, figura storica determinante per lo sviluppo dell'ars nova fiamminga. Figlio di Giovanni di Borgogna detto 'Senza Paura' e nipote di Filippo II l'Ardito, consolida il dominio su Borgogna e Fiandre e sposta il baricentro culturale verso le città fiamminghe.",
+    "innovations": [
+      "promozione sistematica dell'ars nova",
+      "mecenatismo che favorisce Bruges e Gand come centri artistici"
+    ]
+  },
+  {
+    "id": "filippo-lippi",
+    "name": "Filippo Lippi",
+    "aka": [
+      "Fra Filippo Lippi"
+    ],
+    "birth": 1406,
+    "death": 1469,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino cresciuto nel convento di Santa Maria del Carmine, dove osserva Masaccio. Il plasticismo masaccesco lascia poi il posto a uno stile elegante dominato da linea delicata e ritmica.",
+    "innovations": [
+      "eleganza lineare post-masaccesca",
+      "integrazione del paesaggio boschivo nella scena religiosa"
+    ]
+  },
+  {
+    "id": "filippo-rusuti",
+    "name": "Filippo Rusuti",
+    "aka": [],
+    "birth": 1255,
+    "death": 1325,
+    "period_ids": [
+      "duecento-italiano"
+    ],
+    "role": "pittore e mosaicista",
+    "bio": "Pittore e mosaicista romano attivo ad Assisi, Roma e probabilmente Napoli. Esegue i mosaici della facciata della basilica di Santa Maria Maggiore, firmandoli a testimonianza del raggiunto prestigio professionale.",
+    "innovations": [
+      "naturalismo del volto del Redentore nel mosaico",
+      "fluidità del panneggio",
+      "nuovo senso di spazialità nel mosaico di facciata"
+    ]
+  },
+  {
+    "id": "fra-bartolomeo",
+    "name": "Fra Bartolomeo",
+    "aka": [
+      "Bartolomeo della Porta",
+      "Baccio di Paolo della Porta"
+    ],
+    "birth": 1472,
+    "death": 1517,
+    "period_ids": [
+      "primo-manierismo-fiorentino",
+      "rinascimento"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino influenzato da Ghirlandaio e Leonardo, poi da Savonarola che lo indusse a farsi frate domenicano. Riprende a dipingere nel 1504, orientandosi verso Perugino e il primo Raffaello. Un soggiorno veneziano (1508) lo apre alla luce e al colore di Giovanni Bellini. Rivalutato come anticipatore del linguaggio manierista.",
+    "innovations": [
+      "apertura al moderato anticlassicismo",
+      "plasticità michelangiolesca",
+      "varietà compositiva ispirata alle Stanze Vaticane"
+    ]
+  },
+  {
+    "id": "francesco-del-borgo",
+    "name": "Francesco del Borgo",
+    "aka": [],
+    "birth": 1415,
+    "death": 1468,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "architetto",
+    "bio": "Architetto di Sansepolcro, verosimilmente progettista di Palazzo Venezia a Roma su commissione del cardinale Pietro Barbo (futuro Paolo II). Realizza il primo esempio romano di collegamento diretto tra palazzo e giardino tramite il cortile con logge.",
+    "innovations": [
+      "primo collegamento palazzo-giardino tramite cortile con logge a Roma"
+    ]
+  },
+  {
+    "id": "francesco-di-giorgio-martini",
+    "name": "Francesco di Giorgio Martini",
+    "aka": [],
+    "birth": 1439,
+    "death": 1502,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "architetto, scultore, pittore, ingegnere",
+    "bio": "Ingegnere militare, architetto, scultore e pittore senese, arriva a Urbino probabilmente nel 1476. Per Federico da Montefeltro progetta fortificazioni, conclude i lavori del cortile principale del Palazzo Ducale e realizza la scala elicoidale del torrione di Mercatale.",
+    "innovations": [
+      "scala elicoidale percorribile a cavallo",
+      "approccio ingegneristico combinato con sensibilità decorativa classica"
+    ]
+  },
+  {
+    "id": "francesco-talenti",
+    "name": "Francesco Talenti",
+    "aka": [],
+    "birth": 1300,
+    "death": 1369,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "architetto",
+    "bio": "Architetto fiorentino che progettò l'ampliamento della cattedrale di Santa Maria del Fiore di Firenze, allunga le campate e modifica la struttura mantenendola in pianta. A lui è attribuita l'attuale configurazione dell'edificio.",
+    "innovations": [
+      "campate rettangolari nelle navate laterali",
+      "campate quadrate nella navata centrale",
+      "enorme area presbiteriale ottagonale"
+    ]
+  },
+  {
+    "id": "fratelli-de-limbourg",
+    "name": "Fratelli De Limbourg",
+    "aka": [
+      "Pol de Limbourg",
+      "Jehannequin de Limbourg",
+      "Herman de Limbourg"
+    ],
+    "birth": 1380,
+    "death": 1416,
+    "period_ids": [
+      "gotico-internazionale"
+    ],
+    "role": "miniatori",
+    "bio": "Tre fratelli fiamminghi (Pol, Jehannequin e Herman, nati tra il 1380 e il 1390), attivi prima a Digione per Filippo l'Ardito e Giovanni Senza Paura, poi dal 1404 alla corte di Jean de Berry. Creano le Très Riches Heures du Duc de Berry, capolavoro assoluto della miniatura tardogotica. Morti di pestilenza nel 1416.",
+    "innovations": [
+      "resa spaziale del paesaggio",
+      "profondità del cielo schiarito verso l'orizzonte",
+      "fusione di scene aristocratiche ed agresti",
+      "ritratti dei castelli ducali come vedute reali"
+    ]
+  },
+  {
+    "id": "gentile-da-fabriano",
+    "name": "Gentile da Fabriano",
+    "aka": [],
+    "birth": 1375,
+    "death": 1427,
+    "period_ids": [
+      "gotico-internazionale",
+      "tardogotico"
+    ],
+    "role": "pittore",
+    "bio": "Massimo pittore del tardogotico italiano, probabilmente formato in ambito lombardo a contatto con Michelino da Besozzo e Giovannino de' Grassi. Attivo a Venezia, Brescia, Firenze e Roma. A Firenze dipinge l'Adorazione dei Magi (1423) per Palla Strozzi, capolavoro del gotico internazionale in Italia. Lascia la bottega in eredità a Pisanello.",
+    "innovations": [
+      "colore steso a piccoli tocchi per effetti di morbidezza e vibrazione cromatica",
+      "unificazione degli scomparti del polittico in una scena di grande respiro",
+      "attenzione naturalistica ad animali e dettagli di derivazione lombarda"
+    ]
+  },
+  {
+    "id": "gerolamo-romanino",
+    "name": "Gerolamo Romanino",
+    "aka": [
+      "Romanino",
+      "Gerolamo Romani"
+    ],
+    "birth": 1485,
+    "death": 1566,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore",
+    "bio": "Bresciano (1485 circa-1566 circa), elabora un'interpretazione personalissima del tonalismo veneto in chiave marcatamente espressiva e popolare, con influssi di Dürer. Attivo tra Brescia, Cremona, Trento e Pisogne.",
+    "innovations": [
+      "Linguaggio anticlassico ed espressivo al servizio della narrazione popolare",
+      "Rifiuto delle regole canoniche della costruzione spaziale",
+      "Pittura densa e materica con studio attento delle luci"
+    ]
+  },
+  {
+    "id": "giacomo-della-porta",
+    "name": "Giacomo della Porta",
+    "aka": [],
+    "birth": 1532,
+    "death": 1602,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "architetto",
+    "bio": "Architetto romano che portò a compimento i progetti di Michelangelo per la piazza del Campidoglio e la cupola di San Pietro (1566-1593).",
+    "innovations": []
+  },
+  {
+    "id": "giacomo-jaquerio",
+    "name": "Giacomo Jaquerio",
+    "aka": [],
+    "birth": 1375,
+    "death": 1453,
+    "period_ids": [
+      "gotico-internazionale",
+      "tardogotico"
+    ],
+    "role": "pittore",
+    "bio": "Principale artista del Gotico piemontese, attivo fra Torino, Ginevra, il castello di Thonon e la Savoia. Chiamato a corte da Amedeo VIII di Savoia. Apprende lo stile internazionale franco-borgognono e le declinazioni veneziane e italiane attraverso Gregorio Bono. Autore degli affreschi dell'abbazia di Sant'Antonio di Ranverso.",
+    "innovations": [
+      "espressività accentuata quasi grottesca nelle figure dei carnefici",
+      "fusione tra eleganza cortese e realismo quotidiano"
+    ]
+  },
+  {
+    "id": "giambologna",
+    "name": "Giambologna",
+    "aka": [
+      "Jean de Boulogne"
+    ],
+    "birth": 1529,
+    "death": 1608,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "scultore",
+    "bio": "Scultore fiammingo (Jean de Boulogne), italianizzato come Giambologna. Giunge a Firenze nel 1562 sotto la protezione di Francesco de' Medici, dopo un lungo soggiorno a Roma. Costruisce il proprio successo con bronzi elegantissimi e sculture colossali.",
+    "innovations": [
+      "posa a serpentina",
+      "figura circoscrivibile in un cilindro",
+      "moto ascensionale avvitato",
+      "scultura da vedute multiple",
+      "anatomie atletiche che superano la monumentalità michelangiolesca"
+    ]
+  },
+  {
+    "id": "gian-giacomo-dolcebuono",
+    "name": "Gian Giacomo Dolcebuono",
+    "aka": [],
+    "birth": 1445,
+    "death": 1504,
+    "period_ids": [
+      "quattrocento",
+      "umanesimo-lombardo"
+    ],
+    "role": "architetto e scultore",
+    "bio": "Artista ticinese, collabora con Amadeo alla facciata della Certosa di Pavia portando un ulteriore ammorbidimento del linguaggio e forme rinascimentali con rimandi alla classicità.",
+    "innovations": []
+  },
+  {
+    "id": "giorgio-d-antiochia",
+    "name": "Giorgio d'Antiochia",
+    "aka": [],
+    "birth": null,
+    "death": 1151,
+    "period_ids": [
+      "romanico-normanno-siciliano"
+    ],
+    "role": "committente, ammiraglio",
+    "bio": "Ammiraglio del regno normanno di Sicilia sotto Ruggero II. Commissiona la chiesa di Santa Maria dell'Ammiraglio (Martorana) a Palermo nel 1143.",
+    "innovations": []
+  },
+  {
+    "id": "giorgio-vasari",
+    "name": "Giorgio Vasari",
+    "aka": [],
+    "birth": 1511,
+    "death": 1574,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "pittore, architetto, storico dell'arte",
+    "bio": "Pittore e architetto di origine aretina, formatosi nella bottega di Andrea del Sarto. Principale interprete della politica culturale di Cosimo I de' Medici. Autore delle 'Vite de' più eccellenti architetti, pittori et scultori italiani' (1550, 2a ed. 1568), fondamento della storiografia artistica moderna. Curatore del rinnovamento di Palazzo Vecchio e progettista degli Uffizi.",
+    "innovations": [
+      "storia dell'arte come disciplina",
+      "concetto di 'bella maniera'",
+      "Libro de' disegni come raccolta critica"
+    ]
+  },
+  {
+    "id": "giorgione",
+    "name": "Giorgione",
+    "aka": [
+      "Giorgio Zorzi da Castelfranco",
+      "Giorgio da Castelfranco"
+    ],
+    "birth": 1478,
+    "death": 1510,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale",
+      "scuola-veneziana"
+    ],
+    "role": "pittore",
+    "bio": "Nato a Castelfranco Veneto (1478-1510), è il fondatore del tonalismo veneziano. Formatosi probabilmente nella bottega di Giovanni Bellini, sviluppa una pittura rivoluzionaria basata sul colore e sulla luce atmosferica, con soggetti enigmatici e di difficile interpretazione iconografica. Muore di peste nell'ottobre 1510.",
+    "innovations": [
+      "Pittura tonale: giustapposizione di tonalità cromatiche per creare profondità atmosferica",
+      "Fusione tra figure e paesaggio naturale attraverso effetti atmosferici",
+      "Soggetti allegorici e laici di difficile interpretazione iconologica",
+      "Abbandono delle strutture architettoniche nelle sacre conversazioni a favore dell'aria aperta"
+    ]
+  },
+  {
+    "id": "giotto-di-bondone",
+    "name": "Giotto di Bondone",
+    "aka": [
+      "Ambrogio di Bondone",
+      "Giotto"
+    ],
+    "birth": 1267,
+    "death": 1337,
+    "period_ids": [
+      "duecento-italiano",
+      "gotico-italiano",
+      "trecento-italiano"
+    ],
+    "role": "pittore e architetto",
+    "bio": "Nato a Colle di Vespignano vicino a Firenze, Giotto è il principale artefice della rivoluzione pittorica italiana. Formatosi tra Firenze e Roma, supera gli schemi bizantini per un linguaggio naturalistico, tridimensionale e psicologicamente espressivo. Attivo ad Assisi, Padova, Firenze, Roma, Napoli e Milano, fu nominato capomastro dell'Opera del duomo di Firenze nel 1334.",
+    "innovations": [
+      "prospettiva empirica convergente su asse centrale",
+      "tecnica a giornate invece che a pontate",
+      "umanismo pittorico: personaggi come esseri in carne e ossa",
+      "trompe-l'oeil architettonico",
+      "realismo psicologico nelle espressioni dei volti",
+      "luce direzionale coerente con la fonte naturale",
+      "figura di spalle come novità compositiva",
+      "rinnovamento della pittura italiana",
+      "naturalismo espressivo",
+      "progetto campanile di Firenze"
+    ]
+  },
+  {
+    "id": "giovan-battista-moroni",
+    "name": "Giovan Battista Moroni",
+    "aka": [
+      "Moroni"
+    ],
+    "birth": 1522,
+    "death": 1579,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore",
+    "bio": "Nato nei pressi di Bergamo (1522 circa-1578/1579), allievo del Moretto. Specializzato in ritratti e dipinti devozionali, eccelle nell'introspezione psicologica e nel realismo fisionomico, con una committenza borghese e mercantile.",
+    "innovations": [
+      "Ritratto borghese senza idealizzazioni, con dignità e naturalezza",
+      "Tavolozza ridotta al nero, grigi e rosa-bruniti",
+      "Rapporto diretto e colloquiale tra effigiato e spettatore"
+    ]
+  },
+  {
+    "id": "giovan-francesco-penni",
+    "name": "Giovan Francesco Penni",
+    "aka": [
+      "Il Fattore"
+    ],
+    "birth": 1488,
+    "death": 1528,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "pittore",
+    "bio": "Allievo principale di Raffaello insieme a Giulio Romano. Collabora alla Sala di Costantino e dopo la morte del maestro si trasferisce a Mantova con Giulio Romano.",
+    "innovations": []
+  },
+  {
+    "id": "giovan-girolamo-savoldo",
+    "name": "Giovan Girolamo Savoldo",
+    "aka": [
+      "Savoldo"
+    ],
+    "birth": 1480,
+    "death": 1548,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore",
+    "bio": "Probabilmente allievo di Vincenzo Foppa a Brescia (1480 circa-1548), Savoldo si forma su esperienze plurali a Parma, Firenze e Venezia. Intorno al 1520 in Veneto sviluppa una pittura fondata su luminosità intensa e sguardo intimo, con specializzazione nei notturni.",
+    "innovations": [
+      "Notturno come genere autonomo con doppia fonte luminosa artificiale",
+      "Fusione tra modelli veneti e fiamminghi nell'uso della luce",
+      "Realismo dell'ambientazione quotidiana nelle scene sacre"
+    ]
+  },
+  {
+    "id": "giovan-pietro-fugazza",
+    "name": "Giovan Pietro Fugazza",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "architetto",
+    "bio": "Collaboratore di Cristoforo Rocchi nel modello ligneo del duomo di Pavia.",
+    "innovations": []
+  },
+  {
+    "id": "giovanni-antonio-amadeo",
+    "name": "Giovanni Antonio Amadeo",
+    "aka": [],
+    "birth": 1447,
+    "death": 1522,
+    "period_ids": [
+      "quattrocento",
+      "umanesimo-lombardo"
+    ],
+    "role": "architetto e scultore",
+    "bio": "Architetto e scultore di area milanese, è il principale protagonista della scultura decorativa lombarda del secondo Quattrocento. Lavora alla Certosa di Pavia e costruisce e decora la cappella Colleoni a Bergamo tra 1472 e 1477.",
+    "innovations": [
+      "rivestimento marmoreo policromo a fasce (cappella Colleoni)",
+      "complesso programma iconografico di legittimazione del potere laico",
+      "modellato più morbido rispetto ai Mantegazza"
+    ]
+  },
+  {
+    "id": "giovanni-antonio-boltraffio",
+    "name": "Giovanni Antonio Boltraffio",
+    "aka": [
+      "Boltraffio"
+    ],
+    "birth": 1466,
+    "death": 1516,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore",
+    "bio": "Milanese (1466 circa-1516), tra i più fedeli allievi di Leonardo. Assimila profondamente lo sfumato e le teorie leonardesche, come mostra la Pala Casio con la resa atmosferica del paesaggio.",
+    "innovations": [
+      "Paesaggio sfumato all'orizzonte per effetto dell'aria (prospettiva aerea leonardesca)",
+      "Talento nel ritratto dei donatori"
+    ]
+  },
+  {
+    "id": "giovanni-antonio-dosio",
+    "name": "Giovanni Antonio Dosio",
+    "aka": [],
+    "birth": 1533,
+    "death": 1611,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "architetto, disegnatore",
+    "bio": "Architetto e disegnatore fiorentino, realizzò la veduta del cortile del Belvedere (1558-1561).",
+    "innovations": []
+  },
+  {
+    "id": "giovanni-antonio-pordenone",
+    "name": "Pordenone",
+    "aka": [
+      "Giovanni Antonio de' Sacchis",
+      "Pordenone"
+    ],
+    "birth": 1484,
+    "death": 1539,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore",
+    "bio": "Giovanni Antonio de' Sacchis detto Pordenone (1484 circa-1539), cresciuto in Friuli in contatto con la tradizione germanica. Si ispira a Giorgione, Tiziano e alle esperienze romane. Dal 1520 opera nel duomo di Cremona; nel 1528 si stabilisce a Venezia.",
+    "innovations": [
+      "Composizione colossale e violentemente espressiva di derivazione michelangiolesca",
+      "Torsioni muscolari e brutalità espressiva che sfiorano il grottesco",
+      "Sintesi tra realismo nordico, tonalismo veneto e plasticismo romano"
+    ]
+  },
+  {
+    "id": "giovanni-bellini",
+    "name": "Giovanni Bellini",
+    "aka": [
+      "Giambellino"
+    ],
+    "birth": 1430,
+    "death": 1516,
+    "period_ids": [
+      "scuola-veneziana"
+    ],
+    "role": "pittore",
+    "bio": "Veneziano (1430 circa-1516), figura cardine della pittura veneziana. Traghetta la pittura veneziana dalla fase umanistico-quattrocentesca al pieno Rinascimento. Muore nel 1516, anno che segna il passaggio di consegne a Tiziano.",
+    "innovations": [
+      "Transizione dal tempera all'olio nella pittura veneziana",
+      "Sviluppo del paesaggio naturale come sfondo emotivo",
+      "Pala d'altare veneziana con sacra conversazione"
+    ]
+  },
+  {
+    "id": "giovanni-d-ambrogio",
+    "name": "Giovanni d'Ambrogio",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "umanesimo-fiorentino"
+    ],
+    "role": "scultore",
+    "bio": "Scultore fiorentino attivo nel cantiere della Porta della Mandorla (1390-1400), autore della piccola figura di Ercole negli stipiti, uno dei primi nudi scolpiti secondo i modelli antichi.",
+    "innovations": [
+      "primo nudo scolpito secondo i modelli antichi nella Firenze pre-1400"
+    ]
+  },
+  {
+    "id": "giovanni-da-milano",
+    "name": "Giovanni da Milano",
+    "aka": [],
+    "birth": 1325,
+    "death": 1370,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "pittore",
+    "bio": "Formatosi probabilmente a Milano, prosegue la carriera in Toscana dove si trova già nel 1346 e dove ottiene la cittadinanza fiorentina. Lavora alla decorazione della cappella Rinuccini in Santa Croce. Coniuga la costruzione prospettica giottesca con il gusto tardogotico per le figure allungate.",
+    "innovations": [
+      "cangiantismo cromatico",
+      "caratterizzazione volumetrica dei panneggi",
+      "figure allungate di gusto gotico",
+      "attenzione ai dettagli della moda contemporanea"
+    ]
+  },
+  {
+    "id": "giovanni-da-udine",
+    "name": "Giovanni da Udine",
+    "aka": [],
+    "birth": 1487,
+    "death": 1564,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "pittore",
+    "bio": "Allievo di Raffaello, specializzato nella decorazione a grottesca e nella rappresentazione botanica. Esegue la decorazione vegetale della Loggia di Psiche alla Farnesina.",
+    "innovations": [
+      "Prima attestazione di specie vegetali americane nella pittura europea",
+      "Decorazione a grottesca derivata dalle Domus Aurea"
+    ]
+  },
+  {
+    "id": "giovanni-dalmata",
+    "name": "Giovanni Dalmata",
+    "aka": [],
+    "birth": 1440,
+    "death": 1515,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "scultore",
+    "bio": "Scultore dalmata, coautore della transenna marmorea della cappella Sistina insieme a Mino da Fiesole e Andrea Bregno.",
+    "innovations": []
+  },
+  {
+    "id": "giovanni-di-simone",
+    "name": "Giovanni di Simone",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "architetto",
+    "bio": "Architetto pisano attivo nella seconda metà del XIII secolo. Riprende i lavori della torre campanaria di Pisa nel 1272 e dirige nel 1278 i lavori del camposanto monumentale.",
+    "innovations": [
+      "correzione della pendenza della torre campanaria con curvatura dei piani superiori",
+      "camposanto a quadriportico"
+    ]
+  },
+  {
+    "id": "giovanni-e-bartolomeo-bon",
+    "name": "Giovanni e Bartolomeo Bon",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "tardogotico"
+    ],
+    "role": "architetti-scultori",
+    "bio": "Scultori veneziani, terminano la Ca' d'Oro (avviata da Marco Raverti) e scolpiscono la Porta della Carta del Palazzo Ducale a Venezia (dal 1438). La Porta della Carta è un trionfo di pinnacoli, sculture e motivi floreali.",
+    "innovations": [
+      "fusione di tradizione gotica veneziana e apporti lombardi e toscani",
+      "facciata traforata da archi polilobati e coronata da pinnacoli floreali"
+    ]
+  },
+  {
+    "id": "giovanni-pisano",
+    "name": "Giovanni Pisano",
+    "aka": [],
+    "birth": 1248,
+    "death": 1315,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "scultore e architetto",
+    "bio": "Figlio di Nicola Pisano, nato tra il 1245 e il 1248. Si formò con il padre a Pisa e Siena. Completò il duomo di Siena come capomastro, realizzò i pulpiti di Sant'Andrea a Pistoia e della cattedrale di Pisa, la Fontana Maggiore di Perugia (con il padre), il monumento funebre di Margherita di Brabante a Genova. Morì intorno al 1315.",
+    "innovations": [
+      "piena adesione al linguaggio gotico nella scultura italiana",
+      "expressività e dinamismo gotici",
+      "statua equestre di profeti e sapienti per facciate gotiche"
+    ]
+  },
+  {
+    "id": "giovannino-de-dolci",
+    "name": "Giovannino de' Dolci",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "architetto",
+    "bio": "Architetto fiorentino attivo tra il 1435 e il 1486. Progetta la cappella Sistina insieme a Baccio Pontelli.",
+    "innovations": []
+  },
+  {
+    "id": "giovannino-de-grassi",
+    "name": "Giovannino de' Grassi",
+    "aka": [],
+    "birth": 1360,
+    "death": 1398,
+    "period_ids": [
+      "gotico-internazionale",
+      "tardogotico"
+    ],
+    "role": "scultore, architetto, miniatore",
+    "bio": "Scultore, architetto e miniatore che guida i lavori del duomo di Milano dal 1389. Noto soprattutto come autore del Taccuino di disegni (77 disegni e 24 lettere dell'alfabeto miniato), fonte di modelli per la bottega. Nelle figure di animali profonde inedita accuratezza nel segno e precisione nella resa dei dettagli.",
+    "innovations": [
+      "accuratezza naturalistica nella rappresentazione degli animali",
+      "taccuino di disegni come strumento di bottega"
+    ]
+  },
+  {
+    "id": "gislebertus",
+    "name": "Gislebertus",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "cluniacense",
+      "romanico"
+    ],
+    "role": "scultore",
+    "bio": "Scultore attivo nel cantiere di Autun dal 1140 al 1150, responsabile della decorazione plastica della cattedrale di Saint-Lazare. Primo artista medievale a firmare con il proprio nome un'intera impresa decorativa: 'Gislebertus hoc fecit'. Elabora un linguaggio originale fondato sul linearismo plastico con figure allungate.",
+    "innovations": [
+      "Linearismo plastico con figure allungate e pieghe rese con striature parallele",
+      "Espressività psicologica attraverso gesti e posture",
+      "Prima firma di un artista medievale su un complesso decorativo"
+    ]
+  },
+  {
+    "id": "giulio-romano",
+    "name": "Giulio Romano",
+    "aka": [
+      "Giulio Pippi",
+      "Giulio de' Romani"
+    ],
+    "birth": 1499,
+    "death": 1546,
+    "period_ids": [
+      "manierismo",
+      "rinascimento-maturo"
+    ],
+    "role": "pittore, architetto",
+    "bio": "Unico artista della bottega raffaellesca nato a Roma, eredita il linguaggio del maestro dopo la sua morte nel 1520. Si trasferisce a Mantova nel 1524 al servizio di Federico Gonzaga, dove diventa prefetto generale delle fabbriche e trasforma il volto della città.",
+    "innovations": [
+      "Rielaborazione anticlassica dell'architettura (triglifi scivolanti di Palazzo Te)",
+      "Uso dell'illusionismo totale nella Camera dei Giganti",
+      "Stile narrativo epico e drammatico nelle scene di massa",
+      "Fusione di raffinato classicismo e anticlassicismo provocatorio"
+    ]
+  },
+  {
+    "id": "giunta-pisano",
+    "name": "Giunta Pisano",
+    "aka": [
+      "Giunta Capitini",
+      "Giunta di Capitino"
+    ],
+    "birth": 1195,
+    "death": 1260,
+    "period_ids": [
+      "duecento-italiano"
+    ],
+    "role": "pittore",
+    "bio": "Attivo a Pisa, Perugia, Assisi e Roma, Giunta Pisano è uno dei precursori del rinnovamento pittorico duecentesco. Con le sue croci dipinte introduce un'accentuazione drammatica della sofferenza di Cristo (Christus patiens) che influenzerà Cimabue e Giotto.",
+    "innovations": [
+      "eliminazione delle storie laterali nelle croci dipinte per isolare la figura di Cristo",
+      "accentuata inarcatura del corpo di Cristo",
+      "espressione di dolore intensa e naturalistica",
+      "decorazione geometrica a rombi nelle tabelle"
+    ]
+  },
+  {
+    "id": "giusto-de-menabuoi",
+    "name": "Giusto de' Menabuoi",
+    "aka": [],
+    "birth": 1330,
+    "death": 1390,
+    "period_ids": [
+      "scuola-giottesca-veneta"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino attivo principalmente a Padova. Affresca il battistero del duomo di Padova tra il 1375 e il 1378 con uno dei cicli pittorici più imponenti del Trecento. Usa un lessico giottesco arricchito da stilemi veneti.",
+    "innovations": [
+      "cicli pittorici a copertura totale degli spazi architettonici",
+      "sintesi tra volumetria giottesca e ieraticità veneta"
+    ]
+  },
+  {
+    "id": "giusto-di-gand",
+    "name": "Giusto di Gand",
+    "aka": [
+      "Joos van Wassenhove"
+    ],
+    "birth": 1410,
+    "death": 1480,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore nato probabilmente nel 1430, formatosi sulle opere di Van der Weyden e Jan van Eyck. Intorno al 1471 si trasferisce a Roma e poi a Urbino, alla corte di Federico da Montefeltro. Partecipa alla decorazione dello studiolo di Federico con ritratti di uomini illustri.",
+    "innovations": [
+      "diffusione dell'arte fiamminga in Italia centrale",
+      "ritratti di uomini illustri per lo studiolo di Urbino"
+    ]
+  },
+  {
+    "id": "godescalco",
+    "name": "Godescalco",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "eta-carolingia"
+    ],
+    "role": "miniatore",
+    "bio": "Copista e miniatore attivo alla corte di Carlo Magno, autore dell'Evangeliario di Godescalco (781-783), il più antico codice conservato della scuola di corte carolingia, eseguito probabilmente nell'abbazia di Corbie.",
+    "innovations": [
+      "prima miniatura carolingia a noi pervenuta",
+      "uso di fondi purpurei e oro per esaltare il valore imperiale dei codici"
+    ]
+  },
+  {
+    "id": "guariento-di-arpo",
+    "name": "Guariento di Arpo",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "scuola-giottesca-veneta"
+    ],
+    "role": "pittore",
+    "bio": "Pittore padovano documentato dal 1338 al 1367, attivo presso la corte dei da Carrara. Sintetizza la lezione giottesca con elementi dell'arte bizantina e del Gotico nordico.",
+    "innovations": [
+      "sovrapposizione di piani prospettici di derivazione giottesca",
+      "eleganza astratta e uniforme nelle fisionomie di derivazione bizantina",
+      "linearismo calligrafico gotico nelle linee sinuose"
+    ]
+  },
+  {
+    "id": "guglielmo-ii-altavilla",
+    "name": "Guglielmo II d'Altavilla",
+    "aka": [
+      "Guglielmo II",
+      "Guglielmo il Buono"
+    ],
+    "birth": 1153,
+    "death": 1189,
+    "period_ids": [
+      "romanico-normanno-siciliano"
+    ],
+    "role": "committente regio",
+    "bio": "Re di Sicilia dal 1166 al 1189. Commissiona la cattedrale di Santa Maria Nuova a Monreale (dal 1172), con il più vasto ciclo musivo medievale conservato.",
+    "innovations": []
+  },
+  {
+    "id": "guillaume-de-sens",
+    "name": "Guillaume de Sens",
+    "aka": [
+      "Guglielmo di Sens"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "early-english-gothic"
+    ],
+    "role": "architetto",
+    "bio": "Architetto francese chiamato a ricostruire il coro della cattedrale di Canterbury dopo l'incendio del 1174. La sua opera introduce il Gotico in Inghilterra, combinando la monumentalità anglo-normanna con innovazioni gotiche come le volte a sesto acuto.",
+    "innovations": [
+      "introduzione del Gotico in Inghilterra",
+      "volte a sesto acuto a Canterbury"
+    ]
+  },
+  {
+    "id": "guiniforte-solari",
+    "name": "Guiniforte Solari",
+    "aka": [
+      "Guiniforte Solari da Carona"
+    ],
+    "birth": 1429,
+    "death": 1481,
+    "period_ids": [
+      "quattrocento",
+      "rinascimento-maturo",
+      "umanesimo-lombardo"
+    ],
+    "role": "architetto",
+    "bio": "Architetto lombardo, dirige i lavori della Certosa di Pavia su incarico di Francesco Sforza, mantenendo la pianta a croce latina e aggiungendo il maestoso tiburio. Termina il registro superiore dell'Ospedale Maggiore dopo la rimozione di Filarete.",
+    "innovations": [
+      "apertura verso il linguaggio decorativo di Filarete nella Certosa",
+      "tiburio monumentale della Certosa di Pavia"
+    ]
+  },
+  {
+    "id": "hans-memling",
+    "name": "Hans Memling",
+    "aka": [],
+    "birth": 1430,
+    "death": 1494,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore attivo a Bruxelles a contatto con Rogier van der Weyden, poi a Bruges dove lavora per l'alta borghesia e l'aristocrazia. Rappresentante dell'influenza fiamminga in Alsazia. Tra i suoi committenti Tommaso Portinari.",
+    "innovations": [
+      "diffusione del modello fiammingo in Alsazia",
+      "raffinamento del ritratto di tre quarti"
+    ]
+  },
+  {
+    "id": "henri-bellechose",
+    "name": "Henri Bellechose",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-internazionale"
+    ],
+    "role": "pittore",
+    "bio": "Pittore attivo tra il 1415 e il 1445 presso la certosa di Champmol di Digione. Realizza il Martirio di san Dionigi (1416), nel quale fisionomie aguzze e architettura sulla sinistra riprendono aspetti di Simone Martini e Giovannetti, mentre il colore chiaro steso per velature trasparenti deriva dalla tecnica miniatoria franco-fiamminga.",
+    "innovations": [
+      "fusione tra tradizione italiana e tecnica franco-fiamminga"
+    ]
+  },
+  {
+    "id": "hubert-van-eyck",
+    "name": "Hubert van Eyck",
+    "aka": [],
+    "birth": 1366,
+    "death": 1426,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "pittore",
+    "bio": "Fratello maggiore di Jan van Eyck, nato intorno al 1366, pittore del quale si hanno scarsissime notizie. Sarebbe stato il primo maestro di Jan. Insieme a lui inizia il Polittico dell'Agnello Mistico, che Jan porta a termine dopo la sua morte nel 1426.",
+    "innovations": [
+      "avvio del Polittico dell'Agnello Mistico"
+    ]
+  },
+  {
+    "id": "hugo-van-der-goes",
+    "name": "Hugo van der Goes",
+    "aka": [],
+    "birth": 1440,
+    "death": 1482,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore stimato attivo a Gand negli anni sessanta e settanta del Quattrocento. Realizza il monumentale Trittico Portinari su commissione di Tommaso Portinari, opera che ha grande impatto sullo sviluppo della pittura fiorentina.",
+    "innovations": [
+      "monumentalità delle dimensioni nei politici fiamminghi",
+      "naturalismo nell'adorazione e nelle figure dei pastori",
+      "influenza determinante sulla pittura fiorentina tarda del Quattrocento"
+    ]
+  },
+  {
+    "id": "isidoro-di-mileto",
+    "name": "Isidoro di Mileto",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "arte-bizantina",
+      "eta-giustinianea"
+    ],
+    "role": "architetto",
+    "bio": "Architetto greco-orientale attivo a Costantinopoli al tempo di Giustiniano. Con Antemio di Tralle progetta la basilica di Santa Sofia (532-537), uno dei capolavori dell'architettura mondiale.",
+    "innovations": [
+      "cupola semisferica su pennacchi",
+      "struttura a doppio involucro dilatante lo spazio",
+      "sistema di semicupole che espande la navata centrale"
+    ]
+  },
+  {
+    "id": "jacopo-de-barbari",
+    "name": "Jacopo de' Barbari",
+    "aka": [],
+    "birth": 1460,
+    "death": 1516,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "pittore",
+    "bio": "Pittore veneziano a cui per tradizione viene attribuito il Ritratto di Luca Pacioli e giovane ignoto (forse Guidobaldo da Montefeltro), sebbene esistano dubbi sulla datazione e sull'interpretazione. L'opera è riconducibile a Venezia, forse alla bottega di Alvise Vivarini.",
+    "innovations": []
+  },
+  {
+    "id": "jacopo-della-quercia",
+    "name": "Jacopo della Quercia",
+    "aka": [],
+    "birth": 1371,
+    "death": 1438,
+    "period_ids": [
+      "tardogotico",
+      "umanesimo-fiorentino"
+    ],
+    "role": "scultore",
+    "bio": "Scultore senese (1371/74-1438), figura di transizione tra cultura tardogotica e pienamente rinascimentale. Le eleganti componenti tardogotiche di derivazione fiorentina, senese, tedesca e francese si fondono con nuove istanze umanistiche e richiami all'antichità classica. La sua formazione avvenne probabilmente a Lucca nella bottega del padre orafo.",
+    "innovations": [
+      "monumentalità delle figure in spazio ridotto",
+      "fusione di eleganza gotica e richiamo all'antichità classica",
+      "influenza su Michelangelo per le formelle di San Petronio"
+    ]
+  },
+  {
+    "id": "jacopo-di-lorenzo-cosmati",
+    "name": "Jacopo di Lorenzo",
+    "aka": [
+      "Cosmati"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "marmoraro",
+    "bio": "Marmoraro romano attivo nel XIII secolo, esponente della tradizione cosmatesca. Realizza nel 1203 il pavimento cosmatesco della cattedrale di Ferentino.",
+    "innovations": [
+      "pavimento cosmatesco in opus sectile con geometrie policromi"
+    ]
+  },
+  {
+    "id": "jacopo-pontormo",
+    "name": "Jacopo Pontormo",
+    "aka": [
+      "Jacopo Carucci"
+    ],
+    "birth": 1494,
+    "death": 1556,
+    "period_ids": [
+      "manierismo",
+      "primo-manierismo-fiorentino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore nato a Pontorme di Empoli, allievo di Andrea del Sarto. Formatosi nelle botteghe di Leonardo e Piero di Cosimo. Non lascia probabilmente mai la Toscana. È il protagonista più originale del primo Manierismo fiorentino, con una pittura caratterizzata da un gioco incessante di diagonali, torsioni e colori cangianti ispirati a Michelangelo.",
+    "innovations": [
+      "abbandono della prospettiva tradizionale",
+      "colori acidi e cangianti ispirati alla Sistina",
+      "composizioni instabili e volutamente sproporzionate",
+      "figure di monumentalità michelangiolesca in spazi angusti"
+    ]
+  },
+  {
+    "id": "jacopo-sansovino",
+    "name": "Jacopo Sansovino",
+    "aka": [
+      "Jacopo Tatti"
+    ],
+    "birth": 1486,
+    "death": 1570,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "scultore, architetto",
+    "bio": "Architetto e scultore fiorentino di origine, formatosi a Roma con Giuliano da Sangallo e studiando Bramante, Raffaello e Michelangelo. Giunto a Venezia dopo il Sacco (1527), nel 1529 è nominato 'proto' (primo architetto della repubblica). Ridisegna piazza San Marco con la Loggetta e la Libreria Marciana.",
+    "innovations": [
+      "fusione classicismo romano con gusto pittorico veneziano",
+      "serliana adattata al contesto lagunare",
+      "architettura scenografica a servizio del potere"
+    ]
+  },
+  {
+    "id": "jacopo-torriti",
+    "name": "Jacopo Torriti",
+    "aka": [],
+    "birth": 1250,
+    "death": 1310,
+    "period_ids": [
+      "duecento-italiano"
+    ],
+    "role": "pittore e mosaicista",
+    "bio": "Attivo ad Assisi, Roma e presumibilmente Napoli, Jacopo Torriti si forma studiando i cicli musivi delle basiliche romane. Realizza gli affreschi della navata della chiesa superiore di Assisi e il grande mosaico dell'Incoronazione della Vergine in Santa Maria Maggiore a Roma.",
+    "innovations": [
+      "sviluppo del tema iconografico gotico francese dell'Incoronazione della Vergine in contesto romano",
+      "qualità naturalistica e classicista nel modellato",
+      "girali d'acanto con colombe e pavoni in tradizione paleocristiana"
+    ]
+  },
+  {
+    "id": "jacopo-vassalletto",
+    "name": "Jacopo Vassalletto",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "marmoraro",
+    "bio": "Marmoraro romano della famiglia Vassalletto, figlio di Pietro. Con il padre completa il chiostro della basilica di San Paolo fuori le Mura a Roma.",
+    "innovations": []
+  },
+  {
+    "id": "jacopo-vignola",
+    "name": "Jacopo Vignola",
+    "aka": [
+      "Jacopo Barozzi da Vignola"
+    ],
+    "birth": 1507,
+    "death": 1573,
+    "period_ids": [
+      "controriforma"
+    ],
+    "role": "architetto",
+    "bio": "Architetto bolognese, autore della chiesa del Gesù a Roma, prototipo del luogo di culto controriformato a pianta longitudinale con navata unica.",
+    "innovations": [
+      "chiesa a navata unica per esaltare la predicazione",
+      "navata longitudinale come standard controriformato"
+    ]
+  },
+  {
+    "id": "jan-rost",
+    "name": "Jan Rost",
+    "aka": [],
+    "birth": null,
+    "death": 1564,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "artigiano (tessitore di arazzi)",
+    "bio": "Artigiano olandese trasferito a Firenze nel 1545 da Cosimo I per istruire le maestranze fiorentine nella tessitura di arazzi.",
+    "innovations": []
+  },
+  {
+    "id": "jan-van-eyck",
+    "name": "Jan van Eyck",
+    "aka": [
+      "Johannes de Eyck"
+    ],
+    "birth": 1390,
+    "death": 1441,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore e miniatore attivo a L'Aia dal 1422 e poi al servizio di Filippo III il Buono dal 1425. Dal 1430-1431 si stabilisce a Bruges, dove apre una bottega. Insieme al fratello Hubert realizza il Polittico dell'Agnello Mistico. È figura determinante per la formazione e la diffusione della nuova pittura fiamminga in Europa.",
+    "innovations": [
+      "perfezionamento della pittura a olio su vasta scala",
+      "rappresentazione rivoluzionaria della luce su diverse superfici",
+      "trompe-l'oeil e illusionismo ottico",
+      "ritratto psicologico di tre quarti",
+      "uso dello specchio convesso per moltiplicare i punti di vista"
+    ]
+  },
+  {
+    "id": "jean-d-orbais",
+    "name": "Jean d'Orbais",
+    "aka": [],
+    "birth": 1175,
+    "death": 1231,
+    "period_ids": [
+      "gotico-francese"
+    ],
+    "role": "architetto",
+    "bio": "Architetto gotico probabilmente responsabile del progetto della cattedrale di Notre-Dame a Reims (avviata nel 1210). Realizza la pianta a croce latina con coro prolungato a cinque navate.",
+    "innovations": [
+      "coro prolungato a cinque navate con pilastri polilobati",
+      "facciata con decorazione plastica totale e doppio rosone"
+    ]
+  },
+  {
+    "id": "jean-fouquet",
+    "name": "Jean Fouquet",
+    "aka": [],
+    "birth": 1415,
+    "death": 1478,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore al servizio di Carlo VII e poi di Luigi XI di Francia, si impone per originalità e capacità di sintesi tra la tradizione francese e i due modelli europei dominanti (fiammingo e italiano). Compie un viaggio in Italia tra il 1445 e il 1447 dove conosce Beato Angelico e Domenico Veneziano.",
+    "innovations": [
+      "sintesi tra tradizione francese, modello fiammingo e prospettiva lineare italiana",
+      "composizione piramidale di ascendenza italiana",
+      "trattamento della luce di derivazione fiamminga"
+    ]
+  },
+  {
+    "id": "lanfranco",
+    "name": "Lanfranco",
+    "aka": [
+      "Lanfrancus"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "architetto",
+    "bio": "Architetto ideatore e costruttore della cattedrale di San Geminiano a Modena (fondazione 1099). Il suo nome compare in un'epigrafe esterna che lo definisce 'rector et magister'. Lavora in stretta unità d'intenti con lo scultore Wiligelmo.",
+    "innovations": [
+      "Associazione tra caratteri paleocristiani e romanici nell'organizzazione degli spazi",
+      "Loggette a trifore lungo il perimetro esterno",
+      "Facciata a salienti con protiro e leoni stilofori"
+    ]
+  },
+  {
+    "id": "leon-battista-alberti",
+    "name": "Leon Battista Alberti",
+    "aka": [],
+    "birth": 1404,
+    "death": 1472,
+    "period_ids": [
+      "gotico-italiano",
+      "quattrocento",
+      "umanesimo-fiorentino"
+    ],
+    "role": "architetto, teorico e umanista",
+    "bio": "Architetto e teorico dell'arte, autore di trattati fondamentali (De pictura, De re aedificatoria, De statua) che diffondono i principi del rinnovamento artistico fiorentino. Nasce a Genova da famiglia fiorentina esiliata, si forma a Padova e Bologna, nel 1431 giunge a Roma. Lavora su commissione di Giovanni Rucellai a Firenze, poi a Rimini e Mantova.",
+    "innovations": [
+      "De pictura: prima trattazione teorica della prospettiva lineare",
+      "De re aedificatoria: riforma della trattistica architettonica",
+      "architettura modulare e basata su canoni proporzionali",
+      "facciata bipartita a registri separati",
+      "recupero della classicità non come copia ma come rielaborazione",
+      "unificazione dello spazio ecclesiastico con navata unica e cappelle laterali",
+      "ordine gigante",
+      "volta a botte a lacunari in sostituzione delle coperture lignee"
+    ]
+  },
+  {
+    "id": "leonardo-da-besozzo",
+    "name": "Leonardo da Besozzo",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "tardogotico"
+    ],
+    "role": "pittore",
+    "bio": "Figlio di Michelino da Besozzo, porta a Napoli la cultura lombarda del padre. Dipinge Scene della vita della Vergine (1440 circa) nella cappella Caracciolo del Sole in San Giovanni a Carbonara. Articola meglio le architetture sulla suggestione delle nuove invenzioni spaziali fiorentine, usandole però come elemento scenografico.",
+    "innovations": [
+      "trasmissione della cultura lombarda a Napoli",
+      "architetture come elemento scenografico di derivazione fiorentina"
+    ]
+  },
+  {
+    "id": "leonardo-da-vinci",
+    "name": "Leonardo da Vinci",
+    "aka": [],
+    "birth": 1452,
+    "death": 1519,
+    "period_ids": [
+      "rinascimento-fiorentino",
+      "rinascimento-maturo"
+    ],
+    "role": "pittore, scultore, architetto, ingegnere e scienziato",
+    "bio": "Nato a Vinci, si forma nella bottega di Verrocchio a Firenze dal 1469. Dal 1482 è a Milano al servizio di Ludovico il Moro. Dopo il 1499 alterna soggiorni a Mantova, Venezia, Firenze e Roma. Dal 1516 è alla corte di Francesco I di Francia dove muore nel 1519. Incarnazione del genio rinascimentale polivalente.",
+    "innovations": [
+      "sfumato: tecnica di fusione dei contorni per morbidezza atmosferica",
+      "prospettiva aerea per la rappresentazione della profondità",
+      "studio sistematico dei 'moti dell'animo' attraverso gesti ed espressioni",
+      "composizione piramidale nelle Madonne",
+      "uso sperimentale dell'encausto nella pittura murale"
+    ]
+  },
+  {
+    "id": "lippo-memmi",
+    "name": "Lippo Memmi",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-senese"
+    ],
+    "role": "pittore",
+    "bio": "Cognato e collaboratore di Simone Martini. Cofirma con lui l'Annunciazione del 1333 oggi agli Uffizi, dipingendo i pannelli laterali con Sant'Ansano e Santa Massima.",
+    "innovations": []
+  },
+  {
+    "id": "lorenzo-ghiberti",
+    "name": "Lorenzo Ghiberti",
+    "aka": [],
+    "birth": 1378,
+    "death": 1455,
+    "period_ids": [
+      "quattrocento",
+      "tardogotico",
+      "umanesimo-fiorentino"
+    ],
+    "role": "scultore e trattatista",
+    "bio": "Scultore e orafo fiorentino (1378-1455), vincitore del concorso del 1401 per la seconda porta del battistero. Realizza la Porta Nord (1403-1424) e la Porta del Paradiso (1425-1452) del battistero di San Giovanni. La sua bottega diventa palestra per una generazione di giovani artisti tra cui Donatello, Michelozzo e Paolo Uccello. Autore dei Commentari.",
+    "innovations": [
+      "rilievo di profondità digradante per effetti prospettici",
+      "unificazione di più episodi in formelle quadrate",
+      "fusione di eleganza gotica e razionalità rinascimentale",
+      "primo artista autore di un'autobiografia",
+      "porta del battistero di Firenze"
+    ]
+  },
+  {
+    "id": "lorenzo-lotto",
+    "name": "Lorenzo Lotto",
+    "aka": [],
+    "birth": 1480,
+    "death": 1556,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore",
+    "bio": "Nato a Venezia (1480-1556), studia con Giovanni Bellini ma si distingue dal tonalismo lagunare per una pittura più diretta, psicologicamente indagante e di impronta nordica. Costretto dalla concorrenza di Tiziano a operare fuori Venezia (Treviso, Bergamo, Marche), si ritira come oblato a Loreto nel 1554.",
+    "innovations": [
+      "Ritratto psicologico d'introspezione, attenzione alla fisicità e alle imperfezioni dei soggetti",
+      "Narrazione sacra diretta, popolare e didascalica lontana dall'intellettualismo veneziano",
+      "Uso di enigmi e rebus visivi nelle composizioni (es. Ritratto di giovane con lucerna)",
+      "Influenze nordiche nella luce fredda e nel disegno netto"
+    ]
+  },
+  {
+    "id": "lorenzo-maitani",
+    "name": "Lorenzo Maitani",
+    "aka": [],
+    "birth": 1270,
+    "death": 1330,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "architetto e scultore",
+    "bio": "Capomastro del duomo di Orvieto, progettista della straordinaria facciata (dal 1308). Autore insieme alla sua bottega delle quattro grandi lastre marmoree scolpite nel basamento ai lati dei portali. Fu coinvolto anche nella commissione per il Duomo Nuovo di Siena.",
+    "innovations": [
+      "facciata del duomo di Orvieto come sintesi di architettura e scultura gotica italiana",
+      "bassorilievi narrativi in marmo"
+    ]
+  },
+  {
+    "id": "lorenzo-monaco",
+    "name": "Lorenzo Monaco",
+    "aka": [
+      "Lorenzo degli Angeli"
+    ],
+    "birth": 1365,
+    "death": 1424,
+    "period_ids": [
+      "gotico-internazionale",
+      "tardogotico"
+    ],
+    "role": "pittore, monaco",
+    "bio": "Monaco camaldolese, pittore con intonazione devozionale che non abbraccia totalmente i caratteri profani del Gotico internazionale. Attinge da quel gusto la predilezione per la linea elegante. Il chiaroscuro e le ombre decise dei volti e dei panneggi testimoniano uno sviluppo volumetrico dei corpi vicino a Masaccio.",
+    "innovations": [
+      "fusione tra devozione monastica e eleganza tardogotica",
+      "chiaroscuro volumetrico come ponte verso il Rinascimento"
+    ]
+  },
+  {
+    "id": "luca-della-robbia",
+    "name": "Luca della Robbia",
+    "aka": [],
+    "birth": 1399,
+    "death": 1482,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "scultore e ceramista",
+    "bio": "Scultore e ceramista fiorentino, capostipite di una dinastia artistica. Perfeziona e diffonde la terracotta invetriata, che combina resistenza, policromia brillante e versatilita decorativa.",
+    "innovations": [
+      "terracotta invetriata",
+      "cantoria con formelle narrative",
+      "serializzazione della produzione scultorea"
+    ]
+  },
+  {
+    "id": "luca-signorelli",
+    "name": "Luca Signorelli",
+    "aka": [],
+    "birth": 1445,
+    "death": 1523,
+    "period_ids": [
+      "rinascimento-fiorentino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore nato a Cortona, si forma con Piero della Francesca e poi si avvicina a Pollaiolo e Verrocchio. Lavora nella cappella Sistina con Perugino e poi realizza il ciclo della cappella di San Brizio nel duomo di Orvieto, suo capolavoro. Grande doti narrative e anatomiche.",
+    "innovations": [
+      "nudi scattanti ed atletici in scorcio",
+      "articolazione narrativa di scene affollate e frementi",
+      "decorazione a grotteschi con policromia sgargiante"
+    ]
+  },
+  {
+    "id": "lucas-cranach-il-vecchio",
+    "name": "Lucas Cranach il Vecchio",
+    "aka": [],
+    "birth": 1472,
+    "death": 1553,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore tedesco, stretto collaboratore di Martin Lutero. Usa l'arte come strumento di diffusione dell'idea protestante della fede.",
+    "innovations": []
+  },
+  {
+    "id": "luciano-laurana",
+    "name": "Luciano Laurana",
+    "aka": [],
+    "birth": 1420,
+    "death": 1479,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "architetto",
+    "bio": "Architetto nato in Dalmazia, conosce l'architettura di Alberti a Mantova nel 1465. Arriva a Urbino l'anno successivo, dove rimane fino al 1472 quando si trasferisce a Napoli. Nominato ingegnere capo nel 1468, progetta la facciata dei Torricini e il cortile principale del Palazzo Ducale di Urbino.",
+    "innovations": [
+      "soluzione angolare con pilastro a L con paraste e semicolonne nel cortile",
+      "facciata a torre gemelle sovrapponendo tre logge con schema dell'arco di trionfo"
+    ]
+  },
+  {
+    "id": "maarten-van-heemskerck",
+    "name": "Maarten van Heemskerck",
+    "aka": [],
+    "birth": 1498,
+    "death": 1574,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "pittore, incisore",
+    "bio": "Pittore e incisore olandese, attivo tra i Paesi Bassi e Roma. Noto per le sue vedute di Roma e incisioni a soggetto storico.",
+    "innovations": []
+  },
+  {
+    "id": "maestro-dei-giochi-borromeo",
+    "name": "Maestro dei Giochi Borromeo",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "tardogotico"
+    ],
+    "role": "pittore",
+    "bio": "Pittore anonimo, forse identificabile con gli Zavattari, autore degli affreschi con Giochi aristocratici in Palazzo Borromeo a Milano (1445 circa). Lo stile denota influssi di Pisanello nel delicato profilo femminile dalla fronte bombata e dalla preziosa acconciatura 'alla borgognona'.",
+    "innovations": [
+      "attenzione al profilo femminile di influenza pisanelliana"
+    ]
+  },
+  {
+    "id": "maestro-del-maresciallo-di-boucicaut",
+    "name": "Maestro del Maresciallo di Boucicaut",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-internazionale"
+    ],
+    "role": "miniatore",
+    "bio": "Anonimo miniatore di origine fiamminga attivo a Parigi tra il 1410 e il 1415. Deve il nome al maresciallo di Francia Jean le Meingre de Boucicaut, per il quale realizzò le miniature di un libro d'ore. Impiegava stesure particolarmente liquide e leggere, ricche di sfumature, con tentativo di creare profondità spaziale attraverso i passaggi tonali.",
+    "innovations": [
+      "stesura liquida e sfumata del colore",
+      "effetto di profondità spaziale tramite i toni",
+      "realismo naturalistico in ambito miniaturistico"
+    ]
+  },
+  {
+    "id": "maestro-del-registrum-gregorii",
+    "name": "Maestro del Registrum Gregorii",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "arte-ottoniana"
+    ],
+    "role": "miniatore",
+    "bio": "Anonimo miniatore di straordinario talento, attivo per l'arcivescovo Egberto di Treviri (977-993). Realizza il Registrum Gregorii dopo la morte di Ottone II (983). La sua concezione spaziale supera la derivazione classica carolingia grazie a uno spazio stratificato su più piani sovrapposti.",
+    "innovations": [
+      "Spazio tridimensionale definito da piani sovrapposti nelle miniature",
+      "Figura dell'imperatore con aspetto ieratico di sapore bizantino"
+    ]
+  },
+  {
+    "id": "maestro-della-manta",
+    "name": "Maestro della Manta",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-internazionale",
+      "tardogotico"
+    ],
+    "role": "pittore",
+    "bio": "Anonimo pittore attivo al castello della Manta (Saluzzo) poco dopo il 1420. Autore del ciclo di affreschi con i Nove eroi e nove eroine e la Fontana della giovinezza, ispirati alle miniature del romanzo Le chevalier errant di Tommaso III di Saluzzo (1394-1396). Figure ispirate alla moda del tempo con stemmi e iscrizioni.",
+    "innovations": [
+      "traduzione in affresco di temi letterari cortesi d'Oltralpe",
+      "parata di figure in abiti contemporanei con stemmi identificativi"
+    ]
+  },
+  {
+    "id": "maestro-delle-metope",
+    "name": "Maestro delle Metope",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "scultore",
+    "bio": "Anonimo scultore attivo negli anni Trenta del XII secolo nel cantiere del duomo di Modena, autore delle metope dei contrafforti esterni. Evoca memorie classiche nella resa proporzionata dei corpi, pur risentendo della lezione wiligelmica.",
+    "innovations": []
+  },
+  {
+    "id": "maestro-delle-ore-di-rohan",
+    "name": "Maestro delle Ore di Rohan",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-internazionale"
+    ],
+    "role": "miniatore",
+    "bio": "Miniatore anonimo formatosi a contatto con i maestri di Boucicaut e di Bedford, noto per le Ore di Rohan eseguite per Iolanda d'Aragona. Condivide l'amore per il colore e le sfumature, ma ha un senso potentemente drammatico che deforma immagini e proporzioni, caricando l'espressività dei personaggi.",
+    "innovations": [
+      "drammaticità ed espressività accentuata",
+      "deformazione delle proporzioni a fini espressivi",
+      "contrasto tra grandezza del divino e fragilità umana"
+    ]
+  },
+  {
+    "id": "maestro-di-artu",
+    "name": "Maestro di Artù",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "scultore",
+    "bio": "Anonimo scultore attivo alla metà del XII secolo nel cantiere del duomo di Modena, autore della Porta della Pescheria. Si distingue per vivacità narrativa e modellato morbido che riecheggia la scultura borgognona.",
+    "innovations": [
+      "Primo ciclo medievale di rilievi dedicati alle storie di re Artù",
+      "Prime illustrazioni del Ciclo dei Mesi in scultura medievale italiana"
+    ]
+  },
+  {
+    "id": "maestro-di-bedford",
+    "name": "Maestro di Bedford",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-internazionale"
+    ],
+    "role": "miniatore",
+    "bio": "Miniatore anonimo attivo alla corte dei Valois, deve il nome a Giovanni di Lancaster, duca di Bedford, sposo di Anna di Borgogna. Autore del Libro delle meraviglie che narra il viaggio di Marco Polo in Cina con illustrazioni ricche di particolari esotici e fantastici.",
+    "innovations": [
+      "illustrazione di temi esotici e fantastici",
+      "stile derivato dal Maestro di Boucicaut"
+    ]
+  },
+  {
+    "id": "maestro-di-elia",
+    "name": "Maestro di Elia",
+    "aka": [
+      "Maestro della cattedra di Elia"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "scultore",
+    "bio": "Anonimo scultore locale barese attivo alla metà del XII secolo nella basilica di San Nicola a Bari. Realizza i rilievi esterni e gli arredi liturgici, tra cui la famosa cattedra di Elia, ispirandosi all'iconografia bizantina e al linguaggio di Wiligelmo e della scultura tolosana.",
+    "innovations": [
+      "Cattedra episcopale traforata con telamoni in pose espressive"
+    ]
+  },
+  {
+    "id": "maestro-di-naumburg",
+    "name": "Maestro di Naumburg",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "rinascenza-sveva"
+    ],
+    "role": "scultore",
+    "bio": "Scultore anonimo attivo intorno al 1250 nel coro della cattedrale di Naumburg, forse formatosi ad Amiens. Realizzò dodici grandi statue in calcare rappresentanti i fondatori della cattedrale, tra cui la celebre Margravia Uta di Ballenstedt, di straordinario realismo psicologico.",
+    "innovations": [
+      "ritrattismo ideale con caratterizzazione psicologica",
+      "uso della policromia nella scultura gotica tedesca"
+    ]
+  },
+  {
+    "id": "maestro-di-san-geminiano",
+    "name": "Maestro di San Geminiano",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "scultore",
+    "bio": "Anonimo scultore collaboratore di Wiligelmo, autore della Porta dei Principi del duomo di Modena (primo quarto del XII secolo). Il suo stile risente del maestro ma mostra una resa dei volumi per piani meno tesa.",
+    "innovations": []
+  },
+  {
+    "id": "maestro-gerhard",
+    "name": "Maestro Gerhard",
+    "aka": [
+      "Gerhard di Colonia"
+    ],
+    "birth": 1215,
+    "death": 1271,
+    "period_ids": [
+      "gotico-tedesco"
+    ],
+    "role": "architetto",
+    "bio": "Architetto tedesco a cui è attribuito il progetto originario della cattedrale di Colonia (iniziata nel 1248). Formatosi in Francia, la sua opera mostra chiari riferimenti alla cattedrale di Amiens e allo stile rayonnant.",
+    "innovations": [
+      "pianta gotica monumentale tedesca con cinque navate",
+      "westwerk integrato in pianta gotica"
+    ]
+  },
+  {
+    "id": "maestro-guglielmo-pisa",
+    "name": "Maestro Guglielmo",
+    "aka": [
+      "Guglielmo"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "scultore",
+    "bio": "Scultore attivo a Pisa tra il 1159 e il 1162. Firma il pulpito della cattedrale di Pisa, poi trasferito al duomo di Cagliari nel 1312 quando fu sostituito da quello di Giovanni Pisano. Considerato caposcuola della scultura pisana romanica.",
+    "innovations": [
+      "distribuzione di scene neotestamentarie in registri sovrapposti",
+      "fusione di classicismo, decorazione orientale e scultura provenzale"
+    ]
+  },
+  {
+    "id": "maestro-leonardo",
+    "name": "Maestro Leonardo",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "scultore",
+    "bio": "Scultore autore della transenna del presbiterio della cattedrale di San Ciriaco ad Ancona (XII secolo), con figure di san Ciriaco e pavoni affrontati, nel cui linearismo astrattizzante si riconoscono i modi delle tradizioni bizantina e araba.",
+    "innovations": []
+  },
+  {
+    "id": "maestro-matteo",
+    "name": "Maestro Matteo",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "scultore e architetto",
+    "bio": "Architetto e scultore attivo a Santiago de Compostela tra il 1168 e il 1188. Realizza il Portico della Gloria, nartece di tre campate a crociera decorato da un ciclo scultoreo con Cristo Giudice tra gli evangelisti e gli eletti.",
+    "innovations": [
+      "Portale con decorazione scultorea che fonde modelli borgognoni e spagnoli",
+      "Modellato ad altorilievo con posture ieratiche"
+    ]
+  },
+  {
+    "id": "maestro-niccolo",
+    "name": "Maestro Niccolò",
+    "aka": [
+      "Maestro Niccolò"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "scultore",
+    "bio": "Scultore attivo nel cantiere della basilica di San Zeno a Verona intorno al 1138. Riprende il realismo espressivo di Wiligelmo evolvendo verso un senso più pittorico del linguaggio, con maggiore sottigliezza nel modellato e raffinatezza nell'incaglio.",
+    "innovations": [
+      "Evoluzione in senso pittorico del linguaggio wiligelimico"
+    ]
+  },
+  {
+    "id": "maestro-wenceslao",
+    "name": "Maestro Wenceslao",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-internazionale",
+      "tardogotico"
+    ],
+    "role": "pittore",
+    "bio": "Pittore boemo giunto probabilmente a Trento al seguito del vescovo Giorgio di Liechtenstein. Autore del Ciclo dei Mesi nella Torre Aquila del castello del Buonconsiglio (1390-1400), capace di rendere monumentali le qualità delle miniature senza perdere dettagli, vivacità narrativa e qualità pittorica.",
+    "innovations": [
+      "resa monumentale della miniatura in affresco",
+      "descrizione vivace della vita quotidiana aristocratica e contadina"
+    ]
+  },
+  {
+    "id": "magistro-philippus",
+    "name": "Magister Philippus",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "capomastro",
+    "bio": "Maestro comacino documentato dall'iscrizione con la data 1218, responsabile del riallesimento dei portici della cattedrale di San Ciriaco ad Ancona con elementi tipici del Romanico lombardo.",
+    "innovations": []
+  },
+  {
+    "id": "marco-da-brescia",
+    "name": "Marco da Brescia",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "architetto",
+    "bio": "Architetto francescano cui è forse attribuito il progetto della basilica di San Francesco a Bologna, edificata in laterizio a partire dal 1236.",
+    "innovations": []
+  },
+  {
+    "id": "marco-raverti",
+    "name": "Marco Raverti",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "tardogotico"
+    ],
+    "role": "architetto-scultore",
+    "bio": "Architetto-scultore milanese, iniziatore dei lavori della Ca' d'Oro a Venezia, poi terminata dai fratelli Bon.",
+    "innovations": [
+      "innesto delle fioriture tardogotiche sulla tradizione veneziana"
+    ]
+  },
+  {
+    "id": "martin-schongauer",
+    "name": "Martin Schongauer",
+    "aka": [],
+    "birth": 1453,
+    "death": 1491,
+    "period_ids": [
+      "arte-tedesca-quattrocento"
+    ],
+    "role": "pittore, incisore",
+    "bio": "Pittore e incisore alsaziano originario di Colmar. Si distingue per aver superato la spigolositàtardogotica attraverso linee morbide ed equilibrate, composizioni serene e una spiccata sensibilità per la rappresentazione dei sentimenti. Si forma in ambiente permeato di influenze fiamminghe, compiendo viaggi in Borgogna e nelle Fiandre.",
+    "innovations": [
+      "superamento della spigolositàtardogotica nell'area tedesca",
+      "linee morbide e composizioni equilibrate",
+      "sensibilità per l'espressione dei sentimenti",
+      "alta qualità dell'incisione"
+    ]
+  },
+  {
+    "id": "masaccio",
+    "name": "Masaccio",
+    "aka": [
+      "Tommaso di ser Giovanni di Mone Cassai"
+    ],
+    "birth": 1401,
+    "death": 1428,
+    "period_ids": [
+      "quattrocento",
+      "umanesimo-fiorentino"
+    ],
+    "role": "pittore",
+    "bio": "Vero fondatore della pittura rinascimentale italiana, nato a Castel San Giovanni nel Valdarno. Primo artista a organizzare lo spazio pittorico secondo i principi prospettici di Brunelleschi e a studiare l'anatomia dei corpi sull'esempio di Donatello. Muore a Roma a soli 27 anni.",
+    "innovations": [
+      "prospettiva lineare nella pittura",
+      "luce reale per modellare le forme",
+      "sfondato illusionistico",
+      "uguaglianza dimensionale tra figure divine e umane",
+      "approccio sintetico alla figura umana"
+    ]
+  },
+  {
+    "id": "maso-di-banco",
+    "name": "Maso di Banco",
+    "aka": [],
+    "birth": null,
+    "death": 1348,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "pittore",
+    "bio": "Considerato il più innovativo della cerchia giottesca, le fonti documentarie su di lui sono scarse. Muore nel 1348, probabilmente di peste. Le sue opere mostrano una sintesi originale tra il plasticismo giottesco e una narratività episodica.",
+    "innovations": [
+      "sintesi originale tra eredità giottesca e gusto narrativo",
+      "composizioni a episodi multipli"
+    ]
+  },
+  {
+    "id": "masolino-da-panicale",
+    "name": "Masolino da Panicale",
+    "aka": [
+      "Tommaso di Cristoforo Fini"
+    ],
+    "birth": 1383,
+    "death": 1440,
+    "period_ids": [
+      "quattrocento",
+      "tardogotico",
+      "umanesimo-fiorentino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino (1383-1440 circa) di stile elegante, minuzioso e decorativo, che viene a contatto con Masaccio nella cappella Brancacci. Lavora a Roma nella basilica di San Clemente e poi a Castiglione Olona per il cardinale Branda Castiglioni. Sviluppa un approccio personale al Gotico internazionale mantenendo sensibilità cortese anche nelle architetture prospettiche.",
+    "innovations": [
+      "architetture rese con senso prospettico ma come fondale",
+      "fusione tra cortesia tardogotica e nuove istanze prospettiche"
+    ]
+  },
+  {
+    "id": "massimiano-arcivescovo-ravenna",
+    "name": "Massimiano",
+    "aka": [
+      "Massimiano di Ravenna"
+    ],
+    "birth": 498,
+    "death": 556,
+    "period_ids": [
+      "eta-giustinianea"
+    ],
+    "role": "committente ecclesiastico",
+    "bio": "Primo arcivescovo di Ravenna (546-556), figura chiave dell'arte ravennate giustinianea. Consacra San Vitale (547) e Sant'Apollinare in Classe (549), commissiona la Cattedra d'avorio che porta il suo monogramma.",
+    "innovations": [
+      "cattedra episcopale in avorio"
+    ]
+  },
+  {
+    "id": "matteo-de-pasti",
+    "name": "Matteo de' Pasti",
+    "aka": [],
+    "birth": 1420,
+    "death": 1468,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "architetto, medaglista",
+    "bio": "Veronese, allievo di Pisanello, incaricato da Sigismondo Pandolfo Malatesta nel 1447 di costruire una cappella funeraria nella chiesa di San Francesco a Rimini. Successivamente direttore del cantiere del Tempio Malatestiano, realizza anche la medaglia commemorativa che presenta il progetto di Alberti.",
+    "innovations": []
+  },
+  {
+    "id": "matteo-giovannetti",
+    "name": "Matteo Giovannetti",
+    "aka": [
+      "Giovanni Matteo da Viterbo"
+    ],
+    "birth": null,
+    "death": 1369,
+    "period_ids": [
+      "tardogotico"
+    ],
+    "role": "pittore",
+    "bio": "Pittore viterbese formatosi a Siena, documentato ad Avignone tra il 1344 e il 1367. Su commissione di papa Clemente VI assume il ruolo di pittore di corte e decora la monumentale Sala della Grande Udienza del Palazzo dei Papi. Partendo dall'arte di Simone Martini, sviluppa figure dall'esasperata esilità avvolte in sontuosi abiti.",
+    "innovations": [
+      "figure esili e aristocratiche di gusto tardogotico",
+      "decorazione parietale profana ad Avignone",
+      "scene di caccia e natura come ornamento residenziale"
+    ]
+  },
+  {
+    "id": "meliore",
+    "name": "Meliore",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "duecento-italiano"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino coevo di Coppo di Marcovaldo, con cui collabora alla decorazione musiva della cupola del battistero di San Giovanni a Firenze, in particolare nelle scene dell'Inferno.",
+    "innovations": []
+  },
+  {
+    "id": "michael-pacher",
+    "name": "Michael Pacher",
+    "aka": [],
+    "birth": 1435,
+    "death": 1498,
+    "period_ids": [
+      "arte-tedesca-quattrocento"
+    ],
+    "role": "pittore, intagliatore",
+    "bio": "Attivo soprattutto nella zona di Brunico (Trentino-Alto Adige), evolve da una pittura tardogotica locale verso uno stile che reinterpreta l'arte veneta e padovana (Mantegna, Donatello). Gran parte della critica ritiene che abbia visitato Padova e probabilmente Mantova.",
+    "innovations": [
+      "uso del cono ottico unico per unificare più pannelli di un polittico",
+      "naturalezza della gestualità e dell'espressività delle figure",
+      "sintesi tra elementi italiani, fiamminghi e tardogotici tirolesi"
+    ]
+  },
+  {
+    "id": "michael-wolgemut",
+    "name": "Michael Wolgemut",
+    "aka": [],
+    "birth": 1434,
+    "death": 1519,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore, incisore, tipografo",
+    "bio": "Norimberghese (1434-1519), maestro di Dürer. Grande innovatore dell'incisione su legno, tipografo e stampatore. Opera nella città di Norimberga, capitale dell'editoria tedesca dell'epoca.",
+    "innovations": [
+      "Innovazione della xilografia per l'illustrazione dei libri",
+      "Ricerca di soluzioni stilistiche sempre più efficaci per l'illustrazione"
+    ]
+  },
+  {
+    "id": "michelangelo-buonarroti",
+    "name": "Michelangelo Buonarroti",
+    "aka": [
+      "Michelangelo",
+      "Il Divino"
+    ],
+    "birth": 1475,
+    "death": 1564,
+    "period_ids": [
+      "manierismo",
+      "rinascimento-maturo"
+    ],
+    "role": "scultore, pittore, architetto, poeta",
+    "bio": "Nato a Caprese, si forma a Firenze con Ghirlandaio e nella scuola di scultura del giardino di San Marco sotto Lorenzo il Magnifico. Alterna soggiorni a Roma e Firenze, lavorando per papi e Medici. La sua produzione spazia dalla scultura giovanile alla volta della Sistina, alle tombe medicee, al Giudizio Universale, fino alle ultime opere tormentate.",
+    "innovations": [
+      "Non finito come scelta espressiva (lotta della forma sulla materia)",
+      "Concezione neoplatonica del corpo come prigione dell'anima",
+      "Umanità titanica nelle figure della volta sistina",
+      "Architettura anticlassica (Sacrestia Nuova, biblioteca Laurenziana)",
+      "Ordine gigante in architettura",
+      "Cupola di San Pietro come elemento conclusivo dell'edificio"
+    ]
+  },
+  {
+    "id": "michele-sanmicheli",
+    "name": "Michele Sanmicheli",
+    "aka": [],
+    "birth": 1487,
+    "death": 1559,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "architetto",
+    "bio": "Architetto veronese, nominato nel 1539 ingegnere della Repubblica veneziana. Formatosi a Roma e Orvieto, sviluppa una solida conoscenza dell'architettura classica che applica nelle opere veneziane.",
+    "innovations": [
+      "fusione della serliana con la struttura dell'arco trionfale",
+      "quasi totale eliminazione della superficie muraria"
+    ]
+  },
+  {
+    "id": "michelino-da-besozzo",
+    "name": "Michelino da Besozzo",
+    "aka": [],
+    "birth": 1370,
+    "death": 1455,
+    "period_ids": [
+      "gotico-internazionale",
+      "tardogotico"
+    ],
+    "role": "pittore",
+    "bio": "Maggiore pittore lombardo del tardogotico, direttore del cantiere del duomo di Milano dal 1401. Formatosi a contatto con le esperienze francesi e borgognone, sviluppa un stile riconoscibile in tutta Europa come 'Ouvrage de Lombardie'. Attivo anche a Venezia (1404-1417) dove lavora probabilmente con Gentile da Fabriano.",
+    "innovations": [
+      "stile 'Ouvrage de Lombardie' diffuso in tutta Europa",
+      "fondo oro e pastiglia di gesso dorata",
+      "linea sinuosa che dissolve la fisicità delle figure"
+    ]
+  },
+  {
+    "id": "michelozzo-michelozzi",
+    "name": "Michelozzo Michelozzi",
+    "aka": [
+      "Michelozzo di Bartolomeo"
+    ],
+    "birth": 1396,
+    "death": 1472,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "architetto e scultore",
+    "bio": "Architetto e scultore fiorentino di notevole cultura umanistica, formatosi nella bottega di Ghiberti. Forma una societa con Donatello dal 1425. E' l'architetto prediletto di Cosimo de' Medici, per il quale realizza Palazzo Medici-Riccardi, il convento di San Marco e le ville extraurbane.",
+    "innovations": [
+      "prototipo del palazzo rinascimentale di citta",
+      "biblioteca umanistica come tipologia architettonica"
+    ]
+  },
+  {
+    "id": "mino-da-fiesole",
+    "name": "Mino da Fiesole",
+    "aka": [],
+    "birth": 1429,
+    "death": 1484,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "scultore",
+    "bio": "Scultore toscano, coautore della transenna marmorea della cappella Sistina insieme ad Andrea Bregno e Giovanni Dalmata.",
+    "innovations": []
+  },
+  {
+    "id": "moretto",
+    "name": "Moretto",
+    "aka": [
+      "Alessandro Bonvicino",
+      "Il Moretto"
+    ],
+    "birth": 1498,
+    "death": 1554,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore",
+    "bio": "Alessandro Bonvicino detto il Moretto (1498-1554), pittore bresciano animato da profonda religiosità. Guarda alla pittura veneziana innestando elementi eterogenei, probabilmente da un soggiorno a Padova e Venezia. Frequenta la confraternita del Santissimo Sacramento.",
+    "innovations": [
+      "Ecce homo ridotto a essenzialità scarna di grande impatto emotivo",
+      "Tavolozza ridotta dominata da grigi e toni cinerei",
+      "Luce laterale fredda come strumento di drammatizzazione devozionale"
+    ]
+  },
+  {
+    "id": "nanni-di-banco",
+    "name": "Nanni di Banco",
+    "aka": [
+      "Giovanni di Antonio di Banco"
+    ],
+    "birth": 1380,
+    "death": 1421,
+    "period_ids": [
+      "quattrocento",
+      "umanesimo-fiorentino"
+    ],
+    "role": "scultore",
+    "bio": "Scultore fiorentino (1380/85-1421), uno dei pionieri del linguaggio rinascimentale, figlio di uno scalpellino del cantiere di Santa Maria del Fiore. Attivo nei cantieri del duomo e di Orsanmichele. Realizza i Quattro Santi Coronati a Orsanmichele e la Madonna Assunta nel timpano della Porta della Mandorla.",
+    "innovations": [
+      "pioniere del linguaggio rinascimentale in scultura",
+      "gruppo statuario in nicchia gotica",
+      "primo gruppo scultoreo rinascimentale a Firenze",
+      "disposizione semicircolare nella nicchia"
+    ]
+  },
+  {
+    "id": "niccolo-tribolo",
+    "name": "Niccolo Tribolo",
+    "aka": [],
+    "birth": 1500,
+    "death": 1550,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "scultore/architetto",
+    "bio": "Scultore e architetto fiorentino (1500-1550), avvia la sistemazione del giardino di Boboli prima di Ammannati.",
+    "innovations": []
+  },
+  {
+    "id": "nicodemo",
+    "name": "Nicodemo",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "scultore",
+    "bio": "Uno dei tre artisti (con Ruggero e Roberto) della medesima bottega che realizzano la singolare serie di amboni abruzzesi a metà del XII secolo. Firma l'ambone della chiesa abbaziale benedettina di Santa Maria del Lago a Moscufo.",
+    "innovations": [
+      "Ambone in marmo e stucco dipinto con arco trilobato frontale di ispirazione islamica"
+    ]
+  },
+  {
+    "id": "nicola-pisano",
+    "name": "Nicola Pisano",
+    "aka": [
+      "Nicola de Apulia"
+    ],
+    "birth": 1220,
+    "death": 1284,
+    "period_ids": [
+      "arte-federiciana",
+      "gotico-italiano",
+      "romanico-italiano"
+    ],
+    "role": "scultore, architetto",
+    "bio": "Nato in Puglia tra il 1215 e il 1220, si formò nella corte sveva di Federico II. Si spostò in Toscana intorno al 1245, lavorando a Pisa, Siena e Perugia. La sua opera fonde la solidità della tradizione classica con la sensibilità gotica. Morì tra il 1278 e il 1284.",
+    "innovations": [
+      "pulpito con scene a rilievo classicheggiante",
+      "sintesi tra scultura classica romana e linguaggio gotico",
+      "rinnovamento della scultura italiana con recupero del classicismo",
+      "pulpito come organismo architettonico-plastico autonomo",
+      "fusione di modelli antichi e gotico"
+    ]
+  },
+  {
+    "id": "nicolas-bataille",
+    "name": "Nicolas Bataille",
+    "aka": [],
+    "birth": 1330,
+    "death": 1399,
+    "period_ids": [
+      "gotico-internazionale"
+    ],
+    "role": "produttore di arazzi",
+    "bio": "Produttore-mercante di arazzi parigino, a lungo considerato semplice artigiano ma in realtà simile a un moderno imprenditore. Commissiona disegni a Jean de Bondol e affida la tessitura a Robert Poisson. Realizza per Luigi I d'Angiò la celebre serie dell'Apocalisse per la cattedrale di Angers (1376-1382).",
+    "innovations": [
+      "organizzazione imprenditoriale della produzione tessile",
+      "grandiosità narrativa dell'arazzo tardogotico"
+    ]
+  },
+  {
+    "id": "nicolas-froment",
+    "name": "Nicolas Froment",
+    "aka": [],
+    "birth": 1430,
+    "death": 1483,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore formatosi nel nord della Francia a contatto con modelli fiamminghi, influenzato anche dall'arte toscana. Successore ufficiale di Barthélemy d'Eyck alla corte di Renato d'Angiò. La produzione certa si limita a due sole opere.",
+    "innovations": []
+  },
+  {
+    "id": "nicolo-dangelo",
+    "name": "Niccolò d'Angelo",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "scultore",
+    "bio": "Scultore romano attivo alla fine del XII secolo. Con Pietro Vassalletto realizza il candelabro pasquale della basilica di San Paolo fuori le Mura a Roma.",
+    "innovations": [
+      "reinterpretazione cristiana della colonna coclide romana con episodi della Passione"
+    ]
+  },
+  {
+    "id": "nicolo-tribolo",
+    "name": "Niccolò Tribolo",
+    "aka": [],
+    "birth": 1500,
+    "death": 1550,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "scultore, architetto",
+    "bio": "Scultore e architetto fiorentino, avvia la sistemazione dello spazio verde alle spalle di Palazzo Pitti, primo nucleo del giardino di Boboli.",
+    "innovations": []
+  },
+  {
+    "id": "oddo-di-metz",
+    "name": "Oddo di Metz",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "eta-carolingia"
+    ],
+    "role": "architetto",
+    "bio": "Architetto attivo alla corte carolingia, progettista della Cappella Palatina di Aquisgrana (794-805) su commissione di Carlo Magno sotto la supervisione di Eginardo.",
+    "innovations": [
+      "reinterpretazione dell'ottagonale ravennate in chiave carolingia",
+      "integrazione del Westwerk nella cappella palatina"
+    ]
+  },
+  {
+    "id": "palma-il-giovane",
+    "name": "Palma il Giovane",
+    "aka": [
+      "Jacopo Negretti"
+    ],
+    "birth": 1548,
+    "death": 1628,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale"
+    ],
+    "role": "pittore",
+    "bio": "Allievo di Tiziano, completa la Pietà lasciata incompiuta dal maestro morente nel 1576.",
+    "innovations": []
+  },
+  {
+    "id": "paolo-uccello",
+    "name": "Paolo Uccello",
+    "aka": [
+      "Paolo di Dono"
+    ],
+    "birth": 1397,
+    "death": 1475,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino dal carattere originale: il persistere di toni fiabeschi tardogotici si unisce a un insistente interesse per la prospettiva lineare, spesso portata a conseguenze estreme e irreali.",
+    "innovations": [
+      "doppio punto di fuga laterale",
+      "prospettiva come strumento di deformazione",
+      "visione a volo d'uccello nella battaglia"
+    ]
+  },
+  {
+    "id": "paolo-veronese",
+    "name": "Paolo Veronese",
+    "aka": [
+      "Paolo Caliari"
+    ],
+    "birth": 1528,
+    "death": 1588,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore nato a Verona, formatosi su Correggio, Parmigianino e Giulio Romano. Dal 1553 a Venezia, si impone rapidamente intercettando l'apertura della città alla Maniera. Maestro delle grandi composizioni festose, delle architetture all'antica, del colorismo arioso e luminoso.",
+    "innovations": [
+      "scenografia che simula il proseguimento dell'architettura reale",
+      "rappresentazione obliqua per scorci drammatici",
+      "colorismo arioso con vaste campiture ripetute",
+      "lusso e opulenza come linguaggio politico"
+    ]
+  },
+  {
+    "id": "parmigianino",
+    "name": "Parmigianino",
+    "aka": [
+      "Francesco Mazzola"
+    ],
+    "birth": 1503,
+    "death": 1540,
+    "period_ids": [
+      "manierismo",
+      "stile-clementino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore parmense formatosi con Correggio, del cui stile è il principale veicolo in direzione manierista. Attivo a Roma (fino al Sacco del 1527), poi a Bologna e infine a Parma. Muore a Casalmaggiore nel 1540, lasciando incompiuta la Madonna dal collo lungo.",
+    "innovations": [
+      "allungamento proporzionale delle figure",
+      "eleganza mondana e sofisticazione formale",
+      "distorsione spaziale",
+      "autoritratto allo specchio convesso come manifesto manierista"
+    ]
+  },
+  {
+    "id": "pedro-berruguete",
+    "name": "Pedro Berruguete",
+    "aka": [],
+    "birth": 1450,
+    "death": 1504,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "pittore",
+    "bio": "Pittore spagnolo attivo a Urbino intorno al 1475, dipinge per Federico da Montefeltro. Realizza ritratti di uomini illustri per lo studiolo e il Ritratto di Federico da Montefeltro e del figlio Guidobaldo. La sua formazione avviene a contatto con la pittura delle Fiandre.",
+    "innovations": []
+  },
+  {
+    "id": "perin-del-vaga",
+    "name": "Perin del Vaga",
+    "aka": [],
+    "birth": 1501,
+    "death": 1547,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "pittore",
+    "bio": "Collaboratore di Raffaello nelle Logge Vaticane. Dopo il Sacco di Roma trova fortuna a Genova.",
+    "innovations": []
+  },
+  {
+    "id": "petrus-christus",
+    "name": "Petrus Christus",
+    "aka": [],
+    "birth": 1410,
+    "death": 1475,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore formatosi probabilmente accanto a Jan van Eyck, forse compie un viaggio in Italia apprendendo la prospettiva lineare. Attivo a Bruges, è espressione del ritratto fiammingo e influenza l'ambiente artistico fiorentino attraverso opere giunte nelle collezioni medicee.",
+    "innovations": [
+      "atmosfera raccolta e intima nel ritratto",
+      "luce radente chiara e irreale",
+      "figura di tre quarti immobile e pensierosa"
+    ]
+  },
+  {
+    "id": "piero-della-francesca",
+    "name": "Piero della Francesca",
+    "aka": [
+      "Piero di Benedetto dei Franceschi"
+    ],
+    "birth": 1415,
+    "death": 1492,
+    "period_ids": [
+      "quattrocento",
+      "rinascimento-maturo"
+    ],
+    "role": "pittore, teorico",
+    "bio": "Pittore originario di Borgo Sansepolcro, si forma a Firenze nella bottega di Domenico Veneziano dal 1439. Lavora a Sansepolcro, Ferrara, Rimini, Arezzo, Roma e Urbino al servizio di Federico da Montefeltro. Autore di tre trattati matematico-geometrici: Trattato d'Abaco, De prospectiva pingendi e Libellus de quinque corporibus regularibus.",
+    "innovations": [
+      "luce zenitale di mezzogiorno che annulla le ombre",
+      "monumentalità geometrizzante delle figure",
+      "integrazione rigorosa tra matematica e pittura",
+      "codificazione della prospettiva in termini matematici",
+      "atmosfere silenziose e atemporali",
+      "tavolozza cromatica vivace e brillante",
+      "Ricerche matematico-prospettiche",
+      "Pittura di luce e spazio razionale"
+    ]
+  },
+  {
+    "id": "piero-di-cosimo",
+    "name": "Piero di Cosimo",
+    "aka": [
+      "Piero di Lorenzo di Chimenti"
+    ],
+    "birth": 1462,
+    "death": 1521,
+    "period_ids": [
+      "rinascimento-fiorentino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino, allievo di Cosimo Rosselli con cui va a Roma per la Sistina. Influenzato dall'arte fiamminga e da Leonardo, elabora una pittura di grande ricchezza cromatica con soggetti allegorico-mitologici fantasiosi.",
+    "innovations": [
+      "paesaggio atmosferico con prospettiva aerea di derivazione leonardesca",
+      "iconografie mitologiche fantastiche e visionarie",
+      "dettaglio naturalistico nella resa di creature fantastiche"
+    ]
+  },
+  {
+    "id": "pierre-de-montreuil",
+    "name": "Pierre de Montreuil",
+    "aka": [],
+    "birth": null,
+    "death": 1267,
+    "period_ids": [
+      "gotico-francese"
+    ],
+    "role": "architetto",
+    "bio": "Architetto gotico attivo a Parigi nella prima metà del XIII secolo. La tradizione ascrive a lui il progetto della Sainte-Chapelle (1241-1248), committente Luigi IX Capeto.",
+    "innovations": [
+      "cappella regia su due livelli con pareti di sole vetrate nella cappella superiore"
+    ]
+  },
+  {
+    "id": "pieter-paul-rubens",
+    "name": "Pieter Paul Rubens",
+    "aka": [],
+    "birth": 1577,
+    "death": 1640,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiammingo, realizzò nel 1603 una copia a carboncino e biacca della Battaglia di Anghiari di Leonardo.",
+    "innovations": []
+  },
+  {
+    "id": "pietro-cavallini",
+    "name": "Pietro Cavallini",
+    "aka": [
+      "Pietro de' Cerroni"
+    ],
+    "birth": 1240,
+    "death": 1330,
+    "period_ids": [
+      "duecento-italiano",
+      "trecento-italiano"
+    ],
+    "role": "pittore e mosaicista",
+    "bio": "Attivo tra Roma e Napoli, al servizio di Carlo II d'Angiò intorno al 1308, Cavallini pratica con maestria mosaico e pittura a fresco. È considerato uno dei protagonisti della rivoluzione artistica nell'Italia centrale tra fine XIII e inizio XIV secolo, anticipando alcune delle novità giottesche.",
+    "innovations": [
+      "costruzione volumetrica solida dei personaggi",
+      "gradazioni chiaroscurali che costruiscono le ombre",
+      "architetture come elementi di definizione spaziale",
+      "panneggio ampio e classico che segue le forme anatomiche",
+      "effetti cangianti e colori brillanti nei drappeggi"
+    ]
+  },
+  {
+    "id": "pietro-da-rimini",
+    "name": "Pietro da Rimini",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "pittore",
+    "bio": "Pittore riminese documentato, autore della Deposizione del Louvre. Probabilmente presente nel cantiere umbro della basilica di San Francesco ad Assisi nella bottega giottesca durante il secondo decennio del Trecento.",
+    "innovations": [
+      "patetismo intenso delle espressioni",
+      "cromatismo acceso",
+      "punzonatura"
+    ]
+  },
+  {
+    "id": "pietro-lorenzetti",
+    "name": "Pietro Lorenzetti",
+    "aka": [],
+    "birth": 1280,
+    "death": 1348,
+    "period_ids": [
+      "gotico-senese"
+    ],
+    "role": "pittore",
+    "bio": "Il più anziano dei fratelli Lorenzetti, allievo di Duccio di Buoninsegna. Attivo a Siena, Assisi, Arezzo e Firenze. Muore durante l'epidemia di peste nera tra il 1348 e il 1349. È tra i più 'fiorentini' fra i trecentisti senesi per l'interesse verso la volumetria giottesca.",
+    "innovations": [
+      "plasticità e massiccia volumetria delle figure",
+      "patetismo drammatico",
+      "trittico con visione prospettica unitaria su più scomparti",
+      "resa in scorcio di volte a crociera"
+    ]
+  },
+  {
+    "id": "pietro-perugino",
+    "name": "Pietro Perugino",
+    "aka": [
+      "Pietro di Cristoforo Vannucci",
+      "Pietro Vannucci"
+    ],
+    "birth": 1450,
+    "death": 1523,
+    "period_ids": [
+      "rinascimento-fiorentino",
+      "rinascimento-maturo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore umbro, nato a Città della Pieve, si forma a Firenze nella bottega di Verrocchio. Noto per la compostezza e l'armonia delle composizioni in vasti spazi aperti, con figure eleganti e tonalità solari. Coordina la decorazione della cappella Sistina per Sisto IV.",
+    "innovations": [
+      "figure silenziose e aggraziati in spazi aperti",
+      "composizione piramidale con sfondo paesaggistico",
+      "armonia cromatica con preferenza per i colori chiari",
+      "Arte delicata centrata sull'armonia",
+      "Colori luminosissimi",
+      "Impianto prospettico razionale"
+    ]
+  },
+  {
+    "id": "pietro-vassalletto",
+    "name": "Pietro Vassalletto",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "marmoraro, scultore",
+    "bio": "Marmoraro romano della famiglia Vassalletto, attivo tra XII e XIII secolo. Con Niccolò d'Angelo realizza il candelabro pasquale di San Paolo fuori le Mura; con Jacopo Vassalletto esegue il chiostro della stessa basilica.",
+    "innovations": [
+      "colonne tortili nel chiostro di San Paolo fuori le Mura",
+      "tarsia in opus sectile con pietre dure e paste vitree"
+    ]
+  },
+  {
+    "id": "pigello-portinari",
+    "name": "Pigello Portinari",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "committente",
+    "bio": "Responsabile della sede milanese del Banco Mediceo e consigliere di Francesco Sforza. Finanzia la costruzione della cappella Portinari accanto a Sant'Eustorgio a Milano e commissiona a Foppa la decorazione pittorica interna.",
+    "innovations": []
+  },
+  {
+    "id": "pinturicchio",
+    "name": "Pinturicchio",
+    "aka": [
+      "Bernardino di Betto"
+    ],
+    "birth": 1454,
+    "death": 1513,
+    "period_ids": [
+      "rinascimento-fiorentino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore perugino, si forma probabilmente in botteghe locali e inizia come miniatore. Lavora nella cappella Sistina con Perugino e poi diventa il pittore prediletto di Alessandro VI Borgia. Noto per il gusto decorativo, la resa grafica minuziosa e l'eclettico repertorio figurativo.",
+    "innovations": [
+      "sintesi tra gusto decorativo tardogotico spagnolo e rinascimentale",
+      "programmi iconografici esotici con motivi egizi e classici combinati",
+      "resa bidimensionale dei volumi con trattamento miniaturistico dei dettagli"
+    ]
+  },
+  {
+    "id": "pirro-ligorio",
+    "name": "Pirro Ligorio",
+    "aka": [],
+    "birth": 1512,
+    "death": 1583,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "architetto, pittore",
+    "bio": "Architetto e pittore napoletano, attivo principalmente a Roma. Progetta la Villa d'Este a Tivoli per il cardinale Ippolito d'Este e il Sacro bosco di Bomarzo per Pier Francesco Vicino Orsini.",
+    "innovations": [
+      "giardino come luogo di meraviglia e stupore",
+      "fontane meccaniche e automi",
+      "statue mostruose come decorazione allegorica"
+    ]
+  },
+  {
+    "id": "pisanello",
+    "name": "Pisanello",
+    "aka": [
+      "Antonio Pisano"
+    ],
+    "birth": 1395,
+    "death": 1455,
+    "period_ids": [
+      "gotico-internazionale",
+      "tardogotico"
+    ],
+    "role": "pittore, medaglista",
+    "bio": "Massimo esponente della pittura tardogotica in Italia, di origine pisana del padre ma veronese da parte di madre. Formato tra Verona e Venezia. Collaboratore e poi erede della bottega di Gentile da Fabriano. Lavora per i Gonzaga di Mantova e gli Este di Ferrara. Eccelle nei ritratti di profilo, nelle medaglie e nella rappresentazione degli animali.",
+    "innovations": [
+      "ritratto di profilo ispirato alle monete romane",
+      "realizzazione di medaglie di bronzo",
+      "descrizione naturalistica degli animali",
+      "cicli affrescati su temi arturiani"
+    ]
+  },
+  {
+    "id": "polidoro-da-caravaggio",
+    "name": "Polidoro da Caravaggio",
+    "aka": [
+      "Polidoro Caldara"
+    ],
+    "birth": 1500,
+    "death": 1543,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "pittore",
+    "bio": "Collaboratore di Raffaello nelle Logge Vaticane. Dopo il Sacco di Roma si trasferisce a Napoli e poi in Sicilia.",
+    "innovations": []
+  },
+  {
+    "id": "raffaellino-del-colle",
+    "name": "Raffaellino del Colle",
+    "aka": [],
+    "birth": 1495,
+    "death": 1566,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "pittore",
+    "bio": "Allievo di Raffaello, collabora alla Loggia di Psiche alla Farnesina.",
+    "innovations": []
+  },
+  {
+    "id": "raffaello-sanzio",
+    "name": "Raffaello Sanzio",
+    "aka": [
+      "Raffaello",
+      "Rafael"
+    ],
+    "birth": 1483,
+    "death": 1520,
+    "period_ids": [
+      "rinascimento-maturo"
+    ],
+    "role": "pittore, architetto",
+    "bio": "Nato a Urbino, si forma nella bottega del padre Giovanni Santi e poi con Perugino a Perugia. Soggiorna a Firenze (1504-1508) dove assorbe le lezioni di Leonardo e Michelangelo, poi a Roma (dal 1508) dove decora le Stanze Vaticane per Giulio II. Muore improvvisamente nel 1520.",
+    "innovations": [
+      "Sintesi tra grazia peruginesca e monumentalità fiorentina",
+      "Composizioni circolari e piramidali di grande armonia",
+      "Ritrattistica psicologica che supera la distanza fra soggetto e spettatore",
+      "Decorazione a grottesca nelle Logge Vaticane",
+      "Supervisione di una grande bottega con divisione del lavoro per grandi cicli decorativi"
+    ]
+  },
+  {
+    "id": "rainaldo-architetto-pisa",
+    "name": "Rainaldo",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "architetto",
+    "bio": "Architetto pisano attivo nella seconda metà dell'XI secolo. Dirige i lavori di completamento della cattedrale di Pisa, ampliandone il corpo longitudinale e progettando la facciata a salienti con logge aperte.",
+    "innovations": [
+      "facciata a salienti con logge su quattro ordini",
+      "reinterpretazione delle arcate cieche lombarde"
+    ]
+  },
+  {
+    "id": "renier-de-huy",
+    "name": "Renier de Huy",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "orafo e bronzista",
+    "bio": "Orafo e bronzista mosano attivo nella regione della Mosa (Belgio) agli inizi del XII secolo. Autore del fonte battesimale di Saint-Barthélemy a Liegi, interpreta con vigore plastico i modelli carolingi, ottoniani, romani e bizantini.",
+    "innovations": [
+      "Fonti battesimali a tutto tondo con figure a bassorilievo di grande eleganza classica"
+    ]
+  },
+  {
+    "id": "riquinus",
+    "name": "Riquinus",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "bronzista",
+    "bio": "Bronzista che, insieme a Weissmuth, realizza la porta bronzea di Magdeburgo (1152-1156). Si autorirrae su una lastra con un'iscrizione latina.",
+    "innovations": []
+  },
+  {
+    "id": "robert-campin",
+    "name": "Robert Campin",
+    "aka": [
+      "Maestro di Flémalle"
+    ],
+    "birth": 1375,
+    "death": 1444,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore originario della regione di confine tra Fiandre e Borgogna, attivo soprattutto a Tournai. Figura fondamentale nel passaggio dalla tradizione borgognona allo stile fiammingo quattrocentesco. Le sue opere erano in passato attribuite al cosiddetto Maestro di Flémalle.",
+    "innovations": [
+      "conciliazione tra linearismo tardogotico e resa volumetrica delle figure",
+      "elaborazione monumentale e plastica dei volumi",
+      "ambientazione realistica delle scene religiose in interni domestici",
+      "prospettiva empirica"
+    ]
+  },
+  {
+    "id": "rogier-van-der-weyden",
+    "name": "Rogier van der Weyden",
+    "aka": [
+      "Roger de la Pasture"
+    ],
+    "birth": 1400,
+    "death": 1464,
+    "period_ids": [
+      "quattrocento-fiammingo"
+    ],
+    "role": "pittore",
+    "bio": "Contemporaneo di Jan van Eyck, si forma a Tournai nella bottega di Robert Campin, poi prosegue a Bruxelles diventando l'artista prediletto dell'aristocrazia brabantina. Nel 1450 compie un viaggio in Italia dove conosce Beato Angelico e altre opere. Pittore fiammingo più apprezzato dalle corti italiane.",
+    "innovations": [
+      "linguaggio più dinamico con ritmo energico",
+      "composizioni complesse e drammaticamente intense",
+      "prevalenza della figura umana sull'ambiente",
+      "sintesi tra realismo fiammingo e tensione spirituale italiana"
+    ]
+  },
+  {
+    "id": "rosso-fiorentino",
+    "name": "Rosso Fiorentino",
+    "aka": [
+      "Giovanni Battista di Jacopo"
+    ],
+    "birth": 1495,
+    "death": 1540,
+    "period_ids": [
+      "manierismo",
+      "primo-manierismo-fiorentino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino formatosi con Andrea del Sarto, la personalità più audace del primo Manierismo toscano. Attivo a Firenze, Piombino, Volterra, Roma. Nel 1530 diviene pittore di corte di Francesco I di Valois a Fontainebleau, dove affresca con Primaticcio la Galleria di Francesco I.",
+    "innovations": [
+      "esiti stravolti e visionari",
+      "arcaismi che rimandano a Botticelli",
+      "luce fredda e violenta",
+      "tavolozza acida con inediti contrasti",
+      "influenza dell'arte nordica (Dürer)"
+    ]
+  },
+  {
+    "id": "ruggero-ii-altavilla",
+    "name": "Ruggero II d'Altavilla",
+    "aka": [
+      "Ruggero II"
+    ],
+    "birth": 1095,
+    "death": 1154,
+    "period_ids": [
+      "romanico-normanno-siciliano"
+    ],
+    "role": "committente regio",
+    "bio": "Primo re di Sicilia (1130-1154). Commissiona la Cappella Palatina di Palermo (1130-1140) e la cattedrale di Cefalù, promuovendo la straordinaria sintesi artistica normanna.",
+    "innovations": []
+  },
+  {
+    "id": "sandro-botticelli",
+    "name": "Sandro Botticelli",
+    "aka": [
+      "Alessandro Filipepi"
+    ],
+    "birth": 1445,
+    "death": 1510,
+    "period_ids": [
+      "rinascimento-fiorentino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore fiorentino, si forma con Filippo Lippi e poi si avvicina a Verrocchio. Diventa il principale interprete degli ideali neoplatonici della cerchia medicea. Nella fase matura, sotto l'influsso di Savonarola, abbandona la cultura profana per una spiritualità anticlassica.",
+    "innovations": [
+      "linearismo fluido come definizione del ritmo compositivo",
+      "iconografie neoplatoniche delle allegorie mitologiche",
+      "Venere pudica in versione rinascimentale",
+      "abbandono della prospettiva illusionistica nella fase savonaroliana"
+    ]
+  },
+  {
+    "id": "sebastiano-del-piombo",
+    "name": "Sebastiano del Piombo",
+    "aka": [
+      "Sebastiano Luciani"
+    ],
+    "birth": 1485,
+    "death": 1547,
+    "period_ids": [
+      "manierismo",
+      "stile-clementino"
+    ],
+    "role": "pittore",
+    "bio": "Pittore veneziano, formatosi probabilmente con Giovanni Bellini e poi nell'orbita di Giorgione. Chiamato a Roma nel 1511 dal banchiere Agostino Chigi, partecipa alla decorazione della Villa Farnesina con Raffaello. Dal 1513 stringe un sodalizio con Michelangelo, che contribuisce a molte sue opere con cartoni e studi. Il soprannome deriva dall'impiego come piombatore pontificio (guardasigilli delle bolle apostoliche).",
+    "innovations": [
+      "fusione del colorismo veneziano con la monumentalità michelangiolesca",
+      "pathos drammatico attraverso l'immobilità",
+      "ricerca del notturno e del tenebroso"
+    ]
+  },
+  {
+    "id": "sebastiano-serlio",
+    "name": "Sebastiano Serlio",
+    "aka": [],
+    "birth": 1475,
+    "death": 1554,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "architetto, teorico",
+    "bio": "Architetto e teorico bolognese, allievo di Baldassarre Peruzzi. Approda a Venezia tra il 1527 e il 1528, dove si dedica principalmente all'attività teorica. Pubblica i Sette libri dell'architettura (dal 1537), codificando il linguaggio architettonico manierista e diffondendo la serliana.",
+    "innovations": [
+      "codificazione della serliana",
+      "repertorio architettonico illustrato per uso pratico",
+      "diffusione internazionale del linguaggio manierista"
+    ]
+  },
+  {
+    "id": "simone-martini",
+    "name": "Simone Martini",
+    "aka": [],
+    "birth": 1284,
+    "death": 1344,
+    "period_ids": [
+      "gotico-internazionale",
+      "gotico-senese",
+      "tardogotico"
+    ],
+    "role": "pittore",
+    "bio": "Pittore senese, tra i primi artisti italiani a raggiungere Avignone (1335 circa), forse chiamato dal cardinale Jacopo Stefaneschi. In Francia accentua il tono profano e cortese del proprio stile con linea elegante e colori preziosi stesi a velature leggere e trasparenti. Conosce Francesco Petrarca presso la corte papale.",
+    "innovations": [
+      "linea elegante e flessuosa",
+      "colori preziosi a velature trasparenti",
+      "tono profano e cortese dell'arte sacra",
+      "influsso sulla pittura franco-italiana ad Avignone",
+      "raffinata eleganza lineare emancipata dal Bizantino",
+      "uso del colore azzurro oltremarino e pietre semidure",
+      "inserti in oro punzonato su forme in pastiglia",
+      "composizione ariosa con sfondo azzurro",
+      "scatola prospettica",
+      "linearismo dei panneggi quasi smaterializzato"
+    ]
+  },
+  {
+    "id": "stefano-da-verona",
+    "name": "Stefano da Verona",
+    "aka": [
+      "Stefano di Francia"
+    ],
+    "birth": 1379,
+    "death": 1438,
+    "period_ids": [
+      "gotico-internazionale",
+      "tardogotico"
+    ],
+    "role": "pittore",
+    "bio": "Pittore veronese, figlio del pittore francese Jean d'Arbois attivo a Pavia per i Visconti. Riceve la prima formazione a fianco di Michelino da Besozzo, con il quale condivide numerose consonanze stilistiche. Attivo a Verona in un contesto di cultura cortese consolidata fin dai tempi di Cangrande della Scala.",
+    "innovations": [
+      "declinazione veronese del gotico internazionale lombardo",
+      "estrema eleganza della linea e preziosità dei colori"
+    ]
+  },
+  {
+    "id": "suger-abate",
+    "name": "Suger",
+    "aka": [
+      "Abate Suger",
+      "Sugerio"
+    ],
+    "birth": 1081,
+    "death": 1151,
+    "period_ids": [
+      "gotico-francese"
+    ],
+    "role": "committente, abate",
+    "bio": "Abate di Saint-Denis dal 1122 al 1151, consigliere di Luigi VI Capeto. Promotore della ricostruzione gotica di Saint-Denis (1132-1144), padre teorico del Gotico e della teologia della luce.",
+    "innovations": [
+      "teorizzazione della luce come manifestazione del divino",
+      "sintesi degli elementi gotici in un programma architettonico coerente",
+      "deambulatorio con cappelle radiali",
+      "rosone sulla facciata"
+    ]
+  },
+  {
+    "id": "taddeo-gaddi",
+    "name": "Taddeo Gaddi",
+    "aka": [],
+    "birth": 1290,
+    "death": 1366,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "pittore",
+    "bio": "Attivo nella bottega di Giotto per ventiquattro anni, è uno dei più documentati seguaci del maestro fiorentino. Sviluppa una personale libertà compositiva nella disposizione delle figure in scenografie architettoniche. Lavora principalmente a Firenze.",
+    "innovations": [
+      "libertà compositiva nella resa degli spazi architettonici",
+      "scorcio prospettico dal basso",
+      "uso di proporzioni scalari tra primo piano e sfondo"
+    ]
+  },
+  {
+    "id": "tintoretto",
+    "name": "Tintoretto",
+    "aka": [
+      "Jacopo Robusti",
+      "Jacopo Comin"
+    ],
+    "birth": 1519,
+    "death": 1594,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore veneziano, figlio di un tintore di panni di seta. Formatosi vicino a Pordenone e al Manierismo centro-italiano. Dal 1539 a capo della propria bottega, ottiene commissioni dalle confraternite di San Marco e San Rocco. La sua pittura è caratterizzata da tensione drammatica, prospettiva obliqua, luci soprannaturali e grande spiritualità tormentata.",
+    "innovations": [
+      "prospettiva obliqua con punto di fuga fuori dal dipinto",
+      "fonti luminose soprannaturali",
+      "figure angeliche eteree",
+      "diagonali ascendenti e discendenti come struttura compositiva"
+    ]
+  },
+  {
+    "id": "tiziano-vecellio",
+    "name": "Tiziano Vecellio",
+    "aka": [
+      "Tiziano",
+      "Tizian"
+    ],
+    "birth": 1490,
+    "death": 1576,
+    "period_ids": [
+      "rinascimento-maturo-italia-settentrionale",
+      "scuola-veneziana"
+    ],
+    "role": "pittore",
+    "bio": "Nato a Pieve di Cadore (1490 circa-1576), entra nella bottega dei Bellini dove conosce Giorgione. Porta a maturazione la pittura tonale e diventa il massimo protagonista dell'arte veneziana e uno degli artisti più famosi d'Europa, al servizio degli Asburgo. Muore di peste nel 1576 mentre stava dipingendo la Pietà.",
+    "innovations": [
+      "Maturazione e superamento del tonalismo verso una pittura più plastica e dinamica",
+      "Composizione diagonale che rompe con la tradizione della pala veneziana centrata",
+      "Pennellata sempre più materica e sciolta nell'ultimo periodo, presaga del Barocco",
+      "Ritratto come documento psicologico e politico"
+    ]
+  },
+  {
+    "id": "tommaso-pisano",
+    "name": "Tommaso Pisano",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "architetto",
+    "bio": "Architetto pisano attivo nel XIV secolo. Completa la cella campanaria della torre di Pisa con le sette campane.",
+    "innovations": []
+  },
+  {
+    "id": "villard-de-honnecourt",
+    "name": "Villard de Honnecourt",
+    "aka": [],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-francese"
+    ],
+    "role": "architetto, disegnatore",
+    "bio": "Architetto itinerante francese attivo intorno alla metà del XIII secolo. Autore dell'Album de dessins et croquis (ca. 1230-1240), taccuino di disegni architettonici che documenta i suoi viaggi nei cantieri gotici.",
+    "innovations": [
+      "documentazione sistematica dei cantieri gotici",
+      "primo taccuino d'architetto della storia dell'arte medievale"
+    ]
+  },
+  {
+    "id": "vincenzo-foppa",
+    "name": "Vincenzo Foppa",
+    "aka": [],
+    "birth": 1427,
+    "death": 1515,
+    "period_ids": [
+      "quattrocento",
+      "umanesimo-lombardo"
+    ],
+    "role": "pittore",
+    "bio": "Pittore originario di Brescia, segna profondamente la cultura figurativa lombarda. Formatosi in ambito padovano, nel 1463 giunge a Milano presso la corte sforzesca. Precursore del filone naturalistico della pittura lombarda che culminerà con Leonardo e Bramante.",
+    "innovations": [
+      "prospettiva geometrica applicata in modo empirico anziché matematico",
+      "luce calda e vellutata che dà consistenza ai corpi",
+      "integrazione di citazioni classiche in un contesto decorativo lombardo",
+      "precursore del naturalismo lombardo"
+    ]
+  },
+  {
+    "id": "vincenzo-scamozzi",
+    "name": "Vincenzo Scamozzi",
+    "aka": [],
+    "birth": 1552,
+    "death": 1616,
+    "period_ids": [
+      "manierismo"
+    ],
+    "role": "architetto",
+    "bio": "Architetto vicentino, più importante degli immediati seguaci di Palladio. Completa il Teatro Olimpico di Vicenza e la Libreria Marciana di Venezia. Collabora alla costruzione delle Procuratie Nuove a piazza San Marco.",
+    "innovations": [
+      "scenografia illusionistica prospettica del Teatro Olimpico"
+    ]
+  },
+  {
+    "id": "vitale-da-bologna",
+    "name": "Vitale da Bologna",
+    "aka": [
+      "Vitale degli Equi"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "gotico-italiano"
+    ],
+    "role": "pittore",
+    "bio": "Il più noto esponente della scuola bolognese trecentesca, documentato dal 1330 al 1359. Mescola elementi del Gotico transalpino e scultorei francesi con la lezione prospettica giottesca.",
+    "innovations": [
+      "linearità delle figure di derivazione gotico-francese",
+      "cromatismo acceso",
+      "punzonatura decorativa",
+      "fusione tra modelli miniaturistici francesi e plasticismo giottesco"
+    ]
+  },
+  {
+    "id": "vitale-falier",
+    "name": "Vitale Falier",
+    "aka": [],
+    "birth": null,
+    "death": 1096,
+    "period_ids": [
+      "romanico-italiano"
+    ],
+    "role": "committente, doge",
+    "bio": "Doge di Venezia. Nel 1094 presiede alla consacrazione della cripta della basilica di San Marco e alla traslazione delle reliquie di san Marco, completando la fase costruttiva iniziata da Domenico Contarini.",
+    "innovations": []
+  },
+  {
+    "id": "vuolvinio",
+    "name": "Vuolvinio",
+    "aka": [
+      "Vuolvinius",
+      "magister phaber"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "eta-carolingia"
+    ],
+    "role": "orafo",
+    "bio": "Orafo attivo nella Milano carolingia dell'IX secolo, autore della fronte posteriore dell'altare di Sant'Ambrogio. Il suo nome è di probabile origine d'Oltralpe. Si raffigura in abiti monacali all'interno di un clipeo sul pannello dedicatorio.",
+    "innovations": [
+      "Fusione di riferimenti paleocristiani, byzantini e carolingi nella stessa opera",
+      "Grande plasticità nel modellato delle figure in lamina d'argento"
+    ]
+  },
+  {
+    "id": "weissmuth",
+    "name": "Weissmuth",
+    "aka": [
+      "Wedissmuth"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "bronzista",
+    "bio": "Bronzista che, insieme a Riquinus, realizza la porta bronzea di Magdeburgo (1152-1156). Si autorirrae su una lastra con un'iscrizione latina.",
+    "innovations": []
+  },
+  {
+    "id": "wiligelmo",
+    "name": "Wiligelmo",
+    "aka": [
+      "Wiligelmus"
+    ],
+    "birth": null,
+    "death": null,
+    "period_ids": [
+      "romanico"
+    ],
+    "role": "scultore",
+    "bio": "Scultore attivo nel cantiere del duomo di Modena tra la fine dell'XI e l'inizio del XII secolo. Compie un recupero consapevole di forme classiche e paleocristiane, elaborando un linguaggio nuovo che segna un passaggio fondamentale nello sviluppo della plastica medievale. Il suo stile influenza le cattedrali emiliane, Ferrara e Verona.",
+    "innovations": [
+      "Grande ricchezza plastica con figure emergenti dal fondo per piani",
+      "Realismo espressivo inaugurato in scultura romanica padana",
+      "Composizioni ispirate ai sarcofagi romani per cornici e ambientazione"
+    ]
+  },
+  {
+    "id": "andrea-mantegna",
+    "name": "Andrea Mantegna",
+    "aka": [
+      "Mantegna"
+    ],
+    "birth": 1431,
+    "death": 1506,
+    "period_ids": [
+      "quattrocento"
+    ],
+    "role": "pittore",
+    "bio": "Nato a Isola di Carturo (Padova) nel 1431, Andrea Mantegna si forma nella bottega di Francesco Squarcione a Padova, dove assorbe la cultura antiquaria e la prospettiva di Donatello. Dal 1460 è pittore di corte dei Gonzaga a Mantova, dove realizza il ciclo della Camera degli Sposi (1465-1474) con il celebre oculo illusionistico. È tra i primi in Italia a dominare la prospettiva sotto in su e a sviluppare l'incisione a bulino.",
+    "innovations": [
+      "Prospettiva sotto in su (di sotto in su) sistematizzata",
+      "Oculo illusionistico della Camera degli Sposi",
+      "Incisione a bulino di alta qualità",
+      "Integrazione dell'antico romano nella pittura rinascimentale",
+      "Paesaggi rocciosi di ascendenza padovana"
+    ]
+  }
+]

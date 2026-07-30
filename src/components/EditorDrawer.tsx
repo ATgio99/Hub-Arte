@@ -1,0 +1,618 @@
+// ============================================================================
+// EditorDrawer — finestra laterale a destra (o fullscreen) per modificare
+// un'opera in-place, con selettori intelligenti per ogni campo.
+//
+// Architettura a 2 livelli per evitare il bug del focus perso:
+//   - EditorDrawerOuter (con useData): legge ix, ma passa un SNAPSHOT
+//     immutabile a Inner. Snapshot viene ricreato SOLO quando il drawer
+//     è chiuso (così quando è aperto, anche se ix cambia, le props sono
+//     stabili e Inner non re-renderizza).
+//   - EditorDrawerInner (memo, NO useData): gestisce tutto lo state del form.
+//     Re-renderizza SOLO se cambiano workId, open, fullscreen, onClose.
+// ============================================================================
+import { useState, useEffect, useRef, useMemo, memo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { supabase } from "../lib/supabase";
+import { useAuth } from "../lib/auth";
+import { useData } from "../lib/store";
+import EntitySelector from "./EntitySelector";
+import type { Work, Artist, Period, Technique, Term, Dataset } from "../lib/types";
+
+const WORK_TYPES = ["architettura", "pittura", "scultura", "mosaico", "miniatura", "oreficeria", "urbanistica", "tavola", "tela", "polittico", "rilievo", "affresco", "altro"];
+
+function slugify(s: string): string {
+  return String(s).toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "").trim()
+    .replace(/\s+/g, "-").replace(/-+/g, "-")
+    .slice(0, 80);
+}
+
+// Campi del DB works (tutti gli altri vengono strippati prima dell'upsert)
+const WORK_DB_FIELDS = [
+  "id", "title", "artist_ids", "period_id", "date_text", "year_start", "year_end",
+  "type", "technique_ids", "materials", "location_city", "location_place",
+  "lat", "lon", "book", "chapter", "page", "source_file", "importance",
+  "summary", "analysis", "innovations", "term_ids",
+  "image_url", "image_thumb", "image_source", "modified_by",
+];
+
+function buildCleanPayload(work: Work, modifiedBy: string): Record<string, unknown> {
+  const payload: Record<string, unknown> = {};
+  for (const field of WORK_DB_FIELDS) {
+    if (field === "modified_by") {
+      payload[field] = modifiedBy;
+    } else if (field in work) {
+      payload[field] = (work as any)[field];
+    }
+  }
+  for (const k of ["date_text", "location_city", "location_place", "source_file", "summary", "analysis", "image_url", "image_thumb", "image_source", "period_id"]) {
+    if (payload[k] === "") payload[k] = null;
+  }
+  return payload;
+}
+
+// Snapshot del dataset passato a Inner (stabile mentre il drawer è aperto)
+interface DatasetSnapshot {
+  periods: Period[];
+  artists: Artist[];
+  techniques: Technique[];
+  terms: Term[];
+  works: Work[];  // per coordinate città
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+//  INNER — il vero drawer. NON ha useData(). Tutte le props sono stabili.
+// ═══════════════════════════════════════════════════════════════════════
+function EditorDrawerInner({
+  workId,
+  open,
+  onClose,
+  fullscreen,
+  userEmail,
+  dataset,
+  initialWork,
+}: {
+  workId: string | null;
+  open: boolean;
+  onClose: () => void;
+  fullscreen: boolean;
+  userEmail: string | null;
+  dataset: DatasetSnapshot;
+  initialWork: Work | null;
+}) {
+  const { user } = useAuth();
+  const [work, setWork] = useState<Work | null>(initialWork);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [ok, setOk] = useState(false);
+  const [isNew, setIsNew] = useState(!initialWork);
+  const [idField, setIdField] = useState(initialWork?.id || "");
+
+  // Entità create localmente
+  const [localArtists, setLocalArtists] = useState<Artist[]>([]);
+  const [localPeriods, setLocalPeriods] = useState<Period[]>([]);
+  const [localTechniques, setLocalTechniques] = useState<Technique[]>([]);
+  const [localTerms, setLocalTerms] = useState<Term[]>([]);
+
+  // Quando initialWork cambia (es. cambio opera), aggiorna work state
+  useEffect(() => {
+    if (initialWork) {
+      const clean = { ...initialWork };
+      delete (clean as any)._orig_image_url;
+      delete (clean as any)._orig_image_thumb;
+      setWork(clean);
+      setIsNew(false);
+      setIdField(clean.id);
+    } else if (workId) {
+      // Nuova opera
+      setWork({
+        id: workId, title: "", artist_ids: [], period_id: "", date_text: "",
+        year_start: null, year_end: null, type: "pittura", technique_ids: [],
+        materials: [], location_city: null, location_place: null, lat: null, lon: null,
+        book: 1, chapter: 0, page: 0, source_file: "", importance: 2,
+        summary: "", analysis: null, innovations: [], term_ids: [],
+        image_url: "", image_thumb: "", image_source: "commons",
+      });
+      setIsNew(true);
+      setIdField(workId);
+    } else {
+      setWork(null);
+    }
+    setError(null);
+    setOk(false);
+    setLocalArtists([]);
+    setLocalPeriods([]);
+    setLocalTechniques([]);
+    setLocalTerms([]);
+  }, [initialWork, workId]);
+
+  // ESC per chiudere
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+
+  // Mappa città → coordinate (calcolata dal dataset snapshot)
+  const cityCoords = useMemo(() => {
+    const m = new Map<string, { lat: number; lon: number }>();
+    for (const w of dataset.works) {
+      if (w.location_city && w.lat != null && w.lon != null) {
+        if (!m.has(w.location_city)) m.set(w.location_city, { lat: w.lat, lon: w.lon });
+      }
+    }
+    return m;
+  }, [dataset]);
+
+  // Opzioni selettori (dataset + entità locali)
+  const allArtists = useMemo(() => [...dataset.artists, ...localArtists], [dataset.artists, localArtists]);
+  const allPeriods = useMemo(() => [...dataset.periods, ...localPeriods], [dataset.periods, localPeriods]);
+  const allTechniques = useMemo(() => [...dataset.techniques, ...localTechniques], [dataset.techniques, localTechniques]);
+  const allTerms = useMemo(() => [...dataset.terms, ...localTerms], [dataset.terms, localTerms]);
+  const allCities = useMemo(() => {
+    const s = new Set<string>();
+    for (const w of dataset.works) if (w.location_city) s.add(w.location_city);
+    return [...s].sort();
+  }, [dataset.works]);
+
+  if (!open || !work) return null;
+
+  const set = <K extends keyof Work>(key: K, value: Work[K]) => {
+    setWork({ ...work, [key]: value });
+    setOk(false);
+  };
+
+  const setCity = (city: string | null) => {
+    const coords = city ? cityCoords.get(city) : null;
+    setWork({
+      ...work,
+      location_city: city,
+      lat: coords ? coords.lat : work.lat,
+      lon: coords ? coords.lon : work.lon,
+    });
+    setOk(false);
+  };
+
+  const notifyAppChanged = () => {
+    window.dispatchEvent(new Event("hubart-works-changed"));
+    try {
+      const bc = new BroadcastChannel("hubart-admin");
+      bc.postMessage({ type: "changed", ts: Date.now() });
+      bc.close();
+    } catch {}
+  };
+
+  const createArtist = async (name: string): Promise<string> => {
+    const id = slugify(name);
+    const newArtist: Artist = { id, name, aka: [], birth: null, death: null, period_ids: [], role: "", bio: "", innovations: [] };
+    const { error } = await supabase.from("artists").upsert({ ...newArtist, modified_by: userEmail }, { onConflict: "id" });
+    if (error) throw new Error(error.message);
+    setLocalArtists(prev => [...prev, newArtist]);
+    notifyAppChanged();
+    return id;
+  };
+
+  const createPeriod = async (name: string): Promise<string> => {
+    const id = slugify(name);
+    const newPeriod: Period = { id, name, type: "epoca", year_start: 1400, year_end: 1500, regions: [], summary: "", historical_context: "", parent_id: null, key_innovations: [] };
+    const { error } = await supabase.from("periods").upsert({ ...newPeriod, modified_by: userEmail }, { onConflict: "id" });
+    if (error) throw new Error(error.message);
+    setLocalPeriods(prev => [...prev, newPeriod]);
+    notifyAppChanged();
+    return id;
+  };
+
+  const createTechnique = async (name: string): Promise<string> => {
+    const id = slugify(name);
+    const newTech: Technique = { id, name, definition: "", introduced_by: null, first_period_id: null, evolution: "", category: "altra" };
+    const { error } = await supabase.from("techniques").upsert({ ...newTech, modified_by: userEmail }, { onConflict: "id" });
+    if (error) throw new Error(error.message);
+    setLocalTechniques(prev => [...prev, newTech]);
+    notifyAppChanged();
+    return id;
+  };
+
+  const createTerm = async (name: string): Promise<string> => {
+    const id = slugify(name);
+    const newTerm: Term = { id, term: name, definition: "", category: "generale", period_ids: [], is_archetype: false };
+    const { error } = await supabase.from("terms").upsert({ ...newTerm, modified_by: userEmail }, { onConflict: "id" });
+    if (error) throw new Error(error.message);
+    setLocalTerms(prev => [...prev, newTerm]);
+    notifyAppChanged();
+    return id;
+  };
+
+  const save = async () => {
+    if (!work || !userEmail) return;
+    setError(null);
+    setOk(false);
+    if (!work.title.trim()) { setError("Il titolo è obbligatorio."); return; }
+
+    let finalId = isNew ? (idField.trim() || slugify(work.title)) : work.id;
+    if (!finalId) { setError("ID non valido."); return; }
+
+    const payload = buildCleanPayload({ ...work, id: finalId, title: work.title.trim() }, userEmail);
+
+    setSaving(true);
+    try {
+      const { error } = await supabase.from("works").upsert(payload, { onConflict: "id" });
+      if (error) throw error;
+      setOk(true);
+      notifyAppChanged();
+      setWork({ ...work, id: finalId, title: work.title.trim() });
+      setIsNew(false);
+      setIdField(finalId);
+    } catch (e: any) {
+      setError(`Errore salvataggio: ${e.message || "errore sconosciuto"}`);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const del = async () => {
+    if (!work || isNew) return;
+    const confirmed = window.confirm(
+      `⚠️ CONFERMA ELIMINAZIONE\n\n` +
+      `Stai per eliminare definitivamente dal database:\n\n` +
+      `Titolo: ${work.title}\n` +
+      `ID: ${work.id}\n\n` +
+      `Questa azione è irreversibile.\n` +
+      `Se l'opera esiste anche nel file JSON statico, riapparirà con i valori originali.\n\n` +
+      `Vuoi procedere?`
+    );
+    if (!confirmed) return;
+    setSaving(true);
+    setError(null);
+    try {
+      const { error } = await supabase.from("works").delete().eq("id", work.id);
+      if (error) throw error;
+      notifyAppChanged();
+      onClose();
+    } catch (e: any) {
+      setError(`Errore eliminazione: ${e.message || "errore sconosciuto"}`);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  // Stili
+  const labelStyle: React.CSSProperties = {
+    display: "block", fontSize: 11, fontWeight: 600,
+    color: "var(--ink-dim)", marginBottom: 4, textTransform: "uppercase",
+    letterSpacing: "0.04em",
+  };
+  const inputStyle: React.CSSProperties = {
+    width: "100%", padding: "8px 10px", border: "1px solid var(--line)",
+    borderRadius: 6, background: "var(--bg)", color: "var(--ink)",
+    fontSize: 13, fontFamily: "inherit",
+  };
+  const Field = ({ label, children }: { label: string; children: React.ReactNode }) => (
+    <div>
+      <label style={labelStyle}>{label}</label>
+      {children}
+    </div>
+  );
+
+  const bodyPad = fullscreen ? "24px max(20px, calc((100vw - 720px) / 2)) 100px" : "16px 20px 80px";
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <>
+          {!fullscreen && (
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }} onClick={onClose}
+              style={{ position: "fixed", inset: 0, zIndex: 900, background: "rgba(0,0,0,0.35)", backdropFilter: "blur(2px)" }}
+            />
+          )}
+          <motion.aside
+            initial={fullscreen ? { opacity: 0, y: 20 } : { x: "100%" }}
+            animate={fullscreen ? { opacity: 1, y: 0 } : { x: 0 }}
+            exit={fullscreen ? { opacity: 0, y: 20 } : { x: "100%" }}
+            transition={fullscreen ? { duration: 0.25 } : { type: "spring", damping: 28, stiffness: 320 }}
+            style={fullscreen ? {
+              position: "fixed", inset: 0, zIndex: 910, background: "var(--bg)",
+              overflowY: "auto", display: "flex", flexDirection: "column",
+            } : {
+              position: "fixed", top: 0, right: 0, bottom: 0, zIndex: 910,
+              width: "min(540px, 92vw)", background: "var(--bg)",
+              borderLeft: "1px solid var(--line)", overflowY: "auto",
+              boxShadow: "-8px 0 30px rgba(0,0,0,0.12)",
+              display: "flex", flexDirection: "column",
+            }}
+          >
+            {/* Header */}
+            <div style={{
+              padding: fullscreen ? "16px max(20px, calc((100vw - 720px) / 2)) 14px" : "16px 20px 14px",
+              borderBottom: "1px solid var(--line)",
+              position: "sticky", top: 0, background: "var(--bg)", zIndex: 1,
+              display: "flex", justifyContent: "space-between", alignItems: "center",
+            }}>
+              <div>
+                <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>
+                  {isNew ? "Nuova opera" : "Modifica opera"} · Admin
+                </div>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 16, marginTop: 2 }}>
+                  {work.title || "(senza titolo)"}
+                </div>
+              </div>
+              <button onClick={onClose} style={{ background: "none", border: 0, cursor: "pointer", color: "var(--ink-dim)", fontSize: 22, lineHeight: 1, padding: "4px 8px", borderRadius: 6 }} aria-label="Chiudi">✕</button>
+            </div>
+
+            {/* Body */}
+            <div style={{ padding: bodyPad, display: "flex", flexDirection: "column", gap: 14 }}>
+              {error && (
+                <div style={{ padding: "10px 12px", background: "rgba(168,72,63,0.08)", color: "#a8483f", borderRadius: 6, fontSize: 13 }}>⚠️ {error}</div>
+              )}
+              {ok && (
+                <div style={{ padding: "10px 12px", background: "rgba(63,138,79,0.08)", color: "#3f8a4f", borderRadius: 6, fontSize: 13 }}>✓ Opera salvata nel database</div>
+              )}
+
+              <Field label="ID (slug)">
+                <input type="text" value={idField}
+                  onChange={(e) => { setIdField(e.target.value); if (isNew) setWork({ ...work, id: e.target.value }); }}
+                  disabled={!isNew}
+                  style={{ ...inputStyle, opacity: isNew ? 1 : 0.6, fontFamily: "ui-monospace, monospace", fontSize: 12 }}
+                />
+              </Field>
+
+              <Field label="Titolo *">
+                <input type="text" value={work.title} onChange={(e) => set("title", e.target.value)} style={inputStyle} placeholder="es. Volta della Cappella Sistina" />
+              </Field>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                <Field label="Tipo">
+                  <select value={work.type} onChange={(e) => set("type", e.target.value as Work["type"])} style={inputStyle}>
+                    {WORK_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
+                  </select>
+                </Field>
+                <Field label="Importanza">
+                  <select value={String(work.importance)} onChange={(e) => set("importance", Number(e.target.value) as Work["importance"])} style={inputStyle}>
+                    <option value="1">1 · Minore</option>
+                    <option value="2">2 · Importante</option>
+                    <option value="3">3 · Capitale</option>
+                  </select>
+                </Field>
+              </div>
+
+              <Field label="Periodo">
+                <EntitySelector
+                  mode="single"
+                  options={allPeriods.map(p => ({ id: p.id, label: p.name, subtitle: `${p.year_start}–${p.year_end}` }))}
+                  selected={work.period_id || null}
+                  onChange={(v) => set("period_id", (v as string) || "")}
+                  placeholder="Cerca periodo…"
+                  allowCreate={true}
+                  onCreate={createPeriod}
+                  createLabel="Nuovo periodo"
+                />
+              </Field>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 2fr", gap: 12 }}>
+                <Field label="Anno inizio">
+                  <input type="number" value={work.year_start ?? ""} onChange={(e) => set("year_start", e.target.value ? Number(e.target.value) : null)} style={inputStyle} placeholder="-300" />
+                </Field>
+                <Field label="Anno fine">
+                  <input type="number" value={work.year_end ?? ""} onChange={(e) => set("year_end", e.target.value ? Number(e.target.value) : null)} style={inputStyle} />
+                </Field>
+                <Field label="Datazione testuale">
+                  <input type="text" value={work.date_text} onChange={(e) => set("date_text", e.target.value)} style={inputStyle} placeholder="1485-1490" />
+                </Field>
+              </div>
+
+              <Field label="Artisti">
+                <EntitySelector
+                  mode="multi"
+                  options={allArtists.map(a => ({ id: a.id, label: a.name, subtitle: a.role || undefined }))}
+                  selected={work.artist_ids}
+                  onChange={(v) => set("artist_ids", (v as string[]) || [])}
+                  placeholder="Cerca artista…"
+                  allowCreate={true}
+                  onCreate={createArtist}
+                  createLabel="Nuovo artista"
+                />
+              </Field>
+
+              <Field label="Città (auto-coordinate)">
+                <input
+                  type="text"
+                  value={work.location_city || ""}
+                  onChange={(e) => setCity(e.target.value || null)}
+                  list="cities-list"
+                  placeholder="Inizia a digitare… (es. Firenze)"
+                  style={inputStyle}
+                />
+                <datalist id="cities-list">
+                  {allCities.map(c => <option key={c} value={c} />)}
+                </datalist>
+                {work.location_city && cityCoords.has(work.location_city) && (
+                  <div style={{ fontSize: 11, color: "var(--gold-deep)", marginTop: 4 }}>
+                    ✓ Coordinate auto-compilate: {cityCoords.get(work.location_city)?.lat}, {cityCoords.get(work.location_city)?.lon}
+                  </div>
+                )}
+              </Field>
+
+              <Field label="Luogo / edificio">
+                <input type="text" value={work.location_place || ""} onChange={(e) => set("location_place", e.target.value || null)} style={inputStyle} placeholder="Basilica di San Pietro" />
+              </Field>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                <Field label="Latitudine">
+                  <input type="number" step="0.0001" value={work.lat ?? ""} onChange={(e) => set("lat", e.target.value ? Number(e.target.value) : null)} style={inputStyle} />
+                </Field>
+                <Field label="Longitudine">
+                  <input type="number" step="0.0001" value={work.lon ?? ""} onChange={(e) => set("lon", e.target.value ? Number(e.target.value) : null)} style={inputStyle} />
+                </Field>
+              </div>
+
+              <Field label="Tecniche">
+                <EntitySelector
+                  mode="multi"
+                  options={allTechniques.map(t => ({ id: t.id, label: t.name, subtitle: t.category }))}
+                  selected={work.technique_ids}
+                  onChange={(v) => set("technique_ids", (v as string[]) || [])}
+                  placeholder="Cerca tecnica…"
+                  allowCreate={true}
+                  onCreate={createTechnique}
+                  createLabel="Nuova tecnica"
+                />
+              </Field>
+
+              <Field label="Materiali (separati da virgola)">
+                <input type="text" value={(work.materials || []).join(", ")} onChange={(e) => set("materials", e.target.value.split(",").map(s => s.trim()).filter(Boolean))} style={inputStyle} placeholder="marmo, bronzo…" />
+              </Field>
+
+              <Field label="Termini glossario">
+                <EntitySelector
+                  mode="multi"
+                  options={allTerms.map(t => ({ id: t.id, label: t.term, subtitle: t.category }))}
+                  selected={work.term_ids}
+                  onChange={(v) => set("term_ids", (v as string[]) || [])}
+                  placeholder="Cerca termine…"
+                  allowCreate={true}
+                  onCreate={createTerm}
+                  createLabel="Nuovo termine"
+                />
+              </Field>
+
+              <Field label="Sintesi">
+                <textarea value={work.summary} onChange={(e) => set("summary", e.target.value)} style={{ ...inputStyle, minHeight: 70, resize: "vertical" }} placeholder="Breve descrizione…" />
+              </Field>
+              <Field label="Analisi">
+                <textarea value={work.analysis || ""} onChange={(e) => set("analysis", e.target.value || null)} style={{ ...inputStyle, minHeight: 90, resize: "vertical" }} placeholder="Analisi critica…" />
+              </Field>
+              <Field label="Innovazioni (una per riga)">
+                <textarea value={(work.innovations || []).join("\n")} onChange={(e) => set("innovations", e.target.value.split("\n").map(s => s.trim()).filter(Boolean))} style={{ ...inputStyle, minHeight: 60, resize: "vertical" }} />
+              </Field>
+
+              <Field label="URL immagine principale">
+                <input type="url" value={work.image_url || ""} onChange={(e) => set("image_url", e.target.value)} style={inputStyle} placeholder="https://…" />
+              </Field>
+              <Field label="URL thumbnail">
+                <input type="url" value={work.image_thumb || ""} onChange={(e) => set("image_thumb", e.target.value)} style={inputStyle} />
+              </Field>
+              <Field label="Fonte immagine">
+                <input type="text" value={work.image_source || ""} onChange={(e) => set("image_source", e.target.value)} style={inputStyle} placeholder="commons" />
+              </Field>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
+                <Field label="Libro">
+                  <select value={String(work.book || "")} onChange={(e) => set("book", Number(e.target.value) as Work["book"])} style={inputStyle}>
+                    <option value="1">1 · Tardoantico → Gotico</option>
+                    <option value="2">2 · Tardogotico → Controriforma</option>
+                  </select>
+                </Field>
+                <Field label="Capitolo">
+                  <input type="number" value={work.chapter || 0} onChange={(e) => set("chapter", Number(e.target.value))} style={inputStyle} />
+                </Field>
+                <Field label="Pagina">
+                  <input type="number" value={work.page || 0} onChange={(e) => set("page", Number(e.target.value))} style={inputStyle} />
+                </Field>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div style={{
+              position: "sticky", bottom: 0, left: 0, right: 0,
+              padding: fullscreen ? "12px max(20px, calc((100vw - 720px) / 2))" : "12px 20px",
+              borderTop: "1px solid var(--line)", background: "var(--bg)",
+              display: "flex", gap: 8, justifyContent: "flex-end",
+              boxShadow: "0 -4px 12px rgba(0,0,0,0.04)",
+            }}>
+              {!isNew && (
+                <button className="btn ghost sm" onClick={del} disabled={saving}
+                  style={{ marginRight: "auto", color: "#a8483f", borderColor: "#a8483f" }}>
+                  🗑️ Elimina
+                </button>
+              )}
+              <button className="btn ghost sm" onClick={onClose} disabled={saving}>Annulla</button>
+              <button className="btn gold sm" onClick={save} disabled={saving || !work.title.trim()}>
+                {saving ? "Salvataggio…" : "💾 Salva nel database"}
+              </button>
+            </div>
+          </motion.aside>
+        </>
+      )}
+    </AnimatePresence>
+  );
+}
+
+// Memo: Inner re-renderizza SOLO se cambiano queste props (tutte stabili
+// quando il drawer è aperto perché passato dal parent Outer che congela
+// initialWork e dataset).
+const EditorDrawerInnerMemo = memo(EditorDrawerInner, (prev, next) =>
+  prev.workId === next.workId &&
+  prev.open === next.open &&
+  prev.fullscreen === next.fullscreen &&
+  prev.onClose === next.onClose &&
+  prev.userEmail === next.userEmail &&
+  prev.initialWork === next.initialWork &&
+  prev.dataset === next.dataset
+);
+
+// ═══════════════════════════════════════════════════════════════════════
+//  OUTER — legge ix dal context, ma congel initialWork e dataset quando
+//  il drawer è APERTO. Solo quando si CHIUDE, ricarica dal dataset.
+//  Così Inner NON riceve mai props nuove durante la digitazione.
+// ═══════════════════════════════════════════════════════════════════════
+export default function EditorDrawer({
+  workId,
+  open,
+  onClose,
+  fullscreen = false,
+}: {
+  workId: string | null;
+  open: boolean;
+  onClose: () => void;
+  fullscreen?: boolean;
+}) {
+  const ix = useData();
+  const { user } = useAuth();
+
+  // Congela initialWork e dataset quando il drawer è aperto.
+  // Quando si chiude (open=false), resetto per la prossima apertura.
+  const [frozenWork, setFrozenWork] = useState<Work | null>(null);
+  const [frozenDataset, setFrozenDataset] = useState<DatasetSnapshot | null>(null);
+
+  useEffect(() => {
+    if (open) {
+      // Apertura: congela solo se non già congelato (evita di sovrascrivere durante la digitazione)
+      if (!frozenWork) {
+        const w = workId ? ix.workById.get(workId) : null;
+        setFrozenWork(w || null);
+      }
+      if (!frozenDataset) {
+        setFrozenDataset({
+          periods: ix.ds.periods,
+          artists: ix.ds.artists,
+          techniques: ix.ds.techniques,
+          terms: ix.ds.terms,
+          works: ix.ds.works,
+        });
+      }
+    } else {
+      // Chiusura: reset congelamento
+      if (frozenWork !== null) setFrozenWork(null);
+      if (frozenDataset !== null) setFrozenDataset(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, workId, ix]);
+
+  // Se il drawer è chiuso o non ho ancora congelato, non renderizzare Inner
+  if (!open || !frozenDataset) return null;
+
+  return (
+    <EditorDrawerInnerMemo
+      workId={workId}
+      open={open}
+      onClose={onClose}
+      fullscreen={fullscreen}
+      userEmail={user?.email || null}
+      dataset={frozenDataset}
+      initialWork={frozenWork}
+    />
+  );
+}

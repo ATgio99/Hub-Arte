@@ -1,0 +1,24 @@
+# Netlify headers per HUB Art PWA
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Cache lungo per asset statici (hash nel filename)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache medio per dati JSON (possono cambiare tra versioni)
+/data/*
+  Cache-Control: public, max-age=3600
+
+# Cache medio per icone
+/*.png
+  Cache-Control: public, max-age=86400
+
+# Manifest e HTML sempre freschi
+/manifest.json
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
