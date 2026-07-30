@@ -540,6 +540,7 @@ export default function AdminDatabase() {
           rowId={editingId}
           open={drawerOpen}
           onClose={closeDrawer}
+          isNew={!!newId}
         />
       )}
 
@@ -829,6 +830,7 @@ function GenericEditorDrawerInner({
   onClose,
   userEmail,
   initialRow,
+  isNew,
 }: {
   table: Tab;
   rowId: string;
@@ -836,6 +838,7 @@ function GenericEditorDrawerInner({
   onClose: () => void;
   userEmail: string | null;
   initialRow: any | null;
+  isNew: boolean;
 }) {
   const [row, setRow] = useState<any>(initialRow ? { ...initialRow } : { id: rowId });
   const [saving, setSaving] = useState(false);
@@ -873,6 +876,32 @@ function GenericEditorDrawerInner({
         payload[k] = v;
       }
       payload.modified_by = userEmail;
+
+      // Validazione minima per nuove righe
+      if (isNew) {
+        if (!payload.id || String(payload.id).trim() === "") {
+          throw new Error("L'ID è obbligatorio per creare una nuova riga.");
+        }
+        if (table === "techniques" && (!payload.name || String(payload.name).trim() === "")) {
+          throw new Error("Il nome della tecnica è obbligatorio.");
+        }
+        if (table === "works" && (!payload.title || String(payload.title).trim() === "")) {
+          throw new Error("Il titolo dell'opera è obbligatorio.");
+        }
+        if (table === "artists" && (!payload.name || String(payload.name).trim() === "")) {
+          throw new Error("Il nome dell'artista è obbligatorio.");
+        }
+        if (table === "periods" && (!payload.name || String(payload.name).trim() === "")) {
+          throw new Error("Il nome del periodo è obbligatorio.");
+        }
+        if (table === "terms" && (!payload.term || String(payload.term).trim() === "")) {
+          throw new Error("Il termine è obbligatorio.");
+        }
+        if (table === "events" && (!payload.title || String(payload.title).trim() === "")) {
+          throw new Error("Il titolo dell'evento è obbligatorio.");
+        }
+      }
+
       const { error } = await supabase.from(table).upsert(payload, { onConflict: "id" });
       if (error) throw error;
       setOk(true);
@@ -949,10 +978,12 @@ function GenericEditorDrawerInner({
         }}>
           <div>
             <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>
-              {table} · Admin
+              {table} · {isNew ? "NUOVA RIGA" : "Admin"}
             </div>
             <div style={{ fontFamily: "var(--font-display)", fontSize: 16, marginTop: 2 }}>
-              {row.name || row.term || row.title || row.id}
+              {isNew
+                ? `Nuova riga in ${table}`
+                : (row.name || row.term || row.title || row.id)}
             </div>
           </div>
           <button
@@ -981,6 +1012,18 @@ function GenericEditorDrawerInner({
             </div>
           )}
 
+          {/* Banner "NUOVA RIGA" se isNew */}
+          {isNew && (
+            <div style={{
+              padding: "10px 12px", background: "rgba(212,160,23,0.1)",
+              color: "var(--gold-deep)", borderRadius: 6, fontSize: 13,
+              border: "1px solid rgba(212,160,23,0.3)",
+            }}>
+              ✨ Stai creando una nuova riga in <b>{table}</b>.
+              Compila almeno i campi obbligatori (ID + nome/titolo) e premi Salva.
+            </div>
+          )}
+
           {fields.map((field) => {
             const value = row[field];
             const isArray = Array.isArray(value);
@@ -988,14 +1031,70 @@ function GenericEditorDrawerInner({
             const isNumber = typeof value === "number";
             const isNull = value == null;
 
+            // Campi che dovrebbero essere textarea (testo lungo)
+            const LONG_TEXT_FIELDS = ["definition", "evolution", "analysis", "bio",
+              "summary", "description", "historical_context", "date_text"];
+            const isLongText = LONG_TEXT_FIELDS.includes(field);
+
+            // Campi con select predefiniti
+            const SELECT_OPTIONS: Record<string, string[]> = {
+              "techniques.category": ["pittorica", "scultorea", "architettonica", "musiva", "altra"],
+              "works.type": ["architettura", "pittura", "scultura", "mosaico", "miniatura",
+                "oreficeria", "urbanistica", "tela", "tavola", "polittico", "rilievo",
+                "affresco", "altro"],
+              "works.book": ["1", "2"],
+              "works.importance": ["1", "2", "3"],
+              "works.image_source": ["commons", "wikiart", "museo", "altro"],
+              "periods.type": ["epoca", "corrente", "popolo"],
+              "terms.category": ["architettura", "pittura", "scultura", "iconografia", "generale"],
+              "events.kind": ["politico", "religioso", "culturale", "tecnologico"],
+              "connections.kind": ["influenza", "contaminazione", "rielaborazione",
+                "evoluzione", "contrasto", "committenza", "maestro-allievo"],
+              "connections.source_type": ["period", "artist", "work", "technique", "event", "term"],
+              "connections.target_type": ["period", "artist", "work", "technique", "event", "term"],
+            };
+            const selectKey = `${table}.${field}`;
+            const selectOpts = SELECT_OPTIONS[selectKey];
+
+            // Campi in sola lettura (ID per righe esistenti)
+            const isReadOnlyId = field === "id" && !isNew;
+
             return (
               <div key={field}>
-                <label style={labelStyle}>{field}</label>
-                {isArray ? (
+                <label style={labelStyle}>
+                  {field}
+                  {field === "id" && isNew && <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>}
+                  {(field === "name" || field === "title" || field === "term") && isNew && (
+                    <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>
+                  )}
+                </label>
+                {isReadOnlyId ? (
+                  <input type="text" value={String(value ?? "")} disabled style={{ ...inputStyle, opacity: 0.6, cursor: "not-allowed" }} />
+                ) : selectOpts ? (
+                  <select
+                    value={String(value ?? "")}
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      setRow({ ...row, [field]: isNumber ? Number(v) : v });
+                    }}
+                    style={inputStyle}
+                  >
+                    {selectOpts.map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                ) : isArray ? (
                   <textarea
                     value={value.join("\n")}
                     onChange={(e) => setRow({ ...row, [field]: e.target.value.split("\n").map(s => s.trim()).filter(Boolean) })}
                     style={{ ...inputStyle, minHeight: 60, resize: "vertical", fontFamily: "ui-monospace, monospace", fontSize: 12 }}
+                    placeholder="Un valore per riga"
+                  />
+                ) : isLongText ? (
+                  <textarea
+                    value={String(value ?? "")}
+                    onChange={(e) => setRow({ ...row, [field]: e.target.value || null })}
+                    style={{ ...inputStyle, minHeight: 80, resize: "vertical" }}
                   />
                 ) : isBoolean ? (
                   <select value={String(value)} onChange={(e) => setRow({ ...row, [field]: e.target.value === "true" })} style={inputStyle}>
@@ -1021,19 +1120,21 @@ function GenericEditorDrawerInner({
           background: "var(--bg)", display: "flex", gap: 8, justifyContent: "flex-end",
           boxShadow: "0 -4px 12px rgba(0,0,0,0.04)",
         }}>
-          <button
-            className="btn ghost sm"
-            onClick={del}
-            disabled={saving}
-            style={{ marginRight: "auto", color: "#a8483f", borderColor: "#a8483f" }}
-          >🗑️ Elimina</button>
+          {!isNew && (
+            <button
+              className="btn ghost sm"
+              onClick={del}
+              disabled={saving}
+              style={{ marginRight: "auto", color: "#a8483f", borderColor: "#a8483f" }}
+            >🗑️ Elimina</button>
+          )}
           <button className="btn ghost sm" onClick={onClose} disabled={saving}>Annulla</button>
           <button
             className="btn gold sm"
             onClick={save}
             disabled={saving}
           >
-            {saving ? "Salvataggio…" : "💾 Salva"}
+            {saving ? "Salvataggio…" : isNew ? "✨ Crea" : "💾 Salva"}
           </button>
         </div>
       </aside>
@@ -1047,8 +1148,48 @@ const GenericEditorDrawerInnerMemo = memo(GenericEditorDrawerInner, (prev, next)
   prev.open === next.open &&
   prev.onClose === next.onClose &&
   prev.userEmail === next.userEmail &&
-  prev.initialRow === next.initialRow
+  prev.initialRow === next.initialRow &&
+  prev.isNew === next.isNew
 );
+
+// Template di default per nuove righe (così l'editor mostra i campi giusti
+// con valori sensati invece di un form vuoto con solo "id").
+const NEW_ROW_TEMPLATES: Record<Tab, () => any> = {
+  works: () => ({
+    id: "", title: "", artist_ids: [], period_id: null, date_text: "",
+    year_start: null, year_end: null, type: "altro", technique_ids: [],
+    materials: [], location_city: null, location_place: null,
+    lat: null, lon: null, book: 1, chapter: 0, page: 0, source_file: "",
+    importance: 2, summary: "", analysis: null, innovations: [], term_ids: [],
+    image_url: "", image_thumb: "", image_source: "commons",
+  }),
+  artists: () => ({
+    id: "", name: "", aka: [], birth: null, death: null,
+    period_ids: [], role: "", bio: "", innovations: [],
+  }),
+  periods: () => ({
+    id: "", name: "", type: "epoca", year_start: 1400, year_end: 1500,
+    regions: [], summary: "", historical_context: "", parent_id: null,
+    key_innovations: [],
+  }),
+  techniques: () => ({
+    id: "", name: "", definition: "", introduced_by: null,
+    first_period_id: null, evolution: "", category: "altra",
+  }),
+  terms: () => ({
+    id: "", term: "", definition: "", category: "generale",
+    period_ids: [], is_archetype: false,
+  }),
+  events: () => ({
+    id: "", year: 1400, year_end: null, title: "", description: "",
+    kind: "culturale", period_id: null,
+  }),
+  connections: () => ({
+    id: "", source_type: "work", source_id: "", target_type: "work",
+    target_id: "", kind: "influenza", description: "",
+  }),
+  complessi: () => ({ id: "", name: "", works: [] }),
+};
 
 // OUTER: legge ix, congel initialRow quando il drawer è aperto
 function GenericEditorDrawer({
@@ -1056,11 +1197,13 @@ function GenericEditorDrawer({
   rowId,
   open,
   onClose,
+  isNew,
 }: {
   table: Tab;
   rowId: string;
   open: boolean;
   onClose: () => void;
+  isNew: boolean;
 }) {
   const ix = useData();
   const { user } = useAuth();
@@ -1069,23 +1212,31 @@ function GenericEditorDrawer({
   useEffect(() => {
     if (open) {
       if (!frozenRow) {
-        let arr: any[] = [];
-        switch (table) {
-          case "artists": arr = ix.ds.artists; break;
-          case "periods": arr = ix.ds.periods; break;
-          case "techniques": arr = ix.ds.techniques; break;
-          case "terms": arr = ix.ds.terms; break;
-          case "events": arr = ix.ds.events; break;
-          case "connections": arr = ix.ds.connections; break;
+        // Se è una nuova riga, usa il template precompilato
+        if (isNew) {
+          const template = NEW_ROW_TEMPLATES[table]();
+          template.id = rowId === "nuovo" ? "" : rowId;
+          setFrozenRow(template);
+        } else {
+          let arr: any[] = [];
+          switch (table) {
+            case "works": arr = ix.ds.works; break;
+            case "artists": arr = ix.ds.artists; break;
+            case "periods": arr = ix.ds.periods; break;
+            case "techniques": arr = ix.ds.techniques; break;
+            case "terms": arr = ix.ds.terms; break;
+            case "events": arr = ix.ds.events; break;
+            case "connections": arr = ix.ds.connections; break;
+          }
+          const existing = arr.find(r => r.id === rowId);
+          setFrozenRow(existing || null);
         }
-        const existing = arr.find(r => r.id === rowId);
-        setFrozenRow(existing || null);
       }
     } else {
       if (frozenRow !== null) setFrozenRow(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, rowId, table, ix]);
+  }, [open, rowId, table, ix, isNew]);
 
   if (!open) return null;
 
@@ -1097,6 +1248,7 @@ function GenericEditorDrawer({
       onClose={onClose}
       userEmail={user?.email || null}
       initialRow={frozenRow}
+      isNew={isNew}
     />
   );
 }
