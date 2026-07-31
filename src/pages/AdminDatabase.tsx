@@ -931,6 +931,31 @@ const REF_FIELDS: Record<string, { table: string; mode: "single" | "multi" }> = 
   "connections.target_id": { table: "auto", mode: "single" }, // dipende da target_type
 };
 
+// Stili e Field per il GenericEditorDrawer — DEFINITI A LIVELLO DI MODULO.
+// Se fossero dentro Inner, ad ogni re-render sarebbero funzioni nuove
+// → React smonterebbe e rimonterebbe i children → focus perso sugli input.
+const genLabelStyle: React.CSSProperties = {
+  display: "block", fontSize: 11, fontWeight: 600,
+  color: "var(--ink-dim)", marginBottom: 4, textTransform: "uppercase",
+  letterSpacing: "0.04em",
+};
+const genInputStyle: React.CSSProperties = {
+  width: "100%", padding: "8px 10px", border: "1px solid var(--line)",
+  borderRadius: 6, background: "var(--bg)", color: "var(--ink)",
+  fontSize: 13, fontFamily: "inherit",
+};
+function GenField({ label, children, required }: { label: string; children: React.ReactNode; required?: boolean }) {
+  return (
+    <div>
+      <label style={genLabelStyle}>
+        {label}
+        {required && <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>}
+      </label>
+      {children}
+    </div>
+  );
+}
+
 // INNER: NON ha useData(). Tutte le props sono stabili.
 function GenericEditorDrawerInner({
   table,
@@ -1089,25 +1114,8 @@ function GenericEditorDrawerInner({
     }
   };
 
-  const labelStyle: React.CSSProperties = {
-    display: "block", fontSize: 11, fontWeight: 600,
-    color: "var(--ink-dim)", marginBottom: 4, textTransform: "uppercase",
-    letterSpacing: "0.04em",
-  };
-  const inputStyle: React.CSSProperties = {
-    width: "100%", padding: "8px 10px", border: "1px solid var(--line)",
-    borderRadius: 6, background: "var(--bg)", color: "var(--ink)",
-    fontSize: 13, fontFamily: "inherit",
-  };
-  const Field = ({ label, children, required }: { label: string; children: React.ReactNode; required?: boolean }) => (
-    <div>
-      <label style={labelStyle}>
-        {label}
-        {required && <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>}
-      </label>
-      {children}
-    </div>
-  );
+  // Stili e Field sono definiti a livello di modulo (genLabelStyle, genInputStyle, GenField)
+  // per evitare che vengano ricreati ad ogni re-render → focus loss.
 
   // Etichetta leggibile per il tipo di tabella
   const tableLabel = table === "complessi" ? "complesso" : table;
@@ -1215,7 +1223,7 @@ function GenericEditorDrawerInner({
             // Campi con selettore entità (EntitySelector)
             if (refConfig && refConfig.table !== "auto") {
               return (
-                <Field key={field} label={label}>
+                <GenField key={field} label={label}>
                   <EntitySelector
                     mode={refConfig.mode}
                     options={getEntityOptions(refConfig.table)}
@@ -1223,7 +1231,7 @@ function GenericEditorDrawerInner({
                     onChange={(v) => setField(field, v)}
                     placeholder={`Cerca ${refConfig.table}…`}
                   />
-                </Field>
+                </GenField>
               );
             }
 
@@ -1231,15 +1239,15 @@ function GenericEditorDrawerInner({
             if (isConnectionRef) {
               if (!connectionRefTable) {
                 return (
-                  <Field key={field} label={label}>
-                    <div style={{ ...inputStyle, opacity: 0.6, fontStyle: "italic" }}>
+                  <GenField key={field} label={label}>
+                    <div style={{ ...genInputStyle, opacity: 0.6, fontStyle: "italic" }}>
                       Seleziona prima il «{field === "source_id" ? "Tipo entità origine" : "Tipo entità destinazione"}»
                     </div>
-                  </Field>
+                  </GenField>
                 );
               }
               return (
-                <Field key={field} label={`${label} (${connectionRefTable})`}>
+                <GenField key={field} label={`${label} (${connectionRefTable})`}>
                   <EntitySelector
                     mode="single"
                     options={getEntityOptions(connectionRefTable)}
@@ -1247,121 +1255,121 @@ function GenericEditorDrawerInner({
                     onChange={(v) => setField(field, v)}
                     placeholder={`Cerca ${connectionRefTable}…`}
                   />
-                </Field>
+                </GenField>
               );
             }
 
             // Campi in sola lettura (ID per righe esistenti)
             if (isReadOnlyId) {
               return (
-                <Field key={field} label={label}>
-                  <input type="text" defaultValue={String(value ?? "")} disabled style={{ ...inputStyle, opacity: 0.6, cursor: "not-allowed" }} />
-                </Field>
+                <GenField key={field} label={label}>
+                  <input type="text" defaultValue={String(value ?? "")} disabled style={{ ...genInputStyle, opacity: 0.6, cursor: "not-allowed" }} />
+                </GenField>
               );
             }
 
             // Select predefinite (enum)
             if (selectOpts) {
               return (
-                <Field key={field} label={label}>
+                <GenField key={field} label={label}>
                   <select
                     defaultValue={String(value ?? "")}
                     onChange={(e) => {
                       const v = e.target.value;
                       setField(field, isNumber ? Number(v) : v);
                     }}
-                    style={inputStyle}
+                    style={genInputStyle}
                   >
                     {selectOpts.map((opt) => (
                       <option key={opt} value={opt}>{opt}</option>
                     ))}
                   </select>
-                </Field>
+                </GenField>
               );
             }
 
             // Array (textarea, un valore per riga)
             if (isArray) {
               return (
-                <Field key={field} label={label}>
+                <GenField key={field} label={label}>
                   <textarea
                     defaultValue={value.join("\n")}
                     onChange={(e) => setField(field, e.target.value.split("\n").map(s => s.trim()).filter(Boolean))}
-                    style={{ ...inputStyle, minHeight: 60, resize: "vertical", fontFamily: "ui-monospace, monospace", fontSize: 12 }}
+                    style={{ ...genInputStyle, minHeight: 60, resize: "vertical", fontFamily: "ui-monospace, monospace", fontSize: 12 }}
                     placeholder="Un valore per riga"
                   />
-                </Field>
+                </GenField>
               );
             }
 
             // Testo lungo (textarea)
             if (LONG_TEXT_FIELDS.has(field)) {
               return (
-                <Field key={field} label={label}>
+                <GenField key={field} label={label}>
                   <textarea
                     defaultValue={String(value ?? "")}
                     onChange={(e) => setField(field, e.target.value || null)}
-                    style={{ ...inputStyle, minHeight: 80, resize: "vertical" }}
+                    style={{ ...genInputStyle, minHeight: 80, resize: "vertical" }}
                   />
-                </Field>
+                </GenField>
               );
             }
 
             // Boolean
             if (isBoolean) {
               return (
-                <Field key={field} label={label}>
+                <GenField key={field} label={label}>
                   <select
                     defaultValue={String(value)}
                     onChange={(e) => setField(field, e.target.value === "true")}
-                    style={inputStyle}
+                    style={genInputStyle}
                   >
                     <option value="false">No</option>
                     <option value="true">Sì</option>
                   </select>
-                </Field>
+                </GenField>
               );
             }
 
             // Numero
             if (isNumber) {
               return (
-                <Field key={field} label={label}>
+                <GenField key={field} label={label}>
                   <input
                     type="number"
                     defaultValue={value ?? ""}
                     onChange={(e) => setField(field, e.target.value ? Number(e.target.value) : null)}
-                    style={inputStyle}
+                    style={genInputStyle}
                   />
-                </Field>
+                </GenField>
               );
             }
 
             // Null (campo vuoto)
             if (isNull) {
               return (
-                <Field key={field} label={label}>
+                <GenField key={field} label={label}>
                   <input
                     type="text"
                     defaultValue=""
                     placeholder="(vuoto)"
                     onChange={(e) => setField(field, e.target.value || null)}
-                    style={inputStyle}
+                    style={genInputStyle}
                   />
-                </Field>
+                </GenField>
               );
             }
 
             // Stringa normale
             return (
-              <Field key={field} label={label} required={required}>
+              <GenField key={field} label={label} required={required}>
                 <input
                   type="text"
                   defaultValue={String(value)}
                   onChange={(e) => setField(field, e.target.value)}
-                  style={inputStyle}
+                  style={genInputStyle}
                 />
-              </Field>
+              </GenField>
             );
           })}
         </div>

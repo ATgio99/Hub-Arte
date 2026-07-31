@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
-import { WorkCard, WorkGroupCard, Empty, FilterNote } from "../components/ui";
+import { WorkCard, WorkGroupCard, Empty, EmptyTimeRange, FilterNote } from "../components/ui";
 import { useFavorites } from "../lib/favorites";
 import { useStudied } from "../lib/studied";
 import { computeWorkGroups, workGroupMap } from "../lib/data";
@@ -11,7 +11,7 @@ const TYPES: WorkType[] = ["architettura", "pittura", "scultura", "mosaico", "mi
 
 export default function Opere() {
   const { ds, periodById } = useData();
-  const { workIn } = useTimeRange();
+  const { workIn, active } = useTimeRange();
   const [sp] = useSearchParams();
   const [q, setQ] = useState("");
   const [type, setType] = useState<string>(sp.get("type") ?? "");
@@ -147,7 +147,15 @@ export default function Opere() {
         )}
       </div>
 
-      {filtered.length === 0 ? <Empty msg={favOnly && favs.works.length === 0 ? "Nessuna opera preferita: tocca la ★ su una scheda per aggiungerla." : "Nessuna opera corrisponde ai filtri."} /> : (
+      {filtered.length === 0 ? (
+        favOnly && favs.works.length === 0 ? (
+          <Empty msg="Nessuna opera preferita: tocca la ★ su una scheda per aggiungerla." />
+        ) : active ? (
+          <EmptyTimeRange noun="opere" />
+        ) : (
+          <Empty msg="Nessuna opera corrisponde ai filtri." />
+        )
+      ) : (
         <>
           <div className="grid-works">
             {/* Opere raggruppate (solo in modalità raggruppata) */}

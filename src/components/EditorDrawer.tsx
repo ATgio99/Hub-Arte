@@ -28,6 +28,31 @@ function slugify(s: string): string {
     .slice(0, 80);
 }
 
+// Campo form — DEFINITO A LIVELLO DI MODULO (non dentro Inner).
+// Se lo definissimo dentro Inner, ad ogni re-render sarebbe una funzione nuova
+// → React smonterebbe e rimonterebbe i children → focus perso sugli input.
+const labelStyle: React.CSSProperties = {
+  display: "block", fontSize: 11, fontWeight: 600,
+  color: "var(--ink-dim)", marginBottom: 4, textTransform: "uppercase",
+  letterSpacing: "0.04em",
+};
+const inputStyle: React.CSSProperties = {
+  width: "100%", padding: "8px 10px", border: "1px solid var(--line)",
+  borderRadius: 6, background: "var(--bg)", color: "var(--ink)",
+  fontSize: 13, fontFamily: "inherit",
+};
+function Field({ label, children, required }: { label: string; children: React.ReactNode; required?: boolean }) {
+  return (
+    <div>
+      <label style={labelStyle}>
+        {label}
+        {required && <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>}
+      </label>
+      {children}
+    </div>
+  );
+}
+
 // Campi del DB works (tutti gli altri vengono strippati prima dell'upsert)
 const WORK_DB_FIELDS = [
   "id", "title", "artist_ids", "period_id", "date_text", "year_start", "year_end",
@@ -87,7 +112,6 @@ function EditorDrawerInner({
   dataset: DatasetSnapshot;
   initialWork: Work | null;
 }) {
-  const { user } = useAuth();
   // Stato mutabile tramite ref: l'oggetto work viene modificato in place.
   const workRef = useRef<Work | null>(initialWork);
   // idField ref (per sync con work.id quando è new)
@@ -297,23 +321,8 @@ function EditorDrawerInner({
     }
   };
 
-  // Stili
-  const labelStyle: React.CSSProperties = {
-    display: "block", fontSize: 11, fontWeight: 600,
-    color: "var(--ink-dim)", marginBottom: 4, textTransform: "uppercase",
-    letterSpacing: "0.04em",
-  };
-  const inputStyle: React.CSSProperties = {
-    width: "100%", padding: "8px 10px", border: "1px solid var(--line)",
-    borderRadius: 6, background: "var(--bg)", color: "var(--ink)",
-    fontSize: 13, fontFamily: "inherit",
-  };
-  const Field = ({ label, children }: { label: string; children: React.ReactNode }) => (
-    <div>
-      <label style={labelStyle}>{label}</label>
-      {children}
-    </div>
-  );
+  // Stili e Field sono definiti a livello di modulo (non qui dentro)
+  // per evitare che vengano ricreati ad ogni re-render → focus loss.
 
   const bodyPad = fullscreen ? "24px max(20px, calc((100vw - 720px) / 2)) 100px" : "16px 20px 80px";
 

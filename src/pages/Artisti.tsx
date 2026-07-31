@@ -6,13 +6,13 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
-import { FilterNote, Empty, FavStar } from "../components/ui";
+import { FilterNote, Empty, EmptyTimeRange, FavStar } from "../components/ui";
 import { useFavorites } from "../lib/favorites";
 import { fmtYear } from "../lib/data";
 
 export default function Artisti() {
   const ix = useData();
-  const { artistIn } = useTimeRange();
+  const { artistIn, active } = useTimeRange();
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<"opere" | "alfabetico">("opere");
   const [favOnly, setFavOnly] = useState(false);
@@ -69,7 +69,17 @@ export default function Artisti() {
         <FilterNote total={ix.ds.artists.length} shown={list.length} noun="artisti" />
       </div>
 
-      {list.length === 0 && <Empty msg={favOnly && favs.artists.length === 0 ? "Nessun artista preferito: tocca la ★ su una scheda per aggiungerlo." : q ? `Nessun artista per «${q}».` : "Nessun artista nell'intervallo selezionato."} />}
+      {list.length === 0 && (
+        favOnly && favs.artists.length === 0 ? (
+          <Empty msg="Nessun artista preferito: tocca la ★ su una scheda per aggiungerlo." />
+        ) : q ? (
+          <Empty msg={`Nessun artista per «${q}».`} />
+        ) : active ? (
+          <EmptyTimeRange noun="artisti" />
+        ) : (
+          <Empty msg="Nessun artista." />
+        )
+      )}
 
       <div className="grid-artists">
         {list.map((a) => {

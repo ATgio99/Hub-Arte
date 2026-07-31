@@ -309,6 +309,60 @@ export function Empty({ msg }: { msg: string }) {
   return <div className="muted" style={{ padding: "40px 0", textAlign: "center", fontSize: 14 }}>{msg}</div>;
 }
 
+// ---- Empty state quando il filtro temporale nasconde tutto ---------------
+// Mostra un messaggio in semiopacità + una grafica che riproduce la linea
+// del tempo con le maniglie da trascinare per allargare l'intervallo.
+export function EmptyTimeRange({ noun = "opere" }: { noun?: string }) {
+  return (
+    <div style={{
+      padding: "48px 24px", textAlign: "center", opacity: 0.7,
+      display: "flex", flexDirection: "column", alignItems: "center", gap: 16,
+    }}>
+      {/* Grafica linea del tempo con maniglie */}
+      <svg width="220" height="60" viewBox="0 0 220 60" fill="none" style={{ maxWidth: "100%" }}>
+        {/* Linea orizzontale */}
+        <line x1="20" y1="30" x2="200" y2="30" stroke="var(--ink-dim)" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.5" />
+        {/* Tratto selezionato (sottile, in mezzo) */}
+        <line x1="80" y1="30" x2="140" y2="30" stroke="var(--gold)" strokeWidth="3" opacity="0.7" />
+        {/* Maniglia sinistra */}
+        <g>
+          <circle cx="80" cy="30" r="7" fill="var(--gold)" opacity="0.9" />
+          <circle cx="80" cy="30" r="3" fill="#fff" />
+        </g>
+        {/* Maniglia destra */}
+        <g>
+          <circle cx="140" cy="30" r="7" fill="var(--gold)" opacity="0.9" />
+          <circle cx="140" cy="30" r="3" fill="#fff" />
+        </g>
+        {/* Freccia sinistra che indica "allarga a sinistra" */}
+        <g opacity="0.8">
+          <path d="M 60 18 L 50 30 L 60 42" stroke="var(--gold-deep)" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <line x1="50" y1="30" x2="72" y2="30" stroke="var(--gold-deep)" strokeWidth="2" strokeLinecap="round" opacity="0" />
+        </g>
+        {/* Freccia destra che indica "allarga a destra" */}
+        <g opacity="0.8">
+          <path d="M 160 18 L 170 30 L 160 42" stroke="var(--gold-deep)" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <line x1="148" y1="30" x2="170" y2="30" stroke="var(--gold-deep)" strokeWidth="2" strokeLinecap="round" opacity="0" />
+        </g>
+        {/* Etichette anni ai bordi */}
+        <text x="20" y="52" fontSize="9" fill="var(--ink-dim)" textAnchor="middle" fontFamily="ui-monospace, monospace">300</text>
+        <text x="200" y="52" fontSize="9" fill="var(--ink-dim)" textAnchor="middle" fontFamily="ui-monospace, monospace">1600</text>
+      </svg>
+
+      <div style={{ maxWidth: "44ch" }}>
+        <div style={{ fontSize: 15, fontWeight: 500, color: "var(--ink-soft)", marginBottom: 6 }}>
+          Nessuna {noun} nell'intervallo temporale selezionato
+        </div>
+        <div style={{ fontSize: 13, color: "var(--ink-dim)", lineHeight: 1.55 }}>
+          Apri il menù principale (☰ in alto a sinistra) e usa la <b>linea del tempo</b> per
+          allargare l'intervallo: trascina le maniglie <span style={{ color: "var(--gold)" }}>●</span> verso
+          l'esterno per includere più anni, oppure premi «Reset» per tornare a tutto l'arco.
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ---- Nota filtro temporale attivo (mostrata in cima alle viste) -----------
 export function FilterNote({ total, shown, noun = "elementi" }: { total: number; shown: number; noun?: string }) {
   if (shown === total) return null;
