@@ -284,7 +284,16 @@ export default function Grafo() {
   );
 
   const renderGraph = (full: boolean) => (
-    <div className="stage" ref={!full ? wrapRef : undefined} style={{ height: full ? "100%" : "min(72vh, 700px)", flex: full ? 1 : undefined, border: full ? 0 : undefined, borderRadius: full ? 0 : undefined }} data-testid="graph-stage">
+    <div className="stage" ref={!full ? wrapRef : undefined} style={{
+      // In fullscreen: dimensioni FISSE (width/height in px) invece di 100%/flex.
+      // Se usassimo 100%/flex, ogni micro-reflow del parent (es. animazione
+      // del drawer) causerebbe il ridimensionamento del canvas → zoom intermittente.
+      width: full ? dims.w : "100%",
+      height: full ? dims.h : "min(72vh, 700px)",
+      flex: full ? undefined : undefined,
+      border: full ? 0 : undefined,
+      borderRadius: full ? 0 : undefined,
+    }} data-testid="graph-stage">
       <GraphSizer wrapRef={wrapRef} full={full} setDims={setDims} />
       {mode === "3d" ? (
         <ForceGraph3D
@@ -509,19 +518,16 @@ function GraphSizer({ wrapRef, full, setDims }: { wrapRef: any; full: boolean; s
   const selfRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (full) {
-      // In fullscreen: dimensioni fisse basate sulla finestra.
-      // NON usare ResizeObserver (causa tremolio del force-graph).
-      // Ascolta solo 'resize' su window (molto più stabile di RO).
-      const compute = () => {
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-        // sottrai larghezza drawer se desktop (drawer è 300px o 88vw)
-        const drawerW = w > 900 ? 300 : 0;
-        setDims({ w: Math.max(200, w - drawerW), h });
-      };
-      compute();
-      window.addEventListener("resize", compute);
-      return () => window.removeEventListener("resize", compute);
+      // In fullscreen: dimensioni CALCOLATE UNA VOLTA sola all'ingresso.
+      // NON usare ResizeObserver né ascoltare window resize:
+      // cambiare width/height del ForceGraph3D causa re-render del canvas
+      // e ricalcolo della camera → effetto zoom intermittente.
+      // Il grafo mantiene le dimensioni fisse finché si resta in fullscreen.
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const drawerW = w > 900 ? 300 : 0;
+      setDims({ w: Math.max(200, w - drawerW), h });
+      return; // nessun listener, nessun aggiornamento
     }
     // Modalità normale: usa ResizeObserver con debounce
     const target = wrapRef.current;
