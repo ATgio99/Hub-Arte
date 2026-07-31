@@ -158,7 +158,7 @@ export default function LeMieRichieste() {
   return (
     <div className="wrap page">
       <div className="page-head" style={{ marginBottom: 18 }}>
-        <div className="page-eyebrow"><span className="sec-num">★</span><span className="eyebrow">I tuoi contributi</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">I tuoi contributi</span></div>
         <h1 className="page-title">Contributi</h1>
         <p className="page-lead">
           Qui trovi lo storico di tutte le richieste che hai inviato: proposte di nuove opere e suggerimenti di modifica.

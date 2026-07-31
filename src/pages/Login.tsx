@@ -8,7 +8,7 @@ import { supabase } from "../lib/supabase";
 import { fullSync } from "../lib/sync";
 import { getFavorites, setFavorites, clearAllFavorites } from "../lib/favorites";
 import { getStudied, setStudied, clearAllStudied } from "../lib/studied";
-import { getOverrides, setOverrides } from "../lib/imageOverrides";
+import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "../lib/imageOverrides";
 
 export default function Login() {
   const { signIn, signUp, signOut, user, loading } = useAuth();
@@ -43,12 +43,18 @@ export default function Login() {
   }
 
   // ---- EXPORT: genera JSON con tutti i dati locali e scarica un file ----
+  // Include: preferiti, approfondite, override immagini PRIVATI e GLOBALI.
+  // NOTA: i globali di solito vengono riscaricati dal cloud al login, ma
+  // li esportiamo comunque per backup completo (utile se l'utente è admin
+  // o per ripristinare su un altro browser senza attendere il sync).
   const handleExport = () => {
     const data = {
       favorites: getFavorites(),
       studied: getStudied(),
-      imageOverrides: getOverrides(),
+      imageOverrides: getOverrides(),           // privati dell'utente
+      globalImageOverrides: getGlobalOverrides(), // globali (admin o scaricati dal cloud)
       exportedAt: new Date().toISOString(),
+      version: 2, // versione del formato JSON (per futuri upgrade)
     };
     const json = JSON.stringify(data, null, 2);
     const blob = new Blob([json], { type: "application/json" });
@@ -60,7 +66,13 @@ export default function Login() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    setSyncResult("✓ File JSON scaricato! Conservalo per migrare i tuoi dati.");
+    const counts = {
+      favs: data.favorites.works.length + data.favorites.artists.length,
+      studied: data.studied.length,
+      priv: Object.keys(data.imageOverrides).length,
+      glob: Object.keys(data.globalImageOverrides).length,
+    };
+    setSyncResult(`✓ Backup scaricato! ${counts.favs} preferiti, ${counts.studied} approfondite, ${counts.priv} immagini private, ${counts.glob} globali.`);
   };
 
   // ---- IMPORT: carica JSON nella nuova versione ----
@@ -114,19 +126,67 @@ export default function Login() {
         imported += added;
       }
 
-      // Import immagini (merge)
+      // Import immagini PRIVATE (merge — non sovrascive esistenti)
       if (data.imageOverrides && typeof data.imageOverrides === "object") {
         const current = getOverrides();
         let added = 0;
         for (const [k, v] of Object.entries(data.imageOverrides as any)) {
           if (!current[k]) {
-            current[k] = typeof v === "object" && v !== null ? v : { url: String(v), setAt: new Date().toISOString() };
-            added++;
+            const entry: any = typeof v === "object" && v !== null
+              ? { ...v, isGlobal: false }
+              : { url: String(v), setAt: new Date().toISOString(), isGlobal: false };
+            // Assicurati che i campi obbligatori ci siano
+            if (typeof entry.url === "string" && entry.url.trim()) {
+              current[k] = entry;
+              added++;
+            }
           }
         }
         if (added > 0) {
           setOverrides(current);
           imported += added;
+        }
+      }
+
+      // Import immagini GLOBALI (merge — non sovrascive esistenti)
+      // NOTA: di solito i globali vengono riscaricati dal cloud al login,
+      // ma se l'utente sta importando un backup offline, li ripristiniamo.
+      if (data.globalImageOverrides && typeof data.globalImageOverrides === "object") {
+        const current = getGlobalOverrides();
+        let added = 0;
+        for (const [k, v] of Object.entries(data.globalImageOverrides as any)) {
+          if (!current[k]) {
+            const entry: any = typeof v === "object" && v !== null
+              ? { ...v, isGlobal: true }
+              : { url: String(v), setAt: new Date().toISOString(), isGlobal: true };
+            if (typeof entry.url === "string" && entry.url.trim()) {
+              current[k] = entry;
+              added++;
+            }
+          }
+        }
+        if (added > 0) {
+          setGlobalOverrides(current);
+          imported += added;
+        }
+      }
+
+      // Retrocompatibilità: vecchio formato salvava tutto in "imageOverrides"
+      // senza distinguere privati/globali. Se non c'è globalImageOverrides ma
+      // alcuni entry di imageOverrides hanno isGlobal=true, splittali.
+      if (!data.globalImageOverrides && data.imageOverrides) {
+        const globMap = getGlobalOverrides();
+        let moved = 0;
+        for (const [k, v] of Object.entries(data.imageOverrides as any)) {
+          const isGlob = typeof v === "object" && v !== null && (v as any).isGlobal === true;
+          if (isGlob && !globMap[k] && typeof (v as any).url === "string") {
+            globMap[k] = { ...(v as any), isGlobal: true };
+            moved++;
+          }
+        }
+        if (moved > 0) {
+          setGlobalOverrides(globMap);
+          imported += moved;
         }
       }
 

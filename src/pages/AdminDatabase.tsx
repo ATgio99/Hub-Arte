@@ -18,13 +18,14 @@
 //   - Elimina con conferma
 //   - Badge "DB" / "JSON" per distinguere la fonte
 // ============================================================================
-import { useEffect, useState, useMemo, useCallback, memo } from "react";
+import { useEffect, useState, useMemo, useCallback, useRef, memo } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "../lib/auth";
 import { useData } from "../lib/store";
 import { computeWorkGroups, workGroupMap } from "../lib/data";
 import EditorDrawer from "../components/EditorDrawer";
+import EntitySelector from "../components/EntitySelector";
 import type { Work, Artist, Period, Technique, Term, ArtEvent, Connection } from "../lib/types";
 
 type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" | "connections" | "complessi";
@@ -63,6 +64,14 @@ export default function AdminDatabase() {
 
   // Carica gli ID presenti nel DB (per mostrare badge "DB" vs "JSON")
   const loadDbIds = useCallback(async (currentTab: Tab) => {
+    // "complessi" non è una tabella DB reale: deriva dai metadati delle opere.
+    // Salta la query (che fallirebbe con "relation does not exist") e mostra
+    // il conteggio derivato dal dataset.
+    if (currentTab === "complessi") {
+      setDbIds(new Set());
+      setLoadingDb(false);
+      return;
+    }
     setLoadingDb(true);
     try {
       const { data, error } = await supabase.from(currentTab).select("id");
@@ -231,7 +240,6 @@ export default function AdminDatabase() {
       {/* Header */}
       <div className="page-head" style={{ marginBottom: 18 }}>
         <div className="page-eyebrow">
-          <span className="sec-num">DB</span>
           <span className="eyebrow">Pannello amministratore</span>
         </div>
         <h1 className="page-title">Database editor</h1>
@@ -255,7 +263,10 @@ export default function AdminDatabase() {
           </Link>
         </div>
         <div style={{ fontSize: 12, color: "var(--ink-dim)" }}>
-          Tab corrente: <b>{dbCount}</b> righe nel DB · <b>{totalCount}</b> totali visibili
+          {tab === "complessi"
+            ? <>Tab corrente: <b>{totalCount}</b> complessi · derivati dai metadati delle opere</>
+            : <>Tab corrente: <b>{dbCount}</b> righe nel DB · <b>{totalCount}</b> totali visibili</>
+          }
         </div>
       </div>
 
@@ -820,7 +831,105 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
 // ============================================================================
 // GenericEditorDrawer — per tabelle diverse da works (artisti, periodi, ecc.)
 // Architettura a 2 livelli (come EditorDrawer) per evitare perdita di focus.
+//
+// FIX FOCUS-LOSS: usiamo un pattern di "stato mutabile tramite ref + versione".
+//   - rowRef.current è l'oggetto row MUTABILE (modificato in place)
+//   - versionCounter si incrementa solo quando vogliamo forzare il re-render
+//   - Gli input sono UNCONTROLLED: leggono da rowRef.current e scrivono in rowRef.current
+//   - In questo modo, digitare non causa re-rendering → il focus NON si perde
 // ============================================================================
+
+// Traduzioni dei nomi dei campi tecnici in italiano comprensibile
+const FIELD_LABELS_IT: Record<string, string> = {
+  id: "ID (slug)",
+  name: "Nome",
+  title: "Titolo",
+  term: "Termine",
+  aka: "Alias / nomi alternativi",
+  birth: "Anno nascita",
+  death: "Anno morte",
+  period_ids: "Periodi associati",
+  period_id: "Periodo",
+  parent_id: "Periodo genitore",
+  role: "Ruolo",
+  bio: "Biografia",
+  innovations: "Innovazioni",
+  type: "Tipo",
+  year_start: "Anno inizio",
+  year_end: "Anno fine",
+  year: "Anno",
+  regions: "Regioni",
+  summary: "Sintesi",
+  historical_context: "Contesto storico",
+  key_innovations: "Innovazioni chiave",
+  definition: "Definizione",
+  introduced_by: "Introdotto da (artista)",
+  first_period_id: "Prima comparsa (periodo)",
+  evolution: "Evoluzione",
+  category: "Categoria",
+  description: "Descrizione",
+  kind: "Tipo",
+  is_archetype: "È un archetipo",
+  source_type: "Tipo entità origine",
+  source_id: "Entità origine",
+  target_type: "Tipo entità destinazione",
+  target_id: "Entità destinazione",
+  date_text: "Datazione testuale",
+  artist_ids: "Artisti",
+  technique_ids: "Tecniche",
+  materials: "Materiali",
+  location_city: "Città",
+  location_place: "Luogo / edificio",
+  lat: "Latitudine",
+  lon: "Longitudine",
+  book: "Libro",
+  chapter: "Capitolo",
+  page: "Pagina",
+  source_file: "File sorgente",
+  importance: "Importanza",
+  analysis: "Analisi",
+  term_ids: "Termini glossario",
+  image_url: "URL immagine",
+  image_thumb: "URL thumbnail",
+  image_source: "Fonte immagine",
+};
+
+// Campi che dovrebbero essere textarea (testo lungo)
+const LONG_TEXT_FIELDS = new Set([
+  "definition", "evolution", "analysis", "bio",
+  "summary", "description", "historical_context", "date_text",
+]);
+
+// Campi con select predefiniti (enum)
+const SELECT_OPTIONS: Record<string, string[]> = {
+  "techniques.category": ["pittorica", "scultorea", "architettonica", "musiva", "altra"],
+  "works.type": ["architettura", "pittura", "scultura", "mosaico", "miniatura",
+    "oreficeria", "urbanistica", "tela", "tavola", "polittico", "rilievo",
+    "affresco", "altro"],
+  "works.book": ["1", "2"],
+  "works.importance": ["1", "2", "3"],
+  "works.image_source": ["commons", "wikiart", "museo", "altro"],
+  "periods.type": ["epoca", "corrente", "popolo"],
+  "terms.category": ["architettura", "pittura", "scultura", "iconografia", "generale"],
+  "events.kind": ["politico", "religioso", "culturale", "tecnologico"],
+  "connections.kind": ["influenza", "contaminazione", "rielaborazione",
+    "evoluzione", "contrasto", "committenza", "maestro-allievo"],
+  "connections.source_type": ["period", "artist", "work", "technique", "event", "term"],
+  "connections.target_type": ["period", "artist", "work", "technique", "event", "term"],
+};
+
+// Campi che referenziano entità in altre tabelle (per i selettori intelligenti)
+// Mappa: nomeCampo → { table, mode } dove table è la tabella DB da cui pescare
+const REF_FIELDS: Record<string, { table: string; mode: "single" | "multi" }> = {
+  "artists.period_ids": { table: "periods", mode: "multi" },
+  "techniques.first_period_id": { table: "periods", mode: "single" },
+  "techniques.introduced_by": { table: "artists", mode: "single" },
+  "terms.period_ids": { table: "periods", mode: "multi" },
+  "events.period_id": { table: "periods", mode: "single" },
+  "periods.parent_id": { table: "periods", mode: "single" },
+  "connections.source_id": { table: "auto", mode: "single" }, // dipende da source_type
+  "connections.target_id": { table: "auto", mode: "single" }, // dipende da target_type
+};
 
 // INNER: NON ha useData(). Tutte le props sono stabili.
 function GenericEditorDrawerInner({
@@ -831,6 +940,7 @@ function GenericEditorDrawerInner({
   userEmail,
   initialRow,
   isNew,
+  dataset,
 }: {
   table: Tab;
   rowId: string;
@@ -839,8 +949,16 @@ function GenericEditorDrawerInner({
   userEmail: string | null;
   initialRow: any | null;
   isNew: boolean;
+  dataset: { periods: any[]; artists: any[]; techniques: any[]; terms: any[]; works: any[]; events: any[]; connections: any[] };
 }) {
-  const [row, setRow] = useState<any>(initialRow ? { ...initialRow } : { id: rowId });
+  // Stato mutabile tramite ref: l'oggetto row viene modificato in place.
+  // Solo quando cambiano initialRow/rowId, viene ricreato da zero.
+  const rowRef = useRef<any>(initialRow ? { ...initialRow } : { id: rowId });
+  // Version counter: si incrementa quando vogliamo forzare il re-render
+  // (es. dopo un salvataggio riuscito, per aggiornare il titolo nell'header).
+  const [, forceRender] = useState(0);
+  const forceUpdate = () => forceRender(v => v + 1);
+
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [ok, setOk] = useState(false);
@@ -848,20 +966,42 @@ function GenericEditorDrawerInner({
   useEffect(() => {
     if (initialRow) {
       const clean = { ...initialRow };
-      // Strip _orig_* fields
       for (const k of Object.keys(clean)) if (k.startsWith("_")) delete clean[k];
-      setRow(clean);
+      rowRef.current = clean;
     } else {
-      setRow({ id: rowId });
+      rowRef.current = { id: rowId };
     }
     setError(null);
     setOk(false);
+    forceUpdate();
   }, [initialRow, rowId]);
 
-  if (!open || !row) return null;
+  if (!open) return null;
+
+  const row = rowRef.current;
+  if (!row) return null;
 
   const META_FIELDS = ["created_at", "updated_at", "modified_by"];
   const fields = Object.keys(row).filter((k) => !META_FIELDS.includes(k) && !k.startsWith("_"));
+
+  // Helper per aggiornare un campo senza causare re-render (input non controllati)
+  const setField = (field: string, value: any) => {
+    rowRef.current = { ...rowRef.current, [field]: value };
+    setOk(false);
+  };
+
+  // Helper per ottenere le opzioni di un selettore entità
+  const getEntityOptions = (refTable: string) => {
+    switch (refTable) {
+      case "periods": return dataset.periods.map(p => ({ id: p.id, label: p.name, subtitle: `${p.year_start}–${p.year_end}` }));
+      case "artists": return dataset.artists.map(a => ({ id: a.id, label: a.name, subtitle: a.role || undefined }));
+      case "techniques": return dataset.techniques.map(t => ({ id: t.id, label: t.name, subtitle: t.category }));
+      case "terms": return dataset.terms.map(t => ({ id: t.id, label: t.term, subtitle: t.category }));
+      case "works": return dataset.works.map(w => ({ id: w.id, label: w.title, subtitle: w.location_city || undefined }));
+      case "events": return dataset.events.map(e => ({ id: e.id, label: e.title, subtitle: String(e.year) }));
+      default: return [];
+    }
+  };
 
   const save = async () => {
     if (!userEmail) return;
@@ -870,7 +1010,7 @@ function GenericEditorDrawerInner({
     setSaving(true);
     try {
       const payload: Record<string, unknown> = {};
-      for (const [k, v] of Object.entries(row)) {
+      for (const [k, v] of Object.entries(rowRef.current)) {
         if (k.startsWith("_")) continue;
         if (k === "created_at" || k === "updated_at") continue;
         payload[k] = v;
@@ -911,6 +1051,7 @@ function GenericEditorDrawerInner({
         bc.postMessage({ type: "changed", ts: Date.now() });
         bc.close();
       } catch {}
+      forceUpdate(); // aggiorna header col nuovo nome
     } catch (e: any) {
       setError(`Errore: ${e.message || "sconosciuto"}`);
     } finally {
@@ -958,6 +1099,18 @@ function GenericEditorDrawerInner({
     borderRadius: 6, background: "var(--bg)", color: "var(--ink)",
     fontSize: 13, fontFamily: "inherit",
   };
+  const Field = ({ label, children, required }: { label: string; children: React.ReactNode; required?: boolean }) => (
+    <div>
+      <label style={labelStyle}>
+        {label}
+        {required && <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>}
+      </label>
+      {children}
+    </div>
+  );
+
+  // Etichetta leggibile per il tipo di tabella
+  const tableLabel = table === "complessi" ? "complesso" : table;
 
   return (
     <>
@@ -978,11 +1131,11 @@ function GenericEditorDrawerInner({
         }}>
           <div>
             <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>
-              {table} · {isNew ? "NUOVA RIGA" : "Admin"}
+              {tableLabel} · {isNew ? "NUOVA RIGA" : "Admin"}
             </div>
             <div style={{ fontFamily: "var(--font-display)", fontSize: 16, marginTop: 2 }}>
               {isNew
-                ? `Nuova riga in ${table}`
+                ? `Nuova riga in ${tableLabel}`
                 : (row.name || row.term || row.title || row.id)}
             </div>
           </div>
@@ -1019,7 +1172,7 @@ function GenericEditorDrawerInner({
               color: "var(--gold-deep)", borderRadius: 6, fontSize: 13,
               border: "1px solid rgba(212,160,23,0.3)",
             }}>
-              ✨ Stai creando una nuova riga in <b>{table}</b>.
+              ✨ Stai creando una nuova riga in <b>{tableLabel}</b>.
               Compila almeno i campi obbligatori (ID + nome/titolo) e premi Salva.
             </div>
           )}
@@ -1031,51 +1184,91 @@ function GenericEditorDrawerInner({
             const isNumber = typeof value === "number";
             const isNull = value == null;
 
-            // Campi che dovrebbero essere textarea (testo lungo)
-            const LONG_TEXT_FIELDS = ["definition", "evolution", "analysis", "bio",
-              "summary", "description", "historical_context", "date_text"];
-            const isLongText = LONG_TEXT_FIELDS.includes(field);
-
-            // Campi con select predefiniti
-            const SELECT_OPTIONS: Record<string, string[]> = {
-              "techniques.category": ["pittorica", "scultorea", "architettonica", "musiva", "altra"],
-              "works.type": ["architettura", "pittura", "scultura", "mosaico", "miniatura",
-                "oreficeria", "urbanistica", "tela", "tavola", "polittico", "rilievo",
-                "affresco", "altro"],
-              "works.book": ["1", "2"],
-              "works.importance": ["1", "2", "3"],
-              "works.image_source": ["commons", "wikiart", "museo", "altro"],
-              "periods.type": ["epoca", "corrente", "popolo"],
-              "terms.category": ["architettura", "pittura", "scultura", "iconografia", "generale"],
-              "events.kind": ["politico", "religioso", "culturale", "tecnologico"],
-              "connections.kind": ["influenza", "contaminazione", "rielaborazione",
-                "evoluzione", "contrasto", "committenza", "maestro-allievo"],
-              "connections.source_type": ["period", "artist", "work", "technique", "event", "term"],
-              "connections.target_type": ["period", "artist", "work", "technique", "event", "term"],
-            };
-            const selectKey = `${table}.${field}`;
-            const selectOpts = SELECT_OPTIONS[selectKey];
+            // Etichetta italiana
+            const label = FIELD_LABELS_IT[field] || field;
+            const required = isNew && (field === "id" || field === "name" || field === "title" || field === "term");
 
             // Campi in sola lettura (ID per righe esistenti)
             const isReadOnlyId = field === "id" && !isNew;
 
-            return (
-              <div key={field}>
-                <label style={labelStyle}>
-                  {field}
-                  {field === "id" && isNew && <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>}
-                  {(field === "name" || field === "title" || field === "term") && isNew && (
-                    <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>
-                  )}
-                </label>
-                {isReadOnlyId ? (
-                  <input type="text" value={String(value ?? "")} disabled style={{ ...inputStyle, opacity: 0.6, cursor: "not-allowed" }} />
-                ) : selectOpts ? (
+            // Select predefinite (enum)
+            const selectKey = `${table}.${field}`;
+            const selectOpts = SELECT_OPTIONS[selectKey];
+
+            // Riferimenti a entità in altre tabelle
+            const refConfig = REF_FIELDS[selectKey];
+
+            // Per connections: source_id/target_id dipendono dal source_type/target_type
+            const isConnectionRef = table === "connections" && (field === "source_id" || field === "target_id");
+            let connectionRefTable: string | null = null;
+            if (isConnectionRef) {
+              const typeField = field === "source_id" ? "source_type" : "target_type";
+              const typeValue = row[typeField];
+              if (typeValue === "period") connectionRefTable = "periods";
+              else if (typeValue === "artist") connectionRefTable = "artists";
+              else if (typeValue === "work") connectionRefTable = "works";
+              else if (typeValue === "technique") connectionRefTable = "techniques";
+              else if (typeValue === "event") connectionRefTable = "events";
+              else if (typeValue === "term") connectionRefTable = "terms";
+            }
+
+            // Campi con selettore entità (EntitySelector)
+            if (refConfig && refConfig.table !== "auto") {
+              return (
+                <Field key={field} label={label}>
+                  <EntitySelector
+                    mode={refConfig.mode}
+                    options={getEntityOptions(refConfig.table)}
+                    selected={value}
+                    onChange={(v) => setField(field, v)}
+                    placeholder={`Cerca ${refConfig.table}…`}
+                  />
+                </Field>
+              );
+            }
+
+            // Connections source_id/target_id con tipo dinamico
+            if (isConnectionRef) {
+              if (!connectionRefTable) {
+                return (
+                  <Field key={field} label={label}>
+                    <div style={{ ...inputStyle, opacity: 0.6, fontStyle: "italic" }}>
+                      Seleziona prima il «{field === "source_id" ? "Tipo entità origine" : "Tipo entità destinazione"}»
+                    </div>
+                  </Field>
+                );
+              }
+              return (
+                <Field key={field} label={`${label} (${connectionRefTable})`}>
+                  <EntitySelector
+                    mode="single"
+                    options={getEntityOptions(connectionRefTable)}
+                    selected={value}
+                    onChange={(v) => setField(field, v)}
+                    placeholder={`Cerca ${connectionRefTable}…`}
+                  />
+                </Field>
+              );
+            }
+
+            // Campi in sola lettura (ID per righe esistenti)
+            if (isReadOnlyId) {
+              return (
+                <Field key={field} label={label}>
+                  <input type="text" defaultValue={String(value ?? "")} disabled style={{ ...inputStyle, opacity: 0.6, cursor: "not-allowed" }} />
+                </Field>
+              );
+            }
+
+            // Select predefinite (enum)
+            if (selectOpts) {
+              return (
+                <Field key={field} label={label}>
                   <select
-                    value={String(value ?? "")}
+                    defaultValue={String(value ?? "")}
                     onChange={(e) => {
                       const v = e.target.value;
-                      setRow({ ...row, [field]: isNumber ? Number(v) : v });
+                      setField(field, isNumber ? Number(v) : v);
                     }}
                     style={inputStyle}
                   >
@@ -1083,32 +1276,92 @@ function GenericEditorDrawerInner({
                       <option key={opt} value={opt}>{opt}</option>
                     ))}
                   </select>
-                ) : isArray ? (
+                </Field>
+              );
+            }
+
+            // Array (textarea, un valore per riga)
+            if (isArray) {
+              return (
+                <Field key={field} label={label}>
                   <textarea
-                    value={value.join("\n")}
-                    onChange={(e) => setRow({ ...row, [field]: e.target.value.split("\n").map(s => s.trim()).filter(Boolean) })}
+                    defaultValue={value.join("\n")}
+                    onChange={(e) => setField(field, e.target.value.split("\n").map(s => s.trim()).filter(Boolean))}
                     style={{ ...inputStyle, minHeight: 60, resize: "vertical", fontFamily: "ui-monospace, monospace", fontSize: 12 }}
                     placeholder="Un valore per riga"
                   />
-                ) : isLongText ? (
+                </Field>
+              );
+            }
+
+            // Testo lungo (textarea)
+            if (LONG_TEXT_FIELDS.has(field)) {
+              return (
+                <Field key={field} label={label}>
                   <textarea
-                    value={String(value ?? "")}
-                    onChange={(e) => setRow({ ...row, [field]: e.target.value || null })}
+                    defaultValue={String(value ?? "")}
+                    onChange={(e) => setField(field, e.target.value || null)}
                     style={{ ...inputStyle, minHeight: 80, resize: "vertical" }}
                   />
-                ) : isBoolean ? (
-                  <select value={String(value)} onChange={(e) => setRow({ ...row, [field]: e.target.value === "true" })} style={inputStyle}>
-                    <option value="false">false</option>
-                    <option value="true">true</option>
+                </Field>
+              );
+            }
+
+            // Boolean
+            if (isBoolean) {
+              return (
+                <Field key={field} label={label}>
+                  <select
+                    defaultValue={String(value)}
+                    onChange={(e) => setField(field, e.target.value === "true")}
+                    style={inputStyle}
+                  >
+                    <option value="false">No</option>
+                    <option value="true">Sì</option>
                   </select>
-                ) : isNumber ? (
-                  <input type="number" value={value ?? ""} onChange={(e) => setRow({ ...row, [field]: e.target.value ? Number(e.target.value) : null })} style={inputStyle} />
-                ) : isNull ? (
-                  <input type="text" value="" placeholder="(null)" onChange={(e) => setRow({ ...row, [field]: e.target.value || null })} style={inputStyle} />
-                ) : (
-                  <input type="text" value={String(value)} onChange={(e) => setRow({ ...row, [field]: e.target.value })} style={inputStyle} />
-                )}
-              </div>
+                </Field>
+              );
+            }
+
+            // Numero
+            if (isNumber) {
+              return (
+                <Field key={field} label={label}>
+                  <input
+                    type="number"
+                    defaultValue={value ?? ""}
+                    onChange={(e) => setField(field, e.target.value ? Number(e.target.value) : null)}
+                    style={inputStyle}
+                  />
+                </Field>
+              );
+            }
+
+            // Null (campo vuoto)
+            if (isNull) {
+              return (
+                <Field key={field} label={label}>
+                  <input
+                    type="text"
+                    defaultValue=""
+                    placeholder="(vuoto)"
+                    onChange={(e) => setField(field, e.target.value || null)}
+                    style={inputStyle}
+                  />
+                </Field>
+              );
+            }
+
+            // Stringa normale
+            return (
+              <Field key={field} label={label} required={required}>
+                <input
+                  type="text"
+                  defaultValue={String(value)}
+                  onChange={(e) => setField(field, e.target.value)}
+                  style={inputStyle}
+                />
+              </Field>
             );
           })}
         </div>
@@ -1149,7 +1402,8 @@ const GenericEditorDrawerInnerMemo = memo(GenericEditorDrawerInner, (prev, next)
   prev.onClose === next.onClose &&
   prev.userEmail === next.userEmail &&
   prev.initialRow === next.initialRow &&
-  prev.isNew === next.isNew
+  prev.isNew === next.isNew &&
+  prev.dataset === next.dataset
 );
 
 // Template di default per nuove righe (così l'editor mostra i campi giusti
@@ -1208,6 +1462,9 @@ function GenericEditorDrawer({
   const ix = useData();
   const { user } = useAuth();
   const [frozenRow, setFrozenRow] = useState<any>(null);
+  // Congela anche il dataset quando il drawer è aperto (così le modifiche al DB
+  // non causano re-render dell'editor mentre l'utente sta digitando).
+  const [frozenDataset, setFrozenDataset] = useState<any>(null);
 
   useEffect(() => {
     if (open) {
@@ -1231,9 +1488,20 @@ function GenericEditorDrawer({
           const existing = arr.find(r => r.id === rowId);
           setFrozenRow(existing || null);
         }
+        // Congela il dataset per i selettori entità
+        setFrozenDataset({
+          periods: ix.ds.periods,
+          artists: ix.ds.artists,
+          techniques: ix.ds.techniques,
+          terms: ix.ds.terms,
+          works: ix.ds.works,
+          events: ix.ds.events,
+          connections: ix.ds.connections,
+        });
       }
     } else {
       if (frozenRow !== null) setFrozenRow(null);
+      if (frozenDataset !== null) setFrozenDataset(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, rowId, table, ix, isNew]);
@@ -1249,6 +1517,7 @@ function GenericEditorDrawer({
       userEmail={user?.email || null}
       initialRow={frozenRow}
       isNew={isNew}
+      dataset={frozenDataset || { periods: [], artists: [], techniques: [], terms: [], works: [], events: [], connections: [] }}
     />
   );
 }

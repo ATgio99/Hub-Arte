@@ -202,7 +202,7 @@ export default function AdminRichieste() {
   return (
     <div className="wrap page">
       <div className="page-head" style={{ marginBottom: 18 }}>
-        <div className="page-eyebrow"><span className="sec-num">ADM</span><span className="eyebrow">Pannello amministratore</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Pannello amministratore</span></div>
         <h1 className="page-title">Dashboard admin</h1>
         <p className="page-lead">
           Qui trovi tutte le richieste inviate dagli utenti: proposte di nuove opere e suggerimenti di modifica a opere esistenti.

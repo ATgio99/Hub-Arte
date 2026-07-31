@@ -83,7 +83,7 @@ export default function Mappa() {
   return (
     <div className="wrap page" style={{ paddingBottom: 24 }}>
       <div className="page-head">
-        <div className="page-eyebrow"><span className="sec-num">03</span><span className="eyebrow">Geografia</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Geografia</span></div>
         <h1 className="page-title">Mappa & contaminazioni</h1>
         <p className="page-lead">I luoghi che custodiscono le opere e i flussi di influenza che li collegano. La dimensione di ogni cerchio riflette il numero di opere; gli archi uniscono opere connesse in città diverse. Clicca un cerchio o il nome di un centro per aprire la scheda del luogo.</p>
       </div>

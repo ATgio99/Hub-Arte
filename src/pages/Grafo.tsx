@@ -380,7 +380,7 @@ export default function Grafo() {
   return (
     <div className="wrap page" style={{ paddingBottom: 24 }}>
       <div className="page-head">
-        <div className="page-eyebrow"><span className="sec-num">02</span><span className="eyebrow">Rete neurale</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Rete neurale</span></div>
         <h1 className="page-title">Il grafo delle interconnessioni</h1>
         <p className="page-lead">Ogni nodo è un'entità, ogni filo un legame documentato: influenze, rielaborazioni, rapporti maestro-allievo, committenze. Muoviti nello spazio in 3D, passa il mouse su un nodo per accenderne le connessioni, clicca per i dettagli. Lo slider temporale filtra la rete.</p>
       </div>

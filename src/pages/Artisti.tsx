@@ -46,7 +46,7 @@ export default function Artisti() {
   return (
     <div className="wrap page" style={{ paddingBottom: 40 }}>
       <div className="page-head">
-        <div className="page-eyebrow"><span className="sec-num">02</span><span className="eyebrow">Maestri & botteghe</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Maestri & botteghe</span></div>
         <h1 className="page-title">Artisti</h1>
         <p className="page-lead">Tutti i protagonisti del programma: cerca per nome, alias o ruolo. Ogni scheda raccoglie biografia, innovazioni e opere. Lo slider temporale filtra l'elenco.</p>
       </div>

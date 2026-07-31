@@ -94,7 +94,7 @@ export default function Opere() {
   return (
     <div className="wrap page">
       <div className="page-head">
-        <div className="page-eyebrow"><span className="sec-num">04</span><span className="eyebrow">Catalogo · Opere</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Catalogo · Opere</span></div>
         <h1 className="page-title">Opere</h1>
         <p className="page-lead">Il catalogo completo: ogni scheda raccoglie immagine, datazione, tecniche, terminologia e le connessioni con le altre opere. Usa la barra temporale a sinistra per restringere il periodo.</p>
       </div>

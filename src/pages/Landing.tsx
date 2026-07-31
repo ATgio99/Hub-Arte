@@ -100,10 +100,10 @@ export default function Landing() {
         </motion.div>
       </div>
 
-      {/* Stats */}
+      {/* Stats — 6 riquadri su una sola riga */}
       <div ref={ref as any} style={{
-        display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(110px, 1fr))",
-        gap: 12, marginBottom: 40, maxWidth: 700, margin: "0 auto 40px",
+        display: "grid", gridTemplateColumns: "repeat(6, 1fr)",
+        gap: 10, marginBottom: 40, maxWidth: 820, margin: "0 auto 40px",
       }}>
         {stats.map((s, i) => (
           <motion.div
@@ -112,14 +112,14 @@ export default function Landing() {
             animate={{ opacity: (seen || reduced) ? 1 : 0, y: (seen || reduced) ? 0 : 16 }}
             transition={{ duration: 0.5, ease: EASE_OUT, delay: reduced ? 0 : Math.min(i * 0.06, 0.3) }}
             style={{
-              textAlign: "center", padding: "16px 8px",
+              textAlign: "center", padding: "16px 6px",
               background: "var(--bg-2)", borderRadius: 10,
             }}
           >
-            <div style={{ fontSize: "clamp(22px, 4vw, 30px)", fontWeight: 700, color: "var(--gold-deep)" }}>
+            <div style={{ fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 700, color: "var(--gold-deep)" }}>
               <CountUp value={s.n} />
             </div>
-            <div style={{ fontSize: 11.5, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>
+            <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>
               {s.l}
             </div>
           </motion.div>
