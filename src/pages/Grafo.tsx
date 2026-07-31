@@ -42,13 +42,17 @@ export default function Grafo() {
   const [mode, setMode] = useState<"3d" | "2d">("3d");
   const [isFull, setIsFull] = useState(false);
 
+  // ResizeObserver SOLO in modalità non-fullscreen.
+  // In fullscreen usiamo dimensioni fisse (window.innerWidth/innerHeight)
+  // perché il ResizeObserver causa un loop di re-render → tremolio del grafo.
   useEffect(() => {
+    if (isFull) return; // skip in fullscreen
     const ro = new ResizeObserver(() => {
       if (wrapRef.current) setDims({ w: wrapRef.current.clientWidth, h: wrapRef.current.clientHeight });
     });
     if (wrapRef.current) ro.observe(wrapRef.current);
     return () => ro.disconnect();
-  }, []);
+  }, [isFull]);
 
   const inTime = useCallback((type: EntityType, id: string): boolean => {
     switch (type) {
@@ -316,7 +320,6 @@ export default function Grafo() {
           backgroundColor={PAPER}
           cooldownTicks={100}
           cooldownTime={2000}
-          nodeCanvasObject={node2dDraw}
           d3VelocityDecay={0.3}
           nodeRelSize={4}
           linkColor={(l: any) => {
@@ -508,10 +511,17 @@ function GraphSizer({ wrapRef, full, setDims }: { wrapRef: any; full: boolean; s
     if (full) {
       // In fullscreen: dimensioni fisse basate sulla finestra.
       // NON usare ResizeObserver (causa tremolio del force-graph).
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      setDims({ w: w - (window.innerWidth > 900 ? 320 : 0), h }); // sottrai larghezza drawer se desktop
-      return;
+      // Ascolta solo 'resize' su window (molto più stabile di RO).
+      const compute = () => {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        // sottrai larghezza drawer se desktop (drawer è 300px o 88vw)
+        const drawerW = w > 900 ? 300 : 0;
+        setDims({ w: Math.max(200, w - drawerW), h });
+      };
+      compute();
+      window.addEventListener("resize", compute);
+      return () => window.removeEventListener("resize", compute);
     }
     // Modalità normale: usa ResizeObserver con debounce
     const target = wrapRef.current;
