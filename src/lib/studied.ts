@@ -7,6 +7,7 @@ import { supabase } from "./supabase";
 
 const KEY = "atlante:studied";
 const TOMB_KEY = "atlante:studied-tombstones"; // ID eliminati di recente (anti-risveglio)
+const PENDING_KEY = "atlante:studied-pending"; // ID aggiunti localmente, non ancora pushati
 export const STUDIED_EVENT = "atlante:studied-changed";
 
 // --- Tombstones: ID eliminati di recente per evitare che il poll dal cloud
@@ -31,6 +32,29 @@ export function filterTombstonedStudied(ids: string[]): string[] {
     if (now - ts > TOMB_TTL_MS) return true; // scaduto
     return false;
   });
+}
+
+// --- Pending adds: ID aggiunti localmente ma non ancora pushati al cloud.
+//     Servono per evitare che il pullFromCloud (che fa REPLACE con cloud data)
+//     cancelli ID aggiunti offline o appena prima che l'UPSERT venga processato.
+function getPendingAdds(): Record<string, number> {
+  try { return JSON.parse(localStorage.getItem(PENDING_KEY) || "{}"); } catch { return {}; }
+}
+function addPendingAdd(id: string) {
+  const p = getPendingAdds();
+  p[id] = Date.now();
+  localStorage.setItem(PENDING_KEY, JSON.stringify(p));
+}
+function removePendingAdd(id: string) {
+  const p = getPendingAdds();
+  delete p[id];
+  localStorage.setItem(PENDING_KEY, JSON.stringify(p));
+}
+/** Restituisce gli ID aggiunti localmente di recente. Usato da pullFromCloud. */
+export function getPendingAddsStudied(): string[] {
+  const p = getPendingAdds();
+  const now = Date.now();
+  return Object.keys(p).filter(id => now - p[id] < TOMB_TTL_MS);
 }
 
 export function getStudied(): string[] {
@@ -64,6 +88,9 @@ export function toggleStudied(id: string): boolean {
     ids.splice(i, 1);
     // Traccia l'eliminazione per evitare che il poll la riaggiunga
     addTombstone(id);
+  } else {
+    // Traccia l'aggiunta come "pending" finché l'UPSERT non va a buon fine
+    addPendingAdd(id);
   }
   persist(ids);
 
@@ -76,9 +103,11 @@ export function toggleStudied(id: string): boolean {
         { onConflict: "user_id,work_id" }
       ).then(({ error }) => {
         if (!error) {
+          // UPSERT riuscito: il cloud ora ha la riga → rimuovi tombstone e pending
           const t = getTombstones();
           delete t[id];
           localStorage.setItem(TOMB_KEY, JSON.stringify(t));
+          removePendingAdd(id);
         }
       });
     } else {
@@ -102,6 +131,9 @@ export function studiedCount(): number {
 
 export async function clearAllStudied() {
   persist([]);
+  // Pulisci anche tombstones e pending
+  localStorage.removeItem(TOMB_KEY);
+  localStorage.removeItem(PENDING_KEY);
   const { data: { user } } = await supabase.auth.getUser();
   if (user) {
     await supabase.from("user_studied").delete().eq("user_id", user.id);

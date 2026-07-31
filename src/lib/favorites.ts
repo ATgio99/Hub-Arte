@@ -7,6 +7,7 @@ import { supabase } from "./supabase";
 
 const KEY = "atlante:favorites";
 const TOMB_KEY = "atlante:favorites-tombstones"; // ID eliminati di recente (anti-risveglio)
+const PENDING_KEY = "atlante:favorites-pending"; // ID aggiunti localmente, non ancora pushati
 export const FAVS_EVENT = "atlante:favs-changed";
 
 export interface Favorites { works: string[]; artists: string[] }
@@ -37,6 +38,33 @@ export function filterTombstoned(type: FavType, ids: string[]): string[] {
     }
     return false; // tombstoned recente → scartalo
   });
+}
+
+// --- Pending adds: ID aggiunti localmente ma non ancora pushati al cloud.
+//     Servono per evitare che il pullFromCloud (che fa REPLACE con cloud data)
+//     cancelli ID aggiunti offline o appena prima che l'UPSERT venga processato.
+//     Vengono rimossi quando l'UPSERT al cloud ha successo.
+function getPendingAdds(): Record<string, number> {
+  try { return JSON.parse(localStorage.getItem(PENDING_KEY) || "{}"); } catch { return {}; }
+}
+function addPendingAdd(type: FavType, id: string) {
+  const p = getPendingAdds();
+  p[`${type}:${id}`] = Date.now();
+  localStorage.setItem(PENDING_KEY, JSON.stringify(p));
+}
+function removePendingAdd(type: FavType, id: string) {
+  const p = getPendingAdds();
+  delete p[`${type}:${id}`];
+  localStorage.setItem(PENDING_KEY, JSON.stringify(p));
+}
+/** Restituisce gli ID aggiunti localmente di recente (per tipo). Usato da pullFromCloud. */
+export function getPendingAddsFor(type: FavType): string[] {
+  const p = getPendingAdds();
+  const now = Date.now();
+  return Object.keys(p)
+    .filter(k => k.startsWith(`${type}:`))
+    .filter(k => now - p[k] < TOMB_TTL_MS) // scadono dopo 1 ora
+    .map(k => k.slice(`${type}:`.length));
 }
 
 export function getFavorites(): Favorites {
@@ -77,6 +105,9 @@ export function toggleFavorite(type: FavType, id: string): boolean {
     list.splice(i, 1);
     // Traccia l'eliminazione per evitare che il poll la riaggiunga
     addTombstone(type, id);
+  } else {
+    // Traccia l'aggiunta come "pending" finché l'UPSERT non va a buon fine
+    addPendingAdd(type, id);
   }
   persist(f);
 
@@ -88,11 +119,12 @@ export function toggleFavorite(type: FavType, id: string): boolean {
         { user_id: user.id, work_id: id, type },
         { onConflict: "user_id,work_id,type" }
       ).then(({ error }) => {
-        // Se l'upsert ha successo, possiamo rimuovere la tombstone (il cloud ora ha la riga)
         if (!error) {
+          // UPSERT riuscito: il cloud ora ha la riga → rimuovi tombstone e pending
           const t = getTombstones();
           delete t[`${type}:${id}`];
           localStorage.setItem(TOMB_KEY, JSON.stringify(t));
+          removePendingAdd(type, id);
         }
       });
     } else {
@@ -121,7 +153,9 @@ export function favoritesCount(): number {
 /** Svuota tutti i preferiti (locale + cloud). Async: attende la delete su Supabase. */
 export async function clearAllFavorites() {
   persist({ works: [], artists: [] });
-  // Also clear from Supabase (await instead of .then)
+  // Pulisci anche tombstones e pending
+  localStorage.removeItem(TOMB_KEY);
+  localStorage.removeItem(PENDING_KEY);
   const { data: { user } } = await supabase.auth.getUser();
   if (user) {
     await supabase.from("user_favorites").delete().eq("user_id", user.id);

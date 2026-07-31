@@ -26,8 +26,8 @@
 // ============================================================================
 
 import { supabase } from "./supabase";
-import { getFavorites, setFavorites, filterTombstoned } from "./favorites";
-import { getStudied, setStudied, filterTombstonedStudied } from "./studied";
+import { getFavorites, setFavorites, filterTombstoned, getPendingAddsFor } from "./favorites";
+import { getStudied, setStudied, filterTombstonedStudied, getPendingAddsStudied } from "./studied";
 import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "./imageOverrides";
 import type { OverrideMap } from "./imageOverrides";
 import type { User } from "@supabase/supabase-js";
@@ -179,7 +179,11 @@ export async function pushToCloud(user: User): Promise<void> {
 export async function pullFromCloud(user: User): Promise<void> {
   console.log("[sync] pullFromCloud start for user:", user.id);
 
-  // 1) Favorites — MERGE union (con filtro tombstones per evitare risveglio)
+  // 1) Favorites — REPLACE-with-pending
+  //    Il cloud è la fonte di verità per le eliminazioni (se un ID non è nel cloud,
+  //    è stato eliminato da qualche parte e va rimosso anche locale).
+  //    MA preserviamo gli ID "pending": aggiunti localmente di recente e non ancora
+  //    sincronizzati (es. offline add o UPSERT non ancora processato).
   const { data: favRows, error: favErr } = await supabase
     .from("user_favorites")
     .select("work_id, type")
@@ -187,21 +191,20 @@ export async function pullFromCloud(user: User): Promise<void> {
 
   if (favErr) {
     console.error("[sync] Error fetching favorites:", favErr.message);
-  } else if (favRows && favRows.length > 0) {
-    const localFavs = getFavorites();
-    // Filtra via gli ID eliminati di recente dall'utente (tombstones)
-    const cloudWorks = filterTombstoned("work", favRows.filter(r => r.type === "work").map(r => r.work_id));
-    const cloudArtists = filterTombstoned("artist", favRows.filter(r => r.type === "artist").map(r => r.work_id));
-    // MERGE: unione senza duplicati
-    const mergedWorks = [...new Set([...localFavs.works, ...cloudWorks])];
-    const mergedArtists = [...new Set([...localFavs.artists, ...cloudArtists])];
-    setFavorites({ works: mergedWorks, artists: mergedArtists });
-    console.log(`[sync] favorites: local ${localFavs.works.length}+${localFavs.artists.length} + cloud ${cloudWorks.length}+${cloudArtists.length} → merge ${mergedWorks.length}+${mergedArtists.length}`);
   } else {
-    console.log("[sync] favorites: cloud empty, keeping local");
+    const cloudWorks = filterTombstoned("work", (favRows || []).filter(r => r.type === "work").map(r => r.work_id));
+    const cloudArtists = filterTombstoned("artist", (favRows || []).filter(r => r.type === "artist").map(r => r.work_id));
+    // Preserva gli ID pending (aggiunti localmente, non ancora nel cloud)
+    const pendingWorks = getPendingAddsFor("work");
+    const pendingArtists = getPendingAddsFor("artist");
+    // REPLACE: cloud + pending (deduplicati). I locali-non-in-cloud-non-pending vengono scartati.
+    const finalWorks = [...new Set([...cloudWorks, ...pendingWorks])];
+    const finalArtists = [...new Set([...cloudArtists, ...pendingArtists])];
+    setFavorites({ works: finalWorks, artists: finalArtists });
+    console.log(`[sync] favorites: cloud ${cloudWorks.length}+${cloudArtists.length} + pending ${pendingWorks.length}+${pendingArtists.length} → ${finalWorks.length}+${finalArtists.length}`);
   }
 
-  // 2) Studied — MERGE union (con filtro tombstones)
+  // 2) Studied — REPLACE-with-pending (stessa logica)
   const { data: studiedRows, error: studiedErr } = await supabase
     .from("user_studied")
     .select("work_id")
@@ -209,15 +212,12 @@ export async function pullFromCloud(user: User): Promise<void> {
 
   if (studiedErr) {
     console.error("[sync] Error fetching studied:", studiedErr.message);
-  } else if (studiedRows && studiedRows.length > 0) {
-    const localStudied = getStudied();
-    // Filtra via gli ID eliminati di recente dall'utente
-    const cloudStudied = filterTombstonedStudied(studiedRows.map(r => r.work_id));
-    const merged = [...new Set([...localStudied, ...cloudStudied])];
-    setStudied(merged);
-    console.log(`[sync] studied: local ${localStudied.length} + cloud ${cloudStudied.length} → merge ${merged.length}`);
   } else {
-    console.log("[sync] studied: cloud empty, keeping local");
+    const cloudStudied = filterTombstonedStudied((studiedRows || []).map(r => r.work_id));
+    const pendingStudied = getPendingAddsStudied();
+    const finalStudied = [...new Set([...cloudStudied, ...pendingStudied])];
+    setStudied(finalStudied);
+    console.log(`[sync] studied: cloud ${cloudStudied.length} + pending ${pendingStudied.length} → ${finalStudied.length}`);
   }
 
   // 3) Image overrides PRIVATI dell'utente — merge (locale ha precedenza)

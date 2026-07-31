@@ -165,13 +165,13 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               marginTop: 4, padding: "6px 4px",
               textDecoration: "none", color: "var(--ink-dim)", fontSize: 12,
             }}
-            title="Impostazioni, richieste e contributi"
+            title="I tuoi contributi"
             data-testid="sbx-profile"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-2.1 2.6-2.4z" />
             </svg>
-            <span>Impostazioni e contributi</span>
+            <span>Contributi</span>
             {pendingReviewCount > 0 && (
               <span
                 style={{
@@ -231,12 +231,12 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               marginTop: 4, padding: "6px 4px",
               textDecoration: "none", color: "var(--ink-dim)", fontSize: 12,
             }}
-            title="Impostazioni, richieste e contributi"
+            title="I tuoi contributi"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-2.1 2.6-2.4z" />
             </svg>
-            <span>Impostazioni e contributi</span>
+            <span>Contributi</span>
           </Link>
         </>)}
 

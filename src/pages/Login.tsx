@@ -6,8 +6,8 @@ import { useState } from "react";
 import { useAuth } from "../lib/auth";
 import { supabase } from "../lib/supabase";
 import { fullSync } from "../lib/sync";
-import { getFavorites, setFavorites } from "../lib/favorites";
-import { getStudied, setStudied } from "../lib/studied";
+import { getFavorites, setFavorites, clearAllFavorites } from "../lib/favorites";
+import { getStudied, setStudied, clearAllStudied } from "../lib/studied";
 import { getOverrides, setOverrides } from "../lib/imageOverrides";
 
 export default function Login() {
@@ -31,6 +31,8 @@ export default function Login() {
   const [pwMsg, setPwMsg] = useState<string | null>(null);
   const [changingPw, setChangingPw] = useState(false);
   const [changingEmail, setChangingEmail] = useState(false);
+  // Azzeramento progressi (zona pericolosa)
+  const [resetting, setResetting] = useState(false);
 
   if (loading) {
     return (
@@ -157,6 +159,45 @@ export default function Login() {
       setSyncing(false);
     };
 
+    // ---- AZZERA TUTTI I PROGRESSI (zona pericolosa) ----
+    const handleResetProgress = async () => {
+      const confirmed = window.confirm(
+        "⚠️ CONFERMA AZZERAMENTO TOTALE\n\n" +
+        "Stai per cancellare TUTTI i tuoi progressi:\n" +
+        "  • Tutti i preferiti (★)\n" +
+        "  • Tutte le opere approfondite (✓)\n" +
+        "  • I dati corrispondenti sul cloud Supabase\n\n" +
+        "Questa azione è IRREVERSIBILE.\n\nVuoi procedere?"
+      );
+      if (!confirmed) return;
+
+      setResetting(true);
+      setSyncResult("⏳ Azzeramento in corso...");
+
+      // 1) Pulisci localStorage SUBITO (sincrono) — feedback immediato
+      try {
+        localStorage.removeItem("atlante:favorites");
+        localStorage.removeItem("atlante:studied");
+        localStorage.removeItem("atlante:favorites-tombstones");
+        localStorage.removeItem("atlante:studied-tombstones");
+        window.dispatchEvent(new CustomEvent("atlante:favs-changed"));
+        window.dispatchEvent(new CustomEvent("atlante:studied-changed"));
+      } catch { /* ignore */ }
+
+      // 2) Attendi la delete su Supabase con Promise.all
+      try {
+        await Promise.all([
+          clearAllFavorites(),
+          clearAllStudied(),
+        ]);
+      } catch { /* ignore — il localStorage è già pulito */ }
+
+      // 3) Ricarica dopo 2 secondi per mostrare il feedback
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    };
+
     return (
       <div className="card" style={{ padding: "24px 28px", display: "flex", flexDirection: "column", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -278,6 +319,31 @@ export default function Login() {
               }}
             >
               {changingPw ? "Invio…" : "Cambia password"}
+            </button>
+          </div>
+
+          {/* ===== ZONA PERICOLOSA: Azzera progressi ===== */}
+          <div style={{
+            marginTop: 12, padding: 14,
+            background: "rgba(168,72,63,0.04)",
+            border: "1px solid rgba(168,72,63,0.3)",
+            borderRadius: 10,
+          }}>
+            <div className="smallcaps" style={{ marginBottom: 8, color: "#a8483f" }}>⚠️ Zona pericolosa</div>
+            <p style={{ fontSize: 12.5, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 0 10px" }}>
+              Azzeri tutti i preferiti (★) e le opere approfondite (✓) — sia da questo browser che dal cloud.
+              <b> L'azione è irreversibile.</b>
+            </p>
+            <button
+              onClick={handleResetProgress}
+              disabled={resetting || syncing}
+              className="btn sm"
+              style={{
+                background: "#a8483f", color: "#fff", borderColor: "#a8483f",
+                cursor: resetting ? "wait" : "pointer",
+              }}
+            >
+              {resetting ? "⏳ Azzeramento…" : "🗑️ Azzera tutti i progressi"}
             </button>
           </div>
 

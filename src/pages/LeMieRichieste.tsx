@@ -13,8 +13,8 @@ import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { useAuth, CONTACT_EMAIL } from "../lib/auth";
-import { getFavorites, clearAllFavorites } from "../lib/favorites";
-import { getStudied, clearAllStudied } from "../lib/studied";
+import { getFavorites } from "../lib/favorites";
+import { getStudied } from "../lib/studied";
 import { fullSync } from "../lib/sync";
 
 interface SuggestionRow {
@@ -72,8 +72,6 @@ export default function LeMieRichieste() {
   // Feedback sincronizzazione (banner verde/rosso)
   const [syncFeedback, setSyncFeedback] = useState<string | null>(null);
   const [syncing, setSyncing] = useState(false);
-  // Azzeramento progressi (zona pericolosa)
-  const [resetting, setResetting] = useState(false);
 
   const load = useCallback(async () => {
     if (!user) { setLoading(false); return; }
@@ -124,44 +122,6 @@ export default function LeMieRichieste() {
     }
   };
 
-  // ---- AZZERA TUTTI I PROGRESSI (zona pericolosa) ----
-  const handleResetProgress = async () => {
-    if (!user) return;
-    const confirmed = window.confirm(
-      "⚠️ CONFERMA AZZERAMENTO TOTALE\n\n" +
-      "Stai per cancellare TUTTI i tuoi progressi:\n" +
-      "  • Tutti i preferiti (★)\n" +
-      "  • Tutte le opere approfondite (✓)\n" +
-      "  • I dati corrispondenti sul cloud Supabase\n\n" +
-      "Questa azione è IRREVERSIBILE.\n\nVuoi procedere?"
-    );
-    if (!confirmed) return;
-
-    setResetting(true);
-    setSyncFeedback("⏳ Azzeramento in corso...");
-
-    // 1) Pulisci localStorage SUBITO (sincrono) — feedback immediato
-    try {
-      localStorage.removeItem("atlante:favorites");
-      localStorage.removeItem("atlante:studied");
-      window.dispatchEvent(new CustomEvent("atlante:favs-changed"));
-      window.dispatchEvent(new CustomEvent("atlante:studied-changed"));
-    } catch { /* ignore */ }
-
-    // 2) Attendi la delete su Supabase con Promise.all
-    try {
-      await Promise.all([
-        clearAllFavorites(),
-        clearAllStudied(),
-      ]);
-    } catch { /* ignore — il localStorage è già pulito */ }
-
-    // 3) Ricarica dopo 2 secondi per mostrare il feedback
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
-  };
-
   if (!user) {
     return (
       <div className="wrap page" style={{ maxWidth: 560 }}>
@@ -198,8 +158,8 @@ export default function LeMieRichieste() {
   return (
     <div className="wrap page">
       <div className="page-head" style={{ marginBottom: 18 }}>
-        <div className="page-eyebrow"><span className="sec-num">★</span><span className="eyebrow">Il tuo account</span></div>
-        <h1 className="page-title">Impostazioni profilo</h1>
+        <div className="page-eyebrow"><span className="sec-num">★</span><span className="eyebrow">I tuoi contributi</span></div>
+        <h1 className="page-title">Contributi</h1>
         <p className="page-lead">
           Qui trovi lo storico di tutte le richieste che hai inviato: proposte di nuove opere e suggerimenti di modifica.
           Quando un admin le revisiona, riceverai una notifica (badge che pulsa nel menù) e potrai vedere il responso qui.
@@ -241,7 +201,7 @@ export default function LeMieRichieste() {
       <div style={{ display: "flex", gap: 10, marginBottom: 24, flexWrap: "wrap" }}>
         <Link to="/suggerisci" className="btn gold sm">+ Proponi una nuova opera</Link>
         <Link to="/opere" className="btn ghost sm">Cerca un'opera da modificare</Link>
-        <button className="btn ghost sm" onClick={handleSync} disabled={syncing || resetting}>
+        <button className="btn ghost sm" onClick={handleSync} disabled={syncing}>
           {syncing ? "↻ Sincronizzazione…" : "↻ Sincronizza ora"}
         </button>
       </div>
@@ -398,36 +358,6 @@ export default function LeMieRichieste() {
           )}
         </>
       )}
-
-      {/* ===== ZONA PERICOLOSA ===== */}
-      <div style={{
-        marginTop: 40, padding: 18,
-        background: "rgba(168,72,63,0.04)",
-        border: "1px solid rgba(168,72,63,0.3)",
-        borderRadius: 12,
-      }}>
-        <h2 style={{
-          fontSize: 17, marginBottom: 8, fontFamily: "var(--font-display)",
-          color: "#a8483f",
-        }}>
-          ⚠️ Zona pericolosa
-        </h2>
-        <p style={{ fontSize: 13.5, lineHeight: 1.55, color: "var(--ink-soft)", marginBottom: 14, maxWidth: "62ch" }}>
-          Qui puoi azzerare completamente i tuoi progressi: tutti i preferiti (★) e le opere approfondite (✓) verranno
-          cancellati sia da questo browser che dal cloud. <b>L'azione è irreversibile.</b>
-        </p>
-        <button
-          onClick={handleResetProgress}
-          disabled={resetting || syncing}
-          className="btn sm"
-          style={{
-            background: "#a8483f", color: "#fff", borderColor: "#a8483f",
-            cursor: resetting ? "wait" : "pointer",
-          }}
-        >
-          {resetting ? "⏳ Azzeramento in corso..." : "🗑️ Azzera tutti i progressi"}
-        </button>
-      </div>
 
       {/* Mance */}
       <div style={{
