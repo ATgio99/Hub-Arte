@@ -253,9 +253,9 @@ a.hero-stat:hover { background: var(--bg-2); }
 
 /* ---------- OPERA ---------- */
 .opera-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 52px; align-items: start; }
-.opera-img { aspect-ratio: 1/1; max-height: 560px; display: grid; background: var(--bg-2); }
-.opera-img img, .opera-img .img-placeholder { width: 100%; height: 100%; }
-@media (max-width: 880px){ .opera-grid { grid-template-columns: 1fr; gap: 28px; } .opera-img { aspect-ratio: 4/3; } }
+.opera-img { max-height: 72vh; display: flex; align-items: center; justify-content: center; background: var(--bg-2); cursor: zoom-in; }
+.opera-img img, .opera-img .img-placeholder { max-width: 100%; max-height: 72vh; width: auto; height: auto; object-fit: contain; }
+@media (max-width: 880px){ .opera-grid { grid-template-columns: 1fr; gap: 28px; } .opera-img { max-height: 60vh; } .opera-img img { max-height: 60vh; } }
 .innov { margin: 0; padding-left: 0; list-style: none; }
 .innov li { padding: 8px 0 8px 22px; position: relative; color: var(--ink-soft); border-bottom: 1px solid var(--line-soft); font-size: 14.5px; }
 .innov li::before { content: "◆"; position: absolute; left: 0; color: var(--gold); font-size: 9px; top: 11px; }
