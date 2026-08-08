@@ -76,38 +76,95 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signUp = useCallback(async (email: string, password: string) => {
     const redirectTo = getRedirectTo();
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: redirectTo ? { emailRedirectTo: redirectTo } : undefined,
-    });
+    let result;
+    try {
+      result = await supabase.auth.signUp({
+        email,
+        password,
+        options: redirectTo ? { emailRedirectTo: redirectTo } : undefined,
+      });
+    } catch (e: any) {
+      // Errore di rete o eccezione
+      const msg = e?.message || e?.toString() || "Errore di rete durante la registrazione.";
+      return { error: typeof msg === "string" ? msg : "Errore di rete. Controlla la connessione." };
+    }
+    const { data, error } = result;
     if (error) {
-      // Se l'errore ha un messaggio vuoto (es. SMTP mal configurato), mostra un messaggio utile
-      const msg = error.message || error.name || "Errore sconosciuto durante la registrazione.";
-      // Messaggi comuni di Supabase tradotti in italiano
+      // Log completo per debug (visibile nella console del browser: F12 → Console)
+      console.error("[auth.signUp] Errore raw Supabase:", error);
+      console.error("[auth.signUp] Type:", typeof error, "Message:", error?.message, "Name:", error?.name, "Status:", error?.status);
+      // Estrai il messaggio in modo robusto (a volte error è un oggetto complesso)
+      let msg: string;
+      if (typeof error === "string") {
+        msg = error;
+      } else if (error.message && typeof error.message === "string") {
+        msg = error.message;
+      } else if (error.name && typeof error.name === "string") {
+        msg = error.name;
+      } else {
+        // Se non riusciamo a estrarre un messaggio, serializziamo in modo sicuro
+        try {
+          msg = JSON.stringify(error);
+          if (msg === "{}" || msg === "") msg = "Errore sconosciuto durante la registrazione.";
+        } catch {
+          msg = "Errore sconosciuto durante la registrazione.";
+        }
+      }
+      // Traduzioni messaggi comuni di Supabase
       if (msg.includes("User already registered")) return { error: "Questo email è già registrata. Prova ad accedere." };
       if (msg.includes("Password should be at least")) return { error: "La password deve avere almeno 6 caratteri." };
       if (msg.includes("Unable to validate email")) return { error: "Email non valida." };
       if (msg.includes("rate limit") || msg.includes("Rate limit")) return { error: "Troppi tentativi. Riprova tra qualche minuto." };
-      if (msg.includes("smtp") || msg.includes("SMTP") || msg.includes("Email not sent")) return { error: "Errore nell'invio dell'email di conferma. Verifica la configurazione SMTP su Supabase." };
+      if (msg.includes("smtp") || msg.includes("SMTP") || msg.includes("Email not sent") || msg.includes("email_not_sent")) {
+        return { error: "Errore nell'invio dell'email di conferma. Verifica la configurazione SMTP su Supabase (Dashboard → Authentication → Providers → Email)." };
+      }
+      if (msg.includes("signup_disabled") || msg.includes("Signup disabled")) {
+        return { error: "La registrazione è temporaneamente disabilitata. Riprova più tardi." };
+      }
+      // Se il messaggio è vuoto o solo punteggiatura
+      if (!msg || msg.trim().length === 0 || msg === "{}") {
+        return { error: "Errore durante la registrazione. Possibile problema di configurazione SMTP. Verifica su Supabase Dashboard → Authentication → Providers → Email." };
+      }
       return { error: msg };
-    }
-    // Se l'utente non viene restituito e non c'è sessione, probabilmente serve conferma email
-    if (!data.user && !data.session) {
-      return { error: null }; // va bene, l'utente deve confermare l'email
     }
     return { error: null };
   }, []);
 
   const signIn = useCallback(async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    let result;
+    try {
+      result = await supabase.auth.signInWithPassword({ email, password });
+    } catch (e: any) {
+      const msg = e?.message || e?.toString() || "Errore di rete durante l'accesso.";
+      return { error: typeof msg === "string" ? msg : "Errore di rete. Controlla la connessione." };
+    }
+    const { data, error } = result;
     if (error) {
-      const msg = error.message || error.name || "Errore sconosciuto durante l'accesso.";
+      console.error("[auth.signIn] Errore raw Supabase:", error);
+      console.error("[auth.signIn] Type:", typeof error, "Message:", error?.message, "Name:", error?.name, "Status:", error?.status);
+      let msg: string;
+      if (typeof error === "string") {
+        msg = error;
+      } else if (error.message && typeof error.message === "string") {
+        msg = error.message;
+      } else if (error.name && typeof error.name === "string") {
+        msg = error.name;
+      } else {
+        try {
+          msg = JSON.stringify(error);
+          if (msg === "{}" || msg === "") msg = "Errore sconosciuto durante l'accesso.";
+        } catch {
+          msg = "Errore sconosciuto durante l'accesso.";
+        }
+      }
       // Traduzioni messaggi comuni
       if (msg.includes("Invalid login credentials")) return { error: "Email o password non corretti." };
       if (msg.includes("Email not confirmed")) return { error: "Devi confermare la tua email prima di accedere. Controlla la casella di posta (anche spam)." };
       if (msg.includes("rate limit") || msg.includes("Rate limit")) return { error: "Troppi tentativi di accesso. Riprova tra qualche minuto." };
       if (msg.includes("User not found")) return { error: "Nessun account trovato con questa email." };
+      if (!msg || msg.trim().length === 0 || msg === "{}") {
+        return { error: "Errore durante l'accesso. Riprova." };
+      }
       return { error: msg };
     }
     return { error: null };

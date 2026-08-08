@@ -519,7 +519,9 @@ export default function Login() {
             </div>
 
             {error && (
-              <div style={{ color: "#a8483f", fontSize: 13, lineHeight: 1.4 }}>{error}</div>
+              <div style={{ color: "#a8483f", fontSize: 13, lineHeight: 1.4 }}>
+                {typeof error === "string" ? error : "Errore sconosciuto. Controlla la console per dettagli."}
+              </div>
             )}
 
             <button type="submit" className="btn gold sm" style={{ marginTop: 4 }}>
