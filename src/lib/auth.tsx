@@ -31,12 +31,14 @@ export function isAdminEmail(email?: string | null): boolean {
   return ADMIN_EMAILS.includes(email.toLowerCase());
 }
 
-// Determina il redirect URL dopo conferma email (deve essere l'URL corrente dell'app)
+// Determina il redirect URL dopo conferma email.
+// Usa SOLO l'origin (senza path) perché Supabase Auth ha una whitelist
+// di URL consentiti. Se includiamo /login o /#/login, Supabase potrebbe
+// rifiutarlo con un errore 500 se non è nella lista Redirect URLs.
 function getRedirectTo(): string {
-  // In PWA su iPhone, usa l'URL corrente (es. https://tuosito.netlify.app)
-  // Non usare window.location.href perché in PWA potrebbe essere diverso
   if (typeof window !== "undefined") {
-    return window.location.origin + window.location.pathname;
+    // Ritorna solo l'origin: https://hubarte.it o https://hubarte.netlify.app
+    return window.location.origin;
   }
   return "";
 }
