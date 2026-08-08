@@ -2,7 +2,7 @@
 // Login — componente per accedere o registrarsi con email e password
 // Include export/import dati per migrare dalla vecchia versione
 // ============================================================================
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../lib/auth";
 import { supabase } from "../lib/supabase";
 import { fullSync } from "../lib/sync";
@@ -11,12 +11,18 @@ import { getStudied, setStudied, clearAllStudied } from "../lib/studied";
 import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "../lib/imageOverrides";
 
 export default function Login() {
-  const { signIn, signUp, signOut, user, loading, resetPassword } = useAuth();
+  const { signIn, signUp, signOut, user, loading, resetPassword, updateNewPassword, passwordRecoveryActive } = useAuth();
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [forgotMode, setForgotMode] = useState(false);
   const [forgotEmail, setForgotEmail] = useState("");
   const [forgotMsg, setForgotMsg] = useState<string | null>(null);
   const [forgotSending, setForgotSending] = useState(false);
+  // Recovery mode: quando l'utente arriva dal link nell'email di recupero
+  const [recoveryMode, setRecoveryMode] = useState(false);
+  const [recoveryPw, setRecoveryPw] = useState("");
+  const [recoveryPwConfirm, setRecoveryPwConfirm] = useState("");
+  const [recoveryMsg, setRecoveryMsg] = useState<string | null>(null);
+  const [recoverySending, setRecoverySending] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -216,6 +222,47 @@ export default function Login() {
     } else {
       setForgotMsg("✓ Email di recupero inviata! Controlla la tua casella di posta (anche spam) e clicca il link per reimpostare la password.");
       setForgotEmail("");
+    }
+  };
+
+  // ---- RECUPERO PASSWORD: form di inserimento nuova password ----
+  // Quando l'utente clicca il link nell'email, Supabase reindirizza al sito
+  // con type=recovery. AuthProvider intercetta l'evento PASSWORD_RECOVERY
+  // e attiva passwordRecoveryActive. Mostriamo il form per inserire la nuova password.
+  useEffect(() => {
+    if (passwordRecoveryActive) {
+      setRecoveryMode(true);
+      setForgotMode(false);
+    }
+  }, [passwordRecoveryActive]);
+
+  const handleRecoveryUpdate = async () => {
+    setRecoveryMsg(null);
+    if (!recoveryPw.trim()) {
+      setRecoveryMsg("Inserisci la nuova password.");
+      return;
+    }
+    if (recoveryPw.length < 6) {
+      setRecoveryMsg("La password deve avere almeno 6 caratteri.");
+      return;
+    }
+    if (recoveryPw !== recoveryPwConfirm) {
+      setRecoveryMsg("Le password non coincidono.");
+      return;
+    }
+    setRecoverySending(true);
+    const { error } = await updateNewPassword(recoveryPw.trim());
+    setRecoverySending(false);
+    if (error) {
+      setRecoveryMsg("✗ " + error);
+    } else {
+      setRecoveryMsg("✓ Password aggiornata con successo! Ora sei loggato.");
+      setRecoveryPw("");
+      setRecoveryPwConfirm("");
+      setRecoveryMode(false);
+      // L'utente è già loggato (Supabase crea una sessione con il token recovery)
+      // Forza reload per aggiornare tutta l'app
+      setTimeout(() => window.location.reload(), 1500);
     }
   };
 
@@ -522,6 +569,64 @@ export default function Login() {
             Torna al login
           </button>
         </div>
+      ) : recoveryMode ? (
+        <>
+          <div className="eyebrow" style={{ marginBottom: 6 }}>Recupero password</div>
+          <h3 style={{ fontSize: 22, fontFamily: "var(--font-display)", marginBottom: 8 }}>
+            Imposta nuova password
+          </h3>
+          <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.55, marginBottom: 16 }}>
+            Inserisci la nuova password per il tuo account.
+          </p>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            <div>
+              <label className="filter-label">Nuova password</label>
+              <input
+                type="password"
+                className="input"
+                value={recoveryPw}
+                onChange={e => setRecoveryPw(e.target.value)}
+                placeholder="Almeno 6 caratteri"
+                autoComplete="new-password"
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div>
+              <label className="filter-label">Conferma password</label>
+              <input
+                type="password"
+                className="input"
+                value={recoveryPwConfirm}
+                onChange={e => setRecoveryPwConfirm(e.target.value)}
+                placeholder="Ripeti la nuova password"
+                autoComplete="new-password"
+                style={{ width: "100%" }}
+                onKeyDown={e => { if (e.key === "Enter") handleRecoveryUpdate(); }}
+              />
+            </div>
+
+            {recoveryMsg && (
+              <div style={{
+                fontSize: 13, lineHeight: 1.5, padding: "10px 12px", borderRadius: 6,
+                background: recoveryMsg.startsWith("✓") ? "rgba(63,138,79,0.08)" : "rgba(168,72,63,0.08)",
+                color: recoveryMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f",
+                border: `1px solid ${recoveryMsg.startsWith("✓") ? "rgba(63,138,79,0.2)" : "rgba(168,72,63,0.2)"}`,
+              }}>
+                {recoveryMsg}
+              </div>
+            )}
+
+            <button
+              className="btn gold sm"
+              onClick={handleRecoveryUpdate}
+              disabled={recoverySending}
+              style={{ marginTop: 4 }}
+            >
+              {recoverySending ? "Aggiornamento…" : "Aggiorna password →"}
+            </button>
+          </div>
+        </>
       ) : forgotMode ? (
         <>
           <div className="eyebrow" style={{ marginBottom: 6 }}>Recupero password</div>

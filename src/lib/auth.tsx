@@ -14,6 +14,8 @@ interface AuthState {
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<{ error: string | null }>;
+  updateNewPassword: (newPassword: string) => Promise<{ error: string | null }>;
+  passwordRecoveryActive: boolean;
 }
 
 const AuthCtx = createContext<AuthState | null>(null);
@@ -44,11 +46,21 @@ function getRedirectTo(): string {
   return "";
 }
 
+// Stato per il recovery password: quando l'utente clicca il link nell'email,
+// Supabase reindirizza al sito con type=recovery. Mostriamo un form dedicato.
+// Usiamo una variabile externa per comunicare con Login.tsx senza re-render eccessivi.
+let _passwordRecoveryActive = false;
+export function isPasswordRecoveryActive() { return _passwordRecoveryActive; }
+export function clearPasswordRecovery() { _passwordRecoveryActive = false; }
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  // Force re-render quando cambia lo stato di recovery
+  const [, forceRecoveryRender] = useState(0);
+  const triggerRecoveryUpdate = () => forceRecoveryRender(v => v + 1);
 
   useEffect(() => {
     // Recupera sessione esistente
@@ -59,18 +71,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setIsAdmin(isAdminEmail(u?.email));
       setLoading(false);
     }).catch(() => {
-      // Se fallisce (es. PWA senza rete), prosegui senza sessione
       setLoading(false);
     });
 
-    // Ascolta cambiamenti auth (login, logout, token refresh)
+    // Ascolta cambiamenti auth (login, logout, token refresh, PASSWORD_RECOVERY)
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      (event, session) => {
         setSession(session);
         const u = session?.user ?? null;
         setUser(u);
         setIsAdmin(isAdminEmail(u?.email));
         setLoading(false);
+
+        // Gestione PASSWORD_RECOVERY: quando l'utente clicca il link nell'email
+        // di recupero, Supabase scatena questo evento. Attiviamo il flag
+        // per mostrare il form di cambio password in Login.tsx.
+        if (event === "PASSWORD_RECOVERY") {
+          _passwordRecoveryActive = true;
+          triggerRecoveryUpdate();
+        }
       }
     );
 
@@ -215,6 +234,39 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { error: null };
   }, []);
 
+  const updateNewPassword = useCallback(async (newPassword: string) => {
+    let result;
+    try {
+      result = await supabase.auth.updateUser({ password: newPassword });
+    } catch (e: any) {
+      const msg = e?.message || e?.toString() || "Errore di rete durante l'aggiornamento.";
+      return { error: typeof msg === "string" ? msg : "Errore di rete. Controlla la connessione." };
+    }
+    const { error } = result;
+    if (error) {
+      console.error("[auth.updateNewPassword] Errore raw Supabase:", error);
+      let msg: string;
+      if (typeof error === "string") msg = error;
+      else if (error.message && typeof error.message === "string") msg = error.message;
+      else if (error.name && typeof error.name === "string") msg = error.name;
+      else {
+        try {
+          msg = JSON.stringify(error);
+          if (msg === "{}" || msg === "") msg = "Errore sconosciuto durante l'aggiornamento.";
+        } catch { msg = "Errore sconosciuto durante l'aggiornamento."; }
+      }
+      if (msg.includes("Password should be at least")) return { error: "La password deve avere almeno 6 caratteri." };
+      if (msg.includes("rate limit") || msg.includes("Rate limit")) return { error: "Troppi tentativi. Riprova tra qualche minuto." };
+      if (!msg || msg.trim().length === 0 || msg === "{}") {
+        return { error: "Errore durante l'aggiornamento della password. Riprova." };
+      }
+      return { error: msg };
+    }
+    // Password aggiornata con successo: disattiva il flag recovery
+    _passwordRecoveryActive = false;
+    return { error: null };
+  }, []);
+
   const signOut = useCallback(async () => {
     // Pulisci TUTTI i dati utente dal localStorage PRIMA di fare signOut,
     // così il prossimo utente che fa login su questo browser non eredita
@@ -254,7 +306,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <AuthCtx.Provider value={{ user, session, loading, isAdmin, signUp, signIn, signOut, resetPassword }}>
+    <AuthCtx.Provider value={{ user, session, loading, isAdmin, signUp, signIn, signOut, resetPassword, updateNewPassword, passwordRecoveryActive: _passwordRecoveryActive }}>
       {children}
     </AuthCtx.Provider>
   );
