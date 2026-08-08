@@ -13,6 +13,7 @@ interface AuthState {
   signUp: (email: string, password: string) => Promise<{ error: string | null }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
+  resetPassword: (email: string) => Promise<{ error: string | null }>;
 }
 
 const AuthCtx = createContext<AuthState | null>(null);
@@ -172,6 +173,48 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { error: null };
   }, []);
 
+  const resetPassword = useCallback(async (email: string) => {
+    const redirectTo = getRedirectTo();
+    let result;
+    try {
+      result = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: redirectTo || undefined,
+      });
+    } catch (e: any) {
+      const msg = e?.message || e?.toString() || "Errore di rete durante l'invio dell'email.";
+      return { error: typeof msg === "string" ? msg : "Errore di rete. Controlla la connessione." };
+    }
+    const { error } = result;
+    if (error) {
+      console.error("[auth.resetPassword] Errore raw Supabase:", error);
+      let msg: string;
+      if (typeof error === "string") msg = error;
+      else if (error.message && typeof error.message === "string") msg = error.message;
+      else if (error.name && typeof error.name === "string") msg = error.name;
+      else {
+        try {
+          msg = JSON.stringify(error);
+          if (msg === "{}" || msg === "") msg = "Errore sconosciuto durante l'invio dell'email.";
+        } catch { msg = "Errore sconosciuto durante l'invio dell'email."; }
+      }
+      // Traduzioni messaggi comuni
+      if (msg.includes("User not found") || msg.includes("user not found")) {
+        return { error: "Nessun account trovato con questa email." };
+      }
+      if (msg.includes("rate limit") || msg.includes("Rate limit")) {
+        return { error: "Troppi tentativi. Riprova tra qualche minuto." };
+      }
+      if (msg.includes("smtp") || msg.includes("SMTP") || msg.includes("Email not sent")) {
+        return { error: "Errore nell'invio dell'email. Verifica la configurazione SMTP su Supabase." };
+      }
+      if (!msg || msg.trim().length === 0 || msg === "{}") {
+        return { error: "Errore durante l'invio dell'email di recupero. Riprova." };
+      }
+      return { error: msg };
+    }
+    return { error: null };
+  }, []);
+
   const signOut = useCallback(async () => {
     // Pulisci TUTTI i dati utente dal localStorage PRIMA di fare signOut,
     // così il prossimo utente che fa login su questo browser non eredita
@@ -211,7 +254,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <AuthCtx.Provider value={{ user, session, loading, isAdmin, signUp, signIn, signOut }}>
+    <AuthCtx.Provider value={{ user, session, loading, isAdmin, signUp, signIn, signOut, resetPassword }}>
       {children}
     </AuthCtx.Provider>
   );
