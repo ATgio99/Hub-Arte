@@ -89,6 +89,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (event === "PASSWORD_RECOVERY") {
           _passwordRecoveryActive = true;
           triggerRecoveryUpdate();
+          // Reindirizza alla pagina /login dove c'è il form di recovery.
+          // Usiamo window.location.hash perché HashRouter gestisce il routing
+          // tramite hash, e l'utente è probabilmente sulla root (/) dopo
+          // che Supabase ha pulito l'URL dal token.
+          if (typeof window !== "undefined" && !window.location.hash.includes("/login")) {
+            window.location.hash = "#/login";
+          }
         }
       }
     );

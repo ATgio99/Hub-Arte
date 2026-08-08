@@ -49,6 +49,11 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
     storage: customStorage,
     persistSession: true,
     autoRefreshToken: true,
-    detectSessionInUrl: false,
+    // detectSessionInUrl: true — NECESSARIO per il recovery password.
+    // Quando l'utente clicca il link nell'email, Supabase aggiunge
+    // #access_token=xxx&type=recovery all'URL. Con detectSessionInUrl=true,
+    // Supabase parsifica il token, crea la sessione e scatena l'evento
+    // PASSWORD_RECOVERY in onAuthStateChange.
+    detectSessionInUrl: true,
   },
 });
