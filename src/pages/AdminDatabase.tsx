@@ -900,6 +900,28 @@ const LONG_TEXT_FIELDS = new Set([
   "summary", "description", "historical_context", "date_text",
 ]);
 
+// Traduzioni dei valori inglesi per source_type/target_type (connections)
+const ENTITY_TYPE_LABELS: Record<string, string> = {
+  period: "Periodo",
+  artist: "Artista",
+  work: "Opera",
+  technique: "Tecnica",
+  event: "Evento",
+  term: "Termine",
+};
+
+// Traduzioni dei valori per kind (connections) — sono già in italiano, ma
+// le assicuriamo per coerenza
+const CONN_KIND_LABELS: Record<string, string> = {
+  influenza: "Influenza",
+  contaminazione: "Contaminazione",
+  rielaborazione: "Rielaborazione",
+  evoluzione: "Evoluzione",
+  contrasto: "Contrasto",
+  committenza: "Committenza",
+  "maestro-allievo": "Maestro-allievo",
+};
+
 // Campi con select predefiniti (enum)
 const SELECT_OPTIONS: Record<string, string[]> = {
   "techniques.category": ["pittorica", "scultorea", "architettonica", "musiva", "altra"],
@@ -1013,6 +1035,13 @@ function GenericEditorDrawerInner({
   const setField = (field: string, value: any) => {
     rowRef.current = { ...rowRef.current, [field]: value };
     setOk(false);
+  };
+
+  // Helper per componenti CONTROLLATI (EntitySelector, select): aggiorna E forza re-render
+  const setFieldControlled = (field: string, value: any) => {
+    rowRef.current = { ...rowRef.current, [field]: value };
+    setOk(false);
+    forceUpdate();
   };
 
   // Helper per ottenere le opzioni di un selettore entità
@@ -1228,7 +1257,7 @@ function GenericEditorDrawerInner({
                     mode={refConfig.mode}
                     options={getEntityOptions(refConfig.table)}
                     selected={value}
-                    onChange={(v) => setField(field, v)}
+                    onChange={(v) => setFieldControlled(field, v)}
                     placeholder={`Cerca ${refConfig.table}…`}
                   />
                 </GenField>
@@ -1241,19 +1270,20 @@ function GenericEditorDrawerInner({
                 return (
                   <GenField key={field} label={label}>
                     <div style={{ ...genInputStyle, opacity: 0.6, fontStyle: "italic" }}>
-                      Seleziona prima il «{field === "source_id" ? "Tipo entità origine" : "Tipo entità destinazione"}»
+                      Seleziona prima il tipo di entità
                     </div>
                   </GenField>
                 );
               }
+              const typeLabel = ENTITY_TYPE_LABELS[connectionRefTable] || connectionRefTable;
               return (
-                <GenField key={field} label={`${label} (${connectionRefTable})`}>
+                <GenField key={field} label={`${label} (${typeLabel})`}>
                   <EntitySelector
                     mode="single"
                     options={getEntityOptions(connectionRefTable)}
                     selected={value}
-                    onChange={(v) => setField(field, v)}
-                    placeholder={`Cerca ${connectionRefTable}…`}
+                    onChange={(v) => setFieldControlled(field, v)}
+                    placeholder={`Cerca ${typeLabel}…`}
                   />
                 </GenField>
               );
@@ -1268,20 +1298,38 @@ function GenericEditorDrawerInner({
               );
             }
 
-            // Select predefinite (enum)
+            // Select predefinite (enum) — con label tradotte in italiano
             if (selectOpts) {
+              // Determina quali label usare: per connections.source_type/target_type
+              // usiamo ENTITY_TYPE_LABELS, per connections.kind usiamo CONN_KIND_LABELS
+              const isEntityTypeSelect = selectKey === "connections.source_type" || selectKey === "connections.target_type";
+              const isConnKindSelect = selectKey === "connections.kind";
+              const labelMap = isEntityTypeSelect ? ENTITY_TYPE_LABELS : (isConnKindSelect ? CONN_KIND_LABELS : null);
+
               return (
                 <GenField key={field} label={label}>
                   <select
                     defaultValue={String(value ?? "")}
                     onChange={(e) => {
                       const v = e.target.value;
-                      setField(field, isNumber ? Number(v) : v);
+                      // Per source_type/target_type: quando cambia, pulisci anche
+                      // il source_id/target_id corrispondente (l'entità selezionata
+                      // prima non è più valida se il tipo è cambiato)
+                      if (isEntityTypeSelect) {
+                        const idField = field === "source_type" ? "source_id" : "target_id";
+                        rowRef.current = { ...rowRef.current, [field]: v, [idField]: null };
+                        setOk(false);
+                        forceUpdate();
+                      } else {
+                        setFieldControlled(field, isNumber ? Number(v) : v);
+                      }
                     }}
                     style={genInputStyle}
                   >
                     {selectOpts.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
+                      <option key={opt} value={opt}>
+                        {labelMap ? (labelMap[opt] || opt) : opt}
+                      </option>
                     ))}
                   </select>
                 </GenField>
