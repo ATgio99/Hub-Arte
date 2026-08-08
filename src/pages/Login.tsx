@@ -473,13 +473,13 @@ export default function Login() {
     if (mode === "signup") {
       const { error: err } = await signUp(email.trim(), password);
       if (err) {
-        setError(err);
+        setError(err || "Errore durante la registrazione. Riprova.");
       } else {
         setSent(true);
       }
     } else {
       const { error: err } = await signIn(email.trim(), password);
-      if (err) setError(err);
+      if (err) setError(err || "Errore durante l'accesso. Riprova.");
     }
   };
 
