@@ -1,5 +1,5 @@
 // ============================================================================
-// ArtistMap — mappa interattiva che mostra dove si trovano le opere di un artista
+// ArtistMap — mappa interattiva che mostra gli spostamenti di un artista
 // durante la sua vita, derivati dalle opere che ha realizzato in varie città.
 //
 // Per ogni città dove l'artista ha opere:
@@ -72,11 +72,11 @@ export default function ArtistMap({
   );
 
   if (cities.length < 2) {
-    // Se c'è solo 1 città o 0, la mappa delle opere non ha senso
+    // Se c'è solo 1 città o 0, la mappa degli spostamenti non ha senso
     return (
       <div style={{ padding: "16px 20px", background: "var(--bg-2)", borderRadius: 10, fontSize: 14, color: "var(--ink-dim)", textAlign: "center" }}>
         {cities.length === 1
-          ? `Tutte le opere note di ${artist.name} si trovano a ${cities[0].name}.`
+          ? `Tutte le opere note di ${artist.name} si trovano a ${cities[0].name}. Non ci sono spostamenti documentati nel dataset.`
           : `Nessun luogo geolocalizzato nelle opere di ${artist.name}.`}
       </div>
     );
@@ -95,8 +95,9 @@ export default function ArtistMap({
         color: "var(--ink-dim)",
         lineHeight: 1.55,
       }}>
-        🗺️ <b>{artist.name}</b> — dove si trovano le opere
+        🗺️ Mappa degli spostamenti di <b>{artist.name}</b> ricostruita dalle opere documentate
         ({cities.length} città, {works.length} opere geolocalizzate).
+        Le città sono collegate in ordine cronologico (prima opera per anno).
       </div>
       <div style={{
         height: 360,
