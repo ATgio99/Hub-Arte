@@ -44,19 +44,16 @@ const customStorage = {
   },
 };
 
-// Detect se l'URL attuale contiene un token di recovery password.
-// Usiamo detectSessionInUrl=true SOLO in quel caso, per evitare conflitti
-// con HashRouter (che usa #/opere, #/artisti, ecc. nell'hash).
-// In tutti gli altri casi, detectSessionInUrl=false per non interferire.
-const urlHasAuthData = typeof window !== "undefined" &&
-  (window.location.hash.includes("access_token=") ||
-   window.location.search.includes("code="));
-
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: {
     storage: customStorage,
     persistSession: true,
     autoRefreshToken: true,
-    detectSessionInUrl: urlHasAuthData,
+    // detectSessionInUrl: true — NECESSARIO per il recovery password.
+    // Quando l'utente clicca il link nell'email, Supabase aggiunge
+    // #access_token=xxx&type=recovery all'URL. Con detectSessionInUrl=true,
+    // Supabase parsifica il token, crea la sessione e scatena l'evento
+    // PASSWORD_RECOVERY in onAuthStateChange.
+    detectSessionInUrl: true,
   },
 });
