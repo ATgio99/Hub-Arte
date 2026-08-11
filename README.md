@@ -8,20 +8,22 @@
 [![Vite](https://img.shields.io/badge/Vite-5-purple.svg)](https://vitejs.dev/)
 [![Supabase](https://img.shields.io/badge/Supabase-2-green.svg)](https://supabase.com/)
 
+🌐 **Sito live**: [hubarte.it](https://hubarte.it)
+
 ## 📖 Cos'è
 
 HUB Art è un atlante digitale di Storia dell'Arte pensato per studenti, docenti e appassionati. Combina diverse modalità di esplorazione in un'unica interfaccia:
 
-- 🏛️ **Catalogo opere** — 974 opere con schede dettagliate (autore, datazione, luogo, analisi, innovazioni)
-- 👤 **Catalogo artisti** — 259 artisti con biografie e opere collegate
+- 🏛️ **Catalogo opere** — 1100+ opere con schede dettagliate (autore, datazione, luogo, analisi, innovazioni)
+- 👤 **Catalogo artisti** — 300+ artisti con biografie e opere collegate
 - 🕸️ **Grafo neuronale 3D** — visualizzazione interattiva delle connessioni tra opere, artisti, periodi e termini
 - 📅 **Timeline multilivello** — periodi, eventi e artisti su una linea del tempo navigabile
 - 🗺️ **Mappa geografica** — opere e luoghi su mappa Leaflet/OpenStreetMap
-- 📚 **Glossario** — 672 termini di storia dell'arte con definizioni
-- 🎨 **Indice tecniche** — 93 tecniche artistiche catalogate
+- 📚 **Glossario** — 800+ termini di storia dell'arte con definizioni
+- 🎨 **Indice tecniche** — 200+ tecniche artistiche catalogate
 - 📊 **Dashboard statistiche** — dati aggregati sull'atlante
 - 🎯 **Quiz interattivo** — 18 tipi di domanda generati dinamicamente dal dataset, con banca errori e statistiche
-- 🏠 **Home 3D** — scena Three.js di una cattedrale come landing page
+- 🔗 **400+ connessioni** tra entità (influenze, maestro-allievo, committenze, evoluzioni)
 
 ## ✨ Funzionalità principali
 
@@ -29,8 +31,9 @@ HUB Art è un atlante digitale di Storia dell'Arte pensato per studenti, docenti
 - ★ **Preferiti** — salva opere e artisti con la stella
 - ✓ **Approfondite** — segna le opere che hai studiato
 - 🎯 **Quiz personalizzato** — fai quiz solo sui tuoi preferiti o sulle opere approfondite, con filtro temporale a trascinamento
-- 📈 **Statistiche personali** —跟踪 dei progressi nei quiz
+- 📈 **Statistiche personali** — tracciamento dei progressi nei quiz
 - ☁️ **Sincronizzazione cloud** — preferiti e progressi salvati su Supabase, accessibili da qualsiasi dispositivo
+- 🔐 **Recupero password** — reset password via email
 
 ### Per contributori
 - 📝 **Suggerisci nuove opere** — proponi opere da aggiungere all'atlante
@@ -39,8 +42,9 @@ HUB Art è un atlante digitale di Storia dell'Arte pensato per studenti, docenti
 
 ### Per amministratori
 - 🔐 **Dashboard admin** — gestisci le richieste degli utenti (approva/rifiuta con nota)
-- 🖼️ **Editor database** — crea, modifica, elimina opere e artisti direttamente nel DB Supabase
+- 🖼️ **Editor database** — crea, modifica, elimina opere, artisti, periodi, tecniche, termini, eventi e connessioni direttamente nel DB Supabase
 - 🌐 **Immagini globali** — gli admin possono cambiare le immagini delle opere per tutti gli utenti
+- 🏛️ **Gestione complessi** — raggruppa opere per complesso architettonico
 
 ## 🛠️ Stack tecnologico
 
@@ -53,10 +57,11 @@ HUB Art è un atlante digitale di Storia dell'Arte pensato per studenti, docenti
 | **3D** | Three.js 0.169 |
 | **Grafo 3D** | react-force-graph-3d 1.24 |
 | **Mappe** | Leaflet 1.9 + react-leaflet 4.2 |
-| **Backend/DB** | Supabase 2 (PostgreSQL, Auth, Realtime) |
+| **Backend/DB** | Supabase 2 (PostgreSQL, Auth, Realtime, SMTP Resend) |
 | **Mobile** | Capacitor 8 (packaging iOS PWA) |
-| **Hosting** | Netlify |
+| **Hosting** | Netlify (Open Source Plan) |
 | **Font** | Fontshare (Boska, Zodiak, General Sans) |
+| **Email** | Resend (SMTP per auth/email) |
 
 ## 🚀 Quick start
 
@@ -66,8 +71,8 @@ HUB Art è un atlante digitale di Storia dell'Arte pensato per studenti, docenti
 
 ### Installazione
 ```bash
-git clone https://github.com/<tuo-username>/hubart.git
-cd hubart
+git clone https://github.com/ATgio99/Hub-Arte.git
+cd Hub-Arte
 npm install
 ```
 
@@ -111,16 +116,17 @@ npm run build
 
 Lo schema SQL è in `supabase/`. Esegui gli script nel [SQL Editor di Supabase](https://supabase.com/dashboard/project/ddsdvcznziciqdambgom/sql/new) seguendo l'ordine indicato in `supabase/README.md`:
 
-1. `migration_image_overrides_global.sql` — immagini override globali (admin)
-2. `migration_works_artists_tables.sql` — tabelle `works` e `artists` per editor admin
-3. `supabase_suggestions.sql` — tabella richieste utenti (opere nuove)
-4. `supabase_edit_suggestions.sql` — tabella richieste modifiche utenti
+1. `migration_full_database.sql` — tabelle base (periods, works, artists, techniques, terms, events, connections) + RLS
+2. `migration_techniques_table.sql` — tabella techniques (verifica/completa)
+3. `migration_image_overrides_global.sql` — immagini override globali (admin)
+4. `migration_retroactive_global_images.sql` — converte override admin esistenti in globali
+5. `migration_pdf_missing.sql` — 800+ record estratti da libro di storia dell'arte (opere, artisti, connessioni, ecc.)
 
 ### Sicurezza
 - **RLS (Row Level Security)** attiva su tutte le tabelle
-- **Anon key pubblica** by design (non è una chiave segreta)
+- **Anon key pubblica** by design 
 - **Admin authorization** via JWT email verification nelle RLS policies
-- **Service role key** NON è nel codice (è segreta e va usata solo lato server)
+- **Service role key** NON è nel codice 
 
 ## 📁 Struttura del progetto
 
@@ -129,13 +135,12 @@ hubart/
 ├── public/
 │   ├── data/           # dataset JSON statici (works, artists, periods, ...)
 │   ├── textures/       # texture PBR per scena 3D
-│   ├── admin.html      # editor DB per admin (vanilla JS + Supabase)
 │   ├── manifest.json   # PWA manifest
 │   └── _headers        # header Netlify (cache, security)
 ├── src/
 │   ├── components/     # componenti riutilizzabili (Sidebar, ui, CookieConsent, ...)
 │   ├── lib/            # logica business (auth, supabase, sync, data, store, ...)
-│   ├── pages/          # pagine React (Home3D, Opere, Opera, Grafo, Mappa, ...)
+│   ├── pages/          # pagine React (Landing, Opere, Opera, Grafo, Mappa, ...)
 │   ├── three/          # scena 3D Three.js (cathedral.ts)
 │   ├── App.tsx         # router principale
 │   └── main.tsx        # entry point
@@ -164,28 +169,32 @@ Distribuito sotto licenza **MIT**. Vedi [LICENSE](./LICENSE) per dettagli.
 
 ## 📬 Contatti
 
-- 📧 Email: `hubarte@pm.me`
-- 🐛 Bug report: [GitHub Issues](../../issues)
-- 💬 Discussioni: [GitHub Discussions](../../discussions)
+- 🌐 **Sito**: [hubarte.it](https://hubarte.it)
+- 📧 **Email**: `hubarte@pm.me`
+- 🐛 **Bug report**: [GitHub Issues](../../issues)
+- 💬 **Discussioni**: [GitHub Discussions](../../discussions)
+- 💻 **Codice**: [github.com/ATgio99/Hub-Arte](https://github.com/ATgio99/Hub-Arte)
 
 ## 🙏 Riconoscimenti
 
 - **Wikimedia Commons** per le immagini delle opere
 - **OpenStreetMap** per i dati geografici
 - **Fontshare** per i font tipografici
-- **Supabase** per il backend
-- **Netlify** per l'hosting
+- **Supabase** per il backend (auth, database, realtime)
+- **Netlify** per l'hosting (Open Source Plan)
+- **Resend** per il servizio SMTP (email di auth)
 
 ## 📊 Statistiche progetto
 
-- 974 opere catalogate
-- 259 artisti
-- 51 periodi storici
-- 329 connessioni tra entità
-- 672 termini del glossario
-- 93 tecniche artistiche
+- 1100+ opere catalogate
+- 300+ artisti
+- 90+ periodi storici
+- 400+ connessioni tra entità
+- 800+ termini del glossario
+- 200+ tecniche artistiche
 - 18 tipi di domanda nel quiz
+- 130+ eventi storici
 
 ---
 
-⭐ Se questo progetto ti è utile, lascia una star su GitHub!
+⭐ Se questo progetto ti è utile, lascia una star su GitHub! [github.com/ATgio99/Hub-Arte](https://github.com/ATgio99/Hub-Arte)
