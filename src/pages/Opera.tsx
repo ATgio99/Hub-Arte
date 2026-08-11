@@ -141,7 +141,6 @@ export default function Opera() {
         {/* immagine — galleria scorrevole con lightbox integrato */}
         <div>
           <WorkGallery work={w} />
-          {/* Sotto l'immagine: solo ImageEditor (solo admin) + fonte */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8, gap: 10, flexWrap: "wrap" }}>
             {isAdmin && <ImageEditor workId={w.id} />}
             {w.image_source && <div className="faint" style={{ fontSize: 11, marginLeft: "auto" }}>fonte immagine: {getOverrides()[w.id] ? "personalizzata" : w.image_source}</div>}

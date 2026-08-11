@@ -6,7 +6,6 @@ import { useAuth } from "./lib/auth";
 import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides } from "./lib/sync";
 import Sidebar from "./components/Sidebar";
 import CookieConsent from "./components/CookieConsent";
-import LoginPrompt from "./components/LoginPrompt";
 import Timeline from "./pages/Timeline";
 import Luogo from "./pages/Luogo";
 import Artisti from "./pages/Artisti";
@@ -162,9 +161,6 @@ export default function App() {
 
       {/* Banner cookie — solo finché l'utente non ha scelto */}
       <CookieConsent />
-
-      {/* Popup login richiesto (quando un utente non loggato prova a mettere preferiti/approfondite) */}
-      <LoginPrompt />
     </div>
   );
 }

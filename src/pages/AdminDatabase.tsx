@@ -1009,17 +1009,10 @@ function GenericEditorDrawerInner({
   const META_FIELDS = ["created_at", "updated_at", "modified_by"];
   const fields = Object.keys(row).filter((k) => !META_FIELDS.includes(k) && !k.startsWith("_"));
 
-  // Helper per aggiornare un campo SENZA causare re-render (input non controllati)
+  // Helper per aggiornare un campo senza causare re-render (input non controllati)
   const setField = (field: string, value: any) => {
     rowRef.current = { ...rowRef.current, [field]: value };
     setOk(false);
-  };
-
-  // Helper per componenti CONTROLLATI (EntitySelector, select): aggiorna E forza re-render
-  const setFieldControlled = (field: string, value: any) => {
-    rowRef.current = { ...rowRef.current, [field]: value };
-    setOk(false);
-    forceUpdate();
   };
 
   // Helper per ottenere le opzioni di un selettore entità
@@ -1235,7 +1228,7 @@ function GenericEditorDrawerInner({
                     mode={refConfig.mode}
                     options={getEntityOptions(refConfig.table)}
                     selected={value}
-                    onChange={(v) => setFieldControlled(field, v)}
+                    onChange={(v) => setField(field, v)}
                     placeholder={`Cerca ${refConfig.table}…`}
                   />
                 </GenField>
@@ -1259,7 +1252,7 @@ function GenericEditorDrawerInner({
                     mode="single"
                     options={getEntityOptions(connectionRefTable)}
                     selected={value}
-                    onChange={(v) => setFieldControlled(field, v)}
+                    onChange={(v) => setField(field, v)}
                     placeholder={`Cerca ${connectionRefTable}…`}
                   />
                 </GenField>
@@ -1301,7 +1294,7 @@ function GenericEditorDrawerInner({
                 <GenField key={field} label={label}>
                   <textarea
                     defaultValue={value.join("\n")}
-                    onChange={(e) => setFieldControlled(field, e.target.value.split("\n").map(s => s.trim()).filter(Boolean))}
+                    onChange={(e) => setField(field, e.target.value.split("\n").map(s => s.trim()).filter(Boolean))}
                     style={{ ...genInputStyle, minHeight: 60, resize: "vertical", fontFamily: "ui-monospace, monospace", fontSize: 12 }}
                     placeholder="Un valore per riga"
                   />
@@ -1315,7 +1308,7 @@ function GenericEditorDrawerInner({
                 <GenField key={field} label={label}>
                   <textarea
                     defaultValue={String(value ?? "")}
-                    onChange={(e) => setFieldControlled(field, e.target.value || null)}
+                    onChange={(e) => setField(field, e.target.value || null)}
                     style={{ ...genInputStyle, minHeight: 80, resize: "vertical" }}
                   />
                 </GenField>
@@ -1328,7 +1321,7 @@ function GenericEditorDrawerInner({
                 <GenField key={field} label={label}>
                   <select
                     defaultValue={String(value)}
-                    onChange={(e) => setFieldControlled(field, e.target.value === "true")}
+                    onChange={(e) => setField(field, e.target.value === "true")}
                     style={genInputStyle}
                   >
                     <option value="false">No</option>
@@ -1345,7 +1338,7 @@ function GenericEditorDrawerInner({
                   <input
                     type="number"
                     defaultValue={value ?? ""}
-                    onChange={(e) => setFieldControlled(field, e.target.value ? Number(e.target.value) : null)}
+                    onChange={(e) => setField(field, e.target.value ? Number(e.target.value) : null)}
                     style={genInputStyle}
                   />
                 </GenField>
@@ -1360,7 +1353,7 @@ function GenericEditorDrawerInner({
                     type="text"
                     defaultValue=""
                     placeholder="(vuoto)"
-                    onChange={(e) => setFieldControlled(field, e.target.value || null)}
+                    onChange={(e) => setField(field, e.target.value || null)}
                     style={genInputStyle}
                   />
                 </GenField>
@@ -1373,7 +1366,7 @@ function GenericEditorDrawerInner({
                 <input
                   type="text"
                   defaultValue={String(value)}
-                  onChange={(e) => setFieldControlled(field, e.target.value)}
+                  onChange={(e) => setField(field, e.target.value)}
                   style={genInputStyle}
                 />
               </GenField>

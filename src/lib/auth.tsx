@@ -13,9 +13,6 @@ interface AuthState {
   signUp: (email: string, password: string) => Promise<{ error: string | null }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
-  resetPassword: (email: string) => Promise<{ error: string | null }>;
-  updateNewPassword: (newPassword: string) => Promise<{ error: string | null }>;
-  passwordRecoveryActive: boolean;
 }
 
 const AuthCtx = createContext<AuthState | null>(null);
@@ -34,33 +31,21 @@ export function isAdminEmail(email?: string | null): boolean {
   return ADMIN_EMAILS.includes(email.toLowerCase());
 }
 
-// Determina il redirect URL dopo conferma email.
-// Usa SOLO l'origin (senza path) perché Supabase Auth ha una whitelist
-// di URL consentiti. Se includiamo /login o /#/login, Supabase potrebbe
-// rifiutarlo con un errore 500 se non è nella lista Redirect URLs.
+// Determina il redirect URL dopo conferma email (deve essere l'URL corrente dell'app)
 function getRedirectTo(): string {
+  // In PWA su iPhone, usa l'URL corrente (es. https://tuosito.netlify.app)
+  // Non usare window.location.href perché in PWA potrebbe essere diverso
   if (typeof window !== "undefined") {
-    // Ritorna solo l'origin: https://hubarte.it o https://hubarte.netlify.app
-    return window.location.origin;
+    return window.location.origin + window.location.pathname;
   }
   return "";
 }
-
-// Stato per il recovery password: quando l'utente clicca il link nell'email,
-// Supabase reindirizza al sito con type=recovery. Mostriamo un form dedicato.
-// Usiamo una variabile externa per comunicare con Login.tsx senza re-render eccessivi.
-let _passwordRecoveryActive = false;
-export function isPasswordRecoveryActive() { return _passwordRecoveryActive; }
-export function clearPasswordRecovery() { _passwordRecoveryActive = false; }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
-  // Force re-render quando cambia lo stato di recovery
-  const [, forceRecoveryRender] = useState(0);
-  const triggerRecoveryUpdate = () => forceRecoveryRender(v => v + 1);
 
   useEffect(() => {
     // Recupera sessione esistente
@@ -71,32 +56,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setIsAdmin(isAdminEmail(u?.email));
       setLoading(false);
     }).catch(() => {
+      // Se fallisce (es. PWA senza rete), prosegui senza sessione
       setLoading(false);
     });
 
-    // Ascolta cambiamenti auth (login, logout, token refresh, PASSWORD_RECOVERY)
+    // Ascolta cambiamenti auth (login, logout, token refresh)
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
+      (_event, session) => {
         setSession(session);
         const u = session?.user ?? null;
         setUser(u);
         setIsAdmin(isAdminEmail(u?.email));
         setLoading(false);
-
-        // Gestione PASSWORD_RECOVERY: quando l'utente clicca il link nell'email
-        // di recupero, Supabase scatena questo evento. Attiviamo il flag
-        // per mostrare il form di cambio password in Login.tsx.
-        if (event === "PASSWORD_RECOVERY") {
-          _passwordRecoveryActive = true;
-          triggerRecoveryUpdate();
-          // Reindirizza alla pagina /login dove c'è il form di recovery.
-          // Usiamo window.location.hash perché HashRouter gestisce il routing
-          // tramite hash, e l'utente è probabilmente sulla root (/) dopo
-          // che Supabase ha pulito l'URL dal token.
-          if (typeof window !== "undefined" && !window.location.hash.includes("/login")) {
-            window.location.hash = "#/login";
-          }
-        }
       }
     );
 
@@ -105,172 +76,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signUp = useCallback(async (email: string, password: string) => {
     const redirectTo = getRedirectTo();
-    let result;
-    try {
-      result = await supabase.auth.signUp({
-        email,
-        password,
-        options: redirectTo ? { emailRedirectTo: redirectTo } : undefined,
-      });
-    } catch (e: any) {
-      // Errore di rete o eccezione
-      const msg = e?.message || e?.toString() || "Errore di rete durante la registrazione.";
-      return { error: typeof msg === "string" ? msg : "Errore di rete. Controlla la connessione." };
-    }
-    const { data, error } = result;
-    if (error) {
-      // Log completo per debug (visibile nella console del browser: F12 → Console)
-      console.error("[auth.signUp] Errore raw Supabase:", error);
-      console.error("[auth.signUp] Type:", typeof error, "Message:", error?.message, "Name:", error?.name, "Status:", error?.status);
-      // Estrai il messaggio in modo robusto (a volte error è un oggetto complesso)
-      let msg: string;
-      if (typeof error === "string") {
-        msg = error;
-      } else if (error.message && typeof error.message === "string") {
-        msg = error.message;
-      } else if (error.name && typeof error.name === "string") {
-        msg = error.name;
-      } else {
-        // Se non riusciamo a estrarre un messaggio, serializziamo in modo sicuro
-        try {
-          msg = JSON.stringify(error);
-          if (msg === "{}" || msg === "") msg = "Errore sconosciuto durante la registrazione.";
-        } catch {
-          msg = "Errore sconosciuto durante la registrazione.";
-        }
-      }
-      // Traduzioni messaggi comuni di Supabase
-      if (msg.includes("User already registered")) return { error: "Questo email è già registrata. Prova ad accedere." };
-      if (msg.includes("Password should be at least")) return { error: "La password deve avere almeno 6 caratteri." };
-      if (msg.includes("Unable to validate email")) return { error: "Email non valida." };
-      if (msg.includes("rate limit") || msg.includes("Rate limit")) return { error: "Troppi tentativi. Riprova tra qualche minuto." };
-      if (msg.includes("smtp") || msg.includes("SMTP") || msg.includes("Email not sent") || msg.includes("email_not_sent")) {
-        return { error: "Errore nell'invio dell'email di conferma. Verifica la configurazione SMTP su Supabase (Dashboard → Authentication → Providers → Email)." };
-      }
-      if (msg.includes("signup_disabled") || msg.includes("Signup disabled")) {
-        return { error: "La registrazione è temporaneamente disabilitata. Riprova più tardi." };
-      }
-      // Se il messaggio è vuoto o solo punteggiatura
-      if (!msg || msg.trim().length === 0 || msg === "{}") {
-        return { error: "Errore durante la registrazione. Possibile problema di configurazione SMTP. Verifica su Supabase Dashboard → Authentication → Providers → Email." };
-      }
-      return { error: msg };
-    }
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: redirectTo ? { emailRedirectTo: redirectTo } : undefined,
+    });
+    if (error) return { error: error.message };
     return { error: null };
   }, []);
 
   const signIn = useCallback(async (email: string, password: string) => {
-    let result;
-    try {
-      result = await supabase.auth.signInWithPassword({ email, password });
-    } catch (e: any) {
-      const msg = e?.message || e?.toString() || "Errore di rete durante l'accesso.";
-      return { error: typeof msg === "string" ? msg : "Errore di rete. Controlla la connessione." };
-    }
-    const { data, error } = result;
-    if (error) {
-      console.error("[auth.signIn] Errore raw Supabase:", error);
-      console.error("[auth.signIn] Type:", typeof error, "Message:", error?.message, "Name:", error?.name, "Status:", error?.status);
-      let msg: string;
-      if (typeof error === "string") {
-        msg = error;
-      } else if (error.message && typeof error.message === "string") {
-        msg = error.message;
-      } else if (error.name && typeof error.name === "string") {
-        msg = error.name;
-      } else {
-        try {
-          msg = JSON.stringify(error);
-          if (msg === "{}" || msg === "") msg = "Errore sconosciuto durante l'accesso.";
-        } catch {
-          msg = "Errore sconosciuto durante l'accesso.";
-        }
-      }
-      // Traduzioni messaggi comuni
-      if (msg.includes("Invalid login credentials")) return { error: "Email o password non corretti." };
-      if (msg.includes("Email not confirmed")) return { error: "Devi confermare la tua email prima di accedere. Controlla la casella di posta (anche spam)." };
-      if (msg.includes("rate limit") || msg.includes("Rate limit")) return { error: "Troppi tentativi di accesso. Riprova tra qualche minuto." };
-      if (msg.includes("User not found")) return { error: "Nessun account trovato con questa email." };
-      if (!msg || msg.trim().length === 0 || msg === "{}") {
-        return { error: "Errore durante l'accesso. Riprova." };
-      }
-      return { error: msg };
-    }
-    return { error: null };
-  }, []);
-
-  const resetPassword = useCallback(async (email: string) => {
-    const redirectTo = getRedirectTo();
-    let result;
-    try {
-      result = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: redirectTo || undefined,
-      });
-    } catch (e: any) {
-      const msg = e?.message || e?.toString() || "Errore di rete durante l'invio dell'email.";
-      return { error: typeof msg === "string" ? msg : "Errore di rete. Controlla la connessione." };
-    }
-    const { error } = result;
-    if (error) {
-      console.error("[auth.resetPassword] Errore raw Supabase:", error);
-      let msg: string;
-      if (typeof error === "string") msg = error;
-      else if (error.message && typeof error.message === "string") msg = error.message;
-      else if (error.name && typeof error.name === "string") msg = error.name;
-      else {
-        try {
-          msg = JSON.stringify(error);
-          if (msg === "{}" || msg === "") msg = "Errore sconosciuto durante l'invio dell'email.";
-        } catch { msg = "Errore sconosciuto durante l'invio dell'email."; }
-      }
-      // Traduzioni messaggi comuni
-      if (msg.includes("User not found") || msg.includes("user not found")) {
-        return { error: "Nessun account trovato con questa email." };
-      }
-      if (msg.includes("rate limit") || msg.includes("Rate limit")) {
-        return { error: "Troppi tentativi. Riprova tra qualche minuto." };
-      }
-      if (msg.includes("smtp") || msg.includes("SMTP") || msg.includes("Email not sent")) {
-        return { error: "Errore nell'invio dell'email. Verifica la configurazione SMTP su Supabase." };
-      }
-      if (!msg || msg.trim().length === 0 || msg === "{}") {
-        return { error: "Errore durante l'invio dell'email di recupero. Riprova." };
-      }
-      return { error: msg };
-    }
-    return { error: null };
-  }, []);
-
-  const updateNewPassword = useCallback(async (newPassword: string) => {
-    let result;
-    try {
-      result = await supabase.auth.updateUser({ password: newPassword });
-    } catch (e: any) {
-      const msg = e?.message || e?.toString() || "Errore di rete durante l'aggiornamento.";
-      return { error: typeof msg === "string" ? msg : "Errore di rete. Controlla la connessione." };
-    }
-    const { error } = result;
-    if (error) {
-      console.error("[auth.updateNewPassword] Errore raw Supabase:", error);
-      let msg: string;
-      if (typeof error === "string") msg = error;
-      else if (error.message && typeof error.message === "string") msg = error.message;
-      else if (error.name && typeof error.name === "string") msg = error.name;
-      else {
-        try {
-          msg = JSON.stringify(error);
-          if (msg === "{}" || msg === "") msg = "Errore sconosciuto durante l'aggiornamento.";
-        } catch { msg = "Errore sconosciuto durante l'aggiornamento."; }
-      }
-      if (msg.includes("Password should be at least")) return { error: "La password deve avere almeno 6 caratteri." };
-      if (msg.includes("rate limit") || msg.includes("Rate limit")) return { error: "Troppi tentativi. Riprova tra qualche minuto." };
-      if (!msg || msg.trim().length === 0 || msg === "{}") {
-        return { error: "Errore durante l'aggiornamento della password. Riprova." };
-      }
-      return { error: msg };
-    }
-    // Password aggiornata con successo: disattiva il flag recovery
-    _passwordRecoveryActive = false;
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) return { error: error.message };
     return { error: null };
   }, []);
 
@@ -313,7 +130,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <AuthCtx.Provider value={{ user, session, loading, isAdmin, signUp, signIn, signOut, resetPassword, updateNewPassword, passwordRecoveryActive: _passwordRecoveryActive }}>
+    <AuthCtx.Provider value={{ user, session, loading, isAdmin, signUp, signIn, signOut }}>
       {children}
     </AuthCtx.Provider>
   );

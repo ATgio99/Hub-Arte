@@ -1,5 +1,5 @@
 // ============================================================================
-// ArtistMap — mappa interattiva che mostra dove si trovano le opere di un artista
+// ArtistMap — mappa interattiva che mostra gli spostamenti di un artista
 // durante la sua vita, derivati dalle opere che ha realizzato in varie città.
 //
 // Per ogni città dove l'artista ha opere:
@@ -7,7 +7,7 @@
 //   - Popup con elenco opere + anni
 //
 // Polyline tratteggiata che collega le città in ordine cronologico
-// (prima opera per anno) → mostra il posizione delle opere dell'artista.
+// (prima opera per anno) → mostra il percorso di vita dell'artista.
 // ============================================================================
 import { useMemo, useEffect } from "react";
 import { MapContainer, TileLayer, CircleMarker, Popup, Polyline, useMap, Tooltip } from "react-leaflet";
@@ -72,11 +72,11 @@ export default function ArtistMap({
   );
 
   if (cities.length < 2) {
-    // Se c'è solo 1 città o 0, la mappa delle opere non ha senso
+    // Se c'è solo 1 città o 0, la mappa degli spostamenti non ha senso
     return (
       <div style={{ padding: "16px 20px", background: "var(--bg-2)", borderRadius: 10, fontSize: 14, color: "var(--ink-dim)", textAlign: "center" }}>
         {cities.length === 1
-          ? `Tutte le opere note di ${artist.name} si trovano a ${cities[0].name}. Tutte le opere sono in un'unica citt nel dataset.`
+          ? `Tutte le opere note di ${artist.name} si trovano a ${cities[0].name}. Non ci sono spostamenti documentati nel dataset.`
           : `Nessun luogo geolocalizzato nelle opere di ${artist.name}.`}
       </div>
     );
@@ -95,7 +95,7 @@ export default function ArtistMap({
         color: "var(--ink-dim)",
         lineHeight: 1.55,
       }}>
-        🗺️ Mappa delle opere di <b>{artist.name}</b> ricostruita dalle opere documentate
+        🗺️ Mappa degli spostamenti di <b>{artist.name}</b> ricostruita dalle opere documentate
         ({cities.length} città, {works.length} opere geolocalizzate).
         Le città sono collegate in ordine cronologico (prima opera per anno).
       </div>
@@ -211,7 +211,7 @@ export default function ArtistMap({
         </span>
         <span>
           <span style={{ display: "inline-block", width: 18, height: 0, borderTop: "2px dashed #b88a2e", marginRight: 4, verticalAlign: "middle" }} />
-          ordine cronologico
+          percorso cronologico
         </span>
       </div>
     </div>

@@ -36,7 +36,7 @@ export interface Work {
   importance: 1 | 2 | 3; summary: string; analysis: string | null;
   innovations: string[]; term_ids: string[];
   image_url?: string; image_thumb?: string; image_source?: string;
-  image_gallery?: string[]; // immagini aggiuntive (galleria scorrevole)
+  image_gallery?: string[];
 }
 
 export interface Technique {
