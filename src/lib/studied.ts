@@ -81,14 +81,6 @@ export function isStudied(id: string): boolean {
 }
 
 export function toggleStudied(id: string): boolean {
-  // Check se l'utente è loggato. Se non lo è, mostra popup di registrazione.
-  const userStr = localStorage.getItem("sb-ddsdvcznziciqdambgom-auth-token");
-  if (!userStr) {
-    window.dispatchEvent(new CustomEvent("atlante:login-required", {
-      detail: { action: "approfondita", id }
-    }));
-    return false;
-  }
   const ids = getStudied();
   const i = ids.indexOf(id);
   const wasAdded = i < 0;
