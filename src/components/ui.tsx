@@ -373,9 +373,17 @@ export function FilterNote({ total, shown, noun = "elementi" }: { total: number;
   );
 }
 
+// ---- Galleria immagini scorrevole per le opere ---------------------------
+// Mostra l'immagine principale + immagini aggiuntive (image_gallery) in un
+// carousel con frecce di navigazione, indicatori (dot), swipe touch e
+// lightbox fullscreen con navigazione da tastiera.
 export function WorkGallery({ work }: { work: Work }) {
   const [idx, setIdx] = useState(0);
   const [zoom, setZoom] = useState(false);
+
+  // Costruisce la lista di tutte le immagini disponibili:
+  // 1. Immagine principale (image_thumb o image_url)
+  // 2. Immagini aggiuntive (image_gallery)
   const images: string[] = [];
   const main = work.image_thumb || work.image_url;
   if (main) images.push(main);
@@ -384,7 +392,10 @@ export function WorkGallery({ work }: { work: Work }) {
       if (url && url.trim() && !images.includes(url.trim())) images.push(url.trim());
     }
   }
+
   const n = images.length;
+
+  // Se non ci sono immagini, mostra placeholder
   if (n === 0) {
     return (
       <div className="opera-img card" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -392,13 +403,18 @@ export function WorkGallery({ work }: { work: Work }) {
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" style={{ opacity: .7 }}>
             <rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.6" /><path d="M21 15l-5-5L5 21" />
           </svg>
-          <div style={{ fontSize: 10, letterSpacing: ".12em", textTransform: "uppercase", marginTop: 8, color: "var(--ink-faint)" }}>Immagine non disponibile</div>
+          <div style={{ fontSize: 10, letterSpacing: ".12em", textTransform: "uppercase", marginTop: 8, color: "var(--ink-faint)" }}>
+            Immagine non disponibile
+          </div>
         </div>
       </div>
     );
   }
+
   const prev = useCallback(() => setIdx(i => (i - 1 + n) % n), [n]);
   const next = useCallback(() => setIdx(i => (i + 1) % n), [n]);
+
+  // Navigazione tastiera nel lightbox
   useEffect(() => {
     if (!zoom) return;
     const onKey = (e: KeyboardEvent) => {
@@ -410,41 +426,187 @@ export function WorkGallery({ work }: { work: Work }) {
     document.body.style.overflow = "hidden";
     return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
   }, [zoom, prev, next]);
+
+  // Reset index quando cambia opera
   useEffect(() => { setIdx(0); }, [work.id]);
+
   return (
     <>
-      <div className="opera-img card" style={{ position: "relative", overflow: "hidden", cursor: "pointer" }} onClick={() => setZoom(true)} role="button" tabIndex={0} aria-label="Clicca per ingrandire" onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setZoom(true); } }}>
-        <img src={images[idx]} alt={`${work.title} — immagine ${idx + 1} di ${n}`} style={{ maxWidth: "100%", maxHeight: "72vh", width: "auto", height: "auto", objectFit: "contain", background: "var(--bg)", display: "block", margin: "0 auto" }} onError={(e) => { e.currentTarget.style.opacity = "0.2"; }} />
+      {/* Galleria principale */}
+      <div
+        className="opera-img card"
+        style={{ position: "relative", overflow: "hidden", cursor: "pointer" }}
+        onClick={() => setZoom(true)}
+        role="button"
+        tabIndex={0}
+        aria-label="Clicca per ingrandire"
+        onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setZoom(true); } }}
+      >
+        {/* Immagine corrente */}
+        <img
+          src={images[idx]}
+          alt={`${work.title} — immagine ${idx + 1} di ${n}`}
+          style={{
+            maxWidth: "100%", maxHeight: "72vh", width: "auto", height: "auto",
+            objectFit: "contain", background: "var(--bg)",
+            display: "block", margin: "0 auto",
+          }}
+          onError={(e) => { e.currentTarget.style.opacity = "0.2"; }}
+        />
+
+        {/* Frecce di navigazione (se più di 1 immagine) */}
         {n > 1 && (
           <>
-            <button onClick={(e) => { e.stopPropagation(); prev(); }} aria-label="Immagine precedente" style={{ position: "absolute", left: 8, top: "50%", transform: "translateY(-50%)", width: 40, height: 40, borderRadius: "50%", background: "rgba(251,248,241,0.85)", backdropFilter: "blur(4px)", border: "1px solid var(--line)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--ink)", zIndex: 2, opacity: 0.8 }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+            <button
+              onClick={(e) => { e.stopPropagation(); prev(); }}
+              aria-label="Immagine precedente"
+              style={{
+                position: "absolute", left: 8, top: "50%", transform: "translateY(-50%)",
+                width: 40, height: 40, borderRadius: "50%",
+                background: "rgba(251,248,241,0.85)", backdropFilter: "blur(4px)",
+                border: "1px solid var(--line)", cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                color: "var(--ink)", fontSize: 18, zIndex: 2,
+                opacity: 0.8, transition: "opacity .2s",
+              }}
+              onMouseEnter={e => e.currentTarget.style.opacity = "1"}
+              onMouseLeave={e => e.currentTarget.style.opacity = "0.8"}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
             </button>
-            <button onClick={(e) => { e.stopPropagation(); next(); }} aria-label="Immagine successiva" style={{ position: "absolute", right: 8, top: "50%", transform: "translateY(-50%)", width: 40, height: 40, borderRadius: "50%", background: "rgba(251,248,241,0.85)", backdropFilter: "blur(4px)", border: "1px solid var(--line)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--ink)", zIndex: 2, opacity: 0.8 }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+            <button
+              onClick={(e) => { e.stopPropagation(); next(); }}
+              aria-label="Immagine successiva"
+              style={{
+                position: "absolute", right: 8, top: "50%", transform: "translateY(-50%)",
+                width: 40, height: 40, borderRadius: "50%",
+                background: "rgba(251,248,241,0.85)", backdropFilter: "blur(4px)",
+                border: "1px solid var(--line)", cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                color: "var(--ink)", fontSize: 18, zIndex: 2,
+                opacity: 0.8, transition: "opacity .2s",
+              }}
+              onMouseEnter={e => e.currentTarget.style.opacity = "1"}
+              onMouseLeave={e => e.currentTarget.style.opacity = "0.8"}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
             </button>
-            <div style={{ position: "absolute", bottom: 10, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 6, zIndex: 2 }}>
+
+            {/* Indicatore posizione */}
+            <div style={{
+              position: "absolute", bottom: 10, left: "50%", transform: "translateX(-50%)",
+              display: "flex", gap: 6, zIndex: 2,
+            }}>
               {images.map((_, i) => (
-                <button key={i} onClick={(e) => { e.stopPropagation(); setIdx(i); }} aria-label={`Vai all'immagine ${i + 1}`} style={{ width: i === idx ? 20 : 8, height: 8, borderRadius: 4, background: i === idx ? "var(--gold)" : "rgba(184,138,46,0.35)", border: 0, cursor: "pointer", transition: "all .2s", padding: 0 }} />
+                <button
+                  key={i}
+                  onClick={(e) => { e.stopPropagation(); setIdx(i); }}
+                  aria-label={`Vai all'immagine ${i + 1}`}
+                  style={{
+                    width: i === idx ? 20 : 8, height: 8, borderRadius: 4,
+                    background: i === idx ? "var(--gold)" : "rgba(184,138,46,0.35)",
+                    border: 0, cursor: "pointer", transition: "all .2s",
+                    padding: 0,
+                  }}
+                />
               ))}
             </div>
-            <div style={{ position: "absolute", top: 10, right: 10, background: "rgba(251,248,241,0.85)", backdropFilter: "blur(4px)", borderRadius: 999, padding: "3px 10px", fontSize: 12, color: "var(--ink-dim)", fontWeight: 600, zIndex: 2, border: "1px solid var(--line)" }}>{idx + 1} / {n}</div>
+
+            {/* Contatore */}
+            <div style={{
+              position: "absolute", top: 10, right: 10,
+              background: "rgba(251,248,241,0.85)", backdropFilter: "blur(4px)",
+              borderRadius: 999, padding: "3px 10px", fontSize: 12,
+              color: "var(--ink-dim)", fontWeight: 600, zIndex: 2,
+              border: "1px solid var(--line)",
+            }}>
+              {idx + 1} / {n}
+            </div>
           </>
         )}
       </div>
+
+      {/* Lightbox fullscreen */}
       {zoom && (
-        <div onClick={() => setZoom(false)} style={{ position: "fixed", inset: 0, zIndex: 10000, background: "rgba(0,0,0,0.92)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "zoom-out", padding: 24, animation: "fadeIn .2s" }}>
-          <img src={images[idx]} alt={`${work.title} — immagine ${idx + 1} di ${n}`} style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", borderRadius: 4, boxShadow: "0 8px 40px rgba(0,0,0,0.5)" }} onClick={e => e.stopPropagation()} />
-          <button onClick={() => setZoom(false)} aria-label="Chiudi" style={{ position: "fixed", top: 18, right: 18, zIndex: 10001, width: 44, height: 44, borderRadius: "50%", background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.25)", color: "#fff", fontSize: 22, lineHeight: 1, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>✕</button>
+        <div
+          onClick={() => setZoom(false)}
+          style={{
+            position: "fixed", inset: 0, zIndex: 10000,
+            background: "rgba(0,0,0,0.92)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            cursor: "zoom-out", padding: 24, animation: "fadeIn .2s",
+          }}
+        >
+          <img
+            src={images[idx]}
+            alt={`${work.title} — immagine ${idx + 1} di ${n}`}
+            style={{
+              maxWidth: "100%", maxHeight: "100%", objectFit: "contain",
+              borderRadius: 4, boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
+            }}
+            onClick={e => e.stopPropagation()}
+          />
+
+          {/* Pulsante chiudi */}
+          <button
+            onClick={() => setZoom(false)}
+            aria-label="Chiudi"
+            style={{
+              position: "fixed", top: 18, right: 18, zIndex: 10001,
+              width: 44, height: 44, borderRadius: "50%",
+              background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)",
+              border: "1px solid rgba(255,255,255,0.25)",
+              color: "#fff", fontSize: 22, lineHeight: 1,
+              cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+            }}
+          >✕</button>
+
+          {/* Frecce nel lightbox */}
           {n > 1 && (
             <>
-              <button onClick={e => { e.stopPropagation(); prev(); }} aria-label="Precedente" style={{ position: "fixed", left: 18, top: "50%", transform: "translateY(-50%)", zIndex: 10001, width: 50, height: 50, borderRadius: "50%", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+              <button
+                onClick={e => { e.stopPropagation(); prev(); }}
+                aria-label="Precedente"
+                style={{
+                  position: "fixed", left: 18, top: "50%", transform: "translateY(-50%)",
+                  zIndex: 10001, width: 50, height: 50, borderRadius: "50%",
+                  background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)",
+                  border: "1px solid rgba(255,255,255,0.2)", color: "#fff",
+                  cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+                }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
               </button>
-              <button onClick={e => { e.stopPropagation(); next(); }} aria-label="Successiva" style={{ position: "fixed", right: 18, top: "50%", transform: "translateY(-50%)", zIndex: 10001, width: 50, height: 50, borderRadius: "50%", background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+              <button
+                onClick={e => { e.stopPropagation(); next(); }}
+                aria-label="Successiva"
+                style={{
+                  position: "fixed", right: 18, top: "50%", transform: "translateY(-50%)",
+                  zIndex: 10001, width: 50, height: 50, borderRadius: "50%",
+                  background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)",
+                  border: "1px solid rgba(255,255,255,0.2)", color: "#fff",
+                  cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+                }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
               </button>
-              <div style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 10001, color: "rgba(255,255,255,0.7)", fontSize: 14, fontFamily: "var(--font-display)", pointerEvents: "none" }}>{idx + 1} / {n} — {work.title}</div>
+
+              {/* Contatore nel lightbox */}
+              <div style={{
+                position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)",
+                zIndex: 10001, color: "rgba(255,255,255,0.7)", fontSize: 14,
+                fontFamily: "var(--font-display)", pointerEvents: "none",
+              }}>
+                {idx + 1} / {n} — {work.title}
+              </div>
             </>
           )}
         </div>
