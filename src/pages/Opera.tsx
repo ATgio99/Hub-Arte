@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useData } from "../lib/store";
-import { WorkImage, WorkCard, WorkGallery, Section, Empty, EntityLink, FavStar, StudiedCheck } from "../components/ui";
+import { WorkImage, WorkCard, WorkGallery, Section, Empty, EntityLink, FavStar, StudiedCheck, RichText } from "../components/ui";
 import { getOverrides, setOverride, clearOverride } from "../lib/imageOverrides";
 import { useStudied, toggleStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
@@ -175,7 +175,7 @@ export default function Opera() {
             {" · "}<span className="tnum">{workYears(w)}</span>
           </div>
 
-          <p className="prose" style={{ marginTop: 22, fontSize: 17 }}>{w.summary}</p>
+          <p className="prose" style={{ marginTop: 22, fontSize: 17 }}><RichText text={w.summary} /></p>
 
           <dl className="meta" style={{ marginTop: 26 }}>
             {period && <><dt>Periodo</dt><dd><EntityLink type="period" id={period.id} label={period.name} /></dd></>}
@@ -197,7 +197,7 @@ export default function Opera() {
       {w.analysis && (
         <Section eyebrow="Analisi" title="Lettura dell'opera">
           <div className="prose" style={{ maxWidth: "72ch", fontSize: 17 }}>
-            {w.analysis.split(/\n+/).map((p, i) => <p key={i}>{p}</p>)}
+            {w.analysis.split(/\n+/).map((p, i) => <p key={i}><RichText text={p} /></p>)}
           </div>
         </Section>
       )}

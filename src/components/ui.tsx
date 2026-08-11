@@ -1,4 +1,4 @@
-import { ReactNode, CSSProperties, useState, useEffect, useCallback, useRef } from "react";
+import { ReactNode, CSSProperties, useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import type { Work, EntityType } from "../lib/types";
@@ -142,6 +142,71 @@ export function EntityLink({ type, id, label, className }: { type: EntityType; i
   const txt = label ?? entityLabel(ix, type, id);
   if (!exists) return <span className={className}>{txt}</span>;
   return <Link to={entityHref(type, id)} className={className ?? "tlink"} data-testid={`elink-${type}-${id}`}>{txt}</Link>;
+}
+
+// ---- RichText: parsa @nome nel testo e lo trasforma in link cliccabili ----
+// Cerca @SeguitoDaParole e matcha contro opere e artisti del dataset.
+// Se matcha, crea un Link. Se non matcha, mostra il testo senza @.
+// Supporta anche @id-esatto (es. @andrea-mantegna) per matching preciso.
+export function RichText({ text }: { text: string }) {
+  const ix = useData();
+
+  // Costruisce mappe di lookup: nome → { type, id }
+  const lookup = useMemo(() => {
+    const map = new Map<string, { type: EntityType; id: string; label: string }>();
+    // Artisti: per nome e per id
+    for (const a of ix.ds.artists) {
+      map.set(a.name.toLowerCase(), { type: "artist", id: a.id, label: a.name });
+      map.set(a.id.toLowerCase(), { type: "artist", id: a.id, label: a.name });
+      // anche alias
+      for (const aka of a.aka) {
+        map.set(aka.toLowerCase(), { type: "artist", id: a.id, label: aka });
+      }
+    }
+    // Opere: per titolo e per id
+    for (const w of ix.ds.works) {
+      map.set(w.title.toLowerCase(), { type: "work", id: w.id, label: w.title });
+      map.set(w.id.toLowerCase(), { type: "work", id: w.id, label: w.title });
+    }
+    return map;
+  }, [ix.ds.artists, ix.ds.works]);
+
+  // Split del testo mantenendo i @tag
+  // Regex: @ seguito da lettere, numeri, spazi, apostrofi, trattini — fino a un delimitatore
+  const parts = text.split(/(@[\w\s'àéèìòù\-.]+)/g);
+
+  return (
+    <>
+      {parts.map((part, i) => {
+        if (!part.startsWith("@")) {
+          // Testo normale — splitta sui newline
+          return <span key={i}>{part}</span>;
+        }
+        // È un @tag: rimuovi @ e cerca nel lookup
+        const query = part.slice(1).trim().toLowerCase();
+        // Prova match esatto
+        let match = lookup.get(query);
+        // Se non matcha esatto, prova match parziale (primi caratteri)
+        if (!match) {
+          for (const [key, val] of lookup) {
+            if (key.startsWith(query) || query.startsWith(key)) {
+              match = val;
+              break;
+            }
+          }
+        }
+        if (match) {
+          return (
+            <Link key={i} to={entityHref(match.type, match.id)} className="tlink" style={{ fontWeight: 500 }}>
+              {match.label}
+            </Link>
+          );
+        }
+        // Nessun match: mostra senza @
+        return <span key={i}>{part.slice(1)}</span>;
+      })}
+    </>
+  );
 }
 
 // ---- Immagine opera con placeholder elegante ------------------------------
