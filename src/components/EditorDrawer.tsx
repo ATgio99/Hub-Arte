@@ -59,7 +59,7 @@ const WORK_DB_FIELDS = [
   "type", "technique_ids", "materials", "location_city", "location_place",
   "lat", "lon", "book", "chapter", "page", "source_file", "importance",
   "summary", "analysis", "innovations", "term_ids",
-  "image_url", "image_thumb", "image_source", "image_gallery", "modified_by",
+  "image_url", "image_thumb", "image_source", "modified_by",
 ];
 
 function buildCleanPayload(work: Work, modifiedBy: string): Record<string, unknown> {
@@ -147,7 +147,7 @@ function EditorDrawerInner({
         materials: [], location_city: null, location_place: null, lat: null, lon: null,
         book: 1, chapter: 0, page: 0, source_file: "", importance: 2,
         summary: "", analysis: null, innovations: [], term_ids: [],
-        image_url: "", image_thumb: "", image_source: "commons", image_gallery: [],
+        image_url: "", image_thumb: "", image_source: "commons",
       };
       idFieldRef.current = workId;
       setIsNew(true);
@@ -525,15 +525,6 @@ function EditorDrawerInner({
               </Field>
               <Field label="Fonte immagine">
                 <input type="text" defaultValue={work.image_source || ""} onChange={(e) => set("image_source", e.target.value)} style={inputStyle} placeholder="commons" />
-              </Field>
-
-              <Field label="Galleria immagini aggiuntive (un URL per riga)">
-                <textarea
-                  defaultValue={(work.image_gallery || []).join("\n")}
-                  onChange={(e) => set("image_gallery", e.target.value.split("\n").map(s => s.trim()).filter(Boolean))}
-                  style={{ ...inputStyle, minHeight: 70, resize: "vertical", fontFamily: "ui-monospace, monospace", fontSize: 12 }}
-                  placeholder="https://…&#10;https://…"
-                />
               </Field>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>

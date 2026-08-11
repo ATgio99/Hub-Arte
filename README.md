@@ -124,9 +124,9 @@ Lo schema SQL è in `supabase/`. Esegui gli script nel [SQL Editor di Supabase](
 
 ### Sicurezza
 - **RLS (Row Level Security)** attiva su tutte le tabelle
-- **Anon key pubblica** by design 
+- **Anon key pubblica** by design (non è una chiave segreta)
 - **Admin authorization** via JWT email verification nelle RLS policies
-- **Service role key** NON è nel codice 
+- **Service role key** NON è nel codice (è segreta e va usata solo lato server)
 
 ## 📁 Struttura del progetto
 
