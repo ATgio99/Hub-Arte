@@ -151,7 +151,7 @@ export async function pushToCloud(user: User): Promise<void> {
     await supabase.from("image_overrides").upsert(imgRows, { onConflict: "user_id,work_id" });
   }
 
-  // 4) Quiz errors — push completo con tutti i campi
+  // 4) Quiz errors — push solo se ci sono errori locali
   try {
     const errors = JSON.parse(localStorage.getItem("atlante.quiz.errors.v1") || "[]");
     if (Array.isArray(errors) && errors.length > 0) {
@@ -168,10 +168,10 @@ export async function pushToCloud(user: User): Promise<void> {
     }
   } catch { /* ignore */ }
 
-  // 5) Quiz stats — push come JSON
+  // 5) Quiz stats — push solo se ci sono statistiche locali
   try {
     const stats = JSON.parse(localStorage.getItem("atlante.quiz.stats.v1") || "null");
-    if (stats) {
+    if (stats && stats.totalAnswered > 0) {
       await supabase.from("quiz_stats").upsert({
         user_id: uid,
         stats: JSON.stringify(stats),
@@ -254,18 +254,16 @@ export async function pullFromCloud(user: User): Promise<void> {
   // 4) Image overrides GLOBALI — per tutti gli utenti (anche quelli senza propri override)
   await pullGlobalImageOverrides();
 
-  // 5) Quiz errors — REPLACE con dati cloud (cloud è fonte di verità)
-  //    Ma facciamo merge: se locale ha un error non presente nel cloud, lo teniamo
-  //    (potrebbe essere appena sbagliato e non ancora pushato).
-  const { data: errRows } = await supabase
+  // 5) Quiz errors — MERGE cloud + locale
+  const { data: errRows, error: errErr } = await supabase
     .from("quiz_errors")
     .select("kind, ref_id, prompt, correct_streak, added_at, last_seen")
     .eq("user_id", user.id);
 
-  if (errRows && errRows.length >= 0) {
+  if (!errErr) {
     try {
       const local = JSON.parse(localStorage.getItem("atlante.quiz.errors.v1") || "[]");
-      const cloudErrors = errRows.map((e: any) => ({
+      const cloudErrors = (errRows || []).map((e: any) => ({
         kind: e.kind,
         refId: e.ref_id,
         prompt: e.prompt || "",
@@ -273,7 +271,7 @@ export async function pullFromCloud(user: User): Promise<void> {
         addedAt: e.added_at || Date.now(),
         lastSeen: e.last_seen || Date.now(),
       }));
-      // Merge: cloud + locali non presenti nel cloud
+      // Merge: cloud vince, ma preserva locali non nel cloud
       const cloudKeys = new Set(cloudErrors.map((e: any) => `${e.kind}:${e.refId}`));
       for (const le of local) {
         if (!cloudKeys.has(`${le.kind}:${le.refId}`)) {
@@ -281,26 +279,33 @@ export async function pullFromCloud(user: User): Promise<void> {
         }
       }
       localStorage.setItem("atlante.quiz.errors.v1", JSON.stringify(cloudErrors));
+      console.log(`[sync] quiz errors: cloud ${errRows?.length || 0} + local ${local.length} → ${cloudErrors.length}`);
     } catch { /* ignore */ }
   }
 
-  // 6) Quiz stats — REPLACE con dati cloud (più recenti vincono)
-  const { data: statsRow } = await supabase
+  // 6) Quiz stats — cloud vince se ha più sessioni
+  const { data: statsRow, error: statsErr } = await supabase
     .from("quiz_stats")
     .select("stats, updated_at")
     .eq("user_id", user.id)
     .maybeSingle();
 
-  if (statsRow && statsRow.stats) {
+  if (!statsErr && statsRow && statsRow.stats) {
     try {
       const cloudStats = typeof statsRow.stats === "string"
         ? JSON.parse(statsRow.stats)
         : statsRow.stats;
-      // Confronta timestamp: cloud vince se più recente del locale
       const localStats = JSON.parse(localStorage.getItem("atlante.quiz.stats.v1") || "null");
-      if (!localStats || (cloudStats.sessions && localStats.sessions &&
-          cloudStats.sessions.length >= localStats.sessions.length)) {
+      // Cloud vince se: locale è vuoto O cloud ha più sessioni O cloud ha più risposte totali
+      const cloudSessions = cloudStats.sessions?.length || 0;
+      const localSessions = localStats?.sessions?.length || 0;
+      const cloudAnswered = cloudStats.totalAnswered || 0;
+      const localAnswered = localStats?.totalAnswered || 0;
+      if (!localStats || cloudAnswered >= localAnswered) {
         localStorage.setItem("atlante.quiz.stats.v1", JSON.stringify(cloudStats));
+        console.log(`[sync] quiz stats: cloud (${cloudSessions} sessions, ${cloudAnswered} answered) → locale`);
+      } else {
+        console.log(`[sync] quiz stats: locale (${localSessions} sessions, ${localAnswered} answered) > cloud → mantengo locale`);
       }
     } catch { /* ignore */ }
   }
