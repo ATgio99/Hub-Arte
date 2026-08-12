@@ -152,7 +152,6 @@ export default function Opera() {
           <div style={{ display: "flex", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
             <span className="tag">{w.type}</span>
             {w.importance === 3 && <span className="tag" style={{ color: "var(--gold-deep)", borderColor: "var(--gold-deep)" }}>✦ opera capitale</span>}
-            <span className="tag">Libro {w.book} · cap. {w.chapter}</span>
           </div>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
             <h1 style={{ fontSize: "clamp(28px,4.5vw,46px)", lineHeight: 1.04, letterSpacing: "-.02em", minWidth: 0 }}>{w.title}</h1>

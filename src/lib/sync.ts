@@ -151,7 +151,7 @@ export async function pushToCloud(user: User): Promise<void> {
     await supabase.from("image_overrides").upsert(imgRows, { onConflict: "user_id,work_id" });
   }
 
-  // 4) Quiz errors
+  // 4) Quiz errors — push completo con tutti i campi
   try {
     const errors = JSON.parse(localStorage.getItem("atlante.quiz.errors.v1") || "[]");
     if (Array.isArray(errors) && errors.length > 0) {
@@ -160,9 +160,23 @@ export async function pushToCloud(user: User): Promise<void> {
         kind: e.kind,
         ref_id: e.refId,
         prompt: e.prompt || "",
-        count: e.correctStreak || 0,
+        correct_streak: e.correctStreak || 0,
+        added_at: e.addedAt || Date.now(),
+        last_seen: e.lastSeen || Date.now(),
       }));
       await supabase.from("quiz_errors").upsert(errRows, { onConflict: "user_id,kind,ref_id" });
+    }
+  } catch { /* ignore */ }
+
+  // 5) Quiz stats — push come JSON
+  try {
+    const stats = JSON.parse(localStorage.getItem("atlante.quiz.stats.v1") || "null");
+    if (stats) {
+      await supabase.from("quiz_stats").upsert({
+        user_id: uid,
+        stats: JSON.stringify(stats),
+        updated_at: new Date().toISOString(),
+      }, { onConflict: "user_id" });
     }
   } catch { /* ignore */ }
 }
@@ -240,22 +254,54 @@ export async function pullFromCloud(user: User): Promise<void> {
   // 4) Image overrides GLOBALI — per tutti gli utenti (anche quelli senza propri override)
   await pullGlobalImageOverrides();
 
-  // 5) Quiz errors — merge nel localStorage
+  // 5) Quiz errors — REPLACE con dati cloud (cloud è fonte di verità)
+  //    Ma facciamo merge: se locale ha un error non presente nel cloud, lo teniamo
+  //    (potrebbe essere appena sbagliato e non ancora pushato).
   const { data: errRows } = await supabase
     .from("quiz_errors")
-    .select("kind, ref_id, prompt, count")
+    .select("kind, ref_id, prompt, correct_streak, added_at, last_seen")
     .eq("user_id", user.id);
 
-  if (errRows && errRows.length > 0) {
+  if (errRows && errRows.length >= 0) {
     try {
-      const existing = JSON.parse(localStorage.getItem("atlante.quiz.errors.v1") || "[]");
-      for (const e of errRows) {
-        const found = existing.find((x: any) => x.kind === e.kind && x.refId === e.ref_id);
-        if (!found) {
-          existing.push({ kind: e.kind, refId: e.ref_id, prompt: e.prompt });
+      const local = JSON.parse(localStorage.getItem("atlante.quiz.errors.v1") || "[]");
+      const cloudErrors = errRows.map((e: any) => ({
+        kind: e.kind,
+        refId: e.ref_id,
+        prompt: e.prompt || "",
+        correctStreak: e.correct_streak || 0,
+        addedAt: e.added_at || Date.now(),
+        lastSeen: e.last_seen || Date.now(),
+      }));
+      // Merge: cloud + locali non presenti nel cloud
+      const cloudKeys = new Set(cloudErrors.map((e: any) => `${e.kind}:${e.refId}`));
+      for (const le of local) {
+        if (!cloudKeys.has(`${le.kind}:${le.refId}`)) {
+          cloudErrors.push(le);
         }
       }
-      localStorage.setItem("atlante.quiz.errors.v1", JSON.stringify(existing));
+      localStorage.setItem("atlante.quiz.errors.v1", JSON.stringify(cloudErrors));
+    } catch { /* ignore */ }
+  }
+
+  // 6) Quiz stats — REPLACE con dati cloud (più recenti vincono)
+  const { data: statsRow } = await supabase
+    .from("quiz_stats")
+    .select("stats, updated_at")
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (statsRow && statsRow.stats) {
+    try {
+      const cloudStats = typeof statsRow.stats === "string"
+        ? JSON.parse(statsRow.stats)
+        : statsRow.stats;
+      // Confronta timestamp: cloud vince se più recente del locale
+      const localStats = JSON.parse(localStorage.getItem("atlante.quiz.stats.v1") || "null");
+      if (!localStats || (cloudStats.sessions && localStats.sessions &&
+          cloudStats.sessions.length >= localStats.sessions.length)) {
+        localStorage.setItem("atlante.quiz.stats.v1", JSON.stringify(cloudStats));
+      }
     } catch { /* ignore */ }
   }
 }

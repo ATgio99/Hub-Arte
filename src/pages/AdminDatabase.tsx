@@ -649,6 +649,19 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
     else { setAddWorkToGroup(null); setAddWorkId(""); notifyChanged(); }
   };
 
+  const createComplex = async () => {
+    if (!newWorkId || !newPlace.trim()) return;
+    const place = newPlace.trim();
+    const city = newCity.trim() || undefined;
+    const { error } = await supabase.from("works").upsert({
+      id: newWorkId, location_place: place, location_city: city || null, modified_by: null,
+    }, { onConflict: "id" });
+    if (error) { setSaveMsg("✗ Errore: " + error.message); return; }
+    setSaveMsg(`✓ Complesso "${place}" creato con successo!`);
+    setNewWorkId(""); setNewPlace(""); setNewCity(""); setShowNewForm(false);
+    notifyChanged();
+  };
+
   const deleteComplex = async (groupName: string, cityName: string | null) => {
     if (!confirm(`Eliminare il complesso "${groupName}"? Tutte le opere verranno rimosse dal complesso (location_place cancellato).`)) return;
     const group = groups.find(g => g.name === groupName && (g.city ?? null) === cityName);

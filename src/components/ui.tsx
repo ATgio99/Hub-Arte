@@ -166,7 +166,11 @@ export function RichText({ text }: { text: string }) {
     return map;
   }, [ix.ds.artists, ix.ds.works]);
 
-  const parts = text.split(/(@[\w\s'àéèìòù\-.]+)/g);
+  // Split del testo mantenendo i @tag
+  // La regex cattura @ seguito da parole (lettere, numeri, apostrofi, trattini, spazi tra parole)
+  // ma si ferma alla punteggiatura (,.;:!?)]} newline) o fine stringa.
+  // Lo spazio finale viene trimmato nel matching.
+  const parts = text.split(/(@[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ](?:[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ\-. ]*[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ\-.])?)/g);
 
   const closePopup = () => { setPopup(null); document.body.style.overflow = ""; };
 
