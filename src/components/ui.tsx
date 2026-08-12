@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import type { Work, EntityType } from "../lib/types";
 import { useData } from "../lib/store";
-import { entityLabel, resolveEntity, WorkGroup } from "../lib/data";
+import { entityLabel, resolveEntity, WorkGroup, ENTITY_LABEL } from "../lib/data";
 import { useCountUp, useInViewOnce, revealContainer, revealItem, revealItemSoft, EASE_OUT, usePrefersReducedMotion } from "../lib/motion";
 import { useFavorites, toggleFavorite, FavType } from "../lib/favorites";
 import { useStudied, toggleStudied } from "../lib/studied";
@@ -150,20 +150,15 @@ export function EntityLink({ type, id, label, className }: { type: EntityType; i
 // Supporta anche @id-esatto (es. @andrea-mantegna) per matching preciso.
 export function RichText({ text }: { text: string }) {
   const ix = useData();
+  const [popup, setPopup] = useState<{ type: EntityType; id: string } | null>(null);
 
-  // Costruisce mappe di lookup: nome → { type, id }
   const lookup = useMemo(() => {
     const map = new Map<string, { type: EntityType; id: string; label: string }>();
-    // Artisti: per nome e per id
     for (const a of ix.ds.artists) {
       map.set(a.name.toLowerCase(), { type: "artist", id: a.id, label: a.name });
       map.set(a.id.toLowerCase(), { type: "artist", id: a.id, label: a.name });
-      // anche alias
-      for (const aka of a.aka) {
-        map.set(aka.toLowerCase(), { type: "artist", id: a.id, label: aka });
-      }
+      for (const aka of a.aka) map.set(aka.toLowerCase(), { type: "artist", id: a.id, label: aka });
     }
-    // Opere: per titolo e per id
     for (const w of ix.ds.works) {
       map.set(w.title.toLowerCase(), { type: "work", id: w.id, label: w.title });
       map.set(w.id.toLowerCase(), { type: "work", id: w.id, label: w.title });
@@ -171,41 +166,84 @@ export function RichText({ text }: { text: string }) {
     return map;
   }, [ix.ds.artists, ix.ds.works]);
 
-  // Split del testo mantenendo i @tag
-  // Regex: @ seguito da lettere, numeri, spazi, apostrofi, trattini — fino a un delimitatore
   const parts = text.split(/(@[\w\s'àéèìòù\-.]+)/g);
+
+  const closePopup = () => { setPopup(null); document.body.style.overflow = ""; };
+
+  useEffect(() => {
+    if (!popup) return;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closePopup(); };
+    window.addEventListener("keydown", onKey);
+    return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [popup]);
 
   return (
     <>
       {parts.map((part, i) => {
-        if (!part.startsWith("@")) {
-          // Testo normale — splitta sui newline
-          return <span key={i}>{part}</span>;
-        }
-        // È un @tag: rimuovi @ e cerca nel lookup
+        if (!part.startsWith("@")) return <span key={i}>{part}</span>;
         const query = part.slice(1).trim().toLowerCase();
-        // Prova match esatto
         let match = lookup.get(query);
-        // Se non matcha esatto, prova match parziale (primi caratteri)
         if (!match) {
           for (const [key, val] of lookup) {
-            if (key.startsWith(query) || query.startsWith(key)) {
-              match = val;
-              break;
-            }
+            if (key.startsWith(query) || query.startsWith(key)) { match = val; break; }
           }
         }
         if (match) {
           return (
-            <Link key={i} to={entityHref(match.type, match.id)} className="tlink" style={{ fontWeight: 500 }}>
+            <button key={i} onClick={() => setPopup({ type: match!.type, id: match!.id })} className="tlink" style={{ background: "none", border: 0, padding: 0, cursor: "pointer", font: "inherit", fontWeight: 500, textDecoration: "underline", textDecorationColor: "var(--gold)", textUnderlineOffset: "2px" }}>
               {match.label}
-            </Link>
+            </button>
           );
         }
-        // Nessun match: mostra senza @
         return <span key={i}>{part.slice(1)}</span>;
       })}
+      {popup && <EntityPopup type={popup.type} id={popup.id} onClose={closePopup} />}
     </>
+  );
+}
+
+function EntityPopup({ type, id, onClose }: { type: EntityType; id: string; onClose: () => void }) {
+  const ix = useData();
+  const entity = resolveEntity(ix, type, id);
+  if (!entity) return null;
+  const label = entityLabel(ix, type, id);
+  const href = entityHref(type, id);
+  const eyebrow = ENTITY_LABEL[type] || type;
+  let image: string | undefined;
+  let preview: string | undefined;
+  let meta: string | undefined;
+  if (type === "work") {
+    const w = entity as Work;
+    image = w.image_thumb || w.image_url;
+    preview = w.summary;
+    const period = ix.periodById.get(w.period_id);
+    meta = [period?.name, w.date_text, w.location_city].filter(Boolean).join(" · ");
+  } else if (type === "artist") {
+    const a = entity as any;
+    preview = a.bio;
+    meta = [a.role, a.birth != null ? `${a.birth}–${a.death ?? ""}` : null].filter(Boolean).join(" · ");
+  }
+  return (
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 10000, background: "rgba(0,0,0,0.4)", backdropFilter: "blur(2px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 16, animation: "fadeIn .15s" }}>
+      <div onClick={e => e.stopPropagation()} style={{ background: "var(--bg)", borderRadius: 14, maxWidth: 380, width: "100%", maxHeight: "85vh", overflow: "hidden", display: "flex", flexDirection: "column", boxShadow: "0 20px 60px -12px rgba(0,0,0,0.25)", border: "1px solid var(--line)" }}>
+        {image && <div style={{ width: "100%", aspectRatio: "4/3", overflow: "hidden", background: "var(--bg-2)" }}><img src={image} alt={label} style={{ width: "100%", height: "100%", objectFit: "cover" }} onError={(e) => { e.currentTarget.style.display = "none"; }} /></div>}
+        <div style={{ padding: "16px 18px", overflowY: "auto", flex: 1 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
+            <div style={{ minWidth: 0 }}>
+              <div className="eyebrow" style={{ marginBottom: 4, fontSize: 10 }}>{eyebrow}</div>
+              <h3 style={{ fontFamily: "var(--font-display)", fontSize: 19, lineHeight: 1.2, marginBottom: 4 }}>{label}</h3>
+              {meta && <div className="muted" style={{ fontSize: 13 }}>{meta}</div>}
+            </div>
+            <button onClick={onClose} aria-label="Chiudi" style={{ background: "none", border: 0, cursor: "pointer", color: "var(--ink-dim)", fontSize: 20, lineHeight: 1, padding: "2px 6px", flexShrink: 0 }}>✕</button>
+          </div>
+          {preview && <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.55, marginTop: 12, marginBottom: 0 }}>{preview.length > 200 ? preview.slice(0, 200) + "…" : preview}</p>}
+        </div>
+        <div style={{ padding: "12px 18px", borderTop: "1px solid var(--line)", flexShrink: 0 }}>
+          <Link to={href} onClick={onClose} className="btn gold sm" style={{ width: "100%", textAlign: "center", justifyContent: "center" }}>Apri scheda →</Link>
+        </div>
+      </div>
+    </div>
   );
 }
 
