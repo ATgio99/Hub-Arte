@@ -97,12 +97,6 @@ export function isFavorite(type: FavType, id: string): boolean {
 }
 
 export function toggleFavorite(type: FavType, id: string): boolean {
-  // Check login
-  const userStr = localStorage.getItem("sb-ddsdvcznziciqdambgom-auth-token");
-  if (!userStr) {
-    window.dispatchEvent(new CustomEvent("atlante:login-required", { detail: { action: "preferito", type, id } }));
-    return false;
-  }
   const f = getFavorites();
   const list = type === "work" ? f.works : f.artists;
   const i = list.indexOf(id);

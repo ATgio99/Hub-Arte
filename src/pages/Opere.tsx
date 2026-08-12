@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, WorkGroupCard, Empty, EmptyTimeRange, FilterNote } from "../components/ui";
@@ -13,10 +13,10 @@ export default function Opere() {
   const { ds, periodById } = useData();
   const { workIn, active } = useTimeRange();
   const [sp] = useSearchParams();
-  const [q, setQ] = useState(() => sessionStorage.getItem("atlante:opere-search") || "");
+  const [q, setQ] = useState("");
   const [type, setType] = useState<string>(sp.get("type") ?? "");
   const [period, setPeriod] = useState<string>(sp.get("p") ?? "");
-  const [imp, setImp] = useState<string>(() => sessionStorage.getItem("atlante:opere-imp") || "");
+  const [imp, setImp] = useState<string>("");
   const [favOnly, setFavOnly] = useState(false);
   const [studiedFilter, setStudiedFilter] = useState<"" | "studied" | "not-studied">("");
   const [grouped, setGrouped] = useState(false);
@@ -24,16 +24,6 @@ export default function Opere() {
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
   const favs = useFavorites();
   const studied = useStudied();
-
-  // Salva la ricerca in sessionStorage quando cambia
-  useEffect(() => {
-    if (q) sessionStorage.setItem("atlante:opere-search", q);
-    else sessionStorage.removeItem("atlante:opere-search");
-  }, [q]);
-  useEffect(() => {
-    if (imp) sessionStorage.setItem("atlante:opere-imp", imp);
-    else sessionStorage.removeItem("atlante:opere-imp");
-  }, [imp]);
 
   // periodi ordinati cronologicamente per il filtro
   const periodOpts = useMemo(

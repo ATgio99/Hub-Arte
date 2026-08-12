@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useData } from "../lib/store";
-import { WorkImage, WorkCard, WorkGallery, Section, Empty, EntityLink, FavStar, StudiedCheck, RichText } from "../components/ui";
+import { WorkImage, WorkCard, Section, Empty, EntityLink, FavStar, StudiedCheck } from "../components/ui";
 import { getOverrides, setOverride, clearOverride } from "../lib/imageOverrides";
 import { useStudied, toggleStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
@@ -90,7 +90,17 @@ export default function Opera() {
   const { user, isAdmin } = useAuth();
   const w = id ? ix.workById.get(id) : undefined;
   const [editorOpen, setEditorOpen] = useState(false);
+  const [imgZoom, setImgZoom] = useState(false);
   if (!w) return <div className="wrap page"><Empty msg="Opera non trovata." /></div>;
+
+  // Esc per chiudere il lightbox
+  useEffect(() => {
+    if (!imgZoom) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setImgZoom(false); };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [imgZoom]);
 
   const artists = artistsOfWork(ix, w);
   const terms = termsOfWork(ix, w);
@@ -138,9 +148,12 @@ export default function Opera() {
       </div>
 
       <div className="opera-grid">
-        {/* immagine — galleria scorrevole con lightbox integrato */}
+        {/* immagine */}
         <div>
-          <WorkGallery work={w} />
+          <div className="opera-img card" onClick={() => { if (w.image_thumb || w.image_url) setImgZoom(true); }} role={w.image_thumb || w.image_url ? "button" : undefined} tabIndex={w.image_thumb || w.image_url ? 0 : undefined} onKeyDown={(e) => { if ((e.key === "Enter" || e.key === " ") && (w.image_thumb || w.image_url)) { e.preventDefault(); setImgZoom(true); } }}>
+            <WorkImage work={w} style={{ maxWidth: "100%", maxHeight: "72vh", width: "auto", height: "auto", objectFit: "contain", background: "var(--bg)" }} />
+          </div>
+          {/* Sotto l'immagine: solo ImageEditor (solo admin) + fonte (i pulsanti Modifica/Richiedi sono in alto) */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8, gap: 10, flexWrap: "wrap" }}>
             {isAdmin && <ImageEditor workId={w.id} />}
             {w.image_source && <div className="faint" style={{ fontSize: 11, marginLeft: "auto" }}>fonte immagine: {getOverrides()[w.id] ? "personalizzata" : w.image_source}</div>}
@@ -152,6 +165,7 @@ export default function Opera() {
           <div style={{ display: "flex", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
             <span className="tag">{w.type}</span>
             {w.importance === 3 && <span className="tag" style={{ color: "var(--gold-deep)", borderColor: "var(--gold-deep)" }}>✦ opera capitale</span>}
+            <span className="tag">Libro {w.book} · cap. {w.chapter}</span>
           </div>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
             <h1 style={{ fontSize: "clamp(28px,4.5vw,46px)", lineHeight: 1.04, letterSpacing: "-.02em", minWidth: 0 }}>{w.title}</h1>
@@ -174,7 +188,7 @@ export default function Opera() {
             {" · "}<span className="tnum">{workYears(w)}</span>
           </div>
 
-          <p className="prose" style={{ marginTop: 22, fontSize: 17 }}><RichText text={w.summary} /></p>
+          <p className="prose" style={{ marginTop: 22, fontSize: 17 }}>{w.summary}</p>
 
           <dl className="meta" style={{ marginTop: 26 }}>
             {period && <><dt>Periodo</dt><dd><EntityLink type="period" id={period.id} label={period.name} /></dd></>}
@@ -196,7 +210,7 @@ export default function Opera() {
       {w.analysis && (
         <Section eyebrow="Analisi" title="Lettura dell'opera">
           <div className="prose" style={{ maxWidth: "72ch", fontSize: 17 }}>
-            {w.analysis.split(/\n+/).map((p, i) => <p key={i}><RichText text={p} /></p>)}
+            {w.analysis.split(/\n+/).map((p, i) => <p key={i}>{p}</p>)}
           </div>
         </Section>
       )}
@@ -263,6 +277,59 @@ export default function Opera() {
         open={editorOpen}
         onClose={() => setEditorOpen(false)}
       />
+
+      {/* Lightbox immagine fullscreen — click per aprire, Esc/click per chiudere */}
+      {imgZoom && (w.image_thumb || w.image_url) && (
+        <div
+          onClick={() => setImgZoom(false)}
+          onKeyDown={(e) => { if (e.key === "Escape") setImgZoom(false); }}
+          role="button"
+          tabIndex={0}
+          aria-label="Chiudi immagine"
+          style={{
+            position: "fixed", inset: 0, zIndex: 10000,
+            background: "rgba(0,0,0,0.92)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            cursor: "zoom-out",
+            padding: 24,
+            animation: "fadeIn .2s",
+          }}
+        >
+          <img
+            src={w.image_url || w.image_thumb || ""}
+            alt={w.title}
+            style={{
+              maxWidth: "100%", maxHeight: "100%",
+              objectFit: "contain",
+              borderRadius: 4,
+              boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          />
+          {/* Pulsante chiudi */}
+          <button
+            onClick={() => setImgZoom(false)}
+            aria-label="Chiudi"
+            style={{
+              position: "fixed", top: 18, right: 18, zIndex: 10001,
+              width: 44, height: 44, borderRadius: "50%",
+              background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)",
+              border: "1px solid rgba(255,255,255,0.25)",
+              color: "#fff", fontSize: 22, lineHeight: 1,
+              cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+            }}
+          >✕</button>
+          {/* Titolo opera in basso */}
+          <div style={{
+            position: "fixed", bottom: 24, left: 0, right: 0,
+            textAlign: "center", color: "rgba(255,255,255,0.85)",
+            fontSize: 14, fontFamily: "var(--font-display)",
+            pointerEvents: "none", padding: "0 24px",
+          }}>
+            {w.title}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

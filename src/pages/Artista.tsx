@@ -62,9 +62,9 @@ export default function Artista() {
         </Section>
       )}
 
-      {/* Mappa opere (se almeno 2 opere geolocalizzate in città diverse) */}
+      {/* Mappa spostamenti (se almeno 2 opere geolocalizzate in città diverse) */}
       {showMap && hasDistinctCities && (
-        <Section eyebrow="Geografia" title="Dove si trovano le opere">
+        <Section eyebrow="Geografia" title="Mappa degli spostamenti">
           <ArtistMap artist={a} works={geolocatedWorks} periods={periods} />
         </Section>
       )}
