@@ -40,7 +40,7 @@ export function clearDatasetCache() { _cache = null; }
  */
 async function loadDbOverrides(): Promise<Partial<Dataset>> {
   try {
-    const [periodsRes, worksRes, artistsRes, techRes, termsRes, eventsRes, connsRes] = await Promise.all([
+    const [periodsRes, worksRes, artistsRes, techRes, termsRes, eventsRes, connsRes, hiddenRes] = await Promise.all([
       supabase.from("periods").select("*"),
       supabase.from("works").select("*"),
       supabase.from("artists").select("*"),
@@ -48,7 +48,14 @@ async function loadDbOverrides(): Promise<Partial<Dataset>> {
       supabase.from("terms").select("*"),
       supabase.from("events").select("*"),
       supabase.from("connections").select("*"),
+      supabase.from("hidden_entities").select("id"),
     ]);
+    // Salva gli hidden IDs per il filtraggio
+    if (!hiddenRes.error && hiddenRes.data) {
+      (loadDbOverrides as any)._hiddenIds = new Set(hiddenRes.data.map((r: any) => r.id));
+    } else {
+      (loadDbOverrides as any)._hiddenIds = new Set();
+    }
     return {
       periods: periodsRes.error ? undefined : (periodsRes.data as any) ?? [],
       works: worksRes.error ? undefined : (worksRes.data as any) ?? [],
@@ -59,6 +66,7 @@ async function loadDbOverrides(): Promise<Partial<Dataset>> {
       connections: connsRes.error ? undefined : (connsRes.data as any) ?? [],
     };
   } catch {
+    (loadDbOverrides as any)._hiddenIds = new Set();
     return {};
   }
 }
@@ -108,14 +116,17 @@ export function loadDataset(): Promise<Dataset> {
     // Merge Supabase DB (tutte le tabelle)
     try {
       const dbData = await loadDbOverrides();
+      const hiddenIds: Set<string> = (loadDbOverrides as any)._hiddenIds || new Set();
+      const filterHidden = <T extends { id: string }>(arr: T[]): T[] =>
+        hiddenIds.size === 0 ? arr : arr.filter(x => !hiddenIds.has(x.id));
       return {
-        periods: mergeArrays(periods, dbData.periods as Period[]),
-        artists: mergeArrays(artists, dbData.artists as Artist[]),
-        works: mergeArrays(works, dbData.works as Work[]),
-        techniques: mergeArrays(techniques, dbData.techniques as Technique[]),
-        terms: mergeArrays(terms, dbData.terms as Term[]),
-        connections: mergeArrays(connections, dbData.connections as Connection[]),
-        events: mergeArrays(events, dbData.events as ArtEvent[]),
+        periods: filterHidden(mergeArrays(periods, dbData.periods as Period[])),
+        artists: filterHidden(mergeArrays(artists, dbData.artists as Artist[])),
+        works: filterHidden(mergeArrays(works, dbData.works as Work[])),
+        techniques: filterHidden(mergeArrays(techniques, dbData.techniques as Technique[])),
+        terms: filterHidden(mergeArrays(terms, dbData.terms as Term[])),
+        connections: filterHidden(mergeArrays(connections, dbData.connections as Connection[])),
+        events: filterHidden(mergeArrays(events, dbData.events as ArtEvent[])),
       };
     } catch { /* ignore DB errors, use JSON only */ }
 
