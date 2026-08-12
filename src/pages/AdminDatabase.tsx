@@ -162,7 +162,6 @@ export default function AdminDatabase() {
 
   // Elimina riga
   const deleteRow = async (id: string) => {
-    // Cerca la riga per ottenere un'etichetta leggibile
     let label = id;
     const r = currentData.find(x => x.id === id);
     if (r) {
@@ -178,15 +177,15 @@ export default function AdminDatabase() {
     );
     if (!confirmed) return;
     try {
-      const { error } = await supabase.from(tab).delete().eq("id", id);
-      if (error) { alert("Errore: " + error.message); return; }
-      // Notifica app
+      // Prova DELETE dal DB (se esiste)
+      await supabase.from(tab).delete().eq("id", id);
+      // Inserisci in hidden_entities per nascondere record JSON
+      await supabase.from("hidden_entities").upsert(
+        { id, table_name: tab, hidden_by: user?.email || null },
+        { onConflict: "id" }
+      );
       window.dispatchEvent(new Event("hubart-works-changed"));
-      try {
-        const bc = new BroadcastChannel("hubart-admin");
-        bc.postMessage({ type: "changed", ts: Date.now() });
-        bc.close();
-      } catch {}
+      try { const bc = new BroadcastChannel("hubart-admin"); bc.postMessage({ type: "changed", ts: Date.now() }); bc.close(); } catch {}
       loadDbIds(tab);
     } catch (e: any) {
       alert("Errore: " + e.message);
@@ -650,6 +649,19 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
     else { setAddWorkToGroup(null); setAddWorkId(""); notifyChanged(); }
   };
 
+  const createComplex = async () => {
+    if (!newWorkId || !newPlace.trim()) return;
+    const place = newPlace.trim();
+    const city = newCity.trim() || undefined;
+    const { error } = await supabase.from("works").upsert({
+      id: newWorkId, location_place: place, location_city: city || null, modified_by: null,
+    }, { onConflict: "id" });
+    if (error) { setSaveMsg("✗ Errore: " + error.message); return; }
+    setSaveMsg(`✓ Complesso "${place}" creato con successo!`);
+    setNewWorkId(""); setNewPlace(""); setNewCity(""); setShowNewForm(false);
+    notifyChanged();
+  };
+
   const deleteComplex = async (groupName: string, cityName: string | null) => {
     if (!confirm(`Eliminare il complesso "${groupName}"? Tutte le opere verranno rimosse dal complesso (location_place cancellato).`)) return;
     const group = groups.find(g => g.name === groupName && (g.city ?? null) === cityName);
@@ -1098,8 +1110,13 @@ function GenericEditorDrawerInner({
     setSaving(true);
     setError(null);
     try {
-      const { error } = await supabase.from(table).delete().eq("id", row.id);
-      if (error) throw error;
+      // Prova DELETE dal DB
+      await supabase.from(table).delete().eq("id", row.id);
+      // Inserisci in hidden_entities per nascondere record JSON
+      await supabase.from("hidden_entities").upsert(
+        { id: row.id, table_name: table, hidden_by: userEmail },
+        { onConflict: "id" }
+      );
       window.dispatchEvent(new Event("hubart-works-changed"));
       try {
         const bc = new BroadcastChannel("hubart-admin");

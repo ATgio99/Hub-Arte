@@ -17,7 +17,9 @@ function pushErrorsToCloud() {
     try {
       const errors = loadErrors();
       if (errors.length === 0) {
-        // NON eliminare dal cloud! Potrebbero esserci errori su altri dispositivi.
+        // NON eliminare dal cloud! Potrebbero esserci errori su altri dispositivi
+        // che non sono ancora stati scaricati su questo.
+        // L'eliminazione avviene solo via clearErrors() che chiama questa funzione.
         return;
       }
       const rows = errors.map(e => ({
@@ -30,6 +32,17 @@ function pushErrorsToCloud() {
         last_seen: e.lastSeen,
       }));
       await supabase.from("quiz_errors").upsert(rows, { onConflict: "user_id,kind,ref_id" });
+      // Elimina dal cloud gli errori che non sono più nel locale
+      const localKeys = errors.map(e => `${e.kind}:${e.refId}`);
+      const { data: cloudRows } = await supabase.from("quiz_errors")
+        .select("kind,ref_id").eq("user_id", user.id);
+      if (cloudRows) {
+        const toDelete = cloudRows.filter((r: any) => !localKeys.includes(`${r.kind}:${r.ref_id}`));
+        for (const r of toDelete) {
+          await supabase.from("quiz_errors").delete()
+            .eq("user_id", user.id).eq("kind", r.kind).eq("ref_id", r.ref_id);
+        }
+      }
     } catch { /* ignore */ }
   });
 }
@@ -40,8 +53,6 @@ function pushStatsToCloud() {
     if (!user) return;
     try {
       const stats = loadStats();
-      // NON pushare se le stats sono vuote (evita sovrascrivere cloud)
-      if (!stats || stats.totalAnswered === 0) return;
       await supabase.from("quiz_stats").upsert({
         user_id: user.id,
         stats: JSON.stringify(stats),
@@ -101,7 +112,9 @@ export function clearErrors() {
   // Elimina esplicitamente dal cloud
   supabase.auth.getUser().then(async ({ data: { user } }) => {
     if (!user) return;
-    try { await supabase.from("quiz_errors").delete().eq("user_id", user.id); } catch { /* ignore */ }
+    try {
+      await supabase.from("quiz_errors").delete().eq("user_id", user.id);
+    } catch { /* ignore */ }
   });
 }
 export function errorCount(): number { return loadErrors().length; }
@@ -169,11 +182,4 @@ export function recordSession(answers: AnswerLog[], mode: "normale" | "ripasso",
   return s;
 }
 
-export function clearStats() {
-  saveStats({ ...EMPTY });
-  // Elimina esplicitamente dal cloud
-  supabase.auth.getUser().then(async ({ data: { user } }) => {
-    if (!user) return;
-    try { await supabase.from("quiz_stats").delete().eq("user_id", user.id); } catch { /* ignore */ }
-  });
-}
+export function clearStats() { saveStats({ ...EMPTY }); pushStatsToCloud(); }
