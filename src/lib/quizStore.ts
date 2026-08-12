@@ -17,8 +17,9 @@ function pushErrorsToCloud() {
     try {
       const errors = loadErrors();
       if (errors.length === 0) {
-        // Se non ci sono errori locali, elimina tutti dal cloud
-        await supabase.from("quiz_errors").delete().eq("user_id", user.id);
+        // NON eliminare dal cloud! Potrebbero esserci errori su altri dispositivi
+        // che non sono ancora stati scaricati su questo.
+        // L'eliminazione avviene solo via clearErrors() che chiama questa funzione.
         return;
       }
       const rows = errors.map(e => ({
@@ -30,8 +31,18 @@ function pushErrorsToCloud() {
         added_at: e.addedAt,
         last_seen: e.lastSeen,
       }));
-      // Upsert + delete dei vecchi non più presenti
       await supabase.from("quiz_errors").upsert(rows, { onConflict: "user_id,kind,ref_id" });
+      // Elimina dal cloud gli errori che non sono più nel locale
+      const localKeys = errors.map(e => `${e.kind}:${e.refId}`);
+      const { data: cloudRows } = await supabase.from("quiz_errors")
+        .select("kind,ref_id").eq("user_id", user.id);
+      if (cloudRows) {
+        const toDelete = cloudRows.filter((r: any) => !localKeys.includes(`${r.kind}:${r.ref_id}`));
+        for (const r of toDelete) {
+          await supabase.from("quiz_errors").delete()
+            .eq("user_id", user.id).eq("kind", r.kind).eq("ref_id", r.ref_id);
+        }
+      }
     } catch { /* ignore */ }
   });
 }
@@ -96,7 +107,16 @@ export function reviewAnswer(kind: QuizKind, refId: string, ok: boolean): { remo
   return { removed: false };
 }
 
-export function clearErrors() { saveErrors([]); pushErrorsToCloud(); }
+export function clearErrors() {
+  saveErrors([]);
+  // Elimina esplicitamente dal cloud
+  supabase.auth.getUser().then(async ({ data: { user } }) => {
+    if (!user) return;
+    try {
+      await supabase.from("quiz_errors").delete().eq("user_id", user.id);
+    } catch { /* ignore */ }
+  });
+}
 export function errorCount(): number { return loadErrors().length; }
 
 // --- STATISTICHE ------------------------------------------------------------
