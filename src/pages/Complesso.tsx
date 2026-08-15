@@ -7,7 +7,7 @@
 // L'ID nell'URL è il parent.id dell'opera capofila del gruppo.
 // ============================================================================
 import { useMemo } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, EntityLink, Empty } from "../components/ui";
 import { computeWorkGroups, workGroupMap } from "../lib/data";
@@ -15,6 +15,7 @@ import { computeWorkGroups, workGroupMap } from "../lib/data";
 export default function Complesso() {
   const { id = "" } = useParams();
   const ix = useData();
+  const nav = useNavigate();
   const { workIn } = useTimeRange();
 
   const groups = useMemo(() => computeWorkGroups(ix.ds), [ix.ds]);
@@ -53,6 +54,7 @@ export default function Complesso() {
 
   return (
     <div className="wrap page" style={{ paddingBottom: 40 }}>
+      <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 18 }} data-testid="button-back">← Indietro</button>
       <div className="page-head">
         <div className="page-eyebrow">
           <span className="eyebrow" style={{ color: "#4f7d72" }}>Complesso architettonico</span>

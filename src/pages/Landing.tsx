@@ -3,12 +3,149 @@
 // Presenta il progetto come opensource con link al repo GitHub.
 // ============================================================================
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useData } from "../lib/store";
 import { CountUp } from "../components/ui";
 import { useInViewOnce, EASE_OUT, usePrefersReducedMotion } from "../lib/motion";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "../lib/auth";
 
 const GITHUB_URL = "https://github.com/ATgio99/Hub-Arte";
+
+// --- Popup di avviso per utenti non loggati (chiude e non riappare) --------
+const NOTICE_KEY = "atlante.home.notice.dismissed.v1";
+
+function HomeNotice() {
+  const { user } = useAuth();
+  const [dismissed, setDismissed] = useState(true);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(NOTICE_KEY);
+      setDismissed(stored === "1");
+    } catch { /* ignore */ }
+    setReady(true);
+  }, []);
+
+  if (!ready || user || dismissed) return null;
+
+  const close = () => {
+    try { localStorage.setItem(NOTICE_KEY, "1"); } catch { /* ignore */ }
+    setDismissed(true);
+  };
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        role="dialog"
+        aria-live="polite"
+        aria-label="Messaggio di benvenuto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        style={{
+          position: "fixed", inset: 0, zIndex: 9500,
+          background: "rgba(26,20,14,0.55)",
+          backdropFilter: "blur(6px)",
+          WebkitBackdropFilter: "blur(6px)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          padding: "20px",
+        }}
+        onClick={close}
+      >
+        <motion.div
+          initial={{ scale: 0.94, y: 16, opacity: 0 }}
+          animate={{ scale: 1, y: 0, opacity: 1 }}
+          exit={{ scale: 0.94, y: 16, opacity: 0 }}
+          transition={{ duration: 0.35, ease: EASE_OUT }}
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            position: "relative",
+            maxWidth: 440, width: "100%",
+            background: "var(--bg, #faf6ee)",
+            border: "1px solid rgba(184,138,46,0.25)",
+            borderRadius: 18,
+            boxShadow: "0 24px 70px rgba(20,16,12,0.35), 0 4px 12px rgba(20,16,12,0.15)",
+            padding: "32px 28px 24px",
+            overflow: "hidden",
+          }}
+        >
+          {/* Linea decorativa oro in alto */}
+          <div style={{
+            position: "absolute", top: 0, left: 0, right: 0, height: 3,
+            background: "linear-gradient(90deg, transparent 0%, var(--gold, #d4a017) 35%, var(--gold-deep, #b88a2e) 65%, transparent 100%)",
+          }} />
+
+          {/* Icona stella neurale (coerente col logo Landing) */}
+          <div style={{ textAlign: "center", marginBottom: 18 }}>
+            <svg width="40" height="40" viewBox="0 0 48 48" fill="none" style={{ display: "inline-block" }}>
+              <g stroke="var(--gold, #d4a017)" strokeWidth="2" strokeLinecap="round">
+                <path d="M24 24 L24 7 M24 24 L24 41 M24 24 L8 24 M24 24 L40 24" />
+                <path d="M24 24 L12.7 12.7 M24 24 L35.3 35.3 M24 24 L35.3 12.7 M24 24 L12.7 35.3" strokeWidth="1.5" />
+              </g>
+              <circle cx="24" cy="24" r="5" fill="var(--gold, #d4a017)" />
+              <circle cx="24" cy="7" r="2.4" fill="var(--gold, #d4a017)" />
+              <circle cx="40" cy="24" r="2.4" fill="var(--gold, #d4a017)" />
+              <circle cx="24" cy="41" r="2" fill="var(--gold, #d4a017)" opacity=".85" />
+              <circle cx="8" cy="24" r="2" fill="var(--gold, #d4a017)" opacity=".85" />
+            </svg>
+          </div>
+
+          {/* Titolo */}
+          <h2 style={{
+            fontFamily: "var(--font-display, 'Zodiak', serif)",
+            fontSize: 24, fontWeight: 500,
+            color: "var(--ink, #1a1a1a)",
+            textAlign: "center",
+            marginBottom: 16, lineHeight: 1.2,
+            letterSpacing: "-.01em",
+          }}>
+            Benvenutə in HUB Art
+          </h2>
+
+          {/* Corpo testo */}
+          <div style={{ maxWidth: 360, margin: "0 auto 20px" }}>
+            <p style={{
+              fontSize: 14.5, lineHeight: 1.65,
+              color: "var(--ink-soft, #5b5550)", margin: "0 0 12px",
+            }}>
+              Questo progetto è in <b style={{ color: "var(--ink, #1a1a1a)", fontWeight: 600 }}>continua evoluzione</b>: potresti incontrare piccoli errori o funzioni ancora in sviluppo.
+            </p>
+            <p style={{
+              fontSize: 14.5, lineHeight: 1.65,
+              color: "var(--ink-soft, #5b5550)", margin: "0 0 12px",
+            }}>
+              Se qualcosa non funziona, oppure hai un'idea per migliorarlo, <b style={{ color: "var(--ink, #1a1a1a)", fontWeight: 600 }}>segnalacelo</b>. Ogni contributo è prezioso e ci aiuta a far crescere HUB Art.
+            </p>
+            <p style={{
+              fontSize: 14.5, lineHeight: 1.65,
+              color: "var(--gold-deep, #b88a2e)", margin: 0,
+              fontStyle: "italic", textAlign: "center",
+            }}>
+              Buona esplorazione.
+            </p>
+          </div>
+
+          {/* Bottone unico centrato */}
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button
+              className="btn gold sm"
+              onClick={close}
+              style={{
+                minWidth: 140, padding: "10px 28px",
+                fontSize: 14, fontWeight: 600,
+              }}
+            >
+              Grazie!
+            </button>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
 
 export default function Landing() {
   const ix = useData();
@@ -35,6 +172,7 @@ export default function Landing() {
 
   return (
     <div className="wrap page" style={{ maxWidth: 900, margin: "0 auto", padding: "20px 18px 60px" }}>
+      <HomeNotice />
       {/* Hero */}
       <div style={{ textAlign: "center", marginTop: 20, marginBottom: 40 }}>
         <motion.div
@@ -105,10 +243,7 @@ export default function Landing() {
         display: "grid",
         gridTemplateColumns: "repeat(6, 1fr)",
         gap: 10, marginBottom: 40, maxWidth: 820, margin: "0 auto 40px",
-      }}
-      // Su schermi piccoli (<640px) scendiamo a 3 colonne (2 righe da 3)
-      // usando una media query inline via CSS. La regola viene iniettata una sola volta.
-      >
+      }}>
         <style>{`
           @media (max-width: 640px) {
             .hubart-stats-grid { grid-template-columns: repeat(3, 1fr) !important; }

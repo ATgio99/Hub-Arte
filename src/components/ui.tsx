@@ -304,7 +304,7 @@ export function WorkCard({ work, subtitle, showStudied, group }: { work: Work; s
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
           >
             <Link to={`/complesso/${group.parent.id}`} onClick={(e) => e.stopPropagation()}>
-              🏛️ Apri complesso
+              Apri complesso
             </Link>
           </span>
         )}
@@ -360,7 +360,7 @@ export function WorkGroupCard({ group, expanded, onToggle }: { group: WorkGroup;
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
         >
           <Link to={`/complesso/${group.parent.id}`} onClick={(e) => e.stopPropagation()}>
-            🏛️ Apri complesso
+            Apri complesso
           </Link>
         </span>
       </div>
