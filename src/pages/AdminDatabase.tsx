@@ -616,7 +616,7 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
   const [showNewForm, setShowNewForm] = useState(false);
   const [newPlace, setNewPlace] = useState("");
   const [newCity, setNewCity] = useState("");
-  const [newWorkId, setNewWorkId] = useState("");
+  const [newWorkIds, setNewWorkIds] = useState<string[]>([]);
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
   const [editingGroupName, setEditingGroupName] = useState<string | null>(null);
   const [editPlaceName, setEditPlaceName] = useState("");
@@ -637,20 +637,25 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
   }, [groups, q]);
 
   // TUTTE le opere del dataset, per la tendina di selezione (EntitySelector con ricerca).
-  // Non filtriamo per location_place: l'utente può assegnare un'opera ovunque si trovi.
   const allWorkOptions = useMemo(() => {
     return ix.ds.works
       .map(w => ({ id: w.id, label: w.title, subtitle: w.location_city || undefined }))
       .sort((a, b) => a.label.localeCompare(b.label));
   }, [ix.ds.works]);
 
-  // Opere NON in un gruppo (per il form "nuovo complesso"). Anche queste passate
-  // all'EntitySelector, che fa ricerca client-side e non tronca a 200.
+  // Opere NON in un gruppo (per il form "nuovo complesso").
   const orphanWorkOptions = useMemo(() => {
     const inGroup = new Set<string>();
     for (const g of groups) for (const w of g.works) inGroup.add(w.id);
     return allWorkOptions.filter(o => !inGroup.has(o.id));
   }, [allWorkOptions, groups]);
+
+  // Anteprima live: opere che hanno GIÀ il luogo digitato (match esatto case-insensitive)
+  const matchingPlaceWorks = useMemo(() => {
+    const place = newPlace.trim().toLowerCase();
+    if (!place) return [];
+    return ix.ds.works.filter(w => w.location_place && w.location_place.toLowerCase() === place);
+  }, [ix.ds.works, newPlace]);
 
   const notifyChanged = () => {
     window.dispatchEvent(new Event("hubart-works-changed"));
@@ -662,7 +667,6 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
     if (!newName || newName === oldName) { setEditingGroupName(null); return; }
     const group = groups.find(g => g.name === oldName && (g.city ?? null) === cityName);
     if (!group) return;
-    // Per ogni opera: costruisci payload COMPLETO (no null title) e upserta
     const updates = group.works.map(w => {
       const payload = buildWorkPayload(w.id, ix.ds, { location_place: newName });
       if (!payload) return Promise.resolve();
@@ -692,21 +696,41 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
     else { setAddWorkToGroup(null); setAddWorkId(""); notifyChanged(); }
   };
 
+  // Crea complesso: assegna il luogo a TUTTE le opere selezionate (multi).
+  // Se il luogo esiste già in altre opere, le unisce nello stesso complesso.
   const createComplex = async () => {
-    if (!newWorkId || !newPlace.trim()) return;
+    if (!newPlace.trim()) { setSaveMsg("✗ Inserisci un nome per il complesso (luogo)."); return; }
+    if (newWorkIds.length === 0 && matchingPlaceWorks.length === 0) {
+      setSaveMsg("✗ Seleziona almeno un'opera da assegnare a questo complesso.");
+      return;
+    }
     const place = newPlace.trim();
     const city = newCity.trim() || undefined;
-    const payload = buildWorkPayload(newWorkId, ix.ds, {
-      location_place: place,
-      location_city: city || null,
-    });
-    if (!payload) { setSaveMsg("✗ Errore: opera non trovata nel dataset."); return; }
-    const { error } = await supabase.from("works").upsert(payload, { onConflict: "id" });
-    if (error) { setSaveMsg("✗ Errore: " + error.message); return; }
-    setSaveMsg(`✓ Complesso "${place}" creato con successo!`);
-    setNewWorkId(""); setNewPlace(""); setNewCity(""); setShowNewForm(false);
-    notifyChanged();
+    // Unisci: opere selezionate + opere che hanno già il luogo (per non duplicare)
+    const allIds = new Set<string>([...newWorkIds, ...matchingPlaceWorks.map(w => w.id)]);
+    setSavingComplex(true);
+    setSaveMsg(null);
+    try {
+      const updates = [...allIds].map(id => {
+        const payload = buildWorkPayload(id, ix.ds, {
+          location_place: place,
+          location_city: city || null,
+        });
+        if (!payload) return Promise.resolve();
+        return supabase.from("works").upsert(payload, { onConflict: "id" });
+      });
+      await Promise.all(updates);
+      const total = allIds.size;
+      setSaveMsg(`✓ Complesso "${place}" creato! ${total} ${total === 1 ? "opera assegnata" : "opere assegnate"} al complesso.`);
+      setNewWorkIds([]); setNewPlace(""); setNewCity(""); setShowNewForm(false);
+      notifyChanged();
+    } catch (e: any) {
+      setSaveMsg("✗ Errore: " + (e.message || "errore sconosciuto"));
+    } finally {
+      setSavingComplex(false);
+    }
   };
+  const [savingComplex, setSavingComplex] = useState(false);
 
   const deleteComplex = async (groupName: string, cityName: string | null) => {
     if (!confirm(`Eliminare il complesso "${groupName}"? Tutte le opere verranno rimosse dal complesso (luogo cancellato).`)) return;
@@ -724,8 +748,9 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
   return (
     <div style={{ padding: 16 }}>
       <div style={{ marginBottom: 12, fontSize: 13, color: "var(--ink-dim)" }}>
-        📊 <b>{groups.length}</b> complessi trovati. Clicca su un'opera per aprirne l'editor completo,
-        o usa i pulsanti per rinominare, aggiungere/rimuovere opere ed eliminare complessi.
+        📊 <b>{groups.length}</b> complessi trovati. I complessi si formano automaticamente quando
+        2 o più opere hanno lo stesso <b>luogo</b> (es. "Basilica di San Francesco").
+        Usa il pulsante sotto per assegnare un luogo a una o più opere e creare un nuovo complesso.
       </div>
 
       {/* Pulsante nuovo complesso */}
@@ -734,38 +759,59 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
         onClick={() => setShowNewForm(!showNewForm)}
         style={{ marginBottom: 12 }}
       >
-        {showNewForm ? "− Annulla" : "+ Crea nuovo complesso"}
+        {showNewForm ? "− Annulla" : "+ Assegna opere a un luogo (crea complesso)"}
       </button>
 
-      {/* Form nuovo complesso */}
+      {/* Form nuovo complesso — multi-opera + anteprima live */}
       {showNewForm && (
         <div style={{
           padding: 16, background: "var(--bg-2)", borderRadius: 10,
           marginBottom: 16, border: "1px solid var(--gold)",
         }}>
-          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 10 }}>Crea nuovo complesso</div>
+          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 10 }}>Assegna opere a un luogo</div>
           <p style={{ fontSize: 12, color: "var(--ink-dim)", margin: "0 0 10px" }}>
-            Seleziona un'opera esistente e assegnale un nuovo "Luogo / edificio". Tutte le opere con lo stesso luogo verranno raggruppate automaticamente.
+            Scrivi il nome del luogo (es. "Basilica di San Francesco") e seleziona una o più opere.
+            Il complesso apparirà automaticamente nella lista quando almeno 2 opere condividono lo stesso luogo.
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             <div>
-              <label style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 4 }}>Opera da assegnare al complesso</label>
-              <EntitySelector
-                mode="single"
-                options={orphanWorkOptions}
-                selected={newWorkId || null}
-                onChange={(v) => setNewWorkId((v as string) || "")}
-                placeholder="Cerca opera per titolo…"
-              />
-            </div>
-            <div>
-              <label style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 4 }}>Nome del complesso</label>
+              <label style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 4 }}>Nome del luogo *</label>
               <input
                 type="text"
                 placeholder="es. Basilica di San Francesco"
                 value={newPlace}
                 onChange={(e) => setNewPlace(e.target.value)}
                 style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
+                autoFocus
+              />
+            </div>
+
+            {/* Anteprima live: opere con lo stesso luogo */}
+            {matchingPlaceWorks.length > 0 && (
+              <div style={{ padding: 10, background: "rgba(63,138,79,0.08)", border: "1px solid rgba(63,138,79,0.3)", borderRadius: 6 }}>
+                <div style={{ fontSize: 12, fontWeight: 600, color: "#3f8a4f", marginBottom: 4 }}>
+                  ✓ {matchingPlaceWorks.length} {matchingPlaceWorks.length === 1 ? "opera ha già" : "opere hanno già"} questo luogo:
+                </div>
+                <div style={{ fontSize: 12, color: "var(--ink-soft)" }}>
+                  {matchingPlaceWorks.slice(0, 5).map(w => w.title).join(", ")}
+                  {matchingPlaceWorks.length > 5 && `… +${matchingPlaceWorks.length - 5} altre`}
+                </div>
+                <div style={{ fontSize: 11, color: "var(--ink-dim)", marginTop: 4 }}>
+                  Verranno incluse automaticamente nel complesso.
+                </div>
+              </div>
+            )}
+
+            <div>
+              <label style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 4 }}>
+                Opere da assegnare al complesso {newWorkIds.length > 0 && `(${newWorkIds.length} selezionate)`}
+              </label>
+              <EntitySelector
+                mode="multi"
+                options={orphanWorkOptions}
+                selected={newWorkIds}
+                onChange={(v) => setNewWorkIds((v as string[]) || [])}
+                placeholder="Cerca opere da assegnare a questo luogo…"
               />
             </div>
             <div>
@@ -779,8 +825,8 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
               />
             </div>
             {saveMsg && <div style={{ fontSize: 13, color: saveMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{saveMsg}</div>}
-            <button className="btn gold sm" onClick={createComplex} disabled={!newWorkId || !newPlace.trim()}>
-              💾 Crea complesso
+            <button className="btn gold sm" onClick={createComplex} disabled={savingComplex || !newPlace.trim() || (newWorkIds.length === 0 && matchingPlaceWorks.length === 0)}>
+              {savingComplex ? "Salvataggio…" : `💾 Assegna ${newWorkIds.length + matchingPlaceWorks.length} ${newWorkIds.length + matchingPlaceWorks.length === 1 ? "opera" : "opere"} al luogo`}
             </button>
           </div>
         </div>
@@ -788,7 +834,7 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
 
       {filtered.length === 0 ? (
         <div style={{ padding: 32, textAlign: "center", color: "var(--ink-dim)", fontSize: 14 }}>
-          Nessun complesso trovato.
+          Nessun complesso trovato. I complessi si formano automaticamente quando 2+ opere condividono lo stesso luogo.
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -1097,6 +1143,15 @@ function GenericEditorDrawerInner({
   const setField = (field: string, value: any) => {
     rowRef.current = { ...rowRef.current, [field]: value };
     setOk(false);
+    // Per le connessioni: quando si cambia source_type o target_type, forza re-render
+    // così il selettore source_id/target_id si aggiorna con le opzioni giuste
+    // (es. source_type "artist" → mostra artisti, non più opere)
+    if (table === "connections" && (field === "source_type" || field === "target_type")) {
+      // Resetta anche l'ID selezionato (non è valido per il nuovo tipo)
+      const idField = field === "source_type" ? "source_id" : "target_id";
+      rowRef.current = { ...rowRef.current, [idField]: "" };
+      forceUpdate();
+    }
   };
 
   // Helper per ottenere le opzioni di un selettore entità
@@ -1364,10 +1419,14 @@ function GenericEditorDrawerInner({
               const labelMap = selectKey === "connections.kind" ? CONN_KIND_LABELS
                 : selectKey === "connections.source_type" || selectKey === "connections.target_type" ? ENTITY_TYPE_LABELS
                 : null;
+              // Per connections usiamo select CONTROLLATA (value=...) così quando
+              // l'utente cambia source_type/target_id si aggiorna correttamente.
+              // Per le altre usiamo defaultValue (uncontrolled) per non perdere focus.
+              const isConnSelect = selectKey === "connections.kind" || selectKey === "connections.source_type" || selectKey === "connections.target_type";
               return (
                 <GenField key={field} label={label}>
                   <select
-                    defaultValue={String(value ?? "")}
+                    {...(isConnSelect ? { value: String(value ?? "") } : { defaultValue: String(value ?? "") })}
                     onChange={(e) => {
                       const v = e.target.value;
                       setField(field, isNumber ? Number(v) : v);

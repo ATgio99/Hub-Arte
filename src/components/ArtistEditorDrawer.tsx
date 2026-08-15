@@ -87,6 +87,13 @@ interface DatasetSnapshot {
   terms: any[];
   events: any[];
   connections: Connection[];
+  // Mappe indicizzate per resolveEntity / entityLabel
+  periodById: Map<string, Period>;
+  artistById: Map<string, Artist>;
+  workById: Map<string, any>;
+  techById: Map<string, any>;
+  termById: Map<string, any>;
+  eventById: Map<string, any>;
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -520,7 +527,7 @@ function ArtistEditorDrawerInner({
                             </span>
                             <div style={{ flex: 1, minWidth: 0 }}>
                               <div style={{ fontSize: 13, fontWeight: 500 }}>
-                                {a.name} <span style={{ color: "var(--ink-dim)" }}>{arrow}</span> {entityLabel({ artists: dataset.artists, works: dataset.works, periods: dataset.periods, techniques: dataset.techniques, terms: dataset.terms, events: dataset.events } as any, ot, oid)}
+                                {a.name} <span style={{ color: "var(--ink-dim)" }}>{arrow}</span> {entityLabel(dataset as any, ot, oid)}
                               </div>
                               <div style={{ fontSize: 11, color: "var(--ink-dim)" }}>{ENTITY_LABEL[ot]}</div>
                               {c.description && <div style={{ fontSize: 12, color: "var(--ink-soft)", marginTop: 2 }}>{c.description}</div>}
@@ -609,6 +616,12 @@ export default function ArtistEditorDrawer({
           terms: ix.ds.terms,
           events: ix.ds.events,
           connections: ix.ds.connections,
+          periodById: ix.periodById,
+          artistById: ix.artistById,
+          workById: ix.workById,
+          techById: ix.techById,
+          termById: ix.termById,
+          eventById: ix.eventById,
         });
       }
       // Sempre aggiorna le connessioni quando si apre
