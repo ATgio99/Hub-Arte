@@ -186,6 +186,7 @@ export default function Opere() {
             {/* Opere singole */}
             {(grouped ? singleWorks : filtered).slice(0, limit).map((w) => (
               <WorkCard key={w.id} work={w}
+                group={grouped ? byGroup.get(w.id) : undefined}
                 subtitle={[w.location_city, periodById.get(w.period_id)?.name].filter(Boolean).join(" · ")} />
             ))}
           </div>

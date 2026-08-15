@@ -281,7 +281,7 @@ export function WorkImage({ work, className, style }: { work: Work; className?: 
 }
 
 // ---- Card opera (galleria) con badge periodo cliccabile -------------------
-export function WorkCard({ work, subtitle, showStudied }: { work: Work; subtitle?: string; showStudied?: boolean }) {
+export function WorkCard({ work, subtitle, showStudied, group }: { work: Work; subtitle?: string; showStudied?: boolean; group?: WorkGroup | null }) {
   const ix = useData();
   const period = ix.periodById.get(work.period_id);
   const studied = useStudied();
@@ -297,6 +297,17 @@ export function WorkCard({ work, subtitle, showStudied }: { work: Work; subtitle
         )}
         {work.importance === 3 && <span className="workcard-imp">✦</span>}
         {isStudied && <span className="workcard-studied-badge" title="Approfondita">✓</span>}
+        {group && (
+          <span
+            className="workcard-complex-overlay"
+            title={`Apri il complesso: ${group.name}`}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+          >
+            <Link to={`/complesso/${group.parent.id}`} onClick={(e) => e.stopPropagation()}>
+              🏛️ Apri complesso
+            </Link>
+          </span>
+        )}
       </Link>
       <div className="workcard-body">
         <div style={{ display: "flex", alignItems: "flex-start", gap: 8, justifyContent: "space-between" }}>
@@ -343,6 +354,15 @@ export function WorkGroupCard({ group, expanded, onToggle }: { group: WorkGroup;
           </span>
         )}
         <span className="workgroup-count">{group.works.length} opere</span>
+        <span
+          className="workcard-complex-overlay"
+          title={`Apri il complesso: ${group.name}`}
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+        >
+          <Link to={`/complesso/${group.parent.id}`} onClick={(e) => e.stopPropagation()}>
+            🏛️ Apri complesso
+          </Link>
+        </span>
       </div>
 
       {/* Corpo — identico a WorkCard ma con expand */}

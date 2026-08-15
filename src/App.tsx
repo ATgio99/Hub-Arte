@@ -12,6 +12,7 @@ import Luogo from "./pages/Luogo";
 import Artisti from "./pages/Artisti";
 import Opere from "./pages/Opere";
 import Opera from "./pages/Opera";
+import Complesso from "./pages/Complesso";
 import Periodo from "./pages/Periodo";
 import Artista from "./pages/Artista";
 import Glossario from "./pages/Glossario";
@@ -139,6 +140,7 @@ export default function App() {
                   <Route path="/luogo/:name" element={<Luogo />} />
                   <Route path="/opere" element={<Opere />} />
                   <Route path="/opera/:id" element={<Opera />} />
+                  <Route path="/complesso/:id" element={<Complesso />} />
                   <Route path="/periodo/:id" element={<Periodo />} />
                   <Route path="/artisti" element={<Artisti />} />
                   <Route path="/artista/:id" element={<Artista />} />

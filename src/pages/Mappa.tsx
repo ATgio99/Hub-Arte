@@ -45,6 +45,7 @@ export default function Mappa() {
   const ix = useData();
   const { workIn } = useTimeRange();
   const [isFull, setIsFull] = useState(false);
+  const [cityQ, setCityQ] = useState("");
   const mapRef = useRef<any>(null);
 
   const works = useMemo(() => ix.ds.works.filter(workIn), [ix, workIn]);
@@ -135,21 +136,51 @@ export default function Mappa() {
         <div>
           <div className="panel">
             <div className="panel-title">Centri</div>
-            <div style={{ maxHeight: 620, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
-              {cities.slice(0, 24).map((c) => (
-                <div key={c.name} style={{ padding: "10px 0", borderBottom: "1px solid var(--line-soft)" }}>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-                    <Link className="tlink" to={`/luogo/${encodeURIComponent(c.name)}`} style={{ fontFamily: "Zodiak, serif", fontSize: 16 }}>{c.name}</Link>
-                    <span className="badge-period" style={{ fontSize: 9.5, padding: "3px 8px" }}>{c.works.length} opere</span>
+            <input
+              type="text"
+              value={cityQ}
+              onChange={(e) => setCityQ(e.target.value)}
+              placeholder="Cerca città…"
+              style={{
+                width: "100%", padding: "7px 10px", marginBottom: 10,
+                border: "1px solid var(--line)", borderRadius: 6,
+                background: "var(--bg)", color: "var(--ink)",
+                fontSize: 13, fontFamily: "inherit",
+              }}
+            />
+            <div style={{ maxHeight: 580, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
+              {(() => {
+                const q = cityQ.trim().toLowerCase();
+                const filtered = q
+                  ? cities.filter(c => c.name.toLowerCase().includes(q))
+                  : cities.slice(0, 24);
+                if (filtered.length === 0) {
+                  return (
+                    <div style={{ padding: "16px 0", textAlign: "center", color: "var(--ink-dim)", fontSize: 13 }}>
+                      Nessuna città trovata per "{cityQ}".
+                    </div>
+                  );
+                }
+                return filtered.map((c) => (
+                  <div key={c.name} style={{ padding: "10px 0", borderBottom: "1px solid var(--line-soft)" }}>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                      <Link className="tlink" to={`/luogo/${encodeURIComponent(c.name)}`} style={{ fontFamily: "Zodiak, serif", fontSize: 16 }}>{c.name}</Link>
+                      <span className="badge-period" style={{ fontSize: 9.5, padding: "3px 8px" }}>{c.works.length} opere</span>
+                    </div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 7 }}>
+                      {c.works.slice(0, 4).map((w) => (
+                        <Link key={w.id} to={`/opera/${w.id}`} className="tlink" style={{ fontSize: 12 }}>{w.title.length > 26 ? w.title.slice(0, 24) + "…" : w.title}</Link>
+                      ))}
+                    </div>
                   </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 7 }}>
-                    {c.works.slice(0, 4).map((w) => (
-                      <Link key={w.id} to={`/opera/${w.id}`} className="tlink" style={{ fontSize: 12 }}>{w.title.length > 26 ? w.title.slice(0, 24) + "…" : w.title}</Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
+                ));
+              })()}
             </div>
+            {!cityQ.trim() && cities.length > 24 && (
+              <div style={{ padding: "8px 0 0", fontSize: 11, color: "var(--ink-dim)", textAlign: "center" }}>
+                +{cities.length - 24} altre città — usa la ricerca per trovarle
+              </div>
+            )}
           </div>
         </div>
       </div>
