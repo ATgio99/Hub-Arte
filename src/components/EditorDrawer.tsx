@@ -410,19 +410,27 @@ function EditorDrawerInner({
     const currentWork = workRef.current;
     const confirmed = window.confirm(
       `⚠️ CONFERMA ELIMINAZIONE\n\n` +
-      `Stai per eliminare definitivamente dal database:\n\n` +
+      `Stai per eliminare definitivamente:\n\n` +
       `Titolo: ${currentWork.title}\n` +
       `ID: ${currentWork.id}\n\n` +
-      `Questa azione è irreversibile.\n` +
-      `Se l'opera esiste anche nel file JSON statico, riapparirà con i valori originali.\n\n` +
-      `Vuoi procedere?`
+      `L'opera verrà rimossa dal database E oscurata dal file JSON statico,\n` +
+      `in modo che non riappaia più per nessun utente.\n\n` +
+      `Questa azione è irreversibile.\n\nVuoi procedere?`
     );
     if (!confirmed) return;
     setSaving(true);
     setError(null);
     try {
-      const { error } = await supabase.from("works").delete().eq("id", currentWork.id);
-      if (error) throw error;
+      // 1) DELETE dal DB (rimuove l'override)
+      const { error: delErr } = await supabase.from("works").delete().eq("id", currentWork.id);
+      if (delErr) throw delErr;
+      // 2) UPSERT in hidden_entities per oscurare anche l'eventuale record JSON
+      //    (altrimenti ricomparirebbe al prossimo loadDataset, perché il merge
+      //    JSON+DB riprenderebbe la riga dal file statico)
+      await supabase.from("hidden_entities").upsert(
+        { id: currentWork.id, table_name: "works", hidden_by: userEmail },
+        { onConflict: "id" }
+      );
       notifyAppChanged();
       onClose();
     } catch (e: any) {

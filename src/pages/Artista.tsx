@@ -1,8 +1,11 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, Section, Empty, EntityLink, FilterNote, FavStar } from "../components/ui";
 import ArtistMap from "../components/ArtistMap";
 import ArtistTimeline from "../components/ArtistTimeline";
+import ArtistEditorDrawer from "../components/ArtistEditorDrawer";
+import { useAuth } from "../lib/auth";
 import {
   worksByArtist, connectionsOf, fmtYear, entityLabel, ENTITY_LABEL, KIND_LABEL,
 } from "../lib/data";
@@ -11,6 +14,8 @@ export default function Artista() {
   const { id } = useParams();
   const ix = useData();
   const nav = useNavigate();
+  const { user, isAdmin } = useAuth();
+  const [editorOpen, setEditorOpen] = useState(false);
   const { workIn } = useTimeRange();
   const a = id ? ix.artistById.get(id) : undefined;
   if (!a) return <div className="wrap page"><Empty msg="Artista non trovato." /></div>;
@@ -33,7 +38,31 @@ export default function Artista() {
 
   return (
     <div className="wrap page">
-      <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 18 }} data-testid="button-back">← Indietro</button>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18, gap: 12, flexWrap: "wrap" }}>
+        <button className="btn ghost sm" onClick={() => nav(-1)} data-testid="button-back">← Indietro</button>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          {isAdmin ? (
+            <button
+              onClick={() => setEditorOpen(true)}
+              className="btn gold sm"
+              style={{ fontSize: 13, padding: "8px 14px", whiteSpace: "nowrap" }}
+              title="Modifica i metadati dell'artista nel database (solo admin)"
+              data-testid="btn-admin-edit-artist"
+            >
+              ✎ Modifica
+            </button>
+          ) : user ? (
+            <Link
+              to="/suggerisci"
+              className="btn ghost sm"
+              style={{ fontSize: 13, padding: "8px 14px", borderColor: "var(--line)", color: "var(--ink-soft)", whiteSpace: "nowrap" }}
+              title="Proponi una modifica a questo artista"
+            >
+              ✎ Richiedi modifica
+            </Link>
+          ) : null}
+        </div>
+      </div>
       <div className="page-head">
         <div className="eyebrow"><span className="tnum">{a.role}{life ? ` · ${life}` : ""}</span></div>
         <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
@@ -99,6 +128,13 @@ export default function Artista() {
             : <Empty msg="Nessuna opera di questo artista nell'intervallo temporale scelto." />}
         </Section>
       ) : <Section title="Opere"><Empty msg="Nessuna opera registrata per questo artista." /></Section>}
+
+      {/* Editor drawer (solo admin, apre con pulsante Modifica) */}
+      <ArtistEditorDrawer
+        artistId={a.id}
+        open={editorOpen}
+        onClose={() => setEditorOpen(false)}
+      />
     </div>
   );
 }
