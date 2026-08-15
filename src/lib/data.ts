@@ -302,12 +302,19 @@ export interface WorkGroup {
   works: Work[];
 }
 
-// Controlla se un luogo è un edificio raggruppabile (non un museo/gallerie)
+// Controlla se un luogo è raggruppabile in un complesso.
+// Filtro: NON raggruppiamo musei/gallerie/pinacoteche (sono contenitori generici,
+// non complessi architettonici). Per tutto il resto, raggruppiamo se 2+ opere
+// hanno lo stesso location_place (match case-insensitive dopo normalizzazione).
+// Questo permette all'admin di creare complessi con qualsiasi nome di luogo
+// (es. "Casa di Giotto", "Villa Foscari", "Castello Estense") semplicemente
+// assegnando lo stesso luogo a 2+ opere.
 const MUSEUM_RE = /\b(museo|galleri|pinacoteca|collezione|kunst|musée|museum|gallery|national)\b/i;
-const BUILDING_RE = /\b(basilica|chiesa|cattedrale|duomo|cappella|battistero|camposanto|convento|monastero|palazzo|piazza|loggiato|chiostro|oratorio|santuario|abbazia)\b/i;
 
 function isGroupablePlace(place: string): boolean {
-  return BUILDING_RE.test(place) && !MUSEUM_RE.test(place);
+  // Escludi solo musei/gallerie (contenitori generici, non complessi architettonici).
+  // Per tutto il resto, raggruppa se 2+ opere condividono il luogo.
+  return !MUSEUM_RE.test(place);
 }
 
 // Normalizza per bucket iniziale: parte prima della virgola,
