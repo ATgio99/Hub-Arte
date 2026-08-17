@@ -138,7 +138,17 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               <span className="sbx-num">{p.num}</span>
               <span className="sbx-ico"><Icon id={p.id} /></span>
               <span className="sbx-label">
-                <b>{p.name}</b>
+                <b style={{ display: "inline-flex", alignItems: "baseline", gap: 5 }}>
+                  <span>{p.name}</span>
+                  {p.id === "rete" && (
+                    <span style={{
+                      fontSize: 9, fontWeight: 700,
+                      color: "var(--ink-dim)", opacity: 0.5,
+                      textTransform: "lowercase", letterSpacing: "0.02em",
+                      lineHeight: 1,
+                    }}>(beta)</span>
+                  )}
+                </b>
                 <i>{p.desc}</i>
                 <span className="sbx-underline" aria-hidden="true" />
               </span>
