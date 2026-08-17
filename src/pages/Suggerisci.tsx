@@ -110,8 +110,6 @@ export default function Suggerisci() {
     }
     setOk(true);
     setTitle(""); setArtist(""); setYear(""); setLocation(""); setImageUrl(""); setDescription("");
-    // Notifica la sidebar di aggiornare il badge (niente polling continuo)
-    window.dispatchEvent(new Event("atlante:suggestions-changed"));
     loadMine();
   };
 

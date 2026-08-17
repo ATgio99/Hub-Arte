@@ -94,8 +94,6 @@ export default function LeMieRichieste() {
       setEditSuggestions((editRes.data as EditSuggestionRow[]) || []);
       // Reset del contatore "visto" — l'utente sta visualizzando le richieste ora
       try { localStorage.setItem(`atlante:sugg-seen:${user.id}`, String(Date.now())); } catch {}
-      // Notifica la sidebar di aggiornare il badge (niente polling continuo)
-      window.dispatchEvent(new Event("atlante:suggestions-changed"));
     } catch (e: any) {
       setError(e.message || "Errore caricamento richieste");
     } finally {

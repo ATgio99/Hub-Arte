@@ -150,8 +150,6 @@ export default function AdminRichieste() {
       .eq("id", id);
     setActing((a) => ({ ...a, [id]: false }));
     if (error) { alert("Errore: " + error.message); return; }
-    // Notifica la sidebar di aggiornare il badge (niente polling continuo)
-    window.dispatchEvent(new Event("atlante:suggestions-changed"));
     await load();
   };
 
@@ -163,8 +161,6 @@ export default function AdminRichieste() {
       .eq("id", id);
     setActing((a) => ({ ...a, [id]: false }));
     if (error) { alert("Errore: " + error.message); return; }
-    // Notifica la sidebar di aggiornare il badge (niente polling continuo)
-    window.dispatchEvent(new Event("atlante:suggestions-changed"));
     await load();
   };
 
@@ -172,16 +168,12 @@ export default function AdminRichieste() {
     if (!confirm("Eliminare definitivamente questa richiesta? L'azione è irreversibile.")) return;
     const { error } = await supabase.from("user_suggestions").delete().eq("id", id);
     if (error) { alert("Errore: " + error.message); return; }
-    // Notifica la sidebar di aggiornare il badge (niente polling continuo)
-    window.dispatchEvent(new Event("atlante:suggestions-changed"));
     await load();
   };
   const deleteEditSuggestion = async (id: string) => {
     if (!confirm("Eliminare definitivamente questa richiesta di modifica? L'azione è irreversibile.")) return;
     const { error } = await supabase.from("user_edit_suggestions").delete().eq("id", id);
     if (error) { alert("Errore: " + error.message); return; }
-    // Notifica la sidebar di aggiornare il badge (niente polling continuo)
-    window.dispatchEvent(new Event("atlante:suggestions-changed"));
     await load();
   };
 

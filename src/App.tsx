@@ -3,7 +3,7 @@ import { useEffect, type ReactNode, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { pageVariants, usePrefersReducedMotion } from "./lib/motion";
 import { useAuth } from "./lib/auth";
-import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides, pullQuizFromCloud } from "./lib/sync";
+import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides } from "./lib/sync";
 import Sidebar from "./components/Sidebar";
 import CookieConsent from "./components/CookieConsent";
 import LoginPrompt from "./components/LoginPrompt";
@@ -55,18 +55,17 @@ function useSyncOnLogin() {
     let cleanup: (() => void) | undefined;
     let pollInterval: any;
     let globalPollInterval: any;
-    let quizCleanup: (() => void) | undefined;
 
     (async () => {
       // Scarica sempre gli override globali (anche per anonimi)
       await pullGlobalImageOverrides();
 
       if (!user) {
-        // ANONIMO: polla solo i globali ogni 2 minuti (così se l'admin cambia
-        // un'immagine, l'utente anonimo la vede entro 2 min)
+        // ANONIMO: polla solo i globali ogni 30s (così se l'admin cambia
+        // un'immagine, l'utente anonimo la vede entro 30s)
         globalPollInterval = setInterval(async () => {
           await pullGlobalImageOverrides();
-        }, 120000);
+        }, 30000);
         return;
       }
 
@@ -74,29 +73,16 @@ function useSyncOnLogin() {
       await fullSync(user);
       cleanup = subscribeToRealtime(user);
 
-      // Polling automatico ogni 2 MINUTI (prima era 30s):
-      // riduce del 75% le richieste API. Il polling scarica SOLO
-      // favorites/studied/image_overrides (non quiz, che cambiano raramente).
+      // Polling automatico ogni 30 secondi: scarica eventuali modifiche
+      // fatte da altri dispositivi (il realtime a volte non è affidabile)
       pollInterval = setInterval(async () => {
         console.log("[sync] Auto-poll: pulling from cloud...");
         await pullFromCloud(user);
-      }, 120000);
-
-      // Dopo un quiz completato: pull immediato delle quiz stats/errors
-      // (evento dispatchato da quizStore.recordSession)
-      const onQuizCompleted = () => {
-        console.log("[sync] Quiz completed: pulling quiz data from cloud...");
-        pullQuizFromCloud(user);
-      };
-      window.addEventListener("atlante:quiz-completed", onQuizCompleted);
-      quizCleanup = () => {
-        window.removeEventListener("atlante:quiz-completed", onQuizCompleted);
-      };
+      }, 30000);
     })();
 
     return () => {
       if (cleanup) cleanup();
-      if (quizCleanup) quizCleanup();
       if (pollInterval) clearInterval(pollInterval);
       if (globalPollInterval) clearInterval(globalPollInterval);
     };

@@ -3,7 +3,6 @@
 // ============================================================================
 import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from "react";
 import { supabase } from "./supabase";
-import { resetSubscriptions } from "./sync";
 import type { User, Session } from "@supabase/supabase-js";
 
 interface AuthState {
@@ -172,9 +171,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       window.dispatchEvent(new CustomEvent("atlante:studied-changed"));
       window.dispatchEvent(new CustomEvent("atlante:overrides-changed"));
     } catch { /* ignore */ }
-
-    // Reset delle sottoscrizioni realtime, così il prossimo login le ricrea
-    resetSubscriptions();
 
     await supabase.auth.signOut();
   }, []);
