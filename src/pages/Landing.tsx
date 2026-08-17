@@ -136,6 +136,8 @@ function HomeNotice() {
               style={{
                 minWidth: 140, padding: "10px 28px",
                 fontSize: 14, fontWeight: 600,
+                justifyContent: "center",
+                textTransform: "none",
               }}
             >
               Grazie!
