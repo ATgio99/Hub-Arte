@@ -54,6 +54,7 @@ export interface Connection {
   id: string; source_type: EntityType; source_id: string;
   target_type: EntityType; target_id: string;
   kind: ConnKind; description: string;
+  sort_order?: number; // opzionale, per riordino gerarchico (default 0)
 }
 
 export interface ArtEvent {

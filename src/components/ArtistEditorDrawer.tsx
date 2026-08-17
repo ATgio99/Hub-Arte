@@ -137,6 +137,14 @@ function ArtistEditorDrawerInner({
   const [newConnEntityId, setNewConnEntityId] = useState<string>("");
   const [newConnDesc, setNewConnDesc] = useState("");
 
+  // Stato per EDIT connessione esistente
+  const [editingConnId, setEditingConnId] = useState<string | null>(null);
+  const [editConnKind, setEditConnKind] = useState<string>("maestro-allievo");
+  const [editConnDirection, setEditConnDirection] = useState<"outgoing" | "incoming">("outgoing");
+  const [editConnEntityType, setEditConnEntityType] = useState<EntityType>("artist");
+  const [editConnEntityId, setEditConnEntityId] = useState<string>("");
+  const [editConnDesc, setEditConnDesc] = useState("");
+
   // Periodi locali (creati inline durante la sessione)
   const [localPeriods, setLocalPeriods] = useState<Period[]>([]);
 
@@ -300,6 +308,7 @@ function ArtistEditorDrawerInner({
       target_id: isOutgoing ? newConnEntityId : a.id,
       kind: newConnKind as any,
       description: newConnDesc.trim(),
+      sort_order: connections.length, // mette in fondo alla lista
     };
     try {
       const { error } = await supabase.from("connections").upsert({
@@ -313,6 +322,87 @@ function ArtistEditorDrawerInner({
       notifyAppChanged();
     } catch (e: any) {
       alert("Errore creazione connessione: " + e.message);
+    }
+  };
+
+  // === EDIT CONNESSIONE ESISTENTE ===
+  const startEditConnection = (c: Connection) => {
+    const isOutgoing = c.source_type === "artist" && c.source_id === a.id;
+    const otherType = isOutgoing ? c.target_type : c.source_type;
+    const otherId = isOutgoing ? c.target_id : c.source_id;
+    setEditingConnId(c.id);
+    setEditConnKind(c.kind);
+    setEditConnDirection(isOutgoing ? "outgoing" : "incoming");
+    setEditConnEntityType(otherType);
+    setEditConnEntityId(otherId);
+    setEditConnDesc(c.description || "");
+  };
+
+  const cancelEditConnection = () => {
+    setEditingConnId(null);
+    setEditConnEntityId("");
+    setEditConnDesc("");
+  };
+
+  const saveEditConnection = async () => {
+    if (!editingConnId) return;
+    if (!editConnEntityId) { alert("Seleziona un'entità da collegare."); return; }
+    const conn = connections.find(c => c.id === editingConnId);
+    if (!conn) return;
+    const isOutgoing = editConnDirection === "outgoing";
+    const updated: Connection = {
+      ...conn,
+      source_type: isOutgoing ? "artist" : editConnEntityType,
+      source_id: isOutgoing ? a.id : editConnEntityId,
+      target_type: isOutgoing ? editConnEntityType : "artist",
+      target_id: isOutgoing ? editConnEntityId : a.id,
+      kind: editConnKind as any,
+      description: editConnDesc.trim(),
+    };
+    try {
+      const { error } = await supabase.from("connections").upsert({
+        ...updated, modified_by: userEmail,
+      }, { onConflict: "id" });
+      if (error) throw error;
+      setConnections(prev => prev.map(c => c.id === editingConnId ? updated : c));
+      cancelEditConnection();
+      notifyAppChanged();
+    } catch (e: any) {
+      alert("Errore salvataggio connessione: " + e.message);
+    }
+  };
+
+  // === RIORDINO CONNESSIONI (sort_order) ===
+  // Le connessioni sono ordinate per sort_order. Lo spostamento scambia
+  // i sort_order di due connessioni adiacenti.
+  const sortedConnections = useMemo(() => {
+    return [...connections].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
+  }, [connections]);
+
+  const moveConnection = async (connId: string, direction: "up" | "down") => {
+    const idx = sortedConnections.findIndex(c => c.id === connId);
+    if (idx < 0) return;
+    const swapIdx = direction === "up" ? idx - 1 : idx + 1;
+    if (swapIdx < 0 || swapIdx >= sortedConnections.length) return;
+    const conn1 = sortedConnections[idx];
+    const conn2 = sortedConnections[swapIdx];
+    const order1 = conn1.sort_order ?? idx;
+    const order2 = conn2.sort_order ?? swapIdx;
+    // Scambia i sort_order
+    try {
+      await Promise.all([
+        supabase.from("connections").update({ sort_order: order2 }).eq("id", conn1.id),
+        supabase.from("connections").update({ sort_order: order1 }).eq("id", conn2.id),
+      ]);
+      // Aggiorna lo stato locale
+      setConnections(prev => prev.map(c => {
+        if (c.id === conn1.id) return { ...c, sort_order: order2 };
+        if (c.id === conn2.id) return { ...c, sort_order: order1 };
+        return c;
+      }));
+      notifyAppChanged();
+    } catch (e: any) {
+      alert("Errore riordino connessione: " + e.message);
     }
   };
 
@@ -508,31 +598,128 @@ function ArtistEditorDrawerInner({
                     </div>
                   )}
 
-                  {/* Lista connessioni esistenti */}
-                  {connections.length === 0 ? (
+                  {/* Lista connessioni esistenti (ordinate per sort_order) */}
+                  {sortedConnections.length === 0 ? (
                     <div style={{ fontSize: 12, color: "var(--ink-dim)", fontStyle: "italic", padding: 8 }}>
                       Nessuna connessione. Clicca "Aggiungi" per crearne una.
                     </div>
                   ) : (
                     <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                      {connections.map(c => {
+                      {sortedConnections.map((c, idx) => {
                         const isOutgoing = c.source_type === "artist" && c.source_id === a.id;
                         const ot = isOutgoing ? c.target_type : c.source_type;
                         const oid = isOutgoing ? c.target_id : c.source_id;
                         const arrow = isOutgoing ? "→" : "←";
+                        const isEditing = editingConnId === c.id;
+                        const isFirst = idx === 0;
+                        const isLast = idx === sortedConnections.length - 1;
                         return (
-                          <div key={c.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px", background: "var(--bg)", borderRadius: 6, border: "1px solid var(--line)" }}>
-                            <span style={{ background: "var(--bg-2)", padding: "2px 8px", borderRadius: 4, fontSize: 10, fontWeight: 600, color: "var(--gold-deep)" }}>
-                              {KIND_LABEL[c.kind] || c.kind}
-                            </span>
-                            <div style={{ flex: 1, minWidth: 0 }}>
-                              <div style={{ fontSize: 13, fontWeight: 500 }}>
-                                {a.name} <span style={{ color: "var(--ink-dim)" }}>{arrow}</span> {entityLabel(dataset as any, ot, oid)}
+                          <div key={c.id} style={{ padding: "8px 10px", background: "var(--bg)", borderRadius: 6, border: "1px solid var(--line)" }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                              {/* Pulsanti su/giù per riordino */}
+                              <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                                <button
+                                  onClick={() => moveConnection(c.id, "up")}
+                                  disabled={isFirst}
+                                  style={{
+                                    background: "none", border: "1px solid var(--line)", borderRadius: 3,
+                                    padding: "1px 6px", cursor: isFirst ? "not-allowed" : "pointer",
+                                    fontSize: 10, lineHeight: 1.4, color: "var(--ink-dim)",
+                                    opacity: isFirst ? 0.3 : 1,
+                                  }}
+                                  title="Sposta su">▲</button>
+                                <button
+                                  onClick={() => moveConnection(c.id, "down")}
+                                  disabled={isLast}
+                                  style={{
+                                    background: "none", border: "1px solid var(--line)", borderRadius: 3,
+                                    padding: "1px 6px", cursor: isLast ? "not-allowed" : "pointer",
+                                    fontSize: 10, lineHeight: 1.4, color: "var(--ink-dim)",
+                                    opacity: isLast ? 0.3 : 1,
+                                  }}
+                                  title="Sposta giù">▼</button>
                               </div>
-                              <div style={{ fontSize: 11, color: "var(--ink-dim)" }}>{ENTITY_LABEL[ot]}</div>
-                              {c.description && <div style={{ fontSize: 12, color: "var(--ink-soft)", marginTop: 2 }}>{c.description}</div>}
+                              <span style={{ background: "var(--bg-2)", padding: "2px 8px", borderRadius: 4, fontSize: 10, fontWeight: 600, color: "var(--gold-deep)" }}>
+                                {KIND_LABEL[c.kind] || c.kind}
+                              </span>
+                              <div style={{ flex: 1, minWidth: 0 }}>
+                                <div style={{ fontSize: 13, fontWeight: 500 }}>
+                                  {a.name} <span style={{ color: "var(--ink-dim)" }}>{arrow}</span> {entityLabel(dataset as any, ot, oid)}
+                                </div>
+                                <div style={{ fontSize: 11, color: "var(--ink-dim)" }}>{ENTITY_LABEL[ot]}</div>
+                                {c.description && <div style={{ fontSize: 12, color: "var(--ink-soft)", marginTop: 2 }}>{c.description}</div>}
+                              </div>
+                              {/* Pulsanti modifica + elimina */}
+                              <button
+                                onClick={() => isEditing ? cancelEditConnection() : startEditConnection(c)}
+                                style={{
+                                  background: "none", border: "1px solid var(--line)", borderRadius: 4,
+                                  padding: "3px 6px", cursor: "pointer", fontSize: 12, color: "var(--ink-soft)",
+                                }}
+                                title={isEditing ? "Annulla modifica" : "Modifica connessione"}
+                              >{isEditing ? "✕" : "✎"}</button>
+                              <button
+                                onClick={() => deleteConnection(c.id)}
+                                style={{ background: "none", border: 0, color: "#a8483f", cursor: "pointer", fontSize: 14, padding: 4 }}
+                                title="Elimina connessione">🗑️</button>
                             </div>
-                            <button onClick={() => deleteConnection(c.id)} style={{ background: "none", border: 0, color: "#a8483f", cursor: "pointer", fontSize: 16, padding: 4 }} title="Elimina connessione">🗑️</button>
+
+                            {/* Form di EDIT inline (solo per la connessione in modifica) */}
+                            {isEditing && (
+                              <div style={{ marginTop: 10, padding: 10, background: "var(--bg-2)", borderRadius: 6, border: "1px solid var(--gold)", display: "flex", flexDirection: "column", gap: 8 }}>
+                                <div style={{ fontSize: 11, fontWeight: 600, color: "var(--gold-deep)", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                                  Modifica connessione
+                                </div>
+                                <div>
+                                  <label style={{ ...labelStyle, marginBottom: 4 }}>Tipo di relazione</label>
+                                  <select value={editConnKind} onChange={(e) => setEditConnKind(e.target.value)} style={inputStyle}>
+                                    {CONN_KINDS.map(k => <option key={k} value={k}>{KIND_LABEL[k] || k}</option>)}
+                                  </select>
+                                </div>
+                                <div>
+                                  <label style={{ ...labelStyle, marginBottom: 4 }}>Direzione</label>
+                                  <div style={{ display: "flex", gap: 8 }}>
+                                    <button type="button" onClick={() => setEditConnDirection("outgoing")}
+                                      style={{ flex: 1, padding: "6px 10px", borderRadius: 6, border: `1px solid ${editConnDirection === "outgoing" ? "var(--gold)" : "var(--line)"}`, background: editConnDirection === "outgoing" ? "rgba(212,160,23,0.1)" : "var(--bg)", cursor: "pointer", fontSize: 12, fontFamily: "inherit" }}>
+                                      {a.name || "Quest'artista"} → Altro
+                                    </button>
+                                    <button type="button" onClick={() => setEditConnDirection("incoming")}
+                                      style={{ flex: 1, padding: "6px 10px", borderRadius: 6, border: `1px solid ${editConnDirection === "incoming" ? "var(--gold)" : "var(--line)"}`, background: editConnDirection === "incoming" ? "rgba(212,160,23,0.1)" : "var(--bg)", cursor: "pointer", fontSize: 12, fontFamily: "inherit" }}>
+                                      Altro → {a.name || "Quest'artista"}
+                                    </button>
+                                  </div>
+                                </div>
+                                <div>
+                                  <label style={{ ...labelStyle, marginBottom: 4 }}>Tipo entità da collegare</label>
+                                  <select value={editConnEntityType} onChange={(e) => setEditConnEntityType(e.target.value as EntityType)} style={inputStyle}>
+                                    {ENTITY_TYPES.map(t => <option key={t} value={t}>{ENTITY_LABEL[t]}</option>)}
+                                  </select>
+                                </div>
+                                <div>
+                                  <label style={{ ...labelStyle, marginBottom: 4 }}>Entità da collegare</label>
+                                  <EntitySelector
+                                    mode="single"
+                                    options={getEntityOptionsForType(editConnEntityType)}
+                                    selected={editConnEntityId || null}
+                                    onChange={(v) => setEditConnEntityId((v as string) || "")}
+                                    placeholder={`Cerca ${ENTITY_LABEL[editConnEntityType].toLowerCase()}…`}
+                                  />
+                                </div>
+                                <div>
+                                  <label style={{ ...labelStyle, marginBottom: 4 }}>Descrizione (opzionale)</label>
+                                  <textarea
+                                    value={editConnDesc}
+                                    onChange={(e) => setEditConnDesc(e.target.value)}
+                                    style={{ ...inputStyle, minHeight: 60, resize: "vertical" }}
+                                    placeholder="es. Allievo presso la bottega di…"
+                                  />
+                                </div>
+                                <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
+                                  <button className="btn ghost sm" onClick={cancelEditConnection}>Annulla</button>
+                                  <button className="btn gold sm" onClick={saveEditConnection}>💾 Salva</button>
+                                </div>
+                              </div>
+                            )}
                           </div>
                         );
                       })}
