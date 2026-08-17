@@ -253,8 +253,18 @@ export async function pullFromCloud(user: User): Promise<void> {
 
   // 4) Image overrides GLOBALI — per tutti gli utenti (anche quelli senza propri override)
   await pullGlobalImageOverrides();
+}
 
-  // 5) Quiz errors — MERGE cloud + locale
+// ---------- PULL QUIZ FROM CLOUD (solo quiz_errors + quiz_stats) ----------
+// Estratta da pullFromCloud per ridurre il traffico: il polling automatico
+// (ogni 30s) chiama solo pullFromCloud (favorites/studied/overrides),
+// mentre pullQuizFromCloud viene chiamato solo:
+//   - Al login (via fullSync)
+//   - Dopo che l'utente completa un quiz (evento 'atlante:quiz-completed')
+// Questo riduce drasticamente le richieste a quiz_errors/quiz_stats
+// (prima erano 72 richieste/ora = ~52k/mese per tabella, ora 1-2/giorno).
+export async function pullQuizFromCloud(user: User): Promise<void> {
+  // 1) Quiz errors — MERGE cloud + locale
   const { data: errRows, error: errErr } = await supabase
     .from("quiz_errors")
     .select("kind, ref_id, prompt, correct_streak, added_at, last_seen")
@@ -283,7 +293,7 @@ export async function pullFromCloud(user: User): Promise<void> {
     } catch { /* ignore */ }
   }
 
-  // 6) Quiz stats — cloud vince se ha più sessioni
+  // 2) Quiz stats — cloud vince se ha più sessioni
   const { data: statsRow, error: statsErr } = await supabase
     .from("quiz_stats")
     .select("stats, updated_at")
@@ -327,8 +337,10 @@ export async function fullSync(user: User): Promise<void> {
   console.log("[sync] fullSync start for user:", user.id);
   // 1. Push dei dati locali al cloud
   await pushToCloud(user);
-  // 2. Pull dal cloud e merge
+  // 2. Pull dal cloud e merge (favorites/studied/overrides)
   await pullFromCloud(user);
+  // 3. Pull quiz dal cloud (solo al login, non nel polling automatico)
+  await pullQuizFromCloud(user);
   console.log("[sync] fullSync complete");
 }
 

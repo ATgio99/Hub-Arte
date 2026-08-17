@@ -152,6 +152,9 @@ export function RichText({ text }: { text: string }) {
   const ix = useData();
   const [popup, setPopup] = useState<{ type: EntityType; id: string } | null>(null);
 
+  // Gestione null/undefined (alcune opere nel DB potrebbero avere summary/analysis null)
+  const safeText = text ?? "";
+
   const lookup = useMemo(() => {
     const map = new Map<string, { type: EntityType; id: string; label: string }>();
     for (const a of ix.ds.artists) {
@@ -170,7 +173,7 @@ export function RichText({ text }: { text: string }) {
   // La regex cattura @ seguito da parole (lettere, numeri, apostrofi, trattini, spazi tra parole)
   // ma si ferma alla punteggiatura (,.;:!?)]} newline) o fine stringa.
   // Lo spazio finale viene trimmato nel matching.
-  const parts = text.split(/(@[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ](?:[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ\-. ]*[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ\-.])?)/g);
+  const parts = safeText.split(/(@[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ](?:[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ\-. ]*[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ\-.])?)/g);
 
   const closePopup = () => { setPopup(null); document.body.style.overflow = ""; };
 

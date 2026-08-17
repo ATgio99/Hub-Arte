@@ -818,8 +818,11 @@ export default function ArtistEditorDrawer({
           eventById: ix.eventById,
         });
       }
-      // Sempre aggiorna le connessioni quando si apre
-      if (artistId) {
+      // Carica le connessioni SOLO se non già caricate (all'apertura iniziale).
+      // Non ricalcolare quando ix cambia (es. dopo notifyAppChanged durante
+      // il riordino delle connessioni) — altrimenti l'ordine locale viene
+      // sovrascritto con quello vecchio del dataset (causando rollback).
+      if (artistId && frozenConnections.length === 0) {
         const conns = ix.ds.connections.filter(
           c => (c.source_type === "artist" && c.source_id === artistId) ||
                (c.target_type === "artist" && c.target_id === artistId)

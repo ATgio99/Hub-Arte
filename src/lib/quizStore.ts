@@ -179,6 +179,9 @@ export function recordSession(answers: AnswerLog[], mode: "normale" | "ripasso",
   }
   saveStats(s);
   pushStatsToCloud();
+  // Notifica l'app di fare pull immediato delle quiz stats/errors dal cloud
+  // (così l'utente vede subito le sue statistiche aggiornate su tutti i dispositivi)
+  try { window.dispatchEvent(new Event("atlante:quiz-completed")); } catch { /* ignore */ }
   return s;
 }
 

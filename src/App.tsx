@@ -3,7 +3,7 @@ import { useEffect, type ReactNode, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { pageVariants, usePrefersReducedMotion } from "./lib/motion";
 import { useAuth } from "./lib/auth";
-import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides } from "./lib/sync";
+import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides, pullQuizFromCloud } from "./lib/sync";
 import Sidebar from "./components/Sidebar";
 import CookieConsent from "./components/CookieConsent";
 import LoginPrompt from "./components/LoginPrompt";
@@ -55,6 +55,7 @@ function useSyncOnLogin() {
     let cleanup: (() => void) | undefined;
     let pollInterval: any;
     let globalPollInterval: any;
+    let quizCleanup: (() => void) | undefined;
 
     (async () => {
       // Scarica sempre gli override globali (anche per anonimi)
@@ -74,15 +75,29 @@ function useSyncOnLogin() {
       cleanup = subscribeToRealtime(user);
 
       // Polling automatico ogni 30 secondi: scarica eventuali modifiche
-      // fatte da altri dispositivi (il realtime a volte non è affidabile)
+      // fatte da altri dispositivi (il realtime a volte non è affidabile).
+      // NON scarica quiz_errors/quiz_stats (vengono scaricati solo al login
+      // e dopo che l'utente completa un quiz, via evento atlante:quiz-completed)
       pollInterval = setInterval(async () => {
         console.log("[sync] Auto-poll: pulling from cloud...");
         await pullFromCloud(user);
       }, 30000);
+
+      // Dopo un quiz completato: pull immediato delle quiz stats/errors
+      // (evento dispatchato da quizStore.recordSession)
+      const onQuizCompleted = () => {
+        console.log("[sync] Quiz completed: pulling quiz data from cloud...");
+        pullQuizFromCloud(user);
+      };
+      window.addEventListener("atlante:quiz-completed", onQuizCompleted);
+      quizCleanup = () => {
+        window.removeEventListener("atlante:quiz-completed", onQuizCompleted);
+      };
     })();
 
     return () => {
       if (cleanup) cleanup();
+      if (quizCleanup) quizCleanup();
       if (pollInterval) clearInterval(pollInterval);
       if (globalPollInterval) clearInterval(globalPollInterval);
     };

@@ -174,7 +174,7 @@ export default function Opera() {
             {" · "}<span className="tnum">{workYears(w)}</span>
           </div>
 
-          <p className="prose" style={{ marginTop: 22, fontSize: 17 }}><RichText text={w.summary} /></p>
+          <p className="prose" style={{ marginTop: 22, fontSize: 17 }}><RichText text={w.summary || ""} /></p>
 
           <dl className="meta" style={{ marginTop: 26 }}>
             {period && <><dt>Periodo</dt><dd><EntityLink type="period" id={period.id} label={period.name} /></dd></>}
