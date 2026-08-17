@@ -348,6 +348,12 @@ export async function fullSync(user: User): Promise<void> {
 
 let subscriptionsActive = false;
 
+// Reset dello stato sottoscrizioni (chiamato da signOut in auth.tsx)
+// Permette al prossimo login di ricreare le sottoscrizioni realtime.
+export function resetSubscriptions() {
+  subscriptionsActive = false;
+}
+
 export function subscribeToRealtime(user: User): (() => void) | undefined {
   if (subscriptionsActive) return undefined;
   subscriptionsActive = true;

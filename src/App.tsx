@@ -55,6 +55,7 @@ function useSyncOnLogin() {
     let cleanup: (() => void) | undefined;
     let pollInterval: any;
     let globalPollInterval: any;
+    let quizCleanup: (() => void) | undefined;
 
     (async () => {
       // Scarica sempre gli override globali (anche per anonimi)
@@ -88,14 +89,14 @@ function useSyncOnLogin() {
         pullQuizFromCloud(user);
       };
       window.addEventListener("atlante:quiz-completed", onQuizCompleted);
-      cleanup = () => {
-        if (cleanup) cleanup();
+      quizCleanup = () => {
         window.removeEventListener("atlante:quiz-completed", onQuizCompleted);
       };
     })();
 
     return () => {
       if (cleanup) cleanup();
+      if (quizCleanup) quizCleanup();
       if (pollInterval) clearInterval(pollInterval);
       if (globalPollInterval) clearInterval(globalPollInterval);
     };
