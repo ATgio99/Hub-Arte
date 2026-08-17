@@ -3,7 +3,7 @@ import { useEffect, type ReactNode, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { pageVariants, usePrefersReducedMotion } from "./lib/motion";
 import { useAuth } from "./lib/auth";
-import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides } from "./lib/sync";
+import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides, pullQuizFromCloud } from "./lib/sync";
 import Sidebar from "./components/Sidebar";
 import CookieConsent from "./components/CookieConsent";
 import LoginPrompt from "./components/LoginPrompt";
@@ -61,11 +61,11 @@ function useSyncOnLogin() {
       await pullGlobalImageOverrides();
 
       if (!user) {
-        // ANONIMO: polla solo i globali ogni 30s (così se l'admin cambia
-        // un'immagine, l'utente anonimo la vede entro 30s)
+        // ANONIMO: polla solo i globali ogni 2 minuti (così se l'admin cambia
+        // un'immagine, l'utente anonimo la vede entro 2 min)
         globalPollInterval = setInterval(async () => {
           await pullGlobalImageOverrides();
-        }, 30000);
+        }, 120000);
         return;
       }
 
@@ -73,12 +73,25 @@ function useSyncOnLogin() {
       await fullSync(user);
       cleanup = subscribeToRealtime(user);
 
-      // Polling automatico ogni 30 secondi: scarica eventuali modifiche
-      // fatte da altri dispositivi (il realtime a volte non è affidabile)
+      // Polling automatico ogni 2 MINUTI (prima era 30s):
+      // riduce del 75% le richieste API. Il polling scarica SOLO
+      // favorites/studied/image_overrides (non quiz, che cambiano raramente).
       pollInterval = setInterval(async () => {
         console.log("[sync] Auto-poll: pulling from cloud...");
         await pullFromCloud(user);
-      }, 30000);
+      }, 120000);
+
+      // Dopo un quiz completato: pull immediato delle quiz stats/errors
+      // (evento dispatchato da quizStore.recordSession)
+      const onQuizCompleted = () => {
+        console.log("[sync] Quiz completed: pulling quiz data from cloud...");
+        pullQuizFromCloud(user);
+      };
+      window.addEventListener("atlante:quiz-completed", onQuizCompleted);
+      cleanup = () => {
+        if (cleanup) cleanup();
+        window.removeEventListener("atlante:quiz-completed", onQuizCompleted);
+      };
     })();
 
     return () => {

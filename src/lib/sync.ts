@@ -253,8 +253,18 @@ export async function pullFromCloud(user: User): Promise<void> {
 
   // 4) Image overrides GLOBALI — per tutti gli utenti (anche quelli senza propri override)
   await pullGlobalImageOverrides();
+}
 
-  // 5) Quiz errors — MERGE cloud + locale
+// ---------- PULL QUIZ FROM CLOUD (solo quiz_errors + quiz_stats) ----------
+// Estratta da pullFromCloud per ridurre il traffico: il polling automatico
+// (ogni 2 minuti) chiama solo pullFromCloud (favorites/studied/overrides),
+// mentre pullQuizFromCloud viene chiamato solo:
+//   - Al login (via fullSync)
+//   - Dopo che l'utente completa un quiz (evento 'atlante:quiz-completed')
+// Questo riduce drasticamente le richieste a quiz_errors/quiz_stats
+// (prima erano 72 richieste/ora, ora 1-2/giorno).
+export async function pullQuizFromCloud(user: User): Promise<void> {
+  // 1) Quiz errors — MERGE cloud + locale
   const { data: errRows, error: errErr } = await supabase
     .from("quiz_errors")
     .select("kind, ref_id, prompt, correct_streak, added_at, last_seen")
@@ -283,7 +293,7 @@ export async function pullFromCloud(user: User): Promise<void> {
     } catch { /* ignore */ }
   }
 
-  // 6) Quiz stats — cloud vince se ha più sessioni
+  // 2) Quiz stats — cloud vince se ha più sessioni
   const { data: statsRow, error: statsErr } = await supabase
     .from("quiz_stats")
     .select("stats, updated_at")
@@ -327,8 +337,10 @@ export async function fullSync(user: User): Promise<void> {
   console.log("[sync] fullSync start for user:", user.id);
   // 1. Push dei dati locali al cloud
   await pushToCloud(user);
-  // 2. Pull dal cloud e merge
+  // 2. Pull dal cloud e merge (favorites/studied/overrides)
   await pullFromCloud(user);
+  // 3. Pull quiz dal cloud (solo al login, non nel polling automatico)
+  await pullQuizFromCloud(user);
   console.log("[sync] fullSync complete");
 }
 
@@ -340,6 +352,15 @@ export function subscribeToRealtime(user: User): (() => void) | undefined {
   if (subscriptionsActive) return undefined;
   subscriptionsActive = true;
 
+  // OTTIMIZZAZIONE: sottoscriviamo SOLO user_favorites e user_studied
+  // (le feature più visibili agli utenti — vogliono aggiornamento "live").
+  //
+  // NON sottoscriviamo più image_overrides (né private né globali) perché:
+  //   - Generavano 2 sottoscrizioni extra per utente = +50% traffico realtime
+  //   - Le immagini cambiano raramente (solo quando admin o utente le modificano)
+  //   - Il polling ogni 2 minuti (pullGlobalImageOverrides + pullFromCloud)
+  //     già scarica gli override aggiornati
+  // Risultato: -50% sottoscrizioni realtime per utente.
   const channel = supabase
     .channel("hubart-sync")
     .on("postgres_changes",
@@ -382,41 +403,6 @@ export function subscribeToRealtime(user: User): (() => void) | undefined {
         } else if (payload.eventType === "DELETE") {
           const ids = getStudied().filter(id => id !== payload.old.work_id);
           setStudied(ids);
-        }
-      }
-    )
-    .on("postgres_changes",
-      // Ascolta i cambiamenti agli override PRIVATI dell'utente corrente
-      { event: "*", schema: "public", table: "image_overrides", filter: `user_id=eq.${user.id}` },
-      (payload) => {
-        if (payload.eventType === "INSERT" || payload.eventType === "UPDATE") {
-          // Aggiorna solo se è un override privato (is_global=false)
-          const row = payload.new as any;
-          if (row.is_global === false || row.is_global === null) {
-            const map = getOverrides();
-            map[row.work_id] = { url: row.url, setAt: new Date().toISOString(), isGlobal: false };
-            setOverrides(map);
-          }
-        } else if (payload.eventType === "DELETE") {
-          const map = getOverrides();
-          delete map[(payload.old as any).work_id];
-          setOverrides(map);
-        }
-      }
-    )
-    .on("postgres_changes",
-      // Ascolta i cambiamenti agli override GLOBALI (per tutti gli utenti)
-      { event: "*", schema: "public", table: "image_overrides", filter: "is_global=eq.true" },
-      (payload) => {
-        if (payload.eventType === "INSERT" || payload.eventType === "UPDATE") {
-          const row = payload.new as any;
-          const map = getGlobalOverrides();
-          map[row.work_id] = { url: row.url, setAt: new Date().toISOString(), isGlobal: true, modifiedBy: row.modified_by };
-          setGlobalOverrides(map);
-        } else if (payload.eventType === "DELETE") {
-          const map = getGlobalOverrides();
-          delete map[(payload.old as any).work_id];
-          setGlobalOverrides(map);
         }
       }
     )

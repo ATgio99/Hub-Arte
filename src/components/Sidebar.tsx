@@ -42,6 +42,14 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
   //  - ADMIN: conta richieste pendenti degli utenti (pending in user_suggestions + user_edit_suggestions)
   //  - UTENTI NORMALI: conta proprie richieste revisionate dopo l'ultimo "visto"
   //    (reviewed_at > timestamp localStorage atlante:sugg-seen:<uid>)
+  //
+  // OTTIMIZZAZIONE: niente polling continuo (prima era ogni 30s → generava ~160
+  // richieste/30s = ~690k/mese di "Realtime Messages" che saturavano il piano Free).
+  // Ora controlla solo:
+  //   - Al mount del componente (login)
+  //   - Quando l'utente torna attivo sul tab (focus)
+  //   - Quando viene dispatchato l'evento 'atlante:suggestions-changed'
+  //     (es. dopo che l'admin revisiona una richiesta o l'utente ne invia una nuova)
   useEffect(() => {
     if (!user) { setPendingReviewCount(0); return; }
     const admin = isAdminEmail(user.email);
@@ -84,13 +92,15 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
     };
 
     check();
-    const interval = setInterval(check, 30000);
+    // Solo al focus + evento custom, niente setInterval
     const onFocus = () => check();
+    const onSuggestionsChanged = () => check();
     window.addEventListener("focus", onFocus);
+    window.addEventListener("atlante:suggestions-changed", onSuggestionsChanged);
     return () => {
       cancelled = true;
-      clearInterval(interval);
       window.removeEventListener("focus", onFocus);
+      window.removeEventListener("atlante:suggestions-changed", onSuggestionsChanged);
     };
   }, [user]);
 
