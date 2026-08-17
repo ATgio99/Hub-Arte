@@ -359,15 +359,22 @@ function ArtistEditorDrawerInner({
       kind: editConnKind as any,
       description: editConnDesc.trim(),
     };
+    console.log("[conn] saveEditConnection:", updated);
     try {
       const { error } = await supabase.from("connections").upsert({
         ...updated, modified_by: userEmail,
       }, { onConflict: "id" });
-      if (error) throw error;
+      if (error) {
+        console.error("[conn] saveEditConnection error:", error.message);
+        alert("Errore salvataggio connessione: " + error.message);
+        return;
+      }
+      console.log("[conn] saveEditConnection OK");
       setConnections(prev => prev.map(c => c.id === editingConnId ? updated : c));
       cancelEditConnection();
       notifyAppChanged();
     } catch (e: any) {
+      console.error("[conn] saveEditConnection exception:", e.message);
       alert("Errore salvataggio connessione: " + e.message);
     }
   };
@@ -399,17 +406,23 @@ function ArtistEditorDrawerInner({
 
     // Persisti nel DB: upsert di tutte le connessioni con i nuovi sort_order
     try {
+      console.log("[conn] moveConnection:", direction, "connId:", connId);
       const updates = reordered.map(c =>
         supabase.from("connections")
           .update({ sort_order: c.sort_order })
           .eq("id", c.id)
       );
-      await Promise.all(updates);
+      const results = await Promise.all(updates);
+      const errors = results.filter(r => r.error);
+      if (errors.length > 0) {
+        console.error("[conn] moveConnection errors:", errors.map(e => e.error?.message));
+      } else {
+        console.log("[conn] moveConnection OK");
+      }
       notifyAppChanged();
     } catch (e: any) {
+      console.error("[conn] moveConnection exception:", e.message);
       alert("Errore riordino connessione: " + e.message);
-      // Rollback: ricarica dal DB
-      // (in caso di errore, l'utente può riprovare)
     }
   };
 

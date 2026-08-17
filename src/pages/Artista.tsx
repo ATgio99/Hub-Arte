@@ -84,20 +84,6 @@ export default function Artista() {
         </div>
       )}
 
-      {/* Timeline opere (se almeno 2 opere datate) */}
-      {showTimeline && (
-        <Section eyebrow="Cronologia" title="Linea del tempo delle opere">
-          <ArtistTimeline artist={a} works={allWorks} periods={periods} />
-        </Section>
-      )}
-
-      {/* Mappa opere (se almeno 2 opere geolocalizzate in città diverse) */}
-      {showMap && hasDistinctCities && (
-        <Section eyebrow="Geografia" title="Dove si trovano le opere">
-          <ArtistMap artist={a} works={geolocatedWorks} periods={periods} />
-        </Section>
-      )}
-
       {conns.length > 0 && (
         <Section eyebrow="Sinapsi" title="Maestri, allievi e influenze">
           {conns.map((c) => {
@@ -117,6 +103,20 @@ export default function Artista() {
               </div>
             );
           })}
+        </Section>
+      )}
+
+      {/* Timeline opere (se almeno 2 opere datate) */}
+      {showTimeline && (
+        <Section eyebrow="Cronologia" title="Linea del tempo delle opere">
+          <ArtistTimeline artist={a} works={allWorks} periods={periods} />
+        </Section>
+      )}
+
+      {/* Mappa opere (se almeno 2 opere geolocalizzate in città diverse) */}
+      {showMap && hasDistinctCities && (
+        <Section eyebrow="Geografia" title="Dove si trovano le opere">
+          <ArtistMap artist={a} works={geolocatedWorks} periods={periods} />
         </Section>
       )}
 

@@ -397,6 +397,12 @@ export default function AdminRichieste() {
                         {s.work_title}
                       </Link>
                       <span style={{
+                        fontSize: 10.5, color: "var(--ink-dim)",
+                        fontFamily: "ui-monospace, monospace",
+                        background: "var(--bg)", padding: "2px 7px", borderRadius: 4,
+                        border: "1px solid var(--line)",
+                      }} title="ID opera">{s.work_id}</span>
+                      <span style={{
                         fontSize: 11, fontWeight: 700, color: "#fff", background: STATUS_COLOR[s.status],
                         padding: "3px 9px", borderRadius: 999,
                       }}>{STATUS_LABEL[s.status]}</span>
