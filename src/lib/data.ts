@@ -47,7 +47,7 @@ async function loadDbOverrides(): Promise<Partial<Dataset>> {
       supabase.from("techniques").select("*"),
       supabase.from("terms").select("*"),
       supabase.from("events").select("*"),
-      supabase.from("connections").select("*"),
+      supabase.from("connections").select("*").order("sort_order"),
       supabase.from("hidden_entities").select("id"),
     ]);
     // Salva gli hidden IDs per il filtraggio
@@ -217,12 +217,15 @@ export function techniquesOfWork(ix: Indexed, w: Work): Technique[] {
 }
 
 // Connessioni che toccano una data entità
+// Ordinate per sort_order (gerarchia impostata dall'admin nell'editor)
 export function connectionsOf(ds: Dataset, type: EntityType, id: string): Connection[] {
-  return ds.connections.filter(
-    (c) =>
-      (c.source_type === type && c.source_id === id) ||
-      (c.target_type === type && c.target_id === id)
-  );
+  return ds.connections
+    .filter(
+      (c) =>
+        (c.source_type === type && c.source_id === id) ||
+        (c.target_type === type && c.target_id === id)
+    )
+    .sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
 }
 
 // Opere "vicine": connesse direttamente, oppure (fallback) stesso periodo
