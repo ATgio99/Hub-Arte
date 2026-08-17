@@ -373,8 +373,10 @@ function ArtistEditorDrawerInner({
   };
 
   // === RIORDINO CONNESSIONI (sort_order) ===
-  // Le connessioni sono ordinate per sort_order. Lo spostamento scambia
-  // i sort_order di due connessioni adiacenti.
+  // Le connessioni sono ordinate per sort_order.
+  // Lo spostamento sposta la connessione di una posizione nella lista ordinata,
+  // poi RIASSEGNA tutti i sort_order sequenzialmente (0, 1, 2, ...) per
+  // evitare conflitti con sort_order duplicati o non aggiornati.
   const sortedConnections = useMemo(() => {
     return [...connections].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
   }, [connections]);
@@ -384,25 +386,30 @@ function ArtistEditorDrawerInner({
     if (idx < 0) return;
     const swapIdx = direction === "up" ? idx - 1 : idx + 1;
     if (swapIdx < 0 || swapIdx >= sortedConnections.length) return;
-    const conn1 = sortedConnections[idx];
-    const conn2 = sortedConnections[swapIdx];
-    const order1 = conn1.sort_order ?? idx;
-    const order2 = conn2.sort_order ?? swapIdx;
-    // Scambia i sort_order
+
+    // Crea nuova lista ordinata con lo scambio
+    const newList = [...sortedConnections];
+    [newList[idx], newList[swapIdx]] = [newList[swapIdx], newList[idx]];
+
+    // Riassegna sort_order sequenziali (0, 1, 2, ...) a tutte le connessioni
+    const reordered = newList.map((c, i) => ({ ...c, sort_order: i }));
+
+    // Stato ottimistico: aggiorna subito la UI
+    setConnections(reordered);
+
+    // Persisti nel DB: upsert di tutte le connessioni con i nuovi sort_order
     try {
-      await Promise.all([
-        supabase.from("connections").update({ sort_order: order2 }).eq("id", conn1.id),
-        supabase.from("connections").update({ sort_order: order1 }).eq("id", conn2.id),
-      ]);
-      // Aggiorna lo stato locale
-      setConnections(prev => prev.map(c => {
-        if (c.id === conn1.id) return { ...c, sort_order: order2 };
-        if (c.id === conn2.id) return { ...c, sort_order: order1 };
-        return c;
-      }));
+      const updates = reordered.map(c =>
+        supabase.from("connections")
+          .update({ sort_order: c.sort_order })
+          .eq("id", c.id)
+      );
+      await Promise.all(updates);
       notifyAppChanged();
     } catch (e: any) {
       alert("Errore riordino connessione: " + e.message);
+      // Rollback: ricarica dal DB
+      // (in caso di errore, l'utente può riprovare)
     }
   };
 
