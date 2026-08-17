@@ -926,6 +926,7 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 /* La tab bar è position: fixed in alto, segue la sidebar.
    - left = sbx-margin + sbx-w (espansa) o sbx-w-collapsed (collassata)
    - z-index: 130 (sopra il contenuto, sotto la sidebar che è 140 e i popup 900+)
+   - Aggiunge padding-top al page-host per non sovrapporsi al contenuto
 */
 
 .tabbar {
@@ -933,16 +934,17 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   top: calc(var(--sbx-margin) + var(--sat));
   left: calc(var(--sbx-margin) + var(--sbx-w));
   right: var(--sbx-margin);
-  height: 36px;
+  height: 38px;
   display: flex;
   align-items: stretch;
   background: var(--bg-2, #f6f2ea);
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 0 8px 0 4px;
+  padding: 0 6px 0 4px;
   z-index: 130;
-  overflow: hidden; /* niente scroll, max 5 schede */
-  transition: left .3s cubic-bezier(.2,.7,.2,1); /* segue il collasso della sidebar */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(60, 42, 12, 0.12);
+  transition: left .3s cubic-bezier(.2,.7,.2,1);
 }
 
 /* Quando la sidebar è collassata, sposta la tab bar a sinistra */
@@ -950,22 +952,27 @@ body:has(.sbx.collapsed) .tabbar {
   left: calc(var(--sbx-margin) + var(--sbx-w-collapsed));
 }
 
+/* Aggiungi padding superiore al page-host per fare spazio alla tab bar */
+body:has(.tabbar) .page-host {
+  padding-top: calc(30px + var(--sat) + 44px); /* 44px = 38px tab + 6px gap */
+}
+
 .tabbar-tabs {
   display: flex;
   align-items: stretch;
-  gap: 1px;
+  gap: 2px;
   padding-top: 4px;
   width: 100%;
 }
 
-/* Singola scheda — con max 5 schede, ognuna occupa ~20% della larghezza */
+/* Singola scheda */
 .tabbar-tab {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 8px 6px 12px;
+  gap: 8px;
+  padding: 6px 8px 6px 14px;
   flex: 1;
-  min-width: 0; /* permette al flex di restringere */
+  min-width: 0;
   max-width: 220px;
   background: transparent;
   border: 1px solid transparent;
@@ -983,7 +990,7 @@ body:has(.sbx.collapsed) .tabbar {
 }
 
 .tabbar-tab:hover {
-  background: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.6);
   color: var(--ink);
 }
 
@@ -1010,31 +1017,26 @@ body:has(.sbx.collapsed) .tabbar {
   flex: 1;
 }
 
-/* Pulsante chiudi */
+/* Pulsante chiudi — SEMPRE visibile (non solo su hover) */
 .tabbar-tab-close {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border: 0;
   background: transparent;
   color: var(--ink-dim);
   cursor: pointer;
   border-radius: 4px;
-  opacity: 0;
+  opacity: 0.5;
   transition: opacity .15s, background .15s, color .15s;
   flex-shrink: 0;
 }
 
-.tabbar-tab:hover .tabbar-tab-close,
-.tabbar-tab.active .tabbar-tab-close {
-  opacity: 0.6;
-}
-
 .tabbar-tab-close:hover {
-  opacity: 1 !important;
-  background: rgba(168,72,63,0.12);
+  opacity: 1;
+  background: rgba(168, 72, 63, 0.15);
   color: #a8483f;
 }
 
@@ -1043,8 +1045,8 @@ body:has(.sbx.collapsed) .tabbar {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   margin: 4px 0 0 4px;
   border: 0;
   background: transparent;
@@ -1056,13 +1058,8 @@ body:has(.sbx.collapsed) .tabbar {
 }
 
 .tabbar-new:hover {
-  background: rgba(184,138,46,0.12);
+  background: rgba(184, 138, 46, 0.15);
   color: var(--gold-deep);
-}
-
-/* Quando le tabs sono attive, il content3d deve avere il bordo superiore arrotondato */
-.shell3d.has-tabs .content3d {
-  border-top-left-radius: 0;
 }
 
 /* Mobile: nascondi completamente la tabbar */
