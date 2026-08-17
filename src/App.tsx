@@ -1,10 +1,12 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect, type ReactNode, lazy, Suspense } from "react";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useRef, type ReactNode, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { pageVariants, usePrefersReducedMotion } from "./lib/motion";
 import { useAuth } from "./lib/auth";
 import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides, pullQuizFromCloud, pullImageOverrides } from "./lib/sync";
+import { useTabs } from "./lib/tabs";
 import Sidebar from "./components/Sidebar";
+import TabBar from "./components/TabBar";
 import CookieConsent from "./components/CookieConsent";
 import LoginPrompt from "./components/LoginPrompt";
 import Timeline from "./pages/Timeline";
@@ -115,7 +117,36 @@ function useSyncOnLogin() {
 
 export default function App() {
   const loc = useLocation();
+  const nav = useNavigate();
   const isHome = loc.pathname === "/";
+  const { isActive: tabsActive, activeTabId, tabs, updateActiveTab, switchTab } = useTabs();
+
+  // Quando l'URL cambia (navigazione), aggiorna l'URL della scheda attiva.
+  // Questo permette al TabBar di mostrare il titolo corretto.
+  useEffect(() => {
+    if (tabsActive && activeTabId) {
+      const url = loc.pathname + loc.search;
+      updateActiveTab(url);
+    }
+  }, [loc.pathname, loc.search, tabsActive, activeTabId, updateActiveTab]);
+
+  // Quando cambia la scheda attiva (click su una scheda), naviga al suo URL.
+  // Questo permette di cambiare scheda e vedere il contenuto corretto.
+  const lastActiveTabRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!tabsActive || !activeTabId) return;
+    if (lastActiveTabRef.current === activeTabId) return;
+    lastActiveTabRef.current = activeTabId;
+    // Trova la scheda attiva e naviga al suo URL
+    const activeTab = tabs.find(t => t.id === activeTabId);
+    if (activeTab) {
+      const currentUrl = loc.pathname + loc.search;
+      if (activeTab.url !== currentUrl) {
+        nav(activeTab.url);
+      }
+    }
+  }, [activeTabId, tabsActive]);
+
   // Scroll in cima ad ogni cambio rotta. Usa rAF + timeout per essere sicuri
   // che la nuova pagina sia renderizzata prima di scrollare (altrimenti lo
   // scroll avviene sulla pagina vecchia e non ha effetto).
@@ -143,11 +174,15 @@ export default function App() {
   useSyncOnLogin();
 
   return (
-    <div className={`shell3d ${isHome ? "is-home" : ""}`}>
+    <div className={`shell3d ${isHome ? "is-home" : ""} ${tabsActive ? "has-tabs" : ""}`}>
       {/* Sidebar moderna su TUTTE le pagine (home inclusa) */}
       <Sidebar />
 
       <div className="content3d">
+        {/* TabBar — solo desktop (>= 768px). È position:fixed, quindi
+            non influisce sul flusso del content3d. Segue la sidebar. */}
+        {tabsActive && <TabBar />}
+
         {isHome ? (
           <main className="page-host">
             <Landing />
