@@ -233,8 +233,22 @@ export async function pullFromCloud(user: User): Promise<void> {
     setStudied(finalStudied);
     console.log(`[sync] studied: cloud ${cloudStudied.length} + pending ${pendingStudied.length} → ${finalStudied.length}`);
   }
+  // NOTA: image overrides (privati + globali) sono stati estratti in
+  // pullImageOverrides() — non vengono più scaricati ad ogni polling 30s,
+  // ma solo al login e ogni 5 minuti (vedi App.tsx).
+}
 
-  // 3) Image overrides PRIVATI dell'utente — merge (locale ha precedenza)
+// ---------- PULL IMAGE OVERRIDES (privati + globali) ----------
+// Estratta da pullFromCloud per ridurre il traffico: il polling automatico
+// (ogni 30s) chiama solo pullFromCloud (favorites/studied), mentre
+// pullImageOverrides viene chiamato:
+//   - Al login (via fullSync)
+//   - Ogni 5 minuti (polling separato, più lento)
+//   - Al focus del tab (l'utente torna attivo)
+// Questo riduce drasticamente le richieste a image_overrides
+// (prima erano 169/ora = ~125k/mese, ora ~288/giorno = ~8.6k/mese).
+export async function pullImageOverrides(user: User): Promise<void> {
+  // 1) Image overrides PRIVATI dell'utente — merge (locale ha precedenza)
   const { data: imgRows, error: imgErr } = await supabase
     .from("image_overrides")
     .select("work_id, url")
@@ -251,7 +265,7 @@ export async function pullFromCloud(user: User): Promise<void> {
     setOverrides(map);
   }
 
-  // 4) Image overrides GLOBALI — per tutti gli utenti (anche quelli senza propri override)
+  // 2) Image overrides GLOBALI — per tutti gli utenti
   await pullGlobalImageOverrides();
 }
 
@@ -337,10 +351,12 @@ export async function fullSync(user: User): Promise<void> {
   console.log("[sync] fullSync start for user:", user.id);
   // 1. Push dei dati locali al cloud
   await pushToCloud(user);
-  // 2. Pull dal cloud e merge (favorites/studied/overrides)
+  // 2. Pull dal cloud e merge (favorites/studied)
   await pullFromCloud(user);
   // 3. Pull quiz dal cloud (solo al login, non nel polling automatico)
   await pullQuizFromCloud(user);
+  // 4. Pull image overrides (privati + globali) — solo al login e ogni 5 min
+  await pullImageOverrides(user);
   console.log("[sync] fullSync complete");
 }
 

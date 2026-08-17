@@ -164,12 +164,12 @@ export default function Landing() {
   ];
 
   const features = [
-    { icon: "🖼️", title: "Catalogo opere", desc: "Schede dettagliate con immagini, analisi e innovazioni" },
-    { icon: "🕸️", title: "Grafo neuronale", desc: "Visualizza le connessioni tra opere, artisti e periodi in 3D" },
-    { icon: "📅", title: "Timeline multilivello", desc: "Periodi, eventi e artisti su una linea del tempo navigabile" },
-    { icon: "🗺️", title: "Mappa geografica", desc: "Esplora i luoghi che custodiscono le opere" },
-    { icon: "🎯", title: "Quiz interattivo", desc: "Mettiti alla prova con 18 tipi di domanda generati dal dataset" },
-    { icon: "📚", title: "Glossario", desc: "Termini tecnici e definizioni sempre a portata di mano" },
+    { icon: "🖼️", title: "Catalogo opere", desc: "Schede dettagliate con immagini, analisi e innovazioni", to: "/opere" },
+    { icon: "🕸️", title: "Grafo neuronale", desc: "Visualizza le connessioni tra opere, artisti e periodi in 3D", to: "/grafo" },
+    { icon: "📅", title: "Timeline multilivello", desc: "Periodi, eventi e artisti su una linea del tempo navigabile", to: "/timeline" },
+    { icon: "🗺️", title: "Mappa geografica", desc: "Esplora i luoghi che custodiscono le opere", to: "/mappa" },
+    { icon: "🎯", title: "Quiz interattivo", desc: "Mettiti alla prova con 18 tipi di domanda generati dal dataset", to: "/test" },
+    { icon: "📚", title: "Glossario", desc: "Termini tecnici e definizioni sempre a portata di mano", to: "/glossario" },
   ];
 
   return (
@@ -290,35 +290,43 @@ export default function Landing() {
             initial={reduced ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: (seen || reduced) ? 1 : 0, y: (seen || reduced) ? 0 : 20 }}
             transition={{ duration: 0.5, ease: EASE_OUT, delay: reduced ? 0 : Math.min(0.2 + i * 0.08, 0.6) }}
-            style={{
-              padding: "24px 22px", background: "var(--bg)", border: "1px solid var(--line)",
-              borderRadius: 14, position: "relative", overflow: "hidden",
-              transition: "border-color .2s, box-shadow .2s",
-            }}
           >
-            {/* Linea decorativa oro in alto */}
-            <div style={{
-              position: "absolute", top: 0, left: 0, right: 0, height: 2,
-              background: "linear-gradient(90deg, transparent, var(--gold), transparent)",
-              opacity: 0.5,
-            }} />
-            {/* Icona SVG elegante invece di emoji */}
-            <div style={{
-              width: 40, height: 40, borderRadius: 10, marginBottom: 14,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              background: "rgba(184,138,46,0.1)",
-            }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                {i === 0 && <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></>}
-                {i === 1 && <><circle cx="6" cy="6" r="2" /><circle cx="18" cy="8" r="2" /><circle cx="9" cy="18" r="2" /><path d="M8 7l8 1M8 8l1 8M17 10l-7 7" /></>}
-                {i === 2 && <><path d="M3 12h18" /><circle cx="7" cy="12" r="1.5" /><circle cx="13" cy="12" r="1.5" /><circle cx="19" cy="12" r="1.5" /><path d="M7 12V7M13 12v5M19 12V8" /></>}
-                {i === 3 && <><path d="M9 4L4 6v14l5-2 6 2 5-2V4l-5 2-6-2z" /><path d="M9 4v14M15 6v14" /></>}
-                {i === 4 && <><path d="M9 11l2 2 4-4" /><rect x="4" y="4" width="16" height="16" rx="2" /></>}
-                {i === 5 && <><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z" /><path d="M5 17a3 3 0 0 1 3-3h11" /></>}
-              </svg>
-            </div>
-            <h3 style={{ fontSize: 17, marginBottom: 6, fontFamily: "var(--font-display)" }}>{f.title}</h3>
-            <p style={{ fontSize: 13.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: 0 }}>{f.desc}</p>
+            <Link
+              to={f.to}
+              className="hubart-feature-card"
+              style={{
+                display: "block",
+                padding: "24px 22px", background: "var(--bg)", border: "1px solid var(--line)",
+                borderRadius: 14, position: "relative", overflow: "hidden",
+                textDecoration: "none", color: "inherit",
+                transition: "border-color .2s, box-shadow .2s, transform .2s",
+                height: "100%",
+              }}
+            >
+              {/* Linea decorativa oro in alto */}
+              <div style={{
+                position: "absolute", top: 0, left: 0, right: 0, height: 2,
+                background: "linear-gradient(90deg, transparent, var(--gold), transparent)",
+                opacity: 0.5,
+              }} />
+              {/* Icona SVG elegante invece di emoji */}
+              <div style={{
+                width: 40, height: 40, borderRadius: 10, marginBottom: 14,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                background: "rgba(184,138,46,0.1)",
+              }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  {i === 0 && <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></>}
+                  {i === 1 && <><circle cx="6" cy="6" r="2" /><circle cx="18" cy="8" r="2" /><circle cx="9" cy="18" r="2" /><path d="M8 7l8 1M8 8l1 8M17 10l-7 7" /></>}
+                  {i === 2 && <><path d="M3 12h18" /><circle cx="7" cy="12" r="1.5" /><circle cx="13" cy="12" r="1.5" /><circle cx="19" cy="12" r="1.5" /><path d="M7 12V7M13 12v5M19 12V8" /></>}
+                  {i === 3 && <><path d="M9 4L4 6v14l5-2 6 2 5-2V4l-5 2-6-2z" /><path d="M9 4v14M15 6v14" /></>}
+                  {i === 4 && <><path d="M9 11l2 2 4-4" /><rect x="4" y="4" width="16" height="16" rx="2" /></>}
+                  {i === 5 && <><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z" /><path d="M5 17a3 3 0 0 1 3-3h11" /></>}
+                </svg>
+              </div>
+              <h3 style={{ fontSize: 17, marginBottom: 6, fontFamily: "var(--font-display)" }}>{f.title}</h3>
+              <p style={{ fontSize: 13.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: 0 }}>{f.desc}</p>
+            </Link>
           </motion.div>
         ))}
       </div>

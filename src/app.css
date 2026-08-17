@@ -914,3 +914,10 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 @media (max-width: 600px) {
   .grid-works { grid-template-columns: 1fr; }
 }
+
+/* --- Feature cards Landing (cliccabili) ---------------------------------- */
+.hubart-feature-card:hover {
+  border-color: rgba(184,138,46,0.4) !important;
+  box-shadow: 0 6px 20px rgba(184,138,46,0.12);
+  transform: translateY(-2px);
+}

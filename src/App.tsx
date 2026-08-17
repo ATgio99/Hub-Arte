@@ -3,7 +3,7 @@ import { useEffect, type ReactNode, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { pageVariants, usePrefersReducedMotion } from "./lib/motion";
 import { useAuth } from "./lib/auth";
-import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides, pullQuizFromCloud } from "./lib/sync";
+import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides, pullQuizFromCloud, pullImageOverrides } from "./lib/sync";
 import Sidebar from "./components/Sidebar";
 import CookieConsent from "./components/CookieConsent";
 import LoginPrompt from "./components/LoginPrompt";
@@ -55,6 +55,7 @@ function useSyncOnLogin() {
     let cleanup: (() => void) | undefined;
     let pollInterval: any;
     let globalPollInterval: any;
+    let imagePollInterval: any;
     let quizCleanup: (() => void) | undefined;
 
     (async () => {
@@ -62,11 +63,12 @@ function useSyncOnLogin() {
       await pullGlobalImageOverrides();
 
       if (!user) {
-        // ANONIMO: polla solo i globali ogni 30s (così se l'admin cambia
-        // un'immagine, l'utente anonimo la vede entro 30s)
+        // ANONIMO: polla solo i globali ogni 5 MINUTI (prima era 30s).
+        // Le immagini globali cambiano raramente (solo quando l'admin le modifica),
+        // non serve controllare ogni 30s.
         globalPollInterval = setInterval(async () => {
           await pullGlobalImageOverrides();
-        }, 30000);
+        }, 300000); // 5 minuti
         return;
       }
 
@@ -74,14 +76,20 @@ function useSyncOnLogin() {
       await fullSync(user);
       cleanup = subscribeToRealtime(user);
 
-      // Polling automatico ogni 30 secondi: scarica eventuali modifiche
-      // fatte da altri dispositivi (il realtime a volte non è affidabile).
-      // NON scarica quiz_errors/quiz_stats (vengono scaricati solo al login
-      // e dopo che l'utente completa un quiz, via evento atlante:quiz-completed)
+      // Polling automatico ogni 30 secondi: scarica SOLO favorites + studied.
+      // NON scarica quiz (solo al login + dopo quiz) né image_overrides
+      // (solo al login + ogni 5 min) — per ridurre il traffico API.
       pollInterval = setInterval(async () => {
-        console.log("[sync] Auto-poll: pulling from cloud...");
+        console.log("[sync] Auto-poll: pulling favorites+studied...");
         await pullFromCloud(user);
       }, 30000);
+
+      // Polling immagini ogni 5 MINUTI (prima era nel pullFromCloud ogni 30s).
+      // Le immagini cambiano raramente, non serve controllarle spesso.
+      imagePollInterval = setInterval(async () => {
+        console.log("[sync] Image poll: pulling image overrides...");
+        await pullImageOverrides(user);
+      }, 300000); // 5 minuti
 
       // Dopo un quiz completato: pull immediato delle quiz stats/errors
       // (evento dispatchato da quizStore.recordSession)
@@ -100,6 +108,7 @@ function useSyncOnLogin() {
       if (quizCleanup) quizCleanup();
       if (pollInterval) clearInterval(pollInterval);
       if (globalPollInterval) clearInterval(globalPollInterval);
+      if (imagePollInterval) clearInterval(imagePollInterval);
     };
   }, [user]);
 }
