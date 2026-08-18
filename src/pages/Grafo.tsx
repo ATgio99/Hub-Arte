@@ -719,26 +719,33 @@ export default function Grafo() {
 
       {/* === Filtri in orizzontale sotto il grafo (modalità normale) ===
           In fullscreen vengono nascosti via CSS (.gf-bottom-filters display:none)
-          perché sono stati spostati dentro la colonna destra (vedi sideFiltersBlock). */}
-      <div className="gf-bottom-filters" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 16, padding: "12px 16px", background: "var(--bg-2)", borderRadius: 10, border: "1px solid var(--line)" }}>
-        <div className="smallcaps" style={{ marginRight: 8, alignSelf: "center" }}>Livelli:</div>
-        {[...NODE_TYPES, "city" as const].map((t) => {
-          const off = hideTypes.has(t);
-          return (
-            <button key={t} onClick={() => toggle(hideTypes, t, setHideTypes)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
-              <span className="dot" style={{ background: NODE_HEX[t], marginRight: 4 }} />{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]} ({counts[t] ?? 0})
-            </button>
-          );
-        })}
-        <div className="smallcaps" style={{ margin: "0 8px 0 16px", alignSelf: "center" }}>Legami:</div>
-        {KINDS.map((k) => {
-          const off = hideKinds.has(k);
-          return (
-            <button key={k} onClick={() => toggle(hideKinds, k, setHideKinds)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
-              <span className="dot" style={{ background: KIND_COLOR[k], marginRight: 4 }} />{KIND_LABEL[k]}
-            </button>
-          );
-        })}
+          perché sono stati spostati dentro la colonna destra (vedi sideFiltersBlock).
+          "Livelli" e "Legami" stanno su due righe separate, entrambe allineate a sinistra. */}
+      <div className="gf-bottom-filters" style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16, padding: "12px 16px", background: "var(--bg-2)", borderRadius: 10, border: "1px solid var(--line)" }}>
+        {/* Riga 1: Livelli */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+          <div className="smallcaps" style={{ marginRight: 8 }}>Livelli:</div>
+          {[...NODE_TYPES, "city" as const].map((t) => {
+            const off = hideTypes.has(t);
+            return (
+              <button key={t} onClick={() => toggle(hideTypes, t, setHideTypes)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
+                <span className="dot" style={{ background: NODE_HEX[t], marginRight: 4 }} />{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]} ({counts[t] ?? 0})
+              </button>
+            );
+          })}
+        </div>
+        {/* Riga 2: Legami */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+          <div className="smallcaps" style={{ marginRight: 8 }}>Legami:</div>
+          {KINDS.map((k) => {
+            const off = hideKinds.has(k);
+            return (
+              <button key={k} onClick={() => toggle(hideKinds, k, setHideKinds)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
+                <span className="dot" style={{ background: KIND_COLOR[k], marginRight: 4 }} />{KIND_LABEL[k]}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
