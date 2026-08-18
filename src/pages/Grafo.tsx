@@ -258,6 +258,12 @@ export default function Grafo() {
 
   const selDetail = useMemo(() => {
     if (!sel) return null;
+    // Se si è cliccato su un arco (link), mostra info sulla connessione
+    if (sel.etype === "link") {
+      const sNode = typeof sel.linkSource === "object" ? sel.linkSource : graph.nodes.find(n => n.id === sel.linkSource);
+      const tNode = typeof sel.linkTarget === "object" ? sel.linkTarget : graph.nodes.find(n => n.id === sel.linkTarget);
+      return { conns: [], ent: null, isLink: true, sNode, tNode, kind: sel.linkKind, desc: sel.linkDesc };
+    }
     const conns = ix.ds.connections.filter((c) =>
       (c.source_type === sel.etype && c.source_id === sel.eid) ||
       (c.target_type === sel.etype && c.target_id === sel.eid));
@@ -442,8 +448,11 @@ export default function Grafo() {
           linkOpacity={0.6}
           onEngineTick={setup3d}
           onEngineStop={() => { /* il motore si ferma da solo dopo cooldown */ }}
-          onNodeHover={(n: any) => { setHoverId(n ? n.id : null); }}
+          onNodeHover={(n: any) => { setHoverId(n ? n.id : null); if (wrapRef.current) wrapRef.current.style.cursor = n ? "pointer" : "default"; }}
           onNodeClick={(n: any) => { setSel(n); }}
+          onLinkClick={(l: any) => { setSel({ id: typeof l.source === "object" ? l.source.id : l.source, etype: "link", eid: "", label: "", deg: 0, linkKind: l.kind, linkDesc: l.desc, linkSource: l.source, linkTarget: l.target }); }}
+          linkLabel={(l: any) => `${KIND_LABEL[l.kind] || l.kind}${l.desc ? " — " + l.desc : ""}`}
+          nodeLabel={(n: any) => `${n.label} (${n.etype === "city" ? "Luogo" : ENTITY_LABEL[n.etype as EntityType] || n.etype}) · ${n.deg} connessioni`}
           onBackgroundClick={() => setSel(null)}
         />
       ) : (
@@ -481,6 +490,9 @@ export default function Grafo() {
           }}
           onNodeHover={(n: any) => { setHoverId(n ? n.id : null); if (wrapRef.current) wrapRef.current.style.cursor = n ? "pointer" : "default"; }}
           onNodeClick={(n: any) => { setSel(n); }}
+          onLinkClick={(l: any) => { setSel({ id: typeof l.source === "object" ? l.source.id : l.source, etype: "link", eid: "", label: "", deg: 0, linkKind: l.kind, linkDesc: l.desc, linkSource: l.source, linkTarget: l.target }); }}
+          linkLabel={(l: any) => `${KIND_LABEL[l.kind] || l.kind}${l.desc ? " — " + l.desc : ""}`}
+          nodeLabel={(n: any) => `${n.label} (${n.etype === "city" ? "Luogo" : ENTITY_LABEL[n.etype as EntityType] || n.etype}) · ${n.deg} connessioni`}
           onBackgroundClick={(ev: any) => snapSelect2d(ev)}
           nodeCanvasObject={(node: any, ctx: CanvasRenderingContext2D, scale: number) => {
             const dimmed = neighbors && !neighbors.has(node.id);
@@ -620,6 +632,56 @@ export default function Grafo() {
 
           {sel && selDetail ? (
             <div className="panel" data-testid="gf-panel">
+              {/* === Pannello per CLICK SU ARCO (connessione) === */}
+              {sel.etype === "link" && selDetail.isLink && selDetail.sNode && selDetail.tNode ? (
+                <>
+                  <div className="eyebrow" style={{ color: KIND_COLOR[selDetail.kind] || "#b88a2e", marginBottom: 8 }}>
+                    Connessione
+                  </div>
+                  <span className="tag" style={{ marginBottom: 12, color: KIND_COLOR[selDetail.kind] || "#b88a2e", borderColor: "var(--line)" }}>
+                    {KIND_LABEL[selDetail.kind as ConnKind] || selDetail.kind}
+                  </span>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, margin: "10px 0", flexWrap: "wrap" }}>
+                    <span style={{
+                      display: "inline-flex", alignItems: "center", gap: 6,
+                      padding: "6px 10px", borderRadius: 6,
+                      background: "var(--bg-2)", fontSize: 13, fontWeight: 500,
+                    }}>
+                      <span style={{ width: 8, height: 8, borderRadius: "50%", background: NODE_HEX[selDetail.sNode.etype] || "#b88a2e" }} />
+                      {selDetail.sNode.label}
+                    </span>
+                    <span style={{ color: "var(--ink-dim)", fontSize: 16 }}>→</span>
+                    <span style={{
+                      display: "inline-flex", alignItems: "center", gap: 6,
+                      padding: "6px 10px", borderRadius: 6,
+                      background: "var(--bg-2)", fontSize: 13, fontWeight: 500,
+                    }}>
+                      <span style={{ width: 8, height: 8, borderRadius: "50%", background: NODE_HEX[selDetail.tNode.etype] || "#b88a2e" }} />
+                      {selDetail.tNode.label}
+                    </span>
+                  </div>
+                  {selDetail.desc && (
+                    <p className="muted" style={{ fontSize: 13, lineHeight: 1.6, margin: "8px 0" }}>{selDetail.desc}</p>
+                  )}
+                  <div style={{ display: "flex", gap: 6, marginTop: 10, flexWrap: "wrap" }}>
+                    <button
+                      className="btn sm ghost"
+                      onClick={() => setSel(selDetail.sNode)}
+                      style={{ fontSize: 11, padding: "5px 10px" }}
+                    >
+                      Vai a: {selDetail.sNode.label}
+                    </button>
+                    <button
+                      className="btn sm ghost"
+                      onClick={() => setSel(selDetail.tNode)}
+                      style={{ fontSize: 11, padding: "5px 10px" }}
+                    >
+                      Vai a: {selDetail.tNode.label}
+                    </button>
+                  </div>
+                </>
+              ) : (
+              <>
               <div className="eyebrow" style={{ color: sel.etype === "city" ? NODE_HEX.city : ENTITY_COLOR[sel.etype as EntityType], marginBottom: 8 }}>{sel.etype === "city" ? "Luogo" : ENTITY_LABEL[sel.etype as EntityType]}</div>
               <h3 className="panel-title" style={{ marginBottom: 8 }}>{sel.label}</h3>
               {sel.etype === "city" && (() => {
@@ -679,6 +741,8 @@ export default function Grafo() {
                     })}
                   </div>
                 </>
+              )}
+              </>
               )}
             </div>
           ) : (
