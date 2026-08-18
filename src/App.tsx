@@ -3,6 +3,7 @@ import { useEffect, useRef, type ReactNode, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { pageVariants, usePrefersReducedMotion } from "./lib/motion";
 import { useAuth } from "./lib/auth";
+import { useData } from "./lib/store";
 import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides, pullQuizFromCloud, pullImageOverrides } from "./lib/sync";
 import { useTabs } from "./lib/tabs";
 import Sidebar from "./components/Sidebar";
@@ -119,16 +120,71 @@ export default function App() {
   const loc = useLocation();
   const nav = useNavigate();
   const isHome = loc.pathname === "/";
+  const ix = useData();
   const { isActive: tabsActive, activeTabId, tabs, updateActiveTab, switchTab } = useTabs();
 
-  // Quando l'URL cambia (navigazione), aggiorna l'URL della scheda attiva.
-  // Questo permette al TabBar di mostrare il titolo corretto.
+  // Deriva il titolo della scheda dall'URL corrente, usando il dataset
+  // per mostrare il titolo reale dell'opera o il nome dell'artista.
+  const deriveTabTitle = (url: string): string => {
+    const path = url.split("?")[0];
+    const segments = path.split("/").filter(Boolean);
+    if (segments.length === 0) return "Home";
+    const route = segments[0];
+    // Rotte con :id → lookup nel dataset
+    if (segments.length >= 2) {
+      const id = segments[1];
+      if (route === "opera") {
+        const w = ix.workById.get(id);
+        return w ? w.title : "Opera";
+      }
+      if (route === "artista") {
+        const a = ix.artistById.get(id);
+        return a ? a.name : "Artista";
+      }
+      if (route === "periodo") {
+        const p = ix.periodById.get(id);
+        return p ? p.name : "Periodo";
+      }
+      if (route === "complesso") {
+        // Per i complessi, l'ID è il parent.id dell'opera
+        const w = ix.workById.get(id);
+        return w ? w.title : "Complesso";
+      }
+      if (route === "luogo") {
+        return decodeURIComponent(id);
+      }
+    }
+    // Rotte fisse
+    const routeTitles: Record<string, string> = {
+      "opere": "Opere",
+      "artisti": "Artisti",
+      "grafo": "Rete",
+      "timeline": "Timeline",
+      "mappa": "Mappa",
+      "glossario": "Glossario",
+      "tecniche": "Tecniche",
+      "dashboard": "Statistiche",
+      "test": "Quiz",
+      "suggerisci": "Suggerisci",
+      "suggerisci-modifica": "Suggerisci modifica",
+      "profile": "Le mie richieste",
+      "admin": "Richieste admin",
+      "admin/database": "Database",
+      "login": "Accedi",
+      "legal": "Note legali",
+    };
+    return routeTitles[route] || route.charAt(0).toUpperCase() + route.slice(1);
+  };
+
+  // Quando l'URL cambia (navigazione), aggiorna l'URL e il titolo della scheda attiva.
   useEffect(() => {
     if (tabsActive && activeTabId) {
       const url = loc.pathname + loc.search;
-      updateActiveTab(url);
+      const title = deriveTabTitle(url);
+      updateActiveTab(url, title);
     }
-  }, [loc.pathname, loc.search, tabsActive, activeTabId, updateActiveTab]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loc.pathname, loc.search, tabsActive, activeTabId, ix]);
 
   // Quando cambia la scheda attiva (click su una scheda), naviga al suo URL.
   // Questo permette di cambiare scheda e vedere il contenuto corretto.
@@ -179,16 +235,15 @@ export default function App() {
       <Sidebar />
 
       <div className="content3d">
-        {/* TabBar — solo desktop (>= 768px). È position:fixed, quindi
-            non influisce sul flusso del content3d. Segue la sidebar. */}
-        {tabsActive && <TabBar />}
-
         {isHome ? (
           <main className="page-host">
             <Landing />
           </main>
         ) : (
           <main className="page-host">
+            {/* TabBar — solo desktop (>= 768px). È position:sticky dentro page-host,
+                resta in alto quando si scorre (stile cartelletta). */}
+            {tabsActive && <TabBar />}
             <PageTransition pathname={loc.pathname}>
               <Suspense fallback={<div className="h3d-loader" data-testid="page-suspense"><div className="spinner" /></div>}>
                 <Routes location={loc}>
