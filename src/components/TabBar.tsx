@@ -27,10 +27,10 @@ export default function TabBar() {
     }
   };
 
-  // Pulsante "+" — apre una nuova scheda sulla home
+  // Pulsante "+" — apre una nuova scheda sulla pagina Opere
   const handleNewTab = () => {
-    openTab("/");
-    nav("/");
+    openTab("/opere", "Opere");
+    nav("/opere");
   };
 
   // Chiudi scheda — previeni propagazione (altrimenti attiva la scheda)
