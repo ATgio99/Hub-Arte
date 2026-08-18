@@ -91,12 +91,17 @@ export default function Opera() {
   const { user, isAdmin } = useAuth();
   const w = id ? ix.workById.get(id) : undefined;
   const [editorOpen, setEditorOpen] = useState(false);
-  if (!w) return <div className="wrap page"><Empty msg="Opera non trovata." /></div>;
 
-  // Salva l'ID dell'opera come ultima visitata (per il ritorno da menu Opere)
+  // Salva l'ID dell'opera come ultima visitata (per il ritorno da menu Opere).
+  // Deve stare PRIMA dell'early return, altrimenti viola le regole degli hooks.
   useEffect(() => {
-    if (w) setLastOpera(w.id);
+    if (!w) return;
+    setLastOpera(w.id);
+    // Notifica la sidebar di aggiornare l'etichetta "Continua" in tempo reale
+    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   }, [w?.id]);
+
+  if (!w) return <div className="wrap page"><Empty msg="Opera non trovata." /></div>;
 
   const artists = artistsOfWork(ix, w);
   const terms = termsOfWork(ix, w);

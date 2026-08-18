@@ -622,6 +622,72 @@ a.hero-stat:hover { background: var(--bg-2); }
 .sbx-item.active .sbx-dot { background: var(--gold); box-shadow: 0 0 8px 1px rgba(184,138,46,.7); }
 .sbx.on-home .sbx-item.active .sbx-dot { background: #ffce7a; box-shadow: 0 0 9px 1px rgba(255,196,90,.9); }
 
+/* === Voce con "ultima visita" salvata (Opere/Artisti) ===
+   Combinazione A + C: pallino pulsante + etichetta "Continua → Titolo".
+   - Il pallino pulsa delicatamente (1.8s) per segnalare "c'è qualcosa da continuare"
+   - Quando la voce è anche attiva (siamo sulla scheda salvata), pulsa più forte
+     per suggerire "doppio click per uscire"
+   - Sotto il titolo, al posto della descrizione normale, appare l'etichetta
+     compatta "Continua → <titolo opera/artista>" */
+.sbx-item.has-last .sbx-dot {
+  background: var(--gold);
+  animation: sbx-pulse 1.8s ease-in-out infinite;
+}
+.sbx.on-home .sbx-item.has-last .sbx-dot {
+  background: #ffce7a;
+  animation: sbx-pulse-home 1.8s ease-in-out infinite;
+}
+/* Se la voce è anche attiva (siamo sulla pagina dell'ultima opera/artista),
+   il pallino pulsa più visibilmente per segnalare "sei qui, doppio click per uscire". */
+.sbx-item.has-last.active .sbx-dot {
+  animation: sbx-pulse-strong 1.4s ease-in-out infinite;
+}
+.sbx.on-home .sbx-item.has-last.active .sbx-dot {
+  animation: sbx-pulse-strong-home 1.4s ease-in-out infinite;
+}
+@keyframes sbx-pulse {
+  0%, 100% { transform: scale(1);   box-shadow: 0 0 6px 0 rgba(184,138,46,.45); }
+  50%      { transform: scale(1.3); box-shadow: 0 0 10px 1px rgba(184,138,46,.7); }
+}
+@keyframes sbx-pulse-home {
+  0%, 100% { transform: scale(1);   box-shadow: 0 0 7px 0 rgba(255,196,90,.55); }
+  50%      { transform: scale(1.3); box-shadow: 0 0 12px 1px rgba(255,196,90,.85); }
+}
+@keyframes sbx-pulse-strong {
+  0%, 100% { transform: scale(1.15); box-shadow: 0 0 8px 1px rgba(184,138,46,.7); }
+  50%      { transform: scale(1.6);  box-shadow: 0 0 14px 2px rgba(184,138,46,.95); }
+}
+@keyframes sbx-pulse-strong-home {
+  0%, 100% { transform: scale(1.15); box-shadow: 0 0 9px 1px rgba(255,196,90,.85); }
+  50%      { transform: scale(1.6);  box-shadow: 0 0 16px 2px rgba(255,196,90,1); }
+}
+
+/* Etichetta compatta "Continua → <titolo>" che sostituisce la descrizione
+   normale quando c'è un'ultima opera/artista salvata. */
+.sbx-continue {
+  display: flex; gap: 4px; align-items: baseline;
+  font-size: 10.5px; margin-top: 1px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sbx-continue-label {
+  color: var(--gold); font-weight: 700; font-size: 9px;
+  text-transform: uppercase; letter-spacing: .05em;
+  flex-shrink: 0;
+}
+.sbx.on-home .sbx-continue-label { color: #ffce7a; }
+.sbx-continue-name {
+  color: var(--ink-soft); font-style: italic;
+  overflow: hidden; text-overflow: ellipsis; min-width: 0;
+}
+.sbx.on-home .sbx-continue-name { color: rgba(230,216,190,.85); }
+/* In modalità collassata nascondi l'etichetta (non c'è spazio) */
+.sbx.collapsed .sbx-continue { display: none; }
+/* Riduci-motion: disabilita le animazioni se l'utente lo preferisce */
+@media (prefers-reduced-motion: reduce) {
+  .sbx-item.has-last .sbx-dot,
+  .sbx-item.has-last.active .sbx-dot { animation: none; }
+}
+
 /* piede: slider temporale + contatori */
 .sbx-foot { margin-top: auto; border-top: 1px solid var(--line); padding: 14px 16px 4px; }
 .sbx.on-home .sbx-foot { border-top-color: rgba(255,210,140,.18); }

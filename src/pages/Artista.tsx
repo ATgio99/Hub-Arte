@@ -19,12 +19,17 @@ export default function Artista() {
   const [editorOpen, setEditorOpen] = useState(false);
   const { workIn } = useTimeRange();
   const a = id ? ix.artistById.get(id) : undefined;
-  if (!a) return <div className="wrap page"><Empty msg="Artista non trovato." /></div>;
 
-  // Salva l'ID dell'artista come ultimo visitato (per il ritorno da menu Artisti)
+  // Salva l'ID dell'artista come ultimo visitato (per il ritorno da menu Artisti).
+  // Deve stare PRIMA dell'early return, altrimenti viola le regole degli hooks.
   useEffect(() => {
-    if (a) setLastArtista(a.id);
+    if (!a) return;
+    setLastArtista(a.id);
+    // Notifica la sidebar di aggiornare l'etichetta "Continua" in tempo reale
+    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   }, [a?.id]);
+
+  if (!a) return <div className="wrap page"><Empty msg="Artista non trovato." /></div>;
 
   const allWorks = worksByArtist(ix.ds, a.id).sort((x, y) => y.importance - x.importance);
   const works = allWorks.filter(workIn);

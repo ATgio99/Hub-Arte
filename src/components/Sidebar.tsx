@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { STONES } from "../lib/pages";
 import { useAuth, isAdminEmail } from "../lib/auth";
+import { useData } from "../lib/store";
 import { supabase } from "../lib/supabase";
 import { getLastOpera, clearLastOpera, getLastArtista, clearLastArtista } from "../lib/lastVisited";
 import TimeRangeSlider from "./TimeRangeSlider";
@@ -38,7 +39,36 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
   const loc = useLocation();
   const nav = useNavigate();
   const { user } = useAuth();
+  const ix = useData();
   const [pendingReviewCount, setPendingReviewCount] = useState(0);
+
+  // === Memoria ultima opera/artista visitati ===
+  // Leggiamo gli ID dal localStorage e li risolviamo nei titoli/nomi tramite
+  // il dataset, per mostrare un'etichetta "Continua → <titolo>" nella voce
+  // di menu. Rileggiamo al cambio rotta (loc.pathname) così quando l'utente
+  // apre una nuova opera/artista la sidebar si aggiorna.
+  const [lastOperaId, setLastOperaId] = useState<string | null>(null);
+  const [lastArtistaId, setLastArtistaId] = useState<string | null>(null);
+  useEffect(() => {
+    setLastOperaId(getLastOpera());
+    setLastArtistaId(getLastArtista());
+  }, [loc.pathname]);
+  // Ascoltiamo anche un evento custom, così la sidebar si aggiorna in tempo
+  // reale se l'utente apre una scheda opera/artista in un altro tab.
+  useEffect(() => {
+    const onUpdate = () => {
+      setLastOperaId(getLastOpera());
+      setLastArtistaId(getLastArtista());
+    };
+    window.addEventListener("atlante:last-visited-changed", onUpdate);
+    window.addEventListener("storage", onUpdate);
+    return () => {
+      window.removeEventListener("atlante:last-visited-changed", onUpdate);
+      window.removeEventListener("storage", onUpdate);
+    };
+  }, []);
+  const lastOperaTitle = lastOperaId ? ix.workById.get(lastOperaId)?.title : null;
+  const lastArtistaName = lastArtistaId ? ix.artistById.get(lastArtistaId)?.name : null;
 
   // Badge notifiche — logica diversa per admin vs utenti normali:
   //  - ADMIN: conta richieste pendenti degli utenti (pending in user_suggestions + user_edit_suggestions)
@@ -144,6 +174,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               // vai alla home delle opere
               if (!lastOpera || loc.pathname === `/opera/${lastOpera}`) {
                 clearLastOpera();
+                window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
                 e.preventDefault();
                 nav("/opere");
                 onNavigate?.();
@@ -159,6 +190,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               const lastArtista = getLastArtista();
               if (!lastArtista || loc.pathname === `/artista/${lastArtista}`) {
                 clearLastArtista();
+                window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
                 e.preventDefault();
                 nav("/artisti");
                 onNavigate?.();
@@ -174,7 +206,10 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
           };
           return (
             <Link key={p.id} to={p.route} onClick={handleClick}
-              className={`sbx-item ${active ? "active" : ""}`}
+              className={`sbx-item ${active ? "active" : ""} ${
+                p.id === "opere" && lastOperaId ? "has-last" :
+                p.id === "artisti" && lastArtistaId ? "has-last" : ""
+              }`}
               data-testid={`sbx-item-${p.id}`} title={p.name}>
               <span className="sbx-num">{p.num}</span>
               <span className="sbx-ico"><Icon id={p.id} /></span>
@@ -190,7 +225,24 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
                     }}>(beta)</span>
                   )}
                 </b>
-                <i>{p.desc}</i>
+                {/* Etichetta "Continua → <titolo>" — visibile solo se c'è
+                    un'ultima opera/artista salvata e la sidebar NON è collassata. */}
+                {p.id === "opere" && lastOperaTitle && !collapsed && (
+                  <span className="sbx-continue" data-testid="sbx-continue-opere">
+                    <span className="sbx-continue-label">Continua</span>
+                    <span className="sbx-continue-name">{lastOperaTitle}</span>
+                  </span>
+                )}
+                {p.id === "artisti" && lastArtistaName && !collapsed && (
+                  <span className="sbx-continue" data-testid="sbx-continue-artisti">
+                    <span className="sbx-continue-label">Continua</span>
+                    <span className="sbx-continue-name">{lastArtistaName}</span>
+                  </span>
+                )}
+                {/* Fallback: se non c'è un'ultima entità, mostra la descrizione normale */}
+                {((p.id === "opere" && !lastOperaTitle) || (p.id === "artisti" && !lastArtistaName) || (p.id !== "opere" && p.id !== "artisti")) && (
+                  <i>{p.desc}</i>
+                )}
                 <span className="sbx-underline" aria-hidden="true" />
               </span>
               <span className="sbx-dot" aria-hidden="true" />
