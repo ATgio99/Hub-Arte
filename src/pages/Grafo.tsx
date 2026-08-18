@@ -42,6 +42,99 @@ export default function Grafo() {
   const [mode, setMode] = useState<"3d" | "2d">("3d");
   const [isFull, setIsFull] = useState(false);
 
+  // === Ricerca globale ===
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<{ type: EntityType | "city"; id: string; label: string; subtitle?: string }[]>([]);
+
+  // Ricerca globale: cerca in tutte le entità
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (!query.trim()) {
+      setSearchResults([]);
+      return;
+    }
+    const q = query.toLowerCase().trim();
+    const results: { type: EntityType | "city"; id: string; label: string; subtitle?: string }[] = [];
+    // Opere
+    for (const w of ix.ds.works) {
+      if (w.title.toLowerCase().includes(q) || w.id.toLowerCase().includes(q)) {
+        results.push({ type: "work", id: w.id, label: w.title, subtitle: w.location_city || undefined });
+        if (results.length >= 20) break;
+      }
+    }
+    // Artisti
+    if (results.length < 20) {
+      for (const a of ix.ds.artists) {
+        if (a.name.toLowerCase().includes(q) || a.id.toLowerCase().includes(q) || a.aka.some(ak => ak.toLowerCase().includes(q))) {
+          results.push({ type: "artist", id: a.id, label: a.name, subtitle: a.role || undefined });
+          if (results.length >= 20) break;
+        }
+      }
+    }
+    // Luoghi (città)
+    if (results.length < 20) {
+      const cities = new Set<string>();
+      for (const w of ix.ds.works) {
+        if (w.location_city && w.location_city.toLowerCase().includes(q)) cities.add(w.location_city);
+      }
+      for (const city of cities) {
+        results.push({ type: "city", id: city, label: city, subtitle: "Luogo" });
+        if (results.length >= 20) break;
+      }
+    }
+    // Periodi
+    if (results.length < 20) {
+      for (const p of ix.ds.periods) {
+        if (p.name.toLowerCase().includes(q)) {
+          results.push({ type: "period", id: p.id, label: p.name, subtitle: `${p.year_start}–${p.year_end}` });
+          if (results.length >= 20) break;
+        }
+      }
+    }
+    // Termini
+    if (results.length < 20) {
+      for (const t of ix.ds.terms) {
+        if (t.term.toLowerCase().includes(q)) {
+          results.push({ type: "term", id: t.id, label: t.term, subtitle: t.category });
+          if (results.length >= 20) break;
+        }
+      }
+    }
+    // Tecniche
+    if (results.length < 20) {
+      for (const t of ix.ds.techniques) {
+        if (t.name.toLowerCase().includes(q)) {
+          results.push({ type: "technique", id: t.id, label: t.name, subtitle: t.category });
+          if (results.length >= 20) break;
+        }
+      }
+    }
+    setSearchResults(results);
+  };
+
+  // Quando l'utente seleziona un risultato, filtra il grafo per mostrare
+  // solo quel nodo + tutti i nodi connessi (fino a 2 livelli)
+  const [focusNode, setFocusNode] = useState<string | null>(null);
+
+  const handleSelectResult = (result: { type: EntityType | "city"; id: string; label: string }) => {
+    const nodeKey = `${result.type}:${result.id}`;
+    setFocusNode(nodeKey);
+    setSearchQuery(result.label);
+    // Trova il nodo nel grafo e selezionalo
+    const node = graph.nodes.find(n => n.id === nodeKey);
+    if (node) {
+      setSel(node);
+    }
+  };
+
+  // Reset del focus (mostra tutto il grafo)
+  const handleClearSearch = () => {
+    setFocusNode(null);
+    setSearchQuery("");
+    setSearchResults([]);
+    setSel(null);
+  };
+
   // ResizeObserver SOLO in modalità non-fullscreen.
   // In fullscreen usiamo dimensioni fisse (window.innerWidth/innerHeight)
   // perché il ResizeObserver causa un loop di re-render → tremolio del grafo.
@@ -87,7 +180,7 @@ export default function Grafo() {
       const t = addNode(c.target_type, c.target_id);
       links.push({ source: s, target: t, kind: c.kind, desc: c.description });
     }
-    // città come nodi di raggruppamento: ogni opera è legata al luogo in cui si trova
+    // città come nodi di raggruppamento
     if (!hideTypes.has("city")) {
       for (const wn of [...nodeMap.values()].filter((n) => n.etype === "work")) {
         const w = ix.workById.get(wn.eid);
@@ -99,8 +192,40 @@ export default function Grafo() {
         links.push({ source: key, target: wn.id, kind: "luogo", desc: `Opera conservata a ${city}` });
       }
     }
+
+    // === Se c'è un focusNode (ricerca), filtra il grafo per mostrare solo
+    //     il nodo cercato + i suoi vicini diretti + i vicini di 2° livello ===
+    if (focusNode) {
+      // Calcola l'insieme dei nodi visibili: focus + adiacenti + adiacenti-di-adiacenti
+      const adjMap = new Map<string, Set<string>>();
+      for (const l of links) {
+        const s = typeof l.source === "object" ? l.source.id : l.source;
+        const t = typeof l.target === "object" ? l.target.id : l.target;
+        if (!adjMap.has(s)) adjMap.set(s, new Set());
+        if (!adjMap.has(t)) adjMap.set(t, new Set());
+        adjMap.get(s)!.add(t);
+        adjMap.get(t)!.add(s);
+      }
+      const visibleNodes = new Set<string>([focusNode]);
+      // 1° livello
+      adjMap.get(focusNode)?.forEach(n => visibleNodes.add(n));
+      // 2° livello
+      const firstLevel = [...(adjMap.get(focusNode) || [])];
+      for (const n of firstLevel) {
+        adjMap.get(n)?.forEach(m => visibleNodes.add(m));
+      }
+      // Filtra nodi e links
+      const filteredNodes = [...nodeMap.values()].filter(n => visibleNodes.has(n.id));
+      const filteredLinks = links.filter(l => {
+        const s = typeof l.source === "object" ? l.source.id : l.source;
+        const t = typeof l.target === "object" ? l.target.id : l.target;
+        return visibleNodes.has(s) && visibleNodes.has(t);
+      });
+      return { nodes: filteredNodes, links: filteredLinks };
+    }
+
     return { nodes: [...nodeMap.values()], links };
-  }, [ix, hideTypes, hideKinds, inTime]);
+  }, [ix, hideTypes, hideKinds, inTime, focusNode]);
 
   const adj = useMemo(() => {
     const m = new Map<string, Set<string>>();
@@ -400,7 +525,15 @@ export default function Grafo() {
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 16, alignItems: "center" }}>
         {modeToggle}
-        <span className="faint" style={{ fontSize: 12.5 }}>I filtri per livello e legame sono nel pannello a destra.</span>
+        {focusNode && (
+          <span className="faint" style={{ fontSize: 12.5 }}>
+            Grafo filtrato: {graph.nodes.length} nodi, {graph.links.length} connessioni
+            <button onClick={handleClearSearch} className="btn ghost sm" style={{ marginLeft: 8, fontSize: 11, padding: "2px 8px" }}>Mostra tutto</button>
+          </span>
+        )}
+        {!focusNode && (
+          <span className="faint" style={{ fontSize: 12.5 }}>Cerca nel pannello a destra per filtrare la rete.</span>
+        )}
       </div>
 
       <Fullscreen title="Rete delle connessioni" controls={fsControls} onChange={setIsFull}>
@@ -408,6 +541,56 @@ export default function Grafo() {
           {renderGraph(false)}
 
         <div className="gf-side">
+          {/* Pannello ricerca — stile Mappa */}
+          <div className="panel" style={{ marginBottom: 12 }}>
+            <div className="panel-title">Cerca</div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
+              placeholder="Cerca opera, artista, luogo…"
+              style={{
+                width: "100%", padding: "7px 10px", marginBottom: 10,
+                border: "1px solid var(--line)", borderRadius: 6,
+                background: "var(--bg)", color: "var(--ink)",
+                fontSize: 13, fontFamily: "inherit",
+              }}
+            />
+            <div style={{ maxHeight: 280, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
+              {searchQuery.trim() && searchResults.length === 0 && (
+                <div style={{ padding: "12px 0", textAlign: "center", color: "var(--ink-dim)", fontSize: 13 }}>
+                  Nessun risultato per "{searchQuery}".
+                </div>
+              )}
+              {searchResults.map((r) => (
+                <button
+                  key={`${r.type}:${r.id}`}
+                  onClick={() => handleSelectResult(r)}
+                  style={{
+                    display: "flex", alignItems: "center", gap: 8,
+                    width: "100%", padding: "8px 4px",
+                    border: 0, borderBottom: "1px solid var(--line-soft)",
+                    background: "transparent", cursor: "pointer",
+                    textAlign: "left", fontFamily: "inherit",
+                  }}
+                >
+                  <span style={{
+                    width: 8, height: 8, borderRadius: "50%",
+                    background: NODE_HEX[r.type] || "#b88a2e",
+                    flexShrink: 0,
+                  }} />
+                  <span style={{ flex: 1, minWidth: 0 }}>
+                    <span style={{ fontSize: 13, fontWeight: 500, color: "var(--ink)", display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.label}</span>
+                    <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>
+                      {r.subtitle ? `${r.subtitle} · ` : ""}
+                      {r.type === "city" ? "Luogo" : ENTITY_LABEL[r.type as EntityType]}
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* pannello filtri in stile "Livelli" (riorganizzazione richiesta) */}
           <div className="panel gf-filters" data-testid="gf-filters">
             <div className="panel-title" style={{ fontSize: 17, marginBottom: 10 }}>Livelli</div>
