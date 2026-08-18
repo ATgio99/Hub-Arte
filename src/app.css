@@ -507,10 +507,6 @@ a.hero-stat:hover { background: var(--bg-2); }
 
 /* le pagine interne lasciano spazio a sinistra per la sidebar flottante */
 .page-host { min-height: 80vh; padding: calc(30px + var(--sat)) 30px calc(60px + var(--sab)) calc(var(--sbx-w) + var(--sbx-margin) + 20px); }
-/* quando le tabs sono attive, azzeriamo il padding-top così le tabs sono allineate
-   con la sidebar (top: 14px) — la tab bar ha il suo margine interno */
-body:has(.tabbar) .page-host { padding-top: calc(14px + var(--sat)); }
-body:has(.tabbar) .page-host .page { padding-top: 0; }
 .page-host .page { padding-top: 6px; }
 
 /* ---------- SIDEBAR FLOTTANTE (.sbx) ---------- */
@@ -926,21 +922,92 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   transform: translateY(-2px);
 }
 
-/* === TabBar — Proposta A: bordo marrone, sfondo sfumato, niente linea grigia === */
 
-.tabbar {
-  position: sticky;
+/* === TabBar — schede stile browser (solo desktop) ======================= */
+/* Container: position fixed, stessa altezza della sidebar.
+   - Tabs chiuse (pulsante): scroll normale, pulsante fisso
+   - Tabs aperte: sempre visibili, NESSUN fade sulle tabs.
+     È il contenuto della pagina che sfuma salendo dietro le tabs
+     tramite un gradient mask (::before sotto le tabs).
+*/
+
+.tabbar-container {
+  position: fixed;
+  top: calc(var(--sbx-margin) + var(--sat));
+  left: calc(var(--sbx-margin) + var(--sbx-w));
+  right: var(--sbx-margin);
+  z-index: 130;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: auto;
+}
+
+/* Gradient mask separato: quando le tabs sono aperte, copre il contenuto
+   che scorre verso l'alto e lo fa sfumare. Z-index 125: sopra il contenuto
+   della pagina, sotto le tabs (130). */
+.tabbar-fade-mask {
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: calc(var(--sbx-margin) + var(--sbx-w));
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to bottom,
+    var(--bg, #faf6ee) 0%,
+    var(--bg, #faf6ee) 60px,
+    rgba(250, 246, 238, 0.4) 75px,
+    transparent 90px
+  );
+  z-index: 125;
+  pointer-events: none;
+  transition: left .3s cubic-bezier(.2,.7,.2,1);
+}
+
+body:has(.sbx.collapsed) .tabbar-fade-mask {
+  left: calc(var(--sbx-margin) + var(--sbx-w-collapsed));
+}
+
+/* Sidebar collassata → sposta la tab bar e il mask a sinistra */
+body:has(.sbx.collapsed) .tabbar-container {
+  left: calc(var(--sbx-margin) + var(--sbx-w-collapsed));
+}
+
+/* === Pulsante toggle "Schede ▼" — centrato, visibile di default === */
+.tabbar-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 auto;
+  padding: 5px 16px;
+  height: 28px;
+  border: 1px solid var(--line, #e8e0d0);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  background: var(--bg-2, #f6f2ea);
+  color: var(--ink-soft, #6b5d4f);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+  font-family: inherit;
+}
+
+.tabbar-toggle:hover {
+  border-color: var(--gold-deep, #b88a2e);
+  color: var(--ink);
+  background: var(--bg, #faf6ee);
+}
+
+.tabbar-toggle svg {
+  color: var(--gold-deep, #b88a2e);
+}
+
+/* === Barra delle schede === */
+.tabbar {
   display: flex;
   align-items: flex-end;
   gap: 3px;
-  padding: 0;
-  margin: 0 0 10px 0;
-  flex-shrink: 0;
+  width: 100%;
   height: 34px;
-  background: transparent;
-  border: 0;
 }
 
 .tabbar-tabs {
@@ -981,8 +1048,7 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   background: rgba(246, 242, 234, 0.5);
 }
 
-/* Scheda attiva — sfondo sfumato (dal crema al trasparente in basso),
-   bordo marrone ai lati e in alto, niente linea grigia sotto */
+/* Scheda attiva — sfondo sfumato, bordo marrone */
 .tabbar-tab.active {
   color: var(--ink);
   background: linear-gradient(to bottom, #fff 0%, rgba(250, 246, 238, 0.85) 60%, rgba(246, 242, 234, 0.3) 100%);
@@ -1037,11 +1103,6 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   color: #a8483f;
 }
 
-.tabbar-tab-close svg {
-  width: 11px;
-  height: 11px;
-}
-
 /* Pulsante nuova scheda (+) */
 .tabbar-new {
   display: flex;
@@ -1067,7 +1128,29 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   border-color: var(--line);
 }
 
+/* Pulsante nascondi schede */
+.tabbar-collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 28px;
+  border: 0;
+  border-bottom: 0;
+  background: transparent;
+  color: var(--ink-dim);
+  cursor: pointer;
+  opacity: 0.4;
+  transition: all .15s;
+  flex-shrink: 0;
+}
+
+.tabbar-collapse-btn:hover {
+  opacity: 1;
+  color: var(--ink);
+}
+
 /* Mobile: nascondi */
 @media (max-width: 767px) {
-  .tabbar { display: none; }
+  .tabbar-container { display: none; }
 }
