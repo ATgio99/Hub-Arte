@@ -120,7 +120,7 @@ export default function Grafo() {
     const nodeKey = `${result.type}:${result.id}`;
     setFocusNode(nodeKey);
     setSearchQuery(result.label);
-    // Trova il nodo nel grafo e selezionalo
+    setSearchResults([]); // chiudi il dropdown
     const node = graph.nodes.find(n => n.id === nodeKey);
     if (node) {
       setSel(node);
@@ -535,37 +535,14 @@ export default function Grafo() {
       </div>
       <div className="page-rule" />
 
-      {/* Barra superiore: mode toggle + ricerca */}
+      {/* Barra superiore: solo mode toggle */}
       <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 16, alignItems: "center" }}>
         {modeToggle}
-        <div style={{ position: "relative", flex: "1 1 300px", maxWidth: 400 }}>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
-            placeholder="Cerca opera, artista, luogo, periodo…"
-            style={{ width: "100%", padding: "7px 10px", border: "1px solid var(--line)", borderRadius: 6, background: "var(--bg)", color: "var(--ink)", fontSize: 13, fontFamily: "inherit" }}
-          />
-          {searchResults.length > 0 && searchQuery.trim() && (
-            <div style={{ position: "absolute", top: "100%", left: 0, right: 0, background: "var(--bg)", border: "1px solid var(--line)", borderRadius: 6, boxShadow: "0 8px 24px rgba(0,0,0,0.12)", maxHeight: 280, overflowY: "auto", zIndex: 200, marginTop: 4 }}>
-              {searchResults.map((r) => (
-                <button key={`${r.type}:${r.id}`} onClick={() => handleSelectResult(r)}
-                  style={{ display: "flex", alignItems: "center", gap: 8, width: "100%", padding: "8px 10px", border: 0, borderBottom: "1px solid var(--line-soft)", background: "transparent", cursor: "pointer", textAlign: "left", fontFamily: "inherit" }}>
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: NODE_HEX[r.type] || "#b88a2e", flexShrink: 0 }} />
-                  <span style={{ flex: 1, minWidth: 0 }}>
-                    <span style={{ fontSize: 13, fontWeight: 500, color: "var(--ink)", display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.label}</span>
-                    <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{r.subtitle ? `${r.subtitle} · ` : ""}{r.type === "city" ? "Luogo" : ENTITY_LABEL[r.type as EntityType]}</span>
-                  </span>
-                </button>
-              ))}
-            </div>
-          )}
-          {searchQuery.trim() && searchResults.length === 0 && (
-            <div style={{ position: "absolute", top: "100%", left: 0, right: 0, background: "var(--bg)", border: "1px solid var(--line)", borderRadius: 6, marginTop: 4, padding: "10px 12px", fontSize: 13, color: "var(--ink-dim)", zIndex: 200 }}>Nessun risultato per "{searchQuery}".</div>
-          )}
-        </div>
         {focusNode && (
           <button onClick={handleClearSearch} className="btn ghost sm" style={{ fontSize: 12 }}>← Mostra tutto</button>
+        )}
+        {!focusNode && (
+          <span className="faint" style={{ fontSize: 12.5 }}>Cerca nel pannello a destra per filtrare la rete.</span>
         )}
       </div>
 
@@ -574,8 +551,51 @@ export default function Grafo() {
         <div className="gf-inner">
           {renderGraph(false)}
 
-        {/* Pannello destro: dettagli nodo/connessione */}
+        {/* Pannello destro: ricerca + dettagli nodo/connessione (stile Mappa) */}
         <div className="gf-side">
+          {/* Pannello ricerca — come nella pagina Mappa */}
+          <div className="panel" style={{ marginBottom: 12 }}>
+            <div className="panel-title">Cerca</div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
+              placeholder="Cerca opera, artista, luogo…"
+              style={{
+                width: "100%", padding: "7px 10px", marginBottom: 10,
+                border: "1px solid var(--line)", borderRadius: 6,
+                background: "var(--bg)", color: "var(--ink)",
+                fontSize: 13, fontFamily: "inherit",
+              }}
+            />
+            <div style={{ maxHeight: 280, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
+              {searchQuery.trim() && searchResults.length === 0 && (
+                <div style={{ padding: "12px 0", textAlign: "center", color: "var(--ink-dim)", fontSize: 13 }}>
+                  Nessun risultato per "{searchQuery}".
+                </div>
+              )}
+              {searchResults.map((r) => (
+                <button
+                  key={`${r.type}:${r.id}`}
+                  onClick={() => handleSelectResult(r)}
+                  style={{
+                    display: "flex", alignItems: "center", gap: 8,
+                    width: "100%", padding: "8px 4px",
+                    border: 0, borderBottom: "1px solid var(--line-soft)",
+                    background: "transparent", cursor: "pointer",
+                    textAlign: "left", fontFamily: "inherit",
+                  }}
+                >
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: NODE_HEX[r.type] || "#b88a2e", flexShrink: 0 }} />
+                  <span style={{ flex: 1, minWidth: 0 }}>
+                    <span style={{ fontSize: 13, fontWeight: 500, color: "var(--ink)", display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.label}</span>
+                    <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{r.subtitle ? `${r.subtitle} · ` : ""}{r.type === "city" ? "Luogo" : ENTITY_LABEL[r.type as EntityType]}</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           {sel && selDetail ? (
             <div className="panel" data-testid="gf-panel">
               {/* === Click su ARCO === */}
