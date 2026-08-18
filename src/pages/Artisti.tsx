@@ -3,16 +3,23 @@
 // Ricerca per nome/alias/ruolo, ordinamento per numero di opere o alfabetico,
 // card con date, ruolo, periodi e conteggio opere. Filtrata dallo slider.
 // ============================================================================
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { FilterNote, Empty, EmptyTimeRange, FavStar } from "../components/ui";
 import { useFavorites } from "../lib/favorites";
 import { fmtYear } from "../lib/data";
+import { clearLastArtista } from "../lib/lastVisited";
 
 export default function Artisti() {
   const ix = useData();
   const { artistIn, active } = useTimeRange();
+
+  // Quando si arriva alla home degli Artisti, azzerare l'ultimo artista visitato
+  useEffect(() => {
+    clearLastArtista();
+  }, []);
+
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<"opere" | "alfabetico">("opere");
   const [favOnly, setFavOnly] = useState(false);
