@@ -5,6 +5,7 @@ import { WorkCard, WorkGroupCard, Empty, EmptyTimeRange, FilterNote } from "../c
 import { useFavorites } from "../lib/favorites";
 import { useStudied } from "../lib/studied";
 import { computeWorkGroups, workGroupMap } from "../lib/data";
+import { clearLastOpera } from "../lib/lastVisited";
 import type { WorkType } from "../lib/types";
 
 const TYPES: WorkType[] = ["architettura", "pittura", "scultura", "mosaico", "miniatura", "oreficeria", "urbanistica", "altro"];
@@ -13,6 +14,12 @@ export default function Opere() {
   const { ds, periodById } = useData();
   const { workIn, active } = useTimeRange();
   const [sp] = useSearchParams();
+
+  // Quando si arriva alla home delle Opere, azzerare l'ultima opera visitata
+  // (così il prossimo click su "Opere" nel menu non riporta all'opera vecchia)
+  useEffect(() => {
+    clearLastOpera();
+  }, []);
   const [q, setQ] = useState(() => sessionStorage.getItem("atlante:opere-search") || "");
   const [type, setType] = useState<string>(sp.get("type") ?? "");
   const [period, setPeriod] = useState<string>(sp.get("p") ?? "");

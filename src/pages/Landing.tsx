@@ -102,7 +102,7 @@ function HomeNotice() {
             marginBottom: 16, lineHeight: 1.2,
             letterSpacing: "-.01em",
           }}>
-            Benvenutə in HUB Art
+            Benvenutə in HUB Arte
           </h2>
 
           {/* Corpo testo */}
