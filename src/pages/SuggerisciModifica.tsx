@@ -132,8 +132,6 @@ export default function SuggerisciModifica() {
     }
     setOk(true);
     setProposedValue(""); setReason("");
-    // Notifica la sidebar di aggiornare il badge (niente polling continuo)
-    window.dispatchEvent(new Event("atlante:suggestions-changed"));
   };
 
   return (

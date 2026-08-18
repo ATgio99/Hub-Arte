@@ -84,15 +84,13 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
     };
 
     check();
-    // Solo al focus + evento custom, niente setInterval (rimosso per traffico)
+    const interval = setInterval(check, 30000);
     const onFocus = () => check();
-    const onSuggestionsChanged = () => check();
     window.addEventListener("focus", onFocus);
-    window.addEventListener("atlante:suggestions-changed", onSuggestionsChanged);
     return () => {
       cancelled = true;
+      clearInterval(interval);
       window.removeEventListener("focus", onFocus);
-      window.removeEventListener("atlante:suggestions-changed", onSuggestionsChanged);
     };
   }, [user]);
 

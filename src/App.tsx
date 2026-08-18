@@ -235,16 +235,15 @@ export default function App() {
       <Sidebar />
 
       <div className="content3d">
-        {/* TabBar — solo desktop (>= 768px). È position:fixed, quindi
-            non influisce sul flusso del content3d. Segue la sidebar. */}
-        {tabsActive && <TabBar />}
-
         {isHome ? (
           <main className="page-host">
             <Landing />
           </main>
         ) : (
           <main className="page-host">
+            {/* TabBar — solo desktop (>= 768px). È position:sticky dentro page-host,
+                resta in alto quando si scorre (stile cartelletta). */}
+            {tabsActive && <TabBar />}
             <PageTransition pathname={loc.pathname}>
               <Suspense fallback={<div className="h3d-loader" data-testid="page-suspense"><div className="spinner" /></div>}>
                 <Routes location={loc}>

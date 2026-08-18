@@ -151,7 +151,6 @@ export default function AdminRichieste() {
     setActing((a) => ({ ...a, [id]: false }));
     if (error) { alert("Errore: " + error.message); return; }
     await load();
-    window.dispatchEvent(new Event("atlante:suggestions-changed"));
   };
 
   const actOnEditSuggestion = async (id: string, status: "approved" | "rejected") => {
@@ -163,7 +162,6 @@ export default function AdminRichieste() {
     setActing((a) => ({ ...a, [id]: false }));
     if (error) { alert("Errore: " + error.message); return; }
     await load();
-    window.dispatchEvent(new Event("atlante:suggestions-changed"));
   };
 
   const deleteSuggestion = async (id: string) => {
@@ -171,14 +169,12 @@ export default function AdminRichieste() {
     const { error } = await supabase.from("user_suggestions").delete().eq("id", id);
     if (error) { alert("Errore: " + error.message); return; }
     await load();
-    window.dispatchEvent(new Event("atlante:suggestions-changed"));
   };
   const deleteEditSuggestion = async (id: string) => {
     if (!confirm("Eliminare definitivamente questa richiesta di modifica? L'azione è irreversibile.")) return;
     const { error } = await supabase.from("user_edit_suggestions").delete().eq("id", id);
     if (error) { alert("Errore: " + error.message); return; }
     await load();
-    window.dispatchEvent(new Event("atlante:suggestions-changed"));
   };
 
   const fmtDate = (s: string) => new Date(s).toLocaleString("it-IT", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
