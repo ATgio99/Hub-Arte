@@ -923,39 +923,38 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 }
 
 
-/* === TabBar — schede stile browser (solo desktop) ======================= */
-/* Container: position fixed, stessa altezza della sidebar.
-   - Tabs chiuse (pulsante): scroll normale, pulsante fisso
-   - Tabs aperte: sempre visibili, NESSUN fade sulle tabs.
-     È il contenuto della pagina che sfuma salendo dietro le tabs
-     tramite un gradient mask (::before sotto le tabs).
+
+
+/* === TabBar — minimal moderna (solo desktop) ============================= */
+/* Container: position fixed, distante dalla sidebar (left + gap 30px extra).
+   - Pulsante toggle: linea sottile, minimal, no riquadro
+   - Tabs: bottoni continui senza bordo marrone, sfondo leggero
+   - Animazione slide down all apertura
 */
 
 .tabbar-container {
   position: fixed;
   top: calc(var(--sbx-margin) + var(--sat));
-  left: calc(var(--sbx-margin) + var(--sbx-w));
+  left: calc(var(--sbx-margin) + var(--sbx-w) + 30px);
   right: var(--sbx-margin);
   z-index: 130;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   pointer-events: auto;
 }
 
-/* Gradient mask separato: quando le tabs sono aperte, copre il contenuto
-   che scorre verso l'alto e lo fa sfumare. Z-index 125: sopra il contenuto
-   della pagina, sotto le tabs (130). */
+/* Gradient mask: copre il contenuto che scorre verso l alto */
 .tabbar-fade-mask {
   position: fixed;
   top: 0;
-  left: calc(var(--sbx-margin) + var(--sbx-w));
+  left: calc(var(--sbx-margin) + var(--sbx-w) + 30px);
   right: 0;
-  height: 90px;
+  height: 120px;
   background: linear-gradient(to bottom,
     var(--bg, #faf6ee) 0%,
-    var(--bg, #faf6ee) 60px,
-    rgba(250, 246, 238, 0.4) 75px,
-    transparent 90px
+    var(--bg, #faf6ee) 80px,
+    rgba(250, 246, 238, 0.3) 100px,
+    transparent 120px
   );
   z-index: 125;
   pointer-events: none;
@@ -963,100 +962,150 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 }
 
 body:has(.sbx.collapsed) .tabbar-fade-mask {
-  left: calc(var(--sbx-margin) + var(--sbx-w-collapsed));
+  left: calc(var(--sbx-margin) + var(--sbx-w-collapsed) + 30px);
 }
 
-/* Sidebar collassata → sposta la tab bar e il mask a sinistra */
 body:has(.sbx.collapsed) .tabbar-container {
-  left: calc(var(--sbx-margin) + var(--sbx-w-collapsed));
+  left: calc(var(--sbx-margin) + var(--sbx-w-collapsed) + 30px);
 }
 
-/* === Pulsante toggle "Schede ▼" — centrato, visibile di default === */
+/* === Pulsante toggle minimal === */
 .tabbar-toggle {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   margin: 0 auto;
-  padding: 5px 16px;
-  height: 28px;
-  border: 1px solid var(--line, #e8e0d0);
-  border-bottom: 0;
-  border-radius: 8px 8px 0 0;
-  background: var(--bg-2, #f6f2ea);
-  color: var(--ink-soft, #6b5d4f);
-  font-size: 12px;
-  font-weight: 600;
+  padding: 6px 0;
+  height: 24px;
+  border: 0;
+  background: transparent;
+  color: var(--ink-faint, #b5a895);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all .15s;
+  transition: color .15s;
   font-family: inherit;
 }
 
 .tabbar-toggle:hover {
-  border-color: var(--gold-deep, #b88a2e);
   color: var(--ink);
-  background: var(--bg, #faf6ee);
 }
 
-.tabbar-toggle svg {
-  color: var(--gold-deep, #b88a2e);
+.tabbar-toggle-label {
+  white-space: nowrap;
+}
+
+.tabbar-toggle-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line-soft, #f0e8d8);
+  min-width: 60px;
+  max-width: 160px;
+  transition: background .15s;
+}
+
+.tabbar-toggle:hover .tabbar-toggle-line {
+  background: var(--ink-faint, #b5a895);
+}
+
+.tabbar-toggle-arrow {
+  color: var(--ink-faint, #b5a895);
+  transition: color .15s;
+}
+
+.tabbar-toggle:hover .tabbar-toggle-arrow {
+  color: var(--ink);
+}
+
+.tabbar-toggle-arrow-up {
+  color: var(--ink-faint, #b5a895);
 }
 
 /* === Barra delle schede === */
 .tabbar {
   display: flex;
-  align-items: flex-end;
-  gap: 3px;
+  align-items: center;
+  gap: 0;
   width: 100%;
-  height: 34px;
+  height: 32px;
+  animation: tabbarSlideDown .25s cubic-bezier(.2,.7,.2,1);
+}
+
+@keyframes tabbarSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .tabbar-tabs {
   display: flex;
-  align-items: flex-end;
-  gap: 3px;
+  align-items: center;
+  gap: 0;
   width: 100%;
 }
 
-/* Singola scheda — bordo marrone, sfondo sfumato per la attiva */
+/* Singola scheda — bottone continuo, minimal, moderno.
+   Niente bordo marrone. Sfondo uniforme con leggera trasparenza.
+   Le schede sono attaccate l una all altra (gap: 0) con un separatore sottile. */
 .tabbar-tab {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 5px 10px 6px 14px;
+  padding: 6px 16px;
   flex: 1;
   min-width: 0;
   max-width: 240px;
-  height: 28px;
+  height: 32px;
   background: transparent;
-  border: 1px solid transparent;
-  border-bottom: 0;
-  border-radius: 8px 8px 0 0;
+  border: 0;
+  border-right: 1px solid var(--line-soft, #f0e8d8);
   cursor: pointer;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 500;
-  color: var(--ink-dim);
+  color: var(--ink-dim, #8a7d6e);
   white-space: nowrap;
   overflow: hidden;
   transition: all .15s;
   user-select: none;
   position: relative;
+  border-radius: 0;
+}
+
+.tabbar-tab:last-of-type {
+  border-right: 0;
 }
 
 .tabbar-tab:hover {
   color: var(--ink);
-  border-color: var(--line);
-  background: rgba(246, 242, 234, 0.5);
+  background: rgba(246, 242, 234, 0.6);
 }
 
-/* Scheda attiva — sfondo sfumato, bordo marrone */
+/* Scheda attiva — sfondo uniforme leggermente piu chiaro, senza bordo.
+   Una sottile linea dorata in basso indica lo stato attivo. */
 .tabbar-tab.active {
   color: var(--ink);
-  background: linear-gradient(to bottom, #fff 0%, rgba(250, 246, 238, 0.85) 60%, rgba(246, 242, 234, 0.3) 100%);
-  border: 1px solid var(--gold-deep, #b88a2e);
-  border-bottom: 0;
+  background: var(--bg-2, #f6f2ea);
   font-weight: 600;
   z-index: 2;
-  box-shadow: 0 -1px 3px rgba(184, 138, 46, 0.08);
+}
+
+.tabbar-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: var(--gold, #d4a017);
+  border-radius: 2px;
+  opacity: 0.7;
 }
 
 .tabbar-tab.dragging {
@@ -1065,7 +1114,7 @@ body:has(.sbx.collapsed) .tabbar-container {
 }
 
 .tabbar-tab.drag-over {
-  border-left: 2px solid var(--gold-deep, #b88a2e);
+  background: rgba(184, 138, 46, 0.06);
 }
 
 /* Titolo della scheda */
@@ -1087,14 +1136,14 @@ body:has(.sbx.collapsed) .tabbar-container {
   color: var(--ink-dim);
   cursor: pointer;
   border-radius: 4px;
-  opacity: 0.6;
+  opacity: 0.4;
   transition: opacity .15s, background .15s, color .15s;
   flex-shrink: 0;
 }
 
 .tabbar-tab:hover .tabbar-tab-close,
 .tabbar-tab.active .tabbar-tab-close {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .tabbar-tab-close:hover {
@@ -1103,50 +1152,46 @@ body:has(.sbx.collapsed) .tabbar-container {
   color: #a8483f;
 }
 
-/* Pulsante nuova scheda (+) */
+/* Pulsante nuova scheda (+) — integrato nel flusso */
 .tabbar-new {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  border: 1px solid transparent;
-  border-bottom: 0;
-  border-radius: 8px 8px 0 0;
-  background: transparent;
-  color: var(--ink-dim);
-  cursor: pointer;
-  opacity: 0.5;
-  transition: all .15s;
-  flex-shrink: 0;
-}
-
-.tabbar-new:hover {
-  opacity: 1;
-  background: rgba(184, 138, 46, 0.08);
-  color: var(--gold-deep);
-  border-color: var(--line);
-}
-
-/* Pulsante nascondi schede */
-.tabbar-collapse-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border: 0;
-  border-bottom: 0;
   background: transparent;
   color: var(--ink-dim);
   cursor: pointer;
   opacity: 0.4;
   transition: all .15s;
   flex-shrink: 0;
+  border-radius: 0;
+}
+
+.tabbar-new:hover {
+  opacity: 0.8;
+  color: var(--gold-deep, #b88a2e);
+}
+
+/* Pulsante nascondi — minimal */
+.tabbar-collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--ink-dim);
+  cursor: pointer;
+  opacity: 0.3;
+  transition: all .15s;
+  flex-shrink: 0;
 }
 
 .tabbar-collapse-btn:hover {
-  opacity: 1;
+  opacity: 0.8;
   color: var(--ink);
 }
 

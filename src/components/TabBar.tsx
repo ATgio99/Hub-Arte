@@ -1,13 +1,13 @@
 // ============================================================================
 // TabBar — barra delle schede stile browser (solo desktop).
 // - Position: fixed, stessa altezza della sidebar (top: 14px)
-// - Di default mostra un pulsante "Schede ▼" centrato
-// - Click → le schede appaiono
+// - Di default: linea minimal con testo "Schede" e freccia
+// - Click → le schede appaiono con animazione (slide down)
 // - Tabs aperte: sempre visibili, NESSUN fade sulle tabs.
 //   È il contenuto della pagina che sfuma salendo dietro le tabs.
-// - Tabs chiuse (solo pulsante): scroll normale, pulsante resta fisso
+// - Ogni tab mantiene la propria scroll position
 // ============================================================================
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTabs } from "../lib/tabs";
 
@@ -20,9 +20,45 @@ export default function TabBar() {
   const dragCounter = useRef(0);
   const [expanded, setExpanded] = useState(false);
 
+  // === Scroll position per tab ===
+  // Salva la scroll position quando si cambia tab, e ripristinala quando si torna.
+  const scrollPositions = useRef<Record<string, number>>({});
+
+  // Salva lo scroll corrente quando l'URL cambia (prima di navigare)
+  useEffect(() => {
+    const saveScroll = () => {
+      if (activeTabId) {
+        scrollPositions.current[activeTabId] = window.scrollY;
+      }
+    };
+    // Salva prima della navigazione
+    window.addEventListener("scroll", () => {
+      if (activeTabId) {
+        scrollPositions.current[activeTabId] = window.scrollY;
+      }
+    }, { passive: true });
+    return () => {};
+  }, [activeTabId]);
+
+  // Ripristina lo scroll quando cambia la scheda attiva
+  useEffect(() => {
+    if (!expanded || !activeTabId) return;
+    const savedScroll = scrollPositions.current[activeTabId] || 0;
+    // Aspetta che la pagina sia renderizzata
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        window.scrollTo(0, savedScroll);
+      }, 50);
+    });
+  }, [activeTabId, expanded, loc.pathname]);
+
   if (!isActive) return null;
 
   const handleClick = (tabId: string, url: string) => {
+    // Salva la scroll position della tab corrente prima di cambiare
+    if (activeTabId) {
+      scrollPositions.current[activeTabId] = window.scrollY;
+    }
     switchTab(tabId);
     if (loc.pathname + loc.search !== url) {
       nav(url);
@@ -30,6 +66,9 @@ export default function TabBar() {
   };
 
   const handleNewTab = () => {
+    if (activeTabId) {
+      scrollPositions.current[activeTabId] = window.scrollY;
+    }
     openTab("/opere", "Opere");
     nav("/opere");
     setExpanded(true);
@@ -37,7 +76,13 @@ export default function TabBar() {
 
   const handleClose = (e: React.MouseEvent, tabId: string) => {
     e.stopPropagation();
+    // Rimuovi la scroll position salvata
+    delete scrollPositions.current[tabId];
     closeTab(tabId);
+  };
+
+  const handleToggle = () => {
+    setExpanded(prev => !prev);
   };
 
   // === Drag-and-drop ===
@@ -74,89 +119,88 @@ export default function TabBar() {
   return (
     <>
       {/* Gradient mask: quando le tabs sono aperte, copre il contenuto
-          che scorre verso l'alto e lo fa sfumare. Deve essere un elemento
-          separato (non dentro tabbar-container) per non essere intrappolato
-          nel suo stacking context. */}
+          che scorre verso l'alto e lo fa sfumare. */}
       {expanded && (
         <div className="tabbar-fade-mask" aria-hidden="true" />
       )}
 
-    <div className={`tabbar-container ${expanded ? "expanded" : ""}`}>
-      {/* Pulsante toggle "Schede ▼" — centrato, visibile di default */}
-      {!expanded && (
-        <button
-          className="tabbar-toggle"
-          onClick={() => setExpanded(true)}
-          title="Mostra schede"
-        >
-          <span className="tabbar-toggle-label">Schede</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M6 9l6 6 6-6" />
-          </svg>
-        </button>
-      )}
+      <div className={`tabbar-container ${expanded ? "expanded" : ""}`}>
+        {/* Pulsante toggle minimal — linea con testo e freccia */}
+        {!expanded && (
+          <button
+            className="tabbar-toggle"
+            onClick={handleToggle}
+            title="Mostra schede"
+          >
+            <span className="tabbar-toggle-label">Schede</span>
+            <span className="tabbar-toggle-line" />
+            <svg className="tabbar-toggle-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M1 1l5 5 5-5" />
+            </svg>
+          </button>
+        )}
 
-      {/* Barra delle schede — visibile quando expanded=true */}
-      {expanded && (
-        <div className="tabbar">
-          <div className="tabbar-tabs">
-            {tabs.map((tab, index) => {
-              const isActiveTab = tab.id === activeTabId;
-              const isDragging = dragIndex === index;
-              const isDragOver = dragOverIndex === index;
-              return (
-                <div
-                  key={tab.id}
-                  role="tab"
-                  aria-selected={isActiveTab}
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, index)}
-                  onDragEnd={handleDragEnd}
-                  onDragOver={(e) => handleDragOver(e, index)}
-                  onDrop={(e) => handleDrop(e, index)}
-                  onClick={() => handleClick(tab.id, tab.url)}
-                  className={`tabbar-tab ${isActiveTab ? "active" : ""} ${isDragging ? "dragging" : ""} ${isDragOver ? "drag-over" : ""}`}
-                  title={tab.title}
-                >
-                  <span className="tabbar-tab-title">{tab.title}</span>
-                  <button
-                    className="tabbar-tab-close"
-                    onClick={(e) => handleClose(e, tab.id)}
-                    aria-label="Chiudi scheda"
-                    title="Chiudi"
+        {/* Barra delle schede — visibile quando expanded=true, con animazione */}
+        {expanded && (
+          <div className="tabbar tabbar-animated">
+            <div className="tabbar-tabs">
+              {tabs.map((tab, index) => {
+                const isActiveTab = tab.id === activeTabId;
+                const isDragging = dragIndex === index;
+                const isDragOver = dragOverIndex === index;
+                return (
+                  <div
+                    key={tab.id}
+                    role="tab"
+                    aria-selected={isActiveTab}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, index)}
+                    onDragEnd={handleDragEnd}
+                    onDragOver={(e) => handleDragOver(e, index)}
+                    onDrop={(e) => handleDrop(e, index)}
+                    onClick={() => handleClick(tab.id, tab.url)}
+                    className={`tabbar-tab ${isActiveTab ? "active" : ""} ${isDragging ? "dragging" : ""} ${isDragOver ? "drag-over" : ""}`}
+                    title={tab.title}
                   >
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                      <path d="M18 6L6 18M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
-              );
-            })}
-            {/* Pulsante nuova scheda */}
-            <button
-              className="tabbar-new"
-              onClick={handleNewTab}
-              aria-label="Nuova scheda"
-              title="Nuova scheda"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M12 5v14M5 12h14" />
-              </svg>
-            </button>
-            {/* Pulsante nascondi schede (restringi) */}
-            <button
-              className="tabbar-collapse-btn"
-              onClick={() => setExpanded(false)}
-              title="Nascondi schede"
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 15l-6-6-6 6" />
-              </svg>
-            </button>
+                    <span className="tabbar-tab-title">{tab.title}</span>
+                    <button
+                      className="tabbar-tab-close"
+                      onClick={(e) => handleClose(e, tab.id)}
+                      aria-label="Chiudi scheda"
+                      title="Chiudi"
+                    >
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                );
+              })}
+              {/* Pulsante nuova scheda */}
+              <button
+                className="tabbar-new"
+                onClick={handleNewTab}
+                aria-label="Nuova scheda"
+                title="Nuova scheda"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </button>
+              {/* Pulsante nascondi schede — minimal come il toggle */}
+              <button
+                className="tabbar-collapse-btn"
+                onClick={handleToggle}
+                title="Nascondi schede"
+              >
+                <svg className="tabbar-toggle-arrow-up" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 7l5-5 5 5" />
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
     </>
   );
 }
