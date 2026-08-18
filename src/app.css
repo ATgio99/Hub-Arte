@@ -923,49 +923,56 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 }
 
 /* === TabBar — schede stile browser (solo desktop) ====================== */
-/* La tab bar è position: sticky dentro content3d.
-   - Resta in alto quando si scorre (stile cartelletta)
-   - È parte della pagina, non fluttante sopra
-   - Segue la sidebar con margine sinistro dinamico
+/* La tab bar è position: fixed in alto, segue la sidebar.
+   - left = sbx-margin + sbx-w (espansa) o sbx-w-collapsed (collassata)
+   - z-index: 130 (sopra il contenuto, sotto la sidebar che è 140 e i popup 900+)
 */
 
 .tabbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: fixed;
+  top: calc(var(--sbx-margin) + var(--sat));
+  left: calc(var(--sbx-margin) + var(--sbx-w));
+  right: var(--sbx-margin);
+  height: 36px;
   display: flex;
   align-items: stretch;
   background: var(--bg-2, #f6f2ea);
-  border-bottom: 1px solid var(--line);
-  padding: 6px 12px 0 12px;
-  margin-bottom: 8px;
-  flex-shrink: 0;
-  min-height: 38px;
-  box-shadow: 0 2px 8px rgba(60, 42, 12, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 8px 0 4px;
+  z-index: 130;
+  overflow: hidden; /* niente scroll, max 5 schede */
+  transition: left .3s cubic-bezier(.2,.7,.2,1); /* segue il collasso della sidebar */
+}
+
+/* Quando la sidebar è collassata, sposta la tab bar a sinistra */
+body:has(.sbx.collapsed) .tabbar {
+  left: calc(var(--sbx-margin) + var(--sbx-w-collapsed));
 }
 
 .tabbar-tabs {
   display: flex;
   align-items: stretch;
-  gap: 2px;
+  gap: 1px;
+  padding-top: 4px;
   width: 100%;
 }
 
-/* Singola scheda — stile cartelletta */
+/* Singola scheda — con max 5 schede, ognuna occupa ~20% della larghezza */
 .tabbar-tab {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 12px 8px 16px;
+  gap: 6px;
+  padding: 6px 8px 6px 12px;
   flex: 1;
-  min-width: 0;
-  max-width: 240px;
-  background: var(--bg, #faf6ee);
-  border: 1px solid var(--line);
+  min-width: 0; /* permette al flex di restringere */
+  max-width: 220px;
+  background: transparent;
+  border: 1px solid transparent;
   border-bottom: 0;
   border-radius: 8px 8px 0 0;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 500;
   color: var(--ink-soft);
   white-space: nowrap;
@@ -976,18 +983,15 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 }
 
 .tabbar-tab:hover {
-  background: #fff;
+  background: rgba(255,255,255,0.5);
   color: var(--ink);
-  border-color: var(--gold);
 }
 
 .tabbar-tab.active {
-  background: #fff;
+  background: var(--bg, #faf6ee);
   color: var(--ink);
-  border-color: var(--gold);
-  border-bottom: 1px solid #fff; /* si "connette" al contenuto sotto */
+  border-color: var(--line);
   font-weight: 600;
-  z-index: 2;
 }
 
 .tabbar-tab.dragging {
@@ -996,7 +1000,7 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 }
 
 .tabbar-tab.drag-over {
-  border-left: 3px solid var(--gold, #d4a017);
+  border-left: 2px solid var(--gold, #d4a017);
 }
 
 /* Titolo della scheda (tronca se troppo lungo) */
@@ -1006,32 +1010,32 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   flex: 1;
 }
 
-/* Pulsante chiudi — GRANDE e ben visibile */
+/* Pulsante chiudi */
 .tabbar-tab-close {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
   border: 0;
   background: transparent;
   color: var(--ink-dim);
   cursor: pointer;
-  border-radius: 5px;
-  opacity: 0.7;
+  border-radius: 4px;
+  opacity: 0;
   transition: opacity .15s, background .15s, color .15s;
   flex-shrink: 0;
 }
 
-.tabbar-tab-close:hover {
-  opacity: 1;
-  background: rgba(168, 72, 63, 0.15);
-  color: #a8483f;
+.tabbar-tab:hover .tabbar-tab-close,
+.tabbar-tab.active .tabbar-tab-close {
+  opacity: 0.6;
 }
 
-.tabbar-tab-close svg {
-  width: 14px;
-  height: 14px;
+.tabbar-tab-close:hover {
+  opacity: 1 !important;
+  background: rgba(168,72,63,0.12);
+  color: #a8483f;
 }
 
 /* Pulsante nuova scheda (+) */
@@ -1039,23 +1043,26 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 30px;
-  margin-top: 2px;
-  border: 1px solid var(--line);
-  border-bottom: 0;
-  border-radius: 8px 8px 0 0;
+  width: 28px;
+  height: 28px;
+  margin: 4px 0 0 4px;
+  border: 0;
   background: transparent;
   color: var(--ink-dim);
   cursor: pointer;
-  transition: background .15s, color .15s, border-color .15s;
+  border-radius: 6px;
+  transition: background .15s, color .15s;
   flex-shrink: 0;
 }
 
 .tabbar-new:hover {
-  background: rgba(184, 138, 46, 0.1);
+  background: rgba(184,138,46,0.12);
   color: var(--gold-deep);
-  border-color: var(--gold);
+}
+
+/* Quando le tabs sono attive, il content3d deve avere il bordo superiore arrotondato */
+.shell3d.has-tabs .content3d {
+  border-top-left-radius: 0;
 }
 
 /* Mobile: nascondi completamente la tabbar */
