@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, Section, Empty, EntityLink, FilterNote, FavStar } from "../components/ui";
@@ -6,7 +6,6 @@ import ArtistMap from "../components/ArtistMap";
 import ArtistTimeline from "../components/ArtistTimeline";
 import ArtistEditorDrawer from "../components/ArtistEditorDrawer";
 import { useAuth } from "../lib/auth";
-import { setLastArtista } from "../lib/lastVisited";
 import {
   worksByArtist, connectionsOf, fmtYear, entityLabel, ENTITY_LABEL, KIND_LABEL,
 } from "../lib/data";
@@ -20,11 +19,6 @@ export default function Artista() {
   const { workIn } = useTimeRange();
   const a = id ? ix.artistById.get(id) : undefined;
   if (!a) return <div className="wrap page"><Empty msg="Artista non trovato." /></div>;
-
-  // Salva l'ID dell'artista come ultimo visitato (per il ritorno da menu Artisti)
-  useEffect(() => {
-    if (a) setLastArtista(a.id);
-  }, [a?.id]);
 
   const allWorks = worksByArtist(ix.ds, a.id).sort((x, y) => y.importance - x.importance);
   const works = allWorks.filter(workIn);

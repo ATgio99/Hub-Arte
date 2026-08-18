@@ -117,7 +117,7 @@ function HomeNotice() {
               fontSize: 14.5, lineHeight: 1.65,
               color: "var(--ink-soft, #5b5550)", margin: "0 0 12px",
             }}>
-              Se qualcosa non funziona, oppure hai un'idea per migliorarlo, <b style={{ color: "var(--ink, #1a1a1a)", fontWeight: 600 }}>segnalacelo</b>. Ogni contributo è prezioso e ci aiuta a far crescere HUB Art.
+              Se qualcosa non funziona, oppure hai un'idea per migliorarlo, <b style={{ color: "var(--ink, #1a1a1a)", fontWeight: 600 }}>segnalacelo</b>. Ogni contributo è prezioso e ci aiuta a far crescere HUB Arte.
             </p>
             <p style={{
               fontSize: 14.5, lineHeight: 1.65,

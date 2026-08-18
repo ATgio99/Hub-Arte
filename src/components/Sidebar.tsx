@@ -7,11 +7,10 @@
 // Collassabile a sola colonna di icone (desktop). Su mobile: drawer da hamburger.
 // ============================================================================
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { STONES } from "../lib/pages";
 import { useAuth, isAdminEmail } from "../lib/auth";
 import { supabase } from "../lib/supabase";
-import { getLastOpera, clearLastOpera, getLastArtista, clearLastArtista } from "../lib/lastVisited";
 import TimeRangeSlider from "./TimeRangeSlider";
 
 // icone sottili (stroke 1.5) coerenti, una per pagina
@@ -36,7 +35,6 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
   collapsed: boolean; onToggleCollapse: () => void; isHome: boolean; onNavigate?: () => void;
 }) {
   const loc = useLocation();
-  const nav = useNavigate();
   const { user } = useAuth();
   const [pendingReviewCount, setPendingReviewCount] = useState(0);
 
@@ -86,14 +84,13 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
     };
 
     check();
+    const interval = setInterval(check, 30000);
     const onFocus = () => check();
-    const onSuggestionsChanged = () => check();
     window.addEventListener("focus", onFocus);
-    window.addEventListener("atlante:suggestions-changed", onSuggestionsChanged);
     return () => {
       cancelled = true;
+      clearInterval(interval);
       window.removeEventListener("focus", onFocus);
-      window.removeEventListener("atlante:suggestions-changed", onSuggestionsChanged);
     };
   }, [user]);
 
@@ -134,46 +131,8 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
       <nav className="sbx-nav" data-testid="sbx-nav">
         {STONES.map((p) => {
           const active = loc.pathname === p.route || (isHome === false && loc.pathname.startsWith(p.route) && p.route !== "/");
-          // Per Opere e Artisti: logica doppio click
-          // 1° click: se c'è un'ultima opera/artista visitata, vai lì
-          // 2° click (se già su quella pagina): vai alla home della sezione
-          const handleClick = (e: React.MouseEvent) => {
-            if (p.id === "opere") {
-              const lastOpera = getLastOpera();
-              // Se siamo già sulla pagina dell'ultima opera, o non c'è un'ultima opera,
-              // vai alla home delle opere
-              if (!lastOpera || loc.pathname === `/opera/${lastOpera}`) {
-                clearLastOpera();
-                e.preventDefault();
-                nav("/opere");
-                onNavigate?.();
-                return;
-              }
-              // Altrimenti vai all'ultima opera visitata
-              e.preventDefault();
-              nav(`/opera/${lastOpera}`);
-              onNavigate?.();
-              return;
-            }
-            if (p.id === "artisti") {
-              const lastArtista = getLastArtista();
-              if (!lastArtista || loc.pathname === `/artista/${lastArtista}`) {
-                clearLastArtista();
-                e.preventDefault();
-                nav("/artisti");
-                onNavigate?.();
-                return;
-              }
-              e.preventDefault();
-              nav(`/artista/${lastArtista}`);
-              onNavigate?.();
-              return;
-            }
-            // Per le altre voci: navigazione normale
-            onNavigate?.();
-          };
           return (
-            <Link key={p.id} to={p.route} onClick={handleClick}
+            <Link key={p.id} to={p.route} onClick={onNavigate}
               className={`sbx-item ${active ? "active" : ""}`}
               data-testid={`sbx-item-${p.id}`} title={p.name}>
               <span className="sbx-num">{p.num}</span>

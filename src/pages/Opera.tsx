@@ -5,7 +5,6 @@ import { WorkImage, WorkCard, WorkGallery, Section, Empty, EntityLink, FavStar, 
 import { getOverrides, setOverride, clearOverride } from "../lib/imageOverrides";
 import { useStudied, toggleStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
-import { setLastOpera } from "../lib/lastVisited";
 import EditorDrawer from "../components/EditorDrawer";
 import {
   artistsOfWork, termsOfWork, techniquesOfWork, relatedWorks,
@@ -92,11 +91,6 @@ export default function Opera() {
   const w = id ? ix.workById.get(id) : undefined;
   const [editorOpen, setEditorOpen] = useState(false);
   if (!w) return <div className="wrap page"><Empty msg="Opera non trovata." /></div>;
-
-  // Salva l'ID dell'opera come ultima visitata (per il ritorno da menu Opere)
-  useEffect(() => {
-    if (w) setLastOpera(w.id);
-  }, [w?.id]);
 
   const artists = artistsOfWork(ix, w);
   const terms = termsOfWork(ix, w);

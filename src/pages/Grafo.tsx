@@ -45,95 +45,32 @@ export default function Grafo() {
   // === Ricerca globale ===
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<{ type: EntityType | "city"; id: string; label: string; subtitle?: string }[]>([]);
+  const [focusNode, setFocusNode] = useState<string | null>(null);
 
-  // Ricerca globale: cerca in tutte le entità
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    if (!query.trim()) {
-      setSearchResults([]);
-      return;
-    }
+    if (!query.trim()) { setSearchResults([]); return; }
     const q = query.toLowerCase().trim();
     const results: { type: EntityType | "city"; id: string; label: string; subtitle?: string }[] = [];
-    // Opere
-    for (const w of ix.ds.works) {
-      if (w.title.toLowerCase().includes(q) || w.id.toLowerCase().includes(q)) {
-        results.push({ type: "work", id: w.id, label: w.title, subtitle: w.location_city || undefined });
-        if (results.length >= 20) break;
-      }
-    }
-    // Artisti
-    if (results.length < 20) {
-      for (const a of ix.ds.artists) {
-        if (a.name.toLowerCase().includes(q) || a.id.toLowerCase().includes(q) || a.aka.some(ak => ak.toLowerCase().includes(q))) {
-          results.push({ type: "artist", id: a.id, label: a.name, subtitle: a.role || undefined });
-          if (results.length >= 20) break;
-        }
-      }
-    }
-    // Luoghi (città)
-    if (results.length < 20) {
-      const cities = new Set<string>();
-      for (const w of ix.ds.works) {
-        if (w.location_city && w.location_city.toLowerCase().includes(q)) cities.add(w.location_city);
-      }
-      for (const city of cities) {
-        results.push({ type: "city", id: city, label: city, subtitle: "Luogo" });
-        if (results.length >= 20) break;
-      }
-    }
-    // Periodi
-    if (results.length < 20) {
-      for (const p of ix.ds.periods) {
-        if (p.name.toLowerCase().includes(q)) {
-          results.push({ type: "period", id: p.id, label: p.name, subtitle: `${p.year_start}–${p.year_end}` });
-          if (results.length >= 20) break;
-        }
-      }
-    }
-    // Termini
-    if (results.length < 20) {
-      for (const t of ix.ds.terms) {
-        if (t.term.toLowerCase().includes(q)) {
-          results.push({ type: "term", id: t.id, label: t.term, subtitle: t.category });
-          if (results.length >= 20) break;
-        }
-      }
-    }
-    // Tecniche
-    if (results.length < 20) {
-      for (const t of ix.ds.techniques) {
-        if (t.name.toLowerCase().includes(q)) {
-          results.push({ type: "technique", id: t.id, label: t.name, subtitle: t.category });
-          if (results.length >= 20) break;
-        }
-      }
-    }
+    for (const w of ix.ds.works) { if (w.title.toLowerCase().includes(q) || w.id.toLowerCase().includes(q)) { results.push({ type: "work", id: w.id, label: w.title, subtitle: w.location_city || undefined }); if (results.length >= 20) break; } }
+    if (results.length < 20) for (const a of ix.ds.artists) { if (a.name.toLowerCase().includes(q) || a.id.toLowerCase().includes(q) || a.aka.some(ak => ak.toLowerCase().includes(q))) { results.push({ type: "artist", id: a.id, label: a.name, subtitle: a.role || undefined }); if (results.length >= 20) break; } }
+    if (results.length < 20) { const cities = new Set<string>(); for (const w of ix.ds.works) { if (w.location_city && w.location_city.toLowerCase().includes(q)) cities.add(w.location_city); } for (const city of cities) { results.push({ type: "city", id: city, label: city, subtitle: "Luogo" }); if (results.length >= 20) break; } }
+    if (results.length < 20) for (const p of ix.ds.periods) { if (p.name.toLowerCase().includes(q)) { results.push({ type: "period", id: p.id, label: p.name, subtitle: `${p.year_start}–${p.year_end}` }); if (results.length >= 20) break; } }
+    if (results.length < 20) for (const t of ix.ds.terms) { if (t.term.toLowerCase().includes(q)) { results.push({ type: "term", id: t.id, label: t.term, subtitle: t.category }); if (results.length >= 20) break; } }
+    if (results.length < 20) for (const t of ix.ds.techniques) { if (t.name.toLowerCase().includes(q)) { results.push({ type: "technique", id: t.id, label: t.name, subtitle: t.category }); if (results.length >= 20) break; } }
     setSearchResults(results);
   };
-
-  // Quando l'utente seleziona un risultato, filtra il grafo per mostrare
-  // solo quel nodo + tutti i nodi connessi (fino a 2 livelli)
-  const [focusNode, setFocusNode] = useState<string | null>(null);
 
   const handleSelectResult = (result: { type: EntityType | "city"; id: string; label: string }) => {
     const nodeKey = `${result.type}:${result.id}`;
     setFocusNode(nodeKey);
     setSearchQuery(result.label);
-    // Trova il nodo nel grafo e selezionalo
+    setSearchResults([]);
     const node = graph.nodes.find(n => n.id === nodeKey);
-    if (node) {
-      setSel(node);
-    }
+    if (node) setSel(node);
   };
 
-  // Reset del focus (mostra tutto il grafo)
-  const handleClearSearch = () => {
-    setFocusNode(null);
-    setSearchQuery("");
-    setSearchResults([]);
-    setSel(null);
-  };
+  const handleClearSearch = () => { setFocusNode(null); setSearchQuery(""); setSearchResults([]); setSel(null); };
 
   // ResizeObserver SOLO in modalità non-fullscreen.
   // In fullscreen usiamo dimensioni fisse (window.innerWidth/innerHeight)
@@ -180,7 +117,7 @@ export default function Grafo() {
       const t = addNode(c.target_type, c.target_id);
       links.push({ source: s, target: t, kind: c.kind, desc: c.description });
     }
-    // città come nodi di raggruppamento
+    // città come nodi di raggruppamento: ogni opera è legata al luogo in cui si trova
     if (!hideTypes.has("city")) {
       for (const wn of [...nodeMap.values()].filter((n) => n.etype === "work")) {
         const w = ix.workById.get(wn.eid);
@@ -192,38 +129,29 @@ export default function Grafo() {
         links.push({ source: key, target: wn.id, kind: "luogo", desc: `Opera conservata a ${city}` });
       }
     }
-
-    // === Se c'è un focusNode (ricerca), filtra il grafo per mostrare solo
-    //     il nodo cercato + i suoi vicini diretti + i vicini di 2° livello ===
+    // === Filtro per focusNode (ricerca) ===
     if (focusNode) {
-      // Calcola l'insieme dei nodi visibili: focus + adiacenti + adiacenti-di-adiacenti
       const adjMap = new Map<string, Set<string>>();
       for (const l of links) {
         const s = typeof l.source === "object" ? l.source.id : l.source;
         const t = typeof l.target === "object" ? l.target.id : l.target;
         if (!adjMap.has(s)) adjMap.set(s, new Set());
         if (!adjMap.has(t)) adjMap.set(t, new Set());
-        adjMap.get(s)!.add(t);
-        adjMap.get(t)!.add(s);
+        adjMap.get(s)!.add(t); adjMap.get(t)!.add(s);
       }
-      const visibleNodes = new Set<string>([focusNode]);
-      // 1° livello
-      adjMap.get(focusNode)?.forEach(n => visibleNodes.add(n));
-      // 2° livello
+      const visible = new Set<string>([focusNode]);
+      adjMap.get(focusNode)?.forEach(n => visible.add(n));
       const firstLevel = [...(adjMap.get(focusNode) || [])];
-      for (const n of firstLevel) {
-        adjMap.get(n)?.forEach(m => visibleNodes.add(m));
-      }
-      // Filtra nodi e links
-      const filteredNodes = [...nodeMap.values()].filter(n => visibleNodes.has(n.id));
-      const filteredLinks = links.filter(l => {
-        const s = typeof l.source === "object" ? l.source.id : l.source;
-        const t = typeof l.target === "object" ? l.target.id : l.target;
-        return visibleNodes.has(s) && visibleNodes.has(t);
-      });
-      return { nodes: filteredNodes, links: filteredLinks };
+      for (const n of firstLevel) { adjMap.get(n)?.forEach(m => visible.add(m)); }
+      return {
+        nodes: [...nodeMap.values()].filter(n => visible.has(n.id)),
+        links: links.filter(l => {
+          const s = typeof l.source === "object" ? l.source.id : l.source;
+          const t = typeof l.target === "object" ? l.target.id : l.target;
+          return visible.has(s) && visible.has(t);
+        }),
+      };
     }
-
     return { nodes: [...nodeMap.values()], links };
   }, [ix, hideTypes, hideKinds, inTime, focusNode]);
 
@@ -258,7 +186,6 @@ export default function Grafo() {
 
   const selDetail = useMemo(() => {
     if (!sel) return null;
-    // Se si è cliccato su un arco (link), mostra info sulla connessione
     if (sel.etype === "link") {
       const sNode = typeof sel.linkSource === "object" ? sel.linkSource : graph.nodes.find(n => n.id === sel.linkSource);
       const tNode = typeof sel.linkTarget === "object" ? sel.linkTarget : graph.nodes.find(n => n.id === sel.linkTarget);
@@ -278,7 +205,7 @@ export default function Grafo() {
       }
     })();
     return { conns, ent };
-  }, [sel, ix]);
+  }, [sel, ix, graph.nodes]);
 
   // ---- 3D: luci forti su fondo chiaro + sprite text scuri --------------------
   const lit = useRef(false);
@@ -529,178 +456,133 @@ export default function Grafo() {
   return (
     <div className="wrap page" style={{ paddingBottom: 24 }}>
       <div className="page-head">
-        <div className="page-eyebrow"><span className="eyebrow">Rete neurale</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Rete neurale <span style={{ fontSize: 9, fontWeight: 700, color: "var(--ink-dim)", opacity: 0.5, textTransform: "lowercase", letterSpacing: "0.02em" }}>(beta)</span></span></div>
         <h1 className="page-title">Il grafo delle interconnessioni</h1>
-        <p className="page-lead">Ogni nodo è un'entità, ogni filo un legame documentato: influenze, rielaborazioni, rapporti maestro-allievo, committenze. Muoviti nello spazio in 3D, passa il mouse su un nodo per accenderne le connessioni, clicca per i dettagli. Lo slider temporale filtra la rete.</p>
+        <p className="page-lead">Ogni nodo è un'entità, ogni filo un legame documentato: influenze, rielaborazioni, rapporti maestro-allievo, committenze. Clicca su un nodo per i dettagli e le sue connessioni, clicca su un arco per vedere il tipo di legame. Lo slider temporale filtra la rete.</p>
       </div>
       <div className="page-rule" />
 
+      {/* Barra superiore: mode toggle + ricerca */}
       <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 16, alignItems: "center" }}>
         {modeToggle}
-        {focusNode && (
-          <span className="faint" style={{ fontSize: 12.5 }}>
-            Grafo filtrato: {graph.nodes.length} nodi, {graph.links.length} connessioni
-            <button onClick={handleClearSearch} className="btn ghost sm" style={{ marginLeft: 8, fontSize: 11, padding: "2px 8px" }}>Mostra tutto</button>
-          </span>
-        )}
-        {!focusNode && (
-          <span className="faint" style={{ fontSize: 12.5 }}>Cerca nel pannello a destra per filtrare la rete.</span>
-        )}
-      </div>
-
-      <Fullscreen title="Rete delle connessioni" controls={fsControls} onChange={setIsFull}>
-        <div className="gf-inner">
-          {renderGraph(false)}
-
-        <div className="gf-side">
-          {/* Pannello ricerca — stile Mappa */}
-          <div className="panel" style={{ marginBottom: 12 }}>
-            <div className="panel-title">Cerca</div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
-              placeholder="Cerca opera, artista, luogo…"
-              style={{
-                width: "100%", padding: "7px 10px", marginBottom: 10,
-                border: "1px solid var(--line)", borderRadius: 6,
-                background: "var(--bg)", color: "var(--ink)",
-                fontSize: 13, fontFamily: "inherit",
-              }}
-            />
-            <div style={{ maxHeight: 280, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
-              {searchQuery.trim() && searchResults.length === 0 && (
-                <div style={{ padding: "12px 0", textAlign: "center", color: "var(--ink-dim)", fontSize: 13 }}>
-                  Nessun risultato per "{searchQuery}".
-                </div>
-              )}
+        {/* Ricerca globale — stile Mappa */}
+        <div style={{ position: "relative", flex: "1 1 300px", maxWidth: 400 }}>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => handleSearch(e.target.value)}
+            placeholder="Cerca opera, artista, luogo, periodo…"
+            style={{
+              width: "100%", padding: "7px 10px",
+              border: "1px solid var(--line)", borderRadius: 6,
+              background: "var(--bg)", color: "var(--ink)",
+              fontSize: 13, fontFamily: "inherit",
+            }}
+          />
+          {searchResults.length > 0 && searchQuery.trim() && (
+            <div style={{
+              position: "absolute", top: "100%", left: 0, right: 0,
+              background: "var(--bg)", border: "1px solid var(--line)",
+              borderRadius: 6, boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+              maxHeight: 280, overflowY: "auto", zIndex: 200, marginTop: 4,
+            }}>
               {searchResults.map((r) => (
                 <button
                   key={`${r.type}:${r.id}`}
                   onClick={() => handleSelectResult(r)}
                   style={{
                     display: "flex", alignItems: "center", gap: 8,
-                    width: "100%", padding: "8px 4px",
+                    width: "100%", padding: "8px 10px",
                     border: 0, borderBottom: "1px solid var(--line-soft)",
                     background: "transparent", cursor: "pointer",
                     textAlign: "left", fontFamily: "inherit",
                   }}
                 >
-                  <span style={{
-                    width: 8, height: 8, borderRadius: "50%",
-                    background: NODE_HEX[r.type] || "#b88a2e",
-                    flexShrink: 0,
-                  }} />
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: NODE_HEX[r.type] || "#b88a2e", flexShrink: 0 }} />
                   <span style={{ flex: 1, minWidth: 0 }}>
                     <span style={{ fontSize: 13, fontWeight: 500, color: "var(--ink)", display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.label}</span>
                     <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>
-                      {r.subtitle ? `${r.subtitle} · ` : ""}
-                      {r.type === "city" ? "Luogo" : ENTITY_LABEL[r.type as EntityType]}
+                      {r.subtitle ? `${r.subtitle} · ` : ""}{r.type === "city" ? "Luogo" : ENTITY_LABEL[r.type as EntityType]}
                     </span>
                   </span>
                 </button>
               ))}
             </div>
-          </div>
+          )}
+          {searchQuery.trim() && searchResults.length === 0 && (
+            <div style={{ position: "absolute", top: "100%", left: 0, right: 0, background: "var(--bg)", border: "1px solid var(--line)", borderRadius: 6, marginTop: 4, padding: "10px 12px", fontSize: 13, color: "var(--ink-dim)", zIndex: 200 }}>
+              Nessun risultato per "{searchQuery}".
+            </div>
+          )}
+        </div>
+        {focusNode && (
+          <button onClick={handleClearSearch} className="btn ghost sm" style={{ fontSize: 12 }}>
+            ← Mostra tutto
+          </button>
+        )}
+      </div>
 
-          {/* pannello filtri in stile "Livelli" (riorganizzazione richiesta) */}
-          <div className="panel gf-filters" data-testid="gf-filters">
-            <div className="panel-title" style={{ fontSize: 17, marginBottom: 10 }}>Livelli</div>
-            {[...NODE_TYPES, "city" as const].map((t) => {
-              const off = hideTypes.has(t);
-              return (
-                <button key={t} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideTypes, t, setHideTypes)} data-testid={`gf-type-${t}`}>
-                  <span className="dot" style={{ background: NODE_HEX[t] }} />
-                  <span className="gf-frow-lab">{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]}</span>
-                  <span className="gf-frow-n tnum">{counts[t] ?? 0}</span>
-                  <EyeIcon off={off} />
-                </button>
-              );
-            })}
-            <div className="panel-title" style={{ fontSize: 17, margin: "16px 0 10px" }}>Legami</div>
-            {KINDS.map((k) => {
-              const off = hideKinds.has(k);
-              return (
-                <button key={k} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideKinds, k, setHideKinds)} data-testid={`gf-kind-${k}`}>
-                  <span className="dot" style={{ background: KIND_COLOR[k] }} />
-                  <span className="gf-frow-lab">{KIND_LABEL[k]}</span>
-                  <EyeIcon off={off} />
-                </button>
-              );
-            })}
-          </div>
+      {/* Layout: grafo a sinistra + pannello dettagli a destra */}
+      <Fullscreen title="Rete delle connessioni" controls={fsControls} onChange={setIsFull}>
+        <div className="gf-inner">
+          {renderGraph(false)}
 
+        {/* Pannello destro: dettagli nodo/connessione */}
+        <div className="gf-side">
           {sel && selDetail ? (
             <div className="panel" data-testid="gf-panel">
-              {/* === Pannello per CLICK SU ARCO (connessione) === */}
+              {/* === Se si è cliccato su un ARCO === */}
               {sel.etype === "link" && selDetail.isLink && selDetail.sNode && selDetail.tNode ? (
                 <>
-                  <div className="eyebrow" style={{ color: KIND_COLOR[selDetail.kind] || "#b88a2e", marginBottom: 8 }}>
-                    Connessione
-                  </div>
-                  <span className="tag" style={{ marginBottom: 12, color: KIND_COLOR[selDetail.kind] || "#b88a2e", borderColor: "var(--line)" }}>
+                  <div className="eyebrow" style={{ color: KIND_COLOR[selDetail.kind] || "#b88a2e", marginBottom: 8 }}>Connessione</div>
+                  <span className="tag" style={{ marginBottom: 10, color: KIND_COLOR[selDetail.kind] || "#b88a2e", borderColor: "var(--line)" }}>
                     {KIND_LABEL[selDetail.kind as ConnKind] || selDetail.kind}
                   </span>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, margin: "10px 0", flexWrap: "wrap" }}>
-                    <span style={{
-                      display: "inline-flex", alignItems: "center", gap: 6,
-                      padding: "6px 10px", borderRadius: 6,
-                      background: "var(--bg-2)", fontSize: 13, fontWeight: 500,
-                    }}>
-                      <span style={{ width: 8, height: 8, borderRadius: "50%", background: NODE_HEX[selDetail.sNode.etype] || "#b88a2e" }} />
-                      {selDetail.sNode.label}
-                    </span>
-                    <span style={{ color: "var(--ink-dim)", fontSize: 16 }}>→</span>
-                    <span style={{
-                      display: "inline-flex", alignItems: "center", gap: 6,
-                      padding: "6px 10px", borderRadius: 6,
-                      background: "var(--bg-2)", fontSize: 13, fontWeight: 500,
-                    }}>
-                      <span style={{ width: 8, height: 8, borderRadius: "50%", background: NODE_HEX[selDetail.tNode.etype] || "#b88a2e" }} />
-                      {selDetail.tNode.label}
-                    </span>
-                  </div>
                   {selDetail.desc && (
-                    <p className="muted" style={{ fontSize: 13, lineHeight: 1.6, margin: "8px 0" }}>{selDetail.desc}</p>
+                    <p className="muted" style={{ fontSize: 13, lineHeight: 1.6, margin: "8px 0", fontStyle: "italic" }}>
+                      "{selDetail.desc}"
+                    </p>
                   )}
-                  <div style={{ display: "flex", gap: 6, marginTop: 10, flexWrap: "wrap" }}>
-                    <button
-                      className="btn sm ghost"
-                      onClick={() => setSel(selDetail.sNode)}
-                      style={{ fontSize: 11, padding: "5px 10px" }}
-                    >
-                      Vai a: {selDetail.sNode.label}
-                    </button>
-                    <button
-                      className="btn sm ghost"
-                      onClick={() => setSel(selDetail.tNode)}
-                      style={{ fontSize: 11, padding: "5px 10px" }}
-                    >
-                      Vai a: {selDetail.tNode.label}
-                    </button>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8, margin: "10px 0" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px", background: "var(--bg-2)", borderRadius: 6, border: "1px solid var(--line-soft)" }}>
+                      <span style={{ width: 10, height: 10, borderRadius: "50%", background: NODE_HEX[selDetail.sNode.etype] || "#b88a2e", flexShrink: 0 }} />
+                      <span style={{ fontSize: 13, fontWeight: 500 }}>{selDetail.sNode.label}</span>
+                      <span style={{ fontSize: 10, color: "var(--ink-dim)", marginLeft: "auto" }}>{selDetail.sNode.etype === "city" ? "Luogo" : ENTITY_LABEL[selDetail.sNode.etype as EntityType]}</span>
+                    </div>
+                    <div style={{ textAlign: "center", color: "var(--ink-dim)", fontSize: 14 }}>↓</div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px", background: "var(--bg-2)", borderRadius: 6, border: "1px solid var(--line-soft)" }}>
+                      <span style={{ width: 10, height: 10, borderRadius: "50%", background: NODE_HEX[selDetail.tNode.etype] || "#b88a2e", flexShrink: 0 }} />
+                      <span style={{ fontSize: 13, fontWeight: 500 }}>{selDetail.tNode.label}</span>
+                      <span style={{ fontSize: 10, color: "var(--ink-dim)", marginLeft: "auto" }}>{selDetail.tNode.etype === "city" ? "Luogo" : ENTITY_LABEL[selDetail.tNode.etype as EntityType]}</span>
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", gap: 6, marginTop: 10 }}>
+                    {(["artist", "work", "period", "term", "technique"].includes(selDetail.sNode.etype)) && (
+                      <Link className="btn gold sm" to={entityHref(selDetail.sNode.etype, selDetail.sNode.eid)} style={{ fontSize: 12 }}>Apri {selDetail.sNode.label} →</Link>
+                    )}
+                    {(["artist", "work", "period", "term", "technique"].includes(selDetail.tNode.etype)) && (
+                      <Link className="btn gold sm" to={entityHref(selDetail.tNode.etype, selDetail.tNode.eid)} style={{ fontSize: 12 }}>Apri {selDetail.tNode.label} →</Link>
+                    )}
                   </div>
                 </>
               ) : (
               <>
+              {/* === Se si è cliccato su un NODO === */}
               <div className="eyebrow" style={{ color: sel.etype === "city" ? NODE_HEX.city : ENTITY_COLOR[sel.etype as EntityType], marginBottom: 8 }}>{sel.etype === "city" ? "Luogo" : ENTITY_LABEL[sel.etype as EntityType]}</div>
               <h3 className="panel-title" style={{ marginBottom: 8 }}>{sel.label}</h3>
               {sel.etype === "city" && (() => {
                 const cityWorks = ix.ds.works.filter((w) => w.location_city === sel.eid && workIn(w));
                 return (
                   <>
-                    <div className="faint tnum" style={{ fontSize: 12, marginBottom: 10 }}>{cityWorks.length} opere conservate qui (nell'intervallo attivo)</div>
-                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
-                      <Link className="btn gold sm" to={`/luogo/${encodeURIComponent(sel.eid)}`} data-testid="gf-city-page">Apri la scheda del luogo →</Link>
-                      <Link className="btn sm ghost" to="/mappa" data-testid="gf-city-map">Mappa →</Link>
-                    </div>
+                    <div className="faint tnum" style={{ fontSize: 12, marginBottom: 10 }}>{cityWorks.length} opere conservate qui</div>
+                    <Link className="btn gold sm" to={`/luogo/${encodeURIComponent(sel.eid)}`} style={{ marginBottom: 12 }}>Apri il luogo →</Link>
                     <div className="smallcaps" style={{ margin: "4px 0 8px" }}>Opere</div>
-                    <div style={{ maxHeight: 300, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
-                      {cityWorks.slice(0, 40).map((w) => (
-                        <div key={w.id} style={{ padding: "7px 0", borderBottom: "1px solid var(--line-soft)", fontSize: 13 }}>
+                    <div style={{ maxHeight: 200, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
+                      {cityWorks.slice(0, 30).map((w) => (
+                        <div key={w.id} style={{ padding: "6px 0", borderBottom: "1px solid var(--line-soft)", fontSize: 13 }}>
                           <Link className="tlink" to={`/opera/${w.id}`}>{w.title}</Link>
                         </div>
                       ))}
-                      {cityWorks.length > 40 && <div className="faint" style={{ padding: "7px 0", fontSize: 12 }}>… e altre {cityWorks.length - 40}</div>}
                     </div>
                   </>
                 );
@@ -710,32 +592,43 @@ export default function Grafo() {
                   <WorkImage work={selDetail.ent} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </Link>
               )}
-              {selDetail.ent?.summary && <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.6, marginBottom: 6 }}>{selDetail.ent.summary.slice(0, 180)}{selDetail.ent.summary.length > 180 ? "…" : ""}</p>}
-              {selDetail.ent?.bio && <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.6, marginBottom: 6 }}>{selDetail.ent.bio.slice(0, 180)}{selDetail.ent.bio.length > 180 ? "…" : ""}</p>}
-              {selDetail.ent?.definition && <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.6, marginBottom: 6 }}>{selDetail.ent.definition}</p>}
-              <div className="faint tnum" style={{ fontSize: 12, marginBottom: 14 }}>{sel.deg} connessioni nel grafo</div>
-
+              {selDetail.ent?.summary && <p className="muted" style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 6 }}>{selDetail.ent.summary.slice(0, 160)}{selDetail.ent.summary.length > 160 ? "…" : ""}</p>}
+              {selDetail.ent?.bio && <p className="muted" style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 6 }}>{selDetail.ent.bio.slice(0, 160)}{selDetail.ent.bio.length > 160 ? "…" : ""}</p>}
+              {selDetail.ent?.definition && <p className="muted" style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 6 }}>{selDetail.ent.definition}</p>}
+              <div className="faint tnum" style={{ fontSize: 12, marginBottom: 10 }}>{sel.deg} connessioni nel grafo</div>
               {(["artist", "work", "period", "term", "technique"].includes(sel.etype)) && (
                 <Link className="btn gold sm" style={{ marginBottom: 14 }} to={entityHref(sel.etype, sel.eid)} data-testid="gf-open">Apri la scheda →</Link>
               )}
 
+              {/* === Lista connessioni con motivo e tasto Apri === */}
               {selDetail.conns.length > 0 && (
                 <>
-                  <div className="smallcaps" style={{ margin: "8px 0 8px" }}>Connessioni</div>
-                  <div style={{ maxHeight: 280, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
+                  <div className="smallcaps" style={{ margin: "8px 0 8px" }}>Connessioni ({selDetail.conns.length})</div>
+                  <div style={{ maxHeight: 320, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
                     {selDetail.conns.slice(0, 30).map((c) => {
                       const otherIsSource = !(c.source_type === sel.etype && c.source_id === sel.eid);
                       const ot = otherIsSource ? c.source_type : c.target_type;
                       const oid = otherIsSource ? c.source_id : c.target_id;
                       return (
-                        <div key={c.id} style={{ padding: "8px 0", borderBottom: "1px solid var(--line-soft)" }}>
-                          <span className="tag" style={{ marginBottom: 4, color: KIND_COLOR[c.kind], borderColor: "var(--line)" }}>{KIND_LABEL[c.kind] ?? c.kind}</span>
-                          <div style={{ fontSize: 13 }}>
-                            <Link className="tlink" to={entityHref(ot, oid)} onClick={() => { const k = `${ot}:${oid}`; const nn = graph.nodes.find((x) => x.id === k); if (nn) setSel(nn); }}>
-                              {entityLabel(ix, ot, oid)}
-                            </Link>
-                            <span className="faint" style={{ fontSize: 11 }}> · {ENTITY_LABEL[ot]}</span>
+                        <div key={c.id} style={{ padding: "10px 0", borderBottom: "1px solid var(--line-soft)" }}>
+                          <span className="tag" style={{ marginBottom: 4, color: KIND_COLOR[c.kind], borderColor: "var(--line)", fontSize: 10 }}>
+                            {KIND_LABEL[c.kind] ?? c.kind}
+                          </span>
+                          <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 2 }}>
+                            {entityLabel(ix, ot, oid)}
                           </div>
+                          <div className="faint" style={{ fontSize: 11, marginBottom: 4 }}>{ENTITY_LABEL[ot]}</div>
+                          {c.description && (
+                            <div style={{ fontSize: 12, color: "var(--ink-soft)", lineHeight: 1.4, marginBottom: 6, fontStyle: "italic" }}>
+                              {c.description}
+                            </div>
+                          )}
+                          {(["artist", "work", "period", "term", "technique"].includes(ot)) && (
+                            <Link className="tlink" to={entityHref(ot, oid)} onClick={() => { const k = `${ot}:${oid}`; const nn = graph.nodes.find((x) => x.id === k); if (nn) setSel(nn); }}
+                              style={{ fontSize: 12, fontWeight: 600 }}>
+                              Apri scheda →
+                            </Link>
+                          )}
                         </div>
                       );
                     })}
@@ -747,7 +640,7 @@ export default function Grafo() {
             </div>
           ) : (
             <div className="panel gf-placeholder" style={{ textAlign: "center", color: "var(--ink-dim)", fontSize: 14 }}>
-              Seleziona un nodo per i dettagli.
+              Clicca un nodo o una connessione per i dettagli.
               <div style={{ marginTop: 14 }}>
                 <button className="btn sm ghost" onClick={restartFocus}>Riordina la rete</button>
               </div>
@@ -756,6 +649,44 @@ export default function Grafo() {
         </div>
         </div>
       </Fullscreen>
+
+      {/* === Filtri in orizzontale sotto il grafo === */}
+      <div style={{
+        display: "flex", flexWrap: "wrap", gap: 8, marginTop: 16,
+        padding: "12px 16px", background: "var(--bg-2)",
+        borderRadius: 10, border: "1px solid var(--line)",
+      }}>
+        <div className="smallcaps" style={{ marginRight: 8, alignSelf: "center" }}>Livelli:</div>
+        {[...NODE_TYPES, "city" as const].map((t) => {
+          const off = hideTypes.has(t);
+          return (
+            <button key={t} className={`chip ${off ? "" : "active"}`} onClick={() => toggle(hideTypes, t, setHideTypes)}
+              style={{
+                fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1,
+                cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999,
+                background: off ? "transparent" : "var(--bg)",
+              }}>
+              <span className="dot" style={{ background: NODE_HEX[t], marginRight: 4 }} />
+              {t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]} ({counts[t] ?? 0})
+            </button>
+          );
+        })}
+        <div className="smallcaps" style={{ margin: "0 8px 0 16px", alignSelf: "center" }}>Legami:</div>
+        {KINDS.map((k) => {
+          const off = hideKinds.has(k);
+          return (
+            <button key={k} className={`chip ${off ? "" : "active"}`} onClick={() => toggle(hideKinds, k, setHideKinds)}
+              style={{
+                fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1,
+                cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999,
+                background: off ? "transparent" : "var(--bg)",
+              }}>
+              <span className="dot" style={{ background: KIND_COLOR[k], marginRight: 4 }} />
+              {KIND_LABEL[k]}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -132,7 +132,6 @@ export default function SuggerisciModifica() {
     }
     setOk(true);
     setProposedValue(""); setReason("");
-    window.dispatchEvent(new Event("atlante:suggestions-changed"));
   };
 
   return (
