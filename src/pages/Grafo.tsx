@@ -846,9 +846,10 @@ export default function Grafo() {
         {/* Riga 1: Livelli */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
           <div className="smallcaps" style={{ marginRight: 8 }}>Livelli:</div>
-          <div style={{ display: "inline-flex", gap: 4, marginRight: 8 }}>
-            <button onClick={selectAllTypes} style={{ fontSize: 10, padding: "3px 9px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Tutti</button>
-            <button onClick={selectNoneTypes} style={{ fontSize: 10, padding: "3px 9px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Nessuno</button>
+          <div style={{ display: "inline-flex", gap: 6, marginRight: 8, alignItems: "center" }}>
+            <button onClick={selectAllTypes} className="gf-quick-toggle" title="Mostra tutti i livelli">Tutti</button>
+            <span style={{ color: "var(--ink-faint)", fontSize: 10 }}>·</span>
+            <button onClick={selectNoneTypes} className="gf-quick-toggle" title="Nascondi tutti i livelli">Nessuno</button>
           </div>
           {[...NODE_TYPES, "city" as const].map((t) => {
             const off = hideTypes.has(t);
@@ -862,9 +863,10 @@ export default function Grafo() {
         {/* Riga 2: Legami — include "Luogo" (città ↔ opera) oltre ai KINDS standard */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
           <div className="smallcaps" style={{ marginRight: 8 }}>Legami:</div>
-          <div style={{ display: "inline-flex", gap: 4, marginRight: 8 }}>
-            <button onClick={selectAllKinds} style={{ fontSize: 10, padding: "3px 9px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Tutti</button>
-            <button onClick={selectNoneKinds} style={{ fontSize: 10, padding: "3px 9px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Nessuno</button>
+          <div style={{ display: "inline-flex", gap: 6, marginRight: 8, alignItems: "center" }}>
+            <button onClick={selectAllKinds} className="gf-quick-toggle" title="Mostra tutti i legami">Tutti</button>
+            <span style={{ color: "var(--ink-faint)", fontSize: 10 }}>·</span>
+            <button onClick={selectNoneKinds} className="gf-quick-toggle" title="Nascondi tutti i legami">Nessuno</button>
           </div>
           {[...KINDS, "luogo" as const].map((k) => {
             const off = hideKinds.has(k);

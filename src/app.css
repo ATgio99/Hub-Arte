@@ -445,6 +445,37 @@ a.hero-stat:hover { background: var(--bg-2); }
 /* Filtri orizzontali sotto il grafo: nascosti in fullscreen (sono dentro la colonna destra) */
 .fs-host:fullscreen .gf-bottom-filters, .fs-host.is-full .gf-bottom-filters { display: none !important; }
 
+/* Tasti "Tutti / Nessuno" nella barra filtri in basso (modalità non-fullscreen).
+   Stile "text link" minimal — meno appariscenti dei tasti filtro veri e propri,
+   per non rubare attenzione visiva. In fullscreen (sideFiltersBlock) i tasti
+   mantengono lo stile a bottone perché c'è più spazio e si capisce meglio
+   che sono azioni rapide. */
+.gf-quick-toggle {
+  background: transparent;
+  border: 0;
+  padding: 1px 2px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--ink-dim);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: color .15s, text-decoration-color .15s;
+  font-family: inherit;
+  line-height: 1.4;
+}
+.gf-quick-toggle:hover {
+  color: var(--gold-deep);
+  text-decoration-color: var(--gold);
+}
+.gf-quick-toggle:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 /* ---------- dossier periodo (anteprima timeline + memoranda scheda) ---------- */
 .tl-dossier { overflow: hidden; }
 .dossier { border: 1px solid var(--line); background: var(--bg-1); border-radius: 10px; padding: 20px 22px; margin-top: 14px; }

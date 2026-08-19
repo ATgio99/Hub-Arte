@@ -437,9 +437,44 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
   const [showEvents, setShowEvents] = useState(true);
   const [inFull, setInFull] = useState(false);
   const [showArtists, setShowArtists] = useState(false);
+  const [searchQ, setSearchQ] = useState("");
 
   const allPeriods = ix.ds.periods;
   const periods = useMemo(() => allPeriods.filter(periodIn), [allPeriods, periodIn]);
+
+  // === Ricerca globale ===
+  // Cerca tra periodi (se vista periodi) o artisti (se vista artisti).
+  // Risultati mostrati in un dropdown sotto la barra, come nel grafo.
+  const searchResults = useMemo(() => {
+    const q = searchQ.trim().toLowerCase();
+    if (!q) return [];
+    const results: { type: "period" | "artist"; id: string; label: string; subtitle?: string }[] = [];
+    if (showArtists) {
+      for (const a of ix.ds.artists) {
+        if (
+          a.name.toLowerCase().includes(q) ||
+          a.id.toLowerCase().includes(q) ||
+          a.aka.some((ak) => ak.toLowerCase().includes(q))
+        ) {
+          results.push({ type: "artist", id: a.id, label: a.name, subtitle: a.role || undefined });
+          if (results.length >= 20) break;
+        }
+      }
+    } else {
+      for (const p of ix.ds.periods) {
+        if (p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q)) {
+          results.push({
+            type: "period",
+            id: p.id,
+            label: p.name,
+            subtitle: `${fmtYear(p.year_start)}–${fmtYear(p.year_end)}`,
+          });
+          if (results.length >= 20) break;
+        }
+      }
+    }
+    return results;
+  }, [searchQ, showArtists, ix]);
 
   const legendEntries = showArtists
     ? Object.entries(ARTIST_CAT_COLOR).filter(([c]) => layoutArtistLanes(ix.ds.artists).categories.includes(c))
@@ -458,10 +493,76 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
     </span>
   );
 
-  // Colonna destra in fullscreen: vista, tempo, filtri vista (flussi/eventi/artisti), legenda.
+  // Barra di ricerca — riusata sia in modalità normale (sopra la timeline)
+  // che in fullscreen (dentro il sideFiltersBlock della colonna destra).
+  const searchBar = (
+    <div style={{ position: "relative" }}>
+      <input
+        type="text"
+        value={searchQ}
+        onChange={(e) => setSearchQ(e.target.value)}
+        placeholder={showArtists ? "Cerca artista…" : "Cerca periodo…"}
+        data-testid="tl-search"
+        style={{
+          width: "100%", padding: "8px 12px",
+          border: "1px solid var(--line)", borderRadius: 6,
+          background: "var(--bg)", color: "var(--ink)",
+          fontSize: 13, fontFamily: "inherit",
+        }}
+      />
+      {searchQ.trim() && (
+        <div style={{
+          position: "absolute", top: "100%", left: 0, right: 0, zIndex: 50,
+          background: "var(--bg-1)", border: "1px solid var(--line)",
+          borderRadius: "0 0 8px 8px", boxShadow: "0 8px 24px rgba(0,0,0,.12)",
+          maxHeight: 320, overflowY: "auto",
+        }}>
+          {searchResults.length === 0 ? (
+            <div style={{ padding: "12px 14px", color: "var(--ink-dim)", fontSize: 13 }}>
+              Nessun risultato per "{searchQ}".
+            </div>
+          ) : (
+            searchResults.map((r) => (
+              <Link
+                key={`${r.type}:${r.id}`}
+                to={r.type === "period" ? `/periodo/${r.id}` : `/artista/${r.id}`}
+                onClick={() => setSearchQ("")}
+                style={{
+                  display: "flex", alignItems: "center", gap: 8,
+                  padding: "8px 12px", borderBottom: "1px solid var(--line-soft)",
+                  textDecoration: "none", color: "var(--ink)",
+                }}
+              >
+                <span style={{
+                  width: 8, height: 8, borderRadius: "50%",
+                  background: r.type === "period" ? "#b88a2e" : "#b9692c",
+                  flexShrink: 0,
+                }} />
+                <span style={{ flex: 1, minWidth: 0 }}>
+                  <span style={{ fontSize: 13, fontWeight: 500, display: "block" }}>{r.label}</span>
+                  {r.subtitle && (
+                    <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{r.subtitle}</span>
+                  )}
+                </span>
+                <span style={{ fontSize: 10, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  {r.type === "period" ? "Periodo" : "Autore"}
+                </span>
+              </Link>
+            ))
+          )}
+        </div>
+      )}
+    </div>
+  );
+
+  // Colonna destra in fullscreen: ricerca, vista, tempo, filtri vista, legenda.
   // Visibile solo in fullscreen, come sideFiltersBlock nel grafo.
   const sideFiltersBlock = (
     <div className="panel gf-fs-only" data-testid="tl-fs-filters">
+      <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Cerca</div>
+      <div style={{ marginBottom: 14 }}>
+        {searchBar}
+      </div>
       <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Tempo</div>
       <div style={{ margin: "0 -4px 14px" }}>
         <TimeRangeSlider compact />
@@ -485,19 +586,24 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
 
   return (
     <>
-      <div className="filterbar" style={{ marginBottom: 14, gap: 14 }}>
+      {/* Barra superiore: toggle vista + ricerca (in modalità normale) */}
+      <div className="filterbar" style={{ marginBottom: 14, gap: 14, alignItems: "center" }}>
         <ToggleChip active={showFlows} onClick={() => setShowFlows((v) => !v)} testId="tl-flows">↝ flussi</ToggleChip>
         <ToggleChip active={showEvents} onClick={() => setShowEvents((v) => !v)} testId="tl-events">◆ eventi</ToggleChip>
         <ToggleChip active={showArtists} onClick={() => setShowArtists((v) => !v)} testId="tl-artists">👤 artisti</ToggleChip>
-        <div className="filter-group" style={{ marginLeft: "auto" }}>
-          {legendEntries.map(([t, c]) => (
-            <span key={t} className="muted" style={{ fontSize: 11.5, display: "inline-flex", alignItems: "center", gap: 5 }}>
-              <span className="dot" style={{ background: c }} />{t}
-            </span>
-          ))}
+        <div style={{ flex: "1 1 200px", maxWidth: 320, marginLeft: "auto" }}>
+          {/* Barra di ricerca — visibile in modalità normale.
+              In fullscreen è nel sideFiltersBlock, ma la mostriamo comunque
+              anche qui per coerenza (come nel grafo). */}
+          {!inFull && searchBar}
         </div>
       </div>
-      <div style={{ marginBottom: 12 }}>
+      <div className="filter-group" style={{ marginBottom: 12, display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+        {legendEntries.map(([t, c]) => (
+          <span key={t} className="muted" style={{ fontSize: 11.5, display: "inline-flex", alignItems: "center", gap: 5 }}>
+            <span className="dot" style={{ background: c }} />{t}
+          </span>
+        ))}
         <FilterNote total={showArtists ? ix.ds.artists.length : allPeriods.length} shown={showArtists ? ix.ds.artists.filter((a) => a.birth != null).length : periods.length} noun={showArtists ? "artisti" : "periodi"} />
       </div>
 
