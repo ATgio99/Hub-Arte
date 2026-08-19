@@ -86,10 +86,10 @@ export function clearLastArtistiSearch(): void {
 }
 
 // --- Ultima ricerca nel grafo Rete ---
-// Salviamo il focusNode (formato "type:id") e il searchQuery testuale.
-// All'apertura della pagina Rete, questi valori vengono ripristinati così
-// l'utente ritrova la sua ultima ricerca. Doppio click su "Rete" nel menu
-// cancella tutto e resetta il grafo.
+// Salviamo il focusNode (formato "type:id"), il searchQuery testuale, i filtri
+// attivi (tipi/legami nascosti) e il nodo selezionato. All'apertura della
+// pagina Rete, questi valori vengono ripristinati così l'utente ritrova la
+// sua ultima sessione. Doppio click su "Rete" nel menu cancella tutto.
 export interface ReteSearchState {
   focusNode: string | null;
   searchQuery: string;
