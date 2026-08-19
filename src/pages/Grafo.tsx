@@ -160,34 +160,72 @@ export default function Grafo() {
 
   // === Memoria ultima ricerca nel grafo ===
   // All'apertura della pagina, ripristina l'ultima ricerca salvata
-  // (focusNode + searchQuery) se esiste.
+  // (focusNode + searchQuery + filtri + selezione) se esiste.
   const [restored, setRestored] = useState(false);
   useEffect(() => {
     if (restored) return;
     const last = getLastRete();
-    if (last && last.focusNode) {
-      setFocusNode(last.focusNode);
-      setSearchQuery(last.searchQuery || "");
+    if (last) {
+      if (last.focusNode) {
+        setFocusNode(last.focusNode);
+        setSearchQuery(last.searchQuery || "");
+      }
+      // Ripristina filtri livelli/legami
+      if (last.hideTypes && last.hideTypes.length > 0) {
+        setHideTypes(new Set(last.hideTypes));
+      }
+      if (last.hideKinds && last.hideKinds.length > 0) {
+        setHideKinds(new Set(last.hideKinds) as Set<ConnKind>);
+      }
     }
     setRestored(true);
   }, [restored]);
 
-  // Quando focusNode o searchQuery cambiano (dopo il ripristino iniziale),
-  // salva nello storage per ritrovarli alla prossima apertura.
+  // Quando focusNode, searchQuery, filtri o selezione cambiano (dopo il
+  // ripristino iniziale), salva nello storage per ritrovarli alla prossima apertura.
+  // Nota: NON salviamo quando non c'è focusNode E non ci sono filtri attivi E
+  // non c'è selezione — in quel caso cancelliamo lo storage (così il "clear"
+  // rimane pulito). Se però ci sono filtri o selezione ma niente focusNode,
+  // salviamo comunque (l'utente vuole mantenere i filtri).
   useEffect(() => {
     if (!restored) return;
-    // Se non c'è focusNode, non salviamo nulla (così il clear rimane "pulito")
-    if (focusNode) {
-      setLastRete({ focusNode, searchQuery });
+    const hasFilters = hideTypes.size > 0 || hideKinds.size > 0;
+    const hasSelection = sel != null;
+    if (focusNode || hasFilters || hasSelection) {
+      setLastRete({
+        focusNode,
+        searchQuery,
+        hideTypes: [...hideTypes],
+        hideKinds: [...hideKinds],
+        selId: sel ? sel.id : null,
+      });
     } else {
       clearLastRete();
     }
     // Notifica la sidebar di aggiornare l'etichetta "Continua"
     window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-  }, [focusNode, searchQuery, restored]);
+  }, [focusNode, searchQuery, hideTypes, hideKinds, sel, restored]);
+
+  // Ripristina la selezione (nodo cliccato) DOPO che il grafo è stato calcolato.
+  // Lo facciamo in un effetto separato perché `graph.nodes` dipende da filtri e
+  // focusNode, e vogliamo essere sicuri che il nodo esista ancora.
+  const [selRestored, setSelRestored] = useState(false);
+  useEffect(() => {
+    if (!restored || selRestored) return;
+    const last = getLastRete();
+    if (last?.selId) {
+      // Cerca il nodo nel grafo corrente. Se i filtri lo nascondono, non lo
+      // selezioniamo (evitiamo di mostrare un dettaglio orfano).
+      const node = graph.nodes.find((n: any) => n.id === last.selId);
+      if (node) {
+        setSel(node);
+      }
+    }
+    setSelRestored(true);
+  }, [restored, selRestored, graph.nodes]);
 
   // Ascolta il "doppio click su Rete" dalla sidebar: resetta il grafo
-  // (svuota focusNode + searchQuery + selezione). Quando l'utente è già
+  // (svuota focusNode + searchQuery + selezione + filtri). Quando l'utente è già
   // sulla pagina Rete e clicca di nuovo "Rete" nel menu, la sidebar
   // emette questo evento invece di fare una navigazione vera e propria.
   useEffect(() => {
@@ -196,6 +234,10 @@ export default function Grafo() {
       setSearchQuery("");
       setSearchResults([]);
       setSel(null);
+      setHideTypes(new Set());
+      setHideKinds(new Set());
+      setRestored(true);
+      setSelRestored(true);
       clearLastRete();
       window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
     };

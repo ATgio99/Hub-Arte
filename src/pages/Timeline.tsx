@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState, useCallback, useEffect, type ReactNode } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useData, useTimeRange } from "../lib/store";
 import { periodMidYear, fmtYear } from "../lib/data";
@@ -438,28 +438,9 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
   const [inFull, setInFull] = useState(false);
   const [showArtists, setShowArtists] = useState(false);
   const [searchQ, setSearchQ] = useState("");
-  // Filtri per tipo periodo (epoca/corrente/popolo) — solo nella vista periodi.
-  const [hideTypes, setHideTypes] = useState<Set<string>>(new Set());
-  // PID del periodo da evidenziare (pulse) dopo click su risultato di ricerca.
-  const [highlightPid, setHighlightPid] = useState<string | null>(null);
 
   const allPeriods = ix.ds.periods;
-  const periods = useMemo(() => allPeriods.filter((p) => periodIn(p) && !hideTypes.has(p.type)), [allPeriods, periodIn, hideTypes]);
-
-  // Conteggio periodi per tipo (per mostrare il numero accanto al filtro).
-  const typeCounts = useMemo(() => {
-    const c: Record<string, number> = { epoca: 0, corrente: 0, popolo: 0 };
-    for (const p of allPeriods) if (periodIn(p)) c[p.type] = (c[p.type] ?? 0) + 1;
-    return c;
-  }, [allPeriods, periodIn]);
-
-  const toggleType = (t: string) => {
-    setHideTypes((prev) => {
-      const n = new Set(prev);
-      n.has(t) ? n.delete(t) : n.add(t);
-      return n;
-    });
-  };
+  const periods = useMemo(() => allPeriods.filter(periodIn), [allPeriods, periodIn]);
 
   // === Ricerca globale ===
   // Cerca tra periodi (se vista periodi) o artisti (se vista artisti).
@@ -514,19 +495,6 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
 
   // Barra di ricerca — riusata sia in modalità normale (sopra la timeline)
   // che in fullscreen (dentro il sideFiltersBlock della colonna destra).
-  // Quando si clicca un risultato:
-  //  - periodo: imposta highlightPid per far pulsare la barra, NON naviga via
-  //  - artista: naviga alla scheda (come in Mappa/Rete)
-  const handleSelectResult = (r: { type: "period" | "artist"; id: string }) => {
-    setSearchQ("");
-    if (r.type === "period") {
-      setHighlightPid(r.id);
-      // Auto-reset dopo 2.5s (il pulse dura 2s)
-      setTimeout(() => setHighlightPid(null), 2500);
-    }
-    // Per gli artisti, il Link naviga automaticamente
-  };
-
   const searchBar = (
     <div style={{ position: "relative" }}>
       <input
@@ -554,60 +522,43 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
               Nessun risultato per "{searchQ}".
             </div>
           ) : (
-            searchResults.map((r) => {
-              if (r.type === "artist") {
-                return (
-                  <Link
-                    key={`${r.type}:${r.id}`}
-                    to={`/artista/${r.id}`}
-                    onClick={() => setSearchQ("")}
-                    style={{
-                      display: "flex", alignItems: "center", gap: 8,
-                      padding: "8px 12px", borderBottom: "1px solid var(--line-soft)",
-                      textDecoration: "none", color: "var(--ink)",
-                    }}
-                  >
-                    <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#b9692c", flexShrink: 0 }} />
-                    <span style={{ flex: 1, minWidth: 0 }}>
-                      <span style={{ fontSize: 13, fontWeight: 500, display: "block" }}>{r.label}</span>
-                      {r.subtitle && <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{r.subtitle}</span>}
-                    </span>
-                    <span style={{ fontSize: 10, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em" }}>Autore</span>
-                  </Link>
-                );
-              }
-              // Periodo: non naviga, imposta highlightPid per il pulse
-              return (
-                <button
-                  key={`${r.type}:${r.id}`}
-                  onClick={() => handleSelectResult(r)}
-                  style={{
-                    display: "flex", alignItems: "center", gap: 8, width: "100%",
-                    padding: "8px 12px", borderBottom: "1px solid var(--line-soft)",
-                    background: "transparent", border: 0, borderBottomWidth: 1,
-                    cursor: "pointer", textAlign: "left", fontFamily: "inherit",
-                    color: "var(--ink)",
-                  }}
-                >
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#b88a2e", flexShrink: 0 }} />
-                  <span style={{ flex: 1, minWidth: 0 }}>
-                    <span style={{ fontSize: 13, fontWeight: 500, display: "block" }}>{r.label}</span>
-                    {r.subtitle && <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{r.subtitle}</span>}
-                  </span>
-                  <span style={{ fontSize: 10, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em" }}>Periodo</span>
-                </button>
-              );
-            })
+            searchResults.map((r) => (
+              <Link
+                key={`${r.type}:${r.id}`}
+                to={r.type === "period" ? `/periodo/${r.id}` : `/artista/${r.id}`}
+                onClick={() => setSearchQ("")}
+                style={{
+                  display: "flex", alignItems: "center", gap: 8,
+                  padding: "8px 12px", borderBottom: "1px solid var(--line-soft)",
+                  textDecoration: "none", color: "var(--ink)",
+                }}
+              >
+                <span style={{
+                  width: 8, height: 8, borderRadius: "50%",
+                  background: r.type === "period" ? "#b88a2e" : "#b9692c",
+                  flexShrink: 0,
+                }} />
+                <span style={{ flex: 1, minWidth: 0 }}>
+                  <span style={{ fontSize: 13, fontWeight: 500, display: "block" }}>{r.label}</span>
+                  {r.subtitle && (
+                    <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{r.subtitle}</span>
+                  )}
+                </span>
+                <span style={{ fontSize: 10, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  {r.type === "period" ? "Periodo" : "Autore"}
+                </span>
+              </Link>
+            ))
           )}
         </div>
       )}
     </div>
   );
 
-  // Colonna destra: ricerca, vista, tempo, filtri vista, tipi periodo, legenda.
-  // Sempre visibile (sia in modalità normale che in fullscreen), come nel grafo.
+  // Colonna destra in fullscreen: ricerca, vista, tempo, filtri vista, legenda.
+  // Visibile solo in fullscreen, come sideFiltersBlock nel grafo.
   const sideFiltersBlock = (
-    <div className="panel" data-testid="tl-fs-filters">
+    <div className="panel gf-fs-only" data-testid="tl-fs-filters">
       <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Cerca</div>
       <div style={{ marginBottom: 14 }}>
         {searchBar}
@@ -622,36 +573,7 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
         <ToggleChip active={showEvents} onClick={() => setShowEvents((v) => !v)} testId="tl-fs-events">◆ eventi</ToggleChip>
         <ToggleChip active={showArtists} onClick={() => setShowArtists((v) => !v)} testId="tl-fs-artists">👤 artisti</ToggleChip>
       </div>
-      {/* Filtri per tipo periodo (epoca/corrente/popolo) — solo vista periodi.
-          In vista artisti la legenda mostra le categorie di ruolo (informativa). */}
-      {!showArtists && (
-        <>
-          <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Tipi periodo</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 4, marginBottom: 14 }}>
-            {Object.entries(TYPE_COLOR).map(([t, c]) => {
-              const off = hideTypes.has(t);
-              const count = typeCounts[t] ?? 0;
-              return (
-                <button
-                  key={t}
-                  onClick={() => toggleType(t)}
-                  style={{
-                    display: "flex", alignItems: "center", gap: 8, width: "100%",
-                    padding: "6px 4px", background: "transparent", border: 0,
-                    cursor: "pointer", textAlign: "left", fontFamily: "inherit",
-                    color: "var(--ink)", opacity: off ? 0.4 : 1,
-                  }}
-                >
-                  <span className="dot" style={{ background: c, flexShrink: 0 }} />
-                  <span style={{ flex: 1, fontSize: 12.5, textTransform: "capitalize" }}>{t}</span>
-                  <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{count}</span>
-                </button>
-              );
-            })}
-          </div>
-        </>
-      )}
-      <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>{showArtists ? "Categorie" : "Legenda"}</div>
+      <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Legenda</div>
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
         {legendEntries.map(([t, c]) => (
           <span key={t} className="muted" style={{ fontSize: 11.5, display: "inline-flex", alignItems: "center", gap: 5 }}>
@@ -664,19 +586,24 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
 
   return (
     <>
+      {/* Barra superiore: toggle vista + ricerca (in modalità normale) */}
       <div className="filterbar" style={{ marginBottom: 14, gap: 14, alignItems: "center" }}>
         <ToggleChip active={showFlows} onClick={() => setShowFlows((v) => !v)} testId="tl-flows">↝ flussi</ToggleChip>
         <ToggleChip active={showEvents} onClick={() => setShowEvents((v) => !v)} testId="tl-events">◆ eventi</ToggleChip>
         <ToggleChip active={showArtists} onClick={() => setShowArtists((v) => !v)} testId="tl-artists">👤 artisti</ToggleChip>
-        <div className="filter-group" style={{ marginLeft: "auto" }}>
-          {legendEntries.map(([t, c]) => (
-            <span key={t} className="muted" style={{ fontSize: 11.5, display: "inline-flex", alignItems: "center", gap: 5 }}>
-              <span className="dot" style={{ background: c }} />{t}
-            </span>
-          ))}
+        <div style={{ flex: "1 1 200px", maxWidth: 320, marginLeft: "auto" }}>
+          {/* Barra di ricerca — visibile in modalità normale.
+              In fullscreen è nel sideFiltersBlock, ma la mostriamo comunque
+              anche qui per coerenza (come nel grafo). */}
+          {!inFull && searchBar}
         </div>
       </div>
-      <div style={{ marginBottom: 12 }}>
+      <div className="filter-group" style={{ marginBottom: 12, display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+        {legendEntries.map(([t, c]) => (
+          <span key={t} className="muted" style={{ fontSize: 11.5, display: "inline-flex", alignItems: "center", gap: 5 }}>
+            <span className="dot" style={{ background: c }} />{t}
+          </span>
+        ))}
         <FilterNote total={showArtists ? ix.ds.artists.length : allPeriods.length} shown={showArtists ? ix.ds.artists.filter((a) => a.birth != null).length : periods.length} noun={showArtists ? "artisti" : "periodi"} />
       </div>
 
@@ -692,13 +619,7 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
       ) : (
         <Fullscreen title="Linea del tempo" controls={null} showSlider={false} onChange={(f) => { setInFull(f); onFull(f); }}>
           <div className="gf-inner">
-            <TimelineCanvasControlled
-              showFlows={showFlows}
-              showEvents={showEvents}
-              inFullscreen={inFull}
-              hideTypes={hideTypes}
-              highlightPid={highlightPid}
-            />
+            <TimelineCanvasControlled showFlows={showFlows} showEvents={showEvents} inFullscreen={inFull} />
             <div className="gf-side">
               {sideFiltersBlock}
             </div>
@@ -712,8 +633,8 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
 // ═══════════════════════════════════════════════════════════════════════════
 //  ORIGINAL PERIOD TIMELINE CANVAS (unchanged)
 // ═══════════════════════════════════════════════════════════════════════════
-function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTypes, highlightPid }:
-  { showFlows: boolean; showEvents: boolean; inFullscreen: boolean; hideTypes: Set<string>; highlightPid: string | null }) {
+function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
+  { showFlows: boolean; showEvents: boolean; inFullscreen: boolean }) {
   const ix = useData();
   const nav = useNavigate();
   const { range, periodIn, eventIn } = useTimeRange();
@@ -728,10 +649,7 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
   const [stageW, setStageW] = useState(800);
 
   const allPeriods = ix.ds.periods;
-  const periods = useMemo(
-    () => allPeriods.filter((p) => periodIn(p) && !hideTypes.has(p.type)),
-    [allPeriods, periodIn, hideTypes]
-  );
+  const periods = useMemo(() => allPeriods.filter(periodIn), [allPeriods, periodIn]);
   const minY = useMemo(() => (periods.length ? Math.min(...periods.map((p) => p.year_start)) : range.min), [periods, range]);
   const maxY = useMemo(() => (periods.length ? Math.max(...periods.map((p) => p.year_end)) : range.max), [periods, range]);
   const lanes = useMemo(() => layoutLanes(periods), [periods]);
@@ -747,22 +665,6 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
   const height = eventsTop + EV_ROWS * EV_ROW_H + 56 + (selPid ? 410 : 0);
 
   const x = useCallback((year: number) => PAD + (year - minY) * PPY, [minY, PPY]);
-
-  // === Highlight + scroll automatico quando si seleziona un periodo dalla
-  //     barra di ricerca. highlightPid viene impostato da TimelineShell e
-  //     rimane attivo per ~2.5s. Durante quel periodo la barra del periodo
-  //     corrispondente pulsa. Inoltre scorriamo la timeline in modo che la
-  //     barra sia visibile e apriamo il dossier. ===
-  useEffect(() => {
-    if (!highlightPid) return;
-    setSelPid(highlightPid);
-    const p = periods.find((pp) => pp.id === highlightPid);
-    if (!p) return;
-    const el = scrollRef.current;
-    if (!el) return;
-    const targetX = x(p.year_start) - 200;
-    el.scrollTo({ left: Math.max(0, targetX), behavior: "smooth" });
-  }, [highlightPid, periods, x]);
 
   const flows = useMemo(() => {
     const byId = new Map(lanes.map((l) => [l.id, l]));
@@ -845,7 +747,6 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
             const bx = x(p.year_start), bw = Math.max((p.year_end - p.year_start) * PPY, 10);
             const by = laneY(p.lane);
             const col = TYPE_COLOR[p.type] ?? "#888";
-            const isHighlight = highlightPid === p.id;
             return (
               <motion.g key={p.id} style={{ cursor: "pointer" }}
                 initial={stagger ? { opacity: 0, x: -12 } : false}
@@ -857,20 +758,7 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
                 onMouseLeave={() => setHover(null)}>
                 <motion.rect x={bx} y={by} width={bw} height={32} rx={6}
                   fill={col} fillOpacity={selPid === p.id ? 0.32 : 0.14} stroke={col} strokeOpacity={selPid === p.id ? 1 : 0.85} strokeWidth={selPid === p.id ? 2 : 1.1}
-                  whileHover={reduced ? undefined : { scale: 1.0 }}
-                />
-                {/* Aura pulse quando il periodo è stato selezionato dalla ricerca.
-                    Rettangolo separato sopra la barra, animato con framer-motion. */}
-                {isHighlight && !reduced && (
-                  <motion.rect
-                    x={bx - 4} y={by - 4} width={bw + 8} height={40} rx={9}
-                    fill="none" stroke={col} strokeWidth={2}
-                    initial={{ opacity: 0.8, scale: 0.96 }}
-                    animate={{ opacity: [0.8, 0.2, 0.8, 0.2, 0.8], scale: [0.96, 1.04, 0.96, 1.04, 0.96] }}
-                    transition={{ duration: 2, times: [0, 0.25, 0.5, 0.75, 1], ease: "easeInOut" }}
-                    style={{ pointerEvents: "none", transformOrigin: `${bx + bw / 2}px ${by + 16}px` }}
-                  />
-                )}
+                  whileHover={reduced ? undefined : { scale: 1.0 }} />
                 <rect x={bx} y={by} width={3} height={32} fill={col} rx={1.5} style={{ pointerEvents: "none" }} />
                 {bw > 44 && (
                   <text x={bx + 10} y={by + 20} fill="var(--ink)" fontSize={12.5} fontFamily="var(--font-body)" fontWeight={500} style={{ pointerEvents: "none" }}>

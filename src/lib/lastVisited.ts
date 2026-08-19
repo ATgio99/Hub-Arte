@@ -93,6 +93,12 @@ export function clearLastArtistiSearch(): void {
 export interface ReteSearchState {
   focusNode: string | null;
   searchQuery: string;
+  // Filtri attivi (tipi e legami nascosti) — arrays perché Set non è serializzabile.
+  hideTypes?: string[];
+  hideKinds?: string[];
+  // Nodo selezionato (click su sfera) — formato "type:id", ripristinato come
+  // selezione attiva al ritorno nella pagina Rete.
+  selId?: string | null;
 }
 
 export function getLastRete(): ReteSearchState | null {
@@ -104,6 +110,9 @@ export function getLastRete(): ReteSearchState | null {
     return {
       focusNode: typeof parsed.focusNode === "string" ? parsed.focusNode : null,
       searchQuery: typeof parsed.searchQuery === "string" ? parsed.searchQuery : "",
+      hideTypes: Array.isArray(parsed.hideTypes) ? parsed.hideTypes : [],
+      hideKinds: Array.isArray(parsed.hideKinds) ? parsed.hideKinds : [],
+      selId: typeof parsed.selId === "string" ? parsed.selId : null,
     };
   } catch { return null; }
 }
