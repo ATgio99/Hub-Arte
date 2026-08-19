@@ -628,7 +628,7 @@ export default function Grafo() {
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
-              placeholder="Cerca opera, artista, luogo…"
+              placeholder="Cerca opera, autore, luogo…"
               style={{
                 width: "100%", padding: "7px 10px", marginBottom: 10,
                 border: "1px solid var(--line)", borderRadius: 6,

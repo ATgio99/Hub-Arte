@@ -54,7 +54,7 @@ export default function Artisti() {
     <div className="wrap page" style={{ paddingBottom: 40 }}>
       <div className="page-head">
         <div className="page-eyebrow"><span className="eyebrow">Maestri & botteghe</span></div>
-        <h1 className="page-title">Artisti</h1>
+        <h1 className="page-title">Autori</h1>
         <p className="page-lead">Tutti i protagonisti del programma: cerca per nome, alias o ruolo. Ogni scheda raccoglie biografia, innovazioni e opere. Lo slider temporale filtra l'elenco.</p>
       </div>
       <div className="page-rule" />
@@ -62,7 +62,7 @@ export default function Artisti() {
       <div className="filterbar" style={{ marginBottom: 18, gap: 12 }}>
         <input
           type="search" value={q} onChange={(e) => setQ(e.target.value)}
-          placeholder="Cerca un artista… (es. Giotto, orafo, Antelami)" data-testid="art-search"
+          placeholder="Cerca un autore… (es. Giotto, orafo, Antelami)" data-testid="art-search"
           style={{ flex: "1 1 280px", maxWidth: 420, padding: "10px 14px", border: "1px solid var(--line)", borderRadius: 10, background: "var(--bg-1)", color: "var(--ink)", fontSize: 14.5 }}
         />
         <div className="seg">
@@ -70,21 +70,21 @@ export default function Artisti() {
           <button className={`seg-btn ${sort === "alfabetico" ? "on" : ""}`} onClick={() => setSort("alfabetico")} data-testid="art-sort-alfa">A–Z</button>
         </div>
         <button className={`chip fav-chip ${favOnly ? "active" : ""}`} onClick={() => setFavOnly((v) => !v)} data-testid="art-fav-only"
-          title={favs.artists.length === 0 ? "Nessun artista preferito: usa la ★ sulle schede" : ""}>
+          title={favs.artists.length === 0 ? "Nessun autore preferito: usa la ★ sulle schede" : ""}>
           ★ Preferiti{favs.artists.length > 0 ? ` (${favs.artists.length})` : ""}
         </button>
-        <FilterNote total={ix.ds.artists.length} shown={list.length} noun="artisti" />
+        <FilterNote total={ix.ds.artists.length} shown={list.length} noun="autori" />
       </div>
 
       {list.length === 0 && (
         favOnly && favs.artists.length === 0 ? (
-          <Empty msg="Nessun artista preferito: tocca la ★ su una scheda per aggiungerlo." />
+          <Empty msg="Nessun autore preferito: tocca la ★ su una scheda per aggiungerlo." />
         ) : q ? (
-          <Empty msg={`Nessun artista per «${q}».`} />
+          <Empty msg={`Nessun autore per «${q}».`} />
         ) : active ? (
-          <EmptyTimeRange noun="artisti" />
+          <EmptyTimeRange noun="autori" />
         ) : (
-          <Empty msg="Nessun artista." />
+          <Empty msg="Nessun autore." />
         )
       )}
 

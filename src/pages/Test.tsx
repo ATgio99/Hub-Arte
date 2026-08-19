@@ -145,10 +145,10 @@ function OperaDrawer({ workId, open, onClose }: { workId: string | null; open: b
                 {period && <span className="tag" style={{ borderColor: "var(--c-period)", color: "var(--c-period)" }}>{period.name}</span>}
               </div>
 
-              {/* Artisti */}
+              {/* Autori */}
               {artists.length > 0 && (
                 <div style={{ marginBottom: 14 }}>
-                  <div className="smallcaps" style={{ marginBottom: 6 }}>Artista{artists.length > 1 ? "i" : ""}</div>
+                  <div className="smallcaps" style={{ marginBottom: 6 }}>Autore{artists.length > 1 ? "i" : ""}</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                     {artists.map(a => a && (
                       <Link key={a.id} to={`/artista/${a.id}`} className="chip" style={{ fontSize: 13 }}>

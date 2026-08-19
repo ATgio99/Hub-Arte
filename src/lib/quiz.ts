@@ -36,8 +36,8 @@ export const QUIZ_KIND_LABEL: Record<QuizKind, string> = {
   citta: "Città / luogo",
   immagine: "Riconosci l'opera",
   "opera-luogo": "Opera nel luogo",
-  "artista-periodo": "Periodo dell'artista",
-  "artista-opera": "Opera dell'artista",
+  "artista-periodo": "Periodo dell'autore",
+  "artista-opera": "Opera dell'autore",
   "tecnica-def": "Definizione di tecnica",
   "def-tecnica": "Quale tecnica?",
   "termine-def": "Definizione di termine",
@@ -52,7 +52,7 @@ export const QUIZ_KIND_LABEL: Record<QuizKind, string> = {
 // raggruppamento per UI (categorie macro)
 export const QUIZ_GROUPS: { label: string; kinds: QuizKind[] }[] = [
   { label: "Opere", kinds: ["autore", "periodo", "tecnica", "datazione", "secolo", "citta", "immagine", "opera-luogo"] },
-  { label: "Artisti", kinds: ["artista-periodo", "artista-opera"] },
+  { label: "Autori", kinds: ["artista-periodo", "artista-opera"] },
   { label: "Tecniche & termini", kinds: ["tecnica-def", "def-tecnica", "termine-def", "def-termine"] },
   { label: "Periodi & contesto", kinds: ["periodo-secolo", "periodo-regione", "connessione", "evento-anno", "evento-da-anno"] },
 ];

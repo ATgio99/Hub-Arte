@@ -198,6 +198,30 @@ select.input { cursor: pointer; }
 .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
 .section-title { font-size: clamp(22px,3vw,30px); }
 
+/* Sezione collassabile (Sinapsi, Geografia nelle schede Autore) */
+.section-collapsible > .section-toggle {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+  margin-bottom: 0; padding-bottom: 14px; border-bottom: 1px solid var(--line);
+  transition: background .15s;
+}
+.section-collapsible > .section-toggle:hover { background: rgba(184,138,46,.06); }
+.section-collapsible > .section-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.section-collapsible .section-chevron {
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--ink-dim); transition: transform .22s ease, color .15s;
+  flex-shrink: 0; margin-bottom: 14px;
+}
+.section-collapsible .section-chevron.open { transform: rotate(180deg); color: var(--gold-deep); }
+.section-collapsible .section-body { padding-top: 22px; }
+/* Animazione di apertura: fade-in + slide-down leggero */
+.section-collapsible .section-body {
+  animation: section-open .26s ease-out;
+}
+@keyframes section-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* stat cards */
 .stat { background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 20px 22px; }
 .stat-num { font-family: var(--font-display); font-size: 40px; color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums; }

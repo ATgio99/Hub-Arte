@@ -551,16 +551,16 @@ function EditorDrawerInner({
                 </Field>
               </div>
 
-              <Field label="Artisti">
+              <Field label="Autori">
                 <EntitySelector
                   mode="multi"
                   options={allArtists.map(a => ({ id: a.id, label: a.name, subtitle: a.role || undefined }))}
                   selected={work.artist_ids}
                   onChange={(v) => set("artist_ids", (v as string[]) || [])}
-                  placeholder="Cerca artista…"
+                  placeholder="Cerca autore…"
                   allowCreate={true}
                   onCreate={createArtist}
-                  createLabel="Nuovo artista"
+                  createLabel="Nuovo autore"
                 />
               </Field>
 

@@ -32,7 +32,7 @@ type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" |
 
 const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "works", label: "Opere", icon: "🖼️" },
-  { id: "artists", label: "Artisti", icon: "👤" },
+  { id: "artists", label: "Autori", icon: "👤" },
   { id: "periods", label: "Periodi", icon: "📅" },
   { id: "techniques", label: "Tecniche", icon: "🎨" },
   { id: "terms", label: "Termini", icon: "📚" },
@@ -974,7 +974,7 @@ const FIELD_LABELS_IT: Record<string, string> = {
   historical_context: "Contesto storico",
   key_innovations: "Innovazioni chiave",
   definition: "Definizione",
-  introduced_by: "Introdotto da (artista)",
+  introduced_by: "Introdotto da (autore)",
   first_period_id: "Prima comparsa (periodo)",
   evolution: "Evoluzione",
   category: "Categoria",
@@ -986,7 +986,7 @@ const FIELD_LABELS_IT: Record<string, string> = {
   target_type: "Tipo entità destinazione",
   target_id: "Entità destinazione",
   date_text: "Datazione testuale",
-  artist_ids: "Artisti",
+  artist_ids: "Autori",
   technique_ids: "Tecniche",
   materials: "Materiali",
   location_city: "Città",
@@ -1041,7 +1041,7 @@ const CONN_KIND_LABELS: Record<string, string> = {
 };
 const ENTITY_TYPE_LABELS: Record<string, string> = {
   period: "Periodo",
-  artist: "Artista",
+  artist: "Autore",
   work: "Opera",
   technique: "Tecnica",
   event: "Evento",
@@ -1193,7 +1193,7 @@ function GenericEditorDrawerInner({
           throw new Error("Il titolo dell'opera è obbligatorio.");
         }
         if (table === "artists" && (!payload.name || String(payload.name).trim() === "")) {
-          throw new Error("Il nome dell'artista è obbligatorio.");
+          throw new Error("Il nome dell'autore è obbligatorio.");
         }
         if (table === "periods" && (!payload.name || String(payload.name).trim() === "")) {
           throw new Error("Il nome del periodo è obbligatorio.");

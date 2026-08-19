@@ -156,7 +156,7 @@ export default function Landing() {
 
   const stats = [
     { n: ix.ds.works.length, l: "Opere" },
-    { n: ix.ds.artists.length, l: "Artisti" },
+    { n: ix.ds.artists.length, l: "Autori" },
     { n: ix.ds.periods.length, l: "Periodi" },
     { n: ix.ds.terms.length, l: "Termini" },
     { n: ix.ds.techniques.length, l: "Tecniche" },

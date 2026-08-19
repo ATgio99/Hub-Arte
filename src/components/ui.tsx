@@ -412,8 +412,45 @@ export function WorkGroupCard({ group, expanded, onToggle }: { group: WorkGroup;
 }
 
 // ---- Sezione numerata ------------------------------------------------------
-export function Section({ num, eyebrow, title, children, right }:
-  { num?: string; eyebrow?: string; title?: string; children: ReactNode; right?: ReactNode }) {
+export function Section({ num, eyebrow, title, children, right, collapsible = false, defaultCollapsed = false }:
+  { num?: string; eyebrow?: string; title?: string; children: ReactNode; right?: ReactNode;
+    collapsible?: boolean; defaultCollapsed?: boolean }) {
+  const [open, setOpen] = useState(!defaultCollapsed);
+  // Quando collapsible è true, l'header diventa un bottone che toggle lo stato.
+  // Il contenuto viene montato solo se open, così le mappe/timeline pesanti
+  // non vengono renderizzate finché l'utente non apre la sezione.
+  if (collapsible) {
+    return (
+      <section className="section section-collapsible">
+        <button
+          type="button"
+          className="section-head section-toggle"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          style={{ width: "100%", textAlign: "left", cursor: "pointer", background: "transparent", border: 0, padding: 0, font: "inherit", color: "inherit" }}
+        >
+          <div>
+            {(num || eyebrow) && (
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
+                {num && <span className="sec-num">{num}</span>}
+                {eyebrow && <span className="eyebrow">{eyebrow}</span>}
+              </div>
+            )}
+            {title && <h2 className="section-title">{title}</h2>}
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            {right}
+            <span className={`section-chevron ${open ? "open" : ""}`} aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </span>
+          </div>
+        </button>
+        {open && <div className="section-body">{children}</div>}
+      </section>
+    );
+  }
   return (
     <section className="section">
       {(eyebrow || title) && (

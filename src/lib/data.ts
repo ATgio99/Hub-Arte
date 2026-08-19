@@ -183,7 +183,7 @@ export function entityLabel(ix: Indexed, type: EntityType, id: string): string {
 
 // Nome leggibile del tipo entità
 export const ENTITY_LABEL: Record<EntityType, string> = {
-  period: "Periodo", artist: "Artista", work: "Opera",
+  period: "Periodo", artist: "Autore", work: "Opera",
   technique: "Tecnica", event: "Evento", term: "Termine",
 };
 

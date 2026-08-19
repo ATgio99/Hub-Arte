@@ -464,7 +464,7 @@ function ArtistEditorDrawerInner({
             }}>
               <div>
                 <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>
-                  {isNew ? "Nuovo artista" : "Modifica artista"} · Admin
+                  {isNew ? "Nuovo autore" : "Modifica autore"} · Admin
                 </div>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: 16, marginTop: 2 }}>
                   {a.name || "(senza nome)"}
@@ -538,7 +538,7 @@ function ArtistEditorDrawerInner({
                   defaultValue={a.bio}
                   onChange={(e) => set("bio", e.target.value)}
                   style={{ ...inputStyle, minHeight: 120, resize: "vertical" }}
-                  placeholder="Biografia dell'artista…"
+                  placeholder="Biografia dell'autore…"
                 />
               </Field>
 

@@ -29,7 +29,7 @@ export default function Artista() {
     window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   }, [a?.id]);
 
-  if (!a) return <div className="wrap page"><Empty msg="Artista non trovato." /></div>;
+  if (!a) return <div className="wrap page"><Empty msg="Autore non trovato." /></div>;
 
   const allWorks = worksByArtist(ix.ds, a.id).sort((x, y) => y.importance - x.importance);
   const works = allWorks.filter(workIn);
@@ -57,7 +57,7 @@ export default function Artista() {
               onClick={() => setEditorOpen(true)}
               className="btn gold sm"
               style={{ fontSize: 13, padding: "8px 14px", whiteSpace: "nowrap" }}
-              title="Modifica i metadati dell'artista nel database (solo admin)"
+              title="Modifica i metadati dell'autore nel database (solo admin)"
               data-testid="btn-admin-edit-artist"
             >
               ✎ Modifica
@@ -67,7 +67,7 @@ export default function Artista() {
               to="/suggerisci"
               className="btn ghost sm"
               style={{ fontSize: 13, padding: "8px 14px", borderColor: "var(--line)", color: "var(--ink-soft)", whiteSpace: "nowrap" }}
-              title="Proponi una modifica a questo artista"
+              title="Proponi una modifica a questo autore"
             >
               ✎ Richiedi modifica
             </Link>
@@ -95,8 +95,14 @@ export default function Artista() {
         </div>
       )}
 
+      {showTimeline && (
+        <Section eyebrow="Cronologia" title="Linea del tempo delle opere">
+          <ArtistTimeline artist={a} works={allWorks} periods={periods} />
+        </Section>
+      )}
+
       {conns.length > 0 && (
-        <Section eyebrow="Sinapsi" title="Maestri, allievi e influenze">
+        <Section eyebrow="Sinapsi" title="Maestri, allievi e influenze" collapsible defaultCollapsed>
           {conns.map((c) => {
             const otherIsSource = !(c.source_type === "artist" && c.source_id === a.id);
             const ot = otherIsSource ? c.source_type : c.target_type;
@@ -117,16 +123,9 @@ export default function Artista() {
         </Section>
       )}
 
-      {/* Timeline opere (se almeno 2 opere datate) */}
-      {showTimeline && (
-        <Section eyebrow="Cronologia" title="Linea del tempo delle opere">
-          <ArtistTimeline artist={a} works={allWorks} periods={periods} />
-        </Section>
-      )}
-
       {/* Mappa opere (se almeno 2 opere geolocalizzate in città diverse) */}
       {showMap && hasDistinctCities && (
-        <Section eyebrow="Geografia" title="Dove si trovano le opere">
+        <Section eyebrow="Geografia" title="Dove si trovano le opere" collapsible defaultCollapsed>
           <ArtistMap artist={a} works={geolocatedWorks} periods={periods} />
         </Section>
       )}
@@ -136,9 +135,9 @@ export default function Artista() {
           right={<FilterNote total={allWorks.length} shown={works.length} noun="opere nell'arco scelto" />}>
           {works.length > 0
             ? <div className="grid-works">{works.map((w) => <WorkCard key={w.id} work={w} />)}</div>
-            : <Empty msg="Nessuna opera di questo artista nell'intervallo temporale scelto." />}
+            : <Empty msg="Nessuna opera di questo autore nell'intervallo temporale scelto." />}
         </Section>
-      ) : <Section title="Opere"><Empty msg="Nessuna opera registrata per questo artista." /></Section>}
+      ) : <Section title="Opere"><Empty msg="Nessuna opera registrata per questo autore." /></Section>}
 
       {/* Editor drawer (solo admin, apre con pulsante Modifica) */}
       <ArtistEditorDrawer
