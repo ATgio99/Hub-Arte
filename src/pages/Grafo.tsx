@@ -584,9 +584,6 @@ export default function Grafo() {
       <div className="stage-overlay" style={{ left: 14, bottom: 14, fontSize: 11.5 }}>
         <span className="muted tnum">{graph.nodes.length} nodi · {graph.links.length} legami · {range.min}–{range.max}</span>
       </div>
-      <div className="stage-overlay" style={{ right: full ? 14 : 14, bottom: 14, fontSize: 11 }}>
-        <span className="faint">{mode === "3d" ? "orbita · zoom · trascina per ruotare · clic su un nodo" : "trascina · zoom · clic su un nodo"}</span>
-      </div>
     </div>
   );
 
