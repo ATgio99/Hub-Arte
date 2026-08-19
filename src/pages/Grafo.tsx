@@ -23,19 +23,19 @@ const NODE_HEX: Record<string, string> = {
 const KIND_COLOR: Record<string, string> = {
   influenza: "#b88a2e", rielaborazione: "#b9692c", evoluzione: "#6e8350",
   committenza: "#4f7d72", "maestro-allievo": "#9a6a92", contaminazione: "#caa14a", contrasto: "#a8483f",
-  luogo: "#7da59a",
+  luogo: "#5d8a7f",
 };
 // Pattern di tratteggio per distinguere i legami anche senza colore.
 const KIND_DASH: Record<string, number[] | undefined> = {
   influenza: undefined, rielaborazione: undefined, evoluzione: undefined,
   committenza: [10, 5], "maestro-allievo": undefined,
-  contaminazione: [4, 4], contrasto: [2, 4], luogo: [1, 6],
+  contaminazione: [4, 4], contrasto: [2, 4], luogo: [6, 3],
 };
-// Spessore del legame in base al tipo (i legami "forti" più spessi).
+// Spessore del legame in base al tipo.
 const KIND_WIDTH: Record<string, number> = {
   influenza: 1.4, rielaborazione: 1.2, evoluzione: 1.1,
   committenza: 1.0, "maestro-allievo": 1.6, contaminazione: 0.9, contrasto: 1.3,
-  luogo: 0.7,
+  luogo: 1.1,
 };
 const PAPER = "#f7f3ec";
 const INK = "#211c14";
@@ -406,7 +406,7 @@ export default function Grafo() {
     const baseColor = KIND_COLOR[l.kind] ?? INK;
     // Se non c'è un nodo focalizzato/hover, usiamo comunque il colore del kind
     // ma con opacità ridotta, così i legami si distinguono per tipo anche
-    // nella vista d'insieme (richiesto dall'utente).
+    // nella vista d'insieme.
     if (!neighbors) return baseColor + "55"; // ~33% opacity
     const s = typeof l.source === "object" ? l.source.id : l.source;
     const t = typeof l.target === "object" ? l.target.id : l.target;
@@ -495,7 +495,7 @@ export default function Grafo() {
         );
       })}
       <div className="panel-title" style={{ fontSize: 15, margin: "14px 0 8px" }}>Legami</div>
-      {KINDS.map((k) => {
+      {[...KINDS, "luogo" as const].map((k) => {
         const off = hideKinds.has(k);
         const dash = KIND_DASH[k];
         return (
@@ -509,7 +509,7 @@ export default function Grafo() {
                 strokeLinecap="round"
               />
             </svg>
-            <span className="gf-frow-lab">{KIND_LABEL[k]}</span>
+            <span className="gf-frow-lab">{k === "luogo" ? "Luogo" : KIND_LABEL[k]}</span>
             <EyeIcon off={off} />
           </button>
         );
@@ -554,6 +554,9 @@ export default function Grafo() {
           }}
           linkOpacity={0.85}
           linkDirectionalArrowLength={(l: any) => {
+            // Frecce direzionali per i legami con direzione semantica.
+            // "luogo" non ha freccia (l'opera è "in" la città, ma è un
+            // raggruppamento geografico, non un legame direzionale).
             const directional = ["committenza", "maestro-allievo", "influenza", "rielaborazione", "evoluzione", "contrasto"];
             return directional.includes(l.kind) ? 3.5 : 0;
           }}
@@ -580,7 +583,7 @@ export default function Grafo() {
           nodeRelSize={4}
           linkColor={(l: any) => {
             const baseColor = KIND_COLOR[l.kind] ?? INK;
-            if (!neighbors) return baseColor + "88";
+            if (!neighbors) return baseColor + "88"; // ~53% opacity
             const s = typeof l.source === "object" ? l.source.id : l.source;
             const t = typeof l.target === "object" ? l.target.id : l.target;
             const on = neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId);
@@ -832,10 +835,10 @@ export default function Grafo() {
             );
           })}
         </div>
-        {/* Riga 2: Legami */}
+        {/* Riga 2: Legami — include "Luogo" (città ↔ opera) oltre ai KINDS standard */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
           <div className="smallcaps" style={{ marginRight: 8 }}>Legami:</div>
-          {KINDS.map((k) => {
+          {[...KINDS, "luogo" as const].map((k) => {
             const off = hideKinds.has(k);
             const dash = KIND_DASH[k];
             return (
@@ -849,7 +852,7 @@ export default function Grafo() {
                     strokeLinecap="round"
                   />
                 </svg>
-                {KIND_LABEL[k]}
+                {k === "luogo" ? "Luogo" : KIND_LABEL[k]}
               </button>
             );
           })}

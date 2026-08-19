@@ -207,46 +207,18 @@ select.input { cursor: pointer; }
 .section-collapsible > .section-toggle:hover { background: rgba(184,138,46,.06); }
 .section-collapsible > .section-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-/* Badge "Apri/Chiudi" — pill arrotondata che rende chiaro che la sezione è
-   collassabile e cliccabile. Stato chiuso = oro pieno (invita al click),
-   stato aperto = oro tenue (clicca per chiudere). */
-.section-toggle-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  flex-shrink: 0; margin-bottom: 14px;
-  padding: 6px 12px 6px 14px;
-  border-radius: 999;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: .04em; text-transform: uppercase;
-  border: 1px solid transparent;
-  transition: background .18s, color .18s, border-color .18s, transform .12s, box-shadow .18s;
-}
-.section-toggle-badge-text { line-height: 1; }
-/* Stato CHIUSO: pill oro pieno, bianco su oro — chiaramente un bottone da cliccare */
-.section-toggle-badge.closed {
-  background: var(--gold);
-  color: #fff;
-  border-color: var(--gold);
-  box-shadow: 0 1px 4px rgba(184,138,46,.35);
-}
-.section-toggle-badge.closed:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(184,138,46,.45);
-}
-/* Stato APERTO: pill sobrio oro tenue — indica "sezione espansa, clicca per chiudere" */
-.section-toggle-badge.open {
-  background: rgba(184,138,46,.10);
-  color: var(--gold-deep);
-  border-color: rgba(184,138,46,.35);
-}
-.section-toggle-badge.open:hover {
-  background: rgba(184,138,46,.18);
-}
-/* Chevron dentro il badge — ruota di 180° quando la sezione è aperta */
-.section-chevron {
+/* Chevron accanto al titolo della sezione — ruota di 180° quando aperta */
+.section-collapsible .section-chevron {
   display: inline-flex; align-items: center; justify-content: center;
-  transition: transform .22s ease;
+  color: var(--ink-dim);
+  transition: transform .22s ease, color .15s;
+  flex-shrink: 0;
 }
-.section-toggle-badge.open .section-chevron { transform: rotate(180deg); }
+.section-collapsible .section-chevron.open {
+  transform: rotate(180deg);
+  color: var(--gold-deep);
+}
+.section-collapsible .section-toggle:hover .section-chevron { color: var(--gold-deep); }
 
 .section-collapsible .section-body { padding-top: 22px; }
 /* Animazione di apertura: fade-in + slide-down leggero */

@@ -429,28 +429,26 @@ export function Section({ num, eyebrow, title, children, right, collapsible = fa
           aria-expanded={open}
           style={{ width: "100%", textAlign: "left", cursor: "pointer", background: "transparent", border: 0, padding: 0, font: "inherit", color: "inherit" }}
         >
-          <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             {(num || eyebrow) && (
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
                 {num && <span className="sec-num">{num}</span>}
                 {eyebrow && <span className="eyebrow">{eyebrow}</span>}
               </div>
             )}
-            {title && <h2 className="section-title">{title}</h2>}
+            {title && (
+              <h2 className="section-title" style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+                {title}
+                {/* Solo la freccia accanto al titolo — ruota quando la sezione è aperta */}
+                <span className={`section-chevron ${open ? "open" : ""}`} aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </span>
+              </h2>
+            )}
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            {right}
-            {/* Badge "Apri/Chiudi" — affordance esplicita che la sezione è collassabile.
-                Stato chiuso: pill oro pieno (invita al click). Stato aperto: pill oro tenue. */}
-            <span className={`section-toggle-badge ${open ? "open" : "closed"}`} aria-hidden="true">
-              <span className="section-toggle-badge-text">{open ? "Chiudi" : "Apri"}</span>
-              <span className="section-chevron" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </span>
-            </span>
-          </div>
+          {right && <div>{right}</div>}
         </button>
         {open && <div className="section-body">{children}</div>}
       </section>
