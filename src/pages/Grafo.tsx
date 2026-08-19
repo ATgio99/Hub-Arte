@@ -318,6 +318,14 @@ export default function Grafo() {
     const n = new Set(set); n.has(v) ? n.delete(v) : n.add(v); fn(n);
   };
 
+  // "Seleziona tutti / Deseleziona tutti" per i filtri Livelli e Legami.
+  const ALL_TYPES = [...NODE_TYPES, "city" as const];
+  const ALL_KINDS = [...KINDS, "luogo" as const];
+  const selectAllTypes = () => setHideTypes(new Set());
+  const selectNoneTypes = () => setHideTypes(new Set(ALL_TYPES));
+  const selectAllKinds = () => setHideKinds(new Set());
+  const selectNoneKinds = () => setHideKinds(new Set(ALL_KINDS));
+
   const counts = useMemo(() => {
     const c: Record<string, number> = {};
     graph.nodes.forEach((n) => c[n.etype] = (c[n.etype] ?? 0) + 1);
@@ -482,7 +490,13 @@ export default function Grafo() {
       <div style={{ margin: "0 -4px 14px" }}>
         <TimeRangeSlider compact />
       </div>
-      <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Livelli</div>
+      <div className="panel-title" style={{ fontSize: 15, marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <span>Livelli</span>
+        <span style={{ display: "inline-flex", gap: 4 }}>
+          <button onClick={selectAllTypes} style={{ fontSize: 10, padding: "2px 8px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Tutti</button>
+          <button onClick={selectNoneTypes} style={{ fontSize: 10, padding: "2px 8px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Nessuno</button>
+        </span>
+      </div>
       {[...NODE_TYPES, "city" as const].map((t) => {
         const off = hideTypes.has(t);
         return (
@@ -494,7 +508,13 @@ export default function Grafo() {
           </button>
         );
       })}
-      <div className="panel-title" style={{ fontSize: 15, margin: "14px 0 8px" }}>Legami</div>
+      <div className="panel-title" style={{ fontSize: 15, margin: "14px 0 8px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <span>Legami</span>
+        <span style={{ display: "inline-flex", gap: 4 }}>
+          <button onClick={selectAllKinds} style={{ fontSize: 10, padding: "2px 8px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Tutti</button>
+          <button onClick={selectNoneKinds} style={{ fontSize: 10, padding: "2px 8px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Nessuno</button>
+        </span>
+      </div>
       {[...KINDS, "luogo" as const].map((k) => {
         const off = hideKinds.has(k);
         const dash = KIND_DASH[k];
@@ -826,6 +846,10 @@ export default function Grafo() {
         {/* Riga 1: Livelli */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
           <div className="smallcaps" style={{ marginRight: 8 }}>Livelli:</div>
+          <div style={{ display: "inline-flex", gap: 4, marginRight: 8 }}>
+            <button onClick={selectAllTypes} style={{ fontSize: 10, padding: "3px 9px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Tutti</button>
+            <button onClick={selectNoneTypes} style={{ fontSize: 10, padding: "3px 9px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Nessuno</button>
+          </div>
           {[...NODE_TYPES, "city" as const].map((t) => {
             const off = hideTypes.has(t);
             return (
@@ -838,6 +862,10 @@ export default function Grafo() {
         {/* Riga 2: Legami — include "Luogo" (città ↔ opera) oltre ai KINDS standard */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
           <div className="smallcaps" style={{ marginRight: 8 }}>Legami:</div>
+          <div style={{ display: "inline-flex", gap: 4, marginRight: 8 }}>
+            <button onClick={selectAllKinds} style={{ fontSize: 10, padding: "3px 9px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Tutti</button>
+            <button onClick={selectNoneKinds} style={{ fontSize: 10, padding: "3px 9px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Nessuno</button>
+          </div>
           {[...KINDS, "luogo" as const].map((k) => {
             const off = hideKinds.has(k);
             const dash = KIND_DASH[k];

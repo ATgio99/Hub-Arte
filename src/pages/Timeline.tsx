@@ -1,10 +1,11 @@
-import { useMemo, useRef, useState, useCallback, useEffect } from "react";
+import { useMemo, useRef, useState, useCallback, useEffect, type ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useData, useTimeRange } from "../lib/store";
 import { periodMidYear, fmtYear } from "../lib/data";
 import { FilterNote } from "../components/ui";
 import Fullscreen from "../components/Fullscreen";
+import TimeRangeSlider from "../components/TimeRangeSlider";
 import PeriodDossier from "../components/PeriodDossier";
 import { usePrefersReducedMotion, EASE_OUT } from "../lib/motion";
 import type { Period, ArtEvent, Artist } from "../lib/types";
@@ -440,22 +441,54 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
   const allPeriods = ix.ds.periods;
   const periods = useMemo(() => allPeriods.filter(periodIn), [allPeriods, periodIn]);
 
-  const controls = (
-    <>
-      <span className={`chip sm ${showFlows ? "active" : ""}`} onClick={() => setShowFlows((v) => !v)} data-testid="tl-flows">↝ flussi</span>
-      <span className={`chip sm ${showEvents ? "active" : ""}`} onClick={() => setShowEvents((v) => !v)} data-testid="tl-events">◆ eventi</span>
-      <span className={`chip sm ${showArtists ? "active" : ""}`} onClick={() => setShowArtists((v) => !v)} data-testid="tl-artists">👤 artisti</span>
-    </>
-  );
-
   const legendEntries = showArtists
     ? Object.entries(ARTIST_CAT_COLOR).filter(([c]) => layoutArtistLanes(ix.ds.artists).categories.includes(c))
     : Object.entries(TYPE_COLOR);
 
+  // Toggle chips per flussi/eventi/artisti (usati sia nella barra superiore
+  // che nella colonna destra in fullscreen, per coerenza con il grafo).
+  const ToggleChip = ({ active, onClick, children, testId }: { active: boolean; onClick: () => void; children: ReactNode; testId?: string }) => (
+    <span
+      className={`chip sm ${active ? "active" : ""}`}
+      onClick={onClick}
+      data-testid={testId}
+      style={{ cursor: "pointer", userSelect: "none" }}
+    >
+      {children}
+    </span>
+  );
+
+  // Colonna destra in fullscreen: vista, tempo, filtri vista (flussi/eventi/artisti), legenda.
+  // Visibile solo in fullscreen, come sideFiltersBlock nel grafo.
+  const sideFiltersBlock = (
+    <div className="panel gf-fs-only" data-testid="tl-fs-filters">
+      <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Tempo</div>
+      <div style={{ margin: "0 -4px 14px" }}>
+        <TimeRangeSlider compact />
+      </div>
+      <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Vista</div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
+        <ToggleChip active={showFlows} onClick={() => setShowFlows((v) => !v)} testId="tl-fs-flows">↝ flussi</ToggleChip>
+        <ToggleChip active={showEvents} onClick={() => setShowEvents((v) => !v)} testId="tl-fs-events">◆ eventi</ToggleChip>
+        <ToggleChip active={showArtists} onClick={() => setShowArtists((v) => !v)} testId="tl-fs-artists">👤 artisti</ToggleChip>
+      </div>
+      <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Legenda</div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        {legendEntries.map(([t, c]) => (
+          <span key={t} className="muted" style={{ fontSize: 11.5, display: "inline-flex", alignItems: "center", gap: 5 }}>
+            <span className="dot" style={{ background: c }} />{t}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <>
       <div className="filterbar" style={{ marginBottom: 14, gap: 14 }}>
-        {controls}
+        <ToggleChip active={showFlows} onClick={() => setShowFlows((v) => !v)} testId="tl-flows">↝ flussi</ToggleChip>
+        <ToggleChip active={showEvents} onClick={() => setShowEvents((v) => !v)} testId="tl-events">◆ eventi</ToggleChip>
+        <ToggleChip active={showArtists} onClick={() => setShowArtists((v) => !v)} testId="tl-artists">👤 artisti</ToggleChip>
         <div className="filter-group" style={{ marginLeft: "auto" }}>
           {legendEntries.map(([t, c]) => (
             <span key={t} className="muted" style={{ fontSize: 11.5, display: "inline-flex", alignItems: "center", gap: 5 }}>
@@ -469,12 +502,22 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
       </div>
 
       {showArtists ? (
-        <Fullscreen title="Linea del tempo — Artisti" controls={controls} onChange={(f) => { setInFull(f); onFull(f); }}>
-          <ArtistTimelineCanvas inFullscreen={inFull} />
+        <Fullscreen title="Linea del tempo — Artisti" controls={null} showSlider={false} onChange={(f) => { setInFull(f); onFull(f); }}>
+          <div className="gf-inner">
+            <ArtistTimelineCanvas inFullscreen={inFull} />
+            <div className="gf-side">
+              {sideFiltersBlock}
+            </div>
+          </div>
         </Fullscreen>
       ) : (
-        <Fullscreen title="Linea del tempo" controls={controls} onChange={(f) => { setInFull(f); onFull(f); }}>
-          <TimelineCanvasControlled showFlows={showFlows} showEvents={showEvents} inFullscreen={inFull} />
+        <Fullscreen title="Linea del tempo" controls={null} showSlider={false} onChange={(f) => { setInFull(f); onFull(f); }}>
+          <div className="gf-inner">
+            <TimelineCanvasControlled showFlows={showFlows} showEvents={showEvents} inFullscreen={inFull} />
+            <div className="gf-side">
+              {sideFiltersBlock}
+            </div>
+          </div>
         </Fullscreen>
       )}
     </>
