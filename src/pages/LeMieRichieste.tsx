@@ -13,8 +13,8 @@ import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { useAuth, CONTACT_EMAIL } from "../lib/auth";
-import { getFavorites, clearAllFavorites } from "../lib/favorites";
-import { getStudied, clearAllStudied } from "../lib/studied";
+import { getFavorites } from "../lib/favorites";
+import { getStudied } from "../lib/studied";
 import { fullSync } from "../lib/sync";
 
 interface SuggestionRow {
@@ -72,8 +72,6 @@ export default function LeMieRichieste() {
   // Feedback sincronizzazione (banner verde/rosso)
   const [syncFeedback, setSyncFeedback] = useState<string | null>(null);
   const [syncing, setSyncing] = useState(false);
-  // Azzeramento progressi (zona pericolosa)
-  const [resetting, setResetting] = useState(false);
 
   const load = useCallback(async () => {
     if (!user) { setLoading(false); return; }
@@ -96,6 +94,7 @@ export default function LeMieRichieste() {
       setEditSuggestions((editRes.data as EditSuggestionRow[]) || []);
       // Reset del contatore "visto" — l'utente sta visualizzando le richieste ora
       try { localStorage.setItem(`atlante:sugg-seen:${user.id}`, String(Date.now())); } catch {}
+      window.dispatchEvent(new Event("atlante:suggestions-changed"));
     } catch (e: any) {
       setError(e.message || "Errore caricamento richieste");
     } finally {
@@ -122,44 +121,6 @@ export default function LeMieRichieste() {
     } finally {
       setSyncing(false);
     }
-  };
-
-  // ---- AZZERA TUTTI I PROGRESSI (zona pericolosa) ----
-  const handleResetProgress = async () => {
-    if (!user) return;
-    const confirmed = window.confirm(
-      "⚠️ CONFERMA AZZERAMENTO TOTALE\n\n" +
-      "Stai per cancellare TUTTI i tuoi progressi:\n" +
-      "  • Tutti i preferiti (★)\n" +
-      "  • Tutte le opere approfondite (✓)\n" +
-      "  • I dati corrispondenti sul cloud Supabase\n\n" +
-      "Questa azione è IRREVERSIBILE.\n\nVuoi procedere?"
-    );
-    if (!confirmed) return;
-
-    setResetting(true);
-    setSyncFeedback("⏳ Azzeramento in corso...");
-
-    // 1) Pulisci localStorage SUBITO (sincrono) — feedback immediato
-    try {
-      localStorage.removeItem("atlante:favorites");
-      localStorage.removeItem("atlante:studied");
-      window.dispatchEvent(new CustomEvent("atlante:favs-changed"));
-      window.dispatchEvent(new CustomEvent("atlante:studied-changed"));
-    } catch { /* ignore */ }
-
-    // 2) Attendi la delete su Supabase con Promise.all
-    try {
-      await Promise.all([
-        clearAllFavorites(),
-        clearAllStudied(),
-      ]);
-    } catch { /* ignore — il localStorage è già pulito */ }
-
-    // 3) Ricarica dopo 2 secondi per mostrare il feedback
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
   };
 
   if (!user) {
@@ -198,8 +159,8 @@ export default function LeMieRichieste() {
   return (
     <div className="wrap page">
       <div className="page-head" style={{ marginBottom: 18 }}>
-        <div className="page-eyebrow"><span className="sec-num">★</span><span className="eyebrow">Il tuo account</span></div>
-        <h1 className="page-title">Impostazioni profilo</h1>
+        <div className="page-eyebrow"><span className="eyebrow">I tuoi contributi</span></div>
+        <h1 className="page-title">Contributi</h1>
         <p className="page-lead">
           Qui trovi lo storico di tutte le richieste che hai inviato: proposte di nuove opere e suggerimenti di modifica.
           Quando un admin le revisiona, riceverai una notifica (badge che pulsa nel menù) e potrai vedere il responso qui.
@@ -241,7 +202,7 @@ export default function LeMieRichieste() {
       <div style={{ display: "flex", gap: 10, marginBottom: 24, flexWrap: "wrap" }}>
         <Link to="/suggerisci" className="btn gold sm">+ Proponi una nuova opera</Link>
         <Link to="/opere" className="btn ghost sm">Cerca un'opera da modificare</Link>
-        <button className="btn ghost sm" onClick={handleSync} disabled={syncing || resetting}>
+        <button className="btn ghost sm" onClick={handleSync} disabled={syncing}>
           {syncing ? "↻ Sincronizzazione…" : "↻ Sincronizza ora"}
         </button>
       </div>
@@ -399,37 +360,7 @@ export default function LeMieRichieste() {
         </>
       )}
 
-      {/* ===== ZONA PERICOLOSA ===== */}
-      <div style={{
-        marginTop: 40, padding: 18,
-        background: "rgba(168,72,63,0.04)",
-        border: "1px solid rgba(168,72,63,0.3)",
-        borderRadius: 12,
-      }}>
-        <h2 style={{
-          fontSize: 17, marginBottom: 8, fontFamily: "var(--font-display)",
-          color: "#a8483f",
-        }}>
-          ⚠️ Zona pericolosa
-        </h2>
-        <p style={{ fontSize: 13.5, lineHeight: 1.55, color: "var(--ink-soft)", marginBottom: 14, maxWidth: "62ch" }}>
-          Qui puoi azzerare completamente i tuoi progressi: tutti i preferiti (★) e le opere approfondite (✓) verranno
-          cancellati sia da questo browser che dal cloud. <b>L'azione è irreversibile.</b>
-        </p>
-        <button
-          onClick={handleResetProgress}
-          disabled={resetting || syncing}
-          className="btn sm"
-          style={{
-            background: "#a8483f", color: "#fff", borderColor: "#a8483f",
-            cursor: resetting ? "wait" : "pointer",
-          }}
-        >
-          {resetting ? "⏳ Azzeramento in corso..." : "🗑️ Azzera tutti i progressi"}
-        </button>
-      </div>
-
-      {/* Donazioni */}
+      {/* Sostieni il progetto */}
       <div style={{
         marginTop: 24, padding: "20px", background: "var(--bg-2)", borderRadius: 12,
         textAlign: "center",
@@ -438,18 +369,23 @@ export default function LeMieRichieste() {
           Sostieni il progetto
         </h2>
         <p style={{ fontSize: 13.5, color: "var(--ink-soft)", margin: "0 0 14px", lineHeight: 1.55 }}>
-          HUB Art è gratuito e senza pubblicità. Se ti è utile, considera una donazione per
-          supportare lo sviluppo e i costi di hosting.
+          HUB Arte è gratuito e open source. Puoi contribuire in molti modi:
+          mettere una star su GitHub, segnalare bug o suggerimenti, contribuire
+          al codice con pull request, o semplicemente parlarne con chi studia
+          storia dell'arte.
         </p>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
-          <a href="https://www.buymeacoffee.com/ATgio" target="_blank" rel="noopener noreferrer"
+          <a href="https://github.com/ATgio99/Hub-Arte" target="_blank" rel="noopener noreferrer"
             style={{
-              display: "inline-flex", alignItems: "center", gap: 6,
+              display: "inline-flex", alignItems: "center", gap: 8,
               padding: "9px 18px", borderRadius: 999, fontSize: 13, fontWeight: 600,
-              background: "#ffdd00", color: "#000", textDecoration: "none",
-              border: "1px solid #e6c800",
+              background: "var(--gold)", color: "#fff", textDecoration: "none",
+              border: "1px solid var(--gold-deep)",
             }}>
-            ☕ Buy me a coffee
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            Vai al repository GitHub →
           </a>
         </div>
       </div>

@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { useEffect } from "react";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, Section, Empty, EntityLink, FilterNote } from "../components/ui";
 import {
@@ -16,7 +16,7 @@ export default function Periodo() {
   const { workIn } = useTimeRange();
   const p = id ? ix.periodById.get(id) : undefined;
 
-  // Salva l'ultimo periodo aperto dalla Linea del tempo (PRIMA dell'early return)
+  // Salva il periodo come ultimo visitato dalla Linea del tempo (per il ritorno via menu)
   useEffect(() => {
     if (!p) return;
     setLastTimeline(p.id);

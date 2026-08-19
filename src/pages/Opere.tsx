@@ -1,22 +1,29 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
-import { WorkCard, WorkGroupCard, Empty, FilterNote } from "../components/ui";
+import { WorkCard, WorkGroupCard, Empty, EmptyTimeRange, FilterNote } from "../components/ui";
 import { useFavorites } from "../lib/favorites";
 import { useStudied } from "../lib/studied";
 import { computeWorkGroups, workGroupMap } from "../lib/data";
+import { clearLastOpera } from "../lib/lastVisited";
 import type { WorkType } from "../lib/types";
 
 const TYPES: WorkType[] = ["architettura", "pittura", "scultura", "mosaico", "miniatura", "oreficeria", "urbanistica", "altro"];
 
 export default function Opere() {
   const { ds, periodById } = useData();
-  const { workIn } = useTimeRange();
+  const { workIn, active } = useTimeRange();
   const [sp] = useSearchParams();
-  const [q, setQ] = useState("");
+
+  // Quando si arriva alla home delle Opere, azzerare l'ultima opera visitata
+  // (così il prossimo click su "Opere" nel menu non riporta all'opera vecchia)
+  useEffect(() => {
+    clearLastOpera();
+  }, []);
+  const [q, setQ] = useState(() => sessionStorage.getItem("atlante:opere-search") || "");
   const [type, setType] = useState<string>(sp.get("type") ?? "");
   const [period, setPeriod] = useState<string>(sp.get("p") ?? "");
-  const [imp, setImp] = useState<string>("");
+  const [imp, setImp] = useState<string>(() => sessionStorage.getItem("atlante:opere-imp") || "");
   const [favOnly, setFavOnly] = useState(false);
   const [studiedFilter, setStudiedFilter] = useState<"" | "studied" | "not-studied">("");
   const [grouped, setGrouped] = useState(false);
@@ -24,6 +31,16 @@ export default function Opere() {
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
   const favs = useFavorites();
   const studied = useStudied();
+
+  // Salva la ricerca in sessionStorage quando cambia
+  useEffect(() => {
+    if (q) sessionStorage.setItem("atlante:opere-search", q);
+    else sessionStorage.removeItem("atlante:opere-search");
+  }, [q]);
+  useEffect(() => {
+    if (imp) sessionStorage.setItem("atlante:opere-imp", imp);
+    else sessionStorage.removeItem("atlante:opere-imp");
+  }, [imp]);
 
   // periodi ordinati cronologicamente per il filtro
   const periodOpts = useMemo(
@@ -94,7 +111,7 @@ export default function Opere() {
   return (
     <div className="wrap page">
       <div className="page-head">
-        <div className="page-eyebrow"><span className="sec-num">04</span><span className="eyebrow">Catalogo · Opere</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Catalogo · Opere</span></div>
         <h1 className="page-title">Opere</h1>
         <p className="page-lead">Il catalogo completo: ogni scheda raccoglie immagine, datazione, tecniche, terminologia e le connessioni con le altre opere. Usa la barra temporale a sinistra per restringere il periodo.</p>
       </div>
@@ -147,7 +164,15 @@ export default function Opere() {
         )}
       </div>
 
-      {filtered.length === 0 ? <Empty msg={favOnly && favs.works.length === 0 ? "Nessuna opera preferita: tocca la ★ su una scheda per aggiungerla." : "Nessuna opera corrisponde ai filtri."} /> : (
+      {filtered.length === 0 ? (
+        favOnly && favs.works.length === 0 ? (
+          <Empty msg="Nessuna opera preferita: tocca la ★ su una scheda per aggiungerla." />
+        ) : active ? (
+          <EmptyTimeRange noun="opere" />
+        ) : (
+          <Empty msg="Nessuna opera corrisponde ai filtri." />
+        )
+      ) : (
         <>
           <div className="grid-works">
             {/* Opere raggruppate (solo in modalità raggruppata) */}
@@ -168,6 +193,7 @@ export default function Opere() {
             {/* Opere singole */}
             {(grouped ? singleWorks : filtered).slice(0, limit).map((w) => (
               <WorkCard key={w.id} work={w}
+                group={grouped ? byGroup.get(w.id) : undefined}
                 subtitle={[w.location_city, periodById.get(w.period_id)?.name].filter(Boolean).join(" · ")} />
             ))}
           </div>

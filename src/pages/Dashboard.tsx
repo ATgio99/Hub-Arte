@@ -248,7 +248,7 @@ export default function Dashboard() {
   return (
     <div className="wrap page">
       <div className="page-head">
-        <div className="page-eyebrow"><span className="sec-num">07</span><span className="eyebrow">Panoramica quantitativa</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Panoramica quantitativa</span></div>
         <h1 className="page-title">Statistiche dell'atlante</h1>
         <p className="page-lead">Una lettura quantitativa del programma: distribuzione delle opere, geografia, densità di innovazioni e natura delle connessioni. Tutti i grafici seguono la barra temporale a sinistra.</p>
         <div style={{ marginTop: 12 }}>

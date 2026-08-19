@@ -7,9 +7,7 @@ import SpriteText from "three-spritetext";
 import { useData, useTimeRange } from "../lib/store";
 import { ENTITY_COLOR, entityHref, WorkImage } from "../components/ui";
 import { ENTITY_LABEL, KIND_LABEL, entityLabel } from "../lib/data";
-import { getLastRete, setLastRete, clearLastRete } from "../lib/lastVisited";
 import Fullscreen from "../components/Fullscreen";
-import TimeRangeSlider from "../components/TimeRangeSlider";
 import type { EntityType, ConnKind } from "../lib/types";
 
 const NODE_TYPES: EntityType[] = ["period", "artist", "work", "technique", "term", "event"];
@@ -48,17 +46,9 @@ export default function Grafo() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<{ type: EntityType | "city"; id: string; label: string; subtitle?: string }[]>([]);
 
-  // Quando l'utente seleziona un risultato, filtra il grafo per mostrare
-  // solo quel nodo + tutti i nodi connessi (fino a 2 livelli)
-  const [focusNode, setFocusNode] = useState<string | null>(null);
-
   // Ricerca globale: cerca in tutte le entità
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    // Appena l'utente ricomincia a digitare, usciamo dal focus su un risultato
-    // precedente — altrimenti il messaggio "Nessun risultato" verrebbe
-    // nascosto dal flag focusNode anche durante una nuova ricerca valida.
-    if (focusNode) setFocusNode(null);
     if (!query.trim()) {
       setSearchResults([]);
       return;
@@ -124,6 +114,8 @@ export default function Grafo() {
 
   // Quando l'utente seleziona un risultato, filtra il grafo per mostrare
   // solo quel nodo + tutti i nodi connessi (fino a 2 livelli)
+  const [focusNode, setFocusNode] = useState<string | null>(null);
+
   const handleSelectResult = (result: { type: EntityType | "city"; id: string; label: string }) => {
     const nodeKey = `${result.type}:${result.id}`;
     setFocusNode(nodeKey);
@@ -141,55 +133,7 @@ export default function Grafo() {
     setSearchQuery("");
     setSearchResults([]);
     setSel(null);
-    // Reset esplicito: cancella anche la memoria "ultima ricerca"
-    clearLastRete();
-    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   };
-
-  // === Memoria ultima ricerca nel grafo ===
-  // All'apertura della pagina, ripristina l'ultima ricerca salvata
-  // (focusNode + searchQuery) se esiste.
-  const [restored, setRestored] = useState(false);
-  useEffect(() => {
-    if (restored) return;
-    const last = getLastRete();
-    if (last && last.focusNode) {
-      setFocusNode(last.focusNode);
-      setSearchQuery(last.searchQuery || "");
-    }
-    setRestored(true);
-  }, [restored]);
-
-  // Quando focusNode o searchQuery cambiano (dopo il ripristino iniziale),
-  // salva nello storage per ritrovarli alla prossima apertura.
-  useEffect(() => {
-    if (!restored) return;
-    // Se non c'è focusNode, non salviamo nulla (così il clear rimane "pulito")
-    if (focusNode) {
-      setLastRete({ focusNode, searchQuery });
-    } else {
-      clearLastRete();
-    }
-    // Notifica la sidebar di aggiornare l'etichetta "Continua"
-    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-  }, [focusNode, searchQuery, restored]);
-
-  // Ascolta il "doppio click su Rete" dalla sidebar: resetta il grafo
-  // (svuota focusNode + searchQuery + selezione). Quando l'utente è già
-  // sulla pagina Rete e clicca di nuovo "Rete" nel menu, la sidebar
-  // emette questo evento invece di fare una navigazione vera e propria.
-  useEffect(() => {
-    const onReset = () => {
-      setFocusNode(null);
-      setSearchQuery("");
-      setSearchResults([]);
-      setSel(null);
-      clearLastRete();
-      window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-    };
-    window.addEventListener("atlante:rete-reset", onReset);
-    return () => window.removeEventListener("atlante:rete-reset", onReset);
-  }, []);
 
   // ResizeObserver SOLO in modalità non-fullscreen.
   // In fullscreen usiamo dimensioni fisse (window.innerWidth/innerHeight)
@@ -439,40 +383,35 @@ export default function Grafo() {
     </div>
   );
 
-  // Blocco filtri + slider temporale, mostrato dentro la colonna destra
-  // (.gf-side) SOLO in modalità fullscreen. In modalità normale i filtri
-  // rimangono disposti in orizzontale sotto il grafo e lo slider è nella
-  // sidebar dell'app, come sempre.
-  const sideFiltersBlock = (
-    <div className="panel gf-fs-only" data-testid="gf-fs-filters">
-      <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Tempo</div>
-      <div style={{ margin: "0 -4px 14px" }}>
-        <TimeRangeSlider compact />
+  const fsControls = (
+    <>
+      {modeToggle}
+      <div className="panel gf-filters" style={{ background: "transparent", border: 0, padding: 0, margin: 0 }}>
+        <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Livelli</div>
+        {[...NODE_TYPES, "city" as const].map((t) => {
+          const off = hideTypes.has(t);
+          return (
+            <button key={t} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideTypes, t, setHideTypes)}>
+              <span className="dot" style={{ background: NODE_HEX[t] }} />
+              <span className="gf-frow-lab">{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]}</span>
+              <span className="gf-frow-n tnum">{counts[t] ?? 0}</span>
+              <EyeIcon off={off} />
+            </button>
+          );
+        })}
+        <div className="panel-title" style={{ fontSize: 15, margin: "14px 0 8px" }}>Legami</div>
+        {KINDS.map((k) => {
+          const off = hideKinds.has(k);
+          return (
+            <button key={k} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideKinds, k, setHideKinds)}>
+              <span className="dot" style={{ background: KIND_COLOR[k] }} />
+              <span className="gf-frow-lab">{KIND_LABEL[k]}</span>
+              <EyeIcon off={off} />
+            </button>
+          );
+        })}
       </div>
-      <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Livelli</div>
-      {[...NODE_TYPES, "city" as const].map((t) => {
-        const off = hideTypes.has(t);
-        return (
-          <button key={t} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideTypes, t, setHideTypes)}>
-            <span className="dot" style={{ background: NODE_HEX[t] }} />
-            <span className="gf-frow-lab">{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]}</span>
-            <span className="gf-frow-n tnum">{counts[t] ?? 0}</span>
-            <EyeIcon off={off} />
-          </button>
-        );
-      })}
-      <div className="panel-title" style={{ fontSize: 15, margin: "14px 0 8px" }}>Legami</div>
-      {KINDS.map((k) => {
-        const off = hideKinds.has(k);
-        return (
-          <button key={k} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideKinds, k, setHideKinds)}>
-            <span className="dot" style={{ background: KIND_COLOR[k] }} />
-            <span className="gf-frow-lab">{KIND_LABEL[k]}</span>
-            <EyeIcon off={off} />
-          </button>
-        );
-      })}
-    </div>
+    </>
   );
 
   const renderGraph = (full: boolean) => (
@@ -480,16 +419,13 @@ export default function Grafo() {
       // In fullscreen: dimensioni FISSE (width/height in px) invece di 100%/flex.
       // Se usassimo 100%/flex, ogni micro-reflow del parent (es. animazione
       // del drawer) causerebbe il ridimensionamento del canvas → zoom intermittente.
-      // Nota: in fullscreen passiamo full=false a renderGraph (perché il CSS
-      // .fs-host:fullscreen .gf-inner > .stage forza height:100% !important),
-      // ma passiamo full=isFull al GraphSizer per fargli calcolare le dims.
       width: full ? dims.w : "100%",
       height: full ? dims.h : "min(72vh, 700px)",
       flex: full ? undefined : undefined,
       border: full ? 0 : undefined,
       borderRadius: full ? 0 : undefined,
     }} data-testid="graph-stage">
-      <GraphSizer wrapRef={wrapRef} full={isFull} setDims={setDims} />
+      <GraphSizer wrapRef={wrapRef} full={full} setDims={setDims} />
       {mode === "3d" ? (
         <ForceGraph3D
           ref={fg3d}
@@ -610,12 +546,8 @@ export default function Grafo() {
         )}
       </div>
 
-      {/* Layout: grafo a sinistra + pannello dettagli a destra.
-          In fullscreen NON usiamo il drawer laterale del componente Fullscreen:
-          la colonna destra (.gf-side) contiene già ricerca, dettagli e filtri
-          (in parallelsso al grafo), così la disposizione è coerente con la
-          modalità normale e la mappa è alta quanto l'intera colonna destra. */}
-      <Fullscreen title="Rete delle connessioni" controls={null} showSlider={false} onChange={setIsFull}>
+      {/* Layout: grafo a sinistra + pannello dettagli a destra */}
+      <Fullscreen title="Rete delle connessioni" controls={fsControls} onChange={setIsFull}>
         <div className="gf-inner">
           {renderGraph(false)}
 
@@ -628,7 +560,7 @@ export default function Grafo() {
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
-              placeholder="Cerca opera, autore, luogo…"
+              placeholder="Cerca opera, artista, luogo…"
               style={{
                 width: "100%", padding: "7px 10px", marginBottom: 10,
                 border: "1px solid var(--line)", borderRadius: 6,
@@ -637,7 +569,7 @@ export default function Grafo() {
               }}
             />
             <div style={{ maxHeight: 280, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
-              {searchQuery.trim() && searchResults.length === 0 && !focusNode && (
+              {searchQuery.trim() && searchResults.length === 0 && (
                 <div style={{ padding: "12px 0", textAlign: "center", color: "var(--ink-dim)", fontSize: 13 }}>
                   Nessun risultato per "{searchQuery}".
                 </div>
@@ -757,44 +689,30 @@ export default function Grafo() {
               <div style={{ marginTop: 14 }}><button className="btn sm ghost" onClick={restartFocus}>Riordina la rete</button></div>
             </div>
           )}
-
-          {/* In fullscreen mostriamo qui i filtri e lo slider temporale,
-              così la colonna destra contiene ricerca → risultati → dettagli → filtri,
-              in parallelo al grafo che occupa tutta l'altezza della colonna. */}
-          {sideFiltersBlock}
         </div>
         </div>
       </Fullscreen>
 
-      {/* === Filtri in orizzontale sotto il grafo (modalità normale) ===
-          In fullscreen vengono nascosti via CSS (.gf-bottom-filters display:none)
-          perché sono stati spostati dentro la colonna destra (vedi sideFiltersBlock).
-          "Livelli" e "Legami" stanno su due righe separate, entrambe allineate a sinistra. */}
-      <div className="gf-bottom-filters" style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16, padding: "12px 16px", background: "var(--bg-2)", borderRadius: 10, border: "1px solid var(--line)" }}>
-        {/* Riga 1: Livelli */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-          <div className="smallcaps" style={{ marginRight: 8 }}>Livelli:</div>
-          {[...NODE_TYPES, "city" as const].map((t) => {
-            const off = hideTypes.has(t);
-            return (
-              <button key={t} onClick={() => toggle(hideTypes, t, setHideTypes)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
-                <span className="dot" style={{ background: NODE_HEX[t], marginRight: 4 }} />{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]} ({counts[t] ?? 0})
-              </button>
-            );
-          })}
-        </div>
-        {/* Riga 2: Legami */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-          <div className="smallcaps" style={{ marginRight: 8 }}>Legami:</div>
-          {KINDS.map((k) => {
-            const off = hideKinds.has(k);
-            return (
-              <button key={k} onClick={() => toggle(hideKinds, k, setHideKinds)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
-                <span className="dot" style={{ background: KIND_COLOR[k], marginRight: 4 }} />{KIND_LABEL[k]}
-              </button>
-            );
-          })}
-        </div>
+      {/* === Filtri in orizzontale sotto il grafo === */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 16, padding: "12px 16px", background: "var(--bg-2)", borderRadius: 10, border: "1px solid var(--line)" }}>
+        <div className="smallcaps" style={{ marginRight: 8, alignSelf: "center" }}>Livelli:</div>
+        {[...NODE_TYPES, "city" as const].map((t) => {
+          const off = hideTypes.has(t);
+          return (
+            <button key={t} onClick={() => toggle(hideTypes, t, setHideTypes)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
+              <span className="dot" style={{ background: NODE_HEX[t], marginRight: 4 }} />{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]} ({counts[t] ?? 0})
+            </button>
+          );
+        })}
+        <div className="smallcaps" style={{ margin: "0 8px 0 16px", alignSelf: "center" }}>Legami:</div>
+        {KINDS.map((k) => {
+          const off = hideKinds.has(k);
+          return (
+            <button key={k} onClick={() => toggle(hideKinds, k, setHideKinds)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
+              <span className="dot" style={{ background: KIND_COLOR[k], marginRight: 4 }} />{KIND_LABEL[k]}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -812,16 +730,8 @@ function GraphSizer({ wrapRef, full, setDims }: { wrapRef: any; full: boolean; s
       // Il grafo mantiene le dimensioni fisse finché si resta in fullscreen.
       const w = window.innerWidth;
       const h = window.innerHeight;
-      // Colonna destra di 340px + gap 18px + padding laterale 18+18 = 394px
-      // sui desktop; su mobile (w <= 980) la colonna destra va in basso, quindi
-      // il grafo occupa tutta la larghezza disponibile.
-      const sideW = w > 980 ? 376 : 36; // 340 + 18 + 18 = 376
-      const topPad = 56; // spazio per il titolo + pulsante "Esci"
-      const bottomPad = 18;
-      setDims({
-        w: Math.max(200, w - sideW),
-        h: Math.max(200, h - topPad - bottomPad),
-      });
+      const drawerW = w > 900 ? 300 : 0;
+      setDims({ w: Math.max(200, w - drawerW), h });
       return; // nessun listener, nessun aggiornamento
     }
     // Modalità normale: usa ResizeObserver con debounce

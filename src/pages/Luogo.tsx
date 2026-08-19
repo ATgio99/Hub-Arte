@@ -18,9 +18,8 @@ export default function Luogo() {
   const nav = useNavigate();
   const { workIn } = useTimeRange();
 
-  // Salva l'ultima città visitata dalla Mappa
+  // Salva la città come ultima visitata dalla Mappa (per il ritorno via menu)
   useEffect(() => {
-    if (!city) return;
     setLastMappa(city);
     window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   }, [city]);

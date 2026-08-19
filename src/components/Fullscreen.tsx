@@ -94,12 +94,11 @@ export default function Fullscreen({
     );
   }
 
-  // CHANGE 8: se non ci sono né controlli né slider (es. Grafo in fullscreen che
-  // gestisce i filtri nella colonna destra interna), non renderizzare né il
-  // drawer né il pulsante "Filtri".
+  // Fullscreen: drawer laterale stile sidebar + contenuto.
+  // Se controls=null e showSlider=false, non c'è nulla da mostrare nel drawer:
+  // lo saltiamo del tutto (nessun drawer, nessun pulsante "Filtri" in basso).
   const hasDrawerContent = !!controls || showSlider;
 
-  // Fullscreen: drawer laterale stile sidebar + contenuto
   return (
     <div ref={ref} className="fs-host is-full" data-fullscreen={isFull} data-testid="fs-host">
       {/* Pulsante ESCI — sempre in alto a destra, sopra tutto */}
@@ -139,8 +138,8 @@ export default function Fullscreen({
         {children}
       </div>
 
-      {/* Drawer laterale destro — stesso stile della sidebar principale.
-          Nascosto quando non ci sono né controlli né slider (Grafo fullscreen). */}
+      {/* Drawer laterale destro — solo se c'è qualcosa da mostrare
+          (filtri vista + slider temporale). Altrimenti niente drawer. */}
       {hasDrawerContent && (
         <>
           <AnimatePresence>
@@ -150,81 +149,81 @@ export default function Fullscreen({
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ type: "spring", damping: 28, stiffness: 300 }}
+            style={{
+              position: "fixed", top: 0, right: 0, bottom: 0, zIndex: 9999,
+              width: "min(300px, 88vw)",
+              background: "rgba(251,248,241,.88)",
+              backdropFilter: "blur(14px)",
+              borderLeft: "1px solid var(--line)",
+              borderRadius: "16px 0 0 16px",
+              boxShadow: "-8px 0 30px rgba(0,0,0,.12)",
+              overflowY: "auto",
+              display: "flex", flexDirection: "column",
+              paddingTop: 52,
+            }}
+          >
+            {/* Header drawer */}
+            <div style={{
+              padding: "8px 16px 10px",
+              borderBottom: "1px solid var(--line)",
+              display: "flex", justifyContent: "space-between", alignItems: "center",
+            }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                Filtri e impostazioni
+              </span>
+              <button
+                onClick={() => setDrawerOpen(false)}
                 style={{
-                  position: "fixed", top: 0, right: 0, bottom: 0, zIndex: 9999,
-                  width: "min(300px, 88vw)",
-                  background: "rgba(251,248,241,.88)",
-                  backdropFilter: "blur(14px)",
-                  borderLeft: "1px solid var(--line)",
-                  borderRadius: "16px 0 0 16px",
-                  boxShadow: "-8px 0 30px rgba(0,0,0,.12)",
-                  overflowY: "auto",
-                  display: "flex", flexDirection: "column",
-                  paddingTop: 52,
+                  background: "none", border: 0, cursor: "pointer",
+                  color: "var(--ink-dim)", fontSize: 20, lineHeight: 1,
+                  padding: "2px 6px", borderRadius: 4,
                 }}
+                aria-label="Chiudi filtri"
               >
-                {/* Header drawer */}
-                <div style={{
-                  padding: "8px 16px 10px",
-                  borderBottom: "1px solid var(--line)",
-                  display: "flex", justifyContent: "space-between", alignItems: "center",
-                }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                    Filtri e impostazioni
-                  </span>
-                  <button
-                    onClick={() => setDrawerOpen(false)}
-                    style={{
-                      background: "none", border: 0, cursor: "pointer",
-                      color: "var(--ink-dim)", fontSize: 20, lineHeight: 1,
-                      padding: "2px 6px", borderRadius: 4,
-                    }}
-                    aria-label="Chiudi filtri"
-                  >
-                    ✕
-                  </button>
-                </div>
+                ✕
+              </button>
+            </div>
 
-                {/* Corpo drawer */}
-                <div style={{ padding: "12px 16px 80px", display: "flex", flexDirection: "column", gap: 16 }}>
-                  {/* Slider temporale — usa il componente della sidebar */}
-                  {showSlider && (
-                    <div className="sbx-trs" style={{ margin: "0 -4px" }}>
-                      <TimeRangeSlider compact />
-                    </div>
-                  )}
-                  {/* Filtri specifici della vista */}
-                  {controls && (
-                    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                      {controls}
-                    </div>
-                  )}
+            {/* Corpo drawer */}
+            <div style={{ padding: "12px 16px 80px", display: "flex", flexDirection: "column", gap: 16 }}>
+              {/* Slider temporale — usa il componente della sidebar */}
+              {showSlider && (
+                <div className="sbx-trs" style={{ margin: "0 -4px" }}>
+                  <TimeRangeSlider compact />
                 </div>
-              </motion.aside>
-            )}
-          </AnimatePresence>
+              )}
+              {/* Filtri specifici della vista */}
+              {controls && (
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {controls}
+                </div>
+              )}
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
 
-          {/* Pulsante per riaprire il drawer */}
-          {!drawerOpen && (
-            <button
-              onClick={() => setDrawerOpen(true)}
-              style={{
-                position: "fixed", bottom: 14, right: 14, zIndex: 10000,
-                display: "inline-flex", alignItems: "center", gap: 6,
-                padding: "10px 16px", borderRadius: 999, cursor: "pointer",
-                background: "rgba(251,248,241,.95)", backdropFilter: "blur(8px)",
-                border: "1px solid var(--line)", color: "var(--ink)",
-                fontSize: 13, fontWeight: 500, fontFamily: "inherit",
-                boxShadow: "0 2px 12px rgba(0,0,0,.12)",
-              }}
-              aria-label="Apri filtri"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M3 12h18M3 6h18M3 18h18" />
-              </svg>
-              Filtri
-            </button>
-          )}
+      {/* Pulsante per riaprire il drawer */}
+      {!drawerOpen && (
+        <button
+          onClick={() => setDrawerOpen(true)}
+          style={{
+            position: "fixed", bottom: 14, right: 14, zIndex: 10000,
+            display: "inline-flex", alignItems: "center", gap: 6,
+            padding: "10px 16px", borderRadius: 999, cursor: "pointer",
+            background: "rgba(251,248,241,.95)", backdropFilter: "blur(8px)",
+            border: "1px solid var(--line)", color: "var(--ink)",
+            fontSize: 13, fontWeight: 500, fontFamily: "inherit",
+            boxShadow: "0 2px 12px rgba(0,0,0,.12)",
+          }}
+          aria-label="Apri filtri"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <path d="M3 12h18M3 6h18M3 18h18" />
+          </svg>
+          Filtri
+        </button>
+      )}
         </>
       )}
     </div>
