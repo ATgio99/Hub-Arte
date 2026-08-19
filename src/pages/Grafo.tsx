@@ -26,17 +26,10 @@ const KIND_COLOR: Record<string, string> = {
   luogo: "#7da59a",
 };
 // Pattern di tratteggio per distinguere i legami anche senza colore.
-// I legami più "forti" (maestro-allievo, influenza) sono continui; quelli più
-// "deboli" o indiretti (contaminazione, luogo) sono tratteggiati.
 const KIND_DASH: Record<string, number[] | undefined> = {
-  influenza: undefined,           // continuo
-  rielaborazione: undefined,      // continuo
-  evoluzione: undefined,          // continuo
-  committenza: [10, 5],           // tratteggiato lungo
-  "maestro-allievo": undefined,   // continuo
-  contaminazione: [4, 4],         // tratteggiato fitto
-  contrasto: [2, 4],              // puntini
-  luogo: [1, 6],                  // puntini radi
+  influenza: undefined, rielaborazione: undefined, evoluzione: undefined,
+  committenza: [10, 5], "maestro-allievo": undefined,
+  contaminazione: [4, 4], contrasto: [2, 4], luogo: [1, 6],
 };
 // Spessore del legame in base al tipo (i legami "forti" più spessi).
 const KIND_WIDTH: Record<string, number> = {
@@ -468,6 +461,23 @@ export default function Grafo() {
   // sidebar dell'app, come sempre.
   const sideFiltersBlock = (
     <div className="panel gf-fs-only" data-testid="gf-fs-filters">
+      {/* Toggle 2D/3D — in alto, così l'utente può cambiare modalità
+          senza uscire dal fullscreen. */}
+      <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Vista</div>
+      <div className="seg" data-testid="gf-fs-mode" style={{ marginBottom: 14, width: "100%", display: "flex" }}>
+        <button
+          className={`seg-btn ${mode === "3d" ? "on" : ""}`}
+          onClick={() => setMode("3d")}
+          data-testid="gf-fs-mode-3d"
+          style={{ flex: 1 }}
+        >3D</button>
+        <button
+          className={`seg-btn ${mode === "2d" ? "on" : ""}`}
+          onClick={() => setMode("2d")}
+          data-testid="gf-fs-mode-2d"
+          style={{ flex: 1 }}
+        >2D</button>
+      </div>
       <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Tempo</div>
       <div style={{ margin: "0 -4px 14px" }}>
         <TimeRangeSlider compact />
@@ -490,7 +500,6 @@ export default function Grafo() {
         const dash = KIND_DASH[k];
         return (
           <button key={k} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideKinds, k, setHideKinds)}>
-            {/* Campione del legame: mini-linea SVG con colore e pattern (continuo/tratteggiato) */}
             <svg width="24" height="8" style={{ flexShrink: 0 }}>
               <line
                 x1="0" y1="4" x2="24" y2="4"
@@ -545,9 +554,6 @@ export default function Grafo() {
           }}
           linkOpacity={0.85}
           linkDirectionalArrowLength={(l: any) => {
-            // Mostra una freccia direzionale per i legami con direzione significativa
-            // (committenza, maestro-allievo, influenza, rielaborazione, evoluzione, contrasto)
-            // Nasconde la freccia per "contaminazione" (bidirezionale) e "luogo" (contenimento).
             const directional = ["committenza", "maestro-allievo", "influenza", "rielaborazione", "evoluzione", "contrasto"];
             return directional.includes(l.kind) ? 3.5 : 0;
           }}
@@ -574,11 +580,11 @@ export default function Grafo() {
           nodeRelSize={4}
           linkColor={(l: any) => {
             const baseColor = KIND_COLOR[l.kind] ?? INK;
-            if (!neighbors) return baseColor + "88"; // ~53% opacity, sempre distinguibile
+            if (!neighbors) return baseColor + "88";
             const s = typeof l.source === "object" ? l.source.id : l.source;
             const t = typeof l.target === "object" ? l.target.id : l.target;
             const on = neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId);
-            return on ? baseColor : baseColor + "22"; // ~13% opacity se non in evidenza
+            return on ? baseColor : baseColor + "22";
           }}
           linkWidth={(l: any) => {
             const baseW = KIND_WIDTH[l.kind] ?? 0.8;
@@ -834,8 +840,6 @@ export default function Grafo() {
             const dash = KIND_DASH[k];
             return (
               <button key={k} onClick={() => toggle(hideKinds, k, setHideKinds)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)", display: "inline-flex", alignItems: "center", gap: 6 }}>
-                {/* Campione del legame: una mini-linea SVG che riproduce colore
-                    e pattern (continuo/tratteggiato/puntini) del legame nel grafo */}
                 <svg width="22" height="6" style={{ flexShrink: 0 }}>
                   <line
                     x1="0" y1="3" x2="22" y2="3"
