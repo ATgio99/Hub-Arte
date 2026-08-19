@@ -7,9 +7,9 @@ import SpriteText from "three-spritetext";
 import { useData, useTimeRange } from "../lib/store";
 import { ENTITY_COLOR, entityHref, WorkImage } from "../components/ui";
 import { ENTITY_LABEL, KIND_LABEL, entityLabel } from "../lib/data";
-import { getLastRete, setLastRete, clearLastRete } from "../lib/lastVisited";
 import Fullscreen from "../components/Fullscreen";
 import TimeRangeSlider from "../components/TimeRangeSlider";
+import { getLastRete, setLastRete, clearLastRete } from "../lib/lastVisited";
 import type { EntityType, ConnKind } from "../lib/types";
 
 const NODE_TYPES: EntityType[] = ["period", "artist", "work", "technique", "term", "event"];
@@ -44,112 +44,21 @@ export default function Grafo() {
   const [mode, setMode] = useState<"3d" | "2d">("3d");
   const [isFull, setIsFull] = useState(false);
 
-  // === Ricerca globale ===
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<{ type: EntityType | "city"; id: string; label: string; subtitle?: string }[]>([]);
-
-  // Quando l'utente seleziona un risultato, filtra il grafo per mostrare
-  // solo quel nodo + tutti i nodi connessi (fino a 2 livelli)
+  // CHANGE 6: focusNode + searchQuery + searchResults per salvare/ripristinare l'ultima ricerca
   const [focusNode, setFocusNode] = useState<string | null>(null);
-
-  // Ricerca globale: cerca in tutte le entità
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    // Appena l'utente ricomincia a digitare, usciamo dal focus su un risultato
-    // precedente — altrimenti il messaggio "Nessun risultato" verrebbe
-    // nascosto dal flag focusNode anche durante una nuova ricerca valida.
-    if (focusNode) setFocusNode(null);
-    if (!query.trim()) {
-      setSearchResults([]);
-      return;
-    }
-    const q = query.toLowerCase().trim();
-    const results: { type: EntityType | "city"; id: string; label: string; subtitle?: string }[] = [];
-    // Opere
-    for (const w of ix.ds.works) {
-      if (w.title.toLowerCase().includes(q) || w.id.toLowerCase().includes(q)) {
-        results.push({ type: "work", id: w.id, label: w.title, subtitle: w.location_city || undefined });
-        if (results.length >= 20) break;
-      }
-    }
-    // Artisti
-    if (results.length < 20) {
-      for (const a of ix.ds.artists) {
-        if (a.name.toLowerCase().includes(q) || a.id.toLowerCase().includes(q) || a.aka.some(ak => ak.toLowerCase().includes(q))) {
-          results.push({ type: "artist", id: a.id, label: a.name, subtitle: a.role || undefined });
-          if (results.length >= 20) break;
-        }
-      }
-    }
-    // Luoghi (città)
-    if (results.length < 20) {
-      const cities = new Set<string>();
-      for (const w of ix.ds.works) {
-        if (w.location_city && w.location_city.toLowerCase().includes(q)) cities.add(w.location_city);
-      }
-      for (const city of cities) {
-        results.push({ type: "city", id: city, label: city, subtitle: "Luogo" });
-        if (results.length >= 20) break;
-      }
-    }
-    // Periodi
-    if (results.length < 20) {
-      for (const p of ix.ds.periods) {
-        if (p.name.toLowerCase().includes(q)) {
-          results.push({ type: "period", id: p.id, label: p.name, subtitle: `${p.year_start}–${p.year_end}` });
-          if (results.length >= 20) break;
-        }
-      }
-    }
-    // Termini
-    if (results.length < 20) {
-      for (const t of ix.ds.terms) {
-        if (t.term.toLowerCase().includes(q)) {
-          results.push({ type: "term", id: t.id, label: t.term, subtitle: t.category });
-          if (results.length >= 20) break;
-        }
-      }
-    }
-    // Tecniche
-    if (results.length < 20) {
-      for (const t of ix.ds.techniques) {
-        if (t.name.toLowerCase().includes(q)) {
-          results.push({ type: "technique", id: t.id, label: t.name, subtitle: t.category });
-          if (results.length >= 20) break;
-        }
-      }
-    }
-    setSearchResults(results);
-  };
-
-  // Quando l'utente seleziona un risultato, filtra il grafo per mostrare
-  // solo quel nodo + tutti i nodi connessi (fino a 2 livelli)
-  const handleSelectResult = (result: { type: EntityType | "city"; id: string; label: string }) => {
-    const nodeKey = `${result.type}:${result.id}`;
-    setFocusNode(nodeKey);
-    setSearchQuery(result.label);
-    setSearchResults([]); // chiudi il dropdown
-    const node = graph.nodes.find(n => n.id === nodeKey);
-    if (node) {
-      setSel(node);
-    }
-  };
-
-  // Reset del focus (mostra tutto il grafo)
-  const handleClearSearch = () => {
-    setFocusNode(null);
-    setSearchQuery("");
-    setSearchResults([]);
-    setSel(null);
-    // Reset esplicito: cancella anche la memoria "ultima ricerca"
-    clearLastRete();
-    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-  };
-
-  // === Memoria ultima ricerca nel grafo ===
-  // All'apertura della pagina, ripristina l'ultima ricerca salvata
-  // (focusNode + searchQuery) se esiste.
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<any[]>([]);
   const [restored, setRestored] = useState(false);
+
+  useEffect(() => {
+    const ro = new ResizeObserver(() => {
+      if (wrapRef.current) setDims({ w: wrapRef.current.clientWidth, h: wrapRef.current.clientHeight });
+    });
+    if (wrapRef.current) ro.observe(wrapRef.current);
+    return () => ro.disconnect();
+  }, []);
+
+  // CHANGE 6: ripristina l'ultima ricerca salvata al primo mount
   useEffect(() => {
     if (restored) return;
     const last = getLastRete();
@@ -160,24 +69,18 @@ export default function Grafo() {
     setRestored(true);
   }, [restored]);
 
-  // Quando focusNode o searchQuery cambiano (dopo il ripristino iniziale),
-  // salva nello storage per ritrovarli alla prossima apertura.
+  // CHANGE 6: salva l'ultima ricerca ogni volta che cambia focus/query
   useEffect(() => {
     if (!restored) return;
-    // Se non c'è focusNode, non salviamo nulla (così il clear rimane "pulito")
     if (focusNode) {
       setLastRete({ focusNode, searchQuery });
     } else {
       clearLastRete();
     }
-    // Notifica la sidebar di aggiornare l'etichetta "Continua"
     window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   }, [focusNode, searchQuery, restored]);
 
-  // Ascolta il "doppio click su Rete" dalla sidebar: resetta il grafo
-  // (svuota focusNode + searchQuery + selezione). Quando l'utente è già
-  // sulla pagina Rete e clicca di nuovo "Rete" nel menu, la sidebar
-  // emette questo evento invece di fare una navigazione vera e propria.
+  // CHANGE 6: ascolta il reset richiesto dalla sidebar (doppio click su Rete)
   useEffect(() => {
     const onReset = () => {
       setFocusNode(null);
@@ -191,17 +94,52 @@ export default function Grafo() {
     return () => window.removeEventListener("atlante:rete-reset", onReset);
   }, []);
 
-  // ResizeObserver SOLO in modalità non-fullscreen.
-  // In fullscreen usiamo dimensioni fisse (window.innerWidth/innerHeight)
-  // perché il ResizeObserver causa un loop di re-render → tremolio del grafo.
-  useEffect(() => {
-    if (isFull) return; // skip in fullscreen
-    const ro = new ResizeObserver(() => {
-      if (wrapRef.current) setDims({ w: wrapRef.current.clientWidth, h: wrapRef.current.clientHeight });
-    });
-    if (wrapRef.current) ro.observe(wrapRef.current);
-    return () => ro.disconnect();
-  }, [isFull]);
+  // CHANGE 6: handler ricerca — aggiorna risultati e disattiva focus se l'utente digita
+  const handleSearch = useCallback((q: string) => {
+    setSearchQuery(q);
+    if (focusNode) setFocusNode(null);
+    const nq = q.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    if (!nq) { setSearchResults([]); return; }
+    const out: any[] = [];
+    const push = (type: EntityType, id: string, label: string) => {
+      out.push({ id: `${type}:${id}`, etype: type, eid: id, label });
+      if (out.length >= 30) return;
+    };
+    for (const w of ix.ds.works) {
+      if (out.length >= 30) break;
+      const l = (w.title || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      if (l.includes(nq)) push("work", w.id, w.title);
+    }
+    for (const a of ix.ds.artists) {
+      if (out.length >= 30) break;
+      const l = (a.name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      if (l.includes(nq)) push("artist", a.id, a.name);
+    }
+    for (const c of ix.ds.works) {
+      if (out.length >= 30) break;
+      if (c.location_city && c.location_city.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(nq)) {
+        push("city" as any, c.location_city, c.location_city);
+      }
+    }
+    for (const p of ix.ds.periods) {
+      if (out.length >= 30) break;
+      const l = (p.name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      if (l.includes(nq)) push("period", p.id, p.name);
+    }
+    setSearchResults(out);
+  }, [ix, focusNode]);
+
+  // CHANGE 6: pulisci ricerca e focus
+  const handleClearSearch = useCallback(() => {
+    setFocusNode(null);
+    setSearchQuery("");
+    setSearchResults([]);
+    setSel(null);
+    clearLastRete();
+    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
+  }, []);
+
+  // CHANGE 6: handleSearchResultClick è definito DOPO `graph` (vedi sotto).
 
   const inTime = useCallback((type: EntityType, id: string): boolean => {
     switch (type) {
@@ -236,7 +174,7 @@ export default function Grafo() {
       const t = addNode(c.target_type, c.target_id);
       links.push({ source: s, target: t, kind: c.kind, desc: c.description });
     }
-    // città come nodi di raggruppamento
+    // città come nodi di raggruppamento: ogni opera è legata al luogo in cui si trova
     if (!hideTypes.has("city")) {
       for (const wn of [...nodeMap.values()].filter((n) => n.etype === "work")) {
         const w = ix.workById.get(wn.eid);
@@ -248,40 +186,17 @@ export default function Grafo() {
         links.push({ source: key, target: wn.id, kind: "luogo", desc: `Opera conservata a ${city}` });
       }
     }
-
-    // === Se c'è un focusNode (ricerca), filtra il grafo per mostrare solo
-    //     il nodo cercato + i suoi vicini diretti + i vicini di 2° livello ===
-    if (focusNode) {
-      // Calcola l'insieme dei nodi visibili: focus + adiacenti + adiacenti-di-adiacenti
-      const adjMap = new Map<string, Set<string>>();
-      for (const l of links) {
-        const s = typeof l.source === "object" ? l.source.id : l.source;
-        const t = typeof l.target === "object" ? l.target.id : l.target;
-        if (!adjMap.has(s)) adjMap.set(s, new Set());
-        if (!adjMap.has(t)) adjMap.set(t, new Set());
-        adjMap.get(s)!.add(t);
-        adjMap.get(t)!.add(s);
-      }
-      const visibleNodes = new Set<string>([focusNode]);
-      // 1° livello
-      adjMap.get(focusNode)?.forEach(n => visibleNodes.add(n));
-      // 2° livello
-      const firstLevel = [...(adjMap.get(focusNode) || [])];
-      for (const n of firstLevel) {
-        adjMap.get(n)?.forEach(m => visibleNodes.add(m));
-      }
-      // Filtra nodi e links
-      const filteredNodes = [...nodeMap.values()].filter(n => visibleNodes.has(n.id));
-      const filteredLinks = links.filter(l => {
-        const s = typeof l.source === "object" ? l.source.id : l.source;
-        const t = typeof l.target === "object" ? l.target.id : l.target;
-        return visibleNodes.has(s) && visibleNodes.has(t);
-      });
-      return { nodes: filteredNodes, links: filteredLinks };
-    }
-
     return { nodes: [...nodeMap.values()], links };
-  }, [ix, hideTypes, hideKinds, inTime, focusNode]);
+  }, [ix, hideTypes, hideKinds, inTime]);
+
+  // CHANGE 6: quando l'utente clicca un risultato di ricerca, imposta focus + sel
+  const handleSearchResultClick = useCallback((r: any) => {
+    setFocusNode(r.id);
+    setSearchQuery("");
+    setSearchResults([]);
+    const node = graph.nodes.find((n) => n.id === r.id);
+    if (node) setSel(node);
+  }, [graph]);
 
   const adj = useMemo(() => {
     const m = new Map<string, Set<string>>();
@@ -314,12 +229,6 @@ export default function Grafo() {
 
   const selDetail = useMemo(() => {
     if (!sel) return null;
-    // Se si è cliccato su un arco (link), mostra info sulla connessione
-    if (sel.etype === "link") {
-      const sNode = typeof sel.linkSource === "object" ? sel.linkSource : graph.nodes.find(n => n.id === sel.linkSource);
-      const tNode = typeof sel.linkTarget === "object" ? sel.linkTarget : graph.nodes.find(n => n.id === sel.linkTarget);
-      return { conns: [], ent: null, isLink: true, sNode, tNode, kind: sel.linkKind, desc: sel.linkDesc };
-    }
     const conns = ix.ds.connections.filter((c) =>
       (c.source_type === sel.etype && c.source_id === sel.eid) ||
       (c.target_type === sel.etype && c.target_id === sel.eid));
@@ -439,57 +348,40 @@ export default function Grafo() {
     </div>
   );
 
-  // Blocco filtri + slider temporale, mostrato dentro la colonna destra
-  // (.gf-side) SOLO in modalità fullscreen. In modalità normale i filtri
-  // rimangono disposti in orizzontale sotto il grafo e lo slider è nella
-  // sidebar dell'app, come sempre.
-  const sideFiltersBlock = (
-    <div className="panel gf-fs-only" data-testid="gf-fs-filters">
-      <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Tempo</div>
-      <div style={{ margin: "0 -4px 14px" }}>
-        <TimeRangeSlider compact />
+  const fsControls = (
+    <>
+      {modeToggle}
+      <div className="panel gf-filters" style={{ background: "transparent", border: 0, padding: 0, margin: 0 }}>
+        <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Livelli</div>
+        {[...NODE_TYPES, "city" as const].map((t) => {
+          const off = hideTypes.has(t);
+          return (
+            <button key={t} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideTypes, t, setHideTypes)}>
+              <span className="dot" style={{ background: NODE_HEX[t] }} />
+              <span className="gf-frow-lab">{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]}</span>
+              <span className="gf-frow-n tnum">{counts[t] ?? 0}</span>
+              <EyeIcon off={off} />
+            </button>
+          );
+        })}
+        <div className="panel-title" style={{ fontSize: 15, margin: "14px 0 8px" }}>Legami</div>
+        {KINDS.map((k) => {
+          const off = hideKinds.has(k);
+          return (
+            <button key={k} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideKinds, k, setHideKinds)}>
+              <span className="dot" style={{ background: KIND_COLOR[k] }} />
+              <span className="gf-frow-lab">{KIND_LABEL[k]}</span>
+              <EyeIcon off={off} />
+            </button>
+          );
+        })}
       </div>
-      <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Livelli</div>
-      {[...NODE_TYPES, "city" as const].map((t) => {
-        const off = hideTypes.has(t);
-        return (
-          <button key={t} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideTypes, t, setHideTypes)}>
-            <span className="dot" style={{ background: NODE_HEX[t] }} />
-            <span className="gf-frow-lab">{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]}</span>
-            <span className="gf-frow-n tnum">{counts[t] ?? 0}</span>
-            <EyeIcon off={off} />
-          </button>
-        );
-      })}
-      <div className="panel-title" style={{ fontSize: 15, margin: "14px 0 8px" }}>Legami</div>
-      {KINDS.map((k) => {
-        const off = hideKinds.has(k);
-        return (
-          <button key={k} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideKinds, k, setHideKinds)}>
-            <span className="dot" style={{ background: KIND_COLOR[k] }} />
-            <span className="gf-frow-lab">{KIND_LABEL[k]}</span>
-            <EyeIcon off={off} />
-          </button>
-        );
-      })}
-    </div>
+    </>
   );
 
   const renderGraph = (full: boolean) => (
-    <div className="stage" ref={!full ? wrapRef : undefined} style={{
-      // In fullscreen: dimensioni FISSE (width/height in px) invece di 100%/flex.
-      // Se usassimo 100%/flex, ogni micro-reflow del parent (es. animazione
-      // del drawer) causerebbe il ridimensionamento del canvas → zoom intermittente.
-      // Nota: in fullscreen passiamo full=false a renderGraph (perché il CSS
-      // .fs-host:fullscreen .gf-inner > .stage forza height:100% !important),
-      // ma passiamo full=isFull al GraphSizer per fargli calcolare le dims.
-      width: full ? dims.w : "100%",
-      height: full ? dims.h : "min(72vh, 700px)",
-      flex: full ? undefined : undefined,
-      border: full ? 0 : undefined,
-      borderRadius: full ? 0 : undefined,
-    }} data-testid="graph-stage">
-      <GraphSizer wrapRef={wrapRef} full={isFull} setDims={setDims} />
+    <div className="stage" ref={!full ? wrapRef : undefined} style={{ height: full ? "100%" : "min(72vh, 700px)", flex: full ? 1 : undefined, border: full ? 0 : undefined, borderRadius: full ? 0 : undefined }} data-testid="graph-stage">
+      <GraphSizer wrapRef={wrapRef} full={full} setDims={setDims} />
       {mode === "3d" ? (
         <ForceGraph3D
           ref={fg3d}
@@ -512,12 +404,9 @@ export default function Grafo() {
           linkOpacity={0.6}
           onEngineTick={setup3d}
           onEngineStop={() => { /* il motore si ferma da solo dopo cooldown */ }}
-          onNodeHover={(n: any) => { setHoverId(n ? n.id : null); if (wrapRef.current) wrapRef.current.style.cursor = n ? "pointer" : "default"; }}
-          onNodeClick={(n: any) => { setSel(n); }}
-          onLinkClick={(l: any) => { setSel({ id: typeof l.source === "object" ? l.source.id : l.source, etype: "link", eid: "", label: "", deg: 0, linkKind: l.kind, linkDesc: l.desc, linkSource: l.source, linkTarget: l.target }); }}
-          linkLabel={(l: any) => `${KIND_LABEL[l.kind] || l.kind}${l.desc ? " — " + l.desc : ""}`}
-          nodeLabel={(n: any) => `${n.label} (${n.etype === "city" ? "Luogo" : ENTITY_LABEL[n.etype as EntityType] || n.etype}) · ${n.deg} connessioni`}
-          onBackgroundClick={() => setSel(null)}
+          onNodeHover={(n: any) => { setHoverId(n ? n.id : null); }}
+          onNodeClick={(n: any) => { setSel(n); setFocusNode(n.id); }}
+          onBackgroundClick={() => { setSel(null); setFocusNode(null); }}
         />
       ) : (
         <ForceGraph2D
@@ -553,11 +442,8 @@ export default function Grafo() {
             }
           }}
           onNodeHover={(n: any) => { setHoverId(n ? n.id : null); if (wrapRef.current) wrapRef.current.style.cursor = n ? "pointer" : "default"; }}
-          onNodeClick={(n: any) => { setSel(n); }}
-          onLinkClick={(l: any) => { setSel({ id: typeof l.source === "object" ? l.source.id : l.source, etype: "link", eid: "", label: "", deg: 0, linkKind: l.kind, linkDesc: l.desc, linkSource: l.source, linkTarget: l.target }); }}
-          linkLabel={(l: any) => `${KIND_LABEL[l.kind] || l.kind}${l.desc ? " — " + l.desc : ""}`}
-          nodeLabel={(n: any) => `${n.label} (${n.etype === "city" ? "Luogo" : ENTITY_LABEL[n.etype as EntityType] || n.etype}) · ${n.deg} connessioni`}
-          onBackgroundClick={(ev: any) => snapSelect2d(ev)}
+          onNodeClick={(n: any) => { setSel(n); setFocusNode(n.id); }}
+          onBackgroundClick={(ev: any) => { snapSelect2d(ev); setFocusNode(null); }}
           nodeCanvasObject={(node: any, ctx: CanvasRenderingContext2D, scale: number) => {
             const dimmed = neighbors && !neighbors.has(node.id);
             const isFocus = node.id === focusId;
@@ -593,209 +479,164 @@ export default function Grafo() {
   return (
     <div className="wrap page" style={{ paddingBottom: 24 }}>
       <div className="page-head">
-        <div className="page-eyebrow"><span className="eyebrow">Rete neurale <span style={{ fontSize: 9, fontWeight: 700, color: "var(--ink-dim)", opacity: 0.5, textTransform: "lowercase", letterSpacing: "0.02em" }}>(beta)</span></span></div>
+        <div className="page-eyebrow"><span className="sec-num">02</span><span className="eyebrow">Rete neurale</span></div>
         <h1 className="page-title">Il grafo delle interconnessioni</h1>
-        <p className="page-lead">Ogni nodo è un'entità, ogni filo un legame documentato: influenze, rielaborazioni, rapporti maestro-allievo, committenze. Clicca su un nodo per i dettagli e le sue connessioni, clicca su un arco per vedere il tipo di legame. Lo slider temporale filtra la rete.</p>
+        <p className="page-lead">Ogni nodo è un'entità, ogni filo un legame documentato: influenze, rielaborazioni, rapporti maestro-allievo, committenze. Muoviti nello spazio in 3D, passa il mouse su un nodo per accenderne le connessioni, clicca per i dettagli. Lo slider temporale filtra la rete.</p>
       </div>
       <div className="page-rule" />
 
-      {/* Barra superiore: solo mode toggle */}
       <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 16, alignItems: "center" }}>
         {modeToggle}
-        {focusNode && (
-          <button onClick={handleClearSearch} className="btn ghost sm" style={{ fontSize: 12 }}>← Mostra tutto</button>
+        <input
+          type="search"
+          value={searchQuery}
+          onChange={(e) => handleSearch(e.target.value)}
+          placeholder="Cerca opera, autore, luogo…"
+          data-testid="gf-search"
+          style={{ flex: "1 1 280px", maxWidth: 420, padding: "9px 14px", border: "1px solid var(--line)", borderRadius: 10, background: "var(--bg-1)", color: "var(--ink)", fontSize: 14 }}
+        />
+        {(searchQuery || focusNode) && (
+          <button className="btn ghost sm" onClick={handleClearSearch} data-testid="gf-search-clear">✕ Pulisci</button>
         )}
-        {!focusNode && (
-          <span className="faint" style={{ fontSize: 12.5 }}>Cerca nel pannello a destra per filtrare la rete.</span>
-        )}
+        <span className="faint" style={{ fontSize: 12.5 }}>I filtri per livello e legame sono nel pannello a destra.</span>
       </div>
 
-      {/* Layout: grafo a sinistra + pannello dettagli a destra.
-          In fullscreen NON usiamo il drawer laterale del componente Fullscreen:
-          la colonna destra (.gf-side) contiene già ricerca, dettagli e filtri
-          (in parallelsso al grafo), così la disposizione è coerente con la
-          modalità normale e la mappa è alta quanto l'intera colonna destra. */}
-      <Fullscreen title="Rete delle connessioni" controls={null} showSlider={false} onChange={setIsFull}>
+      <Fullscreen title="Rete delle connessioni" controls={isFull ? null : fsControls} showSlider={!isFull} onChange={setIsFull}>
         <div className="gf-inner">
           {renderGraph(false)}
 
-        {/* Pannello destro: ricerca + dettagli nodo/connessione (stile Mappa) */}
         <div className="gf-side">
-          {/* Pannello ricerca — come nella pagina Mappa */}
-          <div className="panel" style={{ marginBottom: 12 }}>
-            <div className="panel-title">Cerca</div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
-              placeholder="Cerca opera, autore, luogo…"
-              style={{
-                width: "100%", padding: "7px 10px", marginBottom: 10,
-                border: "1px solid var(--line)", borderRadius: 6,
-                background: "var(--bg)", color: "var(--ink)",
-                fontSize: 13, fontFamily: "inherit",
-              }}
-            />
-            <div style={{ maxHeight: 280, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
-              {searchQuery.trim() && searchResults.length === 0 && !focusNode && (
-                <div style={{ padding: "12px 0", textAlign: "center", color: "var(--ink-dim)", fontSize: 13 }}>
-                  Nessun risultato per "{searchQuery}".
+          {/* CHANGE 7: in fullscreen mostra slider + mode toggle qui (niente drawer) */}
+          {isFull && (
+            <div className="panel gf-fs-only" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div className="sbx-trs" style={{ margin: "0 -4px" }}>
+                <TimeRangeSlider compact />
+              </div>
+              {modeToggle}
+            </div>
+          )}
+
+          {/* CHANGE 6: risultati di ricerca (sopra i filtri) */}
+          {searchQuery.trim() && !focusNode && (
+            <div className="panel" data-testid="gf-search-results">
+              <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Risultati ({searchResults.length})</div>
+              {searchResults.length === 0 ? (
+                <div className="muted" style={{ fontSize: 13.5, padding: "6px 0" }}>Nessun risultato per «{searchQuery}».</div>
+              ) : (
+                <div style={{ maxHeight: 280, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
+                  {searchResults.map((r) => (
+                    <button key={r.id} className="gf-frow" onClick={() => handleSearchResultClick(r)} style={{ width: "100%", textAlign: "left", background: "none", border: 0, cursor: "pointer", padding: "7px 6px", borderBottom: "1px solid var(--line-soft)", color: "var(--ink)", fontSize: 13 }}>
+                      <span className="dot" style={{ background: NODE_HEX[r.etype] ?? "#b88a2e", marginRight: 8 }} />
+                      <span style={{ flex: 1, minWidth: 0 }}>{r.label}</span>
+                      <span className="faint" style={{ fontSize: 11, marginLeft: 6 }}>{r.etype === "city" ? "Luogo" : ENTITY_LABEL[r.etype as EntityType]}</span>
+                    </button>
+                  ))}
                 </div>
               )}
-              {searchResults.map((r) => (
-                <button
-                  key={`${r.type}:${r.id}`}
-                  onClick={() => handleSelectResult(r)}
-                  style={{
-                    display: "flex", alignItems: "center", gap: 8,
-                    width: "100%", padding: "8px 4px",
-                    border: 0, borderBottom: "1px solid var(--line-soft)",
-                    background: "transparent", cursor: "pointer",
-                    textAlign: "left", fontFamily: "inherit",
-                  }}
-                >
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: NODE_HEX[r.type] || "#b88a2e", flexShrink: 0 }} />
-                  <span style={{ flex: 1, minWidth: 0 }}>
-                    <span style={{ fontSize: 13, fontWeight: 500, color: "var(--ink)", display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.label}</span>
-                    <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{r.subtitle ? `${r.subtitle} · ` : ""}{r.type === "city" ? "Luogo" : ENTITY_LABEL[r.type as EntityType]}</span>
-                  </span>
-                </button>
-              ))}
             </div>
+          )}
+
+          {/* pannello filtri in stile "Livelli" (riorganizzazione richiesta) */}
+          <div className="panel gf-filters" data-testid="gf-filters">
+            <div className="panel-title" style={{ fontSize: 17, marginBottom: 10 }}>Livelli</div>
+            {[...NODE_TYPES, "city" as const].map((t) => {
+              const off = hideTypes.has(t);
+              return (
+                <button key={t} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideTypes, t, setHideTypes)} data-testid={`gf-type-${t}`}>
+                  <span className="dot" style={{ background: NODE_HEX[t] }} />
+                  <span className="gf-frow-lab">{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]}</span>
+                  <span className="gf-frow-n tnum">{counts[t] ?? 0}</span>
+                  <EyeIcon off={off} />
+                </button>
+              );
+            })}
+            <div className="panel-title" style={{ fontSize: 17, margin: "16px 0 10px" }}>Legami</div>
+            {KINDS.map((k) => {
+              const off = hideKinds.has(k);
+              return (
+                <button key={k} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideKinds, k, setHideKinds)} data-testid={`gf-kind-${k}`}>
+                  <span className="dot" style={{ background: KIND_COLOR[k] }} />
+                  <span className="gf-frow-lab">{KIND_LABEL[k]}</span>
+                  <EyeIcon off={off} />
+                </button>
+              );
+            })}
           </div>
 
           {sel && selDetail ? (
             <div className="panel" data-testid="gf-panel">
-              {/* === Click su ARCO === */}
-              {sel.etype === "link" && selDetail.isLink && selDetail.sNode && selDetail.tNode ? (
-                <>
-                  <div className="eyebrow" style={{ color: KIND_COLOR[selDetail.kind] || "#b88a2e", marginBottom: 8 }}>Connessione</div>
-                  <span className="tag" style={{ marginBottom: 10, color: KIND_COLOR[selDetail.kind] || "#b88a2e", borderColor: "var(--line)" }}>{KIND_LABEL[selDetail.kind as ConnKind] || selDetail.kind}</span>
-                  {selDetail.desc && <p className="muted" style={{ fontSize: 13, lineHeight: 1.6, margin: "8px 0", fontStyle: "italic" }}>"{selDetail.desc}"</p>}
-                  <div style={{ display: "flex", flexDirection: "column", gap: 8, margin: "10px 0" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px", background: "var(--bg-2)", borderRadius: 6, border: "1px solid var(--line-soft)" }}>
-                      <span style={{ width: 10, height: 10, borderRadius: "50%", background: NODE_HEX[selDetail.sNode.etype] || "#b88a2e", flexShrink: 0 }} />
-                      <span style={{ fontSize: 13, fontWeight: 500 }}>{selDetail.sNode.label}</span>
-                      <span style={{ fontSize: 10, color: "var(--ink-dim)", marginLeft: "auto" }}>{selDetail.sNode.etype === "city" ? "Luogo" : ENTITY_LABEL[selDetail.sNode.etype as EntityType]}</span>
-                    </div>
-                    <div style={{ textAlign: "center", color: "var(--ink-dim)", fontSize: 14 }}>↓</div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px", background: "var(--bg-2)", borderRadius: 6, border: "1px solid var(--line-soft)" }}>
-                      <span style={{ width: 10, height: 10, borderRadius: "50%", background: NODE_HEX[selDetail.tNode.etype] || "#b88a2e", flexShrink: 0 }} />
-                      <span style={{ fontSize: 13, fontWeight: 500 }}>{selDetail.tNode.label}</span>
-                      <span style={{ fontSize: 10, color: "var(--ink-dim)", marginLeft: "auto" }}>{selDetail.tNode.etype === "city" ? "Luogo" : ENTITY_LABEL[selDetail.tNode.etype as EntityType]}</span>
-                    </div>
-                  </div>
-                  <div style={{ display: "flex", gap: 6, marginTop: 10, flexWrap: "wrap" }}>
-                    {(["artist", "work", "period", "term", "technique"].includes(selDetail.sNode.etype)) && (
-                      <Link className="btn gold sm" to={entityHref(selDetail.sNode.etype, selDetail.sNode.eid)} style={{ fontSize: 12 }}>Apri {selDetail.sNode.label} →</Link>
-                    )}
-                    {(["artist", "work", "period", "term", "technique"].includes(selDetail.tNode.etype)) && (
-                      <Link className="btn gold sm" to={entityHref(selDetail.tNode.etype, selDetail.tNode.eid)} style={{ fontSize: 12 }}>Apri {selDetail.tNode.label} →</Link>
-                    )}
-                  </div>
-                </>
-              ) : (
-              <>
-              {/* === Click su NODO === */}
               <div className="eyebrow" style={{ color: sel.etype === "city" ? NODE_HEX.city : ENTITY_COLOR[sel.etype as EntityType], marginBottom: 8 }}>{sel.etype === "city" ? "Luogo" : ENTITY_LABEL[sel.etype as EntityType]}</div>
               <h3 className="panel-title" style={{ marginBottom: 8 }}>{sel.label}</h3>
               {sel.etype === "city" && (() => {
                 const cityWorks = ix.ds.works.filter((w) => w.location_city === sel.eid && workIn(w));
                 return (
                   <>
-                    <div className="faint tnum" style={{ fontSize: 12, marginBottom: 10 }}>{cityWorks.length} opere conservate qui</div>
-                    <Link className="btn gold sm" to={`/luogo/${encodeURIComponent(sel.eid)}`} style={{ marginBottom: 12 }}>Apri il luogo →</Link>
+                    <div className="faint tnum" style={{ fontSize: 12, marginBottom: 10 }}>{cityWorks.length} opere conservate qui (nell'intervallo attivo)</div>
+                    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+                      <Link className="btn gold sm" to={`/luogo/${encodeURIComponent(sel.eid)}`} data-testid="gf-city-page">Apri la scheda del luogo →</Link>
+                      <Link className="btn sm ghost" to="/mappa" data-testid="gf-city-map">Mappa →</Link>
+                    </div>
                     <div className="smallcaps" style={{ margin: "4px 0 8px" }}>Opere</div>
-                    <div style={{ maxHeight: 200, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
-                      {cityWorks.slice(0, 30).map((w) => (
-                        <div key={w.id} style={{ padding: "6px 0", borderBottom: "1px solid var(--line-soft)", fontSize: 13 }}><Link className="tlink" to={`/opera/${w.id}`}>{w.title}</Link></div>
+                    <div style={{ maxHeight: 300, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
+                      {cityWorks.slice(0, 40).map((w) => (
+                        <div key={w.id} style={{ padding: "7px 0", borderBottom: "1px solid var(--line-soft)", fontSize: 13 }}>
+                          <Link className="tlink" to={`/opera/${w.id}`}>{w.title}</Link>
+                        </div>
                       ))}
+                      {cityWorks.length > 40 && <div className="faint" style={{ padding: "7px 0", fontSize: 12 }}>… e altre {cityWorks.length - 40}</div>}
                     </div>
                   </>
                 );
               })()}
               {sel.etype === "work" && selDetail.ent && (
-                <Link to={`/opera/${sel.eid}`} className="card" style={{ display: "block", aspectRatio: "4/3", marginBottom: 12, overflow: "hidden" }}><WorkImage work={selDetail.ent} style={{ width: "100%", height: "100%", objectFit: "cover" }} /></Link>
+                <Link to={`/opera/${sel.eid}`} className="card" style={{ display: "block", aspectRatio: "4/3", marginBottom: 12, overflow: "hidden" }}>
+                  <WorkImage work={selDetail.ent} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                </Link>
               )}
-              {selDetail.ent?.summary && <p className="muted" style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 6 }}>{selDetail.ent.summary.slice(0, 160)}{selDetail.ent.summary.length > 160 ? "…" : ""}</p>}
-              {selDetail.ent?.bio && <p className="muted" style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 6 }}>{selDetail.ent.bio.slice(0, 160)}{selDetail.ent.bio.length > 160 ? "…" : ""}</p>}
-              {selDetail.ent?.definition && <p className="muted" style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 6 }}>{selDetail.ent.definition}</p>}
-              <div className="faint tnum" style={{ fontSize: 12, marginBottom: 10 }}>{sel.deg} connessioni nel grafo</div>
+              {selDetail.ent?.summary && <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.6, marginBottom: 6 }}>{selDetail.ent.summary.slice(0, 180)}{selDetail.ent.summary.length > 180 ? "…" : ""}</p>}
+              {selDetail.ent?.bio && <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.6, marginBottom: 6 }}>{selDetail.ent.bio.slice(0, 180)}{selDetail.ent.bio.length > 180 ? "…" : ""}</p>}
+              {selDetail.ent?.definition && <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.6, marginBottom: 6 }}>{selDetail.ent.definition}</p>}
+              <div className="faint tnum" style={{ fontSize: 12, marginBottom: 14 }}>{sel.deg} connessioni nel grafo</div>
+
               {(["artist", "work", "period", "term", "technique"].includes(sel.etype)) && (
                 <Link className="btn gold sm" style={{ marginBottom: 14 }} to={entityHref(sel.etype, sel.eid)} data-testid="gf-open">Apri la scheda →</Link>
               )}
-              {/* === Lista connessioni con motivo e tasto Apri === */}
+
               {selDetail.conns.length > 0 && (
                 <>
-                  <div className="smallcaps" style={{ margin: "8px 0 8px" }}>Connessioni ({selDetail.conns.length})</div>
-                  <div style={{ maxHeight: 320, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
+                  <div className="smallcaps" style={{ margin: "8px 0 8px" }}>Connessioni</div>
+                  <div style={{ maxHeight: 280, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
                     {selDetail.conns.slice(0, 30).map((c) => {
                       const otherIsSource = !(c.source_type === sel.etype && c.source_id === sel.eid);
                       const ot = otherIsSource ? c.source_type : c.target_type;
                       const oid = otherIsSource ? c.source_id : c.target_id;
                       return (
-                        <div key={c.id} style={{ padding: "10px 0", borderBottom: "1px solid var(--line-soft)" }}>
-                          <span className="tag" style={{ marginBottom: 4, color: KIND_COLOR[c.kind], borderColor: "var(--line)", fontSize: 10 }}>{KIND_LABEL[c.kind] ?? c.kind}</span>
-                          <div style={{ fontSize: 13, fontWeight: 500, marginBottom: 2 }}>{entityLabel(ix, ot, oid)}</div>
-                          <div className="faint" style={{ fontSize: 11, marginBottom: 4 }}>{ENTITY_LABEL[ot]}</div>
-                          {c.description && <div style={{ fontSize: 12, color: "var(--ink-soft)", lineHeight: 1.4, marginBottom: 6, fontStyle: "italic" }}>{c.description}</div>}
-                          {(["artist", "work", "period", "term", "technique"].includes(ot)) && (
-                            <Link className="tlink" to={entityHref(ot, oid)} onClick={() => { const k = `${ot}:${oid}`; const nn = graph.nodes.find((x) => x.id === k); if (nn) setSel(nn); }} style={{ fontSize: 12, fontWeight: 600 }}>Apri scheda →</Link>
-                          )}
+                        <div key={c.id} style={{ padding: "8px 0", borderBottom: "1px solid var(--line-soft)" }}>
+                          <span className="tag" style={{ marginBottom: 4, color: KIND_COLOR[c.kind], borderColor: "var(--line)" }}>{KIND_LABEL[c.kind] ?? c.kind}</span>
+                          <div style={{ fontSize: 13 }}>
+                            <Link className="tlink" to={entityHref(ot, oid)} onClick={() => { const k = `${ot}:${oid}`; const nn = graph.nodes.find((x) => x.id === k); if (nn) { setSel(nn); setFocusNode(nn.id); } }}>
+                              {entityLabel(ix, ot, oid)}
+                            </Link>
+                            <span className="faint" style={{ fontSize: 11 }}> · {ENTITY_LABEL[ot]}</span>
+                          </div>
                         </div>
                       );
                     })}
                   </div>
                 </>
               )}
-              </>
-              )}
             </div>
           ) : (
             <div className="panel gf-placeholder" style={{ textAlign: "center", color: "var(--ink-dim)", fontSize: 14 }}>
-              Clicca un nodo o una connessione per i dettagli.
-              <div style={{ marginTop: 14 }}><button className="btn sm ghost" onClick={restartFocus}>Riordina la rete</button></div>
+              Seleziona un nodo per i dettagli.
+              <div style={{ marginTop: 14 }}>
+                <button className="btn sm ghost" onClick={restartFocus}>Riordina la rete</button>
+              </div>
             </div>
           )}
-
-          {/* In fullscreen mostriamo qui i filtri e lo slider temporale,
-              così la colonna destra contiene ricerca → risultati → dettagli → filtri,
-              in parallelo al grafo che occupa tutta l'altezza della colonna. */}
-          {sideFiltersBlock}
         </div>
         </div>
       </Fullscreen>
-
-      {/* === Filtri in orizzontale sotto il grafo (modalità normale) ===
-          In fullscreen vengono nascosti via CSS (.gf-bottom-filters display:none)
-          perché sono stati spostati dentro la colonna destra (vedi sideFiltersBlock).
-          "Livelli" e "Legami" stanno su due righe separate, entrambe allineate a sinistra. */}
-      <div className="gf-bottom-filters" style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16, padding: "12px 16px", background: "var(--bg-2)", borderRadius: 10, border: "1px solid var(--line)" }}>
-        {/* Riga 1: Livelli */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-          <div className="smallcaps" style={{ marginRight: 8 }}>Livelli:</div>
-          {[...NODE_TYPES, "city" as const].map((t) => {
-            const off = hideTypes.has(t);
-            return (
-              <button key={t} onClick={() => toggle(hideTypes, t, setHideTypes)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
-                <span className="dot" style={{ background: NODE_HEX[t], marginRight: 4 }} />{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]} ({counts[t] ?? 0})
-              </button>
-            );
-          })}
-        </div>
-        {/* Riga 2: Legami */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-          <div className="smallcaps" style={{ marginRight: 8 }}>Legami:</div>
-          {KINDS.map((k) => {
-            const off = hideKinds.has(k);
-            return (
-              <button key={k} onClick={() => toggle(hideKinds, k, setHideKinds)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
-                <span className="dot" style={{ background: KIND_COLOR[k], marginRight: 4 }} />{KIND_LABEL[k]}
-              </button>
-            );
-          })}
-        </div>
-      </div>
     </div>
   );
 }
@@ -805,24 +646,12 @@ function GraphSizer({ wrapRef, full, setDims }: { wrapRef: any; full: boolean; s
   const selfRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (full) {
-      // In fullscreen: dimensioni CALCOLATE UNA VOLTA sola all'ingresso.
-      // NON usare ResizeObserver né ascoltare window resize:
-      // cambiare width/height del ForceGraph3D causa re-render del canvas
-      // e ricalcolo della camera → effetto zoom intermittente.
-      // Il grafo mantiene le dimensioni fisse finché si resta in fullscreen.
+      // In fullscreen: dimensioni fisse basate sulla finestra.
+      // NON usare ResizeObserver (causa tremolio del force-graph).
       const w = window.innerWidth;
       const h = window.innerHeight;
-      // Colonna destra di 340px + gap 18px + padding laterale 18+18 = 394px
-      // sui desktop; su mobile (w <= 980) la colonna destra va in basso, quindi
-      // il grafo occupa tutta la larghezza disponibile.
-      const sideW = w > 980 ? 376 : 36; // 340 + 18 + 18 = 376
-      const topPad = 56; // spazio per il titolo + pulsante "Esci"
-      const bottomPad = 18;
-      setDims({
-        w: Math.max(200, w - sideW),
-        h: Math.max(200, h - topPad - bottomPad),
-      });
-      return; // nessun listener, nessun aggiornamento
+      setDims({ w: w - (window.innerWidth > 900 ? 320 : 0), h }); // sottrai larghezza drawer se desktop
+      return;
     }
     // Modalità normale: usa ResizeObserver con debounce
     const target = wrapRef.current;

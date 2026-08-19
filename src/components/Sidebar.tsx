@@ -8,11 +8,11 @@
 // ============================================================================
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { STONES } from "../lib/pages";
+import { STONES, type StoneDef } from "../lib/pages";
 import { useAuth, isAdminEmail } from "../lib/auth";
+import { supabase } from "../lib/supabase";
 import { useData } from "../lib/store";
 import { entityLabel } from "../lib/data";
-import { supabase } from "../lib/supabase";
 import {
   getLastOpera, clearLastOpera, getLastArtista, clearLastArtista,
   getLastRete, clearLastRete, getLastMappa, clearLastMappa,
@@ -44,21 +44,19 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
 }) {
   const loc = useLocation();
   const nav = useNavigate();
-  const { user } = useAuth();
   const ix = useData();
+  const { user } = useAuth();
   const [pendingReviewCount, setPendingReviewCount] = useState(0);
 
-  // === Memoria ultima opera/artista visitati ===
-  // Leggiamo gli ID dal localStorage e li risolviamo nei titoli/nomi tramite
-  // il dataset, per mostrare un'etichetta "Continua → <titolo>" nella voce
-  // di menu. Rileggiamo al cambio rotta (loc.pathname) così quando l'utente
-  // apre una nuova opera/artista la sidebar si aggiorna.
+  // --- "Continua →" state: ultima opera/autore/rete/mappa/timeline visitata ---
   const [lastOperaId, setLastOperaId] = useState<string | null>(null);
   const [lastArtistaId, setLastArtistaId] = useState<string | null>(null);
   const [lastReteFocus, setLastReteFocus] = useState<string | null>(null);
   const [lastReteQuery, setLastReteQuery] = useState<string>("");
   const [lastMappaCity, setLastMappaCity] = useState<string | null>(null);
   const [lastTimelineId, setLastTimelineId] = useState<string | null>(null);
+
+  // Aggiorna i valori quando cambia la rotta (es. appena tornati su una pagina)
   useEffect(() => {
     setLastOperaId(getLastOpera());
     setLastArtistaId(getLastArtista());
@@ -68,8 +66,8 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
     setLastMappaCity(getLastMappa());
     setLastTimelineId(getLastTimeline());
   }, [loc.pathname]);
-  // Ascoltiamo anche un evento custom, così la sidebar si aggiorna in tempo
-  // reale se l'utente apre una scheda opera/artista in un altro tab.
+
+  // Ascolta l'evento "last-visited-changed" per aggiornare in tempo reale
   useEffect(() => {
     const onUpdate = () => {
       setLastOperaId(getLastOpera());
@@ -87,9 +85,10 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
       window.removeEventListener("storage", onUpdate);
     };
   }, []);
+
+  // Etichette leggibili per ciascun "continua"
   const lastOperaTitle = lastOperaId ? ix.workById.get(lastOperaId)?.title : null;
   const lastArtistaName = lastArtistaId ? ix.artistById.get(lastArtistaId)?.name : null;
-  // Risolvi il focusNode del grafo (formato "type:id") in un'etichetta leggibile
   const lastReteLabel = (() => {
     if (!lastReteFocus) return null;
     const [type, ...rest] = lastReteFocus.split(":");
@@ -100,6 +99,57 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
   })();
   const lastMappaLabel = lastMappaCity ?? null;
   const lastTimelineLabel = lastTimelineId ? (ix.periodById.get(lastTimelineId)?.name ?? null) : null;
+
+  // --- handleClick: doppio-click per navigare all'ultima visita salvata ---
+  // Pattern: se c'è un valore salvato E non siamo già su quella pagina → vai lì.
+  // Altrimenti → pulisci il salvato e vai alla home della sezione.
+  // Per Rete: se siamo già su /grafo, dispatch di "atlante:rete-reset".
+  const handleClick = (p: StoneDef, ev: React.MouseEvent) => {
+    onNavigate?.();
+    // Determina se è un doppio click (event.detail === 2)
+    const isDouble = ev.detail === 2;
+    if (!isDouble) return; // singolo click: lascia fare al Link il default
+    ev.preventDefault();
+
+    const dispatchChanged = () => window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
+
+    if (p.id === "opere") {
+      if (lastOperaId && !loc.pathname.startsWith("/opera/")) {
+        nav(`/opera/${lastOperaId}`);
+      } else {
+        clearLastOpera(); dispatchChanged(); nav(p.route);
+      }
+    } else if (p.id === "artisti") {
+      if (lastArtistaId && !loc.pathname.startsWith("/artista/")) {
+        nav(`/artista/${lastArtistaId}`);
+      } else {
+        clearLastArtista(); dispatchChanged(); nav(p.route);
+      }
+    } else if (p.id === "rete") {
+      if (lastReteFocus) {
+        if (loc.pathname === "/grafo") {
+          // Già sul grafo: reset del focus
+          window.dispatchEvent(new CustomEvent("atlante:rete-reset"));
+        } else {
+          nav("/grafo");
+        }
+      } else {
+        clearLastRete(); dispatchChanged(); nav(p.route);
+      }
+    } else if (p.id === "mappa") {
+      if (lastMappaCity && !loc.pathname.startsWith("/luogo/")) {
+        nav(`/luogo/${encodeURIComponent(lastMappaCity)}`);
+      } else {
+        clearLastMappa(); dispatchChanged(); nav(p.route);
+      }
+    } else if (p.id === "timeline") {
+      if (lastTimelineId && !loc.pathname.startsWith("/periodo/")) {
+        nav(`/periodo/${lastTimelineId}`);
+      } else {
+        clearLastTimeline(); dispatchChanged(); nav(p.route);
+      }
+    }
+  };
 
   // Badge notifiche — logica diversa per admin vs utenti normali:
   //  - ADMIN: conta richieste pendenti degli utenti (pending in user_suggestions + user_edit_suggestions)
@@ -147,14 +197,13 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
     };
 
     check();
+    const interval = setInterval(check, 30000);
     const onFocus = () => check();
-    const onSuggestionsChanged = () => check();
     window.addEventListener("focus", onFocus);
-    window.addEventListener("atlante:suggestions-changed", onSuggestionsChanged);
     return () => {
       cancelled = true;
+      clearInterval(interval);
       window.removeEventListener("focus", onFocus);
-      window.removeEventListener("atlante:suggestions-changed", onSuggestionsChanged);
     };
   }, [user]);
 
@@ -162,8 +211,8 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
     <>
       {/* brand + collapse */}
       <div className="sbx-top">
-        <Link to="/" className="sbx-brand" data-testid="sbx-brand" onClick={onNavigate} aria-label="HUB Arte — home">
-          {/* stella neurale dorata (logo HUB Arte) */}
+        <Link to="/" className="sbx-brand" data-testid="sbx-brand" onClick={onNavigate} aria-label="HUB Art — home">
+          {/* stella neurale dorata (logo HUB Art) */}
           <svg className="sbx-mono" width="30" height="30" viewBox="0 0 48 48" fill="none" aria-hidden="true">
             <g stroke="var(--gold)" strokeWidth="2" strokeLinecap="round">
               <path d="M24 24 L24 7 M24 24 L24 41 M24 24 L8 24 M24 24 L40 24" />
@@ -180,7 +229,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
             <circle cx="12.7" cy="35.3" r="1.7" fill="var(--gold)" opacity=".7" />
           </svg>
           <span className="sbx-brand-txt">
-            <b>HUB Arte</b><i>Atlante Neuronale</i>
+            <b>HUB Art</b><i>Atlante Neuronale</i>
           </span>
         </Link>
         <button className="sbx-collapse" onClick={onToggleCollapse} data-testid="sbx-collapse"
@@ -195,173 +244,28 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
       <nav className="sbx-nav" data-testid="sbx-nav">
         {STONES.map((p) => {
           const active = loc.pathname === p.route || (isHome === false && loc.pathname.startsWith(p.route) && p.route !== "/");
-          // Per Opere e Artisti: logica doppio click
-          // 1° click: se c'è un'ultima opera/artista visitata, vai lì
-          // 2° click (se già su quella pagina): vai alla home della sezione
-          const handleClick = (e: React.MouseEvent) => {
-            if (p.id === "opere") {
-              const lastOpera = getLastOpera();
-              // Se siamo già sulla pagina dell'ultima opera, o non c'è un'ultima opera,
-              // vai alla home delle opere
-              if (!lastOpera || loc.pathname === `/opera/${lastOpera}`) {
-                clearLastOpera();
-                window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-                e.preventDefault();
-                nav("/opere");
-                onNavigate?.();
-                return;
-              }
-              // Altrimenti vai all'ultima opera visitata
-              e.preventDefault();
-              nav(`/opera/${lastOpera}`);
-              onNavigate?.();
-              return;
-            }
-            if (p.id === "artisti") {
-              const lastArtista = getLastArtista();
-              if (!lastArtista || loc.pathname === `/artista/${lastArtista}`) {
-                clearLastArtista();
-                window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-                e.preventDefault();
-                nav("/artisti");
-                onNavigate?.();
-                return;
-              }
-              e.preventDefault();
-              nav(`/artista/${lastArtista}`);
-              onNavigate?.();
-              return;
-            }
-            if (p.id === "rete") {
-              // Stessa logica di Opere/Artisti:
-              // 1° click: se siamo già sulla pagina Rete, emetti "reset" (il grafo
-              //    svuota focus + ricerca). Se non siamo sulla Rete ma c'è una
-              //    ricerca salvata, vai alla Rete (il grafo ripristinerà lo stato).
-              // 2° click (siamo già sulla Rete): emetti "reset" e basta.
-              // Nota: il route della Rete è "/grafo" (vedi pages.ts), non "/rete".
-              if (loc.pathname === "/grafo" || loc.pathname.startsWith("/grafo")) {
-                // Siamo già sulla Rete: resetta il grafo
-                clearLastRete();
-                window.dispatchEvent(new CustomEvent("atlante:rete-reset"));
-                e.preventDefault();
-                onNavigate?.();
-                return;
-              }
-              // Non siamo sulla Rete: vai alla Rete (il grafo ripristinerà
-              // automaticamente l'ultima ricerca grazie all'useEffect di restore)
-              // Niente preventDefault: lascia che il Link navighi normalmente
-              onNavigate?.();
-              return;
-            }
-            if (p.id === "mappa") {
-              // Stessa logica di Opere/Artisti:
-              // 1° click: se c'è un'ultima città salvata e NON siamo sulla sua scheda,
-              //    vai alla scheda del luogo. Se siamo già sulla scheda della città
-              //    salvata (o non c'è città salvata), vai alla Mappa e resetta.
-              const lastCity = getLastMappa();
-              if (lastCity && loc.pathname !== `/luogo/${encodeURIComponent(lastCity)}`) {
-                e.preventDefault();
-                nav(`/luogo/${encodeURIComponent(lastCity)}`);
-                onNavigate?.();
-                return;
-              }
-              // Siamo già sulla scheda dell'ultima città, o non c'è città salvata:
-              // resetta e vai alla Mappa
-              clearLastMappa();
-              window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-              e.preventDefault();
-              nav("/mappa");
-              onNavigate?.();
-              return;
-            }
-            if (p.id === "timeline") {
-              // Stessa logica di Opere/Artisti:
-              // 1° click: se c'è un ultimo periodo salvato e NON siamo sulla sua scheda,
-              //    vai alla scheda del periodo. Se siamo già sulla scheda del periodo
-              //    salvato (o non c'è periodo salvato), vai alla Timeline e resetta.
-              const lastPid = getLastTimeline();
-              if (lastPid && loc.pathname !== `/periodo/${lastPid}`) {
-                e.preventDefault();
-                nav(`/periodo/${lastPid}`);
-                onNavigate?.();
-                return;
-              }
-              // Siamo già sulla scheda dell'ultimo periodo, o non c'è periodo salvato:
-              // resetta e vai alla Linea del tempo
-              clearLastTimeline();
-              window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-              e.preventDefault();
-              nav("/timeline");
-              onNavigate?.();
-              return;
-            }
-            // Per le altre voci: navigazione normale
-            onNavigate?.();
-          };
+          // Determina se questa sezione ha un'ultima visita salvata
+          let hasLast = false;
+          let lastLabel: string | null = null;
+          if (p.id === "opere" && lastOperaTitle) { hasLast = true; lastLabel = lastOperaTitle; }
+          else if (p.id === "artisti" && lastArtistaName) { hasLast = true; lastLabel = lastArtistaName; }
+          else if (p.id === "rete" && lastReteLabel) { hasLast = true; lastLabel = lastReteLabel; }
+          else if (p.id === "mappa" && lastMappaLabel) { hasLast = true; lastLabel = lastMappaLabel; }
+          else if (p.id === "timeline" && lastTimelineLabel) { hasLast = true; lastLabel = lastTimelineLabel; }
           return (
-            <Link key={p.id} to={p.route} onClick={handleClick}
-              className={`sbx-item ${active ? "active" : ""} ${
-                p.id === "opere" && lastOperaId ? "has-last" :
-                p.id === "artisti" && lastArtistaId ? "has-last" :
-                p.id === "rete" && lastReteFocus ? "has-last" :
-                p.id === "mappa" && lastMappaCity ? "has-last" :
-                p.id === "timeline" && lastTimelineId ? "has-last" : ""
-              }`}
+            <Link key={p.id} to={p.route} onClick={(ev) => handleClick(p, ev)}
+              className={`sbx-item ${active ? "active" : ""} ${hasLast ? "has-last" : ""}`}
               data-testid={`sbx-item-${p.id}`} title={p.name}>
               <span className="sbx-num">{p.num}</span>
               <span className="sbx-ico"><Icon id={p.id} /></span>
               <span className="sbx-label">
-                <b style={{ display: "inline-flex", alignItems: "baseline", gap: 5 }}>
-                  <span>{p.name}</span>
-                  {p.id === "rete" && (
-                    <span style={{
-                      fontSize: 9, fontWeight: 700,
-                      color: "var(--ink-dim)", opacity: 0.5,
-                      textTransform: "lowercase", letterSpacing: "0.02em",
-                      lineHeight: 1,
-                    }}>(beta)</span>
-                  )}
-                </b>
-                {/* Etichetta "Continua → <titolo>" — visibile solo se c'è
-                    un'ultima opera/artista/ricerca/luogo/periodo salvato e la
-                    sidebar NON è collassata. */}
-                {p.id === "opere" && lastOperaTitle && !collapsed && (
-                  <span className="sbx-continue" data-testid="sbx-continue-opere">
-                    <span className="sbx-continue-label">Continua</span>
-                    <span className="sbx-continue-name">{lastOperaTitle}</span>
+                <b>{p.name}</b>
+                {hasLast && lastLabel ? (
+                  <span className="sbx-continue">
+                    <span className="sbx-continue-label">Continua →</span>
+                    <span className="sbx-continue-name">{lastLabel}</span>
                   </span>
-                )}
-                {p.id === "artisti" && lastArtistaName && !collapsed && (
-                  <span className="sbx-continue" data-testid="sbx-continue-artisti">
-                    <span className="sbx-continue-label">Continua</span>
-                    <span className="sbx-continue-name">{lastArtistaName}</span>
-                  </span>
-                )}
-                {p.id === "rete" && lastReteLabel && !collapsed && (
-                  <span className="sbx-continue" data-testid="sbx-continue-rete">
-                    <span className="sbx-continue-label">Continua</span>
-                    <span className="sbx-continue-name">{lastReteLabel}</span>
-                  </span>
-                )}
-                {p.id === "mappa" && lastMappaLabel && !collapsed && (
-                  <span className="sbx-continue" data-testid="sbx-continue-mappa">
-                    <span className="sbx-continue-label">Continua</span>
-                    <span className="sbx-continue-name">{lastMappaLabel}</span>
-                  </span>
-                )}
-                {p.id === "timeline" && lastTimelineLabel && !collapsed && (
-                  <span className="sbx-continue" data-testid="sbx-continue-timeline">
-                    <span className="sbx-continue-label">Continua</span>
-                    <span className="sbx-continue-name">{lastTimelineLabel}</span>
-                  </span>
-                )}
-                {/* Fallback: se non c'è un'ultima entità, mostra la descrizione normale */}
-                {((p.id === "opere" && !lastOperaTitle) ||
-                  (p.id === "artisti" && !lastArtistaName) ||
-                  (p.id === "rete" && !lastReteLabel) ||
-                  (p.id === "mappa" && !lastMappaLabel) ||
-                  (p.id === "timeline" && !lastTimelineLabel) ||
-                  (p.id !== "opere" && p.id !== "artisti" && p.id !== "rete" && p.id !== "mappa" && p.id !== "timeline")) && (
+                ) : (
                   <i>{p.desc}</i>
                 )}
                 <span className="sbx-underline" aria-hidden="true" />
@@ -389,13 +293,13 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               marginTop: 4, padding: "6px 4px",
               textDecoration: "none", color: "var(--ink-dim)", fontSize: 12,
             }}
-            title="I tuoi contributi"
+            title="Impostazioni, richieste e contributi"
             data-testid="sbx-profile"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-2.1 2.6-2.4z" />
             </svg>
-            <span>Contributi</span>
+            <span>Impostazioni e contributi</span>
             {pendingReviewCount > 0 && (
               <span
                 style={{
@@ -455,12 +359,12 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               marginTop: 4, padding: "6px 4px",
               textDecoration: "none", color: "var(--ink-dim)", fontSize: 12,
             }}
-            title="I tuoi contributi"
+            title="Impostazioni, richieste e contributi"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-2.1 2.6-2.4z" />
             </svg>
-            <span>Contributi</span>
+            <span>Impostazioni e contributi</span>
           </Link>
         </>)}
 
@@ -523,7 +427,9 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
 
 export default function Sidebar() {
   const loc = useLocation();
-  const isHome = loc.pathname === "/";
+  // CHANGE 11: disabilita il tema scuro (on-home) della sidebar su tutte le pagine,
+  // così la Landing ha la stessa sidebar chiara delle altre pagine.
+  const isHome = false;
   const [collapsed, setCollapsed] = useState<boolean>(() => {
     try { return localStorage.getItem("atlante.sb.collapsed") === "1"; } catch { return false; }
   });

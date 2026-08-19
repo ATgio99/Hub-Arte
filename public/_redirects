@@ -1,3 +1,3 @@
 # Netlify SPA fallback — invia tutte le rotte non di file a index.html
-# (HUB Arte usa HashRouter, quindi questo è una safety net)
+# (HUB Art usa HashRouter, quindi questo è una safety net)
 /*    /index.html   200

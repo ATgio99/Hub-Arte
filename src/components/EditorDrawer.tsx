@@ -28,38 +28,13 @@ function slugify(s: string): string {
     .slice(0, 80);
 }
 
-// Campo form — DEFINITO A LIVELLO DI MODULO (non dentro Inner).
-// Se lo definissimo dentro Inner, ad ogni re-render sarebbe una funzione nuova
-// → React smonterebbe e rimonterebbe i children → focus perso sugli input.
-const labelStyle: React.CSSProperties = {
-  display: "block", fontSize: 11, fontWeight: 600,
-  color: "var(--ink-dim)", marginBottom: 4, textTransform: "uppercase",
-  letterSpacing: "0.04em",
-};
-const inputStyle: React.CSSProperties = {
-  width: "100%", padding: "8px 10px", border: "1px solid var(--line)",
-  borderRadius: 6, background: "var(--bg)", color: "var(--ink)",
-  fontSize: 13, fontFamily: "inherit",
-};
-function Field({ label, children, required }: { label: string; children: React.ReactNode; required?: boolean }) {
-  return (
-    <div>
-      <label style={labelStyle}>
-        {label}
-        {required && <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>}
-      </label>
-      {children}
-    </div>
-  );
-}
-
 // Campi del DB works (tutti gli altri vengono strippati prima dell'upsert)
 const WORK_DB_FIELDS = [
   "id", "title", "artist_ids", "period_id", "date_text", "year_start", "year_end",
   "type", "technique_ids", "materials", "location_city", "location_place",
   "lat", "lon", "book", "chapter", "page", "source_file", "importance",
   "summary", "analysis", "innovations", "term_ids",
-  "image_url", "image_thumb", "image_source", "image_gallery", "modified_by",
+  "image_url", "image_thumb", "image_source", "modified_by",
 ];
 
 function buildCleanPayload(work: Work, modifiedBy: string): Record<string, unknown> {
@@ -86,125 +61,8 @@ interface DatasetSnapshot {
   works: Work[];  // per coordinate città
 }
 
-// ---- MentionTextarea: textarea con autocomplete @nome ----------------------
-// Quando l'utente digita @, mostra un dropdown con opere/artisti filtrati.
-// L'utente seleziona e il nome viene inserito nel testo.
-function MentionTextarea({ value, onChange, placeholder, style, ix }: {
-  value: string; onChange: (v: string) => void; placeholder?: string; style?: any; ix: any;
-}) {
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [showMentions, setShowMentions] = useState(false);
-  const [mentionQuery, setMentionQuery] = useState("");
-  const [mentionStart, setMentionStart] = useState(0);
-  const [selectedIdx, setSelectedIdx] = useState(0);
-
-  // Lista opere + artisti per l'autocomplete
-  const allItems = useMemo(() => {
-    const items: { label: string; type: string }[] = [];
-    for (const a of ix.ds.artists) items.push({ label: a.name, type: "artista" });
-    for (const w of ix.ds.works) items.push({ label: w.title, type: "opera" });
-    return items.sort((a, b) => a.label.localeCompare(b.label));
-  }, [ix.ds.artists, ix.ds.works]);
-
-  // Filtra in base alla query
-  const filtered = useMemo(() => {
-    if (!mentionQuery) return allItems.slice(0, 10);
-    const q = mentionQuery.toLowerCase();
-    return allItems.filter(x => x.label.toLowerCase().includes(q)).slice(0, 10);
-  }, [mentionQuery, allItems]);
-
-  const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const val = e.target.value;
-    const cursorPos = e.target.selectionStart;
-    onChange(val);
-
-    // Cerca @ prima del cursore
-    const beforeCursor = val.slice(0, cursorPos);
-    const atMatch = beforeCursor.match(/@([A-Za-z0-9'àéèìòùÀÉÈÌÒÙ\-. ]*)$/);
-
-    if (atMatch) {
-      setShowMentions(true);
-      setMentionQuery(atMatch[1]);
-      setMentionStart(cursorPos - atMatch[0].length);
-      setSelectedIdx(0);
-    } else {
-      setShowMentions(false);
-    }
-  };
-
-  const insertMention = (label: string) => {
-    const textarea = textareaRef.current;
-    if (!textarea) return;
-    const val = textarea.value;
-    const before = val.slice(0, mentionStart);
-    const after = val.slice(textarea.selectionStart);
-    const newVal = before + "@" + label + " " + after;
-    onChange(newVal);
-    setShowMentions(false);
-    // Posiziona il cursore dopo il tag inserito
-    setTimeout(() => {
-      const pos = (before + "@" + label + " ").length;
-      textarea.focus();
-      textarea.setSelectionRange(pos, pos);
-    }, 0);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!showMentions || filtered.length === 0) return;
-    if (e.key === "ArrowDown") { e.preventDefault(); setSelectedIdx(i => Math.min(i + 1, filtered.length - 1)); }
-    else if (e.key === "ArrowUp") { e.preventDefault(); setSelectedIdx(i => Math.max(i - 1, 0)); }
-    else if (e.key === "Enter" || e.key === "Tab") { e.preventDefault(); insertMention(filtered[selectedIdx].label); }
-    else if (e.key === "Escape") { e.preventDefault(); setShowMentions(false); }
-  };
-
-  return (
-    <div style={{ position: "relative" }}>
-      <textarea
-        ref={textareaRef}
-        defaultValue={value}
-        onChange={handleInput}
-        onKeyDown={handleKeyDown}
-        onBlur={() => setTimeout(() => setShowMentions(false), 200)}
-        placeholder={placeholder}
-        style={style}
-      />
-      {showMentions && filtered.length > 0 && (
-        <div style={{
-          position: "absolute", zIndex: 100, left: 0, right: 0,
-          background: "var(--bg)", border: "1px solid var(--line)",
-          borderRadius: 8, maxHeight: 200, overflowY: "auto",
-          boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
-        }}>
-          {filtered.map((item, i) => (
-            <button
-              key={i}
-              onMouseDown={(e) => { e.preventDefault(); insertMention(item.label); }}
-              style={{
-                display: "flex", width: "100%", padding: "8px 12px",
-                background: i === selectedIdx ? "rgba(184,138,46,0.1)" : "transparent",
-                border: 0, cursor: "pointer", textAlign: "left",
-                fontFamily: "inherit", fontSize: 13, color: "var(--ink)",
-                gap: 8, alignItems: "center",
-              }}
-            >
-              <span style={{ fontSize: 10, color: "var(--ink-dim)", textTransform: "uppercase", fontWeight: 600, minWidth: 50 }}>{item.type}</span>
-              <span>{item.label}</span>
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
 // ═══════════════════════════════════════════════════════════════════════
 //  INNER — il vero drawer. NON ha useData(). Tutte le props sono stabili.
-//
-//  FIX FOCUS-LOSS: usiamo un pattern di "stato mutabile tramite ref + versione".
-//    - workRef.current è l'oggetto work MUTABILE (modificato in place)
-//    - forceUpdate() si chiama solo quando vogliamo forzare il re-render
-//    - Gli input sono UNCONTROLLED: leggono da defaultValue e scrivono in workRef.current
-//    - In questo modo, digitare non causa re-rendering → il focus NON si perde
 // ═══════════════════════════════════════════════════════════════════════
 function EditorDrawerInner({
   workId,
@@ -217,53 +75,49 @@ function EditorDrawerInner({
 }: {
   workId: string | null;
   open: boolean;
-  fullscreen: boolean;
   onClose: () => void;
+  fullscreen: boolean;
   userEmail: string | null;
   dataset: DatasetSnapshot;
   initialWork: Work | null;
 }) {
-  // Stato mutabile tramite ref: l'oggetto work viene modificato in place.
-  const workRef = useRef<Work | null>(initialWork);
-  // idField ref (per sync con work.id quando è new)
-  const idFieldRef = useRef<string>(initialWork?.id || "");
-  const [, forceRender] = useState(0);
-  const forceUpdate = () => forceRender(v => v + 1);
-
+  const { user } = useAuth();
+  const [work, setWork] = useState<Work | null>(initialWork);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [ok, setOk] = useState(false);
   const [isNew, setIsNew] = useState(!initialWork);
+  const [idField, setIdField] = useState(initialWork?.id || "");
 
-  // Entità create localmente (durante la sessione di editing)
+  // Entità create localmente
   const [localArtists, setLocalArtists] = useState<Artist[]>([]);
   const [localPeriods, setLocalPeriods] = useState<Period[]>([]);
   const [localTechniques, setLocalTechniques] = useState<Technique[]>([]);
   const [localTerms, setLocalTerms] = useState<Term[]>([]);
 
-  // Quando initialWork cambia (es. cambio opera), aggiorna workRef
+  // Quando initialWork cambia (es. cambio opera), aggiorna work state
   useEffect(() => {
     if (initialWork) {
       const clean = { ...initialWork };
       delete (clean as any)._orig_image_url;
       delete (clean as any)._orig_image_thumb;
-      workRef.current = clean;
-      idFieldRef.current = clean.id;
+      setWork(clean);
       setIsNew(false);
+      setIdField(clean.id);
     } else if (workId) {
       // Nuova opera
-      workRef.current = {
+      setWork({
         id: workId, title: "", artist_ids: [], period_id: "", date_text: "",
         year_start: null, year_end: null, type: "pittura", technique_ids: [],
         materials: [], location_city: null, location_place: null, lat: null, lon: null,
         book: 1, chapter: 0, page: 0, source_file: "", importance: 2,
         summary: "", analysis: null, innovations: [], term_ids: [],
-        image_url: "", image_thumb: "", image_source: "commons", image_gallery: [],
-      };
-      idFieldRef.current = workId;
+        image_url: "", image_thumb: "", image_source: "commons",
+      });
       setIsNew(true);
+      setIdField(workId);
     } else {
-      workRef.current = null;
+      setWork(null);
     }
     setError(null);
     setOk(false);
@@ -271,7 +125,6 @@ function EditorDrawerInner({
     setLocalPeriods([]);
     setLocalTechniques([]);
     setLocalTerms([]);
-    forceUpdate();
   }, [initialWork, workId]);
 
   // ESC per chiudere
@@ -304,27 +157,22 @@ function EditorDrawerInner({
     return [...s].sort();
   }, [dataset.works]);
 
-  if (!open) return null;
-  const work = workRef.current;
-  if (!work) return null;
+  if (!open || !work) return null;
 
-  // Helper per aggiornare un campo SENZA causare re-render (input non controllati)
   const set = <K extends keyof Work>(key: K, value: Work[K]) => {
-    workRef.current = { ...workRef.current!, [key]: value };
+    setWork({ ...work, [key]: value });
     setOk(false);
   };
 
   const setCity = (city: string | null) => {
     const coords = city ? cityCoords.get(city) : null;
-    workRef.current = {
-      ...workRef.current!,
+    setWork({
+      ...work,
       location_city: city,
-      lat: coords ? coords.lat : workRef.current!.lat,
-      lon: coords ? coords.lon : workRef.current!.lon,
-    };
+      lat: coords ? coords.lat : work.lat,
+      lon: coords ? coords.lon : work.lon,
+    });
     setOk(false);
-    // Forza update per mostrare/nascondere la nota "✓ Coordinate auto-compilate"
-    forceUpdate();
   };
 
   const notifyAppChanged = () => {
@@ -377,16 +225,15 @@ function EditorDrawerInner({
   };
 
   const save = async () => {
-    if (!workRef.current || !userEmail) return;
-    const currentWork = workRef.current;
+    if (!work || !userEmail) return;
     setError(null);
     setOk(false);
-    if (!currentWork.title.trim()) { setError("Il titolo è obbligatorio."); return; }
+    if (!work.title.trim()) { setError("Il titolo è obbligatorio."); return; }
 
-    let finalId = isNew ? (idFieldRef.current.trim() || slugify(currentWork.title)) : currentWork.id;
+    let finalId = isNew ? (idField.trim() || slugify(work.title)) : work.id;
     if (!finalId) { setError("ID non valido."); return; }
 
-    const payload = buildCleanPayload({ ...currentWork, id: finalId, title: currentWork.title.trim() }, userEmail);
+    const payload = buildCleanPayload({ ...work, id: finalId, title: work.title.trim() }, userEmail);
 
     setSaving(true);
     try {
@@ -394,10 +241,9 @@ function EditorDrawerInner({
       if (error) throw error;
       setOk(true);
       notifyAppChanged();
-      workRef.current = { ...currentWork, id: finalId, title: currentWork.title.trim() };
-      idFieldRef.current = finalId;
+      setWork({ ...work, id: finalId, title: work.title.trim() });
       setIsNew(false);
-      forceUpdate(); // aggiorna header col nuovo titolo
+      setIdField(finalId);
     } catch (e: any) {
       setError(`Errore salvataggio: ${e.message || "errore sconosciuto"}`);
     } finally {
@@ -406,31 +252,22 @@ function EditorDrawerInner({
   };
 
   const del = async () => {
-    if (!workRef.current || isNew) return;
-    const currentWork = workRef.current;
+    if (!work || isNew) return;
     const confirmed = window.confirm(
       `⚠️ CONFERMA ELIMINAZIONE\n\n` +
-      `Stai per eliminare definitivamente:\n\n` +
-      `Titolo: ${currentWork.title}\n` +
-      `ID: ${currentWork.id}\n\n` +
-      `L'opera verrà rimossa dal database E oscurata dal file JSON statico,\n` +
-      `in modo che non riappaia più per nessun utente.\n\n` +
-      `Questa azione è irreversibile.\n\nVuoi procedere?`
+      `Stai per eliminare definitivamente dal database:\n\n` +
+      `Titolo: ${work.title}\n` +
+      `ID: ${work.id}\n\n` +
+      `Questa azione è irreversibile.\n` +
+      `Se l'opera esiste anche nel file JSON statico, riapparirà con i valori originali.\n\n` +
+      `Vuoi procedere?`
     );
     if (!confirmed) return;
     setSaving(true);
     setError(null);
     try {
-      // 1) DELETE dal DB (rimuove l'override)
-      const { error: delErr } = await supabase.from("works").delete().eq("id", currentWork.id);
-      if (delErr) throw delErr;
-      // 2) UPSERT in hidden_entities per oscurare anche l'eventuale record JSON
-      //    (altrimenti ricomparirebbe al prossimo loadDataset, perché il merge
-      //    JSON+DB riprenderebbe la riga dal file statico)
-      await supabase.from("hidden_entities").upsert(
-        { id: currentWork.id, table_name: "works", hidden_by: userEmail },
-        { onConflict: "id" }
-      );
+      const { error } = await supabase.from("works").delete().eq("id", work.id);
+      if (error) throw error;
       notifyAppChanged();
       onClose();
     } catch (e: any) {
@@ -440,8 +277,23 @@ function EditorDrawerInner({
     }
   };
 
-  // Stili e Field sono definiti a livello di modulo (non qui dentro)
-  // per evitare che vengano ricreati ad ogni re-render → focus loss.
+  // Stili
+  const labelStyle: React.CSSProperties = {
+    display: "block", fontSize: 11, fontWeight: 600,
+    color: "var(--ink-dim)", marginBottom: 4, textTransform: "uppercase",
+    letterSpacing: "0.04em",
+  };
+  const inputStyle: React.CSSProperties = {
+    width: "100%", padding: "8px 10px", border: "1px solid var(--line)",
+    borderRadius: 6, background: "var(--bg)", color: "var(--ink)",
+    fontSize: 13, fontFamily: "inherit",
+  };
+  const Field = ({ label, children }: { label: string; children: React.ReactNode }) => (
+    <div>
+      <label style={labelStyle}>{label}</label>
+      {children}
+    </div>
+  );
 
   const bodyPad = fullscreen ? "24px max(20px, calc((100vw - 720px) / 2)) 100px" : "16px 20px 80px";
 
@@ -500,25 +352,25 @@ function EditorDrawerInner({
               )}
 
               <Field label="ID (slug)">
-                <input type="text" defaultValue={idFieldRef.current}
-                  onChange={(e) => { idFieldRef.current = e.target.value; if (isNew) set("id", e.target.value as any); }}
+                <input type="text" value={idField}
+                  onChange={(e) => { setIdField(e.target.value); if (isNew) setWork({ ...work, id: e.target.value }); }}
                   disabled={!isNew}
                   style={{ ...inputStyle, opacity: isNew ? 1 : 0.6, fontFamily: "ui-monospace, monospace", fontSize: 12 }}
                 />
               </Field>
 
               <Field label="Titolo *">
-                <input type="text" defaultValue={work.title} onChange={(e) => set("title", e.target.value)} style={inputStyle} placeholder="es. Volta della Cappella Sistina" />
+                <input type="text" value={work.title} onChange={(e) => set("title", e.target.value)} style={inputStyle} placeholder="es. Volta della Cappella Sistina" />
               </Field>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                 <Field label="Tipo">
-                  <select defaultValue={work.type} onChange={(e) => set("type", e.target.value as Work["type"])} style={inputStyle}>
+                  <select value={work.type} onChange={(e) => set("type", e.target.value as Work["type"])} style={inputStyle}>
                     {WORK_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
                   </select>
                 </Field>
                 <Field label="Importanza">
-                  <select defaultValue={String(work.importance)} onChange={(e) => set("importance", Number(e.target.value) as Work["importance"])} style={inputStyle}>
+                  <select value={String(work.importance)} onChange={(e) => set("importance", Number(e.target.value) as Work["importance"])} style={inputStyle}>
                     <option value="1">1 · Minore</option>
                     <option value="2">2 · Importante</option>
                     <option value="3">3 · Capitale</option>
@@ -541,13 +393,13 @@ function EditorDrawerInner({
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 2fr", gap: 12 }}>
                 <Field label="Anno inizio">
-                  <input type="number" defaultValue={work.year_start ?? ""} onChange={(e) => set("year_start", e.target.value ? Number(e.target.value) : null)} style={inputStyle} placeholder="-300" />
+                  <input type="number" value={work.year_start ?? ""} onChange={(e) => set("year_start", e.target.value ? Number(e.target.value) : null)} style={inputStyle} placeholder="-300" />
                 </Field>
                 <Field label="Anno fine">
-                  <input type="number" defaultValue={work.year_end ?? ""} onChange={(e) => set("year_end", e.target.value ? Number(e.target.value) : null)} style={inputStyle} />
+                  <input type="number" value={work.year_end ?? ""} onChange={(e) => set("year_end", e.target.value ? Number(e.target.value) : null)} style={inputStyle} />
                 </Field>
                 <Field label="Datazione testuale">
-                  <input type="text" defaultValue={work.date_text} onChange={(e) => set("date_text", e.target.value)} style={inputStyle} placeholder="1485-1490" />
+                  <input type="text" value={work.date_text} onChange={(e) => set("date_text", e.target.value)} style={inputStyle} placeholder="1485-1490" />
                 </Field>
               </div>
 
@@ -567,7 +419,7 @@ function EditorDrawerInner({
               <Field label="Città (auto-coordinate)">
                 <input
                   type="text"
-                  defaultValue={work.location_city || ""}
+                  value={work.location_city || ""}
                   onChange={(e) => setCity(e.target.value || null)}
                   list="cities-list"
                   placeholder="Inizia a digitare… (es. Firenze)"
@@ -584,15 +436,15 @@ function EditorDrawerInner({
               </Field>
 
               <Field label="Luogo / edificio">
-                <input type="text" defaultValue={work.location_place || ""} onChange={(e) => set("location_place", e.target.value || null)} style={inputStyle} placeholder="Basilica di San Pietro" />
+                <input type="text" value={work.location_place || ""} onChange={(e) => set("location_place", e.target.value || null)} style={inputStyle} placeholder="Basilica di San Pietro" />
               </Field>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                 <Field label="Latitudine">
-                  <input type="number" step="0.0001" defaultValue={work.lat ?? ""} onChange={(e) => set("lat", e.target.value ? Number(e.target.value) : null)} style={inputStyle} />
+                  <input type="number" step="0.0001" value={work.lat ?? ""} onChange={(e) => set("lat", e.target.value ? Number(e.target.value) : null)} style={inputStyle} />
                 </Field>
                 <Field label="Longitudine">
-                  <input type="number" step="0.0001" defaultValue={work.lon ?? ""} onChange={(e) => set("lon", e.target.value ? Number(e.target.value) : null)} style={inputStyle} />
+                  <input type="number" step="0.0001" value={work.lon ?? ""} onChange={(e) => set("lon", e.target.value ? Number(e.target.value) : null)} style={inputStyle} />
                 </Field>
               </div>
 
@@ -610,7 +462,7 @@ function EditorDrawerInner({
               </Field>
 
               <Field label="Materiali (separati da virgola)">
-                <input type="text" defaultValue={(work.materials || []).join(", ")} onChange={(e) => set("materials", e.target.value.split(",").map(s => s.trim()).filter(Boolean))} style={inputStyle} placeholder="marmo, bronzo…" />
+                <input type="text" value={(work.materials || []).join(", ")} onChange={(e) => set("materials", e.target.value.split(",").map(s => s.trim()).filter(Boolean))} style={inputStyle} placeholder="marmo, bronzo…" />
               </Field>
 
               <Field label="Termini glossario">
@@ -627,33 +479,39 @@ function EditorDrawerInner({
               </Field>
 
               <Field label="Sintesi">
-                <MentionTextarea value={work.summary} onChange={(v) => set("summary", v)} placeholder="Breve descrizione… (usa @ per taggare opere o artisti)" style={{ ...inputStyle, minHeight: 70, resize: "vertical" }} ix={{ ds: { artists: allArtists, works: dataset.works } }} />
+                <textarea value={work.summary} onChange={(e) => set("summary", e.target.value)} style={{ ...inputStyle, minHeight: 70, resize: "vertical" }} placeholder="Breve descrizione…" />
               </Field>
               <Field label="Analisi">
-                <MentionTextarea value={work.analysis || ""} onChange={(v) => set("analysis", v || null)} placeholder="Analisi critica… (usa @ per taggare opere o artisti)" style={{ ...inputStyle, minHeight: 90, resize: "vertical" }} ix={{ ds: { artists: allArtists, works: dataset.works } }} />
+                <textarea value={work.analysis || ""} onChange={(e) => set("analysis", e.target.value || null)} style={{ ...inputStyle, minHeight: 90, resize: "vertical" }} placeholder="Analisi critica…" />
               </Field>
               <Field label="Innovazioni (una per riga)">
-                <textarea defaultValue={(work.innovations || []).join("\n")} onChange={(e) => set("innovations", e.target.value.split("\n").map(s => s.trim()).filter(Boolean))} style={{ ...inputStyle, minHeight: 60, resize: "vertical" }} />
+                <textarea value={(work.innovations || []).join("\n")} onChange={(e) => set("innovations", e.target.value.split("\n").map(s => s.trim()).filter(Boolean))} style={{ ...inputStyle, minHeight: 60, resize: "vertical" }} />
               </Field>
 
               <Field label="URL immagine principale">
-                <input type="url" defaultValue={work.image_url || ""} onChange={(e) => set("image_url", e.target.value)} style={inputStyle} placeholder="https://…" />
+                <input type="url" value={work.image_url || ""} onChange={(e) => set("image_url", e.target.value)} style={inputStyle} placeholder="https://…" />
               </Field>
               <Field label="URL thumbnail">
-                <input type="url" defaultValue={work.image_thumb || ""} onChange={(e) => set("image_thumb", e.target.value)} style={inputStyle} />
+                <input type="url" value={work.image_thumb || ""} onChange={(e) => set("image_thumb", e.target.value)} style={inputStyle} />
               </Field>
               <Field label="Fonte immagine">
-                <input type="text" defaultValue={work.image_source || ""} onChange={(e) => set("image_source", e.target.value)} style={inputStyle} placeholder="commons" />
+                <input type="text" value={work.image_source || ""} onChange={(e) => set("image_source", e.target.value)} style={inputStyle} placeholder="commons" />
               </Field>
 
-              <Field label="Galleria immagini aggiuntive (un URL per riga)">
-                <textarea
-                  defaultValue={(work.image_gallery || []).join("\n")}
-                  onChange={(e) => set("image_gallery", e.target.value.split("\n").map(s => s.trim()).filter(Boolean))}
-                  style={{ ...inputStyle, minHeight: 70, resize: "vertical", fontFamily: "ui-monospace, monospace", fontSize: 12 }}
-                  placeholder="https://…&#10;https://…"
-                />
-              </Field>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
+                <Field label="Libro">
+                  <select value={String(work.book || "")} onChange={(e) => set("book", Number(e.target.value) as Work["book"])} style={inputStyle}>
+                    <option value="1">1 · Tardoantico → Gotico</option>
+                    <option value="2">2 · Tardogotico → Controriforma</option>
+                  </select>
+                </Field>
+                <Field label="Capitolo">
+                  <input type="number" value={work.chapter || 0} onChange={(e) => set("chapter", Number(e.target.value))} style={inputStyle} />
+                </Field>
+                <Field label="Pagina">
+                  <input type="number" value={work.page || 0} onChange={(e) => set("page", Number(e.target.value))} style={inputStyle} />
+                </Field>
+              </div>
             </div>
 
             {/* Footer */}
@@ -671,8 +529,8 @@ function EditorDrawerInner({
                 </button>
               )}
               <button className="btn ghost sm" onClick={onClose} disabled={saving}>Annulla</button>
-              <button className="btn gold sm" onClick={save} disabled={saving}>
-                {saving ? "Salvataggio…" : isNew ? "✨ Crea opera" : "💾 Salva nel database"}
+              <button className="btn gold sm" onClick={save} disabled={saving || !work.title.trim()}>
+                {saving ? "Salvataggio…" : "💾 Salva nel database"}
               </button>
             </div>
           </motion.aside>

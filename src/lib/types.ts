@@ -36,7 +36,6 @@ export interface Work {
   importance: 1 | 2 | 3; summary: string; analysis: string | null;
   innovations: string[]; term_ids: string[];
   image_url?: string; image_thumb?: string; image_source?: string;
-  image_gallery?: string[];
 }
 
 export interface Technique {
@@ -54,7 +53,6 @@ export interface Connection {
   id: string; source_type: EntityType; source_id: string;
   target_type: EntityType; target_id: string;
   kind: ConnKind; description: string;
-  sort_order?: number; // opzionale, per riordino gerarchico (default 0)
 }
 
 export interface ArtEvent {

@@ -480,7 +480,7 @@ export default function Test() {
     return (
       <div className="wrap page">
         <div className="page-head">
-          <div className="page-eyebrow"><span className="eyebrow">Domande generate dal dataset</span></div>
+          <div className="page-eyebrow"><span className="sec-num">06</span><span className="eyebrow">Domande generate dal dataset</span></div>
           <h1 className="page-title">Test</h1>
           <p className="page-lead">Quiz a risposta chiusa costruiti in tempo reale dall'archivio — {ALL_KINDS.length} tipi di domanda, distrattori scelti tra entità affini, banca degli errori e statistiche persistenti.</p>
         </div>
@@ -924,7 +924,7 @@ function StatsView({ onBack, drawerWorkId, drawerOpen, closeDrawer, openDrawer }
     <div className="wrap page">
       <button className="btn ghost sm" onClick={onBack} style={{ marginBottom: 22 }}>← Torna al quiz</button>
       <div className="page-head">
-        <div className="page-eyebrow"><span className="eyebrow">Analisi dettagliata</span></div>
+        <div className="page-eyebrow"><span className="sec-num">06</span><span className="eyebrow">Analisi dettagliata</span></div>
         <h1 className="page-title">Statistiche test</h1>
         <p className="page-lead">Analisi approfondita delle tue prestazioni: andamento nel tempo, punti di forza e debolezza per tipo di domanda e periodo storico, errori ricorrenti.</p>
       </div>

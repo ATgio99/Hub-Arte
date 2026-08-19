@@ -1,11 +1,9 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, Section, Empty, EntityLink, FilterNote, FavStar } from "../components/ui";
 import ArtistMap from "../components/ArtistMap";
 import ArtistTimeline from "../components/ArtistTimeline";
-import ArtistEditorDrawer from "../components/ArtistEditorDrawer";
-import { useAuth } from "../lib/auth";
 import { setLastArtista } from "../lib/lastVisited";
 import {
   worksByArtist, connectionsOf, fmtYear, entityLabel, ENTITY_LABEL, KIND_LABEL,
@@ -15,17 +13,13 @@ export default function Artista() {
   const { id } = useParams();
   const ix = useData();
   const nav = useNavigate();
-  const { user, isAdmin } = useAuth();
-  const [editorOpen, setEditorOpen] = useState(false);
   const { workIn } = useTimeRange();
   const a = id ? ix.artistById.get(id) : undefined;
 
-  // Salva l'ID dell'artista come ultimo visitato (per il ritorno da menu Artisti).
-  // Deve stare PRIMA dell'early return, altrimenti viola le regole degli hooks.
+  // Salva l'ultimo autore visitato (PRIMA dell'early return — rispetta le regole degli hook)
   useEffect(() => {
     if (!a) return;
     setLastArtista(a.id);
-    // Notifica la sidebar di aggiornare l'etichetta "Continua" in tempo reale
     window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   }, [a?.id]);
 
@@ -49,31 +43,7 @@ export default function Artista() {
 
   return (
     <div className="wrap page">
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18, gap: 12, flexWrap: "wrap" }}>
-        <button className="btn ghost sm" onClick={() => nav(-1)} data-testid="button-back">← Indietro</button>
-        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          {isAdmin ? (
-            <button
-              onClick={() => setEditorOpen(true)}
-              className="btn gold sm"
-              style={{ fontSize: 13, padding: "8px 14px", whiteSpace: "nowrap" }}
-              title="Modifica i metadati dell'autore nel database (solo admin)"
-              data-testid="btn-admin-edit-artist"
-            >
-              ✎ Modifica
-            </button>
-          ) : user ? (
-            <Link
-              to="/suggerisci"
-              className="btn ghost sm"
-              style={{ fontSize: 13, padding: "8px 14px", borderColor: "var(--line)", color: "var(--ink-soft)", whiteSpace: "nowrap" }}
-              title="Proponi una modifica a questo autore"
-            >
-              ✎ Richiedi modifica
-            </Link>
-          ) : null}
-        </div>
-      </div>
+      <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 18 }} data-testid="button-back">← Indietro</button>
       <div className="page-head">
         <div className="eyebrow"><span className="tnum">{a.role}{life ? ` · ${life}` : ""}</span></div>
         <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
@@ -95,6 +65,7 @@ export default function Artista() {
         </div>
       )}
 
+      {/* Timeline opere (se almeno 2 opere datate) — per prima, in alto */}
       {showTimeline && (
         <Section eyebrow="Cronologia" title="Linea del tempo delle opere">
           <ArtistTimeline artist={a} works={allWorks} periods={periods} />
@@ -123,7 +94,7 @@ export default function Artista() {
         </Section>
       )}
 
-      {/* Mappa opere (se almeno 2 opere geolocalizzate in città diverse) */}
+      {/* Mappa spostamenti (se almeno 2 opere geolocalizzate in città diverse) */}
       {showMap && hasDistinctCities && (
         <Section eyebrow="Geografia" title="Dove si trovano le opere" collapsible defaultCollapsed>
           <ArtistMap artist={a} works={geolocatedWorks} periods={periods} />
@@ -138,13 +109,6 @@ export default function Artista() {
             : <Empty msg="Nessuna opera di questo autore nell'intervallo temporale scelto." />}
         </Section>
       ) : <Section title="Opere"><Empty msg="Nessuna opera registrata per questo autore." /></Section>}
-
-      {/* Editor drawer (solo admin, apre con pulsante Modifica) */}
-      <ArtistEditorDrawer
-        artistId={a.id}
-        open={editorOpen}
-        onClose={() => setEditorOpen(false)}
-      />
     </div>
   );
 }

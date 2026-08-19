@@ -1,12 +1,12 @@
 import { useState, useMemo, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useData } from "../lib/store";
-import { WorkImage, WorkCard, WorkGallery, Section, Empty, EntityLink, FavStar, StudiedCheck, RichText } from "../components/ui";
+import { WorkImage, WorkCard, Section, Empty, EntityLink, FavStar, StudiedCheck } from "../components/ui";
 import { getOverrides, setOverride, clearOverride } from "../lib/imageOverrides";
 import { useStudied, toggleStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
-import { setLastOpera } from "../lib/lastVisited";
 import EditorDrawer from "../components/EditorDrawer";
+import { setLastOpera } from "../lib/lastVisited";
 import {
   artistsOfWork, termsOfWork, techniquesOfWork, relatedWorks,
   connectionsOf, workYears, entityLabel, ENTITY_LABEL, KIND_LABEL,
@@ -92,12 +92,10 @@ export default function Opera() {
   const w = id ? ix.workById.get(id) : undefined;
   const [editorOpen, setEditorOpen] = useState(false);
 
-  // Salva l'ID dell'opera come ultima visitata (per il ritorno da menu Opere).
-  // Deve stare PRIMA dell'early return, altrimenti viola le regole degli hooks.
+  // Salva l'ultima opera visitata (PRIMA dell'early return — rispetta le regole degli hook)
   useEffect(() => {
     if (!w) return;
     setLastOpera(w.id);
-    // Notifica la sidebar di aggiornare l'etichetta "Continua" in tempo reale
     window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   }, [w?.id]);
 
@@ -149,9 +147,12 @@ export default function Opera() {
       </div>
 
       <div className="opera-grid">
-        {/* immagine — galleria scorrevole con lightbox integrato */}
+        {/* immagine */}
         <div>
-          <WorkGallery work={w} />
+          <div className="opera-img card">
+            <WorkImage work={w} style={{ width: "100%", height: "100%", objectFit: "contain", background: "var(--bg)" }} />
+          </div>
+          {/* Sotto l'immagine: solo ImageEditor (solo admin) + fonte (i pulsanti Modifica/Richiedi sono in alto) */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8, gap: 10, flexWrap: "wrap" }}>
             {isAdmin && <ImageEditor workId={w.id} />}
             {w.image_source && <div className="faint" style={{ fontSize: 11, marginLeft: "auto" }}>fonte immagine: {getOverrides()[w.id] ? "personalizzata" : w.image_source}</div>}
@@ -163,6 +164,7 @@ export default function Opera() {
           <div style={{ display: "flex", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
             <span className="tag">{w.type}</span>
             {w.importance === 3 && <span className="tag" style={{ color: "var(--gold-deep)", borderColor: "var(--gold-deep)" }}>✦ opera capitale</span>}
+            <span className="tag">Libro {w.book} · cap. {w.chapter}</span>
           </div>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
             <h1 style={{ fontSize: "clamp(28px,4.5vw,46px)", lineHeight: 1.04, letterSpacing: "-.02em", minWidth: 0 }}>{w.title}</h1>
@@ -185,7 +187,7 @@ export default function Opera() {
             {" · "}<span className="tnum">{workYears(w)}</span>
           </div>
 
-          <p className="prose" style={{ marginTop: 22, fontSize: 17 }}><RichText text={w.summary || ""} /></p>
+          <p className="prose" style={{ marginTop: 22, fontSize: 17 }}>{w.summary}</p>
 
           <dl className="meta" style={{ marginTop: 26 }}>
             {period && <><dt>Periodo</dt><dd><EntityLink type="period" id={period.id} label={period.name} /></dd></>}
@@ -207,7 +209,7 @@ export default function Opera() {
       {w.analysis && (
         <Section eyebrow="Analisi" title="Lettura dell'opera">
           <div className="prose" style={{ maxWidth: "72ch", fontSize: 17 }}>
-            {w.analysis.split(/\n+/).map((p, i) => <p key={i}><RichText text={p} /></p>)}
+            {w.analysis.split(/\n+/).map((p, i) => <p key={i}>{p}</p>)}
           </div>
         </Section>
       )}

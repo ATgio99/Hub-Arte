@@ -39,14 +39,14 @@ export default function Legal() {
         <H1>Privacy Policy</H1>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
-          HUB Arte — Atlante Neuronale ("il Servizio") è un atlante di studio di Storia dell'Arte
+          HUB Art — Atlante Neuronale ("il Servizio") è un atlante di studio di Storia dell'Arte
           che raccoglie opere, artisti, periodi, tecniche, luoghi e connessioni. Il Servizio è
-          accessibile alla URL <code>https://hubarte.it</code>.
+          accessibile alla URL <code>https://warm-cassata-b06e4d.netlify.app</code>.
         </P>
 
         <H2>1. Titolare del trattamento</H2>
         <P>
-          Il titolare del trattamento dei dati è il responsabile del progetto HUB Arte.
+          Il titolare del trattamento dei dati è il responsabile del progetto HUB Art.
           Per qualsiasi richiesta relativa ai tuoi dati puoi scrivere a <Mailto subject="Privacy" />.
         </P>
 
@@ -102,7 +102,7 @@ export default function Legal() {
         <H1>Cookie Policy</H1>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
-          Questa Cookie Policy spiega quali cookie vengono utilizzati da HUB Arte — Atlante Neuronale
+          Questa Cookie Policy spiega quali cookie vengono utilizzati da HUB Art — Atlante Neuronale
           e come puoi gestirli. I cookie sono piccoli file di testo che il sito salva nel tuo browser
           per garantire il corretto funzionamento delle funzionalità.
         </P>
@@ -129,7 +129,7 @@ export default function Legal() {
 
         <H2>3. Niente cookie di profilazione</H2>
         <P>
-          HUB Arte non utilizza cookie di profilazione, retargeting o tracciamento pubblicitario.
+          HUB Art non utilizza cookie di profilazione, retargeting o tracciamento pubblicitario.
           Non collaboriamo con reti pubblicitarie né con piattaforme di analytics di terze parti
           (Google Analytics, Meta Pixel, ecc.).
         </P>
@@ -154,7 +154,7 @@ export default function Legal() {
 
         <H2>1. Oggetto</H2>
         <P>
-          I presenti Termini regolano l'utilizzo di HUB Arte — Atlante Neuronale ("il Servizio"),
+          I presenti Termini regolano l'utilizzo di HUB Art — Atlante Neuronale ("il Servizio"),
           un atlante di studio di Storia dell'Arte. Accedendo al Servizio accetti integralmente
           i presenti Termini.
         </P>
@@ -212,7 +212,7 @@ export default function Legal() {
 
         <H2>Progetto</H2>
         <P>
-          HUB Arte — Atlante Neuronale è un atlante interattivo di Storia dell'Arte pensato per
+          HUB Art — Atlante Neuronale è un atlante interattivo di Storia dell'Arte pensato per
           studenti, docenti e appassionati. Combina grafo neuronale, timeline multilivello, mappa
           geografica, schede opere e glossario in un'unica interfaccia.
         </P>
@@ -252,7 +252,7 @@ export default function Legal() {
         <BackButton />
         <H1>Contatti</H1>
         <P>
-          Per qualsiasi comunicazione relativa a HUB Arte — Atlante Neuronale, puoi scrivere
+          Per qualsiasi comunicazione relativa a HUB Art — Atlante Neuronale, puoi scrivere
           all'indirizzo <Mailto />.
         </P>
 
@@ -296,23 +296,18 @@ export default function Legal() {
 
         <H2>Sostieni il progetto</H2>
         <P>
-          HUB Arte è gratuito e open source. Puoi contribuire in molti modi:
-          mettere una star su GitHub, segnalare bug o suggerimenti, contribuire
-          al codice con pull request, o semplicemente parlarne con chi studia
-          storia dell'arte.
+          HUB Art è gratuito e senza pubblicità. Se ti è utile, considera una donazione per
+          supportare lo sviluppo e i costi di hosting.
         </P>
         <div style={{ marginTop: 12 }}>
-          <a href="https://github.com/ATgio99/Hub-Arte" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.buymeacoffee.com/ATgio" target="_blank" rel="noopener noreferrer"
             style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
+              display: "inline-flex", alignItems: "center", gap: 6,
               padding: "9px 18px", borderRadius: 999, fontSize: 13, fontWeight: 600,
-              background: "var(--gold)", color: "#fff", textDecoration: "none",
-              border: "1px solid var(--gold-deep)",
+              background: "#ffdd00", color: "#000", textDecoration: "none",
+              border: "1px solid #e6c800",
             }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-            Vai al repository GitHub →
+            ☕ Buy me a coffee
           </a>
         </div>
       </div>

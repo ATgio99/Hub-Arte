@@ -3,23 +3,16 @@
 // Ricerca per nome/alias/ruolo, ordinamento per numero di opere o alfabetico,
 // card con date, ruolo, periodi e conteggio opere. Filtrata dallo slider.
 // ============================================================================
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
-import { FilterNote, Empty, EmptyTimeRange, FavStar } from "../components/ui";
+import { FilterNote, Empty, FavStar } from "../components/ui";
 import { useFavorites } from "../lib/favorites";
 import { fmtYear } from "../lib/data";
-import { clearLastArtista } from "../lib/lastVisited";
 
 export default function Artisti() {
   const ix = useData();
-  const { artistIn, active } = useTimeRange();
-
-  // Quando si arriva alla home degli Artisti, azzerare l'ultimo artista visitato
-  useEffect(() => {
-    clearLastArtista();
-  }, []);
-
+  const { artistIn } = useTimeRange();
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<"opere" | "alfabetico">("opere");
   const [favOnly, setFavOnly] = useState(false);
@@ -53,7 +46,7 @@ export default function Artisti() {
   return (
     <div className="wrap page" style={{ paddingBottom: 40 }}>
       <div className="page-head">
-        <div className="page-eyebrow"><span className="eyebrow">Maestri & botteghe</span></div>
+        <div className="page-eyebrow"><span className="sec-num">02</span><span className="eyebrow">Maestri & botteghe</span></div>
         <h1 className="page-title">Autori</h1>
         <p className="page-lead">Tutti i protagonisti del programma: cerca per nome, alias o ruolo. Ogni scheda raccoglie biografia, innovazioni e opere. Lo slider temporale filtra l'elenco.</p>
       </div>
@@ -76,17 +69,7 @@ export default function Artisti() {
         <FilterNote total={ix.ds.artists.length} shown={list.length} noun="autori" />
       </div>
 
-      {list.length === 0 && (
-        favOnly && favs.artists.length === 0 ? (
-          <Empty msg="Nessun autore preferito: tocca la ★ su una scheda per aggiungerlo." />
-        ) : q ? (
-          <Empty msg={`Nessun autore per «${q}».`} />
-        ) : active ? (
-          <EmptyTimeRange noun="autori" />
-        ) : (
-          <Empty msg="Nessun autore." />
-        )
-      )}
+      {list.length === 0 && <Empty msg={favOnly && favs.artists.length === 0 ? "Nessun autore preferito: tocca la ★ su una scheda per aggiungerlo." : q ? `Nessun autore per «${q}».` : "Nessun autore nell'intervallo selezionato."} />}
 
       <div className="grid-artists">
         {list.map((a) => {

@@ -18,15 +18,14 @@
 //   - Elimina con conferma
 //   - Badge "DB" / "JSON" per distinguere la fonte
 // ============================================================================
-import { useEffect, useState, useMemo, useCallback, useRef, memo } from "react";
+import { useEffect, useState, useMemo, useCallback, memo } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "../lib/auth";
 import { useData } from "../lib/store";
-import { computeWorkGroups, workGroupMap, entityLabel, ENTITY_LABEL, KIND_LABEL } from "../lib/data";
+import { computeWorkGroups, workGroupMap } from "../lib/data";
 import EditorDrawer from "../components/EditorDrawer";
-import EntitySelector from "../components/EntitySelector";
-import type { Work, Artist, Period, Technique, Term, ArtEvent, Connection, Dataset } from "../lib/types";
+import type { Work, Artist, Period, Technique, Term, ArtEvent, Connection } from "../lib/types";
 
 type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" | "connections" | "complessi";
 
@@ -64,14 +63,6 @@ export default function AdminDatabase() {
 
   // Carica gli ID presenti nel DB (per mostrare badge "DB" vs "JSON")
   const loadDbIds = useCallback(async (currentTab: Tab) => {
-    // "complessi" non è una tabella DB reale: deriva dai metadati delle opere.
-    // Salta la query (che fallirebbe con "relation does not exist") e mostra
-    // il conteggio derivato dal dataset.
-    if (currentTab === "complessi") {
-      setDbIds(new Set());
-      setLoadingDb(false);
-      return;
-    }
     setLoadingDb(true);
     try {
       const { data, error } = await supabase.from(currentTab).select("id");
@@ -162,6 +153,7 @@ export default function AdminDatabase() {
 
   // Elimina riga
   const deleteRow = async (id: string) => {
+    // Cerca la riga per ottenere un'etichetta leggibile
     let label = id;
     const r = currentData.find(x => x.id === id);
     if (r) {
@@ -177,15 +169,15 @@ export default function AdminDatabase() {
     );
     if (!confirmed) return;
     try {
-      // Prova DELETE dal DB (se esiste)
-      await supabase.from(tab).delete().eq("id", id);
-      // Inserisci in hidden_entities per nascondere record JSON
-      await supabase.from("hidden_entities").upsert(
-        { id, table_name: tab, hidden_by: user?.email || null },
-        { onConflict: "id" }
-      );
+      const { error } = await supabase.from(tab).delete().eq("id", id);
+      if (error) { alert("Errore: " + error.message); return; }
+      // Notifica app
       window.dispatchEvent(new Event("hubart-works-changed"));
-      try { const bc = new BroadcastChannel("hubart-admin"); bc.postMessage({ type: "changed", ts: Date.now() }); bc.close(); } catch {}
+      try {
+        const bc = new BroadcastChannel("hubart-admin");
+        bc.postMessage({ type: "changed", ts: Date.now() });
+        bc.close();
+      } catch {}
       loadDbIds(tab);
     } catch (e: any) {
       alert("Errore: " + e.message);
@@ -239,11 +231,12 @@ export default function AdminDatabase() {
       {/* Header */}
       <div className="page-head" style={{ marginBottom: 18 }}>
         <div className="page-eyebrow">
+          <span className="sec-num">DB</span>
           <span className="eyebrow">Pannello amministratore</span>
         </div>
         <h1 className="page-title">Database editor</h1>
         <p className="page-lead">
-          Modifica tutte le entità del catalogo: opere, artisti, periodi, tecniche, termini, eventi e connessioni.
+          Modifica tutte le entità del catalogo: opere, autori, periodi, tecniche, termini, eventi e connessioni.
           I cambiamenti sono salvati nel database Supabase e sono visibili immediatamente a tutti gli utenti.
         </p>
       </div>
@@ -262,10 +255,7 @@ export default function AdminDatabase() {
           </Link>
         </div>
         <div style={{ fontSize: 12, color: "var(--ink-dim)" }}>
-          {tab === "complessi"
-            ? <>Tab corrente: <b>{totalCount}</b> complessi · derivati dai metadati delle opere</>
-            : <>Tab corrente: <b>{dbCount}</b> righe nel DB · <b>{totalCount}</b> totali visibili</>
-          }
+          Tab corrente: <b>{dbCount}</b> righe nel DB · <b>{totalCount}</b> totali visibili
         </div>
       </div>
 
@@ -500,10 +490,9 @@ export default function AdminDatabase() {
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
               <tr>
+                <th style={thStyle}>Source</th>
+                <th style={thStyle}>Target</th>
                 <th style={thStyle}>Tipo</th>
-                <th style={thStyle}>Origine</th>
-                <th style={thStyle}>→</th>
-                <th style={thStyle}>Destinazione</th>
                 <th style={thStyle}>Descrizione</th>
                 <th style={thStyle}>Fonte</th>
                 <th style={thStyle}>Azioni</th>
@@ -513,19 +502,12 @@ export default function AdminDatabase() {
               {currentData.slice(0, 200).map((c: Connection) => (
                 <tr key={c.id} style={{ cursor: "pointer" }} onMouseEnter={(e) => e.currentTarget.style.background = "var(--bg-2)"} onMouseLeave={(e) => e.currentTarget.style.background = ""}>
                   <td style={tdStyle} onClick={() => openEdit(c.id)}>
-                    <span style={{ background: "var(--bg-2)", padding: "2px 8px", borderRadius: 4, fontSize: 11, fontWeight: 600, color: "var(--gold-deep)" }}>
-                      {KIND_LABEL[c.kind] ?? c.kind}
-                    </span>
+                    <div style={{ fontWeight: 500 }}>{c.source_type}: {c.source_id}</div>
                   </td>
                   <td style={tdStyle} onClick={() => openEdit(c.id)}>
-                    <div style={{ fontWeight: 500 }}>{entityLabel(ix, c.source_type, c.source_id)}</div>
-                    <div style={{ fontSize: 11, color: "var(--ink-dim)" }}>{ENTITY_LABEL[c.source_type]}</div>
+                    <div style={{ fontWeight: 500 }}>{c.target_type}: {c.target_id}</div>
                   </td>
-                  <td style={{ ...tdStyle, color: "var(--ink-dim)", fontSize: 14 }} onClick={() => openEdit(c.id)}>→</td>
-                  <td style={tdStyle} onClick={() => openEdit(c.id)}>
-                    <div style={{ fontWeight: 500 }}>{entityLabel(ix, c.target_type, c.target_id)}</div>
-                    <div style={{ fontSize: 11, color: "var(--ink-dim)" }}>{ENTITY_LABEL[c.target_type]}</div>
-                  </td>
+                  <td style={tdStyle} onClick={() => openEdit(c.id)}>{c.kind}</td>
                   <td style={tdStyle} onClick={() => openEdit(c.id)}>{(c.description || "").slice(0, 80)}{(c.description || "").length > 80 ? "…" : ""}</td>
                   <td style={tdStyle}>{dbBadge(c.id)}</td>
                   <td style={tdStyle}>{actions(c.id)}</td>
@@ -558,7 +540,6 @@ export default function AdminDatabase() {
           rowId={editingId}
           open={drawerOpen}
           onClose={closeDrawer}
-          isNew={!!newId}
         />
       )}
 
@@ -584,39 +565,11 @@ export default function AdminDatabase() {
 // ComplessiView — mostra i gruppi di opere (complessi/architetture con
 // più opere collegate). Non è una tabella DB: deriva dai metadati delle opere.
 // ============================================================================
-
-// Helper: costruisce un payload COMPLETO per upsert su tabella "works".
-// LEGGE l'opera dal dataset (JSON+DB merge) e ne copia TUTTI i campi,
-// sovrascrivendo solo quelli passati in `overrides`. Questo evita l'errore
-// "null value in column title" quando si fa upsert su opere JSON-only.
-const WORK_DB_FIELDS_FOR_COMPLEX = [
-  "id", "title", "artist_ids", "period_id", "date_text", "year_start", "year_end",
-  "type", "technique_ids", "materials", "location_city", "location_place",
-  "lat", "lon", "book", "chapter", "page", "source_file", "importance",
-  "summary", "analysis", "innovations", "term_ids",
-  "image_url", "image_thumb", "image_source", "image_gallery",
-] as const;
-
-function buildWorkPayload(workId: string, ds: Dataset, overrides: Record<string, unknown>, modifiedBy?: string | null): Record<string, unknown> | null {
-  const w = ds.works.find(x => x.id === workId);
-  if (!w) return null;
-  const payload: Record<string, unknown> = {};
-  for (const f of WORK_DB_FIELDS_FOR_COMPLEX) {
-    payload[f] = (w as any)[f];
-  }
-  Object.assign(payload, overrides);
-  // empty string → null per campi nullable
-  for (const k of ["date_text", "location_city", "location_place", "source_file", "summary", "analysis", "image_url", "image_thumb", "image_source", "period_id"]) {
-    if (payload[k] === "") payload[k] = null;
-  }
-  if (modifiedBy !== undefined) payload.modified_by = modifiedBy;
-  return payload;
-}
 function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData>; search: string; openEdit: (id: string) => void }) {
   const [showNewForm, setShowNewForm] = useState(false);
   const [newPlace, setNewPlace] = useState("");
   const [newCity, setNewCity] = useState("");
-  const [newWorkIds, setNewWorkIds] = useState<string[]>([]);
+  const [newWorkId, setNewWorkId] = useState("");
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
   const [editingGroupName, setEditingGroupName] = useState<string | null>(null);
   const [editPlaceName, setEditPlaceName] = useState("");
@@ -636,26 +589,15 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
     );
   }, [groups, q]);
 
-  // TUTTE le opere del dataset, per la tendina di selezione (EntitySelector con ricerca).
-  const allWorkOptions = useMemo(() => {
-    return ix.ds.works
-      .map(w => ({ id: w.id, label: w.title, subtitle: w.location_city || undefined }))
-      .sort((a, b) => a.label.localeCompare(b.label));
-  }, [ix.ds.works]);
-
-  // Opere NON in un gruppo (per il form "nuovo complesso").
-  const orphanWorkOptions = useMemo(() => {
+  // Opere senza complesso (per il form "nuovo complesso")
+  const orphanWorks = useMemo(() => {
     const inGroup = new Set<string>();
     for (const g of groups) for (const w of g.works) inGroup.add(w.id);
-    return allWorkOptions.filter(o => !inGroup.has(o.id));
-  }, [allWorkOptions, groups]);
-
-  // Anteprima live: opere che hanno GIÀ il luogo digitato (match esatto case-insensitive)
-  const matchingPlaceWorks = useMemo(() => {
-    const place = newPlace.trim().toLowerCase();
-    if (!place) return [];
-    return ix.ds.works.filter(w => w.location_place && w.location_place.toLowerCase() === place);
-  }, [ix.ds.works, newPlace]);
+    return ix.ds.works
+      .filter(w => !inGroup.has(w.id) && w.location_place)
+      .sort((a, b) => a.title.localeCompare(b.title))
+      .slice(0, 200);
+  }, [ix.ds.works, groups]);
 
   const notifyChanged = () => {
     window.dispatchEvent(new Event("hubart-works-changed"));
@@ -665,13 +607,12 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
   const renameComplex = async (oldName: string, cityName: string | null) => {
     const newName = editPlaceName.trim();
     if (!newName || newName === oldName) { setEditingGroupName(null); return; }
+    // Trova tutte le opere del gruppo e aggiorna location_place
     const group = groups.find(g => g.name === oldName && (g.city ?? null) === cityName);
     if (!group) return;
-    const updates = group.works.map(w => {
-      const payload = buildWorkPayload(w.id, ix.ds, { location_place: newName });
-      if (!payload) return Promise.resolve();
-      return supabase.from("works").upsert(payload, { onConflict: "id" });
-    });
+    const updates = group.works.map(w =>
+      supabase.from("works").upsert({ id: w.id, location_place: newName, modified_by: null }, { onConflict: "id" })
+    );
     await Promise.all(updates);
     setEditingGroupName(null);
     setEditPlaceName("");
@@ -679,68 +620,31 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
   };
 
   const removeWorkFromComplex = async (workId: string) => {
-    if (!confirm("Rimuovere quest'opera dal complesso? Il suo luogo verrà cancellato.")) return;
-    const payload = buildWorkPayload(workId, ix.ds, { location_place: null });
-    if (!payload) { alert("Opera non trovata nel dataset."); return; }
-    const { error } = await supabase.from("works").upsert(payload, { onConflict: "id" });
+    // Rimuove l'opera dal complesso impostando location_place a null
+    if (!confirm("Rimuovere quest'opera dal complesso? Il suo location_place verrà cancellato.")) return;
+    const { error } = await supabase.from("works").upsert({
+      id: workId, location_place: null, modified_by: null,
+    }, { onConflict: "id" });
     if (error) alert("Errore: " + error.message);
     else notifyChanged();
   };
 
   const addWorkToComplex = async (groupName: string) => {
     if (!addWorkId.trim()) return;
-    const payload = buildWorkPayload(addWorkId.trim(), ix.ds, { location_place: groupName });
-    if (!payload) { alert("Opera non trovata nel dataset."); return; }
-    const { error } = await supabase.from("works").upsert(payload, { onConflict: "id" });
+    const { error } = await supabase.from("works").upsert({
+      id: addWorkId.trim(), location_place: groupName, modified_by: null,
+    }, { onConflict: "id" });
     if (error) alert("Errore: " + error.message);
     else { setAddWorkToGroup(null); setAddWorkId(""); notifyChanged(); }
   };
 
-  // Crea complesso: assegna il luogo a TUTTE le opere selezionate (multi).
-  // Se il luogo esiste già in altre opere, le unisce nello stesso complesso.
-  const createComplex = async () => {
-    if (!newPlace.trim()) { setSaveMsg("✗ Inserisci un nome per il complesso (luogo)."); return; }
-    if (newWorkIds.length === 0 && matchingPlaceWorks.length === 0) {
-      setSaveMsg("✗ Seleziona almeno un'opera da assegnare a questo complesso.");
-      return;
-    }
-    const place = newPlace.trim();
-    const city = newCity.trim() || undefined;
-    // Unisci: opere selezionate + opere che hanno già il luogo (per non duplicare)
-    const allIds = new Set<string>([...newWorkIds, ...matchingPlaceWorks.map(w => w.id)]);
-    setSavingComplex(true);
-    setSaveMsg(null);
-    try {
-      const updates = [...allIds].map(id => {
-        const payload = buildWorkPayload(id, ix.ds, {
-          location_place: place,
-          location_city: city || null,
-        });
-        if (!payload) return Promise.resolve();
-        return supabase.from("works").upsert(payload, { onConflict: "id" });
-      });
-      await Promise.all(updates);
-      const total = allIds.size;
-      setSaveMsg(`✓ Complesso "${place}" creato! ${total} ${total === 1 ? "opera assegnata" : "opere assegnate"} al complesso.`);
-      setNewWorkIds([]); setNewPlace(""); setNewCity(""); setShowNewForm(false);
-      notifyChanged();
-    } catch (e: any) {
-      setSaveMsg("✗ Errore: " + (e.message || "errore sconosciuto"));
-    } finally {
-      setSavingComplex(false);
-    }
-  };
-  const [savingComplex, setSavingComplex] = useState(false);
-
   const deleteComplex = async (groupName: string, cityName: string | null) => {
-    if (!confirm(`Eliminare il complesso "${groupName}"? Tutte le opere verranno rimosse dal complesso (luogo cancellato).`)) return;
+    if (!confirm(`Eliminare il complesso "${groupName}"? Tutte le opere verranno rimosse dal complesso (location_place cancellato).`)) return;
     const group = groups.find(g => g.name === groupName && (g.city ?? null) === cityName);
     if (!group) return;
-    const updates = group.works.map(w => {
-      const payload = buildWorkPayload(w.id, ix.ds, { location_place: null });
-      if (!payload) return Promise.resolve();
-      return supabase.from("works").upsert(payload, { onConflict: "id" });
-    });
+    const updates = group.works.map(w =>
+      supabase.from("works").upsert({ id: w.id, location_place: null, modified_by: null }, { onConflict: "id" })
+    );
     await Promise.all(updates);
     notifyChanged();
   };
@@ -748,9 +652,8 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
   return (
     <div style={{ padding: 16 }}>
       <div style={{ marginBottom: 12, fontSize: 13, color: "var(--ink-dim)" }}>
-        📊 <b>{groups.length}</b> complessi trovati. I complessi si formano automaticamente quando
-        2 o più opere hanno lo stesso <b>luogo</b> (es. "Basilica di San Francesco").
-        Usa il pulsante sotto per assegnare un luogo a una o più opere e creare un nuovo complesso.
+        📊 <b>{groups.length}</b> complessi trovati. Clicca su un'opera per aprirne l'editor completo,
+        o usa i pulsanti per rinominare, aggiungere/rimuovere opere ed eliminare complessi.
       </div>
 
       {/* Pulsante nuovo complesso */}
@@ -759,74 +662,47 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
         onClick={() => setShowNewForm(!showNewForm)}
         style={{ marginBottom: 12 }}
       >
-        {showNewForm ? "− Annulla" : "+ Assegna opere a un luogo (crea complesso)"}
+        {showNewForm ? "− Annulla" : "+ Crea nuovo complesso"}
       </button>
 
-      {/* Form nuovo complesso — multi-opera + anteprima live */}
+      {/* Form nuovo complesso */}
       {showNewForm && (
         <div style={{
           padding: 16, background: "var(--bg-2)", borderRadius: 10,
           marginBottom: 16, border: "1px solid var(--gold)",
         }}>
-          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 10 }}>Assegna opere a un luogo</div>
+          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 10 }}>Crea nuovo complesso</div>
           <p style={{ fontSize: 12, color: "var(--ink-dim)", margin: "0 0 10px" }}>
-            Scrivi il nome del luogo (es. "Basilica di San Francesco") e seleziona una o più opere.
-            Il complesso apparirà automaticamente nella lista quando almeno 2 opere condividono lo stesso luogo.
+            Seleziona un'opera esistente e assegnale un nuovo "Luogo / edificio". Tutte le opere con lo stesso luogo verranno raggruppate automaticamente.
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <div>
-              <label style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 4 }}>Nome del luogo *</label>
-              <input
-                type="text"
-                placeholder="es. Basilica di San Francesco"
-                value={newPlace}
-                onChange={(e) => setNewPlace(e.target.value)}
-                style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
-                autoFocus
-              />
-            </div>
-
-            {/* Anteprima live: opere con lo stesso luogo */}
-            {matchingPlaceWorks.length > 0 && (
-              <div style={{ padding: 10, background: "rgba(63,138,79,0.08)", border: "1px solid rgba(63,138,79,0.3)", borderRadius: 6 }}>
-                <div style={{ fontSize: 12, fontWeight: 600, color: "#3f8a4f", marginBottom: 4 }}>
-                  ✓ {matchingPlaceWorks.length} {matchingPlaceWorks.length === 1 ? "opera ha già" : "opere hanno già"} questo luogo:
-                </div>
-                <div style={{ fontSize: 12, color: "var(--ink-soft)" }}>
-                  {matchingPlaceWorks.slice(0, 5).map(w => w.title).join(", ")}
-                  {matchingPlaceWorks.length > 5 && `… +${matchingPlaceWorks.length - 5} altre`}
-                </div>
-                <div style={{ fontSize: 11, color: "var(--ink-dim)", marginTop: 4 }}>
-                  Verranno incluse automaticamente nel complesso.
-                </div>
-              </div>
-            )}
-
-            <div>
-              <label style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 4 }}>
-                Opere da assegnare al complesso {newWorkIds.length > 0 && `(${newWorkIds.length} selezionate)`}
-              </label>
-              <EntitySelector
-                mode="multi"
-                options={orphanWorkOptions}
-                selected={newWorkIds}
-                onChange={(v) => setNewWorkIds((v as string[]) || [])}
-                placeholder="Cerca opere da assegnare a questo luogo…"
-              />
-            </div>
-            <div>
-              <label style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 4 }}>Città (opzionale)</label>
-              <input
-                type="text"
-                placeholder="es. Assisi"
-                value={newCity}
-                onChange={(e) => setNewCity(e.target.value)}
-                style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
-              />
-            </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <select
+              value={newWorkId}
+              onChange={(e) => setNewWorkId(e.target.value)}
+              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
+            >
+              <option value="">— Seleziona un'opera da assegnare al complesso —</option>
+              {orphanWorks.map(w => (
+                <option key={w.id} value={w.id}>{w.title} ({w.location_city || "?"})</option>
+              ))}
+            </select>
+            <input
+              type="text"
+              placeholder="Nome del complesso (es. Basilica di San Francesco)"
+              value={newPlace}
+              onChange={(e) => setNewPlace(e.target.value)}
+              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
+            />
+            <input
+              type="text"
+              placeholder="Città (opzionale, usa quella dell'opera se vuoto)"
+              value={newCity}
+              onChange={(e) => setNewCity(e.target.value)}
+              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
+            />
             {saveMsg && <div style={{ fontSize: 13, color: saveMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{saveMsg}</div>}
-            <button className="btn gold sm" onClick={createComplex} disabled={savingComplex || !newPlace.trim() || (newWorkIds.length === 0 && matchingPlaceWorks.length === 0)}>
-              {savingComplex ? "Salvataggio…" : `💾 Assegna ${newWorkIds.length + matchingPlaceWorks.length} ${newWorkIds.length + matchingPlaceWorks.length === 1 ? "opera" : "opere"} al luogo`}
+            <button className="btn gold sm" onClick={createComplex} disabled={!newWorkId || !newPlace.trim()}>
+              💾 Crea complesso
             </button>
           </div>
         </div>
@@ -834,7 +710,7 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
 
       {filtered.length === 0 ? (
         <div style={{ padding: 32, textAlign: "center", color: "var(--ink-dim)", fontSize: 14 }}>
-          Nessun complesso trovato. I complessi si formano automaticamente quando 2+ opere condividono lo stesso luogo.
+          Nessun complesso trovato.
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -887,16 +763,17 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
                 {addWorkToGroup === key && (
                   <div style={{ marginTop: 10, padding: 10, background: "var(--bg)", borderRadius: 6, border: "1px solid var(--gold)" }}>
                     <div style={{ fontSize: 12, color: "var(--ink-dim)", marginBottom: 6 }}>Aggiungi un'opera al complesso "{g.name}":</div>
-                    <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                      <div style={{ flex: 1 }}>
-                        <EntitySelector
-                          mode="single"
-                          options={orphanWorkOptions}
-                          selected={addWorkId || null}
-                          onChange={(v) => setAddWorkId((v as string) || "")}
-                          placeholder="Cerca opera da aggiungere…"
-                        />
-                      </div>
+                    <div style={{ display: "flex", gap: 6 }}>
+                      <select
+                        value={addWorkId}
+                        onChange={(e) => setAddWorkId(e.target.value)}
+                        style={{ flex: 1, padding: "6px 8px", border: "1px solid var(--line)", borderRadius: 4, fontSize: 13, fontFamily: "inherit" }}
+                      >
+                        <option value="">— Seleziona un'opera —</option>
+                        {orphanWorks.map(w => (
+                          <option key={w.id} value={w.id}>{w.title} ({w.location_city || "?"})</option>
+                        ))}
+                      </select>
                       <button className="btn gold sm" style={{ fontSize: 12, padding: "5px 12px" }} onClick={() => addWorkToComplex(g.name)}>Aggiungi</button>
                       <button className="btn ghost sm" style={{ fontSize: 12, padding: "5px 12px" }} onClick={() => setAddWorkToGroup(null)}>Annulla</button>
                     </div>
@@ -942,149 +819,7 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
 // ============================================================================
 // GenericEditorDrawer — per tabelle diverse da works (artisti, periodi, ecc.)
 // Architettura a 2 livelli (come EditorDrawer) per evitare perdita di focus.
-//
-// FIX FOCUS-LOSS: usiamo un pattern di "stato mutabile tramite ref + versione".
-//   - rowRef.current è l'oggetto row MUTABILE (modificato in place)
-//   - versionCounter si incrementa solo quando vogliamo forzare il re-render
-//   - Gli input sono UNCONTROLLED: leggono da rowRef.current e scrivono in rowRef.current
-//   - In questo modo, digitare non causa re-rendering → il focus NON si perde
 // ============================================================================
-
-// Traduzioni dei nomi dei campi tecnici in italiano comprensibile
-const FIELD_LABELS_IT: Record<string, string> = {
-  id: "ID (slug)",
-  name: "Nome",
-  title: "Titolo",
-  term: "Termine",
-  aka: "Alias / nomi alternativi",
-  birth: "Anno nascita",
-  death: "Anno morte",
-  period_ids: "Periodi associati",
-  period_id: "Periodo",
-  parent_id: "Periodo genitore",
-  role: "Ruolo",
-  bio: "Biografia",
-  innovations: "Innovazioni",
-  type: "Tipo",
-  year_start: "Anno inizio",
-  year_end: "Anno fine",
-  year: "Anno",
-  regions: "Regioni",
-  summary: "Sintesi",
-  historical_context: "Contesto storico",
-  key_innovations: "Innovazioni chiave",
-  definition: "Definizione",
-  introduced_by: "Introdotto da (autore)",
-  first_period_id: "Prima comparsa (periodo)",
-  evolution: "Evoluzione",
-  category: "Categoria",
-  description: "Descrizione",
-  kind: "Tipo",
-  is_archetype: "È un archetipo",
-  source_type: "Tipo entità origine",
-  source_id: "Entità origine",
-  target_type: "Tipo entità destinazione",
-  target_id: "Entità destinazione",
-  date_text: "Datazione testuale",
-  artist_ids: "Autori",
-  technique_ids: "Tecniche",
-  materials: "Materiali",
-  location_city: "Città",
-  location_place: "Luogo / edificio",
-  lat: "Latitudine",
-  lon: "Longitudine",
-  book: "Libro",
-  chapter: "Capitolo",
-  page: "Pagina",
-  source_file: "File sorgente",
-  importance: "Importanza",
-  analysis: "Analisi",
-  term_ids: "Termini glossario",
-  image_url: "URL immagine",
-  image_thumb: "URL thumbnail",
-  image_source: "Fonte immagine",
-};
-
-// Campi che dovrebbero essere textarea (testo lungo)
-const LONG_TEXT_FIELDS = new Set([
-  "definition", "evolution", "analysis", "bio",
-  "summary", "description", "historical_context", "date_text",
-]);
-
-// Campi con select predefiniti (enum)
-const SELECT_OPTIONS: Record<string, string[]> = {
-  "techniques.category": ["pittorica", "scultorea", "architettonica", "musiva", "altra"],
-  "works.type": ["architettura", "pittura", "scultura", "mosaico", "miniatura",
-    "oreficeria", "urbanistica", "tela", "tavola", "polittico", "rilievo",
-    "affresco", "altro"],
-  "works.book": ["1", "2"],
-  "works.importance": ["1", "2", "3"],
-  "works.image_source": ["commons", "wikiart", "museo", "altro"],
-  "periods.type": ["epoca", "corrente", "popolo"],
-  "terms.category": ["architettura", "pittura", "scultura", "iconografia", "generale"],
-  "events.kind": ["politico", "religioso", "culturale", "tecnologico"],
-  "connections.kind": ["influenza", "contaminazione", "rielaborazione",
-    "evoluzione", "contrasto", "committenza", "maestro-allievo"],
-  "connections.source_type": ["period", "artist", "work", "technique", "event", "term"],
-  "connections.target_type": ["period", "artist", "work", "technique", "event", "term"],
-};
-
-// Etichette italiane per i valori delle select delle connessioni
-const CONN_KIND_LABELS: Record<string, string> = {
-  influenza: "Influenza",
-  contaminazione: "Contaminazione",
-  rielaborazione: "Rielaborazione",
-  evoluzione: "Evoluzione",
-  contrasto: "Contrasto",
-  committenza: "Committenza",
-  "maestro-allievo": "Maestro-allievo",
-};
-const ENTITY_TYPE_LABELS: Record<string, string> = {
-  period: "Periodo",
-  artist: "Autore",
-  work: "Opera",
-  technique: "Tecnica",
-  event: "Evento",
-  term: "Termine",
-};
-
-// Campi che referenziano entità in altre tabelle (per i selettori intelligenti)
-// Mappa: nomeCampo → { table, mode } dove table è la tabella DB da cui pescare
-const REF_FIELDS: Record<string, { table: string; mode: "single" | "multi" }> = {
-  "artists.period_ids": { table: "periods", mode: "multi" },
-  "techniques.first_period_id": { table: "periods", mode: "single" },
-  "techniques.introduced_by": { table: "artists", mode: "single" },
-  "terms.period_ids": { table: "periods", mode: "multi" },
-  "events.period_id": { table: "periods", mode: "single" },
-  "periods.parent_id": { table: "periods", mode: "single" },
-  "connections.source_id": { table: "auto", mode: "single" }, // dipende da source_type
-  "connections.target_id": { table: "auto", mode: "single" }, // dipende da target_type
-};
-
-// Stili e Field per il GenericEditorDrawer — DEFINITI A LIVELLO DI MODULO.
-// Se fossero dentro Inner, ad ogni re-render sarebbero funzioni nuove
-// → React smonterebbe e rimonterebbe i children → focus perso sugli input.
-const genLabelStyle: React.CSSProperties = {
-  display: "block", fontSize: 11, fontWeight: 600,
-  color: "var(--ink-dim)", marginBottom: 4, textTransform: "uppercase",
-  letterSpacing: "0.04em",
-};
-const genInputStyle: React.CSSProperties = {
-  width: "100%", padding: "8px 10px", border: "1px solid var(--line)",
-  borderRadius: 6, background: "var(--bg)", color: "var(--ink)",
-  fontSize: 13, fontFamily: "inherit",
-};
-function GenField({ label, children, required }: { label: string; children: React.ReactNode; required?: boolean }) {
-  return (
-    <div>
-      <label style={genLabelStyle}>
-        {label}
-        {required && <span style={{ color: "#a8483f", marginLeft: 4 }}>*</span>}
-      </label>
-      {children}
-    </div>
-  );
-}
 
 // INNER: NON ha useData(). Tutte le props sono stabili.
 function GenericEditorDrawerInner({
@@ -1094,8 +829,6 @@ function GenericEditorDrawerInner({
   onClose,
   userEmail,
   initialRow,
-  isNew,
-  dataset,
 }: {
   table: Tab;
   rowId: string;
@@ -1103,17 +836,8 @@ function GenericEditorDrawerInner({
   onClose: () => void;
   userEmail: string | null;
   initialRow: any | null;
-  isNew: boolean;
-  dataset: { periods: any[]; artists: any[]; techniques: any[]; terms: any[]; works: any[]; events: any[]; connections: any[] };
 }) {
-  // Stato mutabile tramite ref: l'oggetto row viene modificato in place.
-  // Solo quando cambiano initialRow/rowId, viene ricreato da zero.
-  const rowRef = useRef<any>(initialRow ? { ...initialRow } : { id: rowId });
-  // Version counter: si incrementa quando vogliamo forzare il re-render
-  // (es. dopo un salvataggio riuscito, per aggiornare il titolo nell'header).
-  const [, forceRender] = useState(0);
-  const forceUpdate = () => forceRender(v => v + 1);
-
+  const [row, setRow] = useState<any>(initialRow ? { ...initialRow } : { id: rowId });
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [ok, setOk] = useState(false);
@@ -1121,51 +845,20 @@ function GenericEditorDrawerInner({
   useEffect(() => {
     if (initialRow) {
       const clean = { ...initialRow };
+      // Strip _orig_* fields
       for (const k of Object.keys(clean)) if (k.startsWith("_")) delete clean[k];
-      rowRef.current = clean;
+      setRow(clean);
     } else {
-      rowRef.current = { id: rowId };
+      setRow({ id: rowId });
     }
     setError(null);
     setOk(false);
-    forceUpdate();
   }, [initialRow, rowId]);
 
-  if (!open) return null;
-
-  const row = rowRef.current;
-  if (!row) return null;
+  if (!open || !row) return null;
 
   const META_FIELDS = ["created_at", "updated_at", "modified_by"];
   const fields = Object.keys(row).filter((k) => !META_FIELDS.includes(k) && !k.startsWith("_"));
-
-  // Helper per aggiornare un campo senza causare re-render (input non controllati)
-  const setField = (field: string, value: any) => {
-    rowRef.current = { ...rowRef.current, [field]: value };
-    setOk(false);
-    // Per le connessioni: quando si cambia source_type o target_type, forza re-render
-    // così il selettore source_id/target_id si aggiorna con le opzioni giuste
-    // (es. source_type "artist" → mostra artisti, non più opere)
-    if (table === "connections" && (field === "source_type" || field === "target_type")) {
-      // Resetta anche l'ID selezionato (non è valido per il nuovo tipo)
-      const idField = field === "source_type" ? "source_id" : "target_id";
-      rowRef.current = { ...rowRef.current, [idField]: "" };
-      forceUpdate();
-    }
-  };
-
-  // Helper per ottenere le opzioni di un selettore entità
-  const getEntityOptions = (refTable: string) => {
-    switch (refTable) {
-      case "periods": return dataset.periods.map(p => ({ id: p.id, label: p.name, subtitle: `${p.year_start}–${p.year_end}` }));
-      case "artists": return dataset.artists.map(a => ({ id: a.id, label: a.name, subtitle: a.role || undefined }));
-      case "techniques": return dataset.techniques.map(t => ({ id: t.id, label: t.name, subtitle: t.category }));
-      case "terms": return dataset.terms.map(t => ({ id: t.id, label: t.term, subtitle: t.category }));
-      case "works": return dataset.works.map(w => ({ id: w.id, label: w.title, subtitle: w.location_city || undefined }));
-      case "events": return dataset.events.map(e => ({ id: e.id, label: e.title, subtitle: String(e.year) }));
-      default: return [];
-    }
-  };
 
   const save = async () => {
     if (!userEmail) return;
@@ -1174,38 +867,12 @@ function GenericEditorDrawerInner({
     setSaving(true);
     try {
       const payload: Record<string, unknown> = {};
-      for (const [k, v] of Object.entries(rowRef.current)) {
+      for (const [k, v] of Object.entries(row)) {
         if (k.startsWith("_")) continue;
         if (k === "created_at" || k === "updated_at") continue;
         payload[k] = v;
       }
       payload.modified_by = userEmail;
-
-      // Validazione minima per nuove righe
-      if (isNew) {
-        if (!payload.id || String(payload.id).trim() === "") {
-          throw new Error("L'ID è obbligatorio per creare una nuova riga.");
-        }
-        if (table === "techniques" && (!payload.name || String(payload.name).trim() === "")) {
-          throw new Error("Il nome della tecnica è obbligatorio.");
-        }
-        if (table === "works" && (!payload.title || String(payload.title).trim() === "")) {
-          throw new Error("Il titolo dell'opera è obbligatorio.");
-        }
-        if (table === "artists" && (!payload.name || String(payload.name).trim() === "")) {
-          throw new Error("Il nome dell'autore è obbligatorio.");
-        }
-        if (table === "periods" && (!payload.name || String(payload.name).trim() === "")) {
-          throw new Error("Il nome del periodo è obbligatorio.");
-        }
-        if (table === "terms" && (!payload.term || String(payload.term).trim() === "")) {
-          throw new Error("Il termine è obbligatorio.");
-        }
-        if (table === "events" && (!payload.title || String(payload.title).trim() === "")) {
-          throw new Error("Il titolo dell'evento è obbligatorio.");
-        }
-      }
-
       const { error } = await supabase.from(table).upsert(payload, { onConflict: "id" });
       if (error) throw error;
       setOk(true);
@@ -1215,7 +882,6 @@ function GenericEditorDrawerInner({
         bc.postMessage({ type: "changed", ts: Date.now() });
         bc.close();
       } catch {}
-      forceUpdate(); // aggiorna header col nuovo nome
     } catch (e: any) {
       setError(`Errore: ${e.message || "sconosciuto"}`);
     } finally {
@@ -1237,13 +903,8 @@ function GenericEditorDrawerInner({
     setSaving(true);
     setError(null);
     try {
-      // Prova DELETE dal DB
-      await supabase.from(table).delete().eq("id", row.id);
-      // Inserisci in hidden_entities per nascondere record JSON
-      await supabase.from("hidden_entities").upsert(
-        { id: row.id, table_name: table, hidden_by: userEmail },
-        { onConflict: "id" }
-      );
+      const { error } = await supabase.from(table).delete().eq("id", row.id);
+      if (error) throw error;
       window.dispatchEvent(new Event("hubart-works-changed"));
       try {
         const bc = new BroadcastChannel("hubart-admin");
@@ -1258,11 +919,16 @@ function GenericEditorDrawerInner({
     }
   };
 
-  // Stili e Field sono definiti a livello di modulo (genLabelStyle, genInputStyle, GenField)
-  // per evitare che vengano ricreati ad ogni re-render → focus loss.
-
-  // Etichetta leggibile per il tipo di tabella
-  const tableLabel = table === "complessi" ? "complesso" : table;
+  const labelStyle: React.CSSProperties = {
+    display: "block", fontSize: 11, fontWeight: 600,
+    color: "var(--ink-dim)", marginBottom: 4, textTransform: "uppercase",
+    letterSpacing: "0.04em",
+  };
+  const inputStyle: React.CSSProperties = {
+    width: "100%", padding: "8px 10px", border: "1px solid var(--line)",
+    borderRadius: 6, background: "var(--bg)", color: "var(--ink)",
+    fontSize: 13, fontFamily: "inherit",
+  };
 
   return (
     <>
@@ -1283,12 +949,10 @@ function GenericEditorDrawerInner({
         }}>
           <div>
             <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>
-              {tableLabel} · {isNew ? "NUOVA RIGA" : "Admin"}
+              {table} · Admin
             </div>
             <div style={{ fontFamily: "var(--font-display)", fontSize: 16, marginTop: 2 }}>
-              {isNew
-                ? `Nuova riga in ${tableLabel}`
-                : (row.name || row.term || row.title || row.id)}
+              {row.name || row.term || row.title || row.id}
             </div>
           </div>
           <button
@@ -1317,18 +981,6 @@ function GenericEditorDrawerInner({
             </div>
           )}
 
-          {/* Banner "NUOVA RIGA" se isNew */}
-          {isNew && (
-            <div style={{
-              padding: "10px 12px", background: "rgba(212,160,23,0.1)",
-              color: "var(--gold-deep)", borderRadius: 6, fontSize: 13,
-              border: "1px solid rgba(212,160,23,0.3)",
-            }}>
-              ✨ Stai creando una nuova riga in <b>{tableLabel}</b>.
-              Compila almeno i campi obbligatori (ID + nome/titolo) e premi Salva.
-            </div>
-          )}
-
           {fields.map((field) => {
             const value = row[field];
             const isArray = Array.isArray(value);
@@ -1336,193 +988,28 @@ function GenericEditorDrawerInner({
             const isNumber = typeof value === "number";
             const isNull = value == null;
 
-            // Etichetta italiana
-            const label = FIELD_LABELS_IT[field] || field;
-            const required = isNew && (field === "id" || field === "name" || field === "title" || field === "term");
-
-            // Campi in sola lettura (ID per righe esistenti)
-            const isReadOnlyId = field === "id" && !isNew;
-
-            // Select predefinite (enum)
-            const selectKey = `${table}.${field}`;
-            const selectOpts = SELECT_OPTIONS[selectKey];
-
-            // Riferimenti a entità in altre tabelle
-            const refConfig = REF_FIELDS[selectKey];
-
-            // Per connections: source_id/target_id dipendono dal source_type/target_type
-            const isConnectionRef = table === "connections" && (field === "source_id" || field === "target_id");
-            let connectionRefTable: string | null = null;
-            if (isConnectionRef) {
-              const typeField = field === "source_id" ? "source_type" : "target_type";
-              const typeValue = row[typeField];
-              if (typeValue === "period") connectionRefTable = "periods";
-              else if (typeValue === "artist") connectionRefTable = "artists";
-              else if (typeValue === "work") connectionRefTable = "works";
-              else if (typeValue === "technique") connectionRefTable = "techniques";
-              else if (typeValue === "event") connectionRefTable = "events";
-              else if (typeValue === "term") connectionRefTable = "terms";
-            }
-
-            // Campi con selettore entità (EntitySelector)
-            if (refConfig && refConfig.table !== "auto") {
-              return (
-                <GenField key={field} label={label}>
-                  <EntitySelector
-                    mode={refConfig.mode}
-                    options={getEntityOptions(refConfig.table)}
-                    selected={value}
-                    onChange={(v) => setField(field, v)}
-                    placeholder={`Cerca ${refConfig.table}…`}
-                  />
-                </GenField>
-              );
-            }
-
-            // Connections source_id/target_id con tipo dinamico
-            if (isConnectionRef) {
-              if (!connectionRefTable) {
-                return (
-                  <GenField key={field} label={label}>
-                    <div style={{ ...genInputStyle, opacity: 0.6, fontStyle: "italic" }}>
-                      Seleziona prima il «{field === "source_id" ? "Tipo entità origine" : "Tipo entità destinazione"}»
-                    </div>
-                  </GenField>
-                );
-              }
-              const typeLabel = ENTITY_TYPE_LABELS[connectionRefTable] || connectionRefTable;
-              return (
-                <GenField key={field} label={`${label} (${typeLabel})`}>
-                  <EntitySelector
-                    mode="single"
-                    options={getEntityOptions(connectionRefTable)}
-                    selected={value}
-                    onChange={(v) => setField(field, v)}
-                    placeholder={`Cerca ${typeLabel.toLowerCase()}…`}
-                  />
-                </GenField>
-              );
-            }
-
-            // Campi in sola lettura (ID per righe esistenti)
-            if (isReadOnlyId) {
-              return (
-                <GenField key={field} label={label}>
-                  <input type="text" defaultValue={String(value ?? "")} disabled style={{ ...genInputStyle, opacity: 0.6, cursor: "not-allowed" }} />
-                </GenField>
-              );
-            }
-
-            // Select predefinite (enum)
-            if (selectOpts) {
-              // Per le select delle connessioni usa etichette italiane
-              const labelMap = selectKey === "connections.kind" ? CONN_KIND_LABELS
-                : selectKey === "connections.source_type" || selectKey === "connections.target_type" ? ENTITY_TYPE_LABELS
-                : null;
-              // Per connections usiamo select CONTROLLATA (value=...) così quando
-              // l'utente cambia source_type/target_id si aggiorna correttamente.
-              // Per le altre usiamo defaultValue (uncontrolled) per non perdere focus.
-              const isConnSelect = selectKey === "connections.kind" || selectKey === "connections.source_type" || selectKey === "connections.target_type";
-              return (
-                <GenField key={field} label={label}>
-                  <select
-                    {...(isConnSelect ? { value: String(value ?? "") } : { defaultValue: String(value ?? "") })}
-                    onChange={(e) => {
-                      const v = e.target.value;
-                      setField(field, isNumber ? Number(v) : v);
-                    }}
-                    style={genInputStyle}
-                  >
-                    {selectOpts.map((opt) => (
-                      <option key={opt} value={opt}>{labelMap ? (labelMap[opt] || opt) : opt}</option>
-                    ))}
-                  </select>
-                </GenField>
-              );
-            }
-
-            // Array (textarea, un valore per riga)
-            if (isArray) {
-              return (
-                <GenField key={field} label={label}>
-                  <textarea
-                    defaultValue={value.join("\n")}
-                    onChange={(e) => setField(field, e.target.value.split("\n").map(s => s.trim()).filter(Boolean))}
-                    style={{ ...genInputStyle, minHeight: 60, resize: "vertical", fontFamily: "ui-monospace, monospace", fontSize: 12 }}
-                    placeholder="Un valore per riga"
-                  />
-                </GenField>
-              );
-            }
-
-            // Testo lungo (textarea)
-            if (LONG_TEXT_FIELDS.has(field)) {
-              return (
-                <GenField key={field} label={label}>
-                  <textarea
-                    defaultValue={String(value ?? "")}
-                    onChange={(e) => setField(field, e.target.value || null)}
-                    style={{ ...genInputStyle, minHeight: 80, resize: "vertical" }}
-                  />
-                </GenField>
-              );
-            }
-
-            // Boolean
-            if (isBoolean) {
-              return (
-                <GenField key={field} label={label}>
-                  <select
-                    defaultValue={String(value)}
-                    onChange={(e) => setField(field, e.target.value === "true")}
-                    style={genInputStyle}
-                  >
-                    <option value="false">No</option>
-                    <option value="true">Sì</option>
-                  </select>
-                </GenField>
-              );
-            }
-
-            // Numero
-            if (isNumber) {
-              return (
-                <GenField key={field} label={label}>
-                  <input
-                    type="number"
-                    defaultValue={value ?? ""}
-                    onChange={(e) => setField(field, e.target.value ? Number(e.target.value) : null)}
-                    style={genInputStyle}
-                  />
-                </GenField>
-              );
-            }
-
-            // Null (campo vuoto)
-            if (isNull) {
-              return (
-                <GenField key={field} label={label}>
-                  <input
-                    type="text"
-                    defaultValue=""
-                    placeholder="(vuoto)"
-                    onChange={(e) => setField(field, e.target.value || null)}
-                    style={genInputStyle}
-                  />
-                </GenField>
-              );
-            }
-
-            // Stringa normale
             return (
-              <GenField key={field} label={label} required={required}>
-                <input
-                  type="text"
-                  defaultValue={String(value)}
-                  onChange={(e) => setField(field, e.target.value)}
-                  style={genInputStyle}
-                />
-              </GenField>
+              <div key={field}>
+                <label style={labelStyle}>{field}</label>
+                {isArray ? (
+                  <textarea
+                    value={value.join("\n")}
+                    onChange={(e) => setRow({ ...row, [field]: e.target.value.split("\n").map(s => s.trim()).filter(Boolean) })}
+                    style={{ ...inputStyle, minHeight: 60, resize: "vertical", fontFamily: "ui-monospace, monospace", fontSize: 12 }}
+                  />
+                ) : isBoolean ? (
+                  <select value={String(value)} onChange={(e) => setRow({ ...row, [field]: e.target.value === "true" })} style={inputStyle}>
+                    <option value="false">false</option>
+                    <option value="true">true</option>
+                  </select>
+                ) : isNumber ? (
+                  <input type="number" value={value ?? ""} onChange={(e) => setRow({ ...row, [field]: e.target.value ? Number(e.target.value) : null })} style={inputStyle} />
+                ) : isNull ? (
+                  <input type="text" value="" placeholder="(null)" onChange={(e) => setRow({ ...row, [field]: e.target.value || null })} style={inputStyle} />
+                ) : (
+                  <input type="text" value={String(value)} onChange={(e) => setRow({ ...row, [field]: e.target.value })} style={inputStyle} />
+                )}
+              </div>
             );
           })}
         </div>
@@ -1534,21 +1021,19 @@ function GenericEditorDrawerInner({
           background: "var(--bg)", display: "flex", gap: 8, justifyContent: "flex-end",
           boxShadow: "0 -4px 12px rgba(0,0,0,0.04)",
         }}>
-          {!isNew && (
-            <button
-              className="btn ghost sm"
-              onClick={del}
-              disabled={saving}
-              style={{ marginRight: "auto", color: "#a8483f", borderColor: "#a8483f" }}
-            >🗑️ Elimina</button>
-          )}
+          <button
+            className="btn ghost sm"
+            onClick={del}
+            disabled={saving}
+            style={{ marginRight: "auto", color: "#a8483f", borderColor: "#a8483f" }}
+          >🗑️ Elimina</button>
           <button className="btn ghost sm" onClick={onClose} disabled={saving}>Annulla</button>
           <button
             className="btn gold sm"
             onClick={save}
             disabled={saving}
           >
-            {saving ? "Salvataggio…" : isNew ? "✨ Crea" : "💾 Salva"}
+            {saving ? "Salvataggio…" : "💾 Salva"}
           </button>
         </div>
       </aside>
@@ -1562,49 +1047,8 @@ const GenericEditorDrawerInnerMemo = memo(GenericEditorDrawerInner, (prev, next)
   prev.open === next.open &&
   prev.onClose === next.onClose &&
   prev.userEmail === next.userEmail &&
-  prev.initialRow === next.initialRow &&
-  prev.isNew === next.isNew &&
-  prev.dataset === next.dataset
+  prev.initialRow === next.initialRow
 );
-
-// Template di default per nuove righe (così l'editor mostra i campi giusti
-// con valori sensati invece di un form vuoto con solo "id").
-const NEW_ROW_TEMPLATES: Record<Tab, () => any> = {
-  works: () => ({
-    id: "", title: "", artist_ids: [], period_id: null, date_text: "",
-    year_start: null, year_end: null, type: "altro", technique_ids: [],
-    materials: [], location_city: null, location_place: null,
-    lat: null, lon: null, book: 1, chapter: 0, page: 0, source_file: "",
-    importance: 2, summary: "", analysis: null, innovations: [], term_ids: [],
-    image_url: "", image_thumb: "", image_source: "commons",
-  }),
-  artists: () => ({
-    id: "", name: "", aka: [], birth: null, death: null,
-    period_ids: [], role: "", bio: "", innovations: [],
-  }),
-  periods: () => ({
-    id: "", name: "", type: "epoca", year_start: 1400, year_end: 1500,
-    regions: [], summary: "", historical_context: "", parent_id: null,
-    key_innovations: [],
-  }),
-  techniques: () => ({
-    id: "", name: "", definition: "", introduced_by: null,
-    first_period_id: null, evolution: "", category: "altra",
-  }),
-  terms: () => ({
-    id: "", term: "", definition: "", category: "generale",
-    period_ids: [], is_archetype: false,
-  }),
-  events: () => ({
-    id: "", year: 1400, year_end: null, title: "", description: "",
-    kind: "culturale", period_id: null,
-  }),
-  connections: () => ({
-    id: "", kind: "influenza", source_type: "work", source_id: "",
-    target_type: "work", target_id: "", description: "",
-  }),
-  complessi: () => ({ id: "", name: "", works: [] }),
-};
 
 // OUTER: legge ix, congel initialRow quando il drawer è aperto
 function GenericEditorDrawer({
@@ -1612,60 +1056,36 @@ function GenericEditorDrawer({
   rowId,
   open,
   onClose,
-  isNew,
 }: {
   table: Tab;
   rowId: string;
   open: boolean;
   onClose: () => void;
-  isNew: boolean;
 }) {
   const ix = useData();
   const { user } = useAuth();
   const [frozenRow, setFrozenRow] = useState<any>(null);
-  // Congela anche il dataset quando il drawer è aperto (così le modifiche al DB
-  // non causano re-render dell'editor mentre l'utente sta digitando).
-  const [frozenDataset, setFrozenDataset] = useState<any>(null);
 
   useEffect(() => {
     if (open) {
       if (!frozenRow) {
-        // Se è una nuova riga, usa il template precompilato
-        if (isNew) {
-          const template = NEW_ROW_TEMPLATES[table]();
-          template.id = rowId === "nuovo" ? "" : rowId;
-          setFrozenRow(template);
-        } else {
-          let arr: any[] = [];
-          switch (table) {
-            case "works": arr = ix.ds.works; break;
-            case "artists": arr = ix.ds.artists; break;
-            case "periods": arr = ix.ds.periods; break;
-            case "techniques": arr = ix.ds.techniques; break;
-            case "terms": arr = ix.ds.terms; break;
-            case "events": arr = ix.ds.events; break;
-            case "connections": arr = ix.ds.connections; break;
-          }
-          const existing = arr.find(r => r.id === rowId);
-          setFrozenRow(existing || null);
+        let arr: any[] = [];
+        switch (table) {
+          case "artists": arr = ix.ds.artists; break;
+          case "periods": arr = ix.ds.periods; break;
+          case "techniques": arr = ix.ds.techniques; break;
+          case "terms": arr = ix.ds.terms; break;
+          case "events": arr = ix.ds.events; break;
+          case "connections": arr = ix.ds.connections; break;
         }
-        // Congela il dataset per i selettori entità
-        setFrozenDataset({
-          periods: ix.ds.periods,
-          artists: ix.ds.artists,
-          techniques: ix.ds.techniques,
-          terms: ix.ds.terms,
-          works: ix.ds.works,
-          events: ix.ds.events,
-          connections: ix.ds.connections,
-        });
+        const existing = arr.find(r => r.id === rowId);
+        setFrozenRow(existing || null);
       }
     } else {
       if (frozenRow !== null) setFrozenRow(null);
-      if (frozenDataset !== null) setFrozenDataset(null);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, rowId, table, ix, isNew]);
+  }, [open, rowId, table, ix]);
 
   if (!open) return null;
 
@@ -1677,8 +1097,6 @@ function GenericEditorDrawer({
       onClose={onClose}
       userEmail={user?.email || null}
       initialRow={frozenRow}
-      isNew={isNew}
-      dataset={frozenDataset || { periods: [], artists: [], techniques: [], terms: [], works: [], events: [], connections: [] }}
     />
   );
 }

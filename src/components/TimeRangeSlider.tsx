@@ -47,7 +47,7 @@ export default function TimeRangeSlider({ compact = true }: { compact?: boolean 
     <div className={`trs ${compact ? "" : "inline"}`} data-testid="time-range-slider">
       <div className="trs-head">
         <span className="trs-title">Intervallo storico</span>
-        {active && <button className="trs-reset" onClick={reset} data-testid="trs-reset">reset</button>}
+        {active && <button className="trs-reset" onClick={reset} data-testid="trs-reset">tutto</button>}
       </div>
       <div className="trs-vals tnum">
         <span data-testid="trs-min">{fmt(range.min)}</span>

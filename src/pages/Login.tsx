@@ -2,26 +2,17 @@
 // Login — componente per accedere o registrarsi con email e password
 // Include export/import dati per migrare dalla vecchia versione
 // ============================================================================
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "../lib/auth";
 import { supabase } from "../lib/supabase";
 import { fullSync } from "../lib/sync";
-import { getFavorites, setFavorites, clearAllFavorites } from "../lib/favorites";
-import { getStudied, setStudied, clearAllStudied } from "../lib/studied";
-import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "../lib/imageOverrides";
+import { getFavorites, setFavorites } from "../lib/favorites";
+import { getStudied, setStudied } from "../lib/studied";
+import { getOverrides, setOverrides } from "../lib/imageOverrides";
 
 export default function Login() {
-  const { signIn, signUp, signOut, user, loading, resetPassword, updateNewPassword, passwordRecoveryActive } = useAuth();
+  const { signIn, signUp, signOut, user, loading } = useAuth();
   const [mode, setMode] = useState<"login" | "signup">("login");
-  const [forgotMode, setForgotMode] = useState(false);
-  const [forgotEmail, setForgotEmail] = useState("");
-  const [forgotMsg, setForgotMsg] = useState<string | null>(null);
-  const [forgotSending, setForgotSending] = useState(false);
-  const [recoveryMode, setRecoveryMode] = useState(false);
-  const [recoveryPw, setRecoveryPw] = useState("");
-  const [recoveryPwConfirm, setRecoveryPwConfirm] = useState("");
-  const [recoveryMsg, setRecoveryMsg] = useState<string | null>(null);
-  const [recoverySending, setRecoverySending] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -40,8 +31,6 @@ export default function Login() {
   const [pwMsg, setPwMsg] = useState<string | null>(null);
   const [changingPw, setChangingPw] = useState(false);
   const [changingEmail, setChangingEmail] = useState(false);
-  // Azzeramento progressi (zona pericolosa)
-  const [resetting, setResetting] = useState(false);
 
   if (loading) {
     return (
@@ -52,18 +41,12 @@ export default function Login() {
   }
 
   // ---- EXPORT: genera JSON con tutti i dati locali e scarica un file ----
-  // Include: preferiti, approfondite, override immagini PRIVATI e GLOBALI.
-  // NOTA: i globali di solito vengono riscaricati dal cloud al login, ma
-  // li esportiamo comunque per backup completo (utile se l'utente è admin
-  // o per ripristinare su un altro browser senza attendere il sync).
   const handleExport = () => {
     const data = {
       favorites: getFavorites(),
       studied: getStudied(),
-      imageOverrides: getOverrides(),           // privati dell'utente
-      globalImageOverrides: getGlobalOverrides(), // globali (admin o scaricati dal cloud)
+      imageOverrides: getOverrides(),
       exportedAt: new Date().toISOString(),
-      version: 2, // versione del formato JSON (per futuri upgrade)
     };
     const json = JSON.stringify(data, null, 2);
     const blob = new Blob([json], { type: "application/json" });
@@ -75,13 +58,7 @@ export default function Login() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    const counts = {
-      favs: data.favorites.works.length + data.favorites.artists.length,
-      studied: data.studied.length,
-      priv: Object.keys(data.imageOverrides).length,
-      glob: Object.keys(data.globalImageOverrides).length,
-    };
-    setSyncResult(`✓ Backup scaricato! ${counts.favs} preferiti, ${counts.studied} approfondite, ${counts.priv} immagini private, ${counts.glob} globali.`);
+    setSyncResult("✓ File JSON scaricato! Conservalo per migrare i tuoi dati.");
   };
 
   // ---- IMPORT: carica JSON nella nuova versione ----
@@ -135,20 +112,14 @@ export default function Login() {
         imported += added;
       }
 
-      // Import immagini PRIVATE (merge — non sovrascive esistenti)
+      // Import immagini (merge)
       if (data.imageOverrides && typeof data.imageOverrides === "object") {
         const current = getOverrides();
         let added = 0;
         for (const [k, v] of Object.entries(data.imageOverrides as any)) {
           if (!current[k]) {
-            const entry: any = typeof v === "object" && v !== null
-              ? { ...v, isGlobal: false }
-              : { url: String(v), setAt: new Date().toISOString(), isGlobal: false };
-            // Assicurati che i campi obbligatori ci siano
-            if (typeof entry.url === "string" && entry.url.trim()) {
-              current[k] = entry;
-              added++;
-            }
+            current[k] = typeof v === "object" && v !== null ? v : { url: String(v), setAt: new Date().toISOString() };
+            added++;
           }
         }
         if (added > 0) {
@@ -157,80 +128,11 @@ export default function Login() {
         }
       }
 
-      // Import immagini GLOBALI (merge — non sovrascive esistenti)
-      // NOTA: di solito i globali vengono riscaricati dal cloud al login,
-      // ma se l'utente sta importando un backup offline, li ripristiniamo.
-      if (data.globalImageOverrides && typeof data.globalImageOverrides === "object") {
-        const current = getGlobalOverrides();
-        let added = 0;
-        for (const [k, v] of Object.entries(data.globalImageOverrides as any)) {
-          if (!current[k]) {
-            const entry: any = typeof v === "object" && v !== null
-              ? { ...v, isGlobal: true }
-              : { url: String(v), setAt: new Date().toISOString(), isGlobal: true };
-            if (typeof entry.url === "string" && entry.url.trim()) {
-              current[k] = entry;
-              added++;
-            }
-          }
-        }
-        if (added > 0) {
-          setGlobalOverrides(current);
-          imported += added;
-        }
-      }
-
-      // Retrocompatibilità: vecchio formato salvava tutto in "imageOverrides"
-      // senza distinguere privati/globali. Se non c'è globalImageOverrides ma
-      // alcuni entry di imageOverrides hanno isGlobal=true, splittali.
-      if (!data.globalImageOverrides && data.imageOverrides) {
-        const globMap = getGlobalOverrides();
-        let moved = 0;
-        for (const [k, v] of Object.entries(data.imageOverrides as any)) {
-          const isGlob = typeof v === "object" && v !== null && (v as any).isGlobal === true;
-          if (isGlob && !globMap[k] && typeof (v as any).url === "string") {
-            globMap[k] = { ...(v as any), isGlobal: true };
-            moved++;
-          }
-        }
-        if (moved > 0) {
-          setGlobalOverrides(globMap);
-          imported += moved;
-        }
-      }
-
       setImportResult(`✓ Importati ${imported} nuovi elementi! Se sei loggato, clicca "Sincronizza ora" per mandarli sul cloud.`);
       setImportJson("");
     } catch (e: any) {
       setImportResult(`✗ Errore: JSON non valido. Controlla di aver copiato tutto.`);
     }
-  };
-
-  // ---- RECUPERO PASSWORD ----
-  useEffect(() => {
-    if (passwordRecoveryActive) { setRecoveryMode(true); setForgotMode(false); }
-  }, [passwordRecoveryActive]);
-
-  const handleForgotPassword = async () => {
-    setForgotMsg(null);
-    if (!forgotEmail.trim()) { setForgotMsg("Inserisci la tua email."); return; }
-    setForgotSending(true);
-    const { error } = await resetPassword(forgotEmail.trim());
-    setForgotSending(false);
-    if (error) setForgotMsg("✗ " + error);
-    else { setForgotMsg("✓ Email di recupero inviata! Controlla la casella di posta (anche spam)."); setForgotEmail(""); }
-  };
-
-  const handleRecoveryUpdate = async () => {
-    setRecoveryMsg(null);
-    if (!recoveryPw.trim()) { setRecoveryMsg("Inserisci la nuova password."); return; }
-    if (recoveryPw.length < 6) { setRecoveryMsg("La password deve avere almeno 6 caratteri."); return; }
-    if (recoveryPw !== recoveryPwConfirm) { setRecoveryMsg("Le password non coincidono."); return; }
-    setRecoverySending(true);
-    const { error } = await updateNewPassword(recoveryPw.trim());
-    setRecoverySending(false);
-    if (error) setRecoveryMsg("✗ " + error);
-    else { setRecoveryMsg("✓ Password aggiornata con successo!"); setRecoveryPw(""); setRecoveryPwConfirm(""); setRecoveryMode(false); setTimeout(() => window.location.reload(), 1500); }
   };
 
   // Utente loggato — mostra profilo + sync + import/export
@@ -253,45 +155,6 @@ export default function Login() {
         setSyncResult(`✗ Errore: ${e.message || "sync fallita"}`);
       }
       setSyncing(false);
-    };
-
-    // ---- AZZERA TUTTI I PROGRESSI (zona pericolosa) ----
-    const handleResetProgress = async () => {
-      const confirmed = window.confirm(
-        "⚠️ CONFERMA AZZERAMENTO TOTALE\n\n" +
-        "Stai per cancellare TUTTI i tuoi progressi:\n" +
-        "  • Tutti i preferiti (★)\n" +
-        "  • Tutte le opere approfondite (✓)\n" +
-        "  • I dati corrispondenti sul cloud Supabase\n\n" +
-        "Questa azione è IRREVERSIBILE.\n\nVuoi procedere?"
-      );
-      if (!confirmed) return;
-
-      setResetting(true);
-      setSyncResult("⏳ Azzeramento in corso...");
-
-      // 1) Pulisci localStorage SUBITO (sincrono) — feedback immediato
-      try {
-        localStorage.removeItem("atlante:favorites");
-        localStorage.removeItem("atlante:studied");
-        localStorage.removeItem("atlante:favorites-tombstones");
-        localStorage.removeItem("atlante:studied-tombstones");
-        window.dispatchEvent(new CustomEvent("atlante:favs-changed"));
-        window.dispatchEvent(new CustomEvent("atlante:studied-changed"));
-      } catch { /* ignore */ }
-
-      // 2) Attendi la delete su Supabase con Promise.all
-      try {
-        await Promise.all([
-          clearAllFavorites(),
-          clearAllStudied(),
-        ]);
-      } catch { /* ignore — il localStorage è già pulito */ }
-
-      // 3) Ricarica dopo 2 secondi per mostrare il feedback
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
     };
 
     return (
@@ -418,31 +281,6 @@ export default function Login() {
             </button>
           </div>
 
-          {/* ===== ZONA PERICOLOSA: Azzera progressi ===== */}
-          <div style={{
-            marginTop: 12, padding: 14,
-            background: "rgba(168,72,63,0.04)",
-            border: "1px solid rgba(168,72,63,0.3)",
-            borderRadius: 10,
-          }}>
-            <div className="smallcaps" style={{ marginBottom: 8, color: "#a8483f" }}>⚠️ Zona pericolosa</div>
-            <p style={{ fontSize: 12.5, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 0 10px" }}>
-              Azzeri tutti i preferiti (★) e le opere approfondite (✓) — sia da questo browser che dal cloud.
-              <b> L'azione è irreversibile.</b>
-            </p>
-            <button
-              onClick={handleResetProgress}
-              disabled={resetting || syncing}
-              className="btn sm"
-              style={{
-                background: "#a8483f", color: "#fff", borderColor: "#a8483f",
-                cursor: resetting ? "wait" : "pointer",
-              }}
-            >
-              {resetting ? "⏳ Azzeramento…" : "🗑️ Azzera tutti i progressi"}
-            </button>
-          </div>
-
           {showImport && (
             <div style={{ marginTop: 10 }}>
               <div style={{ fontSize: 12, color: "var(--ink-dim)", marginBottom: 6, lineHeight: 1.5 }}>
@@ -536,39 +374,6 @@ export default function Login() {
             Torna al login
           </button>
         </div>
-      ) : recoveryMode ? (
-        <>
-          <div className="eyebrow" style={{ marginBottom: 6 }}>Recupero password</div>
-          <h3 style={{ fontSize: 22, fontFamily: "var(--font-display)", marginBottom: 8 }}>Imposta nuova password</h3>
-          <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.55, marginBottom: 16 }}>Inserisci la nuova password per il tuo account.</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            <div>
-              <label className="filter-label">Nuova password</label>
-              <input type="password" className="input" value={recoveryPw} onChange={e => setRecoveryPw(e.target.value)} placeholder="Almeno 6 caratteri" autoComplete="new-password" style={{ width: "100%" }} />
-            </div>
-            <div>
-              <label className="filter-label">Conferma password</label>
-              <input type="password" className="input" value={recoveryPwConfirm} onChange={e => setRecoveryPwConfirm(e.target.value)} placeholder="Ripeti la nuova password" autoComplete="new-password" style={{ width: "100%" }} onKeyDown={e => { if (e.key === "Enter") handleRecoveryUpdate(); }} />
-            </div>
-            {recoveryMsg && <div style={{ fontSize: 13, lineHeight: 1.5, padding: "10px 12px", borderRadius: 6, background: recoveryMsg.startsWith("✓") ? "rgba(63,138,79,0.08)" : "rgba(168,72,63,0.08)", color: recoveryMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f", border: `1px solid ${recoveryMsg.startsWith("✓") ? "rgba(63,138,79,0.2)" : "rgba(168,72,63,0.2)"}` }}>{recoveryMsg}</div>}
-            <button className="btn gold sm" onClick={handleRecoveryUpdate} disabled={recoverySending} style={{ marginTop: 4 }}>{recoverySending ? "Aggiornamento…" : "Aggiorna password →"}</button>
-          </div>
-        </>
-      ) : forgotMode ? (
-        <>
-          <div className="eyebrow" style={{ marginBottom: 6 }}>Recupero password</div>
-          <h3 style={{ fontSize: 22, fontFamily: "var(--font-display)", marginBottom: 8 }}>Password dimenticata?</h3>
-          <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.55, marginBottom: 16 }}>Inserisci la tua email: ti invieremo un link per reimpostare la password.</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            <div>
-              <label className="filter-label">Email</label>
-              <input type="email" className="input" value={forgotEmail} onChange={e => setForgotEmail(e.target.value)} placeholder="tu@email.com" autoComplete="email" style={{ width: "100%" }} onKeyDown={e => { if (e.key === "Enter") handleForgotPassword(); }} />
-            </div>
-            {forgotMsg && <div style={{ fontSize: 13, lineHeight: 1.5, padding: "10px 12px", borderRadius: 6, background: forgotMsg.startsWith("✓") ? "rgba(63,138,79,0.08)" : "rgba(168,72,63,0.08)", color: forgotMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f", border: `1px solid ${forgotMsg.startsWith("✓") ? "rgba(63,138,79,0.2)" : "rgba(168,72,63,0.2)"}` }}>{forgotMsg}</div>}
-            <button className="btn gold sm" onClick={handleForgotPassword} disabled={forgotSending} style={{ marginTop: 4 }}>{forgotSending ? "Invio in corso…" : "Invia link di recupero →"}</button>
-            <button type="button" onClick={() => { setForgotMode(false); setForgotMsg(null); setForgotEmail(""); }} style={{ background: "none", border: 0, padding: 0, color: "var(--gold)", cursor: "pointer", textDecoration: "underline", fontSize: 13, textAlign: "left" }}>← Torna al login</button>
-          </div>
-        </>
       ) : (
         <>
           <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
@@ -612,10 +417,6 @@ export default function Login() {
                 </>
               )}
             </div>
-
-            {mode === "login" && (
-              <button type="button" onClick={() => { setForgotMode(true); setForgotMsg(null); setError(null); }} style={{ background: "none", border: 0, padding: 0, color: "var(--ink-dim)", cursor: "pointer", textDecoration: "underline", fontSize: 12.5, textAlign: "left", marginTop: 2 }}>Password dimenticata?</button>
-            )}
           </form>
 
           {/* Import dati anche senza login */}

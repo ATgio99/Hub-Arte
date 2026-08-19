@@ -44,16 +44,11 @@ const customStorage = {
   },
 };
 
-// Detect se l'URL contiene un token di recovery (evita conflitti con HashRouter)
-const urlHasAuthData = typeof window !== "undefined" &&
-  (window.location.hash.includes("access_token=") ||
-   window.location.search.includes("code="));
-
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: {
     storage: customStorage,
     persistSession: true,
     autoRefreshToken: true,
-    detectSessionInUrl: urlHasAuthData,
+    detectSessionInUrl: false,
   },
 });

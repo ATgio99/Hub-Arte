@@ -1,66 +1,13 @@
 // ============================================================================
-// Persistenza quiz in localStorage + sync Supabase cloud:
+// Persistenza quiz "patente" in localStorage:
 //  - banca errori (domande sbagliate, con conteggio risposte giuste di fila)
 //  - statistiche ricche (storico sessioni, tassi per tipo/periodo, streak)
-// Sync: push automatico ad ogni modifica, pull al login.
+// Tutto client-side, nessuna rete.
 // ============================================================================
 import type { QuizKind } from "./quiz";
-import { supabase } from "./supabase";
 
 const ERR_KEY = "atlante.quiz.errors.v1";
 const STATS_KEY = "atlante.quiz.stats.v1";
-
-// --- Push quiz errors al cloud (fire-and-forget) ---
-function pushErrorsToCloud() {
-  supabase.auth.getUser().then(async ({ data: { user } }) => {
-    if (!user) return;
-    try {
-      const errors = loadErrors();
-      if (errors.length === 0) {
-        // NON eliminare dal cloud! Potrebbero esserci errori su altri dispositivi
-        // che non sono ancora stati scaricati su questo.
-        // L'eliminazione avviene solo via clearErrors() che chiama questa funzione.
-        return;
-      }
-      const rows = errors.map(e => ({
-        user_id: user.id,
-        kind: e.kind,
-        ref_id: e.refId,
-        prompt: e.prompt,
-        correct_streak: e.correctStreak,
-        added_at: e.addedAt,
-        last_seen: e.lastSeen,
-      }));
-      await supabase.from("quiz_errors").upsert(rows, { onConflict: "user_id,kind,ref_id" });
-      // Elimina dal cloud gli errori che non sono più nel locale
-      const localKeys = errors.map(e => `${e.kind}:${e.refId}`);
-      const { data: cloudRows } = await supabase.from("quiz_errors")
-        .select("kind,ref_id").eq("user_id", user.id);
-      if (cloudRows) {
-        const toDelete = cloudRows.filter((r: any) => !localKeys.includes(`${r.kind}:${r.ref_id}`));
-        for (const r of toDelete) {
-          await supabase.from("quiz_errors").delete()
-            .eq("user_id", user.id).eq("kind", r.kind).eq("ref_id", r.ref_id);
-        }
-      }
-    } catch { /* ignore */ }
-  });
-}
-
-// --- Push quiz stats al cloud (fire-and-forget) ---
-function pushStatsToCloud() {
-  supabase.auth.getUser().then(async ({ data: { user } }) => {
-    if (!user) return;
-    try {
-      const stats = loadStats();
-      await supabase.from("quiz_stats").upsert({
-        user_id: user.id,
-        stats: JSON.stringify(stats),
-        updated_at: new Date().toISOString(),
-      }, { onConflict: "user_id" });
-    } catch { /* ignore */ }
-  });
-}
 
 // --- BANCA ERRORI -----------------------------------------------------------
 export interface ErrorEntry {
@@ -87,7 +34,6 @@ export function addError(kind: QuizKind, refId: string, prompt: string) {
   if (i >= 0) { arr[i].correctStreak = 0; arr[i].lastSeen = now; arr[i].prompt = prompt; }
   else arr.push({ kind, refId, prompt, correctStreak: 0, addedAt: now, lastSeen: now });
   saveErrors(arr);
-  pushErrorsToCloud();
 }
 
 /** in ripasso: risposta corretta → +1 streak; a 2 di fila esce dalla banca */
@@ -98,25 +44,15 @@ export function reviewAnswer(kind: QuizKind, refId: string, ok: boolean): { remo
   arr[i].lastSeen = Date.now();
   if (ok) {
     arr[i].correctStreak += 1;
-    if (arr[i].correctStreak >= 2) { arr.splice(i, 1); saveErrors(arr); pushErrorsToCloud(); return { removed: true }; }
+    if (arr[i].correctStreak >= 2) { arr.splice(i, 1); saveErrors(arr); return { removed: true }; }
   } else {
     arr[i].correctStreak = 0;
   }
   saveErrors(arr);
-  pushErrorsToCloud();
   return { removed: false };
 }
 
-export function clearErrors() {
-  saveErrors([]);
-  // Elimina esplicitamente dal cloud
-  supabase.auth.getUser().then(async ({ data: { user } }) => {
-    if (!user) return;
-    try {
-      await supabase.from("quiz_errors").delete().eq("user_id", user.id);
-    } catch { /* ignore */ }
-  });
-}
+export function clearErrors() { saveErrors([]); }
 export function errorCount(): number { return loadErrors().length; }
 
 // --- STATISTICHE ------------------------------------------------------------
@@ -178,11 +114,7 @@ export function recordSession(answers: AnswerLog[], mode: "normale" | "ripasso",
     if (a.periodId) { const p = s.byPeriod[a.periodId] ??= { asked: 0, correct: 0 }; p.asked++; if (a.ok) p.correct++; }
   }
   saveStats(s);
-  pushStatsToCloud();
-  // Notifica l'app di fare pull immediato delle quiz stats/errors dal cloud
-  // (così l'utente vede subito le sue statistiche aggiornate su tutti i dispositivi)
-  try { window.dispatchEvent(new Event("atlante:quiz-completed")); } catch { /* ignore */ }
   return s;
 }
 
-export function clearStats() { saveStats({ ...EMPTY }); pushStatsToCloud(); }
+export function clearStats() { saveStats({ ...EMPTY }); }
