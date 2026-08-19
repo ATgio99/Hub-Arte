@@ -8,6 +8,8 @@
 const LAST_OPERA_KEY = "atlante:last-opera";
 const LAST_ARTISTA_KEY = "atlante:last-artista";
 const LAST_RETE_KEY = "atlante:last-rete";
+const LAST_MAPPA_KEY = "atlante:last-mappa";
+const LAST_TIMELINE_KEY = "atlante:last-timeline";
 const LAST_OPERE_SEARCH_KEY = "atlante:last-opere-search";
 const LAST_ARTISTI_SEARCH_KEY = "atlante:last-artisti-search";
 
@@ -112,4 +114,34 @@ export function setLastRete(state: ReteSearchState): void {
 
 export function clearLastRete(): void {
   try { localStorage.removeItem(LAST_RETE_KEY); } catch { /* ignore */ }
+}
+
+// --- Ultima città aperta dalla Mappa ---
+// Salviamo il nome della città. Quando l'utente clicca "Mappa" nel menu,
+// se c'è una città salvata andiamo alla scheda del luogo; doppio click resetta.
+export function getLastMappa(): string | null {
+  try { return localStorage.getItem(LAST_MAPPA_KEY); } catch { return null; }
+}
+
+export function setLastMappa(city: string): void {
+  try { localStorage.setItem(LAST_MAPPA_KEY, city); } catch { /* ignore */ }
+}
+
+export function clearLastMappa(): void {
+  try { localStorage.removeItem(LAST_MAPPA_KEY); } catch { /* ignore */ }
+}
+
+// --- Ultimo periodo aperto dalla Linea del tempo ---
+// Salviamo l'ID del periodo. Quando l'utente clicca "Linea del tempo" nel menu,
+// se c'è un periodo salvato andiamo alla sua scheda; doppio click resetta.
+export function getLastTimeline(): string | null {
+  try { return localStorage.getItem(LAST_TIMELINE_KEY); } catch { return null; }
+}
+
+export function setLastTimeline(periodId: string): void {
+  try { localStorage.setItem(LAST_TIMELINE_KEY, periodId); } catch { /* ignore */ }
+}
+
+export function clearLastTimeline(): void {
+  try { localStorage.removeItem(LAST_TIMELINE_KEY); } catch { /* ignore */ }
 }
