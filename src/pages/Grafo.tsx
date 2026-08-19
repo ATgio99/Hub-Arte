@@ -7,6 +7,7 @@ import SpriteText from "three-spritetext";
 import { useData, useTimeRange } from "../lib/store";
 import { ENTITY_COLOR, entityHref, WorkImage } from "../components/ui";
 import { ENTITY_LABEL, KIND_LABEL, entityLabel } from "../lib/data";
+import { getLastRete, setLastRete, clearLastRete } from "../lib/lastVisited";
 import Fullscreen from "../components/Fullscreen";
 import TimeRangeSlider from "../components/TimeRangeSlider";
 import type { EntityType, ConnKind } from "../lib/types";
@@ -140,7 +141,55 @@ export default function Grafo() {
     setSearchQuery("");
     setSearchResults([]);
     setSel(null);
+    // Reset esplicito: cancella anche la memoria "ultima ricerca"
+    clearLastRete();
+    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   };
+
+  // === Memoria ultima ricerca nel grafo ===
+  // All'apertura della pagina, ripristina l'ultima ricerca salvata
+  // (focusNode + searchQuery) se esiste.
+  const [restored, setRestored] = useState(false);
+  useEffect(() => {
+    if (restored) return;
+    const last = getLastRete();
+    if (last && last.focusNode) {
+      setFocusNode(last.focusNode);
+      setSearchQuery(last.searchQuery || "");
+    }
+    setRestored(true);
+  }, [restored]);
+
+  // Quando focusNode o searchQuery cambiano (dopo il ripristino iniziale),
+  // salva nello storage per ritrovarli alla prossima apertura.
+  useEffect(() => {
+    if (!restored) return;
+    // Se non c'è focusNode, non salviamo nulla (così il clear rimane "pulito")
+    if (focusNode) {
+      setLastRete({ focusNode, searchQuery });
+    } else {
+      clearLastRete();
+    }
+    // Notifica la sidebar di aggiornare l'etichetta "Continua"
+    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
+  }, [focusNode, searchQuery, restored]);
+
+  // Ascolta il "doppio click su Rete" dalla sidebar: resetta il grafo
+  // (svuota focusNode + searchQuery + selezione). Quando l'utente è già
+  // sulla pagina Rete e clicca di nuovo "Rete" nel menu, la sidebar
+  // emette questo evento invece di fare una navigazione vera e propria.
+  useEffect(() => {
+    const onReset = () => {
+      setFocusNode(null);
+      setSearchQuery("");
+      setSearchResults([]);
+      setSel(null);
+      clearLastRete();
+      window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
+    };
+    window.addEventListener("atlante:rete-reset", onReset);
+    return () => window.removeEventListener("atlante:rete-reset", onReset);
+  }, []);
 
   // ResizeObserver SOLO in modalità non-fullscreen.
   // In fullscreen usiamo dimensioni fisse (window.innerWidth/innerHeight)

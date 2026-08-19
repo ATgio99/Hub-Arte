@@ -11,8 +11,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { STONES } from "../lib/pages";
 import { useAuth, isAdminEmail } from "../lib/auth";
 import { useData } from "../lib/store";
+import { entityLabel } from "../lib/data";
 import { supabase } from "../lib/supabase";
-import { getLastOpera, clearLastOpera, getLastArtista, clearLastArtista } from "../lib/lastVisited";
+import { getLastOpera, clearLastOpera, getLastArtista, clearLastArtista, getLastRete, clearLastRete } from "../lib/lastVisited";
+import type { EntityType } from "../lib/types";
 import TimeRangeSlider from "./TimeRangeSlider";
 
 // icone sottili (stroke 1.5) coerenti, una per pagina
@@ -49,9 +51,14 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
   // apre una nuova opera/artista la sidebar si aggiorna.
   const [lastOperaId, setLastOperaId] = useState<string | null>(null);
   const [lastArtistaId, setLastArtistaId] = useState<string | null>(null);
+  const [lastReteFocus, setLastReteFocus] = useState<string | null>(null);
+  const [lastReteQuery, setLastReteQuery] = useState<string>("");
   useEffect(() => {
     setLastOperaId(getLastOpera());
     setLastArtistaId(getLastArtista());
+    const r = getLastRete();
+    setLastReteFocus(r?.focusNode ?? null);
+    setLastReteQuery(r?.searchQuery ?? "");
   }, [loc.pathname]);
   // Ascoltiamo anche un evento custom, così la sidebar si aggiorna in tempo
   // reale se l'utente apre una scheda opera/artista in un altro tab.
@@ -59,6 +66,9 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
     const onUpdate = () => {
       setLastOperaId(getLastOpera());
       setLastArtistaId(getLastArtista());
+      const r = getLastRete();
+      setLastReteFocus(r?.focusNode ?? null);
+      setLastReteQuery(r?.searchQuery ?? "");
     };
     window.addEventListener("atlante:last-visited-changed", onUpdate);
     window.addEventListener("storage", onUpdate);
@@ -69,6 +79,15 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
   }, []);
   const lastOperaTitle = lastOperaId ? ix.workById.get(lastOperaId)?.title : null;
   const lastArtistaName = lastArtistaId ? ix.artistById.get(lastArtistaId)?.name : null;
+  // Risolvi il focusNode del grafo (formato "type:id") in un'etichetta leggibile
+  const lastReteLabel = (() => {
+    if (!lastReteFocus) return null;
+    const [type, ...rest] = lastReteFocus.split(":");
+    const id = rest.join(":");
+    if (!type || !id) return null;
+    const label = entityLabel(ix, type as EntityType, id);
+    return label || lastReteQuery || null;
+  })();
 
   // Badge notifiche — logica diversa per admin vs utenti normali:
   //  - ADMIN: conta richieste pendenti degli utenti (pending in user_suggestions + user_edit_suggestions)
@@ -201,6 +220,26 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               onNavigate?.();
               return;
             }
+            if (p.id === "rete") {
+              // Stessa logica di Opere/Artisti:
+              // 1° click: se siamo già sulla pagina Rete, emetti "reset" (il grafo
+              //    svuota focus + ricerca). Se non siamo sulla Rete ma c'è una
+              //    ricerca salvata, vai alla Rete (il grafo ripristinerà lo stato).
+              // 2° click (siamo già sulla Rete): emetti "reset" e basta.
+              if (loc.pathname === "/rete" || loc.pathname.startsWith("/rete")) {
+                // Siamo già sulla Rete: resetta il grafo
+                clearLastRete();
+                window.dispatchEvent(new CustomEvent("atlante:rete-reset"));
+                e.preventDefault();
+                onNavigate?.();
+                return;
+              }
+              // Non siamo sulla Rete: vai alla Rete (il grafo ripristinerà
+              // automaticamente l'ultima ricerca grazie all'useEffect di restore)
+              // Niente preventDefault: lascia che il Link navighi normalmente
+              onNavigate?.();
+              return;
+            }
             // Per le altre voci: navigazione normale
             onNavigate?.();
           };
@@ -208,7 +247,8 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
             <Link key={p.id} to={p.route} onClick={handleClick}
               className={`sbx-item ${active ? "active" : ""} ${
                 p.id === "opere" && lastOperaId ? "has-last" :
-                p.id === "artisti" && lastArtistaId ? "has-last" : ""
+                p.id === "artisti" && lastArtistaId ? "has-last" :
+                p.id === "rete" && lastReteFocus ? "has-last" : ""
               }`}
               data-testid={`sbx-item-${p.id}`} title={p.name}>
               <span className="sbx-num">{p.num}</span>
@@ -226,7 +266,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
                   )}
                 </b>
                 {/* Etichetta "Continua → <titolo>" — visibile solo se c'è
-                    un'ultima opera/artista salvata e la sidebar NON è collassata. */}
+                    un'ultima opera/artista/ricerca salvata e la sidebar NON è collassata. */}
                 {p.id === "opere" && lastOperaTitle && !collapsed && (
                   <span className="sbx-continue" data-testid="sbx-continue-opere">
                     <span className="sbx-continue-label">Continua</span>
@@ -239,8 +279,17 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
                     <span className="sbx-continue-name">{lastArtistaName}</span>
                   </span>
                 )}
+                {p.id === "rete" && lastReteLabel && !collapsed && (
+                  <span className="sbx-continue" data-testid="sbx-continue-rete">
+                    <span className="sbx-continue-label">Continua</span>
+                    <span className="sbx-continue-name">{lastReteLabel}</span>
+                  </span>
+                )}
                 {/* Fallback: se non c'è un'ultima entità, mostra la descrizione normale */}
-                {((p.id === "opere" && !lastOperaTitle) || (p.id === "artisti" && !lastArtistaName) || (p.id !== "opere" && p.id !== "artisti")) && (
+                {((p.id === "opere" && !lastOperaTitle) ||
+                  (p.id === "artisti" && !lastArtistaName) ||
+                  (p.id === "rete" && !lastReteLabel) ||
+                  (p.id !== "opere" && p.id !== "artisti" && p.id !== "rete")) && (
                   <i>{p.desc}</i>
                 )}
                 <span className="sbx-underline" aria-hidden="true" />

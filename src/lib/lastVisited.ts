@@ -7,6 +7,7 @@
 
 const LAST_OPERA_KEY = "atlante:last-opera";
 const LAST_ARTISTA_KEY = "atlante:last-artista";
+const LAST_RETE_KEY = "atlante:last-rete";
 const LAST_OPERE_SEARCH_KEY = "atlante:last-opere-search";
 const LAST_ARTISTI_SEARCH_KEY = "atlante:last-artisti-search";
 
@@ -80,4 +81,35 @@ export function setLastArtistiSearch(state: ArtistiSearchState): void {
 
 export function clearLastArtistiSearch(): void {
   try { localStorage.removeItem(LAST_ARTISTI_SEARCH_KEY); } catch { /* ignore */ }
+}
+
+// --- Ultima ricerca nel grafo Rete ---
+// Salviamo il focusNode (formato "type:id") e il searchQuery testuale.
+// All'apertura della pagina Rete, questi valori vengono ripristinati così
+// l'utente ritrova la sua ultima ricerca. Doppio click su "Rete" nel menu
+// cancella tutto e resetta il grafo.
+export interface ReteSearchState {
+  focusNode: string | null;
+  searchQuery: string;
+}
+
+export function getLastRete(): ReteSearchState | null {
+  try {
+    const raw = localStorage.getItem(LAST_RETE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || (typeof parsed !== "object")) return null;
+    return {
+      focusNode: typeof parsed.focusNode === "string" ? parsed.focusNode : null,
+      searchQuery: typeof parsed.searchQuery === "string" ? parsed.searchQuery : "",
+    };
+  } catch { return null; }
+}
+
+export function setLastRete(state: ReteSearchState): void {
+  try { localStorage.setItem(LAST_RETE_KEY, JSON.stringify(state)); } catch { /* ignore */ }
+}
+
+export function clearLastRete(): void {
+  try { localStorage.removeItem(LAST_RETE_KEY); } catch { /* ignore */ }
 }
