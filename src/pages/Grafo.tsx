@@ -25,6 +25,25 @@ const KIND_COLOR: Record<string, string> = {
   committenza: "#4f7d72", "maestro-allievo": "#9a6a92", contaminazione: "#caa14a", contrasto: "#a8483f",
   luogo: "#7da59a",
 };
+// Pattern di tratteggio per distinguere i legami anche senza colore.
+// I legami più "forti" (maestro-allievo, influenza) sono continui; quelli più
+// "deboli" o indiretti (contaminazione, luogo) sono tratteggiati.
+const KIND_DASH: Record<string, number[] | undefined> = {
+  influenza: undefined,           // continuo
+  rielaborazione: undefined,      // continuo
+  evoluzione: undefined,          // continuo
+  committenza: [10, 5],           // tratteggiato lungo
+  "maestro-allievo": undefined,   // continuo
+  contaminazione: [4, 4],         // tratteggiato fitto
+  contrasto: [2, 4],              // puntini
+  luogo: [1, 6],                  // puntini radi
+};
+// Spessore del legame in base al tipo (i legami "forti" più spessi).
+const KIND_WIDTH: Record<string, number> = {
+  influenza: 1.4, rielaborazione: 1.2, evoluzione: 1.1,
+  committenza: 1.0, "maestro-allievo": 1.6, contaminazione: 0.9, contrasto: 1.3,
+  luogo: 0.7,
+};
 const PAPER = "#f7f3ec";
 const INK = "#211c14";
 const DIM_LINE = "rgba(33,28,20,0.05)";
@@ -391,11 +410,15 @@ export default function Grafo() {
   }, [neighbors, focusId]);
 
   const link3dColor = useCallback((l: any) => {
-    if (!neighbors) return "rgba(33,28,20,0.16)";
+    const baseColor = KIND_COLOR[l.kind] ?? INK;
+    // Se non c'è un nodo focalizzato/hover, usiamo comunque il colore del kind
+    // ma con opacità ridotta, così i legami si distinguono per tipo anche
+    // nella vista d'insieme (richiesto dall'utente).
+    if (!neighbors) return baseColor + "55"; // ~33% opacity
     const s = typeof l.source === "object" ? l.source.id : l.source;
     const t = typeof l.target === "object" ? l.target.id : l.target;
     const on = neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId);
-    return on ? (KIND_COLOR[l.kind] ?? INK) : "rgba(33,28,20,0.04)";
+    return on ? baseColor : baseColor + "1a"; // ~10% opacity se non in evidenza
   }, [neighbors, focusId]);
 
   const restartFocus = () => { fg2d.current?.d3ReheatSimulation?.(); fg3d.current?.d3ReheatSimulation?.(); };
@@ -464,9 +487,19 @@ export default function Grafo() {
       <div className="panel-title" style={{ fontSize: 15, margin: "14px 0 8px" }}>Legami</div>
       {KINDS.map((k) => {
         const off = hideKinds.has(k);
+        const dash = KIND_DASH[k];
         return (
           <button key={k} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideKinds, k, setHideKinds)}>
-            <span className="dot" style={{ background: KIND_COLOR[k] }} />
+            {/* Campione del legame: mini-linea SVG con colore e pattern (continuo/tratteggiato) */}
+            <svg width="24" height="8" style={{ flexShrink: 0 }}>
+              <line
+                x1="0" y1="4" x2="24" y2="4"
+                stroke={KIND_COLOR[k]}
+                strokeWidth={Math.max(1.6, (KIND_WIDTH[k] ?? 0.8) * 1.6)}
+                strokeDasharray={dash ? dash.map((n: number) => n * 0.8).join(" ") : undefined}
+                strokeLinecap="round"
+              />
+            </svg>
             <span className="gf-frow-lab">{KIND_LABEL[k]}</span>
             <EyeIcon off={off} />
           </button>
@@ -504,12 +537,22 @@ export default function Grafo() {
           nodeColor={node3dColor}
           linkColor={link3dColor}
           linkWidth={(l: any) => {
-            if (!neighbors) return 0.4;
+            const baseW = KIND_WIDTH[l.kind] ?? 0.8;
+            if (!neighbors) return baseW * 0.7;
             const s = typeof l.source === "object" ? l.source.id : l.source;
             const t = typeof l.target === "object" ? l.target.id : l.target;
-            return (neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId)) ? 1.4 : 0.2;
+            return (neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId)) ? baseW * 1.6 : baseW * 0.4;
           }}
-          linkOpacity={0.6}
+          linkOpacity={0.85}
+          linkDirectionalArrowLength={(l: any) => {
+            // Mostra una freccia direzionale per i legami con direzione significativa
+            // (committenza, maestro-allievo, influenza, rielaborazione, evoluzione, contrasto)
+            // Nasconde la freccia per "contaminazione" (bidirezionale) e "luogo" (contenimento).
+            const directional = ["committenza", "maestro-allievo", "influenza", "rielaborazione", "evoluzione", "contrasto"];
+            return directional.includes(l.kind) ? 3.5 : 0;
+          }}
+          linkDirectionalArrowRelPos={0.85}
+          linkDirectionalArrowColor={link3dColor}
           onEngineTick={setup3d}
           onEngineStop={() => { /* il motore si ferma da solo dopo cooldown */ }}
           onNodeHover={(n: any) => { setHoverId(n ? n.id : null); if (wrapRef.current) wrapRef.current.style.cursor = n ? "pointer" : "default"; }}
@@ -530,18 +573,21 @@ export default function Grafo() {
           d3VelocityDecay={0.3}
           nodeRelSize={4}
           linkColor={(l: any) => {
-            if (!neighbors) return "rgba(33,28,20,0.13)";
+            const baseColor = KIND_COLOR[l.kind] ?? INK;
+            if (!neighbors) return baseColor + "88"; // ~53% opacity, sempre distinguibile
             const s = typeof l.source === "object" ? l.source.id : l.source;
             const t = typeof l.target === "object" ? l.target.id : l.target;
             const on = neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId);
-            return on ? KIND_COLOR[l.kind] ?? INK : DIM_LINE;
+            return on ? baseColor : baseColor + "22"; // ~13% opacity se non in evidenza
           }}
           linkWidth={(l: any) => {
-            if (!neighbors) return 0.6;
+            const baseW = KIND_WIDTH[l.kind] ?? 0.8;
+            if (!neighbors) return baseW * 0.7;
             const s = typeof l.source === "object" ? l.source.id : l.source;
             const t = typeof l.target === "object" ? l.target.id : l.target;
-            return (neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId)) ? 1.6 : 0.4;
+            return (neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId)) ? baseW * 1.6 : baseW * 0.4;
           }}
+          linkLineDash={(l: any) => KIND_DASH[l.kind]}
           nodePointerAreaPaint={(node: any, color: string, ctx: CanvasRenderingContext2D) => {
             // area di click generosa: cerchio min 10px + rettangolo sull'etichetta visibile
             const r = Math.max((2.4 + Math.min(node.deg, 9) * 0.7) + 4, 10);
@@ -785,9 +831,21 @@ export default function Grafo() {
           <div className="smallcaps" style={{ marginRight: 8 }}>Legami:</div>
           {KINDS.map((k) => {
             const off = hideKinds.has(k);
+            const dash = KIND_DASH[k];
             return (
-              <button key={k} onClick={() => toggle(hideKinds, k, setHideKinds)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
-                <span className="dot" style={{ background: KIND_COLOR[k], marginRight: 4 }} />{KIND_LABEL[k]}
+              <button key={k} onClick={() => toggle(hideKinds, k, setHideKinds)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)", display: "inline-flex", alignItems: "center", gap: 6 }}>
+                {/* Campione del legame: una mini-linea SVG che riproduce colore
+                    e pattern (continuo/tratteggiato/puntini) del legame nel grafo */}
+                <svg width="22" height="6" style={{ flexShrink: 0 }}>
+                  <line
+                    x1="0" y1="3" x2="22" y2="3"
+                    stroke={KIND_COLOR[k]}
+                    strokeWidth={Math.max(1.5, (KIND_WIDTH[k] ?? 0.8) * 1.5)}
+                    strokeDasharray={dash ? dash.map((n: number) => n * 0.8).join(" ") : undefined}
+                    strokeLinecap="round"
+                  />
+                </svg>
+                {KIND_LABEL[k]}
               </button>
             );
           })}
