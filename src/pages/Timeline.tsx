@@ -318,10 +318,10 @@ function ArtistTimelineCanvas({ inFullscreen }: { inFullscreen: boolean }) {
         ))}
       </div>
       <div style={{ marginBottom: 12, fontSize: 13, color: "var(--ink-soft)" }}>
-        <b style={{ color: "var(--ink)", fontWeight: 600 }}>{withDates}</b> artisti su {allArtists.length} totali (con date note)
+        <b style={{ color: "var(--ink)", fontWeight: 600 }}>{withDates}</b> autori su {allArtists.length} totali (con date note)
       </div>
 
-      <div className="stage" style={{ overflowX: "auto", overflowY: "auto", flex: inFullscreen ? 1 : undefined, height: inFullscreen ? "100%" : undefined, border: inFullscreen ? 0 : undefined, borderRadius: inFullscreen ? 0 : undefined }}>
+      <div className="stage" style={{ overflowX: "auto", overflowY: "auto", flex: inFullscreen ? 1 : undefined, height: inFullscreen ? "100%" : undefined, border: inFullscreen ? 0 : undefined, borderRadius: inFullscreen ? 0 : undefined, position: "relative" }}>
         <svg width={widthZ} height={height} style={{ display: "block", minWidth: "100%" }}>
           {/* Year ticks */}
           {ticks.map((y) => (
@@ -374,53 +374,62 @@ function ArtistTimelineCanvas({ inFullscreen }: { inFullscreen: boolean }) {
             );
           })}
         </svg>
-      </div>
 
-      {/* Artist detail panel */}
-      <AnimatePresence>
-        {selectedArtist && (
-          <motion.div key={selectedArtist.id} className="tl-inline-dossier"
-            style={{ marginTop: 16 }}
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.4, ease: EASE_OUT }}>
-            <div style={{ background: "var(--bg-1)", border: "1px solid var(--line)", borderRadius: 12, padding: 20 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                <div>
-                  <h3 style={{ fontSize: 18, marginBottom: 4, fontWeight: 600 }}>{selectedArtist.name}</h3>
-                  <div style={{ color: "var(--gold)", fontSize: 13, fontWeight: 500, marginBottom: 8 }}>
-                    {selectedArtist.role || ""} · {selectedArtist.birth ?? "?"}–{selectedArtist.death ?? "?"}
+        {/* Casella info autore — posizionata sotto la barra dell'autore cliccato,
+            dentro i limiti della timeline (width = stageW - 20), con animazione
+            che fa spazio spostando le corsie sotto. Stesso pattern del PeriodDossier. */}
+        <AnimatePresence>
+          {selectedArtist && (
+            <motion.div key={selectedArtist.id} className="tl-inline-dossier" data-testid="tl-artist-dossier"
+              style={{
+                position: "absolute",
+                top: laneY(selectedArtist.lane) + LANE_H + 4,
+                left: 10,
+                right: 10,
+                maxWidth: 720,
+                zIndex: 18,
+              }}
+              initial={reducedMotion ? false : { opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.4, ease: EASE_OUT }}>
+              <div className="dossier" style={{ background: "var(--bg-1)", border: "1px solid var(--line)", borderRadius: 10, padding: 20, margin: 0, maxHeight: 392, overflowY: "auto", boxShadow: "var(--shadow-sm)" }}>
+                <div className="dossier-head">
+                  <div>
+                    <h3 className="dossier-title" style={{ fontSize: 22, marginBottom: 4, fontWeight: 600 }}>{selectedArtist.name}</h3>
+                    <div style={{ color: "var(--gold)", fontSize: 13, fontWeight: 500, marginBottom: 8 }}>
+                      {selectedArtist.role || ""} · {selectedArtist.birth ?? "?"}–{selectedArtist.death ?? "?"}
+                    </div>
                   </div>
+                  <button onClick={() => setSelId(null)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, color: "var(--ink-soft)", padding: "0 4px" }}>&times;</button>
                 </div>
-                <button onClick={() => setSelId(null)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, color: "var(--ink-soft)", padding: "0 4px" }}>&times;</button>
-              </div>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8 }}>
-                {selectedArtist.period_ids.map((pid) => {
-                  const p = ix.periodById.get(pid);
-                  return p ? (
-                    <span key={pid} style={{ fontSize: 12, padding: "3px 8px", borderRadius: 999, background: "var(--bg-2)", color: "var(--ink-soft)", cursor: "pointer" }} onClick={() => nav(`/periodo/${pid}`)}>{p.name}</span>
-                  ) : null;
-                })}
-                {selectedArtist.aka.map((a) => (
-                  <span key={a} style={{ fontSize: 12, padding: "3px 8px", borderRadius: 999, background: "var(--bg-2)", color: "var(--ink-soft)" }}>alias: {a}</span>
-                ))}
-              </div>
-              {selectedArtist.bio && <p className="muted" style={{ fontSize: 14, lineHeight: 1.6, marginBottom: 10 }}>{selectedArtist.bio}</p>}
-              {selectedArtist.innovations.length > 0 && (
-                <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>
-                  <strong>Innovazioni:</strong>
-                  <ul style={{ margin: "4px 0 0 16px" }}>{selectedArtist.innovations.filter(Boolean).map((i) => <li key={i}>{i}</li>)}</ul>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8 }}>
+                  {selectedArtist.period_ids.map((pid) => {
+                    const p = ix.periodById.get(pid);
+                    return p ? (
+                      <span key={pid} style={{ fontSize: 12, padding: "3px 8px", borderRadius: 999, background: "var(--bg-2)", color: "var(--ink-soft)", cursor: "pointer" }} onClick={() => nav(`/periodo/${pid}`)}>{p.name}</span>
+                    ) : null;
+                  })}
+                  {selectedArtist.aka.map((a) => (
+                    <span key={a} style={{ fontSize: 12, padding: "3px 8px", borderRadius: 999, background: "var(--bg-2)", color: "var(--ink-soft)" }}>alias: {a}</span>
+                  ))}
                 </div>
-              )}
-              {/* Tasto per approfondire — uguale al PeriodDossier */}
-              <div style={{ marginTop: 14, display: "flex", gap: 8 }}>
-                <Link className="btn gold sm" to={`/artista/${selectedArtist.id}`} data-testid="tl-artist-open">Apri la scheda completa →</Link>
-                <button className="btn sm ghost" onClick={() => setSelId(null)} aria-label="Chiudi anteprima">✕</button>
+                {selectedArtist.bio && <p className="muted" style={{ fontSize: 14, lineHeight: 1.6, marginBottom: 10 }}>{selectedArtist.bio}</p>}
+                {selectedArtist.innovations.length > 0 && (
+                  <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>
+                    <strong>Innovazioni:</strong>
+                    <ul style={{ margin: "4px 0 0 16px" }}>{selectedArtist.innovations.filter(Boolean).map((i) => <li key={i}>{i}</li>)}</ul>
+                  </div>
+                )}
+                {/* Tasto per approfondire — uguale al PeriodDossier */}
+                <div style={{ marginTop: 14, display: "flex", gap: 8 }}>
+                  <Link className="btn gold sm" to={`/artista/${selectedArtist.id}`} data-testid="tl-artist-open">Apri la scheda completa →</Link>
+                  <button className="btn sm ghost" onClick={() => setSelId(null)} aria-label="Chiudi anteprima">✕</button>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
 
       {hover && (
         <div className="float-tip" style={{ left: Math.min(hover.x + 14, window.innerWidth - 290), top: Math.min(hover.y + 14, window.innerHeight - 120) }}
@@ -441,7 +450,7 @@ export default function Timeline() {
       <div className="page-head">
         <div className="page-eyebrow"><span className="eyebrow">Visualizzazione</span></div>
         <h1 className="page-title">Linea del tempo multilivello</h1>
-        <p className="page-lead">Epoche, popoli e correnti scorrono su corsie parallele: le sovrapposizioni temporali sono visibili, gli archi tracciano i flussi di contaminazione e gli eventi storici ancorano il contesto. Clicca una barra per espandere l'anteprima del periodo — con personaggi, artisti, opere e glossario da ricordare — un pallino per il dettaglio dell'evento.</p>
+        <p className="page-lead">Epoche, popoli e correnti scorrono su corsie parallele: le sovrapposizioni temporali sono visibili, gli archi tracciano i flussi di contaminazione e gli eventi storici ancorano il contesto. Clicca una barra per espandere l'anteprima del periodo — con personaggi, autori, opere e glossario da ricordare — un pallino per il dettaglio dell'evento.</p>
       </div>
       <div className="page-rule" />
       <TimelineShell onFull={setFull} />
@@ -553,7 +562,7 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
         type="text"
         value={searchQ}
         onChange={(e) => setSearchQ(e.target.value)}
-        placeholder={showArtists ? "Cerca artista…" : "Cerca periodo…"}
+        placeholder={showArtists ? "Cerca autore…" : "Cerca periodo…"}
         data-testid="tl-search"
         style={{
           width: "100%", padding: "8px 12px",
@@ -624,9 +633,11 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
     </div>
   );
 
-  // Colonna destra: ricerca, vista (con zoom), tempo, filtri vista, tipi periodo.
+  // Colonna destra: ricerca, tempo, vista (con tutti i filtri in stile lista).
   // Sempre visibile (sia in modalità normale che in fullscreen), come nel grafo.
   // La sezione "Legenda" è stata rimossa su richiesta utente (non utile).
+  // Tutti i filtri (flussi, eventi, autori, epoca, corrente) sono sotto "Vista"
+  // con stile lista (pallino + nome + conteggio a destra), non pulsanti.
   const sideFiltersBlock = (
     <div className="panel" data-testid="tl-fs-filters">
       <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Cerca</div>
@@ -638,50 +649,81 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
         <TimeRangeSlider compact />
       </div>
       <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Vista</div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 10 }}>
-        <ToggleChip active={showFlows} onClick={() => setShowFlows((v) => !v)} testId="tl-fs-flows">↝ flussi</ToggleChip>
-        <ToggleChip active={showEvents} onClick={() => setShowEvents((v) => !v)} testId="tl-fs-events">◆ eventi</ToggleChip>
-        <ToggleChip active={showArtists} onClick={() => setShowArtists((v) => !v)} testId="tl-fs-artists">👤 artisti</ToggleChip>
-      </div>
-      {/* Comandi zoom — visibili solo in fullscreen (in modalità normale sono
-          nella barra superiore sopra la timeline). Stile tl-zoom-float. */}
+      {/* Comandi zoom — visibili solo in fullscreen. Stile tl-zoom-float. */}
       {inFull && (
-        <div className="tl-zoom-float" style={{ position: "static", marginBottom: 14, boxShadow: "none" }}>
+        <div className="tl-zoom-float" style={{ position: "static", marginBottom: 10, boxShadow: "none" }}>
           <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "out" }))} aria-label="Riduci zoom" data-testid="tl-fs-zoom-out">−</button>
           <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "reset" }))} aria-label="Reset zoom" data-testid="tl-fs-zoom-reset" title="Reset zoom">⊙</button>
           <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-fs-zoom-in">+</button>
         </div>
       )}
-      {/* Filtri per tipo periodo (solo epoca/corrente — popolo rimosso) —
-          solo vista periodi. */}
-      {!showArtists && (
-        <>
-          <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Tipi periodo</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 4, marginBottom: 14 }}>
-            {TIMELINE_TYPES.map((t) => {
-              const c = TYPE_COLOR[t];
-              const off = hideTypes.has(t);
-              const count = typeCounts[t] ?? 0;
-              return (
-                <button
-                  key={t}
-                  onClick={() => toggleType(t)}
-                  style={{
-                    display: "flex", alignItems: "center", gap: 8, width: "100%",
-                    padding: "6px 4px", background: "transparent", border: 0,
-                    cursor: "pointer", textAlign: "left", fontFamily: "inherit",
-                    color: "var(--ink)", opacity: off ? 0.4 : 1,
-                  }}
-                >
-                  <span className="dot" style={{ background: c, flexShrink: 0 }} />
-                  <span style={{ flex: 1, fontSize: 12.5, textTransform: "capitalize" }}>{t}</span>
-                  <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{count}</span>
-                </button>
-              );
-            })}
-          </div>
-        </>
-      )}
+      {/* Tutti i filtri in stile lista (pallino + nome + conteggio).
+          Comprende: flussi, eventi, autori (toggle vista) + epoca, corrente (filtri tipo).
+          Solo epoca/corrente sono mostrati nella vista periodi; nella vista
+          autori ci sono solo i 3 toggle (flussi/eventi/autori). */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 14 }}>
+        {/* Toggle: flussi */}
+        <button
+          onClick={() => setShowFlows((v) => !v)}
+          style={{
+            display: "flex", alignItems: "center", gap: 8, width: "100%",
+            padding: "6px 4px", background: "transparent", border: 0,
+            cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+            color: "var(--ink)", opacity: showFlows ? 1 : 0.4,
+          }}
+        >
+          <span className="dot" style={{ background: "#b88a2e", flexShrink: 0 }} />
+          <span style={{ flex: 1, fontSize: 12.5 }}>↝ flussi</span>
+        </button>
+        {/* Toggle: eventi */}
+        <button
+          onClick={() => setShowEvents((v) => !v)}
+          style={{
+            display: "flex", alignItems: "center", gap: 8, width: "100%",
+            padding: "6px 4px", background: "transparent", border: 0,
+            cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+            color: "var(--ink)", opacity: showEvents ? 1 : 0.4,
+          }}
+        >
+          <span className="dot" style={{ background: "#a8483f", flexShrink: 0 }} />
+          <span style={{ flex: 1, fontSize: 12.5 }}>◆ eventi</span>
+        </button>
+        {/* Toggle: autori */}
+        <button
+          onClick={() => setShowArtists((v) => !v)}
+          style={{
+            display: "flex", alignItems: "center", gap: 8, width: "100%",
+            padding: "6px 4px", background: "transparent", border: 0,
+            cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+            color: "var(--ink)", opacity: showArtists ? 1 : 0.4,
+          }}
+        >
+          <span className="dot" style={{ background: "#b9692c", flexShrink: 0 }} />
+          <span style={{ flex: 1, fontSize: 12.5 }}>👤 autori</span>
+        </button>
+        {/* Filtri tipo periodo (solo epoca/corrente) — solo vista periodi */}
+        {!showArtists && TIMELINE_TYPES.map((t) => {
+          const c = TYPE_COLOR[t];
+          const off = hideTypes.has(t);
+          const count = typeCounts[t] ?? 0;
+          return (
+            <button
+              key={t}
+              onClick={() => toggleType(t)}
+              style={{
+                display: "flex", alignItems: "center", gap: 8, width: "100%",
+                padding: "6px 4px", background: "transparent", border: 0,
+                cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+                color: "var(--ink)", opacity: off ? 0.4 : 1,
+              }}
+            >
+              <span className="dot" style={{ background: c, flexShrink: 0 }} />
+              <span style={{ flex: 1, fontSize: 12.5, textTransform: "capitalize" }}>{t}</span>
+              <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{count}</span>
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 
@@ -697,12 +739,12 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
           <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-zoom-in">+</button>
         </div>
         <div style={{ marginLeft: "auto" }}>
-          <FilterNote total={showArtists ? ix.ds.artists.length : allPeriods.length} shown={showArtists ? ix.ds.artists.filter((a) => a.birth != null).length : periods.length} noun={showArtists ? "artisti" : "periodi"} />
+          <FilterNote total={showArtists ? ix.ds.artists.length : allPeriods.length} shown={showArtists ? ix.ds.artists.filter((a) => a.birth != null).length : periods.length} noun={showArtists ? "autori" : "periodi"} />
         </div>
       </div>
 
       {showArtists ? (
-        <Fullscreen title="Linea del tempo — Artisti" controls={null} showSlider={false} onChange={(f) => { setInFull(f); onFull(f); }}>
+        <Fullscreen title="Linea del tempo — Autori" controls={null} showSlider={false} onChange={(f) => { setInFull(f); onFull(f); }}>
           <div className="gf-inner">
             <ArtistTimelineCanvas inFullscreen={inFull} />
             <div className="gf-side">
