@@ -23,19 +23,17 @@ const NODE_HEX: Record<string, string> = {
 const KIND_COLOR: Record<string, string> = {
   influenza: "#b88a2e", rielaborazione: "#b9692c", evoluzione: "#6e8350",
   committenza: "#4f7d72", "maestro-allievo": "#9a6a92", contaminazione: "#caa14a", contrasto: "#a8483f",
-  luogo: "#5d8a7f",
+  luogo: "#5d8a7f", autore: "#9a8c6e",
 };
-// Pattern di tratteggio per distinguere i legami anche senza colore.
 const KIND_DASH: Record<string, number[] | undefined> = {
   influenza: undefined, rielaborazione: undefined, evoluzione: undefined,
   committenza: [10, 5], "maestro-allievo": undefined,
-  contaminazione: [4, 4], contrasto: [2, 4], luogo: [6, 3],
+  contaminazione: [4, 4], contrasto: [2, 4], luogo: [6, 3], autore: [1, 3],
 };
-// Spessore del legame in base al tipo.
 const KIND_WIDTH: Record<string, number> = {
   influenza: 1.4, rielaborazione: 1.2, evoluzione: 1.1,
   committenza: 1.0, "maestro-allievo": 1.6, contaminazione: 0.9, contrasto: 1.3,
-  luogo: 1.1,
+  luogo: 1.1, autore: 0.6,
 };
 const PAPER = "#f7f3ec";
 const INK = "#211c14";
@@ -333,6 +331,30 @@ export default function Grafo() {
       }
     }
 
+    // === Collegamenti autore ↔ opera (automatici) ===
+    // Quando sia "artist" che "work" sono visibili (non filtrati), collega
+    // automaticamente ogni opera al suo autore. Non serve un toggle separato:
+    // se l'utente nasconde le opere o gli autori, i link spariscono da soli.
+    if (!hideTypes.has("artist") && !hideTypes.has("work")) {
+      for (const wn of [...nodeMap.values()].filter((n) => n.etype === "work")) {
+        const w = ix.workById.get(wn.eid);
+        if (!w?.artist_ids) continue;
+        for (const aid of w.artist_ids) {
+          const artistNode = nodeMap.get(`artist:${aid}`);
+          if (!artistNode) continue; // autore non nel grafo (filtrato)
+          // Evita duplicati se il link esiste già
+          const exists = links.some(l => {
+            const s = typeof l.source === "object" ? l.source.id : l.source;
+            const t = typeof l.target === "object" ? l.target.id : l.target;
+            return (s === `artist:${aid}` && t === wn.id) || (s === wn.id && t === `artist:${aid}`);
+          });
+          if (!exists) {
+            links.push({ source: `artist:${aid}`, target: wn.id, kind: "autore" as any, desc: `Opera di ${artistNode.label}` });
+          }
+        }
+      }
+    }
+
     // === Se c'è un focusNode (ricerca), filtra il grafo per mostrare solo
     //     il nodo cercato + i suoi vicini diretti + i vicini di 2° livello ===
     if (focusNode) {
@@ -617,7 +639,7 @@ export default function Grafo() {
           <button onClick={selectNoneKinds} style={{ fontSize: 10, padding: "2px 8px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Nessuno</button>
         </span>
       </div>
-      {[...KINDS, "luogo" as const].map((k) => {
+      {[...KINDS, "luogo" as const, "autore" as const].map((k) => {
         const off = hideKinds.has(k);
         const dash = KIND_DASH[k];
         return (
@@ -631,7 +653,7 @@ export default function Grafo() {
                 strokeLinecap="round"
               />
             </svg>
-            <span className="gf-frow-lab">{k === "luogo" ? "Luogo" : KIND_LABEL[k]}</span>
+            <span className="gf-frow-lab">{k === "luogo" ? "Luogo" : k === "autore" ? "Autore" : KIND_LABEL[k]}</span>
             <EyeIcon off={off} />
           </button>
         );
@@ -1034,7 +1056,7 @@ export default function Grafo() {
             <span style={{ color: "var(--ink-faint)", fontSize: 10 }}>·</span>
             <button onClick={selectNoneKinds} className="gf-quick-toggle" title="Nascondi tutti i legami">Nessuno</button>
           </div>
-          {[...KINDS, "luogo" as const].map((k) => {
+          {[...KINDS, "luogo" as const, "autore" as const].map((k) => {
             const off = hideKinds.has(k);
             const dash = KIND_DASH[k];
             return (
@@ -1048,7 +1070,7 @@ export default function Grafo() {
                     strokeLinecap="round"
                   />
                 </svg>
-                {k === "luogo" ? "Luogo" : KIND_LABEL[k]}
+                {k === "luogo" ? "Luogo" : k === "autore" ? "Autore" : KIND_LABEL[k]}
               </button>
             );
           })}

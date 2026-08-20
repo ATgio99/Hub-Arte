@@ -268,6 +268,69 @@ export default function Opera() {
         </Section>
       )}
 
+      {/* === Banner connessioni con anteprima opera collegata ===
+          Mostra un banner per ogni connessione a un'altra opera, con:
+          - tipo di legame (influenza, rielaborazione, ecc.)
+          - direzione: quest'opera → opera collegata (o viceversa)
+          - anteprima visiva dell'opera collegata (immagine + titolo) */}
+      {conns.filter(c => {
+        const otherIsSource = !(c.source_type === "work" && c.source_id === w.id);
+        const ot = otherIsSource ? c.source_type : c.target_type;
+        return ot === "work";
+      }).length > 0 && (
+        <Section eyebrow="Sinapsi" title="Opere collegate">
+          <div style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 8 }}>
+            {conns.filter(c => {
+              const otherIsSource = !(c.source_type === "work" && c.source_id === w.id);
+              const ot = otherIsSource ? c.source_type : c.target_type;
+              return ot === "work";
+            }).map((c) => {
+              const otherIsSource = !(c.source_type === "work" && c.source_id === w.id);
+              const otherWorkId = otherIsSource ? c.source_id : c.target_id;
+              const otherWork = ix.workById.get(otherWorkId);
+              if (!otherWork) return null;
+              // Direzione: true = quest'opera influenza l'altra; false = l'altra influenza questa
+              const thisIsSource = !otherIsSource;
+              return (
+                <Link
+                  key={c.id}
+                  to={`/opera/${otherWorkId}`}
+                  className="conn-banner"
+                  style={{
+                    display: "flex", gap: 16, padding: 16,
+                    background: "var(--bg-1)", border: "1px solid var(--line)",
+                    borderRadius: 12, textDecoration: "none", color: "var(--ink)",
+                    transition: "border-color .2s, box-shadow .2s",
+                  }}
+                >
+                  {/* Anteprima immagine opera collegata */}
+                  <div style={{ width: 80, height: 80, borderRadius: 8, overflow: "hidden", flexShrink: 0, border: "1px solid var(--line-soft)" }}>
+                    <WorkImage work={otherWork} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  </div>
+                  {/* Info connessione */}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                      <span className="tag" style={{ color: "var(--gold-deep)", borderColor: "var(--gold)", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.04em", fontWeight: 700 }}>
+                        {KIND_LABEL[c.kind] ?? c.kind}
+                      </span>
+                      <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>
+                        {thisIsSource ? "questa opera →" : "← quest'opera"}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }}>{otherWork.title}</div>
+                    {c.description && (
+                      <div style={{ fontSize: 13, color: "var(--ink-soft)", fontStyle: "italic", lineHeight: 1.4 }}>
+                        "{c.description.slice(0, 120)}{c.description.length > 120 ? "…" : ""}"
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </Section>
+      )}
+
       {/* Editor drawer (solo admin, apre con pulsante Modifica) */}
       <EditorDrawer
         workId={w.id}

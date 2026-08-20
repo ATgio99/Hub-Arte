@@ -1107,3 +1107,10 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   box-shadow: 0 6px 20px rgba(184,138,46,0.12);
   transform: translateY(-2px);
 }
+
+/* Banner connessione opera (anteprima opera collegata) */
+.conn-banner:hover {
+  border-color: var(--gold) !important;
+  box-shadow: 0 4px 16px rgba(184,138,46,.12);
+}
+

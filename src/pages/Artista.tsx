@@ -107,13 +107,33 @@ export default function Artista() {
             const otherIsSource = !(c.source_type === "artist" && c.source_id === a.id);
             const ot = otherIsSource ? c.source_type : c.target_type;
             const oid = otherIsSource ? c.source_id : c.target_id;
+            // Per mostrare A → B: "questo autore" è A (source) se source_id === a.id,
+            // altrimenti l'altro è source e "questo autore" è B (target).
+            // thisIsSource = true → quest'autore influenza l'altro (A → B)
+            const thisIsSource = c.source_type === "artist" && c.source_id === a.id;
+            const otherLabel = entityLabel(ix, ot, oid);
             return (
               <div className="conn-row" key={c.id}>
                 <span className="conn-kind">{KIND_LABEL[c.kind] ?? c.kind}</span>
                 <div>
-                  <div style={{ marginBottom: 3 }}>
+                  {/* Mostra direzione: A → B (entrambi i nomi visibili) */}
+                  <div style={{ marginBottom: 4, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                     <span className="muted" style={{ fontSize: 12 }}>{ENTITY_LABEL[ot]} · </span>
-                    <EntityLink type={ot} id={oid} label={entityLabel(ix, ot, oid)} />
+                    {thisIsSource ? (
+                      // Questo autore → altro
+                      <>
+                        <span style={{ fontSize: 13, fontWeight: 600 }}>{a.name}</span>
+                        <span style={{ color: "var(--gold-deep)", fontSize: 13, fontWeight: 700 }}>→</span>
+                        <EntityLink type={ot} id={oid} label={otherLabel} />
+                      </>
+                    ) : (
+                      // Altro → questo autore
+                      <>
+                        <EntityLink type={ot} id={oid} label={otherLabel} />
+                        <span style={{ color: "var(--gold-deep)", fontSize: 13, fontWeight: 700 }}>→</span>
+                        <span style={{ fontSize: 13, fontWeight: 600 }}>{a.name}</span>
+                      </>
+                    )}
                   </div>
                   <div className="muted" style={{ fontSize: 14 }}>{c.description}</div>
                 </div>
