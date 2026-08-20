@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import type { Work, EntityType } from "../lib/types";
 import { useData } from "../lib/store";
-import { entityLabel, resolveEntity, WorkGroup, ENTITY_LABEL } from "../lib/data";
+import { entityLabel, resolveEntity, WorkGroup, ENTITY_LABEL, artistsOfWork } from "../lib/data";
 import { useCountUp, useInViewOnce, revealContainer, revealItem, revealItemSoft, EASE_OUT, usePrefersReducedMotion } from "../lib/motion";
 import { useFavorites, toggleFavorite, FavType } from "../lib/favorites";
 import { useStudied, toggleStudied } from "../lib/studied";
@@ -225,7 +225,10 @@ function EntityPopup({ type, id, onClose }: { type: EntityType; id: string; onCl
     image = w.image_thumb || w.image_url;
     preview = w.summary;
     const period = ix.periodById.get(w.period_id);
-    meta = [period?.name, w.date_text, w.location_city].filter(Boolean).join(" · ");
+    // Mostra il nome dell'autore (o degli autori) dell'opera
+    const artists = artistsOfWork(ix, w);
+    const artistNames = artists.map(a => a.name).join(", ");
+    meta = [artistNames, period?.name, w.date_text, w.location_city].filter(Boolean).join(" · ");
   } else if (type === "artist") {
     const a = entity as any;
     preview = a.bio;

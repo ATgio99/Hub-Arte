@@ -331,11 +331,10 @@ export default function Grafo() {
       }
     }
 
-    // === Collegamenti autore ↔ opera (automatici) ===
-    // Quando sia "artist" che "work" sono visibili (non filtrati), collega
-    // automaticamente ogni opera al suo autore. Non serve un toggle separato:
-    // se l'utente nasconde le opere o gli autori, i link spariscono da soli.
-    if (!hideTypes.has("artist") && !hideTypes.has("work")) {
+    // === Collegamenti autore ↔ opera (automatici, filtrabili da hideKinds) ===
+    // Quando sia "artist" che "work" sono visibili E il legame "autore" non è
+    // disattivato in hideKinds, collega automaticamente ogni opera al suo autore.
+    if (!hideTypes.has("artist") && !hideTypes.has("work") && !hideKinds.has("autore" as any)) {
       // Prima: assicurati che tutte le opere che hanno un autore presente
       // nel grafo siano nel nodeMap (anche se non hanno connessioni documentate).
       for (const a of ix.ds.artists) {
