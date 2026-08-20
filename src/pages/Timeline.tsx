@@ -412,6 +412,11 @@ function ArtistTimelineCanvas({ inFullscreen }: { inFullscreen: boolean }) {
                   <ul style={{ margin: "4px 0 0 16px" }}>{selectedArtist.innovations.filter(Boolean).map((i) => <li key={i}>{i}</li>)}</ul>
                 </div>
               )}
+              {/* Tasto per approfondire — uguale al PeriodDossier */}
+              <div style={{ marginTop: 14, display: "flex", gap: 8 }}>
+                <Link className="btn gold sm" to={`/artista/${selectedArtist.id}`} data-testid="tl-artist-open">Apri la scheda completa →</Link>
+                <button className="btn sm ghost" onClick={() => setSelId(null)} aria-label="Chiudi anteprima">✕</button>
+              </div>
             </div>
           </motion.div>
         )}
@@ -639,12 +644,12 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
         <ToggleChip active={showArtists} onClick={() => setShowArtists((v) => !v)} testId="tl-fs-artists">👤 artisti</ToggleChip>
       </div>
       {/* Comandi zoom — visibili solo in fullscreen (in modalità normale sono
-          nella barra superiore sopra la timeline). */}
+          nella barra superiore sopra la timeline). Stile tl-zoom-float. */}
       {inFull && (
-        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 14 }}>
-          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "out" }))} aria-label="Riduci zoom" data-testid="tl-fs-zoom-out">−</button>
-          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "reset" }))} aria-label="Reset zoom" data-testid="tl-fs-zoom-reset" title="Reset zoom">⊙</button>
-          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-fs-zoom-in">+</button>
+        <div className="tl-zoom-float" style={{ position: "static", marginBottom: 14, boxShadow: "none" }}>
+          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "out" }))} aria-label="Riduci zoom" data-testid="tl-fs-zoom-out">−</button>
+          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "reset" }))} aria-label="Reset zoom" data-testid="tl-fs-zoom-reset" title="Reset zoom">⊙</button>
+          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-fs-zoom-in">+</button>
         </div>
       )}
       {/* Filtri per tipo periodo (solo epoca/corrente — popolo rimosso) —
@@ -686,10 +691,10 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
           I 3 tasti flussi/eventi/artisti sono rimossi da qui (sono nella
           colonna destra, sempre visibili). La legenda è rimossa. */}
       <div className="filterbar" style={{ marginBottom: 14, gap: 14, alignItems: "center" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "out" }))} aria-label="Riduci zoom" data-testid="tl-zoom-out">−</button>
-          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "reset" }))} aria-label="Reset zoom" data-testid="tl-zoom-reset" title="Reset zoom">⊙</button>
-          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-zoom-in">+</button>
+        <div className="tl-zoom-float" style={{ position: "static", boxShadow: "none" }}>
+          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "out" }))} aria-label="Riduci zoom" data-testid="tl-zoom-out">−</button>
+          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "reset" }))} aria-label="Reset zoom" data-testid="tl-zoom-reset" title="Reset zoom">⊙</button>
+          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-zoom-in">+</button>
         </div>
         <div style={{ marginLeft: "auto" }}>
           <FilterNote total={showArtists ? ix.ds.artists.length : allPeriods.length} shown={showArtists ? ix.ds.artists.filter((a) => a.birth != null).length : periods.length} noun={showArtists ? "artisti" : "periodi"} />
@@ -772,8 +777,12 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
   const LANE_H = 48;
   const TOP = 70;
   const EV_ROW_H = 26;
-  const eventsTop = TOP + laneCount * LANE_H + 30;
-  const height = eventsTop + EV_ROWS * EV_ROW_H + 56 + (selPid ? 410 : 0);
+  // Eventi spostati in alto: appena sotto gli anni (y=38), sopra le corsie.
+  // Le corsie dei periodi iniziano a TOP=70, quindi gli eventi occupano lo
+  // spazio tra ~y=44 e y=TOP. Usiamo una singola riga di eventi compatti.
+  const eventsTop = 44;  // era: TOP + laneCount * LANE_H + 30
+  const lanesTop = TOP + EV_ROWS * EV_ROW_H + 20;  // corsie periodi spostate sotto gli eventi
+  const height = lanesTop + laneCount * LANE_H + 56 + (selPid ? 410 : 0);
 
   const x = useCallback((year: number) => PAD + (year - minY) * PPY, [minY, PPY]);
 
@@ -814,7 +823,7 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
     return t;
   }, [minY, maxY]);
 
-  const laneY = (lane: number) => TOP + lane * LANE_H;
+  const laneY = (lane: number) => lanesTop + lane * LANE_H;
 
   const DH = 410;
   const selLane = useMemo(() => {
@@ -853,7 +862,9 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
         <svg width={width} height={Math.max(height, inFullscreen ? 600 : height)} style={{ display: "block", minWidth: "100%" }}>
           {ticks.map((y) => (
             <g key={y}>
-              <line x1={x(y)} y1={48} x2={x(y)} y2={eventsTop - 14 + globalShift} stroke="var(--line-soft)" strokeWidth={1} />
+              <line x1={x(y)} y1={48} x2={x(y)} y2={eventsTop - 4} stroke="var(--line-soft)" strokeWidth={1} />
+              {/* Linea verticale che attraversa le corsie periodi ma non gli eventi */}
+              <line x1={x(y)} y1={eventsTop + EV_ROWS * EV_ROW_H + 4} x2={x(y)} y2={lanesTop + laneCount * LANE_H} stroke="var(--line-soft)" strokeWidth={1} />
               <text x={x(y)} y={38} fill="var(--ink-faint)" fontSize={11} textAnchor="middle" fontFamily="var(--font-body)" style={{ fontVariantNumeric: "tabular-nums" }}>{fmtYear(y)}</text>
             </g>
           ))}
@@ -912,8 +923,9 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
 
           {showEvents && (
             <motion.g animate={{ y: globalShift }} transition={{ duration: 0.45, ease: EASE_OUT }}>
-              <line x1={PAD} y1={eventsTop - 14} x2={width - PAD} y2={eventsTop - 14} stroke="var(--line)" strokeWidth={1} />
-              <text x={PAD} y={eventsTop - 20} fill="var(--ink-faint)" fontSize={9.5} fontFamily="var(--font-body)"
+              {/* Etichetta "Eventi storici" — ora sotto gli eventi (non sopra) */}
+              <line x1={PAD} y1={eventsTop + EV_ROWS * EV_ROW_H + 2} x2={width - PAD} y2={eventsTop + EV_ROWS * EV_ROW_H + 2} stroke="var(--line)" strokeWidth={1} />
+              <text x={PAD} y={eventsTop + EV_ROWS * EV_ROW_H + 14} fill="var(--ink-faint)" fontSize={9.5} fontFamily="var(--font-body)"
                 style={{ letterSpacing: ".16em", textTransform: "uppercase" }}>Eventi storici</text>
               {evNodes.map((n, i) => {
                 const ex = n.x, ey = eventsTop + n.row * EV_ROW_H + 8;
@@ -932,7 +944,8 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
                     onMouseMove={(ev) => setHover((h) => h && { ...h, x: (ev as any).clientX, y: (ev as any).clientY })}
                     onMouseLeave={() => setHover(null)}
                     onClick={(ev) => { ev.stopPropagation(); setHover(null); setPop({ x: (ev as any).clientX, y: (ev as any).clientY, node: n }); }}>
-                    <line x1={ex} y1={eventsTop - 14} x2={ex} y2={ey} stroke={col} strokeWidth={1} strokeOpacity={0.28} />
+                    {/* Linea verticale evento rimossa: gli eventi sono ora in alto,
+                        la linea non avrebbe senso. */}
                     {n.kind === "cluster" ? (
                       <>
                         <circle cx={ex} cy={ey} r={r} fill={col} fillOpacity={0.92} />
@@ -972,9 +985,26 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
       )}
 
       <AnimatePresence>
-        {pop && (
+        {pop && (() => {
+          // Calcola posizione popover in modo che non sia tagliato in fullscreen.
+          // Se non c'è spazio sotto, mostra il popover SOPRA il pallino.
+          const POP_W = 300;
+          const POP_H = 260;
+          const margin = 12;
+          let left = Math.min(pop.x + margin, window.innerWidth - POP_W - margin);
+          if (left < margin) left = margin;
+          let top = pop.y + margin;
+          // Se il popover finisce sotto lo schermo, spostalo sopra
+          if (top + POP_H > window.innerHeight - margin) {
+            top = pop.y - POP_H - margin;
+          }
+          // Se anche sopra è fuori schermo (pallino molto in alto), forza in basso
+          if (top < margin) {
+            top = Math.max(margin, window.innerHeight - POP_H - margin);
+          }
+          return (
           <motion.div className="ev-popover" data-testid="ev-popover"
-            style={{ left: Math.min(pop.x, window.innerWidth - 320), top: Math.min(pop.y + 12, window.innerHeight - 260) }}
+            style={{ left, top }}
             initial={reduced ? false : { opacity: 0, y: 8, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 6, scale: 0.98 }}
             transition={{ duration: 0.22, ease: EASE_OUT }}
@@ -996,14 +1026,9 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
               </div>
             )}
           </motion.div>
-        )}
+          );
+        })()}
       </AnimatePresence>
-
-      {!inFullscreen && (
-        <div className="tl-evstat faint" style={{ fontSize: 12, marginTop: 10 }} data-testid="tl-evstat">
-          {visibleEvents.length} eventi · {labelsShown} etichette visibili a questo zoom · i pallini ravvicinati si raggruppano in cluster (×N): clicca per espandere.
-        </div>
-      )}
     </>
   );
 }

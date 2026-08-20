@@ -737,6 +737,40 @@ export default function Grafo() {
             return (neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId)) ? baseW * 1.6 : baseW * 0.4;
           }}
           linkLineDash={(l: any) => KIND_DASH[l.kind]}
+          linkCanvasObjectMode={() => "after"}
+          linkCanvasObject={(link: any, ctx: CanvasRenderingContext2D, scale: number) => {
+            // Disegna una piccola freccia direzionale al 75% del link, solo per
+            // i legami con direzione semantica (come nel 3D).
+            const directional = ["committenza", "maestro-allievo", "influenza", "rielaborazione", "evoluzione", "contrasto"];
+            if (!directional.includes(link.kind)) return;
+            const s = typeof link.source === "object" ? link.source : { x: 0, y: 0 };
+            const t = typeof link.target === "object" ? link.target : { x: 0, y: 0 };
+            if (s.x == null || t.x == null) return;
+            // Posizione della freccia al 75% del link
+            const frac = 0.78;
+            const x = s.x + (t.x - s.x) * frac;
+            const y = s.y + (t.y - s.y) * frac;
+            // Angolo del link
+            const angle = Math.atan2(t.y - s.y, t.x - s.x);
+            // Dimensione freccia in base allo stato (più grande se link ON)
+            const s2 = typeof link.source === "object" ? link.source.id : link.source;
+            const t2 = typeof link.target === "object" ? link.target.id : link.target;
+            const on = neighbors && neighbors.has(s2) && neighbors.has(t2) && (s2 === focusId || t2 === focusId);
+            const size = on ? 6 / scale : 3.5 / scale;
+            if (!on && neighbors) return; // nascondi frecce off quando c'è focus
+            const col = KIND_COLOR[link.kind] ?? INK;
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            ctx.fillStyle = on ? col : col + "88";
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(-size * 1.6, -size * 0.7);
+            ctx.lineTo(-size * 1.6, size * 0.7);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+          }}
           nodePointerAreaPaint={(node: any, color: string, ctx: CanvasRenderingContext2D) => {
             // area di click generosa: cerchio min 10px + rettangolo sull'etichetta visibile
             const r = Math.max((2.4 + Math.min(node.deg, 9) * 0.7) + 4, 10);
