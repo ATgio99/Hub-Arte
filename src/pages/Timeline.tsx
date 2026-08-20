@@ -235,7 +235,7 @@ function EventCard({ e, onGo, ix }: { e: ArtEvent; onGo: (pid: string) => void; 
 // ═══════════════════════════════════════════════════════════════════════════
 //  ARTIST TIMELINE CANVAS
 // ═══════════════════════════════════════════════════════════════════════════
-function ArtistTimelineCanvas({ inFullscreen }: { inFullscreen: boolean }) {
+function ArtistTimelineCanvas({ inFullscreen, hideCats }: { inFullscreen: boolean; hideCats: Set<string> }) {
   const ix = useData();
   const { range, artistIn } = useTimeRange();
   const nav = useNavigate();
@@ -243,7 +243,11 @@ function ArtistTimelineCanvas({ inFullscreen }: { inFullscreen: boolean }) {
   const [hover, setHover] = useState<Tip | null>(null);
 
   const allArtists = ix.ds.artists;
-  const filtered = useMemo(() => allArtists.filter(artistIn), [allArtists, artistIn]);
+  // Filtra per range temporale E per categoria (hideCats).
+  const filtered = useMemo(
+    () => allArtists.filter((a) => artistIn(a) && !hideCats.has(artistCategory(a))),
+    [allArtists, artistIn, hideCats]
+  );
   const { items, totalLanes, categories } = useMemo(() => layoutArtistLanes(filtered), [filtered]);
 
   const withDates = allArtists.filter((a) => a.birth != null).length;
@@ -490,6 +494,24 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
     });
   };
 
+  // Conteggio autori per categoria (per mostrare il numero accanto al filtro).
+  const catCounts = useMemo(() => {
+    const c: Record<string, number> = {};
+    for (const a of ix.ds.artists) {
+      const cat = artistCategory(a);
+      c[cat] = (c[cat] ?? 0) + 1;
+    }
+    return c;
+  }, [ix.ds.artists]);
+
+  const toggleCat = (cat: string) => {
+    setHideCats((prev) => {
+      const n = new Set(prev);
+      n.has(cat) ? n.delete(cat) : n.add(cat);
+      return n;
+    });
+  };
+
   // === Ricerca globale ===
   // Cerca tra periodi (se vista periodi) o artisti (se vista artisti).
   // Risultati mostrati in un dropdown sotto la barra, come nel grafo.
@@ -649,18 +671,22 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
         <TimeRangeSlider compact />
       </div>
       <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Vista</div>
-      {/* Comandi zoom — visibili solo in fullscreen. Stile tl-zoom-float. */}
-      {inFull && (
-        <div className="tl-zoom-float" style={{ position: "static", marginBottom: 10, boxShadow: "none" }}>
-          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "out" }))} aria-label="Riduci zoom" data-testid="tl-fs-zoom-out">−</button>
-          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "reset" }))} aria-label="Reset zoom" data-testid="tl-fs-zoom-reset" title="Reset zoom">⊙</button>
-          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-fs-zoom-in">+</button>
-        </div>
-      )}
+      {/* Comandi zoom — sempre visibili nel riquadro filtri (non solo fullscreen).
+          Stile tl-zoom-float con simboli chiari e dimensioni uniformi. */}
+      <div className="tl-zoom-controls" style={{ marginBottom: 10 }}>
+        <button className="tl-zoom-btn" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "out" }))} aria-label="Riduci zoom" data-testid="tl-zoom-out" title="Riduci zoom">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M5 12h14" /></svg>
+        </button>
+        <button className="tl-zoom-btn tl-zoom-reset" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "reset" }))} aria-label="Reset zoom" data-testid="tl-zoom-reset" title="Reset zoom">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8" /><path d="M3 3v5h5" /></svg>
+        </button>
+        <button className="tl-zoom-btn" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-zoom-in" title="Aumenta zoom">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
+        </button>
+      </div>
       {/* Tutti i filtri in stile lista (pallino + nome + conteggio).
-          Comprende: flussi, eventi, autori (toggle vista) + epoca, corrente (filtri tipo).
-          Solo epoca/corrente sono mostrati nella vista periodi; nella vista
-          autori ci sono solo i 3 toggle (flussi/eventi/autori). */}
+          Comprende: flussi, eventi, autori (toggle vista) + epoca/corrente (vista periodi)
+          o Pittori/Scultori/... (vista autori). */}
       <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 14 }}>
         {/* Toggle: flussi */}
         <button
@@ -688,7 +714,7 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
           <span className="dot" style={{ background: "#a8483f", flexShrink: 0 }} />
           <span style={{ flex: 1, fontSize: 12.5 }}>◆ eventi</span>
         </button>
-        {/* Toggle: autori */}
+        {/* Toggle: autori (senza emoji) */}
         <button
           onClick={() => setShowArtists((v) => !v)}
           style={{
@@ -699,9 +725,9 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
           }}
         >
           <span className="dot" style={{ background: "#b9692c", flexShrink: 0 }} />
-          <span style={{ flex: 1, fontSize: 12.5 }}>👤 autori</span>
+          <span style={{ flex: 1, fontSize: 12.5 }}>autori</span>
         </button>
-        {/* Filtri tipo periodo (solo epoca/corrente) — solo vista periodi */}
+        {/* Filtri tipo periodo (epoca/corrente) — solo vista periodi */}
         {!showArtists && TIMELINE_TYPES.map((t) => {
           const c = TYPE_COLOR[t];
           const off = hideTypes.has(t);
@@ -723,21 +749,36 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
             </button>
           );
         })}
+        {/* Filtri categoria autore (Pittori, Scultori, ecc.) — solo vista autori */}
+        {showArtists && Object.entries(ARTIST_CAT_COLOR).filter(([cat]) => cat !== "Altro").map(([cat, col]) => {
+          const off = hideCats.has(cat);
+          const count = catCounts[cat] ?? 0;
+          return (
+            <button
+              key={cat}
+              onClick={() => toggleCat(cat)}
+              style={{
+                display: "flex", alignItems: "center", gap: 8, width: "100%",
+                padding: "6px 4px", background: "transparent", border: 0,
+                cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+                color: "var(--ink)", opacity: off ? 0.4 : 1,
+              }}
+            >
+              <span className="dot" style={{ background: col, flexShrink: 0 }} />
+              <span style={{ flex: 1, fontSize: 12.5 }}>{cat}</span>
+              <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{count}</span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
 
   return (
     <>
-      {/* Barra superiore: comandi zoom + contatore.
-          I 3 tasti flussi/eventi/artisti sono rimossi da qui (sono nella
-          colonna destra, sempre visibili). La legenda è rimossa. */}
+      {/* Barra superiore: solo contatore.
+          I comandi zoom sono nel riquadro filtri a destra (sempre visibili). */}
       <div className="filterbar" style={{ marginBottom: 14, gap: 14, alignItems: "center" }}>
-        <div className="tl-zoom-float" style={{ position: "static", boxShadow: "none" }}>
-          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "out" }))} aria-label="Riduci zoom" data-testid="tl-zoom-out">−</button>
-          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "reset" }))} aria-label="Reset zoom" data-testid="tl-zoom-reset" title="Reset zoom">⊙</button>
-          <button className="btn sm" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-zoom-in">+</button>
-        </div>
         <div style={{ marginLeft: "auto" }}>
           <FilterNote total={showArtists ? ix.ds.artists.length : allPeriods.length} shown={showArtists ? ix.ds.artists.filter((a) => a.birth != null).length : periods.length} noun={showArtists ? "autori" : "periodi"} />
         </div>
@@ -746,7 +787,7 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
       {showArtists ? (
         <Fullscreen title="Linea del tempo — Autori" controls={null} showSlider={false} onChange={(f) => { setInFull(f); onFull(f); }}>
           <div className="gf-inner">
-            <ArtistTimelineCanvas inFullscreen={inFull} />
+            <ArtistTimelineCanvas inFullscreen={inFull} hideCats={hideCats} />
             <div className="gf-side">
               {sideFiltersBlock}
             </div>

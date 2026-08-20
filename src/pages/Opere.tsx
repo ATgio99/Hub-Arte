@@ -143,11 +143,24 @@ export default function Opere() {
 
       {/* Seconda riga filtri: approfondite + raggruppate */}
       <div className="filterbar" style={{ marginBottom: 8, marginTop: 4 }}>
-        <select className="input" value={studiedFilter} onChange={(e) => { setStudiedFilter(e.target.value as any); setLimit(60); }} data-testid="select-studied" style={{ flex: "0 0 auto" }}>
-          <option value="">Tutte</option>
-          <option value="studied">✓ Approfondite ({studiedCount})</option>
-          <option value="not-studied">○ Da approfondire ({notStudiedCount})</option>
-        </select>
+        {/* Tasto toggle "Approfondite" — come i preferiti. */}
+        <button
+          className={`chip fav-chip ${studiedFilter === "studied" ? "active" : ""}`}
+          onClick={() => { setStudiedFilter(v => v === "studied" ? "" : "studied"); setLimit(60); }}
+          data-testid="toggle-studied"
+          title="Mostra solo le opere approfondite (studiate)"
+        >
+          ✓ Approfondite{studiedCount > 0 ? ` (${studiedCount})` : ""}
+        </button>
+        {/* Tasto toggle "Da approfondire" */}
+        <button
+          className={`chip fav-chip ${studiedFilter === "not-studied" ? "active" : ""}`}
+          onClick={() => { setStudiedFilter(v => v === "not-studied" ? "" : "not-studied"); setLimit(60); }}
+          data-testid="toggle-not-studied"
+          title="Mostra solo le opere da approfondire"
+        >
+          ○ Da approfondire{notStudiedCount > 0 ? ` (${notStudiedCount})` : ""}
+        </button>
         <button className={`chip ${grouped ? "active" : ""}`} onClick={() => setGrouped(v => !v)} data-testid="toggle-grouped"
           title={groups.size === 0 ? "Nessun gruppo disponibile" : "Raggruppa opere dello stesso complesso"}>
           ⛨ Complessi{groups.size > 0 ? ` (${groups.size})` : ""}

@@ -535,8 +535,9 @@ a.hero-stat:hover { background: var(--bg-2); }
 .fs-input::-moz-range-thumb { pointer-events: all; width: 15px; height: 15px; border-radius: 50%; background: var(--bg-1); border: 2px solid var(--gold-deep); cursor: grab; }
 
 /* ============================================================
-   TIMELINE — popover eventi & controlli zoom flottanti
+   TIMELINE — popover eventi & controlli zoom
    ============================================================ */
+/* Controlli zoom flottanti (legacy, ancora usato in alcuni posti) */
 .tl-zoom-float {
   position: absolute; left: 14px; bottom: 14px; z-index: 6;
   display: inline-flex; align-items: center; gap: 4px;
@@ -545,6 +546,38 @@ a.hero-stat:hover { background: var(--bg-2); }
 }
 .tl-zoom-float .btn.sm { padding: 4px 10px; border: 0; background: transparent; }
 .tl-zoom-float .btn.sm:hover { background: var(--bg-2); }
+
+/* Controlli zoom nel riquadro filtri (sideFiltersBlock).
+   Tre bottoni quadrati uniformi: − (zoom out), reset, + (zoom in).
+   Stile pulito e proporzionato, con hover e focus. */
+.tl-zoom-controls {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--bg-2); border: 1px solid var(--line);
+  border-radius: 8px; padding: 3px;
+}
+.tl-zoom-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+  border: 0; border-radius: 6px;
+  background: transparent; color: var(--ink-soft);
+  cursor: pointer; padding: 0;
+  transition: background .15s, color .15s;
+}
+.tl-zoom-btn:hover {
+  background: var(--bg);
+  color: var(--gold-deep);
+}
+.tl-zoom-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+/* Reset button — leggermente più piccolo e con colore tenue */
+.tl-zoom-btn.tl-zoom-reset {
+  color: var(--ink-dim);
+}
+.tl-zoom-btn.tl-zoom-reset:hover {
+  color: var(--gold-deep);
+}
 
 .ev-popover {
   position: fixed; z-index: 320; width: 300px; max-width: calc(100vw - 24px);
