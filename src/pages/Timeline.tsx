@@ -11,6 +11,10 @@ import { usePrefersReducedMotion, EASE_OUT } from "../lib/motion";
 import type { Period, ArtEvent, Artist } from "../lib/types";
 
 const TYPE_COLOR: Record<string, string> = { epoca: "#b88a2e", corrente: "#b9692c", popolo: "#4f7d72" };
+// Nota: "popolo" è mantenuto nel mapping colore per coerenza dei dati, ma NON
+// viene più mostrato come filtro (rimosso su richiesta utente). Vedi
+// TIMELINE_TYPES sotto che elenca solo i tipi filtrabili.
+const TIMELINE_TYPES = ["epoca", "corrente"] as const;
 const EVENT_COLOR: Record<string, string> = { politico: "#a8483f", religioso: "#9a6a92", culturale: "#6e8350", tecnologico: "#5f7e8c" };
 const EVENT_LABEL: Record<string, string> = { politico: "Politico", religioso: "Religioso", culturale: "Culturale", tecnologico: "Tecnologico" };
 
@@ -261,6 +265,17 @@ function ArtistTimelineCanvas({ inFullscreen }: { inFullscreen: boolean }) {
   const reducedMotion = usePrefersReducedMotion();
   const [zoomTarget, setZoomTarget] = useState(1);
   const zoom = useSmoothZoom(zoomTarget, reducedMotion);
+  // Ascolta i comandi zoom esterni (barra superiore / sezione VISTA fullscreen).
+  useEffect(() => {
+    const onZoom = (e: Event) => {
+      const detail = (e as CustomEvent).detail as "in" | "out" | "reset";
+      if (detail === "in") setZoomTarget((z) => Math.min(5, +(z + 0.4).toFixed(2)));
+      else if (detail === "out") setZoomTarget((z) => Math.max(0.5, +(z - 0.4).toFixed(2)));
+      else if (detail === "reset") setZoomTarget(1);
+    };
+    window.addEventListener("atlante:tl-zoom", onZoom);
+    return () => window.removeEventListener("atlante:tl-zoom", onZoom);
+  }, []);
   const PPY_Z = PPY * zoom;
   const xZ = useCallback((year: number) => PAD + (year - minY) * PPY_Z, [minY, PPY_Z]);
   const widthZ = Math.max((maxY - minY) * PPY_Z + PAD * 2, 600);
@@ -604,8 +619,9 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
     </div>
   );
 
-  // Colonna destra: ricerca, vista, tempo, filtri vista, tipi periodo, legenda.
+  // Colonna destra: ricerca, vista (con zoom), tempo, filtri vista, tipi periodo.
   // Sempre visibile (sia in modalità normale che in fullscreen), come nel grafo.
+  // La sezione "Legenda" è stata rimossa su richiesta utente (non utile).
   const sideFiltersBlock = (
     <div className="panel" data-testid="tl-fs-filters">
       <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Cerca</div>
@@ -617,18 +633,28 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
         <TimeRangeSlider compact />
       </div>
       <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Vista</div>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 10 }}>
         <ToggleChip active={showFlows} onClick={() => setShowFlows((v) => !v)} testId="tl-fs-flows">↝ flussi</ToggleChip>
         <ToggleChip active={showEvents} onClick={() => setShowEvents((v) => !v)} testId="tl-fs-events">◆ eventi</ToggleChip>
         <ToggleChip active={showArtists} onClick={() => setShowArtists((v) => !v)} testId="tl-fs-artists">👤 artisti</ToggleChip>
       </div>
-      {/* Filtri per tipo periodo (epoca/corrente/popolo) — solo vista periodi.
-          In vista artisti la legenda mostra le categorie di ruolo (informativa). */}
+      {/* Comandi zoom — visibili solo in fullscreen (in modalità normale sono
+          nella barra superiore sopra la timeline). */}
+      {inFull && (
+        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 14 }}>
+          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "out" }))} aria-label="Riduci zoom" data-testid="tl-fs-zoom-out">−</button>
+          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "reset" }))} aria-label="Reset zoom" data-testid="tl-fs-zoom-reset" title="Reset zoom">⊙</button>
+          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-fs-zoom-in">+</button>
+        </div>
+      )}
+      {/* Filtri per tipo periodo (solo epoca/corrente — popolo rimosso) —
+          solo vista periodi. */}
       {!showArtists && (
         <>
           <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Tipi periodo</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 4, marginBottom: 14 }}>
-            {Object.entries(TYPE_COLOR).map(([t, c]) => {
+            {TIMELINE_TYPES.map((t) => {
+              const c = TYPE_COLOR[t];
               const off = hideTypes.has(t);
               const count = typeCounts[t] ?? 0;
               return (
@@ -651,33 +677,23 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
           </div>
         </>
       )}
-      <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>{showArtists ? "Categorie" : "Legenda"}</div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        {legendEntries.map(([t, c]) => (
-          <span key={t} className="muted" style={{ fontSize: 11.5, display: "inline-flex", alignItems: "center", gap: 5 }}>
-            <span className="dot" style={{ background: c }} />{t}
-          </span>
-        ))}
-      </div>
     </div>
   );
 
   return (
     <>
+      {/* Barra superiore: comandi zoom + contatore.
+          I 3 tasti flussi/eventi/artisti sono rimossi da qui (sono nella
+          colonna destra, sempre visibili). La legenda è rimossa. */}
       <div className="filterbar" style={{ marginBottom: 14, gap: 14, alignItems: "center" }}>
-        <ToggleChip active={showFlows} onClick={() => setShowFlows((v) => !v)} testId="tl-flows">↝ flussi</ToggleChip>
-        <ToggleChip active={showEvents} onClick={() => setShowEvents((v) => !v)} testId="tl-events">◆ eventi</ToggleChip>
-        <ToggleChip active={showArtists} onClick={() => setShowArtists((v) => !v)} testId="tl-artists">👤 artisti</ToggleChip>
-        <div className="filter-group" style={{ marginLeft: "auto" }}>
-          {legendEntries.map(([t, c]) => (
-            <span key={t} className="muted" style={{ fontSize: 11.5, display: "inline-flex", alignItems: "center", gap: 5 }}>
-              <span className="dot" style={{ background: c }} />{t}
-            </span>
-          ))}
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "out" }))} aria-label="Riduci zoom" data-testid="tl-zoom-out">−</button>
+          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "reset" }))} aria-label="Reset zoom" data-testid="tl-zoom-reset" title="Reset zoom">⊙</button>
+          <button className="btn sm ghost" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-zoom-in">+</button>
         </div>
-      </div>
-      <div style={{ marginBottom: 12 }}>
-        <FilterNote total={showArtists ? ix.ds.artists.length : allPeriods.length} shown={showArtists ? ix.ds.artists.filter((a) => a.birth != null).length : periods.length} noun={showArtists ? "artisti" : "periodi"} />
+        <div style={{ marginLeft: "auto" }}>
+          <FilterNote total={showArtists ? ix.ds.artists.length : allPeriods.length} shown={showArtists ? ix.ds.artists.filter((a) => a.birth != null).length : periods.length} noun={showArtists ? "artisti" : "periodi"} />
+        </div>
       </div>
 
       {showArtists ? (
@@ -721,6 +737,19 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
   const scrollRef = useRef<HTMLDivElement>(null);
   const [zoomTarget, setZoomTarget] = useState(1);
   const zoom = useSmoothZoom(zoomTarget, reduced);
+  // Ascolta i comandi zoom esterni (dalla barra superiore di TimelineShell
+  // o dalla sezione VISTA in fullscreen). L'evento custom "atlante:tl-zoom"
+  // ha detail = "in" | "out" | "reset".
+  useEffect(() => {
+    const onZoom = (e: Event) => {
+      const detail = (e as CustomEvent).detail as "in" | "out" | "reset";
+      if (detail === "in") setZoomTarget((z) => Math.min(5, +(z + 0.4).toFixed(2)));
+      else if (detail === "out") setZoomTarget((z) => Math.max(0.5, +(z - 0.4).toFixed(2)));
+      else if (detail === "reset") setZoomTarget(1);
+    };
+    window.addEventListener("atlante:tl-zoom", onZoom);
+    return () => window.removeEventListener("atlante:tl-zoom", onZoom);
+  }, []);
   const [hover, setHover] = useState<Tip | null>(null);
   const [pop, setPop] = useState<Popover | null>(null);
   const [selPid, setSelPid] = useState<string | null>(null);
@@ -935,12 +964,6 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
             </motion.div>
           )}
         </AnimatePresence>
-
-        <div className="tl-zoom-float" data-testid="tl-zoom-float">
-          <button className="btn sm ghost" onClick={() => setZoomTarget((z) => Math.max(0.5, +(z - 0.4).toFixed(2)))} data-testid="tl-zoom-out" aria-label="Riduci zoom">−</button>
-          <span className="muted tnum" style={{ fontSize: 12, width: 42, textAlign: "center" }}>{Math.round(zoom * 100)}%</span>
-          <button className="btn sm ghost" onClick={() => setZoomTarget((z) => Math.min(5, +(z + 0.4).toFixed(2)))} data-testid="tl-zoom-in" aria-label="Aumenta zoom">+</button>
-        </div>
       </div>
 
       {hover && !pop && (
