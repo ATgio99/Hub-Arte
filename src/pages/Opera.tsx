@@ -212,67 +212,7 @@ export default function Opera() {
         </Section>
       )}
 
-      {/* Sezione gruppo: altre opere dello stesso complesso */}
-      {siblings.length > 0 && (
-        <Section eyebrow="Complesso" title={`Opere di ${group!.name}`}>
-          <p className="muted" style={{ fontSize: 13.5, marginTop: -8, marginBottom: 16, maxWidth: "58ch" }}>
-            Quest'opera fa parte del complesso di <b>{group!.name}</b>{group!.city ? ` a ${group!.city}` : ""}. Ecco le altre opere collegate.
-          </p>
-          <div className="grid-works">{siblings.map((r) => <WorkCard key={r.id} work={r} />)}</div>
-        </Section>
-      )}
-
-      {terms.length > 0 && (
-        <Section eyebrow="Glossario" title="Termini collegati">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: 14 }}>
-            {terms.map((t) => (
-              <Link to={`/glossario?t=${t.id}`} key={t.id} className="card hover" style={{ padding: "16px 18px", display: "block" }} data-testid={`term-${t.id}`}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <h4 style={{ fontSize: 18 }}>{t.term}</h4>
-                  {t.is_archetype && <span className="tag" style={{ color: "var(--c-term)", borderColor: "var(--c-term)" }}>archetipo</span>}
-                </div>
-                <p className="muted" style={{ fontSize: 13.5, marginTop: 6, lineHeight: 1.55 }}>{t.definition}</p>
-              </Link>
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {conns.length > 0 && (
-        <Section eyebrow="Sinapsi" title="Connessioni">
-          <div>
-            {conns.map((c) => {
-              const otherIsSource = !(c.source_type === "work" && c.source_id === w.id);
-              const ot = otherIsSource ? c.source_type : c.target_type;
-              const oid = otherIsSource ? c.source_id : c.target_id;
-              return (
-                <div className="conn-row" key={c.id}>
-                  <span className="conn-kind">{KIND_LABEL[c.kind] ?? c.kind}</span>
-                  <div>
-                    <div style={{ marginBottom: 3 }}>
-                      <span className="muted" style={{ fontSize: 12 }}>{ENTITY_LABEL[ot]} · </span>
-                      <EntityLink type={ot} id={oid} label={entityLabel(ix, ot, oid)} />
-                    </div>
-                    <div className="muted" style={{ fontSize: 14 }}>{c.description}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </Section>
-      )}
-
-      {related.length > 0 && (
-        <Section eyebrow="Vicinanze" title="Opere connesse">
-          <div className="grid-works">{related.map((r) => <WorkCard key={r.id} work={r} />)}</div>
-        </Section>
-      )}
-
-      {/* === Banner connessioni con anteprima opera collegata ===
-          Mostra un banner per ogni connessione a un'altra opera, con:
-          - tipo di legame (influenza, rielaborazione, ecc.)
-          - direzione: quest'opera → opera collegata (o viceversa)
-          - anteprima visiva dell'opera collegata (immagine + titolo) */}
+      {/* === 1. Opere collegate (banner con anteprima + descrizione completa) === */}
       {conns.filter(c => {
         const otherIsSource = !(c.source_type === "work" && c.source_id === w.id);
         const ot = otherIsSource ? c.source_type : c.target_type;
@@ -289,7 +229,6 @@ export default function Opera() {
               const otherWorkId = otherIsSource ? c.source_id : c.target_id;
               const otherWork = ix.workById.get(otherWorkId);
               if (!otherWork) return null;
-              // Direzione: true = quest'opera influenza l'altra; false = l'altra influenza questa
               const thisIsSource = !otherIsSource;
               return (
                 <Link
@@ -303,11 +242,9 @@ export default function Opera() {
                     transition: "border-color .2s, box-shadow .2s",
                   }}
                 >
-                  {/* Anteprima immagine opera collegata */}
                   <div style={{ width: 80, height: 80, borderRadius: 8, overflow: "hidden", flexShrink: 0, border: "1px solid var(--line-soft)" }}>
                     <WorkImage work={otherWork} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
-                  {/* Info connessione */}
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
                       <span className="tag" style={{ color: "var(--gold-deep)", borderColor: "var(--gold)", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.04em", fontWeight: 700 }}>
@@ -319,8 +256,8 @@ export default function Opera() {
                     </div>
                     <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }}>{otherWork.title}</div>
                     {c.description && (
-                      <div style={{ fontSize: 13, color: "var(--ink-soft)", fontStyle: "italic", lineHeight: 1.4 }}>
-                        "{c.description.slice(0, 120)}{c.description.length > 120 ? "…" : ""}"
+                      <div style={{ fontSize: 13, color: "var(--ink-soft)", fontStyle: "italic", lineHeight: 1.5 }}>
+                        "{c.description}"
                       </div>
                     )}
                   </div>
@@ -328,6 +265,40 @@ export default function Opera() {
               );
             })}
           </div>
+        </Section>
+      )}
+
+      {/* === 2. Termini collegati === */}
+      {terms.length > 0 && (
+        <Section eyebrow="Glossario" title="Termini collegati">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: 14 }}>
+            {terms.map((t) => (
+              <Link to={`/glossario?t=${t.id}`} key={t.id} className="card hover" style={{ padding: "16px 18px", display: "block" }} data-testid={`term-${t.id}`}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <h4 style={{ fontSize: 18 }}>{t.term}</h4>
+                  {t.is_archetype && <span className="tag" style={{ color: "var(--c-term)", borderColor: "var(--c-term)" }}>archetipo</span>}
+                </div>
+                <p className="muted" style={{ fontSize: 13.5, marginTop: 6, lineHeight: 1.55 }}>{t.definition}</p>
+              </Link>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {/* === 3. Opere nello stesso complesso === */}
+      {siblings.length > 0 && (
+        <Section eyebrow="Complesso" title={`Opere di ${group!.name}`}>
+          <p className="muted" style={{ fontSize: 13.5, marginTop: -8, marginBottom: 16, maxWidth: "58ch" }}>
+            Quest'opera fa parte del complesso di <b>{group!.name}</b>{group!.city ? ` a ${group!.city}` : ""}. Ecco le altre opere collegate.
+          </p>
+          <div className="grid-works">{siblings.map((r) => <WorkCard key={r.id} work={r} />)}</div>
+        </Section>
+      )}
+
+      {/* === 4. Opere connesse nelle vicinanze === */}
+      {related.length > 0 && (
+        <Section eyebrow="Vicinanze" title="Opere connesse">
+          <div className="grid-works">{related.map((r) => <WorkCard key={r.id} work={r} />)}</div>
         </Section>
       )}
 
