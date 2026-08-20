@@ -87,17 +87,9 @@ export function clearLastArtistiSearch(): void {
 
 // --- Ultima ricerca nel grafo Rete ---
 // Salviamo il focusNode (formato "type:id"), il searchQuery testuale, i filtri
-// attivi (tipi/legami nascosti), il nodo selezionato e la posizione della
-// camera (zoom/pan/rotazione). All'apertura della pagina Rete, questi valori
-// vengono ripristinati così l'utente ritrova la sua ultima sessione.
-// Doppio click su "Rete" nel menu cancella tutto.
-export interface CameraState {
-  // 3D: posizione camera (x,y,z). 2D: x,y sono il centro, z è lo zoom.
-  x?: number;
-  y?: number;
-  z?: number;
-}
-
+// attivi (tipi/legami nascosti) e il nodo selezionato. All'apertura della
+// pagina Rete, questi valori vengono ripristinati così l'utente ritrova la
+// sua ultima sessione. Doppio click su "Rete" nel menu cancella tutto.
 export interface ReteSearchState {
   focusNode: string | null;
   searchQuery: string;
@@ -107,8 +99,6 @@ export interface ReteSearchState {
   // Nodo selezionato (click su sfera) — formato "type:id", ripristinato come
   // selezione attiva al ritorno nella pagina Rete.
   selId?: string | null;
-  // Posizione camera salvata all'uscita dalla pagina.
-  camera?: CameraState | null;
 }
 
 export function getLastRete(): ReteSearchState | null {
@@ -123,7 +113,6 @@ export function getLastRete(): ReteSearchState | null {
       hideTypes: Array.isArray(parsed.hideTypes) ? parsed.hideTypes : [],
       hideKinds: Array.isArray(parsed.hideKinds) ? parsed.hideKinds : [],
       selId: typeof parsed.selId === "string" ? parsed.selId : null,
-      camera: (parsed.camera && typeof parsed.camera === "object") ? parsed.camera : null,
     };
   } catch { return null; }
 }

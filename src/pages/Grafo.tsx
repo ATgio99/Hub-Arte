@@ -206,53 +206,23 @@ export default function Grafo() {
     window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   }, [focusNode, searchQuery, hideTypes, hideKinds, sel, restored]);
 
-  // Salva la posizione della camera quando si lascia la pagina (cambio rotta
-  // o chiusura tab). Così, al ritorno, l'utente ritrova la stessa vista 3D/2D.
-  // Usiamo beforeunload perché si attiva anche quando si naviga via con Link.
-  useEffect(() => {
-    if (!restored) return;
-    const saveCamera = () => {
-      try {
-        const last = getLastRete();
-        if (!last) return;
-        let camera: { x?: number; y?: number; z?: number } | null = null;
-        if (mode === "3d" && fg3d.current) {
-          const cam = fg3d.current.camera?.();
-          if (cam && typeof cam.x === "number" && typeof cam.y === "number" && typeof cam.z === "number") {
-            camera = { x: cam.x, y: cam.y, z: cam.z };
-          }
-        } else if (mode === "2d" && fg2d.current) {
-          const z = fg2d.current.zoom?.();
-          const center = fg2d.current.center?.();
-          if (typeof z === "number" && center) {
-            camera = { x: center.x, y: center.y, z };
-          }
-        }
-        if (camera) {
-          setLastRete({ ...last, camera });
-        }
-      } catch { /* ignore */ }
-    };
-    // Salva al cambio rotta (React Router non emette beforeunload, ma visibilità
-    // e popstate sì). Usiamo visibilitychange come fallback.
-    window.addEventListener("beforeunload", saveCamera);
-    window.addEventListener("pagehide", saveCamera);
-    document.addEventListener("visibilitychange", saveCamera);
-    return () => {
-      // Salva anche quando il componente viene smontato (cambio pagina con Link)
-      saveCamera();
-      window.removeEventListener("beforeunload", saveCamera);
-      window.removeEventListener("pagehide", saveCamera);
-      document.removeEventListener("visibilitychange", saveCamera);
-    };
-  }, [restored, mode]);
-
   // Ripristina la selezione (nodo cliccato) DOPO che il grafo è stato calcolato.
   // Lo facciamo in un effetto separato perché `graph.nodes` dipende da filtri e
   // focusNode, e vogliamo essere sicuri che il nodo esista ancora.
-  // NOTA: la dichiarazione di `selRestored` e del suo useEffect è posposta a
-  // dopo `const graph` (vedi sotto) per evitare problemi di TDZ (Temporal
-  // Dead Zone) con il bundler minificato di produzione.
+  const [selRestored, setSelRestored] = useState(false);
+  useEffect(() => {
+    if (!restored || selRestored) return;
+    const last = getLastRete();
+    if (last?.selId) {
+      // Cerca il nodo nel grafo corrente. Se i filtri lo nascondono, non lo
+      // selezioniamo (evitiamo di mostrare un dettaglio orfano).
+      const node = graph.nodes.find((n: any) => n.id === last.selId);
+      if (node) {
+        setSel(node);
+      }
+    }
+    setSelRestored(true);
+  }, [restored, selRestored, graph.nodes]);
 
   // Ascolta il "doppio click su Rete" dalla sidebar: resetta il grafo
   // (svuota focusNode + searchQuery + selezione + filtri). Quando l'utente è già
@@ -366,23 +336,6 @@ export default function Grafo() {
 
     return { nodes: [...nodeMap.values()], links };
   }, [ix, hideTypes, hideKinds, inTime, focusNode]);
-
-  // Ripristina la selezione (nodo cliccato) DOPO che il grafo è stato calcolato.
-  // Lo facciamo in un effetto separato perché `graph.nodes` dipende da filtri e
-  // focusNode, e vogliamo essere sicuri che il nodo esista ancora.
-  // Deve stare QUI (dopo `const graph`) per evitare TDZ nel bundler minificato.
-  const [selRestored, setSelRestored] = useState(false);
-  useEffect(() => {
-    if (!restored || selRestored) return;
-    const last = getLastRete();
-    if (last?.selId) {
-      const node = graph.nodes.find((n: any) => n.id === last.selId);
-      if (node) {
-        setSel(node);
-      }
-    }
-    setSelRestored(true);
-  }, [restored, selRestored, graph.nodes]);
 
   const adj = useMemo(() => {
     const m = new Map<string, Set<string>>();
@@ -509,6 +462,19 @@ export default function Grafo() {
     const t = typeof l.target === "object" ? l.target.id : l.target;
     const on = neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId);
     return on ? baseColor : baseColor + "1a"; // ~10% opacity se non in evidenza
+  }, [neighbors, focusId]);
+
+  // Colore della freccia direzionale — separato dal linkColor perché le frecce
+  // devono restare visibili anche sui link "off" quando un nodo è selezionato.
+  // Se usassimo link3dColor, i link off avrebbero frecce a ~10% opacity (invisibili).
+  // Qui invece: link ON = colore pieno; link OFF = opacità ~40% (visibile ma tenue).
+  const arrow3dColor = useCallback((l: any) => {
+    const baseColor = KIND_COLOR[l.kind] ?? INK;
+    if (!neighbors) return baseColor + "88"; // ~53% opacity nella vista d'insieme
+    const s = typeof l.source === "object" ? l.source.id : l.source;
+    const t = typeof l.target === "object" ? l.target.id : l.target;
+    const on = neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId);
+    return on ? baseColor : baseColor + "66"; // ~40% opacity per i link off
   }, [neighbors, focusId]);
 
   const restartFocus = () => { fg2d.current?.d3ReheatSimulation?.(); fg3d.current?.d3ReheatSimulation?.(); };
@@ -667,21 +633,21 @@ export default function Grafo() {
             // "luogo" non ha freccia (l'opera è "in" la città, ma è un
             // raggruppamento geografico, non un legame direzionale).
             const directional = ["committenza", "maestro-allievo", "influenza", "rielaborazione", "evoluzione", "contrasto"];
-            return directional.includes(l.kind) ? 3.5 : 0;
+            if (!directional.includes(l.kind)) return 0;
+            // Quando un nodo è selezionato/hover, ingrandisci le frecce dei
+            // link ON così sono ben visibili; riduci quelle dei link OFF.
+            const s = typeof l.source === "object" ? l.source.id : l.source;
+            const t = typeof l.target === "object" ? l.target.id : l.target;
+            if (neighbors) {
+              const on = neighbors.has(s) && neighbors.has(t) && (s === focusId || t === focusId);
+              return on ? 6 : 2.5;
+            }
+            return 3.5; // vista d'insieme
           }}
           linkDirectionalArrowRelPos={0.85}
-          linkDirectionalArrowColor={link3dColor}
+          linkDirectionalArrowColor={arrow3dColor}
           onEngineTick={setup3d}
-          onEngineStop={() => {
-            // Il motore si è fermato: ripristina la posizione della camera
-            // salvata nella sessione precedente, se esiste.
-            const last = getLastRete();
-            if (last?.camera && typeof last.camera.x === "number" && typeof last.camera.y === "number" && typeof last.camera.z === "number") {
-              try {
-                fg3d.current?.cameraPosition?.({ x: last.camera.x, y: last.camera.y, z: last.camera.z }, 0);
-              } catch { /* ignore */ }
-            }
-          }}
+          onEngineStop={() => { /* il motore si ferma da solo dopo cooldown */ }}
           onNodeHover={(n: any) => { setHoverId(n ? n.id : null); if (wrapRef.current) wrapRef.current.style.cursor = n ? "pointer" : "default"; }}
           onNodeClick={(n: any) => { setSel(n); }}
           onLinkClick={(l: any) => { setSel({ id: typeof l.source === "object" ? l.source.id : l.source, etype: "link", eid: "", label: "", deg: 0, linkKind: l.kind, linkDesc: l.desc, linkSource: l.source, linkTarget: l.target }); }}
@@ -731,18 +697,6 @@ export default function Grafo() {
           linkLabel={(l: any) => `${KIND_LABEL[l.kind] || l.kind}${l.desc ? " — " + l.desc : ""}`}
           nodeLabel={(n: any) => `${n.label} (${n.etype === "city" ? "Luogo" : ENTITY_LABEL[n.etype as EntityType] || n.etype}) · ${n.deg} connessioni`}
           onBackgroundClick={(ev: any) => snapSelect2d(ev)}
-          onEngineStop={() => {
-            // Ripristina la posizione della camera 2D salvata.
-            const last = getLastRete();
-            if (last?.camera && typeof last.camera.z === "number") {
-              try {
-                if (typeof last.camera.x === "number" && typeof last.camera.y === "number") {
-                  fg2d.current?.centerAt?.(last.camera.x, last.camera.y, 0);
-                }
-                fg2d.current?.zoom?.(last.camera.z, 0);
-              } catch { /* ignore */ }
-            }
-          }}
           nodeCanvasObject={(node: any, ctx: CanvasRenderingContext2D, scale: number) => {
             const dimmed = neighbors && !neighbors.has(node.id);
             const isFocus = node.id === focusId;
