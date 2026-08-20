@@ -473,6 +473,8 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
   const [searchQ, setSearchQ] = useState("");
   // Filtri per tipo periodo (epoca/corrente/popolo) — solo nella vista periodi.
   const [hideTypes, setHideTypes] = useState<Set<string>>(new Set());
+  // Filtri per categoria autore (Pittori, Scultori, ecc.) — solo nella vista autori.
+  const [hideCats, setHideCats] = useState<Set<string>>(new Set());
   // PID del periodo da evidenziare (pulse) dopo click su risultato di ricerca.
   const [highlightPid, setHighlightPid] = useState<string | null>(null);
 

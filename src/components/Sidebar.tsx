@@ -533,6 +533,17 @@ export default function Sidebar() {
 
   // chiudi il drawer al cambio rotta
   useEffect(() => { setDrawer(false); }, [loc.pathname]);
+
+  // Quando il drawer si chiude, rimuovi il focus da eventuali elementi al suo
+  // interno — evita il warning "Blocked aria-hidden on focused element".
+  useEffect(() => {
+    if (drawer) return;
+    const active = document.activeElement as HTMLElement | null;
+    if (active && active.closest?.(".sbx-drawer")) {
+      active.blur();
+    }
+  }, [drawer]);
+
   useEffect(() => {
     if (!drawer) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setDrawer(false); };

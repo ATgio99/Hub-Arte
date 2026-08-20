@@ -549,34 +549,39 @@ a.hero-stat:hover { background: var(--bg-2); }
 
 /* Controlli zoom nel riquadro filtri (sideFiltersBlock).
    Tre bottoni quadrati uniformi: − (zoom out), reset, + (zoom in).
-   Stile pulito e proporzionato, con hover e focus. */
+   Sfondo chiaro per renderli ben visibili. */
 .tl-zoom-controls {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--bg-2); border: 1px solid var(--line);
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--bg); border: 1px solid var(--gold);
   border-radius: 8px; padding: 3px;
+  box-shadow: 0 1px 3px rgba(184,138,46,.15);
 }
 .tl-zoom-btn {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 30px; height: 30px;
+  width: 32px; height: 32px;
   border: 0; border-radius: 6px;
-  background: transparent; color: var(--ink-soft);
+  background: transparent; color: var(--gold-deep);
   cursor: pointer; padding: 0;
-  transition: background .15s, color .15s;
+  transition: background .15s, color .15s, transform .1s;
 }
 .tl-zoom-btn:hover {
-  background: var(--bg);
-  color: var(--gold-deep);
+  background: rgba(184,138,46,.12);
+  transform: scale(1.08);
+}
+.tl-zoom-btn:active {
+  transform: scale(0.95);
 }
 .tl-zoom-btn:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 1px;
 }
-/* Reset button — leggermente più piccolo e con colore tenue */
+/* Reset button — colore tenue, ma visibile */
 .tl-zoom-btn.tl-zoom-reset {
   color: var(--ink-dim);
 }
 .tl-zoom-btn.tl-zoom-reset:hover {
   color: var(--gold-deep);
+  background: rgba(184,138,46,.10);
 }
 
 .ev-popover {
