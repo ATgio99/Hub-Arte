@@ -209,20 +209,9 @@ export default function Grafo() {
   // Ripristina la selezione (nodo cliccato) DOPO che il grafo è stato calcolato.
   // Lo facciamo in un effetto separato perché `graph.nodes` dipende da filtri e
   // focusNode, e vogliamo essere sicuri che il nodo esista ancora.
-  const [selRestored, setSelRestored] = useState(false);
-  useEffect(() => {
-    if (!restored || selRestored) return;
-    const last = getLastRete();
-    if (last?.selId) {
-      // Cerca il nodo nel grafo corrente. Se i filtri lo nascondono, non lo
-      // selezioniamo (evitiamo di mostrare un dettaglio orfano).
-      const node = graph.nodes.find((n: any) => n.id === last.selId);
-      if (node) {
-        setSel(node);
-      }
-    }
-    setSelRestored(true);
-  }, [restored, selRestored, graph.nodes]);
+  // NOTA: la dichiarazione di `selRestored` e del suo useEffect è posposta a
+  // dopo `const graph` (vedi sotto) per evitare problemi di TDZ (Temporal
+  // Dead Zone) con il bundler minificato di produzione.
 
   // Ascolta il "doppio click su Rete" dalla sidebar: resetta il grafo
   // (svuota focusNode + searchQuery + selezione + filtri). Quando l'utente è già
@@ -336,6 +325,23 @@ export default function Grafo() {
 
     return { nodes: [...nodeMap.values()], links };
   }, [ix, hideTypes, hideKinds, inTime, focusNode]);
+
+  // Ripristina la selezione (nodo cliccato) DOPO che il grafo è stato calcolato.
+  // Lo facciamo in un effetto separato perché `graph.nodes` dipende da filtri e
+  // focusNode, e vogliamo essere sicuri che il nodo esista ancora.
+  // Deve stare QUI (dopo `const graph`) per evitare TDZ nel bundler minificato.
+  const [selRestored, setSelRestored] = useState(false);
+  useEffect(() => {
+    if (!restored || selRestored) return;
+    const last = getLastRete();
+    if (last?.selId) {
+      const node = graph.nodes.find((n: any) => n.id === last.selId);
+      if (node) {
+        setSel(node);
+      }
+    }
+    setSelRestored(true);
+  }, [restored, selRestored, graph.nodes]);
 
   const adj = useMemo(() => {
     const m = new Map<string, Set<string>>();
