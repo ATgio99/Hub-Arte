@@ -334,39 +334,31 @@ export default function Grafo() {
     // === Collegamenti autore ↔ opera (automatici, filtrabili da hideKinds) ===
     // Quando sia "artist" che "work" sono visibili E il legame "autore" non è
     // disattivato in hideKinds, collega automaticamente ogni opera al suo autore.
-    // Importante: aggiungiamo TUTTI gli autori (che passano il filtro temporale)
-    // al nodeMap, non solo quelli con connessioni documentate. Altrimenti, se
-    // tutti gli altri legami sono disattivati, gli autori senza connessioni
-    // documentate non apparirebbero nel grafo.
     if (!hideTypes.has("artist") && !hideTypes.has("work") && !hideKinds.has("autore" as any)) {
-      // 1) Aggiungi tutti gli autori che passano il filtro temporale
-      for (const a of ix.ds.artists) {
-        if (!inTime("artist", a.id)) continue;
-        const artistKey = `artist:${a.id}`;
-        if (!nodeMap.has(artistKey)) {
-          nodeMap.set(artistKey, { id: artistKey, etype: "artist", eid: a.id, label: a.name, deg: 0 });
-        }
-      }
-      // 2) Aggiungi tutte le opere che hanno almeno un autore nel grafo
+      // Prima: assicurati che tutte le opere che hanno un autore presente
+      // nel grafo siano nel nodeMap (anche se non hanno connessioni documentate).
       for (const a of ix.ds.artists) {
         const artistKey = `artist:${a.id}`;
-        if (!nodeMap.has(artistKey)) continue;
+        if (!nodeMap.has(artistKey)) continue; // autore filtrato/non nel grafo
+        // Trova tutte le opere di questo autore
         for (const w of ix.ds.works) {
           if (!w.artist_ids?.includes(a.id)) continue;
-          if (!inTime("work", w.id)) continue;
+          if (!inTime("work", w.id)) continue; // rispetta il filtro temporale
           const workKey = `work:${w.id}`;
           if (!nodeMap.has(workKey)) {
+            // Aggiungi l'opera al nodeMap anche se non ha connessioni documentate
             nodeMap.set(workKey, { id: workKey, etype: "work", eid: w.id, label: w.title, deg: 0 });
           }
         }
       }
-      // 3) Crea i link autore ↔ opera
+      // Poi: crea i link autore ↔ opera
       for (const wn of [...nodeMap.values()].filter((n) => n.etype === "work")) {
         const w = ix.workById.get(wn.eid);
         if (!w?.artist_ids) continue;
         for (const aid of w.artist_ids) {
           const artistNode = nodeMap.get(`artist:${aid}`);
           if (!artistNode) continue;
+          // Evita duplicati se il link esiste già
           const exists = links.some(l => {
             const s = typeof l.source === "object" ? l.source.id : l.source;
             const t = typeof l.target === "object" ? l.target.id : l.target;
