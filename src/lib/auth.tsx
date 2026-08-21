@@ -13,6 +13,9 @@ interface AuthState {
   signUp: (email: string, password: string) => Promise<{ error: string | null }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
+  resetPassword: (email: string) => Promise<{ error: string | null }>;
+  updateNewPassword: (newPassword: string) => Promise<{ error: string | null }>;
+  passwordRecoveryActive: boolean;
 }
 
 const AuthCtx = createContext<AuthState | null>(null);
@@ -33,19 +36,21 @@ export function isAdminEmail(email?: string | null): boolean {
 
 // Determina il redirect URL dopo conferma email (deve essere l'URL corrente dell'app)
 function getRedirectTo(): string {
-  // In PWA su iPhone, usa l'URL corrente (es. https://tuosito.netlify.app)
-  // Non usare window.location.href perché in PWA potrebbe essere diverso
   if (typeof window !== "undefined") {
-    return window.location.origin + window.location.pathname;
+    return window.location.origin;
   }
   return "";
 }
+
+let _passwordRecoveryActive = false;
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [, forceRecoveryRender] = useState(0);
+  const triggerRecoveryUpdate = () => forceRecoveryRender(v => v + 1);
 
   useEffect(() => {
     // Recupera sessione esistente
@@ -62,12 +67,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     // Ascolta cambiamenti auth (login, logout, token refresh)
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
+      (event, session) => {
         setSession(session);
         const u = session?.user ?? null;
         setUser(u);
         setIsAdmin(isAdminEmail(u?.email));
         setLoading(false);
+
+        if (event === "PASSWORD_RECOVERY") {
+          _passwordRecoveryActive = true;
+          triggerRecoveryUpdate();
+          if (typeof window !== "undefined" && !window.location.hash.includes("/login")) {
+            window.location.hash = "#/login";
+          }
+        }
       }
     );
 
@@ -89,6 +102,39 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) return { error: error.message };
     return { error: null };
+  }, []);
+
+  const resetPassword = useCallback(async (email: string) => {
+    const redirectTo = getRedirectTo();
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: redirectTo || undefined,
+      });
+      if (error) {
+        let msg = error.message || "Errore durante l'invio dell'email.";
+        if (msg.includes("User not found")) msg = "Nessun account trovato con questa email.";
+        if (msg.includes("rate limit")) msg = "Troppi tentativi. Riprova tra qualche minuto.";
+        return { error: msg };
+      }
+      return { error: null };
+    } catch (e: any) {
+      return { error: e?.message || "Errore di rete." };
+    }
+  }, []);
+
+  const updateNewPassword = useCallback(async (newPassword: string) => {
+    try {
+      const { error } = await supabase.auth.updateUser({ password: newPassword });
+      if (error) {
+        let msg = error.message || "Errore durante l'aggiornamento.";
+        if (msg.includes("Password should be at least")) msg = "La password deve avere almeno 6 caratteri.";
+        return { error: msg };
+      }
+      _passwordRecoveryActive = false;
+      return { error: null };
+    } catch (e: any) {
+      return { error: e?.message || "Errore di rete." };
+    }
   }, []);
 
   const signOut = useCallback(async () => {
@@ -130,7 +176,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <AuthCtx.Provider value={{ user, session, loading, isAdmin, signUp, signIn, signOut }}>
+    <AuthCtx.Provider value={{ user, session, loading, isAdmin, signUp, signIn, signOut, resetPassword, updateNewPassword, passwordRecoveryActive: _passwordRecoveryActive }}>
       {children}
     </AuthCtx.Provider>
   );

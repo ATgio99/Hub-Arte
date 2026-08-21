@@ -1,15 +1,20 @@
-import { useMemo, useRef, useState, useCallback, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useMemo, useRef, useState, useCallback, useEffect, type ReactNode } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useData, useTimeRange } from "../lib/store";
 import { periodMidYear, fmtYear } from "../lib/data";
 import { FilterNote } from "../components/ui";
 import Fullscreen from "../components/Fullscreen";
+import TimeRangeSlider from "../components/TimeRangeSlider";
 import PeriodDossier from "../components/PeriodDossier";
 import { usePrefersReducedMotion, EASE_OUT } from "../lib/motion";
 import type { Period, ArtEvent, Artist } from "../lib/types";
 
 const TYPE_COLOR: Record<string, string> = { epoca: "#b88a2e", corrente: "#b9692c", popolo: "#4f7d72" };
+// Nota: "popolo" è mantenuto nel mapping colore per coerenza dei dati, ma NON
+// viene più mostrato come filtro (rimosso su richiesta utente). Vedi
+// TIMELINE_TYPES sotto che elenca solo i tipi filtrabili.
+const TIMELINE_TYPES = ["epoca", "corrente"] as const;
 const EVENT_COLOR: Record<string, string> = { politico: "#a8483f", religioso: "#9a6a92", culturale: "#6e8350", tecnologico: "#5f7e8c" };
 const EVENT_LABEL: Record<string, string> = { politico: "Politico", religioso: "Religioso", culturale: "Culturale", tecnologico: "Tecnologico" };
 
@@ -230,7 +235,7 @@ function EventCard({ e, onGo, ix }: { e: ArtEvent; onGo: (pid: string) => void; 
 // ═══════════════════════════════════════════════════════════════════════════
 //  ARTIST TIMELINE CANVAS
 // ═══════════════════════════════════════════════════════════════════════════
-function ArtistTimelineCanvas({ inFullscreen }: { inFullscreen: boolean }) {
+function ArtistTimelineCanvas({ inFullscreen, hideCats }: { inFullscreen: boolean; hideCats: Set<string> }) {
   const ix = useData();
   const { range, artistIn } = useTimeRange();
   const nav = useNavigate();
@@ -238,7 +243,11 @@ function ArtistTimelineCanvas({ inFullscreen }: { inFullscreen: boolean }) {
   const [hover, setHover] = useState<Tip | null>(null);
 
   const allArtists = ix.ds.artists;
-  const filtered = useMemo(() => allArtists.filter(artistIn), [allArtists, artistIn]);
+  // Filtra per range temporale E per categoria (hideCats).
+  const filtered = useMemo(
+    () => allArtists.filter((a) => artistIn(a) && !hideCats.has(artistCategory(a))),
+    [allArtists, artistIn, hideCats]
+  );
   const { items, totalLanes, categories } = useMemo(() => layoutArtistLanes(filtered), [filtered]);
 
   const withDates = allArtists.filter((a) => a.birth != null).length;
@@ -260,6 +269,17 @@ function ArtistTimelineCanvas({ inFullscreen }: { inFullscreen: boolean }) {
   const reducedMotion = usePrefersReducedMotion();
   const [zoomTarget, setZoomTarget] = useState(1);
   const zoom = useSmoothZoom(zoomTarget, reducedMotion);
+  // Ascolta i comandi zoom esterni (barra superiore / sezione VISTA fullscreen).
+  useEffect(() => {
+    const onZoom = (e: Event) => {
+      const detail = (e as CustomEvent).detail as "in" | "out" | "reset";
+      if (detail === "in") setZoomTarget((z) => Math.min(5, +(z + 0.4).toFixed(2)));
+      else if (detail === "out") setZoomTarget((z) => Math.max(0.5, +(z - 0.4).toFixed(2)));
+      else if (detail === "reset") setZoomTarget(1);
+    };
+    window.addEventListener("atlante:tl-zoom", onZoom);
+    return () => window.removeEventListener("atlante:tl-zoom", onZoom);
+  }, []);
   const PPY_Z = PPY * zoom;
   const xZ = useCallback((year: number) => PAD + (year - minY) * PPY_Z, [minY, PPY_Z]);
   const widthZ = Math.max((maxY - minY) * PPY_Z + PAD * 2, 600);
@@ -302,10 +322,10 @@ function ArtistTimelineCanvas({ inFullscreen }: { inFullscreen: boolean }) {
         ))}
       </div>
       <div style={{ marginBottom: 12, fontSize: 13, color: "var(--ink-soft)" }}>
-        <b style={{ color: "var(--ink)", fontWeight: 600 }}>{withDates}</b> artisti su {allArtists.length} totali (con date note)
+        <b style={{ color: "var(--ink)", fontWeight: 600 }}>{withDates}</b> autori su {allArtists.length} totali (con date note)
       </div>
 
-      <div className="stage" style={{ overflowX: "auto", overflowY: "auto", flex: inFullscreen ? 1 : undefined, height: inFullscreen ? "100%" : undefined, border: inFullscreen ? 0 : undefined, borderRadius: inFullscreen ? 0 : undefined }}>
+      <div className="stage" style={{ overflowX: "auto", overflowY: "auto", flex: inFullscreen ? 1 : undefined, height: inFullscreen ? "100%" : undefined, border: inFullscreen ? 0 : undefined, borderRadius: inFullscreen ? 0 : undefined, position: "relative" }}>
         <svg width={widthZ} height={height} style={{ display: "block", minWidth: "100%" }}>
           {/* Year ticks */}
           {ticks.map((y) => (
@@ -358,48 +378,62 @@ function ArtistTimelineCanvas({ inFullscreen }: { inFullscreen: boolean }) {
             );
           })}
         </svg>
-      </div>
 
-      {/* Artist detail panel */}
-      <AnimatePresence>
-        {selectedArtist && (
-          <motion.div key={selectedArtist.id} className="tl-inline-dossier"
-            style={{ marginTop: 16 }}
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.4, ease: EASE_OUT }}>
-            <div style={{ background: "var(--bg-1)", border: "1px solid var(--line)", borderRadius: 12, padding: 20 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                <div>
-                  <h3 style={{ fontSize: 18, marginBottom: 4, fontWeight: 600 }}>{selectedArtist.name}</h3>
-                  <div style={{ color: "var(--gold)", fontSize: 13, fontWeight: 500, marginBottom: 8 }}>
-                    {selectedArtist.role || ""} · {selectedArtist.birth ?? "?"}–{selectedArtist.death ?? "?"}
+        {/* Casella info autore — posizionata sotto la barra dell'autore cliccato,
+            dentro i limiti della timeline (width = stageW - 20), con animazione
+            che fa spazio spostando le corsie sotto. Stesso pattern del PeriodDossier. */}
+        <AnimatePresence>
+          {selectedArtist && (
+            <motion.div key={selectedArtist.id} className="tl-inline-dossier" data-testid="tl-artist-dossier"
+              style={{
+                position: "absolute",
+                top: laneY(selectedArtist.lane) + LANE_H + 4,
+                left: 10,
+                right: 10,
+                maxWidth: 720,
+                zIndex: 18,
+              }}
+              initial={reducedMotion ? false : { opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.4, ease: EASE_OUT }}>
+              <div className="dossier" style={{ background: "var(--bg-1)", border: "1px solid var(--line)", borderRadius: 10, padding: 20, margin: 0, maxHeight: 392, overflowY: "auto", boxShadow: "var(--shadow-sm)" }}>
+                <div className="dossier-head">
+                  <div>
+                    <h3 className="dossier-title" style={{ fontSize: 22, marginBottom: 4, fontWeight: 600 }}>{selectedArtist.name}</h3>
+                    <div style={{ color: "var(--gold)", fontSize: 13, fontWeight: 500, marginBottom: 8 }}>
+                      {selectedArtist.role || ""} · {selectedArtist.birth ?? "?"}–{selectedArtist.death ?? "?"}
+                    </div>
                   </div>
+                  <button onClick={() => setSelId(null)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, color: "var(--ink-soft)", padding: "0 4px" }}>&times;</button>
                 </div>
-                <button onClick={() => setSelId(null)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, color: "var(--ink-soft)", padding: "0 4px" }}>&times;</button>
-              </div>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8 }}>
-                {selectedArtist.period_ids.map((pid) => {
-                  const p = ix.periodById.get(pid);
-                  return p ? (
-                    <span key={pid} style={{ fontSize: 12, padding: "3px 8px", borderRadius: 999, background: "var(--bg-2)", color: "var(--ink-soft)", cursor: "pointer" }} onClick={() => nav(`/periodo/${pid}`)}>{p.name}</span>
-                  ) : null;
-                })}
-                {selectedArtist.aka.map((a) => (
-                  <span key={a} style={{ fontSize: 12, padding: "3px 8px", borderRadius: 999, background: "var(--bg-2)", color: "var(--ink-soft)" }}>alias: {a}</span>
-                ))}
-              </div>
-              {selectedArtist.bio && <p className="muted" style={{ fontSize: 14, lineHeight: 1.6, marginBottom: 10 }}>{selectedArtist.bio}</p>}
-              {selectedArtist.innovations.length > 0 && (
-                <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>
-                  <strong>Innovazioni:</strong>
-                  <ul style={{ margin: "4px 0 0 16px" }}>{selectedArtist.innovations.filter(Boolean).map((i) => <li key={i}>{i}</li>)}</ul>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8 }}>
+                  {selectedArtist.period_ids.map((pid) => {
+                    const p = ix.periodById.get(pid);
+                    return p ? (
+                      <span key={pid} style={{ fontSize: 12, padding: "3px 8px", borderRadius: 999, background: "var(--bg-2)", color: "var(--ink-soft)", cursor: "pointer" }} onClick={() => nav(`/periodo/${pid}`)}>{p.name}</span>
+                    ) : null;
+                  })}
+                  {selectedArtist.aka.map((a) => (
+                    <span key={a} style={{ fontSize: 12, padding: "3px 8px", borderRadius: 999, background: "var(--bg-2)", color: "var(--ink-soft)" }}>alias: {a}</span>
+                  ))}
                 </div>
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                {selectedArtist.bio && <p className="muted" style={{ fontSize: 14, lineHeight: 1.6, marginBottom: 10 }}>{selectedArtist.bio}</p>}
+                {selectedArtist.innovations.length > 0 && (
+                  <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>
+                    <strong>Innovazioni:</strong>
+                    <ul style={{ margin: "4px 0 0 16px" }}>{selectedArtist.innovations.filter(Boolean).map((i) => <li key={i}>{i}</li>)}</ul>
+                  </div>
+                )}
+                {/* Tasto per approfondire — uguale al PeriodDossier */}
+                <div style={{ marginTop: 14, display: "flex", gap: 8 }}>
+                  <Link className="btn gold sm" to={`/artista/${selectedArtist.id}`} data-testid="tl-artist-open">Apri la scheda completa →</Link>
+                  <button className="btn sm ghost" onClick={() => setSelId(null)} aria-label="Chiudi anteprima">✕</button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
 
       {hover && (
         <div className="float-tip" style={{ left: Math.min(hover.x + 14, window.innerWidth - 290), top: Math.min(hover.y + 14, window.innerHeight - 120) }}
@@ -420,7 +454,7 @@ export default function Timeline() {
       <div className="page-head">
         <div className="page-eyebrow"><span className="eyebrow">Visualizzazione</span></div>
         <h1 className="page-title">Linea del tempo multilivello</h1>
-        <p className="page-lead">Epoche, popoli e correnti scorrono su corsie parallele: le sovrapposizioni temporali sono visibili, gli archi tracciano i flussi di contaminazione e gli eventi storici ancorano il contesto. Clicca una barra per espandere l'anteprima del periodo — con personaggi, artisti, opere e glossario da ricordare — un pallino per il dettaglio dell'evento.</p>
+        <p className="page-lead">Epoche, popoli e correnti scorrono su corsie parallele: le sovrapposizioni temporali sono visibili, gli archi tracciano i flussi di contaminazione e gli eventi storici ancorano il contesto. Clicca una barra per espandere l'anteprima del periodo — con personaggi, autori, opere e glossario da ricordare — un pallino per il dettaglio dell'evento.</p>
       </div>
       <div className="page-rule" />
       <TimelineShell onFull={setFull} />
@@ -436,45 +470,345 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
   const [showEvents, setShowEvents] = useState(true);
   const [inFull, setInFull] = useState(false);
   const [showArtists, setShowArtists] = useState(false);
+  const [searchQ, setSearchQ] = useState("");
+  // Filtri per tipo periodo (epoca/corrente/popolo) — solo nella vista periodi.
+  const [hideTypes, setHideTypes] = useState<Set<string>>(new Set());
+  // Filtri per categoria autore (Pittori, Scultori, ecc.) — solo nella vista autori.
+  const [hideCats, setHideCats] = useState<Set<string>>(new Set());
+  // PID del periodo da evidenziare (pulse) dopo click su risultato di ricerca.
+  const [highlightPid, setHighlightPid] = useState<string | null>(null);
 
   const allPeriods = ix.ds.periods;
-  const periods = useMemo(() => allPeriods.filter(periodIn), [allPeriods, periodIn]);
+  const periods = useMemo(() => allPeriods.filter((p) => periodIn(p) && !hideTypes.has(p.type)), [allPeriods, periodIn, hideTypes]);
 
-  const controls = (
-    <>
-      <span className={`chip sm ${showFlows ? "active" : ""}`} onClick={() => setShowFlows((v) => !v)} data-testid="tl-flows">↝ flussi</span>
-      <span className={`chip sm ${showEvents ? "active" : ""}`} onClick={() => setShowEvents((v) => !v)} data-testid="tl-events">◆ eventi</span>
-      <span className={`chip sm ${showArtists ? "active" : ""}`} onClick={() => setShowArtists((v) => !v)} data-testid="tl-artists">👤 artisti</span>
-    </>
-  );
+  // Conteggio periodi per tipo (per mostrare il numero accanto al filtro).
+  const typeCounts = useMemo(() => {
+    const c: Record<string, number> = { epoca: 0, corrente: 0, popolo: 0 };
+    for (const p of allPeriods) if (periodIn(p)) c[p.type] = (c[p.type] ?? 0) + 1;
+    return c;
+  }, [allPeriods, periodIn]);
+
+  const toggleType = (t: string) => {
+    setHideTypes((prev) => {
+      const n = new Set(prev);
+      n.has(t) ? n.delete(t) : n.add(t);
+      return n;
+    });
+  };
+
+  // Conteggio autori per categoria (per mostrare il numero accanto al filtro).
+  const catCounts = useMemo(() => {
+    const c: Record<string, number> = {};
+    for (const a of ix.ds.artists) {
+      const cat = artistCategory(a);
+      c[cat] = (c[cat] ?? 0) + 1;
+    }
+    return c;
+  }, [ix.ds.artists]);
+
+  const toggleCat = (cat: string) => {
+    setHideCats((prev) => {
+      const n = new Set(prev);
+      n.has(cat) ? n.delete(cat) : n.add(cat);
+      return n;
+    });
+  };
+
+  // === Ricerca globale ===
+  // Cerca tra periodi (se vista periodi) o artisti (se vista artisti).
+  // Risultati mostrati in un dropdown sotto la barra, come nel grafo.
+  const searchResults = useMemo(() => {
+    const q = searchQ.trim().toLowerCase();
+    if (!q) return [];
+    const results: { type: "period" | "artist"; id: string; label: string; subtitle?: string }[] = [];
+    if (showArtists) {
+      for (const a of ix.ds.artists) {
+        if (
+          a.name.toLowerCase().includes(q) ||
+          a.id.toLowerCase().includes(q) ||
+          a.aka.some((ak) => ak.toLowerCase().includes(q))
+        ) {
+          results.push({ type: "artist", id: a.id, label: a.name, subtitle: a.role || undefined });
+          if (results.length >= 20) break;
+        }
+      }
+    } else {
+      for (const p of ix.ds.periods) {
+        if (p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q)) {
+          results.push({
+            type: "period",
+            id: p.id,
+            label: p.name,
+            subtitle: `${fmtYear(p.year_start)}–${fmtYear(p.year_end)}`,
+          });
+          if (results.length >= 20) break;
+        }
+      }
+    }
+    return results;
+  }, [searchQ, showArtists, ix]);
 
   const legendEntries = showArtists
     ? Object.entries(ARTIST_CAT_COLOR).filter(([c]) => layoutArtistLanes(ix.ds.artists).categories.includes(c))
     : Object.entries(TYPE_COLOR);
 
+  // Toggle chips per flussi/eventi/artisti (usati sia nella barra superiore
+  // che nella colonna destra in fullscreen, per coerenza con il grafo).
+  const ToggleChip = ({ active, onClick, children, testId }: { active: boolean; onClick: () => void; children: ReactNode; testId?: string }) => (
+    <span
+      className={`chip sm ${active ? "active" : ""}`}
+      onClick={onClick}
+      data-testid={testId}
+      style={{ cursor: "pointer", userSelect: "none" }}
+    >
+      {children}
+    </span>
+  );
+
+  // Barra di ricerca — riusata sia in modalità normale (sopra la timeline)
+  // che in fullscreen (dentro il sideFiltersBlock della colonna destra).
+  // Quando si clicca un risultato:
+  //  - periodo: imposta highlightPid per far pulsare la barra, NON naviga via
+  //  - artista: naviga alla scheda (come in Mappa/Rete)
+  const handleSelectResult = (r: { type: "period" | "artist"; id: string }) => {
+    setSearchQ("");
+    if (r.type === "period") {
+      setHighlightPid(r.id);
+      // Auto-reset dopo 2.5s (il pulse dura 2s)
+      setTimeout(() => setHighlightPid(null), 2500);
+    }
+    // Per gli artisti, il Link naviga automaticamente
+  };
+
+  const searchBar = (
+    <div style={{ position: "relative" }}>
+      <input
+        type="text"
+        value={searchQ}
+        onChange={(e) => setSearchQ(e.target.value)}
+        placeholder={showArtists ? "Cerca autore…" : "Cerca periodo…"}
+        data-testid="tl-search"
+        style={{
+          width: "100%", padding: "8px 12px",
+          border: "1px solid var(--line)", borderRadius: 6,
+          background: "var(--bg)", color: "var(--ink)",
+          fontSize: 13, fontFamily: "inherit",
+        }}
+      />
+      {searchQ.trim() && (
+        <div style={{
+          position: "absolute", top: "100%", left: 0, right: 0, zIndex: 50,
+          background: "var(--bg-1)", border: "1px solid var(--line)",
+          borderRadius: "0 0 8px 8px", boxShadow: "0 8px 24px rgba(0,0,0,.12)",
+          maxHeight: 320, overflowY: "auto",
+        }}>
+          {searchResults.length === 0 ? (
+            <div style={{ padding: "12px 14px", color: "var(--ink-dim)", fontSize: 13 }}>
+              Nessun risultato per "{searchQ}".
+            </div>
+          ) : (
+            searchResults.map((r) => {
+              if (r.type === "artist") {
+                return (
+                  <Link
+                    key={`${r.type}:${r.id}`}
+                    to={`/artista/${r.id}`}
+                    onClick={() => setSearchQ("")}
+                    style={{
+                      display: "flex", alignItems: "center", gap: 8,
+                      padding: "8px 12px", borderBottom: "1px solid var(--line-soft)",
+                      textDecoration: "none", color: "var(--ink)",
+                    }}
+                  >
+                    <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#b9692c", flexShrink: 0 }} />
+                    <span style={{ flex: 1, minWidth: 0 }}>
+                      <span style={{ fontSize: 13, fontWeight: 500, display: "block" }}>{r.label}</span>
+                      {r.subtitle && <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{r.subtitle}</span>}
+                    </span>
+                    <span style={{ fontSize: 10, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em" }}>Autore</span>
+                  </Link>
+                );
+              }
+              // Periodo: non naviga, imposta highlightPid per il pulse
+              return (
+                <button
+                  key={`${r.type}:${r.id}`}
+                  onClick={() => handleSelectResult(r)}
+                  style={{
+                    display: "flex", alignItems: "center", gap: 8, width: "100%",
+                    padding: "8px 12px", borderBottom: "1px solid var(--line-soft)",
+                    background: "transparent", border: 0, borderBottomWidth: 1,
+                    cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+                    color: "var(--ink)",
+                  }}
+                >
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#b88a2e", flexShrink: 0 }} />
+                  <span style={{ flex: 1, minWidth: 0 }}>
+                    <span style={{ fontSize: 13, fontWeight: 500, display: "block" }}>{r.label}</span>
+                    {r.subtitle && <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{r.subtitle}</span>}
+                  </span>
+                  <span style={{ fontSize: 10, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em" }}>Periodo</span>
+                </button>
+              );
+            })
+          )}
+        </div>
+      )}
+    </div>
+  );
+
+  // Colonna destra: ricerca, tempo, vista (con tutti i filtri in stile lista).
+  // Sempre visibile (sia in modalità normale che in fullscreen), come nel grafo.
+  // La sezione "Legenda" è stata rimossa su richiesta utente (non utile).
+  // Tutti i filtri (flussi, eventi, autori, epoca, corrente) sono sotto "Vista"
+  // con stile lista (pallino + nome + conteggio a destra), non pulsanti.
+  const sideFiltersBlock = (
+    <div className="panel" data-testid="tl-fs-filters">
+      <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Cerca</div>
+      <div style={{ marginBottom: 14 }}>
+        {searchBar}
+      </div>
+      <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Tempo</div>
+      <div style={{ margin: "0 -4px 14px" }}>
+        <TimeRangeSlider compact />
+      </div>
+      <div className="panel-title" style={{ fontSize: 15, marginBottom: 8 }}>Vista</div>
+      {/* Comandi zoom — sempre visibili nel riquadro filtri (non solo fullscreen).
+          Stile tl-zoom-float con simboli chiari e dimensioni uniformi. */}
+      <div className="tl-zoom-controls" style={{ marginBottom: 10 }}>
+        <button className="tl-zoom-btn" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "out" }))} aria-label="Riduci zoom" data-testid="tl-zoom-out" title="Riduci zoom">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M5 12h14" /></svg>
+        </button>
+        <button className="tl-zoom-btn tl-zoom-reset" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "reset" }))} aria-label="Reset zoom" data-testid="tl-zoom-reset" title="Reset zoom">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8" /><path d="M3 3v5h5" /></svg>
+        </button>
+        <button className="tl-zoom-btn" onClick={() => window.dispatchEvent(new CustomEvent("atlante:tl-zoom", { detail: "in" }))} aria-label="Aumenta zoom" data-testid="tl-zoom-in" title="Aumenta zoom">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
+        </button>
+      </div>
+      {/* Tutti i filtri in stile lista (pallino + nome + conteggio).
+          Comprende: flussi, eventi, autori (toggle vista) + epoca/corrente (vista periodi)
+          o Pittori/Scultori/... (vista autori). */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 14 }}>
+        {/* Toggle: flussi */}
+        <button
+          onClick={() => setShowFlows((v) => !v)}
+          style={{
+            display: "flex", alignItems: "center", gap: 8, width: "100%",
+            padding: "6px 4px", background: "transparent", border: 0,
+            cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+            color: "var(--ink)", opacity: showFlows ? 1 : 0.4,
+          }}
+        >
+          <span className="dot" style={{ background: "#b88a2e", flexShrink: 0 }} />
+          <span style={{ flex: 1, fontSize: 12.5 }}>↝ flussi</span>
+        </button>
+        {/* Toggle: eventi */}
+        <button
+          onClick={() => setShowEvents((v) => !v)}
+          style={{
+            display: "flex", alignItems: "center", gap: 8, width: "100%",
+            padding: "6px 4px", background: "transparent", border: 0,
+            cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+            color: "var(--ink)", opacity: showEvents ? 1 : 0.4,
+          }}
+        >
+          <span className="dot" style={{ background: "#a8483f", flexShrink: 0 }} />
+          <span style={{ flex: 1, fontSize: 12.5 }}>◆ eventi</span>
+        </button>
+        {/* Toggle: autori (senza emoji) */}
+        <button
+          onClick={() => setShowArtists((v) => !v)}
+          style={{
+            display: "flex", alignItems: "center", gap: 8, width: "100%",
+            padding: "6px 4px", background: "transparent", border: 0,
+            cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+            color: "var(--ink)", opacity: showArtists ? 1 : 0.4,
+          }}
+        >
+          <span className="dot" style={{ background: "#b9692c", flexShrink: 0 }} />
+          <span style={{ flex: 1, fontSize: 12.5 }}>autori</span>
+        </button>
+        {/* Filtri tipo periodo (epoca/corrente) — solo vista periodi */}
+        {!showArtists && TIMELINE_TYPES.map((t) => {
+          const c = TYPE_COLOR[t];
+          const off = hideTypes.has(t);
+          const count = typeCounts[t] ?? 0;
+          return (
+            <button
+              key={t}
+              onClick={() => toggleType(t)}
+              style={{
+                display: "flex", alignItems: "center", gap: 8, width: "100%",
+                padding: "6px 4px", background: "transparent", border: 0,
+                cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+                color: "var(--ink)", opacity: off ? 0.4 : 1,
+              }}
+            >
+              <span className="dot" style={{ background: c, flexShrink: 0 }} />
+              <span style={{ flex: 1, fontSize: 12.5, textTransform: "capitalize" }}>{t}</span>
+              <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{count}</span>
+            </button>
+          );
+        })}
+        {/* Filtri categoria autore (Pittori, Scultori, ecc.) — solo vista autori */}
+        {showArtists && Object.entries(ARTIST_CAT_COLOR).filter(([cat]) => cat !== "Altro").map(([cat, col]) => {
+          const off = hideCats.has(cat);
+          const count = catCounts[cat] ?? 0;
+          return (
+            <button
+              key={cat}
+              onClick={() => toggleCat(cat)}
+              style={{
+                display: "flex", alignItems: "center", gap: 8, width: "100%",
+                padding: "6px 4px", background: "transparent", border: 0,
+                cursor: "pointer", textAlign: "left", fontFamily: "inherit",
+                color: "var(--ink)", opacity: off ? 0.4 : 1,
+              }}
+            >
+              <span className="dot" style={{ background: col, flexShrink: 0 }} />
+              <span style={{ flex: 1, fontSize: 12.5 }}>{cat}</span>
+              <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{count}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+
   return (
     <>
-      <div className="filterbar" style={{ marginBottom: 14, gap: 14 }}>
-        {controls}
-        <div className="filter-group" style={{ marginLeft: "auto" }}>
-          {legendEntries.map(([t, c]) => (
-            <span key={t} className="muted" style={{ fontSize: 11.5, display: "inline-flex", alignItems: "center", gap: 5 }}>
-              <span className="dot" style={{ background: c }} />{t}
-            </span>
-          ))}
+      {/* Barra superiore: solo contatore.
+          I comandi zoom sono nel riquadro filtri a destra (sempre visibili). */}
+      <div className="filterbar" style={{ marginBottom: 14, gap: 14, alignItems: "center" }}>
+        <div style={{ marginLeft: "auto" }}>
+          <FilterNote total={showArtists ? ix.ds.artists.length : allPeriods.length} shown={showArtists ? ix.ds.artists.filter((a) => a.birth != null).length : periods.length} noun={showArtists ? "autori" : "periodi"} />
         </div>
-      </div>
-      <div style={{ marginBottom: 12 }}>
-        <FilterNote total={showArtists ? ix.ds.artists.length : allPeriods.length} shown={showArtists ? ix.ds.artists.filter((a) => a.birth != null).length : periods.length} noun={showArtists ? "artisti" : "periodi"} />
       </div>
 
       {showArtists ? (
-        <Fullscreen title="Linea del tempo — Artisti" controls={controls} onChange={(f) => { setInFull(f); onFull(f); }}>
-          <ArtistTimelineCanvas inFullscreen={inFull} />
+        <Fullscreen title="Linea del tempo — Autori" controls={null} showSlider={false} onChange={(f) => { setInFull(f); onFull(f); }}>
+          <div className="gf-inner">
+            <ArtistTimelineCanvas inFullscreen={inFull} hideCats={hideCats} />
+            <div className="gf-side">
+              {sideFiltersBlock}
+            </div>
+          </div>
         </Fullscreen>
       ) : (
-        <Fullscreen title="Linea del tempo" controls={controls} onChange={(f) => { setInFull(f); onFull(f); }}>
-          <TimelineCanvasControlled showFlows={showFlows} showEvents={showEvents} inFullscreen={inFull} />
+        <Fullscreen title="Linea del tempo" controls={null} showSlider={false} onChange={(f) => { setInFull(f); onFull(f); }}>
+          <div className="gf-inner">
+            <TimelineCanvasControlled
+              showFlows={showFlows}
+              showEvents={showEvents}
+              inFullscreen={inFull}
+              hideTypes={hideTypes}
+              highlightPid={highlightPid}
+            />
+            <div className="gf-side">
+              {sideFiltersBlock}
+            </div>
+          </div>
         </Fullscreen>
       )}
     </>
@@ -484,8 +818,8 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
 // ═══════════════════════════════════════════════════════════════════════════
 //  ORIGINAL PERIOD TIMELINE CANVAS (unchanged)
 // ═══════════════════════════════════════════════════════════════════════════
-function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
-  { showFlows: boolean; showEvents: boolean; inFullscreen: boolean }) {
+function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTypes, highlightPid }:
+  { showFlows: boolean; showEvents: boolean; inFullscreen: boolean; hideTypes: Set<string>; highlightPid: string | null }) {
   const ix = useData();
   const nav = useNavigate();
   const { range, periodIn, eventIn } = useTimeRange();
@@ -493,6 +827,19 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
   const scrollRef = useRef<HTMLDivElement>(null);
   const [zoomTarget, setZoomTarget] = useState(1);
   const zoom = useSmoothZoom(zoomTarget, reduced);
+  // Ascolta i comandi zoom esterni (dalla barra superiore di TimelineShell
+  // o dalla sezione VISTA in fullscreen). L'evento custom "atlante:tl-zoom"
+  // ha detail = "in" | "out" | "reset".
+  useEffect(() => {
+    const onZoom = (e: Event) => {
+      const detail = (e as CustomEvent).detail as "in" | "out" | "reset";
+      if (detail === "in") setZoomTarget((z) => Math.min(5, +(z + 0.4).toFixed(2)));
+      else if (detail === "out") setZoomTarget((z) => Math.max(0.5, +(z - 0.4).toFixed(2)));
+      else if (detail === "reset") setZoomTarget(1);
+    };
+    window.addEventListener("atlante:tl-zoom", onZoom);
+    return () => window.removeEventListener("atlante:tl-zoom", onZoom);
+  }, []);
   const [hover, setHover] = useState<Tip | null>(null);
   const [pop, setPop] = useState<Popover | null>(null);
   const [selPid, setSelPid] = useState<string | null>(null);
@@ -500,7 +847,10 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
   const [stageW, setStageW] = useState(800);
 
   const allPeriods = ix.ds.periods;
-  const periods = useMemo(() => allPeriods.filter(periodIn), [allPeriods, periodIn]);
+  const periods = useMemo(
+    () => allPeriods.filter((p) => periodIn(p) && !hideTypes.has(p.type)),
+    [allPeriods, periodIn, hideTypes]
+  );
   const minY = useMemo(() => (periods.length ? Math.min(...periods.map((p) => p.year_start)) : range.min), [periods, range]);
   const maxY = useMemo(() => (periods.length ? Math.max(...periods.map((p) => p.year_end)) : range.max), [periods, range]);
   const lanes = useMemo(() => layoutLanes(periods), [periods]);
@@ -512,10 +862,30 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
   const LANE_H = 48;
   const TOP = 70;
   const EV_ROW_H = 26;
-  const eventsTop = TOP + laneCount * LANE_H + 30;
-  const height = eventsTop + EV_ROWS * EV_ROW_H + 56 + (selPid ? 410 : 0);
+  // Eventi spostati in alto: appena sotto gli anni (y=38), sopra le corsie.
+  // Le corsie dei periodi iniziano a TOP=70, quindi gli eventi occupano lo
+  // spazio tra ~y=44 e y=TOP. Usiamo una singola riga di eventi compatti.
+  const eventsTop = 44;  // era: TOP + laneCount * LANE_H + 30
+  const lanesTop = TOP + EV_ROWS * EV_ROW_H + 20;  // corsie periodi spostate sotto gli eventi
+  const height = lanesTop + laneCount * LANE_H + 56 + (selPid ? 410 : 0);
 
   const x = useCallback((year: number) => PAD + (year - minY) * PPY, [minY, PPY]);
+
+  // === Highlight + scroll automatico quando si seleziona un periodo dalla
+  //     barra di ricerca. highlightPid viene impostato da TimelineShell e
+  //     rimane attivo per ~2.5s. Durante quel periodo la barra del periodo
+  //     corrispondente pulsa. Inoltre scorriamo la timeline in modo che la
+  //     barra sia visibile e apriamo il dossier. ===
+  useEffect(() => {
+    if (!highlightPid) return;
+    setSelPid(highlightPid);
+    const p = periods.find((pp) => pp.id === highlightPid);
+    if (!p) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    const targetX = x(p.year_start) - 200;
+    el.scrollTo({ left: Math.max(0, targetX), behavior: "smooth" });
+  }, [highlightPid, periods, x]);
 
   const flows = useMemo(() => {
     const byId = new Map(lanes.map((l) => [l.id, l]));
@@ -538,7 +908,7 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
     return t;
   }, [minY, maxY]);
 
-  const laneY = (lane: number) => TOP + lane * LANE_H;
+  const laneY = (lane: number) => lanesTop + lane * LANE_H;
 
   const DH = 410;
   const selLane = useMemo(() => {
@@ -577,7 +947,9 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
         <svg width={width} height={Math.max(height, inFullscreen ? 600 : height)} style={{ display: "block", minWidth: "100%" }}>
           {ticks.map((y) => (
             <g key={y}>
-              <line x1={x(y)} y1={48} x2={x(y)} y2={eventsTop - 14 + globalShift} stroke="var(--line-soft)" strokeWidth={1} />
+              <line x1={x(y)} y1={48} x2={x(y)} y2={eventsTop - 4} stroke="var(--line-soft)" strokeWidth={1} />
+              {/* Linea verticale che attraversa le corsie periodi ma non gli eventi */}
+              <line x1={x(y)} y1={eventsTop + EV_ROWS * EV_ROW_H + 4} x2={x(y)} y2={lanesTop + laneCount * LANE_H} stroke="var(--line-soft)" strokeWidth={1} />
               <text x={x(y)} y={38} fill="var(--ink-faint)" fontSize={11} textAnchor="middle" fontFamily="var(--font-body)" style={{ fontVariantNumeric: "tabular-nums" }}>{fmtYear(y)}</text>
             </g>
           ))}
@@ -598,6 +970,7 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
             const bx = x(p.year_start), bw = Math.max((p.year_end - p.year_start) * PPY, 10);
             const by = laneY(p.lane);
             const col = TYPE_COLOR[p.type] ?? "#888";
+            const isHighlight = highlightPid === p.id;
             return (
               <motion.g key={p.id} style={{ cursor: "pointer" }}
                 initial={stagger ? { opacity: 0, x: -12 } : false}
@@ -609,7 +982,20 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
                 onMouseLeave={() => setHover(null)}>
                 <motion.rect x={bx} y={by} width={bw} height={32} rx={6}
                   fill={col} fillOpacity={selPid === p.id ? 0.32 : 0.14} stroke={col} strokeOpacity={selPid === p.id ? 1 : 0.85} strokeWidth={selPid === p.id ? 2 : 1.1}
-                  whileHover={reduced ? undefined : { scale: 1.0 }} />
+                  whileHover={reduced ? undefined : { scale: 1.0 }}
+                />
+                {/* Aura pulse quando il periodo è stato selezionato dalla ricerca.
+                    Rettangolo separato sopra la barra, animato con framer-motion. */}
+                {isHighlight && !reduced && (
+                  <motion.rect
+                    x={bx - 4} y={by - 4} width={bw + 8} height={40} rx={9}
+                    fill="none" stroke={col} strokeWidth={2}
+                    initial={{ opacity: 0.8, scale: 0.96 }}
+                    animate={{ opacity: [0.8, 0.2, 0.8, 0.2, 0.8], scale: [0.96, 1.04, 0.96, 1.04, 0.96] }}
+                    transition={{ duration: 2, times: [0, 0.25, 0.5, 0.75, 1], ease: "easeInOut" }}
+                    style={{ pointerEvents: "none", transformOrigin: `${bx + bw / 2}px ${by + 16}px` }}
+                  />
+                )}
                 <rect x={bx} y={by} width={3} height={32} fill={col} rx={1.5} style={{ pointerEvents: "none" }} />
                 {bw > 44 && (
                   <text x={bx + 10} y={by + 20} fill="var(--ink)" fontSize={12.5} fontFamily="var(--font-body)" fontWeight={500} style={{ pointerEvents: "none" }}>
@@ -622,8 +1008,9 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
 
           {showEvents && (
             <motion.g animate={{ y: globalShift }} transition={{ duration: 0.45, ease: EASE_OUT }}>
-              <line x1={PAD} y1={eventsTop - 14} x2={width - PAD} y2={eventsTop - 14} stroke="var(--line)" strokeWidth={1} />
-              <text x={PAD} y={eventsTop - 20} fill="var(--ink-faint)" fontSize={9.5} fontFamily="var(--font-body)"
+              {/* Etichetta "Eventi storici" — ora sotto gli eventi (non sopra) */}
+              <line x1={PAD} y1={eventsTop + EV_ROWS * EV_ROW_H + 2} x2={width - PAD} y2={eventsTop + EV_ROWS * EV_ROW_H + 2} stroke="var(--line)" strokeWidth={1} />
+              <text x={PAD} y={eventsTop + EV_ROWS * EV_ROW_H + 14} fill="var(--ink-faint)" fontSize={9.5} fontFamily="var(--font-body)"
                 style={{ letterSpacing: ".16em", textTransform: "uppercase" }}>Eventi storici</text>
               {evNodes.map((n, i) => {
                 const ex = n.x, ey = eventsTop + n.row * EV_ROW_H + 8;
@@ -642,7 +1029,8 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
                     onMouseMove={(ev) => setHover((h) => h && { ...h, x: (ev as any).clientX, y: (ev as any).clientY })}
                     onMouseLeave={() => setHover(null)}
                     onClick={(ev) => { ev.stopPropagation(); setHover(null); setPop({ x: (ev as any).clientX, y: (ev as any).clientY, node: n }); }}>
-                    <line x1={ex} y1={eventsTop - 14} x2={ex} y2={ey} stroke={col} strokeWidth={1} strokeOpacity={0.28} />
+                    {/* Linea verticale evento rimossa: gli eventi sono ora in alto,
+                        la linea non avrebbe senso. */}
                     {n.kind === "cluster" ? (
                       <>
                         <circle cx={ex} cy={ey} r={r} fill={col} fillOpacity={0.92} />
@@ -674,12 +1062,6 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
             </motion.div>
           )}
         </AnimatePresence>
-
-        <div className="tl-zoom-float" data-testid="tl-zoom-float">
-          <button className="btn sm ghost" onClick={() => setZoomTarget((z) => Math.max(0.5, +(z - 0.4).toFixed(2)))} data-testid="tl-zoom-out" aria-label="Riduci zoom">−</button>
-          <span className="muted tnum" style={{ fontSize: 12, width: 42, textAlign: "center" }}>{Math.round(zoom * 100)}%</span>
-          <button className="btn sm ghost" onClick={() => setZoomTarget((z) => Math.min(5, +(z + 0.4).toFixed(2)))} data-testid="tl-zoom-in" aria-label="Aumenta zoom">+</button>
-        </div>
       </div>
 
       {hover && !pop && (
@@ -688,9 +1070,26 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
       )}
 
       <AnimatePresence>
-        {pop && (
+        {pop && (() => {
+          // Calcola posizione popover in modo che non sia tagliato in fullscreen.
+          // Se non c'è spazio sotto, mostra il popover SOPRA il pallino.
+          const POP_W = 300;
+          const POP_H = 260;
+          const margin = 12;
+          let left = Math.min(pop.x + margin, window.innerWidth - POP_W - margin);
+          if (left < margin) left = margin;
+          let top = pop.y + margin;
+          // Se il popover finisce sotto lo schermo, spostalo sopra
+          if (top + POP_H > window.innerHeight - margin) {
+            top = pop.y - POP_H - margin;
+          }
+          // Se anche sopra è fuori schermo (pallino molto in alto), forza in basso
+          if (top < margin) {
+            top = Math.max(margin, window.innerHeight - POP_H - margin);
+          }
+          return (
           <motion.div className="ev-popover" data-testid="ev-popover"
-            style={{ left: Math.min(pop.x, window.innerWidth - 320), top: Math.min(pop.y + 12, window.innerHeight - 260) }}
+            style={{ left, top }}
             initial={reduced ? false : { opacity: 0, y: 8, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 6, scale: 0.98 }}
             transition={{ duration: 0.22, ease: EASE_OUT }}
@@ -712,14 +1111,9 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen }:
               </div>
             )}
           </motion.div>
-        )}
+          );
+        })()}
       </AnimatePresence>
-
-      {!inFullscreen && (
-        <div className="tl-evstat faint" style={{ fontSize: 12, marginTop: 10 }} data-testid="tl-evstat">
-          {visibleEvents.length} eventi · {labelsShown} etichette visibili a questo zoom · i pallini ravvicinati si raggruppano in cluster (×N): clicca per espandere.
-        </div>
-      )}
     </>
   );
 }

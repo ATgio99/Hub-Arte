@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { FilterNote } from "../components/ui";
 import Fullscreen from "../components/Fullscreen";
+import TimeRangeSlider from "../components/TimeRangeSlider";
 import type { Work } from "../lib/types";
 
 // invalida la dimensione della mappa quando si entra/esce dal fullscreen
@@ -45,6 +46,7 @@ export default function Mappa() {
   const ix = useData();
   const { workIn } = useTimeRange();
   const [isFull, setIsFull] = useState(false);
+  const [cityQ, setCityQ] = useState("");
   const mapRef = useRef<any>(null);
 
   const works = useMemo(() => ix.ds.works.filter(workIn), [ix, workIn]);
@@ -94,65 +96,110 @@ export default function Mappa() {
         <span className="muted tnum" style={{ fontSize: 13, marginLeft: "auto" }}>{cities.length} città · {flows.length} flussi</span>
       </div>
 
-      <div className="view-split">
-        <Fullscreen title="Mappa & contaminazioni" onChange={setIsFull}>
-        <div className="stage" style={{ height: isFull ? "100%" : "min(72vh, 700px)", flex: isFull ? 1 : undefined, border: isFull ? 0 : undefined, borderRadius: isFull ? 0 : undefined }} data-testid="map-stage">
-          <MapContainer center={[43, 12]} zoom={5} style={{ height: "100%", width: "100%" }} scrollWheelZoom ref={mapRef}>
-            <TileLayer
-              url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-              attribution='&copy; OpenStreetMap, &copy; CARTO' />
-            <Resizer trigger={isFull} />
-            <FitBounds cities={cities} />
-            {flows.map((f, i) => (
-              <Polyline key={i} positions={[[f.a.lat, f.a.lon], [f.b.lat, f.b.lon]]}
-                pathOptions={{ color: "#b88a2e", weight: 0.7 + Math.min(f.n, 4) * 0.5, opacity: 0.55, dashArray: "4 4" }} />
-            ))}
-            {cities.map((c) => {
-              const r = 5 + (c.works.length / maxWorks) * 22;
-              return (
-                <CircleMarker key={c.name} center={[c.lat, c.lon]} radius={r}
-                  pathOptions={{ color: "#8f6a1d", fillColor: "#caa14a", fillOpacity: 0.55, weight: 1.2 }}>
-                  <Popup>
-                    <div style={{ minWidth: 180 }}>
-                      <Link to={`/luogo/${encodeURIComponent(c.name)}`} style={{ fontSize: 15, fontFamily: "Zodiak, serif", fontWeight: 600, color: "#211c14", textDecoration: "none", borderBottom: "1px solid #caa14a" }}>{c.name}</Link>
-                      <div style={{ color: "#837a66", fontSize: 12, margin: "4px 0 8px" }}>{c.works.length} opere</div>
-                      <Link to={`/luogo/${encodeURIComponent(c.name)}`} style={{ display: "inline-block", color: "#8f6a1d", fontSize: 12.5, fontWeight: 600, textDecoration: "none", marginBottom: 8 }}>Apri la scheda del luogo →</Link>
-                      <div style={{ display: "flex", flexDirection: "column", gap: 4, maxHeight: 180, overflow: "auto" }}>
-                        {c.works.slice(0, 14).map((w) => (
-                          <Link key={w.id} to={`/opera/${w.id}`} style={{ color: "#8f6a1d", fontSize: 13, textDecoration: "none" }}>· {w.title}</Link>
+      <Fullscreen title="Mappa & contaminazioni" controls={null} showSlider={false} onChange={setIsFull}>
+        <div className="gf-inner">
+          {/* Colonna sinistra: mappa */}
+          <div className="stage" style={{
+            height: isFull ? "100%" : "min(72vh, 700px)",
+            flex: isFull ? 1 : undefined,
+            border: isFull ? 0 : undefined,
+            borderRadius: isFull ? 0 : undefined,
+          }} data-testid="map-stage">
+            <MapContainer center={[43, 12]} zoom={5} style={{ height: "100%", width: "100%" }} scrollWheelZoom ref={mapRef}>
+              <TileLayer
+                url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                attribution='&copy; OpenStreetMap, &copy; CARTO' />
+              <Resizer trigger={isFull} />
+              <FitBounds cities={cities} />
+              {flows.map((f, i) => (
+                <Polyline key={i} positions={[[f.a.lat, f.a.lon], [f.b.lat, f.b.lon]]}
+                  pathOptions={{ color: "#b88a2e", weight: 0.7 + Math.min(f.n, 4) * 0.5, opacity: 0.55, dashArray: "4 4" }} />
+              ))}
+              {cities.map((c) => {
+                const r = 5 + (c.works.length / maxWorks) * 22;
+                return (
+                  <CircleMarker key={c.name} center={[c.lat, c.lon]} radius={r}
+                    pathOptions={{ color: "#8f6a1d", fillColor: "#caa14a", fillOpacity: 0.55, weight: 1.2 }}>
+                    <Popup>
+                      <div style={{ minWidth: 180 }}>
+                        <Link to={`/luogo/${encodeURIComponent(c.name)}`} style={{ fontSize: 15, fontFamily: "Zodiak, serif", fontWeight: 600, color: "#211c14", textDecoration: "none", borderBottom: "1px solid #caa14a" }}>{c.name}</Link>
+                        <div style={{ color: "#837a66", fontSize: 12, margin: "4px 0 8px" }}>{c.works.length} opere</div>
+                        <Link to={`/luogo/${encodeURIComponent(c.name)}`} style={{ display: "inline-block", color: "#8f6a1d", fontSize: 12.5, fontWeight: 600, textDecoration: "none", marginBottom: 8 }}>Apri la scheda del luogo →</Link>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 4, maxHeight: 180, overflow: "auto" }}>
+                          {c.works.slice(0, 14).map((w) => (
+                            <Link key={w.id} to={`/opera/${w.id}`} style={{ color: "#8f6a1d", fontSize: 13, textDecoration: "none" }}>· {w.title}</Link>
+                          ))}
+                          {c.works.length > 14 && <span style={{ color: "#837a66", fontSize: 12 }}>+ altre {c.works.length - 14}</span>}
+                        </div>
+                      </div>
+                    </Popup>
+                  </CircleMarker>
+                );
+              })}
+            </MapContainer>
+          </div>
+
+          {/* Colonna destra: ricerca Centri + (in fullscreen) slider temporale */}
+          <div className="gf-side">
+            <div className="panel" style={{ marginBottom: 12 }}>
+              <div className="panel-title">Centri</div>
+              <input
+                type="text"
+                value={cityQ}
+                onChange={(e) => setCityQ(e.target.value)}
+                placeholder="Cerca città…"
+                style={{
+                  width: "100%", padding: "7px 10px", marginBottom: 10,
+                  border: "1px solid var(--line)", borderRadius: 6,
+                  background: "var(--bg)", color: "var(--ink)",
+                  fontSize: 13, fontFamily: "inherit",
+                }}
+              />
+              <div style={{ maxHeight: 580, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
+                {(() => {
+                  const q = cityQ.trim().toLowerCase();
+                  const filtered = q
+                    ? cities.filter(c => c.name.toLowerCase().includes(q))
+                    : cities.slice(0, 24);
+                  if (filtered.length === 0) {
+                    return (
+                      <div style={{ padding: "16px 0", textAlign: "center", color: "var(--ink-dim)", fontSize: 13 }}>
+                        Nessuna città trovata per "{cityQ}".
+                      </div>
+                    );
+                  }
+                  return filtered.map((c) => (
+                    <div key={c.name} style={{ padding: "10px 0", borderBottom: "1px solid var(--line-soft)" }}>
+                      <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                        <Link className="tlink" to={`/luogo/${encodeURIComponent(c.name)}`} style={{ fontFamily: "Zodiak, serif", fontSize: 16 }}>{c.name}</Link>
+                        <span className="badge-period" style={{ fontSize: 9.5, padding: "3px 8px" }}>{c.works.length} opere</span>
+                      </div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 7 }}>
+                        {c.works.slice(0, 4).map((w) => (
+                          <Link key={w.id} to={`/opera/${w.id}`} className="tlink" style={{ fontSize: 12 }}>{w.title.length > 26 ? w.title.slice(0, 24) + "…" : w.title}</Link>
                         ))}
-                        {c.works.length > 14 && <span style={{ color: "#837a66", fontSize: 12 }}>+ altre {c.works.length - 14}</span>}
                       </div>
                     </div>
-                  </Popup>
-                </CircleMarker>
-              );
-            })}
-          </MapContainer>
-        </div>
-        </Fullscreen>
-
-        <div>
-          <div className="panel">
-            <div className="panel-title">Centri</div>
-            <div style={{ maxHeight: 620, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
-              {cities.slice(0, 24).map((c) => (
-                <div key={c.name} style={{ padding: "10px 0", borderBottom: "1px solid var(--line-soft)" }}>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-                    <Link className="tlink" to={`/luogo/${encodeURIComponent(c.name)}`} style={{ fontFamily: "Zodiak, serif", fontSize: 16 }}>{c.name}</Link>
-                    <span className="badge-period" style={{ fontSize: 9.5, padding: "3px 8px" }}>{c.works.length} opere</span>
-                  </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 7 }}>
-                    {c.works.slice(0, 4).map((w) => (
-                      <Link key={w.id} to={`/opera/${w.id}`} className="tlink" style={{ fontSize: 12 }}>{w.title.length > 26 ? w.title.slice(0, 24) + "…" : w.title}</Link>
-                    ))}
-                  </div>
+                  ));
+                })()}
+              </div>
+              {!cityQ.trim() && cities.length > 24 && (
+                <div style={{ padding: "8px 0 0", fontSize: 11, color: "var(--ink-dim)", textAlign: "center" }}>
+                  +{cities.length - 24} altre città — usa la ricerca per trovarle
                 </div>
-              ))}
+              )}
+            </div>
+
+            {/* Slider temporale — visibile solo in fullscreen, come nel grafo */}
+            <div className="panel gf-fs-only" data-testid="mappa-fs-filters">
+              <div className="panel-title" style={{ fontSize: 15, marginBottom: 10 }}>Tempo</div>
+              <div style={{ margin: "0 -4px" }}>
+                <TimeRangeSlider compact />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Fullscreen>
     </div>
   );
 }

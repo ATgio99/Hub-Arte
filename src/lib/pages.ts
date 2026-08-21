@@ -27,7 +27,7 @@ export interface StoneDef {
 // Le 8 pietre = le 8 porte delle pagine. Nessuna semantica architettonica.
 export const STONES: StoneDef[] = [
   { id: "opere", num: "01", name: "Opere", desc: "Catalogo delle opere", route: "/opere" },
-  { id: "artisti", num: "02", name: "Artisti", desc: "Cerca maestri e botteghe", route: "/artisti" },
+  { id: "artisti", num: "02", name: "Autori", desc: "Cerca maestri e botteghe", route: "/artisti" },
   { id: "rete", num: "03", name: "Rete", desc: "Connessioni tra artisti e opere", route: "/grafo" },
   { id: "timeline", num: "04", name: "Linea del tempo", desc: "Periodi e movimenti", route: "/timeline" },
   { id: "mappa", num: "05", name: "Mappa", desc: "Luoghi e geografie", route: "/mappa" },

@@ -23,16 +23,16 @@ import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "../lib/auth";
 import { useData } from "../lib/store";
-import { computeWorkGroups, workGroupMap } from "../lib/data";
+import { computeWorkGroups, workGroupMap, entityLabel, ENTITY_LABEL, KIND_LABEL } from "../lib/data";
 import EditorDrawer from "../components/EditorDrawer";
 import EntitySelector from "../components/EntitySelector";
-import type { Work, Artist, Period, Technique, Term, ArtEvent, Connection } from "../lib/types";
+import type { Work, Artist, Period, Technique, Term, ArtEvent, Connection, Dataset } from "../lib/types";
 
 type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" | "connections" | "complessi";
 
 const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "works", label: "Opere", icon: "🖼️" },
-  { id: "artists", label: "Artisti", icon: "👤" },
+  { id: "artists", label: "Autori", icon: "👤" },
   { id: "periods", label: "Periodi", icon: "📅" },
   { id: "techniques", label: "Tecniche", icon: "🎨" },
   { id: "terms", label: "Termini", icon: "📚" },
@@ -162,7 +162,6 @@ export default function AdminDatabase() {
 
   // Elimina riga
   const deleteRow = async (id: string) => {
-    // Cerca la riga per ottenere un'etichetta leggibile
     let label = id;
     const r = currentData.find(x => x.id === id);
     if (r) {
@@ -178,15 +177,15 @@ export default function AdminDatabase() {
     );
     if (!confirmed) return;
     try {
-      const { error } = await supabase.from(tab).delete().eq("id", id);
-      if (error) { alert("Errore: " + error.message); return; }
-      // Notifica app
+      // Prova DELETE dal DB (se esiste)
+      await supabase.from(tab).delete().eq("id", id);
+      // Inserisci in hidden_entities per nascondere record JSON
+      await supabase.from("hidden_entities").upsert(
+        { id, table_name: tab, hidden_by: user?.email || null },
+        { onConflict: "id" }
+      );
       window.dispatchEvent(new Event("hubart-works-changed"));
-      try {
-        const bc = new BroadcastChannel("hubart-admin");
-        bc.postMessage({ type: "changed", ts: Date.now() });
-        bc.close();
-      } catch {}
+      try { const bc = new BroadcastChannel("hubart-admin"); bc.postMessage({ type: "changed", ts: Date.now() }); bc.close(); } catch {}
       loadDbIds(tab);
     } catch (e: any) {
       alert("Errore: " + e.message);
@@ -501,9 +500,10 @@ export default function AdminDatabase() {
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
               <tr>
-                <th style={thStyle}>Source</th>
-                <th style={thStyle}>Target</th>
                 <th style={thStyle}>Tipo</th>
+                <th style={thStyle}>Origine</th>
+                <th style={thStyle}>→</th>
+                <th style={thStyle}>Destinazione</th>
                 <th style={thStyle}>Descrizione</th>
                 <th style={thStyle}>Fonte</th>
                 <th style={thStyle}>Azioni</th>
@@ -513,12 +513,19 @@ export default function AdminDatabase() {
               {currentData.slice(0, 200).map((c: Connection) => (
                 <tr key={c.id} style={{ cursor: "pointer" }} onMouseEnter={(e) => e.currentTarget.style.background = "var(--bg-2)"} onMouseLeave={(e) => e.currentTarget.style.background = ""}>
                   <td style={tdStyle} onClick={() => openEdit(c.id)}>
-                    <div style={{ fontWeight: 500 }}>{c.source_type}: {c.source_id}</div>
+                    <span style={{ background: "var(--bg-2)", padding: "2px 8px", borderRadius: 4, fontSize: 11, fontWeight: 600, color: "var(--gold-deep)" }}>
+                      {KIND_LABEL[c.kind] ?? c.kind}
+                    </span>
                   </td>
                   <td style={tdStyle} onClick={() => openEdit(c.id)}>
-                    <div style={{ fontWeight: 500 }}>{c.target_type}: {c.target_id}</div>
+                    <div style={{ fontWeight: 500 }}>{entityLabel(ix, c.source_type, c.source_id)}</div>
+                    <div style={{ fontSize: 11, color: "var(--ink-dim)" }}>{ENTITY_LABEL[c.source_type]}</div>
                   </td>
-                  <td style={tdStyle} onClick={() => openEdit(c.id)}>{c.kind}</td>
+                  <td style={{ ...tdStyle, color: "var(--ink-dim)", fontSize: 14 }} onClick={() => openEdit(c.id)}>→</td>
+                  <td style={tdStyle} onClick={() => openEdit(c.id)}>
+                    <div style={{ fontWeight: 500 }}>{entityLabel(ix, c.target_type, c.target_id)}</div>
+                    <div style={{ fontSize: 11, color: "var(--ink-dim)" }}>{ENTITY_LABEL[c.target_type]}</div>
+                  </td>
                   <td style={tdStyle} onClick={() => openEdit(c.id)}>{(c.description || "").slice(0, 80)}{(c.description || "").length > 80 ? "…" : ""}</td>
                   <td style={tdStyle}>{dbBadge(c.id)}</td>
                   <td style={tdStyle}>{actions(c.id)}</td>
@@ -577,11 +584,39 @@ export default function AdminDatabase() {
 // ComplessiView — mostra i gruppi di opere (complessi/architetture con
 // più opere collegate). Non è una tabella DB: deriva dai metadati delle opere.
 // ============================================================================
+
+// Helper: costruisce un payload COMPLETO per upsert su tabella "works".
+// LEGGE l'opera dal dataset (JSON+DB merge) e ne copia TUTTI i campi,
+// sovrascrivendo solo quelli passati in `overrides`. Questo evita l'errore
+// "null value in column title" quando si fa upsert su opere JSON-only.
+const WORK_DB_FIELDS_FOR_COMPLEX = [
+  "id", "title", "artist_ids", "period_id", "date_text", "year_start", "year_end",
+  "type", "technique_ids", "materials", "location_city", "location_place",
+  "lat", "lon", "book", "chapter", "page", "source_file", "importance",
+  "summary", "analysis", "innovations", "term_ids",
+  "image_url", "image_thumb", "image_source", "image_gallery",
+] as const;
+
+function buildWorkPayload(workId: string, ds: Dataset, overrides: Record<string, unknown>, modifiedBy?: string | null): Record<string, unknown> | null {
+  const w = ds.works.find(x => x.id === workId);
+  if (!w) return null;
+  const payload: Record<string, unknown> = {};
+  for (const f of WORK_DB_FIELDS_FOR_COMPLEX) {
+    payload[f] = (w as any)[f];
+  }
+  Object.assign(payload, overrides);
+  // empty string → null per campi nullable
+  for (const k of ["date_text", "location_city", "location_place", "source_file", "summary", "analysis", "image_url", "image_thumb", "image_source", "period_id"]) {
+    if (payload[k] === "") payload[k] = null;
+  }
+  if (modifiedBy !== undefined) payload.modified_by = modifiedBy;
+  return payload;
+}
 function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData>; search: string; openEdit: (id: string) => void }) {
   const [showNewForm, setShowNewForm] = useState(false);
   const [newPlace, setNewPlace] = useState("");
   const [newCity, setNewCity] = useState("");
-  const [newWorkId, setNewWorkId] = useState("");
+  const [newWorkIds, setNewWorkIds] = useState<string[]>([]);
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
   const [editingGroupName, setEditingGroupName] = useState<string | null>(null);
   const [editPlaceName, setEditPlaceName] = useState("");
@@ -601,15 +636,26 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
     );
   }, [groups, q]);
 
-  // Opere senza complesso (per il form "nuovo complesso")
-  const orphanWorks = useMemo(() => {
+  // TUTTE le opere del dataset, per la tendina di selezione (EntitySelector con ricerca).
+  const allWorkOptions = useMemo(() => {
+    return ix.ds.works
+      .map(w => ({ id: w.id, label: w.title, subtitle: w.location_city || undefined }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+  }, [ix.ds.works]);
+
+  // Opere NON in un gruppo (per il form "nuovo complesso").
+  const orphanWorkOptions = useMemo(() => {
     const inGroup = new Set<string>();
     for (const g of groups) for (const w of g.works) inGroup.add(w.id);
-    return ix.ds.works
-      .filter(w => !inGroup.has(w.id) && w.location_place)
-      .sort((a, b) => a.title.localeCompare(b.title))
-      .slice(0, 200);
-  }, [ix.ds.works, groups]);
+    return allWorkOptions.filter(o => !inGroup.has(o.id));
+  }, [allWorkOptions, groups]);
+
+  // Anteprima live: opere che hanno GIÀ il luogo digitato (match esatto case-insensitive)
+  const matchingPlaceWorks = useMemo(() => {
+    const place = newPlace.trim().toLowerCase();
+    if (!place) return [];
+    return ix.ds.works.filter(w => w.location_place && w.location_place.toLowerCase() === place);
+  }, [ix.ds.works, newPlace]);
 
   const notifyChanged = () => {
     window.dispatchEvent(new Event("hubart-works-changed"));
@@ -619,12 +665,13 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
   const renameComplex = async (oldName: string, cityName: string | null) => {
     const newName = editPlaceName.trim();
     if (!newName || newName === oldName) { setEditingGroupName(null); return; }
-    // Trova tutte le opere del gruppo e aggiorna location_place
     const group = groups.find(g => g.name === oldName && (g.city ?? null) === cityName);
     if (!group) return;
-    const updates = group.works.map(w =>
-      supabase.from("works").upsert({ id: w.id, location_place: newName, modified_by: null }, { onConflict: "id" })
-    );
+    const updates = group.works.map(w => {
+      const payload = buildWorkPayload(w.id, ix.ds, { location_place: newName });
+      if (!payload) return Promise.resolve();
+      return supabase.from("works").upsert(payload, { onConflict: "id" });
+    });
     await Promise.all(updates);
     setEditingGroupName(null);
     setEditPlaceName("");
@@ -632,31 +679,68 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
   };
 
   const removeWorkFromComplex = async (workId: string) => {
-    // Rimuove l'opera dal complesso impostando location_place a null
-    if (!confirm("Rimuovere quest'opera dal complesso? Il suo location_place verrà cancellato.")) return;
-    const { error } = await supabase.from("works").upsert({
-      id: workId, location_place: null, modified_by: null,
-    }, { onConflict: "id" });
+    if (!confirm("Rimuovere quest'opera dal complesso? Il suo luogo verrà cancellato.")) return;
+    const payload = buildWorkPayload(workId, ix.ds, { location_place: null });
+    if (!payload) { alert("Opera non trovata nel dataset."); return; }
+    const { error } = await supabase.from("works").upsert(payload, { onConflict: "id" });
     if (error) alert("Errore: " + error.message);
     else notifyChanged();
   };
 
   const addWorkToComplex = async (groupName: string) => {
     if (!addWorkId.trim()) return;
-    const { error } = await supabase.from("works").upsert({
-      id: addWorkId.trim(), location_place: groupName, modified_by: null,
-    }, { onConflict: "id" });
+    const payload = buildWorkPayload(addWorkId.trim(), ix.ds, { location_place: groupName });
+    if (!payload) { alert("Opera non trovata nel dataset."); return; }
+    const { error } = await supabase.from("works").upsert(payload, { onConflict: "id" });
     if (error) alert("Errore: " + error.message);
     else { setAddWorkToGroup(null); setAddWorkId(""); notifyChanged(); }
   };
 
+  // Crea complesso: assegna il luogo a TUTTE le opere selezionate (multi).
+  // Se il luogo esiste già in altre opere, le unisce nello stesso complesso.
+  const createComplex = async () => {
+    if (!newPlace.trim()) { setSaveMsg("✗ Inserisci un nome per il complesso (luogo)."); return; }
+    if (newWorkIds.length === 0 && matchingPlaceWorks.length === 0) {
+      setSaveMsg("✗ Seleziona almeno un'opera da assegnare a questo complesso.");
+      return;
+    }
+    const place = newPlace.trim();
+    const city = newCity.trim() || undefined;
+    // Unisci: opere selezionate + opere che hanno già il luogo (per non duplicare)
+    const allIds = new Set<string>([...newWorkIds, ...matchingPlaceWorks.map(w => w.id)]);
+    setSavingComplex(true);
+    setSaveMsg(null);
+    try {
+      const updates = [...allIds].map(id => {
+        const payload = buildWorkPayload(id, ix.ds, {
+          location_place: place,
+          location_city: city || null,
+        });
+        if (!payload) return Promise.resolve();
+        return supabase.from("works").upsert(payload, { onConflict: "id" });
+      });
+      await Promise.all(updates);
+      const total = allIds.size;
+      setSaveMsg(`✓ Complesso "${place}" creato! ${total} ${total === 1 ? "opera assegnata" : "opere assegnate"} al complesso.`);
+      setNewWorkIds([]); setNewPlace(""); setNewCity(""); setShowNewForm(false);
+      notifyChanged();
+    } catch (e: any) {
+      setSaveMsg("✗ Errore: " + (e.message || "errore sconosciuto"));
+    } finally {
+      setSavingComplex(false);
+    }
+  };
+  const [savingComplex, setSavingComplex] = useState(false);
+
   const deleteComplex = async (groupName: string, cityName: string | null) => {
-    if (!confirm(`Eliminare il complesso "${groupName}"? Tutte le opere verranno rimosse dal complesso (location_place cancellato).`)) return;
+    if (!confirm(`Eliminare il complesso "${groupName}"? Tutte le opere verranno rimosse dal complesso (luogo cancellato).`)) return;
     const group = groups.find(g => g.name === groupName && (g.city ?? null) === cityName);
     if (!group) return;
-    const updates = group.works.map(w =>
-      supabase.from("works").upsert({ id: w.id, location_place: null, modified_by: null }, { onConflict: "id" })
-    );
+    const updates = group.works.map(w => {
+      const payload = buildWorkPayload(w.id, ix.ds, { location_place: null });
+      if (!payload) return Promise.resolve();
+      return supabase.from("works").upsert(payload, { onConflict: "id" });
+    });
     await Promise.all(updates);
     notifyChanged();
   };
@@ -664,8 +748,9 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
   return (
     <div style={{ padding: 16 }}>
       <div style={{ marginBottom: 12, fontSize: 13, color: "var(--ink-dim)" }}>
-        📊 <b>{groups.length}</b> complessi trovati. Clicca su un'opera per aprirne l'editor completo,
-        o usa i pulsanti per rinominare, aggiungere/rimuovere opere ed eliminare complessi.
+        📊 <b>{groups.length}</b> complessi trovati. I complessi si formano automaticamente quando
+        2 o più opere hanno lo stesso <b>luogo</b> (es. "Basilica di San Francesco").
+        Usa il pulsante sotto per assegnare un luogo a una o più opere e creare un nuovo complesso.
       </div>
 
       {/* Pulsante nuovo complesso */}
@@ -674,47 +759,74 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
         onClick={() => setShowNewForm(!showNewForm)}
         style={{ marginBottom: 12 }}
       >
-        {showNewForm ? "− Annulla" : "+ Crea nuovo complesso"}
+        {showNewForm ? "− Annulla" : "+ Assegna opere a un luogo (crea complesso)"}
       </button>
 
-      {/* Form nuovo complesso */}
+      {/* Form nuovo complesso — multi-opera + anteprima live */}
       {showNewForm && (
         <div style={{
           padding: 16, background: "var(--bg-2)", borderRadius: 10,
           marginBottom: 16, border: "1px solid var(--gold)",
         }}>
-          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 10 }}>Crea nuovo complesso</div>
+          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 10 }}>Assegna opere a un luogo</div>
           <p style={{ fontSize: 12, color: "var(--ink-dim)", margin: "0 0 10px" }}>
-            Seleziona un'opera esistente e assegnale un nuovo "Luogo / edificio". Tutte le opere con lo stesso luogo verranno raggruppate automaticamente.
+            Scrivi il nome del luogo (es. "Basilica di San Francesco") e seleziona una o più opere.
+            Il complesso apparirà automaticamente nella lista quando almeno 2 opere condividono lo stesso luogo.
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <select
-              value={newWorkId}
-              onChange={(e) => setNewWorkId(e.target.value)}
-              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
-            >
-              <option value="">— Seleziona un'opera da assegnare al complesso —</option>
-              {orphanWorks.map(w => (
-                <option key={w.id} value={w.id}>{w.title} ({w.location_city || "?"})</option>
-              ))}
-            </select>
-            <input
-              type="text"
-              placeholder="Nome del complesso (es. Basilica di San Francesco)"
-              value={newPlace}
-              onChange={(e) => setNewPlace(e.target.value)}
-              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
-            />
-            <input
-              type="text"
-              placeholder="Città (opzionale, usa quella dell'opera se vuoto)"
-              value={newCity}
-              onChange={(e) => setNewCity(e.target.value)}
-              style={{ padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
-            />
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            <div>
+              <label style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 4 }}>Nome del luogo *</label>
+              <input
+                type="text"
+                placeholder="es. Basilica di San Francesco"
+                value={newPlace}
+                onChange={(e) => setNewPlace(e.target.value)}
+                style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
+                autoFocus
+              />
+            </div>
+
+            {/* Anteprima live: opere con lo stesso luogo */}
+            {matchingPlaceWorks.length > 0 && (
+              <div style={{ padding: 10, background: "rgba(63,138,79,0.08)", border: "1px solid rgba(63,138,79,0.3)", borderRadius: 6 }}>
+                <div style={{ fontSize: 12, fontWeight: 600, color: "#3f8a4f", marginBottom: 4 }}>
+                  ✓ {matchingPlaceWorks.length} {matchingPlaceWorks.length === 1 ? "opera ha già" : "opere hanno già"} questo luogo:
+                </div>
+                <div style={{ fontSize: 12, color: "var(--ink-soft)" }}>
+                  {matchingPlaceWorks.slice(0, 5).map(w => w.title).join(", ")}
+                  {matchingPlaceWorks.length > 5 && `… +${matchingPlaceWorks.length - 5} altre`}
+                </div>
+                <div style={{ fontSize: 11, color: "var(--ink-dim)", marginTop: 4 }}>
+                  Verranno incluse automaticamente nel complesso.
+                </div>
+              </div>
+            )}
+
+            <div>
+              <label style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 4 }}>
+                Opere da assegnare al complesso {newWorkIds.length > 0 && `(${newWorkIds.length} selezionate)`}
+              </label>
+              <EntitySelector
+                mode="multi"
+                options={orphanWorkOptions}
+                selected={newWorkIds}
+                onChange={(v) => setNewWorkIds((v as string[]) || [])}
+                placeholder="Cerca opere da assegnare a questo luogo…"
+              />
+            </div>
+            <div>
+              <label style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 4 }}>Città (opzionale)</label>
+              <input
+                type="text"
+                placeholder="es. Assisi"
+                value={newCity}
+                onChange={(e) => setNewCity(e.target.value)}
+                style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
+              />
+            </div>
             {saveMsg && <div style={{ fontSize: 13, color: saveMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{saveMsg}</div>}
-            <button className="btn gold sm" onClick={createComplex} disabled={!newWorkId || !newPlace.trim()}>
-              💾 Crea complesso
+            <button className="btn gold sm" onClick={createComplex} disabled={savingComplex || !newPlace.trim() || (newWorkIds.length === 0 && matchingPlaceWorks.length === 0)}>
+              {savingComplex ? "Salvataggio…" : `💾 Assegna ${newWorkIds.length + matchingPlaceWorks.length} ${newWorkIds.length + matchingPlaceWorks.length === 1 ? "opera" : "opere"} al luogo`}
             </button>
           </div>
         </div>
@@ -722,7 +834,7 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
 
       {filtered.length === 0 ? (
         <div style={{ padding: 32, textAlign: "center", color: "var(--ink-dim)", fontSize: 14 }}>
-          Nessun complesso trovato.
+          Nessun complesso trovato. I complessi si formano automaticamente quando 2+ opere condividono lo stesso luogo.
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -775,17 +887,16 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
                 {addWorkToGroup === key && (
                   <div style={{ marginTop: 10, padding: 10, background: "var(--bg)", borderRadius: 6, border: "1px solid var(--gold)" }}>
                     <div style={{ fontSize: 12, color: "var(--ink-dim)", marginBottom: 6 }}>Aggiungi un'opera al complesso "{g.name}":</div>
-                    <div style={{ display: "flex", gap: 6 }}>
-                      <select
-                        value={addWorkId}
-                        onChange={(e) => setAddWorkId(e.target.value)}
-                        style={{ flex: 1, padding: "6px 8px", border: "1px solid var(--line)", borderRadius: 4, fontSize: 13, fontFamily: "inherit" }}
-                      >
-                        <option value="">— Seleziona un'opera —</option>
-                        {orphanWorks.map(w => (
-                          <option key={w.id} value={w.id}>{w.title} ({w.location_city || "?"})</option>
-                        ))}
-                      </select>
+                    <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                      <div style={{ flex: 1 }}>
+                        <EntitySelector
+                          mode="single"
+                          options={orphanWorkOptions}
+                          selected={addWorkId || null}
+                          onChange={(v) => setAddWorkId((v as string) || "")}
+                          placeholder="Cerca opera da aggiungere…"
+                        />
+                      </div>
                       <button className="btn gold sm" style={{ fontSize: 12, padding: "5px 12px" }} onClick={() => addWorkToComplex(g.name)}>Aggiungi</button>
                       <button className="btn ghost sm" style={{ fontSize: 12, padding: "5px 12px" }} onClick={() => setAddWorkToGroup(null)}>Annulla</button>
                     </div>
@@ -863,7 +974,7 @@ const FIELD_LABELS_IT: Record<string, string> = {
   historical_context: "Contesto storico",
   key_innovations: "Innovazioni chiave",
   definition: "Definizione",
-  introduced_by: "Introdotto da (artista)",
+  introduced_by: "Introdotto da (autore)",
   first_period_id: "Prima comparsa (periodo)",
   evolution: "Evoluzione",
   category: "Categoria",
@@ -875,7 +986,7 @@ const FIELD_LABELS_IT: Record<string, string> = {
   target_type: "Tipo entità destinazione",
   target_id: "Entità destinazione",
   date_text: "Datazione testuale",
-  artist_ids: "Artisti",
+  artist_ids: "Autori",
   technique_ids: "Tecniche",
   materials: "Materiali",
   location_city: "Città",
@@ -916,6 +1027,25 @@ const SELECT_OPTIONS: Record<string, string[]> = {
     "evoluzione", "contrasto", "committenza", "maestro-allievo"],
   "connections.source_type": ["period", "artist", "work", "technique", "event", "term"],
   "connections.target_type": ["period", "artist", "work", "technique", "event", "term"],
+};
+
+// Etichette italiane per i valori delle select delle connessioni
+const CONN_KIND_LABELS: Record<string, string> = {
+  influenza: "Influenza",
+  contaminazione: "Contaminazione",
+  rielaborazione: "Rielaborazione",
+  evoluzione: "Evoluzione",
+  contrasto: "Contrasto",
+  committenza: "Committenza",
+  "maestro-allievo": "Maestro-allievo",
+};
+const ENTITY_TYPE_LABELS: Record<string, string> = {
+  period: "Periodo",
+  artist: "Autore",
+  work: "Opera",
+  technique: "Tecnica",
+  event: "Evento",
+  term: "Termine",
 };
 
 // Campi che referenziano entità in altre tabelle (per i selettori intelligenti)
@@ -1013,6 +1143,15 @@ function GenericEditorDrawerInner({
   const setField = (field: string, value: any) => {
     rowRef.current = { ...rowRef.current, [field]: value };
     setOk(false);
+    // Per le connessioni: quando si cambia source_type o target_type, forza re-render
+    // così il selettore source_id/target_id si aggiorna con le opzioni giuste
+    // (es. source_type "artist" → mostra artisti, non più opere)
+    if (table === "connections" && (field === "source_type" || field === "target_type")) {
+      // Resetta anche l'ID selezionato (non è valido per il nuovo tipo)
+      const idField = field === "source_type" ? "source_id" : "target_id";
+      rowRef.current = { ...rowRef.current, [idField]: "" };
+      forceUpdate();
+    }
   };
 
   // Helper per ottenere le opzioni di un selettore entità
@@ -1054,7 +1193,7 @@ function GenericEditorDrawerInner({
           throw new Error("Il titolo dell'opera è obbligatorio.");
         }
         if (table === "artists" && (!payload.name || String(payload.name).trim() === "")) {
-          throw new Error("Il nome dell'artista è obbligatorio.");
+          throw new Error("Il nome dell'autore è obbligatorio.");
         }
         if (table === "periods" && (!payload.name || String(payload.name).trim() === "")) {
           throw new Error("Il nome del periodo è obbligatorio.");
@@ -1098,8 +1237,13 @@ function GenericEditorDrawerInner({
     setSaving(true);
     setError(null);
     try {
-      const { error } = await supabase.from(table).delete().eq("id", row.id);
-      if (error) throw error;
+      // Prova DELETE dal DB
+      await supabase.from(table).delete().eq("id", row.id);
+      // Inserisci in hidden_entities per nascondere record JSON
+      await supabase.from("hidden_entities").upsert(
+        { id: row.id, table_name: table, hidden_by: userEmail },
+        { onConflict: "id" }
+      );
       window.dispatchEvent(new Event("hubart-works-changed"));
       try {
         const bc = new BroadcastChannel("hubart-admin");
@@ -1246,14 +1390,15 @@ function GenericEditorDrawerInner({
                   </GenField>
                 );
               }
+              const typeLabel = ENTITY_TYPE_LABELS[connectionRefTable] || connectionRefTable;
               return (
-                <GenField key={field} label={`${label} (${connectionRefTable})`}>
+                <GenField key={field} label={`${label} (${typeLabel})`}>
                   <EntitySelector
                     mode="single"
                     options={getEntityOptions(connectionRefTable)}
                     selected={value}
                     onChange={(v) => setField(field, v)}
-                    placeholder={`Cerca ${connectionRefTable}…`}
+                    placeholder={`Cerca ${typeLabel.toLowerCase()}…`}
                   />
                 </GenField>
               );
@@ -1270,10 +1415,18 @@ function GenericEditorDrawerInner({
 
             // Select predefinite (enum)
             if (selectOpts) {
+              // Per le select delle connessioni usa etichette italiane
+              const labelMap = selectKey === "connections.kind" ? CONN_KIND_LABELS
+                : selectKey === "connections.source_type" || selectKey === "connections.target_type" ? ENTITY_TYPE_LABELS
+                : null;
+              // Per connections usiamo select CONTROLLATA (value=...) così quando
+              // l'utente cambia source_type/target_id si aggiorna correttamente.
+              // Per le altre usiamo defaultValue (uncontrolled) per non perdere focus.
+              const isConnSelect = selectKey === "connections.kind" || selectKey === "connections.source_type" || selectKey === "connections.target_type";
               return (
                 <GenField key={field} label={label}>
                   <select
-                    defaultValue={String(value ?? "")}
+                    {...(isConnSelect ? { value: String(value ?? "") } : { defaultValue: String(value ?? "") })}
                     onChange={(e) => {
                       const v = e.target.value;
                       setField(field, isNumber ? Number(v) : v);
@@ -1281,7 +1434,7 @@ function GenericEditorDrawerInner({
                     style={genInputStyle}
                   >
                     {selectOpts.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
+                      <option key={opt} value={opt}>{labelMap ? (labelMap[opt] || opt) : opt}</option>
                     ))}
                   </select>
                 </GenField>
@@ -1447,8 +1600,8 @@ const NEW_ROW_TEMPLATES: Record<Tab, () => any> = {
     kind: "culturale", period_id: null,
   }),
   connections: () => ({
-    id: "", source_type: "work", source_id: "", target_type: "work",
-    target_id: "", kind: "influenza", description: "",
+    id: "", kind: "influenza", source_type: "work", source_id: "",
+    target_type: "work", target_id: "", description: "",
   }),
   complessi: () => ({ id: "", name: "", works: [] }),
 };

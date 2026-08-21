@@ -94,7 +94,11 @@ export default function Fullscreen({
     );
   }
 
-  // Fullscreen: drawer laterale stile sidebar + contenuto
+  // Fullscreen: drawer laterale stile sidebar + contenuto.
+  // Se controls=null e showSlider=false, non c'è nulla da mostrare nel drawer:
+  // lo saltiamo del tutto (nessun drawer, nessun pulsante "Filtri" in basso).
+  const hasDrawerContent = !!controls || showSlider;
+
   return (
     <div ref={ref} className="fs-host is-full" data-fullscreen={isFull} data-testid="fs-host">
       {/* Pulsante ESCI — sempre in alto a destra, sopra tutto */}
@@ -134,14 +138,17 @@ export default function Fullscreen({
         {children}
       </div>
 
-      {/* Drawer laterale destro — stesso stile della sidebar principale */}
-      <AnimatePresence>
-        {drawerOpen && (
-          <motion.aside
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 28, stiffness: 300 }}
+      {/* Drawer laterale destro — solo se c'è qualcosa da mostrare
+          (filtri vista + slider temporale). Altrimenti niente drawer. */}
+      {hasDrawerContent && (
+        <>
+          <AnimatePresence>
+            {drawerOpen && (
+              <motion.aside
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "spring", damping: 28, stiffness: 300 }}
             style={{
               position: "fixed", top: 0, right: 0, bottom: 0, zIndex: 9999,
               width: "min(300px, 88vw)",
@@ -216,6 +223,8 @@ export default function Fullscreen({
           </svg>
           Filtri
         </button>
+      )}
+        </>
       )}
     </div>
   );

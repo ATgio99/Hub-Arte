@@ -1,10 +1,11 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, WorkGroupCard, Empty, EmptyTimeRange, FilterNote } from "../components/ui";
 import { useFavorites } from "../lib/favorites";
 import { useStudied } from "../lib/studied";
 import { computeWorkGroups, workGroupMap } from "../lib/data";
+import { clearLastOpera } from "../lib/lastVisited";
 import type { WorkType } from "../lib/types";
 
 const TYPES: WorkType[] = ["architettura", "pittura", "scultura", "mosaico", "miniatura", "oreficeria", "urbanistica", "altro"];
@@ -13,10 +14,16 @@ export default function Opere() {
   const { ds, periodById } = useData();
   const { workIn, active } = useTimeRange();
   const [sp] = useSearchParams();
-  const [q, setQ] = useState("");
+
+  // Quando si arriva alla home delle Opere, azzerare l'ultima opera visitata
+  // (così il prossimo click su "Opere" nel menu non riporta all'opera vecchia)
+  useEffect(() => {
+    clearLastOpera();
+  }, []);
+  const [q, setQ] = useState(() => sessionStorage.getItem("atlante:opere-search") || "");
   const [type, setType] = useState<string>(sp.get("type") ?? "");
   const [period, setPeriod] = useState<string>(sp.get("p") ?? "");
-  const [imp, setImp] = useState<string>("");
+  const [imp, setImp] = useState<string>(() => sessionStorage.getItem("atlante:opere-imp") || "");
   const [favOnly, setFavOnly] = useState(false);
   const [studiedFilter, setStudiedFilter] = useState<"" | "studied" | "not-studied">("");
   const [grouped, setGrouped] = useState(false);
@@ -24,6 +31,16 @@ export default function Opere() {
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
   const favs = useFavorites();
   const studied = useStudied();
+
+  // Salva la ricerca in sessionStorage quando cambia
+  useEffect(() => {
+    if (q) sessionStorage.setItem("atlante:opere-search", q);
+    else sessionStorage.removeItem("atlante:opere-search");
+  }, [q]);
+  useEffect(() => {
+    if (imp) sessionStorage.setItem("atlante:opere-imp", imp);
+    else sessionStorage.removeItem("atlante:opere-imp");
+  }, [imp]);
 
   // periodi ordinati cronologicamente per il filtro
   const periodOpts = useMemo(
@@ -126,11 +143,24 @@ export default function Opere() {
 
       {/* Seconda riga filtri: approfondite + raggruppate */}
       <div className="filterbar" style={{ marginBottom: 8, marginTop: 4 }}>
-        <select className="input" value={studiedFilter} onChange={(e) => { setStudiedFilter(e.target.value as any); setLimit(60); }} data-testid="select-studied" style={{ flex: "0 0 auto" }}>
-          <option value="">Tutte</option>
-          <option value="studied">✓ Approfondite ({studiedCount})</option>
-          <option value="not-studied">○ Da approfondire ({notStudiedCount})</option>
-        </select>
+        {/* Tasto toggle "Approfondite" — come i preferiti. */}
+        <button
+          className={`chip fav-chip ${studiedFilter === "studied" ? "active" : ""}`}
+          onClick={() => { setStudiedFilter(v => v === "studied" ? "" : "studied"); setLimit(60); }}
+          data-testid="toggle-studied"
+          title="Mostra solo le opere approfondite (studiate)"
+        >
+          ✓ Approfondite{studiedCount > 0 ? ` (${studiedCount})` : ""}
+        </button>
+        {/* Tasto toggle "Da approfondire" */}
+        <button
+          className={`chip fav-chip ${studiedFilter === "not-studied" ? "active" : ""}`}
+          onClick={() => { setStudiedFilter(v => v === "not-studied" ? "" : "not-studied"); setLimit(60); }}
+          data-testid="toggle-not-studied"
+          title="Mostra solo le opere da approfondire"
+        >
+          ○ Da approfondire{notStudiedCount > 0 ? ` (${notStudiedCount})` : ""}
+        </button>
         <button className={`chip ${grouped ? "active" : ""}`} onClick={() => setGrouped(v => !v)} data-testid="toggle-grouped"
           title={groups.size === 0 ? "Nessun gruppo disponibile" : "Raggruppa opere dello stesso complesso"}>
           ⛨ Complessi{groups.size > 0 ? ` (${groups.size})` : ""}
@@ -176,6 +206,7 @@ export default function Opere() {
             {/* Opere singole */}
             {(grouped ? singleWorks : filtered).slice(0, limit).map((w) => (
               <WorkCard key={w.id} work={w}
+                group={grouped ? byGroup.get(w.id) : undefined}
                 subtitle={[w.location_city, periodById.get(w.period_id)?.name].filter(Boolean).join(" · ")} />
             ))}
           </div>

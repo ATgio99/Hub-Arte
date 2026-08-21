@@ -1,8 +1,12 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, Section, Empty, EntityLink, FilterNote, FavStar } from "../components/ui";
 import ArtistMap from "../components/ArtistMap";
 import ArtistTimeline from "../components/ArtistTimeline";
+import ArtistEditorDrawer from "../components/ArtistEditorDrawer";
+import { useAuth } from "../lib/auth";
+import { setLastArtista } from "../lib/lastVisited";
 import {
   worksByArtist, connectionsOf, fmtYear, entityLabel, ENTITY_LABEL, KIND_LABEL,
 } from "../lib/data";
@@ -11,9 +15,21 @@ export default function Artista() {
   const { id } = useParams();
   const ix = useData();
   const nav = useNavigate();
+  const { user, isAdmin } = useAuth();
+  const [editorOpen, setEditorOpen] = useState(false);
   const { workIn } = useTimeRange();
   const a = id ? ix.artistById.get(id) : undefined;
-  if (!a) return <div className="wrap page"><Empty msg="Artista non trovato." /></div>;
+
+  // Salva l'ID dell'artista come ultimo visitato (per il ritorno da menu Artisti).
+  // Deve stare PRIMA dell'early return, altrimenti viola le regole degli hooks.
+  useEffect(() => {
+    if (!a) return;
+    setLastArtista(a.id);
+    // Notifica la sidebar di aggiornare l'etichetta "Continua" in tempo reale
+    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
+  }, [a?.id]);
+
+  if (!a) return <div className="wrap page"><Empty msg="Autore non trovato." /></div>;
 
   const allWorks = worksByArtist(ix.ds, a.id).sort((x, y) => y.importance - x.importance);
   const works = allWorks.filter(workIn);
@@ -33,7 +49,31 @@ export default function Artista() {
 
   return (
     <div className="wrap page">
-      <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 18 }} data-testid="button-back">← Indietro</button>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18, gap: 12, flexWrap: "wrap" }}>
+        <button className="btn ghost sm" onClick={() => nav(-1)} data-testid="button-back">← Indietro</button>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          {isAdmin ? (
+            <button
+              onClick={() => setEditorOpen(true)}
+              className="btn gold sm"
+              style={{ fontSize: 13, padding: "8px 14px", whiteSpace: "nowrap" }}
+              title="Modifica i metadati dell'autore nel database (solo admin)"
+              data-testid="btn-admin-edit-artist"
+            >
+              ✎ Modifica
+            </button>
+          ) : user ? (
+            <Link
+              to="/suggerisci"
+              className="btn ghost sm"
+              style={{ fontSize: 13, padding: "8px 14px", borderColor: "var(--line)", color: "var(--ink-soft)", whiteSpace: "nowrap" }}
+              title="Proponi una modifica a questo autore"
+            >
+              ✎ Richiedi modifica
+            </Link>
+          ) : null}
+        </div>
+      </div>
       <div className="page-head">
         <div className="eyebrow"><span className="tnum">{a.role}{life ? ` · ${life}` : ""}</span></div>
         <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
@@ -55,33 +95,45 @@ export default function Artista() {
         </div>
       )}
 
-      {/* Timeline opere (se almeno 2 opere datate) */}
       {showTimeline && (
         <Section eyebrow="Cronologia" title="Linea del tempo delle opere">
           <ArtistTimeline artist={a} works={allWorks} periods={periods} />
         </Section>
       )}
 
-      {/* Mappa spostamenti (se almeno 2 opere geolocalizzate in città diverse) */}
-      {showMap && hasDistinctCities && (
-        <Section eyebrow="Geografia" title="Mappa degli spostamenti">
-          <ArtistMap artist={a} works={geolocatedWorks} periods={periods} />
-        </Section>
-      )}
-
       {conns.length > 0 && (
-        <Section eyebrow="Sinapsi" title="Maestri, allievi e influenze">
+        <Section eyebrow="Sinapsi" title="Maestri, allievi e influenze" collapsible defaultCollapsed>
           {conns.map((c) => {
             const otherIsSource = !(c.source_type === "artist" && c.source_id === a.id);
             const ot = otherIsSource ? c.source_type : c.target_type;
             const oid = otherIsSource ? c.source_id : c.target_id;
+            // Per mostrare A → B: "questo autore" è A (source) se source_id === a.id,
+            // altrimenti l'altro è source e "questo autore" è B (target).
+            // thisIsSource = true → quest'autore influenza l'altro (A → B)
+            const thisIsSource = c.source_type === "artist" && c.source_id === a.id;
+            const otherLabel = entityLabel(ix, ot, oid);
             return (
               <div className="conn-row" key={c.id}>
                 <span className="conn-kind">{KIND_LABEL[c.kind] ?? c.kind}</span>
                 <div>
-                  <div style={{ marginBottom: 3 }}>
+                  {/* Mostra direzione: A → B (entrambi i nomi visibili) */}
+                  <div style={{ marginBottom: 4, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                     <span className="muted" style={{ fontSize: 12 }}>{ENTITY_LABEL[ot]} · </span>
-                    <EntityLink type={ot} id={oid} label={entityLabel(ix, ot, oid)} />
+                    {thisIsSource ? (
+                      // Questo autore → altro
+                      <>
+                        <span style={{ fontSize: 13, fontWeight: 600 }}>{a.name}</span>
+                        <span style={{ color: "var(--gold-deep)", fontSize: 13, fontWeight: 700 }}>→</span>
+                        <EntityLink type={ot} id={oid} label={otherLabel} />
+                      </>
+                    ) : (
+                      // Altro → questo autore
+                      <>
+                        <EntityLink type={ot} id={oid} label={otherLabel} />
+                        <span style={{ color: "var(--gold-deep)", fontSize: 13, fontWeight: 700 }}>→</span>
+                        <span style={{ fontSize: 13, fontWeight: 600 }}>{a.name}</span>
+                      </>
+                    )}
                   </div>
                   <div className="muted" style={{ fontSize: 14 }}>{c.description}</div>
                 </div>
@@ -91,14 +143,28 @@ export default function Artista() {
         </Section>
       )}
 
+      {/* Mappa opere (se almeno 2 opere geolocalizzate in città diverse) */}
+      {showMap && hasDistinctCities && (
+        <Section eyebrow="Geografia" title="Dove si trovano le opere" collapsible defaultCollapsed>
+          <ArtistMap artist={a} works={geolocatedWorks} periods={periods} />
+        </Section>
+      )}
+
       {allWorks.length > 0 ? (
         <Section eyebrow={`${works.length} opere`} title="Opere"
           right={<FilterNote total={allWorks.length} shown={works.length} noun="opere nell'arco scelto" />}>
           {works.length > 0
             ? <div className="grid-works">{works.map((w) => <WorkCard key={w.id} work={w} />)}</div>
-            : <Empty msg="Nessuna opera di questo artista nell'intervallo temporale scelto." />}
+            : <Empty msg="Nessuna opera di questo autore nell'intervallo temporale scelto." />}
         </Section>
-      ) : <Section title="Opere"><Empty msg="Nessuna opera registrata per questo artista." /></Section>}
+      ) : <Section title="Opere"><Empty msg="Nessuna opera registrata per questo autore." /></Section>}
+
+      {/* Editor drawer (solo admin, apre con pulsante Modifica) */}
+      <ArtistEditorDrawer
+        artistId={a.id}
+        open={editorOpen}
+        onClose={() => setEditorOpen(false)}
+      />
     </div>
   );
 }

@@ -3,12 +3,151 @@
 // Presenta il progetto come opensource con link al repo GitHub.
 // ============================================================================
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useData } from "../lib/store";
 import { CountUp } from "../components/ui";
 import { useInViewOnce, EASE_OUT, usePrefersReducedMotion } from "../lib/motion";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "../lib/auth";
 
 const GITHUB_URL = "https://github.com/ATgio99/Hub-Arte";
+
+// --- Popup di avviso per utenti non loggati (chiude e non riappare) --------
+const NOTICE_KEY = "atlante.home.notice.dismissed.v1";
+
+function HomeNotice() {
+  const { user } = useAuth();
+  const [dismissed, setDismissed] = useState(true);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(NOTICE_KEY);
+      setDismissed(stored === "1");
+    } catch { /* ignore */ }
+    setReady(true);
+  }, []);
+
+  if (!ready || user || dismissed) return null;
+
+  const close = () => {
+    try { localStorage.setItem(NOTICE_KEY, "1"); } catch { /* ignore */ }
+    setDismissed(true);
+  };
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        role="dialog"
+        aria-live="polite"
+        aria-label="Messaggio di benvenuto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        style={{
+          position: "fixed", inset: 0, zIndex: 9500,
+          background: "rgba(26,20,14,0.55)",
+          backdropFilter: "blur(6px)",
+          WebkitBackdropFilter: "blur(6px)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          padding: "20px",
+        }}
+        onClick={close}
+      >
+        <motion.div
+          initial={{ scale: 0.94, y: 16, opacity: 0 }}
+          animate={{ scale: 1, y: 0, opacity: 1 }}
+          exit={{ scale: 0.94, y: 16, opacity: 0 }}
+          transition={{ duration: 0.35, ease: EASE_OUT }}
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            position: "relative",
+            maxWidth: 440, width: "100%",
+            background: "var(--bg, #faf6ee)",
+            border: "1px solid rgba(184,138,46,0.25)",
+            borderRadius: 18,
+            boxShadow: "0 24px 70px rgba(20,16,12,0.35), 0 4px 12px rgba(20,16,12,0.15)",
+            padding: "32px 28px 24px",
+            overflow: "hidden",
+          }}
+        >
+          {/* Linea decorativa oro in alto */}
+          <div style={{
+            position: "absolute", top: 0, left: 0, right: 0, height: 3,
+            background: "linear-gradient(90deg, transparent 0%, var(--gold, #d4a017) 35%, var(--gold-deep, #b88a2e) 65%, transparent 100%)",
+          }} />
+
+          {/* Icona stella neurale (coerente col logo Landing) */}
+          <div style={{ textAlign: "center", marginBottom: 18 }}>
+            <svg width="40" height="40" viewBox="0 0 48 48" fill="none" style={{ display: "inline-block" }}>
+              <g stroke="var(--gold, #d4a017)" strokeWidth="2" strokeLinecap="round">
+                <path d="M24 24 L24 7 M24 24 L24 41 M24 24 L8 24 M24 24 L40 24" />
+                <path d="M24 24 L12.7 12.7 M24 24 L35.3 35.3 M24 24 L35.3 12.7 M24 24 L12.7 35.3" strokeWidth="1.5" />
+              </g>
+              <circle cx="24" cy="24" r="5" fill="var(--gold, #d4a017)" />
+              <circle cx="24" cy="7" r="2.4" fill="var(--gold, #d4a017)" />
+              <circle cx="40" cy="24" r="2.4" fill="var(--gold, #d4a017)" />
+              <circle cx="24" cy="41" r="2" fill="var(--gold, #d4a017)" opacity=".85" />
+              <circle cx="8" cy="24" r="2" fill="var(--gold, #d4a017)" opacity=".85" />
+            </svg>
+          </div>
+
+          {/* Titolo */}
+          <h2 style={{
+            fontFamily: "var(--font-display, 'Zodiak', serif)",
+            fontSize: 24, fontWeight: 500,
+            color: "var(--ink, #1a1a1a)",
+            textAlign: "center",
+            marginBottom: 16, lineHeight: 1.2,
+            letterSpacing: "-.01em",
+          }}>
+            Benvenutə in HUB Arte
+          </h2>
+
+          {/* Corpo testo */}
+          <div style={{ maxWidth: 360, margin: "0 auto 20px" }}>
+            <p style={{
+              fontSize: 14.5, lineHeight: 1.65,
+              color: "var(--ink-soft, #5b5550)", margin: "0 0 12px",
+            }}>
+              Questo progetto è in <b style={{ color: "var(--ink, #1a1a1a)", fontWeight: 600 }}>continua evoluzione</b>: potresti incontrare piccoli errori o funzioni ancora in sviluppo.
+            </p>
+            <p style={{
+              fontSize: 14.5, lineHeight: 1.65,
+              color: "var(--ink-soft, #5b5550)", margin: "0 0 12px",
+            }}>
+              Se qualcosa non funziona, oppure hai un'idea per migliorarlo, <b style={{ color: "var(--ink, #1a1a1a)", fontWeight: 600 }}>segnalacelo</b>. Ogni contributo è prezioso e ci aiuta a far crescere HUB Arte.
+            </p>
+            <p style={{
+              fontSize: 14.5, lineHeight: 1.65,
+              color: "var(--gold-deep, #b88a2e)", margin: 0,
+              fontStyle: "italic", textAlign: "center",
+            }}>
+              Buona esplorazione.
+            </p>
+          </div>
+
+          {/* Bottone unico centrato */}
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button
+              className="btn gold sm"
+              onClick={close}
+              style={{
+                minWidth: 140, padding: "10px 28px",
+                fontSize: 14, fontWeight: 600,
+                justifyContent: "center",
+                textTransform: "none",
+              }}
+            >
+              Grazie!
+            </button>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
 
 export default function Landing() {
   const ix = useData();
@@ -17,7 +156,7 @@ export default function Landing() {
 
   const stats = [
     { n: ix.ds.works.length, l: "Opere" },
-    { n: ix.ds.artists.length, l: "Artisti" },
+    { n: ix.ds.artists.length, l: "Autori" },
     { n: ix.ds.periods.length, l: "Periodi" },
     { n: ix.ds.terms.length, l: "Termini" },
     { n: ix.ds.techniques.length, l: "Tecniche" },
@@ -25,16 +164,17 @@ export default function Landing() {
   ];
 
   const features = [
-    { icon: "🖼️", title: "Catalogo opere", desc: "Schede dettagliate con immagini, analisi e innovazioni" },
-    { icon: "🕸️", title: "Grafo neuronale", desc: "Visualizza le connessioni tra opere, artisti e periodi in 3D" },
-    { icon: "📅", title: "Timeline multilivello", desc: "Periodi, eventi e artisti su una linea del tempo navigabile" },
-    { icon: "🗺️", title: "Mappa geografica", desc: "Esplora i luoghi che custodiscono le opere" },
-    { icon: "🎯", title: "Quiz interattivo", desc: "Mettiti alla prova con 18 tipi di domanda generati dal dataset" },
-    { icon: "📚", title: "Glossario", desc: "Termini tecnici e definizioni sempre a portata di mano" },
+    { icon: "🖼️", title: "Catalogo opere", desc: "Schede dettagliate con immagini, analisi e innovazioni", to: "/opere" },
+    { icon: "🕸️", title: "Grafo neuronale", desc: "Visualizza le connessioni tra opere, artisti e periodi in 3D", to: "/grafo" },
+    { icon: "📅", title: "Timeline multilivello", desc: "Periodi, eventi e artisti su una linea del tempo navigabile", to: "/timeline" },
+    { icon: "🗺️", title: "Mappa geografica", desc: "Esplora i luoghi che custodiscono le opere", to: "/mappa" },
+    { icon: "🎯", title: "Quiz interattivo", desc: "Mettiti alla prova con 18 tipi di domanda generati dal dataset", to: "/test" },
+    { icon: "📚", title: "Glossario", desc: "Termini tecnici e definizioni sempre a portata di mano", to: "/glossario" },
   ];
 
   return (
     <div className="wrap page" style={{ maxWidth: 900, margin: "0 auto", padding: "20px 18px 60px" }}>
+      <HomeNotice />
       {/* Hero */}
       <div style={{ textAlign: "center", marginTop: 20, marginBottom: 40 }}>
         <motion.div
@@ -59,7 +199,7 @@ export default function Landing() {
             fontFamily: "var(--font-display)", fontSize: "clamp(32px, 6vw, 52px)",
             lineHeight: 1.05, letterSpacing: "-.025em", marginBottom: 12,
           }}>
-            HUB Art
+            HUB Arte
           </h1>
           <p style={{
             fontSize: "clamp(16px, 3vw, 20px)", color: "var(--ink-soft)",
@@ -105,10 +245,7 @@ export default function Landing() {
         display: "grid",
         gridTemplateColumns: "repeat(6, 1fr)",
         gap: 10, marginBottom: 40, maxWidth: 820, margin: "0 auto 40px",
-      }}
-      // Su schermi piccoli (<640px) scendiamo a 3 colonne (2 righe da 3)
-      // usando una media query inline via CSS. La regola viene iniettata una sola volta.
-      >
+      }}>
         <style>{`
           @media (max-width: 640px) {
             .hubart-stats-grid { grid-template-columns: repeat(3, 1fr) !important; }
@@ -153,35 +290,43 @@ export default function Landing() {
             initial={reduced ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: (seen || reduced) ? 1 : 0, y: (seen || reduced) ? 0 : 20 }}
             transition={{ duration: 0.5, ease: EASE_OUT, delay: reduced ? 0 : Math.min(0.2 + i * 0.08, 0.6) }}
-            style={{
-              padding: "24px 22px", background: "var(--bg)", border: "1px solid var(--line)",
-              borderRadius: 14, position: "relative", overflow: "hidden",
-              transition: "border-color .2s, box-shadow .2s",
-            }}
           >
-            {/* Linea decorativa oro in alto */}
-            <div style={{
-              position: "absolute", top: 0, left: 0, right: 0, height: 2,
-              background: "linear-gradient(90deg, transparent, var(--gold), transparent)",
-              opacity: 0.5,
-            }} />
-            {/* Icona SVG elegante invece di emoji */}
-            <div style={{
-              width: 40, height: 40, borderRadius: 10, marginBottom: 14,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              background: "rgba(184,138,46,0.1)",
-            }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                {i === 0 && <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></>}
-                {i === 1 && <><circle cx="6" cy="6" r="2" /><circle cx="18" cy="8" r="2" /><circle cx="9" cy="18" r="2" /><path d="M8 7l8 1M8 8l1 8M17 10l-7 7" /></>}
-                {i === 2 && <><path d="M3 12h18" /><circle cx="7" cy="12" r="1.5" /><circle cx="13" cy="12" r="1.5" /><circle cx="19" cy="12" r="1.5" /><path d="M7 12V7M13 12v5M19 12V8" /></>}
-                {i === 3 && <><path d="M9 4L4 6v14l5-2 6 2 5-2V4l-5 2-6-2z" /><path d="M9 4v14M15 6v14" /></>}
-                {i === 4 && <><path d="M9 11l2 2 4-4" /><rect x="4" y="4" width="16" height="16" rx="2" /></>}
-                {i === 5 && <><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z" /><path d="M5 17a3 3 0 0 1 3-3h11" /></>}
-              </svg>
-            </div>
-            <h3 style={{ fontSize: 17, marginBottom: 6, fontFamily: "var(--font-display)" }}>{f.title}</h3>
-            <p style={{ fontSize: 13.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: 0 }}>{f.desc}</p>
+            <Link
+              to={f.to}
+              className="hubart-feature-card"
+              style={{
+                display: "block",
+                padding: "24px 22px", background: "var(--bg)", border: "1px solid var(--line)",
+                borderRadius: 14, position: "relative", overflow: "hidden",
+                textDecoration: "none", color: "inherit",
+                transition: "border-color .2s, box-shadow .2s, transform .2s",
+                height: "100%",
+              }}
+            >
+              {/* Linea decorativa oro in alto */}
+              <div style={{
+                position: "absolute", top: 0, left: 0, right: 0, height: 2,
+                background: "linear-gradient(90deg, transparent, var(--gold), transparent)",
+                opacity: 0.5,
+              }} />
+              {/* Icona SVG elegante invece di emoji */}
+              <div style={{
+                width: 40, height: 40, borderRadius: 10, marginBottom: 14,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                background: "rgba(184,138,46,0.1)",
+              }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-deep)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  {i === 0 && <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></>}
+                  {i === 1 && <><circle cx="6" cy="6" r="2" /><circle cx="18" cy="8" r="2" /><circle cx="9" cy="18" r="2" /><path d="M8 7l8 1M8 8l1 8M17 10l-7 7" /></>}
+                  {i === 2 && <><path d="M3 12h18" /><circle cx="7" cy="12" r="1.5" /><circle cx="13" cy="12" r="1.5" /><circle cx="19" cy="12" r="1.5" /><path d="M7 12V7M13 12v5M19 12V8" /></>}
+                  {i === 3 && <><path d="M9 4L4 6v14l5-2 6 2 5-2V4l-5 2-6-2z" /><path d="M9 4v14M15 6v14" /></>}
+                  {i === 4 && <><path d="M9 11l2 2 4-4" /><rect x="4" y="4" width="16" height="16" rx="2" /></>}
+                  {i === 5 && <><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z" /><path d="M5 17a3 3 0 0 1 3-3h11" /></>}
+                </svg>
+              </div>
+              <h3 style={{ fontSize: 17, marginBottom: 6, fontFamily: "var(--font-display)" }}>{f.title}</h3>
+              <p style={{ fontSize: 13.5, color: "var(--ink-soft)", lineHeight: 1.55, margin: 0 }}>{f.desc}</p>
+            </Link>
           </motion.div>
         ))}
       </div>
@@ -220,25 +365,37 @@ export default function Landing() {
           </a>
         </div>
 
-        {/* Mance */}
+        {/* Sostieni il progetto */}
         <div style={{
-          marginTop: 20, padding: "16px 20px", background: "var(--bg-2)", borderRadius: 12,
-          display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 10,
+          marginTop: 20, padding: "20px 24px", background: "var(--bg-2)", borderRadius: 12,
+          display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 12,
+          maxWidth: 520,
         }}>
-          <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: 0, lineHeight: 1.5 }}>
-            HUB Art è gratuito e senza pubblicità. Se ti è utile, lascia una mancia al creatore 💛
-          </p>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
-            <a href="https://www.buymeacoffee.com/ATgio" target="_blank" rel="noopener noreferrer"
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 6,
-                padding: "8px 16px", borderRadius: 999, fontSize: 13, fontWeight: 600,
-                background: "#ffdd00", color: "#000", textDecoration: "none",
-                border: "1px solid #e6c800",
-              }}>
-              ☕ Lascia una mancia
-            </a>
+          <div style={{ fontSize: 15, fontWeight: 600, fontFamily: "var(--font-display)", color: "var(--ink)" }}>
+            💛 Sostieni il progetto
           </div>
+          <p style={{ fontSize: 13.5, color: "var(--ink-soft)", margin: 0, lineHeight: 1.6, textAlign: "center" }}>
+            HUB Arte è gratuito e open source. Puoi contribuire in molti modi:
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 14px", justifyContent: "center", fontSize: 13, color: "var(--ink-soft)" }}>
+            <span>⭐ Metti una star su GitHub</span>
+            <span>🐛 Segnala bug o suggerimenti</span>
+            <span>📝 Contribuisci al codice</span>
+            <span>🗣️ Parlane con chi studia storia dell'arte</span>
+          </div>
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              padding: "9px 20px", borderRadius: 999, fontSize: 13.5, fontWeight: 600,
+              background: "var(--gold)", color: "#fff", textDecoration: "none",
+              border: "1px solid var(--gold-deep)",
+              marginTop: 4,
+            }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            Vai al repository GitHub →
+          </a>
         </div>
       </div>
     </div>
