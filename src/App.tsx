@@ -3,16 +3,14 @@ import { useEffect, type ReactNode, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { pageVariants, usePrefersReducedMotion } from "./lib/motion";
 import { useAuth } from "./lib/auth";
-import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides, pullQuizFromCloud, pullImageOverrides } from "./lib/sync";
+import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides } from "./lib/sync";
 import Sidebar from "./components/Sidebar";
 import CookieConsent from "./components/CookieConsent";
-import LoginPrompt from "./components/LoginPrompt";
 import Timeline from "./pages/Timeline";
 import Luogo from "./pages/Luogo";
 import Artisti from "./pages/Artisti";
 import Opere from "./pages/Opere";
 import Opera from "./pages/Opera";
-import Complesso from "./pages/Complesso";
 import Periodo from "./pages/Periodo";
 import Artista from "./pages/Artista";
 import Glossario from "./pages/Glossario";
@@ -55,20 +53,17 @@ function useSyncOnLogin() {
     let cleanup: (() => void) | undefined;
     let pollInterval: any;
     let globalPollInterval: any;
-    let imagePollInterval: any;
-    let quizCleanup: (() => void) | undefined;
 
     (async () => {
       // Scarica sempre gli override globali (anche per anonimi)
       await pullGlobalImageOverrides();
 
       if (!user) {
-        // ANONIMO: polla solo i globali ogni 5 MINUTI (prima era 30s).
-        // Le immagini globali cambiano raramente (solo quando l'admin le modifica),
-        // non serve controllare ogni 30s.
+        // ANONIMO: polla solo i globali ogni 30s (così se l'admin cambia
+        // un'immagine, l'utente anonimo la vede entro 30s)
         globalPollInterval = setInterval(async () => {
           await pullGlobalImageOverrides();
-        }, 300000); // 5 minuti
+        }, 30000);
         return;
       }
 
@@ -76,39 +71,18 @@ function useSyncOnLogin() {
       await fullSync(user);
       cleanup = subscribeToRealtime(user);
 
-      // Polling automatico ogni 30 secondi: scarica SOLO favorites + studied.
-      // NON scarica quiz (solo al login + dopo quiz) né image_overrides
-      // (solo al login + ogni 5 min) — per ridurre il traffico API.
+      // Polling automatico ogni 30 secondi: scarica eventuali modifiche
+      // fatte da altri dispositivi (il realtime a volte non è affidabile)
       pollInterval = setInterval(async () => {
-        console.log("[sync] Auto-poll: pulling favorites+studied...");
+        console.log("[sync] Auto-poll: pulling from cloud...");
         await pullFromCloud(user);
       }, 30000);
-
-      // Polling immagini ogni 5 MINUTI (prima era nel pullFromCloud ogni 30s).
-      // Le immagini cambiano raramente, non serve controllarle spesso.
-      imagePollInterval = setInterval(async () => {
-        console.log("[sync] Image poll: pulling image overrides...");
-        await pullImageOverrides(user);
-      }, 300000); // 5 minuti
-
-      // Dopo un quiz completato: pull immediato delle quiz stats/errors
-      // (evento dispatchato da quizStore.recordSession)
-      const onQuizCompleted = () => {
-        console.log("[sync] Quiz completed: pulling quiz data from cloud...");
-        pullQuizFromCloud(user);
-      };
-      window.addEventListener("atlante:quiz-completed", onQuizCompleted);
-      quizCleanup = () => {
-        window.removeEventListener("atlante:quiz-completed", onQuizCompleted);
-      };
     })();
 
     return () => {
       if (cleanup) cleanup();
-      if (quizCleanup) quizCleanup();
       if (pollInterval) clearInterval(pollInterval);
       if (globalPollInterval) clearInterval(globalPollInterval);
-      if (imagePollInterval) clearInterval(imagePollInterval);
     };
   }, [user]);
 }
@@ -164,7 +138,6 @@ export default function App() {
                   <Route path="/luogo/:name" element={<Luogo />} />
                   <Route path="/opere" element={<Opere />} />
                   <Route path="/opera/:id" element={<Opera />} />
-                  <Route path="/complesso/:id" element={<Complesso />} />
                   <Route path="/periodo/:id" element={<Periodo />} />
                   <Route path="/artisti" element={<Artisti />} />
                   <Route path="/artista/:id" element={<Artista />} />
@@ -188,7 +161,6 @@ export default function App() {
 
       {/* Banner cookie — solo finché l'utente non ha scelto */}
       <CookieConsent />
-      <LoginPrompt />
     </div>
   );
 }

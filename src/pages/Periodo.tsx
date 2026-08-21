@@ -1,5 +1,4 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { useEffect } from "react";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, Section, Empty, EntityLink, FilterNote } from "../components/ui";
 import {
@@ -7,7 +6,6 @@ import {
   entityLabel, ENTITY_LABEL, KIND_LABEL,
 } from "../lib/data";
 import PeriodDossier from "../components/PeriodDossier";
-import { setLastTimeline } from "../lib/lastVisited";
 
 export default function Periodo() {
   const { id } = useParams();
@@ -15,14 +13,6 @@ export default function Periodo() {
   const nav = useNavigate();
   const { workIn } = useTimeRange();
   const p = id ? ix.periodById.get(id) : undefined;
-
-  // Salva il periodo come ultimo visitato dalla Linea del tempo (per il ritorno via menu)
-  useEffect(() => {
-    if (!p) return;
-    setLastTimeline(p.id);
-    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-  }, [p?.id]);
-
   if (!p) return <div className="wrap page"><Empty msg="Periodo non trovato." /></div>;
 
   const allWorks = worksByPeriod(ix.ds, p.id).sort((a, b) => b.importance - a.importance);

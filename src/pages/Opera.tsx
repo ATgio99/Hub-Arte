@@ -1,11 +1,10 @@
 import { useState, useMemo, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useData } from "../lib/store";
-import { WorkImage, WorkCard, WorkGallery, Section, Empty, EntityLink, FavStar, StudiedCheck, RichText } from "../components/ui";
+import { WorkImage, WorkCard, Section, Empty, EntityLink, FavStar, StudiedCheck } from "../components/ui";
 import { getOverrides, setOverride, clearOverride } from "../lib/imageOverrides";
 import { useStudied, toggleStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
-import { setLastOpera } from "../lib/lastVisited";
 import EditorDrawer from "../components/EditorDrawer";
 import {
   artistsOfWork, termsOfWork, techniquesOfWork, relatedWorks,
@@ -91,17 +90,17 @@ export default function Opera() {
   const { user, isAdmin } = useAuth();
   const w = id ? ix.workById.get(id) : undefined;
   const [editorOpen, setEditorOpen] = useState(false);
-
-  // Salva l'ID dell'opera come ultima visitata (per il ritorno da menu Opere).
-  // Deve stare PRIMA dell'early return, altrimenti viola le regole degli hooks.
-  useEffect(() => {
-    if (!w) return;
-    setLastOpera(w.id);
-    // Notifica la sidebar di aggiornare l'etichetta "Continua" in tempo reale
-    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-  }, [w?.id]);
-
+  const [imgZoom, setImgZoom] = useState(false);
   if (!w) return <div className="wrap page"><Empty msg="Opera non trovata." /></div>;
+
+  // Esc per chiudere il lightbox
+  useEffect(() => {
+    if (!imgZoom) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setImgZoom(false); };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [imgZoom]);
 
   const artists = artistsOfWork(ix, w);
   const terms = termsOfWork(ix, w);
@@ -149,9 +148,12 @@ export default function Opera() {
       </div>
 
       <div className="opera-grid">
-        {/* immagine — galleria scorrevole con lightbox integrato */}
+        {/* immagine */}
         <div>
-          <WorkGallery work={w} />
+          <div className="opera-img card" onClick={() => { if (w.image_thumb || w.image_url) setImgZoom(true); }} role={w.image_thumb || w.image_url ? "button" : undefined} tabIndex={w.image_thumb || w.image_url ? 0 : undefined} onKeyDown={(e) => { if ((e.key === "Enter" || e.key === " ") && (w.image_thumb || w.image_url)) { e.preventDefault(); setImgZoom(true); } }}>
+            <WorkImage work={w} style={{ maxWidth: "100%", maxHeight: "72vh", width: "auto", height: "auto", objectFit: "contain", background: "var(--bg)" }} />
+          </div>
+          {/* Sotto l'immagine: solo ImageEditor (solo admin) + fonte (i pulsanti Modifica/Richiedi sono in alto) */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8, gap: 10, flexWrap: "wrap" }}>
             {isAdmin && <ImageEditor workId={w.id} />}
             {w.image_source && <div className="faint" style={{ fontSize: 11, marginLeft: "auto" }}>fonte immagine: {getOverrides()[w.id] ? "personalizzata" : w.image_source}</div>}
@@ -163,6 +165,7 @@ export default function Opera() {
           <div style={{ display: "flex", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
             <span className="tag">{w.type}</span>
             {w.importance === 3 && <span className="tag" style={{ color: "var(--gold-deep)", borderColor: "var(--gold-deep)" }}>✦ opera capitale</span>}
+            <span className="tag">Libro {w.book} · cap. {w.chapter}</span>
           </div>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
             <h1 style={{ fontSize: "clamp(28px,4.5vw,46px)", lineHeight: 1.04, letterSpacing: "-.02em", minWidth: 0 }}>{w.title}</h1>
@@ -185,7 +188,7 @@ export default function Opera() {
             {" · "}<span className="tnum">{workYears(w)}</span>
           </div>
 
-          <p className="prose" style={{ marginTop: 22, fontSize: 17 }}><RichText text={w.summary || ""} /></p>
+          <p className="prose" style={{ marginTop: 22, fontSize: 17 }}>{w.summary}</p>
 
           <dl className="meta" style={{ marginTop: 26 }}>
             {period && <><dt>Periodo</dt><dd><EntityLink type="period" id={period.id} label={period.name} /></dd></>}
@@ -207,68 +210,21 @@ export default function Opera() {
       {w.analysis && (
         <Section eyebrow="Analisi" title="Lettura dell'opera">
           <div className="prose" style={{ maxWidth: "72ch", fontSize: 17 }}>
-            {w.analysis.split(/\n+/).map((p, i) => <p key={i}><RichText text={p} /></p>)}
+            {w.analysis.split(/\n+/).map((p, i) => <p key={i}>{p}</p>)}
           </div>
         </Section>
       )}
 
-      {/* === 1. Opere collegate (banner con anteprima + descrizione completa) === */}
-      {conns.filter(c => {
-        const otherIsSource = !(c.source_type === "work" && c.source_id === w.id);
-        const ot = otherIsSource ? c.source_type : c.target_type;
-        return ot === "work";
-      }).length > 0 && (
-        <Section eyebrow="Sinapsi" title="Opere collegate">
-          <div style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 8 }}>
-            {conns.filter(c => {
-              const otherIsSource = !(c.source_type === "work" && c.source_id === w.id);
-              const ot = otherIsSource ? c.source_type : c.target_type;
-              return ot === "work";
-            }).map((c) => {
-              const otherIsSource = !(c.source_type === "work" && c.source_id === w.id);
-              const otherWorkId = otherIsSource ? c.source_id : c.target_id;
-              const otherWork = ix.workById.get(otherWorkId);
-              if (!otherWork) return null;
-              const thisIsSource = !otherIsSource;
-              return (
-                <Link
-                  key={c.id}
-                  to={`/opera/${otherWorkId}`}
-                  className="conn-banner"
-                  style={{
-                    display: "flex", gap: 16, padding: 16,
-                    background: "var(--bg-1)", border: "1px solid var(--line)",
-                    borderRadius: 12, textDecoration: "none", color: "var(--ink)",
-                    transition: "border-color .2s, box-shadow .2s",
-                  }}
-                >
-                  <div style={{ width: 80, height: 80, borderRadius: 8, overflow: "hidden", flexShrink: 0, border: "1px solid var(--line-soft)" }}>
-                    <WorkImage work={otherWork} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-                      <span className="tag" style={{ color: "var(--gold-deep)", borderColor: "var(--gold)", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.04em", fontWeight: 700 }}>
-                        {KIND_LABEL[c.kind] ?? c.kind}
-                      </span>
-                      <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>
-                        {thisIsSource ? "questa opera →" : "← quest'opera"}
-                      </span>
-                    </div>
-                    <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }}>{otherWork.title}</div>
-                    {c.description && (
-                      <div style={{ fontSize: 13, color: "var(--ink-soft)", fontStyle: "italic", lineHeight: 1.5 }}>
-                        "{c.description}"
-                      </div>
-                    )}
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
+      {/* Sezione gruppo: altre opere dello stesso complesso */}
+      {siblings.length > 0 && (
+        <Section eyebrow="Complesso" title={`Opere di ${group!.name}`}>
+          <p className="muted" style={{ fontSize: 13.5, marginTop: -8, marginBottom: 16, maxWidth: "58ch" }}>
+            Quest'opera fa parte del complesso di <b>{group!.name}</b>{group!.city ? ` a ${group!.city}` : ""}. Ecco le altre opere collegate.
+          </p>
+          <div className="grid-works">{siblings.map((r) => <WorkCard key={r.id} work={r} />)}</div>
         </Section>
       )}
 
-      {/* === 2. Termini collegati === */}
       {terms.length > 0 && (
         <Section eyebrow="Glossario" title="Termini collegati">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: 14 }}>
@@ -285,17 +241,30 @@ export default function Opera() {
         </Section>
       )}
 
-      {/* === 3. Opere nello stesso complesso === */}
-      {siblings.length > 0 && (
-        <Section eyebrow="Complesso" title={`Opere di ${group!.name}`}>
-          <p className="muted" style={{ fontSize: 13.5, marginTop: -8, marginBottom: 16, maxWidth: "58ch" }}>
-            Quest'opera fa parte del complesso di <b>{group!.name}</b>{group!.city ? ` a ${group!.city}` : ""}. Ecco le altre opere collegate.
-          </p>
-          <div className="grid-works">{siblings.map((r) => <WorkCard key={r.id} work={r} />)}</div>
+      {conns.length > 0 && (
+        <Section eyebrow="Sinapsi" title="Connessioni">
+          <div>
+            {conns.map((c) => {
+              const otherIsSource = !(c.source_type === "work" && c.source_id === w.id);
+              const ot = otherIsSource ? c.source_type : c.target_type;
+              const oid = otherIsSource ? c.source_id : c.target_id;
+              return (
+                <div className="conn-row" key={c.id}>
+                  <span className="conn-kind">{KIND_LABEL[c.kind] ?? c.kind}</span>
+                  <div>
+                    <div style={{ marginBottom: 3 }}>
+                      <span className="muted" style={{ fontSize: 12 }}>{ENTITY_LABEL[ot]} · </span>
+                      <EntityLink type={ot} id={oid} label={entityLabel(ix, ot, oid)} />
+                    </div>
+                    <div className="muted" style={{ fontSize: 14 }}>{c.description}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </Section>
       )}
 
-      {/* === 4. Opere connesse nelle vicinanze === */}
       {related.length > 0 && (
         <Section eyebrow="Vicinanze" title="Opere connesse">
           <div className="grid-works">{related.map((r) => <WorkCard key={r.id} work={r} />)}</div>
@@ -308,6 +277,59 @@ export default function Opera() {
         open={editorOpen}
         onClose={() => setEditorOpen(false)}
       />
+
+      {/* Lightbox immagine fullscreen — click per aprire, Esc/click per chiudere */}
+      {imgZoom && (w.image_thumb || w.image_url) && (
+        <div
+          onClick={() => setImgZoom(false)}
+          onKeyDown={(e) => { if (e.key === "Escape") setImgZoom(false); }}
+          role="button"
+          tabIndex={0}
+          aria-label="Chiudi immagine"
+          style={{
+            position: "fixed", inset: 0, zIndex: 10000,
+            background: "rgba(0,0,0,0.92)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            cursor: "zoom-out",
+            padding: 24,
+            animation: "fadeIn .2s",
+          }}
+        >
+          <img
+            src={w.image_url || w.image_thumb || ""}
+            alt={w.title}
+            style={{
+              maxWidth: "100%", maxHeight: "100%",
+              objectFit: "contain",
+              borderRadius: 4,
+              boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          />
+          {/* Pulsante chiudi */}
+          <button
+            onClick={() => setImgZoom(false)}
+            aria-label="Chiudi"
+            style={{
+              position: "fixed", top: 18, right: 18, zIndex: 10001,
+              width: 44, height: 44, borderRadius: "50%",
+              background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)",
+              border: "1px solid rgba(255,255,255,0.25)",
+              color: "#fff", fontSize: 22, lineHeight: 1,
+              cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+            }}
+          >✕</button>
+          {/* Titolo opera in basso */}
+          <div style={{
+            position: "fixed", bottom: 24, left: 0, right: 0,
+            textAlign: "center", color: "rgba(255,255,255,0.85)",
+            fontSize: 14, fontFamily: "var(--font-display)",
+            pointerEvents: "none", padding: "0 24px",
+          }}>
+            {w.title}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

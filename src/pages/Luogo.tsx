@@ -3,26 +3,18 @@
 // rappresentati, i collegamenti con le altre città. Raggiungibile dal grafo,
 // dalla mappa (marker e lista centri) e dalle schede opera.
 // ============================================================================
-import { useMemo, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useMemo } from "react";
+import { useParams, Link } from "react-router-dom";
 import { MapContainer, TileLayer, CircleMarker, Polyline } from "react-leaflet";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, EntityLink, FilterNote, Empty } from "../components/ui";
 import { KIND_LABEL } from "../lib/data";
-import { setLastMappa } from "../lib/lastVisited";
 
 export default function Luogo() {
   const { name = "" } = useParams();
   const city = decodeURIComponent(name);
   const ix = useData();
-  const nav = useNavigate();
   const { workIn } = useTimeRange();
-
-  // Salva la città come ultima visitata dalla Mappa (per il ritorno via menu)
-  useEffect(() => {
-    setLastMappa(city);
-    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-  }, [city]);
 
   const allHere = useMemo(() => ix.ds.works.filter((w) => w.location_city === city), [ix, city]);
   const works = useMemo(() => allHere.filter(workIn), [allHere, workIn]);
@@ -66,7 +58,6 @@ export default function Luogo() {
   if (!allHere.length) {
     return (
       <div className="wrap page">
-        <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 18 }} data-testid="button-back">← Indietro</button>
         <div className="page-head"><h1 className="page-title">{city}</h1></div>
         <Empty msg="Nessuna opera registrata in questo luogo." />
         <Link className="btn sm ghost" to="/mappa" style={{ marginTop: 14 }}>← Torna alla mappa</Link>
@@ -76,7 +67,6 @@ export default function Luogo() {
 
   return (
     <div className="wrap page" style={{ paddingBottom: 40 }}>
-      <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 18 }} data-testid="button-back">← Indietro</button>
       <div className="page-head">
         <div className="page-eyebrow"><span className="eyebrow" style={{ color: "#4f7d72" }}>Luogo</span></div>
         <h1 className="page-title">{city}</h1>

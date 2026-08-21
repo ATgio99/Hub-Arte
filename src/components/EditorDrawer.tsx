@@ -59,7 +59,7 @@ const WORK_DB_FIELDS = [
   "type", "technique_ids", "materials", "location_city", "location_place",
   "lat", "lon", "book", "chapter", "page", "source_file", "importance",
   "summary", "analysis", "innovations", "term_ids",
-  "image_url", "image_thumb", "image_source", "image_gallery", "modified_by",
+  "image_url", "image_thumb", "image_source", "modified_by",
 ];
 
 function buildCleanPayload(work: Work, modifiedBy: string): Record<string, unknown> {
@@ -84,117 +84,6 @@ interface DatasetSnapshot {
   techniques: Technique[];
   terms: Term[];
   works: Work[];  // per coordinate città
-}
-
-// ---- MentionTextarea: textarea con autocomplete @nome ----------------------
-// Quando l'utente digita @, mostra un dropdown con opere/artisti filtrati.
-// L'utente seleziona e il nome viene inserito nel testo.
-function MentionTextarea({ value, onChange, placeholder, style, ix }: {
-  value: string; onChange: (v: string) => void; placeholder?: string; style?: any; ix: any;
-}) {
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [showMentions, setShowMentions] = useState(false);
-  const [mentionQuery, setMentionQuery] = useState("");
-  const [mentionStart, setMentionStart] = useState(0);
-  const [selectedIdx, setSelectedIdx] = useState(0);
-
-  // Lista opere + artisti per l'autocomplete
-  const allItems = useMemo(() => {
-    const items: { label: string; type: string }[] = [];
-    for (const a of ix.ds.artists) items.push({ label: a.name, type: "artista" });
-    for (const w of ix.ds.works) items.push({ label: w.title, type: "opera" });
-    return items.sort((a, b) => a.label.localeCompare(b.label));
-  }, [ix.ds.artists, ix.ds.works]);
-
-  // Filtra in base alla query
-  const filtered = useMemo(() => {
-    if (!mentionQuery) return allItems.slice(0, 10);
-    const q = mentionQuery.toLowerCase();
-    return allItems.filter(x => x.label.toLowerCase().includes(q)).slice(0, 10);
-  }, [mentionQuery, allItems]);
-
-  const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const val = e.target.value;
-    const cursorPos = e.target.selectionStart;
-    onChange(val);
-
-    // Cerca @ prima del cursore
-    const beforeCursor = val.slice(0, cursorPos);
-    const atMatch = beforeCursor.match(/@([A-Za-z0-9'àéèìòùÀÉÈÌÒÙ\-. ]*)$/);
-
-    if (atMatch) {
-      setShowMentions(true);
-      setMentionQuery(atMatch[1]);
-      setMentionStart(cursorPos - atMatch[0].length);
-      setSelectedIdx(0);
-    } else {
-      setShowMentions(false);
-    }
-  };
-
-  const insertMention = (label: string) => {
-    const textarea = textareaRef.current;
-    if (!textarea) return;
-    const val = textarea.value;
-    const before = val.slice(0, mentionStart);
-    const after = val.slice(textarea.selectionStart);
-    const newVal = before + "@" + label + " " + after;
-    onChange(newVal);
-    setShowMentions(false);
-    // Posiziona il cursore dopo il tag inserito
-    setTimeout(() => {
-      const pos = (before + "@" + label + " ").length;
-      textarea.focus();
-      textarea.setSelectionRange(pos, pos);
-    }, 0);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!showMentions || filtered.length === 0) return;
-    if (e.key === "ArrowDown") { e.preventDefault(); setSelectedIdx(i => Math.min(i + 1, filtered.length - 1)); }
-    else if (e.key === "ArrowUp") { e.preventDefault(); setSelectedIdx(i => Math.max(i - 1, 0)); }
-    else if (e.key === "Enter" || e.key === "Tab") { e.preventDefault(); insertMention(filtered[selectedIdx].label); }
-    else if (e.key === "Escape") { e.preventDefault(); setShowMentions(false); }
-  };
-
-  return (
-    <div style={{ position: "relative" }}>
-      <textarea
-        ref={textareaRef}
-        defaultValue={value}
-        onChange={handleInput}
-        onKeyDown={handleKeyDown}
-        onBlur={() => setTimeout(() => setShowMentions(false), 200)}
-        placeholder={placeholder}
-        style={style}
-      />
-      {showMentions && filtered.length > 0 && (
-        <div style={{
-          position: "absolute", zIndex: 100, left: 0, right: 0,
-          background: "var(--bg)", border: "1px solid var(--line)",
-          borderRadius: 8, maxHeight: 200, overflowY: "auto",
-          boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
-        }}>
-          {filtered.map((item, i) => (
-            <button
-              key={i}
-              onMouseDown={(e) => { e.preventDefault(); insertMention(item.label); }}
-              style={{
-                display: "flex", width: "100%", padding: "8px 12px",
-                background: i === selectedIdx ? "rgba(184,138,46,0.1)" : "transparent",
-                border: 0, cursor: "pointer", textAlign: "left",
-                fontFamily: "inherit", fontSize: 13, color: "var(--ink)",
-                gap: 8, alignItems: "center",
-              }}
-            >
-              <span style={{ fontSize: 10, color: "var(--ink-dim)", textTransform: "uppercase", fontWeight: 600, minWidth: 50 }}>{item.type}</span>
-              <span>{item.label}</span>
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -258,7 +147,7 @@ function EditorDrawerInner({
         materials: [], location_city: null, location_place: null, lat: null, lon: null,
         book: 1, chapter: 0, page: 0, source_file: "", importance: 2,
         summary: "", analysis: null, innovations: [], term_ids: [],
-        image_url: "", image_thumb: "", image_source: "commons", image_gallery: [],
+        image_url: "", image_thumb: "", image_source: "commons",
       };
       idFieldRef.current = workId;
       setIsNew(true);
@@ -410,27 +299,19 @@ function EditorDrawerInner({
     const currentWork = workRef.current;
     const confirmed = window.confirm(
       `⚠️ CONFERMA ELIMINAZIONE\n\n` +
-      `Stai per eliminare definitivamente:\n\n` +
+      `Stai per eliminare definitivamente dal database:\n\n` +
       `Titolo: ${currentWork.title}\n` +
       `ID: ${currentWork.id}\n\n` +
-      `L'opera verrà rimossa dal database E oscurata dal file JSON statico,\n` +
-      `in modo che non riappaia più per nessun utente.\n\n` +
-      `Questa azione è irreversibile.\n\nVuoi procedere?`
+      `Questa azione è irreversibile.\n` +
+      `Se l'opera esiste anche nel file JSON statico, riapparirà con i valori originali.\n\n` +
+      `Vuoi procedere?`
     );
     if (!confirmed) return;
     setSaving(true);
     setError(null);
     try {
-      // 1) DELETE dal DB (rimuove l'override)
-      const { error: delErr } = await supabase.from("works").delete().eq("id", currentWork.id);
-      if (delErr) throw delErr;
-      // 2) UPSERT in hidden_entities per oscurare anche l'eventuale record JSON
-      //    (altrimenti ricomparirebbe al prossimo loadDataset, perché il merge
-      //    JSON+DB riprenderebbe la riga dal file statico)
-      await supabase.from("hidden_entities").upsert(
-        { id: currentWork.id, table_name: "works", hidden_by: userEmail },
-        { onConflict: "id" }
-      );
+      const { error } = await supabase.from("works").delete().eq("id", currentWork.id);
+      if (error) throw error;
       notifyAppChanged();
       onClose();
     } catch (e: any) {
@@ -551,16 +432,16 @@ function EditorDrawerInner({
                 </Field>
               </div>
 
-              <Field label="Autori">
+              <Field label="Artisti">
                 <EntitySelector
                   mode="multi"
                   options={allArtists.map(a => ({ id: a.id, label: a.name, subtitle: a.role || undefined }))}
                   selected={work.artist_ids}
                   onChange={(v) => set("artist_ids", (v as string[]) || [])}
-                  placeholder="Cerca autore…"
+                  placeholder="Cerca artista…"
                   allowCreate={true}
                   onCreate={createArtist}
-                  createLabel="Nuovo autore"
+                  createLabel="Nuovo artista"
                 />
               </Field>
 
@@ -627,10 +508,10 @@ function EditorDrawerInner({
               </Field>
 
               <Field label="Sintesi">
-                <MentionTextarea value={work.summary} onChange={(v) => set("summary", v)} placeholder="Breve descrizione… (usa @ per taggare opere o artisti)" style={{ ...inputStyle, minHeight: 70, resize: "vertical" }} ix={{ ds: { artists: allArtists, works: dataset.works } }} />
+                <textarea defaultValue={work.summary} onChange={(e) => set("summary", e.target.value)} style={{ ...inputStyle, minHeight: 70, resize: "vertical" }} placeholder="Breve descrizione…" />
               </Field>
               <Field label="Analisi">
-                <MentionTextarea value={work.analysis || ""} onChange={(v) => set("analysis", v || null)} placeholder="Analisi critica… (usa @ per taggare opere o artisti)" style={{ ...inputStyle, minHeight: 90, resize: "vertical" }} ix={{ ds: { artists: allArtists, works: dataset.works } }} />
+                <textarea defaultValue={work.analysis || ""} onChange={(e) => set("analysis", e.target.value || null)} style={{ ...inputStyle, minHeight: 90, resize: "vertical" }} placeholder="Analisi critica…" />
               </Field>
               <Field label="Innovazioni (una per riga)">
                 <textarea defaultValue={(work.innovations || []).join("\n")} onChange={(e) => set("innovations", e.target.value.split("\n").map(s => s.trim()).filter(Boolean))} style={{ ...inputStyle, minHeight: 60, resize: "vertical" }} />
@@ -646,14 +527,20 @@ function EditorDrawerInner({
                 <input type="text" defaultValue={work.image_source || ""} onChange={(e) => set("image_source", e.target.value)} style={inputStyle} placeholder="commons" />
               </Field>
 
-              <Field label="Galleria immagini aggiuntive (un URL per riga)">
-                <textarea
-                  defaultValue={(work.image_gallery || []).join("\n")}
-                  onChange={(e) => set("image_gallery", e.target.value.split("\n").map(s => s.trim()).filter(Boolean))}
-                  style={{ ...inputStyle, minHeight: 70, resize: "vertical", fontFamily: "ui-monospace, monospace", fontSize: 12 }}
-                  placeholder="https://…&#10;https://…"
-                />
-              </Field>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
+                <Field label="Libro">
+                  <select defaultValue={String(work.book || "")} onChange={(e) => set("book", Number(e.target.value) as Work["book"])} style={inputStyle}>
+                    <option value="1">1 · Tardoantico → Gotico</option>
+                    <option value="2">2 · Tardogotico → Controriforma</option>
+                  </select>
+                </Field>
+                <Field label="Capitolo">
+                  <input type="number" defaultValue={work.chapter || 0} onChange={(e) => set("chapter", Number(e.target.value))} style={inputStyle} />
+                </Field>
+                <Field label="Pagina">
+                  <input type="number" defaultValue={work.page || 0} onChange={(e) => set("page", Number(e.target.value))} style={inputStyle} />
+                </Field>
+              </div>
             </div>
 
             {/* Footer */}

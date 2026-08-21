@@ -40,22 +40,15 @@ export function clearDatasetCache() { _cache = null; }
  */
 async function loadDbOverrides(): Promise<Partial<Dataset>> {
   try {
-    const [periodsRes, worksRes, artistsRes, techRes, termsRes, eventsRes, connsRes, hiddenRes] = await Promise.all([
+    const [periodsRes, worksRes, artistsRes, techRes, termsRes, eventsRes, connsRes] = await Promise.all([
       supabase.from("periods").select("*"),
       supabase.from("works").select("*"),
       supabase.from("artists").select("*"),
       supabase.from("techniques").select("*"),
       supabase.from("terms").select("*"),
       supabase.from("events").select("*"),
-      supabase.from("connections").select("*").order("sort_order"),
-      supabase.from("hidden_entities").select("id"),
+      supabase.from("connections").select("*"),
     ]);
-    // Salva gli hidden IDs per il filtraggio
-    if (!hiddenRes.error && hiddenRes.data) {
-      (loadDbOverrides as any)._hiddenIds = new Set(hiddenRes.data.map((r: any) => r.id));
-    } else {
-      (loadDbOverrides as any)._hiddenIds = new Set();
-    }
     return {
       periods: periodsRes.error ? undefined : (periodsRes.data as any) ?? [],
       works: worksRes.error ? undefined : (worksRes.data as any) ?? [],
@@ -66,7 +59,6 @@ async function loadDbOverrides(): Promise<Partial<Dataset>> {
       connections: connsRes.error ? undefined : (connsRes.data as any) ?? [],
     };
   } catch {
-    (loadDbOverrides as any)._hiddenIds = new Set();
     return {};
   }
 }
@@ -116,17 +108,14 @@ export function loadDataset(): Promise<Dataset> {
     // Merge Supabase DB (tutte le tabelle)
     try {
       const dbData = await loadDbOverrides();
-      const hiddenIds: Set<string> = (loadDbOverrides as any)._hiddenIds || new Set();
-      const filterHidden = <T extends { id: string }>(arr: T[]): T[] =>
-        hiddenIds.size === 0 ? arr : arr.filter(x => !hiddenIds.has(x.id));
       return {
-        periods: filterHidden(mergeArrays(periods, dbData.periods as Period[])),
-        artists: filterHidden(mergeArrays(artists, dbData.artists as Artist[])),
-        works: filterHidden(mergeArrays(works, dbData.works as Work[])),
-        techniques: filterHidden(mergeArrays(techniques, dbData.techniques as Technique[])),
-        terms: filterHidden(mergeArrays(terms, dbData.terms as Term[])),
-        connections: filterHidden(mergeArrays(connections, dbData.connections as Connection[])),
-        events: filterHidden(mergeArrays(events, dbData.events as ArtEvent[])),
+        periods: mergeArrays(periods, dbData.periods as Period[]),
+        artists: mergeArrays(artists, dbData.artists as Artist[]),
+        works: mergeArrays(works, dbData.works as Work[]),
+        techniques: mergeArrays(techniques, dbData.techniques as Technique[]),
+        terms: mergeArrays(terms, dbData.terms as Term[]),
+        connections: mergeArrays(connections, dbData.connections as Connection[]),
+        events: mergeArrays(events, dbData.events as ArtEvent[]),
       };
     } catch { /* ignore DB errors, use JSON only */ }
 
@@ -183,7 +172,7 @@ export function entityLabel(ix: Indexed, type: EntityType, id: string): string {
 
 // Nome leggibile del tipo entità
 export const ENTITY_LABEL: Record<EntityType, string> = {
-  period: "Periodo", artist: "Autore", work: "Opera",
+  period: "Periodo", artist: "Artista", work: "Opera",
   technique: "Tecnica", event: "Evento", term: "Termine",
 };
 
@@ -217,15 +206,12 @@ export function techniquesOfWork(ix: Indexed, w: Work): Technique[] {
 }
 
 // Connessioni che toccano una data entità
-// Ordinate per sort_order (gerarchia impostata dall'admin nell'editor)
 export function connectionsOf(ds: Dataset, type: EntityType, id: string): Connection[] {
-  return ds.connections
-    .filter(
-      (c) =>
-        (c.source_type === type && c.source_id === id) ||
-        (c.target_type === type && c.target_id === id)
-    )
-    .sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
+  return ds.connections.filter(
+    (c) =>
+      (c.source_type === type && c.source_id === id) ||
+      (c.target_type === type && c.target_id === id)
+  );
 }
 
 // Opere "vicine": connesse direttamente, oppure (fallback) stesso periodo
@@ -305,19 +291,12 @@ export interface WorkGroup {
   works: Work[];
 }
 
-// Controlla se un luogo è raggruppabile in un complesso.
-// Filtro: NON raggruppiamo musei/gallerie/pinacoteche (sono contenitori generici,
-// non complessi architettonici). Per tutto il resto, raggruppiamo se 2+ opere
-// hanno lo stesso location_place (match case-insensitive dopo normalizzazione).
-// Questo permette all'admin di creare complessi con qualsiasi nome di luogo
-// (es. "Casa di Giotto", "Villa Foscari", "Castello Estense") semplicemente
-// assegnando lo stesso luogo a 2+ opere.
+// Controlla se un luogo è un edificio raggruppabile (non un museo/gallerie)
 const MUSEUM_RE = /\b(museo|galleri|pinacoteca|collezione|kunst|musée|museum|gallery|national)\b/i;
+const BUILDING_RE = /\b(basilica|chiesa|cattedrale|duomo|cappella|battistero|camposanto|convento|monastero|palazzo|piazza|loggiato|chiostro|oratorio|santuario|abbazia)\b/i;
 
 function isGroupablePlace(place: string): boolean {
-  // Escludi solo musei/gallerie (contenitori generici, non complessi architettonici).
-  // Per tutto il resto, raggruppa se 2+ opere condividono il luogo.
-  return !MUSEUM_RE.test(place);
+  return BUILDING_RE.test(place) && !MUSEUM_RE.test(place);
 }
 
 // Normalizza per bucket iniziale: parte prima della virgola,

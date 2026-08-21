@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
-import { Empty, EntityLink, FilterNote, WorkImage } from "../components/ui";
+import { Empty, EntityLink, FilterNote } from "../components/ui";
 import type { TermCategory } from "../lib/types";
 
 const CATS: TermCategory[] = ["architettura", "pittura", "scultura", "iconografia", "generale"];
@@ -14,28 +14,6 @@ export default function Glossario() {
   const [cat, setCat] = useState<string>("");
   const [onlyArch, setOnlyArch] = useState(false);
   const [active, setActive] = useState<string | null>(sp.get("t"));
-  // Termini espansi (mostra opere collegate)
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
-
-  // Trova opere che contengono un dato termine (per ID).
-  const worksWithTerm = useMemo(() => {
-    const map = new Map<string, typeof ix.ds.works>();
-    for (const w of ix.ds.works) {
-      for (const tid of w.term_ids || []) {
-        if (!map.has(tid)) map.set(tid, []);
-        map.get(tid)!.push(w);
-      }
-    }
-    return map;
-  }, [ix.ds.works]);
-
-  const toggleExpand = (id: string) => {
-    setExpanded((prev) => {
-      const n = new Set(prev);
-      n.has(id) ? n.delete(id) : n.add(id);
-      return n;
-    });
-  };
 
   useEffect(() => {
     const t = sp.get("t");
@@ -84,10 +62,7 @@ export default function Glossario() {
 
       {list.length === 0 ? <Empty msg="Nessun termine trovato." /> : (
         <div className="gloss-grid">
-          {list.map((t) => {
-            const isExpanded = expanded.has(t.id);
-            const works = worksWithTerm.get(t.id) || [];
-            return (
+          {list.map((t) => (
             <div id={`term-${t.id}`} key={t.id}
               className={`gloss-card ${t.is_archetype ? "arch" : ""} ${active === t.id ? "hot" : ""}`}
               data-testid={`gloss-${t.id}`}>
@@ -104,42 +79,8 @@ export default function Glossario() {
                   ))}
                 </div>
               )}
-              {/* Tasto "espandi" per mostrare opere che contengono questo termine */}
-              {works.length > 0 && (
-                <button
-                  onClick={() => toggleExpand(t.id)}
-                  style={{
-                    marginTop: 10, fontSize: 12, fontWeight: 600,
-                    color: "var(--gold-deep)", background: "transparent",
-                    border: 0, cursor: "pointer", padding: 0,
-                    display: "inline-flex", alignItems: "center", gap: 4,
-                  }}
-                  data-testid={`gloss-expand-${t.id}`}
-                >
-                  {isExpanded ? "− Nascondi opere" : `+ ${works.length} opere con questo termine`}
-                </button>
-              )}
-              {/* Zona espansa: lista opere con mini-anteprima */}
-              {isExpanded && works.length > 0 && (
-                <div style={{ marginTop: 12, display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))", gap: 10 }}>
-                  {works.slice(0, 24).map((w) => (
-                    <Link key={w.id} to={`/opera/${w.id}`} style={{ textDecoration: "none", color: "var(--ink)" }}>
-                      <div style={{ aspectRatio: "4/3", borderRadius: 6, overflow: "hidden", border: "1px solid var(--line-soft)", marginBottom: 4 }}>
-                        <WorkImage work={w} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                      </div>
-                      <div style={{ fontSize: 11, lineHeight: 1.3, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>{w.title}</div>
-                    </Link>
-                  ))}
-                  {works.length > 24 && (
-                    <div style={{ fontSize: 11, color: "var(--ink-dim)", gridColumn: "1 / -1", textAlign: "center", paddingTop: 4 }}>
-                      + altre {works.length - 24} opere
-                    </div>
-                  )}
-                </div>
-              )}
             </div>
-            );
-          })}
+          ))}
         </div>
       )}
     </div>

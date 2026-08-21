@@ -115,9 +115,6 @@ main { flex: 1; min-height: 60vh; }
 .workcard-badge .badge-period { background: rgba(247,243,236,.93); border-color: rgba(184,138,46,.5); backdrop-filter: blur(2px); }
 .workcard-imp { position: absolute; top: 10px; right: 12px; color: var(--gold-2); font-size: 13px; text-shadow: 0 1px 3px rgba(0,0,0,.4); }
 .workcard-studied-badge { position: absolute; bottom: 10px; right: 12px; background: var(--c-technique); color: #fff; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
-.workcard-complex-overlay { position: absolute; bottom: 10px; left: 12px; z-index: 2; }
-.workcard-complex-overlay a { display: inline-flex; align-items: center; gap: 4px; background: rgba(79,125,114,.92); color: #fff; padding: 5px 10px; border-radius: 5px; font-size: 11px; font-weight: 600; text-decoration: none; backdrop-filter: blur(3px); box-shadow: 0 1px 4px rgba(0,0,0,.3); transition: background .15s; }
-.workcard-complex-overlay a:hover { background: rgba(63,100,90,.95); }
 .workcard-studied { border-color: color-mix(in srgb, var(--c-technique) 30%, var(--line)); }
 .workcard-body { padding: 14px 16px 16px; }
 .workcard-title { font-size: 18px; font-weight: 500; line-height: 1.18; font-family: var(--font-display); }
@@ -197,38 +194,6 @@ select.input { cursor: pointer; }
 .section { margin-top: 56px; }
 .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
 .section-title { font-size: clamp(22px,3vw,30px); }
-
-/* Sezione collassabile (Sinapsi, Geografia nelle schede Autore) */
-.section-collapsible > .section-toggle {
-  display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
-  margin-bottom: 0; padding-bottom: 14px; border-bottom: 1px solid var(--line);
-  transition: background .15s;
-}
-.section-collapsible > .section-toggle:hover { background: rgba(184,138,46,.06); }
-.section-collapsible > .section-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-
-/* Chevron accanto al titolo della sezione — ruota di 180° quando aperta */
-.section-collapsible .section-chevron {
-  display: inline-flex; align-items: center; justify-content: center;
-  color: var(--ink-dim);
-  transition: transform .22s ease, color .15s;
-  flex-shrink: 0;
-}
-.section-collapsible .section-chevron.open {
-  transform: rotate(180deg);
-  color: var(--gold-deep);
-}
-.section-collapsible .section-toggle:hover .section-chevron { color: var(--gold-deep); }
-
-.section-collapsible .section-body { padding-top: 22px; }
-/* Animazione di apertura: fade-in + slide-down leggero */
-.section-collapsible .section-body {
-  animation: section-open .26s ease-out;
-}
-@keyframes section-open {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
 /* stat cards */
 .stat { background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 20px 22px; }
@@ -397,84 +362,19 @@ a.hero-stat:hover { background: var(--bg-2); }
 /* grafo: stage + pannello dettagli dentro il fullscreen host */
 .gf-inner { display: grid; grid-template-columns: 1fr 320px; gap: 18px; align-items: start; }
 @media (max-width: 980px) { .gf-inner { grid-template-columns: 1fr; } }
-
-/* === FULLSCREEN: layout grid (grafo a sinistra + colonna destra con
-   ricerca → risultati → dettagli → filtri) — la mappa è alta quanto
-   l'intera colonna destra, per coerenza e omogeneità visiva. === */
-.fs-host:fullscreen .gf-inner, .fs-host.is-full .gf-inner {
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 18px;
-  align-items: stretch;
-  height: 100%;
-  padding: 56px 18px 18px;
-}
-@media (max-width: 980px) {
-  .fs-host:fullscreen .gf-inner, .fs-host.is-full .gf-inner {
-    grid-template-columns: 1fr;
-    grid-template-rows: 60vh 1fr;
-  }
-}
-.fs-host:fullscreen .gf-inner > .stage, .fs-host.is-full .gf-inner > .stage {
-  height: 100% !important; min-height: 0;
-  border: 0; border-radius: 0;
-}
+.fs-host:fullscreen .gf-inner, .fs-host.is-full .gf-inner { display: block; flex: 1; height: 100%; }
+.fs-host:fullscreen .gf-inner > .stage, .fs-host.is-full .gf-inner > .stage { height: 100% !important; border: 0; border-radius: 0; }
+/* in fullscreen il pannello diventa un drawer flottante a destra */
 .fs-host:fullscreen .gf-side, .fs-host.is-full .gf-side {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  height: 100%;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: static;
-  width: auto;
-  max-width: none;
-  padding-right: 2px;
-  z-index: auto;
-  pointer-events: auto;
+  position: absolute; top: 116px; right: 16px; bottom: 130px;
+  width: 334px; max-width: calc(100vw - 32px);
+  overflow-y: auto; z-index: 40; pointer-events: none;
 }
+.fs-host:fullscreen .gf-side > *, .fs-host.is-full .gf-side > * { pointer-events: auto; }
 .fs-host:fullscreen .gf-side .panel, .fs-host.is-full .gf-side .panel {
-  background: rgba(247,243,236,.97); box-shadow: 0 8px 28px rgba(33,28,20,.10); backdrop-filter: blur(4px);
+  background: rgba(247,243,236,.97); box-shadow: 0 12px 44px rgba(33,28,20,.14); backdrop-filter: blur(4px);
 }
-
-/* Blocco filtri+slider: visibile SOLO in fullscreen (dentro la colonna destra) */
-.gf-fs-only { display: none; }
-.fs-host:fullscreen .gf-fs-only, .fs-host.is-full .gf-fs-only { display: block; }
-
-/* Filtri orizzontali sotto il grafo: nascosti in fullscreen (sono dentro la colonna destra) */
-.fs-host:fullscreen .gf-bottom-filters, .fs-host.is-full .gf-bottom-filters { display: none !important; }
-
-/* Tasti "Tutti / Nessuno" nella barra filtri in basso (modalità non-fullscreen).
-   Stile "text link" minimal — meno appariscenti dei tasti filtro veri e propri,
-   per non rubare attenzione visiva. In fullscreen (sideFiltersBlock) i tasti
-   mantengono lo stile a bottone perché c'è più spazio e si capisce meglio
-   che sono azioni rapide. */
-.gf-quick-toggle {
-  background: transparent;
-  border: 0;
-  padding: 1px 2px;
-  font-size: 10.5px;
-  font-weight: 500;
-  color: var(--ink-dim);
-  cursor: pointer;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-underline-offset: 2px;
-  text-decoration-thickness: 1px;
-  transition: color .15s, text-decoration-color .15s;
-  font-family: inherit;
-  line-height: 1.4;
-}
-.gf-quick-toggle:hover {
-  color: var(--gold-deep);
-  text-decoration-color: var(--gold);
-}
-.gf-quick-toggle:focus-visible {
-  outline: 1px solid var(--gold);
-  outline-offset: 2px;
-  border-radius: 2px;
-}
+.fs-host:fullscreen .gf-side .gf-placeholder, .fs-host.is-full .gf-side .gf-placeholder { display: none; }
 
 /* ---------- dossier periodo (anteprima timeline + memoranda scheda) ---------- */
 .tl-dossier { overflow: hidden; }
@@ -535,9 +435,8 @@ a.hero-stat:hover { background: var(--bg-2); }
 .fs-input::-moz-range-thumb { pointer-events: all; width: 15px; height: 15px; border-radius: 50%; background: var(--bg-1); border: 2px solid var(--gold-deep); cursor: grab; }
 
 /* ============================================================
-   TIMELINE — popover eventi & controlli zoom
+   TIMELINE — popover eventi & controlli zoom flottanti
    ============================================================ */
-/* Controlli zoom flottanti (legacy, ancora usato in alcuni posti) */
 .tl-zoom-float {
   position: absolute; left: 14px; bottom: 14px; z-index: 6;
   display: inline-flex; align-items: center; gap: 4px;
@@ -546,43 +445,6 @@ a.hero-stat:hover { background: var(--bg-2); }
 }
 .tl-zoom-float .btn.sm { padding: 4px 10px; border: 0; background: transparent; }
 .tl-zoom-float .btn.sm:hover { background: var(--bg-2); }
-
-/* Controlli zoom nel riquadro filtri (sideFiltersBlock).
-   Tre bottoni quadrati uniformi: − (zoom out), reset, + (zoom in).
-   Sfondo chiaro per renderli ben visibili. */
-.tl-zoom-controls {
-  display: inline-flex; align-items: center; gap: 4px;
-  background: var(--bg); border: 1px solid var(--gold);
-  border-radius: 8px; padding: 3px;
-  box-shadow: 0 1px 3px rgba(184,138,46,.15);
-}
-.tl-zoom-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 32px; height: 32px;
-  border: 0; border-radius: 6px;
-  background: transparent; color: var(--gold-deep);
-  cursor: pointer; padding: 0;
-  transition: background .15s, color .15s, transform .1s;
-}
-.tl-zoom-btn:hover {
-  background: rgba(184,138,46,.12);
-  transform: scale(1.08);
-}
-.tl-zoom-btn:active {
-  transform: scale(0.95);
-}
-.tl-zoom-btn:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 1px;
-}
-/* Reset button — colore tenue, ma visibile */
-.tl-zoom-btn.tl-zoom-reset {
-  color: var(--ink-dim);
-}
-.tl-zoom-btn.tl-zoom-reset:hover {
-  color: var(--gold-deep);
-  background: rgba(184,138,46,.10);
-}
 
 .ev-popover {
   position: fixed; z-index: 320; width: 300px; max-width: calc(100vw - 24px);
@@ -656,35 +518,32 @@ a.hero-stat:hover { background: var(--bg-2); }
   padding: 16px 0 14px; overflow-y: auto; -webkit-overflow-scrolling: touch;
   transition: width .3s cubic-bezier(.2,.7,.2,1);
 }
-/* Tema scuro della sidebar in home — DISABILITATO.
-   La sidebar usa sempre il tema chiaro, anche nella landing page, per coerenza
-   con le altre pagine. La regola .on-home è mantenuta come no-op (overrideata
-   con i valori del tema chiaro) per sicurezza, ma non viene mai applicata
-   perché il componente Sidebar ha isHome = false. */
+/* in home la carta è più scura per staccare dal 3D caldo */
 .sbx.on-home {
-  background: rgba(251,248,241,.92);
-  border-color: var(--line);
-  color: var(--ink);
-  box-shadow: 0 22px 60px -28px rgba(60,42,12,.28);
+  background: rgba(24,17,9,.52);
+  border-color: rgba(255,210,140,.22);
+  color: #f3e8d2;
+  box-shadow: 0 22px 60px -26px rgba(0,0,0,.6);
 }
 
 /* top: brand + collapse */
 .sbx-top { display: flex; align-items: center; justify-content: space-between; padding: 2px 16px 14px; }
 .sbx-brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); transition: opacity .2s; }
-/* .sbx.on-home .sbx-brand neutralizzato — tema sempre chiaro */
+.sbx.on-home .sbx-brand { color: #fdf6e8; }
 .sbx-brand:hover { opacity: .7; }
 .sbx-mono { color: currentColor; flex-shrink: 0; }
 .sbx-brand-txt { display: flex; flex-direction: column; line-height: 1.05; white-space: nowrap; }
 .sbx-brand-txt b { font-family: var(--font-display); font-size: 19px; font-weight: 500; letter-spacing: -.01em; }
 .sbx-brand-txt i { font-size: 8.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-dim); font-style: normal; font-weight: 600; margin-top: 2px; }
-/* .sbx.on-home .sbx-brand-txt i neutralizzato */
+.sbx.on-home .sbx-brand-txt i { color: rgba(255,236,200,.7); }
 .sbx-collapse {
   flex-shrink: 0; width: 28px; height: 28px; display: grid; place-items: center;
   border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.4);
   color: var(--ink-dim); cursor: pointer; transition: all .18s;
 }
+.sbx.on-home .sbx-collapse { border-color: rgba(255,210,140,.28); background: rgba(255,210,140,.08); color: #ffce7a; }
 .sbx-collapse:hover { border-color: var(--gold); color: var(--gold-deep); }
-/* .sbx.on-home .sbx-collapse neutralizzato */
+.sbx.on-home .sbx-collapse:hover { border-color: #ffce7a; color: #ffe0a0; }
 
 /* navigazione */
 .sbx-nav { display: flex; flex-direction: column; padding: 4px 10px; gap: 2px; overflow-y: auto; flex: 1 1 auto; min-height: 0; -webkit-overflow-scrolling: touch; }
@@ -693,17 +552,17 @@ a.hero-stat:hover { background: var(--bg-2); }
   align-items: center; gap: 10px; padding: 9px 10px; border-radius: 10px;
   color: var(--ink-soft); transition: background .16s, color .16s, transform .16s;
 }
-/* .sbx.on-home .sbx-item neutralizzato */
+.sbx.on-home .sbx-item { color: #e6d8be; }
 .sbx-num {
   font-family: var(--font-body); font-variant-numeric: tabular-nums; font-size: 10.5px;
   font-weight: 700; letter-spacing: .06em; color: var(--ink-faint); text-align: center;
 }
-/* .sbx.on-home .sbx-num neutralizzato */
+.sbx.on-home .sbx-num { color: rgba(255,236,200,.5); }
 .sbx-ico { color: currentColor; opacity: .7; display: grid; place-items: center; transition: opacity .16s, transform .16s; }
 .sbx-label { position: relative; display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
 .sbx-label b { font-weight: 600; font-size: 14px; letter-spacing: .01em; white-space: nowrap; }
 .sbx-label i { font-style: normal; font-size: 10.5px; color: var(--ink-dim); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-/* .sbx.on-home .sbx-label i neutralizzato */
+.sbx.on-home .sbx-label i { color: rgba(230,216,190,.55); }
 /* sottolineatura animata in hover */
 .sbx-underline {
   position: absolute; left: 0; bottom: -2px; height: 1.5px; width: 0; border-radius: 2px;
@@ -712,91 +571,37 @@ a.hero-stat:hover { background: var(--bg-2); }
 .sbx-dot { width: 6px; height: 6px; border-radius: 50%; background: transparent; transition: background .2s, box-shadow .2s; justify-self: end; }
 
 .sbx-item:hover { background: rgba(184,138,46,.1); transform: translateX(3px); }
-/* .sbx.on-home .sbx-item:hover neutralizzato */
+.sbx.on-home .sbx-item:hover { background: rgba(255,210,140,.1); }
 .sbx-item:hover .sbx-ico { opacity: 1; transform: scale(1.08); }
 .sbx-item:hover .sbx-underline { width: 100%; }
 .sbx-item:hover .sbx-num { color: var(--gold-deep); }
-/* .sbx.on-home .sbx-item:hover .sbx-num neutralizzato */
+.sbx.on-home .sbx-item:hover .sbx-num { color: #ffce7a; }
 
 .sbx-item.active { color: var(--ink); background: rgba(184,138,46,.13); }
-/* .sbx.on-home .sbx-item.active neutralizzato */
+.sbx.on-home .sbx-item.active { color: #fdf6e8; background: rgba(255,210,140,.14); }
 .sbx-item.active .sbx-num { color: var(--gold-deep); }
-/* .sbx.on-home .sbx-item.active .sbx-num neutralizzato */
+.sbx.on-home .sbx-item.active .sbx-num { color: #ffce7a; }
 .sbx-item.active .sbx-ico { opacity: 1; }
 .sbx-item.active .sbx-dot { background: var(--gold); box-shadow: 0 0 8px 1px rgba(184,138,46,.7); }
-/* .sbx.on-home .sbx-item.active .sbx-dot neutralizzato */
-
-/* === Voce con "ultima visita" salvata (Opere/Artisti) ===
-   Combinazione A + C: pallino pulsante + etichetta "Continua → Titolo".
-   - Il pallino pulsa delicatamente (1.8s) per segnalare "c'è qualcosa da continuare"
-   - Quando la voce è anche attiva (siamo sulla scheda salvata), pulsa più forte
-     per suggerire "doppio click per uscire"
-   - Sotto il titolo, al posto della descrizione normale, appare l'etichetta
-     compatta "Continua → <titolo opera/artista>" */
-.sbx-item.has-last .sbx-dot {
-  background: var(--gold);
-  animation: sbx-pulse 1.8s ease-in-out infinite;
-}
-/* .sbx.on-home .sbx-item.has-last .sbx-dot neutralizzato — tema sempre chiaro */
-/* Se la voce è anche attiva (siamo sulla pagina dell'ultima opera/artista),
-   il pallino pulsa più visibilmente per segnalare "sei qui, doppio click per uscire". */
-.sbx-item.has-last.active .sbx-dot {
-  animation: sbx-pulse-strong 1.4s ease-in-out infinite;
-}
-/* .sbx.on-home .sbx-item.has-last.active .sbx-dot neutralizzato */
-@keyframes sbx-pulse {
-  0%, 100% { transform: scale(1);   box-shadow: 0 0 6px 0 rgba(184,138,46,.45); }
-  50%      { transform: scale(1.3); box-shadow: 0 0 10px 1px rgba(184,138,46,.7); }
-}
-@keyframes sbx-pulse-home {
-  0%, 100% { transform: scale(1);   box-shadow: 0 0 7px 0 rgba(255,196,90,.55); }
-  50%      { transform: scale(1.3); box-shadow: 0 0 12px 1px rgba(255,196,90,.85); }
-}
-@keyframes sbx-pulse-strong {
-  0%, 100% { transform: scale(1.15); box-shadow: 0 0 8px 1px rgba(184,138,46,.7); }
-  50%      { transform: scale(1.6);  box-shadow: 0 0 14px 2px rgba(184,138,46,.95); }
-}
-@keyframes sbx-pulse-strong-home {
-  0%, 100% { transform: scale(1.15); box-shadow: 0 0 9px 1px rgba(255,196,90,.85); }
-  50%      { transform: scale(1.6);  box-shadow: 0 0 16px 2px rgba(255,196,90,1); }
-}
-
-/* Etichetta compatta "Continua → <titolo>" che sostituisce la descrizione
-   normale quando c'è un'ultima opera/artista salvata. */
-.sbx-continue {
-  display: flex; gap: 4px; align-items: baseline;
-  font-size: 10.5px; margin-top: 1px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.sbx-continue-label {
-  color: var(--gold); font-weight: 700; font-size: 9px;
-  text-transform: uppercase; letter-spacing: .05em;
-  flex-shrink: 0;
-}
-/* .sbx.on-home .sbx-continue-label neutralizzato */
-.sbx-continue-name {
-  color: var(--ink-soft); font-style: italic;
-  overflow: hidden; text-overflow: ellipsis; min-width: 0;
-}
-/* .sbx.on-home .sbx-continue-name neutralizzato */
-/* In modalità collassata nascondi l'etichetta (non c'è spazio) */
-.sbx.collapsed .sbx-continue { display: none; }
-/* Riduci-motion: disabilita le animazioni se l'utente lo preferisce */
-@media (prefers-reduced-motion: reduce) {
-  .sbx-item.has-last .sbx-dot,
-  .sbx-item.has-last.active .sbx-dot { animation: none; }
-}
+.sbx.on-home .sbx-item.active .sbx-dot { background: #ffce7a; box-shadow: 0 0 9px 1px rgba(255,196,90,.9); }
 
 /* piede: slider temporale + contatori */
 .sbx-foot { margin-top: auto; border-top: 1px solid var(--line); padding: 14px 16px 4px; }
-/* .sbx.on-home .sbx-foot neutralizzato */
+.sbx.on-home .sbx-foot { border-top-color: rgba(255,210,140,.18); }
 .sbx-trs { margin-bottom: 12px; }
 .sbx-counts { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; font-size: 11px; color: var(--ink-dim); }
-/* .sbx.on-home .sbx-counts neutralizzato */
+.sbx.on-home .sbx-counts { color: rgba(230,216,190,.7); }
 .sbx-counts b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 700; }
-/* .sbx.on-home .sbx-counts b neutralizzato */
+.sbx.on-home .sbx-counts b { color: #fdf6e8; }
 
-/* Slider temporale: regole tema chiaro sempre applicate. */
+/* in home, lo slider su carta scura: forziamo i toni chiari */
+.sbx.on-home .trs-title, .sbx.on-home .trs-vals span { color: #f3e8d2; }
+.sbx.on-home .trs-rail { background: rgba(255,236,200,.2); }
+.sbx.on-home .trs-bar { background: rgba(255,236,200,.28); }
+.sbx.on-home .trs-bar.in { background: #ffce7a; }
+.sbx.on-home .trs-preset { background: rgba(255,236,200,.06); border-color: rgba(255,210,140,.24); color: rgba(255,236,200,.8); }
+.sbx.on-home .trs-preset:hover { border-color: #ffce7a; color: #ffe0a0; }
+.sbx.on-home .trs-preset.on { background: #ffce7a; color: #1a130a; border-color: #ffce7a; }
 
 /* ---- COLLASSATA: solo colonna icone ---- */
 .sbx.collapsed { width: var(--sbx-w-collapsed); }
@@ -908,9 +713,9 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
     background: rgba(251,248,241,.86); border: 1px solid var(--line); border-radius: 11px;
     cursor: pointer; box-shadow: var(--shadow-sm); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   }
-  .is-home .sbx-burger { background: rgba(251,248,241,.86); border-color: var(--line); }
+  .is-home .sbx-burger { background: rgba(24,17,9,.62); border-color: rgba(255,210,140,.32); }
   .sbx-burger span { width: 18px; height: 2px; background: var(--ink); display: block; }
-  .is-home .sbx-burger span { background: var(--ink); }
+  .is-home .sbx-burger span { background: #ffce7a; }
 
   .sbx-scrim {
     display: block; position: fixed; inset: 0; z-index: 158; background: rgba(33,28,20,.42);
@@ -926,7 +731,7 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
     box-shadow: 4px 0 24px rgba(0,0,0,.15);
   }
   .sbx-drawer.open { transform: none; }
-  /* .sbx-drawer.on-home neutralizzato — drawer sempre chiaro */
+  .sbx-drawer.on-home { background: rgba(24,17,9,.95); }
   /* Scrim della sidebar sopra la mappa */
   .sbx-scrim { z-index: 9998; }
 }
@@ -1068,11 +873,17 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 }
 .fs-host.is-full .view-split > div:first-child { flex: 1; min-height: 0; }
 .fs-host.is-full .view-split > div:last-child { display: none; }
-/* Regole legacy sovrascritte da quelle più specifiche alla linea ~365.
-   Manteniamo qui solo i fallback per gli stage in fullscreen generico. */
+.fs-host.is-full .gf-inner,
+.fs-host:fullscreen .gf-inner {
+  display: block; flex: 1; height: 100%;
+}
 .fs-host.is-full .gf-inner > .stage,
 .fs-host:fullscreen .gf-inner > .stage {
   height: 100% !important; border: 0; border-radius: 0;
+}
+.fs-host.is-full .gf-side,
+.fs-host:fullscreen .gf-side {
+  display: none; /* nascosto, i filtri sono nel drawer */
 }
 
 /* Drawer filtri: stile coerente con sidebar principale */
@@ -1100,17 +911,3 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 @media (max-width: 600px) {
   .grid-works { grid-template-columns: 1fr; }
 }
-
-/* --- Feature cards Landing (cliccabili) ---------------------------------- */
-.hubart-feature-card:hover {
-  border-color: rgba(184,138,46,0.4) !important;
-  box-shadow: 0 6px 20px rgba(184,138,46,0.12);
-  transform: translateY(-2px);
-}
-
-/* Banner connessione opera (anteprima opera collegata) */
-.conn-banner:hover {
-  border-color: var(--gold) !important;
-  box-shadow: 0 4px 16px rgba(184,138,46,.12);
-}
-

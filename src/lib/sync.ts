@@ -151,7 +151,7 @@ export async function pushToCloud(user: User): Promise<void> {
     await supabase.from("image_overrides").upsert(imgRows, { onConflict: "user_id,work_id" });
   }
 
-  // 4) Quiz errors — push solo se ci sono errori locali
+  // 4) Quiz errors
   try {
     const errors = JSON.parse(localStorage.getItem("atlante.quiz.errors.v1") || "[]");
     if (Array.isArray(errors) && errors.length > 0) {
@@ -160,23 +160,9 @@ export async function pushToCloud(user: User): Promise<void> {
         kind: e.kind,
         ref_id: e.refId,
         prompt: e.prompt || "",
-        correct_streak: e.correctStreak || 0,
-        added_at: e.addedAt || Date.now(),
-        last_seen: e.lastSeen || Date.now(),
+        count: e.correctStreak || 0,
       }));
       await supabase.from("quiz_errors").upsert(errRows, { onConflict: "user_id,kind,ref_id" });
-    }
-  } catch { /* ignore */ }
-
-  // 5) Quiz stats — push solo se ci sono statistiche locali
-  try {
-    const stats = JSON.parse(localStorage.getItem("atlante.quiz.stats.v1") || "null");
-    if (stats && stats.totalAnswered > 0) {
-      await supabase.from("quiz_stats").upsert({
-        user_id: uid,
-        stats: JSON.stringify(stats),
-        updated_at: new Date().toISOString(),
-      }, { onConflict: "user_id" });
     }
   } catch { /* ignore */ }
 }
@@ -233,22 +219,8 @@ export async function pullFromCloud(user: User): Promise<void> {
     setStudied(finalStudied);
     console.log(`[sync] studied: cloud ${cloudStudied.length} + pending ${pendingStudied.length} → ${finalStudied.length}`);
   }
-  // NOTA: image overrides (privati + globali) sono stati estratti in
-  // pullImageOverrides() — non vengono più scaricati ad ogni polling 30s,
-  // ma solo al login e ogni 5 minuti (vedi App.tsx).
-}
 
-// ---------- PULL IMAGE OVERRIDES (privati + globali) ----------
-// Estratta da pullFromCloud per ridurre il traffico: il polling automatico
-// (ogni 30s) chiama solo pullFromCloud (favorites/studied), mentre
-// pullImageOverrides viene chiamato:
-//   - Al login (via fullSync)
-//   - Ogni 5 minuti (polling separato, più lento)
-//   - Al focus del tab (l'utente torna attivo)
-// Questo riduce drasticamente le richieste a image_overrides
-// (prima erano 169/ora = ~125k/mese, ora ~288/giorno = ~8.6k/mese).
-export async function pullImageOverrides(user: User): Promise<void> {
-  // 1) Image overrides PRIVATI dell'utente — merge (locale ha precedenza)
+  // 3) Image overrides PRIVATI dell'utente — merge (locale ha precedenza)
   const { data: imgRows, error: imgErr } = await supabase
     .from("image_overrides")
     .select("work_id, url")
@@ -265,72 +237,25 @@ export async function pullImageOverrides(user: User): Promise<void> {
     setOverrides(map);
   }
 
-  // 2) Image overrides GLOBALI — per tutti gli utenti
+  // 4) Image overrides GLOBALI — per tutti gli utenti (anche quelli senza propri override)
   await pullGlobalImageOverrides();
-}
 
-// ---------- PULL QUIZ FROM CLOUD (solo quiz_errors + quiz_stats) ----------
-// Estratta da pullFromCloud per ridurre il traffico: il polling automatico
-// (ogni 30s) chiama solo pullFromCloud (favorites/studied/overrides),
-// mentre pullQuizFromCloud viene chiamato solo:
-//   - Al login (via fullSync)
-//   - Dopo che l'utente completa un quiz (evento 'atlante:quiz-completed')
-// Questo riduce drasticamente le richieste a quiz_errors/quiz_stats
-// (prima erano 72 richieste/ora = ~52k/mese per tabella, ora 1-2/giorno).
-export async function pullQuizFromCloud(user: User): Promise<void> {
-  // 1) Quiz errors — MERGE cloud + locale
-  const { data: errRows, error: errErr } = await supabase
+  // 5) Quiz errors — merge nel localStorage
+  const { data: errRows } = await supabase
     .from("quiz_errors")
-    .select("kind, ref_id, prompt, correct_streak, added_at, last_seen")
+    .select("kind, ref_id, prompt, count")
     .eq("user_id", user.id);
 
-  if (!errErr) {
+  if (errRows && errRows.length > 0) {
     try {
-      const local = JSON.parse(localStorage.getItem("atlante.quiz.errors.v1") || "[]");
-      const cloudErrors = (errRows || []).map((e: any) => ({
-        kind: e.kind,
-        refId: e.ref_id,
-        prompt: e.prompt || "",
-        correctStreak: e.correct_streak || 0,
-        addedAt: e.added_at || Date.now(),
-        lastSeen: e.last_seen || Date.now(),
-      }));
-      // Merge: cloud vince, ma preserva locali non nel cloud
-      const cloudKeys = new Set(cloudErrors.map((e: any) => `${e.kind}:${e.refId}`));
-      for (const le of local) {
-        if (!cloudKeys.has(`${le.kind}:${le.refId}`)) {
-          cloudErrors.push(le);
+      const existing = JSON.parse(localStorage.getItem("atlante.quiz.errors.v1") || "[]");
+      for (const e of errRows) {
+        const found = existing.find((x: any) => x.kind === e.kind && x.refId === e.ref_id);
+        if (!found) {
+          existing.push({ kind: e.kind, refId: e.ref_id, prompt: e.prompt });
         }
       }
-      localStorage.setItem("atlante.quiz.errors.v1", JSON.stringify(cloudErrors));
-      console.log(`[sync] quiz errors: cloud ${errRows?.length || 0} + local ${local.length} → ${cloudErrors.length}`);
-    } catch { /* ignore */ }
-  }
-
-  // 2) Quiz stats — cloud vince se ha più sessioni
-  const { data: statsRow, error: statsErr } = await supabase
-    .from("quiz_stats")
-    .select("stats, updated_at")
-    .eq("user_id", user.id)
-    .maybeSingle();
-
-  if (!statsErr && statsRow && statsRow.stats) {
-    try {
-      const cloudStats = typeof statsRow.stats === "string"
-        ? JSON.parse(statsRow.stats)
-        : statsRow.stats;
-      const localStats = JSON.parse(localStorage.getItem("atlante.quiz.stats.v1") || "null");
-      // Cloud vince se: locale è vuoto O cloud ha più sessioni O cloud ha più risposte totali
-      const cloudSessions = cloudStats.sessions?.length || 0;
-      const localSessions = localStats?.sessions?.length || 0;
-      const cloudAnswered = cloudStats.totalAnswered || 0;
-      const localAnswered = localStats?.totalAnswered || 0;
-      if (!localStats || cloudAnswered >= localAnswered) {
-        localStorage.setItem("atlante.quiz.stats.v1", JSON.stringify(cloudStats));
-        console.log(`[sync] quiz stats: cloud (${cloudSessions} sessions, ${cloudAnswered} answered) → locale`);
-      } else {
-        console.log(`[sync] quiz stats: locale (${localSessions} sessions, ${localAnswered} answered) > cloud → mantengo locale`);
-      }
+      localStorage.setItem("atlante.quiz.errors.v1", JSON.stringify(existing));
     } catch { /* ignore */ }
   }
 }
@@ -351,12 +276,8 @@ export async function fullSync(user: User): Promise<void> {
   console.log("[sync] fullSync start for user:", user.id);
   // 1. Push dei dati locali al cloud
   await pushToCloud(user);
-  // 2. Pull dal cloud e merge (favorites/studied)
+  // 2. Pull dal cloud e merge
   await pullFromCloud(user);
-  // 3. Pull quiz dal cloud (solo al login, non nel polling automatico)
-  await pullQuizFromCloud(user);
-  // 4. Pull image overrides (privati + globali) — solo al login e ogni 5 min
-  await pullImageOverrides(user);
   console.log("[sync] fullSync complete");
 }
 
