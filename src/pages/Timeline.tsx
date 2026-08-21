@@ -468,7 +468,7 @@ export default function Timeline() {
   return (
     <div className="wrap page" style={{ paddingBottom: 24 }}>
       <div className="page-head">
-        <div className="page-eyebrow"><span className="eyebrow">Visualizzazione <span style={{ fontSize: 9, fontWeight: 700, color: "var(--ink-dim)", opacity: 0.5, textTransform: "lowercase", letterSpacing: "0.02em" }}>(beta)</span></span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Visualizzazione temporale <span style={{ fontSize: 9, fontWeight: 700, color: "var(--ink-dim)", opacity: 0.5, textTransform: "lowercase", letterSpacing: "0.02em" }}>(beta)</span></span></div>
         <h1 className="page-title">Linea del tempo multilivello</h1>
         <p className="page-lead">Epoche, popoli e correnti scorrono su corsie parallele: le sovrapposizioni temporali sono visibili, gli archi tracciano i flussi di contaminazione e gli eventi storici ancorano il contesto. Clicca una barra per espandere l'anteprima del periodo — con personaggi, autori, opere e glossario da ricordare — un pallino per il dettaglio dell'evento.</p>
       </div>

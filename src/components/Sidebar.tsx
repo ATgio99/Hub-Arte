@@ -321,6 +321,14 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
                       lineHeight: 1,
                     }}>(beta)</span>
                   )}
+                  {p.id === "timeline" && (
+                    <span style={{
+                      fontSize: 9, fontWeight: 700,
+                      color: "var(--ink-dim)", opacity: 0.5,
+                      textTransform: "lowercase", letterSpacing: "0.02em",
+                      lineHeight: 1,
+                    }}>(beta)</span>
+                  )}
                 </b>
                 {/* Etichetta "Continua → <titolo>" — visibile solo se c'è
                     un'ultima opera/artista/ricerca/luogo/periodo salvato e la
