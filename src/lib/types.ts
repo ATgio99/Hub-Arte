@@ -20,10 +20,15 @@ export interface Period {
   parent_id: string | null; key_innovations: string[];
 }
 
+export type ArtistCategory =
+  | "pittori" | "scultori" | "architetti" | "orafi-bronzisti"
+  | "miniatori" | "committenti" | "altro";
+
 export interface Artist {
   id: string; name: string; aka: string[];
   birth: number | null; death: number | null;
   period_ids: string[]; role: string; bio: string; innovations: string[];
+  category?: ArtistCategory | null;
 }
 
 export interface Work {

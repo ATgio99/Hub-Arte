@@ -29,7 +29,23 @@ const ARTIST_CAT_COLOR: Record<string, string> = {
   Altro: "#7A7570",
 };
 
+// Mappa tra ArtistCategory (tipo) e label display
+const CAT_LABELS: Record<string, string> = {
+  "pittori": "Pittori",
+  "scultori": "Scultori",
+  "architetti": "Architetti",
+  "orafi-bronzisti": "Orafi/Bronzisti",
+  "miniatori": "Miniatori",
+  "committenti": "Committenti",
+  "altro": "Altro",
+};
+
 function artistCategory(a: Artist): string {
+  // Se l'artista ha un campo category esplicito, usalo
+  if (a.category) {
+    return CAT_LABELS[a.category] || "Altro";
+  }
+  // Altrimenti deduci dal role (fallback per artisti esistenti senza category)
   const r = (a.role || "").toLowerCase();
   if (r.includes("pittor")) return "Pittori";
   if (r.includes("scultor")) return "Scultori";

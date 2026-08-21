@@ -363,6 +363,7 @@ export default function AdminDatabase() {
               <tr>
                 <th style={thStyle}>Nome</th>
                 <th style={thStyle}>Ruolo</th>
+                <th style={thStyle}>Categoria</th>
                 <th style={thStyle}>Anni</th>
                 <th style={thStyle}>Periodi</th>
                 <th style={thStyle}>Fonte</th>
@@ -379,6 +380,7 @@ export default function AdminDatabase() {
                       <div style={{ fontSize: 11, color: "var(--ink-dim)", fontFamily: "ui-monospace, monospace" }}>{a.id}</div>
                     </td>
                     <td style={tdStyle} onClick={() => openEdit(a.id)}>{a.role || "—"}</td>
+                    <td style={tdStyle} onClick={() => openEdit(a.id)}>{a.category || "—"}</td>
                     <td style={tdStyle} onClick={() => openEdit(a.id)}>{a.birth || a.death ? `${a.birth ?? "?"}–${a.death ?? "?"}` : "—"}</td>
                     <td style={tdStyle} onClick={() => openEdit(a.id)}>{periodNames.join(", ") || "—"}</td>
                     <td style={tdStyle}>{dbBadge(a.id)}</td>
@@ -963,6 +965,7 @@ const FIELD_LABELS_IT: Record<string, string> = {
   period_id: "Periodo",
   parent_id: "Periodo genitore",
   role: "Ruolo",
+  category: "Categoria",
   bio: "Biografia",
   innovations: "Innovazioni",
   type: "Tipo",
@@ -1013,6 +1016,7 @@ const LONG_TEXT_FIELDS = new Set([
 
 // Campi con select predefiniti (enum)
 const SELECT_OPTIONS: Record<string, string[]> = {
+  "artists.category": ["pittori", "scultori", "architetti", "orafi-bronzisti", "miniatori", "committenti", "altro"],
   "techniques.category": ["pittorica", "scultorea", "architettonica", "musiva", "altra"],
   "works.type": ["architettura", "pittura", "scultura", "mosaico", "miniatura",
     "oreficeria", "urbanistica", "tela", "tavola", "polittico", "rilievo",
@@ -1580,7 +1584,7 @@ const NEW_ROW_TEMPLATES: Record<Tab, () => any> = {
   }),
   artists: () => ({
     id: "", name: "", aka: [], birth: null, death: null,
-    period_ids: [], role: "", bio: "", innovations: [],
+    period_ids: [], role: "", bio: "", innovations: [], category: null,
   }),
   periods: () => ({
     id: "", name: "", type: "epoca", year_start: 1400, year_end: 1500,

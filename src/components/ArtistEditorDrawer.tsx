@@ -57,13 +57,13 @@ function Field({ label, children, required }: { label: string; children: React.R
 
 // Campi del DB artists
 const ARTIST_DB_FIELDS = [
-  "id", "name", "aka", "birth", "death", "period_ids", "role", "bio", "innovations",
+  "id", "name", "aka", "birth", "death", "period_ids", "role", "bio", "innovations", "category",
 ] as const;
 
 function buildCleanPayload(artist: Artist, modifiedBy: string): Record<string, unknown> {
   const payload: Record<string, unknown> = {};
   for (const field of ARTIST_DB_FIELDS) {
-    if (field === "id" || field === "name" || field === "aka" || field === "period_ids" || field === "role" || field === "bio" || field === "innovations" || field === "birth" || field === "death") {
+    if (field === "id" || field === "name" || field === "aka" || field === "period_ids" || field === "role" || field === "bio" || field === "innovations" || field === "birth" || field === "death" || field === "category") {
       payload[field] = (artist as any)[field];
     }
   }
@@ -71,6 +71,7 @@ function buildCleanPayload(artist: Artist, modifiedBy: string): Record<string, u
   // Normalizza empty string → null
   if (payload.role === "") payload.role = null;
   if (payload.bio === "") payload.bio = null;
+  if (payload.category === "" || payload.category === undefined) payload.category = null;
   return payload;
 }
 
@@ -156,7 +157,7 @@ function ArtistEditorDrawerInner({
     } else if (artistId) {
       artistRef.current = {
         id: artistId, name: "", aka: [], birth: null, death: null,
-        period_ids: [], role: "", bio: "", innovations: [],
+        period_ids: [], role: "", bio: "", innovations: [], category: null,
       };
       idFieldRef.current = artistId;
       setIsNew(true);
@@ -518,6 +519,23 @@ function ArtistEditorDrawerInner({
 
               <Field label="Ruolo">
                 <input type="text" defaultValue={a.role} onChange={(e) => set("role", e.target.value)} style={inputStyle} placeholder="es. Pittore e architetto" />
+              </Field>
+
+              <Field label="Categoria (tag)">
+                <select
+                  defaultValue={a.category || ""}
+                  onChange={(e) => set("category", e.target.value || null)}
+                  style={inputStyle}
+                >
+                  <option value="">— Auto (dal ruolo) —</option>
+                  <option value="pittori">Pittori</option>
+                  <option value="scultori">Scultori</option>
+                  <option value="architetti">Architetti</option>
+                  <option value="orafi-bronzisti">Orafi/Bronzisti</option>
+                  <option value="miniatori">Miniatori</option>
+                  <option value="committenti">Committenti</option>
+                  <option value="altro">Altro</option>
+                </select>
               </Field>
 
               <Field label="Periodi associati">
