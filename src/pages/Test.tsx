@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useData } from "../lib/store";
-import { generateQuiz, Question, QuizKind, QUIZ_GROUPS, QUIZ_KIND_LABEL, ALL_KINDS } from "../lib/quiz";
+import { generateQuiz, Question, QuizKind, QUIZ_GROUPS, QUIZ_KIND_LABEL, ALL_KINDS, OPEN_KINDS, MULTIPLE_KINDS } from "../lib/quiz";
 import {
   loadErrors, addError, reviewAnswer, errorCount, clearErrors,
   loadStats, recordSession, clearStats, AnswerLog,
@@ -307,26 +307,24 @@ function OperaDrawer({ workId, open, onClose }: { workId: string | null; open: b
   );
 }
 
-// ===================== AUTOCOMPLETE ARTISTA =====================
-// Componente per la domanda "autore-input": l'utente digita il nome
-// dell'autore e seleziona dall'elenco filtrato. Usa l'indice (ix) per
-// accedere alla lista completa degli artisti del db. Filtra case-insensitive
-// e per sottostringa (anche in mezzo al nome, non solo come prefisso).
-// Mostra max 8 risultati alla volta.
-function ArtistAutocomplete({
+// ===================== AUTOCOMPLETE GENERICO =====================
+// Componente per le domande "aperte" (a risposta libera con autocomplete):
+// l'utente digita e seleziona dall'elenco filtrato. Supporta diversi tipi di
+// entità (artisti, opere, periodi, luoghi, anni) in base al prop `entityType`.
+// Filtra case-insensitive, per sottostringa, includendo gli alias quando
+// disponibili. Mostra max 8 risultati alla volta.
+function EntityAutocomplete({
   ix,
+  entityType,
   disabled,
   onPick,
-  excludeId,
+  placeholder,
 }: {
   ix: ReturnType<typeof useData>;
+  entityType: "artist" | "work" | "period" | "city" | "year";
   disabled?: boolean;
-  onPick: (artistId: string, artistName: string) => void;
-  /** Id artista da escludere dai suggerimenti (es. l'autore dell'opera
-   *  appena mostrata, per evitare di suggerirlo direttamente). Non lo
-   *  usiamo attualmente perché vogliamo che appaia nella lista, ma lo
-   *  teniamo per future esigenze. */
-  excludeId?: string | null;
+  onPick: (entityId: string, entityLabel: string) => void;
+  placeholder?: string;
 }) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
@@ -334,31 +332,93 @@ function ArtistAutocomplete({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const wrapRef = useRef<HTMLDivElement | null>(null);
 
-  // Pool di artisti: tutti quelli del db con nome valido. Pre-calcoliamo
-  // una versione normalizzata del nome per filtrare velocemente.
-  const allArtists = useMemo(() => {
+  // Pool di entità in base al tipo. Pre-calcoliamo una versione normalizzata
+  // del nome per filtrare velocemente.
+  const allItems = useMemo(() => {
     const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    return ix.ds.artists
-      .filter((a) => a.name && a.name.trim().length > 0)
-      .map((a) => ({
-        id: a.id,
-        name: a.name,
-        role: a.role,
-        norm: norm(a.name),
-        // includi anche gli alias nel testo da filtrare
-        aliases: (a.aka ?? []).map(norm),
+    if (entityType === "artist") {
+      return ix.ds.artists
+        .filter((a) => a.name && a.name.trim().length > 0)
+        .map((a) => ({
+          id: a.id,
+          name: a.name,
+          sub: a.role,
+          norm: norm(a.name),
+          aliases: (a.aka ?? []).map(norm),
+        }));
+    }
+    if (entityType === "work") {
+      return ix.ds.works
+        .filter((w) => w.title && w.title.trim().length > 0)
+        .map((w) => ({
+          id: w.id,
+          name: w.title,
+          sub: w.location_city,
+          norm: norm(w.title),
+          aliases: [] as string[],
+        }));
+    }
+    if (entityType === "period") {
+      return ix.ds.periods
+        .filter((p) => p.name && p.name.trim().length > 0)
+        .map((p) => ({
+          id: p.id,
+          name: p.name,
+          sub: `${p.year_start}–${p.year_end}`,
+          norm: norm(p.name),
+          aliases: [] as string[],
+        }));
+    }
+    if (entityType === "city") {
+      // Estrai l'elenco unico delle città dalle opere
+      const cities = new Set<string>();
+      for (const w of ix.ds.works) {
+        if (w.location_city && w.location_city.trim()) cities.add(w.location_city);
+      }
+      return [...cities].map((c) => ({
+        id: c,
+        name: c,
+        sub: undefined as string | undefined,
+        norm: norm(c),
+        aliases: [] as string[],
       }));
-  }, [ix]);
+    }
+    if (entityType === "year") {
+      // Tutti gli anni distinti dalle opere (year_end优先, fallback year_start)
+      const years = new Set<string>();
+      for (const w of ix.ds.works) {
+        const y = w.year_end ?? w.year_start;
+        if (y != null) {
+          const s = y < 0 ? `${-y} a.C.` : String(y);
+          years.add(s);
+        }
+      }
+      // Ordina numericamente (gestendo anche gli a.C.)
+      return [...years].map((y) => {
+        const isBC = y.endsWith(" a.C.");
+        const n = isBC ? parseInt(y.replace(" a.C.", ""), 10) : parseInt(y, 10);
+        return {
+          id: y,
+          name: y,
+          sub: undefined as string | undefined,
+          norm: norm(y),
+          aliases: [] as string[],
+          _sortN: (isBC ? -n : n),
+        };
+      }).sort((a, b) => (a._sortN as number) - (b._sortN as number));
+    }
+    return [];
+  }, [ix, entityType]);
 
   // Filtra in base alla query
   const filtered = useMemo(() => {
-    if (!query.trim()) return allArtists.slice(0, 8);
+    if (!query.trim()) return allItems.slice(0, 8);
     const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
-    const out = allArtists.filter((a) =>
-      a.norm.includes(q) || a.aliases.some((al) => al.includes(q))
+    const out = allItems.filter((a) =>
+      a.norm.includes(q) || (a.aliases && a.aliases.some((al) => al.includes(q)))
     );
     return out.slice(0, 8);
-  }, [query, allArtists]);
+  }, [query, allItems]);
 
   // Reset highlight quando cambia la query
   useEffect(() => { setHighlighted(0); }, [query]);
@@ -385,8 +445,8 @@ function ArtistAutocomplete({
     }
   }, [disabled]);
 
-  const pick = (artist: { id: string; name: string }) => {
-    onPick(artist.id, artist.name);
+  const pick = (item: { id: string; name: string }) => {
+    onPick(item.id, item.name);
     setQuery("");
     setOpen(false);
   };
@@ -415,6 +475,15 @@ function ArtistAutocomplete({
     }
   };
 
+  const defaultPlaceholder = (() => {
+    if (entityType === "artist") return "Scrivi il nome dell'autore… (es. Giotto, Antelami, Pisano)";
+    if (entityType === "work") return "Scrivi il titolo dell'opera…";
+    if (entityType === "period") return "Scrivi il nome del periodo… (es. Gotico, Trecento)";
+    if (entityType === "city") return "Scrivi il nome della città… (es. Firenze, Roma)";
+    if (entityType === "year") return "Scrivi o seleziona l'anno… (es. 1305, 1500 a.C.)";
+    return "Cerca…";
+  })();
+
   return (
     <div ref={wrapRef} style={{ position: "relative", width: "100%" }}>
       <input
@@ -425,9 +494,9 @@ function ArtistAutocomplete({
         onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
         onFocus={() => setOpen(true)}
         onKeyDown={handleKeyDown}
-        placeholder="Scrivi il nome dell'autore… (es. Giotto, Antelami, Pisano)"
+        placeholder={placeholder ?? defaultPlaceholder}
         className="quiz-artist-input"
-        data-testid="quiz-artist-input"
+        data-testid="quiz-entity-input"
         autoComplete="off"
         spellCheck={false}
         style={{
@@ -454,7 +523,7 @@ function ArtistAutocomplete({
       {/* Conteggio matches */}
       {query.trim() && (
         <div style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", fontSize: 11, color: "var(--ink-dim)", pointerEvents: "none" }}>
-          {filtered.length} {filtered.length === 1 ? "match" : "match"}
+          {filtered.length} match
         </div>
       )}
       {/* Dropdown suggerimenti */}
@@ -466,7 +535,7 @@ function ArtistAutocomplete({
             exit={{ opacity: 0, y: -4 }}
             transition={{ duration: 0.15 }}
             className="quiz-artist-dropdown"
-            data-testid="quiz-artist-dropdown"
+            data-testid="quiz-entity-dropdown"
             style={{
               position: "absolute",
               top: "calc(100% + 4px)",
@@ -486,7 +555,7 @@ function ArtistAutocomplete({
                 key={a.id}
                 type="button"
                 disabled={disabled}
-                data-testid={`quiz-artist-opt-${i}`}
+                data-testid={`quiz-entity-opt-${i}`}
                 onClick={() => pick(a)}
                 onMouseEnter={() => setHighlighted(i)}
                 style={{
@@ -509,9 +578,9 @@ function ArtistAutocomplete({
                 <span style={{ fontWeight: 600, flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                   {a.name}
                 </span>
-                {a.role && (
+                {a.sub && (
                   <span style={{ fontSize: 11, color: "var(--ink-dim)", fontStyle: "italic", flexShrink: 0 }}>
-                    {a.role}
+                    {a.sub}
                   </span>
                 )}
               </button>
@@ -548,6 +617,23 @@ export default function Test() {
   const [favOnly, setFavOnly] = useState(false);
   const [studiedOnly, setStudiedOnly] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
+  // === Modalità quiz: "multipla" (scelta tra 4 opzioni) o "aperte" (input
+  // con autocomplete). Il selettore è in alto, accanto a "Quante domande".
+  // Quando cambia la modalità, filtriamo i kinds selezionati per mantenere
+  // solo quelli compatibili (OPEN_KINDS per "aperte", MULTIPLE_KINDS per
+  // "multipla"). Questo evita che l'utente abbia kinds selezionati di un
+  // tipo che non viene più mostrato. La UI mostra solo le chip relative
+  // alla modalità corrente.
+  const [quizMode, setQuizMode] = useState<"multipla" | "aperte">("multipla");
+  const selectMode = (m: "multipla" | "aperte") => {
+    setQuizMode(m);
+    // Filtra i kinds selezionati per mantenere solo quelli della nuova modalità
+    const allowed = m === "aperte" ? OPEN_KINDS : MULTIPLE_KINDS;
+    const n = new Set([...kinds].filter(k => allowed.includes(k)));
+    setKinds(n); saveKinds(n); setNotice(null);
+  };
+  // Lista dei kinds da mostrare nella UI in base alla modalità corrente
+  const visibleKinds = quizMode === "aperte" ? OPEN_KINDS : MULTIPLE_KINDS;
   const favs = useFavorites();
   const studied = useStudied();
   const nFavs = favs.works.length + favs.artists.length;
@@ -702,24 +788,24 @@ export default function Test() {
     }
   };
 
-  // === Risposta per "autore-input" ===
-  // Invece di un indice opzione, riceve l'id dell'artista scelto dall'utente
-  // dall'autocomplete. Verifica confrontando con q.correctArtistId.
+  // === Risposta per domande "aperte" (autore-input, titolo-input, ecc.) ===
+  // Invece di un indice opzione, riceve l'id dell'entità scelta dall'utente
+  // dall'autocomplete. Verifica confrontando con q.correctEntityId.
   // Per coerenza con la logica del quiz (che usa `picked: number | null` e
   // `chosen: number` negli answers), salviamo picked = 1 se corretto, 0 se
   // sbagliato (come se fosse una domanda binaria con 2 opzioni). Il rendering
-  // del feedback legge poi direttamente l'id artista salvato per mostrare
+  // del feedback legge poi direttamente l'id salvato per mostrare
   // "la tua risposta: X" e "corretta: Y".
-  const [pickedArtistId, setPickedArtistId] = useState<string | null>(null);
-  const [pickedArtistName, setPickedArtistName] = useState<string | null>(null);
+  const [pickedEntityId, setPickedEntityId] = useState<string | null>(null);
+  const [pickedEntityName, setPickedEntityName] = useState<string | null>(null);
 
-  const answerArtist = (artistId: string, artistName: string) => {
+  const answerEntity = (entityId: string, entityName: string) => {
     if (picked != null) return;
-    const ok = q.correctArtistId === artistId;
+    const ok = q.correctEntityId === entityId;
     // picked = 1 se ok, 0 se sbagliato (placeholder, vedi commento sopra)
     setPicked(ok ? 1 : 0);
-    setPickedArtistId(artistId);
-    setPickedArtistName(artistName);
+    setPickedEntityId(entityId);
+    setPickedEntityName(entityName);
     setAnswers((a) => [...a, { q, chosen: ok ? 1 : 0, ok }]);
     if (mode === "normale") {
       if (!ok) addError(q.kind, q.refId, q.prompt);
@@ -731,8 +817,8 @@ export default function Test() {
 
   // Resetta lo stato dell'autocomplete quando si cambia domanda
   useEffect(() => {
-    setPickedArtistId(null);
-    setPickedArtistName(null);
+    setPickedEntityId(null);
+    setPickedEntityName(null);
   }, [idx]);
 
   const next = () => {
@@ -760,7 +846,7 @@ export default function Test() {
     else group.forEach((k) => n.add(k));
     setKinds(n); saveKinds(n); setNotice(null);
   };
-  const selectAll = () => { const n = new Set(ALL_KINDS); setKinds(n); saveKinds(n); setNotice(null); };
+  const selectAll = () => { const n = new Set(visibleKinds); setKinds(n); saveKinds(n); setNotice(null); };
   const clearAll = () => { const n = new Set<QuizKind>(); setKinds(n); saveKinds(n); setNotice(null); };
 
   const togglePeriod = (pid: string) => {
@@ -806,39 +892,42 @@ export default function Test() {
             <div className="quiz-notice soft" data-testid="quiz-hint">Nessun filtro attivo: seleziona qui sotto i tipi di domanda che vuoi (o «seleziona tutto»).</div>
           )}
 
-          <div>
-            <div className="eyebrow" style={{ marginBottom: 12 }}>Quante domande</div>
-            <div className="seg" data-testid="quiz-count-seg">
-              {[10, 20, 40].map((n) => (
-                <button key={n} className={`seg-btn ${count === n ? "on" : ""}`} onClick={() => setCount(n)} data-testid={`quiz-count-${n}`}>{n}</button>
-              ))}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-start" }}>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: 12 }}>Quante domande</div>
+              <div className="seg" data-testid="quiz-count-seg">
+                {[10, 20, 40].map((n) => (
+                  <button key={n} className={`seg-btn ${count === n ? "on" : ""}`} onClick={() => setCount(n)} data-testid={`quiz-count-${n}`}>{n}</button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="eyebrow" style={{ marginBottom: 12 }}>Tipo di domanda</div>
+              <div className="seg" data-testid="quiz-mode-seg">
+                <button className={`seg-btn ${quizMode === "multipla" ? "on" : ""}`} onClick={() => selectMode("multipla")} data-testid="quiz-mode-multipla">A risposta multipla</button>
+                <button className={`seg-btn ${quizMode === "aperte" ? "on" : ""}`} onClick={() => selectMode("aperte")} data-testid="quiz-mode-aperte">Aperte</button>
+              </div>
+              <div className="faint" style={{ fontSize: 11.5, marginTop: 6 }}>
+                {quizMode === "multipla"
+                  ? "Scegli la risposta corretta tra 4 opzioni."
+                  : "Scrivi la risposta a memoria e selezionala dall'elenco (più difficile)."}
+              </div>
             </div>
           </div>
 
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12, flexWrap: "wrap" }}>
-              <div className="eyebrow">Tipi di domanda · {kinds.size} di {ALL_KINDS.length}</div>
+              <div className="eyebrow">
+                {quizMode === "aperte" ? "Domande aperte" : "Tipi di domanda"} · {kinds.size} di {visibleKinds.length}
+              </div>
               <button className="quiz-grouptoggle" onClick={selectAll} data-testid="kinds-all">seleziona tutto</button>
               <button className="quiz-grouptoggle" onClick={clearAll} disabled={kinds.size === 0} data-testid="kinds-none">azzera</button>
             </div>
-            {QUIZ_GROUPS.map((g) => {
-              const allOn = g.kinds.every((k) => kinds.has(k));
-              return (
-                <div key={g.label} style={{ marginBottom: 14 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-                    <span className="smallcaps">{g.label}</span>
-                    <button className="quiz-grouptoggle" onClick={() => toggleGroup(g.kinds)} data-testid={`group-${g.label}`}>
-                      {allOn ? "deseleziona" : "seleziona tutti"}
-                    </button>
-                  </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                    {g.kinds.map((k) => (
-                      <span key={k} className={`chip ${kinds.has(k) ? "active" : ""}`} onClick={() => toggleKind(k)} data-testid={`kind-${k}`}>{QUIZ_KIND_LABEL[k]}</span>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {visibleKinds.map((k) => (
+                <span key={k} className={`chip ${kinds.has(k) ? "active" : ""}`} onClick={() => toggleKind(k)} data-testid={`kind-${k}`}>{QUIZ_KIND_LABEL[k]}</span>
+              ))}
+            </div>
           </div>
 
           {/* Selezione periodi — visibile SOLO se NON in modalità filtrata.
@@ -1017,16 +1106,15 @@ export default function Test() {
                   </div>
                   <div style={{ fontSize: 15, marginTop: 8 }}>{a.q.prompt}</div>
                   <div style={{ fontSize: 13.5, marginTop: 6 }}>
-                    {a.q.kind === "autore-input" ? (
-                      // Per "autore-input" non abbiamo options[]: mostriamo
-                      // direttamente il nome dell'autore corretto e l'eventuale
-                      // risposta sbagliata dell'utente (estratta dall'ultimo
-                      // stato di pickedArtistName/pickedArtistId PRIMA di passare
-                      // alla domanda successiva — ma qui in revisione non abbiamo
-                      // accesso a quello stato, quindi mostriamo solo la corretta).
+                    {OPEN_KINDS.includes(a.q.kind) ? (
+                      // Per le domande "aperte" non abbiamo options[]: mostriamo
+                      // direttamente l'etichetta dell'entità corretta. Per la
+                      // risposta dell'utente, in fase di revisione non abbiamo
+                      // l'ultimo stato di pickedEntityName (è stato resettato),
+                      // quindi mostriamo solo la corretta.
                       a.ok
-                        ? <span style={{ color: "var(--c-technique)" }}>✓ {a.q.correctArtistName}</span>
-                        : <><span className="muted">Corretta: <span style={{ color: "var(--c-technique)" }}>{a.q.correctArtistName}</span></span></>
+                        ? <span style={{ color: "var(--c-technique)" }}>✓ {a.q.correctEntityLabel}</span>
+                        : <><span className="muted">Corretta: <span style={{ color: "var(--c-technique)" }}>{a.q.correctEntityLabel}</span></span></>
                     ) : a.ok
                       ? <span style={{ color: "var(--c-technique)" }}>✓ {a.q.options[a.q.correct]}</span>
                       : <><span style={{ color: "var(--c-event)" }}>✗ La tua risposta: {a.q.options[a.chosen]}</span><br /><span className="muted">Corretta: <span style={{ color: "var(--c-technique)" }}>{a.q.options[a.q.correct]}</span></span></>}
@@ -1083,36 +1171,42 @@ export default function Test() {
           )}
           <div className="quiz-kind">{QUIZ_KIND_LABEL[q.kind]}</div>
           <div className="quiz-prompt">{q.prompt}</div>
-          {q.kind === "autore-input" ? (
-            // === Rendering speciale per domanda "autore-input" ===
+          {OPEN_KINDS.includes(q.kind) ? (
+            // === Rendering speciale per domande "aperte" ===
             // Al posto delle opzioni a scelta multipla, mostriamo un input
-            // autocomplete in cui l'utente digita il nome dell'autore e lo
-            // seleziona dal dropdown dei suggerimenti (tutti gli artisti del db).
-            <div className="quiz-artist-block" data-testid="quiz-artist-block">
+            // autocomplete in cui l'utente digita la risposta e la seleziona
+            // dal dropdown dei suggerimenti (tutte le entità del db del tipo
+            // appropriato: artisti per autore-input, opere per titolo-input,
+            // periodi per periodo-input, città per luogo-input, anni per
+            // data-input).
+            <div className="quiz-artist-block" data-testid="quiz-entity-block">
               {!picked ? (
-                <ArtistAutocomplete
+                <EntityAutocomplete
                   ix={ix}
+                  // Mappa il kind al tipo di entità da cercare. Per "data-input"
+                  // usiamo "year" (autocomplete su tutti gli anni delle opere).
+                  entityType={q.kind === "data-input" ? "year" : (q.correctEntityType ?? "artist")}
                   disabled={picked != null}
-                  onPick={(artistId, artistName) => answerArtist(artistId, artistName)}
+                  onPick={(entityId, entityName) => answerEntity(entityId, entityName)}
                 />
               ) : (
-                // Dopo la risposta, mostriamo il nome scelto + quello corretto
+                // Dopo la risposta, mostriamo la scelta dell'utente + quella corretta
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <div style={{
                     padding: "12px 14px",
                     borderRadius: 10,
-                    border: `1.5px solid ${pickedArtistId === q.correctArtistId ? "var(--c-technique)" : "var(--c-event)"}`,
-                    background: pickedArtistId === q.correctArtistId ? "color-mix(in srgb, var(--c-technique) 8%, transparent)" : "color-mix(in srgb, var(--c-event) 8%, transparent)",
+                    border: `1.5px solid ${pickedEntityId === q.correctEntityId ? "var(--c-technique)" : "var(--c-event)"}`,
+                    background: pickedEntityId === q.correctEntityId ? "color-mix(in srgb, var(--c-technique) 8%, transparent)" : "color-mix(in srgb, var(--c-event) 8%, transparent)",
                     fontSize: 14,
                   }}>
                     <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
                       La tua risposta
                     </div>
                     <div style={{ fontWeight: 600 }}>
-                      {pickedArtistName ?? "—"}
+                      {pickedEntityName ?? "—"}
                     </div>
                   </div>
-                  {pickedArtistId !== q.correctArtistId && (
+                  {pickedEntityId !== q.correctEntityId && (
                     <div style={{
                       padding: "12px 14px",
                       borderRadius: 10,
@@ -1124,7 +1218,7 @@ export default function Test() {
                         Risposta corretta
                       </div>
                       <div style={{ fontWeight: 600, color: "var(--c-technique)" }}>
-                        {q.correctArtistName ?? "—"}
+                        {q.correctEntityLabel ?? "—"}
                       </div>
                     </div>
                   )}
@@ -1164,9 +1258,9 @@ export default function Test() {
               style={{ marginTop: 20 }}
             >
               {/* Feedback corretto/sbagliato */}
-              <div className={`quiz-explain-card ${(q.kind === "autore-input" ? pickedArtistId === q.correctArtistId : picked === q.correct) ? "ok" : "ko"}`}>
+              <div className={`quiz-explain-card ${(OPEN_KINDS.includes(q.kind) ? pickedEntityId === q.correctEntityId : picked === q.correct) ? "ok" : "ko"}`}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-                  {(q.kind === "autore-input" ? pickedArtistId === q.correctArtistId : picked === q.correct) ? (
+                  {(OPEN_KINDS.includes(q.kind) ? pickedEntityId === q.correctEntityId : picked === q.correct) ? (
                     <>
                       <span style={{ fontSize: 20 }}>✓</span>
                       <span style={{ fontWeight: 600, fontSize: 15, color: "var(--c-technique)" }}>Risposta corretta!</span>
@@ -1188,11 +1282,11 @@ export default function Test() {
                     }}>{currentRefWork.title}</button></>
                   )}
                 </div>
-                {/* Per "autore-input": la sezione "la tua risposta / risposta corretta"
+                {/* Per le domande "aperte": la sezione "la tua risposta / risposta corretta"
                     è già mostrata nel blocco sopra, quindi qui la saltiamo per
                     evitare duplicazione. Per le altre domande, manteniamo il
                     feedback testuale come prima. */}
-                {q.kind !== "autore-input" && picked !== q.correct && (
+                {!OPEN_KINDS.includes(q.kind) && picked !== q.correct && (
                   <div style={{ marginTop: 8, fontSize: 13.5 }}>
                     <span className="muted">La risposta corretta è: </span>
                     <span style={{ color: "var(--c-technique)", fontWeight: 600 }}>{q.options[q.correct]}</span>

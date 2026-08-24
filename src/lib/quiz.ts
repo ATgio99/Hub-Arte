@@ -13,7 +13,7 @@ export type QuizKind =
   | "immagine" | "opera-luogo" | "artista-periodo" | "artista-opera" | "tecnica-def"
   | "def-tecnica" | "termine-def" | "def-termine" | "periodo-secolo"
   | "periodo-regione" | "connessione" | "evento-anno" | "evento-da-anno"
-  | "autore-input";
+  | "autore-input" | "titolo-input" | "periodo-input" | "data-input" | "luogo-input";
 
 export interface Question {
   id: string;
@@ -31,6 +31,13 @@ export interface Question {
    *  scelta confrontando l'id (più robusto del confronto stringa). */
   correctArtistId?: string;
   correctArtistName?: string;
+  /** Per domande aperte su altri tipi di entità (opera, periodo, luogo).
+   *  Salviamo l'id e l'etichetta leggibile dell'entità corretta. */
+  correctEntityId?: string;
+  correctEntityLabel?: string;
+  /** Tipo di entità da cercare nell'autocomplete: "artist" | "work" | "period" | "city".
+   *  Usato dal componente Autocomplete per sapere quale pool mostrare. */
+  correctEntityType?: "artist" | "work" | "period" | "city";
 }
 
 export const QUIZ_KIND_LABEL: Record<QuizKind, string> = {
@@ -54,11 +61,21 @@ export const QUIZ_KIND_LABEL: Record<QuizKind, string> = {
   "evento-anno": "Anno dell'evento",
   "evento-da-anno": "Evento dall'anno",
   "autore-input": "Riconosci l'autore (a memoria)",
+  "titolo-input": "Riconosci il titolo (a memoria)",
+  "periodo-input": "Riconosci il periodo (a memoria)",
+  "data-input": "Riconosci la data (a memoria)",
+  "luogo-input": "Riconosci il luogo (a memoria)",
 };
+
+/** Tipi di domanda "aperti" (con autocomplete invece di scelta multipla).
+ *  Sono raggruppati sotto il selettore "Aperte" nel setup del quiz. */
+export const OPEN_KINDS: QuizKind[] = [
+  "autore-input", "titolo-input", "periodo-input", "data-input", "luogo-input",
+];
 
 // raggruppamento per UI (categorie macro)
 export const QUIZ_GROUPS: { label: string; kinds: QuizKind[] }[] = [
-  { label: "Opere", kinds: ["autore", "periodo", "tecnica", "datazione", "secolo", "citta", "immagine", "opera-luogo", "autore-input"] },
+  { label: "Opere", kinds: ["autore", "periodo", "tecnica", "datazione", "secolo", "citta", "immagine", "opera-luogo", "autore-input", "titolo-input", "periodo-input", "data-input", "luogo-input"] },
   { label: "Autori", kinds: ["artista-periodo", "artista-opera"] },
   { label: "Tecniche & termini", kinds: ["tecnica-def", "def-tecnica", "termine-def", "def-termine"] },
   { label: "Periodi & contesto", kinds: ["periodo-secolo", "periodo-regione", "connessione", "evento-anno", "evento-da-anno"] },
@@ -66,9 +83,13 @@ export const QUIZ_GROUPS: { label: string; kinds: QuizKind[] }[] = [
 
 export const ALL_KINDS: QuizKind[] = QUIZ_GROUPS.flatMap((g) => g.kinds);
 
+/** Tipi di domanda "a risposta multipla" (scelta tra 4 opzioni).
+ *  Sono tutti quelli che NON sono in OPEN_KINDS. */
+export const MULTIPLE_KINDS: QuizKind[] = ALL_KINDS.filter(k => !OPEN_KINDS.includes(k));
+
 /** tipi di domanda generati da opere o artisti: gli unici sensati in modalità «solo preferiti» */
 export const FAV_KINDS: QuizKind[] = [
-  "autore", "periodo", "tecnica", "datazione", "secolo", "citta", "immagine", "opera-luogo", "autore-input",
+  "autore", "periodo", "tecnica", "datazione", "secolo", "citta", "immagine", "opera-luogo", "autore-input", "titolo-input", "periodo-input", "data-input", "luogo-input",
   "artista-periodo", "artista-opera",
 ];
 
@@ -223,15 +244,20 @@ export function generateQuiz(ix: Indexed, opts: GenOpts): Question[] {
     switch (kind) {
       case "autore":
       case "immagine":
-      case "autore-input": {
-        if (w.artist_ids.length === 0) return false;
-        const artist = ix.artistById.get(w.artist_ids[0]);
-        if (!artist) return false;
-        // Per "autore-input" NON generiamo distrattori: l'utente deve digitare
-        // e selezionare il nome dall'elenco completo degli artisti del db.
+      case "autore-input":
+      case "titolo-input":
+      case "periodo-input":
+      case "data-input":
+      case "luogo-input": {
+        if (w.artist_ids.length === 0 && (kind === "autore" || kind === "autore-input")) return false;
+        // Per i tipi "aperti" NON generiamo distrattori: l'utente deve digitare
+        // e selezionare la risposta dall'elenco completo del db.
         // Lasciamo options vuoto e correct=0 (placeholder), l'UI speciale in
-        // Test.tsx gestisce la verifica dell'id artista.
+        // Test.tsx gestisce la verifica tramite correctEntityId/Label.
         if (kind === "autore-input") {
+          if (w.artist_ids.length === 0) return false;
+          const artist = ix.artistById.get(w.artist_ids[0]);
+          if (!artist) return false;
           if (!w.image_thumb && !w.image_url) return false;
           return push({
             kind: "autore-input",
@@ -244,9 +270,95 @@ export function generateQuiz(ix: Indexed, opts: GenOpts): Question[] {
             correct: 0,
             correctArtistId: artist.id,
             correctArtistName: artist.name,
+            correctEntityId: artist.id,
+            correctEntityLabel: artist.name,
+            correctEntityType: "artist",
             explain: `«${w.title}» è di ${artist.name} (${periodName(w.period_id)}).`,
           });
         }
+        if (kind === "titolo-input") {
+          if (!w.image_thumb && !w.image_url) return false;
+          return push({
+            kind: "titolo-input",
+            refId: w.id,
+            refHref: `/opera/${w.id}`,
+            topicPeriodId: w.period_id,
+            prompt: "Quale opera è questa? Scrivi il titolo e selezionalo dalla lista.",
+            image: w.image_thumb || w.image_url,
+            options: [],
+            correct: 0,
+            correctEntityId: w.id,
+            correctEntityLabel: w.title,
+            correctEntityType: "work",
+            explain: `È «${w.title}» (${workYears(w)}, ${periodName(w.period_id)}).`,
+          });
+        }
+        if (kind === "periodo-input") {
+          if (!w.image_thumb && !w.image_url) return false;
+          const p = ix.periodById.get(w.period_id);
+          if (!p) return false;
+          return push({
+            kind: "periodo-input",
+            refId: w.id,
+            refHref: `/opera/${w.id}`,
+            topicPeriodId: w.period_id,
+            prompt: "A quale periodo storico appartiene quest'opera? Scrivi il nome e selezionalo dalla lista.",
+            image: w.image_thumb || w.image_url,
+            options: [],
+            correct: 0,
+            correctEntityId: p.id,
+            correctEntityLabel: p.name,
+            correctEntityType: "period",
+            explain: `«${w.title}» appartiene al periodo: ${p.name}.`,
+          });
+        }
+        if (kind === "data-input") {
+          if (!w.image_thumb && !w.image_url) return false;
+          // Per la data, l'utente deve individuare l'anno. L'autocomplete
+          // propone tutti gli anni delle opere del db (così l'utente sceglie
+          // un anno dall'elenco invece di digitarlo a mano — evitiamo
+          // ambiguità di formato). Usiamo come risposta corretta l'anno
+          // di fine (o inizio se non c'è fine).
+          const year = w.year_end ?? w.year_start;
+          if (year == null) return false;
+          const yearStr = String(year < 0 ? `${-year} a.C.` : year);
+          return push({
+            kind: "data-input",
+            refId: w.id,
+            refHref: `/opera/${w.id}`,
+            topicPeriodId: w.period_id,
+            prompt: "A quando risale quest'opera? Seleziona l'anno dalla lista.",
+            image: w.image_thumb || w.image_url,
+            options: [],
+            correct: 0,
+            // Per le date usiamo come id la stringa stessa (non c'è un'entità nel db)
+            correctEntityId: yearStr,
+            correctEntityLabel: yearStr,
+            correctEntityType: "city", // placeholder: il rendering usa l'autocomplete "anno" dedicato
+            explain: `«${w.title}» è databile: ${w.date_text || yearStr} (${periodName(w.period_id)}).`,
+          });
+        }
+        if (kind === "luogo-input") {
+          if (!w.location_city) return false;
+          if (!w.image_thumb && !w.image_url) return false;
+          return push({
+            kind: "luogo-input",
+            refId: w.id,
+            refHref: `/opera/${w.id}`,
+            topicPeriodId: w.period_id,
+            prompt: "In quale città si trova quest'opera? Scrivi il nome e selezionalo dalla lista.",
+            image: w.image_thumb || w.image_url,
+            options: [],
+            correct: 0,
+            correctEntityId: w.location_city,
+            correctEntityLabel: w.location_city,
+            correctEntityType: "city",
+            explain: `«${w.title}» si trova a ${w.location_city}${w.location_place ? ` (${w.location_place})` : ""}.`,
+          });
+        }
+        // Caso "autore" (scelta multipla) e "immagine" (scelta multipla)
+        const artist = ix.artistById.get(w.artist_ids[0]);
+        if (!artist) return false;
         const sameP = namedArtists.filter((a) => a.id !== artist.id && a.period_ids.includes(w.period_id)).map((a) => a.name);
         const distr = uniqOptions(artist.name, [sameP, namedArtists.map((a) => a.name)], rng);
         const b = build(artist.name, distr, rng);
@@ -386,7 +498,7 @@ export function generateQuiz(ix: Indexed, opts: GenOpts): Question[] {
   const produce = (kind: QuizKind): boolean => {
     let guard = 0;
     switch (kind) {
-      case "autore": case "autore-input": case "immagine": case "periodo": case "tecnica":
+      case "autore": case "autore-input": case "titolo-input": case "periodo-input": case "data-input": case "luogo-input": case "immagine": case "periodo": case "tecnica":
       case "datazione": case "secolo": case "citta": case "opera-luogo": {
         while (guard++ < 60) { const w = nextOf(works, "w_" + kind); if (!w) return false; if (genFromWork(kind, w)) return true; }
         return false;
