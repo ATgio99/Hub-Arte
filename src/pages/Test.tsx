@@ -1704,6 +1704,42 @@ export default function Test() {
                     </>
                   )}
                 </div>
+                {/* === Blocco "Autore corretto" / "Risposta corretta" —
+                    sempre mostrato (sia per domande aperte che a risposta multipla)
+                    quando l'utente ha sbagliato. È la cornice verde più visibile
+                    che contiene il nome dell'autore corretto + riferimento all'opera. */}
+                {(() => {
+                  // Per le domande aperte usiamo correctEntityLabel, per le
+                  // multiple usiamo q.options[q.correct].
+                  const isCorrect = OPEN_KINDS.includes(q.kind)
+                    ? pickedEntityId === q.correctEntityId
+                    : picked === q.correct;
+                  if (isCorrect) return null; // se ha azzeccato, non serve (già mostrato nella cornice "La tua risposta" verde)
+                  const correctLabel = OPEN_KINDS.includes(q.kind)
+                    ? (q.correctEntityLabel ?? "—")
+                    : q.options[q.correct];
+                  const isAuthorQuestion = q.kind === "autore" || q.kind === "immagine" || q.kind === "autore-input";
+                  return (
+                    <div style={{
+                      marginBottom: 10, padding: "14px 16px",
+                      borderRadius: 10,
+                      border: "2px solid var(--c-technique)",
+                      background: "color-mix(in srgb, var(--c-technique) 14%, transparent)",
+                    }}>
+                      <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
+                        {isAuthorQuestion ? "Autore corretto" : "Risposta corretta"}
+                      </div>
+                      <div style={{ fontWeight: 800, color: "var(--c-technique)", fontSize: 17, lineHeight: 1.2 }}>
+                        {correctLabel}
+                      </div>
+                      {isAuthorQuestion && currentRefWork && (
+                        <div style={{ fontSize: 12, color: "var(--ink-dim)", fontStyle: "italic", marginTop: 4 }}>
+                          autore di «{currentRefWork.title}»
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
                 <div className="muted" style={{ fontSize: 13.5, lineHeight: 1.6 }}>
                   {q.explain}
                   {currentRefWork && (
@@ -1714,39 +1750,6 @@ export default function Test() {
                     }}>{currentRefWork.title}</button></>
                   )}
                 </div>
-                {/* Per le domande "aperte": la sezione "la tua risposta / risposta corretta"
-                    è già mostrata nel blocco sopra, quindi qui la saltiamo per
-                    evitare duplicazione. Per le altre domande, mostriamo la risposta
-                    corretta in un blocco separato ed evidente, con l'eventuale
-                    nome dell'autore ben visibile. */}
-                {!OPEN_KINDS.includes(q.kind) && picked !== q.correct && (() => {
-                  // Per le domande "autore"/"immagine" la risposta corretta
-                  // è il nome dell'autore; proviamo a estrarlo per mostrarlo
-                  // in modo più chiaro (con l'opera di riferimento).
-                  const correctLabel = q.options[q.correct];
-                  const isAuthorQuestion = q.kind === "autore" || q.kind === "immagine";
-                  return (
-                    <div style={{
-                      marginTop: 10, padding: "10px 12px",
-                      borderRadius: 8,
-                      background: "color-mix(in srgb, var(--c-technique) 10%, transparent)",
-                      border: "1px solid color-mix(in srgb, var(--c-technique) 40%, transparent)",
-                      display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap",
-                    }}>
-                      <span style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 700 }}>
-                        {isAuthorQuestion ? "Autore corretto:" : "Risposta corretta:"}
-                      </span>
-                      <span style={{ color: "var(--c-technique)", fontWeight: 800, fontSize: 16 }}>
-                        {correctLabel}
-                      </span>
-                      {isAuthorQuestion && currentRefWork && (
-                        <span style={{ fontSize: 12, color: "var(--ink-dim)", fontStyle: "italic" }}>
-                          (autore di «{currentRefWork.title}»)
-                        </span>
-                      )}
-                    </div>
-                  );
-                })()}
               </div>
             </motion.div>
           )}
