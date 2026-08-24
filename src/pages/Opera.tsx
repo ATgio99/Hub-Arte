@@ -230,6 +230,12 @@ export default function Opera() {
               const otherWork = ix.workById.get(otherWorkId);
               if (!otherWork) return null;
               const thisIsSource = !otherIsSource;
+              // Risolvi l'autore (o gli autori) dell'opera collegata per mostrarlo
+              // accanto al titolo, come fa già la WorkCard standard.
+              const otherArtists = artistsOfWork(ix, otherWork);
+              const otherArtistsLabel = otherArtists.length > 0
+                ? otherArtists.map(a => a.name).join(", ")
+                : null;
               return (
                 <Link
                   key={c.id}
@@ -254,7 +260,14 @@ export default function Opera() {
                         {thisIsSource ? "questa opera →" : "← quest'opera"}
                       </span>
                     </div>
-                    <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }}>{otherWork.title}</div>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
+                      <span style={{ fontSize: 15, fontWeight: 600 }}>{otherWork.title}</span>
+                      {otherArtistsLabel && (
+                        <span style={{ fontSize: 13, color: "var(--ink-soft)", fontStyle: "italic" }}>
+                          · {otherArtistsLabel}
+                        </span>
+                      )}
+                    </div>
                     {c.description && (
                       <div style={{ fontSize: 13, color: "var(--ink-soft)", fontStyle: "italic", lineHeight: 1.5 }}>
                         "{c.description}"

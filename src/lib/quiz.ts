@@ -386,7 +386,7 @@ export function generateQuiz(ix: Indexed, opts: GenOpts): Question[] {
   const produce = (kind: QuizKind): boolean => {
     let guard = 0;
     switch (kind) {
-      case "autore": case "immagine": case "periodo": case "tecnica":
+      case "autore": case "autore-input": case "immagine": case "periodo": case "tecnica":
       case "datazione": case "secolo": case "citta": case "opera-luogo": {
         while (guard++ < 60) { const w = nextOf(works, "w_" + kind); if (!w) return false; if (genFromWork(kind, w)) return true; }
         return false;
