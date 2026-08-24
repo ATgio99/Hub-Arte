@@ -155,6 +155,12 @@ export interface GenOpts {
   refIds?: { kind: QuizKind; refId: string }[];
   /** se fornito, limita il quiz alle opere/artisti preferiti */
   favorites?: { works: Set<string>; artists: Set<string> };
+  /** se true (modalità "a livelli"), il filtro preferiti considera SOLO le
+   *  opere esplicitamente preferite — NON include le opere di autori
+   *  preferiti. Questo perché in modalità "Tutte (a livelli)" l'utente
+   *  vuole fare una domanda per ogni opera preferita, non per tutte le
+   *  opere degli autori preferiti (che potrebbero essere centinaia). */
+  favoritesStrict?: boolean;
   /** se fornito, limita il quiz alle opere approfondite (studied) */
   studiedWorks?: Set<string>;
 }
@@ -168,7 +174,15 @@ export function generateQuiz(ix: Indexed, opts: GenOpts): Question[] {
 
   const fav = opts.favorites;
   const studied = opts.studiedWorks;
-  const isFavWork = (w: Work) => !fav || fav.works.has(w.id) || w.artist_ids.some((a) => fav.artists.has(a));
+  // In modalità "favoritesStrict" (es. "Tutte (a livelli)" + Solo preferiti),
+  // consideriamo preferite SOLO le opere esplicitamente marcate come tali
+  // (non quelle di autori preferiti). Questo evita di includere nel test
+  // centinaia di opere di autori preferiti quando l'utente vuole testarsi
+  // solo sulle opere che ha salvato.
+  const isFavWork = (w: Work) =>
+    !fav ||
+    fav.works.has(w.id) ||
+    (!opts.favoritesStrict && w.artist_ids.some((a) => fav.artists.has(a)));
   const isStudiedWork = (w: Work) => !studied || studied.has(w.id);
   const isFiltered = !!(fav || studied);
 

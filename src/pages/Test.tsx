@@ -804,6 +804,10 @@ export default function Test() {
         count: 1000,  // "tutte" — il generatore si ferma quando esaurisce le opere
         seed: Date.now() % 1e9,
         favorites: favOnly ? { works: new Set(favs.works), artists: new Set(favs.artists) } : undefined,
+        // In modalità "a livelli" + Solo preferiti, consideriamo preferite SOLO
+        // le opere esplicitamente salvate — non quelle di autori preferiti.
+        // Altrimenti l'utente si ritroverebbe con centinaia di opere nel test.
+        favoritesStrict: favOnly,
         studiedWorks: studiedOnly ? new Set(studied) : undefined,
       });
       if (qs.length === 0) {
@@ -1627,20 +1631,28 @@ export default function Test() {
                   </div>
                   {/* Risposta corretta: sempre mostrata (sia se l'utente ha
                       azzeccato che se ha sbagliato). Cornice verde in evidenza,
-                      con il nome dell'entità corretta in grassetto. */}
+                      con il nome dell'entità corretta in grassetto. Per le
+                      domande "autore-input" usiamo l'etichetta specifica
+                      "Autore corretto" + riferimento all'opera, così è chiaro
+                      a colpo d'occhio chi era l'autore giusto. */}
                   <div style={{
-                    padding: "12px 14px",
+                    padding: "14px 16px",
                     borderRadius: 10,
-                    border: "1.5px solid var(--c-technique)",
-                    background: "color-mix(in srgb, var(--c-technique) 12%, transparent)",
+                    border: "2px solid var(--c-technique)",
+                    background: "color-mix(in srgb, var(--c-technique) 14%, transparent)",
                     fontSize: 14,
                   }}>
                     <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
-                      Risposta corretta
+                      {q.kind === "autore-input" ? "Autore corretto" : "Risposta corretta"}
                     </div>
-                    <div style={{ fontWeight: 800, color: "var(--c-technique)", fontSize: 15 }}>
+                    <div style={{ fontWeight: 800, color: "var(--c-technique)", fontSize: 17 }}>
                       {q.correctEntityLabel ?? "—"}
                     </div>
+                    {q.kind === "autore-input" && currentRefWork && (
+                      <div style={{ fontSize: 12, color: "var(--ink-dim)", fontStyle: "italic", marginTop: 4 }}>
+                        autore di «{currentRefWork.title}»
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -1704,14 +1716,37 @@ export default function Test() {
                 </div>
                 {/* Per le domande "aperte": la sezione "la tua risposta / risposta corretta"
                     è già mostrata nel blocco sopra, quindi qui la saltiamo per
-                    evitare duplicazione. Per le altre domande, manteniamo il
-                    feedback testuale come prima. */}
-                {!OPEN_KINDS.includes(q.kind) && picked !== q.correct && (
-                  <div style={{ marginTop: 8, fontSize: 13.5 }}>
-                    <span className="muted">La risposta corretta è: </span>
-                    <span style={{ color: "var(--c-technique)", fontWeight: 800, fontSize: 14.5 }}>{q.options[q.correct]}</span>
-                  </div>
-                )}
+                    evitare duplicazione. Per le altre domande, mostriamo la risposta
+                    corretta in un blocco separato ed evidente, con l'eventuale
+                    nome dell'autore ben visibile. */}
+                {!OPEN_KINDS.includes(q.kind) && picked !== q.correct && (() => {
+                  // Per le domande "autore"/"immagine" la risposta corretta
+                  // è il nome dell'autore; proviamo a estrarlo per mostrarlo
+                  // in modo più chiaro (con l'opera di riferimento).
+                  const correctLabel = q.options[q.correct];
+                  const isAuthorQuestion = q.kind === "autore" || q.kind === "immagine";
+                  return (
+                    <div style={{
+                      marginTop: 10, padding: "10px 12px",
+                      borderRadius: 8,
+                      background: "color-mix(in srgb, var(--c-technique) 10%, transparent)",
+                      border: "1px solid color-mix(in srgb, var(--c-technique) 40%, transparent)",
+                      display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap",
+                    }}>
+                      <span style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 700 }}>
+                        {isAuthorQuestion ? "Autore corretto:" : "Risposta corretta:"}
+                      </span>
+                      <span style={{ color: "var(--c-technique)", fontWeight: 800, fontSize: 16 }}>
+                        {correctLabel}
+                      </span>
+                      {isAuthorQuestion && currentRefWork && (
+                        <span style={{ fontSize: 12, color: "var(--ink-dim)", fontStyle: "italic" }}>
+                          (autore di «{currentRefWork.title}»)
+                        </span>
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
             </motion.div>
           )}
