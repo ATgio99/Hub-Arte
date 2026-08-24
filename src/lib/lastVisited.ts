@@ -5,6 +5,8 @@
 // Se clicca di nuovo la stessa voce di menu, torna alla home di quella sezione.
 // ============================================================================
 
+import type { Question } from "./quiz";
+
 const LAST_OPERA_KEY = "atlante:last-opera";
 const LAST_ARTISTA_KEY = "atlante:last-artista";
 const LAST_RETE_KEY = "atlante:last-rete";
@@ -12,6 +14,7 @@ const LAST_MAPPA_KEY = "atlante:last-mappa";
 const LAST_TIMELINE_KEY = "atlante:last-timeline";
 const LAST_OPERE_SEARCH_KEY = "atlante:last-opere-search";
 const LAST_ARTISTI_SEARCH_KEY = "atlante:last-artisti-search";
+const LAST_TEST_KEY = "atlante:last-test";
 
 // --- Ultima opera visitata ---
 export function getLastOpera(): string | null {
@@ -164,4 +167,52 @@ export function setLastTimeline(periodId: string): void {
 
 export function clearLastTimeline(): void {
   try { localStorage.removeItem(LAST_TIMELINE_KEY); } catch { /* ignore */ }
+}
+
+// --- Test in corso (sessione di quiz salvata) ---
+// Quando l'utente inizia un quiz, lo stato viene salvato qui. Se l'utente
+// naviga in altre sezioni del sito e poi torna sul Test, la sessione viene
+// ripristinata esattamente dove era rimasta. Doppio click su "Test" nel menu
+// (o click sul pulsante "Esci" in alto a destra) cancella la sessione.
+export interface SavedAnswer {
+  q: Question;
+  chosen: number;
+  ok: boolean;
+}
+
+export interface SavedTestState {
+  questions: Question[];
+  idx: number;
+  picked: number | null;          // scelta corrente (null se ancora da rispondere)
+  answers: SavedAnswer[];
+  mode: "normale" | "ripasso";
+  reviewRemoved: string[];
+  savedAt: number;
+}
+
+export function getLastTest(): SavedTestState | null {
+  try {
+    const raw = localStorage.getItem(LAST_TEST_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return null;
+    if (!Array.isArray(parsed.questions) || parsed.questions.length === 0) return null;
+    return {
+      questions: parsed.questions as Question[],
+      idx: typeof parsed.idx === "number" ? parsed.idx : 0,
+      picked: typeof parsed.picked === "number" ? parsed.picked : null,
+      answers: Array.isArray(parsed.answers) ? parsed.answers as SavedAnswer[] : [],
+      mode: parsed.mode === "ripasso" ? "ripasso" : "normale",
+      reviewRemoved: Array.isArray(parsed.reviewRemoved) ? parsed.reviewRemoved as string[] : [],
+      savedAt: typeof parsed.savedAt === "number" ? parsed.savedAt : Date.now(),
+    };
+  } catch { return null; }
+}
+
+export function setLastTest(state: SavedTestState): void {
+  try { localStorage.setItem(LAST_TEST_KEY, JSON.stringify(state)); } catch { /* ignore */ }
+}
+
+export function clearLastTest(): void {
+  try { localStorage.removeItem(LAST_TEST_KEY); } catch { /* ignore */ }
 }

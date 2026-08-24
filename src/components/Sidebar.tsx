@@ -17,6 +17,7 @@ import {
   getLastOpera, clearLastOpera, getLastArtista, clearLastArtista,
   getLastRete, clearLastRete, getLastMappa, clearLastMappa,
   getLastTimeline, clearLastTimeline,
+  getLastTest, clearLastTest,
 } from "../lib/lastVisited";
 import type { EntityType } from "../lib/types";
 import TimeRangeSlider from "./TimeRangeSlider";
@@ -59,6 +60,22 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
   const [lastReteQuery, setLastReteQuery] = useState<string>("");
   const [lastMappaCity, setLastMappaCity] = useState<string | null>(null);
   const [lastTimelineId, setLastTimelineId] = useState<string | null>(null);
+  // === Test in corso (sessione di quiz salvata) ===
+  // Memorizziamo un'etichetta leggibile ("Domanda N di M" o "Ripasso · N di M")
+  // da mostrare sotto la voce "Test" del menu. Aggiornata al cambio rotta e
+  // quando riceviamo l'evento custom "atlante:last-visited-changed" (emesso
+  // dal Test.tsx quando la sessione viene salvata o abbandonata).
+  const [lastTestLabel, setLastTestLabel] = useState<string | null>(null);
+  const refreshLastTest = () => {
+    const saved = getLastTest();
+    if (saved && saved.questions.length > 0) {
+      const idx = Math.min(saved.idx, saved.questions.length - 1);
+      const prefix = saved.mode === "ripasso" ? "Ripasso · " : "";
+      setLastTestLabel(`${prefix}Domanda ${idx + 1} di ${saved.questions.length}`);
+    } else {
+      setLastTestLabel(null);
+    }
+  };
   useEffect(() => {
     setLastOperaId(getLastOpera());
     setLastArtistaId(getLastArtista());
@@ -67,6 +84,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
     setLastReteQuery(r?.searchQuery ?? "");
     setLastMappaCity(getLastMappa());
     setLastTimelineId(getLastTimeline());
+    refreshLastTest();
   }, [loc.pathname]);
   // Ascoltiamo anche un evento custom, così la sidebar si aggiorna in tempo
   // reale se l'utente apre una scheda opera/artista in un altro tab.
@@ -79,6 +97,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
       setLastReteQuery(r?.searchQuery ?? "");
       setLastMappaCity(getLastMappa());
       setLastTimelineId(getLastTimeline());
+      refreshLastTest();
     };
     window.addEventListener("atlante:last-visited-changed", onUpdate);
     window.addEventListener("storage", onUpdate);
@@ -295,6 +314,28 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
               onNavigate?.();
               return;
             }
+            if (p.id === "test") {
+              // Logica "Continua" per il Test — simile a quella della Rete:
+              // 1° click (NON siamo sulla pagina Test): se c'è un test in corso
+              //    salvato, vai a /test (la pagina lo ripristinerà automaticamente
+              //    dal localStorage). Se non c'è test in corso, vai semplicemente
+              //    al setup del quiz.
+              // 2° click (siamo GIÀ sulla pagina Test): emetti "atlante:test-reset"
+              //    per far abbandonare il test corrente e tornare al setup.
+              if (loc.pathname === "/test" || loc.pathname.startsWith("/test")) {
+                // Siamo già sulla pagina Test: resetta
+                clearLastTest();
+                window.dispatchEvent(new CustomEvent("atlante:test-reset"));
+                window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
+                e.preventDefault();
+                onNavigate?.();
+                return;
+              }
+              // Non siamo sulla pagina Test: il Link navigherà normalmente a /test,
+              // dove la pagina ripristinerà la sessione salvata (se presente).
+              onNavigate?.();
+              return;
+            }
             // Per le altre voci: navigazione normale
             onNavigate?.();
           };
@@ -305,7 +346,8 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
                 p.id === "artisti" && lastArtistaId ? "has-last" :
                 p.id === "rete" && lastReteFocus ? "has-last" :
                 p.id === "mappa" && lastMappaCity ? "has-last" :
-                p.id === "timeline" && lastTimelineId ? "has-last" : ""
+                p.id === "timeline" && lastTimelineId ? "has-last" :
+                p.id === "test" && lastTestLabel ? "has-last" : ""
               }`}
               data-testid={`sbx-item-${p.id}`} title={p.name}>
               <span className="sbx-num">{p.num}</span>
@@ -363,13 +405,20 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
                     <span className="sbx-continue-name">{lastTimelineLabel}</span>
                   </span>
                 )}
+                {p.id === "test" && lastTestLabel && !collapsed && (
+                  <span className="sbx-continue" data-testid="sbx-continue-test">
+                    <span className="sbx-continue-label">Continua</span>
+                    <span className="sbx-continue-name">{lastTestLabel}</span>
+                  </span>
+                )}
                 {/* Fallback: se non c'è un'ultima entità, mostra la descrizione normale */}
                 {((p.id === "opere" && !lastOperaTitle) ||
                   (p.id === "artisti" && !lastArtistaName) ||
                   (p.id === "rete" && !lastReteLabel) ||
                   (p.id === "mappa" && !lastMappaLabel) ||
                   (p.id === "timeline" && !lastTimelineLabel) ||
-                  (p.id !== "opere" && p.id !== "artisti" && p.id !== "rete" && p.id !== "mappa" && p.id !== "timeline")) && (
+                  (p.id === "test" && !lastTestLabel) ||
+                  (p.id !== "opere" && p.id !== "artisti" && p.id !== "rete" && p.id !== "mappa" && p.id !== "timeline" && p.id !== "test")) && (
                   <i>{p.desc}</i>
                 )}
                 <span className="sbx-underline" aria-hidden="true" />

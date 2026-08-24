@@ -13,6 +13,7 @@ import { useFavorites } from "../lib/favorites";
 import { useStudied } from "../lib/studied";
 import QuizTimeSlider, { type TimeRange as QuizTimeRange } from "../components/QuizTimeSlider";
 import { EASE_OUT, usePrefersReducedMotion } from "../lib/motion";
+import { getLastTest, setLastTest, clearLastTest } from "../lib/lastVisited";
 
 // selezione tipi di domanda persistente (default: NESSUN tipo selezionato)
 const KINDS_LS = "atlante:quiz-kinds";
@@ -309,8 +310,21 @@ function OperaDrawer({ workId, open, onClose }: { workId: string | null; open: b
 export default function Test() {
   const ix = useData();
   const reduced = usePrefersReducedMotion();
-  const [phase, setPhase] = useState<Phase>("setup");
-  const [mode, setMode] = useState<Mode>("normale");
+
+  // === Ripristino sessione di quiz salvata ===
+  // Leggiamo una sola volta (lazy initializer) lo stato salvato in localStorage.
+  // Se l'utente aveva un test in corso (è uscito dalla pagina senza terminarlo),
+  // lo ripristiniamo esattamente dov'era rimasto: phase="playing", domande,
+  // indice, risposta scelta, risposte date, modalità, errori di ripasso rimossi.
+  const [restoredTest] = useState(() => getLastTest());
+  const [phase, setPhase] = useState<Phase>(() => restoredTest && restoredTest.questions.length > 0 ? "playing" : "setup");
+  const [mode, setMode] = useState<Mode>(() => restoredTest ? restoredTest.mode : "normale");
+  const [questions, setQuestions] = useState<Question[]>(() => restoredTest ? restoredTest.questions : []);
+  const [idx, setIdx] = useState<number>(() => restoredTest ? Math.min(restoredTest.idx, restoredTest.questions.length - 1) : 0);
+  const [picked, setPicked] = useState<number | null>(() => restoredTest ? restoredTest.picked : null);
+  const [answers, setAnswers] = useState<{ q: Question; chosen: number; ok: boolean }[]>(() => restoredTest ? restoredTest.answers : []);
+  const [reviewRemoved, setReviewRemoved] = useState<string[]>(() => restoredTest ? restoredTest.reviewRemoved : []);
+
   const [kinds, setKinds] = useState<Set<QuizKind>>(() => loadKinds());
   const [periodIds, setPeriodIds] = useState<Set<string>>(() => loadPeriodIds());
   const [book, setBook] = useState("");
@@ -346,12 +360,7 @@ export default function Test() {
   const activeYearRange = (filteredMode && quizRange &&
     (quizRange.min > quizBounds.min || quizRange.max < quizBounds.max)) ? quizRange : undefined;
 
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [idx, setIdx] = useState(0);
-  const [picked, setPicked] = useState<number | null>(null);
-  const [answers, setAnswers] = useState<{ q: Question; chosen: number; ok: boolean }[]>([]);
   const [errN, setErrN] = useState(0);
-  const [reviewRemoved, setReviewRemoved] = useState<string[]>([]);
 
   // Drawer opera
   const [drawerWorkId, setDrawerWorkId] = useState<string | null>(null);
@@ -368,6 +377,77 @@ export default function Test() {
   };
 
   useEffect(() => { setErrN(errorCount()); }, [phase]);
+
+  // === Persistenza della sessione di quiz (memory) ===
+  // Salviamo in localStorage lo stato del quiz ogni volta che cambia (solo
+  // se siamo in fase "playing"). Così l'utente può uscire dalla pagina Test
+  // (per andare su Opere, Autori, ecc.) e tornare successivamente: ritroverà
+  // il test esattamente dov'era rimasto. La sessione viene cancellata:
+  //  - quando si conclude il test (finish)
+  //  - quando l'utente preme "Esci" in alto a destra (abbandono esplicito)
+  //  - quando si clicca due volte "Test" nella sidebar (reset)
+  useEffect(() => {
+    if (phase === "playing" && questions.length > 0) {
+      setLastTest({
+        questions,
+        idx,
+        picked,
+        answers,
+        mode,
+        reviewRemoved,
+        savedAt: Date.now(),
+      });
+    } else if (phase !== "playing") {
+      // Se non siamo in playing, assicuriamoci che non ci sia una sessione
+      // salvata "vecchia": l'utente è tornato al setup/risultato/statistiche.
+      clearLastTest();
+    }
+  }, [phase, questions, idx, picked, answers, mode, reviewRemoved]);
+
+  // === Listen per evento di reset esterno ===
+  // La sidebar emette "atlante:test-reset" quando l'utente clicca due volte
+  // "Test" nel menu (e siamo già sulla pagina Test). In quel caso abbandoniamo
+  // la sessione corrente e torniamo al setup.
+  useEffect(() => {
+    const onReset = () => {
+      clearLastTest();
+      setQuestions([]);
+      setIdx(0);
+      setPicked(null);
+      setAnswers([]);
+      setReviewRemoved([]);
+      setMode("normale");
+      setPhase("setup");
+      setNotice(null);
+      // Notifica la sidebar che la sessione è stata cancellata
+      window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
+    };
+    window.addEventListener("atlante:test-reset", onReset);
+    return () => window.removeEventListener("atlante:test-reset", onReset);
+  }, []);
+
+  // === Abbandono esplicito (pulsante Esci in alto a destra) ===
+  // A differenza del pulsante "Esci" in basso (che chiama finish() e registra
+  // le statistiche), questo pulsante ABANDONS il test senza salvare statistiche
+  // e torna al setup. Mostra una conferma per evitare clic accidentali.
+  const exitTest = () => {
+    const totalAnswered = answers.length;
+    const confirmMsg = totalAnswered > 0
+      ? `Vuoi abbandonare il test? Le ${totalAnswered} ${totalAnswered === 1 ? "risposta data" : "risposte date"} non verranno contate nelle statistiche.`
+      : "Vuoi abbandonare il test? I progressi andranno persi.";
+    if (!window.confirm(confirmMsg)) return;
+    clearLastTest();
+    setQuestions([]);
+    setIdx(0);
+    setPicked(null);
+    setAnswers([]);
+    setReviewRemoved([]);
+    setMode("normale");
+    setPhase("setup");
+    setNotice(null);
+    // Notifica la sidebar che la sessione è stata cancellata
+    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
+  };
 
   const periods = useMemo(() => [...ix.ds.periods].sort((a, b) => a.year_start - b.year_start), [ix]);
 
@@ -743,6 +823,56 @@ export default function Test() {
 
   return (
     <div className="wrap page">
+      {/* Pulsante "Esci" in alto a destra — abbandona il test senza salvare
+          statistiche (a differenza del pulsante "Esci" in basso che chiama
+          finish() e registra la sessione). Chiede conferma per evitare
+          clic accidentali. Visibile solo durante il playing. */}
+      <button
+        onClick={exitTest}
+        data-testid="quiz-exit-topright"
+        aria-label="Esci dal test"
+        title="Esci dal test (i progressi non salvati andranno persi)"
+        style={{
+          position: "fixed",
+          top: 14,
+          right: 18,
+          zIndex: 800,
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 6,
+          padding: "7px 12px 7px 10px",
+          background: "rgba(255,255,255,0.85)",
+          border: "1px solid var(--line)",
+          borderRadius: 999,
+          color: "var(--ink-soft)",
+          fontSize: 12.5,
+          fontWeight: 600,
+          fontFamily: "var(--font-sans)",
+          cursor: "pointer",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.06)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+          transition: "background 0.15s, color 0.15s, border-color 0.15s",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = "rgba(168,72,63,0.08)";
+          e.currentTarget.style.borderColor = "rgba(168,72,63,0.35)";
+          e.currentTarget.style.color = "#a8483f";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = "rgba(255,255,255,0.85)";
+          e.currentTarget.style.borderColor = "var(--line)";
+          e.currentTarget.style.color = "var(--ink-soft)";
+        }}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <polyline points="16 17 21 12 16 7" />
+          <line x1="21" y1="12" x2="9" y2="12" />
+        </svg>
+        Esci
+      </button>
+
       <div className="quiz-top">
         <div className="quiz-progress">
           <motion.div className="quiz-progress-fill" animate={{ width: `${(idx / questions.length) * 100}%` }} transition={{ duration: reduced ? 0 : 0.4, ease: EASE_OUT }} />
