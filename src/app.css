@@ -337,6 +337,17 @@ a.hero-stat:hover { background: var(--bg-2); }
 @media (max-width: 640px) { .quiz-img { height: 240px; } }
 .quiz-body { animation: fadeup .4s ease both; }
 .quiz-opts { display: flex; flex-direction: column; gap: 10px; margin-top: 26px; }
+.quiz-artist-block { margin-top: 26px; position: relative; }
+.quiz-artist-input { width: 100%; }
+.quiz-artist-dropdown {
+  /* zIndex alto per stare sopra la quiz-card e altri elementi della pagina */
+  z-index: 100;
+}
+/* Su mobile, il dropdown potrebbe uscire dal viewport: assicuriamoci che
+   scrolli verticalmente e non tagli i risultati. */
+@media (max-width: 640px) {
+  .quiz-artist-dropdown { max-height: 240px !important; }
+}
 .quiz-opt {
   display: flex; align-items: center; gap: 14px; text-align: left;
   padding: 15px 18px; border: 1px solid var(--line); border-radius: var(--radius-lg);

@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useData } from "../lib/store";
@@ -307,6 +307,222 @@ function OperaDrawer({ workId, open, onClose }: { workId: string | null; open: b
   );
 }
 
+// ===================== AUTOCOMPLETE ARTISTA =====================
+// Componente per la domanda "autore-input": l'utente digita il nome
+// dell'autore e seleziona dall'elenco filtrato. Usa l'indice (ix) per
+// accedere alla lista completa degli artisti del db. Filtra case-insensitive
+// e per sottostringa (anche in mezzo al nome, non solo come prefisso).
+// Mostra max 8 risultati alla volta.
+function ArtistAutocomplete({
+  ix,
+  disabled,
+  onPick,
+  excludeId,
+}: {
+  ix: ReturnType<typeof useData>;
+  disabled?: boolean;
+  onPick: (artistId: string, artistName: string) => void;
+  /** Id artista da escludere dai suggerimenti (es. l'autore dell'opera
+   *  appena mostrata, per evitare di suggerirlo direttamente). Non lo
+   *  usiamo attualmente perché vogliamo che appaia nella lista, ma lo
+   *  teniamo per future esigenze. */
+  excludeId?: string | null;
+}) {
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const [highlighted, setHighlighted] = useState(0);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const wrapRef = useRef<HTMLDivElement | null>(null);
+
+  // Pool di artisti: tutti quelli del db con nome valido. Pre-calcoliamo
+  // una versione normalizzata del nome per filtrare velocemente.
+  const allArtists = useMemo(() => {
+    const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return ix.ds.artists
+      .filter((a) => a.name && a.name.trim().length > 0)
+      .map((a) => ({
+        id: a.id,
+        name: a.name,
+        role: a.role,
+        norm: norm(a.name),
+        // includi anche gli alias nel testo da filtrare
+        aliases: (a.aka ?? []).map(norm),
+      }));
+  }, [ix]);
+
+  // Filtra in base alla query
+  const filtered = useMemo(() => {
+    if (!query.trim()) return allArtists.slice(0, 8);
+    const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    const out = allArtists.filter((a) =>
+      a.norm.includes(q) || a.aliases.some((al) => al.includes(q))
+    );
+    return out.slice(0, 8);
+  }, [query, allArtists]);
+
+  // Reset highlight quando cambia la query
+  useEffect(() => { setHighlighted(0); }, [query]);
+
+  // Click fuori dal dropdown → chiudi
+  useEffect(() => {
+    if (!open) return;
+    const onClick = (e: MouseEvent) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, [open]);
+
+  // Focus sull'input al mount (solo se non disabilitato)
+  useEffect(() => {
+    if (!disabled) {
+      const t = setTimeout(() => {
+        try { inputRef.current?.focus(); } catch { /* ignore */ }
+      }, 100);
+      return () => clearTimeout(t);
+    }
+  }, [disabled]);
+
+  const pick = (artist: { id: string; name: string }) => {
+    onPick(artist.id, artist.name);
+    setQuery("");
+    setOpen(false);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (disabled) return;
+    if (e.key === "ArrowDown" && filtered.length > 0) {
+      e.preventDefault();
+      setOpen(true);
+      setHighlighted((h) => Math.min(h + 1, filtered.length - 1));
+    } else if (e.key === "ArrowUp" && filtered.length > 0) {
+      e.preventDefault();
+      setOpen(true);
+      setHighlighted((h) => Math.max(h - 1, 0));
+    } else if (e.key === "Enter") {
+      if (open && filtered[highlighted]) {
+        e.preventDefault();
+        pick(filtered[highlighted]);
+      } else if (filtered.length === 1) {
+        // Se c'è un solo match, selezionalo con Enter
+        e.preventDefault();
+        pick(filtered[0]);
+      }
+    } else if (e.key === "Escape") {
+      setOpen(false);
+    }
+  };
+
+  return (
+    <div ref={wrapRef} style={{ position: "relative", width: "100%" }}>
+      <input
+        ref={inputRef}
+        type="text"
+        value={query}
+        disabled={disabled}
+        onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
+        onFocus={() => setOpen(true)}
+        onKeyDown={handleKeyDown}
+        placeholder="Scrivi il nome dell'autore… (es. Giotto, Antelami, Pisano)"
+        className="quiz-artist-input"
+        data-testid="quiz-artist-input"
+        autoComplete="off"
+        spellCheck={false}
+        style={{
+          width: "100%",
+          padding: "12px 14px",
+          fontSize: 15,
+          fontFamily: "var(--font-sans)",
+          background: "var(--bg)",
+          color: "var(--ink)",
+          border: "1.5px solid var(--line)",
+          borderRadius: 10,
+          outline: "none",
+          transition: "border-color .15s, box-shadow .15s",
+        }}
+        onFocusCapture={(e) => {
+          e.currentTarget.style.borderColor = "var(--gold)";
+          e.currentTarget.style.boxShadow = "0 0 0 3px rgba(184,138,46,0.15)";
+        }}
+        onBlur={(e) => {
+          e.currentTarget.style.borderColor = "var(--line)";
+          e.currentTarget.style.boxShadow = "none";
+        }}
+      />
+      {/* Conteggio matches */}
+      {query.trim() && (
+        <div style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", fontSize: 11, color: "var(--ink-dim)", pointerEvents: "none" }}>
+          {filtered.length} {filtered.length === 1 ? "match" : "match"}
+        </div>
+      )}
+      {/* Dropdown suggerimenti */}
+      <AnimatePresence>
+        {open && filtered.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.15 }}
+            className="quiz-artist-dropdown"
+            data-testid="quiz-artist-dropdown"
+            style={{
+              position: "absolute",
+              top: "calc(100% + 4px)",
+              left: 0,
+              right: 0,
+              maxHeight: 320,
+              overflowY: "auto",
+              background: "var(--bg)",
+              border: "1px solid var(--line)",
+              borderRadius: 10,
+              boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
+              zIndex: 100,
+            }}
+          >
+            {filtered.map((a, i) => (
+              <button
+                key={a.id}
+                type="button"
+                disabled={disabled}
+                data-testid={`quiz-artist-opt-${i}`}
+                onClick={() => pick(a)}
+                onMouseEnter={() => setHighlighted(i)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  width: "100%",
+                  padding: "10px 14px",
+                  background: i === highlighted ? "var(--bg-2)" : "transparent",
+                  border: 0,
+                  borderBottom: i < filtered.length - 1 ? "1px solid var(--line-soft)" : 0,
+                  cursor: disabled ? "not-allowed" : "pointer",
+                  textAlign: "left",
+                  fontSize: 14,
+                  color: "var(--ink)",
+                  fontFamily: "var(--font-sans)",
+                  transition: "background .1s",
+                }}
+              >
+                <span style={{ fontWeight: 600, flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  {a.name}
+                </span>
+                {a.role && (
+                  <span style={{ fontSize: 11, color: "var(--ink-dim)", fontStyle: "italic", flexShrink: 0 }}>
+                    {a.role}
+                  </span>
+                )}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function Test() {
   const ix = useData();
   const reduced = usePrefersReducedMotion();
@@ -485,6 +701,39 @@ export default function Test() {
       if (r.removed) setReviewRemoved((prev) => [...prev, q.refId]);
     }
   };
+
+  // === Risposta per "autore-input" ===
+  // Invece di un indice opzione, riceve l'id dell'artista scelto dall'utente
+  // dall'autocomplete. Verifica confrontando con q.correctArtistId.
+  // Per coerenza con la logica del quiz (che usa `picked: number | null` e
+  // `chosen: number` negli answers), salviamo picked = 1 se corretto, 0 se
+  // sbagliato (come se fosse una domanda binaria con 2 opzioni). Il rendering
+  // del feedback legge poi direttamente l'id artista salvato per mostrare
+  // "la tua risposta: X" e "corretta: Y".
+  const [pickedArtistId, setPickedArtistId] = useState<string | null>(null);
+  const [pickedArtistName, setPickedArtistName] = useState<string | null>(null);
+
+  const answerArtist = (artistId: string, artistName: string) => {
+    if (picked != null) return;
+    const ok = q.correctArtistId === artistId;
+    // picked = 1 se ok, 0 se sbagliato (placeholder, vedi commento sopra)
+    setPicked(ok ? 1 : 0);
+    setPickedArtistId(artistId);
+    setPickedArtistName(artistName);
+    setAnswers((a) => [...a, { q, chosen: ok ? 1 : 0, ok }]);
+    if (mode === "normale") {
+      if (!ok) addError(q.kind, q.refId, q.prompt);
+    } else {
+      const r = reviewAnswer(q.kind, q.refId, ok);
+      if (r.removed) setReviewRemoved((prev) => [...prev, q.refId]);
+    }
+  };
+
+  // Resetta lo stato dell'autocomplete quando si cambia domanda
+  useEffect(() => {
+    setPickedArtistId(null);
+    setPickedArtistName(null);
+  }, [idx]);
 
   const next = () => {
     if (idx + 1 >= questions.length) finish();
@@ -768,7 +1017,17 @@ export default function Test() {
                   </div>
                   <div style={{ fontSize: 15, marginTop: 8 }}>{a.q.prompt}</div>
                   <div style={{ fontSize: 13.5, marginTop: 6 }}>
-                    {a.ok
+                    {a.q.kind === "autore-input" ? (
+                      // Per "autore-input" non abbiamo options[]: mostriamo
+                      // direttamente il nome dell'autore corretto e l'eventuale
+                      // risposta sbagliata dell'utente (estratta dall'ultimo
+                      // stato di pickedArtistName/pickedArtistId PRIMA di passare
+                      // alla domanda successiva — ma qui in revisione non abbiamo
+                      // accesso a quello stato, quindi mostriamo solo la corretta).
+                      a.ok
+                        ? <span style={{ color: "var(--c-technique)" }}>✓ {a.q.correctArtistName}</span>
+                        : <><span className="muted">Corretta: <span style={{ color: "var(--c-technique)" }}>{a.q.correctArtistName}</span></span></>
+                    ) : a.ok
                       ? <span style={{ color: "var(--c-technique)" }}>✓ {a.q.options[a.q.correct]}</span>
                       : <><span style={{ color: "var(--c-event)" }}>✗ La tua risposta: {a.q.options[a.chosen]}</span><br /><span className="muted">Corretta: <span style={{ color: "var(--c-technique)" }}>{a.q.options[a.q.correct]}</span></span></>}
                   </div>
@@ -824,28 +1083,79 @@ export default function Test() {
           )}
           <div className="quiz-kind">{QUIZ_KIND_LABEL[q.kind]}</div>
           <div className="quiz-prompt">{q.prompt}</div>
-          <div className="quiz-opts">
-            {q.options.map((opt, i) => {
-              let cls = "quiz-opt";
-              if (picked != null) {
-                if (i === q.correct) cls += " correct";
-                else if (i === picked && i !== q.correct) cls += " wrong";
-                else cls += " dim";
-              }
-              return (
-                <motion.button key={i} className={cls} onClick={() => answer(i)}
+          {q.kind === "autore-input" ? (
+            // === Rendering speciale per domanda "autore-input" ===
+            // Al posto delle opzioni a scelta multipla, mostriamo un input
+            // autocomplete in cui l'utente digita il nome dell'autore e lo
+            // seleziona dal dropdown dei suggerimenti (tutti gli artisti del db).
+            <div className="quiz-artist-block" data-testid="quiz-artist-block">
+              {!picked ? (
+                <ArtistAutocomplete
+                  ix={ix}
                   disabled={picked != null}
-                  initial={reduced ? false : { opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2, delay: reduced ? 0 : i * 0.04 }}
-                  data-testid={`opt-${i}`}
-                >
-                  <span className="quiz-opt-letter">{String.fromCharCode(65 + i)}</span>
-                  {opt}
-                </motion.button>
-              );
-            })}
-          </div>
+                  onPick={(artistId, artistName) => answerArtist(artistId, artistName)}
+                />
+              ) : (
+                // Dopo la risposta, mostriamo il nome scelto + quello corretto
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  <div style={{
+                    padding: "12px 14px",
+                    borderRadius: 10,
+                    border: `1.5px solid ${pickedArtistId === q.correctArtistId ? "var(--c-technique)" : "var(--c-event)"}`,
+                    background: pickedArtistId === q.correctArtistId ? "color-mix(in srgb, var(--c-technique) 8%, transparent)" : "color-mix(in srgb, var(--c-event) 8%, transparent)",
+                    fontSize: 14,
+                  }}>
+                    <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
+                      La tua risposta
+                    </div>
+                    <div style={{ fontWeight: 600 }}>
+                      {pickedArtistName ?? "—"}
+                    </div>
+                  </div>
+                  {pickedArtistId !== q.correctArtistId && (
+                    <div style={{
+                      padding: "12px 14px",
+                      borderRadius: 10,
+                      border: "1.5px solid var(--c-technique)",
+                      background: "color-mix(in srgb, var(--c-technique) 8%, transparent)",
+                      fontSize: 14,
+                    }}>
+                      <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
+                        Risposta corretta
+                      </div>
+                      <div style={{ fontWeight: 600, color: "var(--c-technique)" }}>
+                        {q.correctArtistName ?? "—"}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          ) : (
+            // === Rendering standard: opzioni a scelta multipla ===
+            <div className="quiz-opts">
+              {q.options.map((opt, i) => {
+                let cls = "quiz-opt";
+                if (picked != null) {
+                  if (i === q.correct) cls += " correct";
+                  else if (i === picked && i !== q.correct) cls += " wrong";
+                  else cls += " dim";
+                }
+                return (
+                  <motion.button key={i} className={cls} onClick={() => answer(i)}
+                    disabled={picked != null}
+                    initial={reduced ? false : { opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: reduced ? 0 : i * 0.04 }}
+                    data-testid={`opt-${i}`}
+                  >
+                    <span className="quiz-opt-letter">{String.fromCharCode(65 + i)}</span>
+                    {opt}
+                  </motion.button>
+                );
+              })}
+            </div>
+          )}
           {picked != null && (
             <motion.div
               initial={{ opacity: 0, y: 8 }}
@@ -854,9 +1164,9 @@ export default function Test() {
               style={{ marginTop: 20 }}
             >
               {/* Feedback corretto/sbagliato */}
-              <div className={`quiz-explain-card ${picked === q.correct ? "ok" : "ko"}`}>
+              <div className={`quiz-explain-card ${(q.kind === "autore-input" ? pickedArtistId === q.correctArtistId : picked === q.correct) ? "ok" : "ko"}`}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-                  {picked === q.correct ? (
+                  {(q.kind === "autore-input" ? pickedArtistId === q.correctArtistId : picked === q.correct) ? (
                     <>
                       <span style={{ fontSize: 20 }}>✓</span>
                       <span style={{ fontWeight: 600, fontSize: 15, color: "var(--c-technique)" }}>Risposta corretta!</span>
@@ -878,7 +1188,11 @@ export default function Test() {
                     }}>{currentRefWork.title}</button></>
                   )}
                 </div>
-                {picked !== q.correct && (
+                {/* Per "autore-input": la sezione "la tua risposta / risposta corretta"
+                    è già mostrata nel blocco sopra, quindi qui la saltiamo per
+                    evitare duplicazione. Per le altre domande, manteniamo il
+                    feedback testuale come prima. */}
+                {q.kind !== "autore-input" && picked !== q.correct && (
                   <div style={{ marginTop: 8, fontSize: 13.5 }}>
                     <span className="muted">La risposta corretta è: </span>
                     <span style={{ color: "var(--c-technique)", fontWeight: 600 }}>{q.options[q.correct]}</span>

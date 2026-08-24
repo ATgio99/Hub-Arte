@@ -12,8 +12,13 @@ import Fullscreen from "../components/Fullscreen";
 import TimeRangeSlider from "../components/TimeRangeSlider";
 import type { EntityType, ConnKind } from "../lib/types";
 
-const NODE_TYPES: EntityType[] = ["period", "artist", "work", "technique", "term", "event"];
-const KINDS: ConnKind[] = ["influenza", "rielaborazione", "evoluzione", "committenza", "maestro-allievo", "contaminazione", "contrasto"];
+// Tipi di nodo visibili nella Rete. Evento, Termine e Tecnica sono stati
+// rimossi su richiesta dell'utente per semplificare la visualizzazione:
+// ora il grafo mostra solo periodi, artisti, opere e luoghi.
+const NODE_TYPES: EntityType[] = ["period", "artist", "work"];
+// Tipi di legame visibili nella Rete. "contaminazione" e "contrasto" sono
+// stati rimossi su richiesta dell'utente.
+const KINDS: ConnKind[] = ["influenza", "rielaborazione", "evoluzione", "committenza", "maestro-allievo"];
 
 // colori esadecimali (coerenti col tema chiaro). three.js NON interpreta var CSS.
 const NODE_HEX: Record<string, string> = {
@@ -299,6 +304,11 @@ export default function Grafo() {
 
   const graph = useMemo(() => {
     const conns = ix.ds.connections.filter((c) => {
+      // Filtra i legami per tipo: se il kind non è nell'elenco KINDS attualmente
+      // visibili (es. "contaminazione" e "contrasto" sono stati rimossi),
+      // la connessione non entra nel grafo.
+      const ck = c.kind as string;
+      if (!KINDS.includes(c.kind) && ck !== "luogo" && ck !== "autore") return false;
       if (hideKinds.has(c.kind)) return false;
       if (!NODE_TYPES.includes(c.source_type) || !NODE_TYPES.includes(c.target_type)) return false;
       if (hideTypes.has(c.source_type) || hideTypes.has(c.target_type)) return false;
@@ -453,9 +463,60 @@ export default function Grafo() {
   const selectAllKinds = () => setHideKinds(new Set());
   const selectNoneKinds = () => setHideKinds(new Set(ALL_KINDS));
 
+  // === Icona forma del nodo ===
+  // Ritorna un piccolo elemento SVG che rappresenta la forma del nodo,
+  // coerente con la sua rappresentazione nel grafo 3D/2D:
+  //   - work   → rombo (OctahedronGeometry / rombo canvas)
+  //   - city   → quadrato (BoxGeometry / rettangolo canvas)
+  //   - altri  → cerchio (sfera)
+  // Usato sia nelle chip del pannello laterale (.gf-frow) sia in quelle
+  // orizzontali sotto il grafo (.gf-bottom-filters).
+  const NodeShapeIcon = ({ type, color, size = 12 }: { type: string; color: string; size?: number }) => {
+    const r = size / 2;
+    if (type === "work") {
+      // Rombo (diamante)
+      return (
+        <svg width={size} height={size} style={{ flexShrink: 0 }}>
+          <polygon
+            points={`${r},0 ${size},${r} ${r},${size} 0,${r}`}
+            fill={color}
+          />
+        </svg>
+      );
+    }
+    if (type === "city") {
+      // Quadrato (cubo visto di fronte)
+      return (
+        <svg width={size} height={size} style={{ flexShrink: 0 }}>
+          <rect x="1" y="1" width={size - 2} height={size - 2} fill={color} />
+        </svg>
+      );
+    }
+    // Cerchio (sfera)
+    return (
+      <svg width={size} height={size} style={{ flexShrink: 0 }}>
+        <circle cx={r} cy={r} r={r - 1} fill={color} />
+      </svg>
+    );
+  };
+
   const counts = useMemo(() => {
     const c: Record<string, number> = {};
     graph.nodes.forEach((n) => c[n.etype] = (c[n.etype] ?? 0) + 1);
+    return c;
+  }, [graph]);
+
+  // Conteggio dei legami attivi per tipo (kind). Simile a `counts` ma per i
+  // link: conta quanti legami di ciascun tipo sono attualmente presenti nel
+  // grafo (dopo i filtri temporali/nodi/kinds). Usato per mostrare il numero
+  // accanto a ciascuna chip del filtro Legami, come già facciamo per i Nodi.
+  const linkCounts = useMemo(() => {
+    const c: Record<string, number> = {};
+    for (const l of graph.links) {
+      const k = (l as any).kind as string;
+      if (!k) continue;
+      c[k] = (c[k] ?? 0) + 1;
+    }
     return c;
   }, [graph]);
 
@@ -520,7 +581,8 @@ export default function Grafo() {
     // === Forma del nodo in base al tipo ===
     //  - artist → sfera (rounder, "persona")
     //  - work   → ottaedro (rombo/diamante, distingue le opere dalle persone)
-    //  - altri tipi (period, technique, term, event, city) → sfera
+    //  - city   → cubo (luoghi come "blocchi" / "coordinate fisse")
+    //  - altri tipi (period, technique, term, event) → sfera
     // L'ottaedro è il classico "rombo 3D" a 8 facce: proiettato dà un rombo
     // ben riconoscibile anche con rotazione arbitraria.
     let shapeMesh: THREE.Mesh;
@@ -535,6 +597,16 @@ export default function Grafo() {
       // sia sempre frontale (più "rombo 3D" che "due piramidi attaccate").
       shapeMesh.rotation.y = Math.PI / 4;
       shapeMesh.rotation.z = Math.PI / 4;
+    } else if (node.etype === "city") {
+      // BoxGeometry = cubo. Dimensioni leggermente più piccole della sfera
+      // equivalente (perché il cubo ha volume maggiore a parità di raggio).
+      // Usiamo r * 1.3 come lato così il cubo è visibile ma non enorme.
+      const s = r * 1.3;
+      const geo = new THREE.BoxGeometry(s, s, s);
+      shapeMesh = new THREE.Mesh(geo, mat);
+      // Lieve rotazione per dare tridimensionalità e distinguere le facce.
+      shapeMesh.rotation.y = Math.PI / 6;
+      shapeMesh.rotation.x = Math.PI / 8;
     } else {
       shapeMesh = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 16), mat);
     }
@@ -661,7 +733,7 @@ export default function Grafo() {
         const off = hideTypes.has(t);
         return (
           <button key={t} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideTypes, t, setHideTypes)}>
-            <span className="dot" style={{ background: NODE_HEX[t] }} />
+            <NodeShapeIcon type={t} color={NODE_HEX[t]} />
             <span className="gf-frow-lab">{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]}</span>
             <span className="gf-frow-n tnum">{counts[t] ?? 0}</span>
             <EyeIcon off={off} />
@@ -678,6 +750,11 @@ export default function Grafo() {
       {[...KINDS, "luogo" as const, "autore" as const].map((k) => {
         const off = hideKinds.has(k);
         const dash = KIND_DASH[k];
+        // Conteggio legami attivi per questo kind (numero di link nel grafo
+        // con questo tipo). Mostrato come piccolo badge numerico, identico
+        // a quello dei nodi, così l'utente vede a colpo d'occhio quanti
+        // legami di ciascun tipo sono presenti.
+        const n = linkCounts[k] ?? 0;
         return (
           <button key={k} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideKinds, k, setHideKinds)}>
             <svg width="24" height="8" style={{ flexShrink: 0 }}>
@@ -690,6 +767,7 @@ export default function Grafo() {
               />
             </svg>
             <span className="gf-frow-lab">{k === "luogo" ? "Luogo" : k === "autore" ? "Autore" : KIND_LABEL[k]}</span>
+            <span className="gf-frow-n tnum">{n}</span>
             <EyeIcon off={off} />
           </button>
         );
@@ -866,6 +944,7 @@ export default function Grafo() {
             //  - artist → cerchio (sfera vista dall'alto)
             //  - work   → rombo (diamante), per distinguerle visivamente dalle
             //             persone — coerente con la vista 3D dove usiamo Octahedron
+            //  - city   → quadrato (cubo visto di fronte), per i luoghi
             //  - altri tipi → cerchio
             if (node.etype === "work") {
               // Disegna un rombo: 4 vertici (sopra, destra, sotto, sinistra)
@@ -875,6 +954,13 @@ export default function Grafo() {
               ctx.lineTo(node.x, node.y + r);            // vertice inferiore
               ctx.lineTo(node.x - r, node.y);            // vertice sinistro
               ctx.closePath();
+              ctx.fillStyle = NODE_HEX[node.etype] ?? "#b88a2e";
+              ctx.fill();
+              if (isFocus) { ctx.lineWidth = 1.4 / scale; ctx.strokeStyle = INK; ctx.stroke(); }
+            } else if (node.etype === "city") {
+              // Disegna un quadrato (proiezione 2D del cubo)
+              ctx.beginPath();
+              ctx.rect(node.x - r, node.y - r, r * 2, r * 2);
               ctx.fillStyle = NODE_HEX[node.etype] ?? "#b88a2e";
               ctx.fill();
               if (isFocus) { ctx.lineWidth = 1.4 / scale; ctx.strokeStyle = INK; ctx.stroke(); }
@@ -1096,8 +1182,9 @@ export default function Grafo() {
           {[...NODE_TYPES, "city" as const].map((t) => {
             const off = hideTypes.has(t);
             return (
-              <button key={t} onClick={() => toggle(hideTypes, t, setHideTypes)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)" }}>
-                <span className="dot" style={{ background: NODE_HEX[t], marginRight: 4 }} />{t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]} ({counts[t] ?? 0})
+              <button key={t} onClick={() => toggle(hideTypes, t, setHideTypes)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)", display: "inline-flex", alignItems: "center", gap: 6 }}>
+                <NodeShapeIcon type={t} color={NODE_HEX[t]} size={11} />
+                {t === "city" ? "Luogo" : ENTITY_LABEL[t as EntityType]} ({counts[t] ?? 0})
               </button>
             );
           })}
@@ -1113,6 +1200,7 @@ export default function Grafo() {
           {[...KINDS, "luogo" as const, "autore" as const].map((k) => {
             const off = hideKinds.has(k);
             const dash = KIND_DASH[k];
+            const n = linkCounts[k] ?? 0;
             return (
               <button key={k} onClick={() => toggle(hideKinds, k, setHideKinds)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)", display: "inline-flex", alignItems: "center", gap: 6 }}>
                 <svg width="22" height="6" style={{ flexShrink: 0 }}>
@@ -1124,7 +1212,7 @@ export default function Grafo() {
                     strokeLinecap="round"
                   />
                 </svg>
-                {k === "luogo" ? "Luogo" : k === "autore" ? "Autore" : KIND_LABEL[k]}
+                {k === "luogo" ? "Luogo" : k === "autore" ? "Autore" : KIND_LABEL[k]} ({n})
               </button>
             );
           })}

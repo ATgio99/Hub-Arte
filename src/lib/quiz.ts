@@ -12,7 +12,8 @@ export type QuizKind =
   | "autore" | "periodo" | "tecnica" | "datazione" | "secolo" | "citta"
   | "immagine" | "opera-luogo" | "artista-periodo" | "artista-opera" | "tecnica-def"
   | "def-tecnica" | "termine-def" | "def-termine" | "periodo-secolo"
-  | "periodo-regione" | "connessione" | "evento-anno" | "evento-da-anno";
+  | "periodo-regione" | "connessione" | "evento-anno" | "evento-da-anno"
+  | "autore-input";
 
 export interface Question {
   id: string;
@@ -25,6 +26,11 @@ export interface Question {
   refHref?: string;       // link alla scheda
   explain: string;
   topicPeriodId?: string; // periodo associato (per statistiche per periodo)
+  /** Per domande "autore-input": id dell'artista corretto, così il rendering
+   *  può usare un autocomplete sull'elenco artisti del db e verificare la
+   *  scelta confrontando l'id (più robusto del confronto stringa). */
+  correctArtistId?: string;
+  correctArtistName?: string;
 }
 
 export const QUIZ_KIND_LABEL: Record<QuizKind, string> = {
@@ -47,11 +53,12 @@ export const QUIZ_KIND_LABEL: Record<QuizKind, string> = {
   connessione: "Tipo di legame",
   "evento-anno": "Anno dell'evento",
   "evento-da-anno": "Evento dall'anno",
+  "autore-input": "Riconosci l'autore (a memoria)",
 };
 
 // raggruppamento per UI (categorie macro)
 export const QUIZ_GROUPS: { label: string; kinds: QuizKind[] }[] = [
-  { label: "Opere", kinds: ["autore", "periodo", "tecnica", "datazione", "secolo", "citta", "immagine", "opera-luogo"] },
+  { label: "Opere", kinds: ["autore", "periodo", "tecnica", "datazione", "secolo", "citta", "immagine", "opera-luogo", "autore-input"] },
   { label: "Autori", kinds: ["artista-periodo", "artista-opera"] },
   { label: "Tecniche & termini", kinds: ["tecnica-def", "def-tecnica", "termine-def", "def-termine"] },
   { label: "Periodi & contesto", kinds: ["periodo-secolo", "periodo-regione", "connessione", "evento-anno", "evento-da-anno"] },
@@ -61,7 +68,7 @@ export const ALL_KINDS: QuizKind[] = QUIZ_GROUPS.flatMap((g) => g.kinds);
 
 /** tipi di domanda generati da opere o artisti: gli unici sensati in modalità «solo preferiti» */
 export const FAV_KINDS: QuizKind[] = [
-  "autore", "periodo", "tecnica", "datazione", "secolo", "citta", "immagine", "opera-luogo",
+  "autore", "periodo", "tecnica", "datazione", "secolo", "citta", "immagine", "opera-luogo", "autore-input",
   "artista-periodo", "artista-opera",
 ];
 
@@ -215,10 +222,31 @@ export function generateQuiz(ix: Indexed, opts: GenOpts): Question[] {
   const genFromWork = (kind: QuizKind, w: Work): boolean => {
     switch (kind) {
       case "autore":
-      case "immagine": {
+      case "immagine":
+      case "autore-input": {
         if (w.artist_ids.length === 0) return false;
         const artist = ix.artistById.get(w.artist_ids[0]);
         if (!artist) return false;
+        // Per "autore-input" NON generiamo distrattori: l'utente deve digitare
+        // e selezionare il nome dall'elenco completo degli artisti del db.
+        // Lasciamo options vuoto e correct=0 (placeholder), l'UI speciale in
+        // Test.tsx gestisce la verifica dell'id artista.
+        if (kind === "autore-input") {
+          if (!w.image_thumb && !w.image_url) return false;
+          return push({
+            kind: "autore-input",
+            refId: w.id,
+            refHref: `/opera/${w.id}`,
+            topicPeriodId: w.period_id,
+            prompt: "Di chi è quest'opera? Scrivi il nome dell'autore e selezionalo dalla lista.",
+            image: w.image_thumb || w.image_url,
+            options: [],
+            correct: 0,
+            correctArtistId: artist.id,
+            correctArtistName: artist.name,
+            explain: `«${w.title}» è di ${artist.name} (${periodName(w.period_id)}).`,
+          });
+        }
         const sameP = namedArtists.filter((a) => a.id !== artist.id && a.period_ids.includes(w.period_id)).map((a) => a.name);
         const distr = uniqOptions(artist.name, [sameP, namedArtists.map((a) => a.name)], rng);
         const b = build(artist.name, distr, rng);

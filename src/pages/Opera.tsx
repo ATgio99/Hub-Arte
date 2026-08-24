@@ -334,6 +334,12 @@ export default function Opera() {
               <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: coevalRelated.length > 0 ? 20 : 0 }}>
                 {connectedRelated.map((otherWork) => {
                   const info = relatedKindMap.get(otherWork.id)!;
+                  // Risolvi l'autore (o gli autori) dell'opera collegata per mostrarlo
+                  // accanto al titolo, come fa già la WorkCard standard.
+                  const otherArtists = artistsOfWork(ix, otherWork);
+                  const otherArtistsLabel = otherArtists.length > 0
+                    ? otherArtists.map(a => a.name).join(", ")
+                    : null;
                   return (
                     <Link
                       key={otherWork.id}
@@ -358,7 +364,14 @@ export default function Opera() {
                             {info.thisIsSource ? "questa opera →" : "← quest'opera"}
                           </span>
                         </div>
-                        <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 2 }}>{otherWork.title}</div>
+                        <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap", marginBottom: 2 }}>
+                          <span style={{ fontSize: 14, fontWeight: 600 }}>{otherWork.title}</span>
+                          {otherArtistsLabel && (
+                            <span style={{ fontSize: 12.5, color: "var(--ink-soft)", fontStyle: "italic" }}>
+                              · {otherArtistsLabel}
+                            </span>
+                          )}
+                        </div>
                         {info.description && (
                           <div style={{ fontSize: 12.5, color: "var(--ink-soft)", fontStyle: "italic", lineHeight: 1.4 }}>
                             "{info.description}"
