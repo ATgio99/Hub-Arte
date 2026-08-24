@@ -168,7 +168,7 @@ export default function Grafo() {
         setFocusNode(last.focusNode);
         setSearchQuery(last.searchQuery || "");
       }
-      // Ripristina filtri livelli/legami
+      // Ripristina filtri nodi/legami
       if (last.hideTypes && last.hideTypes.length > 0) {
         setHideTypes(new Set(last.hideTypes));
       }
@@ -445,7 +445,7 @@ export default function Grafo() {
     const n = new Set(set); n.has(v) ? n.delete(v) : n.add(v); fn(n);
   };
 
-  // "Seleziona tutti / Deseleziona tutti" per i filtri Livelli e Legami.
+  // "Seleziona tutti / Deseleziona tutti" per i filtri Nodi e Legami.
   const ALL_TYPES = [...NODE_TYPES, "city" as const];
   const ALL_KINDS = [...KINDS, "luogo" as const];
   const selectAllTypes = () => setHideTypes(new Set());
@@ -517,8 +517,28 @@ export default function Grafo() {
       emissive: new THREE.Color(NODE_HEX[node.etype] ?? "#b88a2e"),
       emissiveIntensity: isFocus ? 0.55 : 0.18,
     });
-    const sphere = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 16), mat);
-    group.add(sphere);
+    // === Forma del nodo in base al tipo ===
+    //  - artist → sfera (rounder, "persona")
+    //  - work   → ottaedro (rombo/diamante, distingue le opere dalle persone)
+    //  - altri tipi (period, technique, term, event, city) → sfera
+    // L'ottaedro è il classico "rombo 3D" a 8 facce: proiettato dà un rombo
+    // ben riconoscibile anche con rotazione arbitraria.
+    let shapeMesh: THREE.Mesh;
+    if (node.etype === "work") {
+      // OctahedronGeometry(r, 0) = 6 vertici, 8 facce triangolari. Visivamente
+      // è un rombo/diamante; ruotato di 0 (verticale) appare come rombo visto
+      // di lato. Lo scaliamo leggermente in altezza per renderlo più "rombo"
+      // che "sfera schiacciata".
+      const geo = new THREE.OctahedronGeometry(r, 0);
+      shapeMesh = new THREE.Mesh(geo, mat);
+      // Applichiamo una piccola rotazione per evitare che la faccia piana
+      // sia sempre frontale (più "rombo 3D" che "due piramidi attaccate").
+      shapeMesh.rotation.y = Math.PI / 4;
+      shapeMesh.rotation.z = Math.PI / 4;
+    } else {
+      shapeMesh = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 16), mat);
+    }
+    group.add(shapeMesh);
     // etichetta leggibile (sprite text scuro) per nodi in evidenza / hub
     const showLabel = (!dimmed) && (isFocus || (neighbors && neighbors.has(node.id)) || (!neighbors && node.deg >= 6));
     if (showLabel) {
@@ -631,7 +651,7 @@ export default function Grafo() {
         <TimeRangeSlider compact />
       </div>
       <div className="panel-title" style={{ fontSize: 15, marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span>Livelli</span>
+        <span>Nodi</span>
         <span style={{ display: "inline-flex", gap: 4 }}>
           <button onClick={selectAllTypes} style={{ fontSize: 10, padding: "2px 8px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Tutti</button>
           <button onClick={selectNoneTypes} style={{ fontSize: 10, padding: "2px 8px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Nessuno</button>
@@ -842,11 +862,29 @@ export default function Grafo() {
             const isFocus = node.id === focusId;
             const r = (2.4 + Math.min(node.deg, 9) * 0.7);
             ctx.globalAlpha = dimmed ? 0.18 : 1;
-            ctx.beginPath();
-            ctx.arc(node.x, node.y, r, 0, 2 * Math.PI);
-            ctx.fillStyle = NODE_HEX[node.etype] ?? "#b88a2e";
-            ctx.fill();
-            if (isFocus) { ctx.lineWidth = 1.4 / scale; ctx.strokeStyle = INK; ctx.stroke(); }
+            // === Forma del nodo in 2D ===
+            //  - artist → cerchio (sfera vista dall'alto)
+            //  - work   → rombo (diamante), per distinguerle visivamente dalle
+            //             persone — coerente con la vista 3D dove usiamo Octahedron
+            //  - altri tipi → cerchio
+            if (node.etype === "work") {
+              // Disegna un rombo: 4 vertici (sopra, destra, sotto, sinistra)
+              ctx.beginPath();
+              ctx.moveTo(node.x, node.y - r);          // vertice superiore
+              ctx.lineTo(node.x + r, node.y);            // vertice destro
+              ctx.lineTo(node.x, node.y + r);            // vertice inferiore
+              ctx.lineTo(node.x - r, node.y);            // vertice sinistro
+              ctx.closePath();
+              ctx.fillStyle = NODE_HEX[node.etype] ?? "#b88a2e";
+              ctx.fill();
+              if (isFocus) { ctx.lineWidth = 1.4 / scale; ctx.strokeStyle = INK; ctx.stroke(); }
+            } else {
+              ctx.beginPath();
+              ctx.arc(node.x, node.y, r, 0, 2 * Math.PI);
+              ctx.fillStyle = NODE_HEX[node.etype] ?? "#b88a2e";
+              ctx.fill();
+              if (isFocus) { ctx.lineWidth = 1.4 / scale; ctx.strokeStyle = INK; ctx.stroke(); }
+            }
             const showLabel = (!dimmed) && (isFocus || (neighbors && neighbors.has(node.id)) || (!neighbors && node.deg >= 5));
             if (showLabel && scale > 0.5) {
               const fs = Math.max(10 / scale, 3);
@@ -1045,15 +1083,15 @@ export default function Grafo() {
       {/* === Filtri in orizzontale sotto il grafo (modalità normale) ===
           In fullscreen vengono nascosti via CSS (.gf-bottom-filters display:none)
           perché sono stati spostati dentro la colonna destra (vedi sideFiltersBlock).
-          "Livelli" e "Legami" stanno su due righe separate, entrambe allineate a sinistra. */}
+          "Nodi" e "Legami" stanno su due righe separate, entrambe allineate a sinistra. */}
       <div className="gf-bottom-filters" style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16, padding: "12px 16px", background: "var(--bg-2)", borderRadius: 10, border: "1px solid var(--line)" }}>
-        {/* Riga 1: Livelli */}
+        {/* Riga 1: Nodi */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
-          <div className="smallcaps" style={{ marginRight: 8 }}>Livelli:</div>
+          <div className="smallcaps" style={{ marginRight: 8 }}>Nodi:</div>
           <div style={{ display: "inline-flex", gap: 6, marginRight: 8, alignItems: "center" }}>
-            <button onClick={selectAllTypes} className="gf-quick-toggle" title="Mostra tutti i livelli">Tutti</button>
+            <button onClick={selectAllTypes} className="gf-quick-toggle" title="Mostra tutti i tipi di nodo">Tutti</button>
             <span style={{ color: "var(--ink-faint)", fontSize: 10 }}>·</span>
-            <button onClick={selectNoneTypes} className="gf-quick-toggle" title="Nascondi tutti i livelli">Nessuno</button>
+            <button onClick={selectNoneTypes} className="gf-quick-toggle" title="Nascondi tutti i tipi di nodo">Nessuno</button>
           </div>
           {[...NODE_TYPES, "city" as const].map((t) => {
             const off = hideTypes.has(t);
@@ -1137,7 +1175,7 @@ function GraphSizer({ wrapRef, full, setDims }: { wrapRef: any; full: boolean; s
   return <div ref={selfRef} style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: -1 }} />;
 }
 
-// occhio on/off per le righe filtro (stile riferimento "Livelli")
+// occhio on/off per le righe filtro (stile riferimento "Nodi")
 function EyeIcon({ off }: { off: boolean }) {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"

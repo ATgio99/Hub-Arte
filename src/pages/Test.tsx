@@ -426,29 +426,6 @@ export default function Test() {
     return () => window.removeEventListener("atlante:test-reset", onReset);
   }, []);
 
-  // === Abbandono esplicito (pulsante Esci in alto a destra) ===
-  // A differenza del pulsante "Esci" in basso (che chiama finish() e registra
-  // le statistiche), questo pulsante ABANDONS il test senza salvare statistiche
-  // e torna al setup. Mostra una conferma per evitare clic accidentali.
-  const exitTest = () => {
-    const totalAnswered = answers.length;
-    const confirmMsg = totalAnswered > 0
-      ? `Vuoi abbandonare il test? Le ${totalAnswered} ${totalAnswered === 1 ? "risposta data" : "risposte date"} non verranno contate nelle statistiche.`
-      : "Vuoi abbandonare il test? I progressi andranno persi.";
-    if (!window.confirm(confirmMsg)) return;
-    clearLastTest();
-    setQuestions([]);
-    setIdx(0);
-    setPicked(null);
-    setAnswers([]);
-    setReviewRemoved([]);
-    setMode("normale");
-    setPhase("setup");
-    setNotice(null);
-    // Notifica la sidebar che la sessione è stata cancellata
-    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
-  };
-
   const periods = useMemo(() => [...ix.ds.periods].sort((a, b) => a.year_start - b.year_start), [ix]);
 
   const start = () => {
@@ -823,56 +800,6 @@ export default function Test() {
 
   return (
     <div className="wrap page">
-      {/* Pulsante "Esci" in alto a destra — abbandona il test senza salvare
-          statistiche (a differenza del pulsante "Esci" in basso che chiama
-          finish() e registra la sessione). Chiede conferma per evitare
-          clic accidentali. Visibile solo durante il playing. */}
-      <button
-        onClick={exitTest}
-        data-testid="quiz-exit-topright"
-        aria-label="Esci dal test"
-        title="Esci dal test (i progressi non salvati andranno persi)"
-        style={{
-          position: "fixed",
-          top: 14,
-          right: 18,
-          zIndex: 800,
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 6,
-          padding: "7px 12px 7px 10px",
-          background: "rgba(255,255,255,0.85)",
-          border: "1px solid var(--line)",
-          borderRadius: 999,
-          color: "var(--ink-soft)",
-          fontSize: 12.5,
-          fontWeight: 600,
-          fontFamily: "var(--font-sans)",
-          cursor: "pointer",
-          boxShadow: "0 2px 10px rgba(0,0,0,0.06)",
-          backdropFilter: "blur(8px)",
-          WebkitBackdropFilter: "blur(8px)",
-          transition: "background 0.15s, color 0.15s, border-color 0.15s",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = "rgba(168,72,63,0.08)";
-          e.currentTarget.style.borderColor = "rgba(168,72,63,0.35)";
-          e.currentTarget.style.color = "#a8483f";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = "rgba(255,255,255,0.85)";
-          e.currentTarget.style.borderColor = "var(--line)";
-          e.currentTarget.style.color = "var(--ink-soft)";
-        }}
-      >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-          <polyline points="16 17 21 12 16 7" />
-          <line x1="21" y1="12" x2="9" y2="12" />
-        </svg>
-        Esci
-      </button>
-
       <div className="quiz-top">
         <div className="quiz-progress">
           <motion.div className="quiz-progress-fill" animate={{ width: `${(idx / questions.length) * 100}%` }} transition={{ duration: reduced ? 0 : 0.4, ease: EASE_OUT }} />

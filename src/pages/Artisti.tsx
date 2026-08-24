@@ -3,7 +3,7 @@
 // Ricerca per nome/alias/ruolo, ordinamento per numero di opere o alfabetico,
 // card con date, ruolo, periodi e conteggio opere. Filtrata dallo slider.
 // ============================================================================
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { FilterNote, Empty, EmptyTimeRange, FavStar } from "../components/ui";
@@ -18,6 +18,22 @@ export default function Artisti() {
   // Quando si arriva alla home degli Artisti, azzerare l'ultimo artista visitato
   useEffect(() => {
     clearLastArtista();
+  }, []);
+
+  // === Focus automatico sulla barra di ricerca (solo PC) ===
+  // Stessa logica di Opere.tsx: mettiamo il cursore nella barra di ricerca
+  // quando l'utente arriva alla home degli Artisti dal menu. Solo su device
+  // con mouse (no touch) per evitare l'apertura indesiderata della tastiera
+  // su tablet/cellulare.
+  const searchRef = useRef<HTMLInputElement | null>(null);
+  useEffect(() => {
+    const isTouchPrimary = window.matchMedia?.("(pointer: coarse)")?.matches ?? false;
+    if (!isTouchPrimary && searchRef.current) {
+      const t = setTimeout(() => {
+        try { searchRef.current?.focus(); } catch { /* ignore */ }
+      }, 60);
+      return () => clearTimeout(t);
+    }
   }, []);
 
   const [q, setQ] = useState("");
@@ -61,6 +77,7 @@ export default function Artisti() {
 
       <div className="filterbar" style={{ marginBottom: 18, gap: 12 }}>
         <input
+          ref={searchRef}
           type="search" value={q} onChange={(e) => setQ(e.target.value)}
           placeholder="Cerca un autore… (es. Giotto, orafo, Antelami)" data-testid="art-search"
           style={{ flex: "1 1 280px", maxWidth: 420, padding: "10px 14px", border: "1px solid var(--line)", borderRadius: 10, background: "var(--bg-1)", color: "var(--ink)", fontSize: 14.5 }}

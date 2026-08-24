@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, WorkGroupCard, Empty, EmptyTimeRange, FilterNote } from "../components/ui";
@@ -20,6 +20,29 @@ export default function Opere() {
   useEffect(() => {
     clearLastOpera();
   }, []);
+
+  // === Focus automatico sulla barra di ricerca (solo PC) ===
+  // Quando l'utente arriva alla home delle Opere dal menu (doppio click su
+  // "Opere" nella sidebar mentre è già su una scheda opera, o click singolo
+  // quando era in home), mettiamo subito il cursore nella barra di ricerca
+  // così può iniziare a cercare senza un click aggiuntivo.
+  // Solo su dispositivi con mouse (no touch): se è un device touch (tablet,
+  // cellulare), il focus automatico aprirebbe la tastiera on-screen senza
+  // una chiara intenzione dell'utente — lo evitiamo.
+  const searchRef = useRef<HTMLInputElement | null>(null);
+  useEffect(() => {
+    // Rilevazione approssimativa di device touch. Se la touchscreen è il
+    // primary input, NON facciamo auto-focus (vedi regola qui sopra).
+    const isTouchPrimary = window.matchMedia?.("(pointer: coarse)")?.matches ?? false;
+    if (!isTouchPrimary && searchRef.current) {
+      // Piccolo delay per essere sicuri che il render sia completato
+      const t = setTimeout(() => {
+        try { searchRef.current?.focus(); } catch { /* ignore */ }
+      }, 60);
+      return () => clearTimeout(t);
+    }
+  }, []);
+
   const [q, setQ] = useState(() => sessionStorage.getItem("atlante:opere-search") || "");
   const [type, setType] = useState<string>(sp.get("type") ?? "");
   const [period, setPeriod] = useState<string>(sp.get("p") ?? "");
@@ -119,7 +142,7 @@ export default function Opere() {
       <div className="page-rule" />
 
       <div className="filterbar" style={{ marginBottom: 8 }}>
-        <input className="input" placeholder="Cerca per titolo o luogo…" value={q}
+        <input ref={searchRef} className="input" placeholder="Cerca per titolo o luogo…" value={q}
           onChange={(e) => { setQ(e.target.value); setLimit(60); }} data-testid="input-search" style={{ flex: "1 1 240px" }} />
         <select className="input" value={type} onChange={(e) => { setType(e.target.value); setLimit(60); }} data-testid="select-type">
           <option value="">Ogni tipo</option>

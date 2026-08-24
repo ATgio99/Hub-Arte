@@ -295,12 +295,88 @@ export default function Opera() {
         </Section>
       )}
 
-      {/* === 4. Opere connesse nelle vicinanze === */}
-      {related.length > 0 && (
-        <Section eyebrow="Vicinanze" title="Opere connesse">
-          <div className="grid-works">{related.map((r) => <WorkCard key={r.id} work={r} />)}</div>
-        </Section>
-      )}
+      {/* === 4. Opere del periodo storico dell'opera ===
+          (rinominata da "Opere connesse": il contenuto è per lo più opere dello
+          stesso periodo storico, unite a eventuali opere collegate via
+          connections. Mostriamo il nome del periodo nel titolo per renderlo
+          esplicito all'utente.
+
+          Se tra queste ci sono opere COLLEGATE all'opera corrente (con un tipo
+          di legame esplicito: rielaborazione, contrasto, influenza, ecc.) le
+          mostriamo come banner visivi — nello stesso stile della sezione 1
+          "Opere collegate" — con l'etichetta del tipo di relazione e la
+          descrizione. Le altre (opere solo "coeve" nello stesso periodo)
+          rimangono come WorkCard semplici. */}
+      {related.length > 0 && (() => {
+        // Recupera il tipo di relazione per ciascuna opera "related":
+        // se l'opera corrente è collegata a quest'altra tramite una connection
+        // di tipo opera↔opera, ne mostriamo il kind; altrimenti è solo "coeva".
+        const relatedKindMap = new Map<string, { kind: string; description?: string; thisIsSource: boolean }>();
+        for (const c of conns) {
+          const otherIsSource = !(c.source_type === "work" && c.source_id === w.id);
+          const ot = otherIsSource ? c.source_type : c.target_type;
+          if (ot !== "work") continue;
+          const otherWorkId = otherIsSource ? c.source_id : c.target_id;
+          relatedKindMap.set(otherWorkId, {
+            kind: c.kind,
+            description: c.description,
+            thisIsSource: !otherIsSource,
+          });
+        }
+        // Separa le opere "collegate" (con tipo di relazione) dalle "coeve"
+        const connectedRelated = related.filter(r => relatedKindMap.has(r.id));
+        const coevalRelated = related.filter(r => !relatedKindMap.has(r.id));
+        return (
+          <Section eyebrow="Vicinanze" title={period ? `Opere del ${period.name}` : "Opere vicine"}>
+            {/* Opere effettivamente collegate (con tipo di relazione) —
+                banner visivi come la sezione 1 "Opere collegate" */}
+            {connectedRelated.length > 0 && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: coevalRelated.length > 0 ? 20 : 0 }}>
+                {connectedRelated.map((otherWork) => {
+                  const info = relatedKindMap.get(otherWork.id)!;
+                  return (
+                    <Link
+                      key={otherWork.id}
+                      to={`/opera/${otherWork.id}`}
+                      className="conn-banner"
+                      style={{
+                        display: "flex", gap: 14, padding: 12,
+                        background: "var(--bg-1)", border: "1px solid var(--line)",
+                        borderRadius: 10, textDecoration: "none", color: "var(--ink)",
+                        transition: "border-color .2s, box-shadow .2s",
+                      }}
+                    >
+                      <div style={{ width: 64, height: 64, borderRadius: 6, overflow: "hidden", flexShrink: 0, border: "1px solid var(--line-soft)" }}>
+                        <WorkImage work={otherWork} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" }}>
+                          <span className="tag" style={{ color: "var(--gold-deep)", borderColor: "var(--gold)", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.04em", fontWeight: 700 }}>
+                            {KIND_LABEL[info.kind] ?? info.kind}
+                          </span>
+                          <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>
+                            {info.thisIsSource ? "questa opera →" : "← quest'opera"}
+                          </span>
+                        </div>
+                        <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 2 }}>{otherWork.title}</div>
+                        {info.description && (
+                          <div style={{ fontSize: 12.5, color: "var(--ink-soft)", fontStyle: "italic", lineHeight: 1.4 }}>
+                            "{info.description}"
+                          </div>
+                        )}
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+            {/* Opere solo "coeve" (stesso periodo, senza legame esplicito) */}
+            {coevalRelated.length > 0 && (
+              <div className="grid-works">{coevalRelated.map((r) => <WorkCard key={r.id} work={r} />)}</div>
+            )}
+          </Section>
+        );
+      })()}
 
       {/* Editor drawer (solo admin, apre con pulsante Modifica) */}
       <EditorDrawer
