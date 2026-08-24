@@ -319,16 +319,22 @@ function EntityAutocomplete({
   disabled,
   onPick,
   placeholder,
+  hints,
 }: {
   ix: ReturnType<typeof useData>;
   entityType: "artist" | "work" | "period" | "city" | "year";
   disabled?: boolean;
   onPick: (entityId: string, entityLabel: string) => void;
   placeholder?: string;
+  /** Suggerimenti opzionali mostrati quando l'utente preme "Aiutami".
+   *  Devono includere la risposta corretta + 3 distrattori plausibili.
+   *  Se non fornito, il tasto "Aiutami" non viene mostrato. */
+  hints?: { id: string; label: string }[];
 }) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [highlighted, setHighlighted] = useState(0);
+  const [showHints, setShowHints] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const wrapRef = useRef<HTMLDivElement | null>(null);
 
@@ -485,109 +491,142 @@ function EntityAutocomplete({
   })();
 
   return (
-    <div ref={wrapRef} style={{ position: "relative", width: "100%" }}>
-      <input
-        ref={inputRef}
-        type="text"
-        value={query}
-        disabled={disabled}
-        onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
-        onFocus={() => setOpen(true)}
-        onKeyDown={handleKeyDown}
-        placeholder={placeholder ?? defaultPlaceholder}
-        className="quiz-artist-input"
-        data-testid="quiz-entity-input"
-        autoComplete="off"
-        spellCheck={false}
-        style={{
-          width: "100%",
-          padding: "12px 14px",
-          fontSize: 15,
-          fontFamily: "var(--font-sans)",
-          background: "var(--bg)",
-          color: "var(--ink)",
-          border: "1.5px solid var(--line)",
-          borderRadius: 10,
-          outline: "none",
-          transition: "border-color .15s, box-shadow .15s",
-        }}
-        onFocusCapture={(e) => {
-          e.currentTarget.style.borderColor = "var(--gold)";
-          e.currentTarget.style.boxShadow = "0 0 0 3px rgba(184,138,46,0.15)";
-        }}
-        onBlur={(e) => {
-          e.currentTarget.style.borderColor = "var(--line)";
-          e.currentTarget.style.boxShadow = "none";
-        }}
-      />
-      {/* Conteggio matches */}
-      {query.trim() && (
-        <div style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", fontSize: 11, color: "var(--ink-dim)", pointerEvents: "none" }}>
-          {filtered.length} match
+    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      <div ref={wrapRef} style={{ position: "relative", width: "100%" }}>
+        <input
+          ref={inputRef}
+          type="text"
+          value={query}
+          disabled={disabled}
+          onChange={(e) => { setQuery(e.target.value); setOpen(true); setShowHints(false); }}
+          onFocus={() => setOpen(true)}
+          onKeyDown={handleKeyDown}
+          placeholder={placeholder ?? defaultPlaceholder}
+          className="quiz-artist-input"
+          data-testid="quiz-entity-input"
+          autoComplete="off"
+          spellCheck={false}
+          style={{
+            width: "100%",
+            padding: "12px 14px",
+            fontSize: 15,
+            fontFamily: "var(--font-sans)",
+            background: "var(--bg)",
+            color: "var(--ink)",
+            border: "1.5px solid var(--line)",
+            borderRadius: 10,
+            outline: "none",
+            transition: "border-color .15s, box-shadow .15s",
+          }}
+          onFocusCapture={(e) => {
+            e.currentTarget.style.borderColor = "var(--gold)";
+            e.currentTarget.style.boxShadow = "0 0 0 3px rgba(184,138,46,0.15)";
+          }}
+          onBlur={(e) => {
+            e.currentTarget.style.borderColor = "var(--line)";
+            e.currentTarget.style.boxShadow = "none";
+          }}
+        />
+        {/* Conteggio matches */}
+        {query.trim() && (
+          <div style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", fontSize: 11, color: "var(--ink-dim)", pointerEvents: "none" }}>
+            {filtered.length} match
+          </div>
+        )}
+        {/* Dropdown suggerimenti */}
+        <AnimatePresence>
+          {open && filtered.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.15 }}
+              className="quiz-artist-dropdown"
+              data-testid="quiz-entity-dropdown"
+              style={{
+                position: "absolute",
+                top: "calc(100% + 4px)",
+                left: 0,
+                right: 0,
+                maxHeight: 320,
+                overflowY: "auto",
+                background: "var(--bg)",
+                border: "1px solid var(--line)",
+                borderRadius: 10,
+                boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
+                zIndex: 100,
+              }}
+            >
+              {filtered.map((a, i) => (
+                <button
+                  key={a.id}
+                  type="button"
+                  disabled={disabled}
+                  data-testid={`quiz-entity-opt-${i}`}
+                  onClick={() => pick(a)}
+                  onMouseEnter={() => setHighlighted(i)}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    width: "100%",
+                    padding: "10px 14px",
+                    background: i === highlighted ? "var(--bg-2)" : "transparent",
+                    border: 0,
+                    borderBottom: i < filtered.length - 1 ? "1px solid var(--line-soft)" : 0,
+                    cursor: disabled ? "not-allowed" : "pointer",
+                    textAlign: "left",
+                    fontSize: 14,
+                    color: "var(--ink)",
+                    fontFamily: "var(--font-sans)",
+                    transition: "background .1s",
+                  }}
+                >
+                  <span style={{ fontWeight: 600, flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                    {a.name}
+                  </span>
+                  {a.sub && (
+                    <span style={{ fontSize: 11, color: "var(--ink-dim)", fontStyle: "italic", flexShrink: 0 }}>
+                      {a.sub}
+                    </span>
+                  )}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+      {/* Tasto "Aiutami" — mostra 4 suggerimenti (inclusa la risposta corretta)
+          come chip cliccabili. Click su una chip popola l'input con quel valore
+          e l'utente può confermare la scelta. Stile coerente con il resto del
+          sito: usa la classe .btn.ghost.sm e le .chip esistenti. */}
+      {hints && hints.length > 0 && !showHints && !disabled && (
+        <button
+          className="btn ghost sm"
+          onClick={() => setShowHints(true)}
+          data-testid="quiz-hint-toggle"
+          style={{ alignSelf: "flex-start" }}
+        >
+          Aiutami
+        </button>
+      )}
+      {/* Lista suggerimenti (4 chip: la risposta corretta + 3 distrattori) */}
+      {showHints && hints && hints.length > 0 && (
+        <div data-testid="quiz-hints" style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+          <span className="faint" style={{ fontSize: 12, marginRight: 4 }}>Suggerimenti:</span>
+          {hints.map((h, i) => (
+            <span
+              key={h.id}
+              className="chip"
+              onClick={() => { setQuery(h.label); setOpen(true); setShowHints(false); inputRef.current?.focus(); }}
+              data-testid={`quiz-hint-${i}`}
+              style={{ cursor: "pointer" }}
+            >
+              {h.label}
+            </span>
+          ))}
         </div>
       )}
-      {/* Dropdown suggerimenti */}
-      <AnimatePresence>
-        {open && filtered.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.15 }}
-            className="quiz-artist-dropdown"
-            data-testid="quiz-entity-dropdown"
-            style={{
-              position: "absolute",
-              top: "calc(100% + 4px)",
-              left: 0,
-              right: 0,
-              maxHeight: 320,
-              overflowY: "auto",
-              background: "var(--bg)",
-              border: "1px solid var(--line)",
-              borderRadius: 10,
-              boxShadow: "0 8px 24px rgba(0,0,0,0.10)",
-              zIndex: 100,
-            }}
-          >
-            {filtered.map((a, i) => (
-              <button
-                key={a.id}
-                type="button"
-                disabled={disabled}
-                data-testid={`quiz-entity-opt-${i}`}
-                onClick={() => pick(a)}
-                onMouseEnter={() => setHighlighted(i)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  width: "100%",
-                  padding: "10px 14px",
-                  background: i === highlighted ? "var(--bg-2)" : "transparent",
-                  border: 0,
-                  borderBottom: i < filtered.length - 1 ? "1px solid var(--line-soft)" : 0,
-                  cursor: disabled ? "not-allowed" : "pointer",
-                  textAlign: "left",
-                  fontSize: 14,
-                  color: "var(--ink)",
-                  fontFamily: "var(--font-sans)",
-                  transition: "background .1s",
-                }}
-              >
-                <span style={{ fontWeight: 600, flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {a.name}
-                </span>
-                {a.sub && (
-                  <span style={{ fontSize: 11, color: "var(--ink-dim)", fontStyle: "italic", flexShrink: 0 }}>
-                    {a.sub}
-                  </span>
-                )}
-              </button>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
@@ -774,6 +813,132 @@ export default function Test() {
   // immagine risolta in TEMPO REALE dall'indice
   const liveWork = q?.refHref?.startsWith("/opera/") ? ix.workById.get(q.refHref.slice("/opera/".length)) : undefined;
   const liveImage = q?.image ? (liveWork?.image_thumb || liveWork?.image_url || q.image) : undefined;
+
+  // === Suggerimenti "Aiutami" per le domande aperte ===
+  // Per ogni domanda aperta (autore-input, titolo-input, periodo-input,
+  // data-input, luogo-input) generiamo 4 suggerimenti: la risposta corretta
+  // + 3 distrattori plausibili. Per autore/titolo scegliamo entità dello
+  // stesso periodo dell'opera (quindi più "vicine" e plausibili come
+  // risposta). Per periodo scegliamo periodi vicini cronologicamente.
+  // Per luogo scegliamo città dello stesso periodo. Per data scegliamo
+  // anni vicini a quello corretto.
+  const hints = useMemo(() => {
+    if (!q || !OPEN_KINDS.includes(q.kind)) return undefined;
+    const correctId = q.correctEntityId;
+    const correctLabel = q.correctEntityLabel;
+    if (!correctId || !correctLabel) return undefined;
+    const out: { id: string; label: string }[] = [{ id: correctId, label: correctLabel }];
+
+    if (q.kind === "autore-input") {
+      // Distrattori: artisti dello stesso periodo dell'opera
+      const w = liveWork;
+      if (w) {
+        const pool = ix.ds.artists
+          .filter(a => a.id !== correctId && a.name)
+          .filter(a => a.period_ids.some(pid => pid === w.period_id))
+          .map(a => ({ id: a.id, label: a.name }));
+        // Se non ne abbiamo abbastanza dello stesso periodo, aggiungiamo dal pool generale
+        if (pool.length < 3) {
+          const general = ix.ds.artists
+            .filter(a => a.id !== correctId && a.name && !pool.some(p => p.id === a.id))
+            .slice(0, 3 - pool.length)
+            .map(a => ({ id: a.id, label: a.name }));
+          pool.push(...general);
+        }
+        // Shuffle semplice e prendi 3
+        for (let i = pool.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [pool[i], pool[j]] = [pool[j], pool[i]];
+        }
+        out.push(...pool.slice(0, 3));
+      }
+    } else if (q.kind === "titolo-input") {
+      // Distrattori: opere dello stesso periodo
+      const w = liveWork;
+      if (w) {
+        const pool = ix.ds.works
+          .filter(x => x.id !== correctId && x.title && x.period_id === w.period_id)
+          .map(x => ({ id: x.id, label: x.title }));
+        if (pool.length < 3) {
+          const general = ix.ds.works
+            .filter(x => x.id !== correctId && x.title && !pool.some(p => p.id === x.id))
+            .slice(0, 3 - pool.length)
+            .map(x => ({ id: x.id, label: x.title }));
+          pool.push(...general);
+        }
+        for (let i = pool.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [pool[i], pool[j]] = [pool[j], pool[i]];
+        }
+        out.push(...pool.slice(0, 3));
+      }
+    } else if (q.kind === "periodo-input") {
+      // Distrattori: periodi vicini cronologicamente
+      const correctP = ix.periodById.get(correctId);
+      if (correctP) {
+        const wm = (correctP.year_start + correctP.year_end) / 2;
+        const pool = ix.ds.periods
+          .filter(p => p.id !== correctId && p.name)
+          .sort((a, b) => Math.abs((a.year_start + a.year_end) / 2 - wm) - Math.abs((b.year_start + b.year_end) / 2 - wm))
+          .slice(0, 8)
+          .map(p => ({ id: p.id, label: p.name }));
+        for (let i = pool.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [pool[i], pool[j]] = [pool[j], pool[i]];
+        }
+        out.push(...pool.slice(0, 3));
+      }
+    } else if (q.kind === "data-input") {
+      // Distrattori: anni vicini al corretto
+      const correctYear = parseInt(correctId.replace(" a.C.", ""), 10);
+      if (!isNaN(correctYear)) {
+        const offsets = [-100, +100, -50, +50, -200, +200];
+        const used = new Set([correctYear]);
+        for (const off of offsets) {
+          if (out.length >= 4) break;
+          const y = correctYear + off;
+          if (used.has(y)) continue;
+          used.add(y);
+          const label = y < 0 ? `${-y} a.C.` : String(y);
+          out.push({ id: label, label });
+        }
+      }
+    } else if (q.kind === "luogo-input") {
+      // Distrattori: città di opere dello stesso periodo
+      const w = liveWork;
+      if (w) {
+        const cities = new Set<string>();
+        for (const x of ix.ds.works) {
+          if (x.id !== w.id && x.location_city && x.location_city !== correctId && x.period_id === w.period_id) {
+            cities.add(x.location_city);
+          }
+        }
+        const pool = [...cities].map(c => ({ id: c, label: c }));
+        if (pool.length < 3) {
+          // Fallback: città qualsiasi
+          const allCities = new Set<string>();
+          for (const x of ix.ds.works) {
+            if (x.location_city && x.location_city !== correctId && !pool.some(p => p.id === x.location_city)) {
+              allCities.add(x.location_city);
+            }
+          }
+          pool.push(...[...allCities].slice(0, 3 - pool.length).map(c => ({ id: c, label: c })));
+        }
+        for (let i = pool.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [pool[i], pool[j]] = [pool[j], pool[i]];
+        }
+        out.push(...pool.slice(0, 3));
+      }
+    }
+
+    // Shuffle finale (così la risposta corretta non è sempre la prima)
+    for (let i = out.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [out[i], out[j]] = [out[j], out[i]];
+    }
+    return out.length === 4 ? out : out.slice(0, 4);
+  }, [q, liveWork, ix]);
 
   const answer = (i: number) => {
     if (picked != null) return;
@@ -1188,6 +1353,7 @@ export default function Test() {
                   entityType={q.kind === "data-input" ? "year" : (q.correctEntityType ?? "artist")}
                   disabled={picked != null}
                   onPick={(entityId, entityName) => answerEntity(entityId, entityName)}
+                  hints={hints}
                 />
               ) : (
                 // Dopo la risposta, mostriamo la scelta dell'utente + quella corretta
