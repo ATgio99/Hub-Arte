@@ -1691,53 +1691,77 @@ export default function Test() {
             >
               {/* Feedback corretto/sbagliato */}
               <div className={`quiz-explain-card ${(OPEN_KINDS.includes(q.kind) ? pickedEntityId === q.correctEntityId : picked === q.correct) ? "ok" : "ko"}`}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-                  {(OPEN_KINDS.includes(q.kind) ? pickedEntityId === q.correctEntityId : picked === q.correct) ? (
-                    <>
-                      <span style={{ fontSize: 20 }}>✓</span>
-                      <span style={{ fontWeight: 600, fontSize: 15, color: "var(--c-technique)" }}>Risposta corretta!</span>
-                    </>
-                  ) : (
-                    <>
-                      <span style={{ fontSize: 20 }}>✗</span>
-                      <span style={{ fontWeight: 600, fontSize: 15, color: "var(--c-event)" }}>Risposta sbagliata</span>
-                    </>
-                  )}
-                </div>
-                {/* === Blocco "Autore corretto" / "Risposta corretta" —
-                    sempre mostrato (sia per domande aperte che a risposta multipla)
-                    quando l'utente ha sbagliato. È la cornice verde più visibile
-                    che contiene il nome dell'autore corretto + riferimento all'opera. */}
                 {(() => {
-                  // Per le domande aperte usiamo correctEntityLabel, per le
-                  // multiple usiamo q.options[q.correct].
                   const isCorrect = OPEN_KINDS.includes(q.kind)
                     ? pickedEntityId === q.correctEntityId
                     : picked === q.correct;
-                  if (isCorrect) return null; // se ha azzeccato, non serve (già mostrato nella cornice "La tua risposta" verde)
+                  // Etichetta della risposta data dall'utente (mostrata tra
+                  // parentesi quadre accanto all'intestazione "Risposta giusta/sbagliata")
+                  const userLabel = OPEN_KINDS.includes(q.kind)
+                    ? (pickedEntityName ?? "—")
+                    : (q.options[picked] ?? "—");
+                  // Etichetta della risposta corretta
                   const correctLabel = OPEN_KINDS.includes(q.kind)
                     ? (q.correctEntityLabel ?? "—")
                     : q.options[q.correct];
+                  // Le domande "autore" (multiple "autore"/"immagine" + aperta "autore-input")
+                  // hanno come risposta il nome dell'autore, quindi usiamo l'etichetta
+                  // specifica "Autore corretto" + riferimento all'opera.
                   const isAuthorQuestion = q.kind === "autore" || q.kind === "immagine" || q.kind === "autore-input";
+                  const correctLabelText = isAuthorQuestion ? "Autore corretto" : "Risposta corretta";
                   return (
-                    <div style={{
-                      marginBottom: 10, padding: "14px 16px",
-                      borderRadius: 10,
-                      border: "2px solid var(--c-technique)",
-                      background: "color-mix(in srgb, var(--c-technique) 14%, transparent)",
-                    }}>
-                      <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
-                        {isAuthorQuestion ? "Autore corretto" : "Risposta corretta"}
+                    <>
+                      {/* === Intestazione: stato (✓/✗) + risposta dell'utente
+                          tra parentesi quadre, sulla stessa riga. La risposta
+                          dell'utente è colorata di verde se giusta, rossa se
+                          sbagliata, così si capisce subito a colpo d'occhio. === */}
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12, flexWrap: "wrap" }}>
+                        {isCorrect ? (
+                          <>
+                            <span style={{ fontSize: 20 }}>✓</span>
+                            <span style={{ fontWeight: 600, fontSize: 15, color: "var(--c-technique)" }}>Risposta corretta!</span>
+                          </>
+                        ) : (
+                          <>
+                            <span style={{ fontSize: 20 }}>✗</span>
+                            <span style={{ fontWeight: 600, fontSize: 15, color: "var(--c-event)" }}>Risposta sbagliata</span>
+                          </>
+                        )}
+                        <span style={{
+                          fontSize: 13.5,
+                          color: isCorrect ? "var(--c-technique)" : "var(--c-event)",
+                          fontWeight: 500,
+                          fontStyle: "italic",
+                          marginLeft: "auto",
+                          maxWidth: "60%",
+                          overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+                        }} title={userLabel}>
+                          [{userLabel}]
+                        </span>
                       </div>
-                      <div style={{ fontWeight: 800, color: "var(--c-technique)", fontSize: 17, lineHeight: 1.2 }}>
-                        {correctLabel}
-                      </div>
-                      {isAuthorQuestion && currentRefWork && (
-                        <div style={{ fontSize: 12, color: "var(--ink-dim)", fontStyle: "italic", marginTop: 4 }}>
-                          autore di «{currentRefWork.title}»
+                      {/* === Blocco verde "Autore corretto" / "Risposta corretta" —
+                          cornice spessa 2px, sempre mostrato (sia quando l'utente
+                          ha azzeccato che quando ha sbagliato). Così l'utente vede
+                          sempre chiaramente qual era la risposta giusta. === */}
+                      <div style={{
+                        marginBottom: 12, padding: "14px 16px",
+                        borderRadius: 10,
+                        border: "2px solid var(--c-technique)",
+                        background: "color-mix(in srgb, var(--c-technique) 14%, transparent)",
+                      }}>
+                        <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
+                          {correctLabelText}
                         </div>
-                      )}
-                    </div>
+                        <div style={{ fontWeight: 800, color: "var(--c-technique)", fontSize: 17, lineHeight: 1.2 }}>
+                          {correctLabel}
+                        </div>
+                        {isAuthorQuestion && currentRefWork && (
+                          <div style={{ fontSize: 12, color: "var(--ink-dim)", fontStyle: "italic", marginTop: 4 }}>
+                            autore di «{currentRefWork.title}»
+                          </div>
+                        )}
+                      </div>
+                    </>
                   );
                 })()}
                 <div className="muted" style={{ fontSize: 13.5, lineHeight: 1.6 }}>
