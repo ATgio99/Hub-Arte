@@ -477,11 +477,11 @@ function EntityAutocomplete({
   };
 
   const defaultPlaceholder = (() => {
-    if (entityType === "artist") return "Scrivi il nome dell'autore… (es. Giotto, Antelami, Pisano)";
-    if (entityType === "work") return "Scrivi il titolo dell'opera…";
-    if (entityType === "period") return "Scrivi il nome del periodo… (es. Gotico, Trecento)";
-    if (entityType === "city") return "Scrivi il nome della città… (es. Firenze, Roma)";
-    if (entityType === "year") return "Scrivi o seleziona l'anno… (es. 1305, 1500 a.C.)";
+    if (entityType === "artist") return "Scrivi il nome dell'autore";
+    if (entityType === "work") return "Scrivi il titolo dell'opera";
+    if (entityType === "period") return "Scrivi il nome del periodo";
+    if (entityType === "city") return "Scrivi il nome della città";
+    if (entityType === "year") return "Scrivi o seleziona l'anno";
     return "Cerca…";
   })();
 
@@ -1613,46 +1613,23 @@ export default function Test() {
                   hints={hints}
                 />
               ) : (
-                // Dopo la risposta, mostriamo la scelta dell'utente + quella corretta
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  <div style={{
-                    padding: "12px 14px",
-                    borderRadius: 10,
-                    border: `1.5px solid ${pickedEntityId === q.correctEntityId ? "var(--c-technique)" : "var(--c-event)"}`,
-                    background: pickedEntityId === q.correctEntityId ? "color-mix(in srgb, var(--c-technique) 8%, transparent)" : "color-mix(in srgb, var(--c-event) 8%, transparent)",
-                    fontSize: 14,
-                  }}>
-                    <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
-                      La tua risposta
-                    </div>
-                    <div style={{ fontWeight: 600 }}>
-                      {pickedEntityName ?? "—"}
-                    </div>
+                // Dopo la risposta, mostriamo SOLO la scelta dell'utente
+                // (cornice verde/rossa a seconda dell'esito). Il blocco verde
+                // "Autore corretto" appare invece nel feedback principale
+                // sotto (nella cornice quiz-explain-card) — evitiamo di
+                // duplicarlo qui.
+                <div style={{
+                  padding: "12px 14px",
+                  borderRadius: 10,
+                  border: `1.5px solid ${pickedEntityId === q.correctEntityId ? "var(--c-technique)" : "var(--c-event)"}`,
+                  background: pickedEntityId === q.correctEntityId ? "color-mix(in srgb, var(--c-technique) 8%, transparent)" : "color-mix(in srgb, var(--c-event) 8%, transparent)",
+                  fontSize: 14,
+                }}>
+                  <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
+                    La tua risposta
                   </div>
-                  {/* Risposta corretta: sempre mostrata (sia se l'utente ha
-                      azzeccato che se ha sbagliato). Cornice verde in evidenza,
-                      con il nome dell'entità corretta in grassetto. Per le
-                      domande "autore-input" usiamo l'etichetta specifica
-                      "Autore corretto" + riferimento all'opera, così è chiaro
-                      a colpo d'occhio chi era l'autore giusto. */}
-                  <div style={{
-                    padding: "14px 16px",
-                    borderRadius: 10,
-                    border: "2px solid var(--c-technique)",
-                    background: "color-mix(in srgb, var(--c-technique) 14%, transparent)",
-                    fontSize: 14,
-                  }}>
-                    <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
-                      {q.kind === "autore-input" ? "Autore corretto" : "Risposta corretta"}
-                    </div>
-                    <div style={{ fontWeight: 800, color: "var(--c-technique)", fontSize: 17 }}>
-                      {q.correctEntityLabel ?? "—"}
-                    </div>
-                    {q.kind === "autore-input" && currentRefWork && (
-                      <div style={{ fontSize: 12, color: "var(--ink-dim)", fontStyle: "italic", marginTop: 4 }}>
-                        autore di «{currentRefWork.title}»
-                      </div>
-                    )}
+                  <div style={{ fontWeight: 600 }}>
+                    {pickedEntityName ?? "—"}
                   </div>
                 </div>
               )}
