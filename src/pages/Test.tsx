@@ -633,10 +633,15 @@ export default function Test() {
   // === Ripristino sessione di quiz salvata ===
   // Leggiamo una sola volta (lazy initializer) lo stato salvato in localStorage.
   // Se l'utente aveva un test in corso (è uscito dalla pagina senza terminarlo),
-  // lo ripristiniamo esattamente dov'era rimasto: phase="playing", domande,
-  // indice, risposta scelta, risposte date, modalità, errori di ripasso rimossi.
+  // lo ripristiniamo esattamente dov'era rimasto: phase="playing" durante il
+  // quiz, "level-result" nel riepilogo intermedio tra round della modalità
+  // "a livelli", "level-final" nel risultato finale della modalità "a livelli".
   const [restoredTest] = useState(() => getLastTest());
-  const [phase, setPhase] = useState<Phase>(() => restoredTest && restoredTest.questions.length > 0 ? "playing" : "setup");
+  const [phase, setPhase] = useState<Phase>(() => restoredTest && restoredTest.questions.length > 0
+    ? (restoredTest.phase === "level-result" ? "level-result"
+      : restoredTest.phase === "level-final" ? "level-final"
+      : "playing")
+    : "setup");
   const [mode, setMode] = useState<Mode>(() => restoredTest ? restoredTest.mode : "normale");
   const [questions, setQuestions] = useState<Question[]>(() => restoredTest ? restoredTest.questions : []);
   const [idx, setIdx] = useState<number>(() => restoredTest ? Math.min(restoredTest.idx, restoredTest.questions.length - 1) : 0);
@@ -654,18 +659,15 @@ export default function Test() {
   // === Modalità "a livelli" (survival): una domanda per ogni opera, a
   // eliminazione. Le opere sbagliate passano al round successivo. Si può
   // attivare solo con UN tipo di domanda selezionato (vedi avviso sotto).
-  const [levelsMode, setLevelsMode] = useState(false);
-  // === Stato della sessione "a livelli" ===
-  // - level: round corrente (1, 2, 3, ...)
-  // - totalWorksCount: numero di opere del round 1 (per il risultato finale)
-  // - wrongWorkIdsRound: opere sbagliate nel round corrente (passano al prossimo)
-  // - lastRoundScore: { correct, total } del round appena concluso (per il
-  //   risultato intermedio)
-  const [level, setLevel] = useState(1);
-  const [totalWorksCount, setTotalWorksCount] = useState(0);
-  const [wrongWorkIdsRound, setWrongWorkIdsRound] = useState<Set<string>>(new Set());
-  const [lastRoundScore, setLastRoundScore] = useState<{ correct: number; total: number } | null>(null);
-  const [finalLevelResult, setFinalLevelResult] = useState<{ stillWrong: number; total: number; rounds: number } | null>(null);
+  // Ripristiniamo anche questi valori dal localStorage così, se l'utente
+  // chiude la pagina durante il riepilogo tra i round, al ritorno ritrova
+  // lo stesso stato (round corrente, opere totali, opere ancora sbagliate).
+  const [levelsMode, setLevelsMode] = useState<boolean>(() => restoredTest?.levelsMode ?? false);
+  const [level, setLevel] = useState<number>(() => restoredTest?.level ?? 1);
+  const [totalWorksCount, setTotalWorksCount] = useState<number>(() => restoredTest?.totalWorksCount ?? 0);
+  const [wrongWorkIdsRound, setWrongWorkIdsRound] = useState<Set<string>>(() => new Set(restoredTest?.wrongWorkIdsRound ?? []));
+  const [lastRoundScore, setLastRoundScore] = useState<{ correct: number; total: number } | null>(() => restoredTest?.lastRoundScore ?? null);
+  const [finalLevelResult, setFinalLevelResult] = useState<{ stillWrong: number; total: number; rounds: number } | null>(() => restoredTest?.finalLevelResult ?? null);
   // === Modalità quiz: "multipla" (scelta tra 4 opzioni) o "aperte" (input
   // con autocomplete). Il selettore è in alto, accanto a "Quante domande".
   // Quando cambia la modalità, filtriamo i kinds selezionati per mantenere
@@ -731,11 +733,14 @@ export default function Test() {
 
   // === Persistenza della sessione di quiz (memory) ===
   // Salviamo in localStorage lo stato del quiz ogni volta che cambia (solo
-  // se siamo in fase "playing"). Così l'utente può uscire dalla pagina Test
-  // (per andare su Opere, Autori, ecc.) e tornare successivamente: ritroverà
-  // il test esattamente dov'era rimasto. La sessione viene cancellata:
-  //  - quando si conclude il test (finish)
-  //  - quando l'utente preme "Esci" in alto a destra (abbandono esplicito)
+  // nelle fasi rilevanti: "playing" durante il quiz, "level-result" nel
+  // riepilogo intermedio tra round della modalità "a livelli", "level-final"
+  // nel risultato finale della modalità "a livelli"). Così l'utente può
+  // uscire dalla pagina Test (per andare su Opere, Autori, ecc.) e tornare
+  // successivamente: ritroverà il test esattamente dov'era rimasto.
+  // La sessione viene cancellata:
+  //  - quando si conclude un test NON "a livelli" (fase "result")
+  //  - quando l'utente preme "Esci" in basso a destra (abbandono esplicito)
   //  - quando si clicca due volte "Test" nella sidebar (reset)
   useEffect(() => {
     if (phase === "playing" && questions.length > 0) {
@@ -747,13 +752,59 @@ export default function Test() {
         mode,
         reviewRemoved,
         savedAt: Date.now(),
+        phase: "playing",
+        levelsMode,
+        level,
+        totalWorksCount,
+        wrongWorkIdsRound: [...wrongWorkIdsRound],
+        lastRoundScore,
+        finalLevelResult,
       });
-    } else if (phase !== "playing") {
-      // Se non siamo in playing, assicuriamoci che non ci sia una sessione
-      // salvata "vecchia": l'utente è tornato al setup/risultato/statistiche.
+    } else if (phase === "level-result" && lastRoundScore) {
+      // Riepilogo intermedio: salviamo lo stato così l'utente può uscire
+      // dalla pagina e ritrovare il riepilogo al ritorno (con il pulsante
+      // "Prossimo round" ancora attivo).
+      setLastTest({
+        questions,
+        idx: 0,
+        picked: null,
+        answers,
+        mode,
+        reviewRemoved,
+        savedAt: Date.now(),
+        phase: "level-result",
+        levelsMode,
+        level,
+        totalWorksCount,
+        wrongWorkIdsRound: [...wrongWorkIdsRound],
+        lastRoundScore,
+        finalLevelResult: null,
+      });
+    } else if (phase === "level-final" && finalLevelResult) {
+      // Risultato finale della modalità "a livelli": salviamo così l'utente
+      // può uscire e ritrovare la schermata finale al ritorno.
+      setLastTest({
+        questions,
+        idx: 0,
+        picked: null,
+        answers,
+        mode,
+        reviewRemoved,
+        savedAt: Date.now(),
+        phase: "level-final",
+        levelsMode,
+        level,
+        totalWorksCount,
+        wrongWorkIdsRound: [],
+        lastRoundScore: null,
+        finalLevelResult,
+      });
+    } else {
+      // Fase "setup", "result", "stats": non c'è sessione attiva da salvare.
+      // Cancelliamo eventuali sessioni vecchie rimaste.
       clearLastTest();
     }
-  }, [phase, questions, idx, picked, answers, mode, reviewRemoved]);
+  }, [phase, questions, idx, picked, answers, mode, reviewRemoved, levelsMode, level, totalWorksCount, wrongWorkIdsRound, lastRoundScore, finalLevelResult]);
 
   // === Listen per evento di reset esterno ===
   // La sidebar emette "atlante:test-reset" quando l'utente clicca due volte
@@ -1114,6 +1165,26 @@ export default function Test() {
     setAnswers([]);
     setReviewRemoved([]);
     setPhase("playing");
+  };
+
+  // === Abbandono esplicito (pulsante "Esci" in basso) ===
+  // A differenza del pulsante "Fine" (che chiama finish() e avanza al
+  // prossimo livello nella modalità "a livelli"), questo pulsante ABANDONA
+  // il test senza salvare statistiche e torna al setup. Cancella anche la
+  // sessione salvata.
+  const exitTest = () => {
+    clearLastTest();
+    setQuestions([]);
+    setIdx(0);
+    setPicked(null);
+    setAnswers([]);
+    setReviewRemoved([]);
+    setMode("normale");
+    setPhase("setup");
+    setNotice(null);
+    resetLevelsState();
+    // Notifica la sidebar che la sessione è stata cancellata
+    window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   };
 
   // Resetta lo stato della sessione "a livelli" (per tornare al setup)
@@ -1763,7 +1834,7 @@ export default function Test() {
             {idx + 1 >= questions.length ? "Fine" : "Avanti →"}
           </button>
         )}
-        <button className="btn ghost" onClick={finish} data-testid="quiz-abort">Esci</button>
+        <button className="btn ghost" onClick={exitTest} data-testid="quiz-abort">Esci</button>
       </div>
 
       {/* Drawer opera laterale */}

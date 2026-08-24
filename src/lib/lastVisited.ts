@@ -188,6 +188,18 @@ export interface SavedTestState {
   mode: "normale" | "ripasso";
   reviewRemoved: string[];
   savedAt: number;
+  /** Phase salvata: "playing" durante il quiz, "level-result" nel riepilogo
+   *  intermedio tra round della modalità "a livelli", "level-final" nel
+   *  risultato finale della modalità "a livelli". Per default "playing". */
+  phase?: "playing" | "level-result" | "level-final";
+  /** Stato della sessione "a livelli" — salvato per ripristinarlo se l'utente
+   *  chiude la pagina durante il riepilogo tra i round. */
+  levelsMode?: boolean;
+  level?: number;
+  totalWorksCount?: number;
+  wrongWorkIdsRound?: string[];
+  lastRoundScore?: { correct: number; total: number };
+  finalLevelResult?: { stillWrong: number; total: number; rounds: number };
 }
 
 export function getLastTest(): SavedTestState | null {
@@ -205,6 +217,23 @@ export function getLastTest(): SavedTestState | null {
       mode: parsed.mode === "ripasso" ? "ripasso" : "normale",
       reviewRemoved: Array.isArray(parsed.reviewRemoved) ? parsed.reviewRemoved as string[] : [],
       savedAt: typeof parsed.savedAt === "number" ? parsed.savedAt : Date.now(),
+      // Nuovi campi (opzionali, per retro-compatibilità con sessioni salvate
+      // da versioni precedenti del codice che non li scrivevano)
+      phase: (parsed.phase === "level-result" || parsed.phase === "level-final") ? parsed.phase : "playing",
+      levelsMode: typeof parsed.levelsMode === "boolean" ? parsed.levelsMode : false,
+      level: typeof parsed.level === "number" ? parsed.level : 1,
+      totalWorksCount: typeof parsed.totalWorksCount === "number" ? parsed.totalWorksCount : 0,
+      wrongWorkIdsRound: Array.isArray(parsed.wrongWorkIdsRound) ? parsed.wrongWorkIdsRound as string[] : [],
+      lastRoundScore: (parsed.lastRoundScore && typeof parsed.lastRoundScore === "object")
+        ? { correct: Number(parsed.lastRoundScore.correct) || 0, total: Number(parsed.lastRoundScore.total) || 0 }
+        : null,
+      finalLevelResult: (parsed.finalLevelResult && typeof parsed.finalLevelResult === "object")
+        ? {
+            stillWrong: Number(parsed.finalLevelResult.stillWrong) || 0,
+            total: Number(parsed.finalLevelResult.total) || 0,
+            rounds: Number(parsed.finalLevelResult.rounds) || 1,
+          }
+        : null,
     };
   } catch { return null; }
 }
