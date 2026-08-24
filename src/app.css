@@ -355,7 +355,7 @@ a.hero-stat:hover { background: var(--bg-2); }
 }
 .quiz-opt:hover:not(:disabled) { border-color: var(--gold); background: var(--bg-2); }
 .quiz-opt-letter { width: 28px; height: 28px; flex-shrink: 0; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); font-size: 13px; color: var(--ink-dim); }
-.quiz-opt.correct { border-color: var(--c-technique); background: rgba(110,131,80,.14); }
+.quiz-opt.correct { border-color: var(--c-technique); background: rgba(110,131,80,.14); font-weight: 700; }
 .quiz-opt.correct .quiz-opt-letter { background: var(--c-technique); color: #fff; border-color: var(--c-technique); }
 .quiz-opt.wrong { border-color: var(--c-event); background: rgba(168,72,63,.12); }
 .quiz-opt.wrong .quiz-opt-letter { background: var(--c-event); color: #fff; border-color: var(--c-event); }

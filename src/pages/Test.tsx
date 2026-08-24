@@ -41,7 +41,7 @@ function savePeriodIds(s: Set<string>) {
   try { localStorage.setItem(PERIODS_LS, JSON.stringify([...s])); } catch {}
 }
 
-type Phase = "setup" | "playing" | "result" | "stats";
+type Phase = "setup" | "playing" | "result" | "stats" | "level-result" | "level-final";
 type Mode = "normale" | "ripasso";
 
 // ===================== DRAWER OPERA =====================
@@ -441,15 +441,10 @@ function EntityAutocomplete({
     return () => document.removeEventListener("mousedown", onClick);
   }, [open]);
 
-  // Focus sull'input al mount (solo se non disabilitato)
-  useEffect(() => {
-    if (!disabled) {
-      const t = setTimeout(() => {
-        try { inputRef.current?.focus(); } catch { /* ignore */ }
-      }, 100);
-      return () => clearTimeout(t);
-    }
-  }, [disabled]);
+  // NOTA: non facciamo auto-focus sull'input al mount, perché su mobile
+  // l'apertura automatica della tastiera fa scrollare la viewport e
+  // nasconde i tasti "Esci" e "Aiutami". L'utente attiva l'input con un
+  // tap esplicito, così la tastiera appare solo quando serve.
 
   const pick = (item: { id: string; name: string }) => {
     onPick(item.id, item.name);
@@ -618,7 +613,7 @@ function EntityAutocomplete({
             <span
               key={h.id}
               className="chip"
-              onClick={() => { setQuery(h.label); setOpen(true); setShowHints(false); inputRef.current?.focus(); }}
+              onClick={() => { setQuery(h.label); setOpen(true); setShowHints(false); }}
               data-testid={`quiz-hint-${i}`}
               style={{ cursor: "pointer" }}
             >
@@ -656,6 +651,21 @@ export default function Test() {
   const [favOnly, setFavOnly] = useState(false);
   const [studiedOnly, setStudiedOnly] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
+  // === Modalità "a livelli" (survival): una domanda per ogni opera, a
+  // eliminazione. Le opere sbagliate passano al round successivo. Si può
+  // attivare solo con UN tipo di domanda selezionato (vedi avviso sotto).
+  const [levelsMode, setLevelsMode] = useState(false);
+  // === Stato della sessione "a livelli" ===
+  // - level: round corrente (1, 2, 3, ...)
+  // - totalWorksCount: numero di opere del round 1 (per il risultato finale)
+  // - wrongWorkIdsRound: opere sbagliate nel round corrente (passano al prossimo)
+  // - lastRoundScore: { correct, total } del round appena concluso (per il
+  //   risultato intermedio)
+  const [level, setLevel] = useState(1);
+  const [totalWorksCount, setTotalWorksCount] = useState(0);
+  const [wrongWorkIdsRound, setWrongWorkIdsRound] = useState<Set<string>>(new Set());
+  const [lastRoundScore, setLastRoundScore] = useState<{ correct: number; total: number } | null>(null);
+  const [finalLevelResult, setFinalLevelResult] = useState<{ stillWrong: number; total: number; rounds: number } | null>(null);
   // === Modalità quiz: "multipla" (scelta tra 4 opzioni) o "aperte" (input
   // con autocomplete). Il selettore è in alto, accanto a "Quante domande".
   // Quando cambia la modalità, filtriamo i kinds selezionati per mantenere
@@ -771,9 +781,51 @@ export default function Test() {
 
   const start = () => {
     if (kinds.size === 0) { setNotice("Seleziona almeno un tipo di domanda per iniziare."); return; }
+    // In modalità "a livelli" è obbligatorio un solo tipo di domanda
+    if (levelsMode && kinds.size !== 1) {
+      setNotice("In modalità «Tutte (a livelli)» puoi selezionare un solo tipo di domanda alla volta.");
+      return;
+    }
     // In modalità filtrata (favOnly/studiedOnly) ignoro i periodIds e uso yearRange
     // In modalità normale uso i periodIds classici
     const pids = filteredMode ? undefined : (periodIds.size > 0 ? [...periodIds] : undefined);
+
+    // === Modalità "a livelli" ===
+    // Round 1: una domanda per ogni opera (del tipo selezionato). Generiamo
+    // un gran numero di domande (max 1000) chiedendo un solo kind. Le opere
+    // sbagliate verranno raccolte in wrongWorkIdsRound e passate al round 2.
+    if (levelsMode) {
+      const kindArr = [...kinds] as QuizKind[];
+      const qs = generateQuiz(ix, {
+        kinds: kindArr,
+        periodIds: pids,
+        yearRange: filteredMode ? activeYearRange : undefined,
+        book: book ? Number(book) : undefined,
+        count: 1000,  // "tutte" — il generatore si ferma quando esaurisce le opere
+        seed: Date.now() % 1e9,
+        favorites: favOnly ? { works: new Set(favs.works), artists: new Set(favs.artists) } : undefined,
+        studiedWorks: studiedOnly ? new Set(studied) : undefined,
+      });
+      if (qs.length === 0) {
+        setNotice("Nessuna domanda generabile con questi filtri per il tipo selezionato.");
+        return;
+      }
+      setNotice(null);
+      setLevel(1);
+      setTotalWorksCount(qs.length);
+      setWrongWorkIdsRound(new Set());
+      setLastRoundScore(null);
+      setFinalLevelResult(null);
+      setMode("normale");
+      setQuestions(qs);
+      setIdx(0);
+      setPicked(null);
+      setAnswers([]);
+      setReviewRemoved([]);
+      setPhase("playing");
+      return;
+    }
+
     const qs = generateQuiz(ix, {
       kinds: [...kinds],
       periodIds: pids,
@@ -995,7 +1047,78 @@ export default function Test() {
     const logs: AnswerLog[] = answers.map((a) => ({ kind: a.q.kind, refId: a.q.refId, ok: a.ok, periodId: a.q.topicPeriodId, prompt: a.q.prompt }));
     recordSession(logs, mode, [...kinds]);
     setErrN(errorCount());
+
+    // === Modalità "a livelli" ===
+    // Raccogli le opere sbagliate in questo round (refId = workId per le
+    // domande derivanti da opere). Se ce ne sono, avvia il round successivo
+    // con solo quelle. Se non ce ne sono, mostra il risultato finale.
+    if (levelsMode) {
+      const wrong = new Set<string>();
+      for (const a of answers) {
+        if (!a.ok) {
+          // refId è l'id dell'opera per le domande derivate da opere
+          wrong.add(a.q.refId);
+        }
+      }
+      const correct = answers.filter(a => a.ok).length;
+      const total = answers.length;
+      setLastRoundScore({ correct, total });
+      setWrongWorkIdsRound(wrong);
+
+      if (wrong.size === 0) {
+        // Tutte corrette! Test concluso con successo.
+        setFinalLevelResult({ stillWrong: 0, total: totalWorksCount, rounds: level });
+        setPhase("level-final");
+      } else {
+        // Round successivo: una domanda per ogni opera sbagliata
+        // Mostriamo prima il risultato intermedio, l'utente preme "Prossimo round"
+        setPhase("level-result");
+      }
+      return;
+    }
+
     setPhase("result");
+  };
+
+  // === Avvia il round successivo nella modalità "a livelli" ===
+  // Genera una nuova domanda per ogni opera in wrongWorkIdsRound (del tipo
+  // già selezionato). Incrementa il contatore level.
+  const nextRound = () => {
+    if (wrongWorkIdsRound.size === 0) return;
+    const kindArr = [...kinds] as QuizKind[];
+    // Genera domande SOLO per le opere sbagliate del round precedente.
+    // Usiamo refIds per forzare la generazione su quelle specifiche opere.
+    const refIds = [...wrongWorkIdsRound].map(refId => ({ kind: kindArr[0], refId }));
+    const qs = generateQuiz(ix, {
+      kinds: [],
+      count: refIds.length,
+      refIds,
+      seed: Date.now() % 1e9,
+    });
+    if (qs.length === 0) {
+      // Non dovremmo mai arrivare qui, ma per sicurezza
+      setFinalLevelResult({ stillWrong: wrongWorkIdsRound.size, total: totalWorksCount, rounds: level });
+      setPhase("level-final");
+      return;
+    }
+    setLevel(l => l + 1);
+    setWrongWorkIdsRound(new Set());
+    setMode("normale");
+    setQuestions(qs);
+    setIdx(0);
+    setPicked(null);
+    setAnswers([]);
+    setReviewRemoved([]);
+    setPhase("playing");
+  };
+
+  // Resetta lo stato della sessione "a livelli" (per tornare al setup)
+  const resetLevelsState = () => {
+    setLevel(1);
+    setTotalWorksCount(0);
+    setWrongWorkIdsRound(new Set());
+    setLastRoundScore(null);
+    setFinalLevelResult(null);
   };
 
   const score = answers.filter((a) => a.ok).length;
@@ -1044,8 +1167,8 @@ export default function Test() {
 
         <div className="quiz-setup">
           <div className="quiz-actions">
-            <button className="btn gold" onClick={start} disabled={kinds.size === 0} data-testid="quiz-start"
-              title={kinds.size === 0 ? "Seleziona almeno un tipo di domanda" : ""}>Inizia il quiz →</button>
+            <button className="btn gold" onClick={start} disabled={kinds.size === 0 || (levelsMode && kinds.size !== 1)} data-testid="quiz-start"
+              title={kinds.size === 0 ? "Seleziona almeno un tipo di domanda" : (levelsMode && kinds.size !== 1 ? "In modalità «a livelli» seleziona un solo tipo di domanda" : "")}>Inizia il quiz →</button>
             <button className="btn" onClick={startReview} disabled={errN === 0} data-testid="quiz-review"
               title={errN === 0 ? "Nessun errore da ripassare" : ""}>
               Ripassa errori {errN > 0 && <span className="pill">{errN}</span>}
@@ -1056,15 +1179,26 @@ export default function Test() {
           {kinds.size === 0 && !notice && (
             <div className="quiz-notice soft" data-testid="quiz-hint">Nessun filtro attivo: seleziona qui sotto i tipi di domanda che vuoi (o «seleziona tutto»).</div>
           )}
+          {levelsMode && kinds.size > 1 && !notice && (
+            <div className="quiz-notice soft" data-testid="quiz-levels-hint">
+              In modalità «Tutte (a livelli)» puoi selezionare <b>un solo tipo di domanda</b> alla volta. Deseleziona quelli in più per iniziare.
+            </div>
+          )}
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-start" }}>
             <div>
               <div className="eyebrow" style={{ marginBottom: 12 }}>Quante domande</div>
               <div className="seg" data-testid="quiz-count-seg">
                 {[10, 20, 40].map((n) => (
-                  <button key={n} className={`seg-btn ${count === n ? "on" : ""}`} onClick={() => setCount(n)} data-testid={`quiz-count-${n}`}>{n}</button>
+                  <button key={n} className={`seg-btn ${count === n && !levelsMode ? "on" : ""}`} onClick={() => { setCount(n); setLevelsMode(false); }} data-testid={`quiz-count-${n}`}>{n}</button>
                 ))}
+                <button className={`seg-btn ${levelsMode ? "on" : ""}`} onClick={() => { setLevelsMode(true); setCount(0); }} data-testid="quiz-count-levels" title="Una domanda per ogni opera, a eliminazione: sbagli e l'opera passa al round successivo">Tutte (a livelli)</button>
               </div>
+              {levelsMode && (
+                <div className="faint" style={{ fontSize: 11.5, marginTop: 6, maxWidth: 280 }}>
+                  Round 1: tutte le opere. Round 2: solo quelle sbagliate. Round 3: solo quelle ancora sbagliate. E così via, finché non ne restano 0 o si chiude.
+                </div>
+              )}
             </div>
             <div>
               <div className="eyebrow" style={{ marginBottom: 12 }}>Tipo di domanda</div>
@@ -1227,6 +1361,123 @@ export default function Test() {
     return <StatsView onBack={() => setPhase("setup")} drawerWorkId={drawerWorkId} drawerOpen={drawerOpen} closeDrawer={closeDrawer} openDrawer={openDrawer} />;
   }
 
+  // ===================== LEVEL RESULT (risultato intermedio tra round) ====
+  if (phase === "level-result" && lastRoundScore) {
+    const { correct, total } = lastRoundScore;
+    const pct = total ? Math.round((correct / total) * 100) : 0;
+    const stillWrong = wrongWorkIdsRound.size;
+    return (
+      <div className="wrap page">
+        <div className="result-hero">
+          <div className="eyebrow">Round {level} completato</div>
+          <div className="result-score" data-testid="level-score">
+            <CountUp value={correct} /><span className="muted" style={{ fontSize: 38 }}>/{total}</span>
+          </div>
+          <div className="result-pct" style={{ color: pct >= 70 ? "var(--c-technique)" : pct >= 40 ? "var(--gold)" : "var(--c-event)" }}>
+            <CountUp value={pct} suffix="%" />
+          </div>
+          <p className="muted" style={{ marginTop: 8 }}>
+            {stillWrong === 0
+              ? "Perfetto! Tutte corrette in questo round."
+              : stillWrong === 1
+                ? `Hai ancora 1 opera da azzeccare.`
+                : `Hai ancora ${stillWrong} opere da azzeccare.`}
+          </p>
+          <div style={{ display: "flex", gap: 12, marginTop: 24, flexWrap: "wrap", justifyContent: "center" }}>
+            <button className="btn gold" onClick={nextRound} data-testid="level-next-round">
+              Prossimo round ({stillWrong} {stillWrong === 1 ? "opera" : "opere"}) →
+            </button>
+            <button className="btn ghost" onClick={() => {
+              // Termina qui e mostra il risultato finale
+              setFinalLevelResult({ stillWrong, total: totalWorksCount, rounds: level });
+              setPhase("level-final");
+            }} data-testid="level-stop">Termina qui</button>
+          </div>
+        </div>
+
+        {/* Revisione del round appena concluso (come nella fase result standard) */}
+        <div style={{ marginTop: 44 }}>
+          <div className="eyebrow" style={{ marginBottom: 16 }}>Revisione del round {level}</div>
+          {answers.map((a, i) => {
+            const refWorkId = a.q.refHref?.startsWith("/opera/") ? a.q.refHref.slice("/opera/".length) : null;
+            const refWork = refWorkId ? ix.workById.get(refWorkId) : undefined;
+            return (
+              <div key={i} className="review-row" style={{ borderLeftColor: a.ok ? "var(--c-technique)" : "var(--c-event)" }} data-testid={`review-${i}`}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
+                    <span className="tag" style={{ borderColor: "var(--line)" }}>{QUIZ_KIND_LABEL[a.q.kind]}</span>
+                    {!a.ok && <span style={{ color: "var(--c-event)", fontSize: 13, fontWeight: 600 }}>✗ Sbagliata</span>}
+                    {a.ok && <span style={{ color: "var(--c-technique)", fontSize: 13, fontWeight: 600 }}>✓ Corretta</span>}
+                  </div>
+                  <div style={{ fontSize: 15, marginTop: 8 }}>{a.q.prompt}</div>
+                  <div style={{ fontSize: 13.5, marginTop: 6 }}>
+                    {OPEN_KINDS.includes(a.q.kind) ? (
+                      a.ok
+                        ? <span style={{ color: "var(--c-technique)" }}>✓ {a.q.correctEntityLabel}</span>
+                        : <><span className="muted">Corretta: <span style={{ color: "var(--c-technique)" }}>{a.q.correctEntityLabel}</span></span></>
+                    ) : a.ok
+                      ? <span style={{ color: "var(--c-technique)" }}>✓ {a.q.options[a.q.correct]}</span>
+                      : <><span style={{ color: "var(--c-event)" }}>✗ La tua risposta: {a.q.options[a.chosen]}</span><br /><span className="muted">Corretta: <span style={{ color: "var(--c-technique)" }}>{a.q.options[a.q.correct]}</span></span></>}
+                  </div>
+                  <div className="muted" style={{ fontSize: 13, marginTop: 6 }}>
+                    {a.q.explain}
+                    {refWork && (
+                      <> — <button onClick={() => openDrawer(refWork.id)} style={{
+                        background: "none", border: 0, padding: 0, cursor: "pointer",
+                        color: "var(--gold)", fontSize: 13, textDecoration: "underline",
+                        fontWeight: 500,
+                      }}>{refWork.title}</button></>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Drawer opera */}
+        <OperaDrawer workId={drawerWorkId} open={drawerOpen} onClose={closeDrawer} />
+      </div>
+    );
+  }
+
+  // ===================== LEVEL FINAL (risultato finale) ===================
+  if (phase === "level-final" && finalLevelResult) {
+    const { stillWrong, total, rounds } = finalLevelResult;
+    const pct = total ? Math.round(((total - stillWrong) / total) * 100) : 0;
+    const allCorrect = stillWrong === 0;
+    return (
+      <div className="wrap page">
+        <div className="result-hero">
+          <div className="eyebrow">{allCorrect ? "Test completato!" : "Test concluso"}</div>
+          <div className="result-score" data-testid="level-final-score">
+            <CountUp value={stillWrong} /><span className="muted" style={{ fontSize: 38 }}>/{total}</span>
+          </div>
+          <div className="result-pct" style={{ color: allCorrect ? "var(--c-technique)" : pct >= 70 ? "var(--c-technique)" : pct >= 40 ? "var(--gold)" : "var(--c-event)" }}>
+            <CountUp value={pct} suffix="%" />
+          </div>
+          <p className="muted" style={{ marginTop: 8 }}>
+            {allCorrect
+              ? `Tutte le ${total} opere azzeccate in ${rounds} ${rounds === 1 ? "round" : "round"}! Complimenti.`
+              : `Su ${total} opere totali, ${stillWrong} ${stillWrong === 1 ? "è ancora sbagliata" : "sono ancora sbagliate"} dopo ${rounds} ${rounds === 1 ? "round" : "round"}.`}
+          </p>
+          {!allCorrect && (
+            <p className="muted" style={{ marginTop: 6, color: "var(--c-technique)" }} data-testid="level-final-hint">
+              Ripassale e riprova: la prossima volta andrà meglio.
+            </p>
+          )}
+          <div style={{ display: "flex", gap: 12, marginTop: 24, flexWrap: "wrap", justifyContent: "center" }}>
+            <button className="btn gold" onClick={() => { resetLevelsState(); setPhase("setup"); }} data-testid="level-restart">Nuovo test</button>
+            <button className="btn ghost" onClick={() => setPhase("stats")} data-testid="level-go-stats">Statistiche →</button>
+          </div>
+        </div>
+
+        {/* Drawer opera */}
+        <OperaDrawer workId={drawerWorkId} open={drawerOpen} onClose={closeDrawer} />
+      </div>
+    );
+  }
+
   // ===================== RESULT =====================
   if (phase === "result") {
     const pct = questions.length ? Math.round((score / questions.length) * 100) : 0;
@@ -1317,8 +1568,10 @@ export default function Test() {
           <motion.div className="quiz-progress-fill" animate={{ width: `${(idx / questions.length) * 100}%` }} transition={{ duration: reduced ? 0 : 0.4, ease: EASE_OUT }} />
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: 10 }}>
-          <span className="muted" style={{ fontSize: 13 }}>Domanda {idx + 1} di {questions.length}{mode === "ripasso" ? " · ripasso" : ""}</span>
-          <span className="muted" style={{ fontSize: 13 }}>Punti: {score}</span>
+          <span className="muted" style={{ fontSize: 13 }}>
+            {levelsMode ? `Round ${level} · ` : ""}Domanda {idx + 1} di {questions.length}{mode === "ripasso" ? " · ripasso" : ""}
+          </span>
+          <span className="muted" style={{ fontSize: 13 }}>Punti: {score}{levelsMode && wrongWorkIdsRound.size > 0 ? ` · ${wrongWorkIdsRound.size} da recuperare` : ""}</span>
         </div>
       </div>
 
@@ -1372,22 +1625,23 @@ export default function Test() {
                       {pickedEntityName ?? "—"}
                     </div>
                   </div>
-                  {pickedEntityId !== q.correctEntityId && (
-                    <div style={{
-                      padding: "12px 14px",
-                      borderRadius: 10,
-                      border: "1.5px solid var(--c-technique)",
-                      background: "color-mix(in srgb, var(--c-technique) 8%, transparent)",
-                      fontSize: 14,
-                    }}>
-                      <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
-                        Risposta corretta
-                      </div>
-                      <div style={{ fontWeight: 600, color: "var(--c-technique)" }}>
-                        {q.correctEntityLabel ?? "—"}
-                      </div>
+                  {/* Risposta corretta: sempre mostrata (sia se l'utente ha
+                      azzeccato che se ha sbagliato). Cornice verde in evidenza,
+                      con il nome dell'entità corretta in grassetto. */}
+                  <div style={{
+                    padding: "12px 14px",
+                    borderRadius: 10,
+                    border: "1.5px solid var(--c-technique)",
+                    background: "color-mix(in srgb, var(--c-technique) 12%, transparent)",
+                    fontSize: 14,
+                  }}>
+                    <div style={{ fontSize: 11, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4, fontWeight: 700 }}>
+                      Risposta corretta
                     </div>
-                  )}
+                    <div style={{ fontWeight: 800, color: "var(--c-technique)", fontSize: 15 }}>
+                      {q.correctEntityLabel ?? "—"}
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -1455,7 +1709,7 @@ export default function Test() {
                 {!OPEN_KINDS.includes(q.kind) && picked !== q.correct && (
                   <div style={{ marginTop: 8, fontSize: 13.5 }}>
                     <span className="muted">La risposta corretta è: </span>
-                    <span style={{ color: "var(--c-technique)", fontWeight: 600 }}>{q.options[q.correct]}</span>
+                    <span style={{ color: "var(--c-technique)", fontWeight: 800, fontSize: 14.5 }}>{q.options[q.correct]}</span>
                   </div>
                 )}
               </div>
