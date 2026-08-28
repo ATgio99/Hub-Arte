@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { Empty, EntityLink, FilterNote } from "../components/ui";
-import WorksPanel from "../components/WorksPanel";
+import WorksInline from "../components/WorksInline";
 import { fmtYear } from "../lib/data";
 import type { TechCategory } from "../lib/types";
 
@@ -19,8 +19,8 @@ export default function Tecniche() {
   const [q, setQ] = useState("");
   const [cat, setCat] = useState("");
   const [active, setActive] = useState<string | null>(sp.get("t"));
-  // Tecnica le cui opere sono aperte nel pannello laterale (null = chiuso)
-  const [openTech, setOpenTech] = useState<string | null>(null);
+  // Tecniche espanse: il blocco opere si apre dentro la scheda
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
   // Opere che usano una data tecnica (per ID).
   const worksWithTech = useMemo(() => {
@@ -33,6 +33,14 @@ export default function Tecniche() {
     }
     return map;
   }, [ix.ds.works]);
+
+  const toggleExpand = (id: string) => {
+    setExpanded((prev) => {
+      const n = new Set(prev);
+      n.has(id) ? n.delete(id) : n.add(id);
+      return n;
+    });
+  };
 
   // deep-link a una tecnica: ?t=ID evidenzia e scorre
   useEffect(() => {
@@ -59,8 +67,6 @@ export default function Tecniche() {
       });
   }, [inTime, q, cat, ix]);
 
-  const openTechObj = openTech ? ix.techById.get(openTech) : null;
-
   return (
     <div className="wrap page">
       <div className="page-head">
@@ -84,54 +90,45 @@ export default function Tecniche() {
       </div>
 
       {list.length === 0 ? <Empty msg="Nessuna tecnica trovata." /> : (
-        <div className={openTechObj ? "gloss-split" : ""}>
-          <div className="tech-list">
-            {list.map((t) => {
-              const fp = t.first_period_id ? ix.periodById.get(t.first_period_id) : null;
-              const works = worksWithTech.get(t.id) || [];
-              const isOpen = openTech === t.id;
-              return (
-                <div id={`tech-${t.id}`} className={`tech-card ${active === t.id || isOpen ? "hot" : ""}`} key={t.id} data-testid={`tech-${t.id}`}>
-                  <div className="tech-spine" style={{ background: CAT_COLOR[t.category] }} />
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
-                      <h3 style={{ fontSize: 22 }}>{t.name}</h3>
-                      <span className="tag" style={{ color: CAT_COLOR[t.category], borderColor: "var(--line)" }}>{t.category}</span>
-                      {fp && <span className="faint" style={{ fontSize: 12 }}>prima comparsa: <EntityLink type="period" id={fp.id} label={`${fp.name} (${fmtYear(fp.year_start)})`} /></span>}
-                    </div>
-                    <p className="prose" style={{ marginTop: 10, fontSize: 15.5 }}>{t.definition}</p>
-                    <div className="tech-meta">
-                      {t.introduced_by && <div><span className="faint">Introdotta da · </span>{t.introduced_by}</div>}
-                      {t.evolution && <div style={{ marginTop: 8 }}><span className="faint">Evoluzione · </span><span className="muted">{t.evolution}</span></div>}
-                    </div>
-                    {/* Riga d'accesso alle opere che usano la tecnica */}
-                    {works.length > 0 && (
-                      <div className="gloss-open">
-                        <button className="gloss-openbtn" onClick={() => setOpenTech(isOpen ? null : t.id)}
-                          data-testid={`tech-open-${t.id}`} aria-expanded={isOpen}>
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2" /><path d="M15 3v18" />
-                          </svg>
-                          {works.length} oper{works.length === 1 ? "a" : "e"} con questa tecnica{isOpen ? "" : " →"}
-                        </button>
-                        {isOpen && <span className="gloss-openflag">aperto nel pannello</span>}
-                      </div>
-                    )}
+        <div className="tech-list">
+          {list.map((t) => {
+            const fp = t.first_period_id ? ix.periodById.get(t.first_period_id) : null;
+            const works = worksWithTech.get(t.id) || [];
+            const isExpanded = expanded.has(t.id);
+            return (
+              <div id={`tech-${t.id}`} className={`tech-card ${active === t.id || isExpanded ? "hot" : ""}`} key={t.id} data-testid={`tech-${t.id}`}>
+                <div className="tech-spine" style={{ background: CAT_COLOR[t.category] }} />
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
+                    <h3 style={{ fontSize: 22 }}>{t.name}</h3>
+                    <span className="tag" style={{ color: CAT_COLOR[t.category], borderColor: "var(--line)" }}>{t.category}</span>
+                    {fp && <span className="faint" style={{ fontSize: 12 }}>prima comparsa: <EntityLink type="period" id={fp.id} label={`${fp.name} (${fmtYear(fp.year_start)})`} /></span>}
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                  <p className="prose" style={{ marginTop: 10, fontSize: 15.5 }}>{t.definition}</p>
+                  <div className="tech-meta">
+                    {t.introduced_by && <div><span className="faint">Introdotta da · </span>{t.introduced_by}</div>}
+                    {t.evolution && <div style={{ marginTop: 8 }}><span className="faint">Evoluzione · </span><span className="muted">{t.evolution}</span></div>}
+                  </div>
 
-          {openTechObj && (
-            <WorksPanel
-              eyebrow="Opere · tecnica"
-              title={openTechObj.name}
-              works={worksWithTech.get(openTechObj.id) || []}
-              catalogHref={`/opere?tech=${openTechObj.id}`}
-              onClose={() => setOpenTech(null)}
-            />
-          )}
+                  {/* Apertura del blocco opere dentro la scheda */}
+                  {works.length > 0 && (
+                    <>
+                      <div className="gloss-open">
+                        <button className="gloss-openbtn" onClick={() => toggleExpand(t.id)}
+                          aria-expanded={isExpanded} data-testid={`tech-expand-${t.id}`}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M6 9l6 6 6-6" />
+                          </svg>
+                          {isExpanded ? `Nascondi le ${works.length} opere` : `${works.length} oper${works.length === 1 ? "a" : "e"} con questa tecnica`}
+                        </button>
+                      </div>
+                      {isExpanded && <WorksInline works={works} />}
+                    </>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

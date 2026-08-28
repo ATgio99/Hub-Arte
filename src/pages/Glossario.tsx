@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { Empty, EntityLink, FilterNote } from "../components/ui";
-import WorksPanel from "../components/WorksPanel";
+import WorksInline from "../components/WorksInline";
 import type { TermCategory } from "../lib/types";
 
 const CATS: TermCategory[] = ["architettura", "pittura", "scultura", "iconografia", "generale"];
@@ -15,8 +15,8 @@ export default function Glossario() {
   const [cat, setCat] = useState<string>("");
   const [onlyArch, setOnlyArch] = useState(false);
   const [active, setActive] = useState<string | null>(sp.get("t"));
-  // Termine le cui opere sono aperte nel pannello laterale (null = chiuso)
-  const [openTerm, setOpenTerm] = useState<string | null>(null);
+  // Termini espansi: il blocco opere si apre dentro la scheda
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
   // Trova opere che contengono un dato termine (per ID).
   const worksWithTerm = useMemo(() => {
@@ -29,6 +29,14 @@ export default function Glossario() {
     }
     return map;
   }, [ix.ds.works]);
+
+  const toggleExpand = (id: string) => {
+    setExpanded((prev) => {
+      const n = new Set(prev);
+      n.has(id) ? n.delete(id) : n.add(id);
+      return n;
+    });
+  };
 
   useEffect(() => {
     const t = sp.get("t");
@@ -49,8 +57,6 @@ export default function Glossario() {
       })
       .sort((a, b) => a.term.localeCompare(b.term, "it"));
   }, [inTime, q, cat, onlyArch]);
-
-  const openTermObj = openTerm ? ix.termById.get(openTerm) : null;
 
   return (
     <div className="wrap page">
@@ -76,56 +82,46 @@ export default function Glossario() {
       </div>
 
       {list.length === 0 ? <Empty msg="Nessun termine trovato." /> : (
-        <div className={openTermObj ? "gloss-split" : ""}>
-          <div className="gloss-grid">
-            {list.map((t) => {
-              const works = worksWithTerm.get(t.id) || [];
-              const isOpen = openTerm === t.id;
-              return (
-                <div id={`term-${t.id}`} key={t.id}
-                  className={`gloss-card ${t.is_archetype ? "arch" : ""} ${active === t.id || isOpen ? "hot" : ""}`}
-                  data-testid={`gloss-${t.id}`}>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
-                    <h3 style={{ fontSize: 20 }}>{t.term}</h3>
-                    {t.is_archetype && <span className="tag" style={{ color: "var(--c-term)", borderColor: "var(--c-term)" }}>◆ archetipo</span>}
-                    <span className="faint" style={{ fontSize: 11, marginLeft: "auto", textTransform: "uppercase", letterSpacing: ".08em" }}>{t.category}</span>
-                  </div>
-                  <p className="muted" style={{ marginTop: 8, fontSize: 14.5, lineHeight: 1.6 }}>{t.definition}</p>
-                  {t.period_ids.length > 0 && (
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 12 }}>
-                      {t.period_ids.slice(0, 5).map((pid) => (
-                        <EntityLink key={pid} type="period" id={pid} className="chip sm" />
-                      ))}
-                    </div>
-                  )}
-                  {/* Riga d'accesso: le opere si aprono nel pannello, la scheda non cresce */}
-                  {works.length > 0 && (
-                    <div className="gloss-open">
-                      <button className="gloss-openbtn" onClick={() => setOpenTerm(isOpen ? null : t.id)}
-                        data-testid={`gloss-open-${t.id}`}
-                        aria-expanded={isOpen}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="3" y="3" width="18" height="18" rx="2" /><path d="M15 3v18" />
-                        </svg>
-                        {works.length} oper{works.length === 1 ? "a" : "e"}{isOpen ? "" : " →"}
-                      </button>
-                      {isOpen && <span className="gloss-openflag">aperto nel pannello</span>}
-                    </div>
-                  )}
+        <div className="gloss-grid">
+          {list.map((t) => {
+            const isExpanded = expanded.has(t.id);
+            const works = worksWithTerm.get(t.id) || [];
+            return (
+              <div id={`term-${t.id}`} key={t.id}
+                className={`gloss-card ${t.is_archetype ? "arch" : ""} ${active === t.id || isExpanded ? "hot" : ""}`}
+                data-testid={`gloss-${t.id}`}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
+                  <h3 style={{ fontSize: 20 }}>{t.term}</h3>
+                  {t.is_archetype && <span className="tag" style={{ color: "var(--c-term)", borderColor: "var(--c-term)" }}>◆ archetipo</span>}
+                  <span className="faint" style={{ fontSize: 11, marginLeft: "auto", textTransform: "uppercase", letterSpacing: ".08em" }}>{t.category}</span>
                 </div>
-              );
-            })}
-          </div>
+                <p className="muted" style={{ marginTop: 8, fontSize: 14.5, lineHeight: 1.6 }}>{t.definition}</p>
+                {t.period_ids.length > 0 && (
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 12 }}>
+                    {t.period_ids.slice(0, 5).map((pid) => (
+                      <EntityLink key={pid} type="period" id={pid} className="chip sm" />
+                    ))}
+                  </div>
+                )}
 
-          {openTermObj && (
-            <WorksPanel
-              eyebrow="Opere · termine"
-              title={openTermObj.term}
-              works={worksWithTerm.get(openTermObj.id) || []}
-              catalogHref={`/opere?term=${openTermObj.id}`}
-              onClose={() => setOpenTerm(null)}
-            />
-          )}
+                {/* Apertura del blocco opere dentro la scheda */}
+                {works.length > 0 && (
+                  <>
+                    <div className="gloss-open">
+                      <button className="gloss-openbtn" onClick={() => toggleExpand(t.id)}
+                        aria-expanded={isExpanded} data-testid={`gloss-expand-${t.id}`}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M6 9l6 6 6-6" />
+                        </svg>
+                        {isExpanded ? `Nascondi le ${works.length} opere` : `${works.length} oper${works.length === 1 ? "a" : "e"} con questo termine`}
+                      </button>
+                    </div>
+                    {isExpanded && <WorksInline works={works} />}
+                  </>
+                )}
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
