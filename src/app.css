@@ -1127,17 +1127,27 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 
 /* ============================================================
    WorksInline — opere collegate, in linea dentro la scheda.
-   La scheda cresce solo nella propria colonna: la griglia
-   (.gloss-grid) allinea le schede in alto, quindi le colonne
-   accanto non si spostano.
+   + schede del glossario tutte della stessa altezza quando chiuse.
    Da appendere a src/app.css.
    ============================================================ */
 
-/* le schede del glossario si allineano in alto: una che si espande
-   non trascina le altre */
+/* le schede si allineano in alto: quella che si espande non trascina le altre */
 .gloss-grid { align-items: start; }
 
-/* riga d'apertura in fondo alla scheda voce / tecnica */
+/* ---------- schede chiuse: altezza uniforme ---------- */
+.gloss-card { min-height: 262px; display: flex; flex-direction: column; }
+/* la definizione occupa lo spazio libero ed è tagliata a 4 righe,
+   così la riga d'apertura resta ancorata in fondo alla scheda */
+.gloss-card > p {
+  flex: 1 1 auto;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* scheda aperta: altezza libera e definizione intera */
+.gloss-card.is-open { min-height: 0; }
+.gloss-card.is-open > p { flex: 0 0 auto; display: block; overflow: visible; }
+
+/* ---------- riga d'apertura ---------- */
 .gloss-open {
   margin-top: 14px; padding-top: 11px; border-top: 1px solid var(--line-soft);
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
@@ -1152,6 +1162,10 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 .gloss-openbtn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
 .gloss-openbtn svg { flex-shrink: 0; transition: transform .2s ease; }
 .gloss-openbtn[aria-expanded="true"] svg { transform: rotate(180deg); }
+.gloss-openflag {
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 600; font-variant-numeric: tabular-nums;
+}
 
 /* ---------- blocco opere ---------- */
 .wi { animation: wi-open .24s ease-out both; }
@@ -1180,20 +1194,16 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 .wi-star { color: var(--gold); font-size: 10px; }
 .wi-meta { display: block; font-size: 11.5px; color: var(--ink-dim); margin-top: 3px; }
 
-.wi-foot {
-  display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  flex-wrap: wrap; margin-top: 12px;
-}
 .wi-more {
-  background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit;
-  font-size: 12px; font-weight: 600; color: var(--gold-deep); min-height: 44px;
+  background: none; border: 0; padding: 0; margin-top: 10px; cursor: pointer;
+  font-family: inherit; font-size: 12px; font-weight: 600; color: var(--gold-deep);
+  min-height: 44px;
 }
 .wi-more:hover { color: var(--amber); }
-.wi-sort { display: flex; gap: 5px; margin-left: auto; }
-.wi-sort .chip.sm { font-size: 10.5px; padding: 3px 8px; min-height: 0; }
 
-/* mobile: miniature e testo un filo più grandi (la colonna è unica) */
+/* mobile: una colonna, miniature e testo un filo più grandi */
 @media (max-width: 600px) {
+  .gloss-card { min-height: 0; }        /* a colonna singola l'altezza fissa non serve */
   .wi-thumb { width: 76px; height: 57px; }
   .wi-title { font-size: 15.5px; }
   .wi-meta { font-size: 12.5px; }

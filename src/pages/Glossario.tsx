@@ -88,7 +88,7 @@ export default function Glossario() {
             const works = worksWithTerm.get(t.id) || [];
             return (
               <div id={`term-${t.id}`} key={t.id}
-                className={`gloss-card ${t.is_archetype ? "arch" : ""} ${active === t.id || isExpanded ? "hot" : ""}`}
+                className={`gloss-card ${t.is_archetype ? "arch" : ""} ${isExpanded ? "is-open" : ""} ${active === t.id || isExpanded ? "hot" : ""}`}
                 data-testid={`gloss-${t.id}`}>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
                   <h3 style={{ fontSize: 20 }}>{t.term}</h3>
@@ -115,6 +115,7 @@ export default function Glossario() {
                         </svg>
                         {isExpanded ? `Nascondi le ${works.length} opere` : `${works.length} oper${works.length === 1 ? "a" : "e"} con questo termine`}
                       </button>
+                      {isExpanded && <span className="gloss-openflag">ordine cronologico</span>}
                     </div>
                     {isExpanded && <WorksInline works={works} />}
                   </>
