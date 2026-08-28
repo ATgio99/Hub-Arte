@@ -90,14 +90,14 @@ export default function Glossario() {
               <div id={`term-${t.id}`} key={t.id}
                 className={`gloss-card ${t.is_archetype ? "arch" : ""} ${isExpanded ? "is-open" : ""} ${active === t.id || isExpanded ? "hot" : ""}`}
                 data-testid={`gloss-${t.id}`}>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
+                <div className="gloss-head">
                   <h3 style={{ fontSize: 20 }}>{t.term}</h3>
                   {t.is_archetype && <span className="tag" style={{ color: "var(--c-term)", borderColor: "var(--c-term)" }}>◆ archetipo</span>}
-                  <span className="faint" style={{ fontSize: 11, marginLeft: "auto", textTransform: "uppercase", letterSpacing: ".08em" }}>{t.category}</span>
+                  <span className="faint">{t.category}</span>
                 </div>
-                <p className="muted" style={{ marginTop: 8, fontSize: 14.5, lineHeight: 1.6 }}>{t.definition}</p>
+                <p className="gloss-def muted">{t.definition}</p>
                 {t.period_ids.length > 0 && (
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 12 }}>
+                  <div className="gloss-periods">
                     {t.period_ids.slice(0, 5).map((pid) => (
                       <EntityLink key={pid} type="period" id={pid} className="chip sm" />
                     ))}

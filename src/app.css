@@ -1057,100 +1057,48 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   .grid-works { grid-template-columns: 1fr; }
 }
 
-
-
-/* ========== FULLSCREEN CON DRAWER LATERALE ========== */
-.fs-host.is-full {
-  position: fixed; inset: 0; z-index: 1000; background: var(--bg);
-  overflow: hidden;
-}
-.fs-host:fullscreen {
-  background: var(--bg); overflow: hidden;
-}
-.fs-host.is-full .stage,
-.fs-host:fullscreen .stage {
-  flex: 1; min-height: 0; overflow: auto;
-  border: 0; border-radius: 0;
-  -webkit-overflow-scrolling: touch;
-}
-.fs-host.is-full .view-split,
-.fs-host:fullscreen .view-split {
-  display: flex; flex-direction: column; height: 100%;
-}
-.fs-host.is-full .view-split > div:first-child { flex: 1; min-height: 0; }
-.fs-host.is-full .view-split > div:last-child { display: none; }
-/* Regole legacy sovrascritte da quelle più specifiche alla linea ~365.
-   Manteniamo qui solo i fallback per gli stage in fullscreen generico. */
-.fs-host.is-full .gf-inner > .stage,
-.fs-host:fullscreen .gf-inner > .stage {
-  height: 100% !important; border: 0; border-radius: 0;
-}
-
-/* Drawer filtri: stile coerente con sidebar principale */
-.fs-drawer .fs-drawer-controls {
-  display: flex; flex-wrap: wrap; gap: 6px;
-}
-.fs-drawer .fs-drawer-controls .chip,
-.fs-drawer .fs-drawer-controls button {
-  font-size: 12px; padding: "4px 10px";
-}
-
-/* Stage overlay nel grafo: sfondo opaco */
-.fs-host.is-full .stage-overlay,
-.fs-host:fullscreen .stage-overlay {
-  background: rgba(251,248,241,.96);
-  backdrop-filter: blur(8px);
-}
-
-/* Mobile: il drawer è a scomparsa con scrim */
-@media (max-width: 900px) {
-  .fs-host.is-full .fs-btn-txt { display: none; }
-  .fs-btn { padding: 8px; top: 10px; right: 10px; }
-}
-
-@media (max-width: 600px) {
-  .grid-works { grid-template-columns: 1fr; }
-}
-
-/* --- Feature cards Landing (cliccabili) ---------------------------------- */
-.hubart-feature-card:hover {
-  border-color: rgba(184,138,46,0.4) !important;
-  box-shadow: 0 6px 20px rgba(184,138,46,0.12);
-  transform: translateY(-2px);
-}
-
-/* Banner connessione opera (anteprima opera collegata) */
-.conn-banner:hover {
-  border-color: var(--gold) !important;
-  box-shadow: 0 4px 16px rgba(184,138,46,.12);
-}
-
 /* ============================================================
-   WorksInline — opere collegate, in linea dentro la scheda.
-   + schede del glossario tutte della stessa altezza quando chiuse.
+   Glossario — schede chiuse tutte della STESSA altezza esatta
+   + WorksInline (opere collegate in linea dentro la scheda).
    Da appendere a src/app.css.
    ============================================================ */
 
-/* le schede si allineano in alto: quella che si espande non trascina le altre */
+/* le schede si allineano in alto: quella aperta non trascina le altre */
 .gloss-grid { align-items: start; }
 
-/* ---------- schede chiuse: altezza uniforme ---------- */
-.gloss-card { min-height: 262px; display: flex; flex-direction: column; }
-/* la definizione occupa lo spazio libero ed è tagliata a 4 righe,
-   così la riga d'apertura resta ancorata in fondo alla scheda */
-.gloss-card > p {
-  flex: 1 1 auto;
-  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+/* ---------- scheda chiusa: altezza fissa, non un minimo ---------- */
+.gloss-card:not(.is-open) {
+  height: 300px; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+/* titolo: massimo due righe */
+.gloss-card:not(.is-open) .gloss-head h3 {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
   overflow: hidden;
 }
-/* scheda aperta: altezza libera e definizione intera */
-.gloss-card.is-open { min-height: 0; }
-.gloss-card.is-open > p { flex: 0 0 auto; display: block; overflow: visible; }
+/* definizione: occupa lo spazio libero, tagliata a tre righe */
+.gloss-card:not(.is-open) .gloss-def {
+  flex: 1 1 auto; min-height: 0;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* periodi: una riga sola, il resto viene tagliato */
+.gloss-card:not(.is-open) .gloss-periods {
+  flex-wrap: nowrap; overflow: hidden; max-height: 26px;
+}
+/* la riga d'apertura resta ancorata in fondo */
+.gloss-card:not(.is-open) .gloss-open { margin-top: auto; }
 
-/* ---------- riga d'apertura ---------- */
+/* ---------- pezzi della scheda ---------- */
+.gloss-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.gloss-head .faint { margin-left: auto; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+.gloss-def { margin-top: 8px; font-size: 14.5px; line-height: 1.6; }
+.gloss-periods { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; flex-shrink: 0; }
+
 .gloss-open {
   margin-top: 14px; padding-top: 11px; border-top: 1px solid var(--line-soft);
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  flex-shrink: 0;
 }
 .gloss-openbtn {
   display: inline-flex; align-items: center; gap: 7px;
@@ -1164,7 +1112,7 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 .gloss-openbtn[aria-expanded="true"] svg { transform: rotate(180deg); }
 .gloss-openflag {
   font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--ink-faint); font-weight: 600; font-variant-numeric: tabular-nums;
+  color: var(--ink-faint); font-weight: 600;
 }
 
 /* ---------- blocco opere ---------- */
@@ -1201,9 +1149,11 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 }
 .wi-more:hover { color: var(--amber); }
 
-/* mobile: una colonna, miniature e testo un filo più grandi */
+/* ---------- mobile: una colonna, altezza libera ---------- */
 @media (max-width: 600px) {
-  .gloss-card { min-height: 0; }        /* a colonna singola l'altezza fissa non serve */
+  .gloss-card:not(.is-open) { height: auto; }
+  .gloss-card:not(.is-open) .gloss-def { -webkit-line-clamp: 4; }
+  .gloss-card:not(.is-open) .gloss-periods { flex-wrap: wrap; max-height: none; }
   .wi-thumb { width: 76px; height: 57px; }
   .wi-title { font-size: 15.5px; }
   .wi-meta { font-size: 12.5px; }
