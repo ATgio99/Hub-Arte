@@ -1,7 +1,8 @@
 import { useMemo, useState, useEffect } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
-import { Empty, EntityLink, FilterNote, WorkImage } from "../components/ui";
+import { Empty, EntityLink, FilterNote } from "../components/ui";
+import WorksPanel from "../components/WorksPanel";
 import type { TermCategory } from "../lib/types";
 
 const CATS: TermCategory[] = ["architettura", "pittura", "scultura", "iconografia", "generale"];
@@ -14,8 +15,8 @@ export default function Glossario() {
   const [cat, setCat] = useState<string>("");
   const [onlyArch, setOnlyArch] = useState(false);
   const [active, setActive] = useState<string | null>(sp.get("t"));
-  // Termini espansi (mostra opere collegate)
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  // Termine le cui opere sono aperte nel pannello laterale (null = chiuso)
+  const [openTerm, setOpenTerm] = useState<string | null>(null);
 
   // Trova opere che contengono un dato termine (per ID).
   const worksWithTerm = useMemo(() => {
@@ -28,14 +29,6 @@ export default function Glossario() {
     }
     return map;
   }, [ix.ds.works]);
-
-  const toggleExpand = (id: string) => {
-    setExpanded((prev) => {
-      const n = new Set(prev);
-      n.has(id) ? n.delete(id) : n.add(id);
-      return n;
-    });
-  };
 
   useEffect(() => {
     const t = sp.get("t");
@@ -57,7 +50,7 @@ export default function Glossario() {
       .sort((a, b) => a.term.localeCompare(b.term, "it"));
   }, [inTime, q, cat, onlyArch]);
 
-  const archCount = ix.ds.terms.filter((t) => t.is_archetype).length;
+  const openTermObj = openTerm ? ix.termById.get(openTerm) : null;
 
   return (
     <div className="wrap page">
@@ -83,63 +76,56 @@ export default function Glossario() {
       </div>
 
       {list.length === 0 ? <Empty msg="Nessun termine trovato." /> : (
-        <div className="gloss-grid">
-          {list.map((t) => {
-            const isExpanded = expanded.has(t.id);
-            const works = worksWithTerm.get(t.id) || [];
-            return (
-            <div id={`term-${t.id}`} key={t.id}
-              className={`gloss-card ${t.is_archetype ? "arch" : ""} ${active === t.id ? "hot" : ""}`}
-              data-testid={`gloss-${t.id}`}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
-                <h3 style={{ fontSize: 20 }}>{t.term}</h3>
-                {t.is_archetype && <span className="tag" style={{ color: "var(--c-term)", borderColor: "var(--c-term)" }}>◆ archetipo</span>}
-                <span className="faint" style={{ fontSize: 11, marginLeft: "auto", textTransform: "uppercase", letterSpacing: ".08em" }}>{t.category}</span>
-              </div>
-              <p className="muted" style={{ marginTop: 8, fontSize: 14.5, lineHeight: 1.6 }}>{t.definition}</p>
-              {t.period_ids.length > 0 && (
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 12 }}>
-                  {t.period_ids.slice(0, 5).map((pid) => (
-                    <EntityLink key={pid} type="period" id={pid} className="chip sm" />
-                  ))}
-                </div>
-              )}
-              {/* Tasto "espandi" per mostrare opere che contengono questo termine */}
-              {works.length > 0 && (
-                <button
-                  onClick={() => toggleExpand(t.id)}
-                  style={{
-                    marginTop: 10, fontSize: 12, fontWeight: 600,
-                    color: "var(--gold-deep)", background: "transparent",
-                    border: 0, cursor: "pointer", padding: 0,
-                    display: "inline-flex", alignItems: "center", gap: 4,
-                  }}
-                  data-testid={`gloss-expand-${t.id}`}
-                >
-                  {isExpanded ? "− Nascondi opere" : `+ ${works.length} opere con questo termine`}
-                </button>
-              )}
-              {/* Zona espansa: lista opere con mini-anteprima */}
-              {isExpanded && works.length > 0 && (
-                <div style={{ marginTop: 12, display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))", gap: 10 }}>
-                  {works.slice(0, 24).map((w) => (
-                    <Link key={w.id} to={`/opera/${w.id}`} style={{ textDecoration: "none", color: "var(--ink)" }}>
-                      <div style={{ aspectRatio: "4/3", borderRadius: 6, overflow: "hidden", border: "1px solid var(--line-soft)", marginBottom: 4 }}>
-                        <WorkImage work={w} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                      </div>
-                      <div style={{ fontSize: 11, lineHeight: 1.3, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>{w.title}</div>
-                    </Link>
-                  ))}
-                  {works.length > 24 && (
-                    <div style={{ fontSize: 11, color: "var(--ink-dim)", gridColumn: "1 / -1", textAlign: "center", paddingTop: 4 }}>
-                      + altre {works.length - 24} opere
+        <div className={openTermObj ? "gloss-split" : ""}>
+          <div className="gloss-grid">
+            {list.map((t) => {
+              const works = worksWithTerm.get(t.id) || [];
+              const isOpen = openTerm === t.id;
+              return (
+                <div id={`term-${t.id}`} key={t.id}
+                  className={`gloss-card ${t.is_archetype ? "arch" : ""} ${active === t.id || isOpen ? "hot" : ""}`}
+                  data-testid={`gloss-${t.id}`}>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
+                    <h3 style={{ fontSize: 20 }}>{t.term}</h3>
+                    {t.is_archetype && <span className="tag" style={{ color: "var(--c-term)", borderColor: "var(--c-term)" }}>◆ archetipo</span>}
+                    <span className="faint" style={{ fontSize: 11, marginLeft: "auto", textTransform: "uppercase", letterSpacing: ".08em" }}>{t.category}</span>
+                  </div>
+                  <p className="muted" style={{ marginTop: 8, fontSize: 14.5, lineHeight: 1.6 }}>{t.definition}</p>
+                  {t.period_ids.length > 0 && (
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 12 }}>
+                      {t.period_ids.slice(0, 5).map((pid) => (
+                        <EntityLink key={pid} type="period" id={pid} className="chip sm" />
+                      ))}
+                    </div>
+                  )}
+                  {/* Riga d'accesso: le opere si aprono nel pannello, la scheda non cresce */}
+                  {works.length > 0 && (
+                    <div className="gloss-open">
+                      <button className="gloss-openbtn" onClick={() => setOpenTerm(isOpen ? null : t.id)}
+                        data-testid={`gloss-open-${t.id}`}
+                        aria-expanded={isOpen}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="3" y="3" width="18" height="18" rx="2" /><path d="M15 3v18" />
+                        </svg>
+                        {works.length} oper{works.length === 1 ? "a" : "e"}{isOpen ? "" : " →"}
+                      </button>
+                      {isOpen && <span className="gloss-openflag">aperto nel pannello</span>}
                     </div>
                   )}
                 </div>
-              )}
-            </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {openTermObj && (
+            <WorksPanel
+              eyebrow="Opere · termine"
+              title={openTermObj.term}
+              works={worksWithTerm.get(openTermObj.id) || []}
+              catalogHref={`/opere?term=${openTermObj.id}`}
+              onClose={() => setOpenTerm(null)}
+            />
+          )}
         </div>
       )}
     </div>
