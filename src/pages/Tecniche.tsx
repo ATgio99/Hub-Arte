@@ -6,10 +6,11 @@ import WorksInline from "../components/WorksInline";
 import { fmtYear } from "../lib/data";
 import type { TechCategory } from "../lib/types";
 
-const CATS: TechCategory[] = ["pittorica", "scultorea", "architettonica", "musiva", "altra"];
+const CATS: TechCategory[] = ["pittorica", "scultorea", "architettonica", "musiva", "compositiva", "decorativa", "altra"];
 const CAT_COLOR: Record<string, string> = {
   pittorica: "var(--amber)", scultorea: "var(--c-work)", architettonica: "var(--gold)",
-  musiva: "var(--verdigris)", altra: "var(--c-term)",
+  musiva: "var(--verdigris)", compositiva: "var(--c-technique)", decorativa: "var(--rust)",
+  altra: "var(--c-term)",
 };
 
 export default function Tecniche() {

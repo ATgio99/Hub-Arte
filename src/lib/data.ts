@@ -191,7 +191,9 @@ export const KIND_LABEL: Record<string, string> = {
   influenza: "influenza", contaminazione: "contaminazione",
   rielaborazione: "rielaborazione", evoluzione: "evoluzione",
   contrasto: "contrasto", committenza: "committenza",
-  "maestro-allievo": "maestro-allievo",
+  "maestro-allievo": "maestro-allievo", collaborazione: "collaborazione",
+  // Pseudo-tipi generati dal Grafo (vedi ConnKind in types.ts)
+  autore: "opera di", luogo: "luogo",
 };
 
 // --- Query di dominio ------------------------------------------------------
@@ -289,10 +291,18 @@ export function periodMidYear(p: Period): number {
 
 // --- Raggruppamento opere per complesso architettonico ----------------------
 // Le opere che si trovano nello stesso edificio (chiesa, basilica, cappella…)
-// vengono raggruppate in un "complesso". Il raggruppamento è automatico,
-// basato su location_place normalizzato, con esclusione di musei/gallerie.
-// Fase 2: merge di gruppi affini nella stessa città
-//   (es. "Piazza San Marco" + "Basilica di San Marco" → un unico gruppo)
+// vengono raggruppate in un "complesso". Il raggruppamento è automatico e
+// avviene per corrispondenza ESATTA di città + location_place normalizzato,
+// con esclusione di musei/gallerie.
+//
+// NOTA: qui esisteva una seconda fase che tentava di fondere fra loro i gruppi
+// con nomi "affini" nella stessa città (es. "Piazza San Marco" con "Basilica di
+// San Marco"). Era inattiva per un bug e non ha mai fuso nulla; simulandola sul
+// dataset reale produceva 71 fusioni quasi tutte errate, perché due parole in
+// comune bastano a unire chiese diverse (Santa Croce con Santa Maria Novella,
+// San Clemente al Laterano con San Giovanni in Laterano). È stata rimossa: per
+// unire due grafie dello stesso edificio si uniforma il location_place delle
+// opere, che è esplicito e verificabile.
 
 export interface WorkGroup {
   /** Nome del complesso (il più rappresentativo) */
@@ -331,30 +341,10 @@ function bucketNorm(place: string): string {
   return s.toLowerCase();
 }
 
-// Estrae i "token chiave" di un nome luogo per il merge.
-// Es. "basilica di san marco" → ["basilica", "san", "marco"]
-// Es. "piazza san marco" → ["piazza", "san", "marco"]
-function keyTokens(norm: string): string[] {
-  const STOP = new Set(["di", "del", "della", "dei", "degli", "delle", "da", "in", "a", "al", "alla", "lo", "la", "il", "le", "gli", "i", "e", "con", "per", "su"]);
-  return norm.split(/\s+/).filter(t => t.length > 1 && !STOP.has(t));
-}
-
-// Due nomi normalizzati sono "affini" se condividono almeno 2 token chiave
-// (es. "basilica di san marco" e "piazza san marco" condividono "san" + "marco")
-function areSimilar(n1: string, n2: string): boolean {
-  const t1 = new Set(keyTokens(n1));
-  const t2 = keyTokens(n2);
-  let shared = 0;
-  for (const t of t2) { if (t1.has(t)) shared++; }
-  // devono condividere almeno 2 token significativi, o almeno il 50% dei token minori
-  const minLen = Math.min(t1.size, t2.size);
-  return shared >= 2 && (minLen <= 2 || shared >= minLen * 0.5);
-}
-
 /** Calcola i gruppi di opere per complesso architettonico.
  *  Ritorna una mappa chiave → WorkGroup. */
 export function computeWorkGroups(ds: Dataset): Map<string, WorkGroup> {
-  // Fase 1: raccogli opere per (città + luogo normalizzato)
+  // Raccogli le opere per (città + luogo normalizzato)
   const buckets = new Map<string, Work[]>();
   for (const w of ds.works) {
     const place = w.location_place;
@@ -366,47 +356,11 @@ export function computeWorkGroups(ds: Dataset): Map<string, WorkGroup> {
     buckets.get(key)!.push(w);
   }
 
-  // Fase 2: merge di gruppi affini nella stessa città
-  //   Es. "Piazza San Marco" e "Basilica di San Marco" diventano un gruppo unico
-  const bucketKeys = [...buckets.keys()];
-  const mergeOf = new Map<string, string>(); // key → key del gruppo assorbito
-
-  for (let i = 0; i < bucketKeys.length; i++) {
-    const ki = bucketKeys[i];
-    if (mergeOf.has(ki)) continue; // già assorbito
-    const [city1, norm1] = ki.split("|", 2);
-    if (!norm1) continue;
-
-    for (let j = i + 1; j < bucketKeys.length; j++) {
-      const kj = bucketKeys[j];
-      if (mergeOf.has(kj)) continue;
-      const [city2, norm2] = kj.split("|", 2);
-      if (city1 !== city2 || !norm2) continue;
-
-      if (areSimilar(norm1, norm2)) {
-        // Assorbi kj dentro ki (mantieni il gruppo più grande come primario)
-        const sizeI = buckets.get(ki)!.length;
-        const sizeJ = buckets.get(kj)!.length;
-        if (sizeJ > sizeI) {
-          // kj è più grande: inverti, ki viene assorbito in kj
-          mergeOf.set(ki, kj);
-          buckets.get(kj)!.push(...buckets.get(ki)!);
-          buckets.delete(ki);
-          break; // ki è stato assorbito, passa al prossimo
-        } else {
-          mergeOf.set(kj, ki);
-          buckets.get(ki)!.push(...buckets.get(kj)!);
-          buckets.delete(kj);
-        }
-      }
-    }
-  }
-
-  // Fase 3: crea gruppi solo per bucket con 2+ opere
+  // Crea un gruppo solo per i luoghi con 2+ opere
   const groups = new Map<string, WorkGroup>();
   for (const [key, ws] of buckets) {
     if (ws.length < 2) continue;
-    // Deduplica per id (il merge può aver creato doppioni)
+    // Deduplica per id (difensivo)
     const seen = new Set<string>();
     const unique = ws.filter(w => { if (seen.has(w.id)) return false; seen.add(w.id); return true; });
     if (unique.length < 2) continue;

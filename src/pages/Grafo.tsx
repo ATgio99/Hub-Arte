@@ -18,7 +18,10 @@ import type { EntityType, ConnKind } from "../lib/types";
 const NODE_TYPES: EntityType[] = ["period", "artist", "work"];
 // Tipi di legame visibili nella Rete. "contaminazione" e "contrasto" sono
 // stati rimossi su richiesta dell'utente.
-const KINDS: ConnKind[] = ["influenza", "rielaborazione", "evoluzione", "committenza", "maestro-allievo"];
+// Tipi di legame componibili. "autore" e "luogo" restano fuori da qui: sono
+// pseudo-tipi generati dal grafo e hanno gia' una riga di legenda propria.
+const KINDS: ConnKind[] = ["influenza", "contaminazione", "rielaborazione", "evoluzione",
+  "contrasto", "committenza", "maestro-allievo", "collaborazione"];
 
 // colori esadecimali (coerenti col tema chiaro). three.js NON interpreta var CSS.
 const NODE_HEX: Record<string, string> = {
@@ -28,11 +31,11 @@ const NODE_HEX: Record<string, string> = {
 const KIND_COLOR: Record<string, string> = {
   influenza: "#b88a2e", rielaborazione: "#b9692c", evoluzione: "#6e8350",
   committenza: "#4f7d72", "maestro-allievo": "#9a6a92", contaminazione: "#caa14a", contrasto: "#a8483f",
-  luogo: "#5d8a7f", autore: "#9a8c6e",
+  collaborazione: "#9a4a26", luogo: "#5d8a7f", autore: "#9a8c6e",
 };
 const KIND_DASH: Record<string, number[] | undefined> = {
   influenza: undefined, rielaborazione: undefined, evoluzione: undefined,
-  committenza: [10, 5], "maestro-allievo": undefined,
+  committenza: [10, 5], "maestro-allievo": undefined, collaborazione: [8, 3],
   contaminazione: [4, 4], contrasto: [2, 4], luogo: [6, 3], autore: [1, 3],
 };
 const KIND_WIDTH: Record<string, number> = {

@@ -77,7 +77,9 @@ function buildCleanPayload(artist: Artist, modifiedBy: string): Record<string, u
 
 // Tipi entità per la select delle connessioni
 const ENTITY_TYPES: EntityType[] = ["period", "artist", "work", "technique", "event", "term"];
-const CONN_KINDS = ["influenza", "contaminazione", "rielaborazione", "evoluzione", "contrasto", "committenza", "maestro-allievo"];
+// Tipi componibili a mano nell'editor. "autore" e "luogo" sono esclusi di
+// proposito: il Grafo li deriva da artist_ids e da location_city.
+const CONN_KINDS = ["influenza", "contaminazione", "rielaborazione", "evoluzione", "contrasto", "committenza", "maestro-allievo", "collaborazione"];
 
 // Snapshot del dataset passato a Inner
 interface DatasetSnapshot {

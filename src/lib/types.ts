@@ -8,9 +8,16 @@ export type WorkType =
   | "miniatura" | "oreficeria" | "urbanistica" | "altro";
 export type ConnKind =
   | "influenza" | "contaminazione" | "rielaborazione" | "evoluzione"
-  | "contrasto" | "committenza" | "maestro-allievo";
+  | "contrasto" | "committenza" | "maestro-allievo" | "collaborazione"
+  // Pseudo-tipi: il Grafo li genera da artist_ids e da location_city quando non
+  // esiste gia' una connessione esplicita fra le due entita'. Possono pero'
+  // essere anche salvati nel DB con una descrizione piu' ricca di quella
+  // generata: in quel caso il Grafo usa la versione salvata (vedi Grafo.tsx).
+  | "autore" | "luogo";
 export type EntityType = "period" | "artist" | "work" | "technique" | "event" | "term";
-export type TechCategory = "pittorica" | "scultorea" | "architettonica" | "musiva" | "altra";
+export type TechCategory =
+  | "pittorica" | "scultorea" | "architettonica" | "musiva"
+  | "compositiva" | "decorativa" | "altra";
 export type TermCategory = "architettura" | "pittura" | "scultura" | "iconografia" | "generale";
 
 export interface Period {

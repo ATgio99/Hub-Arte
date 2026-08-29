@@ -1340,7 +1340,7 @@
       "tessere dorate"
     ],
     "location_city": "Ravenna",
-    "location_place": "Sant'Apollinare Nuovo",
+    "location_place": "Chiesa di Sant'Apollinare Nuovo",
     "lat": 44.4178,
     "lon": 12.2005,
     "book": 1,
@@ -1373,7 +1373,7 @@
       "tessere dorate"
     ],
     "location_city": "Ravenna",
-    "location_place": "Sant'Apollinare Nuovo",
+    "location_place": "Chiesa di Sant'Apollinare Nuovo",
     "lat": 44.4178,
     "lon": 12.2005,
     "book": 1,
@@ -2749,7 +2749,7 @@
       "colonne di reimpiego"
     ],
     "location_city": "Benevento",
-    "location_place": "Santa Sofia",
+    "location_place": "Chiesa di Santa Sofia",
     "lat": 41.1294,
     "lon": 14.7828,
     "book": 1,
@@ -5767,7 +5767,7 @@
       "arenaria"
     ],
     "location_city": "Glees",
-    "location_place": "chiesa di Santa Maria Laach",
+    "location_place": "Chiesa abbaziale di Santa Maria Laach",
     "lat": 50.41,
     "lon": 7.26,
     "book": 1,
@@ -5833,7 +5833,7 @@
       "pietra lavica"
     ],
     "location_city": "Glees",
-    "location_place": "chiesa abbaziale di Santa Maria Laach",
+    "location_place": "Chiesa abbaziale di Santa Maria Laach",
     "lat": 50.41,
     "lon": 7.26,
     "book": 1,
@@ -5868,7 +5868,7 @@
       "pietra lavica"
     ],
     "location_city": "Glees",
-    "location_place": "chiesa di Santa Maria Laach",
+    "location_place": "Chiesa abbaziale di Santa Maria Laach",
     "lat": 50.41,
     "lon": 7.26,
     "book": 1,
@@ -5900,7 +5900,7 @@
       "arenaria"
     ],
     "location_city": "Glees",
-    "location_place": "chiesa di Santa Maria Laach",
+    "location_place": "Chiesa abbaziale di Santa Maria Laach",
     "lat": 50.41,
     "lon": 7.26,
     "book": 1,
@@ -6829,7 +6829,7 @@
       "pietra"
     ],
     "location_city": "Moissac",
-    "location_place": "chiesa abbaziale di Saint-Pierre",
+    "location_place": "Chiesa abbaziale di Saint-Pierre",
     "lat": 44.1,
     "lon": 1.08,
     "book": 1,
@@ -6866,7 +6866,7 @@
       "pietra"
     ],
     "location_city": "Moissac",
-    "location_place": "chiesa di Saint-Pierre",
+    "location_place": "Chiesa abbaziale di Saint-Pierre",
     "lat": 44.1,
     "lon": 1.08,
     "book": 1,
@@ -6898,7 +6898,7 @@
       "pietra"
     ],
     "location_city": "Moissac",
-    "location_place": "chiesa di Saint-Pierre",
+    "location_place": "Chiesa abbaziale di Saint-Pierre",
     "lat": 44.1,
     "lon": 1.08,
     "book": 1,
@@ -10021,7 +10021,7 @@
     "date_text": "Prima metà del XIII secolo",
     "year_start": 1220,
     "year_end": 1250,
-    "type": "miniatura",
+    "type": "altro",
     "technique_ids": [],
     "materials": [
       "pergamena",
@@ -12204,7 +12204,7 @@
     "date_text": "1285-1297",
     "year_start": 1285,
     "year_end": 1297,
-    "type": "scultura",
+    "type": "architettura",
     "technique_ids": [
       "scultura-a-tutto-tondo"
     ],
@@ -20486,7 +20486,7 @@
     "date_text": "dal 1438",
     "year_start": 1438,
     "year_end": 1443,
-    "type": "architettura",
+    "type": "scultura",
     "technique_ids": [
       "scultura-in-pietra"
     ],
@@ -21860,7 +21860,7 @@
     "date_text": "1450 circa",
     "year_start": 1450,
     "year_end": 1450,
-    "type": "scultura",
+    "type": "oreficeria",
     "technique_ids": [],
     "materials": [
       "bronzo"
@@ -23150,7 +23150,7 @@
     "date_text": "1460-1465",
     "year_start": 1460,
     "year_end": 1465,
-    "type": "miniatura",
+    "type": "architettura",
     "technique_ids": [
       "disegno-penna-inchiostro"
     ],
@@ -23188,7 +23188,7 @@
     "date_text": "1460-1465",
     "year_start": 1460,
     "year_end": 1465,
-    "type": "miniatura",
+    "type": "urbanistica",
     "technique_ids": [
       "disegno-penna-inchiostro"
     ],
@@ -36153,7 +36153,7 @@
       "ferro"
     ],
     "location_city": "Pratolino",
-    "location_place": "villa medicea",
+    "location_place": "Villa medicea di Pratolino",
     "lat": 43.89,
     "lon": 11.27,
     "book": 2,
@@ -37951,7 +37951,7 @@
     "date_text": "ca. 1296",
     "year_start": 1290,
     "year_end": 1300,
-    "type": "pittura",
+    "type": "mosaico",
     "technique_ids": [
       "mosaico"
     ],

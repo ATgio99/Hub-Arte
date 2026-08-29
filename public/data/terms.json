@@ -523,7 +523,7 @@
     "id": "bronzetto",
     "term": "Bronzetto",
     "definition": "Scultura in bronzo di piccole dimensioni, destinata alla collezione privata. Nel Quattrocento fiorentino si diffonde come genere autonomo, con soggetti mitologici o antichizzanti (Pollaiolo, Ercole e Anteo).",
-    "category": "scultorea",
+    "category": "scultura",
     "period_ids": [
       "quattrocento",
       "rinascimento-fiorentino"
@@ -1804,7 +1804,7 @@
     "id": "fusione-a-cera-persa",
     "term": "Fusione a cera persa",
     "definition": "Metodo di fusione in bronzo in cui il modello in cera viene ricoperto di argilla refrattaria e poi scaldato: la cera 'sparisce' e il metallo fuso prende il suo posto. Diffuso in età classica, reintrodotto da Ghiberti per il San Giovanni Battista di Orsanmichele.",
-    "category": "scultorea",
+    "category": "scultura",
     "period_ids": [
       "umanesimo-fiorentino"
     ],
@@ -1825,7 +1825,7 @@
     "id": "fusione-in-bronzo",
     "term": "Fusione in bronzo",
     "definition": "Tecnica scultorea che prevede la fusione del metallo (lega di rame e stagno) in forme ricavate da modelli in cera (cera persa). Fondamentale per la scultura rinascimentale: Verrocchio fonde il Colleoni, Pollaiolo i monumenti papali.",
-    "category": "scultorea",
+    "category": "scultura",
     "period_ids": [
       "quattrocento"
     ],
@@ -2792,7 +2792,7 @@
     "id": "mosaico-cosmatesco",
     "term": "Mosaico cosmatesco",
     "definition": "Tecnica decorativa tipica dell'arte romana medievale (XII-XIV sec.), realizzata con tessere di marmi colorati e pietre preziose in motivi geometrici. Utilizzata nei pavimenti, ambone e cibori romani. Prende il nome dalla famiglia Cosmati.",
-    "category": "altra",
+    "category": "architettura",
     "period_ids": [
       "gotico-italiano"
     ],
@@ -2940,7 +2940,7 @@
     "id": "niellatura",
     "term": "Niellatura",
     "definition": "Tecnica orafa che consiste nel riempire incisioni su metallo (oro o argento) con un composto nero (niello) di zolfo e metalli. Pollaiolo la pratica come orafo, acquisendo dimestichezza con la linea incisa poi applicata all'incisione a bulino.",
-    "category": "altra",
+    "category": "generale",
     "period_ids": [
       "quattrocento"
     ],
@@ -4782,7 +4782,7 @@
     "id": "tarsia-cosmatesca",
     "term": "Tarsia cosmatesca",
     "definition": "Tecnica decorativa pavimentale e parietale tipica dell'arte romana medievale (famiglia Cosmati), basata su tessere di marmo colorato disposte in motivi geometrici. Presente nelle chiese romane e nella cappella Sistina.",
-    "category": "altra",
+    "category": "architettura",
     "period_ids": [
       "quattrocento"
     ],
