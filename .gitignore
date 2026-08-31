@@ -4,3 +4,12 @@ dist/
 *.local
 .DS_Store
 *.tsbuildinfo
+
+# Materiali di lavoro sul catalogo: proposte, motivazioni e copie di sicurezza.
+# Restano sul disco di chi li ha prodotti, non appesantiscono il repository.
+supabase/lavoro_scuole/
+supabase/lavoro_committenti/
+supabase/lavoro_consolidamento/
+
+# Copie pronte da pubblicare, rigenerabili in qualsiasi momento.
+esportazione/
