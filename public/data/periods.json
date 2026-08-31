@@ -1857,7 +1857,7 @@
   "name": "Periodo sforzesco",
   "type": "scuola",
   "year_start": 1450,
-  "year_end": 1499,
+  "year_end": 1535,
   "regions": [
    "Milano",
    "Lombardia"
@@ -2092,33 +2092,25 @@
  },
  {
   "id": "manierismo",
-  "name": "Manierismo (Tardo Rinascimento)",
+  "name": "Manierismo",
   "type": "corrente",
   "year_start": 1520,
   "year_end": 1600,
   "regions": [
    "Italia",
-   "Europa",
    "Francia",
    "Spagna",
    "Austria",
-   "Boemia"
+   "Paesi Bassi"
   ],
-  "summary": "Corrente artistica nata intorno al 1520 tra Roma e Firenze come reazione alle certezze del classicismo rinascimentale. Si caratterizza per la distorsione delle proporzioni, i colori acidi e cangianti, la complessità compositiva e iconografica, l'anticlassicismo e l'antinaturalismo. Chiamata anche 'Tardo Rinascimento', si diffonde in tutta Europa fino al 1590 circa.",
-  "historical_context": "Si sviluppa nel clima destabilizzante del Sacco di Roma (1527), che disperde gli artisti attivi nella città papale verso altre corti. Il pontificato di Clemente VII de' Medici è il catalizzatore iniziale. La diffusione internazionale è favorita dalle Guerre d'Italia e dalle corti europee che accolgono artisti italiani.",
+  "summary": "Diffusione del Manierismo in Europa: corte di Francia (Fontainebleau), Spagna di Filippo II (El Escorial), corte imperiale di Praga (Rodolfo II).",
+  "historical_context": "Il Manierismo si diffonde in Europa attraverso le corti: Francesco I in Francia, Filippo II in Spagna, Massimiliano II e Rodolfo II a Praga. Each corte sviluppa una propria declinazione: decorativismo in Francia, rigore controriformista in Spagna, allegorie bizzarre a Praga.",
   "parent_id": "rinascimento",
   "key_innovations": [
-   "Figura serpentinata",
-   "Colori cangianti antinaturalistici",
-   "Spazio illusionistico totale",
-   "Anticlassicismo consapevole",
-   "Complessità iconografica",
-   "distorsione proporzionale",
-   "colori acidi e cangianti",
-   "spazio destabilizzante",
-   "posa a serpentina",
-   "iconografie complesse e intellettualistiche",
-   "figura vista da più punti di vista"
+   "Strapwork",
+   "Kunstkammer/Wunderkammer",
+   "Macchina d'altare",
+   "Anamorfosi"
   ]
  },
  {
@@ -2248,23 +2240,21 @@
  },
  {
   "id": "controriforma",
-  "name": "Controriforma (Arte della Controriforma)",
+  "name": "Controriforma",
   "type": "corrente",
   "year_start": 1545,
-  "year_end": 1600,
+  "year_end": 1620,
   "regions": [
    "Italia",
-   "Spagna",
-   "Europa cattolica"
+   "Spagna"
   ],
-  "summary": "Indirizzo artistico promosso dalla Chiesa di Roma in risposta alla Riforma protestante. Il Concilio di Trento (1545-1563) raccomanda chiarezza narrativa, correttezza dottrinale e decenza nei soggetti religiosi. La chiesa del Gesù di Vignola diviene il prototipo dell'edificio sacro controriformato.",
-  "historical_context": "In risposta al protestantesimo e all'iconoclastia, la Chiesa cattolica definisce al Concilio di Trento le linee guida per l'arte religiosa. I modelli teorici e stilistici principali vengono elaborati a Roma e nella Milano dei cardinali Carlo e Federico Borromeo.",
+  "summary": "La crisi del Rinascimento e la risposta cattolica: il Concilio di Trento stabilisce i principi dell'arte sacra controriformista.",
+  "historical_context": "Il Concilio di Trento (1545-1563) stabilisce che l'arte sacra deve essere chiara, didattica e devozionale. Carlo Borromeo promuove i valori controriformisti a Milano. Nascono nuove tipologie architettoniche (chiesa a navata unica con cappelle laterali).",
   "parent_id": "manierismo",
   "key_innovations": [
-   "navata unica per la predicazione",
-   "chiarezza narrativa",
-   "esaltazione dell'Eucarestia",
-   "arte come strumento didattico e propagandistico"
+   "Chiesa a navata unica",
+   "Arte devozionale",
+   "Quadroni di san Carlo"
   ]
  },
  {
@@ -2330,6 +2320,123 @@
    "grandi teleri narrativi dedicati alla vita di un santo contemporaneo",
    "realismo devoto e pathos come strumenti di edificazione dei fedeli",
    "cappelle e percorsi devozionali dei Sacri Monti come predicazione per immagini"
+  ]
+ },
+ {
+  "id": "rinascimento-mantovano",
+  "name": "Rinascimento mantovano",
+  "type": "scuola",
+  "year_start": 1450,
+  "year_end": 1510,
+  "regions": [],
+  "summary": "",
+  "historical_context": "",
+  "parent_id": "quattrocento",
+  "key_innovations": []
+ },
+ {
+  "id": "rinascimento-napoletano",
+  "name": "Rinascimento napoletano",
+  "type": "scuola",
+  "year_start": 1450,
+  "year_end": 1500,
+  "regions": [],
+  "summary": "",
+  "historical_context": "",
+  "parent_id": "quattrocento",
+  "key_innovations": []
+ },
+ {
+  "id": "scuola-ferrarese",
+  "name": "Scuola ferrarese",
+  "type": "scuola",
+  "year_start": 1440,
+  "year_end": 1500,
+  "regions": [],
+  "summary": "",
+  "historical_context": "",
+  "parent_id": "quattrocento",
+  "key_innovations": []
+ },
+ {
+  "id": "rinascimento-padano",
+  "name": "Rinascimento padano",
+  "type": "scuola",
+  "year_start": 1440,
+  "year_end": 1510,
+  "regions": [],
+  "summary": "",
+  "historical_context": "",
+  "parent_id": "quattrocento",
+  "key_innovations": []
+ },
+ {
+  "id": "rinascimento-veneziano",
+  "name": "Rinascimento veneziano",
+  "type": "scuola",
+  "year_start": 1460,
+  "year_end": 1520,
+  "regions": [],
+  "summary": "",
+  "historical_context": "",
+  "parent_id": "quattrocento",
+  "key_innovations": []
+ },
+ {
+  "id": "quattrocento-veneziano",
+  "name": "Quattrocento veneziano",
+  "type": "scuola",
+  "year_start": 1400,
+  "year_end": 1500,
+  "regions": [],
+  "summary": "",
+  "historical_context": "",
+  "parent_id": "quattrocento",
+  "key_innovations": []
+ },
+ {
+  "id": "rinasc-nordico",
+  "name": "Rinascimento nordico",
+  "type": "corrente",
+  "year_start": 1400,
+  "year_end": 1600,
+  "regions": [
+   "Germania",
+   "Paesi Bassi",
+   "Francia",
+   "Inghilterra"
+  ],
+  "summary": "L'arte della Riforma: in Europa protestante, la pittura religiosa perde la funzione didattica e si affermano ritratto, natura morta e paesaggio.",
+  "historical_context": "La Riforma protestante (Zwingli, Calvino, Lutero) vieta l'arte religiosa considerata idolatria. L'iconoclastia distrugge dipinti e sculture sacre. Il rigorismo morale calvinista vieta sensualità e ostentazione, determinando l'affermazione di generi come natura morta e paesaggio.",
+  "parent_id": "rinascimento",
+  "key_innovations": [
+   "Ritratto realistico",
+   "Natura morta",
+   "Paesaggio autonomo",
+   "Iconoclastia"
+  ]
+ },
+ {
+  "id": "barocco",
+  "name": "Barocco",
+  "type": "epoca",
+  "year_start": 1590,
+  "year_end": 1750,
+  "regions": [
+   "Italia",
+   "Spagna",
+   "Francia",
+   "Paesi Bassi"
+  ],
+  "summary": "Nuovo linguaggio artistico nato tra la fine del Cinquecento e il Seicento, fondato su naturalismo, dinamismo, teatralità, coinvolgimento emotivo e forte rapporto tra opera, spazio e spettatore.",
+  "historical_context": "Le ricerche di Caravaggio e dei Carracci contribuiscono alla trasformazione della pittura italiana tra Manierismo e Seicento. Nella pittura religiosa la narrazione diventa più immediata e partecipata; nella pittura profana e di genere si affermano osservazione del reale, effetti luministici e nuove forme di coinvolgimento dello spettatore.",
+  "parent_id": null,
+  "key_innovations": [
+   "Naturalismo",
+   "Tenebrismo",
+   "Dinamismo compositivo",
+   "Teatralità",
+   "Coinvolgimento dello spettatore"
   ]
  }
 ]

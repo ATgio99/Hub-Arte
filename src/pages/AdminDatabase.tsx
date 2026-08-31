@@ -32,7 +32,7 @@ type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" |
 
 const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "works", label: "Opere", icon: "🖼️" },
-  { id: "artists", label: "Autori", icon: "👤" },
+  { id: "artists", label: "Protagonisti", icon: "👤" },
   { id: "periods", label: "Periodi", icon: "📅" },
   { id: "techniques", label: "Tecniche", icon: "🎨" },
   { id: "terms", label: "Termini", icon: "📚" },
@@ -239,7 +239,7 @@ export default function AdminDatabase() {
       {/* Header */}
       <div className="page-head" style={{ marginBottom: 18 }}>
         <div className="page-eyebrow">
-          <span className="eyebrow">Pannello amministratore</span>
+          <span className="eyebrow">Amministrazione</span>
         </div>
         <h1 className="page-title">Database editor</h1>
         <p className="page-lead">
@@ -571,11 +571,11 @@ export default function AdminDatabase() {
       }}>
         <b>ℹ️ Come funziona:</b>
         <ul style={{ margin: "8px 0 0 18px", lineHeight: 1.6 }}>
-          <li>Le modifiche sono salvate nel database Supabase.</li>
-          <li>Le righe con badge <b style={{ color: "#3f8a4f" }}>DB</b> sono già nel database.</li>
-          <li>Le righe con badge <b>JSON</b> provengono dal file statico: per modificarle, l'app creerà una copia nel DB che sovrascrive il JSON.</li>
-          <li>Tutti gli utenti vedranno le modifiche dopo un refresh della pagina.</li>
-          <li>L'eliminazione rimuove solo dal DB. Se la riga esiste anche nel JSON, riapparirà con i valori originali.</li>
+          <li>Il catalogo che il sito mostra sta nei file JSON. Qui modifichi il database, e il sito ne legge <b>solo le righe cambiate dopo l'ultima esportazione</b>: le tue correzioni si vedono subito, senza ripubblicare il sito.</li>
+          <li>Il badge <b style={{ color: "#3f8a4f" }}>DB</b> dice che di quella voce esiste una copia nel database — non che il sito la legga da lì. Dopo un'esportazione le due copie sono identiche, quindi il badge non indica una differenza.</li>
+          <li>Il badge <b>JSON</b> dice che la voce vive solo nel file. Alla prima modifica ne nasce una copia nel database, e il badge diventa DB.</li>
+          <li>Per riportare le modifiche nel repository, da terminale: <code>npm run esporta-catalogo</code>. Riscrive i JSON con quello che hai cambiato, e da lì il badge torna a essere solo una traccia di dove hai lavorato.</li>
+          <li>L'eliminazione nasconde la voce: resta registrata come nascosta finché non esporti, e a quel punto esce davvero dal catalogo.</li>
         </ul>
       </div>
     </div>
@@ -966,6 +966,8 @@ const FIELD_LABELS_IT: Record<string, string> = {
   parent_id: "Periodo genitore",
   role: "Ruolo",
   category: "Categoria",
+  is_collective: "Ente, casata o corte (non una persona)",
+  committente_ids: "Committenti (chi ha voluto l'opera)",
   bio: "Biografia",
   innovations: "Innovazioni",
   type: "Tipo",
@@ -980,7 +982,6 @@ const FIELD_LABELS_IT: Record<string, string> = {
   introduced_by: "Introdotto da (autore)",
   first_period_id: "Prima comparsa (periodo)",
   evolution: "Evoluzione",
-  category: "Categoria",
   description: "Descrizione",
   kind: "Tipo",
   is_archetype: "È un archetipo",
@@ -1005,7 +1006,7 @@ const FIELD_LABELS_IT: Record<string, string> = {
   term_ids: "Termini glossario",
   image_url: "URL immagine",
   image_thumb: "URL thumbnail",
-  image_source: "Fonte immagine",
+  image_source: "Fonte immagine (ricavata automaticamente, non modificare)",
 };
 
 // Campi che dovrebbero essere textarea (testo lungo)
@@ -1017,18 +1018,19 @@ const LONG_TEXT_FIELDS = new Set([
 // Campi con select predefiniti (enum)
 const SELECT_OPTIONS: Record<string, string[]> = {
   "artists.category": ["pittori", "scultori", "architetti", "orafi-bronzisti", "miniatori", "committenti", "altro"],
+  "artists.is_collective": ["true", "false"],
   "techniques.category": ["pittorica", "scultorea", "architettonica", "musiva", "altra"],
   "works.type": ["architettura", "pittura", "scultura", "mosaico", "miniatura",
     "oreficeria", "urbanistica", "tela", "tavola", "polittico", "rilievo",
     "affresco", "altro"],
   "works.book": ["1", "2"],
   "works.importance": ["1", "2", "3"],
-  "works.image_source": ["commons", "wikiart", "museo", "altro"],
   "periods.type": ["epoca", "corrente", "scuola"],
   "terms.category": ["architettura", "pittura", "scultura", "iconografia", "generale"],
   "events.kind": ["politico", "religioso", "culturale", "tecnologico"],
   "connections.kind": ["influenza", "contaminazione", "rielaborazione",
-    "evoluzione", "contrasto", "committenza", "maestro-allievo"],
+    "evoluzione", "contrasto", "committenza", "maestro-allievo", "collaborazione",
+    "autore", "luogo"],
   "connections.source_type": ["period", "artist", "work", "technique", "event", "term"],
   "connections.target_type": ["period", "artist", "work", "technique", "event", "term"],
 };
@@ -1042,10 +1044,13 @@ const CONN_KIND_LABELS: Record<string, string> = {
   contrasto: "Contrasto",
   committenza: "Committenza",
   "maestro-allievo": "Maestro-allievo",
+  collaborazione: "Collaborazione",
+  autore: "Autore dell'opera",
+  luogo: "Legame di luogo",
 };
 const ENTITY_TYPE_LABELS: Record<string, string> = {
   period: "Periodo",
-  artist: "Autore",
+  artist: "Autore o committente",
   work: "Opera",
   technique: "Tecnica",
   event: "Evento",
@@ -1056,6 +1061,11 @@ const ENTITY_TYPE_LABELS: Record<string, string> = {
 // Mappa: nomeCampo → { table, mode } dove table è la tabella DB da cui pescare
 const REF_FIELDS: Record<string, { table: string; mode: "single" | "multi" }> = {
   "artists.period_ids": { table: "periods", mode: "multi" },
+  "works.artist_ids": { table: "artists", mode: "multi" },
+  "works.committente_ids": { table: "artists", mode: "multi" },
+  "works.period_id": { table: "periods", mode: "single" },
+  "works.technique_ids": { table: "techniques", mode: "multi" },
+  "works.term_ids": { table: "terms", mode: "multi" },
   "techniques.first_period_id": { table: "periods", mode: "single" },
   "techniques.introduced_by": { table: "artists", mode: "single" },
   "terms.period_ids": { table: "periods", mode: "multi" },
@@ -1575,7 +1585,7 @@ const GenericEditorDrawerInnerMemo = memo(GenericEditorDrawerInner, (prev, next)
 // con valori sensati invece di un form vuoto con solo "id").
 const NEW_ROW_TEMPLATES: Record<Tab, () => any> = {
   works: () => ({
-    id: "", title: "", artist_ids: [], period_id: null, date_text: "",
+    id: "", title: "", artist_ids: [], committente_ids: [], period_id: null, date_text: "",
     year_start: null, year_end: null, type: "altro", technique_ids: [],
     materials: [], location_city: null, location_place: null,
     lat: null, lon: null, book: 1, chapter: 0, page: 0, source_file: "",
@@ -1585,6 +1595,7 @@ const NEW_ROW_TEMPLATES: Record<Tab, () => any> = {
   artists: () => ({
     id: "", name: "", aka: [], birth: null, death: null,
     period_ids: [], role: "", bio: "", innovations: [], category: null,
+    is_collective: false, location_city: null,
   }),
   periods: () => ({
     id: "", name: "", type: "epoca", year_start: 1400, year_end: 1500,

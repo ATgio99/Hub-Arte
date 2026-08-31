@@ -5,7 +5,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useData } from "../lib/store";
-import { CountUp } from "../components/ui";
+import { CountUp, BannerGitHub } from "../components/ui";
 import { useInViewOnce, EASE_OUT, usePrefersReducedMotion } from "../lib/motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "../lib/auth";
@@ -156,7 +156,7 @@ export default function Landing() {
 
   const stats = [
     { n: ix.ds.works.length, l: "Opere" },
-    { n: ix.ds.artists.length, l: "Autori" },
+    { n: ix.ds.artists.length, l: "Protagonisti" },
     { n: ix.ds.periods.length, l: "Periodi" },
     { n: ix.ds.terms.length, l: "Termini" },
     { n: ix.ds.techniques.length, l: "Tecniche" },
@@ -212,7 +212,7 @@ export default function Landing() {
             fontSize: "clamp(14px, 2.5vw, 16px)", color: "var(--gold-deep)",
             fontWeight: 600, margin: "0 auto 24px", lineHeight: 1.5,
           }}>
-            🎓 Gratuito · Open source · Senza pubblicità
+            Gratuito · Open source · Senza pubblicità
           </p>
 
           {/* CTA */}
@@ -331,6 +331,12 @@ export default function Landing() {
         ))}
       </div>
 
+      {/* L'invito a contribuire viene prima delle righe di servizio: e' la sola
+          cosa in fondo alla pagina che chieda qualcosa a chi legge. */}
+      <div style={{ marginTop: 44, maxWidth: 720, marginLeft: "auto", marginRight: "auto" }}>
+        <BannerGitHub />
+      </div>
+
       {/* Footer */}
       <div style={{
         textAlign: "center", padding: "24px 0", borderTop: "1px solid var(--line)",
@@ -362,39 +368,6 @@ export default function Landing() {
           <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer"
             style={{ color: "var(--ink-dim)", textDecoration: "none" }}>
             GitHub ↗
-          </a>
-        </div>
-
-        {/* Sostieni il progetto */}
-        <div style={{
-          marginTop: 20, padding: "20px 24px", background: "var(--bg-2)", borderRadius: 12,
-          display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 12,
-          maxWidth: 520,
-        }}>
-          <div style={{ fontSize: 15, fontWeight: 600, fontFamily: "var(--font-display)", color: "var(--ink)" }}>
-            💛 Sostieni il progetto
-          </div>
-          <p style={{ fontSize: 13.5, color: "var(--ink-soft)", margin: 0, lineHeight: 1.6, textAlign: "center" }}>
-            HUB Arte è gratuito e open source. Puoi contribuire in molti modi:
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 14px", justifyContent: "center", fontSize: 13, color: "var(--ink-soft)" }}>
-            <span>⭐ Metti una star su GitHub</span>
-            <span>🐛 Segnala bug o suggerimenti</span>
-            <span>📝 Contribuisci al codice</span>
-            <span>🗣️ Parlane con chi studia storia dell'arte</span>
-          </div>
-          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer"
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              padding: "9px 20px", borderRadius: 999, fontSize: 13.5, fontWeight: 600,
-              background: "var(--gold)", color: "#fff", textDecoration: "none",
-              border: "1px solid var(--gold-deep)",
-              marginTop: 4,
-            }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-            Vai al repository GitHub →
           </a>
         </div>
       </div>

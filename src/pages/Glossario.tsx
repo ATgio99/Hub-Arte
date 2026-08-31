@@ -61,7 +61,7 @@ export default function Glossario() {
   return (
     <div className="wrap page">
       <div className="page-head">
-        <div className="page-eyebrow"><span className="eyebrow">Voci · Glossario</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Catalogo</span></div>
         <h1 className="page-title">Glossario</h1>
         <p className="page-lead">Terminologia specifica, parti architettoniche e archetipi ricorrenti. Gli <strong style={{ color: "var(--c-term)" }}>archetipi</strong> sono elementi che riemergono nei secoli.</p>
       </div>
@@ -91,11 +91,11 @@ export default function Glossario() {
                 className={`gloss-card ${t.is_archetype ? "arch" : ""} ${isExpanded ? "is-open" : ""} ${active === t.id || isExpanded ? "hot" : ""}`}
                 data-testid={`gloss-${t.id}`}>
                 <div className="gloss-head">
-                  <h3 style={{ fontSize: 20 }}>{t.term}</h3>
+                  <h3 style={{ fontSize: 20 }}><span className="gloss-term">{t.term}</span></h3>
                   {t.is_archetype && <span className="tag" style={{ color: "var(--c-term)", borderColor: "var(--c-term)" }}>◆ archetipo</span>}
                   <span className="faint">{t.category}</span>
                 </div>
-                <p className="gloss-def muted">{t.definition}</p>
+                <div className="gloss-defbox"><p className="gloss-def muted">{t.definition}</p></div>
                 {t.period_ids.length > 0 && (
                   <div className="gloss-periods">
                     {t.period_ids.slice(0, 5).map((pid) => (

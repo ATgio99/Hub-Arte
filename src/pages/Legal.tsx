@@ -1,17 +1,55 @@
 // ============================================================================
-// Pagine legali: Privacy, Cookie, Termini, Crediti, Contatti.
-// Rotte: /legal/privacy, /legal/cookie, /legal/termini, /legal/crediti, /legal/contatti
+// Pagine informative: Progetto, Privacy, Cookie, Termini, Crediti, Contatti.
+// Rotte: /legal/progetto, /legal/privacy, /legal/cookie, /legal/termini,
+//        /legal/crediti, /legal/contatti
 // ============================================================================
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { CONTACT_EMAIL } from "../lib/auth";
+import PaginaModificabile from "../components/PaginaModificabile";
+import { BannerGitHub } from "../components/ui";
+import { useData } from "../lib/store";
+import { isCommittente } from "../lib/data";
 
-function BackButton() {
-  const nav = useNavigate();
-  return (
-    <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 22 }} data-testid="legal-back">
-      ← Indietro
-    </button>
-  );
+function useConteggi() {
+  const ix = useData();
+  const autori = ix.ds.artists.filter((a) => !isCommittente(a));
+  const committenti = ix.ds.artists.filter(isCommittente);
+  // Le donne fra chi ha commissionato: elenco esplicito, perche' il genere non
+  // e' un dato del catalogo e non va indovinato dai nomi.
+  const DONNE_COMMITTENTI = [
+    "isabella-deste", "galla-placidia", "eleonora-di-toledo", "barbara-di-brandeburgo",
+    "giovanna-da-piacenza", "atalanta-baglioni", "yolanda-daragona",
+  ];
+  const donne = ix.ds.artists.filter((a) => DONNE_COMMITTENTI.includes(a.id));
+  return {
+    opere: ix.ds.works.length,
+    protagonisti: ix.ds.artists.length,
+    autori: autori.length,
+    committenti: committenti.length,
+    periodi: ix.ds.periods.length,
+    termini: ix.ds.terms.length,
+    tecniche: ix.ds.techniques.length,
+    connessioni: ix.ds.connections.length,
+    donne,
+  };
+}
+
+const num = (n: number) => n.toLocaleString("it-IT");
+
+/** Valori del catalogo utilizzabili nel testo come {opere}, {autori}, … */
+function segnapostoCatalogo(c: ReturnType<typeof useConteggi>): Record<string, string> {
+  return {
+    opere: num(c.opere),
+    protagonisti: num(c.protagonisti),
+    autori: num(c.autori),
+    committenti: num(c.committenti),
+    periodi: num(c.periodi),
+    termini: num(c.termini),
+    tecniche: num(c.tecniche),
+    connessioni: num(c.connessioni),
+    donne: String(c.donne.length),
+    nomiDonne: c.donne.map((d) => d.name).join(", "),
+  };
 }
 
 function H1({ children }: { children: React.ReactNode }) {
@@ -30,13 +68,150 @@ function Mailto({ subject }: { subject?: string }) {
 
 export default function Legal() {
   const { section = "" } = useParams();
+  const c = useConteggi();
   const nav = useNavigate();
+
+  if (section === "progetto") {
+    return (
+      <div className="wrap page"><div>
+        <PaginaModificabile id="progetto" valori={segnapostoCatalogo(c)} titolo={<H1>Il progetto, i suoi limiti, e come è stato costruito</H1>}>
+        <P>Ultimo aggiornamento: agosto 2026.</P>
+
+        <H2>Che cos'è</H2>
+        <P>
+          HUB Arte è un atlante di storia dell'arte pensato come strumento di studio. Prova a
+          rendere visibile ciò che un elenco di schede non mostra: come le opere si richiamano
+          fra loro, chi ha imparato da chi, quali città e quali corti hanno reso possibile un
+          certo modo di dipingere o di costruire, e chi ha pagato perché accadesse.
+        </P>
+        <P>
+          Per questo il catalogo è organizzato per relazioni: i periodi si contengono l'un
+          l'altro dall'epoca alla singola bottega; ogni opera è legata a chi l'ha eseguita e,
+          dove documentato, a chi l'ha commissionata; la linea del tempo, la mappa e il grafo
+          sono tre modi di interrogare lo stesso materiale. È gratuito, senza pubblicità e
+          open source con licenza MIT.
+        </P>
+
+        <H2>Che cosa contiene, e che cosa non contiene</H2>
+        <P>
+          Il catalogo raccoglie {num(c.opere)} opere, {num(c.protagonisti)} schede fra autori e
+          committenti, {num(c.periodi)} periodi, {num(c.termini)} termini di glossario. Questi
+          numeri non sono un merito: sono il risultato di una selezione, e ogni selezione esclude.
+        </P>
+        <P>
+          Il nucleo dei contenuti nasce da un manuale universitario italiano di storia
+          dell'arte e ne eredita il perimetro: <b>l'arco cronologico va dalla Tarda Antichità
+          al Barocco</b> (284–1750 circa) e l'orizzonte geografico è europeo, con una netta
+          prevalenza italiana. Non è un atlante di storia dell'arte: è l'atlante di un
+          programma di studio.
+        </P>
+        <P>
+          Il limite più evidente riguarda chi il catalogo lascia fuori. <b>Fra i {num(c.autori)} autori
+          censiti non compare alcuna artista donna.</b> Le sole donne presenti — {c.donne.length} — sono
+          committenti: {c.donne.map((d) => d.name).join(", ")}. Questa assenza riproduce quella dei
+          manuali da cui il catalogo deriva; registrarla qui non la corregge, ma è il primo
+          passo per non spacciarla per neutralità. Colmarla richiede un lavoro di ricerca che
+          il progetto non ha ancora fatto.
+        </P>
+
+        <P>
+          Un secondo limite riguarda la geografia: il luogo registrato per ogni opera è
+          <b>dove l'opera si trova oggi</b>, non dove è stata prodotta. La mappa descrive
+          quindi la geografia della conservazione, ed è la ragione per cui Londra, New York e
+          Washington vi compaiono con un peso che nulla dice sui luoghi di produzione.
+        </P>
+
+        <H2>Come è stato costruito, e dove ha lavorato l'intelligenza artificiale</H2>
+        <P>
+          Una parte del lavoro è stata svolta con l'assistenza di modelli linguistici di
+          grandi dimensioni (famiglia Claude di Anthropic, agosto 2026). Dichiararlo in modo
+          preciso è parte del metodo, non una formalità.
+        </P>
+        <P>Dove sono stati usati, e come:</P>
+        <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
+          <li>
+            <b>Riordino di dati già esistenti.</b> L'assegnazione delle opere ai periodi e
+            l'individuazione dei committenti sono state ottenute esaminando le schede una per
+            una: nella maggior parte dei casi il dato era <i>già scritto</i> nel testo della
+            scheda e andava estratto e reso strutturato, non inventato. Questa è la parte in
+            cui il modello ha lavorato come acceleratore su materiale esistente.
+          </li>
+          <li>
+            <b>Redazione di testi in bozza.</b> Le schede descrittive di alcune scuole e di
+            gran parte dei committenti sono state scritte in prima stesura da un modello, a
+            partire dai dati del catalogo. Qui non si riordina: si produce prosa
+            interpretativa, ed è la parte che richiede più cautela.
+          </li>
+          <li>
+            <b>Verifica delle attribuzioni dubbie.</b> I casi incerti sono stati sciolti
+            consultando fonti museali e bibliografiche (Louvre, Musei Vaticani, Opificio delle
+            Pietre Dure, Treccani, National Gallery). Dove la fonte dichiara di non sapere, il
+            campo è rimasto vuoto: su 42 casi esaminati, 13 restano aperti.
+          </li>
+        </ul>
+
+        <H2>Che cosa significa, qui, "revisione umana"</H2>
+        <P>
+          È il punto in cui è facile essere generici, quindi conviene essere precisi su ciò
+          che è stato fatto e su ciò che non lo è stato.
+        </P>
+        <P>
+          Ogni proposta è stata prodotta come <i>elenco da approvare</i>, mai scritta
+          direttamente nel catalogo: le assegnazioni sono state esaminate e autorizzate voce
+          per voce prima di essere applicate, e le motivazioni di ciascuna sono conservate nel
+          repository pubblico. Sono stati inoltre eseguiti controlli sistematici di coerenza:
+          nessun riferimento a entità inesistenti, nessuna incoerenza nella gerarchia dei
+          periodi, date compatibili fra committente e opera.
+        </P>
+        <P>
+          Quello che <b>non</b> è stato fatto è una verifica bibliografica indipendente di
+          ciascuna delle {num(c.opere)} schede. La revisione ha riguardato la struttura, la coerenza
+          interna e la plausibilità storica, con approfondimento sulle sole attribuzioni
+          segnalate come dubbie. È una revisione reale, ma parziale, e va letta per quello che è.
+        </P>
+
+        <H2>Il limite che riguarda i modelli, e non i dati</H2>
+        <P>
+          Un modello linguistico non sbaglia soltanto le date. Restituisce lo sguardo
+          prevalente nei testi su cui è stato addestrato: tende quindi a riprodurre il canone
+          storiografico dominante, le sue gerarchie e le sue formule, e a rendere ancora meno
+          visibile ciò che è già ai margini. Applicato a un catalogo che eredita il perimetro
+          di un manuale, <b>rischia di funzionare come un amplificatore di quel canone</b>.
+        </P>
+        <P>
+          Ne consegue che la revisione umana non ha soltanto una funzione di controllo dei
+          fatti, ma di correzione di prospettiva — ed è la parte del lavoro più difficile da
+          garantire, perché ciò che manca non segnala la propria assenza.
+        </P>
+
+        <H2>Dove l'intelligenza artificiale non c'entra</H2>
+        <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
+          <li><b>Mentre consulti il sito non gira alcun modello.</b> Le pagine sono file già scritti: navigare, cercare, aprire una scheda non invia nulla a un servizio di intelligenza artificiale.</li>
+          <li><b>I quiz non sono generati da un modello</b>, ma da un programma che pesca dal catalogo secondo regole fisse. Se una domanda è imprecisa, l'errore è nel dato.</li>
+          <li><b>Quello che fai non addestra nulla.</b> Preferiti, opere approfondite e risultati dei quiz restano tuoi: vedi la <Link to="/legal/privacy" className="tlink">Privacy Policy</Link>.</li>
+        </ul>
+
+        <H2>Responsabilità e segnalazioni</H2>
+        <P>
+          La responsabilità scientifica di quanto è pubblicato è di chi cura il progetto, non
+          degli strumenti impiegati per costruirlo. Il catalogo contiene certamente errori:
+          date imprecise, attribuzioni discutibili, sviste. È uno strumento di studio, non una
+          fonte da citare in un lavoro accademico — verifica sui manuali e sulle fonti quando
+          la cosa conta.
+        </P>
+        <P>
+          Le segnalazioni sono il modo più utile per contribuire: da ogni scheda puoi proporre
+          una correzione, oppure scrivere a <Mailto subject="Segnalazione errore nel catalogo" />.
+        </P>
+        </PaginaModificabile>
+      </div></div>
+    );
+  }
 
   if (section === "privacy") {
     return (
-      <div className="wrap page" style={{ maxWidth: 760 }}>
-        <BackButton />
-        <H1>Privacy Policy</H1>
+      <div className="wrap page"><div>
+        <PaginaModificabile id="privacy" valori={segnapostoCatalogo(c)} titolo={<H1>Privacy Policy</H1>}>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
           HUB Arte — Atlante Neuronale ("il Servizio") è un atlante di studio di Storia dell'Arte
@@ -91,15 +266,15 @@ export default function Legal() {
         <P>
           Per i cookie utilizzati si rinvia alla <Link to="/legal/cookie" className="tlink">Cookie Policy</Link>.
         </P>
-      </div>
+        </PaginaModificabile>
+      </div></div>
     );
   }
 
   if (section === "cookie") {
     return (
-      <div className="wrap page" style={{ maxWidth: 760 }}>
-        <BackButton />
-        <H1>Cookie Policy</H1>
+      <div className="wrap page"><div>
+        <PaginaModificabile id="cookie" valori={segnapostoCatalogo(c)} titolo={<H1>Cookie Policy</H1>}>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
           Questa Cookie Policy spiega quali cookie vengono utilizzati da HUB Arte — Atlante Neuronale
@@ -141,15 +316,15 @@ export default function Legal() {
           espressa nel banner iniziale è conservata nel <code>localStorage</code> sotto la chiave
           <code> atlante.cookie.choice</code> e può essere modificata cancellando tale voce.
         </P>
-      </div>
+        </PaginaModificabile>
+      </div></div>
     );
   }
 
   if (section === "termini") {
     return (
-      <div className="wrap page" style={{ maxWidth: 760 }}>
-        <BackButton />
-        <H1>Termini e condizioni</H1>
+      <div className="wrap page"><div>
+        <PaginaModificabile id="termini" valori={segnapostoCatalogo(c)} titolo={<H1>Termini e condizioni</H1>}>
         <P>Ultimo aggiornamento: luglio 2026.</P>
 
         <H2>1. Oggetto</H2>
@@ -200,15 +375,15 @@ export default function Legal() {
           Ci riserviamo il diritto di modificare i presenti Termini. Le modifiche saranno
           efficaci dalla pubblicazione su questa pagina.
         </P>
-      </div>
+        </PaginaModificabile>
+      </div></div>
     );
   }
 
   if (section === "crediti") {
     return (
-      <div className="wrap page" style={{ maxWidth: 760 }}>
-        <BackButton />
-        <H1>Crediti</H1>
+      <div className="wrap page"><div>
+        <PaginaModificabile id="crediti" valori={segnapostoCatalogo(c)} titolo={<H1>Crediti</H1>}>
 
         <H2>Progetto</H2>
         <P>
@@ -230,11 +405,43 @@ export default function Legal() {
           <li><b>Capacitor</b> — packaging iOS (PWA)</li>
         </ul>
 
+        <H2>Testi di riferimento</H2>
+        <P>
+          Le informazioni del catalogo — opere, datazioni, attribuzioni, contesti — derivano dallo
+          studio dei seguenti manuali. I testi delle schede sono rielaborazioni, non riproduzioni:
+          i dati di fatto (autore, data, luogo, tecnica) non sono materia coperta da diritto
+          d'autore, mentre la formulazione è originale.
+        </P>
+        <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
+          <li>
+            G. Dorfles, A. Vettese, E. Princi, <i>Civiltà d'arte</i>, Atlas, Bergamo — vol. 3.
+          </li>
+          <li>
+            E. Demartini, C. Gatti, E. Tonetti, E. P. Villa, <i>Con gli occhi dell'arte</i>,
+            Rizzoli Education (Mondadori Education), Milano 2022 — voll. 2, 3, 4.
+          </li>
+        </ul>
+        <P>
+          Se un riferimento risulta incompleto o attribuito in modo impreciso, segnalalo a <Mailto subject="Correzione crediti" />:
+          viene corretto.
+        </P>
+
         <H2>Immagini</H2>
         <P>
-          Tutte le immagini delle opere provengono da <b>Wikimedia Commons</b> o da fonti pubbliche
-          istituzionali (musei, soprintendenze). Per ogni immagine è possibile consultare la fonte
-          facendo clic sull'immagine stessa o visitando la pagina Commons originale.
+          Le immagini delle opere provengono in larga parte da <b>Wikimedia Commons</b> e da fonti
+          pubbliche istituzionali. Sotto ogni immagine il sito indica il sito di provenienza, ricavato
+          automaticamente dal suo indirizzo e collegato alla pagina di origine, dove si trovano
+          autore e licenza. Le riproduzioni hanno scopo di studio e non sostituiscono riproduzioni
+          scientifiche verificate.
+        </P>
+
+        <H2>Codice</H2>
+        <P>
+          Il progetto è open source con licenza MIT: chiunque può leggerne il codice, segnalare
+          errori, proporre correzioni o farne una versione propria. Il repository è su{" "}
+          <a href="https://github.com/ATgio99/Hub-Arte" target="_blank" rel="noopener noreferrer" className="tlink">GitHub</a>,
+          dove sono pubblici anche i materiali di lavoro sul catalogo: le proposte di attribuzione,
+          le motivazioni di ogni scelta e i controlli effettuati.
         </P>
 
         <H2>Contatti</H2>
@@ -242,15 +449,15 @@ export default function Legal() {
           Per segnalazioni, suggerimenti, richieste di collaborazione o problemi tecnici, scrivi a{" "}
           <Mailto /> oppure visita la pagina <Link to="/legal/contatti" className="tlink">Contatti</Link>.
         </P>
-      </div>
+        </PaginaModificabile>
+      </div></div>
     );
   }
 
   if (section === "contatti") {
     return (
-      <div className="wrap page" style={{ maxWidth: 760 }}>
-        <BackButton />
-        <H1>Contatti</H1>
+      <div className="wrap page"><div>
+        <PaginaModificabile id="contatti" valori={segnapostoCatalogo(c)} titolo={<H1>Contatti</H1>}>
         <P>
           Per qualsiasi comunicazione relativa a HUB Arte — Atlante Neuronale, puoi scrivere
           all'indirizzo <Mailto />.
@@ -294,28 +501,9 @@ export default function Legal() {
           Il codice sorgente del progetto è pubblico su GitHub sotto licenza MIT.
         </P>
 
-        <H2>Sostieni il progetto</H2>
-        <P>
-          HUB Arte è gratuito e open source. Puoi contribuire in molti modi:
-          mettere una star su GitHub, segnalare bug o suggerimenti, contribuire
-          al codice con pull request, o semplicemente parlarne con chi studia
-          storia dell'arte.
-        </P>
-        <div style={{ marginTop: 12 }}>
-          <a href="https://github.com/ATgio99/Hub-Arte" target="_blank" rel="noopener noreferrer"
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              padding: "9px 18px", borderRadius: 999, fontSize: 13, fontWeight: 600,
-              background: "var(--gold)", color: "#fff", textDecoration: "none",
-              border: "1px solid var(--gold-deep)",
-            }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-            Vai al repository GitHub →
-          </a>
-        </div>
-      </div>
+        <div style={{ marginTop: 26 }}><BannerGitHub /></div>
+        </PaginaModificabile>
+      </div></div>
     );
   }
 

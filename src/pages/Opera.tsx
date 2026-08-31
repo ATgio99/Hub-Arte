@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useData } from "../lib/store";
-import { WorkImage, WorkCard, WorkGallery, Section, Empty, EntityLink, FavStar, StudiedCheck, RichText } from "../components/ui";
+import { WorkImage, WorkCard, WorkGallery, Section, Empty, EntityLink, FavStar, StudiedCheck, RichText, BarraScheda, SegnoApprofondita } from "../components/ui";
 import { getOverrides, setOverride, clearOverride } from "../lib/imageOverrides";
 import { useStudied, toggleStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
@@ -10,7 +10,7 @@ import EditorDrawer from "../components/EditorDrawer";
 import {
   artistsOfWork, termsOfWork, techniquesOfWork, relatedWorks,
   connectionsOf, workYears, entityLabel, ENTITY_LABEL, KIND_LABEL,
-  computeWorkGroups, workGroupMap,
+  computeWorkGroups, workGroupMap, fonteImmagine,
 } from "../lib/data";
 
 // --- editor immagine personalizzata: URL manuale, anteprima, ripristino ----
@@ -83,6 +83,24 @@ function ImageEditor({ workId }: { workId: string }) {
   );
 }
 
+// Le attribuzioni che restano aperte non spariscono in un campo vuoto: si
+// dichiarano, con la fonte che dice perche' non si sa. Un'incertezza motivata
+// e' un'informazione; un campo vuoto e' solo un'assenza.
+interface Incertezza { tema: string; fonte: string; nota: string; }
+let _incertezze: Record<string, Incertezza> | null = null;
+function useIncertezza(workId: string): Incertezza | null {
+  const [dati, setDati] = useState<Record<string, Incertezza> | null>(_incertezze);
+  useEffect(() => {
+    if (_incertezze) return;
+    const base = (import.meta as any).env?.BASE_URL ?? "/";
+    fetch(`${base}data/incertezze.json`)
+      .then((r) => (r.ok ? r.json() : {}))
+      .then((j) => { _incertezze = j; setDati(j); })
+      .catch(() => { _incertezze = {}; setDati({}); });
+  }, []);
+  return dati?.[workId] ?? null;
+}
+
 export default function Opera() {
   const { id } = useParams();
   const ix = useData();
@@ -117,36 +135,33 @@ export default function Opera() {
   const siblings = group ? group.works.filter(sw => sw.id !== w.id) : [];
 
   const isStudied = studied.includes(w.id);
+  const incertezza = useIncertezza(w.id);
 
   return (
     <div className="wrap page">
-      {/* Header: indietro (sinistra) + azione principale (destra) */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 22, gap: 12, flexWrap: "wrap" }}>
-        <button className="btn ghost sm" onClick={() => nav(-1)} data-testid="button-back">← Indietro</button>
-        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          {isAdmin ? (
-            <button
-              onClick={() => setEditorOpen(true)}
-              className="btn gold sm"
-              style={{ fontSize: 13, padding: "8px 14px", whiteSpace: "nowrap" }}
-              title="Modifica i metadati dell'opera nel database (solo admin)"
-              data-testid="btn-admin-edit"
-            >
-              ✎ Modifica
-            </button>
-          ) : user ? (
-            <Link
-              to={`/suggerisci-modifica?work=${encodeURIComponent(w.id)}`}
-              className="btn ghost sm"
-              style={{ fontSize: 13, padding: "8px 14px", borderColor: "var(--line)", color: "var(--ink-soft)", whiteSpace: "nowrap" }}
-              title="Richiedi una modifica a quest'opera (titolo, data, luogo, immagine…)"
-              data-testid="btn-suggerisci-modifica"
-            >
-              ✎ Richiedi modifica
-            </Link>
-          ) : null}
-        </div>
-      </div>
+      <BarraScheda azioni={
+        isAdmin ? (
+          <button
+            onClick={() => setEditorOpen(true)}
+            className="btn gold sm"
+            style={{ fontSize: 13, padding: "8px 14px", whiteSpace: "nowrap" }}
+            title="Modifica i metadati dell'opera nel database (solo admin)"
+            data-testid="btn-admin-edit"
+          >
+            ✎ Modifica
+          </button>
+        ) : user ? (
+          <Link
+            to={`/suggerisci-modifica?work=${encodeURIComponent(w.id)}`}
+            className="btn ghost sm"
+            style={{ fontSize: 13, padding: "8px 14px", borderColor: "var(--line)", color: "var(--ink-soft)", whiteSpace: "nowrap" }}
+            title="Richiedi una modifica a quest'opera (titolo, data, luogo, immagine…)"
+            data-testid="btn-suggerisci-modifica"
+          >
+            ✎ Richiedi modifica
+          </Link>
+        ) : null
+      } />
 
       <div className="opera-grid">
         {/* immagine — galleria scorrevole con lightbox integrato */}
@@ -154,7 +169,24 @@ export default function Opera() {
           <WorkGallery work={w} />
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8, gap: 10, flexWrap: "wrap" }}>
             {isAdmin && <ImageEditor workId={w.id} />}
-            {w.image_source && <div className="faint" style={{ fontSize: 11, marginLeft: "auto" }}>fonte immagine: {getOverrides()[w.id] ? "personalizzata" : w.image_source}</div>}
+            {(() => {
+              // La fonte si legge dall'indirizzo dell'immagine mostrata: non e'
+              // un campo da compilare, quindi non puo' essere sbagliata o vecchia.
+              const mostrata = getOverrides()[w.id]?.url || w.image_url;
+              const f = fonteImmagine(mostrata);
+              if (!f) return null;
+              return (
+                <div className="faint" style={{ fontSize: 11, marginLeft: "auto", textAlign: "right" }}>
+                  immagine da{" "}
+                  <a href={f.href} target="_blank" rel="noopener noreferrer"
+                    className="tlink" style={{ color: "inherit" }}>{f.nome}</a>
+                  {!f.affidabile && (
+                    <span title="Indirizzo temporaneo di un motore di ricerca: non dichiara autore ne' licenza e puo' smettere di funzionare."
+                      style={{ marginLeft: 6, color: "#a8483f" }}>· da verificare</span>
+                  )}
+                </div>
+              );
+            })()}
           </div>
         </div>
 
@@ -174,7 +206,7 @@ export default function Opera() {
           {/* Badge approfondita */}
           {isStudied && (
             <div style={{ marginTop: 8, display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 10px", borderRadius: 6, background: "color-mix(in srgb, var(--c-technique) 12%, transparent)", color: "var(--c-technique)", fontSize: 13, fontWeight: 500 }}>
-              ✓ Approfondita
+              <SegnoApprofondita size={14} /> Approfondita
             </div>
           )}
 
@@ -185,15 +217,33 @@ export default function Opera() {
             {" · "}<span className="tnum">{workYears(w)}</span>
           </div>
 
-          <p className="prose" style={{ marginTop: 22, fontSize: 17 }}><RichText text={w.summary || ""} /></p>
-
-          <dl className="meta" style={{ marginTop: 26 }}>
+          {/* Scheda tecnica prima della sintesi: chi legge vuole sapere subito
+              dove si trova l'opera e con che tecnica e' fatta. La datazione non
+              compare qui perche' e' gia' accanto all'autore, sopra. */}
+          <dl className="meta" style={{ marginTop: 22 }}>
             {period && <><dt>Periodo</dt><dd><EntityLink type="period" id={period.id} label={period.name} /></dd></>}
             {w.location_city && <><dt>Luogo</dt><dd>{w.location_place ? `${w.location_place}, ` : ""}<Link className="tlink" to={`/luogo/${encodeURIComponent(w.location_city)}`}>{w.location_city}</Link></dd></>}
             {techs.length > 0 && <><dt>Tecnica</dt><dd>{techs.map((t, i) => <span key={t.id}>{i > 0 && ", "}<EntityLink type="technique" id={t.id} label={t.name} /></span>)}</dd></>}
             {w.materials.length > 0 && <><dt>Materiali</dt><dd>{w.materials.join(", ")}</dd></>}
-            {w.date_text && <><dt>Datazione</dt><dd>{w.date_text}</dd></>}
           </dl>
+
+          {incertezza && (
+            <div style={{
+              marginTop: 18, padding: "12px 14px", borderRadius: 10,
+              border: "1px solid var(--line)", borderLeft: "3px solid var(--gold)",
+              background: "var(--bg-1)", fontSize: 13.5, lineHeight: 1.55,
+            }} data-testid="incertezza">
+              <div className="eyebrow" style={{ marginBottom: 6, color: "var(--gold-deep)" }}>
+                Attribuzione aperta · {incertezza.tema}
+              </div>
+              <div style={{ color: "var(--ink-soft)" }}>{incertezza.nota}</div>
+              {incertezza.fonte && (
+                <div className="faint" style={{ marginTop: 6, fontSize: 12 }}>Fonte consultata: {incertezza.fonte}</div>
+              )}
+            </div>
+          )}
+
+          <p className="prose" style={{ marginTop: 26, fontSize: 17 }}><RichText text={w.summary || ""} /></p>
 
           {w.innovations.length > 0 && (
             <div style={{ marginTop: 24 }}>
@@ -309,17 +359,10 @@ export default function Opera() {
       )}
 
       {/* === 4. Opere del periodo storico dell'opera ===
-          (rinominata da "Opere connesse": il contenuto è per lo più opere dello
-          stesso periodo storico, unite a eventuali opere collegate via
-          connections. Mostriamo il nome del periodo nel titolo per renderlo
-          esplicito all'utente.
-
-          Se tra queste ci sono opere COLLEGATE all'opera corrente (con un tipo
-          di legame esplicito: rielaborazione, contrasto, influenza, ecc.) le
-          mostriamo come banner visivi — nello stesso stile della sezione 1
-          "Opere collegate" — con l'etichetta del tipo di relazione e la
-          descrizione. Le altre (opere solo "coeve" nello stesso periodo)
-          rimangono come WorkCard semplici. */}
+          Qui stanno solo le opere COEVE, cioe' quelle dello stesso periodo che
+          non hanno un legame esplicito con l'opera corrente. Le opere collegate
+          da una connection sono gia' mostrate sopra in "Opere collegate": se le
+          ripetessimo anche qui l'utente vedrebbe due volte la stessa scheda. */}
       {related.length > 0 && (() => {
         // Recupera il tipo di relazione per ciascuna opera "related":
         // se l'opera corrente è collegata a quest'altra tramite una connection
@@ -336,70 +379,15 @@ export default function Opera() {
             thisIsSource: !otherIsSource,
           });
         }
-        // Separa le opere "collegate" (con tipo di relazione) dalle "coeve"
-        const connectedRelated = related.filter(r => relatedKindMap.has(r.id));
+        // Le opere gia' mostrate come "Opere collegate" qui vengono escluse:
+        // in questa sezione restano solo le coeve, senza un legame esplicito.
         const coevalRelated = related.filter(r => !relatedKindMap.has(r.id));
+        if (coevalRelated.length === 0) return null;
+        // Il nome del periodo sta nell'occhiello, non nel titolo: incastrarlo in
+        // "opere del ..." produceva accordi sbagliati (del Rinascenza sveva).
         return (
-          <Section eyebrow="Vicinanze" title={period ? `Opere del ${period.name}` : "Opere vicine"}>
-            {/* Opere effettivamente collegate (con tipo di relazione) —
-                banner visivi come la sezione 1 "Opere collegate" */}
-            {connectedRelated.length > 0 && (
-              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: coevalRelated.length > 0 ? 20 : 0 }}>
-                {connectedRelated.map((otherWork) => {
-                  const info = relatedKindMap.get(otherWork.id)!;
-                  // Risolvi l'autore (o gli autori) dell'opera collegata per mostrarlo
-                  // accanto al titolo, come fa già la WorkCard standard.
-                  const otherArtists = artistsOfWork(ix, otherWork);
-                  const otherArtistsLabel = otherArtists.length > 0
-                    ? otherArtists.map(a => a.name).join(", ")
-                    : null;
-                  return (
-                    <Link
-                      key={otherWork.id}
-                      to={`/opera/${otherWork.id}`}
-                      className="conn-banner"
-                      style={{
-                        display: "flex", gap: 14, padding: 12,
-                        background: "var(--bg-1)", border: "1px solid var(--line)",
-                        borderRadius: 10, textDecoration: "none", color: "var(--ink)",
-                        transition: "border-color .2s, box-shadow .2s",
-                      }}
-                    >
-                      <div style={{ width: 64, height: 64, borderRadius: 6, overflow: "hidden", flexShrink: 0, border: "1px solid var(--line-soft)" }}>
-                        <WorkImage work={otherWork} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                      </div>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" }}>
-                          <span className="tag" style={{ color: "var(--gold-deep)", borderColor: "var(--gold)", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.04em", fontWeight: 700 }}>
-                            {KIND_LABEL[info.kind] ?? info.kind}
-                          </span>
-                          <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>
-                            {info.thisIsSource ? "questa opera →" : "← quest'opera"}
-                          </span>
-                        </div>
-                        <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap", marginBottom: 2 }}>
-                          <span style={{ fontSize: 14, fontWeight: 600 }}>{otherWork.title}</span>
-                          {otherArtistsLabel && (
-                            <span style={{ fontSize: 12.5, color: "var(--ink-soft)", fontStyle: "italic" }}>
-                              · {otherArtistsLabel}
-                            </span>
-                          )}
-                        </div>
-                        {info.description && (
-                          <div style={{ fontSize: 12.5, color: "var(--ink-soft)", fontStyle: "italic", lineHeight: 1.4 }}>
-                            "{info.description}"
-                          </div>
-                        )}
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            )}
-            {/* Opere solo "coeve" (stesso periodo, senza legame esplicito) */}
-            {coevalRelated.length > 0 && (
-              <div className="grid-works">{coevalRelated.map((r) => <WorkCard key={r.id} work={r} />)}</div>
-            )}
+          <Section eyebrow={period ? period.name : "Vicinanze"} title="Altre opere del periodo">
+            <div className="grid-works">{coevalRelated.map((r) => <WorkCard key={r.id} work={r} />)}</div>
           </Section>
         );
       })()}

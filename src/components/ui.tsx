@@ -1,12 +1,14 @@
 import { ReactNode, CSSProperties, useState, useEffect, useCallback, useRef, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import type { Work, EntityType } from "../lib/types";
 import { useData } from "../lib/store";
 import { entityLabel, resolveEntity, WorkGroup, ENTITY_LABEL, artistsOfWork } from "../lib/data";
-import { useCountUp, useInViewOnce, revealContainer, revealItem, revealItemSoft, EASE_OUT, usePrefersReducedMotion } from "../lib/motion";
+import { useCountUp, useInViewOnce, revealContainer, revealItem, revealItemSoft, EASE_OUT, usePrefersReducedMotion, useIsNarrow } from "../lib/motion";
 import { useFavorites, toggleFavorite, FavType } from "../lib/favorites";
+import IconaSezione from "./IconaSezione";
 import { useStudied, toggleStudied } from "../lib/studied";
+import { CONTACT_EMAIL } from "../lib/auth";
 
 // ---- Stella preferiti (opere e artisti) ------------------------------------
 export function FavStar({ type, id, size = 18, className }: { type: FavType; id: string; size?: number; className?: string }) {
@@ -26,6 +28,29 @@ export function FavStar({ type, id, size = 18, className }: { type: FavType; id:
         <path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.45 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95L12 2.6z" />
       </svg>
     </button>
+  );
+}
+
+// I due segni del sito — la stella dei preferiti e la spunta delle opere
+// approfondite — anche in forma non cliccabile, per quando servono come
+// simbolo accanto a un'etichetta invece che come comando.
+export function SegnoPreferito({ size = 15 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+      style={{ color: "var(--gold)", flexShrink: 0 }}>
+      <path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.45 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95L12 2.6z" />
+    </svg>
+  );
+}
+
+export function SegnoApprofondita({ size = 15 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+      style={{ color: "var(--c-technique)", flexShrink: 0 }}>
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+      <polyline points="22 4 12 14.01 9 11.01" />
+    </svg>
   );
 }
 
@@ -302,7 +327,7 @@ export function WorkCard({ work, subtitle, showStudied, group }: { work: Work; s
           </span>
         )}
         {work.importance === 3 && <span className="workcard-imp">✦</span>}
-        {isStudied && <span className="workcard-studied-badge" title="Approfondita">✓</span>}
+        {isStudied && <span className="workcard-studied-badge" title="Approfondita"><SegnoApprofondita size={12} /></span>}
         {group && (
           <span
             className="workcard-complex-overlay"
@@ -403,7 +428,7 @@ export function WorkGroupCard({ group, expanded, onToggle }: { group: WorkGroup;
               <Link key={w.id} to={`/opera/${w.id}`} className="workgroup-child">
                 <span className="tag" style={{ fontSize: 10, padding: "1px 6px", whiteSpace: "nowrap" }}>{w.type}</span>
                 <span className="workgroup-child-title">{w.title}</span>
-                {wStudied && <span style={{ color: "var(--c-technique)", fontSize: 14, flexShrink: 0 }}>✓</span>}
+                {wStudied && <SegnoApprofondita size={13} />}
                 {w.importance === 3 && <span style={{ color: "var(--gold-deep)", fontSize: 12, flexShrink: 0 }}>✦</span>}
               </Link>
             );
@@ -737,5 +762,174 @@ export function WorkGallery({ work }: { work: Work }) {
         </div>
       )}
     </>
+  );
+}
+
+// ---- Barra di navigazione delle schede -------------------------------------
+// Un solo comando diviso in due: a sinistra la freccia che torna indietro nella
+// cronologia, a destra la casetta col nome della sezione da cui la scheda
+// proviene. Il secondo movimento serve soprattutto su telefono, dove il menu si
+// chiude appena apri qualcosa e non c'e' un modo rapido per tornare all'elenco.
+const SEZIONE_DI: { prefisso: string; base: string; nome: string; icona: string }[] = [
+  { prefisso: "/opera/", base: "/opere", nome: "Opere", icona: "opere" },
+  { prefisso: "/complesso/", base: "/opere", nome: "Opere", icona: "opere" },
+  { prefisso: "/artista/", base: "/artisti", nome: "Protagonisti", icona: "artisti" },
+  { prefisso: "/periodo/", base: "/timeline", nome: "Linea del tempo", icona: "timeline" },
+  { prefisso: "/luogo/", base: "/mappa", nome: "Mappa", icona: "mappa" },
+  { prefisso: "/tecnica/", base: "/tecniche", nome: "Tecniche", icona: "tecniche" },
+  { prefisso: "/termine/", base: "/glossario", nome: "Glossario", icona: "glossario" },
+];
+
+// Stesso tratto delle icone del menu: 24x24, linea 1.5, estremi arrotondati.
+const trattoIcona = {
+  width: 16, height: 16, viewBox: "0 0 24 24", fill: "none",
+  stroke: "currentColor", strokeWidth: 1.6,
+  strokeLinecap: "round" as const, strokeLinejoin: "round" as const,
+};
+
+export function BarraScheda({ azioni }: { azioni?: ReactNode }) {
+  const nav = useNavigate();
+  const loc = useLocation();
+  const narrow = useIsNarrow();
+  const sezione = SEZIONE_DI.find((s) => loc.pathname.startsWith(s.prefisso));
+
+  const parte: CSSProperties = {
+    display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7,
+    height: 38, border: 0, background: "transparent", color: "var(--ink-soft)",
+    cursor: "pointer", fontSize: 13.5, fontFamily: "inherit", whiteSpace: "nowrap",
+  };
+
+  return (
+    <div style={{
+      display: "flex", alignItems: "center", justifyContent: "space-between",
+      gap: 10, flexWrap: "wrap", marginBottom: narrow ? 12 : 20,
+    }}>
+      <div style={{
+        display: "inline-flex", alignItems: "stretch",
+        border: "1px solid var(--line)", borderRadius: 10,
+        background: "var(--bg-1)", overflow: "hidden",
+      }}>
+        <button
+          onClick={() => nav(-1)}
+          style={{ ...parte, padding: sezione ? "0 13px" : "0 15px 0 13px" }}
+          title="Torna indietro"
+          aria-label="Torna indietro"
+          data-testid="button-back"
+        >
+          <svg {...trattoIcona} aria-hidden><path d="M15 5l-7 7 7 7" /></svg>
+          {/* Senza la sezione accanto la sola freccia resterebbe muta: qui il
+              comando e' da solo, quindi si nomina. */}
+          {!sezione && <span>Indietro</span>}
+        </button>
+        {sezione && (
+          <>
+            <span aria-hidden style={{ width: 1, background: "var(--line)" }} />
+            <button
+              onClick={() => nav(sezione.base)}
+              style={{ ...parte, padding: "0 14px" }}
+              title={`Vai a ${sezione.nome}`}
+              data-testid="button-section-home"
+            >
+              <IconaSezione id={sezione.icona} size={16} />
+              <span>{sezione.nome}</span>
+            </button>
+          </>
+        )}
+      </div>
+      {azioni && <div style={{ display: "flex", gap: 8, alignItems: "center" }}>{azioni}</div>}
+    </div>
+  );
+}
+
+// ============================================================================
+// AccessoRichiesto — la schermata che vede chi non ha ancora un account.
+//
+// Era scritta due volte, in «Suggerisci» e in «Contributi», con titoli e stili
+// leggermente diversi da quelli del resto del sito. Sta qui in un pezzo solo
+// perche' le due pagine dicano la stessa cosa nello stesso modo, e perche' il
+// motivo per registrarsi vada detto: chi arriva qui non lo sa.
+// ============================================================================
+export function AccessoRichiesto({ occhiello, titolo, motivo, oggettoEmail }:
+  { occhiello: string; titolo: string; motivo: string; oggettoEmail?: string }) {
+  const posta = `mailto:${CONTACT_EMAIL}${oggettoEmail ? `?subject=${encodeURIComponent(oggettoEmail)}` : ""}`;
+  return (
+    <div className="wrap page">
+      <BarraScheda />
+      <div className="page-head">
+        <div className="page-eyebrow"><span className="eyebrow">{occhiello}</span></div>
+        <h1 className="page-title">{titolo}</h1>
+        <p className="page-lead">{motivo}</p>
+      </div>
+      <div className="page-rule" />
+
+      <div className="card" style={{ padding: "22px 24px", maxWidth: 560 }}>
+        <div style={{ fontSize: 15, lineHeight: 1.65, color: "var(--ink-soft)" }}>
+          Serve un account: senza, una proposta non potrebbe essere ricondotta a
+          nessuno e tu non potresti sapere come è andata a finire. Bastano
+          un'email e una password, e non chiediamo nient'altro.
+        </div>
+        <div style={{ marginTop: 18, display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <Link to="/login" className="btn gold">Accedi o registrati</Link>
+          <a href={posta} className="btn ghost">Scrivi invece un'email</a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// BannerGitHub — l'invito a sostenere il progetto.
+//
+// Era scritto tre volte, in tre forme diverse (landing, contributi, crediti).
+// Sta qui in un pezzo solo. È l'unico punto del sito in cui si usano le
+// emoji: qui servono a far sembrare leggero un invito, non a etichettare dati.
+// ============================================================================
+const GITHUB_URL = "https://github.com/ATgio99/Hub-Arte";
+
+const MODI_DI_AIUTARE = [
+  { e: "⭐", t: "Metti una star sul repository" },
+  { e: "🐛", t: "Segnala un errore o un dato sbagliato" },
+  { e: "🧩", t: "Contribuisci al codice o al catalogo" },
+  { e: "📣", t: "Parlane con chi studia storia dell'arte" },
+];
+
+export function BannerGitHub({ compatto = false }: { compatto?: boolean }) {
+  return (
+    <div className="card" style={{
+      padding: compatto ? "20px 22px" : "26px 28px",
+      background: "linear-gradient(180deg, rgba(184,138,46,.06), transparent 70%)",
+      borderColor: "var(--gold)", textAlign: "center",
+    }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 10 }}>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style={{ color: "var(--ink)", flexShrink: 0 }}>
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+        </svg>
+        <h2 style={{ fontSize: 19, fontFamily: "var(--font-display)", margin: 0 }}>Sostieni il progetto</h2>
+      </div>
+
+      <p style={{ fontSize: 14, lineHeight: 1.6, color: "var(--ink-soft)", margin: "0 auto 18px", maxWidth: 560 }}>
+        HUB Arte è gratuito, open source e cresce con chi lo usa. Il codice e il
+        catalogo stanno su GitHub: chiunque può leggerli, correggerli e riusarli.
+      </p>
+
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 22px", marginBottom: 20 }}>
+        {MODI_DI_AIUTARE.map((m) => (
+          <div key={m.t} style={{ display: "inline-flex", alignItems: "baseline", gap: 8, fontSize: 13.5, color: "var(--ink-soft)" }}>
+            <span style={{ fontSize: 15, flexShrink: 0 }} aria-hidden="true">{m.e}</span>
+            <span>{m.t}</span>
+          </div>
+        ))}
+      </div>
+
+      <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer"
+        style={{
+          display: "inline-flex", alignItems: "center", gap: 8,
+          padding: "10px 22px", borderRadius: 999, fontSize: 13.5, fontWeight: 600,
+          background: "var(--gold)", color: "#fff", textDecoration: "none",
+          border: "1px solid var(--gold-deep)",
+        }}>
+        Apri il repository su GitHub →
+      </a>
+    </div>
   );
 }

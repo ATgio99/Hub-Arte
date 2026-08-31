@@ -33,22 +33,43 @@ let _cache: Promise<Dataset> | null = null;
 export function clearDatasetCache() { _cache = null; }
 
 /**
- * Carica TUTTE le tabelle dal DB Supabase (se presenti) e fa merge col JSON statico.
- * - Le righe del DB con stesso id SOVRASCRIVONO quelle del JSON
- * - Le righe del DB con id nuovo vengono AGGIUNTE
- * - Se il DB non risponde o le tabelle non esistono → fallback silenzioso al JSON
+ * Il catalogo completo sta nei JSON: qui si chiedono al database SOLO le righe
+ * modificate dopo l'ultimo export (public/data/meta.json). Cosi' le correzioni
+ * fatte dalla dashboard si vedono subito online, ma finche' non si tocca nulla
+ * queste query tornano vuote e costano quasi niente. Quando si vuole riportare
+ * le modifiche nel repository si lancia `npm run esporta-catalogo`.
+ *
+ * Senza meta.json (fork che non ha ancora esportato) si scarica tutto, come
+ * faceva la versione precedente.
  */
 async function loadDbOverrides(): Promise<Partial<Dataset>> {
   try {
+    // data dell'ultimo export: da li' in poi conta solo cio' che e' cambiato
+    let dopo: string | null = null;
+    try {
+      const meta = await fetchJson<{ esportato_il?: string }>("meta");
+      dopo = meta?.esportato_il ?? null;
+    } catch { /* nessun meta.json: si scarica tutto */ }
+
+    const q = (tabella: string) => {
+      const base = supabase.from(tabella).select("*");
+      return dopo ? base.gt("updated_at", dopo) : base;
+    };
+
     const [periodsRes, worksRes, artistsRes, techRes, termsRes, eventsRes, connsRes, hiddenRes] = await Promise.all([
-      supabase.from("periods").select("*"),
-      supabase.from("works").select("*"),
-      supabase.from("artists").select("*"),
-      supabase.from("techniques").select("*"),
-      supabase.from("terms").select("*"),
-      supabase.from("events").select("*"),
-      supabase.from("connections").select("*").order("sort_order"),
-      supabase.from("hidden_entities").select("id"),
+      q("periods"),
+      q("works"),
+      q("artists"),
+      q("techniques"),
+      q("terms"),
+      q("events"),
+      dopo
+        ? supabase.from("connections").select("*").gt("updated_at", dopo).order("sort_order")
+        : supabase.from("connections").select("*").order("sort_order"),
+      // le voci nascoste prima dell'export sono gia' state tolte dai JSON
+      dopo
+        ? supabase.from("hidden_entities").select("id").gt("hidden_at", dopo)
+        : supabase.from("hidden_entities").select("id"),
     ]);
     // Salva gli hidden IDs per il filtraggio
     if (!hiddenRes.error && hiddenRes.data) {
@@ -206,8 +227,26 @@ export function worksByArtist(ds: Dataset, artistId: string): Work[] {
   return ds.works.filter((w) => w.artist_ids.includes(artistId));
 }
 
+// Le opere volute da un committente. Speculare a worksByArtist, ma sull'altro
+// elenco: chi commissiona non figura tra gli autori, quindi cercarlo in
+// artist_ids non restituirebbe nulla.
+export function worksByCommittente(ds: Dataset, committenteId: string): Work[] {
+  return ds.works.filter((w) => (w.committente_ids ?? []).includes(committenteId));
+}
+
 export function artistsOfWork(ix: Indexed, w: Work): Artist[] {
   return w.artist_ids.map((id) => ix.artistById.get(id)).filter(Boolean) as Artist[];
+}
+
+export function committentiOfWork(ix: Indexed, w: Work): Artist[] {
+  return (w.committente_ids ?? []).map((id) => ix.artistById.get(id)).filter(Boolean) as Artist[];
+}
+
+// Un mecenate: la categoria esplicita se c'e', altrimenti il ruolo scritto a
+// mano (com'era prima che la categoria venisse davvero popolata).
+export function isCommittente(a: Artist): boolean {
+  if (a.category) return a.category === "committenti";
+  return (a.role ?? "").toLowerCase().includes("committ");
 }
 
 export function termsOfWork(ix: Indexed, w: Work): Term[] {
@@ -417,4 +456,54 @@ export function workGroupMap(groups: Map<string, WorkGroup>): Map<string, WorkGr
     }
   }
   return m;
+}
+
+// --- Fonte delle immagini ---------------------------------------------------
+// La provenienza non si dichiara a mano: si ricava dall'indirizzo dell'immagine,
+// cosi' non puo' contraddire il file che si sta effettivamente mostrando.
+// Per Wikimedia si risale alla pagina del file, dove stanno licenza e autore.
+const SITI_NOTI: { test: RegExp; nome: string }[] = [
+  { test: /(^|\.)wikimedia\.org$/, nome: "Wikimedia Commons" },
+  { test: /(^|\.)wikipedia\.org$/, nome: "Wikipedia" },
+  { test: /(^|\.)wikidata\.org$/, nome: "Wikidata" },
+  { test: /(^|\.)meisterdrucke\./, nome: "Meisterdrucke" },
+  { test: /(^|\.)artesvelata\.it$/, nome: "Arte Svelata" },
+  { test: /(^|\.)finestresullarte\./, nome: "Finestre sull'Arte" },
+  { test: /(^|\.)arte\.it$/, nome: "Arte.it" },
+  { test: /(^|\.)alamy\./, nome: "Alamy" },
+  { test: /(^|\.)metmuseum\.org$/, nome: "The Met" },
+  { test: /(^|\.)nga\.gov$/, nome: "National Gallery of Art" },
+  { test: /(^|\.)louvre\.fr$/, nome: "Louvre" },
+  { test: /(^|\.)museicivici/, nome: "Musei Civici" },
+];
+
+// Indirizzi che non sono una fonte ma una copia temporanea di un motore di
+// ricerca: vanno segnalati, perche' spariscono e non dichiarano una licenza.
+const CACHE_DI_RICERCA = /(gstatic\.com|search\.brave\.com|bing\.net|duckduckgo\.com|pinimg\.com)$/;
+
+export interface FonteImmagine {
+  nome: string;
+  href: string;
+  affidabile: boolean;
+}
+
+export function fonteImmagine(url?: string | null): FonteImmagine | null {
+  if (!url) return null;
+  let host: string;
+  try { host = new URL(url).hostname.toLowerCase(); } catch { return null; }
+
+  // Da un file di Wikimedia si risale alla sua pagina di descrizione.
+  if (/wikimedia\.org$/.test(host)) {
+    const file = decodeURIComponent(url.split("/").pop() || "").split("?")[0];
+    return {
+      nome: "Wikimedia Commons",
+      href: file ? `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file)}` : url,
+      affidabile: true,
+    };
+  }
+  if (CACHE_DI_RICERCA.test(host)) {
+    return { nome: "copia da motore di ricerca", href: url, affidabile: false };
+  }
+  const noto = SITI_NOTI.find((s) => s.test.test(host));
+  return { nome: noto ? noto.nome : host.replace(/^www\./, ""), href: url, affidabile: true };
 }

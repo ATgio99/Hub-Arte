@@ -1,6 +1,7 @@
-# HUB Art — Atlante Neuronale
+# HUB Arte — atlante di storia dell'arte
 
-> Atlante di studio interattivo per l'esame di Storia dell'Arte: grafo neuronale 3D, timeline multilivello, mappa geografica, schede opere e modalità quiz.
+> Strumento di studio che mette in relazione opere, chi le ha fatte, chi le ha
+> volute e i periodi in cui sono nate. Gratuito, senza pubblicità, open source.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Made with React](https://img.shields.io/badge/React-18-blue.svg)](https://react.dev/)
@@ -14,16 +15,74 @@
 
 HUB Art è un atlante digitale di Storia dell'Arte pensato per studenti, docenti e appassionati. Combina diverse modalità di esplorazione in un'unica interfaccia:
 
-- 🏛️ **Catalogo opere** — 1100+ opere con schede dettagliate (autore, datazione, luogo, analisi, innovazioni)
-- 👤 **Catalogo artisti** — 300+ artisti con biografie e opere collegate
+- 🏛️ **Catalogo opere** — oltre 1.100 opere con schede dettagliate (autore, committente, datazione, luogo, analisi, innovazioni)
+- 👤 **Protagonisti** — oltre 600 schede fra autori e committenti, dai papi alle corporazioni di mestiere
 - 🕸️ **Grafo neuronale 3D** — visualizzazione interattiva delle connessioni tra opere, artisti, periodi e termini
-- 📅 **Timeline multilivello** — periodi, eventi e artisti su una linea del tempo navigabile
+- 📅 **Timeline gerarchica** — oltre 110 periodi su tre livelli annidati: epoche, correnti, scuole e botteghe
 - 🗺️ **Mappa geografica** — opere e luoghi su mappa Leaflet/OpenStreetMap
-- 📚 **Glossario** — 800+ termini di storia dell'arte con definizioni
-- 🎨 **Indice tecniche** — 200+ tecniche artistiche catalogate
+- 📚 **Glossario** — oltre 850 termini di storia dell'arte con definizioni
+- 🎨 **Indice tecniche** — oltre 200 tecniche artistiche catalogate
 - 📊 **Dashboard statistiche** — dati aggregati sull'atlante
 - 🎯 **Quiz interattivo** — 18 tipi di domanda generati dinamicamente dal dataset, con banca errori e statistiche
-- 🔗 **400+ connessioni** tra entità (influenze, maestro-allievo, committenze, evoluzioni)
+- 🔗 **oltre 600 connessioni** tra entità (influenze, maestro-allievo, committenze, collaborazioni)
+
+### Il perimetro del catalogo, e che cosa resta fuori
+
+Questi numeri sono il risultato di una selezione, e ogni selezione esclude:
+dichiararne i confini fa parte della descrizione del progetto.
+
+Il nucleo dei contenuti nasce da un manuale universitario italiano di storia
+dell'arte e ne eredita il perimetro. **L'arco cronologico va dalla Tarda Antichità
+al Barocco** (284–1750 circa); l'orizzonte è europeo, con netta prevalenza
+italiana. Non è un atlante di storia dell'arte: è l'atlante di un programma di
+studio.
+
+Il limite più netto riguarda chi il catalogo lascia fuori. **Fra gli autori censiti non compare
+alcuna artista donna.** Le sole donne presenti sono committenti: Isabella d'Este, Galla Placidia, Eleonora di Toledo, Barbara di
+Brandeburgo, Giovanna da Piacenza, Atalanta Baglioni, Yolanda d'Aragona. Questa
+assenza riproduce quella dei manuali da cui il catalogo deriva; registrarla non la
+corregge, ma evita di presentarla come neutralità.
+
+Un secondo limite riguarda la geografia: il luogo registrato per ogni opera è
+**dove l'opera si trova oggi**, non dove è stata prodotta. La mappa descrive
+quindi la geografia della conservazione — ed è la ragione per cui Londra, New York
+e Washington vi compaiono con un peso che nulla dice sui luoghi di produzione.
+
+### Come è stato costruito, e dove ha lavorato l'intelligenza artificiale
+
+Una parte del lavoro è stata svolta con l'assistenza di modelli linguistici
+(famiglia Claude di Anthropic, agosto 2026). Le funzioni sono state due, e vanno
+distinte:
+
+1. **Riordino di dati già presenti.** L'assegnazione delle opere ai periodi e
+   l'individuazione dei committenti sono state ricavate esaminando le schede una
+   per una: nella maggior parte dei casi il dato era già scritto nel testo e
+   andava estratto e reso strutturato, non prodotto.
+2. **Redazione di testi in prima stesura.** Le schede di alcune scuole e di gran
+   parte dei committenti sono state scritte in bozza a partire dai dati del
+   catalogo. Qui non si riordina: si produce prosa interpretativa, e la cautela
+   richiesta è maggiore.
+
+Ogni proposta è stata prodotta come elenco da approvare, mai scritta direttamente
+nel catalogo, e le motivazioni di ciascuna sono conservate nel repository. Sono
+stati eseguiti controlli sistematici di coerenza (riferimenti esistenti, gerarchia
+dei periodi, compatibilità cronologica fra committente e opera). **Non** è stata
+condotta una verifica bibliografica indipendente di ciascuna delle schede:
+la revisione ha riguardato struttura, coerenza interna e plausibilità storica, con
+approfondimento sulle sole attribuzioni segnalate come dubbie, esaminate su fonti
+museali; una parte di esse resta dichiaratamente aperta.
+
+Resta un limite che riguarda lo strumento e non i dati: un modello linguistico
+restituisce lo sguardo prevalente nei testi su cui è stato addestrato, e tende
+quindi a riprodurre il canone storiografico dominante, rendendo ancora meno
+visibile ciò che è già ai margini. Applicato a un catalogo che eredita il
+perimetro di un manuale, rischia di funzionare come amplificatore di quel canone.
+La revisione umana ha perciò una funzione non solo di controllo dei fatti ma di
+correzione di prospettiva.
+
+La responsabilità scientifica di quanto è pubblicato è di chi cura il progetto,
+non degli strumenti impiegati per costruirlo. Il catalogo contiene errori: è uno
+strumento di studio, non una fonte da citare in un lavoro accademico.
 
 ## ✨ Funzionalità principali
 
@@ -88,11 +147,17 @@ npm run build      # genera dist/
 npm run preview    # anteprima build
 ```
 
-### Variabili d'ambiente
-Il progetto funziona out-of-the-box con il progetto Supabase ufficiale. Per usarne uno tuo:
+Fatto: il sito è in funzione con il catalogo completo. **Non serve configurare un
+database**, perché opere, autori, periodi, termini, tecniche e connessioni stanno
+nei file JSON in `public/data/`.
+
+### Variabili d'ambiente (facoltative)
+Servono solo per gli account e la dashboard di amministrazione. Senza, il sito
+funziona in sola lettura — che è tutto quel che serve per consultarlo o
+svilupparci sopra.
 ```bash
 cp .env.example .env
-# modifica .env con le tue credenziali Supabase
+# inserisci indirizzo e chiave anonima del tuo progetto Supabase
 ```
 
 ## 📦 Deploy
@@ -112,15 +177,30 @@ npm run build
 # trascina la cartella dist/ su https://app.netlify.com/drop
 ```
 
-## 🗄️ Database Supabase
+## 🗄️ Dove stanno i dati
 
-Lo schema SQL è in `supabase/`. Esegui gli script nel [SQL Editor di Supabase](https://supabase.com/dashboard/project/ddsdvcznziciqdambgom/sql/new) seguendo l'ordine indicato in `supabase/README.md`:
+Il catalogo vive nei JSON di `public/data/`, uno per tipo di entità. È la fonte
+di verità del progetto: chi clona il repository ha l'atlante completo, e il sito
+gira senza credenziali.
 
-1. `migration_full_database.sql` — tabelle base (periods, works, artists, techniques, terms, events, connections) + RLS
-2. `migration_techniques_table.sql` — tabella techniques (verifica/completa)
-3. `migration_image_overrides_global.sql` — immagini override globali (admin)
-4. `migration_retroactive_global_images.sql` — converte override admin esistenti in globali
-5. `migration_pdf_missing.sql` — 800+ record estratti da libro di storia dell'arte (opere, artisti, connessioni, ecc.)
+Il database serve per gli account, la sincronizzazione fra dispositivi, i
+suggerimenti degli utenti e la dashboard di amministrazione. Contiene le stesse
+tabelle del catalogo, ma l'app **non le rilegge tutte a ogni avvio**: chiede solo
+le righe modificate dopo la data di `public/data/meta.json`. Così le correzioni
+fatte dalla dashboard si vedono subito online, e finché non si tocca nulla quelle
+richieste tornano vuote.
+
+Per riportare nel repository le modifiche fatte dalla dashboard:
+
+```bash
+npm run esporta-catalogo
+```
+
+Riscrive i JSON, rimuove le voci nel frattempo nascoste e porta dentro le opere
+le immagini scelte dagli amministratori. Poi si pubblicano i file cambiati.
+
+Le istruzioni per allestire un proprio database sono in
+[`supabase/README.md`](supabase/README.md).
 
 ### Sicurezza
 - **RLS (Row Level Security)** attiva su tutte le tabelle
@@ -177,7 +257,8 @@ Distribuito sotto licenza **MIT**. Vedi [LICENSE](./LICENSE) per dettagli.
 
 ## 🙏 Riconoscimenti
 
-- **Wikimedia Commons** per le immagini delle opere
+- **Wikimedia Commons** e Wikipedia per le immagini delle opere: sono riproduzioni
+  a scopo di studio, non riproduzioni scientifiche verificate
 - **OpenStreetMap** per i dati geografici
 - **Fontshare** per i font tipografici
 - **Supabase** per il backend (auth, database, realtime)

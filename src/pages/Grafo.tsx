@@ -26,7 +26,7 @@ const KINDS: ConnKind[] = ["influenza", "contaminazione", "rielaborazione", "evo
 // colori esadecimali (coerenti col tema chiaro). three.js NON interpreta var CSS.
 const NODE_HEX: Record<string, string> = {
   period: "#b88a2e", artist: "#b9692c", work: "#5f7e8c",
-  technique: "#6e8350", term: "#9a6a92", event: "#a8483f", city: "#4f7d72",
+  technique: "#6e8350", term: "#9a6a92", event: "#a8483f", city: "#7a5aa8",
 };
 const KIND_COLOR: Record<string, string> = {
   influenza: "#b88a2e", rielaborazione: "#b9692c", evoluzione: "#6e8350",
@@ -331,7 +331,11 @@ export default function Grafo() {
       const t = addNode(c.target_type, c.target_id);
       links.push({ source: s, target: t, kind: c.kind, desc: c.description });
     }
-    // città come nodi di raggruppamento
+    // Le citta' non sono entita' del catalogo: sono un campo delle opere, quindi
+    // esistono nel grafo solo finche' ci sono opere da cui ricavarle. Se le opere
+    // vengono nascoste i luoghi spariscono con loro, ed e' corretto che accada:
+    // location_city indica dove l'opera si trova OGGI, non dove e' stata prodotta,
+    // quindi non si presta a descrivere i luoghi di attivita' di chi l'ha fatta.
     if (!hideTypes.has("city")) {
       for (const wn of [...nodeMap.values()].filter((n) => n.etype === "work")) {
         const w = ix.workById.get(wn.eid);
@@ -509,6 +513,13 @@ export default function Grafo() {
     return c;
   }, [graph]);
 
+  // I filtri dei livelli si ordinano dal piu' popoloso al meno: l'elenco fisso
+  // metteva in cima tipi con pochi nodi e in fondo quelli che pesano davvero.
+  const tipiOrdinati = useMemo(
+    () => [...NODE_TYPES, "city" as const].sort((a, b) => (counts[b] ?? 0) - (counts[a] ?? 0)),
+    [counts]
+  );
+
   // Conteggio dei legami attivi per tipo (kind). Simile a `counts` ma per i
   // link: conta quanti legami di ciascun tipo sono attualmente presenti nel
   // grafo (dopo i filtri temporali/nodi/kinds). Usato per mostrare il numero
@@ -522,6 +533,13 @@ export default function Grafo() {
     }
     return c;
   }, [graph]);
+
+  // Anche i legami si ordinano dal piu' frequente, come i tipi di nodo.
+  const legamiOrdinati = useMemo(
+    () => [...KINDS, "luogo" as const, "autore" as const]
+      .sort((a, b) => (linkCounts[b] ?? 0) - (linkCounts[a] ?? 0)),
+    [linkCounts]
+  );
 
   const selDetail = useMemo(() => {
     if (!sel) return null;
@@ -681,7 +699,7 @@ export default function Grafo() {
   const typeChips = (
     <div className="filter-group">
       <span className="filter-label">Tipi</span>
-      {[...NODE_TYPES, "city" as const].map((t) => (
+      {tipiOrdinati.map((t) => (
         <span key={t} className={`chip sm ${hideTypes.has(t) ? "" : "active"}`}
           style={hideTypes.has(t) ? {} : { background: NODE_HEX[t], borderColor: NODE_HEX[t], color: "#fff" }}
           onClick={() => toggle(hideTypes, t, setHideTypes)} data-testid={`gf-type-${t}`}>
@@ -732,7 +750,7 @@ export default function Grafo() {
           <button onClick={selectNoneTypes} style={{ fontSize: 10, padding: "2px 8px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Nessuno</button>
         </span>
       </div>
-      {[...NODE_TYPES, "city" as const].map((t) => {
+      {tipiOrdinati.map((t) => {
         const off = hideTypes.has(t);
         return (
           <button key={t} className={`gf-frow ${off ? "off" : ""}`} onClick={() => toggle(hideTypes, t, setHideTypes)}>
@@ -750,7 +768,7 @@ export default function Grafo() {
           <button onClick={selectNoneKinds} style={{ fontSize: 10, padding: "2px 8px", border: "1px solid var(--line)", borderRadius: 999, background: "var(--bg)", cursor: "pointer", color: "var(--ink-soft)", fontWeight: 600 }}>Nessuno</button>
         </span>
       </div>
-      {[...KINDS, "luogo" as const, "autore" as const].map((k) => {
+      {legamiOrdinati.map((k) => {
         const off = hideKinds.has(k);
         const dash = KIND_DASH[k];
         // Conteggio legami attivi per questo kind (numero di link nel grafo
@@ -996,7 +1014,7 @@ export default function Grafo() {
   return (
     <div className="wrap page" style={{ paddingBottom: 24 }}>
       <div className="page-head">
-        <div className="page-eyebrow"><span className="eyebrow">Rete neurale <span style={{ fontSize: 9, fontWeight: 700, color: "var(--ink-dim)", opacity: 0.5, textTransform: "lowercase", letterSpacing: "0.02em" }}>(beta)</span></span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Visualizzazione <span style={{ fontSize: 9, fontWeight: 700, color: "var(--ink-dim)", opacity: 0.5, textTransform: "lowercase", letterSpacing: "0.02em" }}>(beta)</span></span></div>
         <h1 className="page-title">Il grafo delle interconnessioni</h1>
         <p className="page-lead">Ogni nodo è un'entità, ogni filo un legame documentato: influenze, rielaborazioni, rapporti maestro-allievo, committenze. Clicca su un nodo per i dettagli e le sue connessioni, clicca su un arco per vedere il tipo di legame. Lo slider temporale filtra la rete.</p>
       </div>
@@ -1182,7 +1200,7 @@ export default function Grafo() {
             <span style={{ color: "var(--ink-faint)", fontSize: 10 }}>·</span>
             <button onClick={selectNoneTypes} className="gf-quick-toggle" title="Nascondi tutti i tipi di nodo">Nessuno</button>
           </div>
-          {[...NODE_TYPES, "city" as const].map((t) => {
+          {tipiOrdinati.map((t) => {
             const off = hideTypes.has(t);
             return (
               <button key={t} onClick={() => toggle(hideTypes, t, setHideTypes)} style={{ fontSize: 11, padding: "4px 10px", opacity: off ? 0.4 : 1, cursor: "pointer", border: "1px solid var(--line)", borderRadius: 999, background: off ? "transparent" : "var(--bg)", display: "inline-flex", alignItems: "center", gap: 6 }}>
@@ -1200,7 +1218,7 @@ export default function Grafo() {
             <span style={{ color: "var(--ink-faint)", fontSize: 10 }}>·</span>
             <button onClick={selectNoneKinds} className="gf-quick-toggle" title="Nascondi tutti i legami">Nessuno</button>
           </div>
-          {[...KINDS, "luogo" as const, "autore" as const].map((k) => {
+          {legamiOrdinati.map((k) => {
             const off = hideKinds.has(k);
             const dash = KIND_DASH[k];
             const n = linkCounts[k] ?? 0;

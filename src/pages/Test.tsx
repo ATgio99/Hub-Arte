@@ -141,8 +141,11 @@ function OperaDrawer({ workId, open, onClose }: { workId: string | null; open: b
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
                 {work.type && <span className="tag" style={{ borderColor: "var(--gold)", color: "var(--gold-deep)" }}>{work.type}</span>}
                 {centuryText && <span className="tag">{centuryText}</span>}
-                {yearText && yearText !== work.date_text && <span className="tag" style={{ borderColor: "var(--line)" }}>{yearText}</span>}
-                {work.date_text && <span className="tag" style={{ borderColor: "var(--line)" }}>{work.date_text}</span>}
+                {/* Una sola datazione: il testo esteso se c'e' ("1230 circa"),
+                    altrimenti gli anni ricavati dai campi numerici. */}
+                {(work.date_text || yearText) && (
+                  <span className="tag" style={{ borderColor: "var(--line)" }}>{work.date_text || yearText}</span>
+                )}
                 {period && <span className="tag" style={{ borderColor: "var(--c-period)", color: "var(--c-period)" }}>{period.name}</span>}
               </div>
 
@@ -1235,21 +1238,12 @@ export default function Test() {
     return (
       <div className="wrap page">
         <div className="page-head">
-          <div className="page-eyebrow"><span className="eyebrow">Domande generate dal dataset</span></div>
+          <div className="page-eyebrow"><span className="eyebrow">Studio</span></div>
           <h1 className="page-title">Test</h1>
           <p className="page-lead">Quiz a risposta chiusa costruiti in tempo reale dall'archivio — {ALL_KINDS.length} tipi di domanda, distrattori scelti tra entità affini, banca degli errori e statistiche persistenti.</p>
         </div>
 
         <div className="quiz-setup">
-          <div className="quiz-actions">
-            <button className="btn gold" onClick={start} disabled={kinds.size === 0 || (levelsMode && kinds.size !== 1)} data-testid="quiz-start"
-              title={kinds.size === 0 ? "Seleziona almeno un tipo di domanda" : (levelsMode && kinds.size !== 1 ? "In modalità «a livelli» seleziona un solo tipo di domanda" : "")}>Inizia il quiz →</button>
-            <button className="btn" onClick={startReview} disabled={errN === 0} data-testid="quiz-review"
-              title={errN === 0 ? "Nessun errore da ripassare" : ""}>
-              Ripassa errori {errN > 0 && <span className="pill">{errN}</span>}
-            </button>
-            <button className="btn ghost" onClick={() => setPhase("stats")} data-testid="quiz-stats-link">Le mie statistiche →</button>
-          </div>
           {notice && <div className="quiz-notice" data-testid="quiz-notice">{notice}</div>}
           {kinds.size === 0 && !notice && (
             <div className="quiz-notice soft" data-testid="quiz-hint">Nessun filtro attivo: seleziona qui sotto i tipi di domanda che vuoi (o «seleziona tutto»).</div>
@@ -1262,7 +1256,7 @@ export default function Test() {
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-start" }}>
             <div>
-              <div className="eyebrow" style={{ marginBottom: 12 }}>Quante domande</div>
+              <div className="eyebrow" style={{ marginBottom: 12 }}>1 · Quante domande</div>
               <div className="seg" data-testid="quiz-count-seg">
                 {[10, 20, 40].map((n) => (
                   <button key={n} className={`seg-btn ${count === n && !levelsMode ? "on" : ""}`} onClick={() => { setCount(n); setLevelsMode(false); }} data-testid={`quiz-count-${n}`}>{n}</button>
@@ -1276,7 +1270,7 @@ export default function Test() {
               )}
             </div>
             <div>
-              <div className="eyebrow" style={{ marginBottom: 12 }}>Tipo di domanda</div>
+              <div className="eyebrow" style={{ marginBottom: 12 }}>2 · Come rispondi</div>
               <div className="seg" data-testid="quiz-mode-seg">
                 <button className={`seg-btn ${quizMode === "multipla" ? "on" : ""}`} onClick={() => selectMode("multipla")} data-testid="quiz-mode-multipla">A risposta multipla</button>
                 <button className={`seg-btn ${quizMode === "aperte" ? "on" : ""}`} onClick={() => selectMode("aperte")} data-testid="quiz-mode-aperte">Aperte</button>
@@ -1292,16 +1286,90 @@ export default function Test() {
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12, flexWrap: "wrap" }}>
               <div className="eyebrow">
-                {quizMode === "aperte" ? "Domande aperte" : "Tipi di domanda"} · {kinds.size} di {visibleKinds.length}
+                3 · Che cosa ti viene chiesto · {kinds.size} di {visibleKinds.length}
               </div>
               <button className="quiz-grouptoggle" onClick={selectAll} data-testid="kinds-all">seleziona tutto</button>
               <button className="quiz-grouptoggle" onClick={clearAll} disabled={kinds.size === 0} data-testid="kinds-none">azzera</button>
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {visibleKinds.map((k) => (
-                <span key={k} className={`chip ${kinds.has(k) ? "active" : ""}`} onClick={() => toggleKind(k)} data-testid={`kind-${k}`}>{QUIZ_KIND_LABEL[k]}</span>
-              ))}
+            <div style={{ display: "grid", gap: 16 }}>
+              {QUIZ_GROUPS.map((g) => {
+                const disponibili = g.kinds.filter((k) => visibleKinds.includes(k));
+                if (disponibili.length === 0) return null;
+                const scelti = disponibili.filter((k) => kinds.has(k)).length;
+                const tutti = scelti === disponibili.length;
+                return (
+                  <div key={g.label}>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 7 }}>
+                      <button
+                        className="quiz-gruppo"
+                        onClick={() => {
+                          const n = new Set(kinds);
+                          if (tutti) disponibili.forEach((k) => n.delete(k));
+                          else disponibili.forEach((k) => n.add(k));
+                          setKinds(n); saveKinds(n); setNotice(null);
+                        }}
+                        data-testid={`kind-group-${g.label}`}
+                        title={tutti ? "Togli tutto il gruppo" : "Prendi tutto il gruppo"}
+                      >
+                        {g.label}
+                      </button>
+                      <span className="faint tnum" style={{ fontSize: 11.5 }}>{scelti}/{disponibili.length}</span>
+                    </div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                      {disponibili.map((k) => (
+                        <span key={k} className={`chip ${kinds.has(k) ? "active" : ""}`} onClick={() => toggleKind(k)} data-testid={`kind-${k}`}>{QUIZ_KIND_LABEL[k]}</span>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
+          </div>
+
+          <div>
+            <div className="eyebrow" style={{ marginBottom: 12 }}>4 · Restringi a quello che hai segnato</div>
+            <div className="quiz-setup-row">
+              <div className="quiz-field">
+              <button
+                className={`chip fav-chip ${favOnly ? "active" : ""}`}
+                onClick={() => {
+                  if (nFavs > 0) {
+                    setFavOnly((v) => !v);
+                    // Se spengo favOnly e studiedOnly è già off, resetto anche lo slider
+                    if (favOnly && !studiedOnly) setQuizRange(null);
+                    setNotice(null);
+                  }
+                }}
+                disabled={nFavs === 0}
+                title={nFavs === 0 ? "Aggiungi prima qualche stella a opere o artisti" : ""}
+                data-testid="quiz-fav-only"
+              >
+                ★ Solo preferiti{nFavs > 0 ? ` (${favs.works.length} opere · ${favs.artists.length} artisti)` : ""}
+              </button>
+              {nFavs === 0 && <span className="faint" style={{ fontSize: 11.5, marginTop: 4 }}>Metti una ★ su opere o artisti per usare questo filtro.</span>}
+              {favOnly && <span className="faint" style={{ fontSize: 11.5, marginTop: 4 }}>Valgono i tipi di domanda legati a opere e artisti.</span>}
+            </div>
+              <div className="quiz-field">
+              <button
+                className={`chip fav-chip ${studiedOnly ? "active" : ""}`}
+                style={studiedOnly ? { background: "var(--c-technique)", borderColor: "var(--c-technique)", color: "#fff" } : {}}
+                onClick={() => {
+                  if (nStudied > 0) {
+                    setStudiedOnly((v) => !v);
+                    if (studiedOnly && !favOnly) setQuizRange(null);
+                    setNotice(null);
+                  }
+                }}
+                disabled={nStudied === 0}
+                title={nStudied === 0 ? "Spunta ✓ alcune opere come approfondite per usare questo filtro" : ""}
+                data-testid="quiz-studied-only"
+              >
+                ✓ Solo approfondite{nStudied > 0 ? ` (${nStudied} opere)` : ""}
+              </button>
+              {nStudied === 0 && <span className="faint" style={{ fontSize: 11.5, marginTop: 4 }}>Spunta ✓ su una opera per approfondirla.</span>}
+              {studiedOnly && <span className="faint" style={{ fontSize: 11.5, marginTop: 4 }}>Valgono i tipi di domanda legati a opere.</span>}
+            </div>
+          </div>
           </div>
 
           {/* Selezione periodi — visibile SOLO se NON in modalità filtrata.
@@ -1310,7 +1378,7 @@ export default function Test() {
           {!filteredMode ? (
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12, flexWrap: "wrap" }}>
-                <div className="eyebrow">Periodi · {periodIds.size} selezionati</div>
+                <div className="eyebrow">5 · Su quali periodi · {periodIds.size} selezionati</div>
                 <button className="quiz-grouptoggle" onClick={() => { const n = new Set(periods.map(p => p.id)); setPeriodIds(n); savePeriodIds(n); setNotice(null); }} data-testid="periods-all">seleziona tutto</button>
                 <button className="quiz-grouptoggle" onClick={() => { const n = new Set<string>(); setPeriodIds(n); savePeriodIds(n); setNotice(null); }} disabled={periodIds.size === 0} data-testid="periods-none">azzera</button>
                 {periodIds.size > 0 && <span className="faint" style={{ fontSize: 12 }}>Puoi selezionare più periodi insieme</span>}
@@ -1365,7 +1433,7 @@ export default function Test() {
             <div>
               <div style={{ marginBottom: 8, display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
                 <div className="eyebrow">
-                  Intervallo storico
+                  5 · Su quale arco di tempo
                   {favOnly && <span style={{ marginLeft: 6, color: "var(--gold-deep)" }}>· solo preferiti</span>}
                   {studiedOnly && <span style={{ marginLeft: 6, color: "var(--c-technique)" }}>· solo approfondite</span>}
                 </div>
@@ -1382,49 +1450,21 @@ export default function Test() {
             </div>
           )}
 
-          <div className="quiz-setup-row">
-            <div className="quiz-field">
-              <span className="filter-label">Preferiti</span>
-              <button
-                className={`chip fav-chip ${favOnly ? "active" : ""}`}
-                onClick={() => {
-                  if (nFavs > 0) {
-                    setFavOnly((v) => !v);
-                    // Se spengo favOnly e studiedOnly è già off, resetto anche lo slider
-                    if (favOnly && !studiedOnly) setQuizRange(null);
-                    setNotice(null);
-                  }
-                }}
-                disabled={nFavs === 0}
-                title={nFavs === 0 ? "Aggiungi prima qualche stella a opere o artisti" : ""}
-                data-testid="quiz-fav-only"
-              >
-                ★ Solo preferiti{nFavs > 0 ? ` (${favs.works.length} opere · ${favs.artists.length} artisti)` : ""}
-              </button>
-              {nFavs === 0 && <span className="faint" style={{ fontSize: 11.5, marginTop: 4 }}>Metti una ★ su opere o artisti per usare questo filtro.</span>}
-              {favOnly && <span className="faint" style={{ fontSize: 11.5, marginTop: 4 }}>Valgono i tipi di domanda legati a opere e artisti.</span>}
-            </div>
-            <div className="quiz-field">
-              <span className="filter-label">Approfondite</span>
-              <button
-                className={`chip fav-chip ${studiedOnly ? "active" : ""}`}
-                style={studiedOnly ? { background: "var(--c-technique)", borderColor: "var(--c-technique)", color: "#fff" } : {}}
-                onClick={() => {
-                  if (nStudied > 0) {
-                    setStudiedOnly((v) => !v);
-                    if (studiedOnly && !favOnly) setQuizRange(null);
-                    setNotice(null);
-                  }
-                }}
-                disabled={nStudied === 0}
-                title={nStudied === 0 ? "Spunta ✓ alcune opere come approfondite per usare questo filtro" : ""}
-                data-testid="quiz-studied-only"
-              >
-                ✓ Solo approfondite{nStudied > 0 ? ` (${nStudied} opere)` : ""}
-              </button>
-              {nStudied === 0 && <span className="faint" style={{ fontSize: 11.5, marginTop: 4 }}>Spunta ✓ su una opera per approfondirla.</span>}
-              {studiedOnly && <span className="faint" style={{ fontSize: 11.5, marginTop: 4 }}>Valgono i tipi di domanda legati a opere.</span>}
-            </div>
+          <div className="quiz-riepilogo">
+            {levelsMode ? "Tutte le opere, a livelli" : `${count} domande`}
+            {" · "}{kinds.size} {kinds.size === 1 ? "tipo di domanda" : "tipi di domanda"}
+            {!filteredMode && periodIds.size > 0 && ` · ${periodIds.size} ${periodIds.size === 1 ? "periodo" : "periodi"}`}
+            {favOnly && " · solo preferiti"}
+            {studiedOnly && " · solo approfondite"}
+          </div>
+          <div className="quiz-actions quiz-actions-fondo">
+            <button className="btn gold" onClick={start} disabled={kinds.size === 0 || (levelsMode && kinds.size !== 1)} data-testid="quiz-start"
+              title={kinds.size === 0 ? "Seleziona almeno un tipo di domanda" : (levelsMode && kinds.size !== 1 ? "In modalità «a livelli» seleziona un solo tipo di domanda" : "")}>Inizia il quiz →</button>
+            <button className="btn" onClick={startReview} disabled={errN === 0} data-testid="quiz-review"
+              title={errN === 0 ? "Nessun errore da ripassare" : ""}>
+              Ripassa errori {errN > 0 && <span className="pill">{errN}</span>}
+            </button>
+            <button className="btn ghost" onClick={() => setPhase("stats")} data-testid="quiz-stats-link">Le mie statistiche →</button>
           </div>
         </div>
       </div>
@@ -1654,7 +1694,7 @@ export default function Test() {
         <motion.div className="quiz-card" key={q.id}
           initial={reduced ? false : { opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={reduced ? false : { opacity: 0, y: -8 }}
+          exit={reduced ? { opacity: 1 } : { opacity: 0, y: -8 }}
           transition={{ duration: 0.25, ease: EASE_OUT }}
         >
           {liveImage && (
@@ -1919,7 +1959,7 @@ function StatsView({ onBack, drawerWorkId, drawerOpen, closeDrawer, openDrawer }
     <div className="wrap page">
       <button className="btn ghost sm" onClick={onBack} style={{ marginBottom: 22 }}>← Torna al quiz</button>
       <div className="page-head">
-        <div className="page-eyebrow"><span className="eyebrow">Analisi dettagliata</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Studio</span></div>
         <h1 className="page-title">Statistiche test</h1>
         <p className="page-lead">Analisi approfondita delle tue prestazioni: andamento nel tempo, punti di forza e debolezza per tipo di domanda e periodo storico, errori ricorrenti.</p>
       </div>

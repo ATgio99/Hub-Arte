@@ -71,7 +71,7 @@ export default function Tecniche() {
   return (
     <div className="wrap page">
       <div className="page-head">
-        <div className="page-eyebrow"><span className="eyebrow">{ix.ds.techniques.length} tecniche</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Catalogo</span></div>
         <h1 className="page-title">Indice delle tecniche</h1>
         <p className="page-lead">Tecniche pittoriche, scultoree, architettoniche e musive: come nascono, chi le introduce e come si evolvono nel tempo. Ordinate per epoca di prima comparsa.</p>
       </div>

@@ -65,11 +65,61 @@ export default function Opere() {
     else sessionStorage.removeItem("atlante:opere-imp");
   }, [imp]);
 
-  // periodi ordinati cronologicamente per il filtro
-  const periodOpts = useMemo(
-    () => [...ds.periods].sort((a, b) => a.year_start - b.year_start),
-    [ds]
-  );
+  // Il filtro dei periodi mostrava tutte le voci in fila, ordinate per anno:
+  // epoche, correnti e scuole mescolate, oltre duecento righe senza gerarchia,
+  // in cui scegliere «Rinascimento» non dava nulla perche' le opere sono
+  // attaccate alle scuole sottostanti. Qui l'elenco segue invece l'albero
+  // (epoca › corrente › scuola), scegliere un ramo prende anche tutto quello
+  // che ha sotto, e le voci senza opere non compaiono affatto.
+  const figliDi = useMemo(() => {
+    const m = new Map<string, typeof ds.periods>();
+    for (const p of ds.periods) {
+      const k = p.parent_id ?? "";
+      if (!m.has(k)) m.set(k, []);
+      m.get(k)!.push(p);
+    }
+    for (const v of m.values()) v.sort((a, b) => a.year_start - b.year_start);
+    return m;
+  }, [ds]);
+
+  // Un periodo comprende sempre i suoi discendenti: e' il senso della matrioska.
+  const discendenti = useMemo(() => {
+    const m = new Map<string, Set<string>>();
+    const calcola = (id: string): Set<string> => {
+      if (m.has(id)) return m.get(id)!;
+      const insieme = new Set<string>([id]);
+      m.set(id, insieme);
+      for (const f of figliDi.get(id) ?? []) for (const x of calcola(f.id)) insieme.add(x);
+      return insieme;
+    };
+    for (const p of ds.periods) calcola(p.id);
+    return m;
+  }, [ds, figliDi]);
+
+  const perPeriodo = useMemo(() => {
+    const c = new Map<string, number>();
+    for (const w of ds.works) c.set(w.period_id, (c.get(w.period_id) ?? 0) + 1);
+    return c;
+  }, [ds]);
+
+  const periodOpts = useMemo(() => {
+    const totale = (id: string) => {
+      let n = 0;
+      for (const x of discendenti.get(id) ?? []) n += perPeriodo.get(x) ?? 0;
+      return n;
+    };
+    const out: { id: string; label: string; n: number }[] = [];
+    const scendi = (id: string, livello: number) => {
+      for (const f of figliDi.get(id) ?? []) {
+        const n = totale(f.id);
+        if (n === 0) continue;
+        out.push({ id: f.id, label: "\u00a0\u00a0".repeat(livello) + (livello ? "› " : "") + f.name, n });
+        scendi(f.id, livello + 1);
+      }
+    };
+    scendi("", 0);
+    return out;
+  }, [figliDi, discendenti, perPeriodo]);
 
   // opere visibili nell'intervallo temporale globale (prima dei filtri locali)
   const inTime = useMemo(() => ds.works.filter(workIn), [ds, workIn]);
@@ -83,7 +133,7 @@ export default function Opere() {
     return inTime.filter((w) => {
       if (favOnly && !favs.works.includes(w.id)) return false;
       if (type && w.type !== type) return false;
-      if (period && w.period_id !== period) return false;
+      if (period && !discendenti.get(period)?.has(w.period_id)) return false;
       if (imp && String(w.importance) !== imp) return false;
       if (studiedFilter === "studied" && !studied.includes(w.id)) return false;
       if (studiedFilter === "not-studied" && studied.includes(w.id)) return false;
@@ -94,7 +144,7 @@ export default function Opere() {
       }
       return true;
     }).sort((a, b) => b.importance - a.importance || (a.year_end ?? 9999) - (b.year_end ?? 9999));
-  }, [inTime, q, type, period, imp, favOnly, favs, studiedFilter, studied]);
+  }, [inTime, q, type, period, imp, favOnly, favs, studiedFilter, studied, discendenti]);
 
   // in modalità raggruppata, separa le opere in "singole" e "raggruppate"
   const { singleWorks, groupedWorks } = useMemo(() => {
@@ -134,7 +184,7 @@ export default function Opere() {
   return (
     <div className="wrap page">
       <div className="page-head">
-        <div className="page-eyebrow"><span className="eyebrow">Catalogo · Opere</span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Catalogo</span></div>
         <h1 className="page-title">Opere</h1>
         <p className="page-lead">Il catalogo completo: ogni scheda raccoglie immagine, datazione, tecniche, terminologia e le connessioni con le altre opere. Usa la barra temporale a sinistra per restringere il periodo.</p>
       </div>
@@ -150,22 +200,20 @@ export default function Opere() {
         </select>
         <select className="input" value={period} onChange={(e) => { setPeriod(e.target.value); setLimit(60); }} data-testid="select-period">
           <option value="">Ogni periodo</option>
-          {periodOpts.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
+          {periodOpts.map((p) => <option key={p.id} value={p.id}>{p.label} ({p.n})</option>)}
         </select>
-        <select className="input" value={imp} onChange={(e) => { setImp(e.target.value); setLimit(60); }} data-testid="select-imp">
-          <option value="">Ogni rilievo</option>
-          <option value="3">Capitali</option>
-          <option value="2">Rilevanti</option>
-          <option value="1">Citate</option>
+        <select className="input" value={imp} onChange={(e) => { setImp(e.target.value); setLimit(60); }} data-testid="select-imp"
+          title="Quanto spazio danno all'opera i manuali da cui nasce il catalogo. Non è un giudizio di valore sull'opera.">
+          <option value="">Ogni trattazione</option>
+          <option value="3">Trattate a lungo</option>
+          <option value="2">Trattate</option>
+          <option value="1">Solo citate</option>
         </select>
         <button className={`chip fav-chip ${favOnly ? "active" : ""}`} onClick={() => { setFavOnly((v) => !v); setLimit(60); }} data-testid="works-fav-only"
           title={favs.works.length === 0 ? "Nessuna opera preferita: usa la ★ sulle schede" : ""}>
           ★ Preferiti{favs.works.length > 0 ? ` (${favs.works.length})` : ""}
         </button>
-      </div>
 
-      {/* Seconda riga filtri: approfondite + raggruppate */}
-      <div className="filterbar" style={{ marginBottom: 8, marginTop: 4 }}>
         {/* Tasto toggle "Approfondite" — come i preferiti. */}
         <button
           className={`chip fav-chip ${studiedFilter === "studied" ? "active" : ""}`}
@@ -191,12 +239,16 @@ export default function Opere() {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 14, margin: "12px 0 22px", flexWrap: "wrap" }}>
-        <div className="muted tnum" style={{ fontSize: 13 }} data-testid="text-count">{filtered.length} risultati</div>
-        <FilterNote total={ds.works.length} shown={inTime.length} noun="opere nell'arco scelto" />
-        {studiedFilter && (
-          <div className="filter-note" data-testid="studied-filter-note">
-            {studiedFilter === "studied" ? "✓" : "○"} {studiedFilter === "studied" ? "Approfondite" : "Da approfondire"}: <b>{studiedFilter === "studied" ? studiedCount : notStudiedCount}</b> opere
-          </div>
+        <div className="muted tnum" style={{ fontSize: 13 }} data-testid="text-count">
+          {filtered.length} {filtered.length === 1 ? "opera" : "opere"}
+          {filtered.length !== ds.works.length ? ` su ${ds.works.length}` : ""}
+        </div>
+        {active && <FilterNote total={ds.works.length} shown={inTime.length} noun="opere nell'arco scelto" />}
+        {(q || type || period || imp || favOnly || studiedFilter) && (
+          <button className="btn ghost sm" data-testid="reset-filtri"
+            onClick={() => { setQ(""); setType(""); setPeriod(""); setImp(""); setFavOnly(false); setStudiedFilter(""); setLimit(60); }}>
+            Azzera i filtri
+          </button>
         )}
       </div>
 

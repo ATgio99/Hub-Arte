@@ -12,6 +12,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import { AccessoRichiesto, BarraScheda, BannerGitHub, Section } from "../components/ui";
 import { useAuth, CONTACT_EMAIL } from "../lib/auth";
 import { getFavorites } from "../lib/favorites";
 import { getStudied } from "../lib/studied";
@@ -125,20 +126,11 @@ export default function LeMieRichieste() {
 
   if (!user) {
     return (
-      <div className="wrap page" style={{ maxWidth: 560 }}>
-        <h1 style={{ fontSize: "clamp(26px,4vw,38px)", marginBottom: 16 }}>Le mie richieste</h1>
-        <p style={{ fontSize: 16, color: "var(--ink-soft)" }}>
-          Per vedere lo storico delle tue richieste devi avere un account.
-        </p>
-        <p style={{ fontSize: 16, color: "var(--ink-soft)", marginTop: 12 }}>
-          In alternativa, puoi scriverci a{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`} className="tlink">{CONTACT_EMAIL}</a>.
-        </p>
-        <div style={{ marginTop: 22, display: "flex", gap: 10 }}>
-          <Link to="/login" className="btn gold">Accedi o registrati</Link>
-          <Link to="/opere" className="btn ghost">Torna alle opere</Link>
-        </div>
-      </div>
+      <AccessoRichiesto
+        occhiello="Il tuo account"
+        titolo="Contributi"
+        motivo="Qui compaiono le opere che hai proposto e le correzioni che hai suggerito, con lo stato di ciascuna: in attesa, accolta o respinta."
+      />
     );
   }
 
@@ -158,97 +150,60 @@ export default function LeMieRichieste() {
 
   return (
     <div className="wrap page">
-      <div className="page-head" style={{ marginBottom: 18 }}>
-        <div className="page-eyebrow"><span className="eyebrow">I tuoi contributi</span></div>
+      <BarraScheda />
+      <div className="page-head">
+        <div className="page-eyebrow"><span className="eyebrow">Il tuo account</span></div>
         <h1 className="page-title">Contributi</h1>
         <p className="page-lead">
-          Qui trovi lo storico di tutte le richieste che hai inviato: proposte di nuove opere e suggerimenti di modifica.
-          Quando un admin le revisiona, riceverai una notifica (badge che pulsa nel menù) e potrai vedere il responso qui.
+          Le opere che hai proposto e le correzioni che hai suggerito, con lo stato di ciascuna.
+          Quando qualcuno le revisiona compare un segnale nel menù, e qui trovi la risposta.
         </p>
       </div>
-
-      {/* Info utente */}
-      <div style={{ padding: "12px 16px", background: "var(--bg-2)", borderRadius: 10, marginBottom: 20, fontSize: 13.5 }}>
-        <b>Account:</b> {user.email}
-      </div>
+      <div className="page-rule" />
 
       {error && (
         <div style={{ padding: "12px 16px", background: "rgba(168,72,63,0.08)", color: "#a8483f", borderRadius: 8, marginBottom: 16, fontSize: 14 }}>
-          ⚠️ {error}
+          {error}
         </div>
       )}
 
-      {/* Riepilogo */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12, marginBottom: 24 }}>
-        <div style={{ padding: "14px 16px", background: "var(--bg-2)", borderRadius: 10, textAlign: "center" }}>
-          <div style={{ fontSize: 28, fontWeight: 700, color: "var(--ink)" }}>{total}</div>
-          <div style={{ fontSize: 11.5, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Totale</div>
+      {/* I quattro numeri raccontano da soli lo stato delle richieste: prima
+          erano quattro riquadri colorati, qui restano solo i numeri, nella
+          stessa forma usata nelle altre pagine. Quelli a zero non compaiono. */}
+      {total > 0 && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 30, marginBottom: 24 }}>
+          {[
+            { n: total, l: "inviate in tutto", c: "var(--ink)" },
+            { n: stats.sugPending + stats.editPending, l: "in attesa", c: "var(--c-event)" },
+            { n: stats.sugApproved + stats.editApproved, l: "accolte", c: "#3f8a4f" },
+            { n: stats.sugRejected + stats.editRejected, l: "non accolte", c: "var(--ink-dim)" },
+          ].filter((x) => x.n > 0).map((x) => (
+            <div key={x.l}>
+              <div className="tnum" style={{ fontSize: 24, fontWeight: 600, lineHeight: 1.1, color: x.c }}>{x.n}</div>
+              <div className="smallcaps" style={{ fontSize: 10.5, color: "var(--ink-dim)", marginTop: 2 }}>{x.l}</div>
+            </div>
+          ))}
         </div>
-        <div style={{ padding: "14px 16px", background: "rgba(168,72,63,0.06)", borderRadius: 10, textAlign: "center" }}>
-          <div style={{ fontSize: 28, fontWeight: 700, color: "var(--c-event)" }}>{stats.sugPending + stats.editPending}</div>
-          <div style={{ fontSize: 11.5, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>In attesa</div>
-        </div>
-        <div style={{ padding: "14px 16px", background: "rgba(63,138,79,0.06)", borderRadius: 10, textAlign: "center" }}>
-          <div style={{ fontSize: 28, fontWeight: 700, color: "#3f8a4f" }}>{stats.sugApproved + stats.editApproved}</div>
-          <div style={{ fontSize: 11.5, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Approvate</div>
-        </div>
-        <div style={{ padding: "14px 16px", background: "var(--bg-2)", borderRadius: 10, textAlign: "center" }}>
-          <div style={{ fontSize: 28, fontWeight: 700, color: "var(--ink-dim)" }}>{stats.sugRejected + stats.editRejected}</div>
-          <div style={{ fontSize: 11.5, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 2 }}>Rifiutate</div>
-        </div>
-      </div>
+      )}
 
-      {/* Azione nuova richiesta */}
-      <div style={{ display: "flex", gap: 10, marginBottom: 24, flexWrap: "wrap" }}>
-        <Link to="/suggerisci" className="btn gold sm">+ Proponi una nuova opera</Link>
-        <Link to="/opere" className="btn ghost sm">Cerca un'opera da modificare</Link>
-        <button className="btn ghost sm" onClick={handleSync} disabled={syncing}>
-          {syncing ? "↻ Sincronizzazione…" : "↻ Sincronizza ora"}
+      <div style={{ display: "flex", gap: 10, marginBottom: 26, flexWrap: "wrap", alignItems: "center" }}>
+        <Link to="/suggerisci" className="btn gold sm">Proponi una nuova opera</Link>
+        <Link to="/opere" className="btn ghost sm">Cerca un'opera da correggere</Link>
+        <button className="btn ghost sm" onClick={handleSync} disabled={syncing} style={{ marginLeft: "auto" }}>
+          {syncing ? "Sincronizzazione…" : "Aggiorna"}
         </button>
       </div>
 
-      {/* Banner feedback sincronizzazione (verde/rosso) */}
       {syncFeedback && (
         <div style={{
-          padding: "12px 16px",
-          borderRadius: 10,
-          marginBottom: 20,
-          fontSize: 14,
-          lineHeight: 1.5,
-          background: syncFeedback.startsWith("✓")
-            ? "rgba(63,138,79,0.08)"
-            : syncFeedback.startsWith("⏳")
-              ? "rgba(184,138,46,0.08)"
-              : "rgba(168,72,63,0.08)",
-          color: syncFeedback.startsWith("✓")
-            ? "#3f8a4f"
-            : syncFeedback.startsWith("⏳")
-              ? "var(--gold-deep, #b88a2e)"
-              : "#a8483f",
-          border: `1px solid ${
-            syncFeedback.startsWith("✓")
-              ? "rgba(63,138,79,0.3)"
-              : syncFeedback.startsWith("⏳")
-                ? "rgba(184,138,46,0.3)"
-                : "rgba(168,72,63,0.3)"
-          }`,
-          fontWeight: 500,
+          padding: "10px 14px", borderRadius: 8, marginBottom: 20, fontSize: 13.5, lineHeight: 1.5,
+          background: syncFeedback.startsWith("✓") ? "rgba(63,138,79,0.08)" : "rgba(168,72,63,0.08)",
+          color: syncFeedback.startsWith("✓") ? "#3f8a4f" : "#a8483f",
+          border: `1px solid ${syncFeedback.startsWith("✓") ? "rgba(63,138,79,0.3)" : "rgba(168,72,63,0.3)"}`,
         }}>
           {syncFeedback}
         </div>
       )}
-
-      {/* Link rapido sezione */}
-      <div style={{ marginBottom: 18 }}>
-        <a
-          href="#sez-proposte"
-          style={{ fontSize: 13, color: "var(--gold-deep)", textDecoration: "underline", marginRight: 14 }}
-        >🖼️ Proposte nuove opere ({suggestions.length})</a>
-        <a
-          href="#sez-modifiche"
-          style={{ fontSize: 13, color: "var(--gold-deep)", textDecoration: "underline" }}
-        >✎ Suggerimenti di modifica ({editSuggestions.length})</a>
-      </div>
 
       {loading ? (
         <div style={{ textAlign: "center", padding: 40 }}><div className="spinner" style={{ margin: "0 auto" }} /></div>
@@ -264,11 +219,7 @@ export default function LeMieRichieste() {
         <>
           {/* === SEZIONE 1: PROPOSTE NUOVE OPERE === */}
           {suggestions.length > 0 && (
-            <div id="sez-proposte" style={{ marginBottom: 32, scrollMarginTop: 80 }}>
-              <h2 style={{ fontSize: 18, marginBottom: 12, fontFamily: "var(--font-display)" }}>
-                🖼️ Proposte nuove opere
-                <span style={{ fontSize: 13, color: "var(--ink-dim)", fontWeight: 400, marginLeft: 8 }}>({suggestions.length})</span>
-              </h2>
+            <Section eyebrow="Nuove opere" title={`Opere che hai proposto (${suggestions.length})`}>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {suggestions.map((s) => (
                   <div key={s.id} style={{
@@ -305,16 +256,12 @@ export default function LeMieRichieste() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Section>
           )}
 
           {/* === SEZIONE 2: SUGGERIMENTI MODIFICHE === */}
           {editSuggestions.length > 0 && (
-            <div id="sez-modifiche" style={{ marginBottom: 32, scrollMarginTop: 80 }}>
-              <h2 style={{ fontSize: 18, marginBottom: 12, fontFamily: "var(--font-display)" }}>
-                ✎ Suggerimenti di modifica
-                <span style={{ fontSize: 13, color: "var(--ink-dim)", fontWeight: 400, marginLeft: 8 }}>({editSuggestions.length})</span>
-              </h2>
+            <Section eyebrow="Correzioni" title={`Correzioni che hai suggerito (${editSuggestions.length})`}>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {editSuggestions.map((s) => (
                   <div key={s.id} style={{
@@ -355,40 +302,13 @@ export default function LeMieRichieste() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Section>
           )}
         </>
       )}
 
-      {/* Sostieni il progetto */}
-      <div style={{
-        marginTop: 24, padding: "20px", background: "var(--bg-2)", borderRadius: 12,
-        textAlign: "center",
-      }}>
-        <h2 style={{ fontSize: 18, marginBottom: 8, fontFamily: "var(--font-display)" }}>
-          Sostieni il progetto
-        </h2>
-        <p style={{ fontSize: 13.5, color: "var(--ink-soft)", margin: "0 0 14px", lineHeight: 1.55 }}>
-          HUB Arte è gratuito e open source. Puoi contribuire in molti modi:
-          mettere una star su GitHub, segnalare bug o suggerimenti, contribuire
-          al codice con pull request, o semplicemente parlarne con chi studia
-          storia dell'arte.
-        </p>
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
-          <a href="https://github.com/ATgio99/Hub-Arte" target="_blank" rel="noopener noreferrer"
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              padding: "9px 18px", borderRadius: 999, fontSize: 13, fontWeight: 600,
-              background: "var(--gold)", color: "#fff", textDecoration: "none",
-              border: "1px solid var(--gold-deep)",
-            }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-            Vai al repository GitHub →
-          </a>
-        </div>
-      </div>
+      <div style={{ marginTop: 30 }}><BannerGitHub /></div>
+
     </div>
   );
 }

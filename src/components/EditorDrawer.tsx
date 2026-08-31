@@ -13,6 +13,7 @@
 import { useState, useEffect, useRef, useMemo, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "../lib/supabase";
+import { fonteImmagine } from "../lib/data";
 import { useAuth } from "../lib/auth";
 import { useData } from "../lib/store";
 import EntitySelector from "./EntitySelector";
@@ -55,7 +56,7 @@ function Field({ label, children, required }: { label: string; children: React.R
 
 // Campi del DB works (tutti gli altri vengono strippati prima dell'upsert)
 const WORK_DB_FIELDS = [
-  "id", "title", "artist_ids", "period_id", "date_text", "year_start", "year_end",
+  "id", "title", "artist_ids", "committente_ids", "period_id", "date_text", "year_start", "year_end",
   "type", "technique_ids", "materials", "location_city", "location_place",
   "lat", "lon", "book", "chapter", "page", "source_file", "importance",
   "summary", "analysis", "innovations", "term_ids",
@@ -295,6 +296,12 @@ function EditorDrawerInner({
 
   // Opzioni selettori (dataset + entità locali)
   const allArtists = useMemo(() => [...dataset.artists, ...localArtists], [dataset.artists, localArtists]);
+  // Nel selettore dei committenti mostriamo solo chi ha quella categoria: gli
+  // autori non devono comparirvi, cosi' i due elenchi restano distinti.
+  const allCommittenti = useMemo(
+    () => allArtists.filter((a) => a.category === "committenti" || (a.role ?? "").toLowerCase().includes("committ")),
+    [allArtists]
+  );
   const allPeriods = useMemo(() => [...dataset.periods, ...localPeriods], [dataset.periods, localPeriods]);
   const allTechniques = useMemo(() => [...dataset.techniques, ...localTechniques], [dataset.techniques, localTechniques]);
   const allTerms = useMemo(() => [...dataset.terms, ...localTerms], [dataset.terms, localTerms]);
@@ -342,6 +349,20 @@ function EditorDrawerInner({
     const { error } = await supabase.from("artists").upsert({ ...newArtist, modified_by: userEmail }, { onConflict: "id" });
     if (error) throw new Error(error.message);
     setLocalArtists(prev => [...prev, newArtist]);
+    notifyAppChanged();
+    return id;
+  };
+
+  const createCommittente = async (name: string): Promise<string> => {
+    const id = slugify(name);
+    const nuovo: Artist = {
+      id, name, aka: [], birth: null, death: null, period_ids: [],
+      role: "committente", bio: "", innovations: [], category: "committenti",
+    };
+    const { error } = await supabase.from("artists")
+      .upsert({ ...nuovo, modified_by: userEmail }, { onConflict: "id" });
+    if (error) throw new Error(error.message);
+    setLocalArtists(prev => [...prev, nuovo]);
     notifyAppChanged();
     return id;
   };
@@ -564,6 +585,19 @@ function EditorDrawerInner({
                 />
               </Field>
 
+              <Field label="Committenti (chi ha voluto l'opera)">
+                <EntitySelector
+                  mode="multi"
+                  options={allCommittenti.map(a => ({ id: a.id, label: a.name, subtitle: [a.role, a.location_city].filter(Boolean).join(" · ") || undefined }))}
+                  selected={work.committente_ids ?? []}
+                  onChange={(v) => set("committente_ids", (v as string[]) || [])}
+                  placeholder="Cerca committente…"
+                  allowCreate={true}
+                  onCreate={createCommittente}
+                  createLabel="Nuovo committente"
+                />
+              </Field>
+
               <Field label="Città (auto-coordinate)">
                 <input
                   type="text"
@@ -642,8 +676,20 @@ function EditorDrawerInner({
               <Field label="URL thumbnail">
                 <input type="url" defaultValue={work.image_thumb || ""} onChange={(e) => set("image_thumb", e.target.value)} style={inputStyle} />
               </Field>
-              <Field label="Fonte immagine">
-                <input type="text" defaultValue={work.image_source || ""} onChange={(e) => set("image_source", e.target.value)} style={inputStyle} placeholder="commons" />
+              <Field label="Fonte immagine (ricavata dall'indirizzo)">
+                {(() => {
+                  const f = fonteImmagine(work.image_url);
+                  return (
+                    <div style={{ ...inputStyle, display: "flex", alignItems: "center", gap: 8, background: "var(--bg-2)", color: "var(--ink-soft)" }}>
+                      {f ? (
+                        <>
+                          <span>{f.nome}</span>
+                          {!f.affidabile && <span style={{ color: "#a8483f", fontSize: 12 }}>· indirizzo temporaneo, da sostituire</span>}
+                        </>
+                      ) : <span className="faint">nessuna immagine</span>}
+                    </div>
+                  );
+                })()}
               </Field>
 
               <Field label="Galleria immagini aggiuntive (un URL per riga)">

@@ -21,6 +21,25 @@ export function usePrefersReducedMotion(): boolean {
   return reduced;
 }
 
+// --- schermo stretto (reattivo) ---------------------------------------------
+// Usato dalle pagine lunghe per collassare di default le sezioni sul telefono,
+// dove altrimenti si scorrerebbe all'infinito. Stessa soglia dei breakpoint CSS.
+export function useIsNarrow(maxWidth = 700): boolean {
+  const q = `(max-width: ${maxWidth}px)`;
+  const [narrow, setNarrow] = useState<boolean>(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return false;
+    return window.matchMedia(q).matches;
+  });
+  useEffect(() => {
+    if (!window.matchMedia) return;
+    const mq = window.matchMedia(q);
+    const on = () => setNarrow(mq.matches);
+    mq.addEventListener?.("change", on);
+    return () => mq.removeEventListener?.("change", on);
+  }, [q]);
+  return narrow;
+}
+
 // --- curve condivise --------------------------------------------------------
 export const EASE_OUT = [0.16, 1, 0.3, 1] as const; // ease-out lungo, "Apple"
 export const SPRING = { type: "spring", stiffness: 320, damping: 30, mass: 0.9 } as const;
@@ -79,6 +98,13 @@ export function useInViewOnce(threshold = 0.3) {
   useEffect(() => {
     const el = ref.current;
     if (!el || seen) return;
+    // Se l'elemento e' gia' davanti agli occhi al primo render, non c'e' niente
+    // da aspettare. Serve anche come rete di sicurezza: in una scheda aperta in
+    // secondo piano il browser sospende l'osservatore, e senza questo controllo
+    // il contenuto resterebbe trasparente anche una volta tornati sulla pagina.
+    const r = el.getBoundingClientRect();
+    const h = window.innerHeight || document.documentElement.clientHeight;
+    if (r.height > 0 && r.top < h && r.bottom > 0) { setSeen(true); return; }
     const io = new IntersectionObserver((ents) => {
       if (ents.some((e) => e.isIntersecting)) { setSeen(true); io.disconnect(); }
     }, { threshold });

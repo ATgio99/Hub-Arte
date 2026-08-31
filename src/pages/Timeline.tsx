@@ -8,106 +8,18 @@ import Fullscreen from "../components/Fullscreen";
 import TimeRangeSlider from "../components/TimeRangeSlider";
 import PeriodDossier from "../components/PeriodDossier";
 import { usePrefersReducedMotion, EASE_OUT } from "../lib/motion";
-import type { Period, ArtEvent, Artist } from "../lib/types";
+import type { Period, ArtEvent } from "../lib/types";
 
 const TYPE_COLOR: Record<string, string> = { epoca: "#b88a2e", corrente: "#b9692c", scuola: "#4f7d72" };
 // Le tre fasce della timeline, dalla piu' ampia alla piu' specifica. L'ordine
 // qui e' anche l'ordine verticale delle fasce e dei filtri.
-const TIMELINE_TYPES = ["epoca", "corrente", "scuola"] as const;
+// Nella vista d'insieme si filtrano solo epoche e correnti. Le scuole sono
+// settantasei: in una corsia unica diventavano illeggibili, e si raggiungono
+// aprendo la scheda della corrente che le contiene.
+const TIMELINE_TYPES = ["epoca", "corrente"] as const;
 const TYPE_LABEL: Record<string, string> = { epoca: "Epoche", corrente: "Correnti", scuola: "Scuole" };
 const EVENT_COLOR: Record<string, string> = { politico: "#a8483f", religioso: "#9a6a92", culturale: "#6e8350", tecnologico: "#5f7e8c" };
 const EVENT_LABEL: Record<string, string> = { politico: "Politico", religioso: "Religioso", culturale: "Culturale", tecnologico: "Tecnologico" };
-
-// ── Artist timeline colors by role category ──────────────────────────────
-const ARTIST_CAT_COLOR: Record<string, string> = {
-  Pittori: "#7B5EA7",
-  Scultori: "#3D7A8A",
-  Architetti: "#8A6D3B",
-  "Orafi/Bronzisti": "#A0724A",
-  Miniatori: "#6B8A5E",
-  Committenti: "#8A7E5A",
-  Altro: "#7A7570",
-};
-
-// Mappa tra ArtistCategory (tipo) e label display
-const CAT_LABELS: Record<string, string> = {
-  "pittori": "Pittori",
-  "scultori": "Scultori",
-  "architetti": "Architetti",
-  "orafi-bronzisti": "Orafi/Bronzisti",
-  "miniatori": "Miniatori",
-  "committenti": "Committenti",
-  "altro": "Altro",
-};
-
-function artistCategory(a: Artist): string {
-  // Se l'artista ha un campo category esplicito, usalo
-  if (a.category) {
-    return CAT_LABELS[a.category] || "Altro";
-  }
-  // Altrimenti deduci dal role (fallback per artisti esistenti senza category)
-  const r = (a.role || "").toLowerCase();
-  if (r.includes("pittor")) return "Pittori";
-  if (r.includes("scultor")) return "Scultori";
-  if (r.includes("architett")) return "Architetti";
-  if (r.includes("orafo") || r.includes("bronz")) return "Orafi/Bronzisti";
-  if (r.includes("miniator")) return "Miniatori";
-  if (r.includes("committ")) return "Committenti";
-  return "Altro";
-}
-
-interface ArtistLane extends Artist {
-  lane: number;
-  year_start: number;
-  year_end: number;
-  category: string;
-  color: string;
-}
-
-function layoutArtistLanes(artists: Artist[]): { items: ArtistLane[]; totalLanes: number; categories: string[] } {
-  const withDates = artists.filter((a) => a.birth != null);
-  withDates.sort((a, b) => (a.birth ?? 0) - (b.birth ?? 0));
-
-  const byCat: Record<string, Artist[]> = {};
-  withDates.forEach((a) => {
-    const cat = artistCategory(a);
-    (byCat[cat] ??= []).push(a);
-  });
-
-  const items: ArtistLane[] = [];
-  let laneBase = 0;
-  const catOrder = ["Pittori", "Scultori", "Architetti", "Orafi/Bronzisti", "Miniatori", "Committenti", "Altro"];
-  const activeCats: string[] = [];
-
-  for (const cat of catOrder) {
-    const arr = byCat[cat];
-    if (!arr || arr.length === 0) continue;
-    activeCats.push(cat);
-
-    const laneEnds: number[] = [];
-    for (const a of arr) {
-      const start = a.birth ?? 0;
-      const end = a.death ?? (start + 60);
-      // Require 20-year gap between overlapping artists on the same lane (was -5)
-      // This forces more lanes = more vertical space = less crowding
-      let lane = laneEnds.findIndex((le) => start >= le - 20);
-      if (lane === -1) { lane = laneEnds.length; laneEnds.push(0); }
-      laneEnds[lane] = end;
-      items.push({
-        ...a,
-        lane: laneBase + lane,
-        year_start: start,
-        year_end: end,
-        category: cat,
-        color: ARTIST_CAT_COLOR[cat] ?? "#7A7570",
-      });
-    }
-    laneBase += Math.max(laneEnds.length, 1) + 0.4;
-  }
-  return { items, totalLanes: laneBase, categories: activeCats };
-}
-
-// ── Period lane layout (original) ────────────────────────────────────────
 
 interface LaneItem extends Period { lane: number; }
 
@@ -149,7 +61,12 @@ interface EvNode {
 }
 
 function layoutEvents(events: ArtEvent[], xOf: (y: number) => number, charPx: number): EvNode[] {
-  const sorted = events.slice().sort((a, b) => a.year - b.year);
+  // Un evento senza anno non e' collocabile su un asse temporale: senza questo
+  // filtro finiva in una posizione arbitraria, trascinando con se' il calcolo
+  // dei raggruppamenti vicini.
+  const sorted = events
+    .filter((e) => typeof e.year === "number" && Number.isFinite(e.year))
+    .sort((a, b) => a.year - b.year);
   const groups: ArtEvent[][] = [];
   for (const e of sorted) {
     const last = groups[groups.length - 1];
@@ -250,217 +167,6 @@ function EventCard({ e, onGo, ix }: { e: ArtEvent; onGo: (pid: string) => void; 
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-//  ARTIST TIMELINE CANVAS
-// ═══════════════════════════════════════════════════════════════════════════
-function ArtistTimelineCanvas({ inFullscreen, hideCats }: { inFullscreen: boolean; hideCats: Set<string> }) {
-  const ix = useData();
-  const { range, artistIn } = useTimeRange();
-  const nav = useNavigate();
-  const [selId, setSelId] = useState<string | null>(null);
-  const [hover, setHover] = useState<Tip | null>(null);
-
-  const allArtists = ix.ds.artists;
-  // Filtra per range temporale E per categoria (hideCats).
-  const filtered = useMemo(
-    () => allArtists.filter((a) => artistIn(a) && !hideCats.has(artistCategory(a))),
-    [allArtists, artistIn, hideCats]
-  );
-  const { items, totalLanes, categories } = useMemo(() => layoutArtistLanes(filtered), [filtered]);
-
-  const withDates = allArtists.filter((a) => a.birth != null).length;
-
-  const minY = items.length ? Math.min(...items.map((a) => a.year_start)) - 10 : range.min;
-  const maxY = items.length ? Math.max(...items.map((a) => a.year_end)) + 10 : range.max;
-
-  const PPY = 1.8;       // was 1.05 — wider bars = names visible
-  const PAD = 80;        // was 60 — more margin
-  const LANE_H = 38;     // was 28 — taller rows
-  const TOP = 70;        // was 60
-  const width = Math.max((maxY - minY) * PPY + PAD * 2, 600);
-  const height = TOP + Math.ceil(totalLanes) * LANE_H + 50;
-
-  const x = useCallback((year: number) => PAD + (year - minY) * PPY, [minY, PPY]);
-  const laneY = (lane: number) => TOP + lane * LANE_H;
-
-  // Zoom controls
-  const reducedMotion = usePrefersReducedMotion();
-  const [zoomTarget, setZoomTarget] = useState(1);
-  const zoom = useSmoothZoom(zoomTarget, reducedMotion);
-  // Ascolta i comandi zoom esterni (barra superiore / sezione VISTA fullscreen).
-  useEffect(() => {
-    const onZoom = (e: Event) => {
-      const detail = (e as CustomEvent).detail as "in" | "out" | "reset";
-      if (detail === "in") setZoomTarget((z) => Math.min(5, +(z + 0.4).toFixed(2)));
-      else if (detail === "out") setZoomTarget((z) => Math.max(0.5, +(z - 0.4).toFixed(2)));
-      else if (detail === "reset") setZoomTarget(1);
-    };
-    window.addEventListener("atlante:tl-zoom", onZoom);
-    return () => window.removeEventListener("atlante:tl-zoom", onZoom);
-  }, []);
-  const PPY_Z = PPY * zoom;
-  const xZ = useCallback((year: number) => PAD + (year - minY) * PPY_Z, [minY, PPY_Z]);
-  const widthZ = Math.max((maxY - minY) * PPY_Z + PAD * 2, 600);
-
-  const ticks = useMemo(() => {
-    const t: number[] = [];
-    const span = maxY - minY;
-    const step = span > 900 ? 100 : span > 400 ? 50 : 25;
-    const start = Math.ceil(minY / step) * step;
-    for (let y = start; y <= maxY; y += step) t.push(y);
-    return t;
-  }, [minY, maxY]);
-
-  // Category separator positions
-  const catRanges = useMemo(() => {
-    const ranges: { name: string; startLane: number; endLane: number; color: string }[] = [];
-    let prev: string | null = null;
-    items.forEach((a) => {
-      if (a.category !== prev) {
-        if (prev !== null) ranges[ranges.length - 1].endLane = a.lane;
-        ranges.push({ name: a.category, startLane: a.lane, endLane: a.lane + 1, color: a.color });
-        prev = a.category;
-      } else {
-        ranges[ranges.length - 1].endLane = a.lane + 1;
-      }
-    });
-    return ranges;
-  }, [items]);
-
-  const selectedArtist = selId ? items.find((a) => a.id === selId) : null;
-
-  return (
-    <>
-      {/* Legend */}
-      <div style={{ display: "flex", gap: 16, marginBottom: 12, flexWrap: "wrap", fontSize: 11.5, color: "var(--ink-soft)" }}>
-        {Object.entries(ARTIST_CAT_COLOR).filter(([c]) => categories.includes(c)).map(([cat, col]) => (
-          <span key={cat} style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
-            <span className="dot" style={{ background: col }} />{cat}
-          </span>
-        ))}
-      </div>
-      <div style={{ marginBottom: 12, fontSize: 13, color: "var(--ink-soft)" }}>
-        <b style={{ color: "var(--ink)", fontWeight: 600 }}>{withDates}</b> autori su {allArtists.length} totali (con date note)
-      </div>
-
-      <div className="stage" style={{ overflowX: "auto", overflowY: "auto", flex: inFullscreen ? 1 : undefined, height: inFullscreen ? "100%" : undefined, border: inFullscreen ? 0 : undefined, borderRadius: inFullscreen ? 0 : undefined, position: "relative" }}>
-        <svg width={widthZ} height={height} style={{ display: "block", minWidth: "100%" }}>
-          {/* Year ticks */}
-          {ticks.map((y) => (
-            <g key={y}>
-              <line x1={xZ(y)} y1={TOP - 10} x2={xZ(y)} y2={height - 20} stroke="var(--line-soft)" strokeWidth={1} />
-              <text x={xZ(y)} y={TOP - 18} fill="var(--ink-faint)" fontSize={11} textAnchor="middle" fontFamily="var(--font-body)" style={{ fontVariantNumeric: "tabular-nums" }}>{y < 0 ? `${-y} a.C.` : y}</text>
-            </g>
-          ))}
-
-          {/* Category labels and separators */}
-          {catRanges.map((cr, i) => {
-            const yMid = (laneY(cr.startLane) + laneY(cr.endLane)) / 2 + 5;
-            return (
-              <g key={i}>
-                <rect x={0} y={laneY(cr.startLane) - 4} width={widthZ} height={laneY(cr.endLane) - laneY(cr.startLane) + 8} fill={cr.color} fillOpacity={0.03} />
-                <text x={10} y={yMid} fill={cr.color} fontSize={11} fontWeight={700} fontFamily="var(--font-body)" opacity={0.6}>{cr.name}</text>
-                {i > 0 && (
-                  <line x1={PAD} y1={laneY(cr.startLane) - 6} x2={widthZ - 40} y2={laneY(cr.startLane) - 6} stroke="var(--line)" strokeWidth={0.5} strokeDasharray="4 4" />
-                )}
-              </g>
-            );
-          })}
-
-          {/* Artist bars */}
-          {items.map((a) => {
-            const bx = xZ(a.year_start), bw = Math.max((a.year_end - a.year_start) * PPY_Z, 20);
-            const by = laneY(a.lane);
-            const barH = LANE_H - 10;
-            const barY = by + 5;
-            const periodNames = a.period_ids.map((pid) => { const p = ix.periodById.get(pid); return p ? p.name : pid; }).join(", ");
-            return (
-              <g key={a.id} style={{ cursor: "pointer" }}
-                onClick={() => setSelId((s) => (s === a.id ? null : a.id))}
-                onMouseEnter={(e) => setHover({ x: (e as any).clientX, y: (e as any).clientY, html: `<b>${a.name}</b><br>${a.birth ?? "?"}–${a.death ?? "?"} · ${a.role || ""}${periodNames ? `<br><span style="color:#837a66">${periodNames}</span>` : ""}` })}
-                onMouseMove={(e) => setHover((h) => h && { ...h, x: (e as any).clientX, y: (e as any).clientY })}
-                onMouseLeave={() => setHover(null)}>
-                <rect x={bx} y={barY} width={3.5} height={barH} fill={a.color} rx={1.5} />
-                <rect x={bx} y={barY} width={bw} height={barH} rx={5} fill={a.color} fillOpacity={selId === a.id ? 0.28 : 0.12} stroke={a.color} strokeOpacity={selId === a.id ? 1 : 0.7} strokeWidth={selId === a.id ? 2 : 0.8} />
-                {bw > 50 && (
-                  <text x={bx + 10} y={barY + barH / 2 + 4.5} fill="var(--ink)" fontSize={12} fontFamily="var(--font-body)" fontWeight={500} style={{ pointerEvents: "none" }}>
-                    {bw > a.name.length * 7 ? a.name : a.name.slice(0, Math.floor((bw - 10) / 7)) + (a.name.length * 7 > bw - 10 ? "…" : "")}
-                  </text>
-                )}
-                {bw > a.name.length * 7 + 60 && (
-                  <text x={bx + 10 + a.name.length * 7 + 6} y={barY + barH / 2 + 4.5} fill="var(--ink-soft)" fontSize={10} fontFamily="var(--font-body)" style={{ pointerEvents: "none", fontVariantNumeric: "tabular-nums" }}>
-                    {a.birth ?? "?"}–{a.death ?? "?"}
-                  </text>
-                )}
-              </g>
-            );
-          })}
-        </svg>
-
-        {/* Casella info autore — posizionata sotto la barra dell'autore cliccato,
-            dentro i limiti della timeline (width = stageW - 20), con animazione
-            che fa spazio spostando le corsie sotto. Stesso pattern del PeriodDossier. */}
-        <AnimatePresence>
-          {selectedArtist && (
-            <motion.div key={selectedArtist.id} className="tl-inline-dossier" data-testid="tl-artist-dossier"
-              style={{
-                position: "absolute",
-                top: laneY(selectedArtist.lane) + LANE_H + 4,
-                left: 10,
-                right: 10,
-                maxWidth: 720,
-                zIndex: 18,
-              }}
-              initial={reducedMotion ? false : { opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.4, ease: EASE_OUT }}>
-              <div className="dossier" style={{ background: "var(--bg-1)", border: "1px solid var(--line)", borderRadius: 10, padding: 20, margin: 0, maxHeight: 392, overflowY: "auto", boxShadow: "var(--shadow-sm)" }}>
-                <div className="dossier-head">
-                  <div>
-                    <h3 className="dossier-title" style={{ fontSize: 22, marginBottom: 4, fontWeight: 600 }}>{selectedArtist.name}</h3>
-                    <div style={{ color: "var(--gold)", fontSize: 13, fontWeight: 500, marginBottom: 8 }}>
-                      {selectedArtist.role || ""} · {selectedArtist.birth ?? "?"}–{selectedArtist.death ?? "?"}
-                    </div>
-                  </div>
-                  <button onClick={() => setSelId(null)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, color: "var(--ink-soft)", padding: "0 4px" }}>&times;</button>
-                </div>
-                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8 }}>
-                  {selectedArtist.period_ids.map((pid) => {
-                    const p = ix.periodById.get(pid);
-                    return p ? (
-                      <span key={pid} style={{ fontSize: 12, padding: "3px 8px", borderRadius: 999, background: "var(--bg-2)", color: "var(--ink-soft)", cursor: "pointer" }} onClick={() => nav(`/periodo/${pid}`)}>{p.name}</span>
-                    ) : null;
-                  })}
-                  {selectedArtist.aka.map((a) => (
-                    <span key={a} style={{ fontSize: 12, padding: "3px 8px", borderRadius: 999, background: "var(--bg-2)", color: "var(--ink-soft)" }}>alias: {a}</span>
-                  ))}
-                </div>
-                {selectedArtist.bio && <p className="muted" style={{ fontSize: 14, lineHeight: 1.6, marginBottom: 10 }}>{selectedArtist.bio}</p>}
-                {selectedArtist.innovations.length > 0 && (
-                  <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>
-                    <strong>Innovazioni:</strong>
-                    <ul style={{ margin: "4px 0 0 16px" }}>{selectedArtist.innovations.filter(Boolean).map((i) => <li key={i}>{i}</li>)}</ul>
-                  </div>
-                )}
-                {/* Tasto per approfondire — uguale al PeriodDossier */}
-                <div style={{ marginTop: 14, display: "flex", gap: 8 }}>
-                  <Link className="btn gold sm" to={`/artista/${selectedArtist.id}`} data-testid="tl-artist-open">Apri la scheda completa →</Link>
-                  <button className="btn sm ghost" onClick={() => setSelId(null)} aria-label="Chiudi anteprima">✕</button>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {hover && (
-        <div className="float-tip" style={{ left: Math.min(hover.x + 14, window.innerWidth - 290), top: Math.min(hover.y + 14, window.innerHeight - 120) }}
-          dangerouslySetInnerHTML={{ __html: hover.html }} />
-      )}
-    </>
-  );
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
 //  MAIN TIMELINE PAGE
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -469,7 +175,7 @@ export default function Timeline() {
   return (
     <div className="wrap page" style={{ paddingBottom: 24 }}>
       <div className="page-head">
-        <div className="page-eyebrow"><span className="eyebrow">Visualizzazione temporale <span style={{ fontSize: 9, fontWeight: 700, color: "var(--ink-dim)", opacity: 0.5, textTransform: "lowercase", letterSpacing: "0.02em" }}>(beta)</span></span></div>
+        <div className="page-eyebrow"><span className="eyebrow">Visualizzazione <span style={{ fontSize: 9, fontWeight: 700, color: "var(--ink-dim)", opacity: 0.5, textTransform: "lowercase", letterSpacing: "0.02em" }}>(beta)</span></span></div>
         <h1 className="page-title">Linea del tempo multilivello</h1>
         <p className="page-lead">Epoche e correnti scorrono su corsie parallele: le sovrapposizioni temporali sono visibili, gli archi tracciano i flussi di contaminazione e gli eventi storici ancorano il contesto. Clicca una barra per espandere l'anteprima del periodo — con personaggi, autori, opere e glossario da ricordare — un pallino per il dettaglio dell'evento. Le scuole e le botteghe si trovano dentro la scheda della corrente che le contiene.</p>
       </div>
@@ -479,21 +185,17 @@ export default function Timeline() {
   );
 }
 
-// Shell with toggle between Periods and Artists
+// Shell della linea del tempo: periodi su corsie per tipo
 function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
   const ix = useData();
   const { periodIn } = useTimeRange();
   const [showFlows, setShowFlows] = useState(true);
   const [showEvents, setShowEvents] = useState(true);
   const [inFull, setInFull] = useState(false);
-  const [showArtists, setShowArtists] = useState(false);
   const [searchQ, setSearchQ] = useState("");
-  // Filtri per tipo periodo (epoca/corrente/scuola) — solo nella vista periodi.
-  // Le scuole partono nascoste: la vista d'insieme mostra epoche e correnti, e si
-  // raggiungono le scuole aprendo la scheda della corrente che le contiene.
+  // Le scuole non compaiono nella linea del tempo: restano sempre in questo
+  // insieme, e non c'e' un filtro per riaccenderle (vedi TIMELINE_TYPES).
   const [hideTypes, setHideTypes] = useState<Set<string>>(new Set(["scuola"]));
-  // Filtri per categoria autore (Pittori, Scultori, ecc.) — solo nella vista autori.
-  const [hideCats, setHideCats] = useState<Set<string>>(new Set());
   // PID del periodo da evidenziare (pulse) dopo click su risultato di ricerca.
   const [highlightPid, setHighlightPid] = useState<string | null>(null);
 
@@ -515,61 +217,27 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
     });
   };
 
-  // Conteggio autori per categoria (per mostrare il numero accanto al filtro).
-  const catCounts = useMemo(() => {
-    const c: Record<string, number> = {};
-    for (const a of ix.ds.artists) {
-      const cat = artistCategory(a);
-      c[cat] = (c[cat] ?? 0) + 1;
-    }
-    return c;
-  }, [ix.ds.artists]);
-
-  const toggleCat = (cat: string) => {
-    setHideCats((prev) => {
-      const n = new Set(prev);
-      n.has(cat) ? n.delete(cat) : n.add(cat);
-      return n;
-    });
-  };
-
   // === Ricerca globale ===
-  // Cerca tra periodi (se vista periodi) o artisti (se vista artisti).
-  // Risultati mostrati in un dropdown sotto la barra, come nel grafo.
+  // Cerca tra i periodi. Risultati in un dropdown sotto la barra, come nel grafo.
   const searchResults = useMemo(() => {
     const q = searchQ.trim().toLowerCase();
     if (!q) return [];
-    const results: { type: "period" | "artist"; id: string; label: string; subtitle?: string }[] = [];
-    if (showArtists) {
-      for (const a of ix.ds.artists) {
-        if (
-          a.name.toLowerCase().includes(q) ||
-          a.id.toLowerCase().includes(q) ||
-          a.aka.some((ak) => ak.toLowerCase().includes(q))
-        ) {
-          results.push({ type: "artist", id: a.id, label: a.name, subtitle: a.role || undefined });
-          if (results.length >= 20) break;
-        }
-      }
-    } else {
-      for (const p of ix.ds.periods) {
-        if (p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q)) {
-          results.push({
-            type: "period",
-            id: p.id,
-            label: p.name,
-            subtitle: `${fmtYear(p.year_start)}–${fmtYear(p.year_end)}`,
-          });
-          if (results.length >= 20) break;
-        }
+    const results: { type: "period"; id: string; label: string; subtitle?: string }[] = [];
+    for (const p of ix.ds.periods) {
+      if (p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q)) {
+        results.push({
+          type: "period",
+          id: p.id,
+          label: p.name,
+          subtitle: `${fmtYear(p.year_start)}–${fmtYear(p.year_end)}`,
+        });
+        if (results.length >= 20) break;
       }
     }
     return results;
-  }, [searchQ, showArtists, ix]);
+  }, [searchQ, ix]);
 
-  const legendEntries = showArtists
-    ? Object.entries(ARTIST_CAT_COLOR).filter(([c]) => layoutArtistLanes(ix.ds.artists).categories.includes(c))
-    : Object.entries(TYPE_COLOR);
+  const legendEntries = Object.entries(TYPE_COLOR);
 
   // Toggle chips per flussi/eventi/artisti (usati sia nella barra superiore
   // che nella colonna destra in fullscreen, per coerenza con il grafo).
@@ -605,7 +273,7 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
         type="text"
         value={searchQ}
         onChange={(e) => setSearchQ(e.target.value)}
-        placeholder={showArtists ? "Cerca autore…" : "Cerca periodo…"}
+        placeholder="Cerca periodo…"
         data-testid="tl-search"
         style={{
           width: "100%", padding: "8px 12px",
@@ -627,27 +295,6 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
             </div>
           ) : (
             searchResults.map((r) => {
-              if (r.type === "artist") {
-                return (
-                  <Link
-                    key={`${r.type}:${r.id}`}
-                    to={`/artista/${r.id}`}
-                    onClick={() => setSearchQ("")}
-                    style={{
-                      display: "flex", alignItems: "center", gap: 8,
-                      padding: "8px 12px", borderBottom: "1px solid var(--line-soft)",
-                      textDecoration: "none", color: "var(--ink)",
-                    }}
-                  >
-                    <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#b9692c", flexShrink: 0 }} />
-                    <span style={{ flex: 1, minWidth: 0 }}>
-                      <span style={{ fontSize: 13, fontWeight: 500, display: "block" }}>{r.label}</span>
-                      {r.subtitle && <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{r.subtitle}</span>}
-                    </span>
-                    <span style={{ fontSize: 10, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em" }}>Autore</span>
-                  </Link>
-                );
-              }
               // Periodo: non naviga, imposta highlightPid per il pulse
               return (
                 <button
@@ -679,7 +326,7 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
   // Colonna destra: ricerca, tempo, vista (con tutti i filtri in stile lista).
   // Sempre visibile (sia in modalità normale che in fullscreen), come nel grafo.
   // La sezione "Legenda" è stata rimossa su richiesta utente (non utile).
-  // Tutti i filtri (flussi, eventi, autori, epoca, corrente) sono sotto "Vista"
+  // Tutti i filtri (flussi, eventi, tipi di periodo) sono sotto "Vista"
   // con stile lista (pallino + nome + conteggio a destra), non pulsanti.
   const sideFiltersBlock = (
     <div className="panel" data-testid="tl-fs-filters">
@@ -735,21 +382,8 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
           <span className="dot" style={{ background: "#a8483f", flexShrink: 0 }} />
           <span style={{ flex: 1, fontSize: 12.5 }}>◆ eventi</span>
         </button>
-        {/* Toggle: autori (senza emoji) */}
-        <button
-          onClick={() => setShowArtists((v) => !v)}
-          style={{
-            display: "flex", alignItems: "center", gap: 8, width: "100%",
-            padding: "6px 4px", background: "transparent", border: 0,
-            cursor: "pointer", textAlign: "left", fontFamily: "inherit",
-            color: "var(--ink)", opacity: showArtists ? 1 : 0.4,
-          }}
-        >
-          <span className="dot" style={{ background: "#b9692c", flexShrink: 0 }} />
-          <span style={{ flex: 1, fontSize: 12.5 }}>autori</span>
-        </button>
-        {/* Filtri tipo periodo (epoca/corrente/scuola) — solo vista periodi */}
-        {!showArtists && TIMELINE_TYPES.map((t) => {
+        {/* Filtri per tipo di periodo */}
+        {TIMELINE_TYPES.map((t) => {
           const c = TYPE_COLOR[t];
           const off = hideTypes.has(t);
           const count = typeCounts[t] ?? 0;
@@ -770,27 +404,6 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
             </button>
           );
         })}
-        {/* Filtri categoria autore (Pittori, Scultori, ecc.) — solo vista autori */}
-        {showArtists && Object.entries(ARTIST_CAT_COLOR).filter(([cat]) => cat !== "Altro").map(([cat, col]) => {
-          const off = hideCats.has(cat);
-          const count = catCounts[cat] ?? 0;
-          return (
-            <button
-              key={cat}
-              onClick={() => toggleCat(cat)}
-              style={{
-                display: "flex", alignItems: "center", gap: 8, width: "100%",
-                padding: "6px 4px", background: "transparent", border: 0,
-                cursor: "pointer", textAlign: "left", fontFamily: "inherit",
-                color: "var(--ink)", opacity: off ? 0.4 : 1,
-              }}
-            >
-              <span className="dot" style={{ background: col, flexShrink: 0 }} />
-              <span style={{ flex: 1, fontSize: 12.5 }}>{cat}</span>
-              <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{count}</span>
-            </button>
-          );
-        })}
       </div>
     </div>
   );
@@ -801,35 +414,24 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
           I comandi zoom sono nel riquadro filtri a destra (sempre visibili). */}
       <div className="filterbar" style={{ marginBottom: 14, gap: 14, alignItems: "center" }}>
         <div style={{ marginLeft: "auto" }}>
-          <FilterNote total={showArtists ? ix.ds.artists.length : allPeriods.length} shown={showArtists ? ix.ds.artists.filter((a) => a.birth != null).length : periods.length} noun={showArtists ? "autori" : "periodi"} />
+          <FilterNote total={allPeriods.length} shown={periods.length} noun="periodi" />
         </div>
       </div>
 
-      {showArtists ? (
-        <Fullscreen title="Linea del tempo — Autori" controls={null} showSlider={false} onChange={(f) => { setInFull(f); onFull(f); }}>
-          <div className="gf-inner">
-            <ArtistTimelineCanvas inFullscreen={inFull} hideCats={hideCats} />
-            <div className="gf-side">
-              {sideFiltersBlock}
-            </div>
+      <Fullscreen title="Linea del tempo" controls={null} showSlider={false} onChange={(f) => { setInFull(f); onFull(f); }}>
+        <div className="gf-inner">
+          <TimelineCanvasControlled
+            showFlows={showFlows}
+            showEvents={showEvents}
+            inFullscreen={inFull}
+            hideTypes={hideTypes}
+            highlightPid={highlightPid}
+          />
+          <div className="gf-side">
+            {sideFiltersBlock}
           </div>
-        </Fullscreen>
-      ) : (
-        <Fullscreen title="Linea del tempo" controls={null} showSlider={false} onChange={(f) => { setInFull(f); onFull(f); }}>
-          <div className="gf-inner">
-            <TimelineCanvasControlled
-              showFlows={showFlows}
-              showEvents={showEvents}
-              inFullscreen={inFull}
-              hideTypes={hideTypes}
-              highlightPid={highlightPid}
-            />
-            <div className="gf-side">
-              {sideFiltersBlock}
-            </div>
-          </div>
-        </Fullscreen>
-      )}
+        </div>
+      </Fullscreen>
     </>
   );
 }
@@ -914,7 +516,15 @@ function TimelineCanvasControlled({ showFlows, showEvents, inFullscreen, hideTyp
       .filter((f) => f.a.id !== f.b.id);
   }, [ix, lanes]);
 
-  const visibleEvents = useMemo(() => ix.ds.events.filter(eventIn), [ix, eventIn]);
+  // Restano fuori dalla linea del tempo gli eventi che cadono oltre l'arco dei
+  // periodi: sono soprattutto vicende successive delle opere (restauri, danni,
+  // l'alluvione del 1966, l'incendio di Notre-Dame), che appartengono alla
+  // storia conservativa e non a quella dell'arte qui rappresentata. Verrebbero
+  // comunque disegnate fuori dall'area visibile.
+  const visibleEvents = useMemo(
+    () => ix.ds.events.filter((e) => eventIn(e) && typeof e.year === "number" && e.year >= minY && e.year <= maxY),
+    [ix, eventIn, minY, maxY]
+  );
   const evNodes = useMemo(() => layoutEvents(visibleEvents, x, 6.2), [visibleEvents, x]);
   const labelsShown = useMemo(() => evNodes.filter((n: any) => n.showLabel).length, [evNodes]);
 

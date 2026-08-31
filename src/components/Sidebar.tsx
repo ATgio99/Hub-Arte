@@ -21,23 +21,11 @@ import {
 } from "../lib/lastVisited";
 import type { EntityType } from "../lib/types";
 import TimeRangeSlider from "./TimeRangeSlider";
+import IconaSezione from "./IconaSezione";
 
 // icone sottili (stroke 1.5) coerenti, una per pagina
-function Icon({ id }: { id: string }) {
-  const common = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
-  switch (id) {
-    case "opere": return <svg {...common}><rect x="4" y="3" width="16" height="18" rx="1" /><path d="M4 8h16M9 3v18" /></svg>;
-    case "artisti": return <svg {...common}><circle cx="12" cy="8" r="3.4" /><path d="M5 20c1.2-3.6 3.8-5.4 7-5.4s5.8 1.8 7 5.4" /></svg>;
-    case "rete": return <svg {...common}><circle cx="6" cy="6" r="2" /><circle cx="18" cy="8" r="2" /><circle cx="9" cy="18" r="2" /><path d="M8 7l8 1M8 8l1 8M17 10l-7 7" /></svg>;
-    case "timeline": return <svg {...common}><path d="M3 12h18" /><circle cx="7" cy="12" r="1.6" /><circle cx="13" cy="12" r="1.6" /><circle cx="19" cy="12" r="1.6" /><path d="M7 12V7M13 12v5M19 12V8" /></svg>;
-    case "mappa": return <svg {...common}><path d="M9 4 4 6v14l5-2 6 2 5-2V4l-5 2-6-2z" /><path d="M9 4v14M15 6v14" /></svg>;
-    case "glossario": return <svg {...common}><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z" /><path d="M5 17a3 3 0 0 1 3-3h11" /></svg>;
-    case "tecniche": return <svg {...common}><path d="M14 4l6 6-9 9-6 1 1-6 8-10z" /><path d="M12 6l6 6" /></svg>;
-    case "statistiche": return <svg {...common}><path d="M4 20V10M10 20V4M16 20v-8M22 20H2" /></svg>;
-    case "test": return <svg {...common}><path d="M9 11l2 2 4-4" /><rect x="4" y="4" width="16" height="16" rx="2" /></svg>;
-    default: return <svg {...common}><circle cx="12" cy="12" r="8" /></svg>;
-  }
-}
+const Icon = ({ id }: { id: string }) => <IconaSezione id={id} />;
+
 
 
 function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
@@ -204,8 +192,10 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
         </Link>
         <button className="sbx-collapse" onClick={onToggleCollapse} data-testid="sbx-collapse"
           aria-label={collapsed ? "Espandi menù" : "Comprimi menù"} title={collapsed ? "Espandi" : "Comprimi"}>
+          {/* Tre linee: comprimere il menu non e' "tornare indietro", e la
+              freccia lo faceva confondere con il comando delle schede. */}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-            <path d={collapsed ? "M9 6l6 6-6 6" : "M15 6l-6 6 6 6"} />
+            <path d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         </button>
       </div>
@@ -443,8 +433,8 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
             onClick={onNavigate}
             style={{
               display: "flex", alignItems: "center", gap: 8,
-              marginTop: 4, padding: "6px 4px",
-              textDecoration: "none", color: "var(--ink-dim)", fontSize: 12,
+              marginTop: 2, padding: "4px 4px",
+              textDecoration: "none", color: "var(--ink-dim)", fontSize: 11.5,
             }}
             title="I tuoi contributi"
             data-testid="sbx-profile"
@@ -478,8 +468,8 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
             onClick={onNavigate}
             style={{
               display: "flex", alignItems: "center", gap: 8,
-              marginTop: 4, padding: "6px 4px",
-              textDecoration: "none", color: "var(--gold-deep)", fontSize: 12, fontWeight: 600,
+              marginTop: 2, padding: "4px 4px",
+              textDecoration: "none", color: "var(--gold-deep)", fontSize: 11.5, fontWeight: 600,
             }}
             title="Gestisci le richieste degli utenti"
             data-testid="sbx-admin"
@@ -509,8 +499,8 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
             onClick={onNavigate}
             style={{
               display: "flex", alignItems: "center", gap: 8,
-              marginTop: 4, padding: "6px 4px",
-              textDecoration: "none", color: "var(--ink-dim)", fontSize: 12,
+              marginTop: 2, padding: "4px 4px",
+              textDecoration: "none", color: "var(--ink-dim)", fontSize: 11.5,
             }}
             title="I tuoi contributi"
           >
@@ -523,7 +513,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
 
         {/* account / sync indicator */}
         <Link to="/login" onClick={onNavigate} className="sbx-account" data-testid="sbx-account"
-          style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 8, padding: "6px 4px", textDecoration: "none", color: "var(--ink-dim)", fontSize: 12 }}>
+          style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 4, padding: "4px 4px", textDecoration: "none", color: "var(--ink-dim)", fontSize: 11.5 }}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={user ? "var(--gold)" : "currentColor"} strokeWidth="1.8" strokeLinecap="round">
             <circle cx="12" cy="8" r="3.4" />
             <path d="M5 20c1.2-3.6 3.8-5.4 7-5.4s5.8 1.8 7 5.4" />
@@ -544,6 +534,8 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
             fontSize: 10.5, color: "var(--ink-dim)",
           }}
         >
+          <Link to="/legal/progetto" onClick={onNavigate} style={{ color: "inherit", textDecoration: "none" }}>Progetto &amp; IA</Link>
+          <span>·</span>
           <Link to="/legal/privacy" onClick={onNavigate} style={{ color: "inherit", textDecoration: "none" }}>Privacy</Link>
           <span>·</span>
           <Link to="/legal/cookie" onClick={onNavigate} style={{ color: "inherit", textDecoration: "none" }}>Cookie</Link>

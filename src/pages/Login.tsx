@@ -3,6 +3,7 @@
 // Include export/import dati per migrare dalla vecchia versione
 // ============================================================================
 import { useState, useEffect } from "react";
+import { BarraScheda, SegnoPreferito, SegnoApprofondita } from "../components/ui";
 import { useAuth } from "../lib/auth";
 import { supabase } from "../lib/supabase";
 import { fullSync } from "../lib/sync";
@@ -10,7 +11,7 @@ import { getFavorites, setFavorites, clearAllFavorites } from "../lib/favorites"
 import { getStudied, setStudied, clearAllStudied } from "../lib/studied";
 import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "../lib/imageOverrides";
 
-export default function Login() {
+function Accesso() {
   const { signIn, signUp, signOut, user, loading, resetPassword, updateNewPassword, passwordRecoveryActive } = useAuth();
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [forgotMode, setForgotMode] = useState(false);
@@ -258,7 +259,7 @@ export default function Login() {
     // ---- AZZERA TUTTI I PROGRESSI (zona pericolosa) ----
     const handleResetProgress = async () => {
       const confirmed = window.confirm(
-        "⚠️ CONFERMA AZZERAMENTO TOTALE\n\n" +
+        "CONFERMA AZZERAMENTO TOTALE\n\n" +
         "Stai per cancellare TUTTI i tuoi progressi:\n" +
         "  • Tutti i preferiti (★)\n" +
         "  • Tutte le opere approfondite (✓)\n" +
@@ -295,8 +296,8 @@ export default function Login() {
     };
 
     return (
-      <div className="card" style={{ padding: "24px 28px", display: "flex", flexDirection: "column", gap: 12 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+        <div className="card" style={{ padding: "18px 22px", display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
           <div style={{
             width: 40, height: 40, borderRadius: "50%",
             background: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center",
@@ -310,141 +311,48 @@ export default function Login() {
             </div>
             <div style={{ fontSize: 12, color: "var(--c-technique)" }}>Sincronizzazione attiva ✓</div>
           </div>
+          <button className="btn ghost sm" onClick={signOut} style={{ marginLeft: "auto" }}>Esci</button>
         </div>
 
-        {/* Riepilogo dati */}
-        <div style={{
-          padding: "12px 14px", borderRadius: 8, background: "var(--bg-2)",
-          border: "1px solid var(--line-soft)", fontSize: 13, lineHeight: 1.7,
-        }}>
-          <div style={{ fontWeight: 600, marginBottom: 4, fontSize: 12, textTransform: "uppercase", letterSpacing: ".1em", color: "var(--ink-dim)" }}>
-            I tuoi dati
+        {/* Cosa c'e' nel tuo account, e come tenerlo allineato fra dispositivi */}
+        <div className="card" style={{ padding: "18px 22px" }}>
+          <div className="smallcaps" style={{ marginBottom: 12 }}>I tuoi dati</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 30, marginBottom: 16 }}>
+            {[
+              { n: favs.works.length, l: "opere preferite", segno: <SegnoPreferito /> },
+              { n: favs.artists.length, l: "autori preferiti", segno: <SegnoPreferito /> },
+              { n: studied.length, l: "opere approfondite", segno: <SegnoApprofondita /> },
+            ].map((x) => (
+              <div key={x.l}>
+                <div className="tnum" style={{ fontSize: 24, fontWeight: 600, lineHeight: 1.1 }}>{x.n}</div>
+                <div className="smallcaps" style={{ fontSize: 10.5, color: "var(--ink-dim)", display: "flex", alignItems: "center", gap: 5, marginTop: 2 }}>
+                  {x.segno}{x.l}
+                </div>
+              </div>
+            ))}
           </div>
-          <div>★ <b>{favs.works.length}</b> opere preferite · <b>{favs.artists.length}</b> artisti preferiti</div>
-          <div>✓ <b>{studied.length}</b> opere approfondite</div>
-          <div>🖼 <b>{Object.keys(overrides).length}</b> immagini personalizzate</div>
-        </div>
-
-        {/* Sync */}
-        <button className="btn gold sm" onClick={handleSync} disabled={syncing} style={{ marginTop: 4 }}>
-          {syncing ? "Sincronizzazione…" : "↻ Sincronizza ora con il cloud"}
-        </button>
-
-        {syncResult && (
-          <div style={{ fontSize: 13, lineHeight: 1.4, color: syncResult.startsWith("✓") ? "var(--c-technique)" : "var(--c-event)" }}>
-            {syncResult}
-          </div>
-        )}
-
-        {/* Export / Import / Account */}
-        <div style={{ borderTop: "1px solid var(--line-soft)", paddingTop: 12, marginTop: 4 }}>
-          <div className="smallcaps" style={{ marginBottom: 8 }}>Account, dati e sincronizzazione</div>
+          <p style={{ fontSize: 12.5, color: "var(--ink-dim)", lineHeight: 1.55, margin: "0 0 12px" }}>
+            La sincronizzazione manda questi dati sul cloud e riporta indietro quelli
+            aggiunti dagli altri tuoi dispositivi. Avviene da sola all'accesso: il tasto
+            serve solo se vuoi forzarla subito.
+          </p>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            <button className="btn sm" onClick={handleExport}>
-              💾 Esporta dati (JSON)
+            <button className="btn gold sm" onClick={handleSync} disabled={syncing}>
+              {syncing ? "Sincronizzazione…" : "Sincronizza ora"}
             </button>
+            <button className="btn sm" onClick={handleExport}>Esporta una copia (JSON)</button>
             <button className="btn sm" onClick={() => setShowImport(!showImport)}>
-              {showImport ? "Chiudi import" : "📥 Importa dati"}
+              {showImport ? "Chiudi import" : "Importa dati"}
             </button>
           </div>
-
-          {/* Cambia email — sempre visibile */}
-          <div style={{ marginTop: 12, padding: 14, background: "var(--bg-1)", borderRadius: 10, border: "1px solid var(--line)" }}>
-            <div className="smallcaps" style={{ marginBottom: 8 }}>Cambia email</div>
-            <p style={{ fontSize: 12, color: "var(--ink-dim)", margin: "0 0 8px" }}>
-              Email attuale: <b>{user?.email}</b>
-            </p>
-            <input
-              type="email"
-              value={newEmail}
-              onChange={(e) => setNewEmail(e.target.value)}
-              placeholder="Nuova email"
-              style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, fontFamily: "inherit", marginBottom: 8 }}
-            />
-            {emailMsg && <div style={{ fontSize: 12, marginBottom: 6, color: emailMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{emailMsg}</div>}
-            <button
-              className="btn gold sm"
-              disabled={changingEmail || !newEmail.trim() || newEmail.trim() === user?.email}
-              onClick={async () => {
-                setChangingEmail(true); setEmailMsg(null);
-                const { error } = await supabase.auth.updateUser({ email: newEmail.trim() });
-                setChangingEmail(false);
-                if (error) setEmailMsg("✗ " + error.message);
-                else setEmailMsg("✓ Email aggiornata! Controlla entrambe le caselle email per confermare il cambio.");
-              }}
-            >
-              {changingEmail ? "Invio…" : "Cambia email"}
-            </button>
-          </div>
-
-          {/* Cambia password — sempre visibile, due campi */}
-          <div style={{ marginTop: 12, padding: 14, background: "var(--bg-1)", borderRadius: 10, border: "1px solid var(--line)" }}>
-            <div className="smallcaps" style={{ marginBottom: 8 }}>Cambia password</div>
-            <input
-              type="password"
-              value={newPassword}
-              onChange={(e) => { setNewPassword(e.target.value); setPwMsg(null); }}
-              placeholder="Nuova password (min. 6 caratteri)"
-              style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, fontFamily: "inherit", marginBottom: 8 }}
-            />
-            <input
-              type="password"
-              value={newPasswordConfirm}
-              onChange={(e) => { setNewPasswordConfirm(e.target.value); setPwMsg(null); }}
-              placeholder="Ripeti la nuova password"
-              style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, fontFamily: "inherit", marginBottom: 8 }}
-            />
-            {pwMsg && <div style={{ fontSize: 12, marginBottom: 6, color: pwMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{pwMsg}</div>}
-            <button
-              className="btn gold sm"
-              disabled={changingPw || !newPassword.trim() || newPassword.length < 6}
-              onClick={async () => {
-                if (newPassword !== newPasswordConfirm) {
-                  setPwMsg("✗ Le password non coincidono. Riprova.");
-                  return;
-                }
-                setChangingPw(true); setPwMsg(null);
-                const { error } = await supabase.auth.updateUser({ password: newPassword.trim() });
-                setChangingPw(false);
-                if (error) setPwMsg("✗ " + error.message);
-                else {
-                  setPwMsg("✓ Password aggiornata!");
-                  setNewPassword("");
-                  setNewPasswordConfirm("");
-                }
-              }}
-            >
-              {changingPw ? "Invio…" : "Cambia password"}
-            </button>
-          </div>
-
-          {/* ===== ZONA PERICOLOSA: Azzera progressi ===== */}
-          <div style={{
-            marginTop: 12, padding: 14,
-            background: "rgba(168,72,63,0.04)",
-            border: "1px solid rgba(168,72,63,0.3)",
-            borderRadius: 10,
-          }}>
-            <div className="smallcaps" style={{ marginBottom: 8, color: "#a8483f" }}>⚠️ Zona pericolosa</div>
-            <p style={{ fontSize: 12.5, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 0 10px" }}>
-              Azzeri tutti i preferiti (★) e le opere approfondite (✓) — sia da questo browser che dal cloud.
-              <b> L'azione è irreversibile.</b>
-            </p>
-            <button
-              onClick={handleResetProgress}
-              disabled={resetting || syncing}
-              className="btn sm"
-              style={{
-                background: "#a8483f", color: "#fff", borderColor: "#a8483f",
-                cursor: resetting ? "wait" : "pointer",
-              }}
-            >
-              {resetting ? "⏳ Azzeramento…" : "🗑️ Azzera tutti i progressi"}
-            </button>
-          </div>
+          {syncResult && (
+            <div style={{ fontSize: 13, lineHeight: 1.4, marginTop: 10, color: syncResult.startsWith("✓") ? "var(--c-technique)" : "var(--c-event)" }}>
+              {syncResult}
+            </div>
+          )}
 
           {showImport && (
-            <div style={{ marginTop: 10 }}>
+            <div style={{ marginTop: 14 }}>
               <div style={{ fontSize: 12, color: "var(--ink-dim)", marginBottom: 6, lineHeight: 1.5 }}>
                 Incolla il JSON esportato dalla vecchia versione, oppure carica il file JSON scaricato. I dati verranno uniti (merge) — non verrà perso nulla.
               </div>
@@ -453,7 +361,7 @@ export default function Login() {
                   padding: "7px 14px", borderRadius: 8, border: "1px solid var(--line)",
                   background: "var(--bg-1)", cursor: "pointer", fontSize: 13, fontWeight: 500,
                 }}>
-                  📁 Carica file JSON
+                  Carica file JSON
                   <input type="file" accept=".json" onChange={handleFileImport} style={{ display: "none" }} />
                 </label>
                 <span style={{ fontSize: 12, color: "var(--ink-dim)" }}>oppure incolla sotto:</span>
@@ -481,13 +389,104 @@ export default function Login() {
           )}
         </div>
 
-        <div style={{ fontSize: 12, color: "var(--ink-dim)", lineHeight: 1.5 }}>
-          La sincronizzazione spinge i tuoi dati locali sul cloud e scarica eventuali dati da altri dispositivi.
+        <div className="two-col" style={{ gap: 18, alignItems: "start", gridTemplateColumns: "1fr 1fr" }}>
+          {/* Cambia email — sempre visibile */}
+          <div className="card" style={{ padding: "18px 22px" }}>
+            <div className="smallcaps" style={{ marginBottom: 8 }}>Cambia email</div>
+            <p style={{ fontSize: 12, color: "var(--ink-dim)", margin: "0 0 8px" }}>
+              Email attuale: <b>{user?.email}</b>
+            </p>
+            <input
+              type="email"
+              value={newEmail}
+              onChange={(e) => setNewEmail(e.target.value)}
+              placeholder="Nuova email"
+              className="input" style={{ width: "100%", marginBottom: 8 }}
+            />
+            {emailMsg && <div style={{ fontSize: 12, marginBottom: 6, color: emailMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{emailMsg}</div>}
+            <button
+              className="btn gold sm"
+              disabled={changingEmail || !newEmail.trim() || newEmail.trim() === user?.email}
+              onClick={async () => {
+                setChangingEmail(true); setEmailMsg(null);
+                const { error } = await supabase.auth.updateUser({ email: newEmail.trim() });
+                setChangingEmail(false);
+                if (error) setEmailMsg("✗ " + error.message);
+                else setEmailMsg("✓ Email aggiornata! Controlla entrambe le caselle email per confermare il cambio.");
+              }}
+            >
+              {changingEmail ? "Invio…" : "Cambia email"}
+            </button>
+          </div>
+
+          {/* Cambia password — sempre visibile, due campi */}
+          <div className="card" style={{ padding: "18px 22px" }}>
+            <div className="smallcaps" style={{ marginBottom: 8 }}>Cambia password</div>
+            <input
+              type="password"
+              value={newPassword}
+              onChange={(e) => { setNewPassword(e.target.value); setPwMsg(null); }}
+              placeholder="Nuova password (min. 6 caratteri)"
+              className="input" style={{ width: "100%", marginBottom: 8 }}
+            />
+            <input
+              type="password"
+              value={newPasswordConfirm}
+              onChange={(e) => { setNewPasswordConfirm(e.target.value); setPwMsg(null); }}
+              placeholder="Ripeti la nuova password"
+              className="input" style={{ width: "100%", marginBottom: 8 }}
+            />
+            {pwMsg && <div style={{ fontSize: 12, marginBottom: 6, color: pwMsg.startsWith("✓") ? "#3f8a4f" : "#a8483f" }}>{pwMsg}</div>}
+            <button
+              className="btn gold sm"
+              disabled={changingPw || !newPassword.trim() || newPassword.length < 6}
+              onClick={async () => {
+                if (newPassword !== newPasswordConfirm) {
+                  setPwMsg("✗ Le password non coincidono. Riprova.");
+                  return;
+                }
+                setChangingPw(true); setPwMsg(null);
+                const { error } = await supabase.auth.updateUser({ password: newPassword.trim() });
+                setChangingPw(false);
+                if (error) setPwMsg("✗ " + error.message);
+                else {
+                  setPwMsg("✓ Password aggiornata!");
+                  setNewPassword("");
+                  setNewPasswordConfirm("");
+                }
+              }}
+            >
+              {changingPw ? "Invio…" : "Cambia password"}
+            </button>
+          </div>
+
         </div>
 
-        <button className="btn ghost sm" onClick={signOut} style={{ alignSelf: "flex-start", marginTop: 4 }}>
-          Esci
-        </button>
+        {/* ===== ZONA PERICOLOSA: Azzera progressi ===== */}
+        <div style={{
+            padding: "18px 22px",
+            background: "rgba(168,72,63,0.04)",
+            border: "1px solid rgba(168,72,63,0.3)",
+            borderRadius: 10,
+          }}>
+            <div className="smallcaps" style={{ marginBottom: 8, color: "#a8483f" }}>Zona pericolosa</div>
+            <p style={{ fontSize: 12.5, lineHeight: 1.55, color: "var(--ink-soft)", margin: "0 0 10px" }}>
+              Azzeri tutti i preferiti (★) e le opere approfondite (✓) — sia da questo browser che dal cloud.
+              <b> L'azione è irreversibile.</b>
+            </p>
+            <button
+              onClick={handleResetProgress}
+              disabled={resetting || syncing}
+              className="btn sm"
+              style={{
+                background: "#a8483f", color: "#fff", borderColor: "#a8483f",
+                cursor: resetting ? "wait" : "pointer",
+              }}
+            >
+              {resetting ? "Azzeramento…" : "Azzera tutti i progressi"}
+            </button>
+          </div>
+
       </div>
     );
   }
@@ -520,11 +519,12 @@ export default function Login() {
   };
 
   return (
-    <div className="card" style={{ padding: "28px 32px", maxWidth: 420 }}>
-      <div className="eyebrow" style={{ marginBottom: 6 }}>Account</div>
-      <h3 style={{ fontSize: 22, fontFamily: "var(--font-display)", marginBottom: 16 }}>
-        {mode === "login" ? "Accedi" : "Registrati"}
-      </h3>
+    <div className="card" style={{ padding: "24px 26px" }}>
+      {!sent && !recoveryMode && !forgotMode && (
+        <h3 style={{ fontSize: 19, fontFamily: "var(--font-display)", marginBottom: 16 }}>
+          {mode === "login" ? "Entra con la tua email" : "Crea un account"}
+        </h3>
+      )}
 
       {sent ? (
         <div>
@@ -620,8 +620,9 @@ export default function Login() {
 
           {/* Import dati anche senza login */}
           <div style={{ borderTop: "1px solid var(--line-soft)", marginTop: 16, paddingTop: 14 }}>
-            <button className="btn sm" onClick={() => setShowImport(!showImport)}>
-              {showImport ? "Chiudi" : "📥 Importa dati dalla vecchia versione"}
+            <button type="button" onClick={() => setShowImport(!showImport)}
+              style={{ background: "none", border: 0, padding: 0, color: "var(--ink-dim)", cursor: "pointer", textDecoration: "underline", fontSize: 12.5 }}>
+              {showImport ? "Chiudi" : "Hai dati salvati nella versione precedente del sito? Importali"}
             </button>
 
             {showImport && (
@@ -637,7 +638,7 @@ export default function Login() {
                     padding: "7px 14px", borderRadius: 8, border: "1px solid var(--line)",
                     background: "var(--bg-1)", cursor: "pointer", fontSize: 13, fontWeight: 500,
                   }}>
-                    📁 Carica file JSON
+                    Carica file JSON
                     <input type="file" accept=".json" onChange={handleFileImport} style={{ display: "none" }} />
                   </label>
                   <span style={{ fontSize: 12, color: "var(--ink-dim)" }}>oppure incolla sotto:</span>
@@ -665,12 +666,32 @@ export default function Login() {
             )}
           </div>
 
-          <div style={{ marginTop: 16, padding: "10px 12px", borderRadius: 8, background: "var(--bg-2)", border: "1px solid var(--line-soft)", fontSize: 12.5, lineHeight: 1.5, color: "var(--ink-dim)" }}>
+          <div style={{ marginTop: 16, padding: "10px 12px", borderRadius: 8, background: "var(--bg-2)", border: "1px solid var(--line-soft)", fontSize: 12.5, lineHeight: 1.55, color: "var(--ink-soft)" }}>
             <b style={{ color: "var(--ink)" }}>Come funziona la sincronizzazione</b><br />
-            Quando accedi, i tuoi ★ preferiti, ✓ approfondite e 🖼 immagini personalizzate vengono inviati al cloud e scaricati su tutti i tuoi dispositivi collegati allo stesso account.
+            Quando accedi, i tuoi ★ preferiti, ✓ approfondite e immagini personalizzate vengono inviati al cloud e scaricati su tutti i tuoi dispositivi collegati allo stesso account.
           </div>
         </>
       )}
+    </div>
+  );
+}
+
+export default function Login() {
+  const { user } = useAuth();
+  return (
+    <div className="wrap page" style={user ? undefined : { maxWidth: 620 }}>
+      <BarraScheda />
+      <div className="page-head">
+        <div className="page-eyebrow"><span className="eyebrow">Il tuo account</span></div>
+        <h1 className="page-title">{user ? "Il tuo account" : "Accedi"}</h1>
+        <p className="page-lead">
+          {user
+            ? "Da qui gestisci l'accesso, la sincronizzazione dei tuoi dati e il salvataggio di una copia."
+            : "L'account serve a ritrovare su ogni dispositivo le opere che hai messo tra i preferiti o segnato come approfondite, e a seguire le proposte che invii. Consultare l'atlante non lo richiede."}
+        </p>
+      </div>
+      <div className="page-rule" />
+      <Accesso />
     </div>
   );
 }

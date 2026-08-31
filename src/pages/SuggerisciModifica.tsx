@@ -7,6 +7,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import { BarraScheda } from "../components/ui";
 import { useAuth, CONTACT_EMAIL } from "../lib/auth";
 import { useData } from "../lib/store";
 
@@ -137,6 +138,7 @@ export default function SuggerisciModifica() {
 
   return (
     <div className="wrap page" style={{ maxWidth: 720 }}>
+      <BarraScheda />
       <h1 style={{ fontSize: "clamp(26px,4vw,38px)", letterSpacing: "-.02em", marginBottom: 8 }}>
         Suggerisci una modifica
       </h1>

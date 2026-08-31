@@ -35,15 +35,24 @@ export type ArtistCategory =
   | "pittori" | "scultori" | "architetti" | "orafi-bronzisti"
   | "miniatori" | "committenti" | "altro";
 
+// Gli autori e i committenti condividono questa scheda: li distingue
+// `category` ("committenti" per i mecenati). Cio' che NON va mai confuso e' il
+// collegamento all'opera — vedi Work.artist_ids e Work.committente_ids.
 export interface Artist {
   id: string; name: string; aka: string[];
   birth: number | null; death: number | null;
   period_ids: string[]; role: string; bio: string; innovations: string[];
   category?: ArtistCategory | null;
+  // Casate, corti e istituzioni (Casa Medici, Senato veneziano): non persone.
+  is_collective?: boolean;
+  // Sede del committente, usata dalla mappa in modalita' committenti.
+  location_city?: string | null;
 }
 
 export interface Work {
-  id: string; title: string; artist_ids: string[]; period_id: string;
+  // artist_ids = chi l'ha eseguita; committente_ids = chi l'ha voluta.
+  // I due elenchi non si mescolano mai: un committente non entra in artist_ids.
+  id: string; title: string; artist_ids: string[]; committente_ids?: string[]; period_id: string;
   date_text: string; year_start: number | null; year_end: number | null;
   type: WorkType; technique_ids: string[]; materials: string[];
   location_city: string | null; location_place: string | null;

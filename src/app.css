@@ -66,13 +66,13 @@ main { flex: 1; min-height: 60vh; }
    TIME-RANGE SLIDER globale
    ============================================================ */
 .trs { user-select: none; }
-.trs-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+.trs-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 4px; }
 .trs-title { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-dim); font-weight: 600; }
 .trs-reset { font-size: 10.5px; color: var(--gold-deep); cursor: pointer; background: none; border: 0; padding: 0; letter-spacing: .04em; }
 .trs-reset:hover { text-decoration: underline; }
-.trs-vals { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; font-size: 12px; color: var(--ink); font-weight: 600; margin-bottom: 8px; }
+.trs-vals { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; font-size: 11.5px; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
 
-.trs-track-wrap { position: relative; height: 58px; }
+.trs-track-wrap { position: relative; height: 40px; }
 .trs-hist { position: absolute; inset: 0 0 13px; display: flex; align-items: flex-end; gap: 1px; }
 .trs-bar { flex: 1; background: var(--bg-3); border-radius: 1px 1px 0 0; transition: background .15s; min-height: 0; }
 .trs-bar.in { background: var(--gold); }
@@ -82,9 +82,9 @@ main { flex: 1; min-height: 60vh; }
 .trs-input::-webkit-slider-thumb { -webkit-appearance: none; pointer-events: all; width: 15px; height: 15px; border-radius: 50%; background: var(--bg-1); border: 2px solid var(--gold-deep); cursor: grab; box-shadow: var(--shadow-sm); margin-top: 2px; }
 .trs-input::-webkit-slider-thumb:active { cursor: grabbing; background: var(--gold); }
 .trs-input::-moz-range-thumb { pointer-events: all; width: 15px; height: 15px; border-radius: 50%; background: var(--bg-1); border: 2px solid var(--gold-deep); cursor: grab; }
-.trs-presets { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+.trs-presets { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
 .trs-preset {
-  font-size: 10px; letter-spacing: .04em; padding: 4px 8px; border-radius: 999px;
+  font-size: 9.5px; letter-spacing: .03em; padding: 3px 7px; border-radius: var(--radius);
   border: 1px solid var(--line); background: var(--bg-1); color: var(--ink-soft); cursor: pointer; transition: all .15s;
 }
 .trs-preset:hover { border-color: var(--gold); color: var(--gold-deep); }
@@ -114,7 +114,8 @@ main { flex: 1; min-height: 60vh; }
 /* sopra le immagini il badge deve restare leggibile: fondo carta quasi pieno */
 .workcard-badge .badge-period { background: rgba(247,243,236,.93); border-color: rgba(184,138,46,.5); backdrop-filter: blur(2px); }
 .workcard-imp { position: absolute; top: 10px; right: 12px; color: var(--gold-2); font-size: 13px; text-shadow: 0 1px 3px rgba(0,0,0,.4); }
-.workcard-studied-badge { position: absolute; bottom: 10px; right: 12px; background: var(--c-technique); color: #fff; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.workcard-studied-badge { position: absolute; bottom: 10px; right: 12px; background: var(--c-technique); width: 21px; height: 21px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; line-height: 0; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.workcard-studied-badge svg { color: #fff !important; }
 .workcard-complex-overlay { position: absolute; bottom: 10px; left: 12px; z-index: 2; }
 .workcard-complex-overlay a { display: inline-flex; align-items: center; gap: 4px; background: rgba(79,125,114,.92); color: #fff; padding: 5px 10px; border-radius: 5px; font-size: 11px; font-weight: 600; text-decoration: none; backdrop-filter: blur(3px); box-shadow: 0 1px 4px rgba(0,0,0,.3); transition: background .15s; }
 .workcard-complex-overlay a:hover { background: rgba(63,100,90,.95); }
@@ -613,7 +614,7 @@ a.hero-stat:hover { background: var(--bg-2); }
 .ev-pop-item-t { flex: 1; line-height: 1.3; }
 
 /* segmented control 2D/3D */
-.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--bg-1); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--bg-1); }
 .seg-btn { padding: 6px 16px; border: 0; background: none; cursor: pointer; font-size: 12.5px; font-weight: 600; color: var(--ink-dim); letter-spacing: .06em; transition: all .16s; }
 .seg-btn.on { background: var(--ink); color: var(--bg-1); }
 .seg-btn:not(.on):hover { color: var(--ink); background: var(--bg-2); }
@@ -622,9 +623,17 @@ a.hero-stat:hover { background: var(--bg-2); }
    QUIZ PATENTE — azioni, gruppi, pill
    ============================================================ */
 .quiz-actions { display: flex; gap: 12px; flex-wrap: wrap; padding-bottom: 26px; border-bottom: 1px solid var(--line); }
+/* In fondo alla configurazione i comandi restano agganciati al bordo della
+   finestra: la pagina e' lunga, e il tasto per iniziare non deve sparire
+   mentre si scorre l'elenco dei periodi. */
+.quiz-actions-fondo { position: sticky; bottom: 0; z-index: 5; padding: 14px 0 16px; margin-top: 4px; border-bottom: 0; border-top: 1px solid var(--line); background: linear-gradient(180deg, transparent, var(--bg) 30%); }
+.quiz-riepilogo { font-size: 12.5px; color: var(--ink-dim); letter-spacing: .02em; margin-top: 8px; }
 .quiz-actions .btn { position: relative; }
 .pill { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; background: var(--c-event); color: #fff; font-size: 11px; font-weight: 700; margin-left: 7px; }
 .quiz-grouptoggle { background: none; border: 0; color: var(--gold-deep); font-size: 11px; cursor: pointer; letter-spacing: .04em; padding: 0; }
+/* nome del gruppo di domande: e' anche il comando che lo accende tutto */
+.quiz-gruppo { background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.quiz-gruppo:hover { color: var(--gold-deep); }
 .quiz-grouptoggle:hover { text-decoration: underline; }
 .btn:disabled { opacity: .45; cursor: not-allowed; }
 .btn:disabled:hover { border-color: var(--line); background: var(--bg-1); }
@@ -799,9 +808,9 @@ a.hero-stat:hover { background: var(--bg-2); }
 }
 
 /* piede: slider temporale + contatori */
-.sbx-foot { margin-top: auto; border-top: 1px solid var(--line); padding: 14px 16px 4px; }
+.sbx-foot { margin-top: auto; border-top: 1px solid var(--line); padding: 10px 16px 4px; }
 /* .sbx.on-home .sbx-foot neutralizzato */
-.sbx-trs { margin-bottom: 12px; }
+.sbx-trs { margin-bottom: 8px; }
 .sbx-counts { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; font-size: 11px; color: var(--ink-dim); }
 /* .sbx.on-home .sbx-counts neutralizzato */
 .sbx-counts b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 700; }
@@ -1072,20 +1081,24 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   display: flex; flex-direction: column;
 }
 /* titolo: massimo due righe */
-.gloss-card:not(.is-open) .gloss-head h3 {
+.gloss-card:not(.is-open) .gloss-head h3 { min-width: 0; overflow: hidden; }
+.gloss-card:not(.is-open) .gloss-term {
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-clamp: 2; overflow: hidden;
 }
 /* definizione: occupa lo spazio libero, tagliata a tre righe */
+.gloss-card:not(.is-open) .gloss-defbox { flex: 1 1 auto; min-height: 0; overflow: hidden; }
 .gloss-card:not(.is-open) .gloss-def {
-  flex: 1 1 auto; min-height: 0;
   display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-clamp: 3; overflow: hidden; margin: 8px 0 0;
 }
-/* periodi: una riga sola, il resto viene tagliato */
+/* periodi: una riga sola, sfumata a destra se non ci stanno tutti */
 .gloss-card:not(.is-open) .gloss-periods {
-  flex-wrap: nowrap; overflow: hidden; max-height: 26px;
+  flex-wrap: nowrap; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent);
+  mask-image: linear-gradient(90deg, #000 82%, transparent);
 }
+.gloss-card:not(.is-open) .gloss-periods > * { flex-shrink: 0; }
 /* la riga d'apertura resta ancorata in fondo */
 .gloss-card:not(.is-open) .gloss-open { margin-top: auto; }
 
@@ -1151,9 +1164,8 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 
 /* ---------- mobile: una colonna, altezza libera ---------- */
 @media (max-width: 600px) {
-  .gloss-card:not(.is-open) { height: auto; }
-  .gloss-card:not(.is-open) .gloss-def { -webkit-line-clamp: 4; }
-  .gloss-card:not(.is-open) .gloss-periods { flex-wrap: wrap; max-height: none; }
+  .gloss-card:not(.is-open) { height: 330px; }
+  .gloss-card:not(.is-open) .gloss-def { -webkit-line-clamp: 4; line-clamp: 4; }
   .wi-thumb { width: 76px; height: 57px; }
   .wi-title { font-size: 15.5px; }
   .wi-meta { font-size: 12.5px; }

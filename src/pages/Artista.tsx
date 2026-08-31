@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
-import { WorkCard, Section, Empty, EntityLink, FilterNote, FavStar } from "../components/ui";
+import { WorkCard, Section, Empty, EntityLink, FilterNote, FavStar, BarraScheda } from "../components/ui";
 import ArtistMap from "../components/ArtistMap";
 import ArtistTimeline from "../components/ArtistTimeline";
 import ArtistEditorDrawer from "../components/ArtistEditorDrawer";
 import { useAuth } from "../lib/auth";
 import { setLastArtista } from "../lib/lastVisited";
 import {
-  worksByArtist, connectionsOf, fmtYear, entityLabel, ENTITY_LABEL, KIND_LABEL,
+  worksByArtist, worksByCommittente, isCommittente, connectionsOf, fmtYear, entityLabel, ENTITY_LABEL, KIND_LABEL,
 } from "../lib/data";
 
 export default function Artista() {
@@ -29,9 +29,13 @@ export default function Artista() {
     window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
   }, [a?.id]);
 
-  if (!a) return <div className="wrap page"><Empty msg="Autore non trovato." /></div>;
+  if (!a) return <div className="wrap page"><Empty msg="Scheda non trovata." /></div>;
 
-  const allWorks = worksByArtist(ix.ds, a.id).sort((x, y) => y.importance - x.importance);
+  // Per un committente le "sue" opere sono quelle che ha commissionato: cercarlo
+  // fra gli autori non restituirebbe nulla, perche' non compare in artist_ids.
+  const committente = isCommittente(a);
+  const allWorks = (committente ? worksByCommittente(ix.ds, a.id) : worksByArtist(ix.ds, a.id))
+    .sort((x, y) => y.importance - x.importance);
   const works = allWorks.filter(workIn);
   const periods = a.period_ids.map((pid) => ix.periodById.get(pid)).filter(Boolean) as any[];
   const conns = connectionsOf(ix.ds, "artist", a.id);
@@ -49,38 +53,50 @@ export default function Artista() {
 
   return (
     <div className="wrap page">
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18, gap: 12, flexWrap: "wrap" }}>
-        <button className="btn ghost sm" onClick={() => nav(-1)} data-testid="button-back">← Indietro</button>
-        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          {isAdmin ? (
-            <button
-              onClick={() => setEditorOpen(true)}
-              className="btn gold sm"
-              style={{ fontSize: 13, padding: "8px 14px", whiteSpace: "nowrap" }}
-              title="Modifica i metadati dell'autore nel database (solo admin)"
-              data-testid="btn-admin-edit-artist"
-            >
-              ✎ Modifica
-            </button>
-          ) : user ? (
-            <Link
-              to="/suggerisci"
-              className="btn ghost sm"
-              style={{ fontSize: 13, padding: "8px 14px", borderColor: "var(--line)", color: "var(--ink-soft)", whiteSpace: "nowrap" }}
-              title="Proponi una modifica a questo autore"
-            >
-              ✎ Richiedi modifica
-            </Link>
-          ) : null}
-        </div>
-      </div>
+      <BarraScheda azioni={
+        isAdmin ? (
+          <button
+            onClick={() => setEditorOpen(true)}
+            className="btn gold sm"
+            style={{ fontSize: 13, padding: "8px 14px", whiteSpace: "nowrap" }}
+            title="Modifica i metadati nel database (solo admin)"
+            data-testid="btn-admin-edit-artist"
+          >
+            ✎ Modifica
+          </button>
+        ) : user ? (
+          <Link
+            to="/suggerisci"
+            className="btn ghost sm"
+            style={{ fontSize: 13, padding: "8px 14px", borderColor: "var(--line)", color: "var(--ink-soft)", whiteSpace: "nowrap" }}
+            title="Proponi una modifica a questa scheda"
+          >
+            ✎ Richiedi modifica
+          </Link>
+        ) : null
+      } />
       <div className="page-head">
+        {/* Un committente va riconosciuto subito: la scheda e' la stessa di un
+            autore, e senza un segno esplicito le due cose si confondono. */}
+        {committente && (
+          <div style={{ display: "flex", gap: 8, marginBottom: 12, flexWrap: "wrap" }}>
+            <span className="tag" style={{ color: "var(--gold-deep)", borderColor: "var(--gold-deep)", fontWeight: 700, letterSpacing: ".06em" }}>
+              {a.is_collective ? "◆ ENTE COMMITTENTE" : "◆ COMMITTENTE"}
+            </span>
+            {a.location_city && <span className="tag">{a.location_city}</span>}
+          </div>
+        )}
         <div className="eyebrow"><span className="tnum">{a.role}{life ? ` · ${life}` : ""}</span></div>
         <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
           <h1 className="page-title" style={{ minWidth: 0 }}>{a.name}</h1>
           <FavStar type="artist" id={a.id} size={24} className="fav-star-lg" />
         </div>
         {a.aka.length > 0 && <div className="muted" style={{ marginTop: 6 }}>detto anche: {a.aka.join(", ")}</div>}
+        {committente && (
+          <div className="muted" style={{ marginTop: 8, fontSize: 14 }}>
+            Non ha eseguito queste opere: le ha commissionate.
+          </div>
+        )}
         <p className="page-lead">{a.bio}</p>
       </div>
 
@@ -151,13 +167,13 @@ export default function Artista() {
       )}
 
       {allWorks.length > 0 ? (
-        <Section eyebrow={`${works.length} opere`} title="Opere"
+        <Section eyebrow={`${works.length} opere`} title={committente ? "Opere commissionate" : "Opere"}
           right={<FilterNote total={allWorks.length} shown={works.length} noun="opere nell'arco scelto" />}>
           {works.length > 0
             ? <div className="grid-works">{works.map((w) => <WorkCard key={w.id} work={w} />)}</div>
             : <Empty msg="Nessuna opera di questo autore nell'intervallo temporale scelto." />}
         </Section>
-      ) : <Section title="Opere"><Empty msg="Nessuna opera registrata per questo autore." /></Section>}
+      ) : <Section title={committente ? "Opere commissionate" : "Opere"}><Empty msg={committente ? "Nessuna opera ancora attribuita alla sua committenza." : "Nessuna opera registrata per questo autore."} /></Section>}
 
       {/* Editor drawer (solo admin, apre con pulsante Modifica) */}
       <ArtistEditorDrawer

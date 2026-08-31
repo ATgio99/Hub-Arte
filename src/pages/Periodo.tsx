@@ -1,13 +1,14 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useData, useTimeRange } from "../lib/store";
-import { WorkCard, Section, Empty, EntityLink, FilterNote } from "../components/ui";
+import { WorkCard, Section, Empty, EntityLink, FilterNote, BarraScheda } from "../components/ui";
 import {
   worksByPeriod, connectionsOf, periodAncestry, fmtYear,
   entityLabel, ENTITY_LABEL, KIND_LABEL,
 } from "../lib/data";
 import PeriodDossier from "../components/PeriodDossier";
 import { setLastTimeline } from "../lib/lastVisited";
+import { useIsNarrow } from "../lib/motion";
 import type { Period } from "../lib/types";
 
 const TYPE_COLOR: Record<string, string> = { epoca: "#b88a2e", corrente: "#b9692c", scuola: "#4f7d72" };
@@ -67,6 +68,9 @@ export default function Periodo() {
   const ix = useData();
   const nav = useNavigate();
   const { workIn } = useTimeRange();
+  // Su telefono le sezioni lunghe partono chiuse: la pagina di un periodo
+  // altrimenti diventa un rotolo interminabile.
+  const narrow = useIsNarrow();
   const p = id ? ix.periodById.get(id) : undefined;
 
   // Salva il periodo come ultimo visitato dalla Linea del tempo (per il ritorno via menu)
@@ -87,7 +91,7 @@ export default function Periodo() {
 
   return (
     <div className="wrap page">
-      <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 18 }} data-testid="button-back">← Indietro</button>
+      <BarraScheda />
       {trail.length > 1 && (
         <div className="card" style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginBottom: 14, fontSize: 13, padding: "10px 14px" }}>
           {trail.map((t, i) => {
@@ -127,18 +131,18 @@ export default function Periodo() {
         )}
       </div>
 
-      <Section eyebrow="Memoranda" title="Glossario & cose da ricordare">
+      <Section eyebrow="Memoranda" title="Glossario & cose da ricordare" collapsible={narrow} defaultCollapsed={narrow}>
         <PeriodDossier pid={p.id} variant="page" />
       </Section>
 
       {hasChildren && (
-        <Section eyebrow="Articolazione" title="Cosa contiene">
+        <Section eyebrow="Articolazione" title="Cosa contiene" collapsible={narrow} defaultCollapsed={narrow}>
           <PeriodTree periods={ix.ds.periods} parentId={p.id} />
         </Section>
       )}
 
       {artists.length > 0 && (
-        <Section eyebrow="Protagonisti" title={`Artisti (${artists.length})`}>
+        <Section eyebrow="Protagonisti" title={`Artisti (${artists.length})`} collapsible={narrow} defaultCollapsed={narrow}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
             {artists.map((a) => <EntityLink key={a.id} type="artist" id={a.id} label={a.name} className="chip" />)}
           </div>
@@ -146,7 +150,7 @@ export default function Periodo() {
       )}
 
       {conns.length > 0 && (
-        <Section eyebrow="Sinapsi" title="Connessioni e contaminazioni">
+        <Section eyebrow="Sinapsi" title="Connessioni e contaminazioni" collapsible={narrow} defaultCollapsed={narrow}>
           {conns.map((c) => {
             const otherIsSource = !(c.source_type === "period" && c.source_id === p.id);
             const ot = otherIsSource ? c.source_type : c.target_type;
@@ -172,8 +176,11 @@ export default function Periodo() {
           right={<FilterNote total={allWorks.length} shown={works.length} noun="opere nell'arco scelto" />}>
           {works.length > 0 ? (
             <>
-              <div className="grid-works">{works.slice(0, 24).map((w) => <WorkCard key={w.id} work={w} />)}</div>
-              {works.length > 24 && <div style={{ marginTop: 20 }}><Link className="btn" to={`/opere?p=${p.id}`}>Vedi tutte nel catalogo →</Link></div>}
+              {/* Su telefono le schede vanno in colonna singola: 24 opere fanno
+                  una pagina da migliaia di pixel, quindi qui ne bastano poche
+                  con il rimando al catalogo. */}
+              <div className="grid-works">{works.slice(0, narrow ? 6 : 24).map((w) => <WorkCard key={w.id} work={w} />)}</div>
+              {works.length > (narrow ? 6 : 24) && <div style={{ marginTop: 20 }}><Link className="btn" to={`/opere?p=${p.id}`}>Vedi tutte nel catalogo →</Link></div>}
             </>
           ) : <Empty msg="Nessuna opera del periodo nell'intervallo temporale scelto." />}
         </Section>

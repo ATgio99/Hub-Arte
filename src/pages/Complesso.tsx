@@ -9,7 +9,7 @@
 import { useMemo } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
-import { WorkCard, EntityLink, Empty } from "../components/ui";
+import { WorkCard, EntityLink, Empty, BarraScheda } from "../components/ui";
 import { computeWorkGroups, workGroupMap } from "../lib/data";
 
 export default function Complesso() {
@@ -54,7 +54,7 @@ export default function Complesso() {
 
   return (
     <div className="wrap page" style={{ paddingBottom: 40 }}>
-      <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 18 }} data-testid="button-back">← Indietro</button>
+      <BarraScheda />
       <div className="page-head">
         <div className="page-eyebrow">
           <span className="eyebrow" style={{ color: "#4f7d72" }}>Complesso architettonico</span>

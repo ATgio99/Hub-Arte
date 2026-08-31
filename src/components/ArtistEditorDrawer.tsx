@@ -58,20 +58,24 @@ function Field({ label, children, required }: { label: string; children: React.R
 // Campi del DB artists
 const ARTIST_DB_FIELDS = [
   "id", "name", "aka", "birth", "death", "period_ids", "role", "bio", "innovations", "category",
+  "is_collective", "location_city",
 ] as const;
 
 function buildCleanPayload(artist: Artist, modifiedBy: string): Record<string, unknown> {
   const payload: Record<string, unknown> = {};
+  // Si salvano tutti i campi elencati in ARTIST_DB_FIELDS: prima erano ripetuti
+  // uno per uno in una condizione, e ogni campo aggiunto in seguito veniva
+  // silenziosamente scartato al salvataggio.
   for (const field of ARTIST_DB_FIELDS) {
-    if (field === "id" || field === "name" || field === "aka" || field === "period_ids" || field === "role" || field === "bio" || field === "innovations" || field === "birth" || field === "death" || field === "category") {
-      payload[field] = (artist as any)[field];
-    }
+    payload[field] = (artist as any)[field];
   }
   payload.modified_by = modifiedBy;
   // Normalizza empty string → null
   if (payload.role === "") payload.role = null;
   if (payload.bio === "") payload.bio = null;
   if (payload.category === "" || payload.category === undefined) payload.category = null;
+  if (payload.location_city === "" || payload.location_city === undefined) payload.location_city = null;
+  payload.is_collective = artist.is_collective === true;
   return payload;
 }
 
@@ -523,10 +527,23 @@ function ArtistEditorDrawerInner({
                 <input type="text" defaultValue={a.role} onChange={(e) => set("role", e.target.value)} style={inputStyle} placeholder="es. Pittore e architetto" />
               </Field>
 
+              {(a.category === "committenti" || (a.role ?? "").toLowerCase().includes("committ")) && (
+                <div style={{
+                  padding: "8px 12px", marginBottom: 14, borderRadius: 8, fontSize: 12.5,
+                  background: "color-mix(in srgb, var(--gold) 12%, transparent)",
+                  border: "1px solid var(--gold)", color: "var(--gold-deep)",
+                }}>
+                  ◆ Stai modificando un <b>committente</b>: le opere collegate sono quelle che ha
+                  commissionato, non quelle che ha eseguito.
+                </div>
+              )}
+
               <Field label="Categoria (tag)">
                 <select
                   defaultValue={a.category || ""}
-                  onChange={(e) => set("category", e.target.value || null)}
+                  // il valore arriva dalle <option> qui sotto, che sono esattamente
+                  // i valori ammessi da ArtistCategory
+                  onChange={(e) => set("category", (e.target.value || null) as Artist["category"])}
                   style={inputStyle}
                 >
                   <option value="">— Auto (dal ruolo) —</option>
@@ -539,6 +556,30 @@ function ArtistEditorDrawerInner({
                   <option value="altro">Altro</option>
                 </select>
               </Field>
+
+              {/* Campi che riguardano i committenti: una corte o una casata non e'
+                  una persona, e la sede serve a posizionarla sulla mappa. */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                <Field label="Tipo di soggetto">
+                  <select
+                    defaultValue={a.is_collective ? "si" : "no"}
+                    onChange={(e) => set("is_collective", e.target.value === "si")}
+                    style={inputStyle}
+                  >
+                    <option value="no">Persona</option>
+                    <option value="si">Ente, casata o corte</option>
+                  </select>
+                </Field>
+                <Field label="Sede (per la mappa)">
+                  <input
+                    type="text"
+                    defaultValue={a.location_city || ""}
+                    onChange={(e) => set("location_city", e.target.value || null)}
+                    style={inputStyle}
+                    placeholder="es. Mantova"
+                  />
+                </Field>
+              </div>
 
               <Field label="Periodi associati">
                 <EntitySelector

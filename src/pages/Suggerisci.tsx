@@ -7,6 +7,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import { AccessoRichiesto, BarraScheda } from "../components/ui";
 import { useAuth, CONTACT_EMAIL } from "../lib/auth";
 
 interface UserSuggestionRow {
@@ -66,21 +67,12 @@ export default function Suggerisci() {
 
   if (!user) {
     return (
-      <div className="wrap page" style={{ maxWidth: 560 }}>
-        <h1 style={{ fontSize: "clamp(26px,4vw,38px)", letterSpacing: "-.02em", marginBottom: 16 }}>Suggerisci un'opera</h1>
-        <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--ink-soft)" }}>
-          Per proporre una nuova opera all'atlante devi avere un account. La funzione permette di
-          tracciare lo stato della tua proposta e ricevere una risposta dagli amministratori.
-        </p>
-        <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--ink-soft)", marginTop: 12 }}>
-          In alternativa, puoi scriverci direttamente a{" "}
-          <a href={`mailto:${CONTACT_EMAIL}?subject=Suggerimento opera`} className="tlink">{CONTACT_EMAIL}</a>.
-        </p>
-        <div style={{ marginTop: 22, display: "flex", gap: 10 }}>
-          <Link to="/login" className="btn gold">Accedi o registrati</Link>
-          <Link to="/opere" className="btn ghost">Torna alle opere</Link>
-        </div>
-      </div>
+      <AccessoRichiesto
+        occhiello="Il tuo account"
+        titolo="Suggerisci un'opera"
+        motivo="Puoi proporre un'opera che manca all'atlante. La proposta resta legata al tuo account, così puoi seguirne lo stato e leggere la risposta di chi la revisiona."
+        oggettoEmail="Suggerimento opera"
+      />
     );
   }
 
@@ -116,6 +108,7 @@ export default function Suggerisci() {
 
   return (
     <div className="wrap page" style={{ maxWidth: 720 }}>
+      <BarraScheda />
       <h1 style={{ fontSize: "clamp(28px,4vw,42px)", letterSpacing: "-.02em", marginBottom: 8 }}>Suggerisci un'opera</h1>
       <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "var(--ink-soft)", marginBottom: 22, maxWidth: "62ch" }}>
         Conosci un'opera che non è ancora nell'atlante? Proponila qui. Gli amministratori

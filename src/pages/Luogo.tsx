@@ -5,10 +5,9 @@
 // ============================================================================
 import { useMemo, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { MapContainer, TileLayer, CircleMarker, Polyline } from "react-leaflet";
 import { useData, useTimeRange } from "../lib/store";
-import { WorkCard, EntityLink, FilterNote, Empty } from "../components/ui";
-import { KIND_LABEL } from "../lib/data";
+import { WorkCard, EntityLink, FilterNote, Empty, BarraScheda, Section } from "../components/ui";
+import { isCommittente, fmtYear } from "../lib/data";
 import { setLastMappa } from "../lib/lastVisited";
 
 export default function Luogo() {
@@ -27,15 +26,55 @@ export default function Luogo() {
   const allHere = useMemo(() => ix.ds.works.filter((w) => w.location_city === city), [ix, city]);
   const works = useMemo(() => allHere.filter(workIn), [allHere, workIn]);
 
-  const pos = useMemo(() => {
-    const w = allHere.find((x) => x.lat != null && x.lon != null);
-    return w ? { lat: w.lat as number, lon: w.lon as number } : null;
-  }, [allHere]);
-
   const artists = useMemo(() => {
     const m = new Map<string, number>();
     for (const w of works) for (const a of w.artist_ids ?? []) m.set(a, (m.get(a) ?? 0) + 1);
     return [...m.entries()].sort((a, b) => b[1] - a[1]);
+  }, [works]);
+
+  // Chi ha commissionato qui: sia chi ha sede in citta', sia chi ha voluto
+  // opere che si trovano qui. Sono la stessa domanda vista da due lati, e
+  // insieme raccontano la vicenda della committenza in questo luogo.
+  const committenti = useMemo(() => {
+    const m = new Map<string, { n: number; sede: boolean }>();
+    for (const w of works)
+      for (const cid of w.committente_ids ?? []) {
+        const e = m.get(cid) ?? { n: 0, sede: false };
+        e.n++; m.set(cid, e);
+      }
+    for (const a of ix.ds.artists)
+      if (a.location_city === city && isCommittente(a)) {
+        const e = m.get(a.id) ?? { n: 0, sede: false };
+        e.sede = true; m.set(a.id, e);
+      }
+    return [...m.entries()]
+      .map(([id, v]) => ({ id, ...v, a: ix.artistById.get(id) }))
+      .filter((x) => x.a)
+      .sort((x, y) => (x.a!.birth ?? x.a!.death ?? 9999) - (y.a!.birth ?? y.a!.death ?? 9999));
+  }, [works, ix, city]);
+
+  const committentiPerSecolo = useMemo(() => {
+    const m = new Map<number, typeof committenti>();
+    for (const c of committenti) {
+      const anno = c.a!.birth ?? c.a!.death;
+      const sec = anno != null ? Math.floor((anno - 1) / 100) + 1 : 0;
+      if (!m.has(sec)) m.set(sec, []);
+      m.get(sec)!.push(c);
+    }
+    return [...m.entries()].sort((a, b) => (a[0] || 99) - (b[0] || 99));
+  }, [committenti]);
+
+  // In quali edifici si trovano le opere: una citta' non e' un punto solo,
+  // e sapere che venti opere stanno nella stessa chiesa cambia la lettura.
+  const edifici = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const w of works) if (w.location_place) m.set(w.location_place, (m.get(w.location_place) ?? 0) + 1);
+    return [...m.entries()].filter(([, n]) => n > 1).sort((a, b) => b[1] - a[1]);
+  }, [works]);
+
+  const arco = useMemo(() => {
+    const anni = works.flatMap((w) => [w.year_start, w.year_end].filter((y): y is number => y != null));
+    return anni.length ? { da: Math.min(...anni), a: Math.max(...anni) } : null;
   }, [works]);
 
   const periods = useMemo(() => {
@@ -44,29 +83,27 @@ export default function Luogo() {
     return [...m.entries()].sort((a, b) => b[1] - a[1]);
   }, [works]);
 
-  // collegamenti con altre città: connessioni opera-opera con un capo qui
-  const cityLinks = useMemo(() => {
+  // Quante altre città sono legate a questa da una connessione fra opere.
+  // Serve solo alla frase di apertura: l'elenco degli accostamenti uno per uno
+  // stava nella pagina e diceva poco, la mappa mostrava punti-città e non
+  // edifici, quindi entrambi sono stati tolti.
+  const cittaLegate = useMemo(() => {
     const here = new Set(works.map((w) => w.id));
-    const byCity = new Map<string, { n: number; pairs: { kind: string; a: string; b: string; otherId: string }[]; lat?: number; lon?: number }>();
+    const altre = new Set<string>();
     for (const c of ix.ds.connections) {
       if (c.source_type !== "work" || c.target_type !== "work") continue;
       const sHere = here.has(c.source_id), tHere = here.has(c.target_id);
       if (sHere === tHere) continue; // o entrambe qui o nessuna
       const other = ix.workById.get(sHere ? c.target_id : c.source_id);
-      const mine = ix.workById.get(sHere ? c.source_id : c.target_id);
-      if (!other?.location_city || !mine) continue;
-      if (!byCity.has(other.location_city)) byCity.set(other.location_city, { n: 0, pairs: [], lat: other.lat ?? undefined, lon: other.lon ?? undefined });
-      const e = byCity.get(other.location_city)!;
-      e.n++;
-      if (e.pairs.length < 4) e.pairs.push({ kind: c.kind, a: mine.title, b: other.title, otherId: other.id });
+      if (other?.location_city) altre.add(other.location_city);
     }
-    return [...byCity.entries()].sort((a, b) => b[1].n - a[1].n);
+    return [...altre].sort();
   }, [ix, works]);
 
   if (!allHere.length) {
     return (
       <div className="wrap page">
-        <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 18 }} data-testid="button-back">← Indietro</button>
+        <BarraScheda />
         <div className="page-head"><h1 className="page-title">{city}</h1></div>
         <Empty msg="Nessuna opera registrata in questo luogo." />
         <Link className="btn sm ghost" to="/mappa" style={{ marginTop: 14 }}>← Torna alla mappa</Link>
@@ -76,65 +113,35 @@ export default function Luogo() {
 
   return (
     <div className="wrap page" style={{ paddingBottom: 40 }}>
-      <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 18 }} data-testid="button-back">← Indietro</button>
+      <BarraScheda />
       <div className="page-head">
         <div className="page-eyebrow"><span className="eyebrow" style={{ color: "#4f7d72" }}>Luogo</span></div>
         <h1 className="page-title">{city}</h1>
         <p className="page-lead">
-          {allHere.length} opere del programma sono conservate qui{cityLinks.length > 0 ? `, con legami documentati verso ${cityLinks.length} altre città` : ""}.
+          {allHere.length} opere del programma sono conservate qui{arco ? `, dal ${fmtYear(arco.da)} al ${fmtYear(arco.a)}` : ""}{cittaLegate.length > 1 ? `, con legami documentati verso ${cittaLegate.length} altre città` : ""}.
         </p>
       </div>
       <div className="page-rule" />
 
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 26, marginBottom: 22 }}>
+        {[
+          { n: works.length, l: works.length === 1 ? "opera" : "opere" },
+          { n: artists.length, l: artists.length === 1 ? "autore" : "autori" },
+          { n: committenti.length, l: committenti.length === 1 ? "committente" : "committenti" },
+          { n: edifici.length, l: edifici.length === 1 ? "edificio" : "edifici" },
+          { n: periods.length, l: periods.length === 1 ? "periodo" : "periodi" },
+        ].filter((x) => x.n > 0).map((x) => (
+          <div key={x.l}>
+            <div className="tnum" style={{ fontSize: 22, fontWeight: 600, lineHeight: 1.1 }}>{x.n}</div>
+            <div className="smallcaps" style={{ fontSize: 10.5, color: "var(--ink-dim)" }}>{x.l}</div>
+          </div>
+        ))}
+      </div>
+
       <div className="filterbar" style={{ marginBottom: 18 }}>
         <FilterNote total={allHere.length} shown={works.length} noun="opere" />
-        <span style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
-          <Link className="btn sm ghost" to="/mappa">Mappa →</Link>
-          <Link className="btn sm ghost" to="/grafo">Rete →</Link>
-        </span>
       </div>
 
-      <div className="view-split" style={{ marginBottom: 26 }}>
-        {pos && (
-          <div className="stage" style={{ height: 320 }}>
-            <MapContainer center={[pos.lat, pos.lon]} zoom={6} style={{ height: "100%", width: "100%" }} scrollWheelZoom={false}>
-              <TileLayer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" attribution="&copy; OpenStreetMap, &copy; CARTO" />
-              {cityLinks.map(([cn, e]) => (e.lat != null && e.lon != null) ? (
-                <Polyline key={cn} positions={[[pos.lat, pos.lon], [e.lat, e.lon]]}
-                  pathOptions={{ color: "#b88a2e", weight: 0.8 + Math.min(e.n, 4) * 0.5, opacity: 0.5, dashArray: "4 4" }} />
-              ) : null)}
-              <CircleMarker center={[pos.lat, pos.lon]} radius={10}
-                pathOptions={{ color: "#3c6157", fillColor: "#4f7d72", fillOpacity: 0.7, weight: 1.4 }} />
-              {cityLinks.map(([cn, e]) => (e.lat != null && e.lon != null) ? (
-                <CircleMarker key={`m-${cn}`} center={[e.lat, e.lon]} radius={5}
-                  pathOptions={{ color: "#8f6a1d", fillColor: "#caa14a", fillOpacity: 0.6, weight: 1 }} />
-              ) : null)}
-            </MapContainer>
-          </div>
-        )}
-
-        <div>
-          <div className="panel">
-            <div className="panel-title" style={{ marginBottom: 10 }}>Collegamenti con altre città</div>
-            {cityLinks.length === 0 && <div className="muted" style={{ fontSize: 13 }}>Nessun legame documentato con opere altrove (nell'intervallo attivo).</div>}
-            <div style={{ maxHeight: 250, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
-              {cityLinks.map(([cn, e]) => (
-                <div key={cn} style={{ padding: "9px 0", borderBottom: "1px solid var(--line-soft)" }}>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-                    <Link className="tlink" to={`/luogo/${encodeURIComponent(cn)}`} style={{ fontFamily: "Zodiak, serif", fontSize: 15 }}>{cn}</Link>
-                    <span className="faint tnum" style={{ fontSize: 11.5 }}>{e.n} {e.n === 1 ? "legame" : "legami"}</span>
-                  </div>
-                  {e.pairs.slice(0, 2).map((p, i) => (
-                    <div key={i} className="muted" style={{ fontSize: 12, marginTop: 3 }}>
-                      {KIND_LABEL[p.kind as keyof typeof KIND_LABEL] ?? p.kind}: {p.a.slice(0, 26)}{p.a.length > 26 ? "…" : ""} ↔ <Link className="tlink" to={`/opera/${p.otherId}`}>{p.b.slice(0, 26)}{p.b.length > 26 ? "…" : ""}</Link>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
 
       {(artists.length > 0 || periods.length > 0) && (
         <div style={{ display: "flex", flexWrap: "wrap", gap: 24, marginBottom: 26 }}>
@@ -161,11 +168,43 @@ export default function Luogo() {
         </div>
       )}
 
+      {committentiPerSecolo.length > 0 && (
+        <Section eyebrow="Committenza" title={`Chi ha commissionato qui (${committenti.length})`}>
+          <div style={{ display: "grid", gap: 14 }}>
+            {committentiPerSecolo.map(([sec, gruppo]) => (
+              <div key={sec}>
+                <div className="smallcaps" style={{ marginBottom: 7, color: "var(--gold-deep)" }}>
+                  {sec ? `${sec}° secolo` : "Enti, corporazioni e famiglie"} · {gruppo.length}
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {gruppo.map(({ id, n, a }) => (
+                    <EntityLink
+                      key={id} type="artist" id={id} className="chip sm"
+                      label={n > 0 ? `${a!.name} · ${n}` : a!.name}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {edifici.length > 0 && (
+        <Section eyebrow="Topografia" title={`Dove si trovano, in città (${edifici.length})`}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
+            {edifici.map(([luogo, n]) => (
+              <span key={luogo} className="chip sm" style={{ cursor: "default" }}>{luogo} · {n}</span>
+            ))}
+          </div>
+        </Section>
+      )}
+
       <div className="smallcaps" style={{ margin: "6px 0 12px" }}>Le opere ({works.length})</div>
       <div className="grid-works">
         {works.map((w) => (
-            <WorkCard key={w.id} work={w} subtitle={[w.date_text, ix.periodById.get(w.period_id)?.name].filter(Boolean).join(" · ")} />
-                  ))}
+          <WorkCard key={w.id} work={w} subtitle={[w.date_text, ix.periodById.get(w.period_id)?.name].filter(Boolean).join(" · ")} />
+        ))}
       </div>
     </div>
   );
