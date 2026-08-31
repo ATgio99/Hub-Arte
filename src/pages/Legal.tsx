@@ -74,134 +74,121 @@ export default function Legal() {
   if (section === "progetto") {
     return (
       <div className="wrap page"><div>
-        <PaginaModificabile id="progetto" valori={segnapostoCatalogo(c)} titolo={<H1>Il progetto, i suoi limiti, e come è stato costruito</H1>}>
+        <PaginaModificabile id="progetto" valori={segnapostoCatalogo(c)} titolo={<H1>Il progetto, e come è stato costruito</H1>}>
         <P>Ultimo aggiornamento: agosto 2026.</P>
 
-        <H2>Che cos'è</H2>
+        <H2>Perché l'ho fatto</H2>
         <P>
-          HUB Arte è un atlante di storia dell'arte pensato come strumento di studio. Prova a
-          rendere visibile ciò che un elenco di schede non mostra: come le opere si richiamano
-          fra loro, chi ha imparato da chi, quali città e quali corti hanno reso possibile un
-          certo modo di dipingere o di costruire, e chi ha pagato perché accadesse.
+          Studiando storia dell'arte mi capitava sempre la stessa cosa: sapevo le singole
+          opere e non vedevo cosa le tenesse insieme. Chi aveva imparato da chi, quali città
+          contavano in un certo momento, chi tirava fuori i soldi perché una cappella venisse
+          affrescata. Sui manuali c'è tutto, ma sparso su duecento pagine.
         </P>
         <P>
-          Per questo il catalogo è organizzato per relazioni: i periodi si contengono l'un
-          l'altro dall'epoca alla singola bottega; ogni opera è legata a chi l'ha eseguita e,
-          dove documentato, a chi l'ha commissionata; la linea del tempo, la mappa e il grafo
-          sono tre modi di interrogare lo stesso materiale. È gratuito, senza pubblicità e
-          open source con licenza MIT.
-        </P>
-
-        <H2>Che cosa contiene, e che cosa non contiene</H2>
-        <P>
-          Il catalogo raccoglie {num(c.opere)} opere, {num(c.protagonisti)} schede fra autori e
-          committenti, {num(c.periodi)} periodi, {num(c.termini)} termini di glossario. Questi
-          numeri non sono un merito: sono il risultato di una selezione, e ogni selezione esclude.
-        </P>
-        <P>
-          Il nucleo dei contenuti nasce da un manuale universitario italiano di storia
-          dell'arte e ne eredita il perimetro: <b>l'arco cronologico va dalla Tarda Antichità
-          al Barocco</b> (284–1750 circa) e l'orizzonte geografico è europeo, con una netta
-          prevalenza italiana. Non è un atlante di storia dell'arte: è l'atlante di un
-          programma di studio.
-        </P>
-        <P>
-          Il limite più evidente riguarda chi il catalogo lascia fuori. <b>Fra i {num(c.autori)} autori
-          censiti non compare alcuna artista donna.</b> Le sole donne presenti — {c.donne.length} — sono
-          committenti: {c.donne.map((d) => d.name).join(", ")}. Questa assenza riproduce quella dei
-          manuali da cui il catalogo deriva; registrarla qui non la corregge, ma è il primo
-          passo per non spacciarla per neutralità. Colmarla richiede un lavoro di ricerca che
-          il progetto non ha ancora fatto.
+          HUB Arte prova a tenere insieme quelle cose. I periodi si contengono l'uno dentro
+          l'altro, dall'epoca fino alla singola bottega; ogni opera è legata a chi l'ha fatta
+          e, quando si sa, a chi l'ha pagata; la linea del tempo, la mappa e il grafo sono tre
+          modi di guardare lo stesso materiale. Il sito è gratuito, senza pubblicità, e il
+          codice è pubblico con licenza MIT.
         </P>
 
+        <H2>Da dove vengono i dati</H2>
         <P>
-          Un secondo limite riguarda la geografia: il luogo registrato per ogni opera è
-          <b>dove l'opera si trova oggi</b>, non dove è stata prodotta. La mappa descrive
-          quindi la geografia della conservazione, ed è la ragione per cui Londra, New York e
-          Washington vi compaiono con un peso che nulla dice sui luoghi di produzione.
+          Ci sono {num(c.opere)} opere, {num(c.protagonisti)} schede fra autori e committenti,
+          {" "}{num(c.periodi)} periodi, {num(c.termini)} voci di glossario.
+        </P>
+        <P>
+          Il grosso viene da due manuali di storia dell'arte, e il catalogo ne eredita i
+          confini: si va dalla Tarda Antichità al Barocco, più o meno dal 284 al 1750, e la
+          geografia è europea con una grossa prevalenza italiana. Non aspettarti quindi un
+          panorama completo dell'arte. Questo è il perimetro di un programma scolastico, con
+          i buchi che quel perimetro si porta dietro.
         </P>
 
-        <H2>Come è stato costruito, e dove ha lavorato l'intelligenza artificiale</H2>
+        <H2>Chi manca</H2>
         <P>
-          Una parte del lavoro è stata svolta con l'assistenza di modelli linguistici di
-          grandi dimensioni (famiglia Claude di Anthropic, agosto 2026). Dichiararlo in modo
-          preciso è parte del metodo, non una formalità.
+          Fra i {num(c.autori)} autori censiti <b>non c'è nemmeno una donna</b>. Le uniche
+          donne nel catalogo — {c.donne.length} — compaiono come committenti:{" "}
+          {c.donne.map((d) => d.name).join(", ")}.
         </P>
-        <P>Dove sono stati usati, e come:</P>
+        <P>
+          Non è una mia dimenticanza. I manuali da cui ho lavorato le artiste non le nominano,
+          e io ho ricopiato quel silenzio. Scriverlo qui non lo risolve: serve a non far
+          passare l'assenza per un dato di realtà. Per rimediare servirebbe una ricerca che
+          finora non ho fatto.
+        </P>
+        <P>
+          C'è poi una cosa da sapere sulla mappa. Il luogo che trovi in ogni scheda è{" "}
+          <b>dove l'opera si trova adesso</b>, non dove è stata prodotta. Per questo Londra,
+          New York e Washington pesano tanto: quella è la geografia dei musei, non quella dei
+          cantieri.
+        </P>
+
+        <H2>Dove ho usato l'intelligenza artificiale</H2>
+        <P>
+          In diversi punti, e mi sembra giusto dire quali. Ho lavorato con i modelli Claude di
+          Anthropic, nell'estate del 2026.
+        </P>
         <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
           <li>
-            <b>Riordino di dati già esistenti.</b> L'assegnazione delle opere ai periodi e
-            l'individuazione dei committenti sono state ottenute esaminando le schede una per
-            una: nella maggior parte dei casi il dato era <i>già scritto</i> nel testo della
-            scheda e andava estratto e reso strutturato, non inventato. Questa è la parte in
-            cui il modello ha lavorato come acceleratore su materiale esistente.
+            <b>Riordinare dati che c'erano già.</b> Assegnare le opere ai periodi giusti e
+            trovare i committenti ha voluto dire passare le schede una per una. Quasi sempre
+            il nome del committente era già scritto nel testo della scheda («fu commissionata
+            da…»): andava tirato fuori e messo in un campo, non inventato.
           </li>
           <li>
-            <b>Redazione di testi in bozza.</b> Le schede descrittive di alcune scuole e di
-            gran parte dei committenti sono state scritte in prima stesura da un modello, a
-            partire dai dati del catalogo. Qui non si riordina: si produce prosa
-            interpretativa, ed è la parte che richiede più cautela.
+            <b>Buttare giù le prime stesure.</b> Le descrizioni di alcune scuole e di buona
+            parte dei committenti nascono da un modello, a partire dai dati del catalogo. Qui
+            non si riordina niente, si scrive: è la parte di cui mi fido meno.
           </li>
           <li>
-            <b>Verifica delle attribuzioni dubbie.</b> I casi incerti sono stati sciolti
-            consultando fonti museali e bibliografiche (Louvre, Musei Vaticani, Opificio delle
-            Pietre Dure, Treccani, National Gallery). Dove la fonte dichiara di non sapere, il
-            campo è rimasto vuoto: su 42 casi esaminati, 13 restano aperti.
+            <b>Sciogliere i dubbi.</b> Per le attribuzioni incerte ho fatto controllare le
+            fonti — Louvre, Musei Vaticani, Opificio delle Pietre Dure, Treccani, National
+            Gallery. Quando neanche il museo si sbilancia, il campo è rimasto vuoto: su 42
+            casi, 13 sono ancora aperti.
           </li>
         </ul>
 
-        <H2>Che cosa significa, qui, "revisione umana"</H2>
+        <H2>Che cosa ho controllato davvero</H2>
         <P>
-          È il punto in cui è facile essere generici, quindi conviene essere precisi su ciò
-          che è stato fatto e su ciò che non lo è stato.
+          Nessuna proposta è finita dritta nel catalogo. Il lavoro usciva ogni volta come un
+          elenco da approvare, e l'ho letto voce per voce prima di applicarlo; le motivazioni
+          di ogni scelta sono nel repository, chiunque può andarsele a vedere. Ho fatto girare
+          anche dei controlli automatici: niente rimandi a schede inesistenti, niente periodi
+          appesi male, date del committente compatibili con quelle dell'opera.
         </P>
         <P>
-          Ogni proposta è stata prodotta come <i>elenco da approvare</i>, mai scritta
-          direttamente nel catalogo: le assegnazioni sono state esaminate e autorizzate voce
-          per voce prima di essere applicate, e le motivazioni di ciascuna sono conservate nel
-          repository pubblico. Sono stati inoltre eseguiti controlli sistematici di coerenza:
-          nessun riferimento a entità inesistenti, nessuna incoerenza nella gerarchia dei
-          periodi, date compatibili fra committente e opera.
-        </P>
-        <P>
-          Quello che <b>non</b> è stato fatto è una verifica bibliografica indipendente di
-          ciascuna delle {num(c.opere)} schede. La revisione ha riguardato la struttura, la coerenza
-          interna e la plausibilità storica, con approfondimento sulle sole attribuzioni
-          segnalate come dubbie. È una revisione reale, ma parziale, e va letta per quello che è.
+          Quello che <b>non</b> ho fatto è riaprire i manuali per ciascuna delle{" "}
+          {num(c.opere)} schede. Ho guardato la struttura, la coerenza interna, se una cosa
+          stesse in piedi storicamente, e sono andato a fondo solo dove qualcosa non tornava.
         </P>
 
-        <H2>Il limite che riguarda i modelli, e non i dati</H2>
+        <H2>Un problema che riguarda i modelli</H2>
         <P>
-          Un modello linguistico non sbaglia soltanto le date. Restituisce lo sguardo
-          prevalente nei testi su cui è stato addestrato: tende quindi a riprodurre il canone
-          storiografico dominante, le sue gerarchie e le sue formule, e a rendere ancora meno
-          visibile ciò che è già ai margini. Applicato a un catalogo che eredita il perimetro
-          di un manuale, <b>rischia di funzionare come un amplificatore di quel canone</b>.
-        </P>
-        <P>
-          Ne consegue che la revisione umana non ha soltanto una funzione di controllo dei
-          fatti, ma di correzione di prospettiva — ed è la parte del lavoro più difficile da
-          garantire, perché ciò che manca non segnala la propria assenza.
+          Un modello linguistico non sbaglia solo le date. Restituisce lo sguardo dei testi su
+          cui è stato addestrato, quindi ripete il canone che quei testi danno per scontato e
+          lascia ai margini quello che ai margini c'era già. Su un catalogo che parte da due
+          manuali il rischio è di ritrovarsi gli stessi silenzi, con in più l'aria di essere
+          neutrali. Rileggere serve a controllare i fatti, ma soprattutto a stare attenti a
+          questo — che è la parte difficile, perché quello che manca non ti avvisa.
         </P>
 
-        <H2>Dove l'intelligenza artificiale non c'entra</H2>
+        <H2>Quello che il sito non fa</H2>
         <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
-          <li><b>Mentre consulti il sito non gira alcun modello.</b> Le pagine sono file già scritti: navigare, cercare, aprire una scheda non invia nulla a un servizio di intelligenza artificiale.</li>
-          <li><b>I quiz non sono generati da un modello</b>, ma da un programma che pesca dal catalogo secondo regole fisse. Se una domanda è imprecisa, l'errore è nel dato.</li>
-          <li><b>Quello che fai non addestra nulla.</b> Preferiti, opere approfondite e risultati dei quiz restano tuoi: vedi la <Link to="/legal/privacy" className="tlink">Privacy Policy</Link>.</li>
+          <li><b>Mentre lo consulti non gira nessun modello.</b> Le pagine sono file già scritti: cercare, aprire una scheda, spostarsi da una sezione all'altra non manda niente a un servizio di intelligenza artificiale.</li>
+          <li><b>I quiz non li scrive un modello.</b> Li costruisce un programma che pesca dal catalogo con regole fisse. Se una domanda è sbagliata, è sbagliato il dato.</li>
+          <li><b>Quello che fai qui non addestra niente.</b> Preferiti, opere approfondite e risultati dei quiz restano tuoi: vedi la <Link to="/legal/privacy" className="tlink">Privacy Policy</Link>.</li>
         </ul>
 
-        <H2>Responsabilità e segnalazioni</H2>
+        <H2>Errori e segnalazioni</H2>
         <P>
-          La responsabilità scientifica di quanto è pubblicato è di chi cura il progetto, non
-          degli strumenti impiegati per costruirlo. Il catalogo contiene certamente errori:
-          date imprecise, attribuzioni discutibili, sviste. È uno strumento di studio, non una
-          fonte da citare in un lavoro accademico — verifica sui manuali e sulle fonti quando
-          la cosa conta.
+          Di quello che c'è scritto rispondo io, non gli strumenti che ho usato per scriverlo.
+          Errori ce ne saranno: date sbagliate, attribuzioni discutibili, sviste. Usa il sito
+          per studiare, ma se stai scrivendo qualcosa che conta vai a controllare sui manuali.
         </P>
         <P>
-          Le segnalazioni sono il modo più utile per contribuire: da ogni scheda puoi proporre
-          una correzione, oppure scrivere a <Mailto subject="Segnalazione errore nel catalogo" />.
+          Segnalare è il modo più utile per dare una mano: da ogni scheda puoi proporre una
+          correzione, oppure scrivimi a <Mailto subject="Segnalazione errore nel catalogo" />.
         </P>
         </PaginaModificabile>
       </div></div>
@@ -365,9 +352,8 @@ export default function Legal() {
 
         <H2>6. Responsabilità</H2>
         <P>
-          Le schede delle opere sono redatte a scopo didattico. Pur impegnandoci per
-          l'accuratezza dei dati, non garantiamo l'assenza di errori. Le segnalazioni sono
-          benvenute: vedi la sezione Contatti.
+          Le schede sono scritte a scopo didattico. Ci metto attenzione, ma non posso
+          garantire che non ci siano errori: se ne trovi uno, segnalalo dalla pagina Contatti.
         </P>
 
         <H2>7. Modifiche</H2>
@@ -387,9 +373,11 @@ export default function Legal() {
 
         <H2>Progetto</H2>
         <P>
-          HUB Arte — Atlante Neuronale è un atlante interattivo di Storia dell'Arte pensato per
-          studenti, docenti e appassionati. Combina grafo neuronale, timeline multilivello, mappa
-          geografica, schede opere e glossario in un'unica interfaccia.
+          HUB Arte nasce come strumento di studio, per me prima che per chiunque altro. Poi è
+          diventato un sito aperto a chi studia storia dell'arte, a chi la insegna e a chi
+          semplicemente ci gira dentro per curiosità. Su come è stato costruito, e con quali
+          limiti, c'è una pagina apposta:{" "}
+          <Link to="/legal/progetto" className="tlink">Il progetto</Link>.
         </P>
 
         <H2>Tecnologie</H2>
@@ -407,10 +395,10 @@ export default function Legal() {
 
         <H2>Testi di riferimento</H2>
         <P>
-          Le informazioni del catalogo — opere, datazioni, attribuzioni, contesti — derivano dallo
-          studio dei seguenti manuali. I testi delle schede sono rielaborazioni, non riproduzioni:
-          i dati di fatto (autore, data, luogo, tecnica) non sono materia coperta da diritto
-          d'autore, mentre la formulazione è originale.
+          Datazioni, attribuzioni, contesti: quasi tutto quello che c'è nel catalogo l'ho
+          imparato da questi due manuali. Le schede però sono riscritte, non ricopiate. Un
+          autore, una data, un luogo, una tecnica sono fatti, e i fatti non appartengono a
+          nessuno; il modo di raccontarli sì, ed è mio.
         </P>
         <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
           <li>
@@ -422,32 +410,32 @@ export default function Legal() {
           </li>
         </ul>
         <P>
-          Se un riferimento risulta incompleto o attribuito in modo impreciso, segnalalo a <Mailto subject="Correzione crediti" />:
-          viene corretto.
+          Se un riferimento è incompleto o attribuito male, scrivimi a{" "}
+          <Mailto subject="Correzione crediti" /> e lo sistemo.
         </P>
 
         <H2>Immagini</H2>
         <P>
-          Le immagini delle opere provengono in larga parte da <b>Wikimedia Commons</b> e da fonti
-          pubbliche istituzionali. Sotto ogni immagine il sito indica il sito di provenienza, ricavato
-          automaticamente dal suo indirizzo e collegato alla pagina di origine, dove si trovano
-          autore e licenza. Le riproduzioni hanno scopo di studio e non sostituiscono riproduzioni
-          scientifiche verificate.
+          Le immagini vengono quasi tutte da <b>Wikimedia Commons</b> e da siti di musei e
+          istituzioni. Sotto ognuna trovi il nome del sito da cui arriva, ricavato dal suo
+          indirizzo e collegato alla pagina d'origine, dove ci sono autore e licenza. Sono
+          riproduzioni buone per studiare, non per lavorarci sopra: per quello servono le
+          riproduzioni scientifiche dei musei.
         </P>
 
         <H2>Codice</H2>
         <P>
-          Il progetto è open source con licenza MIT: chiunque può leggerne il codice, segnalare
-          errori, proporre correzioni o farne una versione propria. Il repository è su{" "}
+          Licenza MIT: il codice si può leggere, correggere, copiare e usare per farne una
+          propria versione. Il repository sta su{" "}
           <a href="https://github.com/ATgio99/Hub-Arte" target="_blank" rel="noopener noreferrer" className="tlink">GitHub</a>,
-          dove sono pubblici anche i materiali di lavoro sul catalogo: le proposte di attribuzione,
-          le motivazioni di ogni scelta e i controlli effettuati.
+          insieme ai materiali di lavoro sul catalogo — le proposte di attribuzione, il perché
+          di ogni scelta, i controlli che ho fatto.
         </P>
 
         <H2>Contatti</H2>
         <P>
-          Per segnalazioni, suggerimenti, richieste di collaborazione o problemi tecnici, scrivi a{" "}
-          <Mailto /> oppure visita la pagina <Link to="/legal/contatti" className="tlink">Contatti</Link>.
+          Per qualsiasi cosa: <Mailto />, oppure la pagina{" "}
+          <Link to="/legal/contatti" className="tlink">Contatti</Link>.
         </P>
         </PaginaModificabile>
       </div></div>
@@ -459,46 +447,38 @@ export default function Legal() {
       <div className="wrap page"><div>
         <PaginaModificabile id="contatti" valori={segnapostoCatalogo(c)} titolo={<H1>Contatti</H1>}>
         <P>
-          Per qualsiasi comunicazione relativa a HUB Arte — Atlante Neuronale, puoi scrivere
-          all'indirizzo <Mailto />.
+          Scrivimi a <Mailto />. Rispondo io, quindi ci può volere qualche giorno.
         </P>
 
         <H2>Argomenti</H2>
         <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
-          <li><b>Segnalazioni errori</b>: datazioni sbagliate, autori errati, luoghi imprecisi — le segnalazioni sono benvenute e ci aiutano a migliorare l'atlante.</li>
-          <li><b>Diritti d'autore</b>: per richieste di rimozione immagini o rivendicazione di diritti.</li>
-          <li><b>Suggerimenti</b>: proposte di nuove opere da inserire, nuove funzionalità, miglioramenti dell'interfaccia.</li>
-          <li><b>Bug</b>: malfunzionamenti dell'app, errori di caricamento, problemi su dispositivi specifici.</li>
+          <li><b>Errori nel catalogo</b>: una data sbagliata, un autore attribuito male, un luogo impreciso.</li>
+          <li><b>Diritti d'autore</b>: rimozione di un'immagine, rivendicazione di diritti.</li>
+          <li><b>Proposte</b>: un'opera che manca, una funzione che servirebbe, qualcosa che nell'interfaccia non torna.</li>
+          <li><b>Malfunzionamenti</b>: pagine che non caricano, problemi su un dispositivo particolare.</li>
         </ul>
 
-        <H2>Segnalazione errori</H2>
+        <H2>Se un'immagine è tua</H2>
         <P>
-          Se trovi un errore in una scheda opera (datazione sbagliata, autore errato, luogo
-          impreciso), scrivici indicando l'opera e il problema. Le segnalazioni sono benvenute.
+          Scrivimi con oggetto «Copyright», dicendomi di quale opera e quale immagine si
+          tratta e su cosa vanti i diritti. Rispondo entro sette giorni e, se serve, la tolgo.
         </P>
 
-        <H2>Segnalazione violazione copyright</H2>
+        <H2>Cancellare l'account</H2>
         <P>
-          Per segnalare l'uso improprio di un'immagine: invia una email con oggetto "Copyright"
-          specificando l'opera, l'immagine e i tuoi diritti. Risponderemo entro 7 giorni.
-        </P>
-
-        <H2>Richiesta cancellazione account</H2>
-        <P>
-          Per richiedere la cancellazione del tuo account e di tutti i dati associati (GDPR,
-          diritto all'oblio): invia una email dal tuo indirizzo registrato con oggetto
-          "Cancellazione account".
+          Mandami una email dall'indirizzo con cui ti sei registrato, oggetto «Cancellazione
+          account». Cancello l'account e tutto quello che ci sta attaccato.
         </P>
 
         <H2>Hosting e infrastruttura</H2>
         <P>
-          Questo sito è generosamente ospitato da{" "}
+          Il sito è ospitato da{" "}
           <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" className="tlink">Netlify</a>{" "}
           tramite il loro{" "}
           <a href="https://www.netlify.com/open-source" target="_blank" rel="noopener noreferrer" className="tlink">Open Source Plan</a>{" "}
-          per progetti open source. Il backend (autenticazione, database, realtime) è gestito da{" "}
+          per i progetti open source. Account, database e sincronizzazione stanno su{" "}
           <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" className="tlink">Supabase</a>.
-          Il codice sorgente del progetto è pubblico su GitHub sotto licenza MIT.
+          Il codice è pubblico su GitHub, licenza MIT.
         </P>
 
         <div style={{ marginTop: 26 }}><BannerGitHub /></div>

@@ -1,7 +1,8 @@
 # HUB Arte — atlante di storia dell'arte
 
-> Strumento di studio che mette in relazione opere, chi le ha fatte, chi le ha
-> volute e i periodi in cui sono nate. Gratuito, senza pubblicità, open source.
+> Un atlante per studiare storia dell'arte guardando come le opere stanno fra
+> loro: chi le ha fatte, chi le ha pagate, in che periodo. Gratuito, senza
+> pubblicità, codice aperto.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Made with React](https://img.shields.io/badge/React-18-blue.svg)](https://react.dev/)
@@ -13,83 +14,82 @@
 
 ## 📖 Cos'è
 
-HUB Art è un atlante digitale di Storia dell'Arte pensato per studenti, docenti e appassionati. Combina diverse modalità di esplorazione in un'unica interfaccia:
+Studiando storia dell'arte mi capitava sempre la stessa cosa: sapevo le singole
+opere e non vedevo cosa le tenesse insieme. Chi aveva imparato da chi, quali città
+contavano in un certo momento, chi tirava fuori i soldi perché una cappella
+venisse affrescata. Sui manuali c'è tutto, ma sparso su duecento pagine.
 
-- 🏛️ **Catalogo opere** — oltre 1.100 opere con schede dettagliate (autore, committente, datazione, luogo, analisi, innovazioni)
+HUB Arte prova a tenere insieme quelle cose:
+
+- 🏛️ **Catalogo opere** — oltre 1.100 schede con autore, committente, datazione, luogo, analisi e innovazioni
 - 👤 **Protagonisti** — oltre 600 schede fra autori e committenti, dai papi alle corporazioni di mestiere
-- 🕸️ **Grafo neuronale 3D** — visualizzazione interattiva delle connessioni tra opere, artisti, periodi e termini
-- 📅 **Timeline gerarchica** — oltre 110 periodi su tre livelli annidati: epoche, correnti, scuole e botteghe
-- 🗺️ **Mappa geografica** — opere e luoghi su mappa Leaflet/OpenStreetMap
-- 📚 **Glossario** — oltre 850 termini di storia dell'arte con definizioni
-- 🎨 **Indice tecniche** — oltre 200 tecniche artistiche catalogate
-- 📊 **Dashboard statistiche** — dati aggregati sull'atlante
-- 🎯 **Quiz interattivo** — 18 tipi di domanda generati dinamicamente dal dataset, con banca errori e statistiche
-- 🔗 **oltre 600 connessioni** tra entità (influenze, maestro-allievo, committenze, collaborazioni)
+- 🕸️ **Grafo 3D** — le connessioni fra opere, artisti, periodi e termini, da girarci dentro
+- 📅 **Linea del tempo** — oltre 110 periodi annidati su tre livelli: epoche, correnti, scuole e botteghe
+- 🗺️ **Mappa** — dove si trovano le opere, e i legami fra una città e l'altra
+- 📚 **Glossario** — oltre 850 termini con definizione
+- 🎨 **Tecniche** — oltre 200 procedimenti, ordinati per epoca di comparsa
+- 📊 **Statistiche** — come è distribuito il catalogo
+- 🎯 **Quiz** — domande costruite dal catalogo con regole fisse, con banca degli errori e statistiche
+- 🔗 **oltre 600 connessioni** fra entità: influenze, maestro-allievo, committenze, collaborazioni
 
-### Il perimetro del catalogo, e che cosa resta fuori
+### Fin dove arriva il catalogo, e dove si ferma
 
-Questi numeri sono il risultato di una selezione, e ogni selezione esclude:
-dichiararne i confini fa parte della descrizione del progetto.
+Il grosso viene da due manuali di storia dell'arte, e il catalogo ne eredita i
+confini: **dalla Tarda Antichità al Barocco**, più o meno dal 284 al 1750, con una
+geografia europea e una grossa prevalenza italiana. Non aspettarti un panorama
+completo dell'arte. Questo è il perimetro di un programma scolastico, con i buchi
+che quel perimetro si porta dietro.
 
-Il nucleo dei contenuti nasce da un manuale universitario italiano di storia
-dell'arte e ne eredita il perimetro. **L'arco cronologico va dalla Tarda Antichità
-al Barocco** (284–1750 circa); l'orizzonte è europeo, con netta prevalenza
-italiana. Non è un atlante di storia dell'arte: è l'atlante di un programma di
-studio.
+Il buco più grosso: **fra gli autori censiti non c'è nemmeno una donna.** Le uniche
+donne nel catalogo compaiono come committenti — Isabella d'Este, Galla Placidia,
+Eleonora di Toledo, Barbara di Brandeburgo, Giovanna da Piacenza, Atalanta
+Baglioni, Yolanda d'Aragona. Non è una mia dimenticanza: i manuali da cui ho
+lavorato le artiste non le nominano, e io ho ricopiato quel silenzio. Scriverlo qui
+non lo risolve, serve a non farlo passare per un dato di realtà.
 
-Il limite più netto riguarda chi il catalogo lascia fuori. **Fra gli autori censiti non compare
-alcuna artista donna.** Le sole donne presenti sono committenti: Isabella d'Este, Galla Placidia, Eleonora di Toledo, Barbara di
-Brandeburgo, Giovanna da Piacenza, Atalanta Baglioni, Yolanda d'Aragona. Questa
-assenza riproduce quella dei manuali da cui il catalogo deriva; registrarla non la
-corregge, ma evita di presentarla come neutralità.
+C'è poi una cosa da sapere sulla mappa. Il luogo di ogni scheda è **dove l'opera si
+trova adesso**, non dove è stata prodotta. Per questo Londra, New York e Washington
+pesano tanto: quella è la geografia dei musei, non quella dei cantieri.
 
-Un secondo limite riguarda la geografia: il luogo registrato per ogni opera è
-**dove l'opera si trova oggi**, non dove è stata prodotta. La mappa descrive
-quindi la geografia della conservazione — ed è la ragione per cui Londra, New York
-e Washington vi compaiono con un peso che nulla dice sui luoghi di produzione.
+### Dove ho usato l'intelligenza artificiale
 
-### Come è stato costruito, e dove ha lavorato l'intelligenza artificiale
+In diversi punti, e mi sembra giusto dire quali. Ho lavorato con i modelli Claude
+di Anthropic, nell'estate del 2026.
 
-Una parte del lavoro è stata svolta con l'assistenza di modelli linguistici
-(famiglia Claude di Anthropic, agosto 2026). Le funzioni sono state due, e vanno
-distinte:
+1. **Riordinare dati che c'erano già.** Assegnare le opere ai periodi giusti e
+   trovare i committenti ha voluto dire passare le schede una per una. Quasi sempre
+   il nome del committente era già scritto nel testo («fu commissionata da…»):
+   andava tirato fuori e messo in un campo, non inventato.
+2. **Buttare giù le prime stesure.** Le descrizioni di alcune scuole e di buona
+   parte dei committenti nascono da un modello, a partire dai dati del catalogo.
+   Qui non si riordina niente, si scrive: è la parte di cui mi fido meno.
 
-1. **Riordino di dati già presenti.** L'assegnazione delle opere ai periodi e
-   l'individuazione dei committenti sono state ricavate esaminando le schede una
-   per una: nella maggior parte dei casi il dato era già scritto nel testo e
-   andava estratto e reso strutturato, non prodotto.
-2. **Redazione di testi in prima stesura.** Le schede di alcune scuole e di gran
-   parte dei committenti sono state scritte in bozza a partire dai dati del
-   catalogo. Qui non si riordina: si produce prosa interpretativa, e la cautela
-   richiesta è maggiore.
+Nessuna proposta è finita dritta nel catalogo. Il lavoro usciva ogni volta come un
+elenco da approvare, e l'ho letto voce per voce prima di applicarlo; le motivazioni
+di ogni scelta sono in questo repository. Ho fatto girare anche dei controlli
+automatici: niente rimandi a schede inesistenti, niente periodi appesi male, date
+del committente compatibili con quelle dell'opera. Quello che **non** ho fatto è
+riaprire i manuali per ciascuna scheda: ho guardato struttura, coerenza interna e
+plausibilità storica, e sono andato a fondo solo dove qualcosa non tornava,
+controllando le fonti dei musei. Alcuni casi restano dichiaratamente aperti.
 
-Ogni proposta è stata prodotta come elenco da approvare, mai scritta direttamente
-nel catalogo, e le motivazioni di ciascuna sono conservate nel repository. Sono
-stati eseguiti controlli sistematici di coerenza (riferimenti esistenti, gerarchia
-dei periodi, compatibilità cronologica fra committente e opera). **Non** è stata
-condotta una verifica bibliografica indipendente di ciascuna delle schede:
-la revisione ha riguardato struttura, coerenza interna e plausibilità storica, con
-approfondimento sulle sole attribuzioni segnalate come dubbie, esaminate su fonti
-museali; una parte di esse resta dichiaratamente aperta.
+Resta un problema che riguarda lo strumento, non i dati. Un modello linguistico
+restituisce lo sguardo dei testi su cui è stato addestrato, quindi ripete il canone
+che quei testi danno per scontato e lascia ai margini quello che ai margini c'era
+già. Su un catalogo che parte da due manuali il rischio è di ritrovarsi gli stessi
+silenzi, con in più l'aria di essere neutrali. Rileggere serve a controllare i
+fatti, ma soprattutto a stare attenti a questo.
 
-Resta un limite che riguarda lo strumento e non i dati: un modello linguistico
-restituisce lo sguardo prevalente nei testi su cui è stato addestrato, e tende
-quindi a riprodurre il canone storiografico dominante, rendendo ancora meno
-visibile ciò che è già ai margini. Applicato a un catalogo che eredita il
-perimetro di un manuale, rischia di funzionare come amplificatore di quel canone.
-La revisione umana ha perciò una funzione non solo di controllo dei fatti ma di
-correzione di prospettiva.
-
-La responsabilità scientifica di quanto è pubblicato è di chi cura il progetto,
-non degli strumenti impiegati per costruirlo. Il catalogo contiene errori: è uno
-strumento di studio, non una fonte da citare in un lavoro accademico.
+Di quello che c'è scritto rispondo io, non gli strumenti che ho usato per
+scriverlo. Errori ce ne sono: usalo per studiare, ma se stai scrivendo qualcosa che
+conta vai a controllare sui manuali.
 
 ## ✨ Funzionalità principali
 
 ### Per studenti
 - ★ **Preferiti** — salva opere e artisti con la stella
 - ✓ **Approfondite** — segna le opere che hai studiato
-- 🎯 **Quiz personalizzato** — fai quiz solo sui tuoi preferiti o sulle opere approfondite, con filtro temporale a trascinamento
+- 🎯 **Quiz su misura** — solo sui tuoi preferiti o sulle opere che hai segnato, con filtro temporale a trascinamento
 - 📈 **Statistiche personali** — tracciamento dei progressi nei quiz
 - ☁️ **Sincronizzazione cloud** — preferiti e progressi salvati su Supabase, accessibili da qualsiasi dispositivo
 - 🔐 **Recupero password** — reset password via email
@@ -235,7 +235,7 @@ hubart/
 
 ## 🤝 Contribuire
 
-Le contribuzioni sono benvenute! Vedi [CONTRIBUTING.md](./CONTRIBUTING.md) per:
+Se vuoi dare una mano, [CONTRIBUTING.md](./CONTRIBUTING.md) spiega:
 
 - Come segnalare bug
 - Come proporre funzionalità
@@ -257,8 +257,8 @@ Distribuito sotto licenza **MIT**. Vedi [LICENSE](./LICENSE) per dettagli.
 
 ## 🙏 Riconoscimenti
 
-- **Wikimedia Commons** e Wikipedia per le immagini delle opere: sono riproduzioni
-  a scopo di studio, non riproduzioni scientifiche verificate
+- **Wikimedia Commons** e Wikipedia per le immagini: sono buone per studiare, non
+  per lavorarci sopra — per quello servono le riproduzioni dei musei
 - **OpenStreetMap** per i dati geografici
 - **Fontshare** per i font tipografici
 - **Supabase** per il backend (auth, database, realtime)
@@ -267,15 +267,15 @@ Distribuito sotto licenza **MIT**. Vedi [LICENSE](./LICENSE) per dettagli.
 
 ## 📊 Statistiche progetto
 
-- 1100+ opere catalogate
-- 300+ artisti
-- 90+ periodi storici
-- 400+ connessioni tra entità
-- 800+ termini del glossario
-- 200+ tecniche artistiche
-- 18 tipi di domanda nel quiz
-- 130+ eventi storici
+- 1100+ opere
+- 600+ schede fra autori e committenti
+- 110+ periodi, su tre livelli annidati
+- 600+ connessioni fra entità
+- 850+ termini di glossario
+- 200+ tecniche
+- 270+ eventi storici
+- 24 tipi di domanda nel quiz
 
 ---
 
-⭐ Se questo progetto ti è utile, lascia una star su GitHub! [github.com/ATgio99/Hub-Arte](https://github.com/ATgio99/Hub-Arte)
+⭐ Se ti è utile, lascia una star: [github.com/ATgio99/Hub-Arte](https://github.com/ATgio99/Hub-Arte)
