@@ -2,7 +2,11 @@
 // Riflettono SCHEMA.md. Questi tipi sono condivisi da tutta l'app e
 // rappresentano il contratto dati anche per una futura migrazione a Supabase.
 
-export type PeriodType = "epoca" | "corrente" | "popolo";
+// I tre livelli della timeline, dal piu' ampio al piu' specifico:
+//   epoca    — la fascia maggiore (Romanico, Gotico, Rinascimento)
+//   corrente — un movimento o una fase dentro un'epoca (Tardogotico, Manierismo)
+//   scuola   — un raggruppamento locale o di bottega (Scuola ferrarese, Periodo sforzesco)
+export type PeriodType = "epoca" | "corrente" | "scuola";
 export type WorkType =
   | "architettura" | "pittura" | "scultura" | "mosaico"
   | "miniatura" | "oreficeria" | "urbanistica" | "altro";

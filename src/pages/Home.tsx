@@ -6,7 +6,7 @@ import { WorkCard, Section, CountUp, RevealGroup, RevealChild } from "../compone
 import { EASE_OUT, usePrefersReducedMotion } from "../lib/motion";
 
 const FEATURES = [
-  { to: "/timeline", n: "01", t: "Linea del tempo", d: "Epoche, correnti e popoli su corsie parallele, con flussi di contaminazione ed eventi storici ancorati al contesto." },
+  { to: "/timeline", n: "01", t: "Linea del tempo", d: "Epoche, correnti e scuole in una gerarchia navigabile, con flussi di contaminazione ed eventi storici ancorati al contesto." },
   { to: "/grafo", n: "02", t: "Rete delle connessioni", d: "Le sinapsi tra artisti, opere, periodi e tecniche: passa il mouse su un nodo per accenderne i legami." },
   { to: "/mappa", n: "03", t: "Mappa & contaminazioni", d: "I centri del potere e i flussi che plasmano l'arte: modelli, tecniche e committenze viaggiano tra le città." },
   { to: "/opere", n: "04", t: "Catalogo opere", d: "Ogni scheda raccoglie immagine, datazione, tecniche, terminologia e le connessioni con le altre opere." },

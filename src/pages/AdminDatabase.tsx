@@ -1024,7 +1024,7 @@ const SELECT_OPTIONS: Record<string, string[]> = {
   "works.book": ["1", "2"],
   "works.importance": ["1", "2", "3"],
   "works.image_source": ["commons", "wikiart", "museo", "altro"],
-  "periods.type": ["epoca", "corrente", "popolo"],
+  "periods.type": ["epoca", "corrente", "scuola"],
   "terms.category": ["architettura", "pittura", "scultura", "iconografia", "generale"],
   "events.kind": ["politico", "religioso", "culturale", "tecnologico"],
   "connections.kind": ["influenza", "contaminazione", "rielaborazione",

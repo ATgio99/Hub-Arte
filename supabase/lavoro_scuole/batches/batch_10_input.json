@@ -1,0 +1,961 @@
+[
+ {
+  "id": "studio-battaglia-anghiari-venezia",
+  "title": "Studio per la battaglia di Anghiari",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Venezia",
+  "date_text": "1504-1506",
+  "year_start": 1504,
+  "year_end": 1506,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "studio-testa-guerriero-anghiari",
+  "title": "Studio per testa di guerriero per la battaglia di Anghiari",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Budapest",
+  "date_text": "1504-1505 circa",
+  "year_start": 1504,
+  "year_end": 1505,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "tre-filosofi-giorgione",
+  "title": "Tre filosofi",
+  "artists": [
+   "Giorgione"
+  ],
+  "city": "Vienna",
+  "date_text": "1504 circa",
+  "year_start": 1504,
+  "year_end": 1504,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "tre-grazie-raffaello",
+  "title": "Tre Grazie",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Chantilly",
+  "date_text": "1504 circa",
+  "year_start": 1504,
+  "year_end": 1504,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "adorazione-dei-pastori-allendale-giorgione",
+  "title": "Adorazione dei pastori (Adorazione Allendale)",
+  "artists": [
+   "Giorgione"
+  ],
+  "city": "Washington D.C.",
+  "date_text": "1505-1510",
+  "year_start": 1505,
+  "year_end": 1510,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "medaglia-san-pietro-caradosso",
+  "title": "Medaglia commemorativa della posa della prima pietra della basilica di San Pietro",
+  "artists": [
+   "Cristoforo Caradosso"
+  ],
+  "city": "Washington",
+  "date_text": "1505",
+  "year_start": 1505,
+  "year_end": 1505,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "tondo-doni",
+  "title": "Sacra Famiglia con san Giovannino e ignudi (detto Tondo Doni)",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Firenze",
+  "date_text": "1505-1506",
+  "year_start": 1505,
+  "year_end": 1506,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "festa-del-rosario-durer",
+  "title": "La festa del Rosario",
+  "artists": [
+   "Albrecht Dürer"
+  ],
+  "city": "Praga",
+  "date_text": "1506",
+  "year_start": 1506,
+  "year_end": 1506,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "la-vecchia-giorgione",
+  "title": "La vecchia",
+  "artists": [
+   "Giorgione"
+  ],
+  "city": "Venezia",
+  "date_text": "1506-1508",
+  "year_start": 1506,
+  "year_end": 1508,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "madonna-del-belvedere",
+  "title": "Madonna con il Bambino e san Giovannino (detta Madonna del Belvedere)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Vienna",
+  "date_text": "1506 circa",
+  "year_start": 1506,
+  "year_end": 1506,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "madonna-del-cardellino",
+  "title": "Madonna con il Bambino e san Giovannino (detta Madonna del cardellino)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Firenze",
+  "date_text": "1506 circa",
+  "year_start": 1506,
+  "year_end": 1506,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "polittico-di-recanati-lotto",
+  "title": "Polittico di Recanati",
+  "artists": [
+   "Lorenzo Lotto"
+  ],
+  "city": "Recanati",
+  "date_text": "1506-1508",
+  "year_start": 1506,
+  "year_end": 1508,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "ritratto-di-giovane-con-lucerna-lotto",
+  "title": "Ritratto di giovane con lucerna",
+  "artists": [
+   "Lorenzo Lotto"
+  ],
+  "city": "Vienna",
+  "date_text": "1506",
+  "year_start": 1506,
+  "year_end": 1506,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "bella-giardiniera",
+  "title": "Madonna con il Bambino e san Giovannino (detta Bella giardiniera)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Parigi",
+  "date_text": "1507-1508",
+  "year_start": 1507,
+  "year_end": 1508,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "compianto-sul-cristo-morto-disegno",
+  "title": "Compianto sul Cristo morto (studio preparatorio)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Parigi",
+  "date_text": "1507",
+  "year_start": 1507,
+  "year_end": 1507,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "trasporto-di-cristo-morto-pala-baglioni",
+  "title": "Trasporto di Cristo morto (detta Pala Baglioni o Deposizione Borghese)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Roma",
+  "date_text": "1507",
+  "year_start": 1507,
+  "year_end": 1507,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "affreschi-fondaco-dei-tedeschi-giorgione",
+  "title": "Affreschi del Fondaco dei Tedeschi (Nuda)",
+  "artists": [
+   "Giorgione"
+  ],
+  "city": "Venezia",
+  "date_text": "1508",
+  "year_start": 1508,
+  "year_end": 1508,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "affreschi-fondaco-dei-tedeschi-tiziano",
+  "title": "Affreschi del Fondaco dei Tedeschi (Giuditta)",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Venezia",
+  "date_text": "1508-1509",
+  "year_start": 1508,
+  "year_end": 1509,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "disputa-del-santissimo-sacramento",
+  "title": "Disputa del Santissimo Sacramento (Esaltazione dell'ostia consacrata)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1508-1509",
+  "year_start": 1508,
+  "year_end": 1509,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "madonna-col-bambino-tra-i-santi-lotto-1508",
+  "title": "Madonna col Bambino tra i santi di Antiochia e Onofrio",
+  "artists": [
+   "Lorenzo Lotto"
+  ],
+  "city": "Roma",
+  "date_text": "1508",
+  "year_start": 1508,
+  "year_end": 1508,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "sacrificio-di-noe",
+  "title": "Sacrificio di Noè",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1508-1509",
+  "year_start": 1508,
+  "year_end": 1509,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "stanza-della-segnatura",
+  "title": "Stanza della Segnatura",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1508-1511",
+  "year_start": 1508,
+  "year_end": 1511,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "stanze-vaticane",
+  "title": "Decorazione delle Stanze Vaticane",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1508-1517",
+  "year_start": 1508,
+  "year_end": 1517,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "venere-dormiente-giorgione-tiziano",
+  "title": "Venere dormiente",
+  "artists": [
+   "Giorgione",
+   "Tiziano Vecellio"
+  ],
+  "city": "Dresda",
+  "date_text": "1508-1512",
+  "year_start": 1508,
+  "year_end": 1512,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "volta-cappella-sistina",
+  "title": "Volta della cappella Sistina",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1508-1512",
+  "year_start": 1508,
+  "year_end": 1512,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "concerto-campestre-tiziano",
+  "title": "Concerto campestre",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Parigi",
+  "date_text": "1509-1510",
+  "year_start": 1509,
+  "year_end": 1510,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "parnaso-raffaello",
+  "title": "Parnaso",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1509-1511",
+  "year_start": 1509,
+  "year_end": 1511,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "scuola-di-atene",
+  "title": "Scuola di Atene",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1509-1511",
+  "year_start": 1509,
+  "year_end": 1511,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "creazione-di-adamo",
+  "title": "Creazione di Adamo",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1510",
+  "year_start": 1510,
+  "year_end": 1510,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "grande-passione-durer-cattura-di-cristo",
+  "title": "Cattura di Cristo (dalla Grande Passione)",
+  "artists": [
+   "Albrecht Dürer"
+  ],
+  "city": "Washington D.C.",
+  "date_text": "1510",
+  "year_start": 1510,
+  "year_end": 1510,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "liberazione-di-andromeda",
+  "title": "Liberazione di Andromeda",
+  "artists": [
+   "Piero di Cosimo"
+  ],
+  "city": "Firenze",
+  "date_text": "1510-1515 circa",
+  "year_start": 1510,
+  "year_end": 1515,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "ritratto-di-gentiluomo-tiziano",
+  "title": "Ritratto di gentiluomo",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Londra",
+  "date_text": "1510 circa",
+  "year_start": 1510,
+  "year_end": 1510,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "santanna-madonna-bambino-agnello",
+  "title": "Sant'Anna, la Madonna con il Bambino e l'agnello",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Parigi",
+  "date_text": "1510-1519",
+  "year_start": 1510,
+  "year_end": 1519,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "studio-capigliatura-leda",
+  "title": "Studio per la capigliatura di 'Leda'",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Windsor",
+  "date_text": "1510-1518 circa",
+  "year_start": 1510,
+  "year_end": 1518,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "cacciata-di-eliodoro",
+  "title": "Cacciata di Eliodoro dal Tempio",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1511-1512",
+  "year_start": 1511,
+  "year_end": 1512,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "gregorio-ix-approva-le-decretali",
+  "title": "Gregorio IX approva le Decretali (Fortezza, Prudenza e Temperanza)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1511",
+  "year_start": 1511,
+  "year_end": 1511,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "miracolo-del-marito-geloso-tiziano",
+  "title": "Miracolo del marito geloso",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Padova",
+  "date_text": "1511",
+  "year_start": 1511,
+  "year_end": 1511,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "piccola-passione-durer",
+  "title": "Piccola Passione",
+  "artists": [
+   "Albrecht Dürer"
+  ],
+  "city": null,
+  "date_text": "1511",
+  "year_start": 1511,
+  "year_end": null,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "profeta-giona-sistina",
+  "title": "Profeta Giona",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1511-1512",
+  "year_start": 1511,
+  "year_end": 1512,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "ritratto-papa-giulio-ii",
+  "title": "Ritratto di papa Giulio II",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Londra",
+  "date_text": "1511-1512",
+  "year_start": 1511,
+  "year_end": 1512,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "sibilla-libica",
+  "title": "Sibilla libica",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1511-1512",
+  "year_start": 1511,
+  "year_end": 1512,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "stanza-di-eliodoro",
+  "title": "Stanza di Eliodoro",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1511-1514",
+  "year_start": 1511,
+  "year_end": 1514,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "aminadab-moglie-sistina",
+  "title": "Aminadab e sua moglie",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1512",
+  "year_start": 1512,
+  "year_end": 1512,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "madonna-sistina",
+  "title": "Madonna Sistina (Madonna con il Bambino, i santi Sisto e Barbara e due angeli)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Dresda",
+  "date_text": "1512-1513",
+  "year_start": 1512,
+  "year_end": 1513,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "messa-di-bolsena",
+  "title": "Messa di Bolsena",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1512",
+  "year_start": 1512,
+  "year_end": 1512,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "supplizio-di-aman",
+  "title": "Il supplizio di Aman",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1512",
+  "year_start": 1512,
+  "year_end": 1512,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "trionfo-di-galatea",
+  "title": "Trionfo di Galatea",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Roma",
+  "date_text": "1512",
+  "year_start": 1512,
+  "year_end": 1512,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "busto-lorenzo-de-medici",
+  "title": "Busto di Lorenzo de' Medici",
+  "artists": [],
+  "city": "Washington D.C.",
+  "date_text": "1513-1520 circa",
+  "year_start": 1513,
+  "year_end": 1520,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "incontro-leone-magno-attila",
+  "title": "L'incontro di papa Leone Magno e Attila",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1513-1514",
+  "year_start": 1513,
+  "year_end": 1514,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "liberazione-di-san-pietro-dal-carcere",
+  "title": "Liberazione di san Pietro dal carcere",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1513-1514",
+  "year_start": 1513,
+  "year_end": 1514,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "mose-michelangelo",
+  "title": "Mosè",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Roma",
+  "date_text": "1513-1545",
+  "year_start": 1513,
+  "year_end": 1545,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "pala-martinengo-lotto",
+  "title": "Madonna in trono con il Bambino e sei santi (Pala Martinengo)",
+  "artists": [
+   "Lorenzo Lotto"
+  ],
+  "city": "Bergamo",
+  "date_text": "1513-1516",
+  "year_start": 1513,
+  "year_end": 1516,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "prigioni-louvre",
+  "title": "Prigioni (Schiavo ribelle e Schiavo morente)",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Parigi",
+  "date_text": "1513-1515 circa",
+  "year_start": 1513,
+  "year_end": 1515,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "schiavo-morente",
+  "title": "Schiavo morente",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Parigi",
+  "date_text": "1513-1515 circa",
+  "year_start": 1513,
+  "year_end": 1515,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "schiavo-ribelle",
+  "title": "Schiavo ribelle",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Parigi",
+  "date_text": "1513-1515 circa",
+  "year_start": 1513,
+  "year_end": 1515,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "tomba-giulio-ii",
+  "title": "Tomba di papa Giulio II",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Roma",
+  "date_text": "1513-1545",
+  "year_start": 1513,
+  "year_end": 1545,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "adorazione-dei-magi-cesare-da-sesto",
+  "title": "Adorazione dei Magi",
+  "artists": [
+   "Cesare da Sesto"
+  ],
+  "city": "Napoli",
+  "date_text": "1514-1520",
+  "year_start": 1514,
+  "year_end": 1520,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "amor-sacro-e-amor-profano-tiziano",
+  "title": "Amor sacro e Amor profano",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Roma",
+  "date_text": "1514-1515",
+  "year_start": 1514,
+  "year_end": 1515,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "incendio-di-borgo",
+  "title": "Incendio di Borgo",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1514",
+  "year_start": 1514,
+  "year_end": 1514,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "madonna-della-misericordia-fra-bartolomeo",
+  "title": "Madonna della Misericordia",
+  "artists": [
+   "Fra Bartolomeo"
+  ],
+  "city": "Lucca",
+  "date_text": "1515",
+  "year_start": 1514,
+  "year_end": 1515,
+  "current_period_id": "primo-manierismo-fiorentino"
+ },
+ {
+  "id": "melencolia-i-durer",
+  "title": "Melencolia I",
+  "artists": [
+   "Albrecht Dürer"
+  ],
+  "city": "New York",
+  "date_text": "1514",
+  "year_start": 1514,
+  "year_end": 1514,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "pianta-san-pietro-raffaello",
+  "title": "Pianta della basilica di San Pietro (progetto Raffaello)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1514-1516",
+  "year_start": 1514,
+  "year_end": 1516,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "ritratto-baldassarre-castiglione",
+  "title": "Ritratto di Baldassarre Castiglione",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Parigi",
+  "date_text": "1514-1515",
+  "year_start": 1514,
+  "year_end": 1515,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "stanza-incendio-di-borgo",
+  "title": "Stanza dell'Incendio di Borgo (ciclo)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1514-1517",
+  "year_start": 1514,
+  "year_end": 1517,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "giuseppe-interpreta-sogni-faraone-andrea-del-sarto",
+  "title": "Giuseppe interpreta i sogni del faraone",
+  "artists": [
+   "Andrea del Sarto"
+  ],
+  "city": "Firenze",
+  "date_text": "1515-1516",
+  "year_start": 1515,
+  "year_end": 1516,
+  "current_period_id": "primo-manierismo-fiorentino"
+ },
+ {
+  "id": "predica-san-paolo-ateniesi",
+  "title": "Predica di san Paolo agli Ateniesi (Arazzo cappella Sistina)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Londra",
+  "date_text": "1515-1516",
+  "year_start": 1515,
+  "year_end": 1516,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "rinoceronte-durer",
+  "title": "Rinoceronte",
+  "artists": [
+   "Albrecht Dürer"
+  ],
+  "city": "New York",
+  "date_text": "1515",
+  "year_start": 1515,
+  "year_end": 1515,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "assunta-tiziano",
+  "title": "Assunta  (dei Frari)",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Venezia",
+  "date_text": "1516-1518",
+  "year_start": 1516,
+  "year_end": 1518,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "logge-vaticane",
+  "title": "Logge Vaticane",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1516-1519",
+  "year_start": 1516,
+  "year_end": 1519,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "pieta-sebastiano-del-piombo-viterbo",
+  "title": "Pietà (del Piombo)",
+  "artists": [
+   "Sebastiano del Piombo"
+  ],
+  "city": "Viterbo",
+  "date_text": "1516-1517",
+  "year_start": 1516,
+  "year_end": 1517,
+  "current_period_id": "stile-clementino"
+ },
+ {
+  "id": "ratto-di-proserpina-durer",
+  "title": "Il ratto di Proserpina",
+  "artists": [
+   "Albrecht Dürer"
+  ],
+  "city": "New York",
+  "date_text": "1516",
+  "year_start": 1516,
+  "year_end": 1516,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "trasfigurazione-raffaello",
+  "title": "Trasfigurazione",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1516-1520",
+  "year_start": 1516,
+  "year_end": 1520,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "autoritratto-leonardo",
+  "title": "Autoritratto",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Torino",
+  "date_text": "1517-1518",
+  "year_start": 1517,
+  "year_end": 1518,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "festoni-vegetali-loggia-psiche",
+  "title": "Decorazione a festoni vegetali della Loggia di Psiche",
+  "artists": [
+   "Giovanni da Udine"
+  ],
+  "city": "Roma",
+  "date_text": "1517-1519",
+  "year_start": 1517,
+  "year_end": 1519,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "loggia-di-psiche-farnesina",
+  "title": "Loggia di Psiche (ciclo: Il concilio degli dèi e il Banchetto nuziale)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Roma",
+  "date_text": "1517-1519",
+  "year_start": 1517,
+  "year_end": 1519,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "madonna-delle-arpie-andrea-del-sarto",
+  "title": "Madonna con il Bambino, san Francesco e san Giovanni Battista (Madonna delle Arpie)",
+  "artists": [
+   "Andrea del Sarto"
+  ],
+  "city": "Firenze",
+  "date_text": "1517",
+  "year_start": 1517,
+  "year_end": 1517,
+  "current_period_id": "primo-manierismo-fiorentino"
+ },
+ {
+  "id": "resurrezione-di-lazzaro-sebastiano",
+  "title": "Resurrezione di Lazzaro",
+  "artists": [
+   "Sebastiano del Piombo"
+  ],
+  "city": "Londra",
+  "date_text": "1519",
+  "year_start": 1517,
+  "year_end": 1519,
+  "current_period_id": "stile-clementino"
+ },
+ {
+  "id": "villa-madama",
+  "title": "Villa Madama",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Roma",
+  "date_text": "dal 1517-1518",
+  "year_start": 1517,
+  "year_end": 1534,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "giuseppe-giacobbe-egitto-pontormo",
+  "title": "Giuseppe e Giacobbe in Egitto",
+  "artists": [
+   "Jacopo Pontormo"
+  ],
+  "city": "Londra",
+  "date_text": "1518-1519",
+  "year_start": 1518,
+  "year_end": 1519,
+  "current_period_id": "primo-manierismo-fiorentino"
+ },
+ {
+  "id": "la-perla-giulio-romano",
+  "title": "Madonna con il Bambino, sant'Anna e san Giovannino (detta La Perla)",
+  "artists": [
+   "Giulio Romano"
+  ],
+  "city": "Madrid",
+  "date_text": "1518-1520 circa",
+  "year_start": 1518,
+  "year_end": 1520,
+  "current_period_id": "rinascimento-maturo"
+ }
+]

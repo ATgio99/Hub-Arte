@@ -1,0 +1,876 @@
+[
+ {
+  "id": "decorazione-san-benedetto-malles",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "pittura-carolingia-retica",
+  "status": "nuova_scuola",
+  "note": "Affreschi carolingi di Malles, stesso ambito artistico dei cicli di Mustair (fine VIII - meta IX sec.): con altre opere del lotto forma un gruppo coerente (area retica) non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "pittura-carolingia-retica",
+   "name": "Pittura carolingia retica (Mustair e Malles)",
+   "parent_id": "eta-carolingia",
+   "year_start": 800,
+   "year_end": 850,
+   "region": "Val Venosta, Grigioni (Rezia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "decorazione-san-giovanni-mustair",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "pittura-carolingia-retica",
+  "status": "nuova_scuola",
+  "note": "Pitture murali di San Giovanni a Mustair, nucleo del gruppo retico carolingio insieme a Malles: nessuna scuola specifica esiste in albero.",
+  "new_school": {
+   "suggested_id": "pittura-carolingia-retica",
+   "name": "Pittura carolingia retica (Mustair e Malles)",
+   "parent_id": "eta-carolingia",
+   "year_start": 800,
+   "year_end": 850,
+   "region": "Val Venosta, Grigioni (Rezia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "denaro-di-carlo-magno",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "eta-carolingia",
+  "status": "invariato",
+  "note": "Moneta legata direttamente alla corte di Carlo Magno; non forma un gruppo di bottega con altre opere del lotto, resta al livello di corrente Eta carolingia.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "fuga-in-egitto-mustair",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "pittura-carolingia-retica",
+  "status": "nuova_scuola",
+  "note": "Particolare del ciclo pittorico di Mustair, parte del gruppo retico carolingio.",
+  "new_school": {
+   "suggested_id": "pittura-carolingia-retica",
+   "name": "Pittura carolingia retica (Mustair e Malles)",
+   "parent_id": "eta-carolingia",
+   "year_start": 800,
+   "year_end": 850,
+   "region": "Val Venosta, Grigioni (Rezia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "martirio-santi-pietro-e-paolo-mustair",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "pittura-carolingia-retica",
+  "status": "nuova_scuola",
+  "note": "Particolare del ciclo pittorico di Mustair, parte del gruppo retico carolingio.",
+  "new_school": {
+   "suggested_id": "pittura-carolingia-retica",
+   "name": "Pittura carolingia retica (Mustair e Malles)",
+   "parent_id": "eta-carolingia",
+   "year_start": 800,
+   "year_end": 850,
+   "region": "Val Venosta, Grigioni (Rezia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-abate-malles",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "pittura-carolingia-retica",
+  "status": "nuova_scuola",
+  "note": "Affresco di Malles, stesso ciclo decorativo del gruppo retico carolingio (con Mustair).",
+  "new_school": {
+   "suggested_id": "pittura-carolingia-retica",
+   "name": "Pittura carolingia retica (Mustair e Malles)",
+   "parent_id": "eta-carolingia",
+   "year_start": 800,
+   "year_end": 850,
+   "region": "Val Venosta, Grigioni (Rezia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-nobile-malles",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "pittura-carolingia-retica",
+  "status": "nuova_scuola",
+  "note": "Affresco di Malles, stesso ciclo decorativo del gruppo retico carolingio (con Mustair).",
+  "new_school": {
+   "suggested_id": "pittura-carolingia-retica",
+   "name": "Pittura carolingia retica (Mustair e Malles)",
+   "parent_id": "eta-carolingia",
+   "year_start": 800,
+   "year_end": 850,
+   "region": "Val Venosta, Grigioni (Rezia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "statua-equestre-carlo-magno",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "eta-carolingia",
+  "status": "invariato",
+  "note": "Statuetta legata alla corte di Carlo Magno; oggetto isolato nel lotto, nessuna scuola di bottega specifica identificabile, resta a livello di corrente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pianta-abbazia-san-gallo",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "eta-carolingia",
+  "status": "invariato",
+  "note": "Disegno architettonico unico (San Gallo); nessuna scuola specifica esiste e non e giustificabile crearne una per un'opera isolata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "mosaici-santa-prassede-roma",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "mosaici-eta-pasquale-i",
+  "status": "nuova_scuola",
+  "note": "Mosaico romano voluto da papa Pasquale I (817-826): insieme ad altri due mosaici dello stesso committente/periodo nel lotto forma un gruppo coerente non coperto da scuole esistenti.",
+  "new_school": {
+   "suggested_id": "mosaici-eta-pasquale-i",
+   "name": "Mosaici romani dell'eta di papa Pasquale I",
+   "parent_id": "eta-carolingia",
+   "year_start": 817,
+   "year_end": 826,
+   "region": "Roma"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "mosaico-absidale-santa-maria-domnica",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "mosaici-eta-pasquale-i",
+  "status": "nuova_scuola",
+  "note": "Mosaico romano di eta pasqualiana (817-826), stesso gruppo di Santa Prassede e San Zenone.",
+  "new_school": {
+   "suggested_id": "mosaici-eta-pasquale-i",
+   "name": "Mosaici romani dell'eta di papa Pasquale I",
+   "parent_id": "eta-carolingia",
+   "year_start": 817,
+   "year_end": 826,
+   "region": "Roma"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "mosaico-cappella-san-zenone",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "mosaici-eta-pasquale-i",
+  "status": "nuova_scuola",
+  "note": "Mosaico della cappella di San Zenone, stesso gruppo pasqualiano romano.",
+  "new_school": {
+   "suggested_id": "mosaici-eta-pasquale-i",
+   "name": "Mosaici romani dell'eta di papa Pasquale I",
+   "parent_id": "eta-carolingia",
+   "year_start": 817,
+   "year_end": 826,
+   "region": "Roma"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "vangelo-di-tours",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "eta-carolingia",
+  "status": "invariato",
+  "note": "Manoscritto riconducibile alla scuola miniaturistica di Tours, ma unico esempio nel lotto: non sufficiente per proporre una nuova scuola, resta a livello di corrente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "affreschi-san-vincenzo-volturno",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "cripta-di-epifanio-volturno",
+  "status": "nuova_scuola",
+  "note": "Ciclo della cripta dell'abate Epifanio a San Vincenzo al Volturno: con la Crocifissione dello stesso ambiente forma un gruppo coerente (luogo/committenza) non coperto da scuole esistenti.",
+  "new_school": {
+   "suggested_id": "cripta-di-epifanio-volturno",
+   "name": "Bottega della cripta di Epifanio (San Vincenzo al Volturno)",
+   "parent_id": "eta-carolingia",
+   "year_start": 824,
+   "year_end": 842,
+   "region": "Molise, Italia meridionale"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ciborio-santambrogio",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "bottega-vuolvinio-santambrogio",
+  "status": "nuova_scuola",
+  "note": "Ciborio della basilica di Sant'Ambrogio a Milano, riconducibile alla stessa temperie della bottega che produsse il paliotto di Vuolvinio nello stesso edificio.",
+  "new_school": {
+   "suggested_id": "bottega-vuolvinio-santambrogio",
+   "name": "Bottega carolingia di Sant'Ambrogio (Vuolvinio)",
+   "parent_id": "eta-carolingia",
+   "year_start": 824,
+   "year_end": 850,
+   "region": "Milano, Lombardia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "crocifissione-san-vincenzo-volturno",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "cripta-di-epifanio-volturno",
+  "status": "nuova_scuola",
+  "note": "Crocifissione della cripta di Epifanio, stesso ciclo e committenza dell'affresco gemello nel lotto.",
+  "new_school": {
+   "suggested_id": "cripta-di-epifanio-volturno",
+   "name": "Bottega della cripta di Epifanio (San Vincenzo al Volturno)",
+   "parent_id": "eta-carolingia",
+   "year_start": 824,
+   "year_end": 842,
+   "region": "Molise, Italia meridionale"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "altare-santambrogio-vuolvinio",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "bottega-vuolvinio-santambrogio",
+  "status": "nuova_scuola",
+  "note": "Paliotto d'oro firmato da Vuolvinio per Sant'Ambrogio a Milano: insieme al ciborio dello stesso edificio forma un gruppo di bottega non coperto da scuole esistenti.",
+  "new_school": {
+   "suggested_id": "bottega-vuolvinio-santambrogio",
+   "name": "Bottega carolingia di Sant'Ambrogio (Vuolvinio)",
+   "parent_id": "eta-carolingia",
+   "year_start": 824,
+   "year_end": 850,
+   "region": "Milano, Lombardia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "annunciazione-visitazione-castelseprio",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "ciclo-castelseprio",
+  "status": "nuova_scuola",
+  "note": "Affresco del ciclo di Santa Maria foris Portas a Castelseprio: con le altre scene dello stesso ciclo nel lotto forma un gruppo coerente non coperto da scuole esistenti.",
+  "new_school": {
+   "suggested_id": "ciclo-castelseprio",
+   "name": "Ciclo pittorico di Castelseprio",
+   "parent_id": "eta-carolingia",
+   "year_start": 840,
+   "year_end": 870,
+   "region": "Castelseprio, Lombardia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ciclo-pittorico-santa-maria-foris-portas",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "ciclo-castelseprio",
+  "status": "nuova_scuola",
+  "note": "Nucleo stesso del ciclo pittorico di Castelseprio, che da il nome al gruppo proposto.",
+  "new_school": {
+   "suggested_id": "ciclo-castelseprio",
+   "name": "Ciclo pittorico di Castelseprio",
+   "parent_id": "eta-carolingia",
+   "year_start": 840,
+   "year_end": 870,
+   "region": "Castelseprio, Lombardia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "cristo-pantocratore-castelseprio",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "ciclo-castelseprio",
+  "status": "nuova_scuola",
+  "note": "Particolare del ciclo di Castelseprio, stesso gruppo delle altre scene nel lotto.",
+  "new_school": {
+   "suggested_id": "ciclo-castelseprio",
+   "name": "Ciclo pittorico di Castelseprio",
+   "parent_id": "eta-carolingia",
+   "year_start": 840,
+   "year_end": 870,
+   "region": "Castelseprio, Lombardia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "cattedra-di-pietro-vaticano",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "eta-carolingia",
+  "status": "invariato",
+  "note": "Trono ligneo-avorio legato a Carlo il Calvo; opera isolata nel lotto, nessuna scuola specifica pertinente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "bibbia-di-carlo-il-calvo",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "eta-carolingia",
+  "status": "invariato",
+  "note": "Manoscritto isolato nel lotto, riconducibile alla corte di Carlo il Calvo ma senza altre opere della stessa bottega presenti: resta a livello di corrente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "westwerk-corvey",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "eta-carolingia",
+  "status": "invariato",
+  "note": "Architettura carolingia tedesca isolata; nessuna scuola specifica esiste per l'architettura di questo periodo.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "battistero-san-giovanni-firenze",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Edificio architettonico fiorentino; le uniche scuole sotto Romanico italiano riguardano la pittura e la Sicilia normanna, nessuna pertinente all'architettura fiorentina.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-san-filiberto-tournus",
+  "current_period_id": "romanico",
+  "proposed_period_id": "cluniacense",
+  "status": "assegnato",
+  "note": "Abbazia borgognona (Tournus, Saona e Loira), coerente per area e cronologia con la corrente Arte cluniacense (910-1150), piu specifica del generico Romanico.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-san-ciriaco-gernrode",
+  "current_period_id": "arte-ottoniana",
+  "proposed_period_id": "arte-ottoniana",
+  "status": "invariato",
+  "note": "Chiesa ottoniana tedesca gia correttamente collocata; nessuna scuola piu specifica esiste sotto Arte ottoniana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ottone-presenta-modello-magdeburgo",
+  "current_period_id": "arte-ottoniana",
+  "proposed_period_id": "arte-ottoniana",
+  "status": "invariato",
+  "note": "Avorio ottoniano gia correttamente collocato; nessuna scuola piu specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cristo-incorona-ottone-teofano",
+  "current_period_id": "arte-ottoniana",
+  "proposed_period_id": "arte-ottoniana",
+  "status": "invariato",
+  "note": "Avorio ottoniano gia correttamente collocato; nessuna scuola piu specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "situla-gotofredo",
+  "current_period_id": "arte-ottoniana",
+  "proposed_period_id": "arte-ottoniana",
+  "status": "invariato",
+  "note": "Situla milanese di eta ottoniana gia correttamente collocata; nessuna scuola specifica per l'oreficeria milanese di questo periodo esiste in albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "registrum-gregorii-gregorio-magno",
+  "current_period_id": "arte-ottoniana",
+  "proposed_period_id": "scuola-di-treviri-ottoniana",
+  "status": "nuova_scuola",
+  "note": "Foglio del Registrum Gregorii, opera del Maestro del Registrum Gregorii attivo a Treviri: con l'altro foglio dello stesso manoscritto nel lotto forma un gruppo di bottega coerente non coperto da scuole esistenti.",
+  "new_school": {
+   "suggested_id": "scuola-di-treviri-ottoniana",
+   "name": "Scuola miniaturistica di Treviri (bottega del Registrum Gregorii)",
+   "parent_id": "arte-ottoniana",
+   "year_start": 977,
+   "year_end": 993,
+   "region": "Treviri, Germania"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "registrum-gregorii-imperatore-trono",
+  "current_period_id": "arte-ottoniana",
+  "proposed_period_id": "scuola-di-treviri-ottoniana",
+  "status": "nuova_scuola",
+  "note": "Secondo foglio dello stesso manoscritto e stesso maestro (Registrum Gregorii, Treviri).",
+  "new_school": {
+   "suggested_id": "scuola-di-treviri-ottoniana",
+   "name": "Scuola miniaturistica di Treviri (bottega del Registrum Gregorii)",
+   "parent_id": "arte-ottoniana",
+   "year_start": 977,
+   "year_end": 993,
+   "region": "Treviri, Germania"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "cristo-pantocrator-hosios-lukas",
+  "current_period_id": "arte-bizantina",
+  "proposed_period_id": "arte-bizantina",
+  "status": "invariato",
+  "note": "Mosaico di Dafni (Grecia); l'epoca Arte bizantina non ha correnti/scuole sotto di se in albero, e gia il livello piu specifico disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "basilica-santa-maria-assunta-torcello",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Edificio architettonico di Torcello; le scuole sotto Romanico italiano riguardano pittura e Sicilia normanna, nessuna pertinente all'architettura veneziana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "antependium-basilea",
+  "current_period_id": "romanico",
+  "proposed_period_id": "arte-ottoniana",
+  "status": "assegnato",
+  "note": "Paliotto d'oro commissionato dall'imperatore Enrico II (ambito ottoniano tedesco, entro il 1024): piu specifico del generico Romanico, coerente con Arte ottoniana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "basilica-santabbondio-como",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Basilica di Como, Italia (1010-1095): rientra nella corrente Romanico italiano, piu specifica della sola epoca Romanico.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-san-michele-hildesheim",
+  "current_period_id": "arte-ottoniana",
+  "proposed_period_id": "arte-ottoniana",
+  "status": "invariato",
+  "note": "Chiesa di Bernward a Hildesheim gia correttamente collocata in Arte ottoniana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "portale-santabbondio-como",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Portale della stessa basilica di Como: rientra nella corrente Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "porta-bernoardo-hildesheim",
+  "current_period_id": "arte-ottoniana",
+  "proposed_period_id": "arte-ottoniana",
+  "status": "invariato",
+  "note": "Porta di Bernoardo a Hildesheim gia correttamente collocata in Arte ottoniana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "affreschi-san-vincenzo-galliano",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "pittura-romanica-italiana",
+  "status": "assegnato",
+  "note": "Ciclo pittorico di Galliano (Lombardia, dopo il 1018): rientra nella scuola Pittura romanica italiana (1000-1250, Italia settentrionale), piu specifica della sola corrente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-san-miniato-al-monte-firenze",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Edificio architettonico fiorentino; nessuna scuola sotto Romanico italiano e pertinente all'architettura di Firenze.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-abbaziale-jumiege",
+  "current_period_id": "arte-normanna",
+  "proposed_period_id": "arte-normanna",
+  "status": "invariato",
+  "note": "Abbazia normanna gia correttamente collocata in Arte normanna; nessuna scuola piu specifica esiste.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-spira-i",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Cattedrale tedesca (Spira); nessuna corrente/scuola specifica per il romanico tedesco esiste in albero, resta a livello di epoca.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-notre-dame-poitiers",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Chiesa del Poitou (Francia); non rientra in Cluniacense, Cistercense o Arte normanna, nessuna corrente specifica pertinente, resta a livello di epoca.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "crocefissione-portale-bronzeo-san-zeno",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Formella del portale di San Zeno a Verona (meta XI sec.): rientra nella corrente Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "mosaico-giudizio-universale-torcello",
+  "current_period_id": "arte-bizantina",
+  "proposed_period_id": "pittura-romanica-italiana",
+  "status": "assegnato",
+  "note": "Mosaico di Torcello (1050-1150): per coerenza con altre opere dello stesso edificio e con la Basilica di San Marco, gia classificate nel lotto sotto Romanico italiano, si assegna alla scuola Pittura romanica italiana (Italia settentrionale, 1000-1250) invece della sola epoca Arte bizantina.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "basilica-san-marco-venezia",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Edificio architettonico veneziano; nessuna scuola sotto Romanico italiano e pertinente all'architettura di Venezia.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-santisidoro-leon",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Chiesa spagnola (Leon); nessuna corrente per il romanico spagnolo esiste in albero (solo il gotico spagnolo e presente), resta a livello di epoca.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "interno-basilica-san-marco",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Veduta architettonica della basilica di San Marco; nessuna scuola pertinente sotto Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "veduta-aerea-basilica-san-marco",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Veduta architettonica della basilica di San Marco; nessuna scuola pertinente sotto Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-santa-maria-assunta-pisa",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Duomo di Pisa; nessuna scuola specifica per l'architettura pisana esiste sotto Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-abbaziale-lessay",
+  "current_period_id": "arte-normanna",
+  "proposed_period_id": "arte-normanna",
+  "status": "invariato",
+  "note": "Abbazia normanna gia correttamente collocata; nessuna scuola piu specifica esiste.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-abbaziale-sainte-foy-conques",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Abbazia di Conques, tappa dei cammini di pellegrinaggio verso Santiago; opera isolata nel lotto (non condivide bottega/committenza diretta con le altre chiese di pellegrinaggio presenti), resta a livello di epoca.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "affreschi-sant-angelo-formis",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "pittura-romanica-italiana",
+  "status": "assegnato",
+  "note": "Ciclo pittorico campano (1072-1086): rientra nella scuola Pittura romanica italiana (Campania compresa, 1000-1250).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-san-giacomo-santiago",
+  "current_period_id": "romanico",
+  "proposed_period_id": "cattedrale-santiago-scuola",
+  "status": "nuova_scuola",
+  "note": "Cattedrale di Santiago de Compostela (Maestro Matteo): con la Porta degli Orefici dello stesso edificio nel lotto forma un gruppo di bottega/cantiere coerente non coperto da scuole esistenti.",
+  "new_school": {
+   "suggested_id": "cattedrale-santiago-scuola",
+   "name": "Bottega scultorea della cattedrale di Santiago de Compostela",
+   "parent_id": "romanico",
+   "year_start": 1075,
+   "year_end": 1211,
+   "region": "Santiago de Compostela, Galizia (Spagna)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-winchester",
+  "current_period_id": "arte-normanna",
+  "proposed_period_id": "arte-normanna",
+  "status": "invariato",
+  "note": "Cattedrale anglo-normanna gia correttamente collocata in Arte normanna.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "affreschi-basilica-inferiore-san-clemente",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "pittura-romanica-italiana",
+  "status": "assegnato",
+  "note": "Affreschi romani (fine XI sec.): rientrano nella scuola Pittura romanica italiana (Lazio compreso, 1000-1250).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "capitello-fiumi-paradiso-cluny",
+  "current_period_id": "cluniacense",
+  "proposed_period_id": "cluniacense",
+  "status": "invariato",
+  "note": "Capitello di Cluny gia correttamente collocato in Arte cluniacense; nessuna scuola piu specifica esiste.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-lund",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Cattedrale scandinava (Lund); nessuna corrente specifica per il romanico nordico esiste in albero, resta a livello di epoca.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-lund-cripta",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Stesso edificio di Lund; nessuna corrente specifica pertinente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-san-ciriaco-ancona",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Cattedrale marchigiana (fine XI sec.-1189): rientra nella corrente Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-spira-ii",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Seconda fase della cattedrale di Spira; stessa situazione della prima fase, nessuna corrente tedesca specifica in albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "collegiata-saint-sernin-tolosa",
+  "current_period_id": "romanico",
+  "proposed_period_id": "bottega-bernardus-gelduinus-tolosa",
+  "status": "nuova_scuola",
+  "note": "Collegiata di Saint-Sernin a Tolosa, scultore Bernardus Gelduinus: con la Porta Miegeville dello stesso edificio e scultore nel lotto forma un gruppo di bottega coerente non coperto da scuole esistenti.",
+  "new_school": {
+   "suggested_id": "bottega-bernardus-gelduinus-tolosa",
+   "name": "Bottega di Bernardus Gelduinus (Saint-Sernin, Tolosa)",
+   "parent_id": "romanico",
+   "year_start": 1080,
+   "year_end": 1100,
+   "region": "Tolosa, Francia meridionale"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "portale-transetto-sud-lund",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Portale della cattedrale di Lund; nessuna corrente specifica pertinente per il romanico nordico.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "basilica-san-nicola-bari",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Basilica pugliese (1087-1197, Maestro di Elia): rientra nella corrente Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "abbazia-cluny-iii",
+  "current_period_id": "cluniacense",
+  "proposed_period_id": "cluniacense",
+  "status": "invariato",
+  "note": "Abbazia di Cluny gia correttamente collocata; nessuna scuola piu specifica esiste.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "basilica-santambrogio-milano-romanica",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Ricostruzione romanica della basilica di Sant'Ambrogio a Milano: rientra nella corrente Romanico italiano (edificio architettonico, non pittura, quindi non nella scuola Pittura romanica italiana).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "capitello-quadriportico-santambrogio",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Capitello dello stesso quadriportico milanese: rientra nella corrente Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-san-michele-pavia",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Chiesa di Pavia (1090-1155): rientra nella corrente Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "facciata-san-michele-pavia",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Facciata della stessa chiesa pavese: rientra nella corrente Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "porta-degli-orefici-santiago",
+  "current_period_id": "romanico",
+  "proposed_period_id": "cattedrale-santiago-scuola",
+  "status": "nuova_scuola",
+  "note": "Porta degli Orefici della cattedrale di Santiago (entro il 1097), fase precedente a Maestro Matteo ma stesso cantiere: gruppo coerente con l'altra opera della cattedrale nel lotto.",
+  "new_school": {
+   "suggested_id": "cattedrale-santiago-scuola",
+   "name": "Bottega scultorea della cattedrale di Santiago de Compostela",
+   "parent_id": "romanico",
+   "year_start": 1075,
+   "year_end": 1211,
+   "region": "Santiago de Compostela, Galizia (Spagna)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "porta-miègeville-saint-sernin",
+  "current_period_id": "romanico",
+  "proposed_period_id": "bottega-bernardus-gelduinus-tolosa",
+  "status": "nuova_scuola",
+  "note": "Timpano della Porta Miegeville di Saint-Sernin, stesso scultore Bernardus Gelduinus della Collegiata nel lotto.",
+  "new_school": {
+   "suggested_id": "bottega-bernardus-gelduinus-tolosa",
+   "name": "Bottega di Bernardus Gelduinus (Saint-Sernin, Tolosa)",
+   "parent_id": "romanico",
+   "year_start": 1080,
+   "year_end": 1100,
+   "region": "Tolosa, Francia meridionale"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "portale-destro-san-michele-pavia",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Portale della chiesa di San Michele a Pavia: rientra nella corrente Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "capitello-eva-serpente-laach",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Capitello della chiesa tedesca di Maria Laach; nessuna corrente specifica per il romanico renano esiste in albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-durham",
+  "current_period_id": "arte-normanna",
+  "proposed_period_id": "arte-normanna",
+  "status": "invariato",
+  "note": "Cattedrale anglo-normanna gia correttamente collocata in Arte normanna.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-santa-maria-laach",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Chiesa abbaziale tedesca; nessuna corrente specifica per il romanico renano esiste in albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cripta-santa-maria-laach",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Stesso edificio di Maria Laach; nessuna corrente specifica pertinente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "fregio-fitozoomorfo-santa-maria-laach",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Stesso edificio di Maria Laach; nessuna corrente specifica pertinente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-san-lorenzo-genova",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Cattedrale genovese; nessuna scuola sotto Romanico italiano e pertinente all'architettura ligure.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-san-geminiano-modena",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Cattedrale di Modena (Lanfranco e Wiligelmo, 1099-1184): rientra nella corrente Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-san-nicola-pellegrino-trani",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Cattedrale pugliese (Barisano da Trani, 1099-1210): rientra nella corrente Romanico italiano.",
+  "new_school": null,
+  "alt_options": null
+ }
+]

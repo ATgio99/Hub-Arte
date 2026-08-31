@@ -1,0 +1,1167 @@
+[
+  {
+    "id": "tarda-antichita",
+    "name": "Tarda Antichità",
+    "type": "epoca",
+    "year_start": 284,
+    "year_end": 476,
+    "regions": [
+      "Italia",
+      "Gallia",
+      "Africa settentrionale",
+      "Oriente"
+    ],
+    "summary": "Periodo che va dalla riforma dioclezianea alla caduta dell'impero romano d'Occidente. Si caratterizza per la policentricità del potere imperiale, la progressiva cristianizzazione dello stato e la compresenza di modelli artistici romani, orientali e cristiani.",
+    "historical_context": "Diocleziano (284-305) reorganizza l'impero con la tetrarchia. Costantino (306-337) emana l'editto di tolleranza nel 313, segnando la fine delle persecuzioni anticristiane. Teodosio (379-395) sancisce la piena cristianizzazione dell'impero, dividendolo poi tra i figli Arcadio e Onorio.",
+    "parent_id": null,
+    "key_innovations": [
+      "architettura paleocristiana",
+      "mosaico parietale",
+      "battistero ottagonale",
+      "iconografia cristiana"
+    ]
+  },
+  {
+    "id": "arte-paleocristiana",
+    "name": "Arte paleocristiana",
+    "type": "corrente",
+    "year_start": 313,
+    "year_end": 600,
+    "regions": [
+      "Italia",
+      "Oriente mediterraneo"
+    ],
+    "summary": "Produzione artistica nata con la libertà di culto cristiana, che rielabora forme architettoniche e iconografiche romane in chiave cristiana. Sviluppa tipologie nuove come battisteri ottagonali, basiliche a tre navate, mausolei cruciformi.",
+    "historical_context": "L'editto di Costantino del 313 permette la costruzione di edifici di culto pubblici. Le sedi imperiali di Milano, Ravenna, Treviri e Costantinopoli diventano centri di elaborazione artistica. Il vescovo Ambrogio di Milano (374-397) esercita un ruolo determinante nella definizione di nuove tipologie.",
+    "parent_id": "tarda-antichita",
+    "key_innovations": [
+      "basilica cristiana",
+      "battistero ottagonale",
+      "mosaico absidale",
+      "iconografia del Cristo in maestà"
+    ]
+  },
+  {
+    "id": "arte-bizantina",
+    "name": "Arte bizantina",
+    "type": "epoca",
+    "year_start": 330,
+    "year_end": 1453,
+    "regions": [
+      "Balcani",
+      "Impero byzantino",
+      "Italia meridionale",
+      "Oriente mediterraneo",
+      "Sicilia",
+      "Venezia"
+    ],
+    "summary": "Tradizione artistica dell'Impero romano d'Oriente con capitale Costantinopoli, caratterizzata da frontalità, ieraticità, fondo oro, mosaici policromi e iconografie codificate come il Cristo Pantocratore.",
+    "historical_context": "Bisanzio sopravvive alla caduta dell'Impero romano d'Occidente (476) mantenendo viva una tradizione classica rielaborata in chiave cristiana. La sua influenza artistica si irradia in tutto il Mediterraneo orientale e raggiunge l'Italia meridionale, Venezia e la Sicilia normanna.",
+    "parent_id": null,
+    "key_innovations": [
+      "mosaico in pasta vitrea con fondo oro",
+      "iconostasi",
+      "Cristo Pantocratore",
+      "Vergine Hodigitria ed Eleousa",
+      "pianta a croce greca inscritta",
+      "pianta centrale cupolata",
+      "mosaico a fondo oro",
+      "icona",
+      "Cristo Pantocatore"
+    ]
+  },
+  {
+    "id": "alto-medioevo",
+    "name": "Alto Medioevo",
+    "type": "epoca",
+    "year_start": 476,
+    "year_end": 1000,
+    "regions": [
+      "Italia",
+      "Europa"
+    ],
+    "summary": "Il periodo fra la caduta dell'Impero romano d'Occidente e l'anno Mille, in cui convivono la tradizione tardoantica, gli innesti germanici e il recupero carolingio e ottoniano dell'antico.",
+    "historical_context": "Regni romano-barbarici, riconquista giustinianea, dominazione longobarda, rinascita carolingia e impero ottoniano.",
+    "parent_id": null,
+    "key_innovations": []
+  },
+  {
+    "id": "regno-ostrogoto",
+    "name": "Regno ostrogoto d'Italia",
+    "type": "corrente",
+    "year_start": 493,
+    "year_end": 553,
+    "regions": [
+      "Italia"
+    ],
+    "summary": "Periodo del dominio ostrogoto in Italia guidato da Teodorico (474-526), che persegue una politica di continuità con l'impero romano e di integrazione tra popolazione latina e germanica. Ravenna è capitale e centro artistico privilegiato.",
+    "historical_context": "Con la deposizione di Romolo Augusto nel 476 da parte di Odoacre, e la successiva conquista ostrogota di Teodorico (488-493), l'Italia entra in una nuova fase politica. Teodorico mantiene le istituzioni romane e favorisce la sintesi tra cultura latina e cultura germanica, con Cassiodoro come figura intellettuale centrale.",
+    "parent_id": "alto-medioevo",
+    "key_innovations": [
+      "mausoleo in pietra d'Istria",
+      "sintesi tra tradizione romana e arte barbarica"
+    ]
+  },
+  {
+    "id": "eta-giustinianea",
+    "name": "Età giustinianea",
+    "type": "corrente",
+    "year_start": 527,
+    "year_end": 565,
+    "regions": [
+      "Oriente",
+      "Italia",
+      "Africa settentrionale",
+      "Spagna meridionale"
+    ],
+    "summary": "Periodo del regno di Giustiniano (527-565), imperatore d'Oriente che riconquista parte dell'Occidente e avvia un programma edilizio e artistico straordinario. A Ravenna si raggiunge l'apice della produzione artistica tardo-antica con grandi cantieri musivi.",
+    "historical_context": "Giustiniano riconquista Ravenna nel 540 e organizza l'Italia in esarcato con capitale Ravenna. Commissiona la costruzione di Santa Sofia a Costantinopoli (532-537) e promuove il rinnovamento di chiese a Ravenna (San Vitale, Sant'Apollinare in Classe). Il Corpus iuris civilis sistematizza il diritto romano.",
+    "parent_id": "alto-medioevo",
+    "key_innovations": [
+      "cupola su pianta centrale",
+      "mosaico figurativo ieratico",
+      "struttura a doppio involucro"
+    ]
+  },
+  {
+    "id": "eta-longobarda",
+    "name": "Età longobarda",
+    "type": "corrente",
+    "year_start": 568,
+    "year_end": 774,
+    "regions": [
+      "Benevento",
+      "Italia centrale",
+      "Italia meridionale",
+      "Italia settentrionale"
+    ],
+    "summary": "Periodo della dominazione longobarda in Italia, iniziata con l'invasione di Alboino (568) e terminata con la conquista franca di Carlo Magno (774). L'arte longobarda fonde tradizione orafica germanica, modelli romani e influenze bizantine.",
+    "historical_context": "I Longobardi, forse originari della Scandinavia, arrivano in Italia nel 568 guidati da Alboino. Occupano gran parte della penisola, lasciando ai Bizantini solo Ravenna, Roma, Puglia e Calabria. Gradualmente si convertono all'ortodossia cristiana, favorendo un'apertura culturale.",
+    "parent_id": "alto-medioevo",
+    "key_innovations": [
+      "cloisonné",
+      "oreficeria policroma",
+      "stile animalistico",
+      "scultura in stucco monumentale",
+      "Scultura a intreccio con motivi geometrici e zoomorfi",
+      "Oreficeria con filigrana e cloisonné",
+      "Stucco decorativo figurato"
+    ]
+  },
+  {
+    "id": "civilta-islamica",
+    "name": "Civiltà islamica",
+    "type": "epoca",
+    "year_start": 622,
+    "year_end": 1200,
+    "regions": [
+      "Arabia",
+      "Africa settentrionale",
+      "Penisola iberica",
+      "Asia Minore"
+    ],
+    "summary": "Civiltà nata dall'Islam nel VII secolo che si espande rapidamente nel Mediterraneo. In architettura riprende modelli romani e bizantini rielaborandoli in moschee; l'arte si concentra sulla calligrafia e su motivi ornamentali geometrizzanti e astratti per via dell'aniconismo.",
+    "historical_context": "All'inizio del VII secolo le tribù nomadi arabe, unite dalla fede islamica, occupano l'Africa settentrionale, la penisola iberica e contendono l'Asia Minore ai Bizantini. La civiltà islamica sviluppa una ricca cultura urbana con vivaci scambi commerciali.",
+    "parent_id": null,
+    "key_innovations": [
+      "moschea",
+      "calligrafia",
+      "ornamentazione geometrizzante",
+      "mosaico non figurativo"
+    ]
+  },
+  {
+    "id": "eta-carolingia",
+    "name": "Età carolingia",
+    "type": "corrente",
+    "year_start": 768,
+    "year_end": 900,
+    "regions": [
+      "Francia",
+      "Germania",
+      "Italia settentrionale",
+      "Svizzera"
+    ],
+    "summary": "Periodo del regno di Carlo Magno (768-814) e dei suoi successori carolingi, caratterizzato dalla Renovatio Imperii, il progetto di rinnovamento dell'impero romano d'Occidente. L'arte persegue un recupero filologico dei modelli tardoantichi con impronta germanica.",
+    "historical_context": "Carlo Magno, re dei Franchi dal 768, viene incoronato imperatore dei Romani da papa Leone III nell'800 ad Aquisgrana. Promuove riforme religiose, scolastiche e artistiche. Il Westwerk carolingio e la miniatura della scuola di corte sono le principali innovazioni.",
+    "parent_id": "alto-medioevo",
+    "key_innovations": [
+      "Westwerk",
+      "pianta ideale del monastero",
+      "miniatura carolingia",
+      "cripta",
+      "Recupero della tecnica compendiaria in pittura",
+      "Produzione di miniature di lusso nelle scuole palatine",
+      "Grande oreficeria con smalti cloisonné e pietre preziose",
+      "Rifondazione della scultura monumentale"
+    ]
+  },
+  {
+    "id": "cluniacense",
+    "name": "Arte cluniacense",
+    "type": "corrente",
+    "year_start": 910,
+    "year_end": 1150,
+    "regions": [
+      "Borgogna",
+      "Francia",
+      "Europa"
+    ],
+    "summary": "Arte e architettura promosse dalla potente Congregazione cluniacense, con sede nell'abbazia di Cluny in Borgogna. Si distingue per la monumentalità degli edifici, la ricca decorazione scultorea di capitelli e portali, e un programma iconografico elaborato dai teologi.",
+    "historical_context": "L'abbazia di Cluny, fondata nel 910, diviene il fulcro di una rete di oltre mille monasteri in tutta Europa. La sua terza chiesa (Cluny III), consacrata nel 1130, è per secoli il monumento più grande dell'Europa medievale.",
+    "parent_id": "romanico",
+    "key_innovations": [
+      "Scultura monumentale inserita nei portali e nei capitelli",
+      "Grande navata a cinque campate con deambulatorio",
+      "Decorazione plastica integrata nell'architettura"
+    ]
+  },
+  {
+    "id": "arte-ottoniana",
+    "name": "Arte ottoniana",
+    "type": "corrente",
+    "year_start": 936,
+    "year_end": 1024,
+    "regions": [
+      "Germania",
+      "Italia settentrionale"
+    ],
+    "summary": "Arte dell'impero dei re sassoni Ottone I, II e III, caratterizzata da una nuova Renovatio che riprende i modelli carolingi e li rielabora in senso più gerarchico e ieratico. Eccelle nell'architettura, nell'intaglio in avorio, nella bronzistica e nella miniatura.",
+    "historical_context": "Ottone I di Sassonia, incoronato imperatore a Roma nel 962, inaugura una stagione di rinascita politica e culturale. Il matrimonio di Ottone II con la principessa bizantina Teofano apre nuove prospettive con l'Oriente. Ottone III rilancia la Renovatio Imperii.",
+    "parent_id": "alto-medioevo",
+    "key_innovations": [
+      "Sistema alternato nelle navate delle chiese",
+      "Porta bronzea fusa in un unico getto",
+      "Miniatura con spazi stratificati e figure ieratiche",
+      "Intaglio in avorio con forte geometrizzazione delle forme"
+    ]
+  },
+  {
+    "id": "romanico",
+    "name": "Romanico",
+    "type": "epoca",
+    "year_start": 950,
+    "year_end": 1200,
+    "regions": [
+      "Europa",
+      "Francia",
+      "Germania",
+      "Inghilterra",
+      "Italia",
+      "Scandinavia",
+      "Spagna"
+    ],
+    "summary": "Straordinaria fioritura artistica e architettonica che investe l'Europa tra gli inizi del X e la metà del XII secolo. Si caratterizza per l'imponenza delle chiese in pietra, la modularità basata sulla campata, lo stretto legame tra architettura, scultura e pittura, e la diffusione capillare grazie ai pellegrinaggi.",
+    "historical_context": "Dopo le invasioni e le frammentazioni altomedievali, l'Europa conosce una ripresa economica e demografica. Emergono le istituzioni comunali in Italia, i regni feudali in Francia e il monachesimo cluniacense. I pellegrinaggi verso Roma e Santiago de Compostela diffondono modelli artistici lungo tutto il continente.",
+    "parent_id": null,
+    "key_innovations": [
+      "Volta a crociera costolonata",
+      "Campata come modulo di misura",
+      "Scultura monumentale integrata nell'architettura",
+      "Sistema di scarico dei pesi con contrafforti e costoloni",
+      "Portale monumentale con timpano istoriato",
+      "arco a tutto sesto",
+      "volta a botte",
+      "torre campanaria",
+      "scultura dei portali",
+      "cicli pittorici absidali"
+    ]
+  },
+  {
+    "id": "pittura-romanica-italiana",
+    "name": "Pittura romanica italiana",
+    "type": "scuola",
+    "year_start": 1000,
+    "year_end": 1250,
+    "regions": [
+      "Italia settentrionale",
+      "Lazio",
+      "Sicilia",
+      "Campania",
+      "Italia centrale"
+    ],
+    "summary": "La pittura romanica in Italia si esprime in mosaici, affreschi, tavole e miniature. Ogni area regionale sviluppa un linguaggio proprio: il nord Italia attinge alla tradizione carolingia e ottoniana, il centro si orienta verso la pittura su tavola, il Meridione mantiene vivo il linguaggio byzantino.",
+    "historical_context": "I cicli pittorici si legano all'architettura delle chiese occupando absidi e pareti. Ordini mendicanti stimolano la creazione di nuovi oggetti devozionali come pale, dossali e croci dipinte.",
+    "parent_id": "romanico-italiano",
+    "key_innovations": [
+      "croce dipinta",
+      "pala d'altare agiografica",
+      "affresco absidale monumentale",
+      "sintesi iconografica greco-latina nelle icone"
+    ]
+  },
+  {
+    "id": "romanico-italiano",
+    "name": "Romanico italiano",
+    "type": "corrente",
+    "year_start": 1000,
+    "year_end": 1200,
+    "regions": [
+      "Italia",
+      "Venezia",
+      "Toscana",
+      "Lazio",
+      "Liguria",
+      "Sicilia",
+      "Campania"
+    ],
+    "summary": "Il Romanico italiano si sviluppa tra XI e XII secolo con caratteri regionali diversificati: il Romanico veneto assorbe modelli byzantini, quello fiorentino e pisano privilegia i riferimenti classici con bicromia marmorea, quello romano insiste sulla continuità paleocristiana, quello normanno siciliano fonde elementi latini, byzantini e islamici.",
+    "historical_context": "Il periodo corrisponde alla piena maturazione dei Comuni, alle Crociate (1096-1204) e all'affermazione delle repubbliche marinare. La conquista normanna del Sud Italia e della Sicilia (1091) genera una straordinaria sintesi culturale.",
+    "parent_id": "romanico",
+    "key_innovations": [
+      "bicromia marmorea toscana",
+      "impianto basilicale paleocristiano rinnovato",
+      "sintesi islamico-byzantina-normanna",
+      "scultura dei portali",
+      "apparato musivo"
+    ]
+  },
+  {
+    "id": "arte-normanna",
+    "name": "Arte normanna",
+    "type": "corrente",
+    "year_start": 1050,
+    "year_end": 1200,
+    "regions": [
+      "Normandia",
+      "Inghilterra",
+      "Italia meridionale",
+      "Sicilia"
+    ],
+    "summary": "Corrente artistica prodotta dai Normanni nelle regioni da loro conquistate. In architettura si distingue per il massiccio sviluppo verticale, il sistema tripartito delle pareti navata, l'uso precoce della volta a crociera e la facciata con avancorpo e torri. In Italia meridionale e Sicilia si fonde con elementi islamici e bizantini.",
+    "historical_context": "I Normanni, popolo di origine vichinga insediatosi in Normandia, si espandono verso l'Inghilterra (1066) e il Mezzogiorno d'Italia. La loro arte è il vettore di un dialogo culturale intenso tra Europa settentrionale, Bisanzio e Islam.",
+    "parent_id": "romanico",
+    "key_innovations": [
+      "Facciata con avancorpo e torri gemelle",
+      "Tripartizione verticale delle pareti della navata centrale",
+      "Uso precoce della volta a crociera costolonata"
+    ]
+  },
+  {
+    "id": "arte-catalana",
+    "name": "Pittura catalana romanica",
+    "type": "scuola",
+    "year_start": 1080,
+    "year_end": 1200,
+    "regions": [
+      "Catalogna",
+      "Spagna settentrionale"
+    ],
+    "summary": "Originalissima corrente pittorica della Catalogna romanica, caratterizzata da colori vivaci, vigoroso grafismo che enfatizza la bidimensionalità, un gusto per l'allungamento delle figure e un impianto iconografico di matrice bizantina.",
+    "historical_context": "La Catalogna, parte dei regni cristiani della Spagna settentrionale, intreccia rapporti culturali con la Francia meridionale e con il mondo bizantino. Le chiese romaniche delle valli pirenaiche conservano eccezionali cicli pittorici.",
+    "parent_id": "romanico",
+    "key_innovations": [
+      "Grafismo bidimensionale di grande forza espressiva",
+      "Policromia intensa e contrastata",
+      "Sintesi tra iconografia bizantina e plasticismo romanico"
+    ]
+  },
+  {
+    "id": "romanico-normanno-siciliano",
+    "name": "Romanico normanno in Sicilia",
+    "type": "scuola",
+    "year_start": 1091,
+    "year_end": 1194,
+    "regions": [
+      "Sicilia"
+    ],
+    "summary": "Corrente artistica nata sotto i re normanni in Sicilia (Ruggero II e Guglielmo II), caratterizzata da un eclettismo straordinario che fonde Romanico transalpino, arte byzantina e decorazione islamica in un linguaggio unitario.",
+    "historical_context": "La conquista normanna della Sicilia si completa nel 1091 sottraendola agli Arabi. Ruggero II (1130-1154) fonda il regno di Sicilia e avvia una grande stagione artistica impiegando artisti arabi, maestranze bizantine e architetti europei.",
+    "parent_id": "romanico-italiano",
+    "key_innovations": [
+      "soffitti a muqarnas",
+      "mosaici byzantini su commissione normanna",
+      "cupole arabeggianti rosse",
+      "fusione di tecniche costruttive diverse",
+      "iconografia cristiana in contesti islamici"
+    ]
+  },
+  {
+    "id": "cistercense",
+    "name": "Arte cistercense",
+    "type": "corrente",
+    "year_start": 1098,
+    "year_end": 1250,
+    "regions": [
+      "Borgogna",
+      "Europa",
+      "Francia"
+    ],
+    "summary": "Arte e architettura dell'Ordine cistercense, fondato da Roberto di Molesme nel 1098 come riforma ascetica del monachesimo cluniacense. Si caratterizza per l'assoluta sobrietà ornamentale, il senso della massa, un limitato sviluppo verticale e l'aniconia come valore spirituale.",
+    "historical_context": "Bernardo di Chiaravalle (1090-1153), principale voce dell'ordine, critica ferocemente gli eccessi ornamentali di Cluny nell'Apologia ad Guillelmum Abbatem (1125). L'architettura cistercense sceglie l'espressione plastica delle masse senza ricorrere alla scultura figurativa.",
+    "parent_id": "romanico",
+    "key_innovations": [
+      "Architettura aniconica",
+      "Effetti plastici ottenuti solo dalle masse architettoniche",
+      "Pianta semplificata senza deambulatorio",
+      "sobrietà decorativa assoluta",
+      "pianta standardizzata a croce latina",
+      "luce come unico ornamento",
+      "diffusione capillare del modello in Europa"
+    ]
+  },
+  {
+    "id": "gotico-cistercense",
+    "name": "Architettura gotica cistercense",
+    "type": "corrente",
+    "year_start": 1100,
+    "year_end": 1300,
+    "regions": [
+      "Francia",
+      "Italia",
+      "Europa"
+    ],
+    "summary": "Variante essenziale e luminosa del Gotico, espressione dell'ordine cistercense fondato da Bernardo di Chiaravalle. Si caratterizza per lo stile spoglio e rigoroso, senza decorazioni scultoree o pittoriche eccessive, con chiese simili tra loro.",
+    "historical_context": "L'ordine esprime le aspirazioni di rigorismo morale e pauperismo di una parte della Chiesa. In Italia fu introdotto a cavallo dei secoli XII-XIII soprattutto in area centro-meridionale e in Lombardia.",
+    "parent_id": "gotico",
+    "key_innovations": [
+      "purezza geometrica delle forme",
+      "assenza di decorazioni scultoree sovrastanti",
+      "luminosità sobria",
+      "uso del mattone"
+    ]
+  },
+  {
+    "id": "gotico",
+    "name": "Gotico",
+    "type": "epoca",
+    "year_start": 1140,
+    "year_end": 1400,
+    "regions": [
+      "Francia",
+      "Inghilterra",
+      "Germania",
+      "Spagna",
+      "Italia"
+    ],
+    "summary": "Stile architettonico e artistico nato in Francia (Île-de-France) nel XII secolo, caratterizzato da archi a sesto acuto, volte a crociera ogivale, archi rampanti e grandi vetrate. Si diffuse in tutta Europa con declinazioni regionali. Rappresentò una rivoluzione costruttiva che consentì edifici più alti, luminosi e con pareti più sottili.",
+    "historical_context": "Il Gotico si afferma nel contesto della rinascita urbana medievale, della crescita delle cattedrali come simboli di potere ecclesiastico e della filosofia scolastica che attribuiva alla luce un valore teologico. In Italia si intrecciò con le lotte tra Comuni, papato e impero.",
+    "parent_id": null,
+    "key_innovations": [
+      "arco a sesto acuto",
+      "volta a crociera ogivale",
+      "arco rampante",
+      "tecnica del muro sottile",
+      "grandi vetrate istoriate"
+    ]
+  },
+  {
+    "id": "gotico-francese",
+    "name": "Gotico francese",
+    "type": "corrente",
+    "year_start": 1140,
+    "year_end": 1400,
+    "regions": [
+      "Francia",
+      "Île-de-France"
+    ],
+    "summary": "Fase originaria e modello del Gotico europeo, sviluppatasi nell'Île-de-France a partire da Saint-Denis. Si articola in protogotico (dal 1140), Gotico classico (ca. 1194-1230), Gotico rayonnant (dal 1230) e Gotico flamboyant (dal XIV sec.).",
+    "historical_context": "Nasce in coincidenza con il rafforzamento della monarchia capetingia e del potere papale. I cantieri delle grandi cattedrali sono finanziati da vescovi, capitoli e comuni cittadini arricchiti dai commerci.",
+    "parent_id": "gotico",
+    "key_innovations": [
+      "coro con deambulatorio e cappelle radiali",
+      "Gotico rayonnant con rosoni a raggi",
+      "Sainte-Chapelle come modello di cappella regia",
+      "sistema di archi rampanti sovrapposti"
+    ]
+  },
+  {
+    "id": "early-english-gothic",
+    "name": "Early English Gothic",
+    "type": "scuola",
+    "year_start": 1174,
+    "year_end": 1280,
+    "regions": [
+      "Inghilterra"
+    ],
+    "summary": "Prima fase del Gotico inglese, riconducibile al Gotico classico francese ma con elementi strutturali romanici residui. Le chiese presentano notevole sviluppo longitudinale e ampie facciate con decorazioni scultoree.",
+    "historical_context": "Nasce con la ricostruzione della cattedrale di Canterbury da parte di Guillaume de Sens a partire dal 1174. Si caratterizza per la fusione della massiccia monumentalità anglo-normanna con le innovazioni gotiche.",
+    "parent_id": "gotico-inglese",
+    "key_innovations": [
+      "prime volte a crociera costolonate",
+      "deambulatorio con cappelle radiali"
+    ]
+  },
+  {
+    "id": "gotico-inglese",
+    "name": "Gotico inglese",
+    "type": "corrente",
+    "year_start": 1174,
+    "year_end": 1520,
+    "regions": [
+      "Inghilterra"
+    ],
+    "summary": "Variante del Gotico sviluppatasi in Inghilterra a partire dalla fine del XII secolo. Si distingue per il notevole sviluppo longitudinale, l'uso di materiali di colori diversi, la facciata ampia e decorata, e la crescente complessità delle volte a ogiva. Si articola nelle fasi Early English, Decorated English e Perpendicular English Gothic.",
+    "historical_context": "L'architettura gotica inglese si sviluppa sull'eredità normanna e romanica locale, conservando elementi strutturali massicci. La cattedrale di Canterbury, ricostruita da Guillaume de Sens dopo un incendio nel 1174, rappresenta il primo esempio di Gotico inglese.",
+    "parent_id": "gotico",
+    "key_innovations": [
+      "volte a tiercerons",
+      "facciata in larghezza con nicchie",
+      "volta a stella",
+      "sviluppo longitudinale accentuato"
+    ]
+  },
+  {
+    "id": "duecento-italiano",
+    "name": "Duecento italiano",
+    "type": "corrente",
+    "year_start": 1200,
+    "year_end": 1300,
+    "regions": [
+      "Italia centrale",
+      "Toscana",
+      "Lazio",
+      "Umbria"
+    ],
+    "summary": "Il XIII secolo italiano vede l'avvio del rinnovamento pittorico e scultoreo che porterà al Gotico maturo. I principali centri sono Firenze, Pisa, Siena e Roma; i protagonisti sono Giunta Pisano, Coppo di Marcovaldo, Cimabue, Arnolfo di Cambio, Jacopo Torriti, Pietro Cavallini.",
+    "historical_context": "Il Duecento è segnato dall'ascesa degli ordini mendicanti, dalla lotta tra papato e impero (Federico II di Svevia vs Innocenzo IV), dalla battaglia di Montaperti (1260) e dalla sconfitta degli Svevi a Tagliacozzo (1268). La via Francigena favorisce gli scambi culturali tra Italia e Europa transalpina.",
+    "parent_id": "gotico-italiano",
+    "key_innovations": [
+      "croci dipinte con Christus patiens",
+      "Maestà come tipologia pittorica",
+      "mosaico cosmatesco",
+      "monumento funerario gotico",
+      "naturalismo della figura umana"
+    ]
+  },
+  {
+    "id": "gotico-spagnolo",
+    "name": "Gotico spagnolo",
+    "type": "corrente",
+    "year_start": 1205,
+    "year_end": 1500,
+    "regions": [
+      "Spagna",
+      "Catalogna",
+      "Baleari"
+    ],
+    "summary": "Variante del Gotico nella penisola iberica, diffusosi precocemente dal XII secolo grazie agli intensi rapporti commerciali e religiosi con la Francia, fondendosi con suggestioni islamiche. In Catalogna si sviluppò uno stile caratterizzato dalla ricerca di monumentalità nella semplicità strutturale.",
+    "historical_context": "La presenza araba nella penisola stimolò l'adozione del lessico gotico come stile della cristianità. Si diffuse lungo il cammino di Santiago di Compostela e nei luoghi cistercensi.",
+    "parent_id": "gotico",
+    "key_innovations": [
+      "integrazione di elementi islamici",
+      "Gotico catalano con monumentalità semplificata"
+    ]
+  },
+  {
+    "id": "arte-federiciana",
+    "name": "Arte federiciana",
+    "type": "scuola",
+    "year_start": 1220,
+    "year_end": 1250,
+    "regions": [
+      "Italia meridionale",
+      "Sicilia",
+      "Puglia",
+      "Basilicata"
+    ],
+    "summary": "Arte promossa da Federico II di Svevia, caratterizzata dalla fusione tra classicità romana, Gotico borgognone e cistercense, e tradizioni bizantine e islamiche. Si espresse soprattutto nell'architettura militare e nella scultura laica di recupero classico.",
+    "historical_context": "Federico II aprì oltre 200 cantieri in tutto il suo regno, rimaneggiando e costruendo fortezze. La sua corte cosmopolita fuse tradizioni nordiche, mediterranee, cristiane e islamiche, dando vita a un centro d'irraggiamento per l'arte innovativa.",
+    "parent_id": "gotico-italiano",
+    "key_innovations": [
+      "architettura militare gotica con rigore geometrico classico",
+      "scultura realistica di recupero antico",
+      "riimpiego di statue e frammenti antichi"
+    ]
+  },
+  {
+    "id": "gotico-tedesco",
+    "name": "Gotico tedesco",
+    "type": "corrente",
+    "year_start": 1220,
+    "year_end": 1500,
+    "regions": [
+      "Germania",
+      "Alsazia"
+    ],
+    "summary": "Variante del Gotico nei territori del Sacro Romano Impero, che incontrò resistenze dovute alla tecnica costruttiva locale e alla penuria di pietra nel Nord. I primi caratteri gotici apparirono in elementi non strutturali, mentre il Gotico maturo si affermò con le cattedrali di Colonia e Strasburgo.",
+    "historical_context": "La diffusione del Gotico in Germania fu favorita dall'arrivo di architetti francesi che lavorarono ai grandi cantieri locali. La scultura tedesca ricevette l'influenza francese soprattutto attraverso il cantiere di Reims, dando vita alla cosiddetta rinascenza sveva.",
+    "parent_id": "gotico",
+    "key_innovations": [
+      "integrazione del Westwerk nella pianta gotica",
+      "scultura naturalistica a tutto tondo",
+      "rinascenza sveva"
+    ]
+  },
+  {
+    "id": "rinascenza-sveva",
+    "name": "Rinascenza sveva",
+    "type": "scuola",
+    "year_start": 1220,
+    "year_end": 1260,
+    "regions": [
+      "Germania",
+      "Italia meridionale"
+    ],
+    "summary": "Fenomeno culturale e artistico legato all'intenso sviluppo dell'economia europea agli inizi del XIII secolo e al consolidamento del potere imperiale. Nella scultura si manifesta come recupero del naturalismo classico con influenze gotiche, culminando nell'opera del Maestro di Naumburg.",
+    "historical_context": "Coincide con il regno di Federico II di Svevia, che riconobbe nella classicità un potenziale di legittimazione imperiale, come già avevano fatto le rinascenze carolingia e ottoniana.",
+    "parent_id": "gotico-tedesco",
+    "key_innovations": [
+      "scultura naturalistica equestre (Cavaliere di Bamberga)",
+      "ritrattistica idealizzata",
+      "conservazione della policromia"
+    ]
+  },
+  {
+    "id": "gotico-italiano",
+    "name": "Gotico italiano (temperato)",
+    "type": "corrente",
+    "year_start": 1228,
+    "year_end": 1400,
+    "regions": [
+      "Italia",
+      "Italia centrale",
+      "Toscana",
+      "Lazio",
+      "Umbria",
+      "Veneto",
+      "Emilia-Romagna",
+      "Campania"
+    ],
+    "summary": "Versione 'temperata' del Gotico francese sviluppatasi in Italia, frutto dell'innesto di elementi gotici su un substrato saldamente romanico. Si caratterizza per un'identità poliedrica: religioso e laico, imperiale e comunale, settentrionale e meridionale. Evita di accentuare lo slancio verticale e la vocazione ornamentale tipici del Gotico d'Oltralpe.",
+    "historical_context": "Il Gotico italiano si sviluppa in un'epoca di affermazione dei comuni e delle signorie, con la crescita del ceto mercantile e la moltiplicazione delle committenze laiche. Il successo degli ordini mendicanti (francescani e domenicani) promuove una nuova produzione artistica narrativa e concreta. La sconfitta degli Svevi da parte di Carlo d'Angiò (1268) rafforza il papato e rilancia le commissioni romane.",
+    "parent_id": "gotico",
+    "key_innovations": [
+      "Gotico civile nei palazzi comunali",
+      "scultura di Nicola e Giovanni Pisano",
+      "sintesi tra classicismo e naturalismo gotico",
+      "architettura degli ordini mendicanti",
+      "sviluppo dell'affresco in cicli di ampio respiro",
+      "pittura su tavola come complemento dell'affresco",
+      "abbandono progressivo dei modelli bizantini",
+      "approccio narrativo e naturalistico alla figura umana",
+      "prospettiva empirica e illusionismo spaziale",
+      "pittura a soggetto civile",
+      "prospettiva architettonica",
+      "naturalismo delle figure",
+      "cangiantismo cromatico",
+      "polittico a pannelli multipli"
+    ]
+  },
+  {
+    "id": "gotico-senese",
+    "name": "Scuola senese trecentesca",
+    "type": "scuola",
+    "year_start": 1270,
+    "year_end": 1350,
+    "regions": [
+      "Siena",
+      "Toscana"
+    ],
+    "summary": "La scuola senese del Trecento si distingue per la raffinata eleganza lineare, la ricchezza cromatica con largo uso dell'oro e dei pigmenti preziosi (lapislazzulo), e per una definizione bidimensionale delle figure in contrasto con il plasticismo giottesco. Duccio, Simone Martini e i Lorenzetti ne sono i massimi esponenti.",
+    "historical_context": "Siena è acerrima nemica di Firenze: nonostante l'ostilità fra i due Comuni, le scuole pittoriche senese e fiorentina comunicano tra loro. Il Governo dei Nove, organo politico borghese, è il principale committente delle opere pubbliche senesi.",
+    "parent_id": "gotico-italiano",
+    "key_innovations": [
+      "linearismo elegante di derivazione gotico-francese",
+      "uso dell'oro punzonato e a pastiglia",
+      "polittico monumentale bifronte",
+      "pittura civile allegorica"
+    ]
+  },
+  {
+    "id": "decorated-english-gothic",
+    "name": "Decorated English Gothic",
+    "type": "scuola",
+    "year_start": 1280,
+    "year_end": 1350,
+    "regions": [
+      "Inghilterra"
+    ],
+    "summary": "Seconda fase del Gotico inglese, sviluppatasi dal XIV secolo. Si caratterizza per la crescente complessità delle volte a ogiva che assumono forme a stella con l'aumento delle nervature. L'abbazia di Westminster ne è un esempio emblematico.",
+    "historical_context": "Si sviluppa in un periodo di consolidamento della monarchia inglese e di crescita economica. L'abbazia di Westminster a Londra, avviata nel 1245, rappresenta uno dei massimi esempi.",
+    "parent_id": "gotico-inglese",
+    "key_innovations": [
+      "volte a tiercerons",
+      "volte a stella",
+      "uso di stacchi cromatici fra membrature e muratura"
+    ]
+  },
+  {
+    "id": "trecento-italiano",
+    "name": "Trecento italiano",
+    "type": "corrente",
+    "year_start": 1300,
+    "year_end": 1400,
+    "regions": [
+      "Italia",
+      "Toscana",
+      "Veneto",
+      "Lazio",
+      "Campania"
+    ],
+    "summary": "Il XIV secolo italiano è dominato da Giotto e dalla sua rivoluzione naturalistica. La pittura si emancipa dai modelli bizantini puntando sulla volumetria, la profondità spaziale e l'espressività psicologica. L'arte giottesca si diffonde in tutta Italia, influenzando generazioni successive.",
+    "historical_context": "Il Trecento è segnato dalla cattività avignonese del papato (1313-1377), dalle signorie (Visconti a Milano, Angioini a Napoli), dalla crescita delle città-stato toscane. Giotto ottiene commissioni in tutta la penisola, dalla corte angioina napoletana ai Visconti milanesi.",
+    "parent_id": "gotico-italiano",
+    "key_innovations": [
+      "cicli affrescati narrativi",
+      "cappella privata come spazio artistico totale",
+      "polittico come format pittorico",
+      "trompe-l'oeil",
+      "prospettiva empirica convergente"
+    ]
+  },
+  {
+    "id": "scuola-giottesca-veneta",
+    "name": "Scuola giottesca veneta",
+    "type": "scuola",
+    "year_start": 1330,
+    "year_end": 1390,
+    "regions": [
+      "Padova",
+      "Veneto"
+    ],
+    "summary": "A Padova la lezione di Giotto viene assimilata da pittori attivi presso la corte dei da Carrara. Guariento di Arpo, Giusto de' Menabuoi e Altichiero reinterpretano il modello giottesco inserendo stilemi veneziani e tardogotici.",
+    "historical_context": "I da Carrara, signori di Padova, sono i principali committenti. La scuola padovana assorbe influssi sia dalla tradizione fiorentina sia dalle correnti artistiche del Gotico d'Oltralpe che si diffondono nel Nord Italia.",
+    "parent_id": "gotico-italiano",
+    "key_innovations": [
+      "fusione giottismo e stilemi veneti",
+      "cicli pittorici monumentali nei battisteri e negli oratori",
+      "preziosismo cromatico tardogotico"
+    ]
+  },
+  {
+    "id": "tardogotico",
+    "name": "Tardogotico",
+    "type": "corrente",
+    "year_start": 1350,
+    "year_end": 1500,
+    "regions": [
+      "Europa",
+      "Italia",
+      "Francia",
+      "Fiandre",
+      "Germania",
+      "Spagna",
+      "Inghilterra"
+    ],
+    "summary": "Fase finale del Gotico che si diffonde dalla seconda metà del XIV ai primi decenni del XV secolo. Convive con l'avvio dell'Umanesimo e poi del Rinascimento, protraendosi in Europa centrale e settentrionale fino al XVI secolo. Caratterizzato da figure esili e slanciate, linea flessuosa, cromie luminose e grande attenzione al dettaglio.",
+    "historical_context": "Il periodo è segnato dalla crisi del papato avignonese, dalle grandi epidemie di peste, dalla centralità delle corti principesche e dall'emergere della classe mercantile. L'arte risponde alle esigenze di rappresentatività e prestigio delle corti europee, sviluppando un linguaggio comune internazionale veicolato da rapporti diplomatici e commerciali.",
+    "parent_id": "gotico",
+    "key_innovations": [
+      "internazionalizzazione dello stile",
+      "attenzione al dettaglio naturalistico",
+      "sviluppo delle arti minori (miniatura, arazzo, oreficeria)",
+      "figure esili e slanciate con linea flessuosa",
+      "cromie trasparenti e luminose"
+    ]
+  },
+  {
+    "id": "gotico-cortese",
+    "name": "Gotico cortese (Gotico internazionale)",
+    "type": "corrente",
+    "year_start": 1370,
+    "year_end": 1450,
+    "regions": [
+      "Francia",
+      "Italia",
+      "Borgogna",
+      "Fiandre",
+      "Italia settentrionale"
+    ],
+    "summary": "Definizione che evidenzia il legame con le corti principesche e la produzione di manufatti preziosi (reliquiari, libri d'ore, arazzi, cassoni nuziali, tarocchi, gioielli). L'arte era utilizzata dai nuovi principi per affermare il proprio status e legittimare il potere.",
+    "historical_context": "La richiesta di lusso delle corti comportò un forte sviluppo della produzione di oggetti preziosi destinati ai corredi nuziali e agli scambi diplomatici. Firenze e i Comuni mercantili europei svilupparono varianti parallele con maggiore attenzione alla realtà naturale.",
+    "parent_id": "tardogotico",
+    "key_innovations": [
+      "arti del lusso per le corti",
+      "oggetti portabili e commerciabili",
+      "minuzie decorative di derivazione miniaturistica",
+      "linearismo elegante",
+      "miniatura di alta qualità",
+      "raffinatezza decorativa",
+      "approccio lenticolare al dettaglio"
+    ]
+  },
+  {
+    "id": "gotico-internazionale",
+    "name": "Gotico internazionale",
+    "type": "corrente",
+    "year_start": 1370,
+    "year_end": 1430,
+    "regions": [
+      "Europa"
+    ],
+    "summary": "Denominazione che sottolinea la diffusione capillare del nuovo stile in tutta Europa secondo forme simili o identiche. La circolazione avveniva grazie ai rapporti dinastici tra le corti e ai commerci. Le corti francesi di Digione, Bourges e Parigi erano i principali poli.",
+    "historical_context": "La Francia era polo di attrazione culturale imprescindibile, con la presenza della sede papale ad Avignone. I principati europei erano legati ai centri di potere francesi. I commerci e i matrimoni principeschi favorivano la circolazione di opere d'arte e artisti.",
+    "parent_id": "tardogotico",
+    "key_innovations": [
+      "unificazione stilistica europea",
+      "circolazione di artisti tra corti",
+      "sviluppo dell'arte cortese e del lusso"
+    ]
+  },
+  {
+    "id": "gotico-fiorito",
+    "name": "Gotico fiorito",
+    "type": "corrente",
+    "year_start": 1380,
+    "year_end": 1480,
+    "regions": [
+      "Europa settentrionale",
+      "Fiandre",
+      "Inghilterra"
+    ],
+    "summary": "Denominazione che evidenzia le caratteristiche formali di un'arte basata sul lusso e sull'ornamentazione esasperata, ispirata a elementi vegetali stilizzati. Il marcato verticalismo è suggerito da pinnacoli, guglie, edicole e torricini; la linea è sinuosa e flessuosa.",
+    "historical_context": "Si sviluppa soprattutto nell'architettura delle Fiandre e dell'Inghilterra, dove persiste fino al XVI secolo. Detto anche 'Flamboyant' in Francia per le linee dei costoloni e delle finestre ogivali che si innalzano come fiammate.",
+    "parent_id": "tardogotico",
+    "key_innovations": [
+      "verticalismo esasperato",
+      "decorazione vegetale stilizzata",
+      "linea fiammeggiante nelle finestre ogivali"
+    ]
+  },
+  {
+    "id": "quattrocento",
+    "name": "Quattrocento",
+    "type": "corrente",
+    "year_start": 1400,
+    "year_end": 1500,
+    "regions": [
+      "Emilia",
+      "Firenze",
+      "Italia",
+      "Lombardia",
+      "Marche",
+      "Padova",
+      "Roma",
+      "Toscana",
+      "Umbria",
+      "Veneto"
+    ],
+    "summary": "Il XV secolo è l'età dell'Umanesimo: la cultura classica greco-romana viene riscoperta e reinterpretata come modello per le arti, la letteratura e la filosofia. Firenze è il principale centro propulsivo, con le famiglie Medici come grandi mecenati. Si sviluppano la prospettiva geometrica, lo studio anatomico e la centralità della figura umana.",
+    "historical_context": "L'Italia è frammentata in stati regionali spesso in conflitto: ducato di Milano, repubblica di Venezia, Stato Pontificio, regno di Napoli, signorie minori. La pace di Lodi (1454) garantisce quarant'anni di relativo equilibrio. Lorenzo de' Medici diventa l'arbitro culturale della penisola fino alla sua morte nel 1492.",
+    "parent_id": "rinascimento",
+    "key_innovations": [
+      "prospettiva lineare",
+      "modulo geometrico in architettura",
+      "primo nudo eroico dopo l'antichita",
+      "terracotta invetriata",
+      "monumento equestre laico",
+      "sacra conversazione",
+      "prospettiva geometrica e aerea",
+      "studio anatomico dal vero",
+      "mecenatismo come strumento politico",
+      "integrazione tra arte e cultura neoplatonica",
+      "diffusione del linguaggio artistico fiorentino",
+      "prospettiva lineare matematica",
+      "recupero dell'antico",
+      "centralità della figura umana",
+      "trattati d'arte teorici",
+      "architettura basata su moduli e proporzioni"
+    ]
+  },
+  {
+    "id": "quattrocento-fiammingo",
+    "name": "Ars nova fiammingo-borgognona",
+    "type": "scuola",
+    "year_start": 1400,
+    "year_end": 1500,
+    "regions": [
+      "Fiandre",
+      "Borgogna",
+      "Brabante"
+    ],
+    "summary": "Corrente pittorica nata nelle Fiandre e in Borgogna nel XV secolo, caratterizzata dall'analisi minuziosa della realtà, dall'uso della pittura a olio, dalla resa illusionistica della luce e da una profonda spiritualità di matrice devozionale. Si sviluppa in stretto legame con il mecenatismo di Filippo III il Buono e si diffonde in tutta Europa.",
+    "historical_context": "Il ducato di Borgogna, sotto Filippo III il Buono (1419-1467), espande la propria influenza sulle Fiandre, creando un florido centro economico e culturale con città come Bruges, Gand e Bruxelles. Il riavvicinamento politico con i Valois dal 1435 favorisce la diffusione dello stile fiammingo in Francia.",
+    "parent_id": "gotico-cortese",
+    "key_innovations": [
+      "pittura a olio su vasta scala",
+      "rappresentazione analitica della realtà",
+      "prospettiva empirica",
+      "luce come elemento unificante",
+      "sviluppo del ritratto borghese",
+      "simbolismo degli oggetti quotidiani"
+    ]
+  },
+  {
+    "id": "rinascimento",
+    "name": "Rinascimento",
+    "type": "epoca",
+    "year_start": 1400,
+    "year_end": 1600,
+    "regions": [
+      "Italia",
+      "Europa"
+    ],
+    "summary": "Grande stagione culturale e artistica italiana ed europea, caratterizzata dal recupero dei modelli classici, dalla prospettiva lineare, dalla ricerca delle proporzioni ideali e dal naturalismo. Trova il suo culmine nell'opera di Leonardo, Raffaello e Michelangelo.",
+    "historical_context": "Fiorisce nell'Italia dei comuni e delle signorie, si diffonde in tutta Europa grazie ai commerci e alle stampe. Le guerre d'Italia e il Sacco di Roma (1527) segnano una svolta verso il Manierismo.",
+    "parent_id": null,
+    "key_innovations": [
+      "prospettiva lineare",
+      "studio anatomico",
+      "architettura a modulo",
+      "pittura ad affresco e su tavola",
+      "Anatomia scientifica",
+      "Classicismo formale",
+      "Pittura ad olio",
+      "proporzioni classiche",
+      "naturalismo",
+      "umanesimo"
+    ]
+  },
+  {
+    "id": "umanesimo-fiorentino",
+    "name": "Umanesimo fiorentino",
+    "type": "scuola",
+    "year_start": 1400,
+    "year_end": 1500,
+    "regions": [
+      "Firenze",
+      "Italia"
+    ],
+    "summary": "Movimento culturale nato a Firenze nel primo Quattrocento che pone al centro l'uomo e il recupero dell'antichità classica. Nell'arte visiva si traduce nella codifica della prospettiva lineare, nello studio dell'anatomia, nel recupero dei modelli scultorei antichi e in un nuovo rapporto razionale con lo spazio.",
+    "historical_context": "Firenze, dopo la crisi della peste nera del 1348 e le lotte civili culminate con il tumulto dei Ciompi (1378), conosce una significativa ripresa economica nell'ultimo scorcio del XIV secolo. L'affermazione politica della classe mercantile promuove grandi opere pubbliche come occasione di celebrazione civica.",
+    "parent_id": "quattrocento",
+    "key_innovations": [
+      "prospettiva lineare",
+      "studio anatomico del corpo umano",
+      "recupero dell'antichità classica",
+      "storiografia artistica",
+      "rilievo schiacciato (stiacciato)",
+      "centralita dell'uomo",
+      "studio dell'antico",
+      "prospettiva come scienza",
+      "trattati teorici sull'arte"
+    ]
+  },
+  {
+    "id": "arte-tedesca-quattrocento",
+    "name": "Arte tedesca del Quattrocento",
+    "type": "scuola",
+    "year_start": 1420,
+    "year_end": 1500,
+    "regions": [
+      "Germania",
+      "Austria",
+      "Svizzera",
+      "Alsazia",
+      "Tirolo"
+    ],
+    "summary": "Corrente artistica dell'area tedesca nel XV secolo che fonde influssi fiamminghi e italiani su un substrato tardogotico locale. Il policentrismo politico favorisce linguaggi differenziati, con eccellenze nella pittura e nell'incisione.",
+    "historical_context": "Il Sacro Romano Impero è frammentato in principati formalmente dipendenti dal potere centrale ma de facto autonomi, che competono tra loro sviluppando centri artistici vivaci soprattutto in Alsazia e nel Tirolo.",
+    "parent_id": "rinasc-nordico",
+    "key_innovations": [
+      "sintesi tra gotico locale e influenze fiammingo-italiane",
+      "sviluppo dell'incisione",
+      "prospettiva di ascendenza italiana",
+      "espressività dei sentimenti"
+    ]
+  },
+  {
+    "id": "rinascimento-fiorentino",
+    "name": "Rinascimento fiorentino",
+    "type": "scuola",
+    "year_start": 1430,
+    "year_end": 1500,
+    "regions": [
+      "Toscana",
+      "Firenze"
+    ],
+    "summary": "La Firenze medicea è il laboratorio del Rinascimento italiano: le botteghe di Pollaiolo, Verrocchio e Botticelli elaborano un linguaggio artistico fondato sul disegno, la prospettiva e lo studio dell'antico. La cultura neoplatonica permea le grandi opere allegoriche.",
+    "historical_context": "Lorenzo de' Medici governa Firenze dal 1469 al 1492, creando una corte di artisti e intellettuali neoplatonici. La congiura dei Pazzi (1478) rafforza il suo potere. Dopo la sua morte e l'esperienza savonaroliana, la repubblica soderini avvia nuove commissioni pubbliche.",
+    "parent_id": "quattrocento",
+    "key_innovations": [
+      "dinamismo anatomico e linearismo (Pollaiolo)",
+      "sfumato e prospettiva aerea (Leonardo)",
+      "iconografie neoplatoniche (Botticelli)",
+      "busto-ritratto femminile con mani (Verrocchio)"
+    ]
+  },
+  {
+    "id": "scuola-veneziana",
+    "name": "Scuola veneziana",
+    "type": "scuola",
+    "year_start": 1450,
+    "year_end": 1580,
+    "regions": [
+      "Veneto"
+    ],
+    "summary": "Tradizione pittorica veneziana caratterizzata dalla supremazia del colore sul disegno, dalla luce atmosferica e dalla pittura tonale. Nasce con i Bellini, trova il suo apice in Giorgione e Tiziano.",
+    "historical_context": "Si sviluppa nella ricca Repubblica di Venezia, aperta ai commerci con il Nord Europa e con l'Oriente. L'influsso fiammingo, veicolato da Antonello da Messina, è determinante per l'adozione della pittura ad olio.",
+    "parent_id": "rinascimento-maturo-italia-settentrionale",
+    "key_innovations": [
+      "Tonalismo",
+      "Pittura a olio con velature sovrapposte",
+      "Paesaggio come protagonista",
+      "Cromatismo caldo e luminoso"
+    ]
+  },
+  {
+    "id": "sforzesco",
+    "name": "Periodo sforzesco",
+    "type": "scuola",
+    "year_start": 1450,
+    "year_end": 1499,
+    "regions": [
+      "Milano",
+      "Lombardia"
+    ],
+    "summary": "Il ducato di Milano sotto gli Sforza è uno dei centri culturali più vivaci d'Italia. Francesco Sforza e poi Ludovico il Moro promuovono grandi cantieri architettonici e artistici, attrando artisti da tutta la penisola, incluso Leonardo da Vinci.",
+    "historical_context": "Gli Sforza, di origini condottieristiche, cercano legittimità culturale attraverso il mecenatismo. La corte milanese compete con Firenze, Mantova e Urbino per la supremazia culturale. La caduta del ducato nel 1499 segue l'invasione francese di Carlo VIII.",
+    "parent_id": "umanesimo-lombardo",
+    "key_innovations": [
+      "urbanistica monumentale isolata dal tessuto medievale",
+      "integrazione di artisti e ingegneri alla corte"
+    ]
+  },
+  {
+    "id": "umanesimo-lombardo",
+    "name": "Umanesimo lombardo",
+    "type": "scuola",
+    "year_start": 1450,
+    "year_end": 1500,
+    "regions": [
+      "Lombardia",
+      "Milano",
+      "Pavia",
+      "Bergamo"
+    ],
+    "summary": "La cultura artistica lombarda del XV secolo si caratterizza per la fusione tra la tradizione decorativa gotica locale e il nuovo linguaggio rinascimentale fiorentino. La committenza sforzesca promuove un gusto eterogeneo che valorizza la ricchezza ornamentale.",
+    "historical_context": "Il ducato di Milano sotto gli Sforza (Francesco, Galeazzo Maria, Ludovico il Moro) è una delle corti più potenti d'Italia. L'arrivo di artisti toscani come Filarete e poi Leonardo favorisce l'incontro tra tradizioni diverse.",
+    "parent_id": "quattrocento",
+    "key_innovations": [
+      "fusione di gotico e rinascimentale",
+      "ricca decorazione plastica e cromatica delle facciate",
+      "policromia marmorea nella scultura architettonica"
+    ]
+  },
+  {
+    "id": "rinascimento-maturo",
+    "name": "Rinascimento maturo",
+    "type": "corrente",
+    "year_start": 1490,
+    "year_end": 1527,
+    "regions": [
+      "Italia",
+      "Roma",
+      "Firenze",
+      "Milano",
+      "Italia centrale",
+      "Italia settentrionale"
+    ],
+    "summary": "Fase culminante del Rinascimento italiano, caratterizzata da una sintesi armoniosa tra classicità antica e valori cristiani. I grandi maestri — Bramante, Raffaello, Michelangelo — operano principalmente tra Milano, Firenze e Roma, producendo capolavori di straordinaria complessità formale e concettuale. Il periodo si chiude simbolicamente con il Sacco di Roma del 1527.",
+    "historical_context": "L'Italia è divisa tra potenze regionali (Stato della Chiesa, Ducato di Milano, Repubblica fiorentina, Venezia, Napoli) continuamente in conflitto. Papa Giulio II della Rovere e Leone X Medici sono i principali mecenati romani. La stagione si conclude con il Sacco di Roma del 1527, operato dai lanzichenecchi al servizio di Carlo V d'Asburgo.",
+    "parent_id": "rinascimento",
+    "key_innovations": [
+      "sfumato e prospettiva aerea leonardesca",
+      "studio sistematico delle emozioni",
+      "monumentalità classica",
+      "policentrismo artistico italiano",
+      "Sintesi armoniosa tra classicità e spiritualità cristiana",
+      "Sviluppo della pianta centrale in architettura",
+      "Uso monumentale del nudo scultoreo",
+      "Tecnica dell'affresco a grande scala",
+      "Illusionismo prospettico in architettura",
+      "Concezione unitaria dello spazio architettonico"
+    ]
+  },
+  {
+    "id": "rinascimento-maturo-italia-settentrionale",
+    "name": "Rinascimento maturo nell'Italia settentrionale",
+    "type": "scuola",
+    "year_start": 1490,
+    "year_end": 1550,
+    "regions": [
+      "Veneto",
+      "Lombardia",
+      "Emilia-Romagna",
+      "Marche"
+    ],
+    "summary": "Fase di piena maturazione del Rinascimento nelle regioni settentrionali italiane, caratterizzata dal tonalismo veneziano, dalla diffusione dell'influenza leonardesca in Lombardia e dallo sviluppo di centri artistici autonomi come Brescia, Bergamo, Parma e Cremona. Protagonisti principali sono Giorgione, Tiziano, Dürer, Lorenzo Lotto, Bramantino e Correggio.",
+    "historical_context": "Il periodo è segnato dalle guerre d'Italia (1494-1559): la Repubblica di Venezia si espande sulla terraferma e subisce la sconfitta di Agnadello (1509) per mano della Lega di Cambrai; il Ducato di Milano cambia più volte di mano tra Sforza, Francia e Asburgo. La Riforma protestante di Lutero (1517) genera inquietudine religiosa che si riflette nell'arte devozionale di Brescia e Bergamo.",
+    "parent_id": "rinascimento-maturo",
+    "key_innovations": [
+      "Pittura tonale o tonalismo: colore come mezzo principale, sfumatura dei contorni, effetti atmosferici",
+      "Tecnica ad olio su tela come standard per la grande pittura veneziana",
+      "Dissoluzione delle forme nella tarda produzione tizianesca",
+      "Sfondato illusionistico nelle cupole (Correggio)",
+      "Ritratto psicologico realistico (Lotto, Moroni)"
+    ]
+  },
+  {
+    "id": "primo-manierismo-fiorentino",
+    "name": "Primo Manierismo fiorentino",
+    "type": "scuola",
+    "year_start": 1510,
+    "year_end": 1530,
+    "regions": [
+      "Toscana"
+    ],
+    "summary": "Prima fase manierista che si apre a Firenze negli anni dieci del Cinquecento, quando la crisi dei valori rinascimentali spinge verso nuove formule espressive anticlassiche. Ruota attorno alla 'scuola della Santissima Annunziata' con Andrea del Sarto, Pontormo e Rosso Fiorentino.",
+    "historical_context": "La fine della repubblica fiorentina (1512) e l'elezione di Leone X de' Medici (1513) segnano il contesto politico. Il ritorno di Michelangelo a Firenze è uno stimolo artistico fondamentale.",
+    "parent_id": "manierismo",
+    "key_innovations": [
+      "linguaggio anticlassico",
+      "colori intensi e dissonanti",
+      "abbandono della prospettiva razionale"
+    ]
+  },
+  {
+    "id": "manierismo",
+    "name": "Manierismo (Tardo Rinascimento)",
+    "type": "corrente",
+    "year_start": 1520,
+    "year_end": 1600,
+    "regions": [
+      "Italia",
+      "Europa",
+      "Francia",
+      "Spagna",
+      "Austria",
+      "Boemia"
+    ],
+    "summary": "Corrente artistica nata intorno al 1520 tra Roma e Firenze come reazione alle certezze del classicismo rinascimentale. Si caratterizza per la distorsione delle proporzioni, i colori acidi e cangianti, la complessità compositiva e iconografica, l'anticlassicismo e l'antinaturalismo. Chiamata anche 'Tardo Rinascimento', si diffonde in tutta Europa fino al 1590 circa.",
+    "historical_context": "Si sviluppa nel clima destabilizzante del Sacco di Roma (1527), che disperde gli artisti attivi nella città papale verso altre corti. Il pontificato di Clemente VII de' Medici è il catalizzatore iniziale. La diffusione internazionale è favorita dalle Guerre d'Italia e dalle corti europee che accolgono artisti italiani.",
+    "parent_id": "rinascimento",
+    "key_innovations": [
+      "Figura serpentinata",
+      "Colori cangianti antinaturalistici",
+      "Spazio illusionistico totale",
+      "Anticlassicismo consapevole",
+      "Complessità iconografica",
+      "distorsione proporzionale",
+      "colori acidi e cangianti",
+      "spazio destabilizzante",
+      "posa a serpentina",
+      "iconografie complesse e intellettualistiche",
+      "figura vista da più punti di vista"
+    ]
+  },
+  {
+    "id": "stile-clementino",
+    "name": "Stile clementino",
+    "type": "corrente",
+    "year_start": 1523,
+    "year_end": 1527,
+    "regions": [
+      "Roma"
+    ],
+    "summary": "Fase artistica romana sotto il pontificato di Clemente VII de' Medici (1523-1527), caratterizzata da un sofisticato linguaggio formale che fonde l'eredità di Raffaello con le invenzioni di Michelangelo. Vi partecipano Giulio Romano, Perin del Vaga, Rosso Fiorentino, Parmigianino e Sebastiano del Piombo.",
+    "historical_context": "Il pontificato di Clemente VII segna un momento di grande fermento artistico romano, interrotto dal Sacco del 1527 che disperse gli artisti della corte papale.",
+    "parent_id": "manierismo",
+    "key_innovations": [
+      "fusione eredità raffaellesca e michelangiolesca",
+      "sofisticazione formale"
+    ]
+  },
+  {
+    "id": "controriforma",
+    "name": "Controriforma (Arte della Controriforma)",
+    "type": "corrente",
+    "year_start": 1545,
+    "year_end": 1600,
+    "regions": [
+      "Italia",
+      "Spagna",
+      "Europa cattolica"
+    ],
+    "summary": "Indirizzo artistico promosso dalla Chiesa di Roma in risposta alla Riforma protestante. Il Concilio di Trento (1545-1563) raccomanda chiarezza narrativa, correttezza dottrinale e decenza nei soggetti religiosi. La chiesa del Gesù di Vignola diviene il prototipo dell'edificio sacro controriformato.",
+    "historical_context": "In risposta al protestantesimo e all'iconoclastia, la Chiesa cattolica definisce al Concilio di Trento le linee guida per l'arte religiosa. I modelli teorici e stilistici principali vengono elaborati a Roma e nella Milano dei cardinali Carlo e Federico Borromeo.",
+    "parent_id": "manierismo",
+    "key_innovations": [
+      "navata unica per la predicazione",
+      "chiarezza narrativa",
+      "esaltazione dell'Eucarestia",
+      "arte come strumento didattico e propagandistico"
+    ]
+  }
+]

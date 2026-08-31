@@ -1,0 +1,975 @@
+[
+ {
+  "id": "madonna-di-san-luca-rusuti",
+  "title": "Madonna di San Luca (Filippo Rusuti)",
+  "artists": [
+   "Filippo Rusuti"
+  ],
+  "city": "Roma",
+  "date_text": "ca. 1296",
+  "year_start": 1290,
+  "year_end": 1300,
+  "current_period_id": "duecento-italiano"
+ },
+ {
+  "id": "battistero-lateranense-roma",
+  "title": "Battistero Lateranense",
+  "artists": [],
+  "city": "Roma",
+  "date_text": "ca. 315-330",
+  "year_start": 315,
+  "year_end": 330,
+  "current_period_id": "arte-paleocristiana"
+ },
+ {
+  "id": "addizione-borsiana",
+  "title": "Addizione Borsiana",
+  "artists": [
+   "borso-deste-committente"
+  ],
+  "city": "Ferrara",
+  "date_text": "1450-1471",
+  "year_start": 1450,
+  "year_end": 1471,
+  "current_period_id": null
+ },
+ {
+  "id": "addizione-erculea",
+  "title": "Addizione Erculea",
+  "artists": [
+   "ercole-i-deste-committente"
+  ],
+  "city": "Ferrara",
+  "date_text": "dal 1492",
+  "year_start": 1492,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "adorazione-dei-magi",
+  "title": "Adorazione dei Magi",
+  "artists": [
+   "cosme-tura"
+  ],
+  "city": "Cambridge",
+  "date_text": "",
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "Adorazione-del-sacro-legno",
+  "title": "Adorazione del sacro Legno",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Arezzo",
+  "date_text": null,
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "adorazione-pastori-el-greco",
+  "title": "Adorazione dei pastori",
+  "artists": [
+   "el-greco"
+  ],
+  "city": "Madrid",
+  "date_text": "1612-1614",
+  "year_start": 1612,
+  "year_end": 1614,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "affreschi-della-cappella-garganelli",
+  "title": "Affreschi della cappella Garganelli",
+  "artists": [
+   "ercole-de-roberti"
+  ],
+  "city": "Bologna",
+  "date_text": "1487-1490",
+  "year_start": 1487,
+  "year_end": 1490,
+  "current_period_id": null
+ },
+ {
+  "id": "allegoria-dell'amore",
+  "title": "Allegoria dell'Amore",
+  "artists": [
+   "Agnolo Bronzino"
+  ],
+  "city": "Londra",
+  "date_text": "1545",
+  "year_start": 1545,
+  "year_end": null,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "allegoria-sacra",
+  "title": "Allegoria sacra",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Firenze",
+  "date_text": "1490-1500 circa",
+  "year_start": 1490,
+  "year_end": 1500,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "altare-isenheim",
+  "title": "Altare di Isenheim (Crocifissione)",
+  "artists": [
+   "grunewald"
+  ],
+  "city": "Colmar",
+  "date_text": "1512-1516",
+  "year_start": 1512,
+  "year_end": 1516,
+  "current_period_id": "rinasc-nordico"
+ },
+ {
+  "id": "ambasciatori-holbein",
+  "title": "Gli Ambasciatori",
+  "artists": [
+   "holbein-giovane"
+  ],
+  "city": "Londra",
+  "date_text": "1533",
+  "year_start": 1533,
+  "year_end": 1533,
+  "current_period_id": "rinasc-nordico"
+ },
+ {
+  "id": "Annunciazione-PieroDF",
+  "title": "Annunciazione",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Arezzo",
+  "date_text": null,
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "arcangelo-gabriele",
+  "title": "Arcangelo Gabriele",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Venezia",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "arco-trionfale-di-castel-nuovo",
+  "title": "Arco trionfale di Castel Nuovo",
+  "artists": [
+   "pietro-di-martino-da-milano-e-francesco-laurana",
+   "francesco-laurana",
+   "pietro-di-martino-da-milano"
+  ],
+  "city": "Napoli",
+  "date_text": "1452-1471",
+  "year_start": 1452,
+  "year_end": 1471,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "assunzione-perugino-albertina",
+  "title": "Assunzione (studio)",
+  "artists": [
+   "Pietro Perugino"
+  ],
+  "city": "Vienna",
+  "date_text": "c. 1481",
+  "year_start": 1481,
+  "year_end": 1481,
+  "current_period_id": "rinascimento"
+ },
+ {
+  "id": "autoritratto-mascherone",
+  "title": "Autoritratto (mascherone)",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Mantova",
+  "date_text": "1465-1474",
+  "year_start": 1465,
+  "year_end": 1474,
+  "current_period_id": null
+ },
+ {
+  "id": "bartolomeo-roverella-tra-santi-maurelio-e-paolo",
+  "title": "Bartolomeo Roverella tra santi Maurelio e Paolo",
+  "artists": [
+   "cosme-tura"
+  ],
+  "city": "Roma",
+  "date_text": "",
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "Battaglia-di-Eraclio-e-Cosroe",
+  "title": "Battaglia di Eraclio e Cosroe",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Arezzo",
+  "date_text": "1458-1466",
+  "year_start": 1458,
+  "year_end": 1466,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "bibbia-di-gutenberg",
+  "title": "Bibbia di Gutenberg",
+  "artists": [
+   "johannes-gutenberg"
+  ],
+  "city": "Magonza",
+  "date_text": "1454-1455",
+  "year_start": 1454,
+  "year_end": 1455,
+  "current_period_id": null
+ },
+ {
+  "id": "busto-di-eleonora-o-isabella-daragona",
+  "title": "Busto di Eleonora (o Isabella) d'Aragona",
+  "artists": [
+   "francesco-laurana"
+  ],
+  "city": "Palermo",
+  "date_text": "1487-1488",
+  "year_start": 1487,
+  "year_end": 1488,
+  "current_period_id": null
+ },
+ {
+  "id": "ca-vendramin-calergi",
+  "title": "Ca' Vendramin Calergi",
+  "artists": [
+   "mauro-codussi"
+  ],
+  "city": "Venezia",
+  "date_text": "dal 1481",
+  "year_start": 1481,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "calliope-o-erato",
+  "title": "Calliope (o Erato)",
+  "artists": [
+   "cosme-tura"
+  ],
+  "city": "Londra",
+  "date_text": "1455-1460 circa",
+  "year_start": 1455,
+  "year_end": 1460,
+  "current_period_id": "scuola-ferrarese"
+ },
+ {
+  "id": "camera-duchessa-etampes",
+  "title": "Camera della duchessa d'Etampes",
+  "artists": [
+   "primaticcio"
+  ],
+  "city": "Fontainebleau",
+  "date_text": "1541-1544",
+  "year_start": 1541,
+  "year_end": 1544,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "candelabra-e-angoloni-del-palazzo-dei-diamanti",
+  "title": "Candelabra e angoloni del Palazzo dei Diamanti",
+  "artists": [
+   "gabriele-frisoni"
+  ],
+  "city": "Ferrara",
+  "date_text": "1692",
+  "year_start": 1692,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "canestra-frutta-caravaggio",
+  "title": "La canestra di frutta",
+  "artists": [
+   "caravaggio"
+  ],
+  "city": "Milano",
+  "date_text": "c. 1599",
+  "year_start": 1599,
+  "year_end": 1599,
+  "current_period_id": "barocco"
+ },
+ {
+  "id": "cappella-contarelli",
+  "title": "Cappella Contarelli (insieme)",
+  "artists": [
+   "cavalier-darpino",
+   "caravaggio",
+   "jacques-cobaert",
+   "pompeo-ferrucci"
+  ],
+  "city": "Roma",
+  "date_text": "1591-1602",
+  "year_start": 1591,
+  "year_end": 1602,
+  "current_period_id": "barocco"
+ },
+ {
+  "id": "cappella-del-cardinale-del-portogallo",
+  "title": "Cappella del Cardinale del Portogallo",
+  "artists": [
+   "Antonio Rossellino"
+  ],
+  "city": "Firenze",
+  "date_text": "1461-1466",
+  "year_start": 1461,
+  "year_end": 1466,
+  "current_period_id": null
+ },
+ {
+  "id": "cappella-piccolomini",
+  "title": "Cappella Piccolomini",
+  "artists": [
+   "benedetto-da-maiano-antonio-rossellino",
+   "Antonio Rossellino",
+   "benedetto-da-maiano"
+  ],
+  "city": "Napoli",
+  "date_text": "1475-1490",
+  "year_start": 1475,
+  "year_end": 1490,
+  "current_period_id": null
+ },
+ {
+  "id": "castello-sforzesco",
+  "title": "Castello Sforzesco",
+  "artists": [
+   "filarete-guiniforte-solari"
+  ],
+  "city": "Milano",
+  "date_text": "1450-1466",
+  "year_start": 1450,
+  "year_end": 1466,
+  "current_period_id": null
+ },
+ {
+  "id": "chiesa-di-san-michele-in-isola",
+  "title": "Chiesa di San Michele in Isola",
+  "artists": [
+   "mauro-codussi"
+  ],
+  "city": "Venezia",
+  "date_text": "1468-1479 circa",
+  "year_start": 1468,
+  "year_end": 1479,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "chiesa-di-santa-maria-dei-miracoli",
+  "title": "Chiesa di Santa Maria dei Miracoli",
+  "artists": [
+   "pietro-solari-lombardo",
+   "pietro-solari"
+  ],
+  "city": "Venezia",
+  "date_text": "1481-1489",
+  "year_start": 1481,
+  "year_end": 1489,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "ciclo-dei-mesi-salone-dei-mesi",
+  "title": "Salone dei Mesi (Palazzo Schifanoia)",
+  "artists": [
+   "francesco-del-cossa-ercole-de-roberti",
+   "ercole-de-roberti",
+   "francesco-del-cossa"
+  ],
+  "city": "Ferrara",
+  "date_text": "1467-1470",
+  "year_start": 1467,
+  "year_end": 1470,
+  "current_period_id": "scuola-ferrarese"
+ },
+ {
+  "id": "ciclo-delle-storie-di-santorsola",
+  "title": "Ciclo delle Storie di sant'Orsola",
+  "artists": [
+   "vittore-carpaccio"
+  ],
+  "city": "Venezia",
+  "date_text": "1490-1497",
+  "year_start": 1490,
+  "year_end": 1497,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "ciclo-di-dieci-teleri-dedicato-ai-miracoli-della-vera-croce",
+  "title": "Ciclo di dieci teleri dedicato ai Miracoli della vera Croce",
+  "artists": [
+   "gentile-bellini"
+  ],
+  "city": "Venezia",
+  "date_text": "dal 1493",
+  "year_start": 1493,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "cimasa-del-pala-di-pesaro-cristo-morto-sorretto-dalla-vergine",
+  "title": "Cimasa del Pala di Pesaro (Cristo morto sorretto dalla Vergine)",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Pesaro",
+  "date_text": "1470-1475",
+  "year_start": 1470,
+  "year_end": 1475,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "circonscisione",
+  "title": "Circonscisione",
+  "artists": [
+   "cosme-tura"
+  ],
+  "city": "Boston",
+  "date_text": "",
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "compianto-sul-cristo-morto",
+  "title": "Compianto sul Cristo morto",
+  "artists": [
+   "niccolo-dellarca"
+  ],
+  "city": "Bologna",
+  "date_text": "1463-1490",
+  "year_start": 1463,
+  "year_end": 1490,
+  "current_period_id": null
+ },
+ {
+  "id": "corteggio-della-duchessa-barbara-di-brandeburgo",
+  "title": "Corteggio della duchessa Barbara di Brandeburgo (camera degli sposi)",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Mantova",
+  "date_text": "1465-1474",
+  "year_start": 1465,
+  "year_end": 1474,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "cristo-nellorto-versione-mantegnesca",
+  "title": "Orazione di Gesù nell'orto degli ulivi",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Londra",
+  "date_text": "circa 1458-1460",
+  "year_start": 1458,
+  "year_end": 1460,
+  "current_period_id": null
+ },
+ {
+  "id": "crocifissione",
+  "title": "Crocifissione",
+  "artists": [
+   "Antonello da Messina"
+  ],
+  "city": "Londra",
+  "date_text": "1475",
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "decorazione-della-camera-degli-sposi",
+  "title": "Decorazione della Camera degli Sposi",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Mantova",
+  "date_text": "1465-1474",
+  "year_start": 1465,
+  "year_end": 1474,
+  "current_period_id": null
+ },
+ {
+  "id": "decorazione-dello-studiolo-di-belriguardo",
+  "title": "Decorazione dello Studiolo di Belriguardo",
+  "artists": [
+   "angelo-maccagnino-cosme-tura"
+  ],
+  "city": "Ferrara",
+  "date_text": "1447-1463",
+  "year_start": 1447,
+  "year_end": 1463,
+  "current_period_id": null
+ },
+ {
+  "id": "deposizione-barocci",
+  "title": "Deposizione dalla croce",
+  "artists": [
+   "barocci"
+  ],
+  "city": "Perugia",
+  "date_text": "1569",
+  "year_start": 1569,
+  "year_end": 1569,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "deposizione-dalla-croce-e-compianto-sul-corpo-di-cristo",
+  "title": "Deposizione dalla croce e Compianto sul corpo di Cristo",
+  "artists": [
+   "jacopo-bellini"
+  ],
+  "city": "Parigi",
+  "date_text": "1460-1470",
+  "year_start": 1460,
+  "year_end": 1470,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "el-escorial",
+  "title": "Monastero di San Lorenzo (El Escorial)",
+  "artists": [
+   "toledo",
+   "herrera"
+  ],
+  "city": "El Escorial",
+  "date_text": "1563-1586",
+  "year_start": 1563,
+  "year_end": 1586,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "elefante-trionfale",
+  "title": "Elefante trionfale, tributo allegorico a Francesco I",
+  "artists": [
+   "Rosso Fiorentino",
+   "primaticcio"
+  ],
+  "city": "Fontainebleau",
+  "date_text": "1534-1540",
+  "year_start": 1534,
+  "year_end": 1540,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "ercole-bivio-carracci",
+  "title": "Ercole al bivio",
+  "artists": [
+   "annibale-carracci"
+  ],
+  "city": "Napoli",
+  "date_text": "1596",
+  "year_start": 1596,
+  "year_end": 1596,
+  "current_period_id": "barocco"
+ },
+ {
+  "id": "ercole-onfale",
+  "title": "Ercole e Onfale",
+  "artists": [
+   "spranger"
+  ],
+  "city": "Vienna",
+  "date_text": "1585 circa",
+  "year_start": 1585,
+  "year_end": 1585,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "facciata-della-cattedrale-di-bergamo",
+  "title": "Facciata della Cattedrale di Bergamo",
+  "artists": [
+   "filarete-guiniforte-solari"
+  ],
+  "city": "Bergamo",
+  "date_text": "1456-1459 (progetto Filarete); completamento fino al 1481",
+  "year_start": 1456,
+  "year_end": 1481,
+  "current_period_id": null
+ },
+ {
+  "id": "fontainebleau-porte-doree",
+  "title": "Porte Dorée, Castello di Fontainebleau",
+  "artists": [
+   "le-breton"
+  ],
+  "city": "Fontainebleau",
+  "date_text": "dal 1528",
+  "year_start": 1528,
+  "year_end": 1540,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "fuga-in-egitto",
+  "title": "Fuga in Egitto",
+  "artists": [
+   "cosme-tura"
+  ],
+  "city": "New York",
+  "date_text": "",
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "galleria-francesco-i",
+  "title": "Galleria di Francesco I",
+  "artists": [
+   "Rosso Fiorentino",
+   "primaticcio"
+  ],
+  "city": "Fontainebleau",
+  "date_text": "1534-1540 circa",
+  "year_start": 1534,
+  "year_end": 1540,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "gloria-trinita-cambiaso",
+  "title": "Gloria della Trinità",
+  "artists": [
+   "cambiaso"
+  ],
+  "city": "El Escorial",
+  "date_text": "1584-1585",
+  "year_start": 1584,
+  "year_end": 1585,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "grammatica-greca",
+  "title": "Grammatica greca",
+  "artists": [
+   "aldo-manuzio"
+  ],
+  "city": "Venezia",
+  "date_text": "1495",
+  "year_start": 1495,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "grande-macelleria-carracci",
+  "title": "Grande macelleria",
+  "artists": [
+   "annibale-carracci"
+  ],
+  "city": "Fort Worth",
+  "date_text": "1582 circa",
+  "year_start": 1582,
+  "year_end": 1582,
+  "current_period_id": "barocco"
+ },
+ {
+  "id": "Immacolata-concezione-crivelli",
+  "title": "Immacolata Concezione",
+  "artists": [
+   "carlo-crivelli"
+  ],
+  "city": "Londra",
+  "date_text": "1492",
+  "year_start": 1492,
+  "year_end": null,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "incontro-di-orsola-ed-ereo-e-partenza-dei-pellegrini",
+  "title": "Incontro di Orsola ed Ereo e partenza dei pellegrini",
+  "artists": [
+   "vittore-carpaccio"
+  ],
+  "city": "Venezia",
+  "date_text": "1490-1497",
+  "year_start": 1490,
+  "year_end": 1497,
+  "current_period_id": "quattrocento-veneziano"
+ },
+ {
+  "id": "la-processione-in-piazza-san-marco",
+  "title": "La Processione in piazza San Marco",
+  "artists": [
+   "gentile-bellini"
+  ],
+  "city": "Venezia",
+  "date_text": "1496",
+  "year_start": 1496,
+  "year_end": null,
+  "current_period_id": "quattrocento-veneziano"
+ },
+ {
+  "id": "lannunciazione",
+  "title": "L'Annunciazione",
+  "artists": [
+   "cosme-tura"
+  ],
+  "city": null,
+  "date_text": "",
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "lorazione-nellorto-o-cristo-nellorto",
+  "title": "L'Orazione nell'orto (o Cristo nell'orto)",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Londra",
+  "date_text": "circa 1465-1470",
+  "year_start": 1465,
+  "year_end": 1470,
+  "current_period_id": "quattrocento-veneziano"
+ },
+ {
+  "id": "macelleria-aertsen",
+  "title": "Macelleria",
+  "artists": [
+   "pieter-aertsen"
+  ],
+  "city": "Uppsala",
+  "date_text": "1551",
+  "year_start": 1551,
+  "year_end": 1551,
+  "current_period_id": "rinasc-nordico"
+ },
+ {
+  "id": "maddalena",
+  "title": "Maddalena",
+  "artists": [
+   "ercole-de-roberti"
+  ],
+  "city": "Bologna",
+  "date_text": "1478-1486",
+  "year_start": 1478,
+  "year_end": 1486,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "maddalena-penitente",
+  "title": "Maddalena penitente",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Firenze",
+  "date_text": "1453-1455",
+  "year_start": 1453,
+  "year_end": 1455,
+  "current_period_id": null
+ },
+ {
+  "id": "madonna-col-bambino-in-trono-con-angeli-musicanti-e-santi-pietro-e-caterina",
+  "title": "Madonna col Bambino in trono con angeli musicanti e santi Pietro e Caterina",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Venezia",
+  "date_text": "1505",
+  "year_start": 1505,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "madonna-con-il-bambino-benedicente",
+  "title": "Madonna con il Bambino benedicente",
+  "artists": [
+   "jacopo-bellini"
+  ],
+  "city": "Venezia",
+  "date_text": "1450 circa",
+  "year_start": 1450,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "madonna-del-ceroso",
+  "title": "Madonna del Ceroso",
+  "artists": [
+   "ambrogio-da-fossano-detto-il-bergognone"
+  ],
+  "city": "Milano",
+  "date_text": "1488-1494, tempera su tavola",
+  "year_start": 1488,
+  "year_end": 1494,
+  "current_period_id": null
+ },
+ {
+  "id": "madonna-del-cook",
+  "title": "La Madonna Cook",
+  "artists": [
+   "carlo-crivelli"
+  ],
+  "city": "Washington",
+  "date_text": "1470",
+  "year_start": 1470,
+  "year_end": 1470,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "madonna-del-prato",
+  "title": "Madonna del Prato",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Londra",
+  "date_text": "1500-1505 circa",
+  "year_start": 1500,
+  "year_end": 1505,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "madonna-in-trono-con-il-bambino-e-angeli",
+  "title": "Madonna in trono con il Bambino e angeli",
+  "artists": [
+   "cosme-tura"
+  ],
+  "city": "Londra",
+  "date_text": "",
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "martirio-di san-sebastino",
+  "title": "Martirio di San Sebastiano",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Vienna",
+  "date_text": "1459",
+  "year_start": 1459,
+  "year_end": 1459,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "martirio-e-trasporto-del-corpo-di-san-cristoforo",
+  "title": "Martirio e trasporto del corpo di san Cristoforo (cappella Ovetari)",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Padova",
+  "date_text": "1449-1455",
+  "year_start": 1449,
+  "year_end": 1455,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "martirio-rufina-seconda",
+  "title": "Martirio delle sante Rufina e Seconda (Quadro delle tre mani)",
+  "artists": [
+   "morazzone",
+   "cerano",
+   "procaccini-giulio"
+  ],
+  "city": "Milano",
+  "date_text": "1620-1624",
+  "year_start": 1620,
+  "year_end": 1624,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "martirio-san-matteo-caravaggio",
+  "title": "Martirio di San Matteo",
+  "artists": [
+   "caravaggio"
+  ],
+  "city": "Roma",
+  "date_text": "1599-1600",
+  "year_start": 1599,
+  "year_end": 1600,
+  "current_period_id": "barocco"
+ },
+ {
+  "id": "martirio-san-maurizio",
+  "title": "Martirio di san Maurizio",
+  "artists": [
+   "el-greco"
+  ],
+  "city": "El Escorial",
+  "date_text": "1580-1582",
+  "year_start": 1580,
+  "year_end": 1582,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "matteo-resuscita-figlio-re-etiopia-arpino",
+  "title": "Matteo resuscita il figlio del re d'Etiopia",
+  "artists": [
+   "cavalier-darpino"
+  ],
+  "city": "Roma",
+  "date_text": "1593 circa",
+  "year_start": 1593,
+  "year_end": 1593,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "medaglia-di-alfonso-daragona",
+  "title": "Medaglia di Alfonso d'Aragona",
+  "artists": [
+   "Pisanello"
+  ],
+  "city": "Parigi",
+  "date_text": "1449",
+  "year_start": 1449,
+  "year_end": 1449,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "mese-di-settembre",
+  "title": "Mese di Settembre (Salone dei Mesi di Palazzo Schifanoia)",
+  "artists": [
+   "ercole-de-roberti"
+  ],
+  "city": "Ferrara",
+  "date_text": "1469-1470",
+  "year_start": 1469,
+  "year_end": 1470,
+  "current_period_id": "scuola-ferrarese"
+ },
+ {
+  "id": "mesi-di-aprile-salone-dei-mesi-di-palazzo-schifanoia",
+  "title": "Mese di Aprile (Salone dei Mesi di Palazzo Schifanoia)",
+  "artists": [
+   "francesco-del-cossa"
+  ],
+  "city": "Ferrara",
+  "date_text": "circa 1470",
+  "year_start": 1469,
+  "year_end": 1470,
+  "current_period_id": "scuola-ferrarese"
+ },
+ {
+  "id": "minerva-caccia-i-vizi-dal-giardino-delle-virtu",
+  "title": "Minerva caccia i Vizi dal giardino delle Virtù",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Parigi",
+  "date_text": "1499-1502 circa",
+  "year_start": 1499,
+  "year_end": 1502,
+  "current_period_id": "quattrocento"
+ }
+]

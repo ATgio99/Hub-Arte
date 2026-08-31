@@ -1,0 +1,974 @@
+[
+ {
+  "id": "decorazione-scultorea-san-geminiano-wiligelmo",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-wiligelmo",
+  "status": "nuova_scuola",
+  "note": "Sculture di Wiligelmo per il Duomo di Modena: con altre opere dello stesso cantiere (Lanfranco, Maestro delle Metope, Maestro di Artù) forma un gruppo coerente non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "scuola-di-wiligelmo",
+   "name": "Scuola di Wiligelmo (Duomo di Modena)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1099,
+   "year_end": 1184,
+   "region": "Modena, Emilia-Romagna"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "enoch-elia-epigrafe-modena",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-wiligelmo",
+  "status": "nuova_scuola",
+  "note": "Rilievo di Wiligelmo per il Duomo di Modena: appartiene al medesimo gruppo di bottega.",
+  "new_school": {
+   "suggested_id": "scuola-di-wiligelmo",
+   "name": "Scuola di Wiligelmo (Duomo di Modena)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1099,
+   "year_end": 1184,
+   "region": "Modena, Emilia-Romagna"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "facciata-cattedrale-modena-lanfranco",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-wiligelmo",
+  "status": "nuova_scuola",
+  "note": "Facciata del Duomo di Modena, opera di Lanfranco: fa parte del medesimo cantiere di Wiligelmo.",
+  "new_school": {
+   "suggested_id": "scuola-di-wiligelmo",
+   "name": "Scuola di Wiligelmo (Duomo di Modena)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1099,
+   "year_end": 1184,
+   "region": "Modena, Emilia-Romagna"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "fianco-esterno-cattedrale-modena",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-wiligelmo",
+  "status": "nuova_scuola",
+  "note": "Fianco del Duomo di Modena, opera di Lanfranco: stesso cantiere di Wiligelmo.",
+  "new_school": {
+   "suggested_id": "scuola-di-wiligelmo",
+   "name": "Scuola di Wiligelmo (Duomo di Modena)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1099,
+   "year_end": 1184,
+   "region": "Modena, Emilia-Romagna"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "interno-cattedrale-modena-lanfranco",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-wiligelmo",
+  "status": "nuova_scuola",
+  "note": "Interno del Duomo di Modena, opera di Lanfranco: stesso cantiere di Wiligelmo.",
+  "new_school": {
+   "suggested_id": "scuola-di-wiligelmo",
+   "name": "Scuola di Wiligelmo (Duomo di Modena)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1099,
+   "year_end": 1184,
+   "region": "Modena, Emilia-Romagna"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "porta-dei-principi-modena",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-wiligelmo",
+  "status": "nuova_scuola",
+  "note": "Portale del Duomo di Modena, Maestro di San Geminiano: appartiene al gruppo di bottega wiligelmiano.",
+  "new_school": {
+   "suggested_id": "scuola-di-wiligelmo",
+   "name": "Scuola di Wiligelmo (Duomo di Modena)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1099,
+   "year_end": 1184,
+   "region": "Modena, Emilia-Romagna"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ambone-epistola-ravello",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Opera anonima di Ravello: nessuna scuola specifica per la Costiera amalfitana nell'albero, resta alla corrente romanico-italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "basilica-san-clemente-roma",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Edificio romano anonimo: nessuna scuola romana specifica nell'albero per l'architettura di questo periodo.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "basilica-santa-maria-cosmedin-roma",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Edificio romano anonimo: nessuna scuola specifica nell'albero, resta alla corrente romanico-italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedra-di-elia-bari",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-pugliese",
+  "status": "nuova_scuola",
+  "note": "Bottega del Maestro di Elia a Bari (San Nicola): con altre opere di Bari e Trani nel lotto forma un gruppo pugliese coerente non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "romanico-pugliese",
+   "name": "Romanico pugliese (Bari-Trani)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1105,
+   "year_end": 1178,
+   "region": "Bari, Trani (Puglia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "fonte-battesimale-renier-de-huy",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Opera isolata dell'arte mosana (Liegi): nessuna corrente/scuola dell'albero copre quest'area e non vi sono altre opere nel lotto per formarne una nuova.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "decorazione-sant-climent-taull",
+  "current_period_id": "arte-catalana",
+  "proposed_period_id": "arte-catalana",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella scuola di pittura catalana romanica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pulpito-san-giulio-orta",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Opera italiana (Piemonte, Lago d'Orta): nessuna scuola specifica esiste, ma la corrente romanico-italiano è più specifica del contenitore epoca generico.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "basilica-san-zeno-verona",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-maestro-niccolo",
+  "status": "nuova_scuola",
+  "note": "Basilica di San Zeno a Verona, cantiere di Maestro Niccolò: con altre opere veronesi dello stesso scultore nel lotto forma un gruppo non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "scuola-di-maestro-niccolo",
+   "name": "Scuola di Maestro Niccolò (Romanico veronese)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1120,
+   "year_end": 1150,
+   "region": "Verona, Veneto"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "basilica-san-zeno-verona-int",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-maestro-niccolo",
+  "status": "nuova_scuola",
+  "note": "Interno della basilica di San Zeno: stesso cantiere di Maestro Niccolò.",
+  "new_school": {
+   "suggested_id": "scuola-di-maestro-niccolo",
+   "name": "Scuola di Maestro Niccolò (Romanico veronese)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1120,
+   "year_end": 1150,
+   "region": "Verona, Veneto"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "capitelli-sainte-marie-madeleine-vezelay",
+  "current_period_id": "cluniacense",
+  "proposed_period_id": "cluniacense",
+  "status": "invariato",
+  "note": "Vézelay era priorato cluniacense: collocazione già corretta e specifica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "capitello-davide-golia-vezelay",
+  "current_period_id": "cluniacense",
+  "proposed_period_id": "cluniacense",
+  "status": "invariato",
+  "note": "Stessa motivazione degli altri capitelli di Vézelay: priorato cluniacense.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "capitello-mulino-mistico-vezelay",
+  "current_period_id": "cluniacense",
+  "proposed_period_id": "cluniacense",
+  "status": "invariato",
+  "note": "Stessa motivazione degli altri capitelli di Vézelay: priorato cluniacense.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-saint-lazare-autun",
+  "current_period_id": "romanico",
+  "proposed_period_id": "bottega-di-gislebertus",
+  "status": "nuova_scuola",
+  "note": "Cattedrale di Saint-Lazare ad Autun, sculture firmate Gislebertus: con le altre opere autunesi del lotto forma un gruppo di bottega non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "bottega-di-gislebertus",
+   "name": "Bottega di Gislebertus (Autun)",
+   "parent_id": "romanico",
+   "year_start": 1120,
+   "year_end": 1150,
+   "region": "Autun, Borgogna (Francia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "plutei-san-ciriaco-ancona",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Opera italiana (Ancona, Marche) del Maestro Leonardo: nessuna scuola specifica ma la corrente romanico-italiano è più specifica del contenitore epoca.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "portale-bronzeo-san-zeno",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-maestro-niccolo",
+  "status": "nuova_scuola",
+  "note": "Portale bronzeo di San Zeno a Verona: stesso cantiere di Maestro Niccolò.",
+  "new_school": {
+   "suggested_id": "scuola-di-maestro-niccolo",
+   "name": "Scuola di Maestro Niccolò (Romanico veronese)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1120,
+   "year_end": 1150,
+   "region": "Verona, Veneto"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "portale-san-zeno-verona",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-maestro-niccolo",
+  "status": "nuova_scuola",
+  "note": "Portale d'ingresso di San Zeno, opera di Maestro Niccolò.",
+  "new_school": {
+   "suggested_id": "scuola-di-maestro-niccolo",
+   "name": "Scuola di Maestro Niccolò (Romanico veronese)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1120,
+   "year_end": 1150,
+   "region": "Verona, Veneto"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "portale-sud-saint-pierre-moissac",
+  "current_period_id": "romanico",
+  "proposed_period_id": "cluniacense",
+  "status": "assegnato",
+  "note": "Abbazia di Moissac, priorato aggregato a Cluny: la corrente cluniacense è più specifica e coerente con l'appartenenza all'ordine.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "profeta-geremia-moissac",
+  "current_period_id": "romanico",
+  "proposed_period_id": "cluniacense",
+  "status": "assegnato",
+  "note": "Particolare del portale di Moissac, priorato cluniacense.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "vegliardi-moissac",
+  "current_period_id": "romanico",
+  "proposed_period_id": "cluniacense",
+  "status": "assegnato",
+  "note": "Particolare del portale di Moissac, priorato cluniacense.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "mosaico-absidale-san-clemente",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Mosaico romano anonimo: nessuna scuola più specifica nell'albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "abbazia-fontenay-borgogna",
+  "current_period_id": "romanico",
+  "proposed_period_id": "cistercense",
+  "status": "assegnato",
+  "note": "Abbazia di Fontenay (Borgogna), fondazione cistercense corrispondente alla voce gemella già presente nel lotto (chiesa-abbaziale-fontenay, già in cistercense); il campo città 'Firenze' appare un refuso.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "aquila-di-suger",
+  "current_period_id": "gotico-francese",
+  "proposed_period_id": "cantiere-di-saint-denis",
+  "status": "nuova_scuola",
+  "note": "Opera del cantiere di Saint-Denis promosso dall'abate Suger: con le altre due opere di Saint-Denis nel lotto forma un gruppo coerente non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "cantiere-di-saint-denis",
+   "name": "Cantiere di Saint-Denis (Abate Suger)",
+   "parent_id": "gotico-francese",
+   "year_start": 1130,
+   "year_end": 1151,
+   "region": "Parigi, Île-de-France (Francia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "cappella-palatina-palermo",
+  "current_period_id": "romanico-normanno-siciliano",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella scuola romanico-normanno-siciliano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-santa-maria-ammiraglio-martorana",
+  "current_period_id": "romanico-normanno-siciliano",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella scuola romanico-normanno-siciliano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "metope-maestro-delle-metope",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-wiligelmo",
+  "status": "nuova_scuola",
+  "note": "Metope del Duomo di Modena: bottega collegata al cantiere di Wiligelmo.",
+  "new_school": {
+   "suggested_id": "scuola-di-wiligelmo",
+   "name": "Scuola di Wiligelmo (Duomo di Modena)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1099,
+   "year_end": 1184,
+   "region": "Modena, Emilia-Romagna"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "soffitto-muqarnas-cappella-palatina",
+  "current_period_id": "romanico-normanno-siciliano",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella scuola romanico-normanno-siciliano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-cefalù",
+  "current_period_id": "romanico-normanno-siciliano",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella scuola romanico-normanno-siciliano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-abbaziale-saint-denis",
+  "current_period_id": "gotico-francese",
+  "proposed_period_id": "cantiere-di-saint-denis",
+  "status": "nuova_scuola",
+  "note": "Chiesa abbaziale promossa dall'abate Suger, monumento fondativo del gotico: appartiene al gruppo del cantiere di Saint-Denis.",
+  "new_school": {
+   "suggested_id": "cantiere-di-saint-denis",
+   "name": "Cantiere di Saint-Denis (Abate Suger)",
+   "parent_id": "gotico-francese",
+   "year_start": 1130,
+   "year_end": 1151,
+   "region": "Parigi, Île-de-France (Francia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-san-giovanni-eremiti-palermo",
+  "current_period_id": "romanico-normanno-siciliano",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella scuola romanico-normanno-siciliano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "basilica-santa-maria-trastevere-roma",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Edificio romano anonimo: nessuna scuola più specifica nell'albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "san-zeno-benedice-milizie-verona",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-maestro-niccolo",
+  "status": "nuova_scuola",
+  "note": "Lunetta del portale di San Zeno, opera di Maestro Niccolò.",
+  "new_school": {
+   "suggested_id": "scuola-di-maestro-niccolo",
+   "name": "Scuola di Maestro Niccolò (Romanico veronese)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1120,
+   "year_end": 1150,
+   "region": "Verona, Veneto"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-abbaziale-fontenay",
+  "current_period_id": "cistercense",
+  "proposed_period_id": "cistercense",
+  "status": "invariato",
+  "note": "Già correttamente collocata (abbazia cistercense di Fontenay).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cristo-sol-invictus-san-nicola-bari",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-pugliese",
+  "status": "nuova_scuola",
+  "note": "Basilica di San Nicola a Bari, bottega del Maestro di Elia: gruppo pugliese coerente con altre opere di Bari e Trani.",
+  "new_school": {
+   "suggested_id": "romanico-pugliese",
+   "name": "Romanico pugliese (Bari-Trani)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1105,
+   "year_end": 1178,
+   "region": "Bari, Trani (Puglia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "eva-paradiso-terrestre-autun",
+  "current_period_id": "romanico",
+  "proposed_period_id": "bottega-di-gislebertus",
+  "status": "nuova_scuola",
+  "note": "Scultura firmata Gislebertus, cattedrale di Autun.",
+  "new_school": {
+   "suggested_id": "bottega-di-gislebertus",
+   "name": "Bottega di Gislebertus (Autun)",
+   "parent_id": "romanico",
+   "year_start": 1120,
+   "year_end": 1150,
+   "region": "Autun, Borgogna (Francia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "giudizio-universale-autun",
+  "current_period_id": "romanico",
+  "proposed_period_id": "bottega-di-gislebertus",
+  "status": "nuova_scuola",
+  "note": "Timpano firmato Gislebertus, cattedrale di Autun.",
+  "new_school": {
+   "suggested_id": "bottega-di-gislebertus",
+   "name": "Bottega di Gislebertus (Autun)",
+   "parent_id": "romanico",
+   "year_start": 1120,
+   "year_end": 1150,
+   "region": "Autun, Borgogna (Francia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "mosaici-cappella-palatina-programma",
+  "current_period_id": "romanico-normanno-siciliano",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "invariato",
+  "note": "Ciclo musivo della Cappella Palatina: già correttamente collocato nel programma decorativo del monumento normanno.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "porta-della-pescheria-modena",
+  "current_period_id": "romanico",
+  "proposed_period_id": "scuola-di-wiligelmo",
+  "status": "nuova_scuola",
+  "note": "Portale del Duomo di Modena, Maestro di Artù: seguace della bottega di Wiligelmo.",
+  "new_school": {
+   "suggested_id": "scuola-di-wiligelmo",
+   "name": "Scuola di Wiligelmo (Duomo di Modena)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1099,
+   "year_end": 1184,
+   "region": "Modena, Emilia-Romagna"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "portale-saint-lazare-autun",
+  "current_period_id": "romanico",
+  "proposed_period_id": "bottega-di-gislebertus",
+  "status": "nuova_scuola",
+  "note": "Portale firmato Gislebertus, cattedrale di Autun.",
+  "new_school": {
+   "suggested_id": "bottega-di-gislebertus",
+   "name": "Bottega di Gislebertus (Autun)",
+   "parent_id": "romanico",
+   "year_start": 1120,
+   "year_end": 1150,
+   "region": "Autun, Borgogna (Francia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "protiro-portale-san-nicola-bari",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-pugliese",
+  "status": "nuova_scuola",
+  "note": "Basilica di San Nicola a Bari, bottega del Maestro di Elia: gruppo pugliese.",
+  "new_school": {
+   "suggested_id": "romanico-pugliese",
+   "name": "Romanico pugliese (Bari-Trani)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1105,
+   "year_end": 1178,
+   "region": "Bari, Trani (Puglia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "sculture-saint-lazare-autun-gislebertus",
+  "current_period_id": "romanico",
+  "proposed_period_id": "bottega-di-gislebertus",
+  "status": "nuova_scuola",
+  "note": "Complesso decorativo firmato Gislebertus, cattedrale di Autun.",
+  "new_school": {
+   "suggested_id": "bottega-di-gislebertus",
+   "name": "Bottega di Gislebertus (Autun)",
+   "parent_id": "romanico",
+   "year_start": 1120,
+   "year_end": 1150,
+   "region": "Autun, Borgogna (Francia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "cristo-pantocratore-cappella-palatina",
+  "current_period_id": "arte-bizantina",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "assegnato",
+  "note": "Mosaico della Cappella Palatina: coerente con la classificazione dell'edificio e del suo ciclo musivo, già in romanico-normanno-siciliano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "vetrate-abside-saint-denis",
+  "current_period_id": "gotico-francese",
+  "proposed_period_id": "cantiere-di-saint-denis",
+  "status": "nuova_scuola",
+  "note": "Vetrate del cantiere di Saint-Denis promosso da Suger.",
+  "new_school": {
+   "suggested_id": "cantiere-di-saint-denis",
+   "name": "Cantiere di Saint-Denis (Abate Suger)",
+   "parent_id": "gotico-francese",
+   "year_start": 1130,
+   "year_end": 1151,
+   "region": "Parigi, Île-de-France (Francia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "re-e-regine-di-israele-chartres",
+  "current_period_id": "gotico",
+  "proposed_period_id": "gotico-francese",
+  "status": "assegnato",
+  "note": "Portale Reale della cattedrale di Chartres: dall'epoca generica 'gotico' alla corrente più specifica 'gotico-francese'; nessuna bottega identificabile per una scuola dedicata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "sara-abramo-agar-chartres",
+  "current_period_id": "gotico",
+  "proposed_period_id": "gotico-francese",
+  "status": "assegnato",
+  "note": "Portale Reale della cattedrale di Chartres: dall'epoca generica 'gotico' alla corrente più specifica 'gotico-francese'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cristo-pantocratore-cefalù",
+  "current_period_id": "arte-bizantina",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "assegnato",
+  "note": "Mosaico della cattedrale di Cefalù: coerente con la classificazione dell'edificio (cattedrale-cefalù), già in romanico-normanno-siciliano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "facciata-saint-gilles-du-gard",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Opera isolata del romanico provenzale: non coperta da alcuna corrente/scuola dell'albero e senza altre opere nel lotto per formarne una nuova.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "battistero-san-giovanni-battista-pisa",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-pisano",
+  "status": "nuova_scuola",
+  "note": "Battistero di Pisa, complesso di Piazza dei Miracoli: con le altre opere pisane del lotto (torre campanaria, pulpito di Maestro Guglielmo) forma un gruppo coerente non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "romanico-pisano",
+   "name": "Romanico pisano (Piazza dei Miracoli)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1152,
+   "year_end": 1350,
+   "region": "Pisa (Toscana)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "porta-bronzea-novgorod",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Bottega di Magdeburgo per la cattedrale di Novgorod: nessuna corrente/scuola dell'albero copre l'area tedesco-russa e non vi sono altre opere nel lotto per formarne una nuova.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-san-cataldo-palermo",
+  "current_period_id": "romanico-normanno-siciliano",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella scuola romanico-normanno-siciliano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ambone-moscufo-nicodemo",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-italiano",
+  "status": "assegnato",
+  "note": "Opera italiana (Moscufo, Abruzzo): nessuna scuola specifica ma la corrente romanico-italiano è più specifica del contenitore epoca.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pulpito-maestro-guglielmo-pisa",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-pisano",
+  "status": "nuova_scuola",
+  "note": "Pulpito di Maestro Guglielmo, realizzato per il Duomo di Pisa e poi trasferito a Cagliari nel 1312: appartiene per autore e stile al gruppo pisano.",
+  "new_school": {
+   "suggested_id": "romanico-pisano",
+   "name": "Romanico pisano (Piazza dei Miracoli)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1152,
+   "year_end": 1350,
+   "region": "Pisa (Toscana)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ambone-guarna-salerno",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Opera anonima di Salerno: nessuna scuola specifica nell'albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-notre-dame-parigi",
+  "current_period_id": "gotico-francese",
+  "proposed_period_id": "gotico-francese",
+  "status": "invariato",
+  "note": "Cantiere distinto da quello di Saint-Denis (nessun legame con Suger): resta alla corrente gotico-francese, già la più specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-abbaziale-fossanova",
+  "current_period_id": "gotico-cistercense",
+  "proposed_period_id": "gotico-cistercense",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella corrente gotico-cistercense.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "portico-della-gloria-santiago",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico",
+  "status": "invariato",
+  "note": "Opera isolata del romanico galiziano (Maestro Matteo): l'unica scuola spagnola dell'albero (arte-catalana) riguarda solo la Catalogna e non copre la Galizia; nessuna altra opera nel lotto per formare una nuova scuola.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "gesta-theodorici-miniatura-cassiodoro",
+  "current_period_id": "eta-carolingia",
+  "proposed_period_id": "romanico",
+  "status": "assegnato",
+  "note": "La datazione indicata (1170-1185 circa) è incompatibile con l'età carolingia (768-900); in assenza di informazioni su origine e bottega si ricolloca nell'epoca romanico, coerente con gli anni indicati.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-santa-maria-nuova-monreale",
+  "current_period_id": "romanico-normanno-siciliano",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella scuola romanico-normanno-siciliano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cupola-ascensione-san-marco",
+  "current_period_id": "arte-bizantina",
+  "proposed_period_id": "scuola-marciana-veneziana",
+  "status": "nuova_scuola",
+  "note": "Mosaico della Basilica di San Marco a Venezia: il lotto 04 ha già proposto una 'scuola marciana veneziana' per lo stesso monumento (arte-bizantina); si conferma e si estende l'intervallo iniziale al 1172 per includere quest'opera.",
+  "new_school": {
+   "suggested_id": "scuola-marciana-veneziana",
+   "name": "Scuola marciana (decorazione della Basilica di San Marco, Venezia)",
+   "parent_id": "arte-bizantina",
+   "year_start": 1172,
+   "year_end": 1350,
+   "region": "Venezia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "mosaici-basilica-san-marco-ciclo",
+  "current_period_id": "arte-bizantina",
+  "proposed_period_id": "scuola-marciana-veneziana",
+  "status": "nuova_scuola",
+  "note": "Ciclo musivo della Basilica di San Marco: appartiene al medesimo gruppo già proposto nel lotto 04 (scuola-marciana-veneziana).",
+  "new_school": {
+   "suggested_id": "scuola-marciana-veneziana",
+   "name": "Scuola marciana (decorazione della Basilica di San Marco, Venezia)",
+   "parent_id": "arte-bizantina",
+   "year_start": 1172,
+   "year_end": 1350,
+   "region": "Venezia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "deposizione-barisano-trani",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-pugliese",
+  "status": "nuova_scuola",
+  "note": "Portale del Duomo di Trani, Barisano da Trani: gruppo pugliese coerente con le opere di Bari nel lotto.",
+  "new_school": {
+   "suggested_id": "romanico-pugliese",
+   "name": "Romanico pugliese (Bari-Trani)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1105,
+   "year_end": 1178,
+   "region": "Bari, Trani (Puglia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "figura-santo-barisano-trani",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-pugliese",
+  "status": "nuova_scuola",
+  "note": "Portale del Duomo di Trani, Barisano da Trani: gruppo pugliese.",
+  "new_school": {
+   "suggested_id": "romanico-pugliese",
+   "name": "Romanico pugliese (Bari-Trani)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1105,
+   "year_end": 1178,
+   "region": "Bari, Trani (Puglia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "portale-barisano-trani",
+  "current_period_id": "romanico",
+  "proposed_period_id": "romanico-pugliese",
+  "status": "nuova_scuola",
+  "note": "Portale bronzeo di Barisano da Trani: gruppo pugliese.",
+  "new_school": {
+   "suggested_id": "romanico-pugliese",
+   "name": "Romanico pugliese (Bari-Trani)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1105,
+   "year_end": 1178,
+   "region": "Bari, Trani (Puglia)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "torre-campanaria-pisa",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-pisano",
+  "status": "nuova_scuola",
+  "note": "Torre di Pisa, complesso di Piazza dei Miracoli: gruppo pisano coerente con le altre opere del lotto.",
+  "new_school": {
+   "suggested_id": "romanico-pisano",
+   "name": "Romanico pisano (Piazza dei Miracoli)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1152,
+   "year_end": 1350,
+   "region": "Pisa (Toscana)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-di-canterbury-interno",
+  "current_period_id": "early-english-gothic",
+  "proposed_period_id": "early-english-gothic",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella scuola early-english-gothic.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pianta-cattedrale-canterbury",
+  "current_period_id": "early-english-gothic",
+  "proposed_period_id": "early-english-gothic",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella scuola early-english-gothic.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-di-strasburgo",
+  "current_period_id": "gotico-tedesco",
+  "proposed_period_id": "gotico-tedesco",
+  "status": "invariato",
+  "note": "Già alla corrente più specifica disponibile; nessuna scuola dedicata a Strasburgo nell'albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-sant-andrea-amalfi",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Opera isolata (Amalfi): nessuna scuola specifica per la Costiera amalfitana nell'albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "deposizione-di-cristo-antelami",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-antelami-parma",
+  "status": "nuova_scuola",
+  "note": "Opera firmata Benedetto Antelami a Parma (1178): il lotto 04 ha già proposto una 'bottega di Antelami a Parma' (1196-1230); si estende qui l'intervallo iniziale al 1178, anno di questa sua opera datata più antica.",
+  "new_school": {
+   "suggested_id": "bottega-antelami-parma",
+   "name": "Bottega di Benedetto Antelami (Parma)",
+   "parent_id": "gotico-italiano",
+   "year_start": 1178,
+   "year_end": 1230,
+   "region": "Parma, Emilia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "tre-marie-antelami",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-antelami-parma",
+  "status": "nuova_scuola",
+  "note": "Dettaglio della Deposizione di Antelami a Parma: appartiene al medesimo gruppo di bottega.",
+  "new_school": {
+   "suggested_id": "bottega-antelami-parma",
+   "name": "Bottega di Benedetto Antelami (Parma)",
+   "parent_id": "gotico-italiano",
+   "year_start": 1178,
+   "year_end": 1230,
+   "region": "Parma, Emilia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "belle-verriere-chartres",
+  "current_period_id": "gotico",
+  "proposed_period_id": "gotico-francese",
+  "status": "assegnato",
+  "note": "Vetrata della cattedrale di Chartres: dall'epoca generica 'gotico' alla corrente più specifica 'gotico-francese'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "candelabro-pasquale-san-paolo-fuori-le-mura",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "marmorari-romani",
+  "status": "nuova_scuola",
+  "note": "Candelabro pasquale della bottega dei Vassalletto, marmorari romani attivi a San Paolo fuori le Mura: con l'altra opera della stessa bottega nel lotto forma un gruppo non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "marmorari-romani",
+   "name": "Marmorari romani (Bottega dei Vassalletto)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1180,
+   "year_end": 1230,
+   "region": "Roma, Lazio"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "chiostro-san-paolo-fuori-le-mura",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "marmorari-romani",
+  "status": "nuova_scuola",
+  "note": "Chiostro di San Paolo fuori le Mura, bottega dei Vassalletto (Pietro e Jacopo).",
+  "new_school": {
+   "suggested_id": "marmorari-romani",
+   "name": "Marmorari romani (Bottega dei Vassalletto)",
+   "parent_id": "romanico-italiano",
+   "year_start": 1180,
+   "year_end": 1230,
+   "region": "Roma, Lazio"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "cristo-pantocratore-monreale",
+  "current_period_id": "arte-bizantina",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "assegnato",
+  "note": "Mosaico della cattedrale di Monreale: coerente con la classificazione dell'edificio e del ciclo musivo (già in romanico-normanno-siciliano).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "mosaici-navate-cattedrale-monreale",
+  "current_period_id": "romanico-normanno-siciliano",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "invariato",
+  "note": "Già correttamente collocata nella scuola romanico-normanno-siciliano.",
+  "new_school": null,
+  "alt_options": null
+ }
+]

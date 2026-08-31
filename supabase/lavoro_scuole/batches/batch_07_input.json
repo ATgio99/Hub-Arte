@@ -1,0 +1,959 @@
+[
+ {
+  "id": "mosaico-san-marco-venezia-uccello",
+  "title": "Mosaico con San Pietro (perduto)",
+  "artists": [
+   "Paolo Uccello"
+  ],
+  "city": "Venezia",
+  "date_text": "1425",
+  "year_start": 1425,
+  "year_end": 1425,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "porta-del-paradiso-ghiberti",
+  "title": "Porta del Paradiso (Porta Est del battistero)",
+  "artists": [
+   "Lorenzo Ghiberti"
+  ],
+  "city": "Firenze",
+  "date_text": "1425-1452",
+  "year_start": 1425,
+  "year_end": 1452,
+  "current_period_id": "umanesimo-fiorentino"
+ },
+ {
+  "id": "portale-maggiore-san-petronio-jacopo",
+  "title": "Portale maggiore della basilica di San Petronio",
+  "artists": [
+   "Jacopo della Quercia"
+  ],
+  "city": "Bologna",
+  "date_text": "1425-1438",
+  "year_start": 1425,
+  "year_end": 1438,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "storie-di-giuseppe-porta-del-paradiso",
+  "title": "Storie di Giuseppe (pannello della Porta del Paradiso)",
+  "artists": [
+   "Lorenzo Ghiberti"
+  ],
+  "city": "Firenze",
+  "date_text": "1425-1452",
+  "year_start": 1425,
+  "year_end": 1452,
+  "current_period_id": "umanesimo-fiorentino"
+ },
+ {
+  "id": "tentazione-adamo-eva-masolino",
+  "title": "Tentazione di Adamo ed Eva (peccato originale)",
+  "artists": [
+   "Masolino da Panicale"
+  ],
+  "city": "Firenze",
+  "date_text": "1425-1426",
+  "year_start": 1425,
+  "year_end": 1426,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "tentazione-di-adamo-ed-eva-jacopo",
+  "title": "La Tentazione di Adamo ed Eva (formella del portale di San Petronio)",
+  "artists": [
+   "Jacopo della Quercia"
+  ],
+  "city": "Bologna",
+  "date_text": "1425-1438",
+  "year_start": 1425,
+  "year_end": 1438,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "tributo-della-moneta",
+  "title": "Tributo della moneta",
+  "artists": [
+   "Masaccio"
+  ],
+  "city": "Firenze",
+  "date_text": "1425-1426",
+  "year_start": 1425,
+  "year_end": 1426,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "crocifissione-polittico-pisa",
+  "title": "Crocifissione (pannello superiore del Polittico di Pisa)",
+  "artists": [
+   "Masaccio"
+  ],
+  "city": "Napoli",
+  "date_text": "1426",
+  "year_start": 1426,
+  "year_end": 1426,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "madonna-bambino-trono-angeli-polittico-pisa",
+  "title": "Madonna col Bambino in trono fra quattro angeli (pannello centrale del Polittico di Pisa)",
+  "artists": [
+   "Masaccio"
+  ],
+  "city": "Londra",
+  "date_text": "1426",
+  "year_start": 1426,
+  "year_end": 1426,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "polittico-di-pisa",
+  "title": "Polittico di Pisa",
+  "artists": [
+   "Masaccio"
+  ],
+  "city": "disperso",
+  "date_text": "1426",
+  "year_start": 1426,
+  "year_end": 1426,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "trinita-masaccio",
+  "title": "Trinita",
+  "artists": [
+   "Masaccio"
+  ],
+  "city": "Firenze",
+  "date_text": "1426-1427",
+  "year_start": 1426,
+  "year_end": 1427,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "monumento-funebre-cardinale-brancacci",
+  "title": "Monumento funebre del cardinale Rinaldo Brancacci",
+  "artists": [
+   "Donatello",
+   "Michelozzo Michelozzi"
+  ],
+  "city": "Napoli",
+  "date_text": "1427-1428",
+  "year_start": 1427,
+  "year_end": 1428,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "santo-stefano-orsanmichele-ghiberti",
+  "title": "Santo Stefano",
+  "artists": [
+   "Lorenzo Ghiberti"
+  ],
+  "city": "Firenze",
+  "date_text": "1427-1428",
+  "year_start": 1427,
+  "year_end": 1428,
+  "current_period_id": "umanesimo-fiorentino"
+ },
+ {
+  "id": "storie-santa-caterina-masolino",
+  "title": "Storie di santa Caterina (cappella Branda Castiglioni)",
+  "artists": [
+   "Masolino da Panicale"
+  ],
+  "city": "Roma",
+  "date_text": "1427-1430",
+  "year_start": 1427,
+  "year_end": 1430,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "trittico-di-merode",
+  "title": "Trittico di Mérode",
+  "artists": [
+   "Robert Campin"
+  ],
+  "city": "New York",
+  "date_text": "1427-1428",
+  "year_start": 1427,
+  "year_end": 1428,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "cappella-pazzi",
+  "title": "Cappella Pazzi",
+  "artists": [
+   "Filippo Brunelleschi"
+  ],
+  "city": "Firenze",
+  "date_text": "dal 1430",
+  "year_start": 1430,
+  "year_end": 1461,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "salita-al-calvario-jaquerio",
+  "title": "Salita al Calvario",
+  "artists": [
+   "Giacomo Jaquerio"
+  ],
+  "city": "Ranverso",
+  "date_text": "1430 circa",
+  "year_start": 1430,
+  "year_end": 1430,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "cantoria-luca-della-robbia",
+  "title": "Cantoria",
+  "artists": [
+   "Luca della Robbia"
+  ],
+  "city": "Firenze",
+  "date_text": "1431-1438",
+  "year_start": 1431,
+  "year_end": 1438,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "cantoria-donatello",
+  "title": "Cantoria",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Firenze",
+  "date_text": "1433-1439",
+  "year_start": 1433,
+  "year_end": 1439,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "madonna-di-lucca",
+  "title": "Madonna di Lucca",
+  "artists": [
+   "Jan van Eyck"
+  ],
+  "city": "Francoforte sul Meno",
+  "date_text": "1433-1436",
+  "year_start": 1433,
+  "year_end": 1436,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "ritratto-d-uomo-col-turbante",
+  "title": "Ritratto d'uomo col turbante",
+  "artists": [
+   "Jan van Eyck"
+  ],
+  "city": "Londra",
+  "date_text": "1433",
+  "year_start": 1433,
+  "year_end": null,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "san-giorgio-principessa-pisanello",
+  "title": "San Giorgio e la principessa",
+  "artists": [
+   "Pisanello"
+  ],
+  "city": "Verona",
+  "date_text": "1433-1438",
+  "year_start": 1433,
+  "year_end": 1438,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "trittico-dell-annunciazione-rogier",
+  "title": "Trittico dell'Annunciazione",
+  "artists": [
+   "Rogier van der Weyden"
+  ],
+  "city": "Parigi",
+  "date_text": "1433-1435 circa",
+  "year_start": 1433,
+  "year_end": 1435,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "i-coniugi-arnolfini",
+  "title": "I coniugi Arnolfini",
+  "artists": [
+   "Jan van Eyck"
+  ],
+  "city": "Londra",
+  "date_text": "1434",
+  "year_start": 1434,
+  "year_end": 1434,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "madonna-del-cancelliere-rolin",
+  "title": "Madonna del cancelliere Rolin",
+  "artists": [
+   "Jan van Eyck"
+  ],
+  "city": "Parigi",
+  "date_text": "1434-1435",
+  "year_start": 1434,
+  "year_end": 1435,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "pala-di-annalena",
+  "title": "Pala di Annalena (Madonna col Bambino in trono e i santi Pietro Martire, Cosma, Damiano, Giovanni Evangelista, Lorenzo e Francesco)",
+  "artists": [
+   "Beato Angelico"
+  ],
+  "city": "Firenze",
+  "date_text": "1434-1435",
+  "year_start": 1434,
+  "year_end": 1435,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "tabernacolo-dei-linaioli",
+  "title": "Tabernacolo dei Linaioli",
+  "artists": [
+   "Beato Angelico"
+  ],
+  "city": "Firenze",
+  "date_text": "1434-1435",
+  "year_start": 1434,
+  "year_end": 1435,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "adorazione-magi-stefano-da-verona",
+  "title": "Adorazione dei Magi",
+  "artists": [
+   "Stefano da Verona"
+  ],
+  "city": null,
+  "date_text": "1435",
+  "year_start": 1435,
+  "year_end": 1435,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "annunciazione-cavalcanti",
+  "title": "Annunciazione (detta Cavalcanti)",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Firenze",
+  "date_text": "1435 circa",
+  "year_start": 1435,
+  "year_end": 1435,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "autoritratto-leon-battista-alberti",
+  "title": "Autoritratto di Leon Battista Alberti",
+  "artists": [
+   "Leon Battista Alberti"
+  ],
+  "city": "Washington D.C.",
+  "date_text": "1435 circa",
+  "year_start": 1435,
+  "year_end": 1435,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "banchetto-di-erode-masolino",
+  "title": "Banchetto di Erode",
+  "artists": [
+   "Masolino da Panicale"
+  ],
+  "city": "Castiglione Olona",
+  "date_text": "1435 circa",
+  "year_start": 1435,
+  "year_end": 1435,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "ritratto-di-giovane-donna-rogier",
+  "title": "Ritratto di giovane donna",
+  "artists": [
+   "Rogier van der Weyden"
+  ],
+  "city": "Berlino",
+  "date_text": "1435-1440",
+  "year_start": 1435,
+  "year_end": 1440,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "ritratto-di-principessa-pisanello",
+  "title": "Ritratto di principessa",
+  "artists": [
+   "Pisanello"
+  ],
+  "city": "Parigi",
+  "date_text": "1435-1449",
+  "year_start": 1435,
+  "year_end": 1449,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "visione-di-sant-eustachio-pisanello",
+  "title": "Visione di sant'Eustachio",
+  "artists": [
+   "Pisanello"
+  ],
+  "city": "Londra",
+  "date_text": "1435-1440",
+  "year_start": 1435,
+  "year_end": 1440,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "basilica-di-santo-spirito",
+  "title": "Basilica di Santo Spirito",
+  "artists": [
+   "Filippo Brunelleschi"
+  ],
+  "city": "Firenze",
+  "date_text": "dal 1444",
+  "year_start": 1436,
+  "year_end": 1490,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "battaglia-di-san-romano",
+  "title": "Battaglia di San Romano (trittico)",
+  "artists": [
+   "Paolo Uccello"
+  ],
+  "city": "disperso",
+  "date_text": "1436-1440 circa",
+  "year_start": 1436,
+  "year_end": 1440,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "biblioteca-san-marco",
+  "title": "Sala della biblioteca nel convento di San Marco",
+  "artists": [
+   "Michelozzo Michelozzi"
+  ],
+  "city": "Firenze",
+  "date_text": "1436-1444",
+  "year_start": 1436,
+  "year_end": 1444,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "convento-di-san-marco",
+  "title": "Convento domenicano di San Marco",
+  "artists": [
+   "Michelozzo Michelozzi"
+  ],
+  "city": "Firenze",
+  "date_text": "1436-1452",
+  "year_start": 1436,
+  "year_end": 1452,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "modello-ligneo-lanterna-brunelleschi",
+  "title": "Modello ligneo per la lanterna della cupola di Santa Maria del Fiore",
+  "artists": [
+   "Filippo Brunelleschi"
+  ],
+  "city": "Firenze",
+  "date_text": "1436",
+  "year_start": 1436,
+  "year_end": 1436,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "monumento-equestre-giovanni-acuto",
+  "title": "Monumento equestre a Giovanni Acuto (John Hawkwood)",
+  "artists": [
+   "Paolo Uccello"
+  ],
+  "city": "Firenze",
+  "date_text": "1436",
+  "year_start": 1436,
+  "year_end": 1436,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "storie-di-noe-chiostro-verde",
+  "title": "Storie di Noè: Diluvio e recessione delle acque / Sacrificio ed ebbrezza di Noe",
+  "artists": [
+   "Paolo Uccello"
+  ],
+  "city": "Firenze",
+  "date_text": "1436-1440 circa",
+  "year_start": 1436,
+  "year_end": 1440,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "battesimo-di-cristo",
+  "title": "Battesimo di Cristo",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Londra",
+  "date_text": "post 1437",
+  "year_start": 1437,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "cristo-deriso-beato-angelico",
+  "title": "Cristo deriso",
+  "artists": [
+   "Beato Angelico"
+  ],
+  "city": "Firenze",
+  "date_text": "1438-1446",
+  "year_start": 1438,
+  "year_end": 1446,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "deposizione-beato-angelico",
+  "title": "Deposizione di Cristo nel sepolcro",
+  "artists": [
+   "Beato Angelico"
+  ],
+  "city": "Monaco",
+  "date_text": "1438-1440",
+  "year_start": 1438,
+  "year_end": 1440,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "medaglia-giovanni-viii-paleologo-pisanello",
+  "title": "Medaglia di Giovanni VIII Paleologo",
+  "artists": [
+   "Pisanello"
+  ],
+  "city": "Firenze",
+  "date_text": "1438",
+  "year_start": 1438,
+  "year_end": 1438,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "porta-della-carta-palazzo-ducale-venezia",
+  "title": "Porta della Carta",
+  "artists": [
+   "Giovanni e Bartolomeo Bon"
+  ],
+  "city": "Venezia",
+  "date_text": "dal 1438",
+  "year_start": 1438,
+  "year_end": 1443,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "san-domenico-adorazione-crocifisso",
+  "title": "San Domenico in adorazione del Crocifisso",
+  "artists": [
+   "Beato Angelico"
+  ],
+  "city": "Firenze",
+  "date_text": "1438-1446",
+  "year_start": 1438,
+  "year_end": 1446,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "torneo-battaglia-louverzep-pisanello",
+  "title": "Torneo-battaglia di Louverzep (ciclo arturiano di Mantova)",
+  "artists": [
+   "Pisanello"
+  ],
+  "city": "Mantova",
+  "date_text": "1438-1442",
+  "year_start": 1438,
+  "year_end": 1442,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "trasfigurazione-beato-angelico",
+  "title": "Trasfigurazione",
+  "artists": [
+   "Beato Angelico"
+  ],
+  "city": "Firenze",
+  "date_text": "1438-1446",
+  "year_start": 1438,
+  "year_end": 1446,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "annunciazione-corridoio-nord-san-marco",
+  "title": "Annunciazione",
+  "artists": [
+   "Beato Angelico"
+  ],
+  "city": "Firenze",
+  "date_text": "1440-1450",
+  "year_start": 1440,
+  "year_end": 1450,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "david-bronzo-donatello",
+  "title": "David vittorioso su Golia (o Ermes vittorioso su Argo)",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Firenze",
+  "date_text": "1440-1443",
+  "year_start": 1440,
+  "year_end": 1443,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "nativita-di-maria-leonardo-da-besozzo",
+  "title": "Natività di Maria",
+  "artists": [
+   "Leonardo da Besozzo"
+  ],
+  "city": "Napoli",
+  "date_text": "1440 circa",
+  "year_start": 1440,
+  "year_end": 1440,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "cappella-reale-kings-college",
+  "title": "Cappella Reale del King's College",
+  "artists": [],
+  "city": "Cambridge",
+  "date_text": "1441-1544",
+  "year_start": 1441,
+  "year_end": 1544,
+  "current_period_id": "gotico-fiorito"
+ },
+ {
+  "id": "ritratto-leonello-deste-pisanello",
+  "title": "Ritratto di Leonello d'Este",
+  "artists": [
+   "Pisanello"
+  ],
+  "city": "Bergamo",
+  "date_text": "1441 circa",
+  "year_start": 1441,
+  "year_end": 1441,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "storie-regina-teodolinda-zavattari",
+  "title": "Storie della regina Teodolinda",
+  "artists": [
+   "Famiglia Zavattari"
+  ],
+  "city": "Monza",
+  "date_text": "1441-1446",
+  "year_start": 1441,
+  "year_end": 1446,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "gli-amanti-tarocchi-visconti-bembo",
+  "title": "Gli amanti, dal Mazzo di Tarocchi per Filippo Maria Visconti",
+  "artists": [
+   "Bonifacio Bembo"
+  ],
+  "city": "New Haven",
+  "date_text": "1442-1447",
+  "year_start": 1442,
+  "year_end": 1447,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "regina-di-bastoni-tarocchi-bembo",
+  "title": "Regina di bastoni dal Mazzo di Tarocchi",
+  "artists": [
+   "Bonifacio Bembo"
+  ],
+  "city": "Bergamo",
+  "date_text": "1442-1446",
+  "year_start": 1442,
+  "year_end": 1446,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "crocifisso-bronzo-sant-antonio-padova",
+  "title": "Crocifisso (sull'altare della basilica di Sant'Antonio)",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Padova",
+  "date_text": "1443-1446",
+  "year_start": 1443,
+  "year_end": 1446,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "polittico-del-giudizio-universale",
+  "title": "Polittico del Giudizio Universale",
+  "artists": [
+   "Rogier van der Weyden"
+  ],
+  "city": "Beaune",
+  "date_text": "1443-1451",
+  "year_start": 1443,
+  "year_end": 1451,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "trittico-annunciazione-aix",
+  "title": "Trittico dell'Annunciazione di Aix",
+  "artists": [
+   "Barthélemy d'Eyck"
+  ],
+  "city": "Aix-en-Provence",
+  "date_text": "1443-1445",
+  "year_start": 1443,
+  "year_end": 1445,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "palazzo-medici-riccardi",
+  "title": "Palazzo Medici-Riccardi",
+  "artists": [
+   "Michelozzo Michelozzi"
+  ],
+  "city": "Firenze",
+  "date_text": "1444-1464",
+  "year_start": 1444,
+  "year_end": 1464,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "giochi-aristocratici-palazzo-borromeo",
+  "title": "Giochi aristocratici (Gioco della palla)",
+  "artists": [
+   "Maestro dei Giochi Borromeo"
+  ],
+  "city": "Milano",
+  "date_text": "1445 circa",
+  "year_start": 1445,
+  "year_end": 1445,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "miracolo-di-san-zanobi",
+  "title": "Miracolo di san Zanobi",
+  "artists": [
+   "Domenico Veneziano"
+  ],
+  "city": "Cambridge",
+  "date_text": "1445 circa",
+  "year_start": 1445,
+  "year_end": 1447,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "monumento-funebre-leonardo-bruni",
+  "title": "Monumento funebre di Leonardo Bruni",
+  "artists": [
+   "Bernardo Rossellino"
+  ],
+  "city": "Firenze",
+  "date_text": "1445-1455 circa",
+  "year_start": 1445,
+  "year_end": 1455,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "pala-santa-lucia-de-magnoli",
+  "title": "Pala di Santa Lucia de' Magnoli (sacra conversazione)",
+  "artists": [
+   "Domenico Veneziano"
+  ],
+  "city": "Firenze",
+  "date_text": "1445-1447",
+  "year_start": 1445,
+  "year_end": 1447,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "polittico-della-misericordia",
+  "title": "Polittico della Misericordia",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Sansepolcro",
+  "date_text": "1445-1462",
+  "year_start": 1445,
+  "year_end": 1462,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "villa-medicea-cafaggiolo",
+  "title": "Villa medicea di Cafaggiolo",
+  "artists": [
+   "Michelozzo Michelozzi"
+  ],
+  "city": "Barberino di Mugello",
+  "date_text": "1451 circa",
+  "year_start": 1445,
+  "year_end": 1451,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "altare-del-santo-padova",
+  "title": "Altare del Santo (Altare maggiore della basilica di Sant'Antonio)",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Padova",
+  "date_text": "1446-1450",
+  "year_start": 1446,
+  "year_end": 1450,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "deposizione-nel-sepolcro-padova",
+  "title": "Deposizione di Cristo nel sepolcro",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Padova",
+  "date_text": "1446-1449",
+  "year_start": 1446,
+  "year_end": 1449,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "madonna-bambino-altare-santo",
+  "title": "Madonna con il Bambino",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Padova",
+  "date_text": "1446-1449",
+  "year_start": 1446,
+  "year_end": 1449,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "miracolo-del-cuore-dellavaro",
+  "title": "Miracolo del cuore dell'avaro",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Padova",
+  "date_text": "1446-1449",
+  "year_start": 1446,
+  "year_end": 1449,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "monumento-equestre-gattamelata",
+  "title": "Monumento equestre di Erasmo da Narni detto il Gattamelata",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Padova",
+  "date_text": "1446-1453",
+  "year_start": 1446,
+  "year_end": 1453,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "trionfo-della-morte-palazzo-sclafani",
+  "title": "Trionfo della Morte",
+  "artists": [],
+  "city": "Palermo",
+  "date_text": "1446 circa",
+  "year_start": 1446,
+  "year_end": 1446,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "cappella-niccolina",
+  "title": "Storie di santo Stefano e san Lorenzo (Cappella Niccolina)",
+  "artists": [
+   "Beato Angelico"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1447-1448",
+  "year_start": 1447,
+  "year_end": 1448,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "palazzo-rucellai",
+  "title": "Palazzo Rucellai",
+  "artists": [
+   "Leon Battista Alberti"
+  ],
+  "city": "Firenze",
+  "date_text": "1447-1460 circa",
+  "year_start": 1447,
+  "year_end": 1460,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "refettorio-sanr-apollonia",
+  "title": "Resurrezione, Crocifissione, Deposizione e Ultima cena",
+  "artists": [
+   "Andrea del Castagno"
+  ],
+  "city": "Firenze",
+  "date_text": "1447-1450",
+  "year_start": 1447,
+  "year_end": 1450,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "deposizione-rogier-van-der-weyden",
+  "title": "Deposizione di Cristo nel sepolcro",
+  "artists": [
+   "Rogier van der Weyden"
+  ],
+  "city": "Firenze",
+  "date_text": "1450 circa",
+  "year_start": 1450,
+  "year_end": 1450,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "dittico-di-melun",
+  "title": "Dittico di Melun",
+  "artists": [
+   "Jean Fouquet"
+  ],
+  "city": "Berlino / Anversa",
+  "date_text": "1450-1455",
+  "year_start": 1450,
+  "year_end": 1455,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "etienne-chevalier-presentato-da-santo-stefano",
+  "title": "Étienne Chevalier presentato da santo Stefano (scomparto sinistro del Dittico di Melun)",
+  "artists": [
+   "Jean Fouquet"
+  ],
+  "city": "Berlino",
+  "date_text": "1450-1455",
+  "year_start": 1450,
+  "year_end": 1455,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "medaglia-commemorativa-tempio-malatestiano",
+  "title": "Medaglia commemorativa della fondazione del Tempio Malatestiano",
+  "artists": [
+   "Matteo de' Pasti"
+  ],
+  "city": "Washington D.C.",
+  "date_text": "1450 circa",
+  "year_start": 1450,
+  "year_end": 1450,
+  "current_period_id": "quattrocento"
+ }
+]

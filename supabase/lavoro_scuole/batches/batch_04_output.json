@@ -1,0 +1,939 @@
+[
+ {
+  "id": "orazione-orto-getsemani-san-marco",
+  "current_period_id": "arte-bizantina",
+  "proposed_period_id": "scuola-marciana-veneziana",
+  "status": "nuova_scuola",
+  "note": "Mosaico della Basilica di San Marco a Venezia: con altre opere dello stesso monumento forma un gruppo coerente (luogo/committenza) non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "scuola-marciana-veneziana",
+   "name": "Scuola marciana (decorazione della Basilica di San Marco, Venezia)",
+   "parent_id": "arte-bizantina",
+   "year_start": 1180,
+   "year_end": 1350,
+   "region": "Venezia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "porta-san-ranieri-pisa",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Portale bronzeo pisano isolato: nessuna scuola specifica per la scultura romanica di Pisa nell'albero, resta al livello di corrente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "portale-bronzeo-monreale-bonanno",
+  "current_period_id": "romanico-normanno-siciliano",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "invariato",
+  "note": "Corrisponde esattamente alla scuola romanico-normanno-siciliano (Monreale, entro il 1194).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "portale-bronzeo-monreale-barisano",
+  "current_period_id": "romanico-normanno-siciliano",
+  "proposed_period_id": "romanico-normanno-siciliano",
+  "status": "invariato",
+  "note": "Stessa collocazione del portale di Bonanno: Monreale, scuola romanico-normanno-siciliano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "facciata-fossanova",
+  "current_period_id": "gotico-cistercense",
+  "proposed_period_id": "gotico-cistercense",
+  "status": "invariato",
+  "note": "Abbazia cistercense di Fossanova: corrisponde già alla corrente gotico-cistercense, nessuna scuola più specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "navata-fossanova",
+  "current_period_id": "gotico-cistercense",
+  "proposed_period_id": "gotico-cistercense",
+  "status": "invariato",
+  "note": "Stessa motivazione della facciata di Fossanova.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-notre-dame-chartres",
+  "current_period_id": "gotico-francese",
+  "proposed_period_id": "gotico-francese",
+  "status": "invariato",
+  "note": "Già alla corrente più specifica disponibile (gotico-francese); nessuna scuola dedicata a Chartres nell'albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "battistero-di-parma",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-antelami-parma",
+  "status": "nuova_scuola",
+  "note": "Opera di Benedetto Antelami a Parma: con le altre sue opere del lotto forma un gruppo coerente (stesso autore/luogo) non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "bottega-antelami-parma",
+   "name": "Bottega di Benedetto Antelami (Parma)",
+   "parent_id": "gotico-italiano",
+   "year_start": 1196,
+   "year_end": 1230,
+   "region": "Parma, Emilia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "portale-della-vergine-parma",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-antelami-parma",
+  "status": "nuova_scuola",
+  "note": "Opera di Benedetto Antelami a Parma: fa parte del medesimo gruppo di bottega.",
+  "new_school": {
+   "suggested_id": "bottega-antelami-parma",
+   "name": "Bottega di Benedetto Antelami (Parma)",
+   "parent_id": "gotico-italiano",
+   "year_start": 1196,
+   "year_end": 1230,
+   "region": "Parma, Emilia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ciclo-mesi-portale-san-marco",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "scuola-marciana-veneziana",
+  "status": "nuova_scuola",
+  "note": "Decorazione scultorea del portale maggiore della Basilica di San Marco: appartiene al gruppo di opere della basilica veneziana.",
+  "new_school": {
+   "suggested_id": "scuola-marciana-veneziana",
+   "name": "Scuola marciana (decorazione della Basilica di San Marco, Venezia)",
+   "parent_id": "arte-bizantina",
+   "year_start": 1180,
+   "year_end": 1350,
+   "region": "Venezia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "facciata-basilica-san-marco",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "scuola-marciana-veneziana",
+  "status": "nuova_scuola",
+  "note": "Facciata della Basilica di San Marco: appartiene al gruppo di opere della basilica veneziana.",
+  "new_school": {
+   "suggested_id": "scuola-marciana-veneziana",
+   "name": "Scuola marciana (decorazione della Basilica di San Marco, Venezia)",
+   "parent_id": "arte-bizantina",
+   "year_start": 1180,
+   "year_end": 1350,
+   "region": "Venezia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "madonna-bambino-berlinghiero",
+  "current_period_id": "pittura-romanica-italiana",
+  "proposed_period_id": "scuola-lucchese-berlinghieri",
+  "status": "nuova_scuola",
+  "note": "Dipinto di Berlinghiero Berlinghieri, capostipite della scuola lucchese di pittura duecentesca, non coperta da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "scuola-lucchese-berlinghieri",
+   "name": "Scuola lucchese dei Berlinghieri",
+   "parent_id": "romanico-italiano",
+   "year_start": 1200,
+   "year_end": 1235,
+   "region": "Lucca, Toscana"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "madonna-col-bambino-cosenza",
+  "current_period_id": "pittura-romanica-italiana",
+  "proposed_period_id": "pittura-romanica-italiana",
+  "status": "invariato",
+  "note": "Opera anonima di Cosenza (Calabria): nessuna scuola specifica per la pittura romanica calabrese nell'albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "san-marco-evangelista-pannello-facciata-nord",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "scuola-marciana-veneziana",
+  "status": "nuova_scuola",
+  "note": "Pannello della facciata nord della Basilica di San Marco: appartiene al gruppo di opere della basilica veneziana.",
+  "new_school": {
+   "suggested_id": "scuola-marciana-veneziana",
+   "name": "Scuola marciana (decorazione della Basilica di San Marco, Venezia)",
+   "parent_id": "arte-bizantina",
+   "year_start": 1180,
+   "year_end": 1350,
+   "region": "Venezia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "pavimento-cosmati-ferentino",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "romanico-italiano",
+  "status": "invariato",
+  "note": "Unico pavimento cosmatesco del lotto: nessuna scuola cosmatesca presente nell'albero, resta alla corrente romanico-italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-di-leon",
+  "current_period_id": "gotico-spagnolo",
+  "proposed_period_id": "gotico-spagnolo",
+  "status": "invariato",
+  "note": "Già alla corrente più specifica disponibile (gotico-spagnolo); nessuna scuola dedicata a León nell'albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "allegorie-dei-mesi-antelami-ciclo",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-antelami-parma",
+  "status": "nuova_scuola",
+  "note": "Ciclo scultoreo di Benedetto Antelami a Parma: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-antelami-parma",
+   "name": "Bottega di Benedetto Antelami (Parma)",
+   "parent_id": "gotico-italiano",
+   "year_start": 1196,
+   "year_end": 1230,
+   "region": "Parma, Emilia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "allegorie-dei-mesi-antelami-luglio",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-antelami-parma",
+  "status": "nuova_scuola",
+  "note": "Opera di Benedetto Antelami a Parma: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-antelami-parma",
+   "name": "Bottega di Benedetto Antelami (Parma)",
+   "parent_id": "gotico-italiano",
+   "year_start": 1196,
+   "year_end": 1230,
+   "region": "Parma, Emilia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "allegorie-dei-mesi-antelami-settembre",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-antelami-parma",
+  "status": "nuova_scuola",
+  "note": "Opera di Benedetto Antelami a Parma: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-antelami-parma",
+   "name": "Bottega di Benedetto Antelami (Parma)",
+   "parent_id": "gotico-italiano",
+   "year_start": 1196,
+   "year_end": 1230,
+   "region": "Parma, Emilia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-notre-dame-reims",
+  "current_period_id": "gotico-francese",
+  "proposed_period_id": "gotico-francese",
+  "status": "invariato",
+  "note": "Già alla corrente più specifica disponibile (gotico-francese); nessuna scuola dedicata a Reims nell'albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "re-salomone-regina-saba-antelami",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-antelami-parma",
+  "status": "nuova_scuola",
+  "note": "Opera di Benedetto Antelami a Parma: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-antelami-parma",
+   "name": "Bottega di Benedetto Antelami (Parma)",
+   "parent_id": "gotico-italiano",
+   "year_start": 1196,
+   "year_end": 1230,
+   "region": "Parma, Emilia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "storie-genesi-cupoletta-san-marco",
+  "current_period_id": "arte-bizantina",
+  "proposed_period_id": "scuola-marciana-veneziana",
+  "status": "nuova_scuola",
+  "note": "Mosaico della cupoletta della Genesi in San Marco: appartiene al gruppo di opere della basilica veneziana.",
+  "new_school": {
+   "suggested_id": "scuola-marciana-veneziana",
+   "name": "Scuola marciana (decorazione della Basilica di San Marco, Venezia)",
+   "parent_id": "arte-bizantina",
+   "year_start": 1180,
+   "year_end": 1350,
+   "region": "Venezia"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "broletto-di-como",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "gotico-italiano",
+  "status": "invariato",
+  "note": "Edificio comasco isolato: nessuna scuola lombarda per l'architettura di questo periodo nell'albero, resta alla corrente gotico-italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "vetrata-carlo-magno-chartres",
+  "current_period_id": "gotico",
+  "proposed_period_id": "gotico-francese",
+  "status": "assegnato",
+  "note": "Vetrata della cattedrale di Chartres: il contenitore attuale è l'epoca generica 'gotico', va specificata la corrente 'gotico-francese'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "annunciazione-e-visitazione-reims",
+  "current_period_id": "gotico",
+  "proposed_period_id": "gotico-francese",
+  "status": "assegnato",
+  "note": "Scultura della cattedrale di Reims: dall'epoca generica 'gotico' alla corrente più specifica 'gotico-francese'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-di-salisbury",
+  "current_period_id": "early-english-gothic",
+  "proposed_period_id": "early-english-gothic",
+  "status": "invariato",
+  "note": "Corrisponde esattamente alla scuola early-english-gothic (1220-1258, Inghilterra).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "contrafforti-cattedrale-reims-villard",
+  "current_period_id": "gotico-francese",
+  "proposed_period_id": "gotico-francese",
+  "status": "invariato",
+  "note": "Disegno di Villard de Honnecourt relativo alla cattedrale di Reims: resta alla corrente gotico-francese, nessuna scuola più specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-santa-maria-assunta-siena",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "gotico-italiano",
+  "status": "invariato",
+  "note": "Il Duomo di Siena (1226-1377) eccede l'intervallo della scuola gotico-senese (1270-1350, pittura trecentesca): resta alla corrente gotico-italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-santa-maria-assunta-siena-interno",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "gotico-italiano",
+  "status": "invariato",
+  "note": "Stessa motivazione della voce sul Duomo di Siena (edificio, non pittura senese trecentesca).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "navata-duomo-siena",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "gotico-italiano",
+  "status": "invariato",
+  "note": "Stessa motivazione delle altre voci del Duomo di Siena.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "basilica-san-francesco-assisi",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "gotico-italiano",
+  "status": "invariato",
+  "note": "Edificio anonimo di Assisi: nessuna scuola specifica per l'architettura francescana nell'albero, resta a livello di corrente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-inferiore-san-francesco-assisi",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "gotico-italiano",
+  "status": "invariato",
+  "note": "Stessa motivazione della basilica di Assisi.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "angelo-tubicinario-strasburgo",
+  "current_period_id": "gotico-tedesco",
+  "proposed_period_id": "gotico-tedesco",
+  "status": "invariato",
+  "note": "Scultura del Pilier des Anges di Strasburgo: di ambito renano-francese, non riconducibile alla scuola rinascenza-sveva (di ambito sveva/imperiale); resta alla corrente gotico-tedesco.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "busto-federico-ii",
+  "current_period_id": "arte-federiciana",
+  "proposed_period_id": "arte-federiciana",
+  "status": "invariato",
+  "note": "Corrisponde esattamente alla scuola arte-federiciana (corte di Federico II, Puglia).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cavaliere-di-bamberga",
+  "current_period_id": "rinascenza-sveva",
+  "proposed_period_id": "rinascenza-sveva",
+  "status": "invariato",
+  "note": "Corrisponde esattamente alla scuola rinascenza-sveva (Bamberga, 1230 circa).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pilier-des-anges-strasburgo",
+  "current_period_id": "gotico-tedesco",
+  "proposed_period_id": "gotico-tedesco",
+  "status": "invariato",
+  "note": "Stessa motivazione di angelo-tubicinario-strasburgo: ambito renano-francese, resta alla corrente gotico-tedesco.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "portale-della-vergine-reims",
+  "current_period_id": "gotico",
+  "proposed_period_id": "gotico-francese",
+  "status": "assegnato",
+  "note": "Portale della cattedrale di Reims: dall'epoca generica 'gotico' alla corrente più specifica 'gotico-francese'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "capua-fidelis-testa-femminile",
+  "current_period_id": "arte-federiciana",
+  "proposed_period_id": "arte-federiciana",
+  "status": "invariato",
+  "note": "Corrisponde esattamente alla scuola arte-federiciana (Porta di Capua).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "porta-trionfale-capua",
+  "current_period_id": "arte-federiciana",
+  "proposed_period_id": "arte-federiciana",
+  "status": "invariato",
+  "note": "Corrisponde esattamente alla scuola arte-federiciana (Porta di Capua).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "san-francesco-storie-berlinghieri",
+  "current_period_id": "pittura-romanica-italiana",
+  "proposed_period_id": "scuola-lucchese-berlinghieri",
+  "status": "nuova_scuola",
+  "note": "Dipinto di Bonaventura Berlinghieri (figlio di Berlinghiero), scuola lucchese: appartiene allo stesso gruppo di bottega familiare.",
+  "new_school": {
+   "suggested_id": "scuola-lucchese-berlinghieri",
+   "name": "Scuola lucchese dei Berlinghieri",
+   "parent_id": "romanico-italiano",
+   "year_start": 1200,
+   "year_end": 1235,
+   "region": "Lucca, Toscana"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "basilica-san-francesco-bologna",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "gotico-italiano",
+  "status": "invariato",
+  "note": "Edificio bolognese isolato: nessuna scuola specifica nell'albero, resta a livello di corrente gotico-italiano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-superiore-san-francesco-assisi",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "gotico-italiano",
+  "status": "invariato",
+  "note": "Stessa motivazione della basilica di Assisi.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "sainte-chapelle-parigi",
+  "current_period_id": "gotico-francese",
+  "proposed_period_id": "gotico-francese",
+  "status": "invariato",
+  "note": "Già alla corrente più specifica disponibile (gotico-francese); nessuna scuola dedicata a Parigi nell'albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "vetrate-rosone-sainte-chapelle",
+  "current_period_id": "gotico",
+  "proposed_period_id": "gotico-francese",
+  "status": "assegnato",
+  "note": "Vetrate della Sainte-Chapelle di Parigi: dall'epoca generica 'gotico' alla corrente più specifica 'gotico-francese'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "abbazia-di-westminster",
+  "current_period_id": "decorated-english-gothic",
+  "proposed_period_id": null,
+  "status": "incerto",
+  "note": "Westminster Abbey (dal 1245) è opera di transizione: per datazione ricadrebbe in early-english-gothic (1174-1280), ma introduce il tracciato a barre di origine francese che la storiografia associa già al decorated-english-gothic; collocazione non univoca.",
+  "new_school": null,
+  "alt_options": ["decorated-english-gothic", "early-english-gothic"]
+ },
+ {
+  "id": "pianta-abbazia-westminster",
+  "current_period_id": "decorated-english-gothic",
+  "proposed_period_id": null,
+  "status": "incerto",
+  "note": "Stessa ambiguità di abbazia-di-westminster: opera di transizione fra early-english-gothic e decorated-english-gothic.",
+  "new_school": null,
+  "alt_options": ["decorated-english-gothic", "early-english-gothic"]
+ },
+ {
+  "id": "affreschi-aula-gotica-santi-quattro-coronati",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "duecento-italiano",
+  "status": "invariato",
+  "note": "Ciclo romano: già alla corrente più specifica disponibile (duecento-italiano, Lazio).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "mese-di-gennaio-aula-gotica",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "duecento-italiano",
+  "status": "invariato",
+  "note": "Stessa motivazione del ciclo dell'Aula Gotica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "castel-del-monte",
+  "current_period_id": "arte-federiciana",
+  "proposed_period_id": "arte-federiciana",
+  "status": "invariato",
+  "note": "Corrisponde esattamente alla scuola arte-federiciana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pianta-castel-del-monte",
+  "current_period_id": "arte-federiciana",
+  "proposed_period_id": "arte-federiciana",
+  "status": "invariato",
+  "note": "Corrisponde esattamente alla scuola arte-federiciana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "affreschi-oratorio-san-silvestro",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "duecento-italiano",
+  "status": "invariato",
+  "note": "Ciclo romano: già alla corrente più specifica disponibile (duecento-italiano).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cattedrale-di-colonia",
+  "current_period_id": "gotico-tedesco",
+  "proposed_period_id": "gotico-tedesco",
+  "status": "invariato",
+  "note": "Cattedrale di ambito renano-francese, non riconducibile alla scuola rinascenza-sveva (scultura sveva/imperiale); resta alla corrente gotico-tedesco.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "costantino-offre-tiara-silvestro",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "duecento-italiano",
+  "status": "invariato",
+  "note": "Ciclo romano: già alla corrente più specifica disponibile (duecento-italiano).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "crocifisso-san-domenico-bologna",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "duecento-italiano",
+  "status": "invariato",
+  "note": "Opera isolata di Giunta Pisano a Bologna: nessuna scuola specifica nell'albero, resta a livello di corrente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "margravia-uta-naumburg",
+  "current_period_id": "rinascenza-sveva",
+  "proposed_period_id": "rinascenza-sveva",
+  "status": "invariato",
+  "note": "Corrisponde esattamente alla scuola rinascenza-sveva (Maestro di Naumburg).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pulpito-battistero-pisa",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-nicola-pisano",
+  "status": "nuova_scuola",
+  "note": "Pulpito di Nicola Pisano: capostipite di un gruppo di opere della sua bottega (Pisa, Siena, Perugia) non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "bottega-nicola-pisano",
+   "name": "Bottega di Nicola Pisano e Giovanni Pisano",
+   "parent_id": "gotico-italiano",
+   "year_start": 1255,
+   "year_end": 1278,
+   "region": "Pisa, Siena, Perugia (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "adorazione-magi-nicola-pisano",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-nicola-pisano",
+  "status": "nuova_scuola",
+  "note": "Particolare del pulpito di Nicola Pisano a Pisa: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-nicola-pisano",
+   "name": "Bottega di Nicola Pisano e Giovanni Pisano",
+   "parent_id": "gotico-italiano",
+   "year_start": 1255,
+   "year_end": 1278,
+   "region": "Pisa, Siena, Perugia (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "crocifisso-san-domenico-arezzo",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "bottega-cimabue",
+  "status": "nuova_scuola",
+  "note": "Crocifisso di Cimabue ad Arezzo: con altre opere del lotto forma un gruppo coerente (bottega dell'artista) non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "bottega-cimabue",
+   "name": "Bottega di Cimabue",
+   "parent_id": "duecento-italiano",
+   "year_start": 1260,
+   "year_end": 1290,
+   "region": "Firenze, Arezzo, Assisi (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "crocifisso-san-gimignano",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "bottega-coppo-di-marcovaldo",
+  "status": "nuova_scuola",
+  "note": "Crocifisso di Coppo di Marcovaldo a San Gimignano: con altre sue opere del lotto forma un gruppo di bottega non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "bottega-coppo-di-marcovaldo",
+   "name": "Bottega di Coppo di Marcovaldo",
+   "parent_id": "duecento-italiano",
+   "year_start": 1260,
+   "year_end": 1275,
+   "region": "Firenze, Siena, San Gimignano (Toscana)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "inferno-battistero-firenze",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "bottega-coppo-di-marcovaldo",
+  "status": "nuova_scuola",
+  "note": "Decorazione della cupola del battistero fiorentino di Coppo di Marcovaldo e Meliore: appartiene al gruppo di bottega.",
+  "new_school": {
+   "suggested_id": "bottega-coppo-di-marcovaldo",
+   "name": "Bottega di Coppo di Marcovaldo",
+   "parent_id": "duecento-italiano",
+   "year_start": 1260,
+   "year_end": 1275,
+   "region": "Firenze, Siena, San Gimignano (Toscana)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "nativita-nicola-pisano",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-nicola-pisano",
+  "status": "nuova_scuola",
+  "note": "Particolare del pulpito di Nicola Pisano a Pisa: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-nicola-pisano",
+   "name": "Bottega di Nicola Pisano e Giovanni Pisano",
+   "parent_id": "gotico-italiano",
+   "year_start": 1255,
+   "year_end": 1278,
+   "region": "Pisa, Siena, Perugia (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "madonna-del-bordone",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "bottega-coppo-di-marcovaldo",
+  "status": "nuova_scuola",
+  "note": "Dipinto di Coppo di Marcovaldo a Siena: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-coppo-di-marcovaldo",
+   "name": "Bottega di Coppo di Marcovaldo",
+   "parent_id": "duecento-italiano",
+   "year_start": 1260,
+   "year_end": 1275,
+   "region": "Firenze, Siena, San Gimignano (Toscana)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "crocifissione-nicola-siena",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-nicola-pisano",
+  "status": "nuova_scuola",
+  "note": "Particolare del pulpito di Nicola Pisano a Siena: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-nicola-pisano",
+   "name": "Bottega di Nicola Pisano e Giovanni Pisano",
+   "parent_id": "gotico-italiano",
+   "year_start": 1255,
+   "year_end": 1278,
+   "region": "Pisa, Siena, Perugia (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "pulpito-cattedrale-siena-nicola-pisano",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-nicola-pisano",
+  "status": "nuova_scuola",
+  "note": "Pulpito di Nicola Pisano nel Duomo di Siena: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-nicola-pisano",
+   "name": "Bottega di Nicola Pisano e Giovanni Pisano",
+   "parent_id": "gotico-italiano",
+   "year_start": 1255,
+   "year_end": 1278,
+   "region": "Pisa, Siena, Perugia (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "sala-capitolare-salisbury",
+  "current_period_id": "early-english-gothic",
+  "proposed_period_id": "early-english-gothic",
+  "status": "invariato",
+  "note": "Corrisponde esattamente alla scuola early-english-gothic (Cattedrale di Salisbury).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "basilica-san-lorenzo-napoli",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "gotico-italiano",
+  "status": "invariato",
+  "note": "Edificio napoletano isolato: nessuna scuola gotica per Napoli in questo periodo nell'albero (rinascimento-napoletano è quattrocentesca), resta a livello di corrente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "affreschi-cappella-sancta-sanctorum",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "duecento-italiano",
+  "status": "invariato",
+  "note": "Ciclo romano: già alla corrente più specifica disponibile (duecento-italiano).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cristo-in-trono-sancta-sanctorum",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "duecento-italiano",
+  "status": "invariato",
+  "note": "Stessa motivazione del ciclo del Sancta Sanctorum.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "fontana-minore-perugia-arnolfo",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-arnolfo-di-cambio",
+  "status": "nuova_scuola",
+  "note": "Fontana di Arnolfo di Cambio a Perugia: con altre sue opere del lotto forma un gruppo di bottega itinerante non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "bottega-arnolfo-di-cambio",
+   "name": "Bottega di Arnolfo di Cambio",
+   "parent_id": "duecento-italiano",
+   "year_start": 1277,
+   "year_end": 1282,
+   "region": "Perugia, Roma, Orvieto (Umbria, Lazio)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-carlo-i-dangiu",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-arnolfo-di-cambio",
+  "status": "nuova_scuola",
+  "note": "Ritratto scolpito da Arnolfo di Cambio a Roma: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-arnolfo-di-cambio",
+   "name": "Bottega di Arnolfo di Cambio",
+   "parent_id": "duecento-italiano",
+   "year_start": 1277,
+   "year_end": 1282,
+   "region": "Perugia, Roma, Orvieto (Umbria, Lazio)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-papa-cappella-sancta-sanctorum",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "duecento-italiano",
+  "status": "invariato",
+  "note": "Ciclo romano: già alla corrente più specifica disponibile (duecento-italiano).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "camposanto-pisa",
+  "current_period_id": "romanico-italiano",
+  "proposed_period_id": "gotico-italiano",
+  "status": "assegnato",
+  "note": "Il Camposanto di Pisa (dal 1278, in stile gotico) non rientra nell'intervallo 1000-1200 della corrente romanico-italiano; più coerente con la corrente gotico-italiano (1228-1400).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "fontana-maggiore-perugia",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-nicola-pisano",
+  "status": "nuova_scuola",
+  "note": "Fontana Maggiore di Nicola e Giovanni Pisano a Perugia: appartiene al gruppo di bottega degli stessi artisti.",
+  "new_school": {
+   "suggested_id": "bottega-nicola-pisano",
+   "name": "Bottega di Nicola Pisano e Giovanni Pisano",
+   "parent_id": "gotico-italiano",
+   "year_start": 1255,
+   "year_end": 1278,
+   "region": "Pisa, Siena, Perugia (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "perusia-augusta-fontana-maggiore",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "bottega-nicola-pisano",
+  "status": "nuova_scuola",
+  "note": "Particolare della Fontana Maggiore di Nicola e Giovanni Pisano a Perugia: appartiene al gruppo di bottega degli stessi artisti.",
+  "new_school": {
+   "suggested_id": "bottega-nicola-pisano",
+   "name": "Bottega di Nicola Pisano e Giovanni Pisano",
+   "parent_id": "gotico-italiano",
+   "year_start": 1255,
+   "year_end": 1278,
+   "region": "Pisa, Siena, Perugia (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "basilica-santa-maria-novella-firenze",
+  "current_period_id": "gotico-italiano",
+  "proposed_period_id": "gotico-italiano",
+  "status": "invariato",
+  "note": "Edificio fiorentino isolato: nessuna scuola gotica specifica per Firenze in questo periodo nell'albero, resta a livello di corrente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "crocifisso-santa-croce-firenze",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "bottega-cimabue",
+  "status": "nuova_scuola",
+  "note": "Crocifisso di Cimabue a Firenze: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-cimabue",
+   "name": "Bottega di Cimabue",
+   "parent_id": "duecento-italiano",
+   "year_start": 1260,
+   "year_end": 1290,
+   "region": "Firenze, Arezzo, Assisi (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "maesta-del-louvre",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "bottega-cimabue",
+  "status": "nuova_scuola",
+  "note": "Maestà attribuita a Cimabue (oggi al Louvre, ma opera italiana del Duecento): appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-cimabue",
+   "name": "Bottega di Cimabue",
+   "parent_id": "duecento-italiano",
+   "year_start": 1260,
+   "year_end": 1290,
+   "region": "Firenze, Arezzo, Assisi (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "maesta-di-santa-trinita",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "bottega-cimabue",
+  "status": "nuova_scuola",
+  "note": "Maestà di Cimabue a Firenze: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-cimabue",
+   "name": "Bottega di Cimabue",
+   "parent_id": "duecento-italiano",
+   "year_start": 1260,
+   "year_end": 1290,
+   "region": "Firenze, Arezzo, Assisi (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "putti-decorativi-assisi-cimabue",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "bottega-cimabue",
+  "status": "nuova_scuola",
+  "note": "Decorazione di Cimabue nella basilica di Assisi: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-cimabue",
+   "name": "Bottega di Cimabue",
+   "parent_id": "duecento-italiano",
+   "year_start": 1260,
+   "year_end": 1290,
+   "region": "Firenze, Arezzo, Assisi (Toscana, Umbria)"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "monumento-funebre-guillaume-de-braye",
+  "current_period_id": "duecento-italiano",
+  "proposed_period_id": "bottega-arnolfo-di-cambio",
+  "status": "nuova_scuola",
+  "note": "Monumento funebre di Arnolfo di Cambio a Orvieto: appartiene al gruppo di bottega dell'artista.",
+  "new_school": {
+   "suggested_id": "bottega-arnolfo-di-cambio",
+   "name": "Bottega di Arnolfo di Cambio",
+   "parent_id": "duecento-italiano",
+   "year_start": 1277,
+   "year_end": 1282,
+   "region": "Perugia, Roma, Orvieto (Umbria, Lazio)"
+  },
+  "alt_options": null
+ }
+]

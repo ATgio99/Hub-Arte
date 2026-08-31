@@ -1,0 +1,866 @@
+[
+ {
+  "id": "miracoli-di-san-vincenzo-ferrer",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Predella del Polittico Griffoni (Ercole de' Roberti), commissionato da Floriano Griffoni per la cappella di San Vincenzo Ferrer in San Petronio a Bologna (1472-1473); 'Città del Vaticano' è solo la sede museale attuale (Pinacoteca Vaticana). Apre, con altri pannelli dispersi del lotto, il gruppo dedicato al cantiere bolognese di Cossa e de' Roberti.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "miracolo-della-reliquia-della-croce-a-rialto",
+  "current_period_id": "quattrocento-veneziano",
+  "proposed_period_id": "quattrocento-veneziano",
+  "status": "invariato",
+  "note": "Carpaccio, Venezia (1494-1496): già alla collocazione più specifica corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "monumento-funebre-di-alfonso-daragona",
+  "current_period_id": null,
+  "proposed_period_id": "rinascimento-napoletano",
+  "status": "assegnato",
+  "note": "Benedetto da Maiano, monumento funebre per Alfonso d'Aragona, Napoli (dal 1490): rientra nella scuola 'Rinascimento napoletano' (1450-1500).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "morte-della-vergine",
+  "current_period_id": null,
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Mantegna, dipinto nel periodo di attività presso la corte gonzaghesca di Mantova (1462 circa; 'Madrid' è la sede museale attuale, Prado): rientra nella scuola 'Rinascimento mantovano' (1450-1510).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ninfa-fontainebleau",
+  "current_period_id": "manierismo",
+  "proposed_period_id": "scuola-di-fontainebleau",
+  "status": "nuova_scuola",
+  "note": "Cellini, opera eseguita in Francia per Francesco I (1542-1543), destinata al castello di Fontainebleau: apre, insieme alla Saliera dello stesso autore/committenza, il gruppo dedicato alla corte francese di Francesco I, non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "scuola-di-fontainebleau",
+   "name": "Scuola di Fontainebleau (corte di Francesco I)",
+   "parent_id": "manierismo",
+   "year_start": 1530,
+   "year_end": 1570,
+   "region": ["Fontainebleau", "Francia"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "orazione-di-gesu-nellorto-degli-ulivi",
+  "current_period_id": null,
+  "proposed_period_id": "quattrocento-veneziano",
+  "status": "assegnato",
+  "note": "Giovanni Bellini, opera del periodo veneziano dell'artista (1465-1470 circa): rientra nella scuola 'Quattrocento veneziano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pala-di-pesaro-pala-della-coronazione-della-vergine-tra-san-francesco-paolo-piet",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-veneziano",
+  "status": "assegnato",
+  "note": "Giovanni Bellini, pala eseguita nella bottega veneziana dell'artista e destinata alla chiesa dei Francescani di Pesaro (1470-1475): rientra nella scuola 'Quattrocento veneziano', più specifica della corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pala-di-san-zaccaria",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Giovanni Bellini, pala in situ a San Zaccaria, Venezia (1505): la data supera il limite della scuola 'quattrocento-veneziano' (fino al 1500), mentre 'Scuola veneziana' (1450-1580) è cronologicamente coerente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pala-di-san-zeno-polittico-di-san-zeno",
+  "current_period_id": null,
+  "proposed_period_id": "rinascimento-veneto",
+  "status": "incerto",
+  "note": "Mantegna, pala per la basilica di San Zeno a Verona (1456-1459), eseguita prima del trasferimento a Mantova (1460): la scuola più aderente per città/data sarebbe 'rinascimento-veronese' (1450-1500, Verona), ma tale scuola non è confermata come nodo distinto stabile nell'albero rispetto a 'rinascimento-veneto' (1450-1530, generico Veneto); si segnala l'incertezza fra le due opzioni.",
+  "new_school": null,
+  "alt_options": ["rinascimento-veronese", "rinascimento-veneto"]
+ },
+ {
+  "id": "pala-per-la-basilica-dei-santi-giovanni-e-paolo",
+  "current_period_id": null,
+  "proposed_period_id": "quattrocento-veneziano",
+  "status": "assegnato",
+  "note": "Giovanni Bellini, polittico per la basilica dei Santi Giovanni e Paolo a Venezia (opera distrutta nell'incendio del 1867, databile al periodo veneziano dell'artista): rientra nella scuola 'Quattrocento veneziano' nonostante l'assenza di una data precisa.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pala-portonese-madonna-col-bambino-e-santi",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Ercole de' Roberti, Pala Portuense, dipinta per la cappella della confraternita portoghese a Bologna (1479-1481; 'Milano' è la sede museale attuale, Pinacoteca di Brera): rientra nel gruppo bolognese di Cossa/de' Roberti individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "palazzo-dei-diamanti",
+  "current_period_id": "scuola-ferrarese",
+  "proposed_period_id": "scuola-ferrarese",
+  "status": "invariato",
+  "note": "Biagio Rossetti, Ferrara (dal 1493): collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "palazzo-schifanoia-ristrutturazione",
+  "current_period_id": "scuola-ferrarese",
+  "proposed_period_id": "scuola-ferrarese",
+  "status": "invariato",
+  "note": "Ferrara (dal 1465): collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "parete-nord---scene-mitologiche-e-autoritratto",
+  "current_period_id": null,
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Mantegna, Camera degli Sposi, Palazzo Ducale di Mantova, commissione gonzaghesca (1465-1474): rientra nella scuola 'Rinascimento mantovano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "parete-ovest---scena-dellincontro",
+  "current_period_id": null,
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Mantegna, Camera degli Sposi, Mantova (1465-1474): stesso ciclo della voce precedente, rientra nella scuola 'Rinascimento mantovano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "parnaso",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Mantegna, dipinto per lo Studiolo di Isabella d'Este a Mantova (1497 circa; 'Parigi' è la sede museale attuale, Louvre): rientra nella scuola 'Rinascimento mantovano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "Peccato-originale-e-cacciata",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, volta della Cappella Sistina, Città del Vaticano (1508-1512): riuso della scuola 'rinascimento-romano-giulio-leone' proposta nel batch_10 per il cantiere vaticano di Giulio II e Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "pieta",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-veneziano",
+  "status": "assegnato",
+  "note": "Giovanni Bellini, Pietà del periodo veneziano dell'artista (1475 circa; 'Milano' è la sede museale attuale, Pinacoteca di Brera): rientra nella scuola 'Quattrocento veneziano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pieta-zuccari",
+  "current_period_id": "controriforma",
+  "proposed_period_id": "controriforma",
+  "status": "invariato",
+  "note": "Taddeo Zuccari, Urbino (1564-1565): nessuna scuola specifica per Urbino in questo periodo tardo è presente in albero; opera isolata nel lotto rispetto ad altre opere urbinati, si mantiene la corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "politico-griffoni",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Francesco del Cossa, polittico principale per la cappella Griffoni in San Petronio a Bologna (1473): opera-cardine del gruppo bolognese individuato nel lotto insieme alla predella e ai pannelli dispersi.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "politico-roverella",
+  "current_period_id": "scuola-ferrarese",
+  "proposed_period_id": "scuola-ferrarese",
+  "status": "invariato",
+  "note": "Cosmè Tura, Ferrara (1475-1479): collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "polittico-con-santambrogio-benedicente-e-i-santi-offerenti-luigi-pietro-paolo-e-",
+  "current_period_id": null,
+  "proposed_period_id": "quattrocento-veneziano",
+  "status": "assegnato",
+  "note": "Bartolomeo Vivarini, pittore veneziano (bottega di Murano), Venezia (1477): rientra nella scuola 'Quattrocento veneziano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "polittico-lazara",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-padano",
+  "status": "assegnato",
+  "note": "Francesco Squarcione, capo della scuola pittorica patavina (maestro di Mantegna), Padova (1452): rientra nella scuola 'Rinascimento padano' (1440-1510).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "polittico-porta-romana",
+  "current_period_id": null,
+  "proposed_period_id": "quattrocento",
+  "status": "assegnato",
+  "note": "Opera senese (Siena, 1479-1481): nessuna scuola specifica per la pittura senese di questa fase tarda del Quattrocento è presente in albero (la scuola 'gotico-senese' copre solo il Trecento); si assegna al livello di corrente generica, comunque più specifico del vuoto precedente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "porta-capuana",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-napoletano",
+  "status": "assegnato",
+  "note": "Giuliano da Maiano, Napoli (1484): rientra nella scuola 'Rinascimento napoletano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "predica-di-pietro-masolino",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "umanesimo-fiorentino",
+  "status": "assegnato",
+  "note": "Masolino da Panicale, Cappella Brancacci, Firenze (1424-1425): rientra nella scuola 'Umanesimo fiorentino'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "presentazione-al-tempio",
+  "current_period_id": "quattrocento-veneziano",
+  "proposed_period_id": "quattrocento-veneziano",
+  "status": "invariato",
+  "note": "Giovanni Bellini, Venezia (1460 circa): già alla collocazione più specifica corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "resurrezione-del-figlio-di-teofilo",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "umanesimo-fiorentino",
+  "status": "assegnato",
+  "note": "Masolino da Panicale, Cappella Brancacci, Firenze (1427): rientra nella scuola 'Umanesimo fiorentino'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-del-doge-leonardo-loredan",
+  "current_period_id": null,
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Giovanni Bellini, ritratto del doge di Venezia (1501-1502; 'Londra' è la sede museale attuale): la data supera il limite di 'quattrocento-veneziano' (fino al 1500), 'Scuola veneziana' (1450-1580) è coerente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-di-uomo-con-moneta",
+  "current_period_id": "seconda-meta-del-quattrocento",
+  "proposed_period_id": "quattrocento-fiammingo",
+  "status": "assegnato",
+  "note": "Hans Memling, pittore fiammingo attivo a Bruges nello stile dell'ars nova ('Anversa' è la sede museale attuale): la scuola 'Quattrocento fiammingo' (Ars nova fiammingo-borgognona) è più specifica della corrente generica attuale.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-erasmo-holbein",
+  "current_period_id": "rinasc-nordico",
+  "proposed_period_id": "rinasc-nordico",
+  "status": "invariato",
+  "note": "Holbein il Giovane, ritratto di Erasmo (1523 circa, periodo di Basilea; 'Parigi' è la sede museale attuale): nessuna scuola specifica per l'ambito basileese/renano di questo periodo è presente in albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-lutero-cranach",
+  "current_period_id": "rinasc-nordico",
+  "proposed_period_id": "rinasc-nordico",
+  "status": "invariato",
+  "note": "Cranach il Vecchio, pittore tedesco attivo alla corte sassone di Wittenberg ('Firenze' è la sede museale attuale, Uffizi): nessuna scuola specifica per Wittenberg/Cranach è presente in albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-tommaso-moro",
+  "current_period_id": "rinasc-nordico",
+  "proposed_period_id": "rinasc-nordico",
+  "status": "invariato",
+  "note": "Holbein il Giovane, ritratto dipinto a Londra durante il soggiorno inglese dell'artista (1527; 'New York' è la sede museale attuale): nessuna scuola per l'Inghilterra di questo periodo è presente in albero (le scuole gotico-inglesi si fermano al 1350).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-virile",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": null,
+  "status": "incerto",
+  "note": "Antonello da Messina, ritratto virile (Londra, National Gallery), databile al 1475 circa (il year_start della scheda diverge dal date_text '1465'): la critica è divisa fra un'esecuzione siciliana e una veneziana (soggiorno a Venezia 1475-76); si segnala l'incertezza fra il nuovo gruppo 'Antonello da Messina in Sicilia' (proposto in questo lotto) e la scuola 'Quattrocento veneziano'.",
+  "new_school": null,
+  "alt_options": ["antonello-da-messina-sicilia", "quattrocento-veneziano"]
+ },
+ {
+  "id": "ritratto-virile-ritratto-dignoto-marinaio",
+  "current_period_id": null,
+  "proposed_period_id": "antonello-da-messina-sicilia",
+  "status": "nuova_scuola",
+  "note": "Antonello da Messina, 'Ritratto d'ignoto marinaio', Cefalù/Palermo (1465 circa), periodo siciliano dell'artista precedente al soggiorno veneziano: apre, con la Vergine Annunziata dello stesso lotto, il gruppo dedicato alla produzione siciliana di Antonello, non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "antonello-da-messina-sicilia",
+   "name": "Antonello da Messina in Sicilia",
+   "parent_id": "quattrocento",
+   "year_start": 1460,
+   "year_end": 1479,
+   "region": ["Messina", "Palermo", "Sicilia"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "rodolfo-ii-vertumno",
+  "current_period_id": "manierismo",
+  "proposed_period_id": "manierismo",
+  "status": "invariato",
+  "note": "Arcimboldo, opera inviata a Rodolfo II ma dipinta a Milano dopo il rientro dell'artista (1590; 'Skokloster' è la sede museale attuale in Svezia): nessuna scuola milanese/praghese di corte per Arcimboldo è presente in albero; opera isolata nel lotto, si mantiene la corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "sala-fasti-farnesiani",
+  "current_period_id": "controriforma",
+  "proposed_period_id": "controriforma",
+  "status": "invariato",
+  "note": "Taddeo Zuccari, Palazzo Farnese di Caprarola (1563-1565): nessuna scuola specifica per Caprarola/Farnese è presente in albero; opera isolata nel lotto rispetto ad altre commissioni Zuccari (Urbino), si mantiene la corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "saliera-francesco-i",
+  "current_period_id": "manierismo",
+  "proposed_period_id": "scuola-di-fontainebleau",
+  "status": "nuova_scuola",
+  "note": "Cellini, Saliera di Francesco I, eseguita in Francia per il re (1540-1543; 'Vienna' è la sede museale attuale): rientra nel gruppo della corte francese di Francesco I individuato nel lotto insieme alla Ninfa di Fontainebleau.",
+  "new_school": {
+   "suggested_id": "scuola-di-fontainebleau",
+   "name": "Scuola di Fontainebleau (corte di Francesco I)",
+   "parent_id": "manierismo",
+   "year_start": 1530,
+   "year_end": 1570,
+   "region": ["Fontainebleau", "Francia"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "san-carlo-appestati",
+  "current_period_id": "controriforma",
+  "proposed_period_id": "controriforma-milanese-borromea",
+  "status": "nuova_scuola",
+  "note": "Cerano, Milano (1602), soggetto legato al culto di san Carlo Borromeo: apre, con la chiesa di San Fedele dello stesso lotto, il gruppo dedicato alla Controriforma milanese in età borromaica, non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "controriforma-milanese-borromea",
+   "name": "Controriforma milanese (età borromaica)",
+   "parent_id": "controriforma",
+   "year_start": 1565,
+   "year_end": 1610,
+   "region": ["Milano", "Lombardia"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "san-fedele-tibaldi",
+  "current_period_id": "controriforma",
+  "proposed_period_id": "controriforma-milanese-borromea",
+  "status": "nuova_scuola",
+  "note": "Tibaldi, chiesa di San Fedele a Milano (1569-1580), commissione di ambito borromaico: rientra nel gruppo della Controriforma milanese individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "controriforma-milanese-borromea",
+   "name": "Controriforma milanese (età borromaica)",
+   "parent_id": "controriforma",
+   "year_start": 1565,
+   "year_end": 1610,
+   "region": ["Milano", "Lombardia"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "san-floriano",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Pannello disperso del Polittico Griffoni, Bologna (1470-1473; 'Washington D.C.' è la sede museale attuale): rientra nel gruppo bolognese di Cossa/de' Roberti individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "san-francesco-consegna-la-regola-agli-ordini-francescani",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-napoletano",
+  "status": "assegnato",
+  "note": "Colantonio, pittore napoletano (maestro di Antonello da Messina), Napoli (1445 circa): rientra nella scuola 'Rinascimento napoletano' (1450-1500), con lieve estensione del limite iniziale.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "san-gerolamo-nello-studio",
+  "current_period_id": null,
+  "proposed_period_id": "rinascimento-napoletano",
+  "status": "assegnato",
+  "note": "Colantonio, Napoli (1445 circa): stesso ragionamento della voce precedente, rientra nella scuola 'Rinascimento napoletano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "san-giorgio",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Pannello disperso del Polittico Griffoni, Bologna (1470-1473; 'Venezia' è la sede museale attuale): rientra nel gruppo bolognese di Cossa/de' Roberti.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "san-giorgio-e-la-principessa-ante-chiusure",
+  "current_period_id": "scuola-ferrarese",
+  "proposed_period_id": "scuola-ferrarese",
+  "status": "invariato",
+  "note": "Cosmè Tura, Ferrara (1469 circa): collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "San-giroamo-nello-studio",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": null,
+  "status": "incerto",
+  "note": "Antonello da Messina, 'San Gerolamo nello studio' (Londra, National Gallery, 1475): la critica è divisa fra un'esecuzione nel periodo siciliano dell'artista e il soggiorno veneziano (1475-76); si segnala l'incertezza fra il nuovo gruppo 'Antonello da Messina in Sicilia' e la scuola 'Quattrocento veneziano'.",
+  "new_school": null,
+  "alt_options": ["antonello-da-messina-sicilia", "quattrocento-veneziano"]
+ },
+ {
+  "id": "san-matteo-angelo-caravaggio-prima-versione",
+  "current_period_id": "barocco",
+  "proposed_period_id": "cappella-contarelli-san-luigi-francesi",
+  "status": "nuova_scuola",
+  "note": "Caravaggio, prima versione (distrutta) di San Matteo e l'angelo per la Cappella Contarelli in San Luigi dei Francesi, Roma (1602; 'Berlino' era la sede museale prima della distruzione bellica): apre, con la Vocazione e la statua Cobaert/Ferrucci dello stesso lotto, il gruppo dedicato al cantiere della Cappella Contarelli, non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "cappella-contarelli-san-luigi-francesi",
+   "name": "Cappella Contarelli in San Luigi dei Francesi (Caravaggio)",
+   "parent_id": "barocco",
+   "year_start": 1587,
+   "year_end": 1620,
+   "region": "Roma"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "san-matteo-angelo-cobaert-ferrucci",
+  "current_period_id": "manierismo",
+  "proposed_period_id": "cappella-contarelli-san-luigi-francesi",
+  "status": "nuova_scuola",
+  "note": "Statua marmorea commissionata in origine per l'altare della Cappella Contarelli (poi rifiutata e sostituita dalla tela di Caravaggio), Roma (ante 1587-1620): rientra nel gruppo del cantiere della Cappella Contarelli individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "cappella-contarelli-san-luigi-francesi",
+   "name": "Cappella Contarelli in San Luigi dei Francesi (Caravaggio)",
+   "parent_id": "barocco",
+   "year_start": 1587,
+   "year_end": 1620,
+   "region": "Roma"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "san-michele-arcangelo",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Pannello disperso del Polittico Griffoni, Bologna (1470-1473; 'Lione' è la sede museale attuale): rientra nel gruppo bolognese di Cossa/de' Roberti.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "san-pietro",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Pannello disperso del Polittico Griffoni, Bologna (1470-1473; 'Milano' è la sede museale attuale): rientra nel gruppo bolognese di Cossa/de' Roberti.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "san-pietronio",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Pannello disperso del Polittico Griffoni raffigurante il patrono di Bologna, San Petronio (1470-1473; 'Ferrara' è la sede museale attuale, Pinacoteca Nazionale): rientra nel gruppo bolognese di Cossa/de' Roberti.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "san-sebastiano",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Mantegna, dipinto durante l'attività presso la corte gonzaghesca (1482-1485 circa; 'Parigi' è la sede museale attuale, Louvre): rientra nella scuola 'Rinascimento mantovano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "san-sebastiano-a.d.m.",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-veneziano",
+  "status": "assegnato",
+  "note": "Antonello da Messina, San Sebastiano dipinto a Venezia per la chiesa di San Giuliano durante il soggiorno veneziano documentato dell'artista (1478; 'Dresda' è la sede museale attuale): rientra nella scuola 'Quattrocento veneziano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "san-vincenzo-ferrer",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Pannello disperso del Polittico Griffoni, Bologna (1470-1473; 'Londra' è la sede museale attuale): rientra nel gruppo bolognese di Cossa/de' Roberti.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "santa-apollonia",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Pannello disperso del Polittico Griffoni, Bologna (1470-1473; 'Parigi' è la sede museale attuale): rientra nel gruppo bolognese di Cossa/de' Roberti.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "santa-caterina",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Pannello disperso del Polittico Griffoni, Bologna (1470-1473; 'Venezia' è la sede museale attuale): rientra nel gruppo bolognese di Cossa/de' Roberti.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "santa-caterina-dalessandria",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Pannello disperso del Polittico Griffoni, Bologna (1470-1473; 'Milano' è la sede museale attuale): rientra nel gruppo bolognese di Cossa/de' Roberti.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "santa-lucia",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Pannello disperso del Polittico Griffoni, Bologna (1470-1473; 'Washington D.C.' è la sede museale attuale): rientra nel gruppo bolognese di Cossa/de' Roberti.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "santantonio-abate",
+  "current_period_id": null,
+  "proposed_period_id": "cossa-de-roberti-bologna",
+  "status": "nuova_scuola",
+  "note": "Pannello disperso del Polittico Griffoni, Bologna (1470-1473; 'Rotterdam' è la sede museale attuale): rientra nel gruppo bolognese di Cossa/de' Roberti.",
+  "new_school": {
+   "suggested_id": "cossa-de-roberti-bologna",
+   "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+   "parent_id": "quattrocento",
+   "year_start": 1472,
+   "year_end": 1481,
+   "region": ["Bologna", "Emilia-Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "scena-di-corte-e-celebrazione-di-gonzaga",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Mantegna, Camera degli Sposi, Mantova (1465-1474): rientra nella scuola 'Rinascimento mantovano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "sepoltura-conte-orgaz",
+  "current_period_id": "controriforma",
+  "proposed_period_id": "el-greco-toledo",
+  "status": "nuova_scuola",
+  "note": "El Greco, Sant. Tomé, Toledo (1586-1588): apre, con la Trinità dello stesso lotto, il gruppo dedicato al periodo toledano dell'artista, non coperto da alcuna scuola esistente (Controriforma copre solo il livello di corrente generica).",
+  "new_school": {
+   "suggested_id": "el-greco-toledo",
+   "name": "El Greco a Toledo",
+   "parent_id": "controriforma",
+   "year_start": 1577,
+   "year_end": 1614,
+   "region": "Toledo, Spagna"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "storie-di-orffeo-mantegna",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Mantegna, pennacchi della Camera degli Sposi, Mantova (1465-1474): la corrente 'rinascimento-maturo' (1490-1527) non copre cronologicamente l'opera; si corregge con la scuola 'Rinascimento mantovano' (1450-1510), coerente sia per data sia per luogo.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "teleri-di-san-girolamo",
+  "current_period_id": null,
+  "proposed_period_id": "quattrocento-veneziano",
+  "status": "assegnato",
+  "note": "Vittore Carpaccio, cicli per le Scuole veneziane (Venezia), coerente con l'altra opera di Carpaccio del lotto già collocata in 'quattrocento-veneziano'; nessuna data disponibile ma attività dell'artista interamente veneziana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "testa-di-santi-giorgio",
+  "current_period_id": null,
+  "proposed_period_id": "scuola-ferrarese",
+  "status": "assegnato",
+  "note": "Cosmè Tura, pittore di corte a Ferrara per l'intera carriera (nessuna data disponibile, ma coerente con le altre opere ferraresi dell'artista nel lotto): rientra nella scuola 'Scuola ferrarese'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "trinita-el-greco",
+  "current_period_id": "controriforma",
+  "proposed_period_id": "el-greco-toledo",
+  "status": "nuova_scuola",
+  "note": "El Greco, dipinta per Santo Domingo el Antiguo a Toledo (1577-1579; 'Madrid' è la sede museale attuale, Prado): rientra nel gruppo del periodo toledano dell'artista individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "el-greco-toledo",
+   "name": "El Greco a Toledo",
+   "parent_id": "controriforma",
+   "year_start": 1577,
+   "year_end": 1614,
+   "region": "Toledo, Spagna"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "trionfi-di-cesare-in-gallia",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Mantegna, Trionfi di Cesare, ciclo per la corte gonzaghesca di Mantova (1485-1505; 'Londra' indica solo la sede della collezione attuale, Hampton Court): rientra nella scuola 'Rinascimento mantovano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "trionfo-di-marzo-apile-e-maggio",
+  "current_period_id": "scuola-ferrarese",
+  "proposed_period_id": "scuola-ferrarese",
+  "status": "invariato",
+  "note": "Salone dei Mesi, Palazzo Schifanoia, Ferrara (circa 1460-1470): collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "trittico-carro-fieno",
+  "current_period_id": "rinasc-nordico",
+  "proposed_period_id": "rinasc-nordico",
+  "status": "invariato",
+  "note": "Bosch, pittore di 's-Hertogenbosch (1512-1515; 'Madrid' è la sede museale attuale): nessuna scuola specifica per Bosch/Brabante di questo periodo è presente in albero (la scuola 'quattrocento-fiammingo' si ferma al 1500).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "trittico-con-la-madonna-in-trono-con-il-bambino-tra-i-santi-gregorio-gerolamo-am",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-veneziano",
+  "status": "assegnato",
+  "note": "Antonio Vivarini e Giovanni d'Alemagna, bottega veneziana, Venezia (1446): rientra nella scuola 'Quattrocento veneziano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "trittico-dei-frari",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-veneziano",
+  "status": "assegnato",
+  "note": "Giovanni Bellini, basilica dei Frari, Venezia (1488): rientra nella scuola 'Quattrocento veneziano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "urania",
+  "current_period_id": "scuola-ferrarese",
+  "proposed_period_id": "scuola-ferrarese",
+  "status": "invariato",
+  "note": "Angelo Maccagnino, Ferrara (1455-1460): collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "vergine-annunziata",
+  "current_period_id": null,
+  "proposed_period_id": "antonello-da-messina-sicilia",
+  "status": "nuova_scuola",
+  "note": "Antonello da Messina, Vergine Annunziata, Palermo (1475-1476), attribuita dalla critica prevalente al periodo siciliano dell'artista: rientra nel gruppo 'Antonello da Messina in Sicilia' individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "antonello-da-messina-sicilia",
+   "name": "Antonello da Messina in Sicilia",
+   "parent_id": "quattrocento",
+   "year_start": 1460,
+   "year_end": 1479,
+   "region": ["Messina", "Palermo", "Sicilia"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "vocazione-san-matteo-caravaggio",
+  "current_period_id": "barocco",
+  "proposed_period_id": "cappella-contarelli-san-luigi-francesi",
+  "status": "nuova_scuola",
+  "note": "Caravaggio, Cappella Contarelli in San Luigi dei Francesi, Roma (1599-1600): rientra nel gruppo del cantiere della Cappella Contarelli individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "cappella-contarelli-san-luigi-francesi",
+   "name": "Cappella Contarelli in San Luigi dei Francesi (Caravaggio)",
+   "parent_id": "barocco",
+   "year_start": 1587,
+   "year_end": 1620,
+   "region": "Roma"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "volta-della-camera-degli-sposi",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Mantegna, oculo della Camera degli Sposi, Mantova (1465-1474): rientra nella scuola 'Rinascimento mantovano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "volta-stanza-della-segnatura",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, volta della Stanza della Segnatura, Città del Vaticano (1508): riuso della scuola 'rinascimento-romano-giulio-leone' proposta nel batch_10 per il cantiere vaticano di Giulio II e Leone X, che già include le pareti della stessa stanza.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ }
+]

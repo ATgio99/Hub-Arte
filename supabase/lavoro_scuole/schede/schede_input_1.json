@@ -1,0 +1,1744 @@
+[
+ {
+  "id": "rinascimento-romano-giulio-leone",
+  "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+  "parent_id": "rinascimento-maturo",
+  "parent_name": "Rinascimento maturo",
+  "percorso": "Rinascimento > Rinascimento maturo",
+  "year_start": 1505,
+  "year_end": 1520,
+  "region_proposta": [
+   "Roma",
+   "Città del Vaticano"
+  ],
+  "n_opere": 43,
+  "opere": [
+   {
+    "titolo": "Medaglia commemorativa della posa della prima pietra della basilica di San Pietro",
+    "autori": [
+     "Cristoforo Caradosso"
+    ],
+    "citta": "Washington",
+    "anni": "1505"
+   },
+   {
+    "titolo": "Disputa del Santissimo Sacramento (Esaltazione dell'ostia consacrata)",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1508-1509"
+   },
+   {
+    "titolo": "Madonna col Bambino tra i santi di Antiochia e Onofrio",
+    "autori": [
+     "Lorenzo Lotto"
+    ],
+    "citta": "Roma",
+    "anni": "1508"
+   },
+   {
+    "titolo": "Sacrificio di Noè",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1508-1509"
+   },
+   {
+    "titolo": "Stanza della Segnatura",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1508-1511"
+   },
+   {
+    "titolo": "Decorazione delle Stanze Vaticane",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1508-1517"
+   },
+   {
+    "titolo": "Volta della cappella Sistina",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1508-1512"
+   },
+   {
+    "titolo": "Parnaso",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1509-1511"
+   },
+   {
+    "titolo": "Scuola di Atene",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1509-1511"
+   },
+   {
+    "titolo": "Creazione di Adamo",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1510"
+   },
+   {
+    "titolo": "Cacciata di Eliodoro dal Tempio",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1511-1512"
+   },
+   {
+    "titolo": "Gregorio IX approva le Decretali (Fortezza, Prudenza e Temperanza)",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1511"
+   },
+   {
+    "titolo": "Profeta Giona",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1511-1512"
+   },
+   {
+    "titolo": "Ritratto di papa Giulio II",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Londra",
+    "anni": "1511-1512"
+   },
+   {
+    "titolo": "Sibilla libica",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1511-1512"
+   },
+   {
+    "titolo": "Stanza di Eliodoro",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1511-1514"
+   },
+   {
+    "titolo": "Aminadab e sua moglie",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1512"
+   },
+   {
+    "titolo": "Madonna Sistina (Madonna con il Bambino, i santi Sisto e Barbara e due angeli)",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Dresda",
+    "anni": "1512-1513"
+   },
+   {
+    "titolo": "Messa di Bolsena",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1512"
+   },
+   {
+    "titolo": "Il supplizio di Aman",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1512"
+   },
+   {
+    "titolo": "Trionfo di Galatea",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Roma",
+    "anni": "1512"
+   },
+   {
+    "titolo": "L'incontro di papa Leone Magno e Attila",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1513-1514"
+   },
+   {
+    "titolo": "Liberazione di san Pietro dal carcere",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1513-1514"
+   },
+   {
+    "titolo": "Mosè",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Roma",
+    "anni": "1513-1545"
+   },
+   {
+    "titolo": "Prigioni (Schiavo ribelle e Schiavo morente)",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Parigi",
+    "anni": "1513-1515 circa"
+   },
+   {
+    "titolo": "Schiavo morente",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Parigi",
+    "anni": "1513-1515 circa"
+   },
+   {
+    "titolo": "Schiavo ribelle",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Parigi",
+    "anni": "1513-1515 circa"
+   },
+   {
+    "titolo": "Tomba di papa Giulio II",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Roma",
+    "anni": "1513-1545"
+   },
+   {
+    "titolo": "Incendio di Borgo",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1514"
+   },
+   {
+    "titolo": "Pianta della basilica di San Pietro (progetto Raffaello)",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1514-1516"
+   },
+   {
+    "titolo": "Ritratto di Baldassarre Castiglione",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Parigi",
+    "anni": "1514-1515"
+   },
+   {
+    "titolo": "Stanza dell'Incendio di Borgo (ciclo)",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1514-1517"
+   },
+   {
+    "titolo": "Predica di san Paolo agli Ateniesi (Arazzo cappella Sistina)",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Londra",
+    "anni": "1515-1516"
+   },
+   {
+    "titolo": "Logge Vaticane",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1516-1519"
+   },
+   {
+    "titolo": "Pietà (del Piombo)",
+    "autori": [
+     "Sebastiano del Piombo"
+    ],
+    "citta": "Viterbo",
+    "anni": "1516-1517"
+   },
+   {
+    "titolo": "Trasfigurazione",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1516-1520"
+   },
+   {
+    "titolo": "Decorazione a festoni vegetali della Loggia di Psiche",
+    "autori": [
+     "Giovanni da Udine"
+    ],
+    "citta": "Roma",
+    "anni": "1517-1519"
+   },
+   {
+    "titolo": "Loggia di Psiche (ciclo: Il concilio degli dèi e il Banchetto nuziale)",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Roma",
+    "anni": "1517-1519"
+   },
+   {
+    "titolo": "Resurrezione di Lazzaro",
+    "autori": [
+     "Sebastiano del Piombo"
+    ],
+    "citta": "Londra",
+    "anni": "1519"
+   },
+   {
+    "titolo": "Villa Madama",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Roma",
+    "anni": "dal 1517-1518"
+   },
+   {
+    "titolo": "Madonna con il Bambino, sant'Anna e san Giovannino (detta La Perla)",
+    "autori": [
+     "Giulio Romano"
+    ],
+    "citta": "Madrid",
+    "anni": "1518-1520 circa"
+   },
+   {
+    "titolo": "Peccato originale e cacciata dal paradiso terrestre",
+    "autori": [
+     "Michelangelo Buonarroti"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1508-1512"
+   },
+   {
+    "titolo": "Soffitto e volta della Stanza della Segnatura",
+    "autori": [
+     "Raffaello Sanzio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1508"
+   }
+  ]
+ },
+ {
+  "id": "bottega-giotto",
+  "name": "Bottega di Giotto di Bondone",
+  "parent_id": "gotico-italiano",
+  "parent_name": "Gotico italiano (temperato)",
+  "percorso": "Gotico > Gotico italiano (temperato)",
+  "year_start": 1290,
+  "year_end": 1337,
+  "region_proposta": "Assisi, Firenze, Padova, Napoli, Roma",
+  "n_opere": 24,
+  "opere": [
+   {
+    "titolo": "Apparizione al Capitolo di Arles (Storie di san Francesco, Assisi)",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Assisi",
+    "anni": "1290-1299 circa"
+   },
+   {
+    "titolo": "Crocifisso di Santa Maria Novella",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Firenze",
+    "anni": "1290 circa"
+   },
+   {
+    "titolo": "Innocenzo III conferma la regola",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Assisi",
+    "anni": "1290-1299 circa"
+   },
+   {
+    "titolo": "Il presepe di Greccio",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Assisi",
+    "anni": "1290-1299 circa"
+   },
+   {
+    "titolo": "San Francesco dona il mantello a un cavaliere povero",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Assisi",
+    "anni": "1290-1299 circa"
+   },
+   {
+    "titolo": "San Francesco rinuncia ai beni paterni",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Assisi",
+    "anni": "1290-1299 circa"
+   },
+   {
+    "titolo": "Storie di san Francesco",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Assisi",
+    "anni": "1290-1299 circa"
+   },
+   {
+    "titolo": "Dottori della Chiesa (volta prima campata, chiesa superiore di Assisi)",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Assisi",
+    "anni": "1291-1296 circa"
+   },
+   {
+    "titolo": "Storie di Isacco (Isacco benedice Giacobbe; Esaù respinto da Isacco)",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Assisi",
+    "anni": "1291-1295 circa"
+   },
+   {
+    "titolo": "Polittico di Badia",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Firenze",
+    "anni": "1300 circa"
+   },
+   {
+    "titolo": "Affreschi della cappella degli Scrovegni",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Padova",
+    "anni": "1303-1305"
+   },
+   {
+    "titolo": "Allegorie dei Vizi e delle Virtù",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Padova",
+    "anni": "1303-1305"
+   },
+   {
+    "titolo": "Annuncio ad Anna",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Padova",
+    "anni": "1303-1305"
+   },
+   {
+    "titolo": "Il Bacio di Giuda",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Padova",
+    "anni": "1303-1305"
+   },
+   {
+    "titolo": "Compianto su Cristo morto",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Padova",
+    "anni": "1303-1305"
+   },
+   {
+    "titolo": "Coretti (finti ambienti prospettici)",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Padova",
+    "anni": "1303-1305"
+   },
+   {
+    "titolo": "Giudizio Universale",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Padova",
+    "anni": "1305 circa"
+   },
+   {
+    "titolo": "Incontro di Gioacchino e Anna alla Porta Aurea",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Padova",
+    "anni": "1303-1305"
+   },
+   {
+    "titolo": "Affreschi della cappella Peruzzi",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Firenze",
+    "anni": "secondo decennio del XIV secolo"
+   },
+   {
+    "titolo": "Maestà d'Ognissanti",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Firenze",
+    "anni": "1310 circa"
+   },
+   {
+    "titolo": "Apparizione al Capitolo di Arles (cappella Bardi)",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Firenze",
+    "anni": "1320-1325"
+   },
+   {
+    "titolo": "Affreschi della cappella Bardi (Storie di san Francesco)",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Firenze",
+    "anni": "1320-1325"
+   },
+   {
+    "titolo": "Polittico Stefaneschi",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1320 circa"
+   },
+   {
+    "titolo": "Polittico Baroncelli",
+    "autori": [
+     "Giotto di Bondone"
+    ],
+    "citta": "Firenze",
+    "anni": "1333-1334 circa"
+   }
+  ]
+ },
+ {
+  "id": "quattrocento-romano",
+  "name": "Quattrocento romano (cantiere pontificio)",
+  "parent_id": "quattrocento",
+  "parent_name": "Quattrocento",
+  "percorso": "Rinascimento > Quattrocento",
+  "year_start": 1455,
+  "year_end": 1482,
+  "region_proposta": [
+   "Roma",
+   "Citta' del Vaticano"
+  ],
+  "n_opere": 19,
+  "opere": [
+   {
+    "titolo": "Palazzo Venezia",
+    "autori": [
+     "Francesco del Borgo"
+    ],
+    "citta": "Roma",
+    "anni": "dal 1455"
+   },
+   {
+    "titolo": "Interno della cappella Sistina",
+    "autori": [
+     "Giovannino de' Dolci",
+     "Baccio Pontelli",
+     "Mino da Fiesole",
+     "Andrea Bregno",
+     "Giovanni Dalmata",
+     "Pietro Perugino",
+     "Cosimo Rosselli",
+     "Sandro Botticelli",
+     "Domenico Ghirlandaio",
+     "Luca Signorelli",
+     "Pinturicchio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1477-1481"
+   },
+   {
+    "titolo": "Battesimo di Cristo (cappella Sistina)",
+    "autori": [
+     "Pietro Perugino",
+     "Pinturicchio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Consegna delle chiavi",
+    "autori": [
+     "Pietro Perugino"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Discorso della montagna",
+    "autori": [
+     "Cosimo Rosselli"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Morte di Mosè",
+    "autori": [
+     "Luca Signorelli"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Passaggio del Mar Rosso",
+    "autori": [
+     "Cosimo Rosselli"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Prove di Mosè (parete nord)",
+    "autori": [
+     "Sandro Botticelli"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Punizione dei ribelli",
+    "autori": [
+     "Sandro Botticelli"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Tentazioni di Cristo (parete sud)",
+    "autori": [
+     "Sandro Botticelli"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Transenna marmorea della cappella Sistina",
+    "autori": [
+     "Mino da Fiesole",
+     "Andrea Bregno",
+     "Giovanni Dalmata"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Ultima Cena (cappella Sistina)",
+    "autori": [
+     "Cosimo Rosselli"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Viaggio di Mosè verso l'Egitto",
+    "autori": [
+     "Pietro Perugino",
+     "Pinturicchio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Vocazione dei primi apostoli",
+    "autori": [
+     "Domenico Ghirlandaio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1481-1482"
+   },
+   {
+    "titolo": "Monumento funebre di Sisto IV",
+    "autori": [
+     "Antonio Pollaiolo"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1484-1493"
+   },
+   {
+    "titolo": "Appartamento Borgia, Mito di Iside e Osiride",
+    "autori": [
+     "Pinturicchio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1492-1494"
+   },
+   {
+    "titolo": "Disputa di santa Caterina d'Alessandria con i filosofi",
+    "autori": [
+     "Pinturicchio"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1492-1494"
+   },
+   {
+    "titolo": "Monumento funebre di Innocenzo VIII",
+    "autori": [
+     "Antonio Pollaiolo"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1493-1497"
+   },
+   {
+    "titolo": "Assunzione (studio)",
+    "autori": [
+     "Pietro Perugino"
+    ],
+    "citta": "Vienna",
+    "anni": "c. 1481"
+   }
+  ]
+ },
+ {
+  "id": "bottega-nicola-pisano",
+  "name": "Bottega di Nicola Pisano e Giovanni Pisano",
+  "parent_id": "gotico-italiano",
+  "parent_name": "Gotico italiano (temperato)",
+  "percorso": "Gotico > Gotico italiano (temperato)",
+  "year_start": 1255,
+  "year_end": 1278,
+  "region_proposta": "Pisa, Siena, Perugia (Toscana, Umbria)",
+  "n_opere": 15,
+  "opere": [
+   {
+    "titolo": "Pulpito del battistero di San Giovanni",
+    "autori": [
+     "Nicola Pisano"
+    ],
+    "citta": "Pisa",
+    "anni": "1260"
+   },
+   {
+    "titolo": "Adorazione dei Magi (particolare della decorazione scultorea del pulpito)",
+    "autori": [
+     "Nicola Pisano"
+    ],
+    "citta": "Pisa",
+    "anni": "1260"
+   },
+   {
+    "titolo": "Natività (particolare della decorazione scultorea del pulpito)",
+    "autori": [
+     "Nicola Pisano"
+    ],
+    "citta": "Pisa",
+    "anni": "1260"
+   },
+   {
+    "titolo": "Crocifissione (particolare del pulpito della cattedrale di Siena)",
+    "autori": [
+     "Nicola Pisano"
+    ],
+    "citta": "Siena",
+    "anni": "1265-1268"
+   },
+   {
+    "titolo": "Pulpito della cattedrale di Santa Maria Assunta di Siena",
+    "autori": [
+     "Nicola Pisano"
+    ],
+    "citta": "Siena",
+    "anni": "1265-1268"
+   },
+   {
+    "titolo": "Fontana Maggiore",
+    "autori": [
+     "Nicola Pisano",
+     "Giovanni Pisano"
+    ],
+    "citta": "Perugia",
+    "anni": "1278"
+   },
+   {
+    "titolo": "Perusia Augusta (particolare della decorazione scultorea della Fontana Maggiore)",
+    "autori": [
+     "Nicola Pisano",
+     "Giovanni Pisano"
+    ],
+    "citta": "Perugia",
+    "anni": "1278"
+   },
+   {
+    "titolo": "Facciata della cattedrale di Santa Maria Assunta",
+    "autori": [
+     "Giovanni Pisano"
+    ],
+    "citta": "Siena",
+    "anni": "1285-1297"
+   },
+   {
+    "titolo": "Facciata della cattedrale di Santa Maria Assunta (particolare della decorazione scultorea)",
+    "autori": [
+     "Giovanni Pisano"
+    ],
+    "citta": "Siena",
+    "anni": "1285-1297"
+   },
+   {
+    "titolo": "Crocifissione (particolare del pulpito di Sant'Andrea a Pistoia)",
+    "autori": [
+     "Giovanni Pisano"
+    ],
+    "citta": "Pistoia",
+    "anni": "1298-1301"
+   },
+   {
+    "titolo": "Pulpito della chiesa di Sant'Andrea a Pistoia",
+    "autori": [
+     "Giovanni Pisano"
+    ],
+    "citta": "Pistoia",
+    "anni": "1298-1301"
+   },
+   {
+    "titolo": "Madonna con il Bambino",
+    "autori": [
+     "Giovanni Pisano"
+    ],
+    "citta": "Prato",
+    "anni": "1300 circa"
+   },
+   {
+    "titolo": "Pulpito della cattedrale di Santa Maria Assunta di Pisa",
+    "autori": [
+     "Giovanni Pisano"
+    ],
+    "citta": "Pisa",
+    "anni": "1302-1311"
+   },
+   {
+    "titolo": "Strage degli Innocenti (particolare del pulpito di Pisa)",
+    "autori": [
+     "Giovanni Pisano"
+    ],
+    "citta": "Pisa",
+    "anni": "1302-1311"
+   },
+   {
+    "titolo": "Elevatio animae (frammento dal monumento funebre di Margherita di Brabante)",
+    "autori": [
+     "Giovanni Pisano"
+    ],
+    "citta": "Genova",
+    "anni": "1313-1314"
+   }
+  ]
+ },
+ {
+  "id": "cantieri-medicei-firenze-tardo-500",
+  "name": "Cantieri medicei fiorentini del tardo Cinquecento (Ammannati, Vasari, Buontalenti, Giambologna)",
+  "parent_id": "manierismo",
+  "parent_name": "Manierismo",
+  "percorso": "Rinascimento > Manierismo",
+  "year_start": 1550,
+  "year_end": 1593,
+  "region_proposta": [
+   "Firenze",
+   "Toscana",
+   "Pratolino"
+  ],
+  "n_opere": 15,
+  "opere": [
+   {
+    "titolo": "Giardino di Boboli",
+    "autori": [
+     "Bartolomeo Ammannati"
+    ],
+    "citta": "Firenze",
+    "anni": "dal 1550 circa"
+   },
+   {
+    "titolo": "Vite de' piu eccellenti architetti, pittori et scultori italiani (Le Vite)",
+    "autori": [
+     "Giorgio Vasari"
+    ],
+    "citta": "Firenze",
+    "anni": "1550 (prima ed.); 1568 (seconda ed.)"
+   },
+   {
+    "titolo": "Salone dei Cinquecento (decorazione)",
+    "autori": [
+     "Giorgio Vasari"
+    ],
+    "citta": "Firenze",
+    "anni": "dal 1556"
+   },
+   {
+    "titolo": "Cortile di Palazzo Pitti (ali laterali)",
+    "autori": [
+     "Bartolomeo Ammannati"
+    ],
+    "citta": "Firenze",
+    "anni": "dal 1558"
+   },
+   {
+    "titolo": "Palazzo Pitti (ampliamento)",
+    "autori": [
+     "Bartolomeo Ammannati"
+    ],
+    "citta": "Firenze",
+    "anni": "dal 1558"
+   },
+   {
+    "titolo": "Fontana del Nettuno",
+    "autori": [
+     "Bartolomeo Ammannati"
+    ],
+    "citta": "Firenze",
+    "anni": "1565"
+   },
+   {
+    "titolo": "Complesso degli Uffizi",
+    "autori": [
+     "Giorgio Vasari"
+    ],
+    "citta": "Firenze",
+    "anni": "dal 1560"
+   },
+   {
+    "titolo": "Corridoio Vasariano",
+    "autori": [
+     "Giorgio Vasari"
+    ],
+    "citta": "Firenze",
+    "anni": "1565"
+   },
+   {
+    "titolo": "Villa di Pratolino",
+    "autori": [
+     "Bernardo Buontalenti"
+    ],
+    "citta": "Pratolino",
+    "anni": "1569-1575"
+   },
+   {
+    "titolo": "Studiolo di Francesco I",
+    "autori": [
+     "Giorgio Vasari",
+     "vincenzo-borghini"
+    ],
+    "citta": "Firenze",
+    "anni": "dal 1570"
+   },
+   {
+    "titolo": "L'Appennino",
+    "autori": [
+     "Giambologna"
+    ],
+    "citta": "Pratolino",
+    "anni": "1571"
+   },
+   {
+    "titolo": "Mercurio",
+    "autori": [
+     "Giambologna"
+    ],
+    "citta": "Firenze",
+    "anni": "1576 circa"
+   },
+   {
+    "titolo": "Ratto della Sabina",
+    "autori": [
+     "Giambologna"
+    ],
+    "citta": "Firenze",
+    "anni": "1580-1583"
+   },
+   {
+    "titolo": "Tribuna degli Uffizi",
+    "autori": [
+     "Bernardo Buontalenti"
+    ],
+    "citta": "Firenze",
+    "anni": "1581 circa"
+   },
+   {
+    "titolo": "La Grotta Grande",
+    "autori": [
+     "Bernardo Buontalenti"
+    ],
+    "citta": "Firenze",
+    "anni": "1583-1593 circa"
+   }
+  ]
+ },
+ {
+  "id": "cossa-de-roberti-bologna",
+  "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+  "parent_id": "quattrocento",
+  "parent_name": "Quattrocento",
+  "percorso": "Rinascimento > Quattrocento",
+  "year_start": 1472,
+  "year_end": 1481,
+  "region_proposta": [
+   "Bologna",
+   "Emilia-Romagna"
+  ],
+  "n_opere": 14,
+  "opere": [
+   {
+    "titolo": "Miracoli di san Vincenzo Ferrer (Predella Polittico Griffoni)",
+    "autori": [
+     "ercole-de-roberti"
+    ],
+    "citta": "Città del Vaticano",
+    "anni": "1470-1473"
+   },
+   {
+    "titolo": "Pala Portonese (Madonna col Bambino e santi)",
+    "autori": [
+     "ercole-de-roberti"
+    ],
+    "citta": "Milano",
+    "anni": "1479-1481"
+   },
+   {
+    "titolo": "Politico Griffoni",
+    "autori": [
+     "francesco-del-cossa"
+    ],
+    "citta": "Bologna",
+    "anni": "1473"
+   },
+   {
+    "titolo": "San Floriano",
+    "autori": [
+     "francesco-del-cossa-o-ercole-de-roberti"
+    ],
+    "citta": "Washington D.C.",
+    "anni": "1470-1473"
+   },
+   {
+    "titolo": "San Giorgio",
+    "autori": [
+     "francesco-del-cossa-o-ercole-de-roberti"
+    ],
+    "citta": "Venezia",
+    "anni": "1470-1473"
+   },
+   {
+    "titolo": "San Michele Arcangelo",
+    "autori": [
+     "francesco-del-cossa-o-ercole-de-roberti"
+    ],
+    "citta": "Lione",
+    "anni": "1470-1473"
+   },
+   {
+    "titolo": "San Pietro",
+    "autori": [
+     "francesco-del-cossa-o-ercole-de-roberti"
+    ],
+    "citta": "Milano",
+    "anni": "1470-1473"
+   },
+   {
+    "titolo": "San Pietronio",
+    "autori": [
+     "francesco-del-cossa-o-ercole-de-roberti"
+    ],
+    "citta": "Ferrara",
+    "anni": "1470-1473"
+   },
+   {
+    "titolo": "San Vincenzo Ferrer",
+    "autori": [
+     "francesco-del-cossa-o-ercole-de-roberti"
+    ],
+    "citta": "Londra",
+    "anni": "1470-1473"
+   },
+   {
+    "titolo": "Santa Apollonia",
+    "autori": [
+     "francesco-del-cossa-o-ercole-de-roberti"
+    ],
+    "citta": "Parigi",
+    "anni": "1470-1473"
+   },
+   {
+    "titolo": "Santa Caterina",
+    "autori": [
+     "francesco-del-cossa-o-ercole-de-roberti"
+    ],
+    "citta": "Venezia",
+    "anni": "1470-1473"
+   },
+   {
+    "titolo": "Santa Caterina d'Alessandria",
+    "autori": [
+     "francesco-del-cossa-o-ercole-de-roberti"
+    ],
+    "citta": "Milano",
+    "anni": "1470-1473"
+   },
+   {
+    "titolo": "Santa Lucia",
+    "autori": [
+     "francesco-del-cossa-o-ercole-de-roberti"
+    ],
+    "citta": "Washington D.C.",
+    "anni": "1470-1473"
+   },
+   {
+    "titolo": "Sant'Antonio Abate",
+    "autori": [
+     "francesco-del-cossa-o-ercole-de-roberti"
+    ],
+    "citta": "Rotterdam",
+    "anni": "1470-1473"
+   }
+  ]
+ },
+ {
+  "id": "scuola-di-parma",
+  "name": "Scuola di Parma (Correggio e Parmigianino)",
+  "parent_id": "manierismo",
+  "parent_name": "Manierismo",
+  "percorso": "Rinascimento > Manierismo",
+  "year_start": 1519,
+  "year_end": 1540,
+  "region_proposta": "Parma e Fontanellato, Emilia",
+  "n_opere": 13,
+  "opere": [
+   {
+    "titolo": "Volta della camera della badessa",
+    "autori": [
+     "Correggio"
+    ],
+    "citta": "Parma",
+    "anni": "1519-1520"
+   },
+   {
+    "titolo": "Diana (camera della badessa)",
+    "autori": [
+     "Correggio"
+    ],
+    "citta": "Parma",
+    "anni": "1520 circa"
+   },
+   {
+    "titolo": "Visione di san Giovanni Evangelista a Patmos",
+    "autori": [
+     "Correggio"
+    ],
+    "citta": "Parma",
+    "anni": "dal 1520"
+   },
+   {
+    "titolo": "Autoritratto allo specchio",
+    "autori": [
+     "Parmigianino"
+    ],
+    "citta": "Vienna",
+    "anni": "1523-1524"
+   },
+   {
+    "titolo": "Storie di Diana e Atteone (volta della Sala di Diana e Atteone)",
+    "autori": [
+     "Parmigianino"
+    ],
+    "citta": "Fontanellato",
+    "anni": "1524 circa"
+   },
+   {
+    "titolo": "Assunzione della Vergine",
+    "autori": [
+     "Correggio"
+    ],
+    "citta": "Parma",
+    "anni": "1526-1530"
+   },
+   {
+    "titolo": "Madonna di san Girolamo (Il Giorno)",
+    "autori": [
+     "Correggio"
+    ],
+    "citta": "Parma",
+    "anni": "1526-1528"
+   },
+   {
+    "titolo": "Adorazione dei pastori (La Notte)",
+    "autori": [
+     "Correggio"
+    ],
+    "citta": "Dresda",
+    "anni": "1528-1530"
+   },
+   {
+    "titolo": "Danae",
+    "autori": [
+     "Correggio"
+    ],
+    "citta": null,
+    "anni": "1530-1532 circa"
+   },
+   {
+    "titolo": "Io",
+    "autori": [
+     "Correggio"
+    ],
+    "citta": null,
+    "anni": "1530-1532 circa"
+   },
+   {
+    "titolo": "Leda e il cigno",
+    "autori": [
+     "Correggio"
+    ],
+    "citta": null,
+    "anni": "1530-1532 circa"
+   },
+   {
+    "titolo": "Ganimede e l'aquila",
+    "autori": [
+     "Correggio"
+    ],
+    "citta": "Vienna",
+    "anni": "1531-1532"
+   },
+   {
+    "titolo": "Madonna con il Bambino, gli angeli e un profeta (Madonna dal collo lungo)",
+    "autori": [
+     "Parmigianino"
+    ],
+    "citta": "Firenze",
+    "anni": "1534-1540"
+   }
+  ]
+ },
+ {
+  "id": "corte-montefeltresca-urbino",
+  "name": "Corte di Federico da Montefeltro a Urbino",
+  "parent_id": "quattrocento",
+  "parent_name": "Quattrocento",
+  "percorso": "Rinascimento > Quattrocento",
+  "year_start": 1459,
+  "year_end": 1482,
+  "region_proposta": [
+   "Urbino",
+   "Marche"
+  ],
+  "n_opere": 10,
+  "opere": [
+   {
+    "titolo": "Flagellazione di Cristo",
+    "autori": [
+     "Piero della Francesca"
+    ],
+    "citta": "Urbino",
+    "anni": "1459-1470 circa"
+   },
+   {
+    "titolo": "Palazzo Ducale di Urbino",
+    "autori": [
+     "Luciano Laurana",
+     "Francesco di Giorgio Martini"
+    ],
+    "citta": "Urbino",
+    "anni": "1466-1480 circa"
+   },
+   {
+    "titolo": "Madonna con il Bambino benedicente e due angeli (Madonna di Senigallia)",
+    "autori": [
+     "Piero della Francesca"
+    ],
+    "citta": "Urbino",
+    "anni": "1472-1475"
+   },
+   {
+    "titolo": "Madonna in trono con il Bambino, sei santi, quattro angeli e il duca Federico da Montefeltro (Pala di Brera / Pala Montefeltro/ Pala di Urbino))",
+    "autori": [
+     "Piero della Francesca"
+    ],
+    "citta": "Milano",
+    "anni": "1472-1474 circa"
+   },
+   {
+    "titolo": "Doppio ritratto di Battista Sforza e Federico da Montefeltro (Dittico dei duchi di Urbino)",
+    "autori": [
+     "Piero della Francesca"
+    ],
+    "citta": "Firenze",
+    "anni": "1473-1475 circa"
+   },
+   {
+    "titolo": "Doppio trionfo di Battista Sforza e Federico da Montefeltro",
+    "autori": [
+     "Piero della Francesca"
+    ],
+    "citta": "Firenze",
+    "anni": "1474 circa"
+   },
+   {
+    "titolo": "Sant'Agostino",
+    "autori": [
+     "Giusto di Gand"
+    ],
+    "citta": "Parigi",
+    "anni": "1474 circa"
+   },
+   {
+    "titolo": "Ritratto di Federico da Montefeltro e del figlio Guidobaldo",
+    "autori": [
+     "Pedro Berruguete"
+    ],
+    "citta": "Urbino",
+    "anni": "1475 circa"
+   },
+   {
+    "titolo": "Scala elicoidale del torrione di Mercatale",
+    "autori": [
+     "Francesco di Giorgio Martini"
+    ],
+    "citta": "Urbino",
+    "anni": "1476-1480 circa"
+   },
+   {
+    "titolo": "Studiolo di Federico da Montefeltro",
+    "autori": [
+     "Luciano Laurana",
+     "Francesco di Giorgio Martini"
+    ],
+    "citta": "Urbino",
+    "anni": "1476 circa"
+   }
+  ]
+ },
+ {
+  "id": "bottega-cimabue",
+  "name": "Bottega di Cimabue",
+  "parent_id": "duecento-italiano",
+  "parent_name": "Duecento italiano",
+  "percorso": "Gotico > Gotico italiano (temperato) > Duecento italiano",
+  "year_start": 1260,
+  "year_end": 1290,
+  "region_proposta": "Firenze, Arezzo, Assisi (Toscana, Umbria)",
+  "n_opere": 9,
+  "opere": [
+   {
+    "titolo": "Crocifisso di San Domenico ad Arezzo",
+    "autori": [
+     "Cimabue"
+    ],
+    "citta": "Arezzo",
+    "anni": "1260-1270"
+   },
+   {
+    "titolo": "Crocifisso di Santa Croce",
+    "autori": [
+     "Cimabue"
+    ],
+    "citta": "Firenze",
+    "anni": "1280-1289 circa"
+   },
+   {
+    "titolo": "Maestà del Louvre",
+    "autori": [
+     "Cimabue"
+    ],
+    "citta": "Parigi",
+    "anni": "1280 circa"
+   },
+   {
+    "titolo": "Maestà di Santa Trinita",
+    "autori": [
+     "Cimabue"
+    ],
+    "citta": "Firenze",
+    "anni": "1280-1290"
+   },
+   {
+    "titolo": "Putti decorativi (fasce decorative della basilica di San Francesco)",
+    "autori": [
+     "Cimabue"
+    ],
+    "citta": "Assisi",
+    "anni": "1280-1290"
+   },
+   {
+    "titolo": "Ciclo di affreschi della basilica superiore di San Francesco (Cimabue)",
+    "autori": [
+     "Cimabue"
+    ],
+    "citta": "Assisi",
+    "anni": "1288-1290"
+   },
+   {
+    "titolo": "Crocifissione (transetto sinistro, basilica superiore di San Francesco)",
+    "autori": [
+     "Cimabue"
+    ],
+    "citta": "Assisi",
+    "anni": "1288-1290"
+   },
+   {
+    "titolo": "L'evangelista Marco con veduta di Roma",
+    "autori": [
+     "Cimabue"
+    ],
+    "citta": "Assisi",
+    "anni": "1288-1290"
+   },
+   {
+    "titolo": "San Giovanni Evangelista (mosaico absidale del duomo di Pisa)",
+    "autori": [
+     "Cimabue"
+    ],
+    "citta": "Pisa",
+    "anni": "1302 circa"
+   }
+  ]
+ },
+ {
+  "id": "scuola-bresciana",
+  "name": "Scuola bresciana (Romanino, Moretto, Savoldo)",
+  "parent_id": "manierismo",
+  "parent_name": "Manierismo",
+  "percorso": "Rinascimento > Manierismo",
+  "year_start": 1521,
+  "year_end": 1550,
+  "region_proposta": "Brescia, Lombardia (con attivita' a Trento e in Val Camonica)",
+  "n_opere": 9,
+  "opere": [
+   {
+    "titolo": "La messa di san Gregorio",
+    "autori": [
+     "Gerolamo Romanino"
+    ],
+    "citta": "Brescia",
+    "anni": "1521-1524"
+   },
+   {
+    "titolo": "San Matteo e l'angelo",
+    "autori": [
+     "Giovan Girolamo Savoldo"
+    ],
+    "citta": "New York",
+    "anni": "1530-1535"
+   },
+   {
+    "titolo": "Affreschi della Loggia del castello del Buonconsiglio",
+    "autori": [
+     "Gerolamo Romanino"
+    ],
+    "citta": "Trento",
+    "anni": "1531 circa"
+   },
+   {
+    "titolo": "Cena in casa del fariseo",
+    "autori": [
+     "Gerolamo Romanino"
+    ],
+    "citta": "Brescia",
+    "anni": "1532-1533"
+   },
+   {
+    "titolo": "Affreschi della chiesa di Santa Maria della Neve a Pisogne",
+    "autori": [
+     "Gerolamo Romanino"
+    ],
+    "citta": "Pisogne",
+    "anni": "1534"
+   },
+   {
+    "titolo": "Elia svegliato dall'angelo",
+    "autori": [
+     "Moretto"
+    ],
+    "citta": "Brescia",
+    "anni": "1543 circa"
+   },
+   {
+    "titolo": "Cristo e l'angelo (Ecce homo)",
+    "autori": [
+     "Moretto"
+    ],
+    "citta": "Brescia",
+    "anni": "1550 circa"
+   },
+   {
+    "titolo": "Ritratto di gentiluomo a figura intera",
+    "autori": [
+     "Giovan Battista Moroni"
+    ],
+    "citta": "Londra",
+    "anni": "1555 circa"
+   },
+   {
+    "titolo": "Il sarto",
+    "autori": [
+     "Giovan Battista Moroni"
+    ],
+    "citta": "Londra",
+    "anni": "1565-1570"
+   }
+  ]
+ },
+ {
+  "id": "scuola-di-wiligelmo",
+  "name": "Scuola di Wiligelmo (Duomo di Modena)",
+  "parent_id": "romanico-italiano",
+  "parent_name": "Romanico italiano",
+  "percorso": "Romanico > Romanico italiano",
+  "year_start": 1099,
+  "year_end": 1184,
+  "region_proposta": "Modena, Emilia-Romagna",
+  "n_opere": 8,
+  "opere": [
+   {
+    "titolo": "Decorazione scultorea della cattedrale di San Geminiano (Portale centrale e lastre)",
+    "autori": [
+     "Wiligelmo"
+    ],
+    "citta": "Modena",
+    "anni": "1099-1130"
+   },
+   {
+    "titolo": "Enoch ed Elia con l'epigrafe commemorativa della fondazione",
+    "autori": [
+     "Wiligelmo"
+    ],
+    "citta": "Modena",
+    "anni": "primo quarto del XII secolo"
+   },
+   {
+    "titolo": "Facciata della cattedrale di San Geminiano",
+    "autori": [
+     "Lanfranco"
+    ],
+    "citta": "Modena",
+    "anni": "1099-1184"
+   },
+   {
+    "titolo": "Fianco esterno meridionale della cattedrale di San Geminiano",
+    "autori": [
+     "Lanfranco"
+    ],
+    "citta": "Modena",
+    "anni": "1099-1184"
+   },
+   {
+    "titolo": "Interno della cattedrale di San Geminiano",
+    "autori": [
+     "Lanfranco"
+    ],
+    "citta": "Modena",
+    "anni": "1099-1184"
+   },
+   {
+    "titolo": "Porta dei Principi",
+    "autori": [
+     "Maestro di San Geminiano"
+    ],
+    "citta": "Modena",
+    "anni": "primo quarto del XII secolo"
+   },
+   {
+    "titolo": "Metope dei contrafforti esterni",
+    "autori": [
+     "Maestro delle Metope"
+    ],
+    "citta": "Modena",
+    "anni": "anni Trenta del XII secolo"
+   },
+   {
+    "titolo": "Porta della Pescheria",
+    "autori": [
+     "Maestro di Artù"
+    ],
+    "citta": "Modena",
+    "anni": "metà del XII secolo"
+   }
+  ]
+ },
+ {
+  "id": "bottega-antelami-parma",
+  "name": "Bottega di Benedetto Antelami (Parma)",
+  "parent_id": "gotico-italiano",
+  "parent_name": "Gotico italiano (temperato)",
+  "percorso": "Gotico > Gotico italiano (temperato)",
+  "year_start": 1178,
+  "year_end": 1230,
+  "region_proposta": "Parma, Emilia",
+  "n_opere": 8,
+  "opere": [
+   {
+    "titolo": "Deposizione di Cristo dalla croce",
+    "autori": [
+     "Benedetto Antelami"
+    ],
+    "citta": "Parma",
+    "anni": "1178"
+   },
+   {
+    "titolo": "Tre Marie (particolare della Deposizione di Cristo dalla croce)",
+    "autori": [
+     "Benedetto Antelami"
+    ],
+    "citta": "Parma",
+    "anni": "1178"
+   },
+   {
+    "titolo": "Battistero di San Giovanni Battista di Parma",
+    "autori": [
+     "Benedetto Antelami"
+    ],
+    "citta": "Parma",
+    "anni": "1196-1216 (prima fase); continuato fino al XIV secolo"
+   },
+   {
+    "titolo": "Portale della Vergine (particolare della decorazione scultorea del timpano)",
+    "autori": [
+     "Benedetto Antelami"
+    ],
+    "citta": "Parma",
+    "anni": "1196"
+   },
+   {
+    "titolo": "Allegorie dei Mesi (ciclo completo, Portale dei Mesi)",
+    "autori": [
+     "Benedetto Antelami"
+    ],
+    "citta": "Parma",
+    "anni": "1210-1215"
+   },
+   {
+    "titolo": "Allegorie dei Mesi: Luglio",
+    "autori": [
+     "Benedetto Antelami"
+    ],
+    "citta": "Parma",
+    "anni": "1210-1215"
+   },
+   {
+    "titolo": "Allegorie dei Mesi: Settembre",
+    "autori": [
+     "Benedetto Antelami"
+    ],
+    "citta": "Parma",
+    "anni": "1210-1215"
+   },
+   {
+    "titolo": "Re Salomone e la Regina di Saba",
+    "autori": [
+     "Benedetto Antelami"
+    ],
+    "citta": "Parma",
+    "anni": "1210-1215"
+   }
+  ]
+ },
+ {
+  "id": "scuola-marciana-veneziana",
+  "name": "Scuola marciana (decorazione della Basilica di San Marco, Venezia)",
+  "parent_id": "arte-bizantina",
+  "parent_name": "Arte bizantina",
+  "percorso": "Arte bizantina",
+  "year_start": 1172,
+  "year_end": 1350,
+  "region_proposta": "Venezia",
+  "n_opere": 7,
+  "opere": [
+   {
+    "titolo": "Cupola dell'Ascensione (Basilica di San Marco)",
+    "autori": [],
+    "citta": "Venezia",
+    "anni": "Seconda metà XII secolo"
+   },
+   {
+    "titolo": "Ciclo musivo della basilica di San Marco",
+    "autori": [],
+    "citta": "Venezia",
+    "anni": "XIII secolo (XII-XVII sec.)"
+   },
+   {
+    "titolo": "Orazione nell'orto del Getsemani (cupola San Marco)",
+    "autori": [],
+    "citta": "Venezia",
+    "anni": "XII-XIII secolo (entro il 1218)"
+   },
+   {
+    "titolo": "Ciclo dei Mesi, Dicembre (portale maggiore)",
+    "autori": [],
+    "citta": "Venezia",
+    "anni": "XIII secolo"
+   },
+   {
+    "titolo": "Facciata della basilica di San Marco",
+    "autori": [],
+    "citta": "Venezia",
+    "anni": "XI-XIV secolo"
+   },
+   {
+    "titolo": "San Marco evangelista (pannello della facciata nord)",
+    "autori": [],
+    "citta": "Venezia",
+    "anni": "XIII secolo"
+   },
+   {
+    "titolo": "Storie della Genesi (cupoletta della Genesi, atrio di San Marco)",
+    "autori": [],
+    "citta": "Venezia",
+    "anni": "Secondo-terzo decennio del XIII secolo"
+   }
+  ]
+ }
+]

@@ -8,6 +8,59 @@ import {
 } from "../lib/data";
 import PeriodDossier from "../components/PeriodDossier";
 import { setLastTimeline } from "../lib/lastVisited";
+import type { Period } from "../lib/types";
+
+const TYPE_COLOR: Record<string, string> = { epoca: "#b88a2e", corrente: "#b9692c", scuola: "#4f7d72" };
+
+// Mostra la matrioska sotto un periodo: le scuole dirette come griglia, e ogni
+// corrente figlia come blocco a se' che ripete la stessa struttura al proprio interno.
+// La ricorsione regge anche i casi di scuola dentro scuola presenti nei dati.
+function PeriodTree({ periods, parentId, depth = 0 }: { periods: Period[]; parentId: string; depth?: number }) {
+  const kids = periods.filter((x) => x.parent_id === parentId).sort((a, b) => a.year_start - b.year_start);
+  if (kids.length === 0) return null;
+  const scuole = kids.filter((k) => k.type === "scuola");
+  const correnti = kids.filter((k) => k.type !== "scuola");
+
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      {scuole.length > 0 && (
+        <div>
+          <div className="eyebrow" style={{ marginBottom: 10, color: TYPE_COLOR.scuola }}>
+            {scuole.length === 1 ? "Scuola" : `Scuole (${scuole.length})`}
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+            {scuole.map((s) => <PeriodCard key={s.id} p={s} />)}
+          </div>
+          {scuole.map((s) => (
+            <div key={s.id} style={{ marginTop: 14 }}>
+              <PeriodTree periods={periods} parentId={s.id} depth={depth + 1} />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {correnti.map((c) => (
+        <div key={c.id} style={{ borderLeft: `2px solid ${TYPE_COLOR[c.type] ?? "var(--line)"}`, paddingLeft: 16 }}>
+          <div className="eyebrow" style={{ marginBottom: 6, color: TYPE_COLOR[c.type] }}>{c.type}</div>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginBottom: 12 }}>
+            <Link to={`/periodo/${c.id}`} style={{ fontWeight: 600, fontSize: 17 }}>{c.name}</Link>
+            <span className="faint tnum" style={{ fontSize: 12 }}>{fmtYear(c.year_start)}–{fmtYear(c.year_end)}</span>
+          </div>
+          <PeriodTree periods={periods} parentId={c.id} depth={depth + 1} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PeriodCard({ p }: { p: Period }) {
+  return (
+    <Link to={`/periodo/${p.id}`} className="card hover" style={{ padding: "12px 16px", minWidth: 180 }}>
+      <div style={{ fontWeight: 600 }}>{p.name}</div>
+      <div className="faint tnum" style={{ fontSize: 12, marginTop: 3 }}>{fmtYear(p.year_start)}–{fmtYear(p.year_end)}</div>
+    </Link>
+  );
+}
 
 export default function Periodo() {
   const { id } = useParams();
@@ -27,7 +80,7 @@ export default function Periodo() {
 
   const allWorks = worksByPeriod(ix.ds, p.id).sort((a, b) => b.importance - a.importance);
   const works = allWorks.filter(workIn);
-  const children = ix.ds.periods.filter((x) => x.parent_id === p.id).sort((a, b) => a.year_start - b.year_start);
+  const hasChildren = ix.ds.periods.some((x) => x.parent_id === p.id);
   const artists = ix.ds.artists.filter((a) => a.period_ids.includes(p.id));
   const conns = connectionsOf(ix.ds, "period", p.id);
   const trail = periodAncestry(ix, p.id);
@@ -35,11 +88,22 @@ export default function Periodo() {
   return (
     <div className="wrap page">
       <button className="btn ghost sm" onClick={() => nav(-1)} style={{ marginBottom: 18 }} data-testid="button-back">← Indietro</button>
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 10, fontSize: 13 }}>
-        {trail.slice(0, -1).map((t) => (
-          <Link key={t.id} to={`/periodo/${t.id}`} className="muted tlink" style={{ border: 0 }}>{t.name} ›</Link>
-        ))}
-      </div>
+      {trail.length > 1 && (
+        <div className="card" style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginBottom: 14, fontSize: 13, padding: "10px 14px" }}>
+          {trail.map((t, i) => {
+            const last = i === trail.length - 1;
+            return (
+              <span key={t.id} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                <span style={{ width: 7, height: 7, borderRadius: 999, background: TYPE_COLOR[t.type] ?? "var(--line)" }} />
+                {last
+                  ? <span style={{ fontWeight: 600 }}>{t.name}</span>
+                  : <Link to={`/periodo/${t.id}`} className="tlink" style={{ border: 0 }}>{t.name}</Link>}
+                {!last && <span className="faint">›</span>}
+              </span>
+            );
+          })}
+        </div>
+      )}
       <div className="page-head">
         <div className="eyebrow"><span className="tnum">{p.type} · {fmtYear(p.year_start)} – {fmtYear(p.year_end)}</span></div>
         <h1 className="page-title">{p.name}</h1>
@@ -67,16 +131,9 @@ export default function Periodo() {
         <PeriodDossier pid={p.id} variant="page" />
       </Section>
 
-      {children.length > 0 && (
-        <Section eyebrow="Articolazione" title="Sotto-periodi e correnti">
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-            {children.map((c) => (
-              <Link key={c.id} to={`/periodo/${c.id}`} className="card hover" style={{ padding: "12px 16px", minWidth: 180 }}>
-                <div style={{ fontWeight: 600 }}>{c.name}</div>
-                <div className="faint tnum" style={{ fontSize: 12, marginTop: 3 }}>{fmtYear(c.year_start)}–{fmtYear(c.year_end)}</div>
-              </Link>
-            ))}
-          </div>
+      {hasChildren && (
+        <Section eyebrow="Articolazione" title="Cosa contiene">
+          <PeriodTree periods={ix.ds.periods} parentId={p.id} />
         </Section>
       )}
 

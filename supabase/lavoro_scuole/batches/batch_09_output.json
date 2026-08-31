@@ -1,0 +1,879 @@
+[
+ {
+  "id": "incisione-prevedari",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Disegno di Bramante inciso da Prevedari, Milano 1481: attività di Bramante alla corte sforzesca, rientra nella scuola 'Periodo sforzesco'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "monumento-equestre-bartolomeo-colleoni",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-veneziano",
+  "status": "assegnato",
+  "note": "Opera realizzata interamente a Venezia (Verrocchio vi si trasferì e vi morì nel 1488 lavorando al monumento); non è un'opera fiorentina. Tra le scuole veneziane parallele, 'rinascimento-veneziano' (1460-1520) combacia meglio con la datazione 1481-1488 rispetto a 'quattrocento-veneziano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "morte-di-mose-signorelli-sistina",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo di affreschi della Cappella Sistina (1481-1482), commissione di Sisto IV; riuso della scuola 'quattrocento-romano' proposta nel batch_08 (cantiere pontificio, Roma/Vaticano).",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "passaggio-mar-rosso-rosselli-sistina",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo di affreschi della Cappella Sistina (1481-1482), commissione di Sisto IV; riuso della scuola 'quattrocento-romano' proposta nel batch_08 (cantiere pontificio, Roma/Vaticano).",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "prove-di-mose-botticelli-sistina",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo di affreschi della Cappella Sistina (1481-1482), commissione di Sisto IV; riuso della scuola 'quattrocento-romano' proposta nel batch_08 (cantiere pontificio, Roma/Vaticano).",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "punizione-dei-ribelli-botticelli",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo di affreschi della Cappella Sistina (1481-1482), commissione di Sisto IV; riuso della scuola 'quattrocento-romano' proposta nel batch_08 (cantiere pontificio, Roma/Vaticano). Sebbene Botticelli sia fiorentino, l'opera fu eseguita a Roma su commissione papale, non a Firenze.",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "tentazioni-di-cristo-botticelli-sistina",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo di affreschi della Cappella Sistina (1481-1482), commissione di Sisto IV; riuso della scuola 'quattrocento-romano' proposta nel batch_08 (cantiere pontificio, Roma/Vaticano).",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "transenna-marmorea-sistina",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo di affreschi della Cappella Sistina (1481-1482), commissione di Sisto IV; riuso della scuola 'quattrocento-romano' proposta nel batch_08 (cantiere pontificio, Roma/Vaticano).",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ultima-cena-rosselli-sistina",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo di affreschi della Cappella Sistina (1481-1482), commissione di Sisto IV; riuso della scuola 'quattrocento-romano' proposta nel batch_08 (cantiere pontificio, Roma/Vaticano).",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "viaggio-di-mose-perugino-sistina",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo di affreschi della Cappella Sistina (1481-1482), commissione di Sisto IV; riuso della scuola 'quattrocento-romano' proposta nel batch_08 (cantiere pontificio, Roma/Vaticano).",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "vocazione-primi-apostoli-ghirlandaio-sistina",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo di affreschi della Cappella Sistina (1481-1482), commissione di Sisto IV; riuso della scuola 'quattrocento-romano' proposta nel batch_08 (cantiere pontificio, Roma/Vaticano).",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "santa-maria-presso-san-satiro",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Chiesa milanese realizzata da Bramante in epoca sforzesca (Milano, 1482-1486): rientra nel 'Periodo sforzesco'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "adorazione-del-bambino-bramantino",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Bramantino attivo a Milano presso la corte sforzesca (1483-1485); la corrente 'rinascimento maturo' (dal 1490) non copre cronologicamente l'opera, mentre 'sforzesco' (1450-1535, Milano/Lombardia) è coerente.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "apollo-e-dafni-perugino",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Piccolo pannello mitologico di ambito fiorentino di Perugino (1483 circa); nessuna scuola più specifica individuabile con le informazioni disponibili.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "madonna-del-magnificat",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Opera fiorentina di Botticelli (1483 circa), già alla collocazione più specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "trittico-dei-padri-della-chiesa",
+  "current_period_id": "arte-tedesca-quattrocento",
+  "proposed_period_id": "arte-tedesca-quattrocento",
+  "status": "invariato",
+  "note": "Michael Pacher, pittore tirolese: la collocazione in 'Arte tedesca del Quattrocento' (che include il Tirolo) è già corretta e specifica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "vergine-delle-rocce-prima",
+  "current_period_id": "sforzesco",
+  "proposed_period_id": "sforzesco",
+  "status": "invariato",
+  "note": "Dipinta a Milano per la Confraternita della Concezione in epoca sforzesca: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "monumento-funebre-sisto-iv",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Monumento funebre in San Pietro, commissione papale romana (Antonio Pollaiolo, scultore fiorentino ma opera eseguita a Roma); riuso della scuola 'quattrocento-romano' (batch_08). La datazione (1484-1493) supera lievemente il range proposto (1455-1482): si suggerisce di estendere year_end almeno al 1493.",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "nascita-di-venere",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Capolavoro fiorentino di ambito mediceo, già alla collocazione più specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "nascita-della-vergine-ghirlandaio",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Ciclo della cappella Tornabuoni, Santa Maria Novella, Firenze: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "studio-statua-equestre-sforza",
+  "current_period_id": "sforzesco",
+  "proposed_period_id": "sforzesco",
+  "status": "invariato",
+  "note": "Studio per il monumento equestre a Francesco Sforza, commissione della corte sforzesca: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "venere-e-marte",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Opera fiorentina di Botticelli, già alla collocazione più specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "uomo-darme-bramante",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Disegno di Bramante realizzato a Milano (1486 circa) durante la sua attività presso la corte sforzesca.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "certosa-presentazione-bergognone",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Affresco per la Certosa di Pavia, mausoleo dinastico visconteo-sforzesco, con il donatore Gian Galeazzo (Visconti/Sforza): più specifico collocarlo nel 'Periodo sforzesco' (di cui 'umanesimo-lombardo' è il genitore) che nella scuola generica lombarda.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "dama-con-ermellino",
+  "current_period_id": "sforzesco",
+  "proposed_period_id": "sforzesco",
+  "status": "invariato",
+  "note": "Ritratto di Cecilia Gallerani, favorita di Ludovico il Moro, dipinto a Milano: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "madonna-del-certosino",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Bergognone, opera per la Certosa di Pavia in epoca sforzesca: stesso ragionamento della 'Presentazione della Certosa'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "modello-duomo-pavia",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Modello architettonico per il Duomo di Pavia, città del ducato sforzesco, fine XV secolo: rientra nel 'Periodo sforzesco'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "battaglia-di-centauri",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Rilievo giovanile di Michelangelo, ambito del giardino mediceo a Firenze: nessuna scuola più specifica del livello di corrente è disponibile per questa fase.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "belle-ferronniere",
+  "current_period_id": "sforzesco",
+  "proposed_period_id": "sforzesco",
+  "status": "invariato",
+  "note": "Ritratto femminile della corte sforzesca di Milano: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cristo-alla-colonna-bramante",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Disegno di Bramante, Milano 1490 circa, periodo dell'attività alla corte sforzesca.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cristo-risorto-bramantino",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Bramantino attivo a Milano presso la corte sforzesca (1490 circa): 'sforzesco' è più specifico e cronologicamente più coerente della corrente generica nord-italiana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "madonna-della-scala",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Rilievo giovanile di Michelangelo a Firenze: nessuna scuola più specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "uomo-vitruviano",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Disegno di Leonardo, elaborato a Milano (1490 circa) nell'ambito dei suoi studi per la corte sforzesca (trattatistica con Francesco di Giorgio Martini).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "vergine-delle-rocce-seconda",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Seconda versione dipinta per la stessa confraternita milanese della prima Vergine delle rocce, eseguita perlopiù a Milano (1491-1508): coerente con il 'Periodo sforzesco'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "appartamento-borgia-osiride-iside",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Pinturicchio, Appartamento Borgia in Vaticano (1492-1494), commissione papale romana; riuso della scuola 'quattrocento-romano' (batch_08). Datazione successiva al range originario (1455-1482): si suggerisce estendere year_end al 1494.",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "compianto-sul-cristo-morto-botticelli",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Opera di ambito fiorentino di Botticelli: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "disputa-santa-caterina",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Pinturicchio, Appartamento Borgia in Vaticano (1492-1494): stesso ciclo dell'opera precedente, riuso di 'quattrocento-romano' con la stessa nota di estensione del range al 1494.",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "piazza-ducale-vigevano",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Intervento di Bramante a Vigevano, città prediletta di Ludovico il Moro e possesso sforzesco (1492-1496): rientra nel 'Periodo sforzesco'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "santa-maria-delle-grazie-tribuna",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Tribuna bramantesca di Santa Maria delle Grazie a Milano, commissionata da Ludovico il Moro come mausoleo sforzesco (1492-1497).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "monumento-funebre-innocenzo-viii",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Monumento funebre papale in San Pietro (Antonio Pollaiolo), commissione romana; riuso di 'quattrocento-romano' (batch_08). Datazione (1493-1497) oltre il range originario: si suggerisce estendere year_end al 1497.",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": [
+    "Roma",
+    "Città del Vaticano"
+   ]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "granchio-marino-durer",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "arte-tedesca-quattrocento",
+  "status": "assegnato",
+  "note": "Disegno di Dürer (1495): pur legato al viaggio in Italia, l'artista è tedesco e la scuola 'Arte tedesca del Quattrocento' (1420-1500) è più pertinente della corrente regionale italiana nord-orientale.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "madonna-del-sacco-perugino",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Opera fiorentina di Perugino: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "morte-di-procri",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Piero di Cosimo, opera di ambito fiorentino: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-di-luca-pacioli",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": null,
+  "status": "incerto",
+  "note": "Attribuito a Jacopo de' Barbari (1495 circa); luogo di esecuzione e identità del secondo personaggio (forse Guidobaldo da Montefeltro, duca di Urbino) restano dibattuti in letteratura. Potrebbe collocarsi presso la corte di Urbino (scuola proposta 'corte-montefeltresca-urbino' nel batch_08, sebbene con estensione della datazione oltre il 1482) oppure restare a livello di corrente generica.",
+  "new_school": null,
+  "alt_options": [
+   "corte-montefeltresca-urbino",
+   "quattrocento"
+  ]
+ },
+ {
+  "id": "san-filippo-scaccia-dragone",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Cappella Strozzi, Santa Maria Novella, Firenze: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "san-giovanni-resuscita-drusiana",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Cappella Strozzi, Santa Maria Novella, Firenze: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ultima-cena-leonardo",
+  "current_period_id": "sforzesco",
+  "proposed_period_id": "sforzesco",
+  "status": "invariato",
+  "note": "Santa Maria delle Grazie, Milano, commissione sforzesca: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "nativita-di-gesu-perugino",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Opera perugina di Perugino (probabile fase del Collegio del Cambio); non esiste in albero una scuola specifica per Perugia/Umbria e l'opera isolata nel lotto non basta a giustificarne una nuova: si mantiene la collocazione generica already in uso per Perugino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pieta-vaticana",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Commissione romana di Michelangelo per San Pietro (1497-1499); nessuna scuola specifica per la Roma di fine Quattrocento/inizio Cinquecento maturo è presente in albero (la scuola 'quattrocento-romano' proposta copre un arco troppo anteriore, 1455-1482).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "quattro-cavalieri-dellapocalisse-durer",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "arte-tedesca-quattrocento",
+  "status": "assegnato",
+  "note": "Xilografia di Dürer (1498): stesso ragionamento del 'Granchio marino', più coerente con 'Arte tedesca del Quattrocento' che con una corrente regionale italiana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "sala-delle-asse",
+  "current_period_id": "sforzesco",
+  "proposed_period_id": "sforzesco",
+  "status": "invariato",
+  "note": "Decorazione per il Castello Sforzesco di Milano: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cappella-san-brizio-ciclo-signorelli",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "cappella-san-brizio-orvieto",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo della Cappella di San Brizio nel Duomo di Orvieto (Luca Signorelli, 1499-1502): nessuna scuola esistente copre Orvieto/Umbria in questo periodo; si propone una nuova scuola dedicata al cantiere.",
+  "new_school": {
+   "suggested_id": "cappella-san-brizio-orvieto",
+   "name": "Cappella di San Brizio a Orvieto (Luca Signorelli)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1499,
+   "year_end": 1502,
+   "region": "Orvieto, Umbria"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "cappella-san-brizio-zoccolatura",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "cappella-san-brizio-orvieto",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo della Cappella di San Brizio nel Duomo di Orvieto (Luca Signorelli, 1499-1502): nessuna scuola esistente copre Orvieto/Umbria in questo periodo; si propone una nuova scuola dedicata al cantiere.",
+  "new_school": {
+   "suggested_id": "cappella-san-brizio-orvieto",
+   "name": "Cappella di San Brizio a Orvieto (Luca Signorelli)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1499,
+   "year_end": 1502,
+   "region": "Orvieto, Umbria"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "resurrezione-della-carne-signorelli",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "cappella-san-brizio-orvieto",
+  "status": "nuova_scuola",
+  "note": "Fa parte del ciclo della Cappella di San Brizio nel Duomo di Orvieto (Luca Signorelli, 1499-1502): nessuna scuola esistente copre Orvieto/Umbria in questo periodo; si propone una nuova scuola dedicata al cantiere.",
+  "new_school": {
+   "suggested_id": "cappella-san-brizio-orvieto",
+   "name": "Cappella di San Brizio a Orvieto (Luca Signorelli)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1499,
+   "year_end": 1502,
+   "region": "Orvieto, Umbria"
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-isabella-deste-leonardo",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Cartone preparatorio realizzato da Leonardo durante il suo soggiorno a Mantova (1499-1500) presso la corte gonzaghesca: rientra nella scuola 'Rinascimento mantovano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "santanna-madonna-bambino-giovannino-cartone",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": null,
+  "status": "incerto",
+  "note": "Il celebre 'cartone Burlington House' (1499-1500 circa) è datato al momento di transizione tra il soggiorno milanese di Leonardo (corte sforzesca, fino a fine 1499) e il ritorno a Firenze: la letteratura non è concorde sul luogo esatto di esecuzione.",
+  "new_school": null,
+  "alt_options": [
+   "sforzesco",
+   "rinascimento-fiorentino"
+  ]
+ },
+ {
+  "id": "autoritratto-con-pelliccia-durer",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "arte-tedesca-quattrocento",
+  "status": "assegnato",
+  "note": "Autoritratto di Dürer (1500): stesso ragionamento delle altre opere di Dürer nel lotto, coerente con 'Arte tedesca del Quattrocento' (che arriva fino al 1500).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiostro-santa-maria-della-pace",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Intervento romano di Bramante (1500-1504), fase già successiva al periodo sforzesco milanese; nessuna scuola specifica per la Roma di questi anni è presente in albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "gioiello-marte-minerva-venere-belli",
+  "current_period_id": "umanesimo-fiorentino",
+  "proposed_period_id": "umanesimo-fiorentino",
+  "status": "invariato",
+  "note": "Manufatto orafo senza artista attribuito con certezza: informazioni insufficienti per una collocazione più specifica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pala-casio-boltraffio",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "rinascimento-maturo-italia-settentrionale",
+  "status": "invariato",
+  "note": "Pala Casio, commissionata per San Francesco a Bologna (Emilia-Romagna, regione già inclusa nella scuola): collocazione già corretta nonostante l'autore sia di formazione lombarda.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "david-michelangelo",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Commissione della Repubblica fiorentina; nessuna scuola più specifica di livello 'scuola' esiste per questa fase del primo Cinquecento fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "nativita-mistica",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Opera di ambito fiorentino di Botticelli: collocazione già corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "nemesi-grande-fortuna-durer",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "arte-tedesca-quattrocento",
+  "status": "assegnato",
+  "note": "Incisione di Dürer (1501): coerente con 'Arte tedesca del Quattrocento' più che con una corrente regionale italiana, anche se di poco successiva al 1500.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "sposalizio-della-vergine-perugino",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Pala per la Cattedrale di Perugia (1501-1504): nessuna scuola specifica per Perugia/Umbria in questo periodo è presente in albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "studio-david-disegno",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Disegno preparatorio di Michelangelo per il David fiorentino: nessuna scuola più specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "tempietto-san-pietro-in-montorio",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Opera romana di Bramante (1502-1508), fase post-sforzesca; nessuna scuola specifica per la Roma di questi anni è presente in albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "battaglia-di-anghiari",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Commissione della Repubblica fiorentina a Leonardo (1503-1506); la scuola 'rinascimento-fiorentino' copre solo fino al 1500, quindi si mantiene la corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "la-tempesta-giorgione",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Opera di Giorgione realizzata e conservata a Venezia: rientra nella scuola 'Scuola veneziana', più specifica della corrente nord-italiana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "lotta-tra-amore-e-castita",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Dipinto da Perugino per lo Studiolo di Isabella d'Este nel Palazzo Ducale di Mantova: non è un'opera fiorentina, rientra nella scuola 'Rinascimento mantovano'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "monna-lisa",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Ritratto iniziato a Firenze ma completato/ritoccato negli anni successivi in contesti diversi (Milano, Roma, Francia): nessuna singola scuola locale è pienamente adeguata, si mantiene la corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pala-di-castelfranco-giorgione",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Opera di Giorgione per Castelfranco Veneto, ambito veneziano: rientra nella 'Scuola veneziana'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "tondo-pitti",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Opera fiorentina di Michelangelo, oltre il limite cronologico della scuola 'rinascimento-fiorentino' (fino al 1500): si mantiene la corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "tondo-taddei",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Opera fiorentina di Michelangelo (1504 circa): stesso ragionamento del Tondo Pitti.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "battaglia-di-cascina-cartone",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Commissione della Repubblica fiorentina a Michelangelo (1504-1506): nessuna scuola più specifica disponibile per questa fase.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cortile-del-belvedere",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Opera romana di Bramante per Giulio II (dal 1504): nessuna scuola specifica per la Roma giulia è presente in albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "progetto-bramantesco-san-pietro",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Progetto di Bramante per la nuova San Pietro (1504-1505), commissione vaticana di primo Cinquecento: nessuna scuola specifica disponibile per questa fase.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-agnolo-doni",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Ritratto fiorentino di Raffaello (1504-1507), oltre il limite cronologico di 'rinascimento-fiorentino': si mantiene la corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-maddalena-strozzi",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Pendant del ritratto di Agnolo Doni, stesso ragionamento.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "san-matteo-michelangelo",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Statua fiorentina di Michelangelo (1504-1506): nessuna scuola più specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "sposalizio-della-vergine-raffaello",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Pala dipinta da Raffaello per Città di Castello (Umbria), oggi a Brera: nessuna scuola specifica per Città di Castello/Umbria di questo periodo è presente in albero.",
+  "new_school": null,
+  "alt_options": null
+ }
+]

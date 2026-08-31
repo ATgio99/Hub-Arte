@@ -1,0 +1,1051 @@
+[
+ {
+  "id": "studio-battaglia-anghiari-venezia",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Studio preparatorio di Leonardo per la Battaglia di Anghiari, commissione della Repubblica fiorentina (1504-1506; 'Venezia' e' solo la sede museale attuale, Gallerie dell'Accademia). Per coerenza con 'battaglia-di-anghiari' gia' classificata in altro lotto, resta alla corrente generica poiche' 'rinascimento-fiorentino' copre solo fino al 1500.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "studio-testa-guerriero-anghiari",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Studio preparatorio di Leonardo per la Battaglia di Anghiari (1504-1505; 'Budapest' e' la sede museale attuale). Stessa logica dello studio gemello: resta alla corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "tre-filosofi-giorgione",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Giorgione, opera veneziana (1504 circa; 'Vienna' e' la sede museale attuale, Kunsthistorisches Museum): rientra nella scuola veneziana, piu' specifica della corrente nord-italiana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "tre-grazie-raffaello",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Piccolo pannello di Raffaello (1504 circa), opera del periodo pre-romano (Urbino/Firenze) di attribuzione e luogo di esecuzione dibattuti in letteratura; 'Chantilly' e' la sede museale attuale. Nessuna scuola specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "adorazione-dei-pastori-allendale-giorgione",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Giorgione, opera veneziana (1505-1510; 'Washington D.C.' e' la sede museale attuale): rientra nella scuola veneziana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "medaglia-san-pietro-caradosso",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Medaglia di Caradosso per la posa della prima pietra della nuova basilica di San Pietro, Roma 1505, voluta da Giulio II: apre un chiaro gruppo di opere del cantiere vaticano di Giulio II e Leone X presente in massa nel lotto, non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "tondo-doni",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Michelangelo, opera fiorentina (1505-1506) precedente al trasferimento a Roma: resta alla corrente generica poiche' 'rinascimento-fiorentino' copre solo fino al 1500.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "festa-del-rosario-durer",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "durer-maturita",
+  "status": "nuova_scuola",
+  "note": "Dürer dipinge questa pala a Venezia nel 1506 per la comunita' dei mercanti tedeschi ('Praga' e' la sede museale attuale): apre, con le altre opere di Dürer nel lotto (Norimberga, 1510-1516), un gruppo coerente del corpus maturo dell'artista non coperto dalla scuola 'arte-tedesca-quattrocento' (che si ferma al 1500).",
+  "new_school": {
+   "suggested_id": "durer-maturita",
+   "name": "Albrecht Dürer: maturità (Venezia e Norimberga)",
+   "parent_id": "rinasc-nordico",
+   "year_start": 1506,
+   "year_end": 1516,
+   "region": ["Norimberga", "Venezia", "Germania"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "la-vecchia-giorgione",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Giorgione a Venezia (1506-1508): rientra nella scuola veneziana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "madonna-del-belvedere",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Raffaello, opera del periodo fiorentino (1506 circa; 'Vienna' e' la sede museale attuale): resta alla corrente generica, oltre il limite del 1500 di 'rinascimento-fiorentino'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "madonna-del-cardellino",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Raffaello a Firenze (1506 circa): resta alla corrente generica, oltre il limite del 1500 di 'rinascimento-fiorentino'.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "polittico-di-recanati-lotto",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "rinascimento-maturo-italia-settentrionale",
+  "status": "invariato",
+  "note": "Lorenzo Lotto a Recanati, Marche (1506-1508): gia' correttamente collocato, la scuola comprende esplicitamente le Marche.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-di-giovane-con-lucerna-lotto",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "rinascimento-maturo-italia-settentrionale",
+  "status": "invariato",
+  "note": "Lorenzo Lotto (1506), verosimilmente ambito marchigiano dello stesso periodo del Polittico di Recanati; 'Vienna' e' la sede museale attuale. Nessuna informazione sufficiente per una collocazione piu' specifica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "bella-giardiniera",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Raffaello, opera del periodo fiorentino (1507-1508; 'Parigi' e' la sede museale attuale, Louvre): resta alla corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "compianto-sul-cristo-morto-disegno",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Studio preparatorio di Raffaello per la Pala Baglioni, eseguito nel periodo fiorentino per una commissione di Perugia (1507; 'Parigi' e' la sede museale attuale, Louvre): resta alla corrente generica, nessuna scuola dedicata a Perugia/Umbria in questo periodo.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "trasporto-di-cristo-morto-pala-baglioni",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Raffaello, Pala Baglioni (1507), commissionata da Atalanta Baglioni per San Francesco al Prato a Perugia ed eseguita durante il periodo fiorentino dell'artista; 'Roma' indica solo la sede museale attuale (Galleria Borghese, dal 1608). Resta alla corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "affreschi-fondaco-dei-tedeschi-giorgione",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Giorgione a Venezia, Fondaco dei Tedeschi (1508): rientra nella scuola veneziana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "affreschi-fondaco-dei-tedeschi-tiziano",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Tiziano a Venezia, Fondaco dei Tedeschi (1508-1509): rientra nella scuola veneziana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "disputa-del-santissimo-sacramento",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Stanza della Segnatura, Città del Vaticano (1508-1509): rientra nel cantiere vaticano di Giulio II e Leone X individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "madonna-col-bambino-tra-i-santi-lotto-1508",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Lorenzo Lotto a Roma (1508), durante il suo breve soggiorno presso la corte di Giulio II (chiamato a collaborare alla Stanza della Segnatura): pur di formazione veneta, l'opera condivide il luogo e il momento del cantiere vaticano, analogamente ad altri artisti 'ospiti' inclusi nelle scuole di corte proposte in altri lotti.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "sacrificio-di-noe",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, volta della Cappella Sistina, Città del Vaticano (1508-1509): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "stanza-della-segnatura",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Città del Vaticano (1508-1511): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "stanze-vaticane",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, ciclo delle Stanze Vaticane, Città del Vaticano (1508-1517): cantiere vaticano di Giulio II e Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "venere-dormiente-giorgione-tiziano",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Giorgione e Tiziano, opera veneziana (1508-1512; 'Dresda' e' la sede museale attuale): rientra nella scuola veneziana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "volta-cappella-sistina",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, Cappella Sistina, Città del Vaticano (1508-1512): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "concerto-campestre-tiziano",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Tiziano, opera veneziana (1509-1510; 'Parigi' e' la sede museale attuale, Louvre): rientra nella scuola veneziana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "parnaso-raffaello",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Stanza della Segnatura, Città del Vaticano (1509-1511): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "scuola-di-atene",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Stanza della Segnatura, Città del Vaticano (1509-1511): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "creazione-di-adamo",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, Cappella Sistina, Città del Vaticano (1510): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "grande-passione-durer-cattura-di-cristo",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "durer-maturita",
+  "status": "nuova_scuola",
+  "note": "Dürer, dalla Grande Passione, eseguita a Norimberga (1510; 'Washington D.C.' e' la sede museale attuale): corpus maturo di Dürer individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "durer-maturita",
+   "name": "Albrecht Dürer: maturità (Venezia e Norimberga)",
+   "parent_id": "rinasc-nordico",
+   "year_start": 1506,
+   "year_end": 1516,
+   "region": ["Norimberga", "Venezia", "Germania"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "liberazione-di-andromeda",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "assegnato",
+  "note": "Piero di Cosimo, opera datata 1510-1515: la scuola 'rinascimento-fiorentino' copre solo fino al 1500, la datazione supera quel limite; si corregge risalendo alla corrente generica, coerentemente con altre opere fiorentine di questi anni gia' trattate in lotti precedenti (es. ritratti di Agnolo Doni e Maddalena Strozzi).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-di-gentiluomo-tiziano",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Tiziano, opera veneziana (1510 circa; 'Londra' e' la sede museale attuale): rientra nella scuola veneziana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "santanna-madonna-bambino-agnello",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Leonardo, opera eseguita e ritoccata in contesti diversi (Milano, Roma, Francia) tra il 1510 e il 1519; 'Parigi' e' la sede museale attuale. Nessuna singola scuola locale e' pienamente adeguata, si mantiene la corrente generica (stessa logica applicata alla Gioconda in altro lotto).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "studio-capigliatura-leda",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Disegno di Leonardo (1510-1518 circa), periodo di soggiorni multipli (Milano, Roma, Francia); 'Windsor' e' la sede museale attuale. Si mantiene la corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cacciata-di-eliodoro",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Stanza di Eliodoro, Città del Vaticano (1511-1512): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "gregorio-ix-approva-le-decretali",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Stanza della Segnatura, Città del Vaticano (1511): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "miracolo-del-marito-geloso-tiziano",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Tiziano, affresco per la Scuola del Santo a Padova (1511, Veneto): rientra nella scuola veneziana, che copre l'intera regione veneta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "piccola-passione-durer",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "durer-maturita",
+  "status": "nuova_scuola",
+  "note": "Dürer, ciclo di silografie eseguito a Norimberga (1509-1511): corpus maturo di Dürer individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "durer-maturita",
+   "name": "Albrecht Dürer: maturità (Venezia e Norimberga)",
+   "parent_id": "rinasc-nordico",
+   "year_start": 1506,
+   "year_end": 1516,
+   "region": ["Norimberga", "Venezia", "Germania"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "profeta-giona-sistina",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, Cappella Sistina, Città del Vaticano (1511-1512): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-papa-giulio-ii",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, ritratto dipinto a Roma per il pontefice (1511-1512; 'Londra' e' la sede museale attuale): cantiere/corte di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "sibilla-libica",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, Cappella Sistina, Città del Vaticano (1511-1512): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "stanza-di-eliodoro",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Città del Vaticano (1511-1514): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "aminadab-moglie-sistina",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, Cappella Sistina, Città del Vaticano (1512): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "madonna-sistina",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, opera eseguita a Roma (1512-1513) e destinata a Piacenza per volere di Giulio II; 'Dresda' e' la sede museale attuale. Cantiere/corte di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "messa-di-bolsena",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Stanza di Eliodoro, Città del Vaticano (1512): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "supplizio-di-aman",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, Cappella Sistina, Città del Vaticano (1512): cantiere vaticano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "trionfo-di-galatea",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Villa Farnesina, Roma (1512), per il banchiere Agostino Chigi: cantiere/ambito romano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "busto-lorenzo-de-medici",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "assegnato",
+  "note": "Busto senza autore certo, datato 1513-1520: la scuola 'rinascimento-fiorentino' copre solo fino al 1500, la datazione supera quel limite; si corregge risalendo alla corrente generica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "incontro-leone-magno-attila",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Stanza di Eliodoro, Città del Vaticano (1513-1514): cantiere vaticano, fase iniziale di Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "liberazione-di-san-pietro-dal-carcere",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Stanza di Eliodoro, Città del Vaticano (1513-1514): cantiere vaticano.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "mose-michelangelo",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, per la tomba di Giulio II, Roma (1513-1545): appartiene al cantiere romano di Giulio II individuato nel lotto. La datazione (fino al 1545) supera ampiamente il range proposto (1505-1520): si suggerisce di estendere year_end almeno al 1545 per coprire il completamento tardo del monumento.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "pala-martinengo-lotto",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "rinascimento-maturo-italia-settentrionale",
+  "status": "invariato",
+  "note": "Lorenzo Lotto a Bergamo (1513-1516, Lombardia): gia' correttamente collocato, nessuna scuola piu' specifica copre Bergamo in questo periodo (citta' di dominio veneziano, non sforzesco).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "prigioni-louvre",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, Prigioni per la tomba di Giulio II (1513-1515 circa; 'Parigi' e' la sede museale attuale, Louvre): cantiere romano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "schiavo-morente",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, per la tomba di Giulio II (1513-1515 circa; 'Parigi' e' la sede museale attuale): cantiere romano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "schiavo-ribelle",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, per la tomba di Giulio II (1513-1515 circa; 'Parigi' e' la sede museale attuale): cantiere romano di Giulio II.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "tomba-giulio-ii",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Michelangelo, Roma (1513-1545): stesso cantiere del Mose' e degli Schiavi. Datazione oltre il range proposto: si suggerisce di estendere year_end almeno al 1545.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "adorazione-dei-magi-cesare-da-sesto",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "assegnato",
+  "note": "Cesare da Sesto, opera eseguita a Napoli (1514-1520): la Campania non rientra fra le regioni della scuola 'rinascimento-maturo-italia-settentrionale' (Veneto, Lombardia, Emilia-Romagna, Marche), nonostante la formazione lombarda dell'autore; si corregge risalendo alla corrente generica per evitare una forzatura regionale.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "amor-sacro-e-amor-profano-tiziano",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Tiziano, opera commissionata ed eseguita a Venezia (1514-1515; 'Roma' indica solo la sede museale attuale, Galleria Borghese): rientra nella scuola veneziana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "incendio-di-borgo",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Stanza dell'Incendio di Borgo, Città del Vaticano (1514): cantiere vaticano, epoca di Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "madonna-della-misericordia-fra-bartolomeo",
+  "current_period_id": "primo-manierismo-fiorentino",
+  "proposed_period_id": "primo-manierismo-fiorentino",
+  "status": "invariato",
+  "note": "Fra Bartolomeo, pittore fiorentino, pala per il Duomo di Lucca (1515, Toscana): gia' correttamente collocato nel Primo Manierismo fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "melencolia-i-durer",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "durer-maturita",
+  "status": "nuova_scuola",
+  "note": "Dürer, incisione eseguita a Norimberga (1514; 'New York' e' la sede museale attuale): corpus maturo di Dürer individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "durer-maturita",
+   "name": "Albrecht Dürer: maturità (Venezia e Norimberga)",
+   "parent_id": "rinasc-nordico",
+   "year_start": 1506,
+   "year_end": 1516,
+   "region": ["Norimberga", "Venezia", "Germania"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "pianta-san-pietro-raffaello",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, progetto per San Pietro, Città del Vaticano (1514-1516): cantiere vaticano di Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-baldassarre-castiglione",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, ritratto dipinto a Roma (1514-1515; 'Parigi' e' la sede museale attuale, Louvre), dove Castiglione risiedeva come ambasciatore: cantiere/corte romana di Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "stanza-incendio-di-borgo",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Città del Vaticano (1514-1517): cantiere vaticano di Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "giuseppe-interpreta-sogni-faraone-andrea-del-sarto",
+  "current_period_id": "primo-manierismo-fiorentino",
+  "proposed_period_id": "primo-manierismo-fiorentino",
+  "status": "invariato",
+  "note": "Andrea del Sarto a Firenze (1515-1516), ciclo Borgherini: gia' correttamente collocato nel Primo Manierismo fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "predica-san-paolo-ateniesi",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, cartone per arazzo della Cappella Sistina, disegnato a Roma (1515-1516; 'Londra' e' la sede museale attuale): cantiere vaticano di Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "rinoceronte-durer",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "durer-maturita",
+  "status": "nuova_scuola",
+  "note": "Dürer, xilografia eseguita a Norimberga (1515; 'New York' e' la sede museale attuale): corpus maturo di Dürer individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "durer-maturita",
+   "name": "Albrecht Dürer: maturità (Venezia e Norimberga)",
+   "parent_id": "rinasc-nordico",
+   "year_start": 1506,
+   "year_end": 1516,
+   "region": ["Norimberga", "Venezia", "Germania"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "assunta-tiziano",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "scuola-veneziana",
+  "status": "assegnato",
+  "note": "Tiziano, Basilica dei Frari, Venezia (1516-1518): rientra nella scuola veneziana.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "logge-vaticane",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Città del Vaticano (1516-1519): cantiere vaticano di Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "pieta-sebastiano-del-piombo-viterbo",
+  "current_period_id": "stile-clementino",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Sebastiano del Piombo, opera del 1516-1517: la corrente 'stile-clementino' copre il 1523-1527 (pontificato di Clemente VII), quindi precedente di alcuni anni a quella fase; l'opera appartiene invece al periodo romano dell'artista sotto Leone X, coerente con il cantiere vaticano di Giulio II/Leone X individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ratto-di-proserpina-durer",
+  "current_period_id": "rinascimento-maturo-italia-settentrionale",
+  "proposed_period_id": "durer-maturita",
+  "status": "nuova_scuola",
+  "note": "Dürer, incisione eseguita a Norimberga (1516; 'New York' e' la sede museale attuale): corpus maturo di Dürer individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "durer-maturita",
+   "name": "Albrecht Dürer: maturità (Venezia e Norimberga)",
+   "parent_id": "rinasc-nordico",
+   "year_start": 1506,
+   "year_end": 1516,
+   "region": ["Norimberga", "Venezia", "Germania"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "trasfigurazione-raffaello",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, ultima opera, Città del Vaticano (1516-1520): cantiere vaticano di Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "autoritratto-leonardo",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-maturo",
+  "status": "invariato",
+  "note": "Disegno attribuito a Leonardo (1517-1518 secondo la datazione fornita, sebbene la critica proponga spesso una data anteriore), periodo di trasferimento alla corte di Francesco I in Francia; 'Torino' e' la sede museale attuale (Biblioteca Reale). Opera isolata, nessuna scuola francese dedicata a Leonardo esiste nell'albero: si mantiene la corrente generica italiana, coerente con lo stile e la nazionalita' dell'artista.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "festoni-vegetali-loggia-psiche",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Giovanni da Udine, Villa Farnesina, Roma (1517-1519), collaboratore di Raffaello: cantiere romano di Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "loggia-di-psiche-farnesina",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Villa Farnesina, Roma (1517-1519): cantiere romano di Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "madonna-delle-arpie-andrea-del-sarto",
+  "current_period_id": "primo-manierismo-fiorentino",
+  "proposed_period_id": "primo-manierismo-fiorentino",
+  "status": "invariato",
+  "note": "Andrea del Sarto a Firenze (1517): gia' correttamente collocato nel Primo Manierismo fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "resurrezione-di-lazzaro-sebastiano",
+  "current_period_id": "stile-clementino",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Sebastiano del Piombo, dipinto a Roma (1517-1519) per il cardinale Giulio de' Medici in competizione con la Trasfigurazione di Raffaello: la corrente 'stile-clementino' copre solo il 1523-1527 (pontificato di Clemente VII), successivo a quest'opera; si corregge collocandola nel cantiere romano di Leone X individuato nel lotto.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "villa-madama",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Raffaello, Roma, per il cardinale Giulio de' Medici (dal 1517-1518): cantiere romano di Leone X. La datazione di completamento (1534) supera il range proposto: si suggerisce di estendere year_end almeno al 1534 per coprire il proseguimento del cantiere dopo la morte di Raffaello.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "giuseppe-giacobbe-egitto-pontormo",
+  "current_period_id": "primo-manierismo-fiorentino",
+  "proposed_period_id": "primo-manierismo-fiorentino",
+  "status": "invariato",
+  "note": "Pontormo, ciclo Borgherini a Firenze (1518-1519; 'Londra' e' la sede museale attuale): gia' correttamente collocato nel Primo Manierismo fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "la-perla-giulio-romano",
+  "current_period_id": "rinascimento-maturo",
+  "proposed_period_id": "rinascimento-romano-giulio-leone",
+  "status": "nuova_scuola",
+  "note": "Giulio Romano, principale collaboratore di Raffaello a Roma fino al 1524 (1518-1520 circa; 'Madrid' e' la sede museale attuale): rientra nel cantiere/bottega romana di Raffaello sotto Leone X.",
+  "new_school": {
+   "suggested_id": "rinascimento-romano-giulio-leone",
+   "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+   "parent_id": "rinascimento-maturo",
+   "year_start": 1505,
+   "year_end": 1520,
+   "region": ["Roma", "Città del Vaticano"]
+  },
+  "alt_options": null
+ }
+]

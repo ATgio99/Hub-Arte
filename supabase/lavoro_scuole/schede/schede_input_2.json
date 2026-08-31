@@ -1,0 +1,707 @@
+[
+ {
+  "id": "longobardi-cividale-friuli",
+  "name": "Longobardi a Cividale del Friuli (eta di Ratchis)",
+  "parent_id": "eta-longobarda",
+  "parent_name": "Età longobarda",
+  "percorso": "Alto Medioevo > Età longobarda",
+  "year_start": 734,
+  "year_end": 756,
+  "region_proposta": [
+   "Cividale del Friuli",
+   "Friuli"
+  ],
+  "n_opere": 6,
+  "opere": [
+   {
+    "titolo": "Adorazione dei Magi (lato dell'Altare di Ratchis)",
+    "autori": [],
+    "citta": "Cividale del Friuli",
+    "anni": "737-744"
+   },
+   {
+    "titolo": "Altare di Ratchis",
+    "autori": [],
+    "citta": "Cividale del Friuli",
+    "anni": "734-744"
+   },
+   {
+    "titolo": "Maiestas Domini (paliotto dell'Altare di Ratchis)",
+    "autori": [],
+    "citta": "Cividale del Friuli",
+    "anni": "734-744"
+   },
+   {
+    "titolo": "Chiesa di Santa Maria in Valle (Tempietto longobardo)",
+    "autori": [],
+    "citta": "Cividale del Friuli",
+    "anni": "744-756"
+   },
+   {
+    "titolo": "Ghiera con tralcio di vite (controfacciata)",
+    "autori": [],
+    "citta": "Cividale del Friuli",
+    "anni": "744-756"
+   },
+   {
+    "titolo": "Teoria di sante e martiri (decorazione della controfacciata)",
+    "autori": [],
+    "citta": "Cividale del Friuli",
+    "anni": "744-756"
+   }
+  ]
+ },
+ {
+  "id": "pittura-carolingia-retica",
+  "name": "Pittura carolingia retica (Mustair e Malles)",
+  "parent_id": "eta-carolingia",
+  "parent_name": "Età carolingia",
+  "percorso": "Alto Medioevo > Età carolingia",
+  "year_start": 800,
+  "year_end": 850,
+  "region_proposta": "Val Venosta, Grigioni (Rezia)",
+  "n_opere": 6,
+  "opere": [
+   {
+    "titolo": "Affreschi di San Benedetto a Malles",
+    "autori": [],
+    "citta": "Malles",
+    "anni": "prima metà del IX secolo"
+   },
+   {
+    "titolo": "Pitture murali di San Giovanni a Müstair",
+    "autori": [],
+    "citta": "Müstair",
+    "anni": "prima metà del IX secolo"
+   },
+   {
+    "titolo": "Fuga in Egitto (particolare della decorazione della navata)",
+    "autori": [],
+    "citta": "Müstair",
+    "anni": "prima metà del IX secolo"
+   },
+   {
+    "titolo": "Martirio dei santi Pietro e Paolo",
+    "autori": [],
+    "citta": "Müstair",
+    "anni": "prima metà del IX secolo"
+   },
+   {
+    "titolo": "Ritratto di un abate benedettino con occhiali (particolare della decorazione della parete orientale)",
+    "autori": [],
+    "citta": "Malles",
+    "anni": "prima metà del IX secolo"
+   },
+   {
+    "titolo": "Ritratto di un nobile con spada (particolare della decorazione della parete orientale)",
+    "autori": [],
+    "citta": "Malles",
+    "anni": "prima metà del IX secolo"
+   }
+  ]
+ },
+ {
+  "id": "romanico-pugliese",
+  "name": "Romanico pugliese (Bari-Trani)",
+  "parent_id": "romanico-italiano",
+  "parent_name": "Romanico italiano",
+  "percorso": "Romanico > Romanico italiano",
+  "year_start": 1105,
+  "year_end": 1178,
+  "region_proposta": "Bari, Trani (Puglia)",
+  "n_opere": 6,
+  "opere": [
+   {
+    "titolo": "Cattedra di Elia",
+    "autori": [
+     "Maestro di Elia"
+    ],
+    "citta": "Bari",
+    "anni": "1105-1150"
+   },
+   {
+    "titolo": "Cristo Sol Invictus (chiave dell'archivolto del protiro)",
+    "autori": [
+     "Maestro di Elia"
+    ],
+    "citta": "Bari",
+    "anni": "metà XII secolo"
+   },
+   {
+    "titolo": "Protiro e portale maggiore della basilica di San Nicola",
+    "autori": [
+     "Maestro di Elia"
+    ],
+    "citta": "Bari",
+    "anni": "metà XII secolo"
+   },
+   {
+    "titolo": "Deposizione di Cristo dalla croce (formella del portale)",
+    "autori": [
+     "Barisano da Trani"
+    ],
+    "citta": "Trani",
+    "anni": "1175 circa"
+   },
+   {
+    "titolo": "Figura di santo (formella del portale)",
+    "autori": [
+     "Barisano da Trani"
+    ],
+    "citta": "Trani",
+    "anni": "1175 circa"
+   },
+   {
+    "titolo": "Portale bronzeo di Barisano da Trani",
+    "autori": [
+     "Barisano da Trani"
+    ],
+    "citta": "Trani",
+    "anni": "1175 circa"
+   }
+  ]
+ },
+ {
+  "id": "bottega-arnolfo-di-cambio",
+  "name": "Bottega di Arnolfo di Cambio",
+  "parent_id": "duecento-italiano",
+  "parent_name": "Duecento italiano",
+  "percorso": "Gotico > Gotico italiano (temperato) > Duecento italiano",
+  "year_start": 1277,
+  "year_end": 1282,
+  "region_proposta": "Perugia, Roma, Orvieto (Umbria, Lazio)",
+  "n_opere": 6,
+  "opere": [
+   {
+    "titolo": "Fontana Minore di Perugia (Donna assetata)",
+    "autori": [
+     "Arnolfo di Cambio"
+    ],
+    "citta": "Perugia",
+    "anni": "1277-1281"
+   },
+   {
+    "titolo": "Carlo I d'Angiò",
+    "autori": [
+     "Arnolfo di Cambio"
+    ],
+    "citta": "Roma",
+    "anni": "1277"
+   },
+   {
+    "titolo": "Monumento funebre del cardinale Guillaume de Braye",
+    "autori": [
+     "Arnolfo di Cambio"
+    ],
+    "citta": "Orvieto",
+    "anni": "1282 circa"
+   },
+   {
+    "titolo": "Ciborio di San Paolo fuori le Mura",
+    "autori": [
+     "Arnolfo di Cambio"
+    ],
+    "citta": "Roma",
+    "anni": "1285"
+   },
+   {
+    "titolo": "Monumento funerario di Riccardo Annibaldi",
+    "autori": [
+     "Arnolfo di Cambio"
+    ],
+    "citta": "Roma",
+    "anni": "1290 circa"
+   },
+   {
+    "titolo": "Ciborio di Santa Cecilia in Trastevere",
+    "autori": [
+     "Arnolfo di Cambio"
+    ],
+    "citta": "Roma",
+    "anni": "1293"
+   }
+  ]
+ },
+ {
+  "id": "corte-cosimo-i-firenze",
+  "name": "Corte di Cosimo I de' Medici a Firenze (Bronzino, Cellini, Bandinelli, Pontormo)",
+  "parent_id": "manierismo",
+  "parent_name": "Manierismo",
+  "percorso": "Rinascimento > Manierismo",
+  "year_start": 1537,
+  "year_end": 1553,
+  "region_proposta": "Firenze, Toscana",
+  "n_opere": 6,
+  "opere": [
+   {
+    "titolo": "Ritratto di Cosimo I come alabardiere",
+    "autori": [
+     "Jacopo Pontormo"
+    ],
+    "citta": "Malibu",
+    "anni": "1537"
+   },
+   {
+    "titolo": "Busto di Cosimo I",
+    "autori": [
+     "Baccio Bandinelli"
+    ],
+    "citta": "Firenze",
+    "anni": "1544"
+   },
+   {
+    "titolo": "Perseo",
+    "autori": [
+     "Benvenuto Cellini"
+    ],
+    "citta": "Firenze",
+    "anni": "1545-1553"
+   },
+   {
+    "titolo": "Ritratto di Cosimo I in armatura",
+    "autori": [
+     "Agnolo Bronzino"
+    ],
+    "citta": "Madrid",
+    "anni": "1545 circa"
+   },
+   {
+    "titolo": "Ritratto di Eleonora di Toledo con il figlio Giovanni de' Medici",
+    "autori": [
+     "Agnolo Bronzino"
+    ],
+    "citta": "Firenze",
+    "anni": "1545"
+   },
+   {
+    "titolo": "Allegoria dell'Amore",
+    "autori": [
+     "Agnolo Bronzino"
+    ],
+    "citta": "Londra",
+    "anni": "1545"
+   }
+  ]
+ },
+ {
+  "id": "scuola-di-fontainebleau",
+  "name": "Scuola di Fontainebleau (corte di Francesco I)",
+  "parent_id": "manierismo",
+  "parent_name": "Manierismo",
+  "percorso": "Rinascimento > Manierismo",
+  "year_start": 1528,
+  "year_end": 1544,
+  "region_proposta": "Fontainebleau, Francia",
+  "n_opere": 6,
+  "opere": [
+   {
+    "titolo": "Camera della duchessa d'Etampes",
+    "autori": [
+     "primaticcio"
+    ],
+    "citta": "Fontainebleau",
+    "anni": "1541-1544"
+   },
+   {
+    "titolo": "Elefante trionfale, tributo allegorico a Francesco I",
+    "autori": [
+     "Rosso Fiorentino",
+     "primaticcio"
+    ],
+    "citta": "Fontainebleau",
+    "anni": "1534-1540"
+   },
+   {
+    "titolo": "Porte Dorée, Castello di Fontainebleau",
+    "autori": [
+     "le-breton"
+    ],
+    "citta": "Fontainebleau",
+    "anni": "dal 1528"
+   },
+   {
+    "titolo": "Galleria di Francesco I",
+    "autori": [
+     "Rosso Fiorentino",
+     "primaticcio"
+    ],
+    "citta": "Fontainebleau",
+    "anni": "1534-1540 circa"
+   },
+   {
+    "titolo": "Ninfa di Fontainebleau",
+    "autori": [
+     "Benvenuto Cellini"
+    ],
+    "citta": "Parigi",
+    "anni": "1542-1543"
+   },
+   {
+    "titolo": "Saliera di Francesco I",
+    "autori": [
+     "Benvenuto Cellini"
+    ],
+    "citta": "Vienna",
+    "anni": "1540-1543"
+   }
+  ]
+ },
+ {
+  "id": "scuola-di-maestro-niccolo",
+  "name": "Scuola di Maestro Niccolò (Romanico veronese)",
+  "parent_id": "romanico-italiano",
+  "parent_name": "Romanico italiano",
+  "percorso": "Romanico > Romanico italiano",
+  "year_start": 1120,
+  "year_end": 1150,
+  "region_proposta": "Verona, Veneto",
+  "n_opere": 5,
+  "opere": [
+   {
+    "titolo": "Basilica di San Zeno",
+    "autori": [
+     "Maestro Niccolò"
+    ],
+    "citta": "Verona",
+    "anni": "1120-1138"
+   },
+   {
+    "titolo": "Interno della basilica di San Zeno",
+    "autori": [],
+    "citta": "Verona",
+    "anni": "1120-1138"
+   },
+   {
+    "titolo": "Portale bronzeo",
+    "autori": [],
+    "citta": "Verona",
+    "anni": "1120-1150"
+   },
+   {
+    "titolo": "Portale d'ingresso della basilica di San Zeno",
+    "autori": [
+     "Maestro Niccolò"
+    ],
+    "citta": "Verona",
+    "anni": "1120-1138"
+   },
+   {
+    "titolo": "San Zeno che benedice le milizie veronesi (decorazione della lunetta del portale)",
+    "autori": [
+     "Maestro Niccolò"
+    ],
+    "citta": "Verona",
+    "anni": "1138 circa"
+   }
+  ]
+ },
+ {
+  "id": "bottega-di-gislebertus",
+  "name": "Bottega di Gislebertus (Autun)",
+  "parent_id": "romanico",
+  "parent_name": "Romanico",
+  "percorso": "Romanico",
+  "year_start": 1120,
+  "year_end": 1150,
+  "region_proposta": "Autun, Borgogna (Francia)",
+  "n_opere": 5,
+  "opere": [
+   {
+    "titolo": "Cattedrale di Saint-Lazare ad Autun",
+    "autori": [
+     "Gislebertus"
+    ],
+    "citta": "Autun",
+    "anni": "1120-1147"
+   },
+   {
+    "titolo": "Eva nel Paradiso terrestre",
+    "autori": [
+     "Gislebertus"
+    ],
+    "citta": "Autun",
+    "anni": "1140-1150"
+   },
+   {
+    "titolo": "Giudizio Universale (timpano del portale d'ingresso)",
+    "autori": [
+     "Gislebertus"
+    ],
+    "citta": "Autun",
+    "anni": "1140-1150"
+   },
+   {
+    "titolo": "Portale d'ingresso della cattedrale di Saint-Lazare",
+    "autori": [
+     "Gislebertus"
+    ],
+    "citta": "Autun",
+    "anni": "1140-1150"
+   },
+   {
+    "titolo": "Sculture di Saint-Lazare ad Autun (complesso decorativo)",
+    "autori": [
+     "Gislebertus"
+    ],
+    "citta": "Autun",
+    "anni": "1140-1150"
+   }
+  ]
+ },
+ {
+  "id": "bottega-gentile-da-fabriano",
+  "name": "Bottega di Gentile da Fabriano",
+  "parent_id": "gotico-cortese",
+  "parent_name": "Gotico cortese (Gotico internazionale)",
+  "percorso": "Gotico > Tardogotico > Gotico cortese (Gotico internazionale)",
+  "year_start": 1400,
+  "year_end": 1425,
+  "region_proposta": [
+   "Marche",
+   "Lombardia",
+   "Veneto",
+   "Toscana",
+   "Lazio"
+  ],
+  "n_opere": 5,
+  "opere": [
+   {
+    "titolo": "Polittico di Valle Romita",
+    "autori": [
+     "Gentile da Fabriano"
+    ],
+    "citta": "Milano",
+    "anni": "1400-1410"
+   },
+   {
+    "titolo": "Veduta di città (frammento)",
+    "autori": [
+     "Gentile da Fabriano"
+    ],
+    "citta": "Brescia",
+    "anni": "1414-1419"
+   },
+   {
+    "titolo": "Adorazione dei Magi",
+    "autori": [
+     "Gentile da Fabriano"
+    ],
+    "citta": "Firenze",
+    "anni": "1423"
+   },
+   {
+    "titolo": "Presentazione al Tempio (predella dell'Adorazione dei Magi)",
+    "autori": [
+     "Gentile da Fabriano"
+    ],
+    "citta": "Parigi",
+    "anni": "1423"
+   },
+   {
+    "titolo": "Miracolo dei pellegrini sulla tomba di san Nicola di Bari (predella del Polittico Quaratesi)",
+    "autori": [
+     "Gentile da Fabriano"
+    ],
+    "citta": "Washington",
+    "anni": "1425"
+   }
+  ]
+ },
+ {
+  "id": "palazzo-te-mantova",
+  "name": "Giulio Romano e Palazzo Te a Mantova (corte gonzaghesca)",
+  "parent_id": "manierismo",
+  "parent_name": "Manierismo",
+  "percorso": "Rinascimento > Manierismo",
+  "year_start": 1525,
+  "year_end": 1535,
+  "region_proposta": "Mantova, Lombardia",
+  "n_opere": 5,
+  "opere": [
+   {
+    "titolo": "Loggia di Davide (Palazzo Te)",
+    "autori": [
+     "Giulio Romano"
+    ],
+    "citta": "Mantova",
+    "anni": "1525-1535"
+   },
+   {
+    "titolo": "Palazzo Te",
+    "autori": [
+     "Giulio Romano"
+    ],
+    "citta": "Mantova",
+    "anni": "1525-1535"
+   },
+   {
+    "titolo": "Camera di Amore e Psiche",
+    "autori": [
+     "Giulio Romano"
+    ],
+    "citta": "Mantova",
+    "anni": "1526-1528"
+   },
+   {
+    "titolo": "Polifemo, Aci e Galatea",
+    "autori": [
+     "Giulio Romano"
+    ],
+    "citta": "Mantova",
+    "anni": "1526-1528"
+   },
+   {
+    "titolo": "Camera dei Giganti",
+    "autori": [
+     "Giulio Romano"
+    ],
+    "citta": "Mantova",
+    "anni": "1532-1535"
+   }
+  ]
+ },
+ {
+  "id": "arnolfo-di-cambio-firenze",
+  "name": "Arnolfo di Cambio a Firenze (cantiere di Santa Croce, Palazzo dei Priori e opere fiorentine)",
+  "parent_id": "gotico-italiano",
+  "parent_name": "Gotico italiano (temperato)",
+  "percorso": "Gotico > Gotico italiano (temperato)",
+  "year_start": 1294,
+  "year_end": 1310,
+  "region_proposta": "Firenze, Toscana",
+  "n_opere": 4,
+  "opere": [
+   {
+    "titolo": "Basilica di Santa Croce",
+    "autori": [
+     "Arnolfo di Cambio"
+    ],
+    "citta": "Firenze",
+    "anni": "1294-1443"
+   },
+   {
+    "titolo": "Ritratto di Bonifacio VIII",
+    "autori": [
+     "Arnolfo di Cambio"
+    ],
+    "citta": "Firenze",
+    "anni": "fine XIII - inizio XIV secolo"
+   },
+   {
+    "titolo": "Palazzo Vecchio (Palazzo dei Priori)",
+    "autori": [
+     "Arnolfo di Cambio"
+    ],
+    "citta": "Firenze",
+    "anni": "1299-1314"
+   },
+   {
+    "titolo": "Madonna dagli occhi di vetro",
+    "autori": [
+     "Arnolfo di Cambio"
+    ],
+    "citta": "Firenze",
+    "anni": "1300-1310"
+   }
+  ]
+ },
+ {
+  "id": "scuola-avignonese-papale",
+  "name": "Scuola avignonese della corte papale (Simone Martini, Matteo Giovannetti)",
+  "parent_id": "gotico-cortese",
+  "parent_name": "Gotico cortese (Gotico internazionale)",
+  "percorso": "Gotico > Tardogotico > Gotico cortese (Gotico internazionale)",
+  "year_start": 1340,
+  "year_end": 1353,
+  "region_proposta": [
+   "Avignone",
+   "Francia"
+  ],
+  "n_opere": 4,
+  "opere": [
+   {
+    "titolo": "Allegoria virgiliana (frontespizio del Commento di Servio a Virgilio)",
+    "autori": [
+     "Simone Martini"
+    ],
+    "citta": "Milano",
+    "anni": "1340 circa"
+   },
+   {
+    "titolo": "Ritorno di Gesù dal Tempio (Sacra Famiglia)",
+    "autori": [
+     "Simone Martini"
+    ],
+    "citta": "Liverpool",
+    "anni": "1342"
+   },
+   {
+    "titolo": "Scene di caccia al cervo e di pesca (Camera del Cervo)",
+    "autori": [
+     "Matteo Giovannetti"
+    ],
+    "citta": "Avignone",
+    "anni": "1343"
+   },
+   {
+    "titolo": "Profeti e Patriarchi (Sala della Grande Udienza)",
+    "autori": [
+     "Matteo Giovannetti"
+    ],
+    "citta": "Avignone",
+    "anni": "1352-1353"
+   }
+  ]
+ },
+ {
+  "id": "corte-viscontea-tardogotica",
+  "name": "Arte tardogotica alla corte dei Visconti (Milano, Pavia, Monza, Cremona)",
+  "parent_id": "gotico-cortese",
+  "parent_name": "Gotico cortese (Gotico internazionale)",
+  "percorso": "Gotico > Tardogotico > Gotico cortese (Gotico internazionale)",
+  "year_start": 1441,
+  "year_end": 1447,
+  "region_proposta": [
+   "Milano",
+   "Lombardia",
+   "Monza",
+   "Pavia",
+   "Cremona"
+  ],
+  "n_opere": 4,
+  "opere": [
+   {
+    "titolo": "Storie della regina Teodolinda",
+    "autori": [
+     "Famiglia Zavattari"
+    ],
+    "citta": "Monza",
+    "anni": "1441-1446"
+   },
+   {
+    "titolo": "Gli amanti, dal Mazzo di Tarocchi per Filippo Maria Visconti",
+    "autori": [
+     "Bonifacio Bembo"
+    ],
+    "citta": "New Haven",
+    "anni": "1442-1447"
+   },
+   {
+    "titolo": "Regina di bastoni dal Mazzo di Tarocchi",
+    "autori": [
+     "Bonifacio Bembo"
+    ],
+    "citta": "Bergamo",
+    "anni": "1442-1446"
+   },
+   {
+    "titolo": "Giochi aristocratici (Gioco della palla)",
+    "autori": [
+     "Maestro dei Giochi Borromeo"
+    ],
+    "citta": "Milano",
+    "anni": "1445 circa"
+   }
+  ]
+ }
+]

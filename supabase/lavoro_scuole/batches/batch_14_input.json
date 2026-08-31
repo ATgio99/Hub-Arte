@@ -1,0 +1,905 @@
+[
+ {
+  "id": "miracoli-di-san-vincenzo-ferrer",
+  "title": "Miracoli di san Vincenzo Ferrer (Predella Polittico Griffoni)",
+  "artists": [
+   "ercole-de-roberti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "miracolo-della-reliquia-della-croce-a-rialto",
+  "title": "Miracolo della reliquia della Croce a Rialto",
+  "artists": [
+   "vittore-carpaccio"
+  ],
+  "city": "Venezia",
+  "date_text": "1494-1496",
+  "year_start": 1494,
+  "year_end": 1496,
+  "current_period_id": "quattrocento-veneziano"
+ },
+ {
+  "id": "monumento-funebre-di-alfonso-daragona",
+  "title": "Monumento funebre di Alfonso d'Aragona",
+  "artists": [
+   "benedetto-da-maiano"
+  ],
+  "city": "Napoli",
+  "date_text": "dal 1490",
+  "year_start": 1490,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "morte-della-vergine",
+  "title": "Morte della Vergine",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Madrid",
+  "date_text": "1462 circa",
+  "year_start": 1462,
+  "year_end": 1462,
+  "current_period_id": null
+ },
+ {
+  "id": "ninfa-fontainebleau",
+  "title": "Ninfa di Fontainebleau",
+  "artists": [
+   "Benvenuto Cellini"
+  ],
+  "city": "Parigi",
+  "date_text": "1542-1543",
+  "year_start": 1542,
+  "year_end": 1543,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "orazione-di-gesu-nellorto-degli-ulivi",
+  "title": "Orazione di Gesù nell'orto degli ulivi",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": null,
+  "date_text": "1465-1470",
+  "year_start": 1465,
+  "year_end": 1470,
+  "current_period_id": null
+ },
+ {
+  "id": "pala-di-pesaro-pala-della-coronazione-della-vergine-tra-san-francesco-paolo-piet",
+  "title": "Pala di Pesaro (Pala della Coronazione della Vergine tra San Francesco, Paolo, Pietro, Girolamo)",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Pesaro",
+  "date_text": "1470-1475",
+  "year_start": 1470,
+  "year_end": 1475,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "pala-di-san-zaccaria",
+  "title": "Pala di San Zaccaria",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Venezia",
+  "date_text": "1505",
+  "year_start": 1505,
+  "year_end": 1505,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "pala-di-san-zeno-polittico-di-san-zeno",
+  "title": "Pala di San Zeno (Polittico di San Zeno)",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Verona",
+  "date_text": "1456-1459",
+  "year_start": 1456,
+  "year_end": 1459,
+  "current_period_id": null
+ },
+ {
+  "id": "pala-per-la-basilica-dei-santi-giovanni-e-paolo",
+  "title": "Pala per la basilica dei Santi Giovanni e Paolo",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Venezia",
+  "date_text": "",
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "pala-portonese-madonna-col-bambino-e-santi",
+  "title": "Pala Portonese (Madonna col Bambino e santi)",
+  "artists": [
+   "ercole-de-roberti"
+  ],
+  "city": "Milano",
+  "date_text": "1479-1481",
+  "year_start": 1479,
+  "year_end": 1481,
+  "current_period_id": null
+ },
+ {
+  "id": "palazzo-dei-diamanti",
+  "title": "Palazzo dei Diamanti",
+  "artists": [
+   "biagio-rossetti"
+  ],
+  "city": "Ferrara",
+  "date_text": "dal 1493",
+  "year_start": 1493,
+  "year_end": null,
+  "current_period_id": "scuola-ferrarese"
+ },
+ {
+  "id": "palazzo-schifanoia-ristrutturazione",
+  "title": "Palazzo Schifanoia (ristrutturazione)",
+  "artists": [
+   "pietro-benvogliente"
+  ],
+  "city": "Ferrara",
+  "date_text": "dal 1465",
+  "year_start": 1465,
+  "year_end": null,
+  "current_period_id": "scuola-ferrarese"
+ },
+ {
+  "id": "parete-nord---scene-mitologiche-e-autoritratto",
+  "title": "Parete nord - Scene mitologiche e autoritratto",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Mantova",
+  "date_text": "1465-1474",
+  "year_start": 1465,
+  "year_end": 1474,
+  "current_period_id": null
+ },
+ {
+  "id": "parete-ovest---scena-dellincontro",
+  "title": "Parete ovest - Scena dell'Incontro (camera degli sposi)",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Mantova",
+  "date_text": "1465-1474",
+  "year_start": 1465,
+  "year_end": 1474,
+  "current_period_id": null
+ },
+ {
+  "id": "parnaso",
+  "title": "Parnaso",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Parigi",
+  "date_text": "1497 circa",
+  "year_start": 1497,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "Peccato-originale-e-cacciata",
+  "title": "Peccato originale e cacciata dal paradiso terrestre",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1508-1512",
+  "year_start": 1506,
+  "year_end": 1512,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "pieta",
+  "title": "Pietà (Bellini)",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Milano",
+  "date_text": "1475 circa",
+  "year_start": 1470,
+  "year_end": 1480,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "pieta-zuccari",
+  "title": "Pietà",
+  "artists": [
+   "taddeo-zuccari"
+  ],
+  "city": "Urbino",
+  "date_text": "1564-1565",
+  "year_start": 1564,
+  "year_end": 1565,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "politico-griffoni",
+  "title": "Politico Griffoni",
+  "artists": [
+   "francesco-del-cossa"
+  ],
+  "city": "Bologna",
+  "date_text": "1473",
+  "year_start": 1473,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "politico-roverella",
+  "title": "Politico Roverella",
+  "artists": [
+   "cosme-tura"
+  ],
+  "city": "Ferrara",
+  "date_text": "1475-1479",
+  "year_start": 1475,
+  "year_end": 1479,
+  "current_period_id": "scuola-ferrarese"
+ },
+ {
+  "id": "polittico-con-santambrogio-benedicente-e-i-santi-offerenti-luigi-pietro-paolo-e-",
+  "title": "Polittico con sant'Ambrogio benedicente e i santi offerenti Luigi, Pietro, Paolo e Sebastiano",
+  "artists": [
+   "bartolomeo-vivarini"
+  ],
+  "city": "Venezia",
+  "date_text": "1477",
+  "year_start": 1477,
+  "year_end": 1477,
+  "current_period_id": null
+ },
+ {
+  "id": "polittico-lazara",
+  "title": "Polittico De Lazara",
+  "artists": [
+   "francesco-squarcione"
+  ],
+  "city": "Padova",
+  "date_text": "1452",
+  "year_start": 1452,
+  "year_end": 1452,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "polittico-porta-romana",
+  "title": "Polittico Porta Romana",
+  "artists": [
+   "pietro-di-giovanni-dambrogio"
+  ],
+  "city": "Siena",
+  "date_text": "1479-1481",
+  "year_start": 1479,
+  "year_end": 1481,
+  "current_period_id": null
+ },
+ {
+  "id": "porta-capuana",
+  "title": "Porta Capuana",
+  "artists": [
+   "giuliano-da-maiano"
+  ],
+  "city": "Napoli",
+  "date_text": "1484",
+  "year_start": 1484,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "predica-di-pietro-masolino",
+  "title": "Predica di San Pietro",
+  "artists": [
+   "Masolino da Panicale"
+  ],
+  "city": "Firenze",
+  "date_text": "1424-1425",
+  "year_start": 1424,
+  "year_end": 1425,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "presentazione-al-tempio",
+  "title": "Presentazione al Tempio",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Venezia",
+  "date_text": "1460 circa",
+  "year_start": 1460,
+  "year_end": 1460,
+  "current_period_id": "quattrocento-veneziano"
+ },
+ {
+  "id": "resurrezione-del-figlio-di-teofilo",
+  "title": "Resurrezione del figlio di Teofilo e san Pietro in cattedra",
+  "artists": [
+   "Masolino da Panicale"
+  ],
+  "city": "Firenze",
+  "date_text": "1427",
+  "year_start": 1427,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "ritratto-del-doge-leonardo-loredan",
+  "title": "Ritratto del doge Leonardo Loredan",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Londra",
+  "date_text": "1501-1502",
+  "year_start": 1501,
+  "year_end": 1502,
+  "current_period_id": null
+ },
+ {
+  "id": "ritratto-di-uomo-con-moneta",
+  "title": "Ritratto di uomo con moneta",
+  "artists": [
+   "Hans Memling"
+  ],
+  "city": "Anversa",
+  "date_text": "1471-1474",
+  "year_start": 1471,
+  "year_end": 1474,
+  "current_period_id": "seconda-meta-del-quattrocento"
+ },
+ {
+  "id": "ritratto-erasmo-holbein",
+  "title": "Ritratto di Erasmo da Rotterdam",
+  "artists": [
+   "holbein-giovane"
+  ],
+  "city": "Parigi",
+  "date_text": "1523 circa",
+  "year_start": 1523,
+  "year_end": 1523,
+  "current_period_id": "rinasc-nordico"
+ },
+ {
+  "id": "ritratto-lutero-cranach",
+  "title": "Ritratto di Lutero e Katharina von Bora",
+  "artists": [
+   "cranach-vecchio"
+  ],
+  "city": "Firenze",
+  "date_text": "1529",
+  "year_start": 1529,
+  "year_end": 1529,
+  "current_period_id": "rinasc-nordico"
+ },
+ {
+  "id": "ritratto-tommaso-moro",
+  "title": "Ritratto di Tommaso Moro",
+  "artists": [
+   "holbein-giovane"
+  ],
+  "city": "New York",
+  "date_text": "1527",
+  "year_start": 1527,
+  "year_end": 1527,
+  "current_period_id": "rinasc-nordico"
+ },
+ {
+  "id": "ritratto-virile",
+  "title": "Ritratto virile",
+  "artists": [
+   "Antonello da Messina"
+  ],
+  "city": "Londra",
+  "date_text": "1465",
+  "year_start": 1475,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "ritratto-virile-ritratto-dignoto-marinaio",
+  "title": "Ritratto virile (Ritratto d'ignoto marinaio)",
+  "artists": [
+   "Antonello da Messina"
+  ],
+  "city": "Cefalù (Palermo)",
+  "date_text": "1465 circa",
+  "year_start": 1465,
+  "year_end": 1465,
+  "current_period_id": null
+ },
+ {
+  "id": "rodolfo-ii-vertumno",
+  "title": "Rodolfo II come Vertumno",
+  "artists": [
+   "arcimboldo"
+  ],
+  "city": "Skokloster",
+  "date_text": "1590",
+  "year_start": 1590,
+  "year_end": 1590,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "sala-fasti-farnesiani",
+  "title": "Sala dei fasti farnesiani",
+  "artists": [
+   "taddeo-zuccari"
+  ],
+  "city": "Caprarola",
+  "date_text": "1563-1565",
+  "year_start": 1563,
+  "year_end": 1565,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "saliera-francesco-i",
+  "title": "Saliera di Francesco I",
+  "artists": [
+   "Benvenuto Cellini"
+  ],
+  "city": "Vienna",
+  "date_text": "1540-1543",
+  "year_start": 1540,
+  "year_end": 1543,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "san-carlo-appestati",
+  "title": "San Carlo visita gli appestati",
+  "artists": [
+   "cerano"
+  ],
+  "city": "Milano",
+  "date_text": "1602",
+  "year_start": 1602,
+  "year_end": 1602,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "san-fedele-tibaldi",
+  "title": "Chiesa di San Fedele",
+  "artists": [
+   "tibaldi"
+  ],
+  "city": "Milano",
+  "date_text": "1569",
+  "year_start": 1569,
+  "year_end": 1580,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "san-floriano",
+  "title": "San Floriano",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Washington D.C.",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "san-francesco-consegna-la-regola-agli-ordini-francescani",
+  "title": "San Francesco consegna la regola agli ordini francescani",
+  "artists": [
+   "colantonio"
+  ],
+  "city": "Napoli",
+  "date_text": "1445 circa",
+  "year_start": 1445,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "san-gerolamo-nello-studio",
+  "title": "San Gerolamo nello studio con leone",
+  "artists": [
+   "colantonio"
+  ],
+  "city": "Napoli",
+  "date_text": "1445 Circa",
+  "year_start": 1445,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "san-giorgio",
+  "title": "San Giorgio",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Venezia",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "san-giorgio-e-la-principessa-ante-chiusure",
+  "title": "San Giorgio e la principessa / Annunciazione",
+  "artists": [
+   "cosme-tura"
+  ],
+  "city": "Ferrara",
+  "date_text": "1469 circa",
+  "year_start": null,
+  "year_end": 1469,
+  "current_period_id": "scuola-ferrarese"
+ },
+ {
+  "id": "San-giroamo-nello-studio",
+  "title": "San Gerolamo nello studio",
+  "artists": [
+   "Antonello da Messina"
+  ],
+  "city": "Londra",
+  "date_text": "1475",
+  "year_start": 1475,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "san-matteo-angelo-caravaggio-prima-versione",
+  "title": "San Matteo Evangelista (prima versione, l'Ispirazione di san Matteo)",
+  "artists": [
+   "caravaggio"
+  ],
+  "city": "Berlino",
+  "date_text": "1602",
+  "year_start": 1602,
+  "year_end": 1602,
+  "current_period_id": "barocco"
+ },
+ {
+  "id": "san-matteo-angelo-cobaert-ferrucci",
+  "title": "San Matteo e Angelo (statua)",
+  "artists": [
+   "jacques-cobaert",
+   "pompeo-ferrucci"
+  ],
+  "city": "Roma",
+  "date_text": "San Matteo: ante 1587-1602; Angelo: 1615-1620",
+  "year_start": 1587,
+  "year_end": 1620,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "san-michele-arcangelo",
+  "title": "San Michele Arcangelo",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Lione",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "san-pietro",
+  "title": "San Pietro",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Milano",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "san-pietronio",
+  "title": "San Pietronio",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Ferrara",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "san-sebastiano",
+  "title": "San Sebastiano",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Parigi",
+  "date_text": "1482-1485 circa",
+  "year_start": 1482,
+  "year_end": 1485,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "san-sebastiano-a.d.m.",
+  "title": "San Sebastiano",
+  "artists": [
+   "Antonello da Messina"
+  ],
+  "city": "Dresda",
+  "date_text": "1478",
+  "year_start": 1478,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "san-vincenzo-ferrer",
+  "title": "San Vincenzo Ferrer",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Londra",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "santa-apollonia",
+  "title": "Santa Apollonia",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Parigi",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "santa-caterina",
+  "title": "Santa Caterina",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Venezia",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "santa-caterina-dalessandria",
+  "title": "Santa Caterina d'Alessandria",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Milano",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "santa-lucia",
+  "title": "Santa Lucia",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Washington D.C.",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "santantonio-abate",
+  "title": "Sant'Antonio Abate",
+  "artists": [
+   "francesco-del-cossa-o-ercole-de-roberti"
+  ],
+  "city": "Rotterdam",
+  "date_text": "1470-1473",
+  "year_start": 1470,
+  "year_end": 1473,
+  "current_period_id": null
+ },
+ {
+  "id": "scena-di-corte-e-celebrazione-di-gonzaga",
+  "title": "Scena di corte e celebrazione di Gonzaga (camera degli sposi)",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Mantova",
+  "date_text": "1465-1474",
+  "year_start": 1465,
+  "year_end": 1474,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "sepoltura-conte-orgaz",
+  "title": "La sepoltura del conte di Orgaz",
+  "artists": [
+   "el-greco"
+  ],
+  "city": "Toledo",
+  "date_text": "1586-1588",
+  "year_start": 1586,
+  "year_end": 1588,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "storie-di-orffeo-mantegna",
+  "title": "Storie di Orfeo, pennacchi (Camera degli Sposi)",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Mantova",
+  "date_text": "1465-1474",
+  "year_start": 1465,
+  "year_end": 1474,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "teleri-di-san-girolamo",
+  "title": "Teleri di San Girolamo",
+  "artists": [
+   "vittore-carpaccio"
+  ],
+  "city": "Venezia",
+  "date_text": "",
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "testa-di-santi-giorgio",
+  "title": "Testa di santi Giorgio",
+  "artists": [
+   "cosme-tura"
+  ],
+  "city": "San Diego",
+  "date_text": "",
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": null
+ },
+ {
+  "id": "trinita-el-greco",
+  "title": "Trinità",
+  "artists": [
+   "el-greco"
+  ],
+  "city": "Madrid",
+  "date_text": "1577-1579",
+  "year_start": 1577,
+  "year_end": 1579,
+  "current_period_id": "controriforma"
+ },
+ {
+  "id": "trionfi-di-cesare-in-gallia",
+  "title": "Trionfi di Cesare in Gallia",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Londra",
+  "date_text": "1485-1505",
+  "year_start": 1485,
+  "year_end": 1505,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "trionfo-di-marzo-apile-e-maggio",
+  "title": "Mese di Marzo (Salone dei Mesi di Palazzo Schifanoia)",
+  "artists": [
+   "officina-ferrarese-cosme-tura"
+  ],
+  "city": "Ferrara",
+  "date_text": "circa 1460-1470",
+  "year_start": null,
+  "year_end": null,
+  "current_period_id": "scuola-ferrarese"
+ },
+ {
+  "id": "trittico-carro-fieno",
+  "title": "Trittico del Carro di fieno",
+  "artists": [
+   "bosch"
+  ],
+  "city": "Madrid",
+  "date_text": "1512-1515",
+  "year_start": 1512,
+  "year_end": 1515,
+  "current_period_id": "rinasc-nordico"
+ },
+ {
+  "id": "trittico-con-la-madonna-in-trono-con-il-bambino-tra-i-santi-gregorio-gerolamo-am",
+  "title": "Trittico con la Madonna in trono con il Bambino tra i santi Gregorio, Gerolamo, Ambrogio e Agostino",
+  "artists": [
+   "antonio-vivarini-e-giovanni-dalemagna",
+   "antonio-vivarini",
+   "giovanni-dalemagna"
+  ],
+  "city": "Venezia",
+  "date_text": "1446",
+  "year_start": 1446,
+  "year_end": 1446,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "trittico-dei-frari",
+  "title": "Trittico dei Frari",
+  "artists": [
+   "Giovanni Bellini"
+  ],
+  "city": "Venezia",
+  "date_text": "1488",
+  "year_start": 1488,
+  "year_end": 1488,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "urania",
+  "title": "Urania",
+  "artists": [
+   "angelo-maccagnino"
+  ],
+  "city": "Ferrara",
+  "date_text": "1455-1460",
+  "year_start": 1455,
+  "year_end": 1460,
+  "current_period_id": "scuola-ferrarese"
+ },
+ {
+  "id": "vergine-annunziata",
+  "title": "Vergine Annunziata (annunciazione)",
+  "artists": [
+   "Antonello da Messina"
+  ],
+  "city": "Palermo",
+  "date_text": "circa 1475-1476",
+  "year_start": 1475,
+  "year_end": 1476,
+  "current_period_id": null
+ },
+ {
+  "id": "vocazione-san-matteo-caravaggio",
+  "title": "Vocazione di San Matteo",
+  "artists": [
+   "caravaggio"
+  ],
+  "city": "Roma",
+  "date_text": "1599-1600",
+  "year_start": 1599,
+  "year_end": 1600,
+  "current_period_id": "barocco"
+ },
+ {
+  "id": "volta-della-camera-degli-sposi",
+  "title": "Volta della Camera degli Sposi",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Mantova",
+  "date_text": "1465-1474",
+  "year_start": 1465,
+  "year_end": 1474,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "volta-stanza-della-segnatura",
+  "title": "Soffitto e volta della Stanza della Segnatura",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1508",
+  "year_start": 1508,
+  "year_end": null,
+  "current_period_id": "rinascimento-maturo"
+ }
+]

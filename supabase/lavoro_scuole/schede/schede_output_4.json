@@ -1,0 +1,232 @@
+[
+ {
+  "id": "scuola-di-treviri-ottoniana",
+  "name": "Scuola miniaturistica di Treviri (bottega del Registrum Gregorii)",
+  "type": "scuola",
+  "year_start": 977,
+  "year_end": 993,
+  "regions": ["Treviri", "Renania", "Germania"],
+  "summary": "Attivo a Treviri nell'ultimo quarto del X secolo, l'anonimo miniatore convenzionalmente detto Maestro del Registrum Gregorii è la personalità più raffinata della miniatura ottoniana. Il suo linguaggio si distingue per il recupero consapevole dei modelli tardoantichi e carolingi: figure di volume solido avvolte in panneggi chiaroscurati, incarnati morbidi, ambientazioni architettoniche che ricostruiscono uno spazio credibile attorno al personaggio. Rispetto alla tendenza ottoniana all'astrazione e al fondo oro, la sua pittura conserva una misura classica e una compostezza monumentale che la rendono immediatamente riconoscibile.",
+  "historical_context": "Lo scriptorium lavora nell'orbita dell'arcivescovo Egberto di Treviri, prelato colto e vicino alla casa imperiale, che fa della sua sede uno dei centri librari più prestigiosi dell'impero. Le miniature nascono per manoscritti liturgici e di prestigio destinati alla cattedrale e al dono di corte, e servono anche a costruire l'immagine sacrale del sovrano ottoniano.",
+  "parent_id": "arte-ottoniana",
+  "key_innovations": [
+   "ritratto imperiale in trono desunto da modelli tardoantichi",
+   "personificazioni delle province dell'impero come omaggio al sovrano",
+   "impaginazione architettonica della pagina miniata",
+   "resa chiaroscurale del panneggio e della carne",
+   "immagine dell'autore ispirato colto nell'atto della scrittura"
+  ]
+ },
+ {
+  "id": "cattedrale-santiago-scuola",
+  "name": "Bottega scultorea della cattedrale di Santiago de Compostela",
+  "type": "scuola",
+  "year_start": 1075,
+  "year_end": 1211,
+  "regions": ["Santiago de Compostela", "Galizia", "Spagna settentrionale"],
+  "summary": "Il cantiere della cattedrale compostellana raccoglie per oltre un secolo generazioni di scultori e lapicidi, dando forma al modello più compiuto di chiesa di pellegrinaggio: pianta a croce latina con navate laterali, tribune continue e deambulatorio con cappelle radiali, pensati per far scorrere le folle attorno alla tomba dell'apostolo. La decorazione scolpita passa da un primo linguaggio di rilievi assemblati sulle facciate laterali, dal segno duro e incisivo, alla piena maturità raggiunta con Maestro Matteo, autore del portico occidentale, dove le figure di profeti e apostoli acquistano peso corporeo, volti individuati e un'espressività quasi conversativa.",
+  "historical_context": "L'impresa è promossa dai vescovi di Compostela, in particolare da Diego Gelmírez, e sostenuta dalle offerte del pellegrinaggio e dalla monarchia di Castiglia e León. Il cammino verso la tomba di san Giacomo mette la Galizia in contatto diretto con i cantieri della Francia meridionale, favorendo la circolazione di maestranze e di modelli.",
+  "parent_id": "romanico",
+  "key_innovations": [
+   "impianto della chiesa di pellegrinaggio con deambulatorio e cappelle radiali",
+   "tribune continue sopra le navate laterali per il flusso dei fedeli",
+   "portale a più archivolti istoriati con programma apocalittico",
+   "statua-colonna con volti individualizzati e panneggi naturalistici",
+   "facciata laterale composta come repertorio di rilievi narrativi"
+  ]
+ },
+ {
+  "id": "bottega-bernardus-gelduinus-tolosa",
+  "name": "Bottega di Bernardus Gelduinus (Saint-Sernin, Tolosa)",
+  "type": "scuola",
+  "year_start": 1080,
+  "year_end": 1100,
+  "regions": ["Tolosa", "Linguadoca", "Francia meridionale"],
+  "summary": "Attorno al cantiere della basilica di Saint-Sernin si forma alla fine dell'XI secolo una delle prime botteghe scultoree pienamente romaniche d'Europa, il cui nome è legato a Bernardus Gelduinus, artefice che firma la mensa d'altare in marmo. Il gruppo lavora il marmo con un rilievo basso e nitido, di superficie levigata, che riprende dai sarcofagi tardoantichi l'impostazione frontale e la scansione regolare delle figure: il Cristo benedicente entro la mandorla, gli angeli e gli apostoli del deambulatorio ne sono l'esito più solenne. Nella generazione successiva, con i portali della basilica, il rilievo si fa più alto e narrativo e conquista il timpano, sperimentando l'organizzazione della scena sacra sopra l'ingresso.",
+  "historical_context": "Saint-Sernin è una grande basilica di pellegrinaggio lungo la via che conduce a Compostela, retta da un capitolo di canonici e sostenuta dal flusso dei fedeli verso le reliquie di san Saturnino. La consacrazione dell'altare da parte del papa nel corso della sua discesa in Occitania segna il prestigio del cantiere e ne accelera l'attività.",
+  "parent_id": "romanico",
+  "key_innovations": [
+   "rilievo marmoreo a figura intera modellato sui sarcofagi tardoantichi",
+   "Cristo in mandorla con i simboli degli evangelisti nel deambulatorio",
+   "mensa d'altare con bordo a girali e firma dell'artefice",
+   "passaggio del racconto sacro dall'interno della chiesa al timpano del portale"
+  ]
+ },
+ {
+  "id": "marmorari-romani",
+  "name": "Marmorari romani (Bottega dei Vassalletto)",
+  "type": "scuola",
+  "year_start": 1180,
+  "year_end": 1230,
+  "regions": ["Roma", "Lazio"],
+  "summary": "I marmorari romani sono dinastie di artefici che si tramandano di padre in figlio il mestiere del taglio e dell'intarsio del marmo: tra queste i Vassalletto, accanto ai Cosmati e ai Laurenziani. Il loro linguaggio nasce dal reimpiego dei marmi antichi di Roma, tagliati in tessere di porfido, serpentino e paste vitree e ricomposti in tappeti geometrici di grande effetto cromatico. La bottega produce l'intero arredo liturgico — pavimenti, amboni, cibori, cattedre, candelabri pasquali — e soprattutto chiostri dalle colonnine tortili, binate e rivestite di mosaico, dove alla decorazione astratta si affianca una scultura figurata di gusto ancora romanico ma nutrita di modelli classici.",
+  "historical_context": "La committenza è quella dei grandi monasteri e delle basiliche romane, in una stagione di rinnovamento degli arredi sacri sostenuta dal papato e dai capitoli canonicali. Il cantiere di San Paolo fuori le Mura è il banco di prova più ambizioso, e su queste opere gli artefici firmano con orgoglio il proprio nome.",
+  "parent_id": "romanico-italiano",
+  "key_innovations": [
+   "intarsio marmoreo policromo con tessere di porfido e paste vitree",
+   "reimpiego sistematico dei marmi antichi di Roma",
+   "colonnine tortili e binate rivestite a mosaico nei chiostri",
+   "candelabro pasquale a fusto istoriato con racconto continuo",
+   "firma dell'artefice apposta sull'opera come marchio di bottega"
+  ]
+ },
+ {
+  "id": "scuola-lucchese-berlinghieri",
+  "name": "Scuola lucchese dei Berlinghieri",
+  "type": "scuola",
+  "year_start": 1200,
+  "year_end": 1235,
+  "regions": ["Lucca", "Pescia", "Toscana"],
+  "summary": "La famiglia dei Berlinghieri — Berlinghiero e i figli, tra cui Bonaventura — fa di Lucca uno dei centri guida della pittura su tavola nella Toscana del primo Duecento. Il loro linguaggio appartiene alla cosiddetta maniera greca: figure allungate e frontali, volti dal disegno inciso e severo, vesti percorse da fitte lumeggiature d'oro che sostituiscono il chiaroscuro. Su questa base bizantineggiante la bottega elabora due tipologie di grande fortuna, la croce dipinta monumentale e il dossale agiografico, e mette a punto per prima l'immagine di san Francesco affiancata dagli episodi della sua vita, destinata a diventare modello per tutto il secolo.",
+  "historical_context": "Lucca è nel Duecento una città ricca, sulla via Francigena e in rapporto costante con il Mediterraneo orientale, da cui giungono icone e modelli bizantini. Le tavole nascono per chiese, confraternite e soprattutto per i nuovi insediamenti degli ordini mendicanti, che nell'immediato dopo la morte di Francesco d'Assisi hanno bisogno di immagini per il culto del santo appena canonizzato.",
+  "parent_id": "romanico-italiano",
+  "key_innovations": [
+   "dossale agiografico con il santo al centro e le storie laterali",
+   "croce dipinta di grande formato per l'arco trionfale delle chiese",
+   "crisografia, cioè lumeggiature d'oro a definire le pieghe",
+   "fissazione dell'iconografia francescana delle origini",
+   "adattamento della maniera greca alla tavola dipinta toscana"
+  ]
+ },
+ {
+  "id": "monumenti-funebri-napoletani-carbonara",
+  "name": "Monumenti funebri tardogotici napoletani (San Giovanni a Carbonara)",
+  "type": "scuola",
+  "year_start": 1414,
+  "year_end": 1430,
+  "regions": ["Napoli", "Campania"],
+  "summary": "Nella chiesa di San Giovanni a Carbonara si concentra la stagione più ambiziosa della scultura funeraria napoletana del primo Quattrocento, esito dell'incontro fra la tradizione locale, erede di Tino di Camaino, e le maestranze toscane e centro-italiane attirate dalla corte. Il tipo dominante è il sepolcro a parete sviluppato in altezza per registri sovrapposti: basamento con virtù e figure di corte, sarcofago con il defunto giacente, baldacchino e coronamento, fino alla statua equestre del sovrano che chiude la macchina architettonica. Il linguaggio resta gotico nel gusto per la decorazione minuta e per le figure allungate, ma la scala monumentale e la ricerca di somiglianza nei ritratti annunciano una nuova concezione celebrativa del monumento.",
+  "historical_context": "La committenza è quella della dinastia angioino-durazzesca e dell'aristocrazia di seggio che le gravita attorno: la regina Giovanna II fa erigere il sepolcro del fratello Ladislao, mentre i grandi ufficiali del regno commissionano per sé cappelle e tombe nella stessa chiesa. Il monumento funebre diventa così uno strumento di legittimazione dinastica e di affermazione del rango familiare.",
+  "parent_id": "tardogotico",
+  "key_innovations": [
+   "sepolcro a parete articolato su più registri sovrapposti",
+   "statua equestre del sovrano a coronamento del monumento",
+   "integrazione di virtù, cortigiani e baldacchino nella struttura architettonica",
+   "innesto di maestranze toscane sul repertorio decorativo gotico napoletano"
+  ]
+ },
+ {
+  "id": "ciclo-castello-della-manta",
+  "name": "Ciclo pittorico del Castello della Manta",
+  "type": "scuola",
+  "year_start": 1420,
+  "year_end": 1425,
+  "regions": ["Manta", "Saluzzo", "Piemonte"],
+  "summary": "Gli affreschi della sala baronale del castello della Manta, opera di un anonimo maestro di cultura franco-borgognona attivo in Piemonte attorno al 1420, sono uno dei più alti cicli profani del gotico internazionale in Italia. Su una parete sfila la schiera dei Nove Prodi e delle Nove Eroine, figure quasi al naturale disposte come una teoria di ritratti di corte, ciascuna accompagnata dal proprio cartiglio e vestita con abiti sontuosi rigorosamente contemporanei; sulla parete opposta si dispiega la Fontana della giovinezza, racconto continuo dei vecchi che si spogliano, si immergono e riemergono ringiovaniti. Il maestro unisce alla linea elegante e al gusto araldico un'attenzione minuziosa alle stoffe, ai gioielli e alle specie vegetali del fondo fiorito.",
+  "historical_context": "Il ciclo è voluto dal signore della Manta, ramo cadetto dei marchesi di Saluzzo, in una sala di rappresentanza destinata a ricevere ospiti e vassalli. Il programma deriva da un poema cavalleresco composto in ambiente saluzzese, e permette al committente di iscrivere se stesso e la propria consorte nella genealogia ideale degli eroi, in un momento in cui la piccola signoria cerca di affermare il proprio prestigio.",
+  "parent_id": "gotico-cortese",
+  "key_innovations": [
+   "ciclo profano a figure quasi al naturale in una sala di rappresentanza",
+   "iconografia dei Nove Prodi e delle Nove Eroine derivata da un testo cavalleresco",
+   "narrazione continua della Fontana della giovinezza su una sola parete",
+   "uso del costume di corte contemporaneo come strumento di identificazione dinastica",
+   "fondo a prato fiorito con resa analitica delle specie vegetali"
+  ]
+ },
+ {
+  "id": "bottega-michelino-da-besozzo",
+  "name": "Bottega di Michelino da Besozzo",
+  "type": "scuola",
+  "year_start": 1420,
+  "year_end": 1425,
+  "regions": ["Milano", "Lombardia", "Verona", "Siena"],
+  "summary": "Michelino da Besozzo è considerato dai contemporanei il pittore più eccellente della Lombardia, e la sua bottega diffonde in tutta l'Italia settentrionale la versione più morbida e lirica del gotico cortese. Il suo tratto distintivo è una linea continua e avvolgente che scioglie ogni spigolo: le figure sembrano piegarsi su se stesse in curve senza interruzione, i volti hanno la levigatezza dell'avorio, il colore è chiaro, smaltato, steso in campiture tenui. Formatosi anche come miniatore, Michelino trasferisce alla tavola e all'affresco la delicatezza e la cura minuta del libro dipinto, ambientando le sue Madonne in giardini fioriti e roseti carichi di valore simbolico.",
+  "historical_context": "La bottega opera nell'orbita della corte viscontea e del cantiere del Duomo di Milano, in una Lombardia dove signori, prelati e ordini religiosi richiedono immagini devozionali di alta qualità e manoscritti di lusso. La fama del maestro ne fa circolare le opere ben oltre il ducato, fino al Veneto e alla Toscana.",
+  "parent_id": "gotico-cortese",
+  "key_innovations": [
+   "linea continua e sinuosa che modella figure prive di spigoli",
+   "incarnati d'avorio e cromie chiare e smaltate",
+   "trasferimento della finezza miniaturistica alla pittura su tavola",
+   "giardino fiorito e roseto come ambientazione simbolica della Vergine",
+   "diffusione sovraregionale del linguaggio cortese lombardo"
+  ]
+ },
+ {
+  "id": "cantiere-san-petronio-bologna",
+  "name": "Cantiere del portale maggiore di San Petronio a Bologna (Jacopo della Quercia)",
+  "type": "scuola",
+  "year_start": 1425,
+  "year_end": 1438,
+  "regions": ["Bologna", "Emilia-Romagna"],
+  "summary": "Il portale maggiore di San Petronio, cui Jacopo della Quercia lavora negli ultimi tredici anni di vita, è il cantiere in cui la scultura tardogotica italiana raggiunge una monumentalità nuova. Sugli stipiti corrono le formelle con le Storie della Genesi, dalla creazione dei progenitori al fratricidio di Caino, mentre sull'architrave si dispongono le scene dell'infanzia di Cristo e nella lunetta la Madonna con il Bambino tra i santi protettori della città. Il senese riduce ogni racconto a poche figure di corporatura possente, colte in gesti ampi e trattenuti, e sacrifica il paesaggio e gli aneddoti a favore del solo peso plastico dei corpi: un nudo eroico e solenne che colpirà profondamente le generazioni successive, Michelangelo compreso.",
+  "historical_context": "L'opera è commissionata dalla fabbriceria di San Petronio, la basilica civica voluta dal Comune di Bologna e non dal vescovo, e finanziata dalla città come simbolo della propria identità. I lavori procedono a rilento, tra difficoltà di approvvigionamento della pietra d'Istria e le tensioni politiche che attraversano Bologna in quegli anni, e restano incompiuti alla morte dello scultore.",
+  "parent_id": "tardogotico",
+  "key_innovations": [
+   "formelle veterotestamentarie ridotte a poche figure monumentali",
+   "nudo eroico di forte tensione plastica nel rilievo",
+   "eliminazione dell'aneddoto e dell'ambientazione a favore del corpo",
+   "portale concepito come racconto biblico continuo su stipiti, architrave e lunetta"
+  ]
+ },
+ {
+  "id": "corte-cardinale-branda-castiglioni",
+  "name": "Masolino da Panicale alla corte del cardinale Branda Castiglioni (Roma - Castiglione Olona)",
+  "type": "scuola",
+  "year_start": 1427,
+  "year_end": 1435,
+  "regions": ["Roma", "Castiglione Olona", "Lombardia"],
+  "summary": "Il lungo rapporto tra Masolino da Panicale e il cardinale Branda Castiglioni dà vita a una delle imprese pittoriche più originali del secondo quarto del Quattrocento, divisa tra Roma e il borgo lombardo di Castiglione Olona. Masolino conserva l'eleganza cortese della sua formazione — figure snelle, colori chiari e preziosi, gesti misurati — ma la innesta su architetture costruite in prospettiva e su paesaggi ampi e digradanti, in cui aria e luce danno profondità alla scena. Ne nasce un linguaggio di equilibrio, meno drammatico di quello masaccesco ma capace di misurare lo spazio e di ambientare il racconto sacro in scenari di grande respiro.",
+  "historical_context": "Branda Castiglioni è un prelato di formazione umanistica, legato pontificio in Ungheria e in Germania, che investe le proprie risorse nella cappella di famiglia a Roma e nella trasformazione del paese natale in un piccolo centro ideale, dotato di collegiata, battistero, palazzo e scuola. La chiamata di un pittore toscano in Lombardia risponde a questo progetto di autorappresentazione culturale.",
+  "parent_id": "gotico-cortese",
+  "key_innovations": [
+   "quadratura architettonica prospettica come cornice della narrazione",
+   "paesaggio ampio e atmosferico integrato nella scena sacra",
+   "conciliazione tra eleganza tardogotica e spazio misurato",
+   "programma di committenza che trasforma un borgo in una corte umanistica in miniatura"
+  ]
+ },
+ {
+  "id": "corte-di-tours-fouquet",
+  "name": "Jean Fouquet e la corte reale di Tours",
+  "type": "scuola",
+  "year_start": 1450,
+  "year_end": 1455,
+  "regions": ["Tours", "Val della Loira", "Francia"],
+  "summary": "Jean Fouquet è il maggiore pittore francese del Quattrocento e opera a Tours, nel cuore della valle della Loira dove risiede la corte reale. Dopo un soggiorno in Italia che gli fa conoscere la prospettiva e l'architettura all'antica, elabora una sintesi personalissima tra la costruzione geometrica dei volumi di matrice italiana e la resa levigata, smaltata e minuziosa della tradizione fiamminga. I suoi ritratti, di implacabile verità fisionomica, e le sue immagini devozionali, dove le figure sono ridotte a forme quasi geometriche e i colori a contrasti netti, hanno una freddezza solenne che non trova paragoni altrove; la stessa mano è attiva anche nella miniatura, che rinnova con inquadrature spaziali di grande audacia.",
+  "historical_context": "Fouquet lavora per Carlo VII e per la cerchia dei grandi ufficiali della corona, in particolare per il tesoriere di Francia Étienne Chevalier, committente del dittico e di un celebre libro d'ore. Sono gli anni della ricostruzione del regno dopo la guerra dei Cent'anni, in cui la monarchia e la sua alta burocrazia usano le arti per affermare la ritrovata autorità.",
+  "parent_id": "tardogotico",
+  "key_innovations": [
+   "innesto della prospettiva e delle architetture all'antica italiane nella pittura francese",
+   "ritratto del donatore trattato come effigie autonoma di forte verità fisionomica",
+   "riduzione delle figure a volumi netti e quasi geometrici",
+   "dittico devozionale giocato sul contrasto tra due registri cromatici",
+   "rinnovamento dell'impaginazione spaziale nella miniatura di corte"
+  ]
+ },
+ {
+  "id": "corte-malatestiana-riminese",
+  "name": "Corte malatestiana di Rimini (Tempio Malatestiano)",
+  "type": "scuola",
+  "year_start": 1450,
+  "year_end": 1468,
+  "regions": ["Rimini", "Romagna"],
+  "summary": "Attorno alla trasformazione della chiesa di San Francesco a Rimini nel cosiddetto Tempio Malatestiano si raccoglie a metà Quattrocento una delle imprese più significative del primo Rinascimento fuori Firenze. Leon Battista Alberti riveste l'edificio medievale con un involucro marmoreo che traduce in facciata lo schema dell'arco di trionfo romano e apre sui fianchi profonde arcate destinate ad accogliere i sarcofagi degli uomini di cultura della corte. All'interno Agostino di Duccio scolpisce a bassissimo rilievo un repertorio di pianeti, segni zodiacali, arti liberali, sibille e putti danzanti di eleganza lineare e sapore antiquario, mentre Piero della Francesca fissa nel proprio affresco il ritratto di profilo del signore, inginocchiato in uno spazio nitido e geometrico.",
+  "historical_context": "Il promotore è Sigismondo Pandolfo Malatesta, condottiero e signore di Rimini, che chiama attorno a sé letterati, umanisti e medaglisti e usa il cantiere come strumento di autocelebrazione dinastica, disseminandolo di imprese araldiche e di iniziali intrecciate. La sua rottura con il papato e la condanna pubblica che ne segue interrompono i lavori, che restano incompiuti.",
+  "parent_id": "quattrocento",
+  "key_innovations": [
+   "facciata di chiesa impostata sullo schema dell'arco di trionfo romano",
+   "fianchi ad arcate profonde concepiti come sepolcreto degli umanisti di corte",
+   "rilievo schiacciato con repertorio astrologico e allegorico all'antica",
+   "ritratto di profilo del signore inserito nell'affresco votivo",
+   "medaglia commemorativa come strumento di autorappresentazione"
+  ]
+ },
+ {
+  "id": "controriforma-milanese-borromea",
+  "name": "Controriforma milanese (età borromaica)",
+  "type": "scuola",
+  "year_start": 1565,
+  "year_end": 1610,
+  "regions": ["Milano", "Lombardia"],
+  "summary": "Fra il tardo Cinquecento e i primi decenni del Seicento Milano diventa il laboratorio più coerente dell'arte della Controriforma, sotto la guida dei due arcivescovi Borromeo. L'architettura sacra abbandona la complessità manierista per soluzioni sobrie e razionali, con navate uniche ampie e ben illuminate, pensate per la predicazione, per la visibilità dell'altare e per l'amministrazione dei sacramenti secondo le nuove norme. La pittura, con Cerano, Morazzone e Giulio Cesare Procaccini, punta invece sull'immediatezza emotiva: realismo dei volti e degli stracci, luce drammatica, gesti eloquenti che coinvolgono direttamente il fedele e trasformano la carità e il martirio in esperienza condivisa.",
+  "historical_context": "Carlo Borromeo, arcivescovo dopo il concilio di Trento, riorganizza la diocesi e detta precise istruzioni sulla costruzione delle chiese e sugli arredi liturgici, mentre gli ordini nuovi, gesuiti in testa, costruiscono le proprie sedi cittadine. Dopo la peste e la canonizzazione di Carlo, il cugino Federico Borromeo prosegue l'impresa promuovendo grandi cicli figurativi sulla vita del santo e fondando istituzioni per la formazione degli artisti.",
+  "parent_id": "controriforma",
+  "key_innovations": [
+   "chiesa a navata unica pensata per la predicazione e la liturgia riformata",
+   "codificazione normativa dell'architettura sacra e degli arredi liturgici",
+   "grandi teleri narrativi dedicati alla vita di un santo contemporaneo",
+   "realismo devoto e pathos come strumenti di edificazione dei fedeli",
+   "cappelle e percorsi devozionali dei Sacri Monti come predicazione per immagini"
+  ]
+ }
+]

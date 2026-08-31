@@ -1,0 +1,979 @@
+[
+ {
+  "id": "san-sigismondo-e-sigismondo-pandolfo-malatesta",
+  "title": "San Sigismondo e Sigismondo Pandolfo Malatesta",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Rimini",
+  "date_text": "1450-1451",
+  "year_start": 1450,
+  "year_end": 1451,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "castello-sforzesco-torre-ingresso",
+  "title": "Castello Sforzesco (torre d'ingresso)",
+  "artists": [
+   "Filarete"
+  ],
+  "city": "Milano",
+  "date_text": "post 1451",
+  "year_start": 1451,
+  "year_end": null,
+  "current_period_id": "sforzesco"
+ },
+ {
+  "id": "sforzinda-citta-ideale",
+  "title": "Sforzinda (città ideale, progetto)",
+  "artists": [
+   "Filarete"
+  ],
+  "city": null,
+  "date_text": "1451-1465",
+  "year_start": 1451,
+  "year_end": 1465,
+  "current_period_id": "sforzesco"
+ },
+ {
+  "id": "leggenda-della-vera-croce",
+  "title": "Leggenda della vera Croce",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Arezzo",
+  "date_text": "1452-1466",
+  "year_start": 1452,
+  "year_end": 1466,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "madonna-del-latte-in-trono",
+  "title": "Madonna del latte in trono con il Bambino (scomparto destro del Dittico di Melun)",
+  "artists": [
+   "Jean Fouquet"
+  ],
+  "city": "Anversa",
+  "date_text": "1452-1455",
+  "year_start": 1452,
+  "year_end": 1455,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "certosa-di-pavia-navata",
+  "title": "Navata centrale della chiesa conventuale della Certosa delle Grazie",
+  "artists": [
+   "Guiniforte Solari"
+  ],
+  "city": "Pavia",
+  "date_text": "dal 1453 circa",
+  "year_start": 1453,
+  "year_end": null,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "monumento-funebre-carlo-marsuppini",
+  "title": "Monumento funebre di Carlo Marsuppini",
+  "artists": [
+   "Desiderio da Settignano"
+  ],
+  "city": "Firenze",
+  "date_text": "1453-1455",
+  "year_start": 1453,
+  "year_end": 1455,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "giuditta-e-oloferne",
+  "title": "Giuditta e Oloferne (statua)",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Firenze",
+  "date_text": "1454-1457",
+  "year_start": 1454,
+  "year_end": 1457,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "giuditta-oloferne-donatello",
+  "title": "Giuditta e Oloferne",
+  "artists": [],
+  "city": "Firenze",
+  "date_text": "1454-1457",
+  "year_start": 1454,
+  "year_end": 1457,
+  "current_period_id": "rinascimento"
+ },
+ {
+  "id": "maddalena-donatello",
+  "title": "Maddalena (dal battistero di San Giovanni a Firenze)",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Firenze",
+  "date_text": "1454-1455",
+  "year_start": 1454,
+  "year_end": 1455,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "tempio-malatestiano",
+  "title": "Tempio Malatestiano",
+  "artists": [
+   "Leon Battista Alberti",
+   "Matteo de' Pasti",
+   "Agostino di Duccio"
+  ],
+  "city": "Rimini",
+  "date_text": "post 1454",
+  "year_start": 1454,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "incoronazione-cristo-maria-bembo",
+  "title": "Incoronazione di Cristo e Maria (con ritratti di Bianca Maria Visconti e Francesco Sforza)",
+  "artists": [
+   "Bonifacio Bembo"
+  ],
+  "city": "Cremona",
+  "date_text": "1455-1460 circa",
+  "year_start": 1455,
+  "year_end": 1460,
+  "current_period_id": "tardogotico"
+ },
+ {
+  "id": "madonna-bambino-luca-della-robbia-metropolitan",
+  "title": "Madonna con il Bambino",
+  "artists": [
+   "Luca della Robbia"
+  ],
+  "city": "New York",
+  "date_text": "1455 circa",
+  "year_start": 1455,
+  "year_end": 1455,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "palazzo-venezia-roma",
+  "title": "Palazzo Venezia",
+  "artists": [
+   "Francesco del Borgo"
+  ],
+  "city": "Roma",
+  "date_text": "dal 1455",
+  "year_start": 1455,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "monumento-equestre-niccolo-da-tolentino",
+  "title": "Monumento equestre a Niccolo da Tolentino",
+  "artists": [
+   "Andrea del Castagno"
+  ],
+  "city": "Firenze",
+  "date_text": "1456",
+  "year_start": 1456,
+  "year_end": 1456,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "ospedale-maggiore-milano",
+  "title": "Ospedale Maggiore (Ca' Granda)",
+  "artists": [
+   "Filarete",
+   "Guiniforte Solari"
+  ],
+  "city": "Milano",
+  "date_text": "1456-1499",
+  "year_start": 1456,
+  "year_end": 1499,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "tre-crocifissi-foppa",
+  "title": "Tre Crocifissi",
+  "artists": [
+   "Vincenzo Foppa"
+  ],
+  "city": "Bergamo",
+  "date_text": "1456",
+  "year_start": 1456,
+  "year_end": 1456,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "cappella-rucellai",
+  "title": "Cappella Rucellai (con tempietto del Santo Sepolcro)",
+  "artists": [
+   "Leon Battista Alberti"
+  ],
+  "city": "Firenze",
+  "date_text": "1457 circa-1467",
+  "year_start": 1457,
+  "year_end": 1467,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "facciata-santa-maria-novella",
+  "title": "Facciata della basilica di Santa Maria Novella",
+  "artists": [
+   "Leon Battista Alberti"
+  ],
+  "city": "Firenze",
+  "date_text": "1458-1470",
+  "year_start": 1458,
+  "year_end": 1470,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "madonna-del-parto",
+  "title": "Madonna del parto",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Monterchi",
+  "date_text": "post 1458",
+  "year_start": 1458,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "angeli-adoranti-cappella-magi",
+  "title": "Angeli adoranti (particolare del Corteo dei Magi)",
+  "artists": [
+   "Benozzo Gozzoli"
+  ],
+  "city": "Firenze",
+  "date_text": "1459-1461",
+  "year_start": 1459,
+  "year_end": 1461,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "corteo-dei-magi",
+  "title": "Corteo dei Magi",
+  "artists": [
+   "Benozzo Gozzoli"
+  ],
+  "city": "Firenze",
+  "date_text": "1459-1461",
+  "year_start": 1459,
+  "year_end": 1461,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "corteo-dei-magi-gozzoli",
+  "title": "Corteo dei Magi (parete sud)",
+  "artists": [],
+  "city": "Firenze",
+  "date_text": "1459-1461",
+  "year_start": 1459,
+  "year_end": 1461,
+  "current_period_id": "umanesimo-fiorentino"
+ },
+ {
+  "id": "flagellazione-di-cristo",
+  "title": "Flagellazione di Cristo",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Urbino",
+  "date_text": "1459-1470 circa",
+  "year_start": 1459,
+  "year_end": 1470,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "adorazione-nella-foresta-lippi",
+  "title": "Adorazione nella foresta (Adorazione del Bambino con Dio Padre e lo Spirito Santo alla presenza di san Giovanni Battista bambino e san Bernardino)",
+  "artists": [
+   "Filippo Lippi"
+  ],
+  "city": "Berlino",
+  "date_text": "1460 circa",
+  "year_start": 1460,
+  "year_end": 1460,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "bambino-che-ride",
+  "title": "Bambino che ride",
+  "artists": [
+   "Desiderio da Settignano"
+  ],
+  "city": "Vienna",
+  "date_text": "1460 circa",
+  "year_start": 1460,
+  "year_end": 1460,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "chiesa-di-san-sebastiano-mantova",
+  "title": "Chiesa di San Sebastiano",
+  "artists": [
+   "Leon Battista Alberti"
+  ],
+  "city": "Mantova",
+  "date_text": "post 1460",
+  "year_start": 1460,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "la-giustizia-volta-cappella-portogallo",
+  "title": "La Giustizia (particolare della volta della cappella del Cardinale del Portogallo)",
+  "artists": [
+   "Luca della Robbia"
+  ],
+  "city": "Firenze",
+  "date_text": "1460 circa",
+  "year_start": 1460,
+  "year_end": 1460,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "pulpito-della-passione",
+  "title": "Pulpito della Passione",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Firenze",
+  "date_text": "1460-1466",
+  "year_start": 1460,
+  "year_end": 1466,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "spirito-santo-virtu-cardinali-cappella-portogallo",
+  "title": "Lo Spirito Santo in forma di colomba tra le personificazioni delle virtu cardinali (decorazione della volta)",
+  "artists": [
+   "Luca della Robbia"
+  ],
+  "city": "Firenze",
+  "date_text": "1460 circa",
+  "year_start": 1460,
+  "year_end": 1460,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "trattato-architettura-filarete-facciata",
+  "title": "Trattato di architettura (pagina con la facciata dell'Ospedale Maggiore)",
+  "artists": [
+   "Filarete"
+  ],
+  "city": "Firenze",
+  "date_text": "1460-1465",
+  "year_start": 1460,
+  "year_end": 1465,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "trattato-architettura-filarete-sforzinda",
+  "title": "Trattato di architettura (pagina con la pianta di Sforzinda)",
+  "artists": [
+   "Filarete"
+  ],
+  "city": "Firenze",
+  "date_text": "1460-1465",
+  "year_start": 1460,
+  "year_end": 1465,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "monumento-funebre-cardinale-portogallo",
+  "title": "Monumento funebre del Cardinale del Portogallo",
+  "artists": [
+   "Antonio Rossellino",
+   "Bernardo Rossellino"
+  ],
+  "city": "Firenze",
+  "date_text": "1461-1466",
+  "year_start": 1461,
+  "year_end": 1466,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "cappella-portinari-interno",
+  "title": "Interno della cappella Portinari",
+  "artists": [
+   "Guiniforte Solari"
+  ],
+  "city": "Milano",
+  "date_text": "1462-1468",
+  "year_start": 1462,
+  "year_end": 1468,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "miracolo-della-nube-foppa",
+  "title": "Miracolo della nube (particolare della decorazione parietale)",
+  "artists": [
+   "Vincenzo Foppa"
+  ],
+  "city": "Milano",
+  "date_text": "1462-1468",
+  "year_start": 1462,
+  "year_end": 1468,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "miracolo-falsa-madonna-foppa",
+  "title": "Miracolo della falsa Madonna (particolare della decorazione parietale)",
+  "artists": [
+   "Vincenzo Foppa"
+  ],
+  "city": "Milano",
+  "date_text": "1462-1468",
+  "year_start": 1462,
+  "year_end": 1468,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "camera-degli-sposi-oculo",
+  "title": "Camera degli Sposi (particolare dell'oculo)",
+  "artists": [
+   "Andrea Mantegna"
+  ],
+  "city": "Mantova",
+  "date_text": "1465-1474",
+  "year_start": 1465,
+  "year_end": 1474,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "martirio-di-san-lorenzo",
+  "title": "Martirio di san Lorenzo",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Firenze",
+  "date_text": "1465",
+  "year_start": 1465,
+  "year_end": 1465,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "pulpito-della-resurrezione",
+  "title": "Pulpito della Resurrezione",
+  "artists": [
+   "Donatello"
+  ],
+  "city": "Firenze",
+  "date_text": "1465-1466",
+  "year_start": 1465,
+  "year_end": 1466,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "palazzo-ducale-urbino",
+  "title": "Palazzo Ducale di Urbino",
+  "artists": [
+   "Luciano Laurana",
+   "Francesco di Giorgio Martini"
+  ],
+  "city": "Urbino",
+  "date_text": "1466-1480 circa",
+  "year_start": 1466,
+  "year_end": 1480,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "madonna-della-melagrana-leonardo",
+  "title": "Madonna della melagrana (detta Madonna Dreyfus)",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Washington D.C.",
+  "date_text": "1469 circa",
+  "year_start": 1469,
+  "year_end": 1469,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "battesimo-di-cristo-verrocchio-leonardo",
+  "title": "Battesimo di Cristo",
+  "artists": [
+   "Andrea Verrocchio",
+   "Leonardo da Vinci"
+  ],
+  "city": "Firenze",
+  "date_text": "1470-1475 circa",
+  "year_start": 1470,
+  "year_end": 1475,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "chiesa-di-sant-andrea-mantova",
+  "title": "Chiesa di Sant'Andrea",
+  "artists": [
+   "Leon Battista Alberti"
+  ],
+  "city": "Mantova",
+  "date_text": "post 1470",
+  "year_start": 1470,
+  "year_end": null,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "combattimento-degli-ignudi",
+  "title": "Combattimento degli ignudi",
+  "artists": [
+   "Antonio Pollaiolo"
+  ],
+  "city": "New York",
+  "date_text": "1470-1490 circa",
+  "year_start": 1470,
+  "year_end": 1490,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "ritratto-di-giovane-donna-petrus-christus",
+  "title": "Ritratto di giovane donna",
+  "artists": [
+   "Petrus Christus"
+  ],
+  "city": "Berlino",
+  "date_text": "1470 circa",
+  "year_start": 1470,
+  "year_end": 1470,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "ritratto-di-tommaso-portinari",
+  "title": "Ritratto di Tommaso Portinari",
+  "artists": [
+   "Hans Memling"
+  ],
+  "city": "New York",
+  "date_text": "1470-1480 circa",
+  "year_start": 1470,
+  "year_end": 1480,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "annunciazione-leonardo",
+  "title": "Annunciazione",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Firenze",
+  "date_text": "1472-1475 circa",
+  "year_start": 1472,
+  "year_end": 1475,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "cappella-colleoni-facciata",
+  "title": "Facciata della cappella Colleoni",
+  "artists": [
+   "Giovanni Antonio Amadeo"
+  ],
+  "city": "Bergamo",
+  "date_text": "1472-1477",
+  "year_start": 1472,
+  "year_end": 1477,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "madonna-di-senigallia",
+  "title": "Madonna con il Bambino benedicente e due angeli (Madonna di Senigallia)",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Urbino",
+  "date_text": "1472-1475",
+  "year_start": 1472,
+  "year_end": 1475,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "monumento-funebre-bartolomeo-colleoni-amadeo",
+  "title": "Monumento funebre di Bartolomeo Colleoni",
+  "artists": [
+   "Giovanni Antonio Amadeo"
+  ],
+  "city": "Bergamo",
+  "date_text": "1472-1477",
+  "year_start": 1472,
+  "year_end": 1477,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "pala-di-brera",
+  "title": "Madonna in trono con il Bambino, sei santi, quattro angeli e il duca Federico da Montefeltro (Pala di Brera / Pala Montefeltro/ Pala di Urbino))",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Milano",
+  "date_text": "1472-1474 circa",
+  "year_start": 1472,
+  "year_end": 1474,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "certosa-di-pavia-facciata",
+  "title": "Facciata della chiesa conventuale della Certosa delle Grazie",
+  "artists": [
+   "Giovanni Antonio Amadeo",
+   "Gian Giacomo Dolcebuono",
+   "Benedetto Briosco",
+   "Antonio Mantegazza"
+  ],
+  "city": "Pavia",
+  "date_text": "dal 1473",
+  "year_start": 1473,
+  "year_end": null,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "dittico-duchi-di-urbino",
+  "title": "Doppio ritratto di Battista Sforza e Federico da Montefeltro (Dittico dei duchi di Urbino)",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Firenze",
+  "date_text": "1473-1475 circa",
+  "year_start": 1473,
+  "year_end": 1475,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "madonna-nel-roseto",
+  "title": "Madonna del roseto",
+  "artists": [
+   "Martin Schongauer"
+  ],
+  "city": "Colmar",
+  "date_text": "1473",
+  "year_start": 1473,
+  "year_end": 1473,
+  "current_period_id": "arte-tedesca-quattrocento"
+ },
+ {
+  "id": "paesaggio-con-fiume",
+  "title": "Paesaggio con fiume",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Firenze",
+  "date_text": "1473",
+  "year_start": 1473,
+  "year_end": 1473,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "doppio-trionfo-battista-sforza-federico",
+  "title": "Doppio trionfo di Battista Sforza e Federico da Montefeltro",
+  "artists": [
+   "Piero della Francesca"
+  ],
+  "city": "Firenze",
+  "date_text": "1474 circa",
+  "year_start": 1474,
+  "year_end": 1474,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "ritratto-ginevra-benci",
+  "title": "Ritratto di Ginevra Benci",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Washington D.C.",
+  "date_text": "1474-1476 circa",
+  "year_start": 1474,
+  "year_end": 1476,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "sant-agostino-giusto-di-gand",
+  "title": "Sant'Agostino",
+  "artists": [
+   "Giusto di Gand"
+  ],
+  "city": "Parigi",
+  "date_text": "1474 circa",
+  "year_start": 1474,
+  "year_end": 1474,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "adorazione-dei-magi-botticelli",
+  "title": "Adorazione dei Magi",
+  "artists": [
+   "Sandro Botticelli"
+  ],
+  "city": "Firenze",
+  "date_text": "1475",
+  "year_start": 1475,
+  "year_end": 1475,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "busto-giuliano-de-medici-verrocchio",
+  "title": "Giuliano de' Medici",
+  "artists": [
+   "Andrea Verrocchio"
+  ],
+  "city": "Washington D.C.",
+  "date_text": "1475 circa",
+  "year_start": 1475,
+  "year_end": 1475,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "dama-col-mazzolino",
+  "title": "Dama col mazzolino",
+  "artists": [
+   "Andrea Verrocchio"
+  ],
+  "city": "Firenze",
+  "date_text": "1475 circa",
+  "year_start": 1475,
+  "year_end": 1475,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "ercole-e-anteo-pollaiolo-bronzetto",
+  "title": "Ercole e Anteo (bronzetto)",
+  "artists": [
+   "Antonio Pollaiolo"
+  ],
+  "city": "Firenze",
+  "date_text": "1475 circa",
+  "year_start": 1475,
+  "year_end": 1475,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "ercole-e-anteo-pollaiolo-dipinto",
+  "title": "Ercole e Anteo (tavoletta)",
+  "artists": [
+   "Antonio Pollaiolo"
+  ],
+  "city": "Firenze",
+  "date_text": "1475 circa",
+  "year_start": 1475,
+  "year_end": 1475,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "madonna-del-garofano",
+  "title": "Madonna con il Bambino (detta Madonna del garofano)",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Monaco",
+  "date_text": "1475 circa",
+  "year_start": 1475,
+  "year_end": 1475,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "pala-di-san-cassiano",
+  "title": "Pala di San Cassiano",
+  "artists": [
+   "Antonello da Messina"
+  ],
+  "city": "Vienna",
+  "date_text": "1475-1476",
+  "year_start": 1475,
+  "year_end": 1476,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "ritratto-federico-da-montefeltro-guidobaldo",
+  "title": "Ritratto di Federico da Montefeltro e del figlio Guidobaldo",
+  "artists": [
+   "Pedro Berruguete"
+  ],
+  "city": "Urbino",
+  "date_text": "1475 circa",
+  "year_start": 1475,
+  "year_end": 1475,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "trittico-portinari",
+  "title": "Trittico Portinari (Adorazione dei pastori)",
+  "artists": [
+   "Hugo van der Goes"
+  ],
+  "city": "Firenze",
+  "date_text": "1475-1478",
+  "year_start": 1475,
+  "year_end": 1478,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "scala-elicoidale-mercatale",
+  "title": "Scala elicoidale del torrione di Mercatale",
+  "artists": [
+   "Francesco di Giorgio Martini"
+  ],
+  "city": "Urbino",
+  "date_text": "1476-1480 circa",
+  "year_start": 1476,
+  "year_end": 1480,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "studiolo-federico-da-montefeltro",
+  "title": "Studiolo di Federico da Montefeltro",
+  "artists": [
+   "Luciano Laurana",
+   "Francesco di Giorgio Martini"
+  ],
+  "city": "Urbino",
+  "date_text": "1476 circa",
+  "year_start": 1476,
+  "year_end": 1476,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "trittico-del-roveto-ardente",
+  "title": "Trittico del Roveto ardente",
+  "artists": [
+   "Nicolas Froment"
+  ],
+  "city": "Aix-en-Provence",
+  "date_text": "1476 circa",
+  "year_start": 1476,
+  "year_end": 1476,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "cappella-sistina-interno",
+  "title": "Interno della cappella Sistina",
+  "artists": [
+   "Giovannino de' Dolci",
+   "Baccio Pontelli",
+   "Mino da Fiesole",
+   "Andrea Bregno",
+   "Giovanni Dalmata",
+   "Pietro Perugino",
+   "Cosimo Rosselli",
+   "Sandro Botticelli",
+   "Domenico Ghirlandaio",
+   "Luca Signorelli",
+   "Pinturicchio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1477-1481",
+  "year_start": 1477,
+  "year_end": 1481,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "madonna-benois",
+  "title": "Madonna con il Bambino (detta Madonna Benois)",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "San Pietroburgo",
+  "date_text": "1478 circa",
+  "year_start": 1478,
+  "year_end": 1478,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "allegoria-della-primavera",
+  "title": "Allegoria della Primavera",
+  "artists": [
+   "Sandro Botticelli"
+  ],
+  "city": "Firenze",
+  "date_text": "1480 circa",
+  "year_start": 1480,
+  "year_end": 1480,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "annunciazione-memling",
+  "title": "Annunciazione",
+  "artists": [
+   "Hans Memling"
+  ],
+  "city": "New York",
+  "date_text": "1480 circa",
+  "year_start": 1480,
+  "year_end": 1480,
+  "current_period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "pallade-e-centauro-botticelli",
+  "title": "Pallade e il centauro",
+  "artists": [
+   "Sandro Botticelli"
+  ],
+  "city": "Firenze",
+  "date_text": "1480-1485 circa",
+  "year_start": 1480,
+  "year_end": 1485,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "san-girolamo-leonardo",
+  "title": "San Girolamo",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1480 circa",
+  "year_start": 1480,
+  "year_end": 1480,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "adorazione-dei-magi-leonardo",
+  "title": "Adorazione dei Magi",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Firenze",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "battesimo-di-cristo-perugino-sistina",
+  "title": "Battesimo di Cristo (cappella Sistina)",
+  "artists": [
+   "Pietro Perugino",
+   "Pinturicchio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "consegna-delle-chiavi",
+  "title": "Consegna delle chiavi",
+  "artists": [
+   "Pietro Perugino"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "discorso-della-montagna-rosselli-sistina",
+  "title": "Discorso della montagna",
+  "artists": [
+   "Cosimo Rosselli"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "quattrocento"
+ }
+]

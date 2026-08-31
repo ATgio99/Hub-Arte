@@ -1,0 +1,227 @@
+[
+ {
+  "id": "longobardi-cividale-friuli",
+  "name": "Longobardi a Cividale del Friuli (eta di Ratchis)",
+  "type": "scuola",
+  "year_start": 734,
+  "year_end": 756,
+  "regions": ["Cividale del Friuli", "Friuli"],
+  "summary": "A Cividale, capitale del più antico ducato longobardo, opera nella prima metà dell'VIII secolo un gruppo di maestranze capaci di fondere la tradizione ornamentale germanica con modelli tardoantichi e bizantini. La scultura in pietra procede per rilievo bassissimo e uniforme, con figure appiattite, teste sproporzionate, mani allargate e fondi saturati da girali, rosette e nastri: una rinuncia consapevole allo spazio naturalistico a favore del segno e del simbolo. Accanto alla pietra si sviluppa una straordinaria plastica in stucco, che nel Tempietto di Santa Maria in Valle raggiunge un modellato morbido e monumentale, di intonazione classicheggiante, del tutto diverso dal linearismo dei rilievi.",
+  "historical_context": "La committenza è quella ducale e regia: Ratchis, duca del Friuli e poi re dei Longobardi, e l'aristocrazia legata alla corte finanziano altari e cappelle palatine in una città che, come Forum Iulii, controlla i valichi orientali del regno. La progressiva cristianizzazione della classe dirigente longobarda e i contatti con Ravenna e con il mondo bizantino orientano le scelte iconografiche verso repertori sacri di matrice mediterranea.",
+  "parent_id": "eta-longobarda",
+  "key_innovations": [
+   "rilievo piatto a lastra con figure schiacciate e fondo occupato da ornato",
+   "stucco modellato a rilievo per la decorazione monumentale degli interni",
+   "Maiestas Domini entro mandorla sorretta da angeli come immagine d'altare",
+   "repertorio ornamentale a tralci di vite, girali e intrecci nastriformi"
+  ]
+ },
+ {
+  "id": "pittura-carolingia-retica",
+  "name": "Pittura carolingia retica (Mustair e Malles)",
+  "type": "scuola",
+  "year_start": 800,
+  "year_end": 850,
+  "regions": ["Müstair", "Malles", "Val Venosta", "Grigioni", "Rezia"],
+  "summary": "Nelle valli alpine della Rezia si conserva uno dei nuclei più estesi di pittura murale di età carolingia. Gli interni delle chiese vengono rivestiti integralmente da cicli narrativi disposti su registri sovrapposti, che affiancano storie dell'Antico e del Nuovo Testamento a episodi agiografici e a grandi scene di Giudizio. Il linguaggio recupera la monumentalità tardoantica e paleocristiana: figure ampie e frontali, panneggi a fasce di colore, gesti dilatati e campiture chiare, con un disegno rapido e sintetico pensato per essere leggibile a distanza. A Malles compaiono inoltre figure di committenti a grandezza naturale, laici e religiosi, inserite nella decorazione sacra.",
+  "historical_context": "La Rezia è terra di cerniera fra il regno franco e l'Italia, attraversata dalle strade dei valichi alpini e organizzata attorno a fondazioni monastiche e pievi protette dal potere carolingio e dai vescovi di Coira. Sono le comunità monastiche e l'aristocrazia locale a promuovere questi cantieri, che traducono in periferia il programma di rinnovamento culturale e liturgico voluto dalla corte di Carlo Magno e dei suoi successori.",
+  "parent_id": "eta-carolingia",
+  "key_innovations": [
+   "decorazione integrale della navata a registri narrativi sovrapposti",
+   "ripresa della monumentalità figurativa tardoantica in ambito alpino",
+   "inserimento di ritratti di committenti a figura intera nel ciclo sacro",
+   "associazione di pittura murale e plastica in stucco nello stesso ambiente"
+  ]
+ },
+ {
+  "id": "romanico-pugliese",
+  "name": "Romanico pugliese (Bari-Trani)",
+  "type": "scuola",
+  "year_start": 1105,
+  "year_end": 1178,
+  "regions": ["Bari", "Trani", "Puglia"],
+  "summary": "Il romanico della costa adriatica pugliese elabora un linguaggio di sintesi, in cui la struttura basilicale di matrice normanna accoglie ornati bizantini e islamici e una scultura di forte energia plastica. I portali si aprono entro protiri sorretti da leoni stilofori, incorniciati da fasci di colonnine e da archivolti popolati di intrecci vegetali, animali e figure fantastiche. Alla scultura in pietra si affianca la grande fusione bronzea: Barisano da Trani costruisce le sue porte come griglie di formelle a rilievo, con figure allungate e ripetute da matrici, secondo una tecnica che l'artista replica in più cattedrali del Mezzogiorno. Nell'arredo liturgico, la cattedra sorretta da telamoni piegati sotto il peso è l'esempio più celebre di questa scultura tesa ed espressiva.",
+  "historical_context": "Dopo la conquista normanna la Puglia diventa una piattaforma mediterranea aperta a Bisanzio e al Levante, e il porto di Bari si trasforma in meta di pellegrinaggio dopo la traslazione delle reliquie di san Nicola. Vescovi, abati e capitoli cattedrali, sostenuti dai proventi del pellegrinaggio e del traffico crociato, promuovono grandi cantieri urbani che fanno da modello all'intera regione.",
+  "parent_id": "romanico-italiano",
+  "key_innovations": [
+   "protiro su leoni stilofori addossato al portale maggiore",
+   "porte bronzee composte da formelle fuse a rilievo",
+   "cattedra episcopale sorretta da telamoni a tutto tondo",
+   "innesto di motivi ornamentali islamici e bizantini sulla struttura normanna"
+  ]
+ },
+ {
+  "id": "bottega-arnolfo-di-cambio",
+  "name": "Bottega di Arnolfo di Cambio",
+  "type": "scuola",
+  "year_start": 1277,
+  "year_end": 1282,
+  "regions": ["Roma", "Orvieto", "Perugia", "Lazio", "Umbria"],
+  "summary": "Formatosi accanto a Nicola Pisano, Arnolfo di Cambio porta a Roma e in Umbria una scultura che unisce il senso del volume e della gravità antica a un impianto architettonico gotico. Le sue figure hanno corpi solidi e sintetici, ricavati per grandi masse, e sono sempre concepite in rapporto a una struttura che le contiene: cibori a tabernacolo su colonne, edicole funerarie, fontane. Nei monumenti sepolcrali mette a punto una macchina compiuta, che sovrappone il defunto disteso, gli angeli che scostano le cortine e la Vergine in trono, in un racconto unitario della morte e della salvezza. Nella bottega collaborano marmorari e mosaicisti romani, che rivestono le strutture di tarsie cosmatesche.",
+  "historical_context": "Arnolfo lavora per i grandi committenti della Roma di fine Duecento: Carlo I d'Angiò, senatore della città, i cardinali della curia e le grandi basiliche romane, mentre a Perugia è il Comune a chiamarlo per la decorazione della fontana pubblica. In una città priva di un cantiere unitario, la sua attività si distribuisce fra arredi liturgici e monumenti privati commissionati dal clero e dall'aristocrazia.",
+  "parent_id": "duecento-italiano",
+  "key_innovations": [
+   "monumento funebre a baldacchino con defunto giacente e cortine scostate dagli angeli",
+   "ciborio a tabernacolo gotico su colonne isolate",
+   "ritratto scolpito a figura intera di un sovrano vivente",
+   "integrazione fra scultura marmorea e tarsia musiva cosmatesca"
+  ]
+ },
+ {
+  "id": "corte-cosimo-i-firenze",
+  "name": "Corte di Cosimo I de' Medici a Firenze (Bronzino, Cellini, Bandinelli, Pontormo)",
+  "type": "scuola",
+  "year_start": 1537,
+  "year_end": 1553,
+  "regions": ["Firenze", "Toscana"],
+  "summary": "Attorno al primo duca di Firenze si costituisce un sistema artistico di corte in cui pittura, scultura e oreficeria servono un unico programma di immagine. In pittura domina il ritratto di stato di Bronzino: figure immobili e distanti, incarnati levigati come smalto, luce fredda, resa minuziosa di armature, gioielli e velluti che valgono come insegne di rango; accanto ad esso, le allegorie profane costruiscono rebus eruditi destinati a un pubblico ristretto. In scultura convivono la ricerca virtuosistica di Cellini, che misura la propria fama sulla difficoltà tecnica della grande fusione in bronzo, e la statuaria celebrativa di Bandinelli, che riprende dall'antico la formula del busto imperiale. Comune a tutti è una eleganza calcolata e una superficie di finitezza assoluta.",
+  "historical_context": "Salito al potere nel 1537 dopo l'assassinio del duca Alessandro, Cosimo I consolida il principato mediceo e usa sistematicamente le arti come strumento di legittimazione dinastica, affiancato da Eleonora di Toledo. Le commissioni sono governate direttamente dalla corte, che stipendia gli artisti, controlla i cantieri pubblici della Piazza della Signoria e trasforma il palazzo di governo in residenza principesca.",
+  "parent_id": "manierismo",
+  "key_innovations": [
+   "ritratto di stato come strumento di propaganda dinastica",
+   "resa smaltata degli incarnati e descrizione araldica delle stoffe",
+   "fusione in bronzo a cera persa di una statua monumentale in un solo getto",
+   "allegoria erudita a chiave enigmatica per un pubblico di corte",
+   "ripresa del busto-ritratto all'antica in chiave celebrativa"
+  ]
+ },
+ {
+  "id": "scuola-di-fontainebleau",
+  "name": "Scuola di Fontainebleau (corte di Francesco I)",
+  "type": "scuola",
+  "year_start": 1528,
+  "year_end": 1544,
+  "regions": ["Fontainebleau", "Parigi", "Francia"],
+  "summary": "La Scuola di Fontainebleau nasce dal trapianto del manierismo italiano in Francia e diventa il modello del gusto cortese europeo del Cinquecento. La sua invenzione più fortunata è un sistema decorativo misto, in cui i riquadri affrescati sono incorniciati da un'esuberante plastica in stucco: putti, ghirlande, festoni e soprattutto cartelle a bordi arrotolati che simulano il cuoio tagliato. Le figure sono allungate, dai contorni serpentinati e dai nudi levigati, immerse in soggetti mitologici e allegorici il cui significato celebra sempre il sovrano. Lo stesso repertorio elegante e prezioso passa nell'oreficeria e nella scultura, dove la ricerca di grazia si accompagna a un'abilità tecnica estrema.",
+  "historical_context": "Francesco I trasforma un castello di caccia in residenza reale e chiama in Francia artisti italiani di primo piano, affidando l'architettura a maestranze francesi e la decorazione ai forestieri. Le imprese decorative celebrano il re e la sua cerchia, compresa la favorita duchessa d'Étampes, e la loro diffusione a stampa fa di Fontainebleau il centro di irradiazione dell'ornato manierista in tutta Europa.",
+  "parent_id": "manierismo",
+  "key_innovations": [
+   "sistema decorativo misto di affresco e stucco a forte rilievo",
+   "cornice a cuoio arrotolato (cuir roulé) e cartella ornamentale",
+   "galleria concepita come ambiente decorativo unitario a programma celebrativo",
+   "diffusione internazionale del repertorio ornamentale attraverso l'incisione",
+   "figura femminile allungata e serpentinata come canone di eleganza cortese"
+  ]
+ },
+ {
+  "id": "scuola-di-maestro-niccolo",
+  "name": "Scuola di Maestro Niccolò (Romanico veronese)",
+  "type": "scuola",
+  "year_start": 1120,
+  "year_end": 1150,
+  "regions": ["Verona", "Veneto"],
+  "summary": "Erede della cultura scultorea padana avviata da Wiligelmo, Maestro Niccolò guida a Verona un cantiere che fa del portale il fulcro visivo e ideologico dell'intera facciata. Il protiro sporgente su leoni stilofori, l'archivolto con i Mesi e il lavoro dell'uomo, la lunetta e le grandi lastre narrative addossate ai fianchi dell'ingresso compongono un dispositivo unitario in cui architettura, scultura e racconto si saldano. Le figure hanno volumi compatti, teste grandi e panneggi a solchi paralleli, con un rilievo netto pensato per reggere la luce radente. Accanto alla pietra, la porta è rivestita di formelle bronzee di rozza e potente immediatezza, appartenenti a fasi e mani diverse, che costituiscono uno dei più antichi cicli bronzei conservati in Italia.",
+  "historical_context": "Verona è nodo della strada del Brennero e conosce nel XII secolo una intensa stagione di ricostruzione dopo il terremoto del 1117. I grandi cantieri sono promossi dal monastero benedettino e dal capitolo cittadino, in un momento in cui il Comune nascente rivendica la propria identità: la lunetta del portale, con il santo patrono che consegna il vessillo alle milizie cittadine, ne è la traduzione figurativa.",
+  "parent_id": "romanico-italiano",
+  "key_innovations": [
+   "protiro su leoni stilofori con archivolto dei Mesi",
+   "lastre narrative in pietra affiancate al portale come Bibbia figurata",
+   "porta lignea rivestita di formelle bronzee a rilievo",
+   "firma dell'artefice esibita in posizione visibile sul portale"
+  ]
+ },
+ {
+  "id": "bottega-di-gislebertus",
+  "name": "Bottega di Gislebertus (Autun)",
+  "type": "scuola",
+  "year_start": 1120,
+  "year_end": 1150,
+  "regions": ["Autun", "Borgogna", "Francia"],
+  "summary": "Il cantiere borgognone di Autun ospita una delle personalità scultoree più riconoscibili del romanico europeo. Il timpano del portale maggiore organizza il Giudizio Universale in fasce e scomparti gerarchici attorno a un Cristo smisurato entro mandorla, e affida l'effetto alla deformazione: corpi filiformi, arti allungati fino all'inverosimile, teste piccole, gesti dilatati, superfici percorse da pieghe incise a linee parallele. Il risultato è una scultura antinaturalistica e visionaria, di grande efficacia narrativa. La stessa mano dà nel rilievo di Eva una delle prime figure femminili nude e distese della scultura medievale, sinuosa e adagiata fra i tralci, mentre i capitelli storiati sviluppano episodi biblici autonomi entro lo spazio ristretto del cesto.",
+  "historical_context": "La cattedrale è edificata per accogliere le reliquie di san Lazzaro e per servire il flusso dei pellegrini che attraversa la Borgogna, in un'area profondamente segnata dall'influenza culturale e liturgica di Cluny. Committenti sono il vescovo e il capitolo, che nel programma scolpito del portale offrono ai fedeli in arrivo un ammonimento sulla sorte ultima delle anime.",
+  "parent_id": "romanico",
+  "key_innovations": [
+   "timpano a scomparti gerarchici dominato dal Cristo in mandorla",
+   "deformazione espressiva delle proporzioni come mezzo narrativo",
+   "nudo femminile disteso a bassorilievo su architrave",
+   "capitello storiato come unità narrativa autonoma",
+   "firma dell'autore collocata sotto la figura di Cristo"
+  ]
+ },
+ {
+  "id": "bottega-gentile-da-fabriano",
+  "name": "Bottega di Gentile da Fabriano",
+  "type": "scuola",
+  "year_start": 1400,
+  "year_end": 1425,
+  "regions": ["Fabriano", "Marche", "Lombardia", "Veneto", "Toscana"],
+  "summary": "Gentile da Fabriano è il massimo interprete italiano del gotico cortese e la sua bottega itinerante ne diffonde il linguaggio da una città all'altra della penisola. La sua pittura combina il fasto della superficie aurea — foglia d'oro punzonata, rilievi a pastiglia, tessuti broccati che imitano le stoffe di lusso — con un naturalismo analitico che descrive con pari cura fisionomie, animali, gioielli e vegetazione. Le composizioni si dispongono come cortei processionali che percorrono il piano del dipinto e si perdono in lontananza fra colline e città turrite. Nelle scene minori delle predelle sperimenta effetti di luce notturna e artificiale, con bagliori che modellano le figure nel buio, aprendo una strada che la pittura successiva raccoglierà.",
+  "historical_context": "Privo di una sede stabile, Gentile lavora su chiamata per le corti signorili e per i grandi committenti urbani, dai signori lombardi alla Repubblica di Venezia, fino ai banchieri e mercanti fiorentini e alla curia romana. È una committenza colta e ricchissima, che chiede opere di alto costo materiale, dove l'impiego dell'oro e dei pigmenti pregiati è esso stesso segno di prestigio.",
+  "parent_id": "gotico-cortese",
+  "key_innovations": [
+   "foglia d'oro punzonata e decorazioni a pastiglia in rilievo sulla tavola",
+   "corteo narrativo continuo che attraversa lo spazio del dipinto",
+   "resa notturna con effetti di luce artificiale nelle scene di predella",
+   "descrizione naturalistica minuziosa di animali, stoffe e paesaggio"
+  ]
+ },
+ {
+  "id": "palazzo-te-mantova",
+  "name": "Giulio Romano e Palazzo Te a Mantova (corte gonzaghesca)",
+  "type": "scuola",
+  "year_start": 1525,
+  "year_end": 1535,
+  "regions": ["Mantova", "Lombardia"],
+  "summary": "Erede diretto della bottega di Raffaello, Giulio Romano trasferisce a Mantova la grande maniera romana e la piega verso una libertà anticlassica che fa di lui uno dei padri del manierismo. In architettura conosce perfettamente le regole degli ordini e le infrange di proposito: bugnato rustico volutamente grezzo, chiavi che scivolano verso il basso, triglifi che sembrano cadere dalla trabeazione, ritmi resi irregolari per sorprendere l'occhio. In pittura porta all'estremo l'illusionismo, dissolvendo l'architettura reale della sala in un cataclisma dipinto che invade pareti e volta senza cornici né interruzioni, e alterna a questa violenza figurativa la sensualità colta e distesa delle favole mitologiche.",
+  "historical_context": "Federico II Gonzaga fa costruire nell'isola del Te, sede delle scuderie ducali, una villa suburbana destinata all'otium, alle feste e all'accoglienza degli ospiti illustri, fra cui l'imperatore Carlo V. Giulio Romano vi opera come artista unico, responsabile insieme di progetto architettonico, decorazione e apparati, secondo un modello di direzione totale del cantiere che la corte gonzaghesca gli riconosce.",
+  "parent_id": "manierismo",
+  "key_innovations": [
+   "uso deliberato della licenza architettonica come effetto espressivo",
+   "bugnato rustico applicato a una residenza di corte",
+   "ambiente affrescato senza cornici che annulla lo spacco fra parete e volta",
+   "integrazione di camino, pavimento e apertura reale nell'illusione dipinta",
+   "villa suburbana concepita come macchina scenografica per la festa"
+  ]
+ },
+ {
+  "id": "arnolfo-di-cambio-firenze",
+  "name": "Arnolfo di Cambio a Firenze (cantiere di Santa Croce, Palazzo dei Priori e opere fiorentine)",
+  "type": "scuola",
+  "year_start": 1294,
+  "year_end": 1310,
+  "regions": ["Firenze", "Toscana"],
+  "summary": "Negli ultimi anni della sua carriera Arnolfo di Cambio è il capomaestro che dà forma alla Firenze comunale, operando insieme come architetto e scultore. La sua architettura interpreta il gotico in chiave italiana: spazi ampi e luminosi, muri continui, copertura a capriate lignee e proporzioni distese, pensati per accogliere grandi folle di fedeli attorno alla predicazione. Nell'edilizia civile traduce la medesima ricerca di solidità in un blocco compatto di pietra forte, coronato da ballatoio a sporgere e dominato dalla torre. La sua scultura mantiene volumi pieni e sintetici e un impianto frontale e solenne, con una ricerca di intensità realistica che lo porta a inserire nel marmo occhi di vetro colorato.",
+  "historical_context": "Firenze vive alla fine del Duecento una stagione di espansione economica e di riorganizzazione urbana, con la nuova cerchia di mura, la sede del governo popolare e i cantieri delle grandi chiese mendicanti. Committenti sono il Comune, l'Opera della cattedrale e gli ordini francescano e domenicano, sostenuti dalle famiglie mercantili che finanziano cappelle e sepolture; il papato di Bonifacio VIII e il Giubileo del 1300 fanno da sfondo alle commissioni celebrative.",
+  "parent_id": "gotico-italiano",
+  "key_innovations": [
+   "chiesa mendicante a navate ampie e copertura a capriate per la predicazione",
+   "palazzo pubblico a blocco turrito con ballatoio su archetti",
+   "facciata scolpita con statue alloggiate entro nicchie e tabernacoli",
+   "inserimento di occhi in vetro colorato nella scultura marmorea"
+  ]
+ },
+ {
+  "id": "scuola-avignonese-papale",
+  "name": "Scuola avignonese della corte papale (Simone Martini, Matteo Giovannetti)",
+  "type": "scuola",
+  "year_start": 1340,
+  "year_end": 1353,
+  "regions": ["Avignone", "Provenza", "Francia"],
+  "summary": "Ad Avignone, attorno alla corte pontificia, si forma un ambiente artistico cosmopolita in cui la tradizione senese incontra il gusto gotico d'oltralpe: è uno dei crogioli da cui nascerà il gotico internazionale. La componente italiana porta la linea sinuosa e melodica, i colori chiari e cangianti, la capacità di dare misura e sentimento alle figure; l'ambiente francese offre in cambio una vocazione alla narrazione profana e mondana. Accanto alle immagini devozionali di piccolo formato, destinate alla contemplazione privata, e alla miniatura d'autore per committenti letterati, si sviluppa così la decorazione degli appartamenti papali, dove scene di caccia, di pesca e di svago si distendono su fondali di verzura fitta e popolata, senza intento sacro.",
+  "historical_context": "Trasferita ad Avignone dal 1309, la sede pontificia diventa in pochi decenni una capitale europea: i papi vi costruiscono un immenso palazzo fortificato e chiamano artisti italiani e francesi per decorarne cappelle e sale di rappresentanza. Attorno alla curia gravita una società di cardinali, funzionari e letterati, e proprio la presenza di questo pubblico colto favorisce commissioni raffinate e di soggetto anche laico.",
+  "parent_id": "gotico-cortese",
+  "key_innovations": [
+   "ciclo murale di soggetto profano su fondale di verzura continua",
+   "frontespizio miniato d'autore per un committente letterato",
+   "innesto della linea senese sul gusto cortese d'oltralpe",
+   "tavola devozionale di piccolo formato per la devozione privata"
+  ]
+ },
+ {
+  "id": "corte-viscontea-tardogotica",
+  "name": "Arte tardogotica alla corte dei Visconti (Milano, Pavia, Monza, Cremona)",
+  "type": "scuola",
+  "year_start": 1441,
+  "year_end": 1447,
+  "regions": ["Milano", "Monza", "Pavia", "Cremona", "Lombardia"],
+  "summary": "Nella Lombardia della prima metà del Quattrocento il gotico cortese sopravvive a lungo, alimentato dal gusto fastoso della corte ducale, mentre altrove si afferma già il linguaggio rinascimentale. La pittura di questo ambiente predilige superfici preziose: fondi e dettagli in oro, rilievi a pastiglia, applicazioni metalliche che imitano armature e gioielli, abiti alla moda descritti con fedeltà di cronaca. Le storie del passato vengono raccontate come cerimonie contemporanee, con cortei di cavalieri e dame, cavalli bardati e architetture eleganti disposti in registri continui. Lo stesso repertorio raffinato si riversa negli oggetti di lusso della corte, dalle decorazioni di sale di svago alle carte da gioco dipinte a mano una per una come piccole tavole.",
+  "historical_context": "Sotto l'ultimo duca visconteo la corte usa le arti per costruire la propria memoria dinastica, richiamandosi anche alle radici longobarde del regno d'Italia attraverso la figura della regina Teodolinda. Accanto alla committenza ducale operano il capitolo delle grandi chiese lombarde e le famiglie aristocratiche milanesi, che fanno decorare le proprie residenze con scene di giochi e passatempi signorili.",
+  "parent_id": "gotico-cortese",
+  "key_innovations": [
+   "impiego di pastiglia dorata e lamine metalliche applicate all'affresco",
+   "narrazione storico-dinastica travestita da cerimoniale di corte contemporaneo",
+   "carte da gioco miniate a mano come oggetto suntuario di corte",
+   "scene di svaghi e giochi aristocratici come soggetto autonomo di decorazione profana"
+  ]
+ }
+]

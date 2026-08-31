@@ -1,0 +1,965 @@
+[
+ {
+  "id": "paesaggio-con-cannone-durer",
+  "title": "Paesaggio con cannone",
+  "artists": [
+   "Albrecht Dürer"
+  ],
+  "city": "New York",
+  "date_text": "1518",
+  "year_start": 1518,
+  "year_end": 1518,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "pala-pesaro-tiziano",
+  "title": "Sacra conversazione con i donatori (Pala Pesaro)",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Venezia",
+  "date_text": "1518-1526",
+  "year_start": 1518,
+  "year_end": 1526,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "pala-pucci-pontormo",
+  "title": "Madonna con il Bambino, san Giuseppe, san Giovanni Evangelista, san Giovannino, san Francesco e san Jacopo (Pala Pucci)",
+  "artists": [
+   "Jacopo Pontormo"
+  ],
+  "city": "Firenze",
+  "date_text": "1518",
+  "year_start": 1518,
+  "year_end": 1518,
+  "current_period_id": "primo-manierismo-fiorentino"
+ },
+ {
+  "id": "pala-spedalingo-rosso-fiorentino",
+  "title": "Madonna in trono con il Bambino tra i santi Giovanni Battista, Antonio Abate, Stefano e Gerolamo (Pala dello Spedalingo)",
+  "artists": [
+   "Rosso Fiorentino"
+  ],
+  "city": "Firenze",
+  "date_text": "1518",
+  "year_start": 1518,
+  "year_end": 1518,
+  "current_period_id": "primo-manierismo-fiorentino"
+ },
+ {
+  "id": "vertumno-pomona-pontormo",
+  "title": "Vertumno e Pomona",
+  "artists": [
+   "Jacopo Pontormo"
+  ],
+  "city": "Poggio a Caiano",
+  "date_text": "1519-1521",
+  "year_start": 1519,
+  "year_end": 1521,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "volta-camera-della-badessa-correggio",
+  "title": "Volta della camera della badessa",
+  "artists": [
+   "Correggio"
+  ],
+  "city": "Parma",
+  "date_text": "1519-1520",
+  "year_start": 1519,
+  "year_end": 1520,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "apparizione-croce-costantino",
+  "title": "Apparizione della Croce a Costantino",
+  "artists": [
+   "Giulio Romano"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1520-1524",
+  "year_start": 1520,
+  "year_end": 1524,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "bacco-e-arianna-tiziano",
+  "title": "Bacco e Arianna",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Londra",
+  "date_text": "1520-1523",
+  "year_start": 1520,
+  "year_end": 1523,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "crocifissione-pordenone-cremona",
+  "title": "Crocifissione",
+  "artists": [
+   "Pordenone"
+  ],
+  "city": "Cremona",
+  "date_text": "1520-1521",
+  "year_start": 1520,
+  "year_end": 1521,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "diana-correggio-san-paolo",
+  "title": "Diana (camera della badessa)",
+  "artists": [
+   "Correggio"
+  ],
+  "city": "Parma",
+  "date_text": "1520 circa",
+  "year_start": 1520,
+  "year_end": 1520,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "polittico-averoldi-tiziano",
+  "title": "Polittico Averoldi (Resurrezione di Cristo)",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Brescia",
+  "date_text": "1520-1522",
+  "year_start": 1520,
+  "year_end": 1522,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "sacrestia-nuova",
+  "title": "Sacrestia Nuova (con tombe medicee)",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Firenze",
+  "date_text": "1520-1534",
+  "year_start": 1520,
+  "year_end": 1534,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "sala-di-costantino",
+  "title": "Sala di Costantino (ciclo)",
+  "artists": [
+   "Giulio Romano",
+   "Giovan Francesco Penni"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1520-1524",
+  "year_start": 1520,
+  "year_end": 1524,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "visione-di-san-giovanni-evangelista-correggio",
+  "title": "Visione di san Giovanni Evangelista a Patmos",
+  "artists": [
+   "Correggio"
+  ],
+  "city": "Parma",
+  "date_text": "dal 1520",
+  "year_start": 1520,
+  "year_end": 1523,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "deposizione-volterra-rosso-fiorentino",
+  "title": "Deposizione di Volterra",
+  "artists": [
+   "Rosso Fiorentino"
+  ],
+  "city": "Volterra",
+  "date_text": "1521",
+  "year_start": 1521,
+  "year_end": 1521,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "messa-di-san-gregorio-romanino",
+  "title": "La messa di san Gregorio",
+  "artists": [
+   "Gerolamo Romanino"
+  ],
+  "city": "Brescia",
+  "date_text": "1521-1524",
+  "year_start": 1521,
+  "year_end": 1524,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "autoritratto-allo-specchio-parmigianino",
+  "title": "Autoritratto allo specchio",
+  "artists": [
+   "Parmigianino"
+  ],
+  "city": "Vienna",
+  "date_text": "1523-1524",
+  "year_start": 1523,
+  "year_end": 1524,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "mose-difende-figlie-jetro-rosso",
+  "title": "Mosè difende le figlie di Jetro",
+  "artists": [
+   "Rosso Fiorentino"
+  ],
+  "city": "Firenze",
+  "date_text": "1523 circa",
+  "year_start": 1523,
+  "year_end": 1523,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "volta-sala-diana-atteone-parmigianino",
+  "title": "Storie di Diana e Atteone (volta della Sala di Diana e Atteone)",
+  "artists": [
+   "Parmigianino"
+  ],
+  "city": "Fontanellato",
+  "date_text": "1524 circa",
+  "year_start": 1523,
+  "year_end": 1524,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "affreschi-oratorio-suardi-lotto",
+  "title": "Affreschi dell'oratorio Suardi",
+  "artists": [
+   "Lorenzo Lotto"
+  ],
+  "city": "Trescore Balneario",
+  "date_text": "1524",
+  "year_start": 1524,
+  "year_end": 1524,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "biblioteca-laurenziana",
+  "title": "Biblioteca Laurenziana (vestibolo e sala di lettura)",
+  "artists": [
+   "Michelangelo Buonarroti",
+   "Bartolomeo Ammannati"
+  ],
+  "city": "Firenze",
+  "date_text": "dal 1524",
+  "year_start": 1524,
+  "year_end": 1568,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "cristo-come-albero-di-vite-lotto",
+  "title": "Cristo come albero di vite",
+  "artists": [
+   "Lorenzo Lotto"
+  ],
+  "city": "Trescore Balneario",
+  "date_text": "1524",
+  "year_start": 1524,
+  "year_end": 1524,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "fanciulle-al-bagno-luini",
+  "title": "Fanciulle al bagno",
+  "artists": [
+   "Bernardino Luini"
+  ],
+  "city": "Milano",
+  "date_text": "1524",
+  "year_start": 1524,
+  "year_end": 1524,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "pagina-libro-disegni-vasari",
+  "title": "Pagina del Libro de' disegni",
+  "artists": [
+   "Giorgio Vasari"
+  ],
+  "city": "Washington",
+  "date_text": "post 1524",
+  "year_start": 1524,
+  "year_end": 1568,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "cristo-morto-angeli-rosso-fiorentino",
+  "title": "Cristo morto tra gli angeli",
+  "artists": [
+   "Rosso Fiorentino"
+  ],
+  "city": "Boston",
+  "date_text": "1525-1526",
+  "year_start": 1525,
+  "year_end": 1526,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "loggia-di-davide",
+  "title": "Loggia di Davide (Palazzo Te)",
+  "artists": [
+   "Giulio Romano"
+  ],
+  "city": "Mantova",
+  "date_text": "1525-1535",
+  "year_start": 1525,
+  "year_end": 1535,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "palazzo-te",
+  "title": "Palazzo Te",
+  "artists": [
+   "Giulio Romano"
+  ],
+  "city": "Mantova",
+  "date_text": "1525-1535",
+  "year_start": 1525,
+  "year_end": 1535,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "tomba-lorenzo-urbino",
+  "title": "Tomba di Lorenzo de' Medici duca di Urbino",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Firenze",
+  "date_text": "1525-1534",
+  "year_start": 1525,
+  "year_end": 1534,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "annunciazione-pontormo-cappella-capponi",
+  "title": "Annunciazione (cappella Capponi)",
+  "artists": [
+   "Jacopo Pontormo"
+  ],
+  "city": "Firenze",
+  "date_text": "1526-1528",
+  "year_start": 1526,
+  "year_end": 1528,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "assunzione-della-vergine-correggio-duomo-parma",
+  "title": "Assunzione della Vergine",
+  "artists": [
+   "Correggio"
+  ],
+  "city": "Parma",
+  "date_text": "1526-1530",
+  "year_start": 1526,
+  "year_end": 1530,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "camera-di-amore-e-psiche",
+  "title": "Camera di Amore e Psiche",
+  "artists": [
+   "Giulio Romano"
+  ],
+  "city": "Mantova",
+  "date_text": "1526-1528",
+  "year_start": 1526,
+  "year_end": 1528,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "cappella-capponi-pontormo",
+  "title": "Cappella Capponi (ciclo decorativo)",
+  "artists": [
+   "Jacopo Pontormo"
+  ],
+  "city": "Firenze",
+  "date_text": "1526-1528",
+  "year_start": 1526,
+  "year_end": 1528,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "madonna-di-san-girolamo-correggio",
+  "title": "Madonna di san Girolamo (Il Giorno)",
+  "artists": [
+   "Correggio"
+  ],
+  "city": "Parma",
+  "date_text": "1526-1528",
+  "year_start": 1526,
+  "year_end": 1528,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "madonna-vergine-medicea",
+  "title": "Madonna con il Bambino (detta Vergine Medicea)",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Firenze",
+  "date_text": "1526-1531",
+  "year_start": 1526,
+  "year_end": 1531,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "pieta-cappella-capponi-pontormo",
+  "title": "Pietà (o Deposizione o Trasporto al sepolcro)",
+  "artists": [
+   "Jacopo Pontormo"
+  ],
+  "city": "Firenze",
+  "date_text": "1526-1528",
+  "year_start": 1526,
+  "year_end": 1528,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "polifemo-aci-galatea-palazzo-te",
+  "title": "Polifemo, Aci e Galatea",
+  "artists": [
+   "Giulio Romano"
+  ],
+  "city": "Mantova",
+  "date_text": "1526-1528",
+  "year_start": 1526,
+  "year_end": 1528,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "tomba-giuliano-nemours",
+  "title": "Tomba di Giuliano de' Medici duca di Nemours",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Firenze",
+  "date_text": "1526-1534",
+  "year_start": 1526,
+  "year_end": 1534,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "visione-san-gerolamo-parmigianino",
+  "title": "Madonna con il Bambino e i santi Giovanni Battista e Gerolamo (Visione di san Gerolamo)",
+  "artists": [
+   "Parmigianino"
+  ],
+  "city": "Londra",
+  "date_text": "1527",
+  "year_start": 1526,
+  "year_end": 1527,
+  "current_period_id": "stile-clementino"
+ },
+ {
+  "id": "adorazione-dei-pastori-la-notte-correggio",
+  "title": "Adorazione dei pastori (La Notte)",
+  "artists": [
+   "Correggio"
+  ],
+  "city": "Dresda",
+  "date_text": "1528-1530",
+  "year_start": 1528,
+  "year_end": 1530,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "pieta-sansepolcro-rosso-fiorentino",
+  "title": "Pietà",
+  "artists": [
+   "Rosso Fiorentino"
+  ],
+  "city": "Sansepolcro",
+  "date_text": "1528",
+  "year_start": 1528,
+  "year_end": 1528,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "visitazione-pontormo-carmignano",
+  "title": "Visitazione",
+  "artists": [
+   "Jacopo Pontormo"
+  ],
+  "city": "Carmignano",
+  "date_text": "1528-1529",
+  "year_start": 1528,
+  "year_end": 1529,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "danae-correggio",
+  "title": "Danae",
+  "artists": [
+   "Correggio"
+  ],
+  "city": null,
+  "date_text": "1530-1532 circa",
+  "year_start": 1530,
+  "year_end": 1532,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "io-correggio",
+  "title": "Io",
+  "artists": [
+   "Correggio"
+  ],
+  "city": null,
+  "date_text": "1530-1532 circa",
+  "year_start": 1530,
+  "year_end": 1532,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "leda-e-il-cigno-correggio",
+  "title": "Leda e il cigno",
+  "artists": [
+   "Correggio"
+  ],
+  "city": null,
+  "date_text": "1530-1532 circa",
+  "year_start": 1530,
+  "year_end": 1532,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "pianta-san-pietro-sangallo",
+  "title": "Pianta della basilica di San Pietro (progetto Antonio da Sangallo il Giovane)",
+  "artists": [
+   "Antonio da Sangallo il Giovane"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1530-1546",
+  "year_start": 1530,
+  "year_end": 1546,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "san-matteo-e-langelo-savoldo",
+  "title": "San Matteo e l'angelo",
+  "artists": [
+   "Giovan Girolamo Savoldo"
+  ],
+  "city": "New York",
+  "date_text": "1530-1535",
+  "year_start": 1530,
+  "year_end": 1535,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "affreschi-loggia-castello-buonconsiglio-romanino",
+  "title": "Affreschi della Loggia del castello del Buonconsiglio",
+  "artists": [
+   "Gerolamo Romanino"
+  ],
+  "city": "Trento",
+  "date_text": "1531 circa",
+  "year_start": 1531,
+  "year_end": null,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "ganimede-e-laquila-correggio",
+  "title": "Ganimede e l'aquila",
+  "artists": [
+   "Correggio"
+  ],
+  "city": "Vienna",
+  "date_text": "1531-1532",
+  "year_start": 1531,
+  "year_end": 1532,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "camera-dei-giganti",
+  "title": "Camera dei Giganti",
+  "artists": [
+   "Giulio Romano"
+  ],
+  "city": "Mantova",
+  "date_text": "1532-1535",
+  "year_start": 1532,
+  "year_end": 1535,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "cena-in-casa-del-fariseo-romanino",
+  "title": "Cena in casa del fariseo",
+  "artists": [
+   "Gerolamo Romanino"
+  ],
+  "city": "Brescia",
+  "date_text": "1532-1533",
+  "year_start": 1532,
+  "year_end": 1533,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "genio-della-vittoria",
+  "title": "Genio della Vittoria",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Firenze",
+  "date_text": "1532 circa",
+  "year_start": 1532,
+  "year_end": 1532,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "palazzo-corner-ca-granda-sansovino",
+  "title": "Palazzo Corner della Ca' Granda",
+  "artists": [
+   "Jacopo Sansovino"
+  ],
+  "city": "Venezia",
+  "date_text": "dal 1533",
+  "year_start": 1533,
+  "year_end": 1556,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "affreschi-santa-maria-della-neve-pisogne-romanino",
+  "title": "Affreschi della chiesa di Santa Maria della Neve a Pisogne",
+  "artists": [
+   "Gerolamo Romanino"
+  ],
+  "city": "Pisogne",
+  "date_text": "1534",
+  "year_start": 1534,
+  "year_end": null,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "annunciazione-lotto-1534",
+  "title": "Annunciazione",
+  "artists": [
+   "Lorenzo Lotto"
+  ],
+  "city": "Recanati",
+  "date_text": "1534",
+  "year_start": 1534,
+  "year_end": 1534,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "madonna-dal-collo-lungo-parmigianino",
+  "title": "Madonna con il Bambino, gli angeli e un profeta (Madonna dal collo lungo)",
+  "artists": [
+   "Parmigianino"
+  ],
+  "city": "Firenze",
+  "date_text": "1534-1540",
+  "year_start": 1534,
+  "year_end": 1540,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "giudizio-universale",
+  "title": "Giudizio Universale",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1536-1541",
+  "year_start": 1536,
+  "year_end": 1541,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "libreria-marciana-sansovino",
+  "title": "Libreria Marciana",
+  "artists": [
+   "Jacopo Sansovino"
+  ],
+  "city": "Venezia",
+  "date_text": "dal 1537",
+  "year_start": 1537,
+  "year_end": 1588,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "loggetta-san-marco-sansovino",
+  "title": "Loggetta di San Marco",
+  "artists": [
+   "Jacopo Sansovino"
+  ],
+  "city": "Venezia",
+  "date_text": "1537-1549",
+  "year_start": 1537,
+  "year_end": 1549,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "piazza-del-campidoglio",
+  "title": "Piazza del Campidoglio",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Roma",
+  "date_text": "dal 1537 circa",
+  "year_start": 1537,
+  "year_end": null,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "ritratto-cosimo-i-alabardiere-pontormo",
+  "title": "Ritratto di Cosimo I come alabardiere",
+  "artists": [
+   "Jacopo Pontormo"
+  ],
+  "city": "Malibu",
+  "date_text": "1537",
+  "year_start": 1537,
+  "year_end": 1537,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "sette-libri-architettura-serlio",
+  "title": "Sette libri dell'architettura (pagina con il disegno della serliana)",
+  "artists": [
+   "Sebastiano Serlio"
+  ],
+  "city": null,
+  "date_text": "1537",
+  "year_start": 1537,
+  "year_end": 1537,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "venere-di-urbino-tiziano",
+  "title": "Venere di Urbino",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Firenze",
+  "date_text": "1538",
+  "year_start": 1538,
+  "year_end": 1538,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "conversione-di-saulo",
+  "title": "Conversione di Saulo",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1542-1545",
+  "year_start": 1542,
+  "year_end": 1545,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "copia-cascina-sangallo",
+  "title": "Copia dalla Battaglia di Càscina di Michelangelo",
+  "artists": [
+   "Aristotile da Sangallo"
+  ],
+  "city": null,
+  "date_text": "1542",
+  "year_start": 1542,
+  "year_end": 1542,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "crocifissione-di-san-pietro",
+  "title": "Crocifissione di san Pietro",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1542-1550 circa",
+  "year_start": 1542,
+  "year_end": 1550,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "incoronazione-di-spine-tiziano",
+  "title": "L'Incoronazione di spine",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Parigi",
+  "date_text": "1542-1543",
+  "year_start": 1542,
+  "year_end": 1543,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "elia-svegliato-dallangelo-moretto",
+  "title": "Elia svegliato dall'angelo",
+  "artists": [
+   "Moretto"
+  ],
+  "city": "Brescia",
+  "date_text": "1543 circa",
+  "year_start": 1543,
+  "year_end": 1543,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "ritratto-di-paolo-iii-farnese-tiziano",
+  "title": "Ritratto di Paolo III Farnese",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Napoli",
+  "date_text": "1543",
+  "year_start": 1543,
+  "year_end": 1543,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "busto-cosimo-i-bandinelli",
+  "title": "Busto di Cosimo I",
+  "artists": [
+   "Baccio Bandinelli"
+  ],
+  "city": "Firenze",
+  "date_text": "1544",
+  "year_start": 1544,
+  "year_end": 1544,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "perseo-cellini",
+  "title": "Perseo",
+  "artists": [
+   "Benvenuto Cellini"
+  ],
+  "city": "Firenze",
+  "date_text": "1545-1553",
+  "year_start": 1545,
+  "year_end": 1553,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "ritratto-cosimo-i-in-armatura-bronzino",
+  "title": "Ritratto di Cosimo I in armatura",
+  "artists": [
+   "Agnolo Bronzino"
+  ],
+  "city": "Madrid",
+  "date_text": "1545 circa",
+  "year_start": 1545,
+  "year_end": 1545,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "ritratto-di-pietro-aretino-tiziano",
+  "title": "Ritratto di Pietro Aretino",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Firenze",
+  "date_text": "1545",
+  "year_start": 1545,
+  "year_end": 1545,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "ritratto-eleonora-di-toledo-bronzino",
+  "title": "Ritratto di Eleonora di Toledo con il figlio Giovanni de' Medici",
+  "artists": [
+   "Agnolo Bronzino"
+  ],
+  "city": "Firenze",
+  "date_text": "1545",
+  "year_start": 1545,
+  "year_end": 1545,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "palazzo-farnese-facciata",
+  "title": "Facciata di Palazzo Farnese",
+  "artists": [
+   "Michelangelo Buonarroti",
+   "Antonio da Sangallo il Giovane"
+  ],
+  "city": "Roma",
+  "date_text": "dal 1546",
+  "year_start": 1546,
+  "year_end": null,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "pianta-san-pietro-michelangelo",
+  "title": "Pianta della basilica di San Pietro (progetto Michelangelo)",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1546-1564",
+  "year_start": 1546,
+  "year_end": 1564,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "miracolo-dello-schiavo-tintoretto",
+  "title": "Miracolo dello schiavo (o San Marco libera lo schiavo)",
+  "artists": [
+   "Tintoretto"
+  ],
+  "city": "Venezia",
+  "date_text": "1547-1548",
+  "year_start": 1547,
+  "year_end": 1548,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "martirio-di-san-lorenzo-tiziano",
+  "title": "Martirio di san Lorenzo",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Venezia",
+  "date_text": "1548-1557",
+  "year_start": 1548,
+  "year_end": 1557,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "ritratto-di-carlo-v-a-cavallo-tiziano",
+  "title": "Ritratto di Carlo V a cavallo",
+  "artists": [
+   "Tiziano Vecellio"
+  ],
+  "city": "Madrid",
+  "date_text": "1548",
+  "year_start": 1548,
+  "year_end": 1548,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "basilica-palladiana-vicenza",
+  "title": "Basilica Palladiana",
+  "artists": [
+   "Andrea Palladio"
+  ],
+  "city": "Vicenza",
+  "date_text": "dal 1549",
+  "year_start": 1549,
+  "year_end": 1617,
+  "current_period_id": "manierismo"
+ },
+ {
+  "id": "cristo-e-langelo-moretto",
+  "title": "Cristo e l'angelo (Ecce homo)",
+  "artists": [
+   "Moretto"
+  ],
+  "city": "Brescia",
+  "date_text": "1550 circa",
+  "year_start": 1550,
+  "year_end": 1550,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ }
+]

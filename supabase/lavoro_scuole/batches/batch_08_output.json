@@ -1,0 +1,841 @@
+[
+ {
+  "id": "san-sigismondo-e-sigismondo-pandolfo-malatesta",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "corte-malatestiana-riminese",
+  "status": "nuova_scuola",
+  "note": "Affresco di Piero della Francesca nel Tempio Malatestiano, commissione diretta di Sigismondo Pandolfo Malatesta a Rimini: corte non coperta da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "corte-malatestiana-riminese",
+   "name": "Corte malatestiana di Rimini (Tempio Malatestiano)",
+   "parent_id": "quattrocento",
+   "year_start": 1450,
+   "year_end": 1468,
+   "region": ["Rimini", "Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "castello-sforzesco-torre-ingresso",
+  "current_period_id": "sforzesco",
+  "proposed_period_id": "sforzesco",
+  "status": "invariato",
+  "note": "Opera di Filarete per il Castello Sforzesco di Milano, gia' correttamente collocata nel Periodo sforzesco.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "sforzinda-citta-ideale",
+  "current_period_id": "sforzesco",
+  "proposed_period_id": "sforzesco",
+  "status": "invariato",
+  "note": "Progetto di citta' ideale di Filarete legato alla corte sforzesca (il nome stesso deriva da Sforza), gia' correttamente collocato.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "leggenda-della-vera-croce",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento",
+  "status": "invariato",
+  "note": "Ciclo di Piero della Francesca ad Arezzo, opera indipendente non legata a una corte o bottega specifica presente nell'albero; nessuna scuola piu' specifica disponibile.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "madonna-del-latte-in-trono",
+  "current_period_id": "quattrocento-fiammingo",
+  "proposed_period_id": "rinasc-nordico",
+  "status": "assegnato",
+  "note": "Jean Fouquet e' pittore francese della corte di Tours, non fiammingo: la citta' 'Anversa' indica solo l'ubicazione museale attuale del pannello del Dittico di Melun; corrente Rinascimento nordico piu' corretta di quella fiamminga.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "certosa-di-pavia-navata",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Cantiere della Certosa di Pavia, mausoleo dinastico sforzesco, piu' specifico del generico Umanesimo lombardo.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "monumento-funebre-carlo-marsuppini",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Tomba di Desiderio da Settignano in Santa Croce a Firenze, opera cardine del Rinascimento fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "giuditta-e-oloferne",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Statua di Donatello per i Medici a Firenze, rientra nel Rinascimento fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "giuditta-oloferne-donatello",
+  "current_period_id": "rinascimento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Stessa opera (Giuditta e Oloferne di Donatello, Firenze 1454-1457) attualmente all'epoca generica Rinascimento: va abbassata alla scuola fiorentina specifica.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "maddalena-donatello",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Maddalena penitente di Donatello per il Battistero di Firenze, Rinascimento fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "tempio-malatestiano",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "corte-malatestiana-riminese",
+  "status": "nuova_scuola",
+  "note": "Cantiere albertiano commissionato da Sigismondo Pandolfo Malatesta a Rimini, stessa corte del Piero della Francesca riminese nel lotto.",
+  "new_school": {
+   "suggested_id": "corte-malatestiana-riminese",
+   "name": "Corte malatestiana di Rimini (Tempio Malatestiano)",
+   "parent_id": "quattrocento",
+   "year_start": 1450,
+   "year_end": 1468,
+   "region": ["Rimini", "Romagna"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "incoronazione-cristo-maria-bembo",
+  "current_period_id": "tardogotico",
+  "proposed_period_id": "tardogotico",
+  "status": "invariato",
+  "note": "Bonifacio Bembo lavora in stile tardogotico lombardo per la corte visconteo-sforzesca a Cremona; nessuna scuola piu' specifica esiste nell'albero e l'opera e' isolata nel lotto.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "madonna-bambino-luca-della-robbia-metropolitan",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Luca della Robbia, scultore fiorentino; 'New York' e' solo l'attuale sede museale (Metropolitan Museum).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "palazzo-venezia-roma",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Cantiere romano voluto dal cardinale Pietro Barbo (poi Paolo II), parte del filone del Quattrocento romano pontificio non coperto da scuole esistenti.",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": ["Roma", "Citta' del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "monumento-equestre-niccolo-da-tolentino",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Affresco di Andrea del Castagno nel Duomo di Firenze, Rinascimento fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ospedale-maggiore-milano",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Ca' Granda commissionata da Francesco Sforza a Milano: collocazione piu' specifica nel Periodo sforzesco rispetto al generico Umanesimo lombardo.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "tre-crocifissi-foppa",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "umanesimo-lombardo",
+  "status": "invariato",
+  "note": "Vincenzo Foppa a Bergamo, citta' di dominio veneziano non legata alla corte sforzesca milanese: resta nella scuola lombarda regionale.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cappella-rucellai",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Opera di Leon Battista Alberti a Firenze, Rinascimento fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "facciata-santa-maria-novella",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Facciata albertiana a Firenze, Rinascimento fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "madonna-del-parto",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento",
+  "status": "invariato",
+  "note": "Affresco di Piero della Francesca a Monterchi, opera indipendente non legata a corte/bottega gia' presente nell'albero.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "angeli-adoranti-cappella-magi",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "umanesimo-fiorentino",
+  "status": "assegnato",
+  "note": "Particolare del ciclo di Benozzo Gozzoli nella Cappella dei Magi di Palazzo Medici, Firenze; allineato alla scuola gia' assegnata ad altra opera dello stesso ciclo nel lotto (corteo-dei-magi-gozzoli).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "corteo-dei-magi",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "umanesimo-fiorentino",
+  "status": "assegnato",
+  "note": "Stesso ciclo della Cappella dei Magi di Benozzo Gozzoli, Firenze; coerente con l'altra opera del ciclo gia' classificata come Umanesimo fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "corteo-dei-magi-gozzoli",
+  "current_period_id": "umanesimo-fiorentino",
+  "proposed_period_id": "umanesimo-fiorentino",
+  "status": "invariato",
+  "note": "Gia' correttamente collocato nell'Umanesimo fiorentino (ciclo della Cappella dei Magi, Palazzo Medici, Firenze).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "flagellazione-di-cristo",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "corte-montefeltresca-urbino",
+  "status": "nuova_scuola",
+  "note": "Piero della Francesca a Urbino per la corte di Federico da Montefeltro: nel lotto emerge un chiaro gruppo di opere legate a questa corte, non coperto da alcuna scuola esistente.",
+  "new_school": {
+   "suggested_id": "corte-montefeltresca-urbino",
+   "name": "Corte di Federico da Montefeltro a Urbino",
+   "parent_id": "quattrocento",
+   "year_start": 1459,
+   "year_end": 1482,
+   "region": ["Urbino", "Marche"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "adorazione-nella-foresta-lippi",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Filippo Lippi, pittore fiorentino; 'Berlino' e' la sede museale attuale (Gemaldegalerie).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "bambino-che-ride",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Desiderio da Settignano, scultore fiorentino; 'Vienna' e' la sede museale attuale.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-di-san-sebastiano-mantova",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Chiesa albertiana commissionata dai Gonzaga a Mantova, rientra nel Rinascimento mantovano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "la-giustizia-volta-cappella-portogallo",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Luca della Robbia, Cappella del Cardinale del Portogallo a San Miniato al Monte, Firenze.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pulpito-della-passione",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Pulpiti tardi di Donatello in San Lorenzo, Firenze.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "spirito-santo-virtu-cardinali-cappella-portogallo",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Luca della Robbia, stessa Cappella del Cardinale del Portogallo a Firenze.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "trattato-architettura-filarete-facciata",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Trattato scritto da Filarete presso la corte sforzesca di Milano (raffigura l'Ospedale Maggiore); 'Firenze' e' solo la sede attuale del manoscritto (Bibl. Nazionale).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "trattato-architettura-filarete-sforzinda",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Stesso trattato di Filarete per la corte sforzesca (progetto di Sforzinda); 'Firenze' e' solo la sede attuale del manoscritto.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "monumento-funebre-cardinale-portogallo",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Tomba di Antonio e Bernardo Rossellino a San Miniato al Monte, Firenze.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cappella-portinari-interno",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Cappella Portinari a Milano, cantiere del periodo sforzesco milanese piu' specifico del generico Umanesimo lombardo.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "miracolo-della-nube-foppa",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Affresco di Vincenzo Foppa nella Cappella Portinari a Milano, periodo sforzesco.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "miracolo-falsa-madonna-foppa",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Affresco di Vincenzo Foppa nella Cappella Portinari a Milano, periodo sforzesco.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "camera-degli-sposi-oculo",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Andrea Mantegna per la corte dei Gonzaga a Mantova, Rinascimento mantovano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "martirio-di-san-lorenzo",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Pulpiti tardi di Donatello in San Lorenzo, Firenze.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pulpito-della-resurrezione",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "assegnato",
+  "note": "Pulpiti tardi di Donatello in San Lorenzo, Firenze.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "palazzo-ducale-urbino",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "corte-montefeltresca-urbino",
+  "status": "nuova_scuola",
+  "note": "Sede stessa della corte di Federico da Montefeltro a Urbino, opera di Laurana e Francesco di Giorgio Martini: fa parte del gruppo di opere della corte urbinate.",
+  "new_school": {
+   "suggested_id": "corte-montefeltresca-urbino",
+   "name": "Corte di Federico da Montefeltro a Urbino",
+   "parent_id": "quattrocento",
+   "year_start": 1459,
+   "year_end": 1482,
+   "region": ["Urbino", "Marche"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "madonna-della-melagrana-leonardo",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Opera giovanile di Leonardo, Firenze; 'Washington D.C.' e' solo la sede museale attuale. Gia' correttamente collocata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "battesimo-di-cristo-verrocchio-leonardo",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Bottega di Verrocchio a Firenze con Leonardo, gia' correttamente collocata nel Rinascimento fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "chiesa-di-sant-andrea-mantova",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-mantovano",
+  "status": "assegnato",
+  "note": "Chiesa albertiana commissionata dai Gonzaga a Mantova, Rinascimento mantovano.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "combattimento-degli-ignudi",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Incisione di Antonio Pollaiolo, artista fiorentino; 'New York' e' la sede museale attuale. Gia' correttamente collocata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-di-giovane-donna-petrus-christus",
+  "current_period_id": "quattrocento-fiammingo",
+  "proposed_period_id": "quattrocento-fiammingo",
+  "status": "invariato",
+  "note": "Petrus Christus, pittore fiammingo di Bruges, gia' correttamente collocato; 'Berlino' e' la sede museale attuale.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-di-tommaso-portinari",
+  "current_period_id": "quattrocento-fiammingo",
+  "proposed_period_id": "quattrocento-fiammingo",
+  "status": "invariato",
+  "note": "Hans Memling, pittore fiammingo di Bruges, gia' correttamente collocato; 'New York' e' la sede museale attuale.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "annunciazione-leonardo",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Leonardo a Firenze, gia' correttamente collocata nel Rinascimento fiorentino.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cappella-colleoni-facciata",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "umanesimo-lombardo",
+  "status": "invariato",
+  "note": "Giovanni Antonio Amadeo a Bergamo (dominio veneziano, non sforzesco): resta nella scuola lombarda regionale, gia' corretta.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "madonna-di-senigallia",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "corte-montefeltresca-urbino",
+  "status": "nuova_scuola",
+  "note": "Piero della Francesca a Urbino per Federico da Montefeltro, parte del gruppo di opere della corte urbinate.",
+  "new_school": {
+   "suggested_id": "corte-montefeltresca-urbino",
+   "name": "Corte di Federico da Montefeltro a Urbino",
+   "parent_id": "quattrocento",
+   "year_start": 1459,
+   "year_end": 1482,
+   "region": ["Urbino", "Marche"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "monumento-funebre-bartolomeo-colleoni-amadeo",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "umanesimo-lombardo",
+  "status": "invariato",
+  "note": "Giovanni Antonio Amadeo a Bergamo per il condottiero Colleoni (al servizio di Venezia): resta nella scuola lombarda regionale.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pala-di-brera",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "corte-montefeltresca-urbino",
+  "status": "nuova_scuola",
+  "note": "Pala Montefeltro di Piero della Francesca, commissionata da Federico da Montefeltro per San Bernardino a Urbino (oggi a Brera solo per collocazione museale): appartiene alla corte urbinate.",
+  "new_school": {
+   "suggested_id": "corte-montefeltresca-urbino",
+   "name": "Corte di Federico da Montefeltro a Urbino",
+   "parent_id": "quattrocento",
+   "year_start": 1459,
+   "year_end": 1482,
+   "region": ["Urbino", "Marche"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "certosa-di-pavia-facciata",
+  "current_period_id": "umanesimo-lombardo",
+  "proposed_period_id": "sforzesco",
+  "status": "assegnato",
+  "note": "Facciata della Certosa di Pavia, mausoleo dinastico sforzesco, piu' specifico del generico Umanesimo lombardo.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "dittico-duchi-di-urbino",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "corte-montefeltresca-urbino",
+  "status": "nuova_scuola",
+  "note": "Doppio ritratto dei duchi di Urbino di Piero della Francesca, commissione della corte montefeltresca (oggi agli Uffizi solo per collocazione museale).",
+  "new_school": {
+   "suggested_id": "corte-montefeltresca-urbino",
+   "name": "Corte di Federico da Montefeltro a Urbino",
+   "parent_id": "quattrocento",
+   "year_start": 1459,
+   "year_end": 1482,
+   "region": ["Urbino", "Marche"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "madonna-nel-roseto",
+  "current_period_id": "arte-tedesca-quattrocento",
+  "proposed_period_id": "arte-tedesca-quattrocento",
+  "status": "invariato",
+  "note": "Martin Schongauer, pittore alsaziano di Colmar: gia' correttamente collocato (l'Alsazia e' tra le regioni della scuola).",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "paesaggio-con-fiume",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Celebre disegno datato di Leonardo, Firenze, gia' correttamente collocato.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "doppio-trionfo-battista-sforza-federico",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "corte-montefeltresca-urbino",
+  "status": "nuova_scuola",
+  "note": "Retro del dittico dei duchi di Urbino di Piero della Francesca, stessa commissione montefeltresca del gruppo urbinate.",
+  "new_school": {
+   "suggested_id": "corte-montefeltresca-urbino",
+   "name": "Corte di Federico da Montefeltro a Urbino",
+   "parent_id": "quattrocento",
+   "year_start": 1459,
+   "year_end": 1482,
+   "region": ["Urbino", "Marche"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-ginevra-benci",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Leonardo, opera fiorentina; 'Washington D.C.' e' la sede museale attuale. Gia' correttamente collocata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "sant-agostino-giusto-di-gand",
+  "current_period_id": "quattrocento-fiammingo",
+  "proposed_period_id": "corte-montefeltresca-urbino",
+  "status": "nuova_scuola",
+  "note": "Giusto di Gand fu chiamato da Federico da Montefeltro a Urbino per la serie degli Uomini illustri dello Studiolo: opera della corte urbinate, non della bottega fiamminga d'origine (oggi al Louvre solo per collocazione museale).",
+  "new_school": {
+   "suggested_id": "corte-montefeltresca-urbino",
+   "name": "Corte di Federico da Montefeltro a Urbino",
+   "parent_id": "quattrocento",
+   "year_start": 1459,
+   "year_end": 1482,
+   "region": ["Urbino", "Marche"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "adorazione-dei-magi-botticelli",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Botticelli, opera fiorentina, gia' correttamente collocata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "busto-giuliano-de-medici-verrocchio",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Verrocchio, scultore fiorentino; 'Washington D.C.' e' la sede museale attuale. Gia' correttamente collocato.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "dama-col-mazzolino",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Verrocchio a Firenze, gia' correttamente collocato.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ercole-e-anteo-pollaiolo-bronzetto",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Antonio Pollaiolo a Firenze, gia' correttamente collocato.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ercole-e-anteo-pollaiolo-dipinto",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Antonio Pollaiolo a Firenze, gia' correttamente collocato.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "madonna-del-garofano",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Leonardo, opera fiorentina; 'Monaco' e' la sede museale attuale (Alte Pinakothek). Gia' correttamente collocata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pala-di-san-cassiano",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "rinascimento-veneziano",
+  "status": "assegnato",
+  "note": "Antonello da Messina dipinse questa pala a Venezia per la chiesa di San Cassiano durante il suo soggiorno veneziano (opera chiave del primo Rinascimento veneziano); 'Vienna' e' solo la sede museale attuale.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "ritratto-federico-da-montefeltro-guidobaldo",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "corte-montefeltresca-urbino",
+  "status": "nuova_scuola",
+  "note": "Pedro Berruguete attivo a Urbino per lo Studiolo di Federico da Montefeltro, parte del gruppo di opere della corte urbinate.",
+  "new_school": {
+   "suggested_id": "corte-montefeltresca-urbino",
+   "name": "Corte di Federico da Montefeltro a Urbino",
+   "parent_id": "quattrocento",
+   "year_start": 1459,
+   "year_end": 1482,
+   "region": ["Urbino", "Marche"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "trittico-portinari",
+  "current_period_id": "quattrocento-fiammingo",
+  "proposed_period_id": "quattrocento-fiammingo",
+  "status": "invariato",
+  "note": "Hugo van der Goes, pittore fiammingo, gia' correttamente collocato; 'Firenze' e' la sede attuale (Uffizi) dell'opera inviata da Bruges/Gand.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "scala-elicoidale-mercatale",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "corte-montefeltresca-urbino",
+  "status": "nuova_scuola",
+  "note": "Francesco di Giorgio Martini a Urbino per Federico da Montefeltro, gruppo di opere della corte urbinate.",
+  "new_school": {
+   "suggested_id": "corte-montefeltresca-urbino",
+   "name": "Corte di Federico da Montefeltro a Urbino",
+   "parent_id": "quattrocento",
+   "year_start": 1459,
+   "year_end": 1482,
+   "region": ["Urbino", "Marche"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "studiolo-federico-da-montefeltro",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "corte-montefeltresca-urbino",
+  "status": "nuova_scuola",
+  "note": "Studiolo dello stesso Federico da Montefeltro a Urbino, opera emblematica della corte urbinate.",
+  "new_school": {
+   "suggested_id": "corte-montefeltresca-urbino",
+   "name": "Corte di Federico da Montefeltro a Urbino",
+   "parent_id": "quattrocento",
+   "year_start": 1459,
+   "year_end": 1482,
+   "region": ["Urbino", "Marche"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "trittico-del-roveto-ardente",
+  "current_period_id": "quattrocento-fiammingo",
+  "proposed_period_id": "rinasc-nordico",
+  "status": "assegnato",
+  "note": "Nicolas Froment e' pittore francese/provenzale (corte di Renato d'Angio' ad Aix-en-Provence), non fiammingo: corrente Rinascimento nordico piu' corretta di quella fiamminga.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "cappella-sistina-interno",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Cantiere della Cappella Sistina voluto da Sisto IV, nucleo del gruppo di opere del Quattrocento romano pontificio nel lotto.",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": ["Roma", "Citta' del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "madonna-benois",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Leonardo, opera fiorentina; 'San Pietroburgo' e' la sede museale attuale (Ermitage). Gia' correttamente collocata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "allegoria-della-primavera",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Botticelli, opera fiorentina, gia' correttamente collocata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "annunciazione-memling",
+  "current_period_id": "quattrocento-fiammingo",
+  "proposed_period_id": "quattrocento-fiammingo",
+  "status": "invariato",
+  "note": "Hans Memling, pittore fiammingo di Bruges, gia' correttamente collocato; 'New York' e' la sede museale attuale.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "pallade-e-centauro-botticelli",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Botticelli, opera fiorentina, gia' correttamente collocata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "san-girolamo-leonardo",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Leonardo, opera fiorentina incompiuta; 'Citta' del Vaticano' e' la sede museale attuale. Gia' correttamente collocata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "adorazione-dei-magi-leonardo",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "rinascimento-fiorentino",
+  "status": "invariato",
+  "note": "Leonardo, commissione fiorentina di San Donato a Scopeto, gia' correttamente collocata.",
+  "new_school": null,
+  "alt_options": null
+ },
+ {
+  "id": "battesimo-di-cristo-perugino-sistina",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Affresco della Cappella Sistina (Perugino/Pinturicchio), cantiere pontificio di Sisto IV, gruppo Quattrocento romano.",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": ["Roma", "Citta' del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "consegna-delle-chiavi",
+  "current_period_id": "rinascimento-fiorentino",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Affresco di Perugino nella Cappella Sistina, cantiere pontificio romano di Sisto IV, piu' specifico e coerente del generico Rinascimento fiorentino (Perugino era umbro, attivo a Roma per questa commissione).",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": ["Roma", "Citta' del Vaticano"]
+  },
+  "alt_options": null
+ },
+ {
+  "id": "discorso-della-montagna-rosselli-sistina",
+  "current_period_id": "quattrocento",
+  "proposed_period_id": "quattrocento-romano",
+  "status": "nuova_scuola",
+  "note": "Affresco di Cosimo Rosselli nella Cappella Sistina, cantiere pontificio di Sisto IV, gruppo Quattrocento romano.",
+  "new_school": {
+   "suggested_id": "quattrocento-romano",
+   "name": "Quattrocento romano (cantiere pontificio)",
+   "parent_id": "quattrocento",
+   "year_start": 1455,
+   "year_end": 1482,
+   "region": ["Roma", "Citta' del Vaticano"]
+  },
+  "alt_options": null
+ }
+]

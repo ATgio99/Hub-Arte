@@ -1,0 +1,967 @@
+[
+ {
+  "id": "incisione-prevedari",
+  "title": "Tempio in rovina (detta Incisione Prevedari)",
+  "artists": [
+   "Donato Bramante",
+   "Bernardino Prevedari"
+  ],
+  "city": "Milano",
+  "date_text": "1481",
+  "year_start": 1481,
+  "year_end": 1481,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "monumento-equestre-bartolomeo-colleoni",
+  "title": "Monumento equestre a Bartolomeo Colleoni",
+  "artists": [
+   "Andrea Verrocchio",
+   "Alessandro Leopardi"
+  ],
+  "city": "Venezia",
+  "date_text": "1481-1488",
+  "year_start": 1481,
+  "year_end": 1488,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "morte-di-mose-signorelli-sistina",
+  "title": "Morte di Mosè",
+  "artists": [
+   "Luca Signorelli"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "passaggio-mar-rosso-rosselli-sistina",
+  "title": "Passaggio del Mar Rosso",
+  "artists": [
+   "Cosimo Rosselli"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "prove-di-mose-botticelli-sistina",
+  "title": "Prove di Mosè (parete nord)",
+  "artists": [
+   "Sandro Botticelli"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "punizione-dei-ribelli-botticelli",
+  "title": "Punizione dei ribelli",
+  "artists": [
+   "Sandro Botticelli"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "tentazioni-di-cristo-botticelli-sistina",
+  "title": "Tentazioni di Cristo (parete sud)",
+  "artists": [
+   "Sandro Botticelli"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "transenna-marmorea-sistina",
+  "title": "Transenna marmorea della cappella Sistina",
+  "artists": [
+   "Mino da Fiesole",
+   "Andrea Bregno",
+   "Giovanni Dalmata"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "ultima-cena-rosselli-sistina",
+  "title": "Ultima Cena (cappella Sistina)",
+  "artists": [
+   "Cosimo Rosselli"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "viaggio-di-mose-perugino-sistina",
+  "title": "Viaggio di Mosè verso l'Egitto",
+  "artists": [
+   "Pietro Perugino",
+   "Pinturicchio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "vocazione-primi-apostoli-ghirlandaio-sistina",
+  "title": "Vocazione dei primi apostoli",
+  "artists": [
+   "Domenico Ghirlandaio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1481-1482",
+  "year_start": 1481,
+  "year_end": 1482,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "santa-maria-presso-san-satiro",
+  "title": "Chiesa di Santa Maria presso San Satiro",
+  "artists": [
+   "Donato Bramante"
+  ],
+  "city": "Milano",
+  "date_text": "1482-1486",
+  "year_start": 1482,
+  "year_end": 1486,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "adorazione-del-bambino-bramantino",
+  "title": "Adorazione del Bambino",
+  "artists": [
+   "Bramantino"
+  ],
+  "city": "Milano",
+  "date_text": "1483-1485 circa",
+  "year_start": 1483,
+  "year_end": 1485,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "apollo-e-dafni-perugino",
+  "title": "Apollo e Dafni",
+  "artists": [
+   "Pietro Perugino"
+  ],
+  "city": "Parigi",
+  "date_text": "1483 circa",
+  "year_start": 1483,
+  "year_end": 1483,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "madonna-del-magnificat",
+  "title": "Madonna con il Bambino e cinque angeli (Madonna del Magnificat)",
+  "artists": [
+   "Sandro Botticelli"
+  ],
+  "city": "Firenze",
+  "date_text": "1483 circa",
+  "year_start": 1483,
+  "year_end": 1483,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "trittico-dei-padri-della-chiesa",
+  "title": "Trittico dei Padri della Chiesa",
+  "artists": [
+   "Michael Pacher"
+  ],
+  "city": "Monaco",
+  "date_text": "1483 circa",
+  "year_start": 1483,
+  "year_end": 1483,
+  "current_period_id": "arte-tedesca-quattrocento"
+ },
+ {
+  "id": "vergine-delle-rocce-prima",
+  "title": "Vergine delle rocce (Louvre)",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Parigi",
+  "date_text": "1483-1486 circa",
+  "year_start": 1483,
+  "year_end": 1486,
+  "current_period_id": "sforzesco"
+ },
+ {
+  "id": "monumento-funebre-sisto-iv",
+  "title": "Monumento funebre di Sisto IV",
+  "artists": [
+   "Antonio Pollaiolo"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1484-1493",
+  "year_start": 1484,
+  "year_end": 1493,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "nascita-di-venere",
+  "title": "Nascita di Venere",
+  "artists": [
+   "Sandro Botticelli"
+  ],
+  "city": "Firenze",
+  "date_text": "1484-1485 circa",
+  "year_start": 1484,
+  "year_end": 1485,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "nascita-della-vergine-ghirlandaio",
+  "title": "Nascita della Vergine",
+  "artists": [
+   "Domenico Ghirlandaio"
+  ],
+  "city": "Firenze",
+  "date_text": "1485-1490",
+  "year_start": 1485,
+  "year_end": 1490,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "studio-statua-equestre-sforza",
+  "title": "Studio per la statua equestre di Francesco Sforza",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Windsor",
+  "date_text": "1485 circa",
+  "year_start": 1485,
+  "year_end": 1485,
+  "current_period_id": "sforzesco"
+ },
+ {
+  "id": "venere-e-marte",
+  "title": "Venere e Marte",
+  "artists": [
+   "Sandro Botticelli"
+  ],
+  "city": "Londra",
+  "date_text": "1485 circa",
+  "year_start": 1485,
+  "year_end": 1485,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "uomo-darme-bramante",
+  "title": "Uomo d'arme",
+  "artists": [
+   "Donato Bramante"
+  ],
+  "city": "Milano",
+  "date_text": "1486 circa",
+  "year_start": 1486,
+  "year_end": 1486,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "certosa-presentazione-bergognone",
+  "title": "Presentazione della Certosa alla Vergine da parte di Gian Galeazzo",
+  "artists": [
+   "Bergognone"
+  ],
+  "city": "Pavia",
+  "date_text": "1488-1494",
+  "year_start": 1488,
+  "year_end": 1494,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "dama-con-ermellino",
+  "title": "Ritratto di Cecilia Gallerani (detto Dama con l'ermellino)",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Cracovia",
+  "date_text": "1488 circa",
+  "year_start": 1488,
+  "year_end": 1488,
+  "current_period_id": "sforzesco"
+ },
+ {
+  "id": "madonna-del-certosino",
+  "title": "Madonna del Certosino",
+  "artists": [
+   "Bergognone"
+  ],
+  "city": "Milano",
+  "date_text": "1488-1494",
+  "year_start": 1488,
+  "year_end": 1494,
+  "current_period_id": "umanesimo-lombardo"
+ },
+ {
+  "id": "modello-duomo-pavia",
+  "title": "Modello del duomo di Pavia",
+  "artists": [
+   "Cristoforo Rocchi",
+   "Giovan Pietro Fugazza"
+  ],
+  "city": "Pavia",
+  "date_text": "fine del XV secolo",
+  "year_start": 1488,
+  "year_end": 1500,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "battaglia-di-centauri",
+  "title": "Battaglia di centauri",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Firenze",
+  "date_text": "1490-1492",
+  "year_start": 1490,
+  "year_end": 1492,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "belle-ferronniere",
+  "title": "Ritratto di dama (detta La Belle Ferronnière)",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Parigi",
+  "date_text": "1490-1495",
+  "year_start": 1490,
+  "year_end": 1495,
+  "current_period_id": "sforzesco"
+ },
+ {
+  "id": "cristo-alla-colonna-bramante",
+  "title": "Cristo alla colonna",
+  "artists": [
+   "Donato Bramante"
+  ],
+  "city": "Milano",
+  "date_text": "1490 circa",
+  "year_start": 1490,
+  "year_end": 1490,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "cristo-risorto-bramantino",
+  "title": "Cristo risorto (Uomo dei dolori)",
+  "artists": [
+   "Bramantino"
+  ],
+  "city": "Madrid",
+  "date_text": "1490 circa",
+  "year_start": 1490,
+  "year_end": 1490,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "madonna-della-scala",
+  "title": "Madonna della Scala (Madonna con il Bambino)",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Firenze",
+  "date_text": "1490 circa",
+  "year_start": 1490,
+  "year_end": 1490,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "uomo-vitruviano",
+  "title": "Uomo vitruviano",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Venezia",
+  "date_text": "1490 circa",
+  "year_start": 1490,
+  "year_end": 1490,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "vergine-delle-rocce-seconda",
+  "title": "Vergine delle rocce (seconda versione)",
+  "artists": [
+   "Leonardo da Vinci",
+   "Ambrogio De Predis"
+  ],
+  "city": "Londra",
+  "date_text": "1491-1508 circa",
+  "year_start": 1491,
+  "year_end": 1508,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "appartamento-borgia-osiride-iside",
+  "title": "Appartamento Borgia, Mito di Iside e Osiride",
+  "artists": [
+   "Pinturicchio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1492-1494",
+  "year_start": 1492,
+  "year_end": 1494,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "compianto-sul-cristo-morto-botticelli",
+  "title": "Compianto sul Cristo morto con san Gerolamo, san Paolo e san Pietro",
+  "artists": [
+   "Sandro Botticelli"
+  ],
+  "city": "Monaco",
+  "date_text": "1492 circa",
+  "year_start": 1492,
+  "year_end": 1492,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "disputa-santa-caterina",
+  "title": "Disputa di santa Caterina d'Alessandria con i filosofi",
+  "artists": [
+   "Pinturicchio"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1492-1494",
+  "year_start": 1492,
+  "year_end": 1494,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "piazza-ducale-vigevano",
+  "title": "Piazza Ducale con la torre del Bramante",
+  "artists": [
+   "Donato Bramante"
+  ],
+  "city": "Vigevano",
+  "date_text": "1492-1496",
+  "year_start": 1492,
+  "year_end": 1496,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "santa-maria-delle-grazie-tribuna",
+  "title": "Tribuna e tiburio della chiesa di Santa Maria delle Grazie",
+  "artists": [
+   "Donato Bramante"
+  ],
+  "city": "Milano",
+  "date_text": "1492-1497",
+  "year_start": 1492,
+  "year_end": 1497,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "monumento-funebre-innocenzo-viii",
+  "title": "Monumento funebre di Innocenzo VIII",
+  "artists": [
+   "Antonio Pollaiolo"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1493-1497",
+  "year_start": 1493,
+  "year_end": 1497,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "granchio-marino-durer",
+  "title": "Granchio marino",
+  "artists": [
+   "Albrecht Dürer"
+  ],
+  "city": "Rotterdam",
+  "date_text": "1495",
+  "year_start": 1495,
+  "year_end": 1495,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "madonna-del-sacco-perugino",
+  "title": "Madonna in adorazione del Bambino (detta Madonna del sacco)",
+  "artists": [
+   "Pietro Perugino"
+  ],
+  "city": "Firenze",
+  "date_text": "1495-1500",
+  "year_start": 1495,
+  "year_end": 1500,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "morte-di-procri",
+  "title": "Morte di Procri",
+  "artists": [
+   "Piero di Cosimo"
+  ],
+  "city": "Londra",
+  "date_text": "1495 circa",
+  "year_start": 1495,
+  "year_end": 1495,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "ritratto-di-luca-pacioli",
+  "title": "Ritratto di Luca Pacioli e giovane ignoto (forse Guidobaldo da Montefeltro)",
+  "artists": [
+   "Jacopo de' Barbari"
+  ],
+  "city": "Napoli",
+  "date_text": "1495 circa",
+  "year_start": 1495,
+  "year_end": 1495,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "san-filippo-scaccia-dragone",
+  "title": "San Filippo scaccia il dragone dal tempio di Hierapolis",
+  "artists": [
+   "Filippino Lippi"
+  ],
+  "city": "Firenze",
+  "date_text": "1495-1496",
+  "year_start": 1495,
+  "year_end": 1496,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "san-giovanni-resuscita-drusiana",
+  "title": "San Giovanni resuscita Drusiana",
+  "artists": [
+   "Filippino Lippi"
+  ],
+  "city": "Firenze",
+  "date_text": "1495-1496",
+  "year_start": 1495,
+  "year_end": 1496,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "ultima-cena-leonardo",
+  "title": "Ultima cena",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Milano",
+  "date_text": "1495-1497",
+  "year_start": 1495,
+  "year_end": 1497,
+  "current_period_id": "sforzesco"
+ },
+ {
+  "id": "nativita-di-gesu-perugino",
+  "title": "Natività di Gesù",
+  "artists": [
+   "Pietro Perugino"
+  ],
+  "city": "Perugia",
+  "date_text": "1497-1498",
+  "year_start": 1497,
+  "year_end": 1498,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "pieta-vaticana",
+  "title": "Pietà (Michelangelo)",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "1497-1499",
+  "year_start": 1497,
+  "year_end": 1499,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "quattro-cavalieri-dellapocalisse-durer",
+  "title": "I quattro cavalieri dell'Apocalisse",
+  "artists": [
+   "Albrecht Dürer"
+  ],
+  "city": "New York",
+  "date_text": "1498",
+  "year_start": 1498,
+  "year_end": 1498,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "sala-delle-asse",
+  "title": "Sala delle Asse",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Milano",
+  "date_text": "1498",
+  "year_start": 1498,
+  "year_end": 1498,
+  "current_period_id": "sforzesco"
+ },
+ {
+  "id": "cappella-san-brizio-ciclo-signorelli",
+  "title": "Ciclo della cappella di San Brizio",
+  "artists": [
+   "Luca Signorelli"
+  ],
+  "city": "Orvieto",
+  "date_text": "1499-1502",
+  "year_start": 1499,
+  "year_end": 1502,
+  "current_period_id": "quattrocento"
+ },
+ {
+  "id": "cappella-san-brizio-zoccolatura",
+  "title": "Zoccolatura con ritratto di Ovidio",
+  "artists": [
+   "Luca Signorelli"
+  ],
+  "city": "Orvieto",
+  "date_text": "1499-1502",
+  "year_start": 1499,
+  "year_end": 1502,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "resurrezione-della-carne-signorelli",
+  "title": "Resurrezione della carne",
+  "artists": [
+   "Luca Signorelli"
+  ],
+  "city": "Orvieto",
+  "date_text": "1499-1502",
+  "year_start": 1499,
+  "year_end": 1502,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "ritratto-isabella-deste-leonardo",
+  "title": "Ritratto di Isabella d'Este",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Parigi",
+  "date_text": "1499-1500",
+  "year_start": 1499,
+  "year_end": 1500,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "santanna-madonna-bambino-giovannino-cartone",
+  "title": "Sant'Anna, la Madonna con il Bambino e san Giovannino (cartone)",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Londra",
+  "date_text": "1499-1500 circa",
+  "year_start": 1499,
+  "year_end": 1500,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "autoritratto-con-pelliccia-durer",
+  "title": "Autoritratto con pelliccia",
+  "artists": [
+   "Albrecht Dürer"
+  ],
+  "city": "Monaco",
+  "date_text": "1500",
+  "year_start": 1500,
+  "year_end": 1500,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "chiostro-santa-maria-della-pace",
+  "title": "Chiostro di Santa Maria della Pace",
+  "artists": [
+   "Donato Bramante"
+  ],
+  "city": "Roma",
+  "date_text": "1500-1504",
+  "year_start": 1500,
+  "year_end": 1504,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "gioiello-marte-minerva-venere-belli",
+  "title": "Gioiello rinascimentale raffigurante Marte, Minerva, Venere e Cupido",
+  "artists": [],
+  "city": "Cleveland",
+  "date_text": "1500 circa",
+  "year_start": 1500,
+  "year_end": 1500,
+  "current_period_id": "umanesimo-fiorentino"
+ },
+ {
+  "id": "pala-casio-boltraffio",
+  "title": "Madonna con il Bambino tra i santi Giovanni Battista e Sebastiano e due donatori (Pala Casio)",
+  "artists": [
+   "Giovanni Antonio Boltraffio"
+  ],
+  "city": "Parigi",
+  "date_text": "1500 circa",
+  "year_start": 1500,
+  "year_end": 1500,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "david-michelangelo",
+  "title": "David",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Firenze",
+  "date_text": "1501-1504",
+  "year_start": 1501,
+  "year_end": 1504,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "nativita-mistica",
+  "title": "Natività mistica",
+  "artists": [
+   "Sandro Botticelli"
+  ],
+  "city": "Londra",
+  "date_text": "1501",
+  "year_start": 1501,
+  "year_end": 1501,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "nemesi-grande-fortuna-durer",
+  "title": "Nemesi (La Grande Fortuna)",
+  "artists": [
+   "Albrecht Dürer"
+  ],
+  "city": "Karlsruhe",
+  "date_text": "1501",
+  "year_start": 1501,
+  "year_end": 1501,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "sposalizio-della-vergine-perugino",
+  "title": "Sposalizio della Vergine (Perugino)",
+  "artists": [
+   "Pietro Perugino"
+  ],
+  "city": "Caen",
+  "date_text": "1501-1504",
+  "year_start": 1501,
+  "year_end": 1504,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "studio-david-disegno",
+  "title": "Studio per la figura di David",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Parigi",
+  "date_text": "1502-1503 circa",
+  "year_start": 1502,
+  "year_end": 1503,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "tempietto-san-pietro-in-montorio",
+  "title": "Tempietto di San Pietro in Montorio",
+  "artists": [
+   "Donato Bramante"
+  ],
+  "city": "Roma",
+  "date_text": "1502-1508",
+  "year_start": 1502,
+  "year_end": 1508,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "battaglia-di-anghiari",
+  "title": "Battaglia di Anghiari (perduta)",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Firenze",
+  "date_text": "1503-1506",
+  "year_start": 1503,
+  "year_end": 1506,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "la-tempesta-giorgione",
+  "title": "La tempesta",
+  "artists": [
+   "Giorgione"
+  ],
+  "city": "Venezia",
+  "date_text": "1503-1505",
+  "year_start": 1503,
+  "year_end": 1505,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "lotta-tra-amore-e-castita",
+  "title": "Lotta tra Amore e Castità",
+  "artists": [
+   "Pietro Perugino"
+  ],
+  "city": "Parigi",
+  "date_text": "1503 circa",
+  "year_start": 1503,
+  "year_end": 1503,
+  "current_period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "monna-lisa",
+  "title": "Monna Lisa (La Gioconda)",
+  "artists": [
+   "Leonardo da Vinci"
+  ],
+  "city": "Parigi",
+  "date_text": "1503-1506 e 1513-1516",
+  "year_start": 1503,
+  "year_end": 1516,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "pala-di-castelfranco-giorgione",
+  "title": "Madonna in trono con il Bambino tra i santi Nicasio e Francesco (Pala di Castelfranco)",
+  "artists": [
+   "Giorgione"
+  ],
+  "city": "Castelfranco Veneto",
+  "date_text": "1503-1504 circa",
+  "year_start": 1503,
+  "year_end": 1504,
+  "current_period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "tondo-pitti",
+  "title": "Tondo Pitti (Madonna con il Bambino e san Giovannino)",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Firenze",
+  "date_text": "1503-1504",
+  "year_start": 1503,
+  "year_end": 1504,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "tondo-taddei",
+  "title": "Madonna con il Bambino e san Giovannino (detto Tondo Taddei)",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Londra",
+  "date_text": "1504 circa",
+  "year_start": 1503,
+  "year_end": 1504,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "battaglia-di-cascina-cartone",
+  "title": "Battaglia di Càscina (cartone preparatorio, perduto)",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": null,
+  "date_text": "1504-1506",
+  "year_start": 1504,
+  "year_end": 1506,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "cortile-del-belvedere",
+  "title": "Cortile del Belvedere",
+  "artists": [
+   "Donato Bramante"
+  ],
+  "city": "Città del Vaticano",
+  "date_text": "dal 1504",
+  "year_start": 1504,
+  "year_end": 1514,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "progetto-bramantesco-san-pietro",
+  "title": "Progetto per la nuova basilica di San Pietro (disegno agli Uffizi)",
+  "artists": [
+   "Donato Bramante"
+  ],
+  "city": "Firenze",
+  "date_text": "1504-1505",
+  "year_start": 1504,
+  "year_end": 1506,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "ritratto-agnolo-doni",
+  "title": "Ritratto di Agnolo Doni",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Firenze",
+  "date_text": "1504-1507",
+  "year_start": 1504,
+  "year_end": 1507,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "ritratto-maddalena-strozzi",
+  "title": "Ritratto di Maddalena Strozzi",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Firenze",
+  "date_text": "1504-1507",
+  "year_start": 1504,
+  "year_end": 1507,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "san-matteo-michelangelo",
+  "title": "San Matteo",
+  "artists": [
+   "Michelangelo Buonarroti"
+  ],
+  "city": "Firenze",
+  "date_text": "1504-1506",
+  "year_start": 1504,
+  "year_end": 1506,
+  "current_period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "sposalizio-della-vergine-raffaello",
+  "title": "Sposalizio della Vergine (Raffaello)",
+  "artists": [
+   "Raffaello Sanzio"
+  ],
+  "city": "Milano",
+  "date_text": "1504",
+  "year_start": 1504,
+  "year_end": 1504,
+  "current_period_id": "rinascimento-maturo"
+ }
+]

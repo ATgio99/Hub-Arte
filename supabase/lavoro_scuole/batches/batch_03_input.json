@@ -1,0 +1,885 @@
+[
+ {
+  "id": "decorazione-scultorea-san-geminiano-wiligelmo",
+  "title": "Decorazione scultorea della cattedrale di San Geminiano (Portale centrale e lastre)",
+  "artists": [
+   "Wiligelmo"
+  ],
+  "city": "Modena",
+  "date_text": "1099-1130",
+  "year_start": 1099,
+  "year_end": 1130,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "enoch-elia-epigrafe-modena",
+  "title": "Enoch ed Elia con l'epigrafe commemorativa della fondazione",
+  "artists": [
+   "Wiligelmo"
+  ],
+  "city": "Modena",
+  "date_text": "primo quarto del XII secolo",
+  "year_start": 1099,
+  "year_end": 1130,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "facciata-cattedrale-modena-lanfranco",
+  "title": "Facciata della cattedrale di San Geminiano",
+  "artists": [
+   "Lanfranco"
+  ],
+  "city": "Modena",
+  "date_text": "1099-1184",
+  "year_start": 1099,
+  "year_end": 1184,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "fianco-esterno-cattedrale-modena",
+  "title": "Fianco esterno meridionale della cattedrale di San Geminiano",
+  "artists": [
+   "Lanfranco"
+  ],
+  "city": "Modena",
+  "date_text": "1099-1184",
+  "year_start": 1099,
+  "year_end": 1184,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "interno-cattedrale-modena-lanfranco",
+  "title": "Interno della cattedrale di San Geminiano",
+  "artists": [
+   "Lanfranco"
+  ],
+  "city": "Modena",
+  "date_text": "1099-1184",
+  "year_start": 1099,
+  "year_end": 1184,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "porta-dei-principi-modena",
+  "title": "Porta dei Principi",
+  "artists": [
+   "Maestro di San Geminiano"
+  ],
+  "city": "Modena",
+  "date_text": "primo quarto del XII secolo",
+  "year_start": 1099,
+  "year_end": 1130,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "ambone-epistola-ravello",
+  "title": "Ambone dell'Epistola",
+  "artists": [],
+  "city": "Ravello",
+  "date_text": "Prima metà del XII secolo",
+  "year_start": 1100,
+  "year_end": 1150,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "basilica-san-clemente-roma",
+  "title": "Basilica superiore di San Clemente al Laterano",
+  "artists": [],
+  "city": "Roma",
+  "date_text": "1100-1118",
+  "year_start": 1100,
+  "year_end": 1118,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "basilica-santa-maria-cosmedin-roma",
+  "title": "Basilica di Santa Maria in Cosmedin",
+  "artists": [],
+  "city": "Roma",
+  "date_text": "Entro il 1123 (consacrata nel 1123)",
+  "year_start": 1100,
+  "year_end": 1123,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "cattedra-di-elia-bari",
+  "title": "Cattedra di Elia",
+  "artists": [
+   "Maestro di Elia"
+  ],
+  "city": "Bari",
+  "date_text": "1105-1150",
+  "year_start": 1105,
+  "year_end": 1150,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "fonte-battesimale-renier-de-huy",
+  "title": "Fonte battesimale",
+  "artists": [
+   "Renier de Huy"
+  ],
+  "city": "Liegi",
+  "date_text": "1107-1118",
+  "year_start": 1107,
+  "year_end": 1118,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "decorazione-sant-climent-taull",
+  "title": "Cristo Pantocratore della chiesa di Sant Climent a Taüll",
+  "artists": [],
+  "city": "Barcellona",
+  "date_text": "prima del 1123",
+  "year_start": 1110,
+  "year_end": 1123,
+  "current_period_id": "arte-catalana"
+ },
+ {
+  "id": "pulpito-san-giulio-orta",
+  "title": "Pulpito della chiesa parrocchiale dell'isola di San Giulio",
+  "artists": [],
+  "city": "Orta San Giulio",
+  "date_text": "1118 circa",
+  "year_start": 1118,
+  "year_end": 1118,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "basilica-san-zeno-verona",
+  "title": "Basilica di San Zeno",
+  "artists": [
+   "Maestro Niccolò"
+  ],
+  "city": "Verona",
+  "date_text": "1120-1138",
+  "year_start": 1120,
+  "year_end": 1138,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "basilica-san-zeno-verona-int",
+  "title": "Interno della basilica di San Zeno",
+  "artists": [],
+  "city": "Verona",
+  "date_text": "1120-1138",
+  "year_start": 1120,
+  "year_end": 1138,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "capitelli-sainte-marie-madeleine-vezelay",
+  "title": "Capitelli della navata centrale di Sainte-Marie-Madeleine",
+  "artists": [],
+  "city": "Vézelay",
+  "date_text": "1120-1140",
+  "year_start": 1120,
+  "year_end": 1140,
+  "current_period_id": "cluniacense"
+ },
+ {
+  "id": "capitello-davide-golia-vezelay",
+  "title": "Davide e Golia (capitello della navata centrale)",
+  "artists": [],
+  "city": "Vézelay",
+  "date_text": "1120-1140",
+  "year_start": 1120,
+  "year_end": 1140,
+  "current_period_id": "cluniacense"
+ },
+ {
+  "id": "capitello-mulino-mistico-vezelay",
+  "title": "Il Mulino Mistico (capitello della navata centrale)",
+  "artists": [],
+  "city": "Vézelay",
+  "date_text": "1120-1140",
+  "year_start": 1120,
+  "year_end": 1140,
+  "current_period_id": "cluniacense"
+ },
+ {
+  "id": "cattedrale-saint-lazare-autun",
+  "title": "Cattedrale di Saint-Lazare ad Autun",
+  "artists": [
+   "Gislebertus"
+  ],
+  "city": "Autun",
+  "date_text": "1120-1147",
+  "year_start": 1120,
+  "year_end": 1147,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "plutei-san-ciriaco-ancona",
+  "title": "San Ciriaco e Due pavoni affrontati (plutei del transetto destro)",
+  "artists": [
+   "Maestro Leonardo"
+  ],
+  "city": "Ancona",
+  "date_text": "XII secolo",
+  "year_start": 1120,
+  "year_end": 1189,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "portale-bronzeo-san-zeno",
+  "title": "Portale bronzeo",
+  "artists": [],
+  "city": "Verona",
+  "date_text": "1120-1150",
+  "year_start": 1120,
+  "year_end": 1150,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "portale-san-zeno-verona",
+  "title": "Portale d'ingresso della basilica di San Zeno",
+  "artists": [
+   "Maestro Niccolò"
+  ],
+  "city": "Verona",
+  "date_text": "1120-1138",
+  "year_start": 1120,
+  "year_end": 1138,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "portale-sud-saint-pierre-moissac",
+  "title": "Portale sud della chiesa di Saint-Pierre",
+  "artists": [],
+  "city": "Moissac",
+  "date_text": "1120-1130",
+  "year_start": 1120,
+  "year_end": 1130,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "profeta-geremia-moissac",
+  "title": "Profeta Geremia (particolare del trumeau del portale sud)",
+  "artists": [],
+  "city": "Moissac",
+  "date_text": "1120-1130",
+  "year_start": 1120,
+  "year_end": 1130,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "vegliardi-moissac",
+  "title": "Vegliardi (particolare della decorazione del timpano del portale sud)",
+  "artists": [],
+  "city": "Moissac",
+  "date_text": "1120-1130",
+  "year_start": 1120,
+  "year_end": 1130,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "mosaico-absidale-san-clemente",
+  "title": "Mosaico absidale della basilica superiore di San Clemente",
+  "artists": [],
+  "city": "Roma",
+  "date_text": "1130 circa",
+  "year_start": 1125,
+  "year_end": 1140,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "abbazia-fontenay-borgogna",
+  "title": "Abbazia di Fontenay",
+  "artists": [],
+  "city": "Firenze",
+  "date_text": "Consacrata nel 1147",
+  "year_start": 1130,
+  "year_end": 1147,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "aquila-di-suger",
+  "title": "Aquila di Suger",
+  "artists": [
+   "Suger"
+  ],
+  "city": "Parigi",
+  "date_text": "Prima del 1147",
+  "year_start": 1130,
+  "year_end": 1147,
+  "current_period_id": "gotico-francese"
+ },
+ {
+  "id": "cappella-palatina-palermo",
+  "title": "Cappella Palatina",
+  "artists": [],
+  "city": "Palermo",
+  "date_text": "1130-1143",
+  "year_start": 1130,
+  "year_end": 1143,
+  "current_period_id": "romanico-normanno-siciliano"
+ },
+ {
+  "id": "chiesa-santa-maria-ammiraglio-martorana",
+  "title": "Chiesa di Santa Maria dell'Ammiraglio (Martorana)",
+  "artists": [],
+  "city": "Palermo",
+  "date_text": "Entro il 1143",
+  "year_start": 1130,
+  "year_end": 1143,
+  "current_period_id": "romanico-normanno-siciliano"
+ },
+ {
+  "id": "metope-maestro-delle-metope",
+  "title": "Metope dei contrafforti esterni",
+  "artists": [
+   "Maestro delle Metope"
+  ],
+  "city": "Modena",
+  "date_text": "anni Trenta del XII secolo",
+  "year_start": 1130,
+  "year_end": 1145,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "soffitto-muqarnas-cappella-palatina",
+  "title": "Soffitto a muqarnas della navata centrale della Cappella Palatina",
+  "artists": [],
+  "city": "Palermo",
+  "date_text": "1130-1143",
+  "year_start": 1130,
+  "year_end": 1143,
+  "current_period_id": "romanico-normanno-siciliano"
+ },
+ {
+  "id": "cattedrale-cefalù",
+  "title": "Cattedrale del Santissimo Salvatore di Cefalù",
+  "artists": [],
+  "city": "Cefalù",
+  "date_text": "1131-1267 (compiuta ~1166, consacrata 1267)",
+  "year_start": 1131,
+  "year_end": 1267,
+  "current_period_id": "romanico-normanno-siciliano"
+ },
+ {
+  "id": "chiesa-abbaziale-saint-denis",
+  "title": "Chiesa abbaziale di Saint-Denis",
+  "artists": [
+   "Suger"
+  ],
+  "city": "Parigi",
+  "date_text": "1132-1144 (facciata e coro); riconstruita 1231 ss.",
+  "year_start": 1132,
+  "year_end": 1144,
+  "current_period_id": "gotico-francese"
+ },
+ {
+  "id": "chiesa-san-giovanni-eremiti-palermo",
+  "title": "Chiesa di San Giovanni degli Eremiti",
+  "artists": [],
+  "city": "Palermo",
+  "date_text": "1132-1136",
+  "year_start": 1132,
+  "year_end": 1136,
+  "current_period_id": "romanico-normanno-siciliano"
+ },
+ {
+  "id": "basilica-santa-maria-trastevere-roma",
+  "title": "Basilica di Santa Maria in Trastevere",
+  "artists": [],
+  "city": "Roma",
+  "date_text": "1138-1148",
+  "year_start": 1138,
+  "year_end": 1148,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "san-zeno-benedice-milizie-verona",
+  "title": "San Zeno che benedice le milizie veronesi (decorazione della lunetta del portale)",
+  "artists": [
+   "Maestro Niccolò"
+  ],
+  "city": "Verona",
+  "date_text": "1138 circa",
+  "year_start": 1138,
+  "year_end": 1138,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "chiesa-abbaziale-fontenay",
+  "title": "Chiesa abbaziale di Fontenay",
+  "artists": [],
+  "city": "Montbard",
+  "date_text": "1139-1147",
+  "year_start": 1139,
+  "year_end": 1147,
+  "current_period_id": "cistercense"
+ },
+ {
+  "id": "cristo-sol-invictus-san-nicola-bari",
+  "title": "Cristo Sol Invictus (chiave dell'archivolto del protiro)",
+  "artists": [
+   "Maestro di Elia"
+  ],
+  "city": "Bari",
+  "date_text": "metà XII secolo",
+  "year_start": 1140,
+  "year_end": 1160,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "eva-paradiso-terrestre-autun",
+  "title": "Eva nel Paradiso terrestre",
+  "artists": [
+   "Gislebertus"
+  ],
+  "city": "Autun",
+  "date_text": "1140-1150",
+  "year_start": 1140,
+  "year_end": 1150,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "giudizio-universale-autun",
+  "title": "Giudizio Universale (timpano del portale d'ingresso)",
+  "artists": [
+   "Gislebertus"
+  ],
+  "city": "Autun",
+  "date_text": "1140-1150",
+  "year_start": 1140,
+  "year_end": 1150,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "mosaici-cappella-palatina-programma",
+  "title": "Ciclo musivo della Cappella Palatina",
+  "artists": [],
+  "city": "Palermo",
+  "date_text": "1140-1189 (zona presbiteriale entro 1143; navate 1154-1189)",
+  "year_start": 1140,
+  "year_end": 1189,
+  "current_period_id": "romanico-normanno-siciliano"
+ },
+ {
+  "id": "porta-della-pescheria-modena",
+  "title": "Porta della Pescheria",
+  "artists": [
+   "Maestro di Artù"
+  ],
+  "city": "Modena",
+  "date_text": "metà del XII secolo",
+  "year_start": 1140,
+  "year_end": 1160,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "portale-saint-lazare-autun",
+  "title": "Portale d'ingresso della cattedrale di Saint-Lazare",
+  "artists": [
+   "Gislebertus"
+  ],
+  "city": "Autun",
+  "date_text": "1140-1150",
+  "year_start": 1140,
+  "year_end": 1150,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "protiro-portale-san-nicola-bari",
+  "title": "Protiro e portale maggiore della basilica di San Nicola",
+  "artists": [
+   "Maestro di Elia"
+  ],
+  "city": "Bari",
+  "date_text": "metà XII secolo",
+  "year_start": 1140,
+  "year_end": 1160,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "sculture-saint-lazare-autun-gislebertus",
+  "title": "Sculture di Saint-Lazare ad Autun (complesso decorativo)",
+  "artists": [
+   "Gislebertus"
+  ],
+  "city": "Autun",
+  "date_text": "1140-1150",
+  "year_start": 1140,
+  "year_end": 1150,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "cristo-pantocratore-cappella-palatina",
+  "title": "Cristo Pantocratore (catino absidale della Cappella Palatina)",
+  "artists": [],
+  "city": "Palermo",
+  "date_text": "1143",
+  "year_start": 1143,
+  "year_end": 1143,
+  "current_period_id": "arte-bizantina"
+ },
+ {
+  "id": "vetrate-abside-saint-denis",
+  "title": "Vetrate dell'abside della chiesa abbaziale di Saint-Denis",
+  "artists": [
+   "Suger"
+  ],
+  "city": "Parigi",
+  "date_text": "1144-1151",
+  "year_start": 1144,
+  "year_end": 1151,
+  "current_period_id": "gotico-francese"
+ },
+ {
+  "id": "re-e-regine-di-israele-chartres",
+  "title": "Re e regine di Israele (decorazione scultorea del Portale Reale)",
+  "artists": [],
+  "city": "Chartres",
+  "date_text": "1145 circa",
+  "year_start": 1145,
+  "year_end": 1145,
+  "current_period_id": "gotico"
+ },
+ {
+  "id": "sara-abramo-agar-chartres",
+  "title": "Sara (?), Abramo (?), Agar (?) (particolare del portale sinistro del Portale Reale)",
+  "artists": [],
+  "city": "Chartres",
+  "date_text": "1145 circa",
+  "year_start": 1145,
+  "year_end": 1145,
+  "current_period_id": "gotico"
+ },
+ {
+  "id": "cristo-pantocratore-cefalù",
+  "title": "Cristo Pantocratore (catino absidale della cattedrale di Cefalù)",
+  "artists": [],
+  "city": "Cefalù",
+  "date_text": "1148",
+  "year_start": 1148,
+  "year_end": 1148,
+  "current_period_id": "arte-bizantina"
+ },
+ {
+  "id": "facciata-saint-gilles-du-gard",
+  "title": "Facciata della chiesa abbaziale di Saint-Gilles",
+  "artists": [],
+  "city": "Saint-Gilles-du-Gard",
+  "date_text": "1150-1160",
+  "year_start": 1150,
+  "year_end": 1160,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "battistero-san-giovanni-battista-pisa",
+  "title": "Battistero di San Giovanni Battista",
+  "artists": [
+   "Diotisalvi",
+   "Nicola Pisano"
+  ],
+  "city": "Pisa",
+  "date_text": "Dal 1152 (Diotisalvi); cuspidi gotiche XIII sec. (Nicola Pisano)",
+  "year_start": 1152,
+  "year_end": 1300,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "porta-bronzea-novgorod",
+  "title": "Portale meridionale con storie bibliche ed evangeliche",
+  "artists": [
+   "Riquinus",
+   "Weissmuth",
+   "Abraam"
+  ],
+  "city": "Novgorod",
+  "date_text": "1152-1156",
+  "year_start": 1152,
+  "year_end": 1156,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "chiesa-san-cataldo-palermo",
+  "title": "Chiesa di San Cataldo",
+  "artists": [],
+  "city": "Palermo",
+  "date_text": "1154-1161",
+  "year_start": 1154,
+  "year_end": 1161,
+  "current_period_id": "romanico-normanno-siciliano"
+ },
+ {
+  "id": "ambone-moscufo-nicodemo",
+  "title": "Ambone",
+  "artists": [
+   "Nicodemo"
+  ],
+  "city": "Moscufo",
+  "date_text": "1159",
+  "year_start": 1159,
+  "year_end": 1159,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "pulpito-maestro-guglielmo-pisa",
+  "title": "Pulpito di Maestro Guglielmo",
+  "artists": [
+   "Maestro Guglielmo"
+  ],
+  "city": "Cagliari",
+  "date_text": "1159-1162",
+  "year_start": 1159,
+  "year_end": 1162,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "ambone-guarna-salerno",
+  "title": "Ambone Guarna della cattedrale di San Matteo",
+  "artists": [],
+  "city": "Salerno",
+  "date_text": "Seconda metà del XII secolo",
+  "year_start": 1163,
+  "year_end": 1200,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "cattedrale-notre-dame-parigi",
+  "title": "Cattedrale di Notre-Dame a Parigi",
+  "artists": [],
+  "city": "Parigi",
+  "date_text": "1163-1344",
+  "year_start": 1163,
+  "year_end": 1344,
+  "current_period_id": "gotico-francese"
+ },
+ {
+  "id": "chiesa-abbaziale-fossanova",
+  "title": "Chiesa abbaziale di Fossanova",
+  "artists": [],
+  "city": "Priverno",
+  "date_text": "1163-1208 (facciata e navata: 1187-1206)",
+  "year_start": 1163,
+  "year_end": 1208,
+  "current_period_id": "gotico-cistercense"
+ },
+ {
+  "id": "portico-della-gloria-santiago",
+  "title": "Cristo Giudice tra gli evangelisti e gli eletti (Portico della Gloria)",
+  "artists": [
+   "Maestro Matteo"
+  ],
+  "city": "Santiago de Compostela",
+  "date_text": "1168-1188 circa",
+  "year_start": 1168,
+  "year_end": 1188,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "gesta-theodorici-miniatura-cassiodoro",
+  "title": "Gesta Theodorici Regis (frontespizio raffigurante Cassiodoro)",
+  "artists": [],
+  "city": "Leida",
+  "date_text": "1177 circa",
+  "year_start": 1170,
+  "year_end": 1185,
+  "current_period_id": "eta-carolingia"
+ },
+ {
+  "id": "cattedrale-santa-maria-nuova-monreale",
+  "title": "Cattedrale di Santa Maria Nuova a Monreale",
+  "artists": [],
+  "city": "Monreale",
+  "date_text": "Dal 1172, completata 1189",
+  "year_start": 1172,
+  "year_end": 1189,
+  "current_period_id": "romanico-normanno-siciliano"
+ },
+ {
+  "id": "cupola-ascensione-san-marco",
+  "title": "Cupola dell'Ascensione (Basilica di San Marco)",
+  "artists": [],
+  "city": "Venezia",
+  "date_text": "Seconda metà XII secolo",
+  "year_start": 1172,
+  "year_end": 1200,
+  "current_period_id": "arte-bizantina"
+ },
+ {
+  "id": "mosaici-basilica-san-marco-ciclo",
+  "title": "Ciclo musivo della basilica di San Marco",
+  "artists": [],
+  "city": "Venezia",
+  "date_text": "XIII secolo (XII-XVII sec.)",
+  "year_start": 1172,
+  "year_end": 1300,
+  "current_period_id": "arte-bizantina"
+ },
+ {
+  "id": "deposizione-barisano-trani",
+  "title": "Deposizione di Cristo dalla croce (formella del portale)",
+  "artists": [
+   "Barisano da Trani"
+  ],
+  "city": "Trani",
+  "date_text": "1175 circa",
+  "year_start": 1173,
+  "year_end": 1178,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "figura-santo-barisano-trani",
+  "title": "Figura di santo (formella del portale)",
+  "artists": [
+   "Barisano da Trani"
+  ],
+  "city": "Trani",
+  "date_text": "1175 circa",
+  "year_start": 1173,
+  "year_end": 1178,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "portale-barisano-trani",
+  "title": "Portale bronzeo di Barisano da Trani",
+  "artists": [
+   "Barisano da Trani"
+  ],
+  "city": "Trani",
+  "date_text": "1175 circa",
+  "year_start": 1173,
+  "year_end": 1178,
+  "current_period_id": "romanico"
+ },
+ {
+  "id": "torre-campanaria-pisa",
+  "title": "Torre campanaria di Pisa (Torre di Pisa)",
+  "artists": [
+   "Bonanno Pisano",
+   "Giovanni di Simone",
+   "Tommaso Pisano"
+  ],
+  "city": "Pisa",
+  "date_text": "Dal 1173; ripresa 1272; cella 1350 circa",
+  "year_start": 1173,
+  "year_end": 1350,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "cattedrale-di-canterbury-interno",
+  "title": "Interno della cattedrale di Nostro Signore Gesù Cristo",
+  "artists": [
+   "Guillaume de Sens"
+  ],
+  "city": "Canterbury",
+  "date_text": "1174-1184",
+  "year_start": 1174,
+  "year_end": 1184,
+  "current_period_id": "early-english-gothic"
+ },
+ {
+  "id": "pianta-cattedrale-canterbury",
+  "title": "Pianta della cattedrale di Nostro Signore Gesù Cristo, Canterbury",
+  "artists": [],
+  "city": "Canterbury",
+  "date_text": "1174-1184",
+  "year_start": 1174,
+  "year_end": 1184,
+  "current_period_id": "early-english-gothic"
+ },
+ {
+  "id": "cattedrale-di-strasburgo",
+  "title": "Cattedrale di Notre-Dame di Strasburgo",
+  "artists": [],
+  "city": "Strasburgo",
+  "date_text": "iniziata dopo il 1176; rifacimento dal 1220",
+  "year_start": 1176,
+  "year_end": null,
+  "current_period_id": "gotico-tedesco"
+ },
+ {
+  "id": "cattedrale-sant-andrea-amalfi",
+  "title": "Cattedrale di Sant'Andrea ad Amalfi",
+  "artists": [],
+  "city": "Amalfi",
+  "date_text": "Dal 1176",
+  "year_start": 1176,
+  "year_end": 1250,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "deposizione-di-cristo-antelami",
+  "title": "Deposizione di Cristo dalla croce",
+  "artists": [
+   "Benedetto Antelami"
+  ],
+  "city": "Parma",
+  "date_text": "1178",
+  "year_start": 1178,
+  "year_end": 1178,
+  "current_period_id": "gotico-italiano"
+ },
+ {
+  "id": "tre-marie-antelami",
+  "title": "Tre Marie (particolare della Deposizione di Cristo dalla croce)",
+  "artists": [
+   "Benedetto Antelami"
+  ],
+  "city": "Parma",
+  "date_text": "1178",
+  "year_start": 1178,
+  "year_end": 1178,
+  "current_period_id": "gotico-italiano"
+ },
+ {
+  "id": "belle-verriere-chartres",
+  "title": "La Belle Verrière (particolare della parte superiore)",
+  "artists": [],
+  "city": "Chartres",
+  "date_text": "1180-1220 circa",
+  "year_start": 1180,
+  "year_end": 1220,
+  "current_period_id": "gotico"
+ },
+ {
+  "id": "candelabro-pasquale-san-paolo-fuori-le-mura",
+  "title": "Candelabro pasquale della basilica di San Paolo fuori le Mura",
+  "artists": [
+   "Niccolò d'Angelo",
+   "Pietro Vassalletto"
+  ],
+  "city": "Roma",
+  "date_text": "Fine del XII secolo",
+  "year_start": 1180,
+  "year_end": 1200,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "chiostro-san-paolo-fuori-le-mura",
+  "title": "Chiostro della basilica di San Paolo fuori le Mura",
+  "artists": [
+   "Pietro Vassalletto",
+   "Jacopo Vassalletto"
+  ],
+  "city": "Roma",
+  "date_text": "XII secolo",
+  "year_start": 1180,
+  "year_end": 1230,
+  "current_period_id": "romanico-italiano"
+ },
+ {
+  "id": "cristo-pantocratore-monreale",
+  "title": "Cristo Pantocratore (catino absidale della cattedrale di Monreale)",
+  "artists": [],
+  "city": "Monreale",
+  "date_text": "1180-1190",
+  "year_start": 1180,
+  "year_end": 1190,
+  "current_period_id": "arte-bizantina"
+ },
+ {
+  "id": "mosaici-navate-cattedrale-monreale",
+  "title": "Ciclo musivo della cattedrale di Santa Maria Nuova a Monreale",
+  "artists": [],
+  "city": "Monreale",
+  "date_text": "1180-1190",
+  "year_start": 1180,
+  "year_end": 1190,
+  "current_period_id": "romanico-normanno-siciliano"
+ }
+]

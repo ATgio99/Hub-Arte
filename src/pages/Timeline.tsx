@@ -10,11 +10,11 @@ import PeriodDossier from "../components/PeriodDossier";
 import { usePrefersReducedMotion, EASE_OUT } from "../lib/motion";
 import type { Period, ArtEvent, Artist } from "../lib/types";
 
-const TYPE_COLOR: Record<string, string> = { epoca: "#b88a2e", corrente: "#b9692c", popolo: "#4f7d72" };
-// Nota: "popolo" è mantenuto nel mapping colore per coerenza dei dati, ma NON
-// viene più mostrato come filtro (rimosso su richiesta utente). Vedi
-// TIMELINE_TYPES sotto che elenca solo i tipi filtrabili.
-const TIMELINE_TYPES = ["epoca", "corrente"] as const;
+const TYPE_COLOR: Record<string, string> = { epoca: "#b88a2e", corrente: "#b9692c", scuola: "#4f7d72" };
+// Le tre fasce della timeline, dalla piu' ampia alla piu' specifica. L'ordine
+// qui e' anche l'ordine verticale delle fasce e dei filtri.
+const TIMELINE_TYPES = ["epoca", "corrente", "scuola"] as const;
+const TYPE_LABEL: Record<string, string> = { epoca: "Epoche", corrente: "Correnti", scuola: "Scuole" };
 const EVENT_COLOR: Record<string, string> = { politico: "#a8483f", religioso: "#9a6a92", culturale: "#6e8350", tecnologico: "#5f7e8c" };
 const EVENT_LABEL: Record<string, string> = { politico: "Politico", religioso: "Religioso", culturale: "Culturale", tecnologico: "Tecnologico" };
 
@@ -113,10 +113,11 @@ interface LaneItem extends Period { lane: number; }
 
 function layoutLanes(periods: Period[]): LaneItem[] {
   const out: LaneItem[] = [];
-  const byType: Record<string, Period[]> = { epoca: [], corrente: [], popolo: [] };
+  const byType: Record<string, Period[]> = { epoca: [], corrente: [], scuola: [] };
   periods.forEach((p) => (byType[p.type] ?? byType.corrente).push(p));
   let laneBase = 0;
-  for (const type of ["epoca", "popolo", "corrente"]) {
+  // Dall'alto verso il basso: epoche, poi correnti, poi scuole.
+  for (const type of ["epoca", "corrente", "scuola"]) {
     const arr = (byType[type] ?? []).slice().sort((a, b) => a.year_start - b.year_start);
     const laneEnds: number[] = [];
     for (const p of arr) {
@@ -470,7 +471,7 @@ export default function Timeline() {
       <div className="page-head">
         <div className="page-eyebrow"><span className="eyebrow">Visualizzazione temporale <span style={{ fontSize: 9, fontWeight: 700, color: "var(--ink-dim)", opacity: 0.5, textTransform: "lowercase", letterSpacing: "0.02em" }}>(beta)</span></span></div>
         <h1 className="page-title">Linea del tempo multilivello</h1>
-        <p className="page-lead">Epoche, popoli e correnti scorrono su corsie parallele: le sovrapposizioni temporali sono visibili, gli archi tracciano i flussi di contaminazione e gli eventi storici ancorano il contesto. Clicca una barra per espandere l'anteprima del periodo — con personaggi, autori, opere e glossario da ricordare — un pallino per il dettaglio dell'evento.</p>
+        <p className="page-lead">Epoche e correnti scorrono su corsie parallele: le sovrapposizioni temporali sono visibili, gli archi tracciano i flussi di contaminazione e gli eventi storici ancorano il contesto. Clicca una barra per espandere l'anteprima del periodo — con personaggi, autori, opere e glossario da ricordare — un pallino per il dettaglio dell'evento. Le scuole e le botteghe si trovano dentro la scheda della corrente che le contiene.</p>
       </div>
       <div className="page-rule" />
       <TimelineShell onFull={setFull} />
@@ -487,8 +488,10 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
   const [inFull, setInFull] = useState(false);
   const [showArtists, setShowArtists] = useState(false);
   const [searchQ, setSearchQ] = useState("");
-  // Filtri per tipo periodo (epoca/corrente/popolo) — solo nella vista periodi.
-  const [hideTypes, setHideTypes] = useState<Set<string>>(new Set());
+  // Filtri per tipo periodo (epoca/corrente/scuola) — solo nella vista periodi.
+  // Le scuole partono nascoste: la vista d'insieme mostra epoche e correnti, e si
+  // raggiungono le scuole aprendo la scheda della corrente che le contiene.
+  const [hideTypes, setHideTypes] = useState<Set<string>>(new Set(["scuola"]));
   // Filtri per categoria autore (Pittori, Scultori, ecc.) — solo nella vista autori.
   const [hideCats, setHideCats] = useState<Set<string>>(new Set());
   // PID del periodo da evidenziare (pulse) dopo click su risultato di ricerca.
@@ -499,7 +502,7 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
 
   // Conteggio periodi per tipo (per mostrare il numero accanto al filtro).
   const typeCounts = useMemo(() => {
-    const c: Record<string, number> = { epoca: 0, corrente: 0, popolo: 0 };
+    const c: Record<string, number> = { epoca: 0, corrente: 0, scuola: 0 };
     for (const p of allPeriods) if (periodIn(p)) c[p.type] = (c[p.type] ?? 0) + 1;
     return c;
   }, [allPeriods, periodIn]);
@@ -745,7 +748,7 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
           <span className="dot" style={{ background: "#b9692c", flexShrink: 0 }} />
           <span style={{ flex: 1, fontSize: 12.5 }}>autori</span>
         </button>
-        {/* Filtri tipo periodo (epoca/corrente) — solo vista periodi */}
+        {/* Filtri tipo periodo (epoca/corrente/scuola) — solo vista periodi */}
         {!showArtists && TIMELINE_TYPES.map((t) => {
           const c = TYPE_COLOR[t];
           const off = hideTypes.has(t);
@@ -762,7 +765,7 @@ function TimelineShell({ onFull }: { onFull: (b: boolean) => void }) {
               }}
             >
               <span className="dot" style={{ background: c, flexShrink: 0 }} />
-              <span style={{ flex: 1, fontSize: 12.5, textTransform: "capitalize" }}>{t}</span>
+              <span style={{ flex: 1, fontSize: 12.5 }}>{TYPE_LABEL[t] ?? t}</span>
               <span style={{ fontSize: 11, color: "var(--ink-dim)" }}>{count}</span>
             </button>
           );
