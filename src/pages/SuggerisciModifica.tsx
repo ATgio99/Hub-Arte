@@ -1,8 +1,19 @@
 // ============================================================================
-// SuggerisciModifica — form per proporre una modifica a un'opera esistente.
-// Rotta: /suggerisci-modifica?work=<id>
-// Scrive su Supabase (public.user_edit_suggestions). Solo utenti autenticati
-// non-admin: gli admin usano direttamente il button "Modifica" su Opera.tsx.
+// SuggerisciModifica — form per proporre una modifica a una scheda esistente.
+// Rotte: /suggerisci-modifica?work=<id>  oppure  ?artist=<id>
+//
+// Vale per le opere e per le schede di autori e committenti: chi arriva qui da
+// una scheda trova gia' scritto di che cosa sta parlando, e sceglie solo quale
+// campo correggere. I campi proposti cambiano secondo il tipo di scheda —
+// chiedere la «datazione testuale» di un autore non avrebbe senso.
+//
+// Scrive su Supabase (public.user_edit_suggestions). La tabella nasce per le
+// opere e ha una colonna work_id: ci mettiamo l'id della scheda qualunque essa
+// sia, perche' gli id di opere e autori non si sovrappongono mai (verificato:
+// zero collisioni su 1115 opere e 623 schede). Chi legge la richiesta capisce
+// il tipo cercando l'id nei due indici.
+//
+// Solo utenti autenticati non-admin: gli admin hanno il tasto «Modifica».
 // ============================================================================
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
@@ -10,12 +21,14 @@ import { supabase } from "../lib/supabase";
 import { BarraScheda } from "../components/ui";
 import { useAuth, CONTACT_EMAIL } from "../lib/auth";
 import { useData } from "../lib/store";
+import { isCommittente } from "../lib/data";
 
 type FieldKey =
   | "title" | "summary" | "analysis" | "date_text" | "year_start" | "year_end"
   | "type" | "location_city" | "location_place" | "materials"
   | "image_url" | "image_thumb" | "image_source"
-  | "importance" | "artist" | "period" | "technique" | "term";
+  | "importance" | "artist" | "period" | "technique" | "term"
+  | "name" | "aka" | "birth" | "death" | "role" | "bio" | "innovations";
 
 const FIELD_LABELS: Record<FieldKey, string> = {
   title: "Titolo",
@@ -36,13 +49,25 @@ const FIELD_LABELS: Record<FieldKey, string> = {
   period: "Periodo",
   technique: "Tecnica",
   term: "Termine di glossario",
+  name: "Nome",
+  aka: "Altri nomi con cui è conosciuto",
+  birth: "Anno di nascita",
+  death: "Anno di morte",
+  role: "Ruolo",
+  bio: "Biografia",
+  innovations: "Innovazioni",
 };
 
-const FIELD_ORDER: FieldKey[] = [
+const CAMPI_OPERA: FieldKey[] = [
   "title", "summary", "analysis", "date_text", "year_start", "year_end",
   "type", "location_city", "location_place", "materials",
   "image_url", "image_thumb", "image_source",
   "importance", "artist", "period", "technique", "term",
+];
+
+const CAMPI_AUTORE: FieldKey[] = [
+  "name", "aka", "role", "birth", "death", "bio", "innovations",
+  "period", "location_city",
 ];
 
 export default function SuggerisciModifica() {
@@ -50,10 +75,23 @@ export default function SuggerisciModifica() {
   const ix = useData();
   const nav = useNavigate();
   const [params] = useSearchParams();
-  const workId = params.get("work") ?? "";
-  const w = ix.workById.get(workId);
 
-  const [field, setField] = useState<FieldKey>("title");
+  // La scheda di partenza puo' essere un'opera o un autore/committente.
+  const idOpera = params.get("work") ?? "";
+  const idAutore = params.get("artist") ?? "";
+  const w = idOpera ? ix.workById.get(idOpera) : undefined;
+  const a = idAutore ? ix.artistById.get(idAutore) : undefined;
+
+  const tipo: "work" | "artist" = idAutore ? "artist" : "work";
+  const workId = idAutore || idOpera;
+  const record = (a ?? w) as unknown as Record<string, unknown> | undefined;
+  const campi = tipo === "artist" ? CAMPI_AUTORE : CAMPI_OPERA;
+  const rottaScheda = tipo === "artist" ? `/artista/${workId}` : `/opera/${workId}`;
+  const nomeTipo = tipo === "artist"
+    ? (a && isCommittente(a) ? "il committente" : "l'autore")
+    : "l'opera";
+
+  const [field, setField] = useState<FieldKey>(idAutore ? "name" : "title");
   const [currentValue, setCurrentValue] = useState<string>("");
   const [proposedValue, setProposedValue] = useState<string>("");
   const [reason, setReason] = useState<string>("");
@@ -61,50 +99,57 @@ export default function SuggerisciModifica() {
   const [error, setError] = useState<string | null>(null);
   const [ok, setOk] = useState(false);
 
-  // Quando cambia opera/campo, precompila "valore attuale"
+  // Quando cambia scheda o campo, precompila «valore attuale»
   useEffect(() => {
-    if (!w) { setCurrentValue(""); return; }
-    const v = (w as unknown as Record<string, unknown>)[field];
+    if (!record) { setCurrentValue(""); return; }
+    const v = record[field];
     if (v == null) setCurrentValue("");
     else if (Array.isArray(v)) setCurrentValue(v.join(", "));
     else setCurrentValue(String(v));
-  }, [w, field]);
+  }, [record, field]);
 
-  const workTitle = useMemo(() => w?.title ?? workId, [w, workId]);
-
-  // Redirect se admin → torna alla pagina opera (usano il button Modifica)
+  // Cambiando tipo di scheda il campo scelto potrebbe non esistere piu'.
   useEffect(() => {
-    if (isAdmin && workId) nav(`/opera/${workId}`, { replace: true });
-  }, [isAdmin, workId, nav]);
+    if (!campi.includes(field)) setField(campi[0]);
+  }, [campi, field]);
+
+  const workTitle = useMemo(() => a?.name ?? w?.title ?? workId, [a, w, workId]);
+
+  // Redirect se admin → torna alla scheda (usano il tasto Modifica)
+  useEffect(() => {
+    if (isAdmin && workId) nav(rottaScheda, { replace: true });
+  }, [isAdmin, workId, rottaScheda, nav]);
 
   if (!user) {
     return (
       <div className="wrap page" style={{ maxWidth: 560 }}>
         <h1 style={{ fontSize: "clamp(26px,4vw,38px)", letterSpacing: "-.02em", marginBottom: 16 }}>Suggerisci una modifica</h1>
         <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--ink-soft)" }}>
-          Per proporre una modifica a un'opera devi avere un account. La funzione permette di
+          Per proporre una modifica a una scheda devi avere un account. La funzione permette di
           tracciare lo stato della tua proposta e ricevere una risposta dagli amministratori.
         </p>
         <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--ink-soft)", marginTop: 12 }}>
           In alternativa, puoi scriverci direttamente a{" "}
-          <a href={`mailto:${CONTACT_EMAIL}?subject=Modifica opera: ${workTitle}`} className="tlink">{CONTACT_EMAIL}</a>.
+          <a href={`mailto:${CONTACT_EMAIL}?subject=Modifica scheda: ${workTitle}`} className="tlink">{CONTACT_EMAIL}</a>.
         </p>
         <div style={{ marginTop: 22, display: "flex", gap: 10 }}>
           <Link to="/login" className="btn gold">Accedi o registrati</Link>
-          {workId && <Link to={`/opera/${workId}`} className="btn ghost">Torna all'opera</Link>}
+          {workId && <Link to={rottaScheda} className="btn ghost">Torna alla scheda</Link>}
         </div>
       </div>
     );
   }
 
-  if (!w) {
+  if (!record) {
     return (
       <div className="wrap page" style={{ maxWidth: 560 }}>
-        <h1 style={{ fontSize: "clamp(26px,4vw,38px)", marginBottom: 16 }}>Opera non trovata</h1>
+        <h1 style={{ fontSize: "clamp(26px,4vw,38px)", marginBottom: 16 }}>Scheda non trovata</h1>
         <p style={{ fontSize: 16, color: "var(--ink-soft)" }}>
-          L'opera indicata non è presente nell'atlante. Verifica l'URL o torna al catalogo.
+          La scheda indicata non è nell'atlante. Controlla l'indirizzo, oppure torna al catalogo.
         </p>
-        <Link to="/opere" className="btn ghost" style={{ marginTop: 18 }}>← Torna alle opere</Link>
+        <Link to={tipo === "artist" ? "/artisti" : "/opere"} className="btn ghost" style={{ marginTop: 18 }}>
+          ← Torna al catalogo
+        </Link>
       </div>
     );
   }
@@ -143,8 +188,8 @@ export default function SuggerisciModifica() {
         Suggerisci una modifica
       </h1>
       <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "var(--ink-soft)", marginBottom: 8 }}>
-        Stai proponendo una modifica all'opera{" "}
-        <Link to={`/opera/${workId}`} style={{ color: "var(--gold-deep)", textDecoration: "underline" }}>
+        Stai proponendo una modifica a {nomeTipo}{" "}
+        <Link to={rottaScheda} style={{ color: "var(--gold-deep)", textDecoration: "underline" }}>
           {workTitle}
         </Link>.
       </p>
@@ -161,7 +206,7 @@ export default function SuggerisciModifica() {
             className="input"
             style={{ width: "100%", padding: "9px 11px", border: "1px solid var(--line)", borderRadius: 8, background: "var(--bg)", color: "var(--ink)", fontSize: 14 }}
           >
-            {FIELD_ORDER.map((f) => (
+            {campi.map((f) => (
               <option key={f} value={f}>{FIELD_LABELS[f]}</option>
             ))}
           </select>

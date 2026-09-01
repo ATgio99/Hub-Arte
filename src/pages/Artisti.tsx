@@ -7,6 +7,7 @@
 import { useMemo, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
+import { arrivatoDaTastiera } from "../lib/scorciatoie";
 import { FilterNote, Empty, EmptyTimeRange, FavStar } from "../components/ui";
 import { useFavorites } from "../lib/favorites";
 import { fmtYear, isCommittente } from "../lib/data";
@@ -18,6 +19,10 @@ export default function Artisti() {
 
   // Quando si arriva alla home degli Artisti, azzerare l'ultimo artista visitato
   useEffect(() => {
+    // Chi arriva con una scorciatoia sta solo cambiando sezione: la memoria
+    // di dove era rimasto non va toccata. La si azzera solo quando l'indice
+    // e' una scelta esplicita — il secondo clic sulla voce di menu.
+    if (arrivatoDaTastiera()) return;
     clearLastArtista();
   }, []);
 
@@ -29,7 +34,10 @@ export default function Artisti() {
   const searchRef = useRef<HTMLInputElement | null>(null);
   useEffect(() => {
     const isTouchPrimary = window.matchMedia?.("(pointer: coarse)")?.matches ?? false;
-    if (!isTouchPrimary && searchRef.current) {
+    // Chi e' arrivato con una scorciatoia sta usando la tastiera per
+    // navigare: mettergli il cursore nel campo di ricerca gli spegnerebbe
+    // le scorciatoie al tasto successivo.
+    if (!isTouchPrimary && !arrivatoDaTastiera() && searchRef.current) {
       const t = setTimeout(() => {
         try { searchRef.current?.focus(); } catch { /* ignore */ }
       }, 60);

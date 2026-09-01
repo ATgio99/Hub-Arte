@@ -1,12 +1,13 @@
 // ============================================================================
 // Pagine informative: Progetto, Privacy, Cookie, Termini, Crediti, Contatti.
 // Rotte: /legal/progetto, /legal/privacy, /legal/cookie, /legal/termini,
-//        /legal/crediti, /legal/contatti
+//        /legal/crediti, /legal/contatti, /legal/accessibilita
 // ============================================================================
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { CONTACT_EMAIL } from "../lib/auth";
 import PaginaModificabile from "../components/PaginaModificabile";
 import { BannerGitHub } from "../components/ui";
+import { SCORCIATOIE } from "../lib/scorciatoie";
 import { useData } from "../lib/store";
 import { isCommittente } from "../lib/data";
 
@@ -27,10 +28,16 @@ function useConteggi() {
     autori: autori.length,
     committenti: committenti.length,
     periodi: ix.ds.periods.length,
+    // I tre livelli si contano, non si ricavano per differenza: il totale
+    // cambia a ogni revisione del catalogo e una sottrazione fissa mentirebbe.
+    epoche: ix.ds.periods.filter((p) => p.type === "epoca").length,
+    correnti: ix.ds.periods.filter((p) => p.type === "corrente").length,
+    scuole: ix.ds.periods.filter((p) => p.type === "scuola").length,
     termini: ix.ds.terms.length,
     tecniche: ix.ds.techniques.length,
     connessioni: ix.ds.connections.length,
     donne,
+    conImmagine: ix.ds.works.filter((w) => w.image_url || w.image_thumb).length,
   };
 }
 
@@ -44,10 +51,14 @@ function segnapostoCatalogo(c: ReturnType<typeof useConteggi>): Record<string, s
     autori: num(c.autori),
     committenti: num(c.committenti),
     periodi: num(c.periodi),
+    epoche: num(c.epoche),
+    correnti: num(c.correnti),
+    scuole: num(c.scuole),
     termini: num(c.termini),
     tecniche: num(c.tecniche),
     connessioni: num(c.connessioni),
     donne: String(c.donne.length),
+    conImmagine: num(c.conImmagine),
     nomiDonne: c.donne.map((d) => d.name).join(", "),
   };
 }
@@ -79,30 +90,37 @@ export default function Legal() {
 
         <H2>Perché l'ho fatto</H2>
         <P>
-          Studiando storia dell'arte mi capitava sempre la stessa cosa: sapevo le singole
-          opere e non vedevo cosa le tenesse insieme. Chi aveva imparato da chi, quali città
-          contavano in un certo momento, chi tirava fuori i soldi perché una cappella venisse
-          affrescata. Sui manuali c'è tutto, ma sparso su duecento pagine.
+          Studiando storia dell'arte mi capitava sempre la stessa cosa: sapevo le singole opere
+          e non vedevo cosa le tenesse insieme. Che Masaccio e Masolino avessero dipinto nella
+          stessa cappella lo sapevo; che a pagarla fosse stato un mercante di seta che si
+          chiamava Felice Brancacci, no. Sui manuali c'è, ma tre capitoli più in là.
         </P>
         <P>
-          HUB Arte prova a tenere insieme quelle cose. I periodi si contengono l'uno dentro
-          l'altro, dall'epoca fino alla singola bottega; ogni opera è legata a chi l'ha fatta
-          e, quando si sa, a chi l'ha pagata; la linea del tempo, la mappa e il grafo sono tre
-          modi di guardare lo stesso materiale. Il sito è gratuito, senza pubblicità, e il
-          codice è pubblico con licenza MIT.
+          Da qui l'idea di un catalogo tenuto insieme dalle relazioni invece che dall'ordine
+          delle pagine. I periodi si contengono l'uno dentro l'altro su tre livelli — {num(c.epoche)} epoche, {num(c.correnti)} correnti, {num(c.scuole)} fra scuole e botteghe —
+          e un'opera sta nel più stretto che la contiene: non nel «Quattrocento», ma nella
+          bottega di Giotto o nel cantiere di Santa Maria del Fiore. Ogni opera è legata a chi
+          l'ha eseguita e, dove risulta, a chi l'ha pagata. La linea del tempo, la mappa e il
+          grafo interrogano lo stesso materiale in tre modi diversi.
+        </P>
+        <P>
+          È gratuito, non ha pubblicità, non chiede di registrarsi per leggere, e il codice è
+          pubblico con licenza MIT.
         </P>
 
         <H2>Da dove vengono i dati</H2>
         <P>
-          Ci sono {num(c.opere)} opere, {num(c.protagonisti)} schede fra autori e committenti,
-          {" "}{num(c.periodi)} periodi, {num(c.termini)} voci di glossario.
+          {num(c.opere)} opere, {num(c.protagonisti)} schede fra autori e committenti,
+          {" "}{num(c.periodi)} periodi, {num(c.termini)} voci di glossario,
+          {" "}{num(c.connessioni)} legami documentati fra le une e gli altri.
         </P>
         <P>
-          Il grosso viene da due manuali di storia dell'arte, e il catalogo ne eredita i
-          confini: si va dalla Tarda Antichità al Barocco, più o meno dal 284 al 1750, e la
-          geografia è europea con una grossa prevalenza italiana. Non aspettarti quindi un
-          panorama completo dell'arte. Questo è il perimetro di un programma scolastico, con
-          i buchi che quel perimetro si porta dietro.
+          Il grosso l'ho ricavato da due manuali di storia dell'arte, e il catalogo ne eredita
+          i confini: dalla Tarda Antichità al Barocco, e un'Europa in cui l'Italia pesa più di
+          tutto il resto messo insieme — Firenze da sola vale 185 opere, quante Parigi, Londra,
+          Madrid, Vienna e Berlino sommate. Non è un panorama dell'arte. È il perimetro di un
+          programma di studio, con i buchi che quel perimetro si porta dietro: niente arte
+          islamica se non di sponda, niente Asia, niente Africa, niente America precolombiana.
         </P>
 
         <H2>Chi manca</H2>
@@ -112,16 +130,17 @@ export default function Legal() {
           {c.donne.map((d) => d.name).join(", ")}.
         </P>
         <P>
-          Non è una mia dimenticanza. I manuali da cui ho lavorato le artiste non le nominano,
-          e io ho ricopiato quel silenzio. Scriverlo qui non lo risolve: serve a non far
-          passare l'assenza per un dato di realtà. Per rimediare servirebbe una ricerca che
-          finora non ho fatto.
+          Non è una mia dimenticanza, ed è peggio così: i manuali da cui ho lavorato le artiste
+          non le nominano, e io ho ricopiato quel silenzio senza accorgermene finché non ho
+          contato. Anguissola, Fontana, Gentileschi non ci sono perché non c'erano nel libro.
+          Scriverlo qui non lo risolve — serve solo a non far passare l'assenza per un dato di
+          realtà. Rimediare vuol dire aprire altre fonti e rifare il lavoro, e non l'ho fatto.
         </P>
         <P>
-          C'è poi una cosa da sapere sulla mappa. Il luogo che trovi in ogni scheda è{" "}
-          <b>dove l'opera si trova adesso</b>, non dove è stata prodotta. Per questo Londra,
-          New York e Washington pesano tanto: quella è la geografia dei musei, non quella dei
-          cantieri.
+          C'è poi una cosa da sapere sulla mappa. Il luogo di ogni scheda è{" "}
+          <b>dove l'opera si trova adesso</b>, non dove è stata fatta. Quaranta opere risultano
+          a Londra e quindici a New York: nessuna delle due città le ha prodotte. Quella è la
+          geografia dei musei, e in trasparenza la storia di come ci sono finite.
         </P>
 
         <H2>Dove ho usato l'intelligenza artificiale</H2>
@@ -144,8 +163,8 @@ export default function Legal() {
           <li>
             <b>Sciogliere i dubbi.</b> Per le attribuzioni incerte ho fatto controllare le
             fonti — Louvre, Musei Vaticani, Opificio delle Pietre Dure, Treccani, National
-            Gallery. Quando neanche il museo si sbilancia, il campo è rimasto vuoto: su 42
-            casi, 13 sono ancora aperti.
+            Gallery. Quando neanche il museo si sbilancia, il campo è rimasto vuoto: su 42 casi
+            esaminati, 13 sono ancora aperti, e nelle schede si vede che lo sono.
           </li>
         </ul>
 
@@ -153,9 +172,11 @@ export default function Legal() {
         <P>
           Nessuna proposta è finita dritta nel catalogo. Il lavoro usciva ogni volta come un
           elenco da approvare, e l'ho letto voce per voce prima di applicarlo; le motivazioni
-          di ogni scelta sono nel repository, chiunque può andarsele a vedere. Ho fatto girare
-          anche dei controlli automatici: niente rimandi a schede inesistenti, niente periodi
-          appesi male, date del committente compatibili con quelle dell'opera.
+          di ogni scelta sono nel repository, chiunque può andarsele a vedere. Poi ho fatto
+          girare dei controlli automatici, che hanno pescato cose che a occhio non avevo visto:
+          venti committenti citati da qualche opera ma senza una scheda propria, cinque
+          mecenati finiti per sbaglio fra gli autori delle opere che avevano pagato, un Cosimo
+          I con la data di morte sbagliata di trentasette anni.
         </P>
         <P>
           Quello che <b>non</b> ho fatto è riaprire i manuali per ciascuna delle{" "}
@@ -189,6 +210,77 @@ export default function Legal() {
         <P>
           Segnalare è il modo più utile per dare una mano: da ogni scheda puoi proporre una
           correzione, oppure scrivimi a <Mailto subject="Segnalazione errore nel catalogo" />.
+        </P>
+        </PaginaModificabile>
+      </div></div>
+    );
+  }
+
+  if (section === "accessibilita") {
+    return (
+      <div className="wrap page"><div>
+        <PaginaModificabile id="accessibilita" valori={segnapostoCatalogo(c)} titolo={<H1>Accessibilità e scorciatoie</H1>}>
+        <P>
+          L'atlante si può usare interamente da tastiera. Le scorciatoie qui sotto valgono su
+          computer; su telefono e tablet non sono attive.
+        </P>
+        <P>
+          I numeri sono gli stessi che vedi accanto a ogni voce del menu: <b>2</b> porta ai
+          Protagonisti perché nel menu quella voce è la 02. Un tasto non fa mai niente mentre
+          stai scrivendo in un campo di testo.
+        </P>
+
+        {SCORCIATOIE.map((g) => (
+          <div key={g.gruppo}>
+            <H2>{g.gruppo}</H2>
+            <table style={{ borderCollapse: "collapse", width: "100%", marginBottom: 6 }}>
+              <tbody>
+                {g.voci.map((v) => (
+                  <tr key={v.tasti} style={{ borderBottom: "1px solid var(--line-soft)" }}>
+                    <td style={{ padding: "7px 14px 7px 0", width: 150, verticalAlign: "top" }}>
+                      <kbd style={{
+                        display: "inline-block", padding: "3px 8px", borderRadius: 6,
+                        border: "1px solid var(--line)", borderBottomWidth: 2,
+                        background: "var(--bg-1)", fontSize: 12.5, fontFamily: "inherit",
+                        fontWeight: 600, color: "var(--ink)", whiteSpace: "nowrap",
+                      }}>{v.tasti}</kbd>
+                    </td>
+                    <td style={{ padding: "7px 0", fontSize: 15, color: "var(--ink-soft)" }}>{v.cosa}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))}
+
+        <H2>Il resto della tastiera</H2>
+        <P>
+          Il tasto <b>Tab</b> passa da un elemento all'altro nell'ordine in cui stanno nella
+          pagina, e quello che riceve il fuoco viene evidenziato. <b>Invio</b> apre il
+          collegamento o preme il tasto su cui sei.
+        </P>
+
+        <H2>Movimento ridotto</H2>
+        <P>
+          Se nel sistema hai chiesto di ridurre le animazioni, l'atlante lo rispetta: le
+          transizioni fra le pagine e i numeri che salgono da soli restano fermi. Non c'è niente
+          da impostare qui.
+        </P>
+
+        <H2>Quello che non va ancora bene</H2>
+        <P>
+          Il grafo tridimensionale si esplora col mouse e da tastiera non è utilizzabile. Le
+          stesse informazioni — chi è legato a chi, e con quale tipo di legame — si trovano però
+          nella sezione «Connessioni» in fondo a ogni scheda, che è testo normale e si legge con
+          qualsiasi strumento.
+        </P>
+        <P>
+          Le immagini delle opere hanno come testo alternativo il titolo dell'opera, che è poco:
+          una descrizione vera di che cosa si vede non c'è. È un lavoro che va fatto.
+        </P>
+        <P>
+          Se incontri una barriera che qui non è scritta, <Mailto subject="Accessibilità" /> —
+          è la segnalazione più utile che puoi mandare.
         </P>
         </PaginaModificabile>
       </div></div>
@@ -373,10 +465,10 @@ export default function Legal() {
 
         <H2>Progetto</H2>
         <P>
-          HUB Arte nasce come strumento di studio, per me prima che per chiunque altro. Poi è
-          diventato un sito aperto a chi studia storia dell'arte, a chi la insegna e a chi
-          semplicemente ci gira dentro per curiosità. Su come è stato costruito, e con quali
-          limiti, c'è una pagina apposta:{" "}
+          HUB Arte l'ho cominciato per studiare, e per un po' è servito solo a me. L'ho messo
+          online quando mi sono accorto che le domande a cui rispondeva — chi ha pagato questa
+          cappella, quale bottega stava dietro a questo cantiere — se le fa chiunque apra un
+          manuale. Su come è costruito e su che cosa non contiene c'è una pagina a parte:{" "}
           <Link to="/legal/progetto" className="tlink">Il progetto</Link>.
         </P>
 
@@ -396,9 +488,10 @@ export default function Legal() {
         <H2>Testi di riferimento</H2>
         <P>
           Datazioni, attribuzioni, contesti: quasi tutto quello che c'è nel catalogo l'ho
-          imparato da questi due manuali. Le schede però sono riscritte, non ricopiate. Un
-          autore, una data, un luogo, una tecnica sono fatti, e i fatti non appartengono a
-          nessuno; il modo di raccontarli sì, ed è mio.
+          imparato da questi due manuali. Le schede però sono riscritte, non ricopiate. Che il
+          Tributo sia di Masaccio e stia al Carmine è un fatto, e i fatti non sono di nessuno;
+          il modo di raccontarli sì, e quello è mio. Se qualcuno dei due editori ritiene che
+          da qualche parte abbia passato il segno, mi scriva e correggo.
         </P>
         <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
           <li>
@@ -416,20 +509,22 @@ export default function Legal() {
 
         <H2>Immagini</H2>
         <P>
-          Le immagini vengono quasi tutte da <b>Wikimedia Commons</b> e da siti di musei e
-          istituzioni. Sotto ognuna trovi il nome del sito da cui arriva, ricavato dal suo
-          indirizzo e collegato alla pagina d'origine, dove ci sono autore e licenza. Sono
-          riproduzioni buone per studiare, non per lavorarci sopra: per quello servono le
-          riproduzioni scientifiche dei musei.
+          {num(c.conImmagine)} opere su {num(c.opere)} hanno un'immagine, e vengono quasi tutte
+          da <b>Wikimedia Commons</b> o dai siti dei musei. Sotto ognuna c'è scritto da dove
+          arriva: il nome lo ricava il sito dall'indirizzo dell'immagine, e porta alla pagina
+          d'origine dove stanno autore e licenza. Non è un archivio fotografico — sono
+          riproduzioni buone per riconoscere un'opera e studiarla, non per giudicarne il
+          colore. Per quello servono le riproduzioni scientifiche dei musei.
         </P>
 
         <H2>Codice</H2>
         <P>
-          Licenza MIT: il codice si può leggere, correggere, copiare e usare per farne una
-          propria versione. Il repository sta su{" "}
+          Licenza MIT: si può leggere, correggere, copiare, e farne una versione propria anche
+          per un'altra materia — la struttura non ha niente di specificamente artistico. Il
+          repository sta su{" "}
           <a href="https://github.com/ATgio99/Hub-Arte" target="_blank" rel="noopener noreferrer" className="tlink">GitHub</a>,
-          insieme ai materiali di lavoro sul catalogo — le proposte di attribuzione, il perché
-          di ogni scelta, i controlli che ho fatto.
+          insieme ai materiali di lavoro: le proposte di attribuzione una per una, il perché di
+          ogni scelta, i controlli che ho fatto e quelli che non ho fatto.
         </P>
 
         <H2>Contatti</H2>

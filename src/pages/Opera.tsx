@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useData } from "../lib/store";
+import { useIsNarrow } from "../lib/motion";
 import { WorkImage, WorkCard, WorkGallery, Section, Empty, EntityLink, FavStar, StudiedCheck, RichText, BarraScheda, SegnoApprofondita } from "../components/ui";
 import { getOverrides, setOverride, clearOverride } from "../lib/imageOverrides";
 import { useStudied, toggleStudied } from "../lib/studied";
@@ -104,6 +105,7 @@ function useIncertezza(workId: string): Incertezza | null {
 export default function Opera() {
   const { id } = useParams();
   const ix = useData();
+  const stretto = useIsNarrow();
   const nav = useNavigate();
   const studied = useStudied();
   const { user, isAdmin } = useAuth();
@@ -158,7 +160,7 @@ export default function Opera() {
             title="Richiedi una modifica a quest'opera (titolo, data, luogo, immagine…)"
             data-testid="btn-suggerisci-modifica"
           >
-            ✎ Richiedi modifica
+            ✎ {stretto ? "Modifica" : "Richiedi modifica"}
           </Link>
         ) : null
       } />

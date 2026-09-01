@@ -361,7 +361,12 @@ export interface WorkGroup {
 // Questo permette all'admin di creare complessi con qualsiasi nome di luogo
 // (es. "Casa di Giotto", "Villa Foscari", "Castello Estense") semplicemente
 // assegnando lo stesso luogo a 2+ opere.
-const MUSEUM_RE = /\b(museo|galleri|pinacoteca|collezione|kunst|musée|museum|gallery|national)\b/i;
+// I musei non sono complessi architettonici: sono contenitori, e due opere
+// appese nella stessa sala non formano un edificio. La versione precedente
+// chiudeva ogni voce con \b, quindi «galleri\b» non stava dentro «Gallerie»
+// (plurale) e gli Uffizi finivano per diventare un complesso, con capofila
+// un'opera qualsiasi. Le radici restano aperte a destra.
+const MUSEUM_RE = /\b(mus(eo|ei|ée|eum)|galleri|gallery|galleries|pinacotec|collezion|kunst|national)/i;
 
 function isGroupablePlace(place: string): boolean {
   // Escludi solo musei/gallerie (contenitori generici, non complessi architettonici).
@@ -373,6 +378,14 @@ function isGroupablePlace(place: string): boolean {
 // togliendo parentesi e dettagli. Es:
 //   "Basilica di San Marco, intradosso del portale" → "basilica di san marco"
 //   "Piazza San Marco" → "piazza san marco"
+/** Nome breve di un luogo: la parte prima della virgola, senza parentesi.
+ *  «Galleria degli Uffizi, ma collocazione originaria la chiesa di …» diventa
+ *  «Galleria degli Uffizi». Serve sia a raggruppare sia a scriverlo a video:
+ *  certi luoghi nel catalogo sono frasi intere e sfondano l'impaginazione. */
+export function nomeBreveLuogo(place: string): string {
+  return place.split(",")[0].trim().replace(/\s*\([^)]*\)/g, "").trim();
+}
+
 function bucketNorm(place: string): string {
   let s = place.split(",")[0].trim();
   // rimuovi parentesi e contenuto: "Basilica di San Marco (facciata)" → "Basilica di San Marco"
@@ -506,4 +519,13 @@ export function fonteImmagine(url?: string | null): FonteImmagine | null {
   }
   const noto = SITI_NOTI.find((s) => s.test.test(host));
   return { nome: noto ? noto.nome : host.replace(/^www\./, ""), href: url, affidabile: true };
+}
+
+// Una richiesta di modifica porta con se' l'id della scheda, non il suo tipo:
+// la tabella nasce per le opere e ha una sola colonna work_id. Gli id di opere
+// e autori non si sovrappongono mai, quindi il tipo si ricava cercando l'id
+// nei due indici.
+export function rottaDiScheda(ix: Indexed, id: string): string {
+  if (ix.artistById.has(id)) return `/artista/${id}`;
+  return `/opera/${id}`;
 }

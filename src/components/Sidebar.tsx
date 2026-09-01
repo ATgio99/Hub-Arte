@@ -21,6 +21,8 @@ import {
 } from "../lib/lastVisited";
 import type { EntityType } from "../lib/types";
 import TimeRangeSlider from "./TimeRangeSlider";
+import { RigaIntervallo, FoglioIntervallo } from "./FiltroTempoFoglio";
+import { useIsNarrow } from "../lib/motion";
 import IconaSezione from "./IconaSezione";
 
 // icone sottili (stroke 1.5) coerenti, una per pagina
@@ -35,6 +37,10 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
   const nav = useNavigate();
   const { user } = useAuth();
   const ix = useData();
+  // Stessa soglia dell'hamburger: sotto i 900px il menu e' un drawer attaccato
+  // al bordo, ed e' li' che il cursore del tempo diventa impossibile da usare.
+  const suTelefono = useIsNarrow(900);
+  const [foglioTempo, setFoglioTempo] = useState(false);
   const [pendingReviewCount, setPendingReviewCount] = useState(0);
 
   // === Memoria ultima opera/artista visitati ===
@@ -190,13 +196,23 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
             <b>HUB Arte</b><i>Atlante Neuronale</i>
           </span>
         </Link>
-        <button className="sbx-collapse" onClick={onToggleCollapse} data-testid="sbx-collapse"
-          aria-label={collapsed ? "Espandi menù" : "Comprimi menù"} title={collapsed ? "Espandi" : "Comprimi"}>
-          {/* Tre linee: comprimere il menu non e' "tornare indietro", e la
-              freccia lo faceva confondere con il comando delle schede. */}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-            <path d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
+        {/* Su telefono questo comando chiude il pannello, e allora porta una
+            croce: l'hamburger che restava li' era lo stesso segno che l'aveva
+            aperto, dalla parte sbagliata. Sul desktop invece comprime, e
+            restano le tre linee. */}
+        <button className="sbx-collapse" onClick={suTelefono ? onNavigate : onToggleCollapse}
+          data-testid={suTelefono ? "sbx-chiudi" : "sbx-collapse"}
+          aria-label={suTelefono ? "Chiudi il menù" : collapsed ? "Espandi menù" : "Comprimi menù"}
+          title={suTelefono ? "Chiudi" : collapsed ? "Espandi" : "Comprimi"}>
+          {suTelefono ? (
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          ) : (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          )}
         </button>
       </div>
 
@@ -401,16 +417,10 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
                     <span className="sbx-continue-name">{lastTestLabel}</span>
                   </span>
                 )}
-                {/* Fallback: se non c'è un'ultima entità, mostra la descrizione normale */}
-                {((p.id === "opere" && !lastOperaTitle) ||
-                  (p.id === "artisti" && !lastArtistaName) ||
-                  (p.id === "rete" && !lastReteLabel) ||
-                  (p.id === "mappa" && !lastMappaLabel) ||
-                  (p.id === "timeline" && !lastTimelineLabel) ||
-                  (p.id === "test" && !lastTestLabel) ||
-                  (p.id !== "opere" && p.id !== "artisti" && p.id !== "rete" && p.id !== "mappa" && p.id !== "timeline" && p.id !== "test")) && (
-                  <i>{p.desc}</i>
-                )}
+                {/* Niente descrizione sotto il nome: «Opere — Catalogo delle
+                    opere» diceva due volte la stessa cosa e raddoppiava
+                    l'altezza della riga. La seconda riga resta libera per
+                    l'unica cosa che cambia nel tempo, cioe' dove eri rimasto. */}
                 <span className="sbx-underline" aria-hidden="true" />
               </span>
               <span className="sbx-dot" aria-hidden="true" />
@@ -419,10 +429,17 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
         })}
       </nav>
 
-      {/* slider temporale */}
+      {/* Intervallo storico: sul desktop il cursore sta nel menu, dove col
+          mouse si prende senza problemi. Su telefono diventa una riga che apre
+          un foglio dal basso — nel menu le maniglie finivano sul bordo dello
+          schermo, dove lo scorrimento e' gia' preso dal gesto di sistema. */}
       <div className="sbx-foot">
         <div className="sbx-trs">
-          <TimeRangeSlider compact />
+          {suTelefono ? (
+            <RigaIntervallo onApri={() => setFoglioTempo(true)} />
+          ) : (
+            <TimeRangeSlider compact />
+          )}
         </div>
 
         {/* Voce profilo per UTENTI NORMALI loggati — mostra badge con richieste
@@ -524,27 +541,22 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
           {user && <span style={{ marginLeft: "auto", fontSize: 10, color: "var(--gold)" }}>✓ sync</span>}
         </Link>
 
-        {/* footer legale — link alle pagine legali */}
-        <div
-          className="sbx-legal"
-          style={{
-            marginTop: 10, paddingTop: 8,
-            borderTop: "1px solid var(--line)",
-            display: "flex", flexWrap: "wrap", gap: "4px 10px",
-            fontSize: 10.5, color: "var(--ink-dim)",
-          }}
-        >
-          <Link to="/legal/progetto" onClick={onNavigate} style={{ color: "inherit", textDecoration: "none" }}>Progetto &amp; IA</Link>
-          <span>·</span>
-          <Link to="/legal/privacy" onClick={onNavigate} style={{ color: "inherit", textDecoration: "none" }}>Privacy</Link>
-          <span>·</span>
-          <Link to="/legal/cookie" onClick={onNavigate} style={{ color: "inherit", textDecoration: "none" }}>Cookie</Link>
-          <span>·</span>
-          <Link to="/legal/termini" onClick={onNavigate} style={{ color: "inherit", textDecoration: "none" }}>Termini</Link>
-          <span>·</span>
-          <Link to="/legal/crediti" onClick={onNavigate} style={{ color: "inherit", textDecoration: "none" }}>Crediti</Link>
-          <span>·</span>
-          <Link to="/legal/contatti" onClick={onNavigate} style={{ color: "inherit", textDecoration: "none" }}>Contatti</Link>
+        {/* Footer legale. I separatori erano elementi a se' stanti e potevano
+            finire a inizio riga, orfani: adesso sono attaccati al link che li
+            precede, quindi vanno a capo insieme a lui. L'ordine e' quello
+            dell'uso reale, non quello legale. */}
+        <div className="sbx-legal">
+          {[
+            { a: "/legal/progetto", t: "Progetto & IA" },
+            { a: "/legal/accessibilita", t: "Accessibilità" },
+            { a: "/legal/contatti", t: "Contatti" },
+            { a: "/legal/crediti", t: "Crediti" },
+            { a: "/legal/privacy", t: "Privacy" },
+            { a: "/legal/cookie", t: "Cookie" },
+            { a: "/legal/termini", t: "Termini" },
+          ].map((v) => (
+            <Link key={v.a} to={v.a} onClick={onNavigate}>{v.t}</Link>
+          ))}
         </div>
 
         {/* Netlify badge — richiesto per il Netlify Open Source Plan.
@@ -566,6 +578,8 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
           Hosted on Netlify
         </a>
       </div>
+
+      <FoglioIntervallo aperto={foglioTempo} onChiudi={() => setFoglioTempo(false)} />
     </>
   );
 }
@@ -610,6 +624,17 @@ export default function Sidebar() {
     return () => { document.body.style.overflow = ""; };
   }, [drawer]);
 
+  // La scorciatoia «M» arriva da fuori: il menu e' l'unico a sapere se e'
+  // aperto, quindi la decisione resta qui.
+  useEffect(() => {
+    const onScorciatoia = () => {
+      if (window.matchMedia("(max-width: 900px)").matches) setDrawer((d) => !d);
+      else toggleCollapse();
+    };
+    window.addEventListener("atlante:scorciatoia-menu", onScorciatoia);
+    return () => window.removeEventListener("atlante:scorciatoia-menu", onScorciatoia);
+  });
+
   const toggleCollapse = () => {
     setCollapsed((c) => {
       const n = !c;
@@ -620,13 +645,16 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* hamburger mobile (in alto a sinistra) — nascosto quando il drawer è aperto */}
+      {/* Il comando che apre il menu, in alto a sinistra. Con il drawer aperto
+          non sparisce di colpo: le tre linee si chiudono in croce e il tasto si
+          ritira sotto al pannello, cosi' il gesto si vede. A chiudere e' poi la
+          ✕ dentro al pannello, che sta dove il pollice la trova. */}
       <button
-        className="sbx-burger"
-        onClick={() => setDrawer(true)}
+        className={`sbx-burger ${drawer ? "aperto" : ""}`}
+        onClick={() => setDrawer((d) => !d)}
         data-testid="sbx-burger"
-        aria-label="Apri menù"
-        style={{ display: drawer ? "none" : undefined }}
+        aria-label={drawer ? "Chiudi menù" : "Apri menù"}
+        aria-expanded={drawer}
       >
         <span /><span /><span />
       </button>

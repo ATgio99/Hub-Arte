@@ -17,6 +17,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import { rottaDiScheda } from "../lib/data";
 import { useAuth, isAdminEmail, CONTACT_EMAIL } from "../lib/auth";
 import { useData } from "../lib/store";
 
@@ -397,7 +398,7 @@ export default function AdminRichieste() {
                 }}>
                   <div style={{ marginBottom: 10 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" }}>
-                      <Link to={`/opera/${s.work_id}`} style={{ fontSize: 16, fontWeight: 600, color: "var(--ink)", textDecoration: "none" }}>
+                      <Link to={rottaDiScheda(ix, s.work_id)} style={{ fontSize: 16, fontWeight: 600, color: "var(--ink)", textDecoration: "none" }}>
                         {s.work_title}
                       </Link>
                       <span style={{

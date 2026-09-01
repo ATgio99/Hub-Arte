@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
+import { useIsNarrow } from "../lib/motion";
 import { WorkCard, Section, Empty, EntityLink, FilterNote, FavStar, BarraScheda } from "../components/ui";
 import ArtistMap from "../components/ArtistMap";
 import ArtistTimeline from "../components/ArtistTimeline";
@@ -14,6 +15,7 @@ import {
 export default function Artista() {
   const { id } = useParams();
   const ix = useData();
+  const stretto = useIsNarrow();
   const nav = useNavigate();
   const { user, isAdmin } = useAuth();
   const [editorOpen, setEditorOpen] = useState(false);
@@ -66,12 +68,13 @@ export default function Artista() {
           </button>
         ) : user ? (
           <Link
-            to="/suggerisci"
+            to={`/suggerisci-modifica?artist=${encodeURIComponent(a.id)}`}
             className="btn ghost sm"
             style={{ fontSize: 13, padding: "8px 14px", borderColor: "var(--line)", color: "var(--ink-soft)", whiteSpace: "nowrap" }}
-            title="Proponi una modifica a questa scheda"
+            title="Richiedi una correzione a questa scheda (nome, date, ruolo, biografia…)"
+            data-testid="btn-suggerisci-modifica-artista"
           >
-            ✎ Richiedi modifica
+            ✎ {stretto ? "Modifica" : "Richiedi modifica"}
           </Link>
         ) : null
       } />

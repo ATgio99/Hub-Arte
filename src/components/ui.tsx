@@ -791,7 +791,17 @@ export function BarraScheda({ azioni }: { azioni?: ReactNode }) {
   const nav = useNavigate();
   const loc = useLocation();
   const narrow = useIsNarrow();
+  // La soglia e' quella dell'hamburger, non quella generica: sotto i 900px la
+  // barra sta sulla sua stessa riga e lo spazio e' contato.
+  const telefono = useIsNarrow(900);
   const sezione = SEZIONE_DI.find((s) => loc.pathname.startsWith(s.prefisso));
+
+  // Su telefono, quando la scheda appartiene a una sezione, resta il solo
+  // comando che riporta all'indice di quella sezione: la freccia indietro
+  // duplicava il gesto di sistema (scorrimento dal bordo, tasto del telefono)
+  // e rubava spazio alla riga. Dove la sezione non c'e' — crediti, privacy,
+  // accesso — la freccia e' l'unico modo per tornare, e resta.
+  const soloSezione = telefono && !!sezione;
 
   const parte: CSSProperties = {
     display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 7,
@@ -800,30 +810,32 @@ export function BarraScheda({ azioni }: { azioni?: ReactNode }) {
   };
 
   return (
-    <div style={{
+    <div className="barra-scheda" style={{
       display: "flex", alignItems: "center", justifyContent: "space-between",
-      gap: 10, flexWrap: "wrap", marginBottom: narrow ? 12 : 20,
+      gap: 10, marginBottom: narrow ? 12 : 20,
     }}>
-      <div style={{
+      <div className="barra-scheda-nav" style={{
         display: "inline-flex", alignItems: "stretch",
         border: "1px solid var(--line)", borderRadius: 10,
         background: "var(--bg-1)", overflow: "hidden",
       }}>
-        <button
-          onClick={() => nav(-1)}
-          style={{ ...parte, padding: sezione ? "0 13px" : "0 15px 0 13px" }}
-          title="Torna indietro"
-          aria-label="Torna indietro"
-          data-testid="button-back"
-        >
-          <svg {...trattoIcona} aria-hidden><path d="M15 5l-7 7 7 7" /></svg>
-          {/* Senza la sezione accanto la sola freccia resterebbe muta: qui il
-              comando e' da solo, quindi si nomina. */}
-          {!sezione && <span>Indietro</span>}
-        </button>
+        {!soloSezione && (
+          <button
+            onClick={() => nav(-1)}
+            style={{ ...parte, padding: sezione ? "0 13px" : "0 15px 0 13px" }}
+            title="Torna indietro"
+            aria-label="Torna indietro"
+            data-testid="button-back"
+          >
+            <svg {...trattoIcona} aria-hidden><path d="M15 5l-7 7 7 7" /></svg>
+            {/* Senza la sezione accanto la sola freccia resterebbe muta: qui il
+                comando e' da solo, quindi si nomina. */}
+            {!sezione && <span>Indietro</span>}
+          </button>
+        )}
         {sezione && (
           <>
-            <span aria-hidden style={{ width: 1, background: "var(--line)" }} />
+            {!soloSezione && <span aria-hidden style={{ width: 1, background: "var(--line)" }} />}
             <button
               onClick={() => nav(sezione.base)}
               style={{ ...parte, padding: "0 14px" }}
@@ -836,7 +848,7 @@ export function BarraScheda({ azioni }: { azioni?: ReactNode }) {
           </>
         )}
       </div>
-      {azioni && <div style={{ display: "flex", gap: 8, alignItems: "center" }}>{azioni}</div>}
+      {azioni && <div className="barra-scheda-azioni" style={{ display: "flex", gap: 8, alignItems: "center", minWidth: 0 }}>{azioni}</div>}
     </div>
   );
 }

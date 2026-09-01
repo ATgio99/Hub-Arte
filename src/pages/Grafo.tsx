@@ -513,12 +513,18 @@ export default function Grafo() {
     return c;
   }, [graph]);
 
-  // I filtri dei livelli si ordinano dal piu' popoloso al meno: l'elenco fisso
-  // metteva in cima tipi con pochi nodi e in fondo quelli che pesano davvero.
-  const tipiOrdinati = useMemo(
-    () => [...NODE_TYPES, "city" as const].sort((a, b) => (counts[b] ?? 0) - (counts[a] ?? 0)),
-    [counts]
-  );
+  // I filtri dei livelli vanno dal piu' popoloso al meno. L'ordine si calcola
+  // sul catalogo intero, non sul grafo filtrato: altrimenti spegnere un livello
+  // cambia i conteggi e i tasti si riordinano proprio mentre li stai premendo.
+  const tipiOrdinati = useMemo(() => {
+    const tot: Record<string, number> = {};
+    for (const w of ix.ds.works) tot.work = (tot.work ?? 0) + 1;
+    for (const a of ix.ds.artists) tot.artist = (tot.artist ?? 0) + 1;
+    for (const p of ix.ds.periods) tot.period = (tot.period ?? 0) + 1;
+    const citta = new Set(ix.ds.works.map((w) => w.location_city).filter(Boolean));
+    tot.city = citta.size;
+    return [...NODE_TYPES, "city" as const].sort((a, b) => (tot[b] ?? 0) - (tot[a] ?? 0));
+  }, [ix.ds]);
 
   // Conteggio dei legami attivi per tipo (kind). Simile a `counts` ma per i
   // link: conta quanti legami di ciascun tipo sono attualmente presenti nel
@@ -534,12 +540,17 @@ export default function Grafo() {
     return c;
   }, [graph]);
 
-  // Anche i legami si ordinano dal piu' frequente, come i tipi di nodo.
-  const legamiOrdinati = useMemo(
-    () => [...KINDS, "luogo" as const, "autore" as const]
-      .sort((a, b) => (linkCounts[b] ?? 0) - (linkCounts[a] ?? 0)),
-    [linkCounts]
-  );
+  // Stessa cosa per i legami: ordine fissato sul catalogo intero.
+  const legamiOrdinati = useMemo(() => {
+    const tot: Record<string, number> = {};
+    for (const c of ix.ds.connections) tot[c.kind] = (tot[c.kind] ?? 0) + 1;
+    // «autore» e «luogo» non sono legami del catalogo ma collegamenti che il
+    // grafo costruisce da solo: si contano dalle opere.
+    tot.autore = ix.ds.works.reduce((n, w) => n + (w.artist_ids?.length ?? 0), 0);
+    tot.luogo = ix.ds.works.filter((w) => w.location_city).length;
+    return [...KINDS, "luogo" as const, "autore" as const]
+      .sort((a, b) => (tot[b] ?? 0) - (tot[a] ?? 0));
+  }, [ix.ds]);
 
   const selDetail = useMemo(() => {
     if (!sel) return null;

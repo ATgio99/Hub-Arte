@@ -81,30 +81,66 @@ function applicaSegnaposto(testo: string, valori: Record<string, string>): strin
     Object.prototype.hasOwnProperty.call(valori, chiave) ? valori[chiave] : intero);
 }
 
-// Converte in testo semplice il contenuto gia' impaginato, per poterlo
-// modificare senza riscriverlo da capo. I numeri riconosciuti tornano a essere
-// segnaposto, altrimenti resterebbero congelati al valore del giorno.
+// Converte in testo modificabile il contenuto gia' impaginato, per poterlo
+// correggere senza riscriverlo da capo.
+//
+// Va percorso l'albero nodo per nodo, non letto con textContent: quello
+// restituisce solo le lettere, e grassetti e collegamenti sparivano dal testo
+// che compariva nell'editor. Chi salvava una correzione di una virgola si
+// ritrovava la pagina senza piu' un grassetto.
+//
+// I numeri riconosciuti tornano a essere segnaposto, altrimenti resterebbero
+// congelati al valore del giorno in cui si e' premuto «modifica».
 function daPaginaATesto(radice: HTMLElement, valori: Record<string, string>): string {
-  const pezzi: string[] = [];
   const inverso = (t: string) => {
     for (const [chiave, valore] of Object.entries(valori)) {
       if (valore && valore.length > 1) t = t.split(valore).join(`{${chiave}}`);
     }
     return t;
   };
+
+  const percorri = (n: Node): string => {
+    if (n.nodeType === Node.TEXT_NODE) return n.textContent || "";
+    if (n.nodeType !== Node.ELEMENT_NODE) return "";
+    const el = n as HTMLElement;
+    const dentro = Array.from(el.childNodes).map(percorri).join("");
+    switch (el.tagName.toLowerCase()) {
+      case "b":
+      case "strong":
+        return dentro.trim() ? `**${dentro}**` : dentro;
+      case "i":
+      case "em":
+        return dentro;
+      case "a": {
+        const href = el.getAttribute("href") || "";
+        return href && dentro.trim() ? `[${dentro}](${href})` : dentro;
+      }
+      case "br":
+        return " ";
+      default:
+        return dentro;
+    }
+  };
+
+  const riga = (el: Element) => inverso(percorri(el).replace(/\s+/g, " ").trim());
+
+  const pezzi: string[] = [];
   radice.querySelectorAll(":scope > *").forEach((el) => {
     const tag = el.tagName.toLowerCase();
-    const testo = (el.textContent || "").replace(/\s+/g, " ").trim();
-    if (!testo) return;
-    if (tag === "h2") pezzi.push("## " + inverso(testo));
-    else if (tag === "ul" || tag === "ol") {
+    if (tag === "h2") {
+      const t = riga(el);
+      if (t) pezzi.push("## " + t);
+    } else if (tag === "ul" || tag === "ol") {
       const voci: string[] = [];
       el.querySelectorAll("li").forEach((li) => {
-        const t = (li.textContent || "").replace(/\s+/g, " ").trim();
-        if (t) voci.push("- " + inverso(t));
+        const t = riga(li);
+        if (t) voci.push("- " + t);
       });
       if (voci.length) pezzi.push(voci.join("\n"));
-    } else pezzi.push(inverso(testo));
+    } else {
+      const t = riga(el);
+      if (t) pezzi.push(t);
+    }
   });
   return pezzi.join("\n\n");
 }

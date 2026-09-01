@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
+import { arrivatoDaTastiera } from "../lib/scorciatoie";
 import { WorkCard, WorkGroupCard, Empty, EmptyTimeRange, FilterNote } from "../components/ui";
 import { useFavorites } from "../lib/favorites";
 import { useStudied } from "../lib/studied";
@@ -18,6 +19,10 @@ export default function Opere() {
   // Quando si arriva alla home delle Opere, azzerare l'ultima opera visitata
   // (così il prossimo click su "Opere" nel menu non riporta all'opera vecchia)
   useEffect(() => {
+    // Chi arriva con una scorciatoia sta solo cambiando sezione: la memoria
+    // di dove era rimasto non va toccata. La si azzera solo quando l'indice
+    // e' una scelta esplicita — il secondo clic sulla voce di menu.
+    if (arrivatoDaTastiera()) return;
     clearLastOpera();
   }, []);
 
@@ -34,7 +39,10 @@ export default function Opere() {
     // Rilevazione approssimativa di device touch. Se la touchscreen è il
     // primary input, NON facciamo auto-focus (vedi regola qui sopra).
     const isTouchPrimary = window.matchMedia?.("(pointer: coarse)")?.matches ?? false;
-    if (!isTouchPrimary && searchRef.current) {
+    // Chi e' arrivato con una scorciatoia sta usando la tastiera per
+    // navigare: mettergli il cursore nel campo di ricerca gli spegnerebbe
+    // le scorciatoie al tasto successivo.
+    if (!isTouchPrimary && !arrivatoDaTastiera() && searchRef.current) {
       // Piccolo delay per essere sicuri che il render sia completato
       const t = setTimeout(() => {
         try { searchRef.current?.focus(); } catch { /* ignore */ }
@@ -102,6 +110,15 @@ export default function Opere() {
     return c;
   }, [ds]);
 
+  // Tre opere non hanno un periodo assegnato. Finora esistevano solo come una
+  // barra senza nome nelle statistiche: qui diventano una voce del filtro, con
+  // il suo conteggio, cosi' si possono guardare e sistemare.
+  const SENZA_PERIODO = "__senza_periodo__";
+  const senzaPeriodo = useMemo(
+    () => ds.works.filter((w) => !w.period_id || !periodById.has(w.period_id)).length,
+    [ds, periodById]
+  );
+
   const periodOpts = useMemo(() => {
     const totale = (id: string) => {
       let n = 0;
@@ -133,7 +150,9 @@ export default function Opere() {
     return inTime.filter((w) => {
       if (favOnly && !favs.works.includes(w.id)) return false;
       if (type && w.type !== type) return false;
-      if (period && !discendenti.get(period)?.has(w.period_id)) return false;
+      if (period === SENZA_PERIODO) {
+        if (w.period_id && periodById.has(w.period_id)) return false;
+      } else if (period && !discendenti.get(period)?.has(w.period_id)) return false;
       if (imp && String(w.importance) !== imp) return false;
       if (studiedFilter === "studied" && !studied.includes(w.id)) return false;
       if (studiedFilter === "not-studied" && studied.includes(w.id)) return false;
@@ -144,7 +163,7 @@ export default function Opere() {
       }
       return true;
     }).sort((a, b) => b.importance - a.importance || (a.year_end ?? 9999) - (b.year_end ?? 9999));
-  }, [inTime, q, type, period, imp, favOnly, favs, studiedFilter, studied, discendenti]);
+  }, [inTime, q, type, period, imp, favOnly, favs, studiedFilter, studied, discendenti, periodById]);
 
   // in modalità raggruppata, separa le opere in "singole" e "raggruppate"
   const { singleWorks, groupedWorks } = useMemo(() => {
@@ -201,6 +220,9 @@ export default function Opere() {
         <select className="input" value={period} onChange={(e) => { setPeriod(e.target.value); setLimit(60); }} data-testid="select-period">
           <option value="">Ogni periodo</option>
           {periodOpts.map((p) => <option key={p.id} value={p.id}>{p.label} ({p.n})</option>)}
+          {senzaPeriodo > 0 && (
+            <option value={SENZA_PERIODO}>Senza periodo assegnato ({senzaPeriodo})</option>
+          )}
         </select>
         <select className="input" value={imp} onChange={(e) => { setImp(e.target.value); setLimit(60); }} data-testid="select-imp"
           title="Quanto spazio danno all'opera i manuali da cui nasce il catalogo. Non è un giudizio di valore sull'opera.">

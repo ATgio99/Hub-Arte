@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, type ReactNode, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { pageVariants, usePrefersReducedMotion } from "./lib/motion";
+import { useScorciatoie } from "./lib/scorciatoie";
 import { useAuth } from "./lib/auth";
 import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides, pullQuizFromCloud, pullImageOverrides } from "./lib/sync";
 import Sidebar from "./components/Sidebar";
@@ -141,6 +142,7 @@ export default function App() {
 
   // Sincronizza dal cloud al login
   useSyncOnLogin();
+  useScorciatoie();
 
   return (
     <div className={`shell3d ${isHome ? "is-home" : ""}`}>

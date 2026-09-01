@@ -7,7 +7,7 @@ import { useMemo, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, EntityLink, FilterNote, Empty, BarraScheda, Section } from "../components/ui";
-import { isCommittente, fmtYear } from "../lib/data";
+import { isCommittente, fmtYear, computeWorkGroups, workGroupMap, nomeBreveLuogo } from "../lib/data";
 import { setLastMappa } from "../lib/lastVisited";
 
 export default function Luogo() {
@@ -66,11 +66,45 @@ export default function Luogo() {
 
   // In quali edifici si trovano le opere: una citta' non e' un punto solo,
   // e sapere che venti opere stanno nella stessa chiesa cambia la lettura.
+  //
+  // Si raggruppa sul nome breve, non sul campo cosi' com'e': nel catalogo certi
+  // luoghi sono frasi intere («Galleria degli Uffizi, ma collocazione
+  // originaria…») che come etichetta sfondano la pagina e che, scritte in due
+  // modi diversi, spezzerebbero in due lo stesso edificio. Il nome breve e' poi
+  // la stessa chiave con cui si formano i complessi, quindi da qui si puo'
+  // aprire il complesso invece di restare fermi su un'etichetta morta.
+  const gruppi = useMemo(() => computeWorkGroups(ix.ds), [ix.ds]);
+  const gruppoDiOpera = useMemo(() => workGroupMap(gruppi), [gruppi]);
   const edifici = useMemo(() => {
-    const m = new Map<string, number>();
-    for (const w of works) if (w.location_place) m.set(w.location_place, (m.get(w.location_place) ?? 0) + 1);
-    return [...m.entries()].filter(([, n]) => n > 1).sort((a, b) => b[1] - a[1]);
-  }, [works]);
+    // Chiave minuscola per non spezzare in due lo stesso edificio quando il
+    // catalogo scrive «Basilica di Santa Croce» e «basilica di Santa Croce».
+    const m = new Map<string, { nome: string; opere: typeof works }>();
+    for (const w of works) {
+      if (!w.location_place) continue;
+      const nome = nomeBreveLuogo(w.location_place);
+      if (!nome) continue;
+      const chiave = nome.toLowerCase();
+      if (!m.has(chiave)) m.set(chiave, { nome, opere: [] });
+      m.get(chiave)!.opere.push(w);
+    }
+    return [...m.values()]
+      .filter((e) => e.opere.length > 1)
+      .sort((a, b) => b.opere.length - a.opere.length)
+      .map(({ nome, opere }) => {
+        // Il complesso si ricava dalle opere stesse, non dal nome del gruppo:
+        // un gruppo prende il nome dal luogo piu' frequente fra le sue opere,
+        // che non e' per forza l'edificio da cui si sta guardando.
+        const conteggio = new Map<string, number>();
+        for (const w of opere) {
+          const g = gruppoDiOpera.get(w.id);
+          if (g) conteggio.set(g.parent.id, (conteggio.get(g.parent.id) ?? 0) + 1);
+        }
+        let complessoId: string | null = null;
+        let max = 1;
+        for (const [id, n] of conteggio) if (n > max) { max = n; complessoId = id; }
+        return { nome, n: opere.length, complessoId };
+      });
+  }, [works, gruppoDiOpera]);
 
   const arco = useMemo(() => {
     const anni = works.flatMap((w) => [w.year_start, w.year_end].filter((y): y is number => y != null));
@@ -170,13 +204,13 @@ export default function Luogo() {
 
       {committentiPerSecolo.length > 0 && (
         <Section eyebrow="Committenza" title={`Chi ha commissionato qui (${committenti.length})`}>
-          <div style={{ display: "grid", gap: 14 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: 14 }}>
             {committentiPerSecolo.map(([sec, gruppo]) => (
               <div key={sec}>
                 <div className="smallcaps" style={{ marginBottom: 7, color: "var(--gold-deep)" }}>
                   {sec ? `${sec}° secolo` : "Enti, corporazioni e famiglie"} · {gruppo.length}
                 </div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, minWidth: 0 }}>
                   {gruppo.map(({ id, n, a }) => (
                     <EntityLink
                       key={id} type="artist" id={id} className="chip sm"
@@ -193,8 +227,11 @@ export default function Luogo() {
       {edifici.length > 0 && (
         <Section eyebrow="Topografia" title={`Dove si trovano, in città (${edifici.length})`}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
-            {edifici.map(([luogo, n]) => (
-              <span key={luogo} className="chip sm" style={{ cursor: "default" }}>{luogo} · {n}</span>
+            {edifici.map(({ nome, n, complessoId }) => complessoId ? (
+              <Link key={nome} to={`/complesso/${complessoId}`} className="chip sm"
+                title={`Apri il complesso: ${nome}`}>{nome} · {n}</Link>
+            ) : (
+              <span key={nome} className="chip sm" style={{ cursor: "default" }}>{nome} · {n}</span>
             ))}
           </div>
         </Section>

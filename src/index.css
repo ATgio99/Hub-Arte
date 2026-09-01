@@ -125,6 +125,10 @@ button { font-family: inherit; }
   border: 1px solid var(--line); border-radius: var(--radius);
   color: var(--ink-soft); background: var(--bg-1);
   cursor: pointer; transition: all .18s ease; white-space: nowrap;
+  /* Su una riga sola, ma mai piu' larga dello spazio disponibile: certi nomi
+     del catalogo («Procuratoria di San Marco…») su telefono spingevano fuori
+     tutta la pagina. Oltre il limite il testo viene troncato con i puntini. */
+  max-width: 100%; min-width: 0; overflow: hidden; text-overflow: ellipsis;
 }
 .chip:hover { border-color: var(--gold); color: var(--ink); background: var(--bg-2); }
 .chip.active { background: var(--ink); border-color: var(--ink); color: var(--bg-1); font-weight: 600; }

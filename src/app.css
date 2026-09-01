@@ -67,7 +67,13 @@ main { flex: 1; min-height: 60vh; }
    ============================================================ */
 .trs { user-select: none; }
 .trs-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 4px; }
-.trs-title { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-dim); font-weight: 600; }
+/* Il titolo del filtro era dello stesso grigio di ogni altra etichetta e
+   spariva. Ora e' dorato, un filo piu' grande, con un segno davanti. */
+.trs-title { font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-deep); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+.trs-title::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.fint-riga-et { color: var(--gold-deep) !important; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 6px; }
+.fint-riga-et::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
 .trs-reset { font-size: 10.5px; color: var(--gold-deep); cursor: pointer; background: none; border: 0; padding: 0; letter-spacing: .04em; }
 .trs-reset:hover { text-decoration: underline; }
 .trs-vals { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; font-size: 11.5px; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
@@ -154,7 +160,8 @@ main { flex: 1; min-height: 60vh; }
 @media (max-width: 600px) { .grid-works { grid-template-columns: 1fr; gap: 16px; } }
 
 /* ---------- filtri ---------- */
-.filterbar { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; }
+.filterbar { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; max-width: 100%; }
+.filterbar > * { min-width: 0; max-width: 100%; }
 .filter-group { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
 .filter-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin-right: 4px; font-weight: 600; }
 .input {
@@ -162,7 +169,15 @@ main { flex: 1; min-height: 60vh; }
   padding: 9px 13px; border-radius: var(--radius); font-size: 13.5px; font-family: inherit; outline: none;
 }
 .input:focus { border-color: var(--gold); }
-select.input { cursor: pointer; }
+/* Un <select> si allarga quanto la sua voce piu' lunga, e nel catalogo alcuni
+   nomi di scuola sono lunghissimi: su telefono spingevano la pagina oltre lo
+   schermo. Qui il campo non supera mai la larghezza disponibile e il testo
+   troppo lungo viene troncato con i puntini. */
+select.input {
+  cursor: pointer; max-width: 100%; min-width: 0;
+  text-overflow: ellipsis;
+}
+.filterbar > .input { min-width: 0; }
 
 /* ---------- stage (grafo, timeline, mappa) ---------- */
 .stage { position: relative; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: var(--bg-1); }
@@ -690,6 +705,7 @@ a.hero-stat:hover { background: var(--bg-2); }
 
 /* top: brand + collapse */
 .sbx-top { display: flex; align-items: center; justify-content: space-between; padding: 2px 16px 14px; }
+.sbx-drawer .sbx-top { align-items: flex-start; padding: 26px 14px 16px 18px; }
 .sbx-brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); transition: opacity .2s; }
 /* .sbx.on-home .sbx-brand neutralizzato — tema sempre chiaro */
 .sbx-brand:hover { opacity: .7; }
@@ -699,29 +715,37 @@ a.hero-stat:hover { background: var(--bg-2); }
 .sbx-brand-txt i { font-size: 8.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-dim); font-style: normal; font-weight: 600; margin-top: 2px; }
 /* .sbx.on-home .sbx-brand-txt i neutralizzato */
 .sbx-collapse {
-  flex-shrink: 0; width: 28px; height: 28px; display: grid; place-items: center;
-  border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.4);
+  flex-shrink: 0; width: 32px; height: 32px; display: grid; place-items: center;
+  border: 1px solid var(--line); border-radius: 9px; background: rgba(255,255,255,.4);
   color: var(--ink-dim); cursor: pointer; transition: all .18s;
 }
-.sbx-collapse:hover { border-color: var(--gold); color: var(--gold-deep); }
+.sbx-collapse:hover { border-color: var(--gold); color: var(--gold-deep); background: var(--bg-2); }
+.sbx-collapse:active { transform: scale(.94); }
+/* Nel drawer chiude, e un comando che si tocca col pollice vuole 42px come
+   l'hamburger che gli sta di fronte: 28 erano troppo pochi. */
+.sbx-drawer .sbx-collapse { width: 42px; height: 42px; border-radius: 11px; color: var(--ink-soft); background: var(--bg-1); }
 /* .sbx.on-home .sbx-collapse neutralizzato */
 
 /* navigazione */
-.sbx-nav { display: flex; flex-direction: column; padding: 4px 10px; gap: 2px; overflow-y: auto; flex: 1 1 auto; min-height: 0; -webkit-overflow-scrolling: touch; }
+.sbx-nav { display: flex; flex-direction: column; padding: 6px 10px; gap: 4px; overflow-y: auto; flex: 1 1 auto; min-height: 0; -webkit-overflow-scrolling: touch; }
 .sbx-item {
   position: relative; display: grid; grid-template-columns: 26px 22px 1fr 10px;
-  align-items: center; gap: 10px; padding: 9px 10px; border-radius: 10px;
+  align-items: center; gap: 10px; padding: 5px 10px; border-radius: 10px;
+  /* Altezza uguale per tutte, con o senza «Continua»: lo spazio della seconda
+     riga e' riservato sempre, cosi' l'elenco non salta quando quella scritta
+     compare o sparisce. */
+  min-height: 44px;
   color: var(--ink-soft); transition: background .16s, color .16s, transform .16s;
 }
 /* .sbx.on-home .sbx-item neutralizzato */
 .sbx-num {
-  font-family: var(--font-body); font-variant-numeric: tabular-nums; font-size: 10.5px;
+  font-family: var(--font-body); font-variant-numeric: tabular-nums; font-size: 11px;
   font-weight: 700; letter-spacing: .06em; color: var(--ink-faint); text-align: center;
 }
 /* .sbx.on-home .sbx-num neutralizzato */
 .sbx-ico { color: currentColor; opacity: .7; display: grid; place-items: center; transition: opacity .16s, transform .16s; }
 .sbx-label { position: relative; display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
-.sbx-label b { font-weight: 600; font-size: 14px; letter-spacing: .01em; white-space: nowrap; }
+.sbx-label b { font-weight: 600; font-size: 15px; letter-spacing: .01em; white-space: nowrap; }
 .sbx-label i { font-style: normal; font-size: 10.5px; color: var(--ink-dim); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* .sbx.on-home .sbx-label i neutralizzato */
 /* sottolineatura animata in hover */
@@ -738,7 +762,17 @@ a.hero-stat:hover { background: var(--bg-2); }
 .sbx-item:hover .sbx-num { color: var(--gold-deep); }
 /* .sbx.on-home .sbx-item:hover .sbx-num neutralizzato */
 
-.sbx-item.active { color: var(--ink); background: rgba(184,138,46,.13); }
+/* La voce attiva era un blocco pieno e competeva con i pallini d'oro sulla
+   stessa riga: tre segni dorati diversi nello stesso pannello. Ora e' un filo
+   verticale sul bordo, che dice dove sei senza gridarlo. L'effetto di
+   sollevamento in hover resta quello di prima. */
+.sbx-item.active { color: var(--ink); background: transparent; }
+.sbx-item.active::before {
+  content: ""; position: absolute; left: -2px; top: 7px; bottom: 7px;
+  width: 3px; border-radius: 2px; background: var(--gold);
+}
+.sbx-item.active .sbx-label b { font-weight: 700; }
+.sbx-item.active:hover { background: rgba(184,138,46,.1); }
 /* .sbx.on-home .sbx-item.active neutralizzato */
 .sbx-item.active .sbx-num { color: var(--gold-deep); }
 /* .sbx.on-home .sbx-item.active .sbx-num neutralizzato */
@@ -784,8 +818,8 @@ a.hero-stat:hover { background: var(--bg-2); }
 /* Etichetta compatta "Continua → <titolo>" che sostituisce la descrizione
    normale quando c'è un'ultima opera/artista salvata. */
 .sbx-continue {
-  display: flex; gap: 4px; align-items: baseline;
-  font-size: 10.5px; margin-top: 1px;
+  display: flex; gap: 5px; align-items: baseline;
+  font-size: 11px; margin-top: 2px;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .sbx-continue-label {
@@ -801,8 +835,58 @@ a.hero-stat:hover { background: var(--bg-2); }
 /* .sbx.on-home .sbx-continue-name neutralizzato */
 /* In modalità collassata nascondi l'etichetta (non c'è spazio) */
 .sbx.collapsed .sbx-continue { display: none; }
+/* ── ingresso ──────────────────────────────────────────────────────────
+   All'arrivo sul sito il pannello entra da sinistra e le voci lo seguono
+   scaglionate: il menu sembra distribuito, non gia' li'. Succede una volta
+   sola, al caricamento, e non si ripete cambiando pagina. */
+@keyframes sbx-entra-pannello {
+  from { opacity: 0; transform: translateX(-26px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes sbx-entra-voce {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: none; }
+}
+.sbx:not(.sbx-drawer) { animation: sbx-entra-pannello .52s cubic-bezier(.2,.75,.25,1) both; }
+.sbx:not(.sbx-drawer) .sbx-item { animation: sbx-entra-voce .42s cubic-bezier(.2,.75,.25,1) backwards; }
+.sbx:not(.sbx-drawer) .sbx-item:nth-child(1) { animation-delay: .16s; }
+.sbx:not(.sbx-drawer) .sbx-item:nth-child(2) { animation-delay: .19s; }
+.sbx:not(.sbx-drawer) .sbx-item:nth-child(3) { animation-delay: .22s; }
+.sbx:not(.sbx-drawer) .sbx-item:nth-child(4) { animation-delay: .25s; }
+.sbx:not(.sbx-drawer) .sbx-item:nth-child(5) { animation-delay: .28s; }
+.sbx:not(.sbx-drawer) .sbx-item:nth-child(6) { animation-delay: .31s; }
+.sbx:not(.sbx-drawer) .sbx-item:nth-child(7) { animation-delay: .34s; }
+.sbx:not(.sbx-drawer) .sbx-item:nth-child(8) { animation-delay: .37s; }
+.sbx:not(.sbx-drawer) .sbx-item:nth-child(9) { animation-delay: .40s; }
+/* Le voci del drawer entrano quando il drawer si apre, non al caricamento. */
+.sbx-drawer.open .sbx-item { animation: sbx-entra-voce .34s cubic-bezier(.2,.75,.25,1) backwards; }
+.sbx-drawer.open .sbx-item:nth-child(1) { animation-delay: .06s; }
+.sbx-drawer.open .sbx-item:nth-child(2) { animation-delay: .08s; }
+.sbx-drawer.open .sbx-item:nth-child(3) { animation-delay: .10s; }
+.sbx-drawer.open .sbx-item:nth-child(4) { animation-delay: .12s; }
+.sbx-drawer.open .sbx-item:nth-child(5) { animation-delay: .14s; }
+.sbx-drawer.open .sbx-item:nth-child(6) { animation-delay: .16s; }
+.sbx-drawer.open .sbx-item:nth-child(7) { animation-delay: .18s; }
+.sbx-drawer.open .sbx-item:nth-child(8) { animation-delay: .20s; }
+.sbx-drawer.open .sbx-item:nth-child(9) { animation-delay: .22s; }
+
+/* Il velo dietro al drawer sfoca appena: la pagina si legge come parcheggiata. */
+.sbx-scrim.show { -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+
+.sbx-legal {
+  margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; gap: 4px 14px;
+  font-size: 10.5px; color: var(--ink-dim);
+}
+.sbx-legal a { color: inherit; text-decoration: none; white-space: nowrap; }
+.sbx-legal a:hover { color: var(--gold-deep); text-decoration: underline; }
+/* Niente punti di separazione: attaccati al link non aprivano piu' una riga,
+   ma ne lasciavano uno penzoloni alla fine. Lo spazio separa gia' abbastanza. */
+
 /* Riduci-motion: disabilita le animazioni se l'utente lo preferisce */
 @media (prefers-reduced-motion: reduce) {
+  .sbx:not(.sbx-drawer), .sbx:not(.sbx-drawer) .sbx-item,
+  .sbx-drawer.open .sbx-item { animation: none !important; }
   .sbx-item.has-last .sbx-dot,
   .sbx-item.has-last.active .sbx-dot { animation: none; }
 }
@@ -929,8 +1013,42 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
     cursor: pointer; box-shadow: var(--shadow-sm); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   }
   .is-home .sbx-burger { background: rgba(251,248,241,.86); border-color: var(--line); }
-  .sbx-burger span { width: 18px; height: 2px; background: var(--ink); display: block; }
+  .sbx-burger span {
+    width: 18px; height: 2px; background: var(--ink); display: block;
+    transition: transform .26s cubic-bezier(.2,.75,.25,1), opacity .18s;
+  }
+  /* Le tre linee si chiudono in croce, poi il tasto scivola sotto al pannello:
+     prima spariva di colpo e il passaggio non si leggeva. */
+  .sbx-burger.aperto span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .sbx-burger.aperto span:nth-child(2) { opacity: 0; transform: scaleX(.4); }
+  .sbx-burger.aperto span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .sbx-burger {
+    transition: transform .3s cubic-bezier(.2,.75,.25,1), opacity .24s ease, border-color .18s;
+  }
+  .sbx-burger.aperto { transform: translateX(-14px) scale(.9); opacity: 0; pointer-events: none; }
+  .sbx-burger:active { transform: scale(.94); }
   .is-home .sbx-burger span { background: var(--ink); }
+
+  /* Su telefono la barra della scheda sale accanto all'hamburger, sulla stessa
+     riga: prima stava sotto, e con il tasto «Richiedi modifica» accanto andava
+     a capo per mancanza di spazio. I due comandi restano alti quanto
+     l'hamburger (42px) e ancorati in alto mentre la pagina scorre. */
+  /* Niente position:fixed: l'animazione di cambio pagina lascia una traslazione
+     residua sul contenitore, e un antenato trasformato fa ancorare gli elementi
+     fissi a lui invece che allo schermo — la barra finiva 78px piu' in basso.
+     Si risale invece nella banda che la pagina gia' riserva all'hamburger:
+     l'intestazione parte a 70px, l'hamburger sta a 14px, quindi -56px. */
+  /* Il rientro superiore della pagina va azzerato, altrimenti la risalita
+     dipende da quanto padding ha il contenitore di turno e la barra si ferma
+     qualche pixel piu' in basso su certe schede. */
+  .wrap.page { padding-top: 0; }
+  .barra-scheda {
+    position: relative; z-index: 5; gap: 8px;
+    margin-top: -56px; margin-left: 50px;
+  }
+  .barra-scheda-nav { height: 42px; border-radius: 11px; box-shadow: var(--shadow-sm); background: rgba(251,248,241,.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .barra-scheda-nav button { height: 40px !important; }
+  .barra-scheda-azioni .btn { height: 42px; border-radius: 11px; background: rgba(251,248,241,.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); overflow: hidden; text-overflow: ellipsis; }
 
   .sbx-scrim {
     display: block; position: fixed; inset: 0; z-index: 158; background: rgba(33,28,20,.42);
@@ -1171,3 +1289,121 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   .wi-meta { font-size: 12.5px; }
   .wi-row { padding: 12px 0; }
 }
+/* ============================================================
+   FiltroTempoFoglio — l'intervallo storico su telefono.
+   Il cursore esce dal menu e sale dal basso: le maniglie stanno
+   al centro dello schermo, lontane dalla fascia sinistra dove il
+   sistema interpreta lo scorrimento come «torna indietro».
+   ============================================================ */
+.fint-riga {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; padding: 9px 12px; cursor: pointer; min-height: 48px;
+  border: 1px solid var(--line); border-radius: 10px;
+  background: var(--bg-1); font-family: inherit; color: var(--ink); text-align: left;
+  transition: border-color .18s, background .18s, box-shadow .3s;
+}
+.fint-riga:hover { background: var(--bg-2); border-color: var(--gold); }
+.fint-riga:active { transform: scale(.99); }
+/* Filtro attivo: la riga si accende e respira piano, cosi' non ti scordi che
+   quello che stai guardando e' un pezzo del catalogo e non tutto. */
+.fint-riga.attivo {
+  border-color: var(--gold); background: rgba(184,138,46,.09);
+  animation: fint-respiro 2.6s ease-in-out infinite;
+}
+@keyframes fint-respiro {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(184,138,46,.30); }
+  50%      { box-shadow: 0 0 0 4px rgba(184,138,46,0); }
+}
+.fint-riga-nota {
+  display: block; font-size: 10px; line-height: 1.4; color: var(--ink-dim);
+  margin-top: 3px; white-space: normal;
+}
+.fint-riga.attivo .fint-riga-nota { color: var(--gold-deep); }
+@media (prefers-reduced-motion: reduce) { .fint-riga.attivo { animation: none; } }
+.fint-riga svg { flex-shrink: 0; color: var(--ink-dim); }
+.fint-riga-et { display: block; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-dim); font-weight: 600; }
+.fint-riga-val { display: block; font-size: 12.5px; color: var(--ink-soft); margin-top: 2px; }
+
+.fint-velo {
+  position: fixed; inset: 0; z-index: 10000; background: rgba(33,28,20,.42);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+}
+.fint-foglio {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10001;
+  background: var(--bg-1); border-top: 1px solid var(--line);
+  border-radius: 18px 18px 0 0; padding: 8px 20px calc(20px + var(--sab));
+  box-shadow: 0 -8px 30px rgba(0,0,0,.18);
+}
+.fint-maniglia { width: 38px; height: 4px; border-radius: 2px; background: var(--line); margin: 4px auto 14px; }
+.fint-testa { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.fint-testa h2 { font-family: var(--font-display); font-size: 19px; font-weight: 500; margin: 0; }
+.fint-azzera {
+  background: none; border: 0; padding: 6px 2px; cursor: pointer; font-family: inherit;
+  font-size: 12.5px; color: var(--gold-deep); letter-spacing: .04em;
+}
+.fint-azzera:hover { text-decoration: underline; }
+.fint-conto { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+.fint-conto b { font-size: 16px; font-variant-numeric: tabular-nums; }
+.fint-conto span { font-size: 12.5px; color: var(--ink-dim); }
+
+/* La pista e' alta 64px: l'istogramma resta leggibile e le maniglie hanno
+   sotto una fascia da 44px in cui il dito le prende senza mirare. */
+/* La pista rientra di 14px per lato: cosi' il centro delle maniglie sta a
+   una quarantina di pixel dal bordo dello schermo, ben fuori dalla fascia in
+   cui il sistema si prende lo scorrimento. */
+.fint-pista { position: relative; height: 64px; margin: 6px 14px 16px; }
+.fint-isto { position: absolute; inset: 0 0 22px; display: flex; align-items: flex-end; gap: 1px; }
+.fint-barra { flex: 1; background: var(--bg-3); border-radius: 1px 1px 0 0; transition: background .15s; }
+.fint-barra.in { background: var(--gold); }
+.fint-binario { position: absolute; left: 0; right: 0; bottom: 20px; height: 3px; background: var(--line); border-radius: 2px; }
+.fint-scelto { position: absolute; bottom: 20px; height: 3px; background: var(--gold-deep); border-radius: 2px; }
+.fint-cursore {
+  position: absolute; left: -2px; right: -2px; bottom: 0; width: calc(100% + 4px);
+  height: 44px; margin: 0; background: none; pointer-events: none;
+  -webkit-appearance: none; appearance: none;
+}
+.fint-cursore::-webkit-slider-thumb {
+  -webkit-appearance: none; pointer-events: all;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--bg-1); border: 3px solid var(--gold-deep);
+  cursor: grab; box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+.fint-cursore::-webkit-slider-thumb:active { cursor: grabbing; background: var(--gold); }
+.fint-cursore::-moz-range-thumb {
+  pointer-events: all; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--bg-1); border: 3px solid var(--gold-deep); cursor: grab;
+}
+
+.fint-preset { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+.fint-preset-b {
+  min-height: 44px; padding: 0 14px; border-radius: 10px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--bg-1); color: var(--ink-soft);
+  font-family: inherit; font-size: 13px;
+}
+.fint-preset-b:hover { border-color: var(--gold); color: var(--gold-deep); }
+.fint-preset-b.on { background: var(--ink); color: var(--bg-1); border-color: var(--ink); }
+
+.fint-fatto {
+  width: 100%; min-height: 48px; border-radius: 12px; cursor: pointer;
+  border: 1px solid var(--ink); background: var(--ink); color: var(--bg-1);
+  font-family: inherit; font-size: 15px; font-weight: 600;
+}
+.fint-fatto:hover { background: #000; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fint-velo, .fint-foglio { transition: none !important; }
+}
+.fint-avviso {
+  font-size: 12px; line-height: 1.5; color: var(--ink-dim);
+  margin: 2px 0 10px; max-width: 46ch;
+}
+
+/* Istogramma della densità: l'oro è il totale, il verde che sale dal basso è
+   quanto hai approfondito in quella fascia di anni. */
+.density i { display: block; }
+.density i.fuori { background: var(--line); }
+.density-fatte {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  background: var(--c-technique); border-radius: 0 0 1px 1px;
+}
+.density i:hover .density-fatte { background: color-mix(in srgb, var(--c-technique) 80%, #000); }

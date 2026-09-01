@@ -365,6 +365,7 @@ export default function Landing() {
           <Link to="/legal/termini" style={{ color: "var(--ink-dim)", textDecoration: "none" }}>Termini</Link>
           <Link to="/legal/crediti" style={{ color: "var(--ink-dim)", textDecoration: "none" }}>Crediti</Link>
           <Link to="/legal/contatti" style={{ color: "var(--ink-dim)", textDecoration: "none" }}>Contatti</Link>
+          <Link to="/legal/accessibilita" style={{ color: "var(--ink-dim)", textDecoration: "none" }}>Accessibilità</Link>
           <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer"
             style={{ color: "var(--ink-dim)", textDecoration: "none" }}>
             GitHub ↗

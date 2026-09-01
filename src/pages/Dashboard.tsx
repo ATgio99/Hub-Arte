@@ -33,21 +33,36 @@ function Bars({ data, color = "var(--gold)" }: { data: [string, number, string?]
   );
 }
 
-// ---- Istogramma densità con barre che crescono (stagger) ------------------
-function DensityBars({ density, densityMax, inSel, yearAt }:
-  { density: number[]; densityMax: number; inSel: (i: number) => boolean; yearAt: (i: number) => number }) {
+// ---- Istogramma densità: l'altezza dice quante opere ci sono in
+//      quell'intervallo, la parte verde quante ne hai approfondite.
+//      Cosi' l'avanzamento si legge nel tempo e non solo per periodo: si vede
+//      subito quali secoli hai lasciato indietro.
+function DensityBars({ density, studiedDensity, densityMax, inSel, yearAt }:
+  { density: number[]; studiedDensity: number[]; densityMax: number;
+    inSel: (i: number) => boolean; yearAt: (i: number) => number }) {
   const reduced = usePrefersReducedMotion();
   const { ref, seen } = useInViewOnce(0.2);
   return (
     <div className="density" data-testid="dash-density" ref={ref as any}>
-      {density.map((n, i) => (
-        <motion.i key={i}
-          title={`${yearAt(i)}–${yearAt(i) + 30}: ${n} opere`}
-          style={{ background: inSel(i) ? "var(--gold)" : "var(--line)" }}
-          initial={reduced ? false : { height: 0 }}
-          animate={{ height: `${((seen || reduced) ? (n / densityMax) : 0) * 100}%` }}
-          transition={{ duration: 0.6, ease: EASE_OUT, delay: reduced ? 0 : Math.min(i * 0.006, 0.5) }} />
-      ))}
+      {density.map((n, i) => {
+        const fatte = studiedDensity[i] ?? 0;
+        const quota = n > 0 ? Math.round((fatte / n) * 100) : 0;
+        return (
+          <motion.i key={i}
+            className={inSel(i) ? "" : "fuori"}
+            title={`${yearAt(i)}–${yearAt(i) + 30}: ${n} ${n === 1 ? "opera" : "opere"}${n > 0 ? `, ${fatte} ${fatte === 1 ? "approfondita" : "approfondite"} (${quota}%)` : ""}`}
+            initial={reduced ? false : { height: 0 }}
+            animate={{ height: `${((seen || reduced) ? (n / densityMax) : 0) * 100}%` }}
+            transition={{ duration: 0.6, ease: EASE_OUT, delay: reduced ? 0 : Math.min(i * 0.006, 0.5) }}>
+            {fatte > 0 && (
+              <motion.span className="density-fatte" aria-hidden
+                initial={reduced ? false : { height: 0 }}
+                animate={{ height: `${(seen || reduced) ? quota : 0}%` }}
+                transition={{ duration: 0.5, ease: EASE_OUT, delay: reduced ? 0 : 0.25 + Math.min(i * 0.006, 0.5) }} />
+            )}
+          </motion.i>
+        );
+      })}
     </div>
   );
 }
@@ -73,7 +88,7 @@ function SparkCard({ title, count, bins, color = "var(--gold)", href }:
 }
 
 // ---- Barre progresso approfondite per periodo ----------------------------
-function StudiedBars({ data }: { data: { name: string; total: number; studied: number; pct: number; href: string }[] }) {
+function StudiedBars({ data }: { data: { name: string; total: number; studied: number; pct: number; href: string; orfane?: boolean }[] }) {
   const reduced = usePrefersReducedMotion();
   const { ref, seen } = useInViewOnce(0.15);
   return (
@@ -81,7 +96,11 @@ function StudiedBars({ data }: { data: { name: string; total: number; studied: n
       {data.map((d, i) => (
         <div key={d.name} style={{ marginBottom: 10 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-            <Link className="tlink" to={d.href} style={{ border: 0, fontSize: 13, flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{d.name}</Link>
+            <Link className="tlink" to={d.href}
+              title={d.orfane ? "Opere a cui non è ancora stato assegnato un periodo" : undefined}
+              style={{ border: 0, fontSize: 13, flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", fontStyle: d.orfane ? "italic" : undefined, color: d.orfane ? "var(--c-event)" : undefined }}>
+              {d.orfane ? `⚑ ${d.name}` : d.name}
+            </Link>
             <span className="tnum" style={{ fontSize: 12, color: d.pct === 100 ? "var(--c-technique)" : "var(--ink-dim)" }}>
               {d.studied}/{d.total} ({d.pct}%)
             </span>
@@ -130,14 +149,22 @@ export default function Dashboard() {
       }
     }
     return [...periodWorks.entries()]
-      .map(([pid, s]) => ({
-        pid,
-        name: ix.periodById.get(pid)?.name ?? pid,
-        total: s.total,
-        studied: s.studied,
-        pct: s.total > 0 ? Math.round((s.studied / s.total) * 100) : 0,
-        href: `/periodo/${pid}`,
-      }))
+      .map(([pid, s]) => {
+        // Le opere a cui nessuno ha ancora assegnato un periodo finivano in una
+        // barra senza etichetta e senza collegamento: sembrava un difetto del
+        // grafico. Ora si chiamano per quello che sono e si possono aprire.
+        const p = ix.periodById.get(pid);
+        const orfane = !p;
+        return {
+          pid,
+          name: p ? p.name : "Senza periodo assegnato",
+          orfane,
+          total: s.total,
+          studied: s.studied,
+          pct: s.total > 0 ? Math.round((s.studied / s.total) * 100) : 0,
+          href: orfane ? "/opere?p=__senza_periodo__" : `/periodo/${pid}`,
+        };
+      })
       .sort((a, b) => b.total - a.total);
   }, [works, ix, studiedIds]);
 
@@ -200,6 +227,19 @@ export default function Dashboard() {
     });
     return arr;
   }, [ds, bounds, nBins]);
+  // Le stesse fasce, contando solo le opere segnate come approfondite.
+  const studiedDensity = useMemo(() => {
+    const fatte = new Set(studiedIds);
+    const arr = new Array(nBins).fill(0);
+    ds.works.forEach((w) => {
+      if (!fatte.has(w.id)) return;
+      const y = workSortYear(w);
+      if (y == null) return;
+      const i = Math.min(nBins - 1, Math.max(0, Math.floor((y - bounds.min) / BIN)));
+      arr[i]++;
+    });
+    return arr;
+  }, [ds, bounds, nBins, studiedIds]);
   const densityMax = Math.max(...density, 1);
   const yearAt = (i: number) => bounds.min + i * BIN;
   const inSel = (i: number) => yearAt(i) + BIN > range.min && yearAt(i) <= range.max;
@@ -323,9 +363,12 @@ export default function Dashboard() {
       {/* DENSITÀ TEMPORALE — istogramma grande, bin nell'arco evidenziati */}
       <Section eyebrow="Densità temporale" title="Opere nel tempo">
         <p className="muted" style={{ fontSize: 13.5, marginTop: -8, marginBottom: 16, maxWidth: "58ch" }}>
-          Numero di opere catalogate per intervalli di {BIN} anni. Le barre in oro cadono nell'arco selezionato.
+          Numero di opere catalogate per intervalli di {BIN} anni. Le barre in oro cadono
+          nell'arco selezionato; la parte verde in basso è quanto hai già approfondito in
+          quella fascia di anni.
         </p>
-        <DensityBars density={density} densityMax={densityMax} inSel={inSel} yearAt={yearAt} />
+        <DensityBars density={density} studiedDensity={studiedDensity}
+          densityMax={densityMax} inSel={inSel} yearAt={yearAt} />
         <div className="density-axis">
           <span>{bounds.min}</span><span>{Math.round((bounds.min + bounds.max) / 2)}</span><span>{bounds.max}</span>
         </div>

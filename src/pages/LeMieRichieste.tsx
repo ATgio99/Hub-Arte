@@ -12,6 +12,8 @@
 import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import { rottaDiScheda } from "../lib/data";
+import { useData } from "../lib/store";
 import { AccessoRichiesto, BarraScheda, BannerGitHub, Section } from "../components/ui";
 import { useAuth, CONTACT_EMAIL } from "../lib/auth";
 import { getFavorites } from "../lib/favorites";
@@ -66,6 +68,7 @@ const FIELD_LABELS: Record<string, string> = {
 
 export default function LeMieRichieste() {
   const { user } = useAuth();
+  const ix = useData();
   const [suggestions, setSuggestions] = useState<SuggestionRow[]>([]);
   const [editSuggestions, setEditSuggestions] = useState<EditSuggestionRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -270,7 +273,7 @@ export default function LeMieRichieste() {
                     borderRadius: 10,
                   }}>
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "baseline", flexWrap: "wrap" }}>
-                      <Link to={`/opera/${s.work_id}`} style={{ fontSize: 15, fontWeight: 600, color: "var(--ink)", textDecoration: "none" }}>
+                      <Link to={rottaDiScheda(ix, s.work_id)} style={{ fontSize: 15, fontWeight: 600, color: "var(--ink)", textDecoration: "none" }}>
                         {s.work_title}
                       </Link>
                       <span style={{
