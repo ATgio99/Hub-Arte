@@ -81,15 +81,18 @@ function useSyncOnLogin() {
       await fullSync(user);
     })();
 
-    // Niente piu' polling. Ci si riallinea quando si torna sulla scheda, e non
-    // piu' di una volta ogni cinque minuti: il realtime copre tutto il resto.
+    // Niente polling a orologio: ci si riallinea quando si torna sulla scheda.
+    // E' il momento in cui serve davvero — un telefono va in secondo piano di
+    // continuo, e al ritorno deve trovare quello che hai fatto altrove. La
+    // pausa minima e' di venti secondi, che basta a non ripetersi se si passa
+    // avanti e indietro fra le finestre, ma non lascia i due dispositivi su
+    // numeri diversi come succedeva con cinque minuti.
     let ultimoAllineamento = Date.now();
     const alRientro = () => {
       if (document.visibilityState !== "visible") return;
-      if (Date.now() - ultimoAllineamento < 300000) return;
+      if (Date.now() - ultimoAllineamento < 20000) return;
       ultimoAllineamento = Date.now();
       pullFromCloud(user);
-      pullImageOverrides(user);
     };
     document.addEventListener("visibilitychange", alRientro);
 

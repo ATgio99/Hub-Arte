@@ -12,7 +12,11 @@ export const STUDIED_EVENT = "atlante:studied-changed";
 
 // --- Tombstones: ID eliminati di recente per evitare che il poll dal cloud
 //     li riaggiunga. Scadono dopo 1 ora.
-const TOMB_TTL_MS = 60 * 60 * 1000; // 1 ora
+// Quaranta secondi: il tempo perche' una scrittura arrivi al cloud e torni
+// indietro. Prima era un'ora, e in quell'ora un preferito aggiunto dal telefono
+// veniva rifiutato dal computer che lo aveva tolto poco prima: i due
+// dispositivi restavano su numeri diversi senza piu' riallinearsi.
+const TOMB_TTL_MS = 40 * 1000;
 
 function getTombstones(): Record<string, number> {
   try { return JSON.parse(localStorage.getItem(TOMB_KEY) || "{}"); } catch { return {}; }

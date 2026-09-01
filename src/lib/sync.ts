@@ -43,7 +43,20 @@ import type { User } from "@supabase/supabase-js";
 // il localStorage verrebbe svuotato e l'immagine tornerebbe al default.
 // Il MERGE preserva sempre i dati locali; cloud vince solo su URL diverso.
 
+// Le immagini scelte dagli amministratori valgono per tutti e cambiano di rado,
+// ma venivano richieste a ogni caricamento di pagina da ogni dispositivo: nel
+// log erano sedici richieste in trentasette secondi. Restano in sessionStorage
+// per cinque minuti, e chi ricarica non le ripaga. Se un admin ne cambia una,
+// il realtime la porta subito lo stesso.
+const CHIAVE_IMG = "atlante:img-globali-lette";
+const DURATA_IMG = 5 * 60 * 1000;
+
 export async function pullGlobalImageOverrides(): Promise<void> {
+  try {
+    const letto = Number(sessionStorage.getItem(CHIAVE_IMG) || 0);
+    if (Date.now() - letto < DURATA_IMG) return;
+    sessionStorage.setItem(CHIAVE_IMG, String(Date.now()));
+  } catch { /* sessionStorage negato: si procede */ }
   try {
     // Prova prima con il filtro is_global = true (richiede la migration)
     let { data, error } = await supabase
@@ -380,6 +393,22 @@ export async function fullSync(user: User): Promise<void> {
 // chiude, riautenticato a ogni rinnovo del token, e con un tetto ai tentativi
 // oltre il quale si smette e si torna a sincronizzare al rientro sulla scheda.
 
+// Postgres, quando cancella una riga, nell'evento di realtime manda solo le
+// colonne che identificano la riga — di norma la chiave primaria. Non basta a
+// capire quale preferito e' stato tolto, e infatti le cancellazioni fatte da un
+// altro dispositivo non arrivavano mai: le aggiunte si vedevano, le rimozioni
+// no, e i due dispositivi finivano su numeri diversi.
+//
+// Invece di cambiare la configurazione del database, quando arriva una
+// cancellazione che non sappiamo leggere si chiede una rilettura, una sola,
+// dopo un secondo e mezzo. Le cancellazioni sono rare: costa due chiamate
+// quando succede davvero qualcosa, e niente il resto del tempo.
+let rilettura: any = null;
+function chiediRilettura(user: User) {
+  if (rilettura) clearTimeout(rilettura);
+  rilettura = setTimeout(() => { rilettura = null; pullFromCloud(user); }, 1500);
+}
+
 let canaleCorrente: ReturnType<typeof supabase.channel> | null = null;
 let tentativiFalliti = 0;
 const MAX_TENTATIVI = 4;
@@ -419,6 +448,8 @@ export function subscribeToRealtime(user: User): () => void {
             setFavorites(f);
           }
         } else if (payload.eventType === "DELETE") {
+          const vecchio = payload.old as any;
+          if (!vecchio || !vecchio.work_id || !vecchio.type) { chiediRilettura(user); return; }
           const f = getFavorites();
           if (payload.old.type === "work") {
             f.works = f.works.filter(id => id !== payload.old.work_id);
@@ -444,7 +475,9 @@ export function subscribeToRealtime(user: User): () => void {
             setStudied(ids);
           }
         } else if (payload.eventType === "DELETE") {
-          const ids = getStudied().filter(id => id !== payload.old.work_id);
+          const vecchio = payload.old as any;
+          if (!vecchio || !vecchio.work_id) { chiediRilettura(user); return; }
+          const ids = getStudied().filter(id => id !== vecchio.work_id);
           setStudied(ids);
         }
       }
