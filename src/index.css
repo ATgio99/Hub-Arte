@@ -1,0 +1,225 @@
+/* ============================================================
+   Atlante di Storia dell'Arte — design system "Carta"
+   Estetica: archivio editoriale chiaro, tipografia protagonista,
+   griglia svizzera con hairline a vista, accenti oro/ambra/ruggine.
+   Display serif: Zodiak (Fontshare) — serif editoriale ad alto
+   contrasto, sobria nei testi e di carattere nei display.
+   Sans di supporto: General Sans. Numeri tabulari per date/statistiche.
+   ============================================================ */
+
+:root {
+  /* superfici chiare — color carta / crema */
+  --bg:        #f6f1e8;   /* carta */
+  --bg-1:      #fbf8f1;   /* pannello */
+  --bg-2:      #f1ebdf;   /* pannello sollevato / hover */
+  --bg-3:      #ece4d4;   /* hover marcato */
+  --paper-edge:#e7dcc7;
+
+  /* hairline */
+  --line:      #d8ccb4;   /* linea principale a vista */
+  --line-soft: #e6dcc9;   /* linea tenue */
+  --line-ink:  #cdbfa3;
+
+  /* inchiostri */
+  --ink:       #211c14;   /* testo principale, quasi nero caldo */
+  --ink-soft:  #4a4234;
+  --ink-dim:   #837a66;
+  --ink-faint: #a99e87;
+
+  /* accenti oro / ambra / ruggine */
+  --gold:      #b88a2e;   /* oro profondo, leggibile su carta */
+  --gold-2:    #caa14a;
+  --gold-deep: #8f6a1d;
+  --amber:     #b9692c;
+  --rust:      #9a4a26;
+  --verdigris: #4f7d72;
+
+  /* colori per categorie entità (grafo, timeline, mappa, badge) */
+  --c-period:    #b88a2e;
+  --c-artist:    #b9692c;
+  --c-work:      #5f7e8c;
+  --c-technique: #6e8350;
+  --c-term:      #9a6a92;
+  --c-event:     #a8483f;
+
+  --radius: 10px;   /* forma dei comandi: pulsanti, campi, chip */
+  --radius-lg: 6px;
+  --shadow: 0 14px 40px -22px rgba(60,42,12,.32);
+  --shadow-sm: 0 3px 14px -8px rgba(60,42,12,.3);
+  --maxw: 1180px;
+
+  --font-display: 'Zodiak', Georgia, 'Times New Roman', serif;
+  --font-body: 'General Sans', system-ui, -apple-system, sans-serif;
+
+  --sidebar-w: 256px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* texture carta: grana finissima, niente gradienti AI */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: -1; opacity: .04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+h1,h2,h3,h4 {
+  font-family: var(--font-display);
+  font-weight: 500; line-height: 1.05; margin: 0;
+  letter-spacing: -0.015em; color: var(--ink);
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+
+::selection { background: rgba(184,138,46,.26); color: var(--ink); }
+
+/* numeri tabulari per date / statistiche */
+.tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--bg-3); border-radius: 6px; border: 3px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--line); }
+
+/* ---------- util ---------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
+@media (max-width: 980px) { .wrap { padding: 0 24px; } }
+@media (max-width: 560px) { .wrap { padding: 0 18px; } }
+
+/* etichette in maiuscoletto spaziato */
+.eyebrow {
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold-deep); font-weight: 600;
+}
+.smallcaps {
+  font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink-dim); font-weight: 600;
+}
+.muted { color: var(--ink-dim); }
+.faint { color: var(--ink-faint); }
+.serif { font-family: var(--font-display); }
+.italic-accent { font-style: italic; color: var(--rust); }
+
+/* numerazione sezioni 01, 02… */
+.sec-num { font-family: var(--font-body); font-variant-numeric: tabular-nums; font-size: 11px; letter-spacing: .12em; color: var(--gold-deep); font-weight: 600; }
+
+/* ---------- chip / badge ---------- */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; line-height: 1; padding: 6px 11px;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  color: var(--ink-soft); background: var(--bg-1);
+  cursor: pointer; transition: all .18s ease; white-space: nowrap;
+  /* Su una riga sola, ma mai piu' larga dello spazio disponibile: certi nomi
+     del catalogo («Procuratoria di San Marco…») su telefono spingevano fuori
+     tutta la pagina. Oltre il limite il testo viene troncato con i puntini. */
+  max-width: 100%; min-width: 0; overflow: hidden; text-overflow: ellipsis;
+}
+.chip:hover { border-color: var(--gold); color: var(--ink); background: var(--bg-2); }
+.chip.active { background: var(--ink); border-color: var(--ink); color: var(--bg-1); font-weight: 600; }
+.chip.sm { font-size: 11px; padding: 4px 9px; }
+
+a.chip { text-decoration: none; }
+
+.tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 2px; font-weight: 600;
+  background: var(--bg-2); color: var(--ink-dim); border: 1px solid var(--line-soft);
+}
+a.tag { cursor: pointer; transition: all .16s ease; }
+a.tag:hover { border-color: var(--gold); color: var(--gold-deep); background: var(--bg-1); }
+
+/* badge periodo morbido (stile HubArt) */
+.badge-period {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600;
+  padding: 5px 11px; border-radius: var(--radius);
+  background: rgba(184,138,46,.12); color: var(--gold-deep); border: 1px solid rgba(184,138,46,.28);
+  transition: all .16s ease;
+}
+a.badge-period:hover { background: rgba(184,138,46,.2); border-color: var(--gold); }
+.badge-period::before { content:""; width:6px; height:6px; border-radius:50%; background: var(--gold); }
+
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 20px; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--bg-1); color: var(--ink);
+  font-size: 13.5px; font-weight: 500; cursor: pointer; transition: all .18s ease;
+}
+.btn:hover { border-color: var(--gold); background: var(--bg-2); }
+.btn.gold { background: var(--ink); color: var(--bg-1); border-color: var(--ink); font-weight: 600; }
+.btn.gold:hover { background: #000; }
+.btn.amber { background: var(--amber); color: #fff5ea; border-color: var(--amber); font-weight: 600; }
+.btn.amber:hover { background: var(--rust); border-color: var(--rust); }
+.btn.ghost { background: transparent; }
+.btn.sm { padding: 8px 14px; font-size: 12.5px; }
+
+/* ---------- card ---------- */
+.card {
+  background: var(--bg-1); border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg); overflow: hidden;
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+a.card:hover, .card.hover:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
+/* ---------- loader ---------- */
+.loader-wrap { display: grid; place-items: center; min-height: 70vh; gap: 18px; background: var(--bg); }
+.spinner {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 2px solid var(--line); border-top-color: var(--gold);
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.skeleton { background: linear-gradient(90deg, var(--bg-1), var(--bg-2), var(--bg-1)); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+@keyframes fadeup { from { opacity:0; transform: translateY(10px);} to {opacity:1; transform:none;} }
+.fadeup { animation: fadeup .55s cubic-bezier(.2,.7,.2,1) both; }
+
+/* placeholder immagine elegante su carta */
+.img-placeholder {
+  display: grid; place-items: center; position: relative;
+  background:
+    repeating-linear-gradient(45deg, var(--bg-2) 0 9px, var(--bg-1) 9px 18px);
+  color: var(--ink-faint);
+}
+.img-placeholder::after {
+  content: ""; position:absolute; inset: 12px; border: 1px solid var(--line);
+  border-radius: 2px;
+}
+
+/* link-text con sottolineatura animata raffinata */
+.tlink {
+  color: var(--ink); position: relative; background-image: linear-gradient(var(--gold), var(--gold));
+  background-size: 0% 1.2px; background-repeat: no-repeat; background-position: 0 100%;
+  transition: background-size .25s ease, color .2s ease; padding-bottom: 1px;
+}
+.tlink:hover { color: var(--gold-deep); background-size: 100% 1.2px; }
+
+/* leaflet override su carta */
+.leaflet-container { background: #eee6d6 !important; font-family: var(--font-body); }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--bg-1); color: var(--ink); box-shadow: var(--shadow); border-radius: var(--radius-lg); }
+.leaflet-popup-content { margin: 12px 14px; }
+.leaflet-bar a { background: var(--bg-1); color: var(--ink); border-color: var(--line); }
+.leaflet-bar a:hover { background: var(--bg-2); }
+.leaflet-control-attribution { background: rgba(251,248,241,.8) !important; color: var(--ink-faint) !important; }
+.leaflet-control-attribution a { color: var(--gold-deep) !important; }
