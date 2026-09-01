@@ -123,11 +123,21 @@ export async function pushToCloud(user: User): Promise<void> {
   const uid = user.id;
   console.log("[sync] pushToCloud start for user:", uid);
 
-  // 1) Favorites — upsert tutti i preferiti locali
-  const favs = getFavorites();
+  // 1) Preferiti — solo quelli che il cloud non ha ancora.
+  //
+  // Qui si riscrivevano TUTTE le righe locali a ogni sincronizzazione: 393
+  // preferiti piu' 517 approfondite, novecento scritture per ogni caricamento
+  // di pagina. E ogni riga scritta genera un evento che il realtime deve
+  // consegnare al client: e' cosi' che si arrivava a «Too many postgres
+  // changes messages per second».
+  //
+  // Si spinge quindi solo cio' che e' segnato come non ancora confermato: nel
+  // caso normale sono zero righe, e la spinta non parte nemmeno.
+  const daMandareWork = getPendingAddsFor("work");
+  const daMandareArtist = getPendingAddsFor("artist");
   const favRows = [
-    ...favs.works.map(work_id => ({ user_id: uid, work_id, type: "work" as const })),
-    ...favs.artists.map(work_id => ({ user_id: uid, work_id, type: "artist" as const })),
+    ...daMandareWork.map(work_id => ({ user_id: uid, work_id, type: "work" as const })),
+    ...daMandareArtist.map(work_id => ({ user_id: uid, work_id, type: "artist" as const })),
   ];
   if (favRows.length > 0) {
     const { error } = await supabase.from("user_favorites").upsert(favRows, { onConflict: "user_id,work_id,type" });
@@ -137,8 +147,8 @@ export async function pushToCloud(user: User): Promise<void> {
     console.log("[sync] No local favorites to push");
   }
 
-  // 2) Studied — upsert tutti gli approfonditi locali
-  const studiedIds = getStudied();
+  // 2) Approfondite — stessa regola: solo quelle non ancora confermate.
+  const studiedIds = getPendingAddsStudied();
   if (studiedIds.length > 0) {
     const studiedRows = studiedIds.map(work_id => ({ user_id: uid, work_id }));
     const { error } = await supabase.from("user_studied").upsert(studiedRows, { onConflict: "user_id,work_id" });

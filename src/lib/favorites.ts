@@ -21,6 +21,13 @@ export interface Favorites { works: string[]; artists: string[] }
 // dispositivi restavano su numeri diversi senza piu' riallinearsi.
 const TOMB_TTL_MS = 40 * 1000;
 
+// I «non ancora inviati» sono un'altra cosa: sono le aggiunte fatte qui che il
+// cloud potrebbe non avere ancora — perche' eri senza rete, o la scrittura e'
+// fallita. Devono sopravvivere finche' non arrivano davvero, quindi la loro
+// finestra e' lunga: usare la stessa delle lapidi significherebbe perdere una
+// stella messa offline e ripresa in mano il giorno dopo.
+const PENDING_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
 function getTombstones(): Record<string, number> {
   try { return JSON.parse(localStorage.getItem(TOMB_KEY) || "{}"); } catch { return {}; }
 }
@@ -67,7 +74,7 @@ export function getPendingAddsFor(type: FavType): string[] {
   const now = Date.now();
   return Object.keys(p)
     .filter(k => k.startsWith(`${type}:`))
-    .filter(k => now - p[k] < TOMB_TTL_MS) // scadono dopo 1 ora
+    .filter(k => now - p[k] < PENDING_TTL_MS)
     .map(k => k.slice(`${type}:`.length));
 }
 

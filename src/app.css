@@ -1048,7 +1048,14 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   }
   .barra-scheda-nav { height: 42px; border-radius: 11px; box-shadow: var(--shadow-sm); background: rgba(251,248,241,.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
   .barra-scheda-nav button { height: 40px !important; }
-  .barra-scheda-azioni .btn { height: 42px; border-radius: 11px; background: rgba(251,248,241,.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); overflow: hidden; text-overflow: ellipsis; }
+  .barra-scheda-azioni .btn { height: 42px; border-radius: 11px; overflow: hidden; text-overflow: ellipsis; }
+  /* Lo sfondo chiaro vale solo per i tasti neutri. Applicato a tutti copriva
+     il fondo scuro del tasto «Modifica» degli amministratori, che diventava
+     testo chiaro su chiaro: illeggibile. */
+  .barra-scheda-azioni .btn:not(.gold):not(.amber) {
+    background: rgba(251,248,241,.92);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  }
 
   .sbx-scrim {
     display: block; position: fixed; inset: 0; z-index: 158; background: rgba(33,28,20,.42);

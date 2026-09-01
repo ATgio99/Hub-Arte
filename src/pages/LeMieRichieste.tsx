@@ -118,7 +118,7 @@ export default function LeMieRichieste() {
       const favs = getFavorites();
       const studied = getStudied();
       setSyncFeedback(
-        `✓ Sincronizzato! ${favs.works.length + favs.artists.length} preferiti, ${studied.length} approfondite nel cloud.`
+        `✓ Sincronizzato: ${favs.works.length} opere preferite, ${favs.artists.length} autori preferiti, ${studied.length} opere approfondite.`
       );
     } catch (e: any) {
       setSyncFeedback(`✗ Errore di sincronizzazione: ${e.message || "sync fallita"}`);

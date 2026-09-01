@@ -18,6 +18,13 @@ export const STUDIED_EVENT = "atlante:studied-changed";
 // dispositivi restavano su numeri diversi senza piu' riallinearsi.
 const TOMB_TTL_MS = 40 * 1000;
 
+// I «non ancora inviati» sono un'altra cosa: sono le aggiunte fatte qui che il
+// cloud potrebbe non avere ancora — perche' eri senza rete, o la scrittura e'
+// fallita. Devono sopravvivere finche' non arrivano davvero, quindi la loro
+// finestra e' lunga: usare la stessa delle lapidi significherebbe perdere una
+// stella messa offline e ripresa in mano il giorno dopo.
+const PENDING_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
 function getTombstones(): Record<string, number> {
   try { return JSON.parse(localStorage.getItem(TOMB_KEY) || "{}"); } catch { return {}; }
 }
@@ -58,7 +65,7 @@ function removePendingAdd(id: string) {
 export function getPendingAddsStudied(): string[] {
   const p = getPendingAdds();
   const now = Date.now();
-  return Object.keys(p).filter(id => now - p[id] < TOMB_TTL_MS);
+  return Object.keys(p).filter(id => now - p[id] < PENDING_TTL_MS);
 }
 
 // Come per i preferiti: la lista vive in memoria, il disco e' una copia.

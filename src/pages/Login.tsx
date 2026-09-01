@@ -247,9 +247,15 @@ function Accesso() {
         await fullSync(user);
         const updatedFavs = getFavorites();
         const updatedStudied = getStudied();
-        const updatedOverrides = getOverrides();
-        const totalUpdated = updatedFavs.works.length + updatedFavs.artists.length;
-        setSyncResult(`✓ Sincronizzato! ${totalUpdated} preferiti, ${updatedStudied.length} approfondite, ${Object.keys(updatedOverrides).length} immagini nel cloud.`);
+        // Il messaggio contava opere e autori insieme sotto la parola
+        // «preferiti», mentre i numeri qui sopra li tengono separati: 383 e 10
+        // diventavano 393, e sembrava che la sincronizzazione avesse trovato
+        // dati diversi. Adesso dice le stesse tre cose con le stesse parole.
+        setSyncResult(
+          `✓ Sincronizzato: ${updatedFavs.works.length} opere preferite, ` +
+          `${updatedFavs.artists.length} autori preferiti, ` +
+          `${updatedStudied.length} opere approfondite.`
+        );
       } catch (e: any) {
         setSyncResult(`✗ Errore: ${e.message || "sync fallita"}`);
       }
@@ -668,7 +674,7 @@ function Accesso() {
 
           <div style={{ marginTop: 16, padding: "10px 12px", borderRadius: 8, background: "var(--bg-2)", border: "1px solid var(--line-soft)", fontSize: 12.5, lineHeight: 1.55, color: "var(--ink-soft)" }}>
             <b style={{ color: "var(--ink)" }}>Come funziona la sincronizzazione</b><br />
-            Quando accedi, i tuoi ★ preferiti, ✓ approfondite e immagini personalizzate vengono inviati al cloud e scaricati su tutti i tuoi dispositivi collegati allo stesso account.
+            Quando accedi, le opere e gli autori che hai messo tra i preferiti e le opere che hai segnato come approfondite vengono inviati al cloud e ritrovati su ogni dispositivo collegato allo stesso account.
           </div>
         </>
       )}
