@@ -1,0 +1,1910 @@
+[
+ {
+  "id": "acquaforte",
+  "name": "Acquaforte",
+  "definition": "Tecnica incisoria che utilizza l'acido nitrico per incidere una lastra di metallo ricoperta di cera resistente all'acido. Il tratto risultante è più fluido rispetto al bulino.",
+  "introduced_by": "Invenzione collocata attorno al 1513",
+  "first_period_id": "rinascimento-maturo-italia-settentrionale",
+  "evolution": "Introdotta attorno al 1513, offre libertà esecutiva vicina al disegno. Dürer la sperimenta nel Paesaggio con cannone (1518).",
+  "category": "altra"
+ },
+ {
+  "id": "acquerello-e-guazzo",
+  "name": "Acquerello e guazzo",
+  "definition": "Tecniche di disegno a base acquosa: l'acquerello è trasparente (pigmenti + acqua), il guazzo è opaco (pigmenti + acqua + bianco). Esecuzione rapida, adatta per schizzi dal vero.",
+  "introduced_by": "Tradizione nordeuropea, diffusa nel medioevo",
+  "first_period_id": "rinascimento-maturo-italia-settentrionale",
+  "evolution": "Usata da Dürer nei disegni di studio naturalistico durante i viaggi.",
+  "category": "altra"
+ },
+ {
+  "id": "affresco",
+  "name": "Affresco",
+  "definition": "Tecnica pittorica su intonaco fresco, in cui i pigmenti vengono applicati su malta ancora umida.",
+  "introduced_by": null,
+  "first_period_id": "medioevo",
+  "evolution": "Nel Manierismo viene combinato con stucchi e decorazioni dipinte (Fontainebleau).",
+  "category": "pittorica"
+ },
+ {
+  "id": "affresco-staccato",
+  "name": "Affresco staccato",
+  "definition": "Procedura di distacco di un affresco dal muro originario per conservarlo o trasportarlo, mediante incollaggio di tela sulla superficie e successivo stacco dell'intonaco dipinto.",
+  "introduced_by": "restauratori rinascimentali e moderni",
+  "first_period_id": "rinascimento-maturo-italia-settentrionale",
+  "evolution": "Pratica di restauro che ha permesso di conservare frammenti di affreschi altrimenti perduti, come quelli del Fondaco dei Tedeschi.",
+  "category": "pittorica"
+ },
+ {
+  "id": "affresco-staccato-su-tavola",
+  "name": "Affresco staccato e trasportato su tavola",
+  "definition": "Affresco distaccato dall'intonaco originale e trasportato su supporto ligneo.",
+  "introduced_by": null,
+  "first_period_id": "rinascimento-maturo-italia-settentrionale",
+  "evolution": "Tecnica conservativa moderna applicata retroattivamente ad opere del Cinquecento.",
+  "category": "pittorica"
+ },
+ {
+  "id": "altorilievo",
+  "name": "Altorilievo",
+  "definition": "Tecnica scultorea in cui le figure emergono dallo sfondo per più della metà del loro volume, creando effetti plastici e chiaroscurali intensi.",
+  "introduced_by": "Tradizione classica greco-romana",
+  "first_period_id": "rinascimento-maturo",
+  "evolution": "Impiegato da Antelami e dai Pisano con crescente profondità spaziale e drammaticità. Giovanni Pisano porta il rilievo a effetti quasi a tutto tondo con forti contrasti chiaroscurali.",
+  "category": "scultorea"
+ },
+ {
+  "id": "apparato-musivo",
+  "name": "Apparato musivo",
+  "definition": "Sistema decorativo integrato che utilizza il mosaico per rivestire intere superfici architettoniche (absidi, cupole, volte, pareti) secondo un programma iconografico coerente.",
+  "introduced_by": "Tradizione paleocristiana e byzantina",
+  "first_period_id": "arte-bizantina",
+  "evolution": "Nel Romanico normanno siciliano l'apparato musivo raggiunge la sua massima estensione (Cappella Palatina, Cefalù, Monreale). A San Marco di Venezia si mantiene vivo fino al XIV-XV secolo.",
+  "category": "musiva"
+ },
+ {
+  "id": "arazzo",
+  "name": "Arazzo (tessitura)",
+  "definition": "Manufatto tessile di grandi dimensioni realizzato a telaio con lana e spesso seta, su disegno preventivo (carton) di un pittore. Destinato alla decorazione parietale di castelli e palazzi nobiliari.",
+  "introduced_by": "manifatture di Parigi e Arras",
+  "first_period_id": "gotico-internazionale",
+  "evolution": "Raggiunge il massimo sviluppo nelle manifatture di Parigi e Arras nel XIV-XV secolo. Gli arazzi seguono la corte itinerante e sono oggetti di grande valore commerciale e diplomatico.",
+  "category": "altra"
+ },
+ {
+  "id": "architettura-in-pietra",
+  "name": "Architettura in pietra (opus quadratum)",
+  "definition": "Costruzione con blocchi di pietra squadrata e lavorata, disposti in filari regolari, caratteristica dell'architettura romanica per solidità e durata.",
+  "introduced_by": "tradizione romana",
+  "first_period_id": "romanico",
+  "evolution": "Generalizzata nel romanico europeo in sostituzione del legno e dei materiali misti altomedievali. Consente la realizzazione di volte in pietra e la massiva modularità campata-per-campata.",
+  "category": "architettonica"
+ },
+ {
+  "id": "architettura-in-pietra-serena",
+  "name": "Architettura con pietra serena",
+  "definition": "Uso della pietra serena (pietra arenaria grigio-azzurra del fiorentino) come membratura architettonica (colonne, archi, cornici, paraste) in contrasto cromatico con le superfici intonacate di bianco.",
+  "introduced_by": "Filippo Brunelleschi",
+  "first_period_id": "quattrocento",
+  "evolution": "Cifra stilistica di Brunelleschi, adottata poi da Michelozzo e diventata carattere distintivo dell'architettura rinascimentale fiorentina.",
+  "category": "architettonica"
+ },
+ {
+  "id": "architettura-rinascimentale",
+  "name": "Architettura rinascimentale",
+  "definition": "Sistema architettonico basato sul recupero critico dell'antico, sull'uso di moduli e canoni proporzionali derivati dalla matematica, sull'ordine architettonico classico (lesene, colonne, trabeazioni, archi a tutto sesto) e su una concezione razionale dello spazio.",
+  "introduced_by": "Filippo Brunelleschi, Firenze, primo Quattrocento",
+  "first_period_id": "quattrocento",
+  "evolution": "Elaborata da Brunelleschi a Firenze nel primo Quattrocento, si diffonde in tutta Italia nella seconda metà del XV secolo attraverso artisti e trattati, trovando sviluppi locali (lombardo, veneto, romano).",
+  "category": "architettonica"
+ },
+ {
+  "id": "arco-rampante",
+  "name": "Arco rampante",
+  "definition": "Elemento strutturale gotico esterno che contrasta la spinta laterale delle volte della navata centrale trasferendola sui contrafforti perimetrali, consentendo la riduzione dello spessore delle pareti.",
+  "introduced_by": "Gotico classico francese",
+  "first_period_id": "gotico",
+  "evolution": "Elemento fondamentale del Gotico classico e rayonnant. In Italia è presente ma con funzione più sobria e dimensioni ridotte; in Spagna con slancio enfatizzato (León).",
+  "category": "architettonica"
+ },
+ {
+  "id": "bassorilievo",
+  "name": "Bassorilievo",
+  "definition": "Tecnica scultorea in cui le figure emergono di poco (meno della metà del loro spessore) dal piano di fondo. Può essere graduato in stiacciato (quasi piano) o bassorilievo più pronunciato.",
+  "introduced_by": "antichità classica",
+  "first_period_id": "rinascimento-maturo",
+  "evolution": "Michelangelo nella Madonna della Scala riprende lo stiacciato donatelliano. La Battaglia dei Centauri usa invece l'altorilievo con figure emergenti a tutto tondo.",
+  "category": "scultorea"
+ },
+ {
+  "id": "bugnato",
+  "name": "Bugnato",
+  "definition": "Rivestimento di parete con blocchi di pietra a faccia esterna sporgente e grezza, che dà un effetto plastico di solidità e robustezza. Usato specialmente per i piani terreni.",
+  "introduced_by": null,
+  "first_period_id": "rinascimento",
+  "evolution": "Nel Manierismo trasformato da Ammannati in 'bugnato rustico' elegante e variato per Palazzo Pitti.",
+  "category": "architettonica"
+ },
+ {
+  "id": "cartone-preparatorio",
+  "name": "Cartone preparatorio",
+  "definition": "Disegno in grandezza naturale su carta spessa (cartone) che precede l'esecuzione di un affresco o di un'opera di grandi dimensioni. Serviva da guida per trasferire il disegno sull'intonaco.",
+  "introduced_by": "botteghe fiorentine e romane del Rinascimento",
+  "first_period_id": "rinascimento-maturo",
+  "evolution": "I cartoni delle battaglie di Leonardo (Anghiari) e Michelangelo (Cascina) furono talmente studiati da artisti contemporanei da diventare autonomi oggetti di culto, perduti dopo le copie.",
+  "category": "pittorica"
+ },
+ {
+  "id": "cloisonne",
+  "name": "Cloisonné",
+  "definition": "Tecnica orafa che consiste nel saldare alla superficie da decorare sottili lamicine metalliche (in francese cloison) per ricavare celle (alveoli), ciascuna poi riempita da smalti, paste vitree o pietre preziose a taglio piatto. Crea contrasti tra il metallo e la brillantezza cromatica.",
+  "introduced_by": "oreficeria barbarica",
+  "first_period_id": "eta-longobarda",
+  "evolution": "Tecnica tipica dei popoli germanici (Goti, Longobardi, Franchi) adottata nelle fibule, nelle croci devozionali e negli oggetti di corredo funerario. Si combina con la tradizione orafa romana e bizantina nelle oreficerie longobarde d'Italia.",
+  "category": "altra"
+ },
+ {
+  "id": "costruzione-a-muratura",
+  "name": "Costruzione a muratura",
+  "definition": "Tecnica costruttiva che utilizza blocchi di pietra, mattoni o laterizi posati in corsi orizzontali con malta, tipica dell'architettura medievale europea.",
+  "introduced_by": "Tradizione romana",
+  "first_period_id": "romanico",
+  "evolution": "Nel Romanico prevalgono le murature massive con contrafforti. Nel Gotico la muratura si alleggerisce grazie agli archi rampanti e alla tecnica del muro sottile, riducendo lo spessore delle pareti.",
+  "category": "architettonica"
+ },
+ {
+  "id": "costruzione-a-spina-di-pesce",
+  "name": "Muratura a spina di pesce (opus spicatum)",
+  "definition": "Tecnica costruttiva che dispone i mattoni in modo alternato a lisca di pesce, consentendo alla superficie curva di fare presa senza appoggiarsi ad armature in legno.",
+  "introduced_by": "Filippo Brunelleschi",
+  "first_period_id": "quattrocento",
+  "evolution": "Ricavata dallo studio dell'architettura antica e usata da Brunelleschi per le vele della cupola di Santa Maria del Fiore.",
+  "category": "architettonica"
+ },
+ {
+  "id": "costruzione-in-pietra",
+  "name": "Costruzione in pietra d'Istria",
+  "definition": "Tecnica costruttiva che usa blocchi di pietra calcarea della penisola istriana (pietra d'Istria), particolarmente apprezzata per la sua bianchezza e resistenza all'umidità.",
+  "introduced_by": "tradizione romana",
+  "first_period_id": "regno-ostrogoto",
+  "evolution": "Uso eccezionale nella produzione ravennate dove domina il laterizio. Il mausoleo di Teodorico è l'unico grande edificio ravennate in pietra d'Istria, con cupola monolitica di dimensioni uniche.",
+  "category": "architettonica"
+ },
+ {
+  "id": "doratura",
+  "name": "Doratura",
+  "definition": "Tecnica pittorica per la realizzazione in oro di sfondi e parti delle figure, tramite doratura a conchiglia (oro in polvere), a guazzo o a mordente (oro in foglia).",
+  "introduced_by": null,
+  "first_period_id": "gotico-senese",
+  "evolution": "La doratura a guazzo prevede l'applicazione del bolo prima della pittura; la doratura a mordente dopo. La superficie dorata può essere decorata con punzonatura, graffitura o pittura traslucida.",
+  "category": "pittorica"
+ },
+ {
+  "id": "encausto",
+  "name": "Encausto",
+  "definition": "Tecnica pittorica antica che consiste nel mescolare i colori con cera d'api, resina o gomma calde e olio, stendendo poi l'impasto ancora caldo sul supporto (intonaco, legno, terracotta, marmo o tela); una volta stesi i colori, la superficie veniva sottoposta ad alte temperature per far penetrare la cera e fissare i pigmenti. Il nome deriva dal greco encaustòs, 'bruciato'.",
+  "introduced_by": "tradizione greco-ellenistica",
+  "first_period_id": "tarda-antichita",
+  "evolution": "Usato nell'antica Grecia e descritto da Plinio nella Naturalis Historia. Leonardo tenta di applicarla alla Battaglia di Anghiari (1503-1506) su grande scala murale, ma l'esperimento fallisce perché le dimensioni della parete rendono impossibile riscaldare uniformemente la superficie.",
+  "category": "pittorica"
+ },
+ {
+  "id": "fusione-bronzo",
+  "name": "Fusione del bronzo a cera persa",
+  "definition": "Tecnica di fusione metallica in cui il modello in cera viene ricoperto da uno strato refrattario; la cera viene fusa via e sostituita dal metallo liquido.",
+  "introduced_by": "bronzisti ottoniani",
+  "first_period_id": "arte-ottoniana",
+  "evolution": "La Porta di Bernoardo (Hildesheim, 1015) è il primo esempio di porta bronzea fusa in un unico getto in epoca medievale. La tecnica continua con le porte di Novgorod (Riquinus e Wedissmuth) e il portale di Barisano da Trani.",
+  "category": "scultorea"
+ },
+ {
+  "id": "fusione-in-bronzo",
+  "name": "Fusione in bronzo",
+  "definition": "Tecnica scultorea che consiste nel versare bronzo fuso in uno stampo preparato, poi rifinire la superficie con lo scalpello e il cesello. Include la fusione a cera persa (scomparsa del modello in cera nell'operazione di fusione).",
+  "introduced_by": "Maestranze renane e byzantine",
+  "first_period_id": "umanesimo-fiorentino",
+  "evolution": "Ripresa nell'Umanesimo fiorentino da Ghiberti e Donatello dopo il lungo abbandono medievale. La fusione a cera persa, diffusa in età classica, viene reintrodotta da Ghiberti per il San Giovanni Battista di Orsanmichele.",
+  "category": "scultorea"
+ },
+ {
+  "id": "incisione-a-bulino",
+  "name": "Incisione a bulino su lastra metallica",
+  "definition": "Tecnica grafica che consiste nell'incidere direttamente una lastra metallica (rame o zinco) con uno strumento a punta (bulino), ricavando solchi che trattengono l'inchiostro. Si fonda sulla linea e garantisce la massima precisione del tratto.",
+  "introduced_by": "Paesi Bassi e area tedesca, metà del Quattrocento",
+  "first_period_id": "rinascimento-maturo-italia-settentrionale",
+  "evolution": "Tecnica proveniente dall'Europa settentrionale, sperimentata in Italia tra i primissimi da Antonio Pollaiolo e da Andrea Mantegna intorno al 1470. Pollaiolo la preferisce alla xilografia per la sua affinità con la tecnica della niellatura appresa come orafo.",
+  "category": "altra"
+ },
+ {
+  "id": "intaglio-avorio",
+  "name": "Intaglio dell'avorio",
+  "definition": "Tecnica scultorea che prevede la lavorazione dell'avorio (zanne di elefante) mediante intaglio e bassorilievo. Produce oggetti di lusso come dittici, cofanetti, copertine di libri e cattedre episcopali.",
+  "introduced_by": "tradizione carolingia e romana tardoantica",
+  "first_period_id": "tarda-antichita",
+  "evolution": "Nell'età tardoantica e paleocristiana è tecnica nobile usata per oggetti di rappresentanza. Nella Ravenna giustinianea raggiunge apici nella Cattedra di Massimiano. Nell'età carolingia continua nella produzione di lusso (Cattedra di Pietro).",
+  "category": "scultorea"
+ },
+ {
+  "id": "miniatura",
+  "name": "Miniatura",
+  "definition": "Tecnica pittorica per la decorazione di manoscritti su pergamena o papiro. I pigmenti (finemente macinati e legati con albume d'uovo o gomma arabica) sono applicati in successive stesure per ottenere effetti di chiaroscuro; l'oro e l'argento impreziosiscono i dettagli.",
+  "introduced_by": "tradizione tardoantica",
+  "first_period_id": "eta-carolingia",
+  "evolution": "Nasce nell'Antichità come decorazione dei rotuli. Nell'età carolingia raggiunge grande raffinatezza nelle scuole di corte e nei grandi scriptoria (Reims, Tours). La scuola di corte carolingia recupera i modelli tardoantichi e ellenistici.",
+  "category": "pittorica"
+ },
+ {
+  "id": "miniatura-su-pergamena",
+  "name": "Miniatura su pergamena",
+  "definition": "Tecnica di decorazione dei manoscritti su pergamena, con pigmenti finissimi e oro in foglia o in polvere, destinata ai libri d'ore e ai codici miniati. Richiede pennelli finissimi e straordinaria precisione.",
+  "introduced_by": "tradizione monastica medievale",
+  "first_period_id": "gotico-internazionale",
+  "evolution": "Raggiunge la massima raffinatezza ottoniana con il Maestro del Registrum Gregorii (post 983). Le figure ieratiche su fondi dorati con spazialità stratificata diventano un modello per la miniatura successiva.",
+  "category": "pittorica"
+ },
+ {
+  "id": "mosaico",
+  "name": "Mosaico",
+  "definition": "Tecnica decorativa basata sull'accostamento di tessere di vetro (smalti), pietra o altri materiali per comporre immagini su pareti, soffitti o pavimenti. A Roma rimane largamente in uso nel Duecento, diversamente dal resto d'Europa.",
+  "introduced_by": "tradizione romana e paleocristiana",
+  "first_period_id": "duecento-italiano",
+  "evolution": "Il mosaico paleocristiano e byzantino con fondo oro diventa il principale strumento decorativo delle chiese medievali. Il Romanico italiano lo impiega nelle absidi e nelle volte (San Clemente, Torcello, San Marco); il Romanico normanno siciliano lo usa sistematicamente per rivestire interi edifici. A Venezia continua fino al XVII secolo.",
+  "category": "musiva"
+ },
+ {
+  "id": "mosaico-cosmatesco",
+  "name": "Mosaico cosmatesco (Opus sectile cosmateschi)",
+  "definition": "Tecnica di decorazione musiva romana medievale basata su intarsi geometrici di marmi colorati e pasta vitrea, praticata dalle botteghe dei Cosmati (attivi tra XII e XIV secolo). Caratterizza pavimenti, amboni, cibori e monumenti funebri romani.",
+  "introduced_by": "botteghe dei Cosmati (Roma)",
+  "first_period_id": "duecento-italiano",
+  "evolution": "Tecnica tipica dell'arte romana medievale, assorbita da Arnolfo di Cambio nei monumenti funebri e dagli artisti romani nel XIII secolo. Citata da Giotto nel Presepe di Greccio e nel Polittico Stefaneschi come elemento di cultura artistica romana.",
+  "category": "musiva"
+ },
+ {
+  "id": "mosaico-parietale",
+  "name": "Mosaico parietale",
+  "definition": "Tecnica decorativa che prevede la posa di tessere (in pasta vitrea, pietra, oro o marmo) su superfici parietali e voltate, con malta come legante. Permette di creare immagini figurate o decorative di grande effetto cromatico e luminoso.",
+  "introduced_by": "tradizione romano-ellenistica",
+  "first_period_id": "tarda-antichita",
+  "evolution": "Dal mosaico pavimentale romano si passa nella tarda antichità al mosaico parietale cristiano con fondo oro, che diventa strumento teologico nell'arte bizantina. Nell'arte giustinianea raggiunge l'apice con la resa frontale e ieratica delle figure.",
+  "category": "musiva"
+ },
+ {
+  "id": "muqarnas",
+  "name": "Muqarnas",
+  "definition": "Tecnica architettonica e decorativa islamica che usa celle prismatiche a forma di alveare sovrapposte per formare soffitti, nicchie e stalattiti in legno o pietra.",
+  "introduced_by": "Tradizione fatimide e araba",
+  "first_period_id": "romanico-normanno-siciliano",
+  "evolution": "Importata in Sicilia dagli artigiani fatimidi al servizio dei re normanni, compare nei soffitti della Cappella Palatina di Palermo (il più grande soffitto a muqarnas in legno in un edificio cristiano).",
+  "category": "architettonica"
+ },
+ {
+  "id": "olio-su-tavola",
+  "name": "Olio su tavola",
+  "definition": "Tecnica pittorica con pigmenti legati ad olio stesi su un supporto ligneo, generalmente pioppo o noce. Precede cronologicamente la tela come supporto principale.",
+  "introduced_by": "fiamminghi (Van Eyck), poi diffuso in Italia",
+  "first_period_id": "rinascimento-maturo",
+  "evolution": "Tecnica dominante nella pittura su tavola del Quattrocento e Cinquecento. Raffaello la usa per le Madonne e i ritratti; Michelangelo nel Tondo Doni.",
+  "category": "pittorica"
+ },
+ {
+  "id": "olio-su-tela",
+  "name": "Olio su tela",
+  "definition": "Tecnica pittorica che utilizza i pigmenti legati con olio di lino o di noce stesi su una tela preparata. Permette velature sovrapposte, sfumature graduali e grande ricchezza cromatica.",
+  "introduced_by": "Fiandre (Jan van Eyck), diffuso in Italia da Antonello da Messina",
+  "first_period_id": "rinascimento-maturo",
+  "evolution": "Nasce nelle Fiandre e giunge in Italia attraverso Antonello da Messina; diventa tecnica standard nella pittura veneziana del Cinquecento con Giorgione e Tiziano. Nell'ultimo Tiziano evolve verso la stesura diretta con le dita.",
+  "category": "pittorica"
+ },
+ {
+  "id": "opera-laterizia",
+  "name": "Opera laterizia",
+  "definition": "Tecnica costruttiva che impiega mattoni cotti come materiale da costruzione principale, legati con malta. Caratteristica dell'architettura romana e poi di quella paleocristiana, ravennate e longobarda.",
+  "introduced_by": "tradizione romana",
+  "first_period_id": "tarda-antichita",
+  "evolution": "Dominante nell'architettura ravennate tardoantica e giustinianea. I Longobardi la adottano nelle loro architetture monumentali (San Salvatore a Brescia, Santa Sofia a Benevento). Viene reinterpretata nell'architettura carolingia.",
+  "category": "architettonica"
+ },
+ {
+  "id": "opus-sectile",
+  "name": "Opus sectile (tarsia marmorea)",
+  "definition": "Rivestimento murale o pavimentale realizzato con lastre di marmi policromi tagliate in forme geometriche e figurative, combinate a creare composizioni decorative. Termine latino che significa 'opera tagliata'.",
+  "introduced_by": "tradizione romana",
+  "first_period_id": "romanico-italiano",
+  "evolution": "Dall'antico Romano viene ripreso dai marmorari medievali, in particolare dai Cosmati che lo applicano a pavimenti, amboni e cattedre episcopali. La tradizione cosmatesca dura dal XII al XIV secolo a Roma e nel Lazio.",
+  "category": "musiva"
+ },
+ {
+  "id": "oreficeria",
+  "name": "Oreficeria",
+  "definition": "Arte della lavorazione di metalli preziosi (oro, argento) e pietre dure per creare oggetti di culto, reliquiari, suppellettili liturgiche e oggetti di lusso.",
+  "introduced_by": "Tradizione classica e medievale europea",
+  "first_period_id": "romanico",
+  "evolution": "Nell'arte medievale l'oreficeria ha funzione liturgica e rappresentativa. Suger la teorizza come veicolo di luce divina: l'Aquila di Suger trasforma un vaso antico in un reliquiario prezioso. I reliquiari gotici in argento dorato e smalti anticipano le forme architettoniche delle cattedrali.",
+  "category": "altra"
+ },
+ {
+  "id": "oreficeria-medievale",
+  "name": "Oreficeria medievale",
+  "definition": "Lavorazione di metalli preziosi (oro, argento) con tecniche di fusione, cesellatura, smalti (cloisonné, champlevé) e incastonatura di pietre preziose, applicata a oggetti liturgici e di corte.",
+  "introduced_by": "tradizione medievale",
+  "first_period_id": "gotico-internazionale",
+  "evolution": "Raggiunge il massimo splendore nel tardogotico europeo con i grandi reliquiari, le ostensorie e i manufatti di corte. Nel Rinascimento si trasforma gradualmente in oreficeria 'all'antica'.",
+  "category": "altra"
+ },
+ {
+  "id": "oro-punzonato",
+  "name": "Oro punzonato",
+  "definition": "Decorazione di superfici dorate mediante impressione di motivi con timbri metallici (punzoni), creando rilievi geometrici o figurati.",
+  "introduced_by": "pittori senesi trecenteschi",
+  "first_period_id": "gotico-senese",
+  "evolution": "Tecnica largamente usata da Duccio, Simone Martini e i Lorenzetti su aureole, sfondi e decorazioni delle tavole; si afferma come caratteristica distintiva della pittura senese.",
+  "category": "pittorica"
+ },
+ {
+  "id": "pastiglia",
+  "name": "Pastiglia",
+  "definition": "Decorazioni a rilievo modellate in una pasta di gesso e colla applicate sulle tavole, poi dorate con foglia d'oro.",
+  "introduced_by": "pittori senesi",
+  "first_period_id": "gotico-senese",
+  "evolution": "Usata da Simone Martini nella Maestà del Palazzo Pubblico e nel San Ludovico di Tolosa per creare effetti di preziosismo materico.",
+  "category": "pittorica"
+ },
+ {
+  "id": "pastiglia-di-gesso",
+  "name": "Pastiglia di gesso",
+  "definition": "Impasto costituito da stucco con farine di frumento o di riso, con aggiunta di biacca, uovo e sostanze profumate; veniva modellato su una superficie (a mano o con pennelli, stecche e punzoni) e infine eventualmente dorato. Usato per creare effetti di rilievo su fondi di dipinti.",
+  "introduced_by": "pittura lombarda tardogotica",
+  "first_period_id": "tardogotico",
+  "evolution": "Usata da Michelino da Besozzo e da Stefano da Verona per i fondi dorati e i troni in rilievo. Crea effetti di luminosità e preziosità tipici dello stile tardogotico lombardo.",
+  "category": "pittorica"
+ },
+ {
+  "id": "pittura-a-olio",
+  "name": "Pittura a olio",
+  "definition": "Tecnica pittorica in cui il legante dei pigmenti è un olio (di lino, noci o papavero). Permette velature successive, sfumature tonali graduali, superfici lucide e vivide e migliore resa delle trasparenze e della luce rispetto alla tempera.",
+  "introduced_by": "pittori fiamminghi (perfezionata e sistematizzata)",
+  "first_period_id": "quattrocento-fiammingo",
+  "evolution": "Nota fin dall'antichità (Plinio, Vitruvio) e attestata anche in Italia da Cennino Cennini, viene perfezionata nelle Fiandre nel primo Quattrocento e adottata sistematicamente con risultati rivoluzionari. Nella seconda metà del secolo si diffonde in tutta Europa; in Italia è introdotta, secondo la tradizione, da Antonello da Messina dopo la metà del secolo. Nel XVI secolo si estende alla tela.",
+  "category": "pittorica"
+ },
+ {
+  "id": "pittura-tonale",
+  "name": "Pittura tonale (Tonalismo)",
+  "definition": "Tecnica pittorica veneziana che giustappone diverse tonalità di colore (calde o fredde) per creare l'illusione della profondità e degli effetti atmosferici, sfumando i contorni delle figure e riducendo l'importanza del disegno.",
+  "introduced_by": "Giorgione, Giovanni Bellini",
+  "first_period_id": "scuola-veneziana",
+  "evolution": "Nasce con Giovanni Bellini, si manifesta pienamente con Giorgione e viene portata a maturazione da Tiziano, che la arricchisce con plasticità e dinamismo. Fondamentale la tecnica dell'olio con velature sovrapposte.",
+  "category": "pittorica"
+ },
+ {
+  "id": "prospettiva-aerea",
+  "name": "Prospettiva aerea",
+  "definition": "Modalità di rappresentazione della profondità degli spazi fondata sulla progressiva sfocatura dei contorni e sulla graduazione dei toni cromatici in funzione della distanza, basandosi sull'osservazione che l'aria non è perfettamente trasparente e che i contorni appaiono meno nitidi e i colori più tenui e azzurrognoli a grande distanza.",
+  "introduced_by": "Leonardo da Vinci",
+  "first_period_id": "rinascimento-fiorentino",
+  "evolution": "Elaborata da Leonardo attraverso gli studi sugli elementi naturali, è già presente nell'Annunciazione (1472-75) e diventa strumento maturo nella Monna Lisa e nelle Vergini delle rocce. Influenza profondamente i pittori lombardi e veneziani (Giorgione).",
+  "category": "pittorica"
+ },
+ {
+  "id": "prospettiva-empirica",
+  "name": "Prospettiva empirica",
+  "definition": "Resa della profondità spaziale basata sull'osservazione diretta e sulla stesura pittorica, senza regole matematiche codificate. Tipica della pittura fiamminga.",
+  "introduced_by": "robert-campin",
+  "first_period_id": "quattrocento-fiammingo",
+  "evolution": "Contrapposta alla prospettiva lineare matematica fiorentina, la prospettiva empirica dei fiamminghi è tecnicamente possibile grazie alla stesura del colore e al trattamento magistrale della luce.",
+  "category": "pittorica"
+ },
+ {
+  "id": "prospettiva-lineare",
+  "name": "Prospettiva lineare",
+  "definition": "Sistema di rappresentazione del tridimensionale su superficie bidimensionale basato su principi geometrico-matematici, con un punto di vista fisso, una linea dell'orizzonte e uno o più punti di fuga verso i quali convergono le linee di profondità.",
+  "introduced_by": "filippo-brunelleschi",
+  "first_period_id": "umanesimo-fiorentino",
+  "evolution": "Scoperta e codificata da Brunelleschi intorno al 1415 con la consulenza di Paolo dal Pozzo Toscanelli. Teorizzata per iscritto da Leon Battista Alberti nel De pictura (1435). Diventa il fondamento della rappresentazione spaziale nel Rinascimento e oltre.",
+  "category": "pittorica"
+ },
+ {
+  "id": "sbalzo-lamine-metalliche",
+  "name": "Sbalzo su lamine metalliche",
+  "definition": "Tecnica orafa in cui una lamina metallica (oro o argento) viene lavorata dall'interno con punzoni, facendo emergere il rilievo sul recto.",
+  "introduced_by": "oreficeria carolingia e ottoniana",
+  "first_period_id": "eta-carolingia",
+  "evolution": "Tecnica centrale nella grande oreficeria carolingia e ottoniana (Altare di Vuolvinio, Antependium di Basilea). Persiste nelle arti suntuarie romaniche.",
+  "category": "altra"
+ },
+ {
+  "id": "scultura-a-tutto-tondo",
+  "name": "Scultura a tutto tondo",
+  "definition": "Scultura completamente autonoma dallo sfondo, realizzata per essere vista da tutti i lati. Nel Gotico acquista maggiore autonomia dall'architettura.",
+  "introduced_by": "Tradizione classica",
+  "first_period_id": "gotico",
+  "evolution": "Nel Gotico transalpino le sculture delle cattedrali acquistano autonomia pur restando concepite per essere viste frontalmente. Con Nicola e Giovanni Pisano in Italia diventa pienamente autonoma e psicologicamente caratterizzata.",
+  "category": "scultorea"
+ },
+ {
+  "id": "scultura-decorativa-lombarda",
+  "name": "Scultura decorativa lombarda",
+  "definition": "Stile scultoreo tipico della Lombardia del secondo Quattrocento, caratterizzato da ricchi programmi decorativi in marmi policromi, rilievi figurativi e ornamentali che ricoprono interi prospetti architettonici.",
+  "introduced_by": "fratelli Mantegazza, Amadeo",
+  "first_period_id": "umanesimo-lombardo",
+  "evolution": "Sviluppata dai Mantegazza e poi da Amadeo e Dolcebuono nella Certosa di Pavia e nella cappella Colleoni, questa tradizione decorativa si fonde con il linguaggio classicizzante rinascimentale.",
+  "category": "scultorea"
+ },
+ {
+  "id": "scultura-in-legno",
+  "name": "Scultura in legno policromo",
+  "definition": "Scultura in legno scolpito e dipinto con colori (policromia). Tecnica diffusa per i crocifissi e le statue devozionali, permetteva effetti di grande naturalismo.",
+  "introduced_by": "tradizione medievale",
+  "first_period_id": "umanesimo-fiorentino",
+  "evolution": "Brunelleschi e Donatello realizzano entrambi un Crocifisso in legno, con esiti diametralmente opposti: idealizzazione umanistica il primo, realismo disarmante il secondo.",
+  "category": "scultorea"
+ },
+ {
+  "id": "scultura-in-marmo",
+  "name": "Scultura in marmo",
+  "definition": "Tecnica scultorea basata sulla lavorazione del marmo con scalpelli e abrasivi. Nel Gotico italiano raggiunge vette espressive con Arnolfo di Cambio, che fonde classicismo, goticismo e realismo ritrattistico.",
+  "introduced_by": "Tradizione classica greco-romana",
+  "first_period_id": "umanesimo-fiorentino",
+  "evolution": "Nel Romanico italiano la scultura in marmo riprende i modelli antichi (capitelli corinzi, sarcofagi). I Cosmati sviluppano la tarsia marmorea; Nicola Pisano reinterpreta la scultura funeraria romana per i suoi pulpiti.",
+  "category": "scultorea"
+ },
+ {
+  "id": "scultura-in-pietra",
+  "name": "Scultura in pietra serena",
+  "definition": "Lavorazione della pietra serena per sculture a rilievo o a tutto tondo. La pietra serena, piu tenera del marmo, permette dettagli fini ma e meno luminosa.",
+  "introduced_by": "tradizione classica romana",
+  "first_period_id": "quattrocento",
+  "evolution": "Nel romanico la scultura in pietra torna a rivestire ruolo monumentale integrata nell'architettura (portali, capitelli, facciate). Protagonisti: Wiligelmo a Modena, Gislebertus ad Autun, la bottega di Moissac.",
+  "category": "scultorea"
+ },
+ {
+  "id": "scultura-marmorea",
+  "name": "Scultura in marmo",
+  "definition": "Lavorazione del marmo per sottrazione di materia (scultura 'in levare'), utilizzando scalpelli, subbie e gradine. Richiede pianificazione precisa poiché gli errori sono irreversibili.",
+  "introduced_by": "antichità classica greca e romana",
+  "first_period_id": "rinascimento-maturo",
+  "evolution": "Michelangelo porta la scultura marmorea al suo apice rinascimentale con il David, i Prigioni e la Pietà Rondanini. Il non finito michelangiolesco diventa scelta espressiva consapevole.",
+  "category": "scultorea"
+ },
+ {
+  "id": "sfumato",
+  "name": "Sfumato",
+  "definition": "Tecnica pittorica elaborata da Leonardo da Vinci che consiste nel rendere evanescenti i contorni delle figure e nel graduare le transizioni tonali, ottenendo morbidezza atmosferica, trasparenza e calda luminosità senza confini netti tra le forme.",
+  "introduced_by": "Leonardo da Vinci",
+  "first_period_id": "rinascimento-fiorentino",
+  "evolution": "Anticipato nei passaggi tonali di Verrocchio, lo sfumato viene sistematizzato da Leonardo nell'Annunciazione (1472-1475) e portato alla perfezione nella Monna Lisa e nella Vergine delle rocce. Diventerà elemento fondante del linguaggio pittoresco dei successori in Lombardia (Luini, Boltraffio).",
+  "category": "pittorica"
+ },
+ {
+  "id": "smalto-cloisonne",
+  "name": "Smalto cloisonné",
+  "definition": "Tecnica orafa in cui smalti colorati vengono colati in alveoli (setti metallici) saldati su una base metallica, creando motivi multicolori.",
+  "introduced_by": "oreficeria orientale e bizantina",
+  "first_period_id": "eta-carolingia",
+  "evolution": "Adottato dagli orafi carolingi e ottoniani (Altare di Vuolvinio, Antependium di Basilea). Diffuso in tutta l'Europa medievale come tecnica di lusso.",
+  "category": "altra"
+ },
+ {
+  "id": "stiacciato",
+  "name": "Stiacciato (rilievo schiacciato)",
+  "definition": "Tecnica scultorea inventata da Donatello basata su minime variazioni di spessore rispetto al fondo, che si presta perfettamente a rendere la profondità spaziale e a creare effetti pittorici. Le figure in primo piano hanno maggiore spessore, quelle lontane quasi solo incise.",
+  "introduced_by": "donatello",
+  "first_period_id": "umanesimo-fiorentino",
+  "evolution": "Inventata da Donatello nel basamento della statua di San Giorgio per Orsanmichele (1417-1418). Ripresa da Ghiberti nella Porta del Paradiso per i personaggi più lontani. Fondamentale nello sviluppo della scultura rinascimentale.",
+  "category": "scultorea"
+ },
+ {
+  "id": "stucco",
+  "name": "Stucco",
+  "definition": "Materiale plastico composto di calce, polvere di marmo e acqua, usato per rivestire superfici architettoniche e per creare rilievi e figure scolpite. Permette effetti di grande raffinatezza e può essere colorato o dorato.",
+  "introduced_by": "tradizione romana",
+  "first_period_id": "tarda-antichita",
+  "evolution": "Usato nell'arte tardoromana e paleocristiana. Nella scultura longobarda raggiunge esiti monumentali nella chiesa di Santa Maria in Valle a Cividale (sante della controfacciata) e in San Salvatore a Brescia.",
+  "category": "scultorea"
+ },
+ {
+  "id": "tarsia-lignea",
+  "name": "Tarsia lignea (intarsio in legno)",
+  "definition": "Tecnica decorativa che utilizza lamine di legni di diversi colori accostati per creare figure geometriche o scene figurate ('tarsie pittoriche') con effetti di ombre e luci illusionistici.",
+  "introduced_by": "artigiani italiani",
+  "first_period_id": "quattrocento",
+  "evolution": "Si diffonde in Italia a partire dal Trecento sul modello degli intarsi in marmo. Ha particolare fortuna tra Quattrocento e Cinquecento. Nei progetti più ambiziosi gli intarsiatori lavorano su disegni di pittori e scultori per creare scene complesse con virtuosismi illusionistici, come nello studiolo del Palazzo Ducale di Urbino.",
+  "category": "altra"
+ },
+ {
+  "id": "tecnica-a-giornate",
+  "name": "Tecnica a giornate",
+  "definition": "Metodo di esecuzione dell'affresco in cui la superficie pittorica viene suddivisa in aree (giornate) ciascuna completata nell'arco di una giornata lavorativa prima che l'intonaco secchi. Produce giunte visibili nell'intonaco. Introdotta da Giotto in sostituzione della più antica tecnica a pontate.",
+  "introduced_by": "giotto-di-bondone",
+  "first_period_id": "trecento-italiano",
+  "evolution": "La tecnica a giornate diventa standard nella pittura ad affresco dal Trecento in poi, permettendo una gestione più precisa delle zone pittoriche.",
+  "category": "pittorica"
+ },
+ {
+  "id": "tecnica-mista-su-tavola",
+  "name": "Tecnica mista su tavola",
+  "definition": "Combinazione di tempera, olio e altri materiali (come foglia d'argento) su supporto ligneo, usata in opere di grande formato nel Quattrocento.",
+  "introduced_by": null,
+  "first_period_id": "quattrocento",
+  "evolution": "Usata da Paolo Uccello nella Battaglia di San Romano, dove le armature erano rivestite con foglia d'argento.",
+  "category": "pittorica"
+ },
+ {
+  "id": "tecnica-vetrata-grisaille",
+  "name": "Grisaille (pittura su vetro)",
+  "definition": "Pittura monocroma basata su tonalità di grigio o bruno ottenute da miscele di polvere di vetro e limatura di metalli, usata per delineare i dettagli figurativi delle vetrate (volti, panneggi).",
+  "introduced_by": "Artigiani medievali",
+  "first_period_id": "gotico",
+  "evolution": "Tecnica essenziale per le vetrate istoriate gotiche; consente di rendere i dettagli sulle lastre di pasta vitrea colorata.",
+  "category": "pittorica"
+ },
+ {
+  "id": "tempera-e-olio-su-tela",
+  "name": "Tempera e olio su tela",
+  "definition": "Tecnica mista che utilizza sia la tempera sia l'olio su supporto telato. Usata nel periodo di transizione tra le due tecniche.",
+  "introduced_by": null,
+  "first_period_id": "rinascimento-maturo-italia-settentrionale",
+  "evolution": "Tecnica di transizione, attestata in Giorgione (La Tempesta).",
+  "category": "pittorica"
+ },
+ {
+  "id": "tempera-su-carta",
+  "name": "Tempera su carta",
+  "definition": "Tecnica pittorica con pigmenti all'uovo su supporto cartaceo, usata per disegni preparatori di grandi dimensioni o per cartoni.",
+  "introduced_by": "botteghe rinascimentali italiane",
+  "first_period_id": "rinascimento-maturo",
+  "evolution": "Usata per la copia della Battaglia di Cascina da Aristotile da Sangallo e per altri cartoni preparatori del periodo.",
+  "category": "pittorica"
+ },
+ {
+  "id": "tempera-su-intonaco",
+  "name": "Tempera su intonaco (pittura a secco)",
+  "definition": "Tecnica pittorica eseguita su intonaco già asciutto (a secco) con pigmenti legati a un medium organico (uovo, colla, ecc.).",
+  "introduced_by": "artigiani carolingi dell'area alpina",
+  "first_period_id": "eta-carolingia",
+  "evolution": "Usata nelle chiese alpine carolinge (San Benedetto a Malles, San Procolo a Naturno) dove le condizioni climatiche rendevano difficile l'affresco vero e proprio.",
+  "category": "pittorica"
+ },
+ {
+  "id": "tempera-su-tavola",
+  "name": "Tempera su tavola",
+  "definition": "Tecnica pittorica tradizionale in cui il legante è costituito da sostanze quali albumi e tuorli d'uovo, latte, colla o cera. Dà colori più opachi ma caldi, con asciugatura rapida che non permette velature successive come l'olio.",
+  "introduced_by": "Tradizione medievale e rinascimentale italiana",
+  "first_period_id": "pittura-romanica-italiana",
+  "evolution": "La pittura su tavola si diffonde in Italia nel XIII secolo con la maniera greca (Berlinghiero, Coppo di Marcovaldo) e la pala agiografica francescana (Bonaventura Berlinghieri). Sarà la tecnica principale fino all'avvento della pittura a olio nel XV-XVI sec.",
+  "category": "pittorica"
+ },
+ {
+  "id": "terracotta-invetriata",
+  "name": "Terracotta invetriata",
+  "definition": "Tecnica che consiste nell'applicare alla terracotta cotta uno smalto stannifero (a base di sabbia silicea e ossidi di stagno e piombo), che dopo una seconda cottura acquisisce un aspetto vetroso di straordinaria lucentezza con colori brillanti (azzurro, bianco, verde, giallo).",
+  "introduced_by": "Luca della Robbia",
+  "first_period_id": "quattrocento",
+  "evolution": "Perfezionata da Luca della Robbia intorno al 1440, sviluppata su scala quasi industriale dal nipote Andrea della Robbia. Permette policromia brillante e resistenza agli agenti atmosferici.",
+  "category": "scultorea"
+ },
+ {
+  "id": "vetrata-istoriata",
+  "name": "Vetrata istoriata",
+  "definition": "Composizione di vetri colorati tenuti insieme da listelli di piombo montati su intelaiature di ferro, dipinti con grisaglia per i dettagli figurativi. Tecnica descritta nel De diversis artibus del monaco Teofilo (XII secolo).",
+  "introduced_by": "Tecnica romana, diffusa nel Romanico, perfezionata nel Gotico",
+  "first_period_id": "gotico",
+  "evolution": "Nel Romanico a figure semplici; nel Gotico si arricchisce di scene narrative affollate e di effetti cromatici sofisticati (blu di Chartres). Nel Gotico rayonnant le vetrate tendono a sostituire quasi totalmente le pareti murarie.",
+  "category": "pittorica"
+ },
+ {
+  "id": "vetrata-policroma",
+  "name": "Vetrata policroma",
+  "definition": "Tecnica di produzione di finestre decorative con vetri colorati tagliati e tenuti insieme da profili di piombo; i contorni delle figure sono realizzati con la grisaille, una pittura vetrificabile grigia o nera.",
+  "introduced_by": "Artigiani dell'Île-de-France",
+  "first_period_id": "gotico-francese",
+  "evolution": "La vetrata gotica nasce a Saint-Denis nel 1140 e si sviluppa con Notre-Dame di Chartres, Parigi e Reims. Trova la sua massima espressione nella Sainte-Chapelle (1241-1248), dove le pareti della cappella superiore sono quasi interamente composte di vetrate.",
+  "category": "pittorica"
+ },
+ {
+  "id": "volta-a-crociera",
+  "name": "Volta a crociera",
+  "definition": "Tipo di copertura ottenuta dall'intersezione di due volte a botte perpendicolari; i costoloni ne seguono le linee di intersezione.",
+  "introduced_by": "architettura romanica normanna",
+  "first_period_id": "romanico",
+  "evolution": "Sperimentata a Durham (1093-1133) con costoloni, diventa il sistema di copertura standard del gotico. Consente di scaricare i pesi su piloni isolati.",
+  "category": "architettonica"
+ },
+ {
+  "id": "volta-a-crociera-ogivale",
+  "name": "Volta a crociera ogivale",
+  "definition": "Volta formata dall'incrocio di due volte a sesto acuto, con costoloni diagonali portanti. Consente di concentrare i carichi sui pilastri, alleggerendo le pareti.",
+  "introduced_by": "Gotico francese (XII secolo)",
+  "first_period_id": "gotico",
+  "evolution": "Base dell'architettura gotica. In Inghilterra si arricchisce di nervature supplementari (tiercerons, liernes) fino alla volta a stella; in Italia rimane più sobria nelle nervature.",
+  "category": "architettonica"
+ },
+ {
+  "id": "volta-a-sesto-acuto",
+  "name": "Volta a sesto acuto",
+  "definition": "Arco la cui freccia è superiore alla metà della luce, creando una cuspide appuntita. Consente di distribuire i carichi verticalmente e ridurre la spinta orizzontale rispetto all'arco a tutto sesto.",
+  "introduced_by": "Gotico francese",
+  "first_period_id": "gotico",
+  "evolution": "Carattere fondamentale del Gotico, consente di costruire edifici più alti e aperture più grandi. In Inghilterra evolve nelle volte a tiercerons e a stella; in Italia è temperato con proporzioni più armoniche.",
+  "category": "architettonica"
+ },
+ {
+  "id": "volta-a-tiercerons",
+  "name": "Volta a tiercerons",
+  "definition": "Volta a ogiva in cui alle nervature diagonali si aggiungono nervature ortogonali (liernes) e nervature più corte (tiercerons) che collegano le ortogonali ai pilastri di sostegno, creando la tipica forma a stella.",
+  "introduced_by": "Gotico inglese",
+  "first_period_id": "early-english-gothic",
+  "evolution": "Usate per la prima volta nella cattedrale di Lincoln (fine XII secolo), diventano uno degli elementi caratterizzanti delle chiese inglesi del Duecento e del primo Trecento. Applicate sistematicamente nell'abbazia di Westminster.",
+  "category": "architettonica"
+ },
+ {
+  "id": "westwerk",
+  "name": "Westwerk (blocco occidentale)",
+  "definition": "Elemento architettonico carolingio e ottoniano costituito da un massiccio blocco posto all'estremità occidentale della chiesa, con torri, gallerie, cappella di tribuna e facciata articolata.",
+  "introduced_by": "Architettura carolingia",
+  "first_period_id": "eta-carolingia",
+  "evolution": "Sviluppato a partire dall'abbaziale di Centula/Saint-Riquier (fine VIII sec), il Westwerk raggiunge la sua forma canonica con Corvey (873-885). È un'innovazione tipicamente carolingia senza precedenti nell'architettura paleocristiana.",
+  "category": "architettonica"
+ },
+ {
+  "id": "xilografia",
+  "name": "Xilografia",
+  "definition": "Incisione a rilievo su supporto ligneo, realizzata con la sgorbia o il bulino. Tecnica di stampa che produce immagini con linee di spessore evidente e bordi lievemente smangiati.",
+  "introduced_by": "Europa settentrionale, diffusa nel XV secolo",
+  "first_period_id": "rinascimento-maturo-italia-settentrionale",
+  "evolution": "Elevata da Dürer a opera d'arte autonoma con la pubblicazione dell'Apocalisse (1498). Tecnica di grande diffusione attraverso la stampa.",
+  "category": "altra"
+ },
+ {
+  "id": "incastonatura",
+  "name": "Incastonatura",
+  "definition": "Tecnica orafa che consiste nel fissare pietre preziose, paste vitree o smalti entro alloggiamenti metallici (castone) appositamente sagomati; può essere realizzata a giorno (con metallo ridotto al minimo) o a collet (entro anello continuo), ed è elemento fondamentale della lavorazione delle croci, delle fibule e dei monili medievali.",
+  "introduced_by": "oreficeria tardoantica e longobarda",
+  "first_period_id": "eta-longobarda",
+  "evolution": "Tecnica diffusissima dall'oreficeria longobarda e carolingia fino all'oreficeria gotica e rinascimentale; si affina nel gotico con l'incastonatura a giorno che valorizza la trasparenza delle pietre.",
+  "category": "altra"
+ },
+ {
+  "id": "coniazione",
+  "name": "Coniazione",
+  "definition": "Tecnica di produzione di monete e medaglie attraverso la pressione di conii metallici incisi su tondelli di metallo (oro, argento, bronzo), impressa a martello o, più tardi, a torchio; permette la riproduzione seriale di effigi e iscrizioni con alta precisione.",
+  "introduced_by": "zecche imperiali romane e carolinge",
+  "first_period_id": "eta-carolingia",
+  "evolution": "La coniazione medievale riprende modelli romani; con l'Umanesimo fiorentino si afferma la medaglia celebrativa (da Pisanello in poi) come evoluzione artistica della coniazione monetaria.",
+  "category": "altra"
+ },
+ {
+  "id": "nervature",
+  "name": "Nervature (costoloni di volta)",
+  "definition": "Tecnica costruttiva gotica che prevede la realizzazione di archi diagonali sporgenti (costoloni) che percorrono la superficie delle volte a crociera concentrando il peso lungo linee definite e permettendo la riduzione delle pareti d'imposta; consente l'alleggerimento delle strutture murarie e l'apertura di grandi vetrate.",
+  "introduced_by": "architettura gotica francese, XII secolo",
+  "first_period_id": "gotico",
+  "evolution": "Dai semplici costoloni diagonali del gotico primitivo si sviluppano le nervature a tierceron, lierne e volta a raggiera nei gotici inglese e tedesco tardivi.",
+  "category": "architettonica"
+ },
+ {
+  "id": "architettura-gotica-tardiva",
+  "name": "Architettura gotica tardiva",
+  "definition": "Fase conclusiva dell'architettura gotica (fine XIV-metà XVI secolo) caratterizzata da una tendenza alla verticalità estrema, dalla moltiplicazione degli elementi decorativi (trafori, guglie, pinnacoli, volte a rete), e dalla persistenza delle forme gotiche anche in contesti dove si diffonde il Rinascimento; include lo Spät-Gotik tedesco, il gotico fiammeggiante francese e il tardogotico italiano.",
+  "introduced_by": "cantieri europei del gotico internazionale",
+  "first_period_id": "tardogotico",
+  "evolution": "Sopravvive nelle regioni alpine e nordeuropee fino al XVI secolo, spesso coesistendo con le novità rinascimentali (Certosa di Pavia, Duomo di Milano).",
+  "category": "architettonica"
+ },
+ {
+  "id": "costruzione-in-marmo",
+  "name": "Costruzione in marmo",
+  "definition": "Tecnica costruttiva che utilizza il marmo come materiale portante o di rivestimento, impiegata dall'antichità attraverso il reimpiego di spolia o l'estrazione da cave (es. marmo di Musso, marmo lunense), caratteristica di architetture imperiali romane e paleocristiane.",
+  "introduced_by": "architettura romana imperiale",
+  "first_period_id": "tarda-antichita",
+  "evolution": "Dal reimpiego tardoantico di colonne e lastre marmoree all'uso sistematico del marmo nelle facciate rinascimentali (Alberti, Tempio Malatestiano) e nelle grandi architetture ecclesiastiche bizantine (Santa Sofia).",
+  "category": "architettonica"
+ },
+ {
+  "id": "acquerello-su-pergamena",
+  "name": "Acquerello su pergamena",
+  "definition": "Tecnica che utilizza colori diluiti in acqua (acquerello) applicati su supporto di pergamena (pelle animale trattata), usata per disegni preparatori, taccuini e miniature di grande freschezza e precisione naturalistica, come nei taccuini di Giovannino de' Grassi.",
+  "introduced_by": null,
+  "first_period_id": "tardogotico",
+  "evolution": "Tecnica impiegata dai disegnatori medievali per rilevare dal vero animali e nature, anticipa la tradizione del disegno naturalistico rinascimentale.",
+  "category": "altra"
+ },
+ {
+  "id": "tempera-su-argento",
+  "name": "Tempera su argento",
+  "definition": "Tecnica mista in cui la pittura a tempera è applicata su una superficie specchiante d'argento, creando un effetto di riflessione della luce che simula la profondità e l'ambiente circostante; usata da Brunelleschi nella prima tavoletta prospettica.",
+  "introduced_by": "Filippo Brunelleschi",
+  "first_period_id": "umanesimo-fiorentino",
+  "evolution": "Tecnica sperimentale unica, impiegata per la dimostrazione della prospettiva lineare; non si diffonde come pratica corrente.",
+  "category": "pittorica"
+ },
+ {
+  "id": "vetro-soffiato",
+  "name": "Vetro soffiato",
+  "definition": "Tecnica di lavorazione del vetro in cui una massa di vetro fuso viene modellata mediante soffiatura attraverso una canna metallica, ottenendo oggetti di forma variabile; produzione tipica dell'area veneziana e islamica, usata anche per tondi vitreo e decorazioni di lusso.",
+  "introduced_by": "artigianato romano-alessandrino",
+  "first_period_id": "tarda-antichita",
+  "evolution": "Dalla tradizione tardoantica, la tecnica si afferma nella Serenissima come eccellenza manifatturiera veneziana a partire dal Medioevo.",
+  "category": "altra"
+ },
+ {
+  "id": "olio-su-tavola-trasferito-su-tela",
+  "name": "Olio su tavola trasferito su tela",
+  "definition": "Dipinto originariamente eseguito a olio su supporto ligneo e successivamente staccato dal pannello e incollato su tela, procedura di restauro conservativo adottata per opere fragili; la Madonna Benois di Leonardo è un esempio emblematico.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "Pratica di restauro documentata a partire dal XVIII-XIX secolo per preservare dipinti su tavola deteriorati.",
+  "category": "pittorica"
+ },
+ {
+  "id": "tempera-e-olio-su-strato-gessoso",
+  "name": "Tempera e olio su strato gessoso",
+  "definition": "Tecnica mista murale sperimentata da Leonardo per l'Ultima Cena: la preparazione gessosa (anziché l'intonaco fresco dell'affresco) consente ritocchi a secco, ma rende l'opera vulnerabile all'umidità e alla caduta del film pittorico.",
+  "introduced_by": "Leonardo da Vinci",
+  "first_period_id": "sforzesco",
+  "evolution": "Tecnica sperimentale non replicata, responsabile del precoce degrado dell'Ultima Cena; costituisce un caso unico nella storia della pittura murale.",
+  "category": "pittorica"
+ },
+ {
+  "id": "disegno-penna-inchiostro",
+  "name": "Disegno a penna e inchiostro",
+  "definition": "Tecnica grafica che utilizza una punta di penna (calamo, piuma d'oca o punta metallica) intinta in inchiostro nero o bruno per tracciare linee su carta o pergamena; impiegata per disegni preparatori, studi architettonici e illustrazioni di testi.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "Usata già nell'antichità e nel Medioevo per manoscritti illustrati e trattati; nel Rinascimento diventa strumento privilegiato di architetti e artisti come Leonardo da Vinci e Filarete per studi anatomici, paesaggistici e progettuali.",
+  "category": "altra"
+ },
+ {
+  "id": "tempera-grassa-su-tavola",
+  "name": "Tempera grassa su tavola",
+  "definition": "Variante della tempera in cui l'emulsione agglutinante (tipicamente tuorlo d'uovo) è arricchita con olio di lino o olio cotto, rendendo il colore più trasparente, fluido e luminoso; tecnica di transizione tra la tempera tradizionale e la pittura a olio.",
+  "introduced_by": null,
+  "first_period_id": "rinascimento-fiorentino",
+  "evolution": "Impiegata da pittori fiorentini e romani del tardo Quattrocento e del primo Cinquecento (Antonio Pollaiolo, Piero di Cosimo, Raffaello) come tecnica di passaggio verso la pittura a olio pura, mantenendo la nitidezza del segno tipica della tempera.",
+  "category": "pittorica"
+ },
+ {
+  "id": "mosaico-pavimentale",
+  "name": "Mosaico pavimentale",
+  "definition": "Tecnica decorativa in cui tessere di pietra, marmo o ceramica sono inserite nel pavimento a formare motivi geometrici, figurativi o ornamentali; di tradizione romana, diffusa nei palazzi tardo-antichi e nelle basiliche paleocristiane.",
+  "introduced_by": null,
+  "first_period_id": "tarda-antichita",
+  "evolution": "Presente dai pavimenti romani del I-IV secolo ai rivestimenti musivi dei palazzi ravennati tardoantichi; evolve nel Medioevo nella tarsia cosmatesca e negli opus sectile delle chiese romaniche.",
+  "category": "musiva"
+ },
+ {
+  "id": "architettura-in-mattoni-e-cotto",
+  "name": "Architettura in mattoni e cotto",
+  "definition": "Tecnica costruttiva che utilizza mattoni di laterizio cotto come materiale principale per pareti, volte e decori, con modanature in terracotta sagomata; caratteristica dell'architettura lombarda del Rinascimento maturo.",
+  "introduced_by": null,
+  "first_period_id": "rinascimento-maturo",
+  "evolution": "Tipica dell'architettura padana medievale (opus latericium), viene reinterpretata in chiave classicista da Bramante a Milano (Santa Maria presso San Satiro, Santa Maria delle Grazie) che integra il cotto con decorazioni in terracotta all'antica.",
+  "category": "architettonica"
+ },
+ {
+  "id": "architettura-centrale",
+  "name": "Architettura a pianta centrale",
+  "definition": "Sistema costruttivo in cui l'edificio è organizzato attorno a un asse verticale centrale con pianta poligonale, circolare o a croce greca, generando simmetria radiale su tutti i lati; tipico dei battisteri paleocristiani e del programma ideale bramantesco.",
+  "introduced_by": null,
+  "first_period_id": "arte-paleocristiana",
+  "evolution": "Dalle piante ottagonali dei battisteri tardoantichi (Ravenna) al martyrion, fino all'ideale rinascimentale di Bramante (Tempietto di San Pietro in Montorio, progetto per San Pietro); ripreso nel manierismo con la chiesa del Gesù e nelle ville palladiane.",
+  "category": "architettonica"
+ },
+ {
+  "id": "volta-a-stella",
+  "name": "Volta a stella",
+  "definition": "Tipo di volta gotica ottenuta aggiungendo ai costoloni diagonali di base una serie di nervature secondarie (tiercerons e liernes) che si intersecano creando un motivo a stella; caratteristica del Decorated English Gothic (Abbazia di Westminster).",
+  "introduced_by": null,
+  "first_period_id": "decorated-english-gothic",
+  "evolution": "Sviluppata nel Gotico inglese del XIII-XIV secolo come evoluzione della volta a crociera semplice; diffusa poi in Spagna (Gotico catalano) e nella Mitteleuropa come elemento ornamentale di grande complessità tecnica.",
+  "category": "architettonica"
+ },
+ {
+  "id": "terracotta-dipinta",
+  "name": "Terracotta dipinta",
+  "definition": "Tecnica scultorea in cui l'argilla modellata e cotta viene rifinita con pigmenti colorati applicati a freddo o a tempera, ottenendo effetti cromatici vivaci; usata nel Rinascimento per busti-ritratto e sculture decorative.",
+  "introduced_by": null,
+  "first_period_id": "rinascimento-fiorentino",
+  "evolution": "Diffusa nel Quattrocento e Cinquecento come alternativa economica al marmo e al bronzo, la terracotta dipinta è impiegata per busti di committenti privati (es. Busto di Lorenzo de' Medici, National Gallery Washington) e per sculture devozionali.",
+  "category": "scultorea"
+ },
+ {
+  "id": "tempera-su-muro",
+  "name": "Tempera su muro",
+  "definition": "Pittura murale a secco in cui i pigmenti mescolati con un legante (colla, tuorlo d'uovo, latte di calce) vengono applicati sull'intonaco già asciutto; a differenza dell'affresco, non si integra chimicamente con la parete e tende a deteriorarsi.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "Usata da Leonardo da Vinci nella Sala delle Asse del Castello Sforzesco (1498) e nell'Ultima Cena di Santa Maria delle Grazie, con risultati di qualità pittorica superiore all'affresco ma di minore durata nel tempo.",
+  "category": "pittorica"
+ },
+ {
+  "id": "olio-su-stucco",
+  "name": "Olio su stucco",
+  "definition": "Tecnica pittorica in cui colori a olio vengono applicati su una superficie di stucco già asciutta, ottenendo effetti di leggerezza e luminosità; impiegata da Giulio Romano nella Camera di Amore e Psiche di Palazzo Te a Mantova.",
+  "introduced_by": "Giulio Romano",
+  "first_period_id": "manierismo",
+  "evolution": "Tecnica sperimentale adottata nella decorazione manierista per combinare rilievo plastico e pittura su superfici architettoniche complesse, in alternativa all'affresco tradizionale.",
+  "category": "pittorica"
+ },
+ {
+  "id": "bassorilievo-marmoreo",
+  "name": "Bassorilievo marmoreo",
+  "definition": "Scultura in rilievo eseguita su lastra di marmo in cui le figure emergono appena dal fondo, con profondità limitata; nel Rinascimento Donatello perfeziona lo stiacciato come sua variante estrema, poi ripreso da Michelangelo nelle prime opere.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "Tradizione antica della scultura funeraria e architettonica romana, ripresa nel Medioevo (plutei, pulpiti) e teorizzata nel Rinascimento con la distinzione tra altorilievo, bassorilievo e stiacciato donatelliano.",
+  "category": "scultorea"
+ },
+ {
+  "id": "nuovo-ms7rx0w4",
+  "name": "Grisaille",
+  "definition": "grisaglia in italiano o monocromo indica varie tecniche nella pittura. La parola è un prestito dal francese grisaille, che a sua volta proviene da gris (\"grigio\"), inteso come metodo per rendere le sfumature di grigio. In generale indica una decorazione o una pittura eseguita a monocromo.",
+  "introduced_by": "XIII Secolo",
+  "first_period_id": "XIII Secolo",
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "tempera-grassa",
+  "name": "Tempera grassa",
+  "definition": "Tecnica pittorica che utilizza pigmenti legati con emulsioni oleose, applicabile anche su muro secco o per ritocchi.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "medaglistica",
+  "name": "Medaglistica",
+  "definition": "Arte di creare medaglie commemorative o celebrative, spesso con ritratti del committente",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "arazzeria-su-cartoni",
+  "name": "Arazzeria su cartoni",
+  "definition": "Tecnica di realizzazione di arazzi basata su disegni preparatori (cartoni) creati da pittori",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "arcosolio",
+  "name": "Arcosolio",
+  "definition": "Schema architettonico funebre costituito da una nicchia ad arco che ospita il sarcofago e la statua del defunto",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "forma-cubica-con-cupola",
+  "name": "Forma cubica con cupola",
+  "definition": "Schema planimetrico e volumetrico derivato dai modelli brunelleschiani (Sacrestia Vecchia), caratterizzato da pianta quadrata e copertura a cupola",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "struttura-marmorea-slanciata-in-verticale",
+  "name": "Struttura marmorea slanciata in verticale",
+  "definition": "Tecnica architettonica che prevede lo sviluppo verticale della struttura in marmo per spezzare la severa linearità della patta del castello",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "colonne-binate-corinzie",
+  "name": "Colonne binate corinzie",
+  "definition": "Accoppiamento di colonne con capitelli corinzi utilizzate nel piano inferiore dell'arco",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "timpano-curvilineo",
+  "name": "Timpano curvilineo",
+  "definition": "Elemento architettonico superiore con andamento curvo che contiene le statue delle Virtù nelle nicchie",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "resa-atmosferica-a-nebbia",
+  "name": "Resa atmosferica a nebbia",
+  "definition": "Tecnica pittorica che utilizza la nebbia per rendere meno nitido il paesaggio con l'aumentare della distanza, creando profondità spaziale",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "illuminazione-diagonale",
+  "name": "Illuminazione diagonale",
+  "definition": "Sistema di luce proveniente da sinistra che colpisce la figura evidenziandone i volumi attraverso un gioco d'ombre radenti",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "copertura-policroma",
+  "name": "Copertura policroma",
+  "definition": "Tecnica decorativa che utilizza pietra colorata per creare effetti cromatici sulla superficie architettonica, ripresa della maniera antica e omaggio al gusto veneziano",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "stampa-a-caratteri-mobili",
+  "name": "Stampa a caratteri mobili",
+  "definition": "Innovazione tecnica che cambia l'orizzonte culturale di un intero continente, permettendo la riproduzione meccanica di testi attraverso tipi metallici riutilizzabili",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "introduzione-del-corsivo",
+  "name": "Introduzione del corsivo",
+  "definition": "Perfezionamento tecnico introdotto da Aldo Manuzio nella stampa, uno dei fondamentali miglioramenti della tecnica tipografica",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "architettura-merlata",
+  "name": "Architettura merlata",
+  "definition": "Elemento decorativo architettonico tardo-gotico presente nel Trittico con la Madonna in trono dei Vivarini, che accoglie la sacra conversazione",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "telerio",
+  "name": "Telerio",
+  "definition": "Grande pittura su tela destinata alla decorazione di confraternite (scuole) veneziane, tipico formato del Rinascimento veneziano",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "atmosfera-naturale",
+  "name": "Atmosfera naturale",
+  "definition": "Rendere l'aria come elemento tangibile attraverso sfumature cromatiche e variazioni di luminosità che creano profondità spaziale",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "bugnato-diamantato",
+  "name": "bugnato diamantato",
+  "definition": "Rivestimento facciata costituito da blocchi (bugne) a forma di diamante con punte orientate in direzioni diverse, che crea effetti prospettici e luminosi",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "planimetria-articolata",
+  "name": "planimetria articolata",
+  "definition": "Struttura planimetrica complessa e non regolare, tipica dell'architettura rinascimentale evoluta",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "tecnica-a-olio",
+  "name": "Tecnica a olio",
+  "definition": "Tecnica pittorica che Tura padroneggia probabilmente acquisita a Venezia",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "tempera",
+  "name": "Tempera",
+  "definition": "Tecnica pittorica usata nell'originale delle opere, successivamente modificata con interventi a olio",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "ante-dorgano",
+  "name": "Ante d'organo",
+  "definition": "Sportelli decorativi destinati a coprire l'organo della chiesa quando non in uso, spesso dipinti su entrambi i lati (ante aperte/chiuse)",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "facciata",
+  "name": "Facciata",
+  "definition": "In architettura, il fronte principale di un edificio. Filarete ne teorizza una versione semplificata rispetto ai canoni classici, con marcato cornicione in laterizi che raccorda le diverse parti dell'edificio, finestre bifore ad archi ogivali all'ultimo piano e doppio ordine di logge.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "ordine-architettonico",
+  "name": "Ordine architettonico",
+  "definition": "Sistema di proporzioni e elementi decorativi (colonne, capitelli, trabeazioni) derivati dall'architettura classica romana e greca. Filarete utilizza principalmente l'ordine corinzio nelle sue opere milanesi.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "pianta-centrale",
+  "name": "Pianta centrale",
+  "definition": "Schema planimetrico in cui l'edificio si sviluppa attorno a un centro (cortile o sala), tipico dell'architettura rinascimentale. L'Ospedale Maggiore ne è un esempio con il cortile quadrato porticato.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "loggiatoporticato",
+  "name": "Loggiato/Porticato",
+  "definition": "Spazio coperto aperto verso l'esterno attraverso una serie di arcate sostenute da colonne o pilastri. Nell'Ospedale Maggiore è presente su due livelli (doppio ordine).",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "disegno-a-penna-e-inchiostro",
+  "name": "Disegno a penna e inchiostro",
+  "definition": "Tecnica grafica utilizzata per i disegni architettonici e le illustrazioni dei trattati rinascimentali, eseguita con inchiostro bruno su carta",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "colonna-binata",
+  "name": "Colonna binata",
+  "definition": "Struttura architettonica costituita da due colonne accoppiate, spesso usata per enfatizzare l'importanza di un elemento architettonico come un portale o un'abside",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "loggiato",
+  "name": "Loggiato",
+  "definition": "Galleria aperta sul lato esterno, sostenuta da colonne o pilastri, tipica dell'architettura rinascimentale italiana",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "facciata-a-paramento-murario",
+  "name": "facciata a paramento murario",
+  "definition": "Tecnica costruttiva che prevede l'uso di diversi tipi di marmo e pietra per creare effetti cromatici e decorativi sulla superficie esterna dell'edificio",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "cupola-a-spicchi",
+  "name": "cupola a spicchi",
+  "definition": "Struttura di copertura ottagonale divisa in spicchi (vele), derivata dall'architettura romanica e bizantina, qui ripresa in chiave rinascimentale",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "olio-su-una-precedente-stesura-a-tempera-su-tavola",
+  "name": "Olio su una precedente stesura a tempera su tavola",
+  "definition": "",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "oro-smalti",
+  "name": "Oreficeria a smalto",
+  "definition": "Tecnica orafa con applicazione di smalti su metallo prezioso.",
+  "introduced_by": null,
+  "first_period_id": "medioevo",
+  "evolution": "Nel Manierismo raggiunge vertici con la Saliera di Cellini.",
+  "category": "altra"
+ },
+ {
+  "id": "prospettiva-illusionistica",
+  "name": "prospettiva illusionistica",
+  "definition": "Tecnica di rappresentazione spaziale che crea l'illusione di profondità attraverso regole matematiche precise, usata da Mantegna per fondere cornice e spazio dipinto.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "sacra-conversazione",
+  "name": "sacra conversazione",
+  "definition": "Schema compositivo rinascimentale che riunisce in uno spazio unitario la Madonna col Bambino e i santi in atto di dialogo.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "spazio-architettonico-unitario",
+  "name": "Spazio architettonico unitario",
+  "definition": "Composizione in cui tutte le figure sono inserite in un unico spazio costruito architettonicamente, con regole prospettiche classiche e impostazione formale rigorosa",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "prospettiva-di-sotto-in-su-dal-basso",
+  "name": "prospettiva di sotto in sù (dal basso)",
+  "definition": "Tecnica prospettica che rappresenta il soggetto visto da un punto di vista inferiore, creando un effetto di monumentalità",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "di-sotto-in-su-prospettiva",
+  "name": "Di sotto in sù (prospettiva)",
+  "definition": "Tecnica prospettica usata per dipingere soffitti creando l'illusione di spazi architettonici aperti verso l'alto.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "trompe-lil",
+  "name": "Trompe-l'œil",
+  "definition": "Tecnica illusionistica che crea l'inganno ottico facendo apparire elementi dipinti come reali (balaustrata, oculo).",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "prospettiva-intuitivaillusionistica",
+  "name": "Prospettiva intuitiva/illusionistica",
+  "definition": "Uso della prospettiva per creare l'illusione di uno spazio tridimensionale che si prolonga oltre i limiti fisici della parete, tipica della Camera degli Sposi dove l'architettura dipinta sembra continuare quella reale.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "finestra-aperta",
+  "name": "Finestra aperta",
+  "definition": "Concetto teorizzato da Alberti secondo cui la superficie dipinta deve apparire come una finestra attraverso cui si guarda uno spazio reale e virtuale",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "scorciotaglio-prospettico",
+  "name": "Scorcio/Taglio prospettico",
+  "definition": "Rappresentazione di un oggetto o una figura da un punto di vista obliquo o estremo, che ne altera la percezione abituale creando effetti spaziali particolari",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "sfondato-architettonico",
+  "name": "Sfondato architettonico",
+  "definition": "Ambiente costruito che funge da sfondo alla scena rappresentata, con elementi architettonici realistici o illusionistici",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "formine-incastonate",
+  "name": "Formine incastonate",
+  "definition": "Tecnica decorativa che prevede l'inserimento di piccole sculture (formine) all'interno di nicchie o spazi appositamente creati nell'architettura",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "decorativa"
+ },
+ {
+  "id": "prospettiva-ribaltata",
+  "name": "prospettiva ribaltata",
+  "definition": "Tecnica prospettica in cui il pavimento sembra inclinarsi verso l'osservatore, tipica di alcune interpretazioni dello spazio fiammingo e aragonese",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "sezione-aurea",
+  "name": "Sezione aurea",
+  "definition": "Proporzione matematica utilizzata nella composizione della Crocifissione per organizzare gli elementi spaziali",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "prospettiva-centrale",
+  "name": "Prospettiva centrale",
+  "definition": "Sistema di rappresentazione dello spazio basato su un punto di fuga unico al centro dell'opera",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "sviluppo-orizzontale-con-ritmo-verticale",
+  "name": "Sviluppo orizzontale con ritmo verticale",
+  "definition": "Composizione palazzina che bilancia l'estensione orizzontale del corpo di fabbrica con una scansione verticale rigorosa tramite marcapiani e ordini architettonici sovrapposti.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "ariosa-veduta-collinare",
+  "name": "Ariosa veduta collinare",
+  "definition": "Tipo di paesaggio ampio e sereno che sostituisce l'asprezza delle rocce mantegnesche con dolci colline e luce diffusa",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "punto-di-vista-ravvicinato",
+  "name": "punto di vista ravvicinato",
+  "definition": "Prospettiva che avvicina le figure allo spettatore, aumentando l'impatto emotivo e il coinvolgimento",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "mezzobusto",
+  "name": "mezzobusto",
+  "definition": "Raffigurazione delle figure tagliate all'altezza del petto o della vita",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "formato-unitario",
+  "name": "formato unitario",
+  "definition": "Struttura compositiva tipica della pala rinascimentale toscana, in contrapposizione al politico gotico",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "spazio-pittorico-reale",
+  "name": "Spazio pittorico reale",
+  "definition": "Integrazione dello spazio dipinto con lo spazio architettonico reale in cui l'opera è collocata",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "prospettiva-invertita",
+  "name": "Prospettiva invertita",
+  "definition": "Effetto spaziale in cui le figure sembrano proiettarsi verso l'osservatore anziché allontanarsi, creando un effetto di coinvolgimento emotivo e teatrale",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "articolazione-spaziale",
+  "name": "Articolazione spaziale",
+  "definition": "Organizzazione dello spazio architettonico dell'opera attraverso strutture architettoniche (nicchie, cornici) che inquadrano le figure",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "schema-piramidale",
+  "name": "Schema piramidale",
+  "definition": "Composizione figurativa organizzata secondo una struttura triangolare o piramidale, che conferisce equilibrio e stabilità all'insieme.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "pedana-ottagonale",
+  "name": "Pedana ottagonale",
+  "definition": "Base ottagonale su cui si innesta la struttura architettonica della pala, soluzione originale adottata da Roberti nella Pala Portonese.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "progetto-iconografico-unitario",
+  "name": "Progetto iconografico unitario",
+  "definition": "Coerenza del linguaggio artistico e scansione regolare delle pareti basata su un progetto comune di apparatenza, pur mantenendo le peculiarità stilistiche dei singoli artisti",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "effetto-illusionistico",
+  "name": "Effetto illusionistico",
+  "definition": "Tecnica usata nel registro inferiore per creare uno spazio reale attraverso la linea di vista e la prospettiva",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "fascia-orizzontale",
+  "name": "Fascia orizzontale",
+  "definition": "Struttura compositiva tipica dei cicli ferraresi di Palazzo Schifanoia, che divide la parete in tre registri sovrapposti: trionfo celeste, zodiaco/mitologia, vita terrena/cortese",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "prospettiva-dal-basso-di-sotto-in-su",
+  "name": "prospettiva dal basso (di sotto in sù)",
+  "definition": "Tecnica prospettica che rappresenta i soggetti visti dal basso verso l'alto, usata per creare effetto di monumentalità",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "compositiva"
+ },
+ {
+  "id": "graffito",
+  "name": "Graffito",
+  "definition": "Tecnica decorativa che consiste nell'incidere lo strato superficiale dell'intonaco per creare disegni a contrasto cromatico, usata da Mantenga per le decorazioni parietali della Camera.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "decorativa"
+ },
+ {
+  "id": "quadratura",
+  "name": "Quadratura",
+  "definition": "Dipinto illusionistico che simula elementi architettonici per dilatare lo spazio reale dell'ambiente",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "decorativa"
+ },
+ {
+  "id": "fondo-oro-bulinato",
+  "name": "fondo oro bulinato",
+  "definition": "Tecnica decorativa che prevede l'incisione (bulinatura) sul fondo in oro per creare motivi ornamentali",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "decorativa"
+ },
+ {
+  "id": "aureole-traforate",
+  "name": "aureole traforate",
+  "definition": "Aureole (nimbi) realizzate con lavorazione a traforo, tipiche della tradizione tardogotica e fiamminga",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "decorativa"
+ },
+ {
+  "id": "azulejos",
+  "name": "azulejos",
+  "definition": "Piastrelle ceramiche decorate, tipiche della tradizione spagnola (valenciana), con motivi geometrici e floreali",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "decorativa"
+ },
+ {
+  "id": "facciata-a-candelabre",
+  "name": "facciata a candelabre",
+  "definition": "Decorazione verticale a forma di candelabro, di derivazione classica, utilizzata per elementi strutturali o decorativi",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "decorativa"
+ },
+ {
+  "id": "sfondo-oro",
+  "name": "Sfondo oro",
+  "definition": "Uso di fondo dorato tipico dell'iconografia medievale e gotica, qui rielaborato in chiave tardogotica",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "decorativa"
+ },
+ {
+  "id": "oculus",
+  "name": "Oculus",
+  "definition": "Apertura circolare o ellittica, reale o illusionistica, presente in cupole o soffitti; nella Camera degli Sposi è dipinta per creare un effetto di apertura verso il cielo.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "vele",
+  "name": "Vele",
+  "definition": "Elemento architettonico decorativo a forma di vela o drappo",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "lacunari",
+  "name": "Lacunari",
+  "definition": "Elementi decorativi a cassettoni presenti nei soffitti, tipici dell'architettura classica",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "oculo",
+  "name": "Oculo",
+  "definition": "Apertura circolare o finestra rotonda presente nelle strutture architettoniche",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "rivestimento-in-pietra-distria",
+  "name": "Rivestimento in pietra d'Istria",
+  "definition": "Uso esclusivo della pietra d'Istria bianca candore per rivestire la superficie esterna del prospetto, tecnica tipica dell'architettura veneziana.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "pianta-longitudinale-a-tre-navate-su-colonne",
+  "name": "Pianta longitudinale a tre navate su colonne",
+  "definition": "Struttura interna della chiesa divisa in tre navate sostenute da colonne, secondo una teoria di archi a tutto sesto impostati su colonne.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "prospettiva-costruita-in-pianta-e-alzato",
+  "name": "prospettiva costruita in pianta e alzato",
+  "definition": "Tecnica architecttonica dove i pilastri dipinti corrispondono perfettamente a quelli reali dello spazio fisico",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "addizione-urbanistica",
+  "name": "Addizione urbanistica",
+  "definition": "Ampliamento pianificato di una città con creazione di nuovi quartieri, strade e piazze secondo criteri razionali.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "laterizio",
+  "name": "Laterizio",
+  "definition": "Materiale da costruzione ottenuto dalla cottura dell'argilla, ampiamente utilizzato in Lombardia per la realizzazione delle facciate e dei cornicioni, come nell'Ospedale Maggiore.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "pianta-a-stella",
+  "name": "Pianta a stella",
+  "definition": "Schema urbanistico a forma di stella a otto punte (ottagono inscritto in un cerchio), tipico delle città ideali rinascimentali, con strade convergenti verso il centro",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "strade-secondarie-radiali",
+  "name": "Strade secondarie radiali",
+  "definition": "Sistema viario secondario organizzato a raggiera dal centro verso la periferia, collegato alle vie principali convergenti",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "architettonica"
+ },
+ {
+  "id": "intaglio-della-pietra",
+  "name": "Intaglio della pietra",
+  "definition": "Tecnica scultorea di raffinata esecuzione sulle superfici lapidee, caratteristica dell'officina lombarda applicata all'architettura",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "scultorea"
+ },
+ {
+  "id": "terracotta-policroma",
+  "name": "Terracotta policroma",
+  "definition": "Scultura in argilla cotta (terracotta) successivamente dipinta con colori per simulare tessuti, carnagioni e altri dettagli realistici; tecnica molto usata nella scultura bolognese del Quattrocento.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "scultorea"
+ },
+ {
+  "id": "bronzo",
+  "name": "Scultura in bronzo",
+  "definition": "Tecnica scultorea tramite fusione di lega di rame e stagno.",
+  "introduced_by": null,
+  "first_period_id": "antichita",
+  "evolution": "Nel Rinascimento viene usata per altorilievi e sculture a tutto tondo.",
+  "category": "scultorea"
+ },
+ {
+  "id": "scultura-marmo",
+  "name": "Scultura in marmo",
+  "definition": "Tecnica scultorea basata sulla lavorazione sottrattiva del marmo per ottenere figure e gruppi a tutto tondo.",
+  "introduced_by": null,
+  "first_period_id": "antichita",
+  "evolution": "Nel Rinascimento e nel Manierismo romano il marmo torna a essere il principale materiale per grandi sculture religiose e mitologiche.",
+  "category": "scultorea"
+ },
+ {
+  "id": "tratto-inciso-e-sicuro",
+  "name": "Tratto inciso e sicuro",
+  "definition": "Caratteristica stilistica derivante dall'influenza di Donatello, che conferisce alle figure un'impostazione salda e monumentale.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "tempera-a-colla-su-tela",
+  "name": "tempera a colla su tela",
+  "definition": "Tecnica pittorica che utilizza pigmenti legati con colla animale o vegetale applicati su tela",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "di-sotto-in-su",
+  "name": "Di sotto in su",
+  "definition": "Tecnica pittorica prospettica usata per rappresentare figure o oggetti visti dal basso verso l'alto, tipicamente su soffitti o volte.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "affresco-a-secco",
+  "name": "Affresco a secco",
+  "definition": "Tecnica pittorica eseguita su intonaco asciutto, utilizzata da Mantegna per i particolari minuti e i rifiniti della Camera degli Sposi, in combinazione con la tecnica del buon affresco.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "graffitosgraffito",
+  "name": "Graffito/Sgraffito",
+  "definition": "Tecnica di incisione o raschiamento dello strato superficiale dell'affresco per creare dettagli o effetti di rilievo",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "tempera-su-tela",
+  "name": "Tempera su tela",
+  "definition": "Tecnica pittorica che utilizza pigmenti legati con emulsioni (tuorlo d'uovo o altri leganti) applicati su supporto tessile, tipica del XV secolo prima dell'affermazione dell'olio",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "colorito-corto",
+  "name": "Colorito corto",
+  "definition": "Modalità cromatica caratterizzata da tonalità vivaci e contrastate, tipica delle opere celebrative mantegnesche",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "tempera-e-oro-su-tavola",
+  "name": "tempera e oro su tavola",
+  "definition": "Tecnica pittorica che utilizza pigmenti legati con tempera (generalmente tuorlo d'uovo) applicati su supporto ligneo, con fondo o rifiniture in foglia d'oro",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "medium-pittorico-dei-colori-a-olio",
+  "name": "Medium pittorico dei colori a olio",
+  "definition": "Nuova tecnica pittorica dominata con maestria da Antonello da Messina, che permette di creare sottili passaggi tonali, trasparenze impercettibili e delicati chiaroscuri.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "illuminazione-complessa",
+  "name": "Illuminazione complessa",
+  "definition": "Gioco dei diversi piani di profondità esaltato dalla complessa illuminazione della scena che genera numerose zone d'ombra e di penombra nel vano dello studiolo",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "pittura-a-olio-su-tela",
+  "name": "pittura a olio su tela",
+  "definition": "Tecnica introdotta in Venezia dai Paesi Bassi che spinge gli artisti locali verso un approccio più diretto alla realtà e alla natura.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "pittura-a-gettito",
+  "name": "pittura a gettito",
+  "definition": "Tecnica formale dei teli prospettici con una linea di contorno agile ed essenziale e un colore netto e ben definito",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "colore-a-olio",
+  "name": "colore a olio",
+  "definition": "Tecnica pittorica introdotta a Venezia da Antonello da Messina, che permette tonalità più luminose e sfumature morbide rispetto alla tempera",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "luce-dellalba",
+  "name": "Luce dell'alba",
+  "definition": "Illuminazione caratterizzata da tonalità rosa/arancio che rischiara il cielo e crea riflessi sulle nuvole, colli e pareti rocciose",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "tavola",
+  "name": "tavola",
+  "definition": "Supporto ligneo per dipinti, qui in tempera",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "olio",
+  "name": "olio",
+  "definition": "Tecnica pittorica ad olio, usata da Bellini nella Pala di Pesaro come sua prima opera in questa tecnica",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "luce-uniforme",
+  "name": "Luce uniforme",
+  "definition": "Illuminazione diffusa e omogenea che elimina contrasti drammatici a favore dell'armonia cromatica",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "luce-naturale",
+  "name": "luce naturale",
+  "definition": "Potenza unificante della luce che lega insieme i colori, le ombre e le forme creando un'atmosfera omogenea e realistica",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "colore-unificante",
+  "name": "colore unificante",
+  "definition": "Uso del colore non solo come elemento decorativo ma come strumento costruttivo che definisce lo spazio e unifica la composizione",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "colorito-tonale",
+  "name": "colorito tonale",
+  "definition": "Uso del colore per definire volumi e creare unità atmosferica, tipico della scuola veneta",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "colore-tonale",
+  "name": "colore tonale",
+  "definition": "Uso del colore per creare modellato e volume attraverso sfumature progressive anziché contrasti netti",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "illuminazione-laterale",
+  "name": "Illuminazione laterale",
+  "definition": "Tecnica di illuminazione che colpisce le figure lateralmente, accentuando il vigore plastico e il rilievo delle forme",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "affresco-e-tempera-a-secco",
+  "name": "Affresco e tempera a secco",
+  "definition": "Tecnica pittorica utilizzata per il ciclo dei Mesi, combinando affresco (pittura su intonaco fresco) e tempera a secco per finiture",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "tecnica-mista-a-secco",
+  "name": "Tecnica mista a secco",
+  "definition": "Tecnica pittorica che prevede l'esecuzione di parti seguate a fresco con interventi a secco per completare o rifinire l'opera",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "luce-calda-e-velata",
+  "name": "luce calda e velata",
+  "definition": "Trattamento della illuminazione che cita il modello dell'Ospedale Maggiore di Filarete, con funzione decorativa e simbolica universale",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "pittorica"
+ },
+ {
+  "id": "olio-tavola",
+  "name": "Pittura a olio su tavola",
+  "definition": "Tecnica pittorica che utilizza pigmenti legati con olio (solitamente di lino) applicati su supporto ligneo.",
+  "introduced_by": "Jan van Eyck",
+  "first_period_id": "rinascimento",
+  "evolution": "Nel Rinascimento nordico viene usata per la resa lenticolare dei dettagli.",
+  "category": "pittorica"
+ },
+ {
+  "id": "olio-tela",
+  "name": "Pittura a olio su tela",
+  "definition": "Tecnica pittorica con pigmenti a olio su supporto di tela (lino o canapa).",
+  "introduced_by": null,
+  "first_period_id": "rinascimento",
+  "evolution": "Si diffonde nel Cinquecento sostituendo progressivamente la tavola.",
+  "category": "pittorica"
+ },
+ {
+  "id": "olio-rame",
+  "name": "Pittura a olio su rame",
+  "definition": "Tecnica pittorica con olio su lamina di rame, usata per piccoli dipinti di grande dettaglio.",
+  "introduced_by": null,
+  "first_period_id": "manierismo",
+  "evolution": "Tipica del Manierismo per opere da collezionismo privato.",
+  "category": "pittorica"
+ },
+ {
+  "id": "tempera-tela",
+  "name": "Tempera su tela",
+  "definition": "Tecnica pittorica con pigmenti a tempera (legante acquoso) su tela di grandi dimensioni.",
+  "introduced_by": null,
+  "first_period_id": "rinascimento",
+  "evolution": "Usata per i Quadroni di san Carlo nel Duomo di Milano.",
+  "category": "pittorica"
+ },
+ {
+  "id": "cornice-lignea",
+  "name": "cornice lignea",
+  "definition": "Struttura architettonica in legno che circonda l'opera pittorica, qui integrata con lo spazio dipinto tramite colonne dorate scanalate e fregio a girali.",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "ridipintura-cinquecentesca",
+  "name": "Ridipintura cinquecentesca",
+  "definition": "Intervento di ripristino o modifica effettuato sul dipinto originale nel XVI secolo, che ne altera l'aspetto originario",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "trasferimento-su-tela",
+  "name": "Trasferimento su tela",
+  "definition": "Tecnica di conservazione che prevede il distacco del strato pittorico dal supporto originale e la sua applicazione su tela nuova",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "penna-e-inchiostro-bruno-su-carta",
+  "name": "penna e inchiostro bruno su carta",
+  "definition": "Tecnica disegnativa che utilizza penna e inchiostro bruno su supporto cartaceo",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "opere-fiamminghe",
+  "name": "opere fiamminghe",
+  "definition": "Riferimento alla pittura fiamminga presente in laguna, che indusse gli artisti veneziani a scegliere di dipingere con colori a olio",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "polittico",
+  "name": "polittico",
+  "definition": "Opera d'arte composta da più pannelli, qui con tappera fondamentale, legno scolpito e dorato, piastre laterali",
+  "introduced_by": null,
+  "first_period_id": null,
+  "evolution": "",
+  "category": "altra"
+ },
+ {
+  "id": "disegno-penna-lavaggio",
+  "name": "Disegno a penna e lavaggio",
+  "definition": "Tecnica grafica che combina linee a penna e campiture di inchiostro diluito, spesso integrate da lumeggiature bianche.",
+  "introduced_by": null,
+  "first_period_id": "rinascimento",
+  "evolution": "Nel Rinascimento viene usata per studi compositivi, copie, preparazioni e ricostruzioni di opere perdute.",
+  "category": "altra"
+ }
+]

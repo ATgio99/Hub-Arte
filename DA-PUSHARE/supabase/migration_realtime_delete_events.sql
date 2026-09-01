@@ -1,0 +1,25 @@
+-- ============================================================================
+-- Eventi di cancellazione nel realtime
+--
+-- Con l'identita' predefinita, quando Postgres cancella una riga nel registro
+-- delle modifiche scrive solo la chiave primaria. La sottoscrizione del sito
+-- filtra per utente (user_id=eq.<id>), e con un dato cosi' scarno il server non
+-- riesce a valutare il filtro: l'evento non viene consegnato affatto.
+--
+-- Conseguenza vista sul campo: le aggiunte di preferiti e opere approfondite si
+-- propagavano fra i dispositivi, le rimozioni no, e i totali dei due
+-- dispositivi si allontanavano senza piu' riallinearsi.
+--
+-- Con `replica identity full` la riga viene scritta per intero, il filtro torna
+-- valutabile e le rimozioni arrivano. Le due tabelle hanno cinque colonne
+-- minuscole, quindi il peso aggiuntivo e' trascurabile.
+--
+-- Nota: le regole di sicurezza continuano a oscurare il contenuto della riga
+-- cancellata, quindi il sito sa *che* qualcosa e' stato tolto ma non *cosa*, e
+-- richiede una rilettura. Costa due chiamate per ogni rimozione fatta da un
+-- altro dispositivo.
+--
+-- Applicata il 1 settembre 2026.
+-- ============================================================================
+alter table public.user_favorites replica identity full;
+alter table public.user_studied   replica identity full;

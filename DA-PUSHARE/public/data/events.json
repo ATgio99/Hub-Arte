@@ -1,0 +1,2477 @@
+[
+ {
+  "id": "tetrarchia-diocleziano",
+  "year": 284,
+  "year_end": 305,
+  "title": "Tetrarchia di Diocleziano",
+  "description": "Diocleziano riorganizza l'impero dividendolo tra due Augusti e due Cesari, creando nuove capitali (Milano, Treviri, Nicomedia, Sirmio) che assumono importanza politica e culturale a scapito di Roma.",
+  "kind": "politico",
+  "period_id": "tarda-antichita"
+ },
+ {
+  "id": "editto-di-milano",
+  "year": 313,
+  "year_end": null,
+  "title": "Editto di tolleranza di Milano",
+  "description": "Costantino emana l'editto che sancisce la libertà di culto cristiana, dando avvio alla costruzione pubblica di chiese e allo sviluppo dell'arte paleocristiana.",
+  "kind": "religioso",
+  "period_id": "arte-paleocristiana"
+ },
+ {
+  "id": "teodosio-piena-cristianizzazione",
+  "year": 380,
+  "year_end": 395,
+  "title": "Piena cristianizzazione dell'impero sotto Teodosio",
+  "description": "Teodosio (379-395) sancisce con l'editto di Tessalonica (380) il cristianesimo niceno come unica religione di stato, vietando i culti pagani e l'arianesimo.",
+  "kind": "religioso",
+  "period_id": "tarda-antichita"
+ },
+ {
+  "id": "consacrazione-battistero-ambrosiano",
+  "year": 387,
+  "year_end": null,
+  "title": "Battesimo di Agostino e consacrazione del Battistero di Milano",
+  "description": "Ambrogio battezza Agostino di Ippona nel Battistero di San Giovanni alle Fonti (387), segnando uno dei momenti fondanti della cultura cristiana latina.",
+  "kind": "religioso",
+  "period_id": "arte-paleocristiana"
+ },
+ {
+  "id": "caduta-impero-romano-occidente",
+  "year": 476,
+  "year_end": null,
+  "title": "Caduta dell'impero romano d'Occidente",
+  "description": "Odoacre depone l'ultimo imperatore romano d'Occidente Romolo Augustolo. Ravenna, già capitale imperiale, diventa sede del nuovo potere barbarico.",
+  "kind": "politico",
+  "period_id": "tarda-antichita"
+ },
+ {
+  "id": "teodorico-conquista-italia",
+  "year": 493,
+  "year_end": null,
+  "title": "Teodorico conquista l'Italia",
+  "description": "Teodorico re degli Ostrogoti sconfigge Odoacre e conquista tutta l'Italia, stabilendo la capitale a Ravenna e avviando un programma di costruzioni che trasforma la città.",
+  "kind": "politico",
+  "period_id": "regno-ostrogoto"
+ },
+ {
+  "id": "costruzione-santa-sofia",
+  "year": 532,
+  "year_end": 537,
+  "title": "Costruzione di Santa Sofia a Costantinopoli",
+  "description": "Giustiniano commissiona ad Antemio di Tralles e Isidoro di Mileto la costruzione di Santa Sofia, capolavoro dell'architettura medievale con la cupola su pennacchi.",
+  "kind": "culturale",
+  "period_id": "eta-giustinianea"
+ },
+ {
+  "id": "giustiniano-riconquista-ravenna",
+  "year": 540,
+  "year_end": null,
+  "title": "Riconquista giustinianea di Ravenna",
+  "description": "Il generale Belisario riconquista Ravenna per conto di Giustiniano, che istituisce l'Esarcato d'Italia con capitale nella città. Ha inizio la fase di massimo splendore dell'arte ravennate.",
+  "kind": "politico",
+  "period_id": "eta-giustinianea"
+ },
+ {
+  "id": "invasione-longobarda",
+  "year": 568,
+  "year_end": null,
+  "title": "Invasione longobarda dell'Italia",
+  "description": "I Longobardi guidati da Alboino invadono l'Italia, occupando gran parte della penisola e costringendo i Bizantini a ritirarsi su Ravenna, Roma, Puglia e Calabria.",
+  "kind": "politico",
+  "period_id": "eta-longobarda"
+ },
+ {
+  "id": "iconoclastia-prima",
+  "year": 726,
+  "year_end": 787,
+  "title": "Prima iconoclastia",
+  "description": "L'imperatore Leone III proibisce il culto delle immagini (726), dando inizio alla controversia iconoclasta che divise Oriente e Occidente cristiano. Il secondo Concilio di Nicea (787) restaura la venerazione delle icone.",
+  "kind": "religioso",
+  "period_id": "arte-bizantina"
+ },
+ {
+  "id": "conquista-franca-longobardi",
+  "year": 774,
+  "year_end": null,
+  "title": "Carlo Magno conquista il regno longobardo",
+  "description": "Carlo Magno sconfigge l'ultimo re longobardo Desiderio e assume il titolo di Rex Francorum et Langobardorum, ponendo fine al regno longobardo e aprendo la fase carolingia in Italia.",
+  "kind": "politico",
+  "period_id": "eta-carolingia"
+ },
+ {
+  "id": "concilio-nicea-ii",
+  "year": 787,
+  "year_end": null,
+  "title": "Secondo Concilio di Nicea",
+  "description": "Il Concilio restaura il culto delle icone, affermando la distinzione tra latria (adorazione dovuta solo a Dio) e proskynesis (venerazione ammessa per le immagini sacre).",
+  "kind": "religioso",
+  "period_id": "arte-bizantina"
+ },
+ {
+  "id": "incoronazione-carlo-magno",
+  "year": 800,
+  "year_end": null,
+  "title": "Incoronazione di Carlo Magno a imperatore",
+  "description": "Papa Leone III incorona Carlo Magno imperatore dei Romani nella basilica di San Pietro a Roma il 25 dicembre 800, sancendo la Renovatio Imperii carolingia.",
+  "kind": "politico",
+  "period_id": "eta-carolingia"
+ },
+ {
+  "id": "incoronazione-carlo-magno-800",
+  "year": 800,
+  "year_end": null,
+  "title": "Incoronazione di Carlo Magno a imperatore",
+  "description": "Papa Leone III incorona Carlo Magno imperatore del Sacro Romano Impero nella Basilica di San Pietro a Roma la notte di Natale dell'800, avviando la Renovatio Imperii.",
+  "kind": "politico",
+  "period_id": "eta-carolingia"
+ },
+ {
+  "id": "sinodo-di-media-carolingia",
+  "year": 816,
+  "year_end": 830,
+  "title": "Riforma monastica carolingia e pianta di San Gallo",
+  "description": "La riforma benedettina promossa da Benedetto di Aniane e dall'imperatore Ludovico il Pio porta alla codificazione della pianta ideale del monastero, esemplificata nel disegno conservato a San Gallo.",
+  "kind": "religioso",
+  "period_id": "eta-carolingia"
+ },
+ {
+  "id": "pontificato-pasquale-i-817-826",
+  "year": 817,
+  "year_end": 826,
+  "title": "Pontificato di Pasquale I",
+  "description": "Papa Pasquale I promuove un vasto programma di rinnovamento delle chiese romane con mosaici paleocristiani rinnovati, includendo Santa Prassede, Santa Maria in Domnica e Santa Cecilia.",
+  "kind": "religioso",
+  "period_id": "eta-carolingia"
+ },
+ {
+  "id": "fondazione-cappella-ducale-venezia",
+  "year": 832,
+  "year_end": null,
+  "title": "Fondazione della cappella ducale di Venezia",
+  "description": "Prima costruzione della cappella ducale veneziana per ospitare le reliquie di san Marco, traslate da Alessandria d'Egitto.",
+  "kind": "religioso",
+  "period_id": "romanico-italiano"
+ },
+ {
+  "id": "fondazione-abbazia-cluny-910",
+  "year": 910,
+  "year_end": null,
+  "title": "Fondazione dell'abbazia di Cluny",
+  "description": "Guglielmo I d'Aquitania fonda l'abbazia di Cluny in Borgogna; essa diventerà il fulcro della riforma cluniacense e di una rete di oltre mille monasteri in Europa.",
+  "kind": "religioso",
+  "period_id": "cluniacense"
+ },
+ {
+  "id": "incoronazione-ottone-i-962",
+  "year": 962,
+  "year_end": null,
+  "title": "Incoronazione di Ottone I imperatore",
+  "description": "Ottone I di Sassonia viene incoronato imperatore a Roma nel 962, avviando la Renovatio Imperii ottoniana e la stagione dell'arte ottoniana.",
+  "kind": "politico",
+  "period_id": "arte-ottoniana"
+ },
+ {
+  "id": "matrimonio-ottone-ii-teofano-972",
+  "year": 972,
+  "year_end": null,
+  "title": "Matrimonio di Ottone II con Teofano",
+  "description": "Ottone II sposa la principessa bizantina Teofano, aprendo canali di influenza artistica e culturale dall'Oriente verso l'Occidente ottoniano.",
+  "kind": "politico",
+  "period_id": "arte-ottoniana"
+ },
+ {
+  "id": "consacrazione-san-vincenzo-galliano",
+  "year": 1007,
+  "year_end": null,
+  "title": "Consacrazione di San Vincenzo a Galliano",
+  "description": "La chiesa di San Vincenzo a Galliano viene consacrata nel 1007 per volere dell'arcivescovo Ariberto da Intimiano, dando avvio al ciclo di affreschi romanico-lombardi.",
+  "kind": "religioso",
+  "period_id": "romanico-italiano"
+ },
+ {
+  "id": "consacrazione-san-miniato",
+  "year": 1013,
+  "year_end": null,
+  "title": "Consacrazione della chiesa di San Miniato al Monte",
+  "description": "Consacrazione della basilica di San Miniato al Monte a Firenze nel 1013, punto di partenza del Romanico fiorentino bicromato.",
+  "kind": "religioso",
+  "period_id": "romanico-italiano"
+ },
+ {
+  "id": "fondazione-basilica-san-marco",
+  "year": 1063,
+  "year_end": 1094,
+  "title": "Costruzione della basilica di San Marco",
+  "description": "Il doge Domenico Contarini avvia nel 1063 la ricostruzione della basilica ducale sul modello dei Santi Apostoli di Costantinopoli; consacrata nel 1094 sotto il doge Vitale Falier.",
+  "kind": "religioso",
+  "period_id": "romanico-italiano"
+ },
+ {
+  "id": "conquista-normanna-inghilterra-1066",
+  "year": 1066,
+  "year_end": null,
+  "title": "Conquista normanna dell'Inghilterra",
+  "description": "Guglielmo il Conquistatore sconfigge Harold II ad Hastings e conquista l'Inghilterra, avviando un'intensa stagione di costruzioni romaniche normanne (Winchester, Durham, Norwich, Ely).",
+  "kind": "politico",
+  "period_id": "arte-normanna"
+ },
+ {
+  "id": "pellegrinaggi-santiago-xi-xii-sec",
+  "year": 1075,
+  "year_end": 1211,
+  "title": "Costruzione della cattedrale di Santiago de Compostela",
+  "description": "Tra 1075 e 1211 viene eretta la cattedrale di Santiago de Compostela, meta del principale pellegrinaggio romanico europeo, che diffonde modelli architettonici e scultoreo lungo le vie jacobee.",
+  "kind": "religioso",
+  "period_id": "romanico"
+ },
+ {
+  "id": "traslazione-reliquie-san-nicola-bari-1087",
+  "year": 1087,
+  "year_end": null,
+  "title": "Traslazione delle reliquie di san Nicola a Bari",
+  "description": "Marinai baresi trafugano le reliquie di san Nicola da Myra (Licia) e le portano a Bari nel 1087, avviando la costruzione della basilica di San Nicola.",
+  "kind": "religioso",
+  "period_id": "romanico"
+ },
+ {
+  "id": "conquista-normanna-sicilia",
+  "year": 1091,
+  "year_end": null,
+  "title": "Conquista normanna della Sicilia",
+  "description": "Con la presa di Noto nel 1091, i Normanni completano la conquista della Sicilia ponendo fine al dominio arabo, avviando la straordinaria sintesi culturale normanna.",
+  "kind": "politico",
+  "period_id": "romanico-normanno-siciliano"
+ },
+ {
+  "id": "fondazione-ordine-cistercense",
+  "year": 1098,
+  "year_end": null,
+  "title": "Fondazione dell'ordine cistercense",
+  "description": "L'ordine cistercense, nato alla fine dell'XI secolo e fiorito in tutta Europa per opera di Bernardo di Chiaravalle, diffonde in Italia un'architettura religiosa spoglia e rigorosa che prepara il terreno per il Gotico.",
+  "kind": "religioso",
+  "period_id": "gotico-cistercense"
+ },
+ {
+  "id": "riforma-cistercense-1098",
+  "year": 1098,
+  "year_end": null,
+  "title": "Fondazione dell'Ordine cistercense",
+  "description": "Roberto di Molesme fonda a Cîteaux il monastero che diventerà il nucleo dell'Ordine cistercense; Bernardo di Chiaravalle ne diventa la voce più autorevole e critica il lusso di Cluny.",
+  "kind": "religioso",
+  "period_id": "cistercense"
+ },
+ {
+  "id": "inizio-duomo-modena-1099",
+  "year": 1099,
+  "year_end": null,
+  "title": "Inizio costruzione del duomo di Modena",
+  "description": "Il vescovo Anselmo di Baggio pone la prima pietra del duomo di Modena nel 1099, con Lanfranco come architetto e Wiligelmo come scultore principale.",
+  "kind": "culturale",
+  "period_id": "romanico"
+ },
+ {
+  "id": "fondazione-clairvaux",
+  "year": 1115,
+  "year_end": null,
+  "title": "Fondazione dell'abbazia di Clairvaux",
+  "description": "Bernardo di Chiaravalle fonda l'abbazia di Clairvaux nel 1115, nucleo dell'espansione cistercense che porterà alla costruzione di centinaia di abbazie in Europa.",
+  "kind": "religioso",
+  "period_id": "cistercense"
+ },
+ {
+  "id": "consacrazione-cluny-iii-1130",
+  "year": 1130,
+  "year_end": null,
+  "title": "Consacrazione di Cluny III",
+  "description": "Papa Innocenzo II consacra Cluny III, la più grande chiesa medievale d'Europa con i suoi 187 m di lunghezza; quasi interamente demolita nella Rivoluzione francese.",
+  "kind": "religioso",
+  "period_id": "cluniacense"
+ },
+ {
+  "id": "ruggero-ii-re-sicilia",
+  "year": 1130,
+  "year_end": 1154,
+  "title": "Regno di Ruggero II d'Altavilla",
+  "description": "Ruggero II fonda il regno di Sicilia nel 1130 e avvia la grande stagione artistica normanna con la Cappella Palatina di Palermo e la cattedrale di Cefalù.",
+  "kind": "politico",
+  "period_id": "romanico-normanno-siciliano"
+ },
+ {
+  "id": "consacrazione-saint-denis",
+  "year": 1144,
+  "year_end": null,
+  "title": "Consacrazione del coro di Saint-Denis",
+  "description": "L'abate Suger consacra nel 1144 il coro rinnovato della chiesa abbaziale di Saint-Denis, segnando la nascita ufficiale dell'architettura gotica.",
+  "kind": "religioso",
+  "period_id": "gotico-francese"
+ },
+ {
+  "id": "canonizzazione-antipapa-carlo-magno-1164",
+  "year": 1164,
+  "year_end": 1168,
+  "title": "Canonizzazione di Carlo Magno da parte dell'antipapa",
+  "description": "L'antipapa Pasquale III canonizza Carlo Magno (1164-1168), non riconosciuta dalla Chiesa di Roma. La vetrata a lui dedicata nella cattedrale di Chartres allude alla sacralità del potere monarchico capetingio.",
+  "kind": "religioso",
+  "period_id": "gotico"
+ },
+ {
+  "id": "canonizzazione-thomas-becket-1173",
+  "year": 1173,
+  "year_end": null,
+  "title": "Canonizzazione di Thomas Becket",
+  "description": "L'arcivescovo di Canterbury Thomas Becket, ucciso nel 1170 da sicari del re Enrico II Plantageneto, viene canonizzato. Le sue reliquie sono ospitate nella Corona di Becket nella cattedrale di Canterbury.",
+  "kind": "religioso",
+  "period_id": "early-english-gothic"
+ },
+ {
+  "id": "incendio-canterbury-1174",
+  "year": 1174,
+  "year_end": null,
+  "title": "Incendio della cattedrale di Canterbury",
+  "description": "Un incendio devasta il coro della cattedrale di Canterbury, avviando la ricostruzione affidata al francese Guillaume de Sens che introduce il Gotico in Inghilterra.",
+  "kind": "culturale",
+  "period_id": "early-english-gothic"
+ },
+ {
+  "id": "pace-di-costanza-1183",
+  "year": 1183,
+  "year_end": null,
+  "title": "Pace di Costanza",
+  "description": "Federico I Barbarossa riconosce l'autonomia dei Comuni dell'Italia settentrionale, che avevano resistito alle sue campagne militari con l'appoggio del papato e di Venezia.",
+  "kind": "politico",
+  "period_id": "gotico-italiano"
+ },
+ {
+  "id": "incendio-chartres-1194",
+  "year": 1194,
+  "year_end": null,
+  "title": "Incendio della cattedrale di Chartres",
+  "description": "Il catastrofico incendio del 10 giugno 1194 distrugge la cattedrale romanica di Chartres, portando alla ricostruzione gotica consacrata nel 1260.",
+  "kind": "culturale",
+  "period_id": "gotico-francese"
+ },
+ {
+  "id": "presa-costantinopoli-1204",
+  "year": 1204,
+  "year_end": null,
+  "title": "Quarta Crociata e sacco di Costantinopoli",
+  "description": "I crociati veneziani saccheggiano Costantinopoli nel 1204, portando a Venezia preziosi bottini tra cui la quadriga bronzea ora sulla facciata di San Marco.",
+  "kind": "politico",
+  "period_id": "romanico-italiano"
+ },
+ {
+  "id": "magna-charta-1215",
+  "year": 1215,
+  "year_end": null,
+  "title": "Promulgazione della Magna Charta Libertatum",
+  "description": "Il re Giovanni Plantageneto detto Senzaterra emana la Magna Charta Libertatum, costretto dai baroni inglesi a riconoscere loro libertà e privilegi. Una copia è conservata nella Sala Capitolare della cattedrale di Salisbury.",
+  "kind": "politico",
+  "period_id": "early-english-gothic"
+ },
+ {
+  "id": "incoronazione-federico-ii-1220",
+  "year": 1220,
+  "year_end": null,
+  "title": "Incoronazione di Federico II imperatore",
+  "description": "Federico II di Svevia, già re di Sicilia, viene incoronato imperatore del Sacro Romano Impero. Avvia una politica di legittimazione imperiale attraverso il recupero della classicità e la promozione di un'arte che fonde gotico e tradizione romana.",
+  "kind": "politico",
+  "period_id": "arte-federiciana"
+ },
+ {
+  "id": "regno-luigi-ix-capeto",
+  "year": 1226,
+  "year_end": 1270,
+  "title": "Regno di Luigi IX Capeto (san Luigi)",
+  "description": "Sotto Luigi IX il Gotico rayonnant raggiunge il suo apice con la costruzione della Sainte-Chapelle (1241-1248) come cappella regia per ospitare la corona di spine di Cristo.",
+  "kind": "politico",
+  "period_id": "gotico-francese"
+ },
+ {
+  "id": "canonizzazione-san-francesco",
+  "year": 1228,
+  "year_end": null,
+  "title": "Canonizzazione di Francesco d'Assisi",
+  "description": "Papa Gregorio IX canonizza Francesco d'Assisi nel 1228, due anni dopo la sua morte, stimolando la produzione di tavole agiografiche e pale francescane.",
+  "kind": "religioso",
+  "period_id": "pittura-romanica-italiana"
+ },
+ {
+  "id": "canonizzazione-san-francesco-1228",
+  "year": 1228,
+  "year_end": null,
+  "title": "Canonizzazione di san Francesco d'Assisi",
+  "description": "Papa Gregorio IX canonizza Francesco d'Assisi e pone subito in essere la costruzione della basilica papale di Assisi, di cui la Santa Sede diviene proprietaria esclusiva concedendone l'uso ai frati.",
+  "kind": "religioso",
+  "period_id": "gotico-italiano"
+ },
+ {
+  "id": "papa-innocenzo-iv-lascia-roma-1244",
+  "year": 1244,
+  "year_end": 1254,
+  "title": "Innocenzo IV lascia Roma",
+  "description": "Papa Innocenzo IV Fieschi deve lasciare Roma nel 1244 per sfuggire alle minacce dell'imperatore Federico II di Svevia. Il cardinale Stefano Conti come vicario fa restaurare e ampliare la basilica dei Santi Quattro Coronati, commissionando gli affreschi dell'oratorio di San Silvestro e dell'Aula Gotica.",
+  "kind": "politico",
+  "period_id": "duecento-italiano"
+ },
+ {
+  "id": "incendio-colonia-1248",
+  "year": 1248,
+  "year_end": null,
+  "title": "Incendio della cattedrale di Colonia",
+  "description": "Un incendio devasta l'edificio in costruzione della cattedrale di Colonia, determinando la ripresa dei lavori con un progetto rinnovato attribuito al Maestro Gerhard, formatosi in Francia.",
+  "kind": "culturale",
+  "period_id": "gotico-tedesco"
+ },
+ {
+  "id": "battaglia-di-montaperti-1260",
+  "year": 1260,
+  "year_end": null,
+  "title": "Battaglia di Montaperti",
+  "description": "Scontro tra i guelfi guidati da Firenze e i ghibellini sotto il comando di Siena (1260). Coppo di Marcovaldo, fiorentino, viene fatto prigioniero e trascorre alcuni mesi a Siena, dove esegue la Madonna del Bordone.",
+  "kind": "politico",
+  "period_id": "duecento-italiano"
+ },
+ {
+  "id": "battaglia-montaperti-1260",
+  "year": 1260,
+  "year_end": null,
+  "title": "Battaglia di Montaperti",
+  "description": "Siena sconfigge i guelfi fiorentini a Montaperti. La città si era votata alla Vergine prima della battaglia e, avendo trionfato, commissiona la Maestà di Duccio come ex voto.",
+  "kind": "politico",
+  "period_id": "gotico-senese"
+ },
+ {
+  "id": "carlo-angiu-1266",
+  "year": 1266,
+  "year_end": null,
+  "title": "Carlo d'Angiò ottiene il trono di Napoli",
+  "description": "Dopo l'uccisione dell'ultimo discendente della casata sveva, Carlo d'Angiò ottiene il trono di Napoli, riportando il Sud Italia nella sfera d'influenza francese e favorendo la diffusione del Gotico transalpino nel meridione.",
+  "kind": "politico",
+  "period_id": "gotico-italiano"
+ },
+ {
+  "id": "battaglia-di-tagliacozzo-1268",
+  "year": 1268,
+  "year_end": null,
+  "title": "Battaglia di Tagliacozzo",
+  "description": "Sconfitta della casata di Svevia a opera di Carlo d'Angiò, che restituisce al papato forza e peso politico e innesca un rifiorire delle commissioni pontificie per le grandi basiliche romane.",
+  "kind": "politico",
+  "period_id": "duecento-italiano"
+ },
+ {
+  "id": "pontif-niccolo-iii-sancta-sanctorum-1277",
+  "year": 1277,
+  "year_end": 1280,
+  "title": "Pontificato di Niccolò III Orsini",
+  "description": "Papa Niccolò III Orsini (1277-1280) fa ricostruire e decorare la cappella del Sancta Sanctorum presso San Giovanni in Laterano con affreschi che testimoniano una svolta stilistica nel naturalismo pittorico romano.",
+  "kind": "religioso",
+  "period_id": "duecento-italiano"
+ },
+ {
+  "id": "governo-dei-nove-siena",
+  "year": 1287,
+  "year_end": 1355,
+  "title": "Governo dei Nove a Siena",
+  "description": "Il Governo dei Nove è il principale organo politico comunale senese, controllato dalla borghesia e osteggiato dagli aristocratici. Commissiona le Maestà del Palazzo Pubblico a Simone Martini e il ciclo del Buono e Cattivo Governo ad Ambrogio Lorenzetti.",
+  "kind": "politico",
+  "period_id": "gotico-senese"
+ },
+ {
+  "id": "pontificato-niccolo-iv-1288",
+  "year": 1288,
+  "year_end": 1292,
+  "title": "Pontificato di Niccolò IV Masci",
+  "description": "Primo papa francescano (1288-1292), dà grande impulso alla decorazione pittorica della basilica di San Francesco ad Assisi, commissiona l'Incoronazione della Vergine di Torriti in Santa Maria Maggiore e il ciclo di mosaici di Rusuti sulla facciata.",
+  "kind": "religioso",
+  "period_id": "duecento-italiano"
+ },
+ {
+  "id": "costruzione-santa-maria-del-fiore-1296",
+  "year": 1296,
+  "year_end": null,
+  "title": "Inizio ricostruzione di Santa Maria del Fiore",
+  "description": "Dal 1296, tornato in Toscana, Arnolfo di Cambio viene ingaggiato per la ricostruzione della cattedrale di Santa Maria del Fiore a Firenze, per la quale progetta e realizza in parte anche una facciata (mai completata e smantellata nel XVI secolo).",
+  "kind": "culturale",
+  "period_id": "duecento-italiano"
+ },
+ {
+  "id": "giubileo-1300",
+  "year": 1300,
+  "year_end": null,
+  "title": "Primo Giubileo",
+  "description": "Giubileo del 1300 indetto dal papa: anno di remissione dei peccati per coloro che si recano a Roma e compiono particolari pratiche religiose. Giotto probabilmente si trova a Roma in questa occasione, portando a termine commissioni papali.",
+  "kind": "religioso",
+  "period_id": "trecento-italiano"
+ },
+ {
+  "id": "trasferimento-papato-avignone",
+  "year": 1309,
+  "year_end": 1377,
+  "title": "Trasferimento della sede papale ad Avignone",
+  "description": "Dal 1309 al 1377 il papato risiede ad Avignone (Francia), che diventa polo di attrazione culturale internazionale e favorisce la diffusione dell'arte italiana in Francia e il nascere del Gotico internazionale.",
+  "kind": "politico",
+  "period_id": "gotico-internazionale"
+ },
+ {
+  "id": "cattivita-avignonese-1313",
+  "year": 1313,
+  "year_end": 1377,
+  "title": "Cattività avignonese",
+  "description": "Periodo compreso fra il 1313 e il 1377 durante il quale il papa e la sua corte si trasferiscono da Roma ad Avignone, in Francia. Il Polittico Stefaneschi di Giotto celebra il primato di Roma come luogo del martirio di Pietro e Paolo in risposta a questo trasferimento.",
+  "kind": "politico",
+  "period_id": "trecento-italiano"
+ },
+ {
+  "id": "canonizzazione-san-ludovico-1317",
+  "year": 1317,
+  "year_end": null,
+  "title": "Canonizzazione di san Ludovico da Tolosa",
+  "description": "San Ludovico da Tolosa è canonizzato nel 1317; in quell'anno Roberto d'Angiò commissiona a Simone Martini la tavola celebrativa destinata alla chiesa di San Lorenzo Maggiore a Napoli.",
+  "kind": "religioso",
+  "period_id": "gotico-senese"
+ },
+ {
+  "id": "giotto-capomastro-santa-maria-del-fiore-1334",
+  "year": 1334,
+  "year_end": null,
+  "title": "Giotto nominato capomastro del duomo di Firenze",
+  "description": "Nel 1334 Giotto viene nominato capomastro dell'Opera della cattedrale di Santa Reparata (poi Santa Maria del Fiore) a Firenze, per la quale progetta il campanile.",
+  "kind": "culturale",
+  "period_id": "trecento-italiano"
+ },
+ {
+  "id": "soggiorno-avignone-simone-1336",
+  "year": 1336,
+  "year_end": 1344,
+  "title": "Soggiorno di Simone Martini ad Avignone",
+  "description": "Simone Martini si trasferisce ad Avignone intorno al 1336 come pittore ufficiale della corte papale; realizza numerose opere tra cui affreschi perduti di Notre-Dame-des-Doms e il ritratto di Laura commissionato da Petrarca.",
+  "kind": "culturale",
+  "period_id": "gotico-senese"
+ },
+ {
+  "id": "peste-nera-1348",
+  "year": 1348,
+  "year_end": null,
+  "title": "Pandemia di peste nera a Firenze",
+  "description": "La grande epidemia del 1348 colpisce Firenze devastandola, interrompendo i grandi cantieri artistici e segnando una cesura nella storia della città. La ripresa economica e demografica avverrà solo nell'ultimo scorcio del XIV secolo.",
+  "kind": "culturale",
+  "period_id": "gotico-italiano"
+ },
+ {
+  "id": "peste-nera-1348-1349",
+  "year": 1348,
+  "year_end": 1349,
+  "title": "Epidemia di peste nera",
+  "description": "La peste nera tra il 1348 e il 1349 segna un drammatico spartiacque culturale, economico e demografico. Muoiono in quell'epidemia Pietro e Ambrogio Lorenzetti, Maso di Banco e Bernardo Daddi.",
+  "kind": "culturale",
+  "period_id": "gotico-senese"
+ },
+ {
+  "id": "battaglia-di-cascina-1364",
+  "year": 1364,
+  "year_end": null,
+  "title": "Battaglia di Cascina",
+  "description": "Scontro del 1364 in cui i Fiorentini sconfissero i Pisani. Michelangelo ne fu incaricato della rappresentazione per la Sala del Consiglio di Palazzo Vecchio (1504-1506): il cartone preparatorio, perduto, fu la prima grande commissione pubblica dell'artista.",
+  "kind": "politico",
+  "period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "ritorno-papato-roma",
+  "year": 1377,
+  "year_end": null,
+  "title": "Ritorno del papato a Roma",
+  "description": "Papa Gregorio XI de Beaufort riporta la sede papale a Roma nel 1377, ma la Francia continua a essere un polo d'attrazione culturale e i legami con le corti europee rimangono forti.",
+  "kind": "politico",
+  "period_id": "gotico-internazionale"
+ },
+ {
+  "id": "tumulto-ciompi-firenze",
+  "year": 1378,
+  "year_end": null,
+  "title": "Tumulto dei Ciompi",
+  "description": "Rivolta dei lavoratori tessili fiorentini (1378), culminazione delle lotte civili del secondo Trecento. Precede la ripresa economica della fine del XIV secolo che porterà all'affermazione politica della classe mercantile.",
+  "kind": "politico",
+  "period_id": "umanesimo-fiorentino"
+ },
+ {
+  "id": "avvio-fabbrica-duomo-milano",
+  "year": 1386,
+  "year_end": null,
+  "title": "Avvio della fabbrica del duomo di Milano",
+  "description": "Per volere di Gian Galeazzo Visconti viene avviata nel 1386 la fabbrica del duomo di Milano, ispirata alle grandi chiese gotiche europee. Il primo ingegnere-capo Simone d'Orsenigo viene poi sostituito dal francese Nicolas de Bonaventure.",
+  "kind": "culturale",
+  "period_id": "tardogotico"
+ },
+ {
+  "id": "concorso-battistero-firenze",
+  "year": 1401,
+  "year_end": null,
+  "title": "Concorso per la seconda porta del battistero di Firenze",
+  "description": "L'Arte di Calimala bandisce nel 1401 il concorso per la seconda porta del battistero di San Giovanni. Vi partecipano Ghiberti e Brunelleschi. Vince Ghiberti, che lavorerà alla Porta Nord per oltre vent'anni.",
+  "kind": "culturale",
+  "period_id": "umanesimo-fiorentino"
+ },
+ {
+  "id": "concilio-di-costanza",
+  "year": 1414,
+  "year_end": 1418,
+  "title": "Concilio di Costanza",
+  "description": "Concilio che trasforma Costanza in luogo di incontro tra le massime autorità politiche ed ecclesiastiche europee, favorendo la circolazione di artisti al seguito delle corti e delle ambasciate, con influenza sullo sviluppo dell'arte tedesca.",
+  "kind": "religioso",
+  "period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "morte-de-limbourg-peste",
+  "year": 1416,
+  "year_end": null,
+  "title": "Morte dei fratelli De Limbourg per la pestilenza",
+  "description": "I fratelli De Limbourg cadono vittime della pestilenza del 1416 insieme al loro committente Jean de Berry, lasciando incompiute le Très Riches Heures, completate tra il 1485 e il 1489 da Jean Colombe.",
+  "kind": "culturale",
+  "period_id": "gotico-internazionale"
+ },
+ {
+  "id": "concorso-cupola-1418",
+  "year": 1418,
+  "year_end": 1418,
+  "title": "Concorso per la cupola di Santa Maria del Fiore",
+  "description": "Nel 1418 l'Opera del Duomo bandisce il concorso per la realizzazione della cupola della cattedrale. Brunelleschi e Ghiberti partecipano presentando un progetto comune e vengono nominati capomastri del cantiere.",
+  "kind": "culturale",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "filippo-iii-al-potere",
+  "year": 1419,
+  "year_end": 1467,
+  "title": "Filippo III il Buono duca di Borgogna e conte delle Fiandre",
+  "description": "Filippo III il Buono governa il ducato per quasi cinquant'anni, inglobando il Brabante e le Fiandre e spostando il baricentro culturale verso i nuovi centri fiamminghi di Bruges, Gand e Bruxelles.",
+  "kind": "politico",
+  "period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "donatello-viaggio-roma-1430",
+  "year": 1430,
+  "year_end": 1432,
+  "title": "Secondo viaggio di Donatello a Roma",
+  "description": "Tra il 1430 e il 1432 Donatello compie insieme a Michelozzo un viaggio a Roma, studiando l'arte classica, paleocristiana e altomedievale (mosaici cosmateschi). Il soggiorno romano arricchisce le sue soluzioni stilistiche.",
+  "kind": "culturale",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "concilio-di-basilea-ferrara-firenze",
+  "year": 1431,
+  "year_end": 1449,
+  "title": "Concilio di Basilea, Ferrara e Firenze",
+  "description": "Concilio iniziato a Basilea nel 1431, poi spostato a Ferrara e infine a Firenze. Favorisce il confronto tra le culture fiamminga e italiana e la riconciliazione con la Chiesa d'Oriente, evento celebrato da Piero della Francesca nel Battesimo di Cristo e nella Leggenda della vera Croce.",
+  "kind": "religioso",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "gonzaga-marchesi-1432",
+  "year": 1432,
+  "year_end": null,
+  "title": "I Gonzaga ottengono il titolo di marchesi",
+  "description": "L'imperatore Sigismondo conferisce ai Gonzaga il titolo di marchesi, avviando la politica di legittimazione culturale della casata che culmina nel mecenatismo di Ludovico II Gonzaga.",
+  "kind": "politico",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "esilio-cosimo-medici-1433",
+  "year": 1433,
+  "year_end": 1434,
+  "title": "Esilio e ritorno di Cosimo de' Medici",
+  "description": "Nel 1433 Cosimo de' Medici viene esiliato da Firenze a causa dell'aspra contrapposizione tra l'oligarchia e i ceti popolari; l'anno successivo vi rientra trionfalmente e diviene il signore della citta.",
+  "kind": "politico",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "ritorno-esilio-cosimo-medici",
+  "year": 1434,
+  "year_end": null,
+  "title": "Ritorno dall'esilio di Cosimo de' Medici",
+  "description": "Cosimo de' Medici, esiliato durante l'oligarchia, torna a Firenze nel 1434. L'evento è allusivamente celebrato nel pannello delle Storie di Giuseppe nella Porta del Paradiso di Ghiberti.",
+  "kind": "politico",
+  "period_id": "umanesimo-fiorentino"
+ },
+ {
+  "id": "riavvicinamento-filippo-valois",
+  "year": 1435,
+  "year_end": null,
+  "title": "Riavvicinamento politico tra Filippo di Borgogna e i Valois di Francia",
+  "description": "Dal 1435 Filippo III il Buono si riavvicina politicamente alla corte dei Valois, consentendo allo stile fiammingo di ampliare la propria influenza in Francia e favorendo la commistione tra artisti francesi e fiamminghi.",
+  "kind": "politico",
+  "period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "consacrazione-santa-maria-del-fiore-1436",
+  "year": 1436,
+  "year_end": 1436,
+  "title": "Consacrazione ufficiale di Santa Maria del Fiore",
+  "description": "Il 25 marzo 1436 santa Maria del Fiore viene ufficialmente consacrata. In previsione di tale data l'Opera del Duomo commissiona numerosi lavori tra cui le due cantorie di Donatello e Luca della Robbia.",
+  "kind": "religioso",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "concilio-ferrara-1438",
+  "year": 1438,
+  "year_end": null,
+  "title": "Concilio di Ferrara (poi Firenze)",
+  "description": "Il Concilio di Ferrara (1438) vede la partecipazione dell'imperatore di Bisanzio Giovanni VIII Paleologo. Pisanello vi realizza la prima medaglia moderna. Il Concilio proponeva una nuova crociata contro i Turchi.",
+  "kind": "religioso",
+  "period_id": "tardogotico"
+ },
+ {
+  "id": "concilio-ferrara-firenze-1438",
+  "year": 1438,
+  "year_end": 1439,
+  "title": "Concilio a Ferrara e Firenze (1438-1439)",
+  "description": "Il Concilio tra la Chiesa d'Oriente e d'Occidente si tiene a Ferrara e poi a Firenze. Alberti vi partecipa, incontra Brunelleschi e inizia a elaborare il suo primo trattato teorico. A Ferrara arriva la dotta corte papale di Eugenio IV e i maggiori intellettuali bizantini.",
+  "kind": "religioso",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "battaglia-di-anghiari-1440",
+  "year": 1440,
+  "year_end": null,
+  "title": "Battaglia di Anghiari",
+  "description": "Scontro militare del 1440 in cui le truppe fiorentine sconfissero i Visconti; Leonardo da Vinci ne fu incaricato della rappresentazione pittorica per la Sala del Consiglio di Palazzo Vecchio (1503-1506), opera rimasta incompiuta.",
+  "kind": "politico",
+  "period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "conquista-aragonese-napoli",
+  "year": 1442,
+  "year_end": null,
+  "title": "Alfonso V d'Aragona conquista il regno di Napoli",
+  "description": "Nel 1442 il regno di Napoli passa sotto Alfonso V d'Aragona. Nonostante il principe sia umanista, il tardogotico continua a riscuotere grande fortuna; nel 1448 giunge Pisanello a Napoli.",
+  "kind": "politico",
+  "period_id": "tardogotico"
+ },
+ {
+  "id": "donatello-viaggio-padova-1443",
+  "year": 1443,
+  "year_end": 1450,
+  "title": "Donatello a Padova",
+  "description": "Dal 1443 al 1450 circa Donatello e a Padova, dove realizza l'Altare del Santo e il Monumento equestre al Gattamelata. La sua presenza influenza profondamente il Rinascimento padovano e dell'Italia settentrionale.",
+  "kind": "culturale",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "papa-niccolo-v-pontificato",
+  "year": 1447,
+  "year_end": 1455,
+  "title": "Pontificato di Niccolo V Parentucelli",
+  "description": "Nel 1447 diviene papa Niccolo V Parentucelli, raffinato umanista amico di Cosimo de' Medici. Incarica Beato Angelico di affrescare la cappella Niccolina negli appartamenti papali del Palazzo Apostolico.",
+  "kind": "religioso",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "giubileo-1450",
+  "year": 1450,
+  "year_end": null,
+  "title": "Giubileo del 1450",
+  "description": "Anno giubilare che richiama a Roma anche Rogier van der Weyden, favorendo i contatti tra artisti fiamminghi e italiani nella capitale della cristianità.",
+  "kind": "religioso",
+  "period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "caduta-costantinopoli",
+  "year": 1453,
+  "year_end": null,
+  "title": "Caduta di Costantinopoli",
+  "description": "L'assedio di Costantinopoli si conclude con la conquista turca, segnando la fine dell'impero romano d'Oriente. L'evento è evocato nel ciclo della Leggenda della vera Croce di Piero della Francesca attraverso la Battaglia di Eraclio e Cosroe.",
+  "kind": "politico",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "pace-di-lodi-1454",
+  "year": 1454,
+  "year_end": null,
+  "title": "Pace di Lodi",
+  "description": "Accordo di pace tra i principali stati italiani (Milano, Venezia, Firenze, Napoli, Stato Pontificio) che garantisce quarant'anni di relativo equilibrio politico nella penisola. È il contesto che permette la grande fioritura artistica del secondo Quattrocento.",
+  "kind": "politico",
+  "period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "fondazione-ospedale-maggiore-1456",
+  "year": 1456,
+  "year_end": 1499,
+  "title": "Costruzione dell'Ospedale Maggiore di Milano",
+  "description": "Francesco Sforza commissiona nel 1456 a Filarete la progettazione dell'Ospedale Maggiore di Milano (Ca' Granda), simbolo del nuovo governo illuminato degli Sforza. I lavori proseguono fino al 1499 con Guiniforte Solari.",
+  "kind": "culturale",
+  "period_id": "sforzesco"
+ },
+ {
+  "id": "distruzione-decorazione-cappella-brancacci-1458",
+  "year": 1458,
+  "year_end": 1458,
+  "title": "Distruzione dei ritratti Brancacci",
+  "description": "Nel 1458 Cosimo de' Medici ordina che vengano distrutte tutte le immagini riferite alla famiglia Brancacci (esiliata come nemica della repubblica): i frati del Carmine cancellano i ritratti dipinti da Masaccio.",
+  "kind": "politico",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "accademia-platonica-firenze",
+  "year": 1462,
+  "year_end": 1494,
+  "title": "Accademia Platonica di Firenze",
+  "description": "Marsilio Ficino fonda nel 1462 l'Accademia Platonica nella villa medicea di Careggi, centro della cultura neoplatonica fiorentina. Le idee dell'Accademia ispirano i programmi iconografici delle grandi allegorie di Botticelli.",
+  "kind": "culturale",
+  "period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "morte-donatello-1466",
+  "year": 1466,
+  "year_end": 1466,
+  "title": "Morte di Donatello",
+  "description": "Donatello muore nel 1466 senza aver terminato i pulpiti bronzei di San Lorenzo, che vengono completati dalla sua bottega.",
+  "kind": "culturale",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "sigismondo-malatesta-morte",
+  "year": 1468,
+  "year_end": null,
+  "title": "Morte di Sigismondo Pandolfo Malatesta",
+  "description": "La morte di Sigismondo Malatesta interrompe i lavori al Tempio Malatestiano, che rimane incompiuto e non viene mai ultimato secondo il progetto di Alberti.",
+  "kind": "politico",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "signoria-lorenzo-de-medici-1469",
+  "year": 1469,
+  "year_end": 1492,
+  "title": "Signoria di Lorenzo de' Medici a Firenze",
+  "description": "Lorenzo de' Medici governa Firenze come signore di fatto dal 1469 alla morte nel 1492, promuovendo la cultura neoplatonica e il mecenatismo artistico. Diventa l'arbitro culturale della penisola.",
+  "kind": "politico",
+  "period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "federico-da-montefeltro-duca",
+  "year": 1474,
+  "year_end": null,
+  "title": "Federico da Montefeltro nominato duca di Urbino",
+  "description": "Federico da Montefeltro riceve il titolo ducale nel 1474, coronando le sue ambizioni politiche e culturali che aveva perseguito circondan dosi di intellettuali e artisti impegnati in speculazioni filosofiche e ricerche prospettiche.",
+  "kind": "politico",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "sixtus-iv-commissiona-sistina-1477",
+  "year": 1477,
+  "year_end": 1482,
+  "title": "Commissione della cappella Sistina da parte di Sisto IV",
+  "description": "Papa Sisto IV della Rovere fa costruire la cappella palatina del Vaticano (1477-1481) e commissiona ai principali pittori italiani la decorazione delle pareti (1481-1482), creando il più importante cantiere pittorico del Quattrocento.",
+  "kind": "religioso",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "congiura-dei-pazzi-1478",
+  "year": 1478,
+  "year_end": null,
+  "title": "Congiura dei Pazzi",
+  "description": "Tentativo di assassinio ai danni di Lorenzo e Giuliano de' Medici nella cattedrale di Firenze: Giuliano viene ucciso, Lorenzo sopravvive. L'evento provoca una repressione violenta e rafforza il potere mediceo.",
+  "kind": "politico",
+  "period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "leonardo-a-milano-1482",
+  "year": 1482,
+  "year_end": 1499,
+  "title": "Primo soggiorno milanese di Leonardo da Vinci",
+  "description": "Leonardo giunge a Milano nel 1482 al servizio di Ludovico il Moro come ingegnere, pittore e musicista. Nel lungo primo soggiorno milanese realizza la Vergine delle rocce, la Dama con l'ermellino, la Sala delle Asse e l'Ultima cena.",
+  "kind": "culturale",
+  "period_id": "sforzesco"
+ },
+ {
+  "id": "leonardo-milano-primo-soggiorno-1482",
+  "year": 1482,
+  "year_end": 1499,
+  "title": "Primo soggiorno di Leonardo a Milano",
+  "description": "Leonardo da Vinci soggiorna a Milano dal 1482 al 1499 sotto Ludovico il Moro; la sua presenza è il principale riferimento culturale per l'arte lombarda e i pittori leonardeschi.",
+  "kind": "culturale",
+  "period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "giardino-san-marco-medici",
+  "year": 1489,
+  "year_end": null,
+  "title": "Giardino di San Marco e scuola scultorea medicea",
+  "description": "Lorenzo de' Medici istituisce nel giardino di San Marco una scuola-laboratorio per giovani scultori, affidandola a Bertoldo di Giovanni. Vi si forma il giovane Michelangelo, che vi studia la raccolta di antichità classiche dei Medici.",
+  "kind": "culturale",
+  "period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "morte-lorenzo-de-medici-1492",
+  "year": 1492,
+  "year_end": null,
+  "title": "Morte di Lorenzo de' Medici",
+  "description": "La morte di Lorenzo de' Medici nel 1492 segna la fine della stagione aurea del mecenatismo mediceo fiorentino. La città entra in una crisi politica che culmina con l'esperienza savonaroliana e la cacciata dei Medici.",
+  "kind": "culturale",
+  "period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "discesa-carlo-viii-italia-1494",
+  "year": 1494,
+  "year_end": 1495,
+  "title": "Discesa di Carlo VIII in Italia",
+  "description": "Carlo VIII di Francia invade l'Italia; Venezia è l'unico Stato italiano capace di ostacolarlo, ottenendo in cambio il controllo di importanti città portuali pugliesi da Napoli.",
+  "kind": "politico",
+  "period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "guerre-italia-fine-quattrocento",
+  "year": 1494,
+  "year_end": 1530,
+  "title": "Guerre d'Italia",
+  "description": "Le invasioni degli eserciti stranieri in Italia a fine Quattrocento innescano la diaspora degli artisti italiani verso le corti europee e l'ingresso di opere e maestri italiani nelle corti dei sovrani invasori. Determinano la diffusione internazionale del Manierismo.",
+  "kind": "politico",
+  "period_id": "manierismo"
+ },
+ {
+  "id": "invasioni-francesi-1494",
+  "year": 1494,
+  "year_end": null,
+  "title": "Prima invasione francese in Italia (Carlo VIII)",
+  "description": "Carlo VIII di Francia scende in Italia nel 1494, rompendo l'equilibrio della Pace di Lodi. L'evento destabilizza gli stati italiani e segna l'inizio delle guerre d'Italia che dureranno fino al 1559.",
+  "kind": "politico",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "savonarola-firenze-1494-1498",
+  "year": 1494,
+  "year_end": 1498,
+  "title": "Predicazione e signoria di Savonarola a Firenze",
+  "description": "Il frate domenicano Girolamo Savonarola guida una repubblica teocrática a Firenze dopo la cacciata dei Medici, condannando la cultura neoplatonica e il paganesimo rinascimentale. Influenza profondamente Botticelli negli ultimi anni.",
+  "kind": "religioso",
+  "period_id": "rinascimento-fiorentino"
+ },
+ {
+  "id": "cacciata-medici-1495",
+  "year": 1495,
+  "year_end": 1495,
+  "title": "Cacciata dei Medici da Firenze (seconda)",
+  "description": "Nel 1495 il David in bronzo di Donatello viene trafugato dalla folla e trasportato in Palazzo Vecchio come simbolo della liberta repubblicana, in occasione della seconda cacciata dei Medici.",
+  "kind": "politico",
+  "period_id": "quattrocento"
+ },
+ {
+  "id": "caduta-ludovico-il-moro-1499",
+  "year": 1499,
+  "year_end": null,
+  "title": "Caduta di Ludovico il Moro e fine del ducato sforzesco",
+  "description": "Luigi XII di Francia invade il ducato di Milano e deporta Ludovico il Moro in Francia. L'evento disperde la corte milanese e favorisce la diffusione dell'influenza di Leonardo in tutta l'Italia settentrionale.",
+  "kind": "politico",
+  "period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "caduta-ludovico-sforza-1499",
+  "year": 1499,
+  "year_end": null,
+  "title": "Caduta di Ludovico Sforza",
+  "description": "La caduta di Ludovico il Moro (1499) con l'invasione francese pone fine alla corte milanese e alla fase lombarda di Bramante, spingendolo a trasferirsi a Roma dove intraprende i grandi cantieri giuliani.",
+  "kind": "politico",
+  "period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "battaglia-anghiari-commissione-1503",
+  "year": 1503,
+  "year_end": 1506,
+  "title": "Commissione della Battaglia di Anghiari a Leonardo",
+  "description": "La Repubblica fiorentina commissiona a Leonardo la decorazione del Salone dei Cinquecento in Palazzo Vecchio con la Battaglia di Anghiari (1440). L'opera rimane incompiuta per il fallimento tecnico della pittura a encausto.",
+  "kind": "culturale",
+  "period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "pontificato-giulio-ii",
+  "year": 1503,
+  "year_end": 1513,
+  "title": "Pontificato di Giulio II",
+  "description": "Papa Giulio II della Rovere (1503-1513) è il grande mecenate del Rinascimento romano: commissions la ricostruzione di San Pietro, la decorazione della Sistina a Michelangelo, le Stanze Vaticane a Raffaello.",
+  "kind": "politico",
+  "period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "lega-di-cambrai-1509",
+  "year": 1509,
+  "year_end": null,
+  "title": "Lega di Cambrai e battaglia di Agnadello",
+  "description": "La Lega di Cambrai, cui aderiscono tutti gli avversari di Venezia (Francia, Asburgo, papato), infligge alla Serenissima una drammatica sconfitta ad Agnadello, segnando l'inizio del suo declino.",
+  "kind": "politico",
+  "period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "morte-giorgione-peste-1510",
+  "year": 1510,
+  "year_end": null,
+  "title": "Morte di Giorgione per peste",
+  "description": "Giorgione muore di peste nell'ottobre 1510 ancora giovane, forse lasciando incompleta la Venere dormiente che sarà completata da Tiziano, in una sorta di passaggio di consegne tra i due artisti.",
+  "kind": "culturale",
+  "period_id": "scuola-veneziana"
+ },
+ {
+  "id": "fine-repubblica-fiorentina-1512",
+  "year": 1512,
+  "year_end": null,
+  "title": "Fine della Repubblica fiorentina guidata da Pier Soderini",
+  "description": "Nel 1512 cade la repubblica fiorentina guidata da Pier Soderini; i Medici tornano al potere e Leone X de' Medici viene eletto papa nel 1513. Questi eventi favoriscono i legami tra Firenze e Roma e il ritorno di Michelangelo in città.",
+  "kind": "politico",
+  "period_id": "manierismo"
+ },
+ {
+  "id": "pontificato-leone-x",
+  "year": 1513,
+  "year_end": 1521,
+  "title": "Pontificato di Leone X",
+  "description": "Papa Leone X de' Medici (1513-1521) continua il mecenatismo giuliano; commissiona le Logge Vaticane a Raffaello e i progetti medicei a Michelangelo (Sacrestia Nuova, Biblioteca Laurenziana).",
+  "kind": "politico",
+  "period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "morte-bramante-1514",
+  "year": 1514,
+  "year_end": null,
+  "title": "Morte di Bramante",
+  "description": "Donato Bramante muore a Roma nel 1514, lasciando incompiuto il cantiere di San Pietro e aprendo la successione dei capomastri (Raffaello, Sangallo il Giovane, Michelangelo).",
+  "kind": "culturale",
+  "period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "riforma-protestante-1517",
+  "year": 1517,
+  "year_end": null,
+  "title": "Riforma protestante di Lutero",
+  "description": "La Riforma protestante genera inquietudine religiosa nell'Italia settentrionale; a Brescia, Bergamo e in area lombarda si sviluppa una pittura devozionale più austera e partecipativa in risposta al clima di crisi religiosa.",
+  "kind": "religioso",
+  "period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "riforma-protestante-xvi",
+  "year": 1517,
+  "year_end": 1563,
+  "title": "Riforma protestante",
+  "description": "La Riforma protestante avviata da Lutero nel 1517 scuote l'Europa religiosa e innesca episodi di iconoclastia in diverse aree del nord Europa, costringendo molti artisti a cercare fortuna altrove. Genera il fenomeno della Controriforma e ridisegna la geografia religiosa del continente.",
+  "kind": "religioso",
+  "period_id": "controriforma"
+ },
+ {
+  "id": "morte-di-raffaello-1520",
+  "year": 1520,
+  "year_end": null,
+  "title": "Morte di Raffaello",
+  "description": "Raffaello Sanzio muore a Roma il 6 aprile 1520 a soli 37 anni. La sua scomparsa prematura lascia incompiuta la Trasfigurazione e apre la via al Manierismo nella scuola romana.",
+  "kind": "culturale",
+  "period_id": "rinascimento-maturo"
+ },
+ {
+  "id": "invasione-carlo-v-milano-1521",
+  "year": 1521,
+  "year_end": null,
+  "title": "Carlo V conquista il ducato di Milano",
+  "description": "Carlo V prende Milano con l'appoggio di papa Leone X, inserendo il ducato nei propri domini. Dopo la morte di Francesco II Sforza (1535) lo annette direttamente, poi lo trasmette al figlio Filippo II di Spagna.",
+  "kind": "politico",
+  "period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "sacco-di-roma-1527",
+  "year": 1527,
+  "year_end": null,
+  "title": "Sacco di Roma",
+  "description": "Le truppe imperiali di Carlo V saccheggiano Roma nel 1527, costringendo Clemente VII alla fuga e disperdendo gli artisti della corte papale verso altre città italiane ed europee. Evento traumatico che rafforza il gusto per lo stile tormentato di Michelangelo e innesca la diaspora dei modelli raffaelleschi in Europa.",
+  "kind": "politico",
+  "period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "ducato-firenze-1532",
+  "year": 1532,
+  "year_end": null,
+  "title": "Alessandro de' Medici nominato Duca di Firenze",
+  "description": "Nel 1532 Alessandro de' Medici viene nominato primo duca ereditario di Firenze, segnando la fine definitiva delle istituzioni repubblicane. Cinque anni dopo Alessandro viene assassinato e il potere passa a Cosimo I (1537).",
+  "kind": "politico",
+  "period_id": "manierismo"
+ },
+ {
+  "id": "pontificato-paolo-iii-farnese",
+  "year": 1534,
+  "year_end": 1549,
+  "title": "Pontificato di Paolo III Farnese",
+  "description": "Papa Paolo III Farnese (1534-1549) commissiona il Giudizio Universale, la Conversione di Saulo, la piazza del Campidoglio e nomina Michelangelo capomastro di San Pietro. Avvia il Concilio di Trento.",
+  "kind": "politico",
+  "period_id": "manierismo"
+ },
+ {
+  "id": "concilio-di-trento-1545",
+  "year": 1545,
+  "year_end": 1563,
+  "title": "Concilio di Trento",
+  "description": "A Trento inizia il Concilio che definirà la risposta cattolica alla Riforma protestante, imponendo alle arti un orientamento devozionale controriformista più vicino alla pittura della periferia veneta che all'arte veneziana aulica.",
+  "kind": "religioso",
+  "period_id": "rinascimento-maturo-italia-settentrionale"
+ },
+ {
+  "id": "concilio-di-trento-1545-1563",
+  "year": 1545,
+  "year_end": 1563,
+  "title": "Concilio di Trento",
+  "description": "Il Concilio di Trento (1545-1563) elabora la risposta cattolica alla Riforma protestante, raccomandando per l'arte chiarezza narrativa, correttezza dottrinale e decenza. Pone le basi dell'arte controriformista e del suo linguaggio didattico e devozionale.",
+  "kind": "religioso",
+  "period_id": "controriforma"
+ },
+ {
+  "id": "concilio-trento",
+  "year": 1545,
+  "year_end": 1563,
+  "title": "Concilio di Trento",
+  "description": "Concilio della Controriforma (1545-1563) che regola, tra l'altro, le immagini sacre: favorisce la chiarezza narrativa e la decenza nell'arte religiosa, contribuendo alla censura delle nudità del Giudizio Universale.",
+  "kind": "religioso",
+  "period_id": "manierismo"
+ },
+ {
+  "id": "cosimo-i-granduca-1569",
+  "year": 1569,
+  "year_end": null,
+  "title": "Cosimo I de' Medici diviene Granduca di Toscana",
+  "description": "Nel 1569 Cosimo I de' Medici ottiene il titolo di Granduca di Toscana, consolidando il potere mediceo su Firenze e la Toscana. Sotto il suo governo l'arte fiorentina ruota interamente attorno alla sua figura, con commissioni celebrative e imprese architettoniche monumentali.",
+  "kind": "politico",
+  "period_id": "manierismo"
+ },
+ {
+  "id": "pestilenza-venezia-1575-1576",
+  "year": 1575,
+  "year_end": 1576,
+  "title": "Grande Pestilenza di Venezia",
+  "description": "La terribile pestilenza del 1575-1576 colpisce Venezia causando la morte di un terzo della popolazione, compreso Tiziano. Il Senato veneziano vota la costruzione della chiesa del Redentore come ex voto. Il dramma della peste incide profondamente sulla produzione di Tintoretto.",
+  "kind": "politico",
+  "period_id": "manierismo"
+ },
+ {
+  "id": "istituzione-galleria-uffizi-1581",
+  "year": 1581,
+  "year_end": null,
+  "title": "Istituzione della Galleria degli Uffizi",
+  "description": "Nel 1581 Francesco I de' Medici trasforma il secondo piano degli Uffizi in una galleria pubblica raccogliendo i tesori d'arte dei Medici, con la Tribuna ideata da Buontalenti come cuore del museo.",
+  "kind": "culturale",
+  "period_id": "manierismo"
+ },
+ {
+  "id": "alluvione-firenze-1966",
+  "year": 1966,
+  "year_end": null,
+  "title": "Alluvione di Firenze",
+  "description": "L'alluvione del 1966 ha irrimediabilmente danneggiato il Crocifisso di Santa Croce di Cimabue, una delle più imponenti opere del Duecento italiano.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "terremoto-assisi-1997",
+  "year": 1997,
+  "year_end": null,
+  "title": "Terremoto di Assisi",
+  "description": "Il sisma del 1997 ha gravemente danneggiato gli affreschi di Cimabue e Giotto nella basilica superiore di San Francesco ad Assisi, distruggendo tra l'altro la volta con gli Evangelisti sopra l'altare e i Dottori della Chiesa.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "restauro-polittico-agnello-2020",
+  "year": 2010,
+  "year_end": 2020,
+  "title": "Restauro del Polittico dell'Agnello Mistico (2010-2020)",
+  "description": "Complesso restauro durato circa dieci anni che ha permesso di cogliere al meglio la tridimensionalità luministica della pittura e ha portato alla luce dettagli virtuosistici come una tela di ragno dipinta sopra le teste del committente e della moglie.",
+  "kind": "culturale",
+  "period_id": "quattrocento-fiammingo"
+ },
+ {
+  "id": "incendio-notre-dame-parigi-2019",
+  "year": 2019,
+  "year_end": null,
+  "title": "Incendio della cattedrale di Notre-Dame a Parigi",
+  "description": "Il grave incendio del 15 aprile 2019 distrugge la guglia ottocentesca di Viollet-le-Duc e la copertura della cattedrale di Notre-Dame; la cattedrale è ora in fase di ricostruzione.",
+  "kind": "culturale",
+  "period_id": "gotico-francese"
+ },
+ {
+  "id": "nascita-di-andrea-mantegna",
+  "year": 1431,
+  "year_end": null,
+  "title": "Nascita di Andrea Mantegna",
+  "description": "Andrea Mantegna nasce a Isola di Carturo, presso Padova.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "inizio-lavori-cappella-ovetari",
+  "year": 1449,
+  "year_end": null,
+  "title": "Inizio lavori Cappella Ovetari",
+  "description": "Mantegna viene coinvolto nella decorazione ad affresco della cappella Ovetari nella chiesa degli Eremitani a Padova.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "matrimonio-con-nicolosia-bellini",
+  "year": 1453,
+  "year_end": null,
+  "title": "Matrimonio con Nicolosia Bellini",
+  "description": "Mantegna sposa Nicolosia Bellini, sorella dei pittori veneziani Gentile e Giovanni Bellini.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "morte-di-niccolo-pizzolo",
+  "year": 1453,
+  "year_end": null,
+  "title": "Morte di Niccolò Pizzolo",
+  "description": "Morte del collaboratore Niccolò Pizzolo; Mantegna diventa responsabile di tutta la decorazione pittorica della cappella Ovetari.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "trasferimento-a-mantova",
+  "year": 1460,
+  "year_end": null,
+  "title": "Trasferimento a Mantova",
+  "description": "Mantegna si trasferisce definitivamente a Mantova su invito di Ludovico Gonzaga, assumendo il ruolo di pittore di corte.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "viaggio-in-toscana",
+  "year": 1466,
+  "year_end": null,
+  "title": "Viaggio in Toscana",
+  "description": "Primo dei due viaggi importanti compiuti da Mantegna durante il periodo mantovano, in Toscana.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "soggiorno-romano",
+  "year": 1488,
+  "year_end": null,
+  "title": "Soggiorno romano",
+  "description": "Mantegna soggiorna a Roma chiamato da papa Innocenzo VIII.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "ritorno-da-roma",
+  "year": 1490,
+  "year_end": null,
+  "title": "Ritorno da Roma",
+  "description": "Mantegna rientra a Mantova dopo il soggiorno romano.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "morte-di-andrea-mantegna",
+  "year": 1506,
+  "year_end": null,
+  "title": "Morte di Andrea Mantegna",
+  "description": "Mantegna muore a Mantova, città dove aveva vissuto e lavorato come pittore di corte dal 1460.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "distruzione-affreschi-cappella-ovetari",
+  "year": 1944,
+  "year_end": null,
+  "title": "Distruzione affreschi Cappella Ovetari",
+  "description": "Gli affreschi della cappella Ovetari vengono distrutti durante la Seconda guerra mondiale; ne rimangono solo due porzioni riportate su tela nell'Ottocento.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "nomina-di-gregorio-correr-ad-abate-di-san-zeno",
+  "year": 1443,
+  "year_end": null,
+  "title": "Nomina di Gregorio Correr ad abate di San Zeno",
+  "description": "Gregorio Correr viene nominato abate di San Zeno a Verona, evento che precede la commissione della Pala di Mantegna.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "esecuzione-della-pala-di-san-zeno",
+  "year": 1456,
+  "year_end": null,
+  "title": "Esecuzione della Pala di San Zeno",
+  "description": "Inizio dei lavori per la Pala di San Zeno commissionata dall'abate Gregorio Correr.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "completamento-della-pala-di-san-zeno",
+  "year": 1459,
+  "year_end": null,
+  "title": "Completamento della Pala di San Zeno",
+  "description": "Conclusione dell'opera di Andrea Mantegna per la basilica veronese.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "restauri-della-pala-di-san-zeno",
+  "year": 2007,
+  "year_end": null,
+  "title": "Restauri della Pala di San Zeno",
+  "description": "Durante i restauri condotti nel 2007 è stata rilevata la corrispondenza del tappeto con la data 1443, confermando la datazione della committenza.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "commissione-della-pala-di-san-zeno",
+  "year": 1443,
+  "year_end": null,
+  "title": "Commissione della Pala di San Zeno",
+  "description": "L'abate Gregorio Correr commissiona ad Andrea Mantegna la realizzazione della pala d'altare per la Basilica di San Zeno a Verona",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "restauro-della-pala-di-san-zeno",
+  "year": 2007,
+  "year_end": null,
+  "title": "Restauro della Pala di San Zeno",
+  "description": "Durante i restauri condotti nel 2007, viene rilevata sul tappeto della data 1443, confermando l'anno della commissione dell'opera",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "inizio-collaborazione-mantegna-gonzaga",
+  "year": 1460,
+  "year_end": null,
+  "title": "Inizio collaborazione Mantegna-Gonzaga",
+  "description": "Mantegna inizia a lavorare per la famiglia Gonzaga a Mantova, dove resterà per oltre quarant'anni",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "affidamento-morte-della-vergine",
+  "year": 1462,
+  "year_end": null,
+  "title": "Affidamento Morte della Vergine",
+  "description": "Ludovico Gonzaga affida a Mantegna la decorazione della cappella del castello di San Giorgio con la Morte della Vergine",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "affidamento-camera-degli-sposi",
+  "year": 1465,
+  "year_end": null,
+  "title": "Affidamento Camera degli Sposi",
+  "description": "Ludovico affida a Andrea Mantegna anche la decorazione di una piccola stanza nel torzione di nord-est del castello di San Giorgio (Camera degli Sposi)",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "commissione-della-camera-degli-sposi",
+  "year": 1465,
+  "year_end": null,
+  "title": "Commissione della Camera degli Sposi",
+  "description": "Ludovico Gonzaga affida ad Andrea Mantegna la decorazione di una piccola stanza nel torrione nord-est del castello di San Giorgio a Mantova",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-del-compianto-sul-cristo-morto",
+  "year": 1475,
+  "year_end": null,
+  "title": "Realizzazione del Compianto sul Cristo morto",
+  "description": "Mantegna realizza il Compianto sul Cristo morto, opera privata destinata alla devozione personale, dopo il 1475",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "inizio-lavori-decorazione-camera-degli-sposi",
+  "year": 1465,
+  "year_end": null,
+  "title": "Inizio lavori decorazione Camera degli Sposi",
+  "description": "Andrea Mantegna inizia a decorare la piccola stanza cubica nel castello di San Giorgio su commissione di Ludovico III Gonzaga.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "conclusione-decorazione-camera-degli-sposi",
+  "year": 1474,
+  "year_end": null,
+  "title": "Conclusione decorazione Camera degli Sposi",
+  "description": "Mantegna conclude la straordinaria decorazione pittorica, testimoniata dalla targa dorata sulla porta occidentale.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "incontro-ludovico-gonzaga---cardinale-francesco-gonzaga",
+  "year": null,
+  "year_end": null,
+  "title": "Incontro Ludovico Gonzaga - Cardinale Francesco Gonzaga",
+  "description": "Scene raffigurate negli affreschi: l'incontro del marchese Ludovico col figlio cardinale Francesco (affresco 2) e la scena di caccia (affresco 3).",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "inizio-lavori-camera-degli-sposi",
+  "year": 1465,
+  "year_end": null,
+  "title": "Inizio lavori Camera degli Sposi",
+  "description": "Inizio dei lavori di Andrea Mantegna per la decorazione affrescata della Camera degli Sposi nel Palazzo Ducale di Mantova.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "completamento-camera-degli-sposi",
+  "year": 1474,
+  "year_end": null,
+  "title": "Completamento Camera degli Sposi",
+  "description": "Completamento del ciclo di affreschi della Camera degli Sposi dopo circa nove anni di lavoro.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "stipula-del-contratto-per-la-camera-degli-sposi",
+  "year": 1465,
+  "year_end": null,
+  "title": "Stipula del contratto per la Camera degli Sposi",
+  "description": "Ludovico III Gonzaga affida ad Andrea Mantegna l'incarico di decorare una sala della Torre della Gabbia nel Palazzo Ducale di Mantova, dando inizio al capolavoro della Camera Picta.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "nomina-a-cardinale-di-francesco-gonzaga",
+  "year": 1463,
+  "year_end": null,
+  "title": "Nomina a cardinale di Francesco Gonzaga",
+  "description": "Francesco, secondogenito di Ludovico III Gonzaga, viene nominato cardinale grazie all'appoggio di Francesco Sforza, evento celebrato nell'affresco della parete occidentale della Camera.",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "incontro-tra-ludovico-iii-e-il-figlio-cardinale-francesco",
+  "year": 1474,
+  "year_end": null,
+  "title": "Incontro tra Ludovico III e il figlio cardinale Francesco",
+  "description": "Episodio reale raffigurato da Mantegna nella Camera degli Sposi, momento di incontro tra il marchese e il figlio tornato da Roma, con presenza di dignitari e segretari.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "completamento-della-camera-degli-sposi",
+  "year": 1474,
+  "year_end": null,
+  "title": "Completamento della Camera degli Sposi",
+  "description": "Terminazione dei lavori di decorazione della Camera Picta, dopo circa nove anni di lavoro, con l'esecuzione delle ultime scene e dei dettagli ornamentali.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "decorazione-della-camera-degli-sposi",
+  "year": 1465,
+  "year_end": null,
+  "title": "Decorazione della Camera degli Sposi",
+  "description": "Inizio dei lavori di Andrea Mantegna alla decorazione affrescata della camera da letto dei Gonzaga nel Palazzo Ducale di Mantova",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "incontro-tra-ludovico-gonzaga-e-federico-iii-dasburgo",
+  "year": 1472,
+  "year_end": null,
+  "title": "Incontro tra Ludovico Gonzaga e Federico III d'Asburgo",
+  "description": "Evento storico commemorato nella scena dell'Incontro sulla parete ovest della Camera degli Sposi",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-della-pala-di-san-zeno",
+  "year": 1457,
+  "year_end": null,
+  "title": "Realizzazione della Pala di San Zeno",
+  "description": "Opera precedente di Mantegna che sperimenta l'imposizione architettonica poi sviluppata nella Camera degli Sposi",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "chiamata-di-mantegna-a-roma-da-papa-innocenzo-viii",
+  "year": 1488,
+  "year_end": null,
+  "title": "Chiamata di Mantegna a Roma da Papa Innocenzo VIII",
+  "description": "Il papa chiama Mantegna a Roma per realizzare affreschi in una cappella palatina (distrutta nel 1780), occasione che consente al maestro lo studio diretto dei modelli antichi",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "inizio-lavori-studiolo-di-isabella-deste",
+  "year": 1490,
+  "year_end": null,
+  "title": "Inizio lavori Studiolo di Isabella d'Este",
+  "description": "Il marchese Francesco II Gonzaga sposa Isabella d'Este e inizia la creazione dello spazio privato con biblioteca e collezione di antichità",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-del-parnaso",
+  "year": 1497,
+  "year_end": null,
+  "title": "Realizzazione del Parnaso",
+  "description": "Mantegna realizza il Parnaso per lo Studiolo di Isabella d'Este, prima opera che mostra una svolta qualitativa verso stilemi più liberi e anticipatori del Cinquecento",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "unificazione-del-regno-di-napoli-e-sicilia",
+  "year": 1443,
+  "year_end": null,
+  "title": "Unificazione del regno di Napoli e Sicilia",
+  "description": "Alfonso d'Aragona prende il potere e unifica il regno di Napoli con quello di Sicilia, dando inizio al periodo aragonese",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "arrivo-di-jean-fouquet-a-roma",
+  "year": 1444,
+  "year_end": null,
+  "title": "Arrivo di Jean Fouquet a Roma",
+  "description": "Il pittore francese Jean Fouquet giunge a Roma e successivamente si spinge fino a Napoli",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "soggiorno-di-jean-fouquet-a-napoli",
+  "year": null,
+  "year_end": null,
+  "title": "Soggiorno di Jean Fouquet a Napoli",
+  "description": "Jean Fouquet risiede a Napoli dove realizza i cartoni della Passione di Cristo",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "morte-di-alfonso-daragona",
+  "year": 1458,
+  "year_end": null,
+  "title": "Morte di Alfonso d'Aragona",
+  "description": "Fine del regno di Alfonso d'Aragona e ascesa al trono del figlio Ferdinando I (Ferrante)",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "alleanza-con-lorenzo-il-magnifico",
+  "year": null,
+  "year_end": null,
+  "title": "Alleanza con Lorenzo il Magnifico",
+  "description": "Ferdinando I d'Aragona stringe alleanza con Lorenzo de' Medici, favorendo l'arrivo di artisti fiorentini a Napoli",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "commissione-del-monumento-funebre-di-alfonso-daragona",
+  "year": 1490,
+  "year_end": null,
+  "title": "Commissione del Monumento funebre di Alfonso d'Aragona",
+  "description": "Ferdinando I commissiona a Benedetto da Maiano il monumento funebre del padre Alfonso nella cappella Piccolomini",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "invasione-di-carlo-viii-di-valois",
+  "year": 1495,
+  "year_end": null,
+  "title": "Invasione di Carlo VIII di Valois",
+  "description": "L'invasione del re di Francia provoca la fuga degli Aragonesi da Napoli e interrompe il periodo aragonese",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "costruzione-cappella-piccolomini",
+  "year": 1475,
+  "year_end": null,
+  "title": "Costruzione Cappella Piccolomini",
+  "description": "Inizio dei lavori della Cappella Piccolomini nella chiesa di Sant'Anna dei Lombardi a Napoli su progetto di Benedetto da Maiano e Antonio Rossellino",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "progettazione-porta-capuana",
+  "year": 1484,
+  "year_end": null,
+  "title": "Progettazione Porta Capuana",
+  "description": "Progettazione della Porta Capuana da parte di Giuliano da Maiano nell'ambito del programma di rafforzamento delle fortificazioni cittadine voluto da Ferdinando I",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "ingresso-trionfale-di-alfonso-daragona-a-napoli",
+  "year": 1443,
+  "year_end": null,
+  "title": "Ingresso trionfale di Alfonso d'Aragona a Napoli",
+  "description": "Alfonso V d'Aragona entra trionfalmente a Napoli dopo la conquista del regno, evento commemorato dalla costruzione dell'Arco trionfale di Castel Nuovo",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "inizio-costruzione-arco-trionfale-di-castel-nuovo",
+  "year": 1452,
+  "year_end": null,
+  "title": "Inizio costruzione Arco trionfale di Castel Nuovo",
+  "description": "Avvio dei lavori di costruzione dell'arco trionfale rivolto verso il centro antico della città",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "interruzione-lavori-arco-trionfale",
+  "year": 1458,
+  "year_end": null,
+  "title": "Interruzione lavori Arco trionfale",
+  "description": "Sospensione dei lavori di costruzione dell'arco trionfale",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "completamento-arco-trionfale-di-castel-nuovo",
+  "year": 1471,
+  "year_end": null,
+  "title": "Completamento Arco trionfale di Castel Nuovo",
+  "description": "Terminazione dei lavori dell'arco trionfale sotto il regno di Ferdinando I",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "arrivo-di-francesco-laurana-a-napoli",
+  "year": 1453,
+  "year_end": null,
+  "title": "Arrivo di Francesco Laurana a Napoli",
+  "description": "Lo scultore dalmata arriva a Napoli verosimilmente insieme all'architetto Luciano, iniziando la sua carriera italiana al servizio di Renato d'Angiò",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "trasferimento-di-laurana-in-sicilia",
+  "year": 1468,
+  "year_end": null,
+  "title": "Trasferimento di Laurana in Sicilia",
+  "description": "Laurana si trasferisce in Sicilia dove continua la sua attività di scultore e ritrattista",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-delle-opere-di-colantonio-per-san-lorenzo-maggiore",
+  "year": 1445,
+  "year_end": null,
+  "title": "Realizzazione delle opere di Colantonio per San Lorenzo Maggiore",
+  "description": "Nel periodo aragonese, attorno al 1445, Colantonio realizza il capolavoro comprendente San Gerolamo nello studio e San Francesco consegna la regola agli ordini francescani per la chiesa franciscana di San Lorenzo Maggiore a Napoli",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "formazione-nella-bottega-di-colantonio",
+  "year": 1450,
+  "year_end": null,
+  "title": "Formazione nella bottega di Colantonio",
+  "description": "Intorno al 1450 Antonello si forma nella bottega di Colantonio a Napoli, centro commerciale fiorente che lo espone alle influenze fiamminghe.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "viaggio-a-roma",
+  "year": 1459,
+  "year_end": null,
+  "title": "Viaggio a Roma",
+  "description": "Viaggio fondamentale in cui Antonello entra in contatto con le impostazioni geometriche e prospettiche e con la lezione di Piero della Francesca.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "soggiorno-a-venezia",
+  "year": null,
+  "year_end": null,
+  "title": "Soggiorno a Venezia",
+  "description": "Esperienza fondamentale in cui Antonello perfeziona lo studio della luce e raggiunge la piena potenza espressiva, realizzando opere come San Sebastiano e San Gerolamo nello studio.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "ritorno-e-morte-a-messina",
+  "year": 1479,
+  "year_end": null,
+  "title": "Ritorno e morte a Messina",
+  "description": "Dopo aver lasciato la città lagunare, l'artista prosegue la sua attività a Messina fino alla morte avvenuta nel 1479.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "arrivo-di-antonello-da-messina-a-venezia",
+  "year": 1474,
+  "year_end": null,
+  "title": "Arrivo di Antonello da Messina a Venezia",
+  "description": "Antonello da Messina giunge a Venezia probabilmente nel 1474, iniziando un soggiorno che si protrarrà fino al marzo 1476",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-della-vergine-annunziata",
+  "year": 1475,
+  "year_end": null,
+  "title": "Realizzazione della Vergine Annunziata",
+  "description": "Tra il 1475 e il 1476 Antonello dipinge la piccola tavola della Vergine Annunziata durante il soggiorno veneziano",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "commissione-della-pala-di-san-cassiano",
+  "year": 1475,
+  "year_end": null,
+  "title": "Commissione della Pala di San Cassiano",
+  "description": "Il patrizio Pietro Bon commissiona ad Antonello da Messina la pala d'altare per la chiesa di San Cassiano a Venezia",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "ricostruzione-novecentesca-della-composizione-originaria",
+  "year": 1900,
+  "year_end": null,
+  "title": "Ricostruzione novecentesca della composizione originaria",
+  "description": "Proposta all'inizio del Novecento di ricostruzione della composizione originaria con figure inserite in struttura architettonica classicheggiante",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-del-san-sebastiano-per-la-scuola-dei-santi-rocco-e-nicolo",
+  "year": 1478,
+  "year_end": null,
+  "title": "Realizzazione del San Sebastiano per la Scuola dei Santi Rocco e Nicolò",
+  "description": "Commissione dell'opera alla parrocchia di San Zulian a Venezia come parte di un trittico comprendente anche San Rocco e San Cristoforo",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "traduzione-della-bibbia-in-latino-da-parte-di-san-gerolamo",
+  "year": null,
+  "year_end": null,
+  "title": "Traduzione della Bibbia in latino da parte di san Gerolamo",
+  "description": "San Gerolamo, Padre e Dottore della Chiesa vissuto tra IV e V secolo, tradusse la Bibbia in latino (Vulgata). Secondo la tradizione radicata fu anche di origine cardinale.",
+  "kind": "religioso",
+  "period_id": null
+ },
+ {
+  "id": "soggiorno-di-antonello-da-messina-a-venezia",
+  "year": 1475,
+  "year_end": null,
+  "title": "Soggiorno di Antonello da Messina a Venezia",
+  "description": "Periodo durante il quale Antonello potrebbe aver realizzato il suo San Gerolamo nello studio, portando con sé la tecnica dell'olio su tavola appresa dai modelli fiamminghi.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "documentazione-dellopera-di-van-eyck-a-napoli",
+  "year": 1456,
+  "year_end": null,
+  "title": "Documentazione dell'opera di Van Eyck a Napoli",
+  "description": "Documentazione a Napoli di un dipinto di analogo soggetto di Van Eyck che influenzò Antonello da Messina",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "collocazione-originale-del-san-gerolamo",
+  "year": null,
+  "year_end": null,
+  "title": "Collocazione originale del San Gerolamo",
+  "description": "L'opera era originariamente collocata nella chiesa di San Lorenzo Maggiore a Napoli di ordine francescano",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "arrivo-di-mauro-codussi-a-venezia",
+  "year": 1468,
+  "year_end": null,
+  "title": "Arrivo di Mauro Codussi a Venezia",
+  "description": "Mauro Codussi, formatosi a Ravenna, approda a Venezia alla fine degli anni sessanta del Quattrocento portando nuove influenze architettoniche",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "inizio-lavori-chiesa-di-santa-maria-dei-miracoli",
+  "year": 1481,
+  "year_end": null,
+  "title": "Inizio lavori Chiesa di Santa Maria dei Miracoli",
+  "description": "Inizio della costruzione della chiesa di Santa Maria dei Miracoli su progetto di Pietro Solari (Lombardo)",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "costruzione-ca-vendramin-calergi",
+  "year": 1481,
+  "year_end": null,
+  "title": "Costruzione Ca' Vendramin Calergi",
+  "description": "Inizio della costruzione del palazzo privato Ca' Vendramin Calergi su progetto di Mauro Codussi, modello per lo sviluppo del palazzo veneziano",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "trasferimento-di-mantegna-a-padova",
+  "year": 1448,
+  "year_end": null,
+  "title": "Trasferimento di Mantegna a Padova",
+  "description": "Mantegna si trasferisce a Padova per affrescare la cappella Ovetari, entrando in contatto con l'opera di Donatello e con i pittori toscani come Andrea del Castagno e Paolo Uccello",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "pubblicazione-della-bibbia-di-gutenberg",
+  "year": 1455,
+  "year_end": null,
+  "title": "Pubblicazione della Bibbia di Gutenberg",
+  "description": "Vent'anni dopo quasi tutte le principali città del continente possiedono un'officina di stampa; a fine secolo in Europa si contano oltre 200 stamperie",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "fuga-degli-eruditi-da-costantinopoli",
+  "year": 1453,
+  "year_end": null,
+  "title": "Fuga degli eruditi da Costantinopoli",
+  "description": "Caduta di Costantinopoli e rifugio degli eruditi bizantini a Venezia (nelle mani dei Turchi), portando con sé la tradizione della cultura greca classica che alimenta l'attività di Aldo Manuzio",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "fondazione-della-stamperia-di-aldo-manuzio-a-venezia",
+  "year": null,
+  "year_end": null,
+  "title": "Fondazione della stamperia di Aldo Manuzio a Venezia",
+  "description": "Aldo Manuzio fonda una stamperia a Venezia, città ideale legata alla tradizione bizantina e rifugio degli eruditi, iniziando la pubblicazione di testi greci e classici",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "soggiorno-a-verona",
+  "year": 1436,
+  "year_end": null,
+  "title": "Soggiorno a Verona",
+  "description": "Jacopo Bellini soggiorna a Verona",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "soggiorno-a-ferrara",
+  "year": 1440,
+  "year_end": null,
+  "title": "Soggiorno a Ferrara",
+  "description": "Jacopo Bellini soggiorna a Ferrara fino al 1441",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "guarigione-miracolosa-di-un-devoto-bresciano",
+  "year": 1444,
+  "year_end": null,
+  "title": "Guarigione miracolosa di un devoto bresciano",
+  "description": "Evento miracoloso avvenuto durante una festa religiosa in piazza San Marco, raffigurato da Gentile Bellini nel telerio Processione in piazza San Marco",
+  "kind": "religioso",
+  "period_id": null
+ },
+ {
+  "id": "invito-di-maometto-ii-a-gentile-bellini",
+  "year": 1479,
+  "year_end": null,
+  "title": "Invito di Maometto II a Gentile Bellini",
+  "description": "Gentile viene invitato dalle autorità veneziane a Costantinopoli per ritrarre il sultano conquistatore Maometto II",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "donazione-della-vera-croce-alla-confraternita",
+  "year": 1369,
+  "year_end": null,
+  "title": "Donazione della Vera Croce alla confraternita",
+  "description": "La Vera Croce donata alla confraternita nel 1369 da Philippe de Mézières, cancelliere del regno di Gerusalemme",
+  "kind": "religioso",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-del-ciclo-di-santorsola",
+  "year": 1490,
+  "year_end": null,
+  "title": "Realizzazione del ciclo di Sant'Orsola",
+  "description": "Inizio della realizzazione del ciclo di nove teleri delle Storie di sant'Orsola per la Scuola di Sant'Orsola, completato nel 1497",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-del-miracolo-della-croce-a-rialto",
+  "year": 1494,
+  "year_end": null,
+  "title": "Realizzazione del Miracolo della Croce a Rialto",
+  "description": "Esecuzione del telerio del Miracolo della reliquia della Croce a Rialto (1494-1496), parte del ciclo della Scuola Grande di San Giovanni Evangelista",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "matrimonio-tra-nicolosia-bellini-e-andrea-mantegna",
+  "year": 1453,
+  "year_end": null,
+  "title": "Matrimonio tra Nicolosia Bellini e Andrea Mantegna",
+  "description": "Nicolosia, sorella di Giovanni Bellini, sposa Andrea Mantegna, creando un legame familiare e artistico tra i due pittori",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "nomina-a-pittore-ufficiale-della-serenissima",
+  "year": 1483,
+  "year_end": null,
+  "title": "Nomina a pittore ufficiale della Serenissima",
+  "description": "Giovanni Bellini viene nominato pittore ufficiale della Repubblica di Venezia, riconoscimento ufficiale del suo ruolo di primo piano",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "morte-di-giovanni-bellini",
+  "year": 1516,
+  "year_end": null,
+  "title": "Morte di Giovanni Bellini",
+  "description": "Morte dell'artista a Venezia dopo una lunga carriera",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "matrimonio-di-andrea-mantegna-con-nicolosia-bellini",
+  "year": 1453,
+  "year_end": null,
+  "title": "Matrimonio di Andrea Mantegna con Nicolosia Bellini",
+  "description": "Unione familiare che rafforzò i legami tra le botteghe dei due artisti e facilitò lo scambio culturale tra Padova e Venezia",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-dellorazione-nellorto",
+  "year": 1467,
+  "year_end": null,
+  "title": "Realizzazione dell'Orazione nell'orto",
+  "description": "Opera chiave nel percorso di autonomizzazione stilistica di Giovanni Bellini rispetto al modello mantegnesco",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-della-pala-di-pesaro",
+  "year": 1470,
+  "year_end": null,
+  "title": "Realizzazione della Pala di Pesaro",
+  "description": "Inizio della realizzazione della Pala di Pesaro commissionata probabilmente dalla famiglia Sforza di Pesaro",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "completamento-della-pala-di-pesaro",
+  "year": 1475,
+  "year_end": null,
+  "title": "Completamento della Pala di Pesaro",
+  "description": "Completamento e consegna della Pala di Pesaro alla chiesa di destinazione",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "ricostruzione-della-cornice-della-pala-di-pesaro",
+  "year": 1925,
+  "year_end": null,
+  "title": "Ricostruzione della cornice della Pala di Pesaro",
+  "description": "Ricostruzione della cornice architettonica della pala nella prima metà del XX secolo",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-della-pala-di-san-zaccaria",
+  "year": 1505,
+  "year_end": null,
+  "title": "Realizzazione della Pala di San Zaccaria",
+  "description": "Completamento di una delle ultime grandi pale d'altare di Giovanni Bellini, considerata tra i suoi capolavori maturi",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "elezione-di-leonardo-loredan-come-doge",
+  "year": 1501,
+  "year_end": null,
+  "title": "Elezione di Leonardo Loredan come doge",
+  "description": "Leonardo Loredan viene eletto doge di Venezia, evento commemorato dal celebre ritratto di Giovanni Bellini",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "guerra-contro-venezia",
+  "year": 1482,
+  "year_end": null,
+  "title": "Guerra contro Venezia",
+  "description": "Conflitto combattuto da Ercole I d'Este contro la Serenissima, conclusosi in modo disastroso per Ferrara con la cessione del Polesine e Rovigo.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "ascesa-di-leonello-deste",
+  "year": 1441,
+  "year_end": null,
+  "title": "Ascesa di Leonello d'Este",
+  "description": "Leonello diventa marchese di Ferrara, iniziando una politica di mecenatismo che trasforma la città in centro culturale.",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "morte-di-leonello-deste",
+  "year": 1450,
+  "year_end": null,
+  "title": "Morte di Leonello d'Este",
+  "description": "Fine del periodo di governo di Leonello; succede il fratello Borso I.",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "costruzione-mura-e-addizione-erculea",
+  "year": 1492,
+  "year_end": null,
+  "title": "Costruzione mura e Addizione Erculea",
+  "description": "Inizio dei lavori di costruzione delle mura e dell'ampliamento urbano settentrionale di Ferrara su progetto di Biagio Rossetti",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "nomina-di-biagio-rossetti-architetto-di-corte",
+  "year": 1483,
+  "year_end": null,
+  "title": "Nomina di Biagio Rossetti architetto di corte",
+  "description": "Biagio Rossetti viene nominato architetto di corte degli Este",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "costruzione-dello-studiolo-di-belriguardo",
+  "year": 1447,
+  "year_end": null,
+  "title": "Costruzione dello Studiolo di Belriguardo",
+  "description": "Il marchese Leonello d'Este avvia la costruzione e decorazione del suo studiolo privato nella villa di Belriguardo, affidando a Guarino Veronese la definizione del progetto iconografico dedicato alle Muse.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "completamento-decorazione-studiolo",
+  "year": 1463,
+  "year_end": null,
+  "title": "Completamento decorazione Studiolo",
+  "description": "Termine della decorazione dello studiolo di Belriguardo, suddivisa in due facciate: superiore con figure delle Muse in tavola, inferiore con tarsie lignee.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "distruzione-dello-studiolo-di-belriguardo",
+  "year": 1482,
+  "year_end": null,
+  "title": "Distruzione dello Studiolo di Belriguardo",
+  "description": "Lo studiolo andato distrutto a causa del terremoto o eventi bellici; le opere d'arte vengono disperse e oggi conservate in vari musei.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "soggiorno-a-padova-e-venezia-di-cosme-tura",
+  "year": 1450,
+  "year_end": null,
+  "title": "Soggiorno a Padova e Venezia di Cosmè Tura",
+  "description": "Dopo un viaggio poetico a Padova e Venezia (circa 1450-1456), Tura entra in contatto con Donatello, Mantegna e Squarcione",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "ritorno-a-ferrara-di-cosme-tura",
+  "year": 1456,
+  "year_end": null,
+  "title": "Ritorno a Ferrara di Cosmè Tura",
+  "description": "Tura torna a Ferrara e inizia una fortunata carriera come pittore di corte",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-delle-ante-dellorgano-del-duomo-di-ferrara",
+  "year": 1469,
+  "year_end": null,
+  "title": "Realizzazione delle ante dell'organo del Duomo di Ferrara",
+  "description": "Commissione a Cosmè Tura delle ante decorate per l'organo del duomo di Ferrara, comprendenti San Giorgio e la principessa e l'Annunciazione",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "danneggiamento-del-politico-roverella",
+  "year": null,
+  "year_end": null,
+  "title": "Danneggiamento del Politico Roverella",
+  "description": "Il Politico Roverella viene danneggiato da un colpo di cannone",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "smembramento-del-politico-roverella",
+  "year": null,
+  "year_end": null,
+  "title": "Smembramento del Politico Roverella",
+  "description": "Nel Settecento l'opera viene smembrata e le parti disperse in musei europei e americani",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "viaggio-in-toscana-di-francesco-del-cossa",
+  "year": null,
+  "year_end": null,
+  "title": "Viaggio in Toscana di Francesco del Cossa",
+  "description": "Viaggio formativo di Francesco del Cossa in Toscana che influenza il suo stile",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "rottura-con-borso-deste",
+  "year": 1470,
+  "year_end": null,
+  "title": "Rottura con Borso d'Este",
+  "description": "Francesco del Cossa interrompe i rapporti con la corte ferrarese inviando una lettera di protesta per il trattamento economico",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "trasferimento-a-bologna",
+  "year": 1470,
+  "year_end": null,
+  "title": "Trasferimento a Bologna",
+  "description": "Dopo la rottura con la corte ferrarese, Francesco del Cossa si trasferisce a Bologna dove lavora al Politico Griffoni",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-del-polittico-griffoni",
+  "year": 1470,
+  "year_end": null,
+  "title": "Realizzazione del Polittico Griffoni",
+  "description": "Inizio dei lavori per il polittico commissionato dalla famiglia Griffoni per la cappella di San Petronio a Bologna",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "completamento-del-polittico-griffoni",
+  "year": 1473,
+  "year_end": null,
+  "title": "Completamento del Polittico Griffoni",
+  "description": "Conclusione del Polittico Griffoni ad opera di Francesco del Cossa ed Ercole de' Roberti",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "viaggio-a-venezia-di-ercole-de-roberti",
+  "year": 1475,
+  "year_end": null,
+  "title": "Viaggio a Venezia di Ercole de' Roberti",
+  "description": "Soggiorno veneziano di Roberti durante il quale studiò le opere di Antonello da Messina e Giovanni Bellini, influenzando profondamente la sua produzione successiva.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "arrivo-di-ercole-de-roberti-a-ferrara-come-pittore-di-corte",
+  "year": 1487,
+  "year_end": null,
+  "title": "Arrivo di Ercole de' Roberti a Ferrara come pittore di corte",
+  "description": "Roberti raggiunge Cosmè Tura assumendo il ruolo di pittore di corte ferrarese, segnando l'inizio della sua fase matura.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "morte-di-francesco-del-cossa",
+  "year": 1478,
+  "year_end": null,
+  "title": "Morte di Francesco del Cossa",
+  "description": "La morte del maestro apre la strada a Ercole de' Roberti per la commissione degli affreschi della cappella Garganelli a Bologna.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "conclusione-affreschi-cappella-garganelli",
+  "year": 1490,
+  "year_end": null,
+  "title": "Conclusione affreschi cappella Garganelli",
+  "description": "Termine dei lavori decorativi della cappella Garganelli nella cattedrale di San Pietro a Bologna.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "inizio-lavori-ciclo-dei-mesi",
+  "year": 1467,
+  "year_end": null,
+  "title": "Inizio lavori ciclo dei Mesi",
+  "description": "Inizio della realizzazione del complesso ciclo decorativo del Salone d'onore di Palazzo Schifanoia",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "commissione-ristrutturazione-palazzo-schifanoia",
+  "year": 1465,
+  "year_end": null,
+  "title": "Commissione ristrutturazione Palazzo Schifanoia",
+  "description": "Borso d'Este affida all'architetto Pietro Benvogliente l'incarico di ristrutturare il palazzo come residenza di rappresentanza",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "esecuzione-della-decorazione-del-salone-dei-mesi",
+  "year": 1469,
+  "year_end": null,
+  "title": "Esecuzione della decorazione del Salone dei Mesi",
+  "description": "Inizio dei lavori di decorazione del Salone dei Mesi di Palazzo Schifanoia a Ferrara, affidati a un congruo numero di pittori dell'officina ferrarese tra cui Cosmè Tura, Francesco del Cossa ed Ercole de' Roberti",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "ufficializzazione-della-nomina-a-duca-di-ferrara-di-borso-deste",
+  "year": 1471,
+  "year_end": null,
+  "title": "Ufficializzazione della nomina a Duca di Ferrara di Borso d'Este",
+  "description": "Borso d'Este viene nominato ufficialmente duca di Ferrara dal Papa; l'opera doveva essere ultimata entro questa data per celebrare l'avvenimento",
+  "kind": "politico",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-del-ciclo-di-affreschi-della-sala-dei-mesi",
+  "year": 1469,
+  "year_end": null,
+  "title": "Realizzazione del ciclo di affreschi della Sala dei Mesi",
+  "description": "Inizio dei lavori di decorazione della Sala dei Mesi di Palazzo Schifanoi con la partecipazione di Francesco del Cossa, Ercole de' Roberti e altri artisti dell'officina ferrarese",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-degli-affreschi-del-mese-di-aprile",
+  "year": 1470,
+  "year_end": null,
+  "title": "Realizzazione degli affreschi del Mese di Aprile",
+  "description": "Francesco del Cossa completa gli affreschi del Mese di Aprile nel Salone dei Mesi di Palazzo Schifanoia, Ferrara, inviando successivamente una lettera di reclamo al duca Borso d'Este per la retribuzione ritenuta non proporzionata alla qualità del lavoro",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "composizione-dei-trionfi-di-petrarca",
+  "year": 1351,
+  "year_end": null,
+  "title": "Composizione dei Trionfi di Petrarca",
+  "description": "Completamento dell'opera poetica dei Trionfi di Francesco Petrarca, che diventerà fonte iconografica essenziale per l'arte rinascimentale italiana",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "palo-di-santagata-a-ferrara",
+  "year": null,
+  "year_end": null,
+  "title": "Palo di Sant'Agata a Ferrara",
+  "description": "Evento culturale e religioso cittadino documentato nella fascia inferiore degli affreschi del Mese di Aprile, esempio di come l'arte registrasse manifestazioni sociali contemporanee",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "arrivo-di-filarete-a-milano",
+  "year": 1450,
+  "year_end": null,
+  "title": "Arrivo di Filarete a Milano",
+  "description": "Filarete viene chiamato a Milano dal Duca Francesco Sforza per lavorare alla ricostruzione e modernizzazione architecttonica del ducato, segnando l'incontro tra cultura fiorentina e tradizione lombarda.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "inizio-lavori-ospedale-maggiore",
+  "year": 1456,
+  "year_end": null,
+  "title": "Inizio lavori Ospedale Maggiore",
+  "description": "Avvio della costruzione dell'Ospedale Maggiore di Milano su progetto di Filarete, opera destinata a diventare il simbolo del nuovo umanesimo sforzesco.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "partenza-di-filarete-da-milano",
+  "year": 1465,
+  "year_end": null,
+  "title": "Partenza di Filarete da Milano",
+  "description": "Filarete lascia Milano dopo quindici anni di attività; i suoi lavori vengono continuati da Guiniforte Solari secondo le direttive originali ma con adattamenti locali.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "morte-di-francesco-sforza",
+  "year": 1466,
+  "year_end": null,
+  "title": "Morte di Francesco Sforza",
+  "description": "Morte del Duca committente, evento che segna una svolta nella politica artistica milanese e nella prosecuzione dei grandi cantieri avviati.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "composizione-del-trattato-di-architettura",
+  "year": 1460,
+  "year_end": null,
+  "title": "Composizione del Trattato di architettura",
+  "description": "Periodo di stesura del trattato teorico di Filarete, fondamentale documento sulla diffusione dell'architettura rinascimentale in Lombardia.",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "redazione-del-trattato-di-architettura-di-filarete",
+  "year": 1460,
+  "year_end": null,
+  "title": "Redazione del Trattato di architettura di Filarete",
+  "description": "Inizio della stesura del trattato che contiene il progetto della città ideale di Sforzinda, durante il soggiorno di Filarete a Milano alla corte degli Sforza",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "inizio-lavori-ospedale-maggiore-di-milano",
+  "year": 1456,
+  "year_end": null,
+  "title": "Inizio lavori Ospedale Maggiore di Milano",
+  "description": "Avvio della costruzione del grande complesso ospedaliero milanese su progetto di Filarete, commesso da Francesco Sforza",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "fondazione-della-certosa-di-pavia",
+  "year": 1396,
+  "year_end": null,
+  "title": "Fondazione della Certosa di Pavia",
+  "description": "Gian Galeazzo Visconti fonda la Certosa come mausoleo dinastico per la famiglia Visconti, iniziando i lavori di costruzione",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "inizio-affreschi-di-mantegna",
+  "year": 1473,
+  "year_end": null,
+  "title": "Inizio affreschi di Mantegna",
+  "description": "Andrea Mantegna esegue i primi affreschi sulla facciata della Certosa, inaugurando la fase decorativa del monumento",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "nomina-di-amadeo",
+  "year": 1481,
+  "year_end": null,
+  "title": "Nomina di Amadeo",
+  "description": "Dopo la morte di Guiniforte Solari, Giovanni Antonio Amadeo assume la direzione dei lavori della Certosa, modificando il progetto originario",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "affreschi-di-bergognone",
+  "year": 1488,
+  "year_end": null,
+  "title": "Affreschi di Bergognone",
+  "description": "Inizio dei lavori di Bergognone per la decorazione pittorica del coro e del transetto della Certosa, che si protrarranno fino al 1495",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "attivita-del-bergognone-a-milano",
+  "year": 1481,
+  "year_end": null,
+  "title": "Attività del Bergognone a Milano",
+  "description": "L'artista si trasferisce a Milano dove lavorerà fino al 1495",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "decorazione-della-certosa-di-pavia",
+  "year": null,
+  "year_end": null,
+  "title": "Decorazione della Certosa di Pavia",
+  "description": "Periodo di attività del Bergognone alla decorazione ad affresco della volta, del transetto e delle pareti della chiesa della Certosa di Pavia",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "costruzione-della-cappella-colleoni",
+  "year": 1472,
+  "year_end": null,
+  "title": "Costruzione della Cappella Colleoni",
+  "description": "Inizio dei lavori della cappella funebre voluta da Bartolomeo Colleoni a Bergamo, affidata a Giovanni Antonio Amadeo",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "completamento-della-cappella-colleoni",
+  "year": 1476,
+  "year_end": null,
+  "title": "Completamento della Cappella Colleoni",
+  "description": "Termine della costruzione della cappella, uno dei capolavori del Rinascimento lombardo",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "inizio-del-monumento-funebre-di-colleoni-a-venezia",
+  "year": 1488,
+  "year_end": null,
+  "title": "Inizio del Monumento funebre di Colleoni a Venezia",
+  "description": "Inizio dei lavori per il monumento funebre equestre nella chiesa dei Santi Giovanni e Paolo a Venezia, con la statua bronzea del Verrocchio e il basamento dell'Amadeo",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "arrivo-di-vincenzo-foppa-a-milano",
+  "year": 1463,
+  "year_end": null,
+  "title": "Arrivo di Vincenzo Foppa a Milano",
+  "description": "Foppa si trasferisce a Milano dove lavora come pittore di corte sotto gli Sforza, entrando in contatto con artisti e intellettuali fiorentini residenti in città",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "realizzazione-del-tre-crocifissi",
+  "year": 1456,
+  "year_end": null,
+  "title": "Realizzazione del Tre Crocifissi",
+  "description": "Esecuzione della prima opera firmata e datata di Vincenzo Foppa, conservata oggi all'Accademia Carrara di Bergamo",
+  "kind": "culturale",
+  "period_id": null
+ },
+ {
+  "id": "evt-riforma",
+  "year": 1517,
+  "year_end": null,
+  "title": "Lutero e le 95 tesi",
+  "description": "Martin Lutero pubblica le 95 tesi, avviando la Riforma protestante.",
+  "kind": "religioso",
+  "period_id": "rinasc-nordico"
+ },
+ {
+  "id": "evt-trento",
+  "year": 1545,
+  "year_end": 1563,
+  "title": "Concilio di Trento",
+  "description": "Il Concilio stabilisce i principi dell'arte sacra controriformista: chiarezza didattica e decoro.",
+  "kind": "religioso",
+  "period_id": "controriforma"
+ },
+ {
+  "id": "evt-fontainebleau",
+  "year": 1528,
+  "year_end": null,
+  "title": "Inizio dei lavori di Fontainebleau",
+  "description": "Francesco I avvia la costruzione del castello di Fontainebleau, centro del Manierismo in Francia.",
+  "kind": "culturale",
+  "period_id": "manierismo"
+ },
+ {
+  "id": "evt-escorial",
+  "year": 1563,
+  "year_end": 1586,
+  "title": "Costruzione dell'Escorial",
+  "description": "Filippo II fa erigere il monastero di San Lorenzo di El Escorial.",
+  "kind": "politico",
+  "period_id": "controriforma"
+ },
+ {
+  "id": "evt-borromeo",
+  "year": 1577,
+  "year_end": null,
+  "title": "Instructiones di Carlo Borromeo",
+  "description": "Carlo Borromeo pubblica le istruzioni per la costruzione e l'arredo delle chiese.",
+  "kind": "religioso",
+  "period_id": "controriforma"
+ },
+ {
+  "id": "evt-praga-rodotfo",
+  "year": 1583,
+  "year_end": null,
+  "title": "Rodolfo II trasferisce la corte a Praga",
+  "description": "L'imperatore trasferisce la corte a Praga, trasformandola in un centro del Manierismo internazionale.",
+  "kind": "culturale",
+  "period_id": "manierismo"
+ }
+]

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="apple-touch-icon" href="./icon-192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="HUB Arte" />
+    <meta name="theme-color" content="#1a1a1a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta property="og:title" content="HUB Arte — Atlante di Storia dell'Arte open source" />
+    <meta property="og:description" content="Atlante di Storia dell'Arte open source: grafo 3D, timeline, mappa e quiz." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="it_IT" />
+    <title>HUB Arte — Atlante di Storia dell'Arte open source</title>
+    <meta name="description" content="Atlante di Storia dell'Arte open source: grafo 3D, timeline, mappa e quiz." />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,700,900&f[]=zodiak@400,500,700&f[]=general-sans@300,400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+      /* iOS safe-area: il body non ha padding, ci pensa .shell3d */
+      body { margin: 0; }
+      /* Layout: NON usiamo overflow:hidden su html perché su iOS causa bug
+         di "testo che scompare" durante lo scroll. */
+      html { overscroll-behavior: none; }
+      body { overscroll-behavior: none; -webkit-overflow-scrolling: touch; }
+      /* Prevent text selection on UI elements for mobile */
+      .chip, .btn, nav a, .dot { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+      /* Better touch targets */
+      .chip { min-height: 36px; display: inline-flex; align-items: center; }
+      .btn { min-height: 40px; }
+      /* Animazione pulse per badge notifiche */
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.08); opacity: 0.92; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

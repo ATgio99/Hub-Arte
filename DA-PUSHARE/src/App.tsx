@@ -81,16 +81,16 @@ function useSyncOnLogin() {
       await fullSync(user);
     })();
 
-    // Niente polling a orologio: ci si riallinea quando si torna sulla scheda.
-    // E' il momento in cui serve davvero — un telefono va in secondo piano di
-    // continuo, e al ritorno deve trovare quello che hai fatto altrove. La
-    // pausa minima e' di venti secondi, che basta a non ripetersi se si passa
-    // avanti e indietro fra le finestre, ma non lascia i due dispositivi su
-    // numeri diversi come succedeva con cinque minuti.
+    // Niente polling a orologio: ci si riallinea quando si torna sulla scheda,
+    // e non piu' di una volta ogni tre minuti. La pausa puo' essere lunga
+    // perche' il canale realtime ora consegna anche le rimozioni, non solo le
+    // aggiunte: questo e' diventato una rete di sicurezza per quando la
+    // connessione e' caduta, non piu' l'unico modo di accorgersi di una
+    // cancellazione.
     let ultimoAllineamento = Date.now();
     const alRientro = () => {
       if (document.visibilityState !== "visible") return;
-      if (Date.now() - ultimoAllineamento < 20000) return;
+      if (Date.now() - ultimoAllineamento < 180000) return;
       ultimoAllineamento = Date.now();
       pullFromCloud(user);
     };

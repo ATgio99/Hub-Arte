@@ -399,10 +399,14 @@ export async function fullSync(user: User): Promise<void> {
 // altro dispositivo non arrivavano mai: le aggiunte si vedevano, le rimozioni
 // no, e i due dispositivi finivano su numeri diversi.
 //
-// Invece di cambiare la configurazione del database, quando arriva una
-// cancellazione che non sappiamo leggere si chiede una rilettura, una sola,
-// dopo un secondo e mezzo. Le cancellazioni sono rare: costa due chiamate
-// quando succede davvero qualcosa, e niente il resto del tempo.
+// Sul database e' stata messa `replica identity full` sulle due tabelle: senza,
+// con il filtro per utente, l'evento di cancellazione non veniva proprio
+// consegnato e le rimozioni fatte da un altro dispositivo non arrivavano mai.
+// Adesso arrivano, ma il contenuto della riga resta oscurato dalle regole di
+// sicurezza — quindi non sappiamo *quale* riga e' sparita. Si chiede allora una
+// rilettura, una sola, dopo un secondo e mezzo. Costa due chiamate quando
+// qualcuno toglie davvero qualcosa da un altro dispositivo, e niente il resto
+// del tempo.
 let rilettura: any = null;
 function chiediRilettura(user: User) {
   if (rilettura) clearTimeout(rilettura);

@@ -1,0 +1,67 @@
+{
+ "adorazione-dei-magi": {
+  "tema": "committenza",
+  "fonte": "Wikipedia it/en, voce Polittico Roverella / Roverella Altarpiece; Fondazione Zeri, scheda opera 31281; A. Andreotti, Il polittico Roverella di Cosme Tura (Academia.edu)",
+  "nota": "La ricerca esclude con sicurezza Lorenzo Roverella (opzione_2): il vescovo, morto nel 1474, e il defunto commemorato dal polittico, non il committente. Restano pero due candidati realmente discordi in letteratura, il fratello Niccolo (priore/abate di San Giorgio, che nel 1476 ottiene la concessione della cappella maggiore per la tomba e la pala) e il fratello Bartolomeo (cardinale), indicato come committente dalle voci enciclopediche correnti: non si puo scegliere senza forzare."
+ },
+ "bartolomeo-roverella-tra-santi-maurelio-e-paolo": {
+  "tema": "committenza",
+  "fonte": "Fondazione Zeri, scheda 'Tura Cosme, San Maurelio, san Paolo e Bartolomeo Roverella'; Wikipedia it, Polittico Roverella (scomparto 'Santi Maurelio e Paolo con Niccolo Roverella'), Galleria Colonna, Roma",
+  "nota": "Oltre alla committenza del polittico (Niccolo abate vs Bartolomeo cardinale), qui e incerta anche l'identita del donatore inginocchiato: la Fondazione Zeri lo dice Bartolomeo, altre schede Niccolo. Doppia incertezza non risolvibile con le fonti disponibili; Lorenzo Roverella resta comunque escluso perche e il defunto commemorato."
+ },
+ "basilica-santa-maria-antiqua-roma": {
+  "tema": "committenza",
+  "fonte": "Parco archeologico del Colosseo, scheda Santa Maria Antiqua (musei.beniculturali.it); Wikipedia it, Chiesa di Santa Maria Antiqua; P.J. Nordhagen, The frescoes of John VII (705-707) in S. Maria Antiqua",
+  "nota": "Il monumento e per definizione a committenza stratificata (Martino I, Giovanni VII, Zaccaria, Paolo I, Adriano I) e la 'parete palinsesto' ne e la prova materiale: non esiste un committente unico. Se l'atlante dovesse indicarne uno, il candidato principale e Giovanni VII (705-707), autore della campagna piu estesa e promotore della chiesa a cappella palatina."
+ },
+ "ghiera-tralcio-vite-santa-maria-valle": {
+  "tema": "committenza",
+  "fonte": "Catalogo del patrimonio culturale della Regione FVG, scheda Tempietto longobardo; Ministero della Cultura, scheda Monastero di Santa Maria in Valle; Archeocarta FVG",
+  "nota": "Il catalogo regionale afferma esplicitamente che dai lacerti dell'iscrizione dedicatoria non si ricava alcun elemento sulla datazione ne sul committente; l'attribuzione ad Astolfo e alla moglie Giseltrude e presentata come 'probabile' e resta un'ipotesi, mentre altri studi spostano il cantiere in eta liutprandea o piu avanti nel secolo. Da segnalare che nel CSV la consorte e chiamata 'Giselperga' invece di Giseltrude."
+ },
+ "madonna-di-san-luca-rusuti": {
+  "tema": "committenza",
+  "fonte": "Basilica di Santa Maria Maggiore, scheda ufficiale 'Mosaico della facciata' (basilicasantamariamaggiore.va); Wikipedia en, Filippo Rusuti",
+  "nota": "La scheda della basilica non attribuisce la committenza a un solo cardinale: registra la presenza di entrambi i fratelli Colonna come donatori e collega il registro superiore al periodo anteriore alla loro caduta in disgrazia (1297) e quello inferiore al dopo 1306, anno dell'arcipresbiterato di Giacomo. La ripartizione fra Giacomo e Pietro resta discussa."
+ },
+ "medaglia-giovanni-viii-paleologo-pisanello": {
+  "tema": "committenza",
+  "fonte": "The Metropolitan Museum of Art, scheda 'Medal: John VIII Palaeologus' (acc. 460849); Victoria and Albert Museum, schede O93566/O39904; Italian Renaissance Medals (italianrenaissancemedals.com)",
+  "nota": "Le schede museali dichiarano espressamente che non si sa se la medaglia sia stata ordinata dall'imperatore stesso o dai suoi ospiti italiani, indicando Leonello d'Este solo come 'candidato piu probabile'; una voce corrente sostiene invece che Pisanello l'abbia realizzata di propria iniziativa e poi donata all'imperatore. Nessuna base documentaria per scegliere."
+ },
+ "pianta-san-pietro-sangallo": {
+  "tema": "committenza",
+  "fonte": "Treccani, Dizionario Biografico degli Italiani, voce Cordini, Antonio detto Antonio da Sangallo il Giovane; Gabinetto Disegni e Stampe degli Uffizi, progetto Euploos (disegni per San Pietro)",
+  "nota": "Sangallo tenne l'ufficio di architetto della Fabbrica in modo continuativo dal 1520 attraversando tre pontificati, e non esiste un singolo atto di committenza per il disegno: il 1530 indicato in catalogo cade sotto Clemente VII, ma il progetto compiuto (pianta definitiva e modello ligneo) e del 1538-1546 sotto Paolo III. Da verificare anche la data 1530 registrata nella scheda, che sembra imprecisa."
+ },
+ "ritratto-ginevra-benci": {
+  "tema": "committenza",
+  "fonte": "National Gallery of Art, Washington, scheda ufficiale 'Ginevra de' Benci [obverse]'; Google Arts & Culture, dossier NGA sul dipinto",
+  "nota": "Il museo che conserva l'opera afferma esplicitamente che la commissione da parte di Bernardo Bembo e 'possibile ma finora non dimostrata': gli emblemi e il motto Virtus et honor emersi ai raggi infrarossi provano il suo intervento sul verso, non che abbia ordinato il ritratto, che altri studiosi collegano alle nozze del 1474 con Luigi Niccolini."
+ },
+ "san-francesco-dona-mantello": {
+  "tema": "committenza",
+  "fonte": "Wikipedia it, Basilica superiore di San Francesco d'Assisi; C. Frugoni, Le storie di San Francesco. Guida agli affreschi della Basilica superiore di Assisi (Einaudi); Vasari, Vite",
+  "nota": "La committenza del ciclo resta uno dei nodi aperti della storia dell'arte medievale: si oscilla fra Niccolo IV (che nel 1288 destino per bolla le offerte dei pellegrini alla decorazione della chiesa), i suoi predecessori Niccolo III e i ministri generali dell'Ordine, con Vasari che indica il generale francescano. Nessun documento di allogazione e sopravvissuto."
+ },
+ "san-francesco-rinuncia-beni": {
+  "tema": "committenza",
+  "fonte": "Wikipedia it, Basilica superiore di San Francesco d'Assisi; C. Frugoni, Le storie di San Francesco (Einaudi); Vasari, Vite",
+  "nota": "Stessa impresa e stessa incertezza dell'altro riquadro: la datazione del ciclo e legata al conflitto fra Conventuali e Spirituali e la critica non ha sciolto l'alternativa fra iniziativa pontificia (Niccolo IV) e iniziativa dei vertici dell'Ordine; l'attribuzione stessa a Giotto resta discussa."
+ },
+ "san-sebastiano": {
+  "tema": "committenza",
+  "fonte": "Musee du Louvre, scheda 'Saint Sebastien' (ark:/53355/cl010064796) e mini-sito della mostra Mantegna; Wikipedia it, San Sebastiano (Mantegna Parigi)",
+  "nota": "Il Louvre dichiara che nulla si sa delle circostanze della commissione e della destinazione iniziale, e che nulla prova che la tela sia stata dipinta per le nozze di Chiara Gonzaga: la 'committenza gonzaghesca' e dedotta a posteriori dalla via di trasmissione dotale verso Aigueperse. ATTENZIONE ai dati esistenti: l'id federico-gonzaga in catalogo e schedato come 'cardinale' con date 1441-1484, che sono pero quelle di Federico I Gonzaga marchese di Mantova; le due figure sembrano confuse."
+ },
+ "torhalle-lorsch": {
+  "tema": "committenza",
+  "fonte": "UNESCO Welterbe Kloster Lorsch, sezione 'Archaeology & building history' (kloster-lorsch.de); Staatliche Schlosser und Garten Hessen, Kloster Lorsch; W. Jacobsen e M. Exner, posizioni riassunte nelle stesse pagine",
+  "nota": "La datazione e con essa la committenza sono oggetto di un dibattito scientifico irrisolto: Jacobsen collega la Torhalle all'ecclesia varia dell'876-882 e a Ludovico il Germanico, Exner la riporta agli affreschi del 820/830 circa. La committenza di Carlo Magno riguarda la fondazione dell'abbazia (774), non necessariamente questo edificio."
+ },
+ "trinita-masaccio": {
+  "tema": "committenza",
+  "fonte": "Basilica di Santa Maria Novella, scheda ufficiale 'La Trinita di Masaccio' (smn.it); Wikipedia it, Trinita (Masaccio); RestaurArs, sintesi degli studi d'archivio",
+  "nota": "La basilica che conserva l'affresco dichiara che l'identita dei committenti non e nota con certezza. Oltre alle famiglie Lenzi e Berti, gli studi d'archivio hanno introdotto un terzo nome, Berto di Bartolomeo del Banderaio con la moglie Sandra, e una quarta ipotesi che chiama in causa il priore domenicano: la questione e apertissima."
+ }
+}
