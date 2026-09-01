@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, useMemo, useCallback, ReactNode } from "react";
-import { loadDataset, buildIndex, clearDatasetCache, Indexed } from "./data";
+import { loadDataset, buildIndex, clearDatasetCache, scadiDeltaCatalogo, Indexed } from "./data";
 import { applyOverrides, OVERRIDES_EVENT } from "./imageOverrides";
 import type { Work, Period, Artist, Term, Technique, ArtEvent } from "./types";
 
@@ -30,6 +30,10 @@ export function DataProvider({ children }: { children: ReactNode }) {
     window.addEventListener(OVERRIDES_EVENT, onOverrides);
     // Works overrides changed in admin → reload dataset
     const onStorage = () => {
+      // Anche la copia del delta in sessionStorage va buttata: altrimenti una
+      // modifica appena salvata dalla dashboard non si vedrebbe per dieci
+      // minuti.
+      scadiDeltaCatalogo();
       clearDatasetCache();
       loadDataset()
         .then((ds) => {

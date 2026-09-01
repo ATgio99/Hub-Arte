@@ -42,7 +42,46 @@ export function clearDatasetCache() { _cache = null; }
  * Senza meta.json (fork che non ha ancora esportato) si scarica tutto, come
  * faceva la versione precedente.
  */
+// Le otto tabelle del catalogo si interrogano a ogni caricamento di pagina, e
+// ognuna costa due richieste — la verifica CORS e la lettura vera. Sedici
+// richieste per un risultato che, salvo modifiche di un amministratore, e'
+// sempre lo stesso: niente.
+//
+// Il risultato viene quindi tenuto per qualche minuto in sessionStorage: chi
+// ricarica, cambia scheda e torna, o naviga con Safari che ricarica le pagine
+// in secondo piano, non ripaga sedici richieste ogni volta. La finestra e'
+// breve perche' una correzione fatta dalla dashboard deve comunque comparire
+// in fretta.
+const CHIAVE_DELTA = "atlante:delta-catalogo";
+const DURATA_DELTA = 10 * 60 * 1000;
+
+function leggiDeltaSalvato(): { dati: Partial<Dataset>; nascosti: string[] } | null {
+  try {
+    const raw = sessionStorage.getItem(CHIAVE_DELTA);
+    if (!raw) return null;
+    const c = JSON.parse(raw);
+    if (!c || Date.now() - c.quando > DURATA_DELTA) return null;
+    return { dati: c.dati, nascosti: c.nascosti ?? [] };
+  } catch { return null; }
+}
+
+function salvaDelta(dati: Partial<Dataset>, nascosti: string[]) {
+  try {
+    sessionStorage.setItem(CHIAVE_DELTA, JSON.stringify({ quando: Date.now(), dati, nascosti }));
+  } catch { /* quota piena: si continua senza cache */ }
+}
+
+/** Da chiamare quando un amministratore salva: la copia in cache non vale piu'. */
+export function scadiDeltaCatalogo() {
+  try { sessionStorage.removeItem(CHIAVE_DELTA); } catch { /* ignore */ }
+}
+
 async function loadDbOverrides(): Promise<Partial<Dataset>> {
+  const salvato = leggiDeltaSalvato();
+  if (salvato) {
+    (loadDbOverrides as any)._hiddenIds = new Set(salvato.nascosti);
+    return salvato.dati;
+  }
   try {
     // data dell'ultimo export: da li' in poi conta solo cio' che e' cambiato
     let dopo: string | null = null;
@@ -72,12 +111,10 @@ async function loadDbOverrides(): Promise<Partial<Dataset>> {
         : supabase.from("hidden_entities").select("id"),
     ]);
     // Salva gli hidden IDs per il filtraggio
-    if (!hiddenRes.error && hiddenRes.data) {
-      (loadDbOverrides as any)._hiddenIds = new Set(hiddenRes.data.map((r: any) => r.id));
-    } else {
-      (loadDbOverrides as any)._hiddenIds = new Set();
-    }
-    return {
+    const nascosti: string[] = (!hiddenRes.error && hiddenRes.data)
+      ? hiddenRes.data.map((r: any) => r.id) : [];
+    (loadDbOverrides as any)._hiddenIds = new Set(nascosti);
+    const risultato = {
       periods: periodsRes.error ? undefined : (periodsRes.data as any) ?? [],
       works: worksRes.error ? undefined : (worksRes.data as any) ?? [],
       artists: artistsRes.error ? undefined : (artistsRes.data as any) ?? [],
@@ -86,6 +123,8 @@ async function loadDbOverrides(): Promise<Partial<Dataset>> {
       events: eventsRes.error ? undefined : (eventsRes.data as any) ?? [],
       connections: connsRes.error ? undefined : (connsRes.data as any) ?? [],
     };
+    salvaDelta(risultato, nascosti);
+    return risultato;
   } catch {
     (loadDbOverrides as any)._hiddenIds = new Set();
     return {};

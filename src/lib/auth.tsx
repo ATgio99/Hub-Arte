@@ -70,10 +70,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       (event, session) => {
         setSession(session);
         // Il canale realtime nasce legato al token del momento: quando Supabase
-        // lo rinnova va aggiornato anche li', altrimenti alla scadenza il server
-        // lo rifiuta e il client si mette a riconnettersi senza fermarsi.
+        // lo rinnova va aggiornato anche li', altrimenti alla scadenza il
+        // server lo rifiuta.
+        //
+        // Ma va fatto FUORI da questa funzione. Supabase esegue questa callback
+        // tenendo un lucchetto sulla sessione: chiamarci dentro un'altra sua
+        // funzione blocca entrambe, il rinnovo del token fallisce con un 400 e
+        // il client finisce per disconnettere l'utente. E' esattamente quello
+        // che era successo: sincronizzazione ferma e clic che non facevano piu'
+        // niente, perche' la sessione non c'era piu'. Il rinvio a zero
+        // millisecondi basta: esce dal lucchetto e viene eseguito subito dopo.
         if (event === "TOKEN_REFRESHED" || event === "SIGNED_IN") {
-          aggiornaTokenRealtime(session?.access_token);
+          const t = session?.access_token;
+          setTimeout(() => aggiornaTokenRealtime(t), 0);
         }
         const u = session?.user ?? null;
         setUser(u);

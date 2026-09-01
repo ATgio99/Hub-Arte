@@ -175,7 +175,13 @@ export function toggleFavorite(type: FavType, id: string): boolean {
     // Traccia l'eliminazione per evitare che il poll la riaggiunga
     addTombstone(type, id);
   } else {
-    // Traccia l'aggiunta come "pending" finché l'UPSERT non va a buon fine
+    // L'aggiunta va scritta subito nella lista locale. Non c'era: l'id finiva
+    // solo fra i «pending», e la stella si accendeva quando il dato tornava
+    // indietro dal cloud — da qui i dieci secondi di attesa che si vedevano.
+    // Adesso lo stato locale e' quello vero e il cloud lo raggiunge dopo.
+    list.push(id);
+    // Resta segnato come «pending» finché l'UPSERT non va a buon fine, così
+    // una lettura dal cloud che arrivasse prima della scrittura non lo cancella.
     addPendingAdd(type, id);
   }
   persist(f);

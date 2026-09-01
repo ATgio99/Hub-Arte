@@ -134,7 +134,9 @@ export function toggleStudied(id: string): boolean {
     // Traccia l'eliminazione per evitare che il poll la riaggiunga
     addTombstone(id);
   } else {
-    // Traccia l'aggiunta come "pending" finché l'UPSERT non va a buon fine
+    // Stesso difetto dei preferiti: l'id non veniva mai aggiunto alla lista
+    // locale, e la spunta compariva solo quando il dato tornava dal cloud.
+    ids.push(id);
     addPendingAdd(id);
   }
   persist(ids);
