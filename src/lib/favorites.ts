@@ -67,7 +67,17 @@ export function getPendingAddsFor(type: FavType): string[] {
     .map(k => k.slice(`${type}:`.length));
 }
 
-export function getFavorites(): Favorites {
+// La lista sta in memoria e il disco e' solo una copia di sicurezza.
+//
+// Prima ogni componente che mostrava una stella rileggeva localStorage e
+// rifaceva il parsing del JSON a ogni notifica: nella pagina delle opere sono
+// sessanta schede, e un clic ci metteva mezzo secondo a farsi vedere. Adesso il
+// clic tocca un oggetto gia' in memoria, la pagina si ridisegna nel fotogramma
+// successivo, e la scrittura su disco aspetta il momento di quiete.
+let memoria: Favorites | null = null;
+let scritturaProgrammata: any = null;
+
+function leggiDaDisco(): Favorites {
   try {
     const raw = JSON.parse(localStorage.getItem(KEY) || "{}");
     return {
@@ -79,21 +89,73 @@ export function getFavorites(): Favorites {
   }
 }
 
-export function setFavorites(f: Favorites) {
-  localStorage.setItem(KEY, JSON.stringify(f));
-  window.dispatchEvent(new CustomEvent(FAVS_EVENT));
+export function getFavorites(): Favorites {
+  if (!memoria) memoria = leggiDaDisco();
+  // Copia difensiva: chi chiama puo' modificarla senza toccare lo stato vero.
+  return { works: [...memoria.works], artists: [...memoria.artists] };
 }
 
-function persist(f: Favorites) {
-  localStorage.setItem(KEY, JSON.stringify(f));
+/** Set per i controlli di appartenenza: una stella deve sapere in un colpo se
+ *  e' accesa, non scorrere un elenco di trecento voci. */
+let indice: { works: Set<string>; artists: Set<string> } | null = null;
+function aggiornaIndice() {
+  const m = memoria ?? leggiDaDisco();
+  indice = { works: new Set(m.works), artists: new Set(m.artists) };
+}
+
+function scriviSuDisco() {
+  if (!memoria) return;
+  try { localStorage.setItem(KEY, JSON.stringify(memoria)); } catch { /* disco pieno o negato */ }
+}
+
+function applica(f: Favorites) {
+  memoria = { works: [...f.works], artists: [...f.artists] };
+  aggiornaIndice();
+  // Il disegno parte subito; il disco lo raggiunge dopo, raggruppando i clic
+  // ravvicinati in una scrittura sola.
   window.dispatchEvent(new CustomEvent(FAVS_EVENT));
+  if (scritturaProgrammata) clearTimeout(scritturaProgrammata);
+  scritturaProgrammata = setTimeout(scriviSuDisco, 400);
+}
+
+export function setFavorites(f: Favorites) { applica(f); }
+function persist(f: Favorites) { applica(f); }
+
+// Se si chiude la pagina prima che la scrittura differita sia partita, si salva
+// comunque: quattro decimi di secondo bastano a perdere un clic.
+if (typeof window !== "undefined") {
+  window.addEventListener("pagehide", scriviSuDisco);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") scriviSuDisco();
+  });
 }
 
 export type FavType = "work" | "artist";
 
+// Quello che scriviamo noi ci torna indietro dal realtime qualche centinaio di
+// millesimi dopo, e rimette a posto uno stato che era gia' a posto: la pagina si
+// ridisegnava una seconda volta senza motivo. Qui si segna cosa abbiamo appena
+// toccato, e l'eco di ritorno si lascia cadere. La finestra e' breve: una
+// modifica vera fatta da un altro dispositivo passa lo stesso.
+const scritturaNostra = new Map<string, number>();
+const FINESTRA_ECO = 8000;
+
+export function segnaScritturaNostra(type: FavType, id: string) {
+  scritturaNostra.set(`${type}:${id}`, Date.now());
+}
+
+/** Vero se questo cambiamento l'abbiamo appena fatto noi da questa scheda. */
+export function eNostraEco(type: string, id: string): boolean {
+  const k = `${type}:${id}`;
+  const t = scritturaNostra.get(k);
+  if (t == null) return false;
+  if (Date.now() - t > FINESTRA_ECO) { scritturaNostra.delete(k); return false; }
+  return true;
+}
+
 export function isFavorite(type: FavType, id: string): boolean {
-  const f = getFavorites();
-  return (type === "work" ? f.works : f.artists).includes(id);
+  if (!indice) aggiornaIndice();
+  return (type === "work" ? indice!.works : indice!.artists).has(id);
 }
 
 export function toggleFavorite(type: FavType, id: string): boolean {
@@ -107,6 +169,7 @@ export function toggleFavorite(type: FavType, id: string): boolean {
   const list = type === "work" ? f.works : f.artists;
   const i = list.indexOf(id);
   const wasAdded = i < 0;
+  segnaScritturaNostra(type, id);
   if (i >= 0) {
     list.splice(i, 1);
     // Traccia l'eliminazione per evitare che il poll la riaggiunga
@@ -117,8 +180,11 @@ export function toggleFavorite(type: FavType, id: string): boolean {
   }
   persist(f);
 
-  // Push su Supabase (fire-and-forget, non blocca l'UI)
-  supabase.auth.getUser().then(({ data: { user } }) => {
+  // La scrittura sul cloud non deve passare da `auth.getUser()`: quella e' una
+  // chiamata di rete, e la faceva a ogni singolo clic su una stella. La
+  // sessione e' gia' in memoria nel client, e leggerla non costa niente.
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    const user = session?.user;
     if (!user) return;
     if (wasAdded) {
       supabase.from("user_favorites").upsert(
@@ -166,6 +232,23 @@ export async function clearAllFavorites() {
   if (user) {
     await supabase.from("user_favorites").delete().eq("user_id", user.id);
   }
+}
+
+/** Hook mirato: dice solo se QUESTA voce e' fra i preferiti.
+ *
+ *  `useFavorites` consegna un oggetto nuovo a ogni notifica, quindi tutte le
+ *  stelle della pagina si ridisegnavano a ogni clic — sessanta componenti per
+ *  un pallino che cambia colore. Questo restituisce un booleano: si ridisegna
+ *  solo la stella che e' davvero cambiata. */
+export function useIsFavorite(type: FavType, id: string): boolean {
+  const [on, setOn] = useState<boolean>(() => isFavorite(type, id));
+  useEffect(() => {
+    const aggiorna = () => setOn(isFavorite(type, id));
+    aggiorna();
+    window.addEventListener(FAVS_EVENT, aggiorna);
+    return () => window.removeEventListener(FAVS_EVENT, aggiorna);
+  }, [type, id]);
+  return on;
 }
 
 /** Hook reattivo: restituisce i preferiti correnti e si aggiorna a ogni toggle. */

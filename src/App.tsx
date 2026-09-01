@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { pageVariants, usePrefersReducedMotion } from "./lib/motion";
 import { useScorciatoie } from "./lib/scorciatoie";
 import { useAuth } from "./lib/auth";
-import { pullFromCloud, pushToCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides, pullQuizFromCloud, pullImageOverrides } from "./lib/sync";
+import { pullFromCloud, fullSync, subscribeToRealtime, pullGlobalImageOverrides, pullImageOverrides } from "./lib/sync";
 import Sidebar from "./components/Sidebar";
 import CookieConsent from "./components/CookieConsent";
 import LoginPrompt from "./components/LoginPrompt";
@@ -52,66 +52,59 @@ function PageTransition({ pathname, children }: { pathname: string; children: Re
 function useSyncOnLogin() {
   const { user } = useAuth();
 
+  // La dipendenza e' l'identificativo, non l'oggetto: Supabase emette un evento
+  // di autenticazione a ogni rinnovo del token e a ogni rientro sulla scheda, e
+  // ogni volta consegna un oggetto utente nuovo. Con `[user]` questo effetto si
+  // rismontava di continuo; con `[user?.id]` si rismonta solo quando cambia
+  // davvero la persona collegata.
+  const userId = user?.id;
+
   useEffect(() => {
-    let cleanup: (() => void) | undefined;
-    let pollInterval: any;
-    let globalPollInterval: any;
-    let imagePollInterval: any;
-    let quizCleanup: (() => void) | undefined;
+    if (!userId || !user) {
+      // Anonimo: le immagini scelte dagli admin si leggono una volta sola.
+      // Prima venivano richieste ogni 5 minuti anche a chi non ha un account:
+      // 288 chiamate al giorno per visitatore, per un dato che cambia una volta
+      // ogni tanto e che l'esportazione del catalogo porta comunque nei JSON.
+      pullGlobalImageOverrides();
+      return;
+    }
 
+    // Il canale si apre subito, prima di qualunque attesa: se lo si apriva dopo
+    // un await, un rilancio dell'effetto nel frattempo lasciava indietro un
+    // canale che nessuno poteva piu' chiudere.
+    const chiudiCanale = subscribeToRealtime(user);
+
+    let vivo = true;
     (async () => {
-      // Scarica sempre gli override globali (anche per anonimi)
       await pullGlobalImageOverrides();
-
-      if (!user) {
-        // ANONIMO: polla solo i globali ogni 5 MINUTI (prima era 30s).
-        // Le immagini globali cambiano raramente (solo quando l'admin le modifica),
-        // non serve controllare ogni 30s.
-        globalPollInterval = setInterval(async () => {
-          await pullGlobalImageOverrides();
-        }, 300000); // 5 minuti
-        return;
-      }
-
-      // Per gli utenti autenticati: PUSH + PULL (sync completo)
+      if (!vivo) return;
       await fullSync(user);
-      cleanup = subscribeToRealtime(user);
-
-      // Polling automatico ogni 30 secondi: scarica SOLO favorites + studied.
-      // NON scarica quiz (solo al login + dopo quiz) né image_overrides
-      // (solo al login + ogni 5 min) — per ridurre il traffico API.
-      pollInterval = setInterval(async () => {
-        console.log("[sync] Auto-poll: pulling favorites+studied...");
-        await pullFromCloud(user);
-      }, 30000);
-
-      // Polling immagini ogni 5 MINUTI (prima era nel pullFromCloud ogni 30s).
-      // Le immagini cambiano raramente, non serve controllarle spesso.
-      imagePollInterval = setInterval(async () => {
-        console.log("[sync] Image poll: pulling image overrides...");
-        await pullImageOverrides(user);
-      }, 300000); // 5 minuti
-
-      // Dopo un quiz completato: pull immediato delle quiz stats/errors
-      // (evento dispatchato da quizStore.recordSession)
-      const onQuizCompleted = () => {
-        console.log("[sync] Quiz completed: pulling quiz data from cloud...");
-        pullQuizFromCloud(user);
-      };
-      window.addEventListener("atlante:quiz-completed", onQuizCompleted);
-      quizCleanup = () => {
-        window.removeEventListener("atlante:quiz-completed", onQuizCompleted);
-      };
     })();
 
-    return () => {
-      if (cleanup) cleanup();
-      if (quizCleanup) quizCleanup();
-      if (pollInterval) clearInterval(pollInterval);
-      if (globalPollInterval) clearInterval(globalPollInterval);
-      if (imagePollInterval) clearInterval(imagePollInterval);
+    // Niente piu' polling. Ci si riallinea quando si torna sulla scheda, e non
+    // piu' di una volta ogni cinque minuti: il realtime copre tutto il resto.
+    let ultimoAllineamento = Date.now();
+    const alRientro = () => {
+      if (document.visibilityState !== "visible") return;
+      if (Date.now() - ultimoAllineamento < 300000) return;
+      ultimoAllineamento = Date.now();
+      pullFromCloud(user);
+      pullImageOverrides(user);
     };
-  }, [user]);
+    document.addEventListener("visibilitychange", alRientro);
+
+    // A fine quiz i dati sono appena stati mandati da noi: rileggerli subito
+    // era un viaggio di ritorno per informazioni che avevamo gia'.
+    const onQuizCompleted = () => { ultimoAllineamento = Date.now(); };
+    window.addEventListener("atlante:quiz-completed", onQuizCompleted);
+
+    return () => {
+      vivo = false;
+      chiudiCanale();
+      document.removeEventListener("visibilitychange", alRientro);
+      window.removeEventListener("atlante:quiz-completed", onQuizCompleted);
+    };
+  }, [userId]);
 }
 
 export default function App() {

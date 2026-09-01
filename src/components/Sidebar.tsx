@@ -30,6 +30,10 @@ const Icon = ({ id }: { id: string }) => <IconaSezione id={id} />;
 
 
 
+// Condiviso fra le due istanze della barra: e' un momento nel tempo, non uno
+// stato di un componente, quindi vive fuori da React.
+let ultimoControlloRichieste = 0;
+
 function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
   collapsed: boolean; onToggleCollapse: () => void; isHome: boolean; onNavigate?: () => void;
 }) {
@@ -159,17 +163,31 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
       } catch { /* ignore */ }
     };
 
-    check();
-    const onFocus = () => check();
-    const onSuggestionsChanged = () => check();
-    window.addEventListener("focus", onFocus);
-    window.addEventListener("atlante:suggestions-changed", onSuggestionsChanged);
+    // Questo controllo partiva a ogni `focus` della finestra, senza freno, e
+    // partiva due volte perche' la barra e' montata due volte — pannello del
+    // desktop e drawer del telefono. Alt-tab ripetuti facevano quattro query
+    // ognuno. Ora c'e' un limite condiviso fra le due istanze: al massimo una
+    // verifica ogni cinque minuti, salvo quando siamo noi ad aver mandato una
+    // proposta, che e' l'unico momento in cui il numero cambia davvero.
+    const controllaSeServe = (forzato = false) => {
+      const ora = Date.now();
+      if (!forzato && ora - ultimoControlloRichieste < 300000) return;
+      if (!forzato && document.visibilityState !== "visible") return;
+      ultimoControlloRichieste = ora;
+      check();
+    };
+
+    controllaSeServe();
+    const alRientro = () => { if (document.visibilityState === "visible") controllaSeServe(); };
+    const suProposta = () => controllaSeServe(true);
+    document.addEventListener("visibilitychange", alRientro);
+    window.addEventListener("atlante:suggestions-changed", suProposta);
     return () => {
       cancelled = true;
-      window.removeEventListener("focus", onFocus);
-      window.removeEventListener("atlante:suggestions-changed", onSuggestionsChanged);
+      document.removeEventListener("visibilitychange", alRientro);
+      window.removeEventListener("atlante:suggestions-changed", suProposta);
     };
-  }, [user]);
+  }, [user?.id]);
 
   return (
     <>

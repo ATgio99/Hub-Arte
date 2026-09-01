@@ -57,7 +57,14 @@ export function getPendingAddsStudied(): string[] {
   return Object.keys(p).filter(id => now - p[id] < TOMB_TTL_MS);
 }
 
-export function getStudied(): string[] {
+// Come per i preferiti: la lista vive in memoria, il disco e' una copia.
+// Rileggere e riparsare il JSON in ognuna delle sessanta schede a ogni spunta
+// era la ragione per cui la spunta ci metteva mezzo secondo a comparire.
+let memoria: string[] | null = null;
+let indice: Set<string> | null = null;
+let scritturaProgrammata: any = null;
+
+function leggiDaDisco(): string[] {
   try {
     const raw = JSON.parse(localStorage.getItem(KEY) || "[]");
     return Array.isArray(raw) ? raw : [];
@@ -66,18 +73,49 @@ export function getStudied(): string[] {
   }
 }
 
-export function setStudied(ids: string[]) {
-  localStorage.setItem(KEY, JSON.stringify(ids));
-  window.dispatchEvent(new CustomEvent(STUDIED_EVENT));
+export function getStudied(): string[] {
+  if (!memoria) { memoria = leggiDaDisco(); indice = new Set(memoria); }
+  return [...memoria];
 }
 
-function persist(ids: string[]) {
-  localStorage.setItem(KEY, JSON.stringify(ids));
+function scriviSuDisco() {
+  if (!memoria) return;
+  try { localStorage.setItem(KEY, JSON.stringify(memoria)); } catch { /* disco pieno o negato */ }
+}
+
+function applica(ids: string[]) {
+  memoria = [...ids];
+  indice = new Set(memoria);
   window.dispatchEvent(new CustomEvent(STUDIED_EVENT));
+  if (scritturaProgrammata) clearTimeout(scritturaProgrammata);
+  scritturaProgrammata = setTimeout(scriviSuDisco, 400);
+}
+
+export function setStudied(ids: string[]) { applica(ids); }
+function persist(ids: string[]) { applica(ids); }
+
+if (typeof window !== "undefined") {
+  window.addEventListener("pagehide", scriviSuDisco);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") scriviSuDisco();
+  });
 }
 
 export function isStudied(id: string): boolean {
-  return getStudied().includes(id);
+  if (!indice) { memoria = leggiDaDisco(); indice = new Set(memoria); }
+  return indice.has(id);
+}
+
+// Stessa cosa dei preferiti: l'eco della nostra scrittura non deve far
+// ridisegnare la pagina una seconda volta.
+const scritturaNostra = new Map<string, number>();
+const FINESTRA_ECO = 8000;
+
+export function eNostraEcoStudied(id: string): boolean {
+  const t = scritturaNostra.get(id);
+  if (t == null) return false;
+  if (Date.now() - t > FINESTRA_ECO) { scritturaNostra.delete(id); return false; }
+  return true;
 }
 
 export function toggleStudied(id: string): boolean {
@@ -87,6 +125,7 @@ export function toggleStudied(id: string): boolean {
     window.dispatchEvent(new CustomEvent("atlante:login-required", { detail: { action: "approfondita", id } }));
     return false;
   }
+  scritturaNostra.set(id, Date.now());
   const ids = getStudied();
   const i = ids.indexOf(id);
   const wasAdded = i < 0;
@@ -101,7 +140,8 @@ export function toggleStudied(id: string): boolean {
   persist(ids);
 
   // Push su Supabase (fire-and-forget)
-  supabase.auth.getUser().then(({ data: { user } }) => {
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    const user = session?.user;
     if (!user) return;
     if (wasAdded) {
       supabase.from("user_studied").upsert(
@@ -147,6 +187,19 @@ export async function clearAllStudied() {
 }
 
 /** Hook reattivo: restituisce gli id delle opere approfondite e si aggiorna a ogni toggle. */
+/** Come `useIsFavorite`: un booleano invece dell'intero elenco, cosi' a ogni
+ *  spunta si ridisegna una casella sola e non tutte quelle in pagina. */
+export function useIsStudied(id: string): boolean {
+  const [on, setOn] = useState<boolean>(() => isStudied(id));
+  useEffect(() => {
+    const aggiorna = () => setOn(isStudied(id));
+    aggiorna();
+    window.addEventListener(STUDIED_EVENT, aggiorna);
+    return () => window.removeEventListener(STUDIED_EVENT, aggiorna);
+  }, [id]);
+  return on;
+}
+
 export function useStudied(): string[] {
   const [ids, setIds] = useState<string[]>(() => getStudied());
   useEffect(() => {

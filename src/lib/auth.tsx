@@ -2,7 +2,7 @@
 // Auth context — login, signup, sessione utente con Supabase Auth
 // ============================================================================
 import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from "react";
-import { supabase } from "./supabase";
+import { supabase, aggiornaTokenRealtime } from "./supabase";
 import type { User, Session } from "@supabase/supabase-js";
 
 interface AuthState {
@@ -69,6 +69,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
         setSession(session);
+        // Il canale realtime nasce legato al token del momento: quando Supabase
+        // lo rinnova va aggiornato anche li', altrimenti alla scadenza il server
+        // lo rifiuta e il client si mette a riconnettersi senza fermarsi.
+        if (event === "TOKEN_REFRESHED" || event === "SIGNED_IN") {
+          aggiornaTokenRealtime(session?.access_token);
+        }
         const u = session?.user ?? null;
         setUser(u);
         setIsAdmin(isAdminEmail(u?.email));

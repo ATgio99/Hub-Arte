@@ -1,19 +1,18 @@
-import { ReactNode, CSSProperties, useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { ReactNode, CSSProperties, useState, useEffect, useCallback, useRef, useMemo, memo } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import type { Work, EntityType } from "../lib/types";
 import { useData } from "../lib/store";
 import { entityLabel, resolveEntity, WorkGroup, ENTITY_LABEL, artistsOfWork } from "../lib/data";
 import { useCountUp, useInViewOnce, revealContainer, revealItem, revealItemSoft, EASE_OUT, usePrefersReducedMotion, useIsNarrow } from "../lib/motion";
-import { useFavorites, toggleFavorite, FavType } from "../lib/favorites";
+import { useFavorites, useIsFavorite, toggleFavorite, FavType } from "../lib/favorites";
 import IconaSezione from "./IconaSezione";
-import { useStudied, toggleStudied } from "../lib/studied";
+import { useStudied, useIsStudied, toggleStudied } from "../lib/studied";
 import { CONTACT_EMAIL } from "../lib/auth";
 
 // ---- Stella preferiti (opere e artisti) ------------------------------------
 export function FavStar({ type, id, size = 18, className }: { type: FavType; id: string; size?: number; className?: string }) {
-  const favs = useFavorites();
-  const on = (type === "work" ? favs.works : favs.artists).includes(id);
+  const on = useIsFavorite(type, id);
   return (
     <button
       type="button"
@@ -56,8 +55,7 @@ export function SegnoApprofondita({ size = 15 }: { size?: number }) {
 
 // ---- Spunta "approfondita" (opere) -----------------------------------------
 export function StudiedCheck({ id, size = 18, className }: { id: string; size?: number; className?: string }) {
-  const studied = useStudied();
-  const on = studied.includes(id);
+  const on = useIsStudied(id);
   return (
     <button
       type="button"
@@ -312,11 +310,16 @@ export function WorkImage({ work, className, style }: { work: Work; className?: 
 }
 
 // ---- Card opera (galleria) con badge periodo cliccabile -------------------
-export function WorkCard({ work, subtitle, showStudied, group }: { work: Work; subtitle?: string; showStudied?: boolean; group?: WorkGroup | null }) {
+//
+// Memorizzata: la pagina delle opere legge l'elenco dei preferiti per il
+// contatore e per il filtro, quindi si ridisegna a ogni stella toccata. Senza
+// memoria si ridisegnavano con lei tutte le sessanta schede, e un clic ci
+// metteva quasi un secondo a vedersi. Ogni scheda sa gia' badare a se stessa:
+// la stella e la spunta hanno la loro sottoscrizione.
+function WorkCardBase({ work, subtitle, showStudied, group }: { work: Work; subtitle?: string; showStudied?: boolean; group?: WorkGroup | null }) {
   const ix = useData();
   const period = ix.periodById.get(work.period_id);
-  const studied = useStudied();
-  const isStudied = studied.includes(work.id);
+  const isStudied = useIsStudied(work.id);
   return (
     <div className={`card workcard ${isStudied ? "workcard-studied" : ""}`} data-testid={`card-work-${work.id}`}>
       <Link to={`/opera/${work.id}`} className="workcard-img">
@@ -369,6 +372,8 @@ export function WorkCard({ work, subtitle, showStudied, group }: { work: Work; s
 
 // ---- Card gruppo opere (complesso architettonico) -------------------------
 // Layout verticale identico a WorkCard, con sezione espandibile sotto
+export const WorkCard = memo(WorkCardBase);
+
 export function WorkGroupCard({ group, expanded, onToggle }: { group: WorkGroup; expanded: boolean; onToggle: () => void }) {
   const ix = useData();
   const studied = useStudied();

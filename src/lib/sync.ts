@@ -26,8 +26,8 @@
 // ============================================================================
 
 import { supabase } from "./supabase";
-import { getFavorites, setFavorites, filterTombstoned, getPendingAddsFor } from "./favorites";
-import { getStudied, setStudied, filterTombstonedStudied, getPendingAddsStudied } from "./studied";
+import { getFavorites, setFavorites, filterTombstoned, getPendingAddsFor, eNostraEco } from "./favorites";
+import { getStudied, setStudied, filterTombstonedStudied, getPendingAddsStudied, eNostraEcoStudied } from "./studied";
 import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "./imageOverrides";
 import type { OverrideMap } from "./imageOverrides";
 import type { User } from "@supabase/supabase-js";
@@ -361,18 +361,52 @@ export async function fullSync(user: User): Promise<void> {
 }
 
 // ---------- REALTIME SUBSCRIPTIONS ----------
+//
+// Qui c'era il difetto che ha prodotto centinaia di migliaia di chiamate al
+// giorno. Tre cose andavano storte insieme:
+//
+// 1. Una variabile globale «subscriptionsActive» faceva da lucchetto. Se
+//    l'effetto che chiama questa funzione veniva rilanciato mentre era ancora
+//    dentro un await, la pulizia partiva prima che il canale esistesse: il
+//    lucchetto restava chiuso per sempre, il canale vecchio non lo rimuoveva
+//    piu' nessuno e ogni chiamata successiva tornava «undefined».
+// 2. Il canale restava agganciato al token con cui era nato. Quando quel token
+//    scadeva — dopo circa un'ora — il server lo rifiutava.
+// 3. `.subscribe()` era chiamato senza callback di stato: l'errore era muto e
+//    il client riprovava a connettersi da solo, all'infinito.
+//
+// Il risultato era un canale zombie che bussava alla porta tutto il giorno.
+// Adesso: un solo canale tracciato in un riferimento, chiuso davvero quando si
+// chiude, riautenticato a ogni rinnovo del token, e con un tetto ai tentativi
+// oltre il quale si smette e si torna a sincronizzare al rientro sulla scheda.
 
-let subscriptionsActive = false;
+let canaleCorrente: ReturnType<typeof supabase.channel> | null = null;
+let tentativiFalliti = 0;
+const MAX_TENTATIVI = 4;
 
-export function subscribeToRealtime(user: User): (() => void) | undefined {
-  if (subscriptionsActive) return undefined;
-  subscriptionsActive = true;
+/** Chiude il canale in corso, se ce n'e' uno. Sempre sicuro da chiamare. */
+export function chiudiRealtime() {
+  if (canaleCorrente) {
+    try { supabase.removeChannel(canaleCorrente); } catch { /* gia' chiuso */ }
+    canaleCorrente = null;
+  }
+}
+
+export function subscribeToRealtime(user: User): () => void {
+  // Un canale alla volta: se ce n'era gia' uno lo si chiude, non lo si eredita.
+  chiudiRealtime();
+  tentativiFalliti = 0;
 
   const channel = supabase
-    .channel("hubart-sync")
+    .channel(`hubart-sync-${user.id}`)
     .on("postgres_changes",
       { event: "*", schema: "public", table: "user_favorites", filter: `user_id=eq.${user.id}` },
       (payload) => {
+        // L'eco delle nostre stesse scritture si lascia cadere: lo stato locale
+        // e' gia' quello giusto, e riapplicarlo fa solo ridisegnare la pagina.
+        const idEco = (payload.new as any)?.work_id ?? (payload.old as any)?.work_id;
+        const tipoEco = (payload.new as any)?.type ?? (payload.old as any)?.type;
+        if (idEco && tipoEco && eNostraEco(tipoEco, idEco)) return;
         if (payload.eventType === "INSERT") {
           const f = getFavorites();
           const list = payload.new.type === "work" ? f.works : f.artists;
@@ -398,6 +432,8 @@ export function subscribeToRealtime(user: User): (() => void) | undefined {
     .on("postgres_changes",
       { event: "*", schema: "public", table: "user_studied", filter: `user_id=eq.${user.id}` },
       (payload) => {
+        const idEco = (payload.new as any)?.work_id ?? (payload.old as any)?.work_id;
+        if (idEco && eNostraEcoStudied(idEco)) return;
         if (payload.eventType === "INSERT") {
           const ids = getStudied();
           const newId = payload.new.work_id;
@@ -448,10 +484,27 @@ export function subscribeToRealtime(user: User): (() => void) | undefined {
         }
       }
     )
-    .subscribe();
+    .subscribe((stato) => {
+      if (stato === "SUBSCRIBED") {
+        tentativiFalliti = 0;
+        return;
+      }
+      if (stato === "CHANNEL_ERROR" || stato === "TIMED_OUT") {
+        tentativiFalliti++;
+        // Oltre il tetto si smette: insistere contro un server che risponde
+        // «too many requests» produce solo altre richieste. La sincronizzazione
+        // continua comunque al rientro sulla scheda.
+        if (tentativiFalliti >= MAX_TENTATIVI) {
+          console.warn(`[sync] Realtime non disponibile dopo ${MAX_TENTATIVI} tentativi: si continua senza, sincronizzando al rientro sulla scheda.`);
+          chiudiRealtime();
+        }
+      }
+    });
 
+  canaleCorrente = channel;
   return () => {
-    supabase.removeChannel(channel);
-    subscriptionsActive = false;
+    if (canaleCorrente === channel) chiudiRealtime();
   };
 }
+
+

@@ -57,3 +57,17 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
     detectSessionInUrl: urlHasAuthData,
   },
 });
+
+/** Il canale realtime nasce legato al token del momento. Quando Supabase lo
+ *  rinnova va detto anche li', altrimenti alla scadenza il server lo rifiuta e
+ *  il client entra in un ciclo di riconnessioni — la causa delle centinaia di
+ *  migliaia di chiamate al giorno.
+ *
+ *  Sta qui e non in sync.ts perche' questo file non importa niente
+ *  dell'applicazione: mettendola altrove, auth.tsx avrebbe dovuto importare
+ *  sync.ts, che importa imageOverrides.ts, che importa auth.tsx — un cerchio
+ *  che lascia il contesto di autenticazione vuoto al primo render. */
+export function aggiornaTokenRealtime(token: string | undefined) {
+  if (!token) return;
+  try { supabase.realtime.setAuth(token); } catch { /* versione senza setAuth */ }
+}
