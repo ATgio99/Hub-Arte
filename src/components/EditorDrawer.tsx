@@ -538,13 +538,6 @@ function EditorDrawerInner({
                     {WORK_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
                   </select>
                 </Field>
-                <Field label="Importanza">
-                  <select defaultValue={String(work.importance)} onChange={(e) => set("importance", Number(e.target.value) as Work["importance"])} style={inputStyle}>
-                    <option value="1">1 · Minore</option>
-                    <option value="2">2 · Importante</option>
-                    <option value="3">3 · Capitale</option>
-                  </select>
-                </Field>
               </div>
 
               <Field label="Periodo">

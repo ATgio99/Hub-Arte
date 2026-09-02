@@ -9,6 +9,9 @@ import { useFavorites, useIsFavorite, toggleFavorite, FavType } from "../lib/fav
 import IconaSezione from "./IconaSezione";
 import { useStudied, useIsStudied, toggleStudied } from "../lib/studied";
 import { CONTACT_EMAIL } from "../lib/auth";
+import {
+  clearLastOpera, clearLastArtista, clearLastTimeline, clearLastMappa,
+} from "../lib/lastVisited";
 
 // ---- Stella preferiti (opere e artisti) ------------------------------------
 export function FavStar({ type, id, size = 18, className }: { type: FavType; id: string; size?: number; className?: string }) {
@@ -329,7 +332,6 @@ function WorkCardBase({ work, subtitle, showStudied, group }: { work: Work; subt
             <span className="badge-period">{period.name}</span>
           </span>
         )}
-        {work.importance === 3 && <span className="workcard-imp">✦</span>}
         {isStudied && <span className="workcard-studied-badge" title="Approfondita"><SegnoApprofondita size={12} /></span>}
         {group && (
           <span
@@ -434,7 +436,6 @@ export function WorkGroupCard({ group, expanded, onToggle }: { group: WorkGroup;
                 <span className="tag" style={{ fontSize: 10, padding: "1px 6px", whiteSpace: "nowrap" }}>{w.type}</span>
                 <span className="workgroup-child-title">{w.title}</span>
                 {wStudied && <SegnoApprofondita size={13} />}
-                {w.importance === 3 && <span style={{ color: "var(--gold-deep)", fontSize: 12, flexShrink: 0 }}>✦</span>}
               </Link>
             );
           })}
@@ -775,12 +776,19 @@ export function WorkGallery({ work }: { work: Work }) {
 // cronologia, a destra la casetta col nome della sezione da cui la scheda
 // proviene. Il secondo movimento serve soprattutto su telefono, dove il menu si
 // chiude appena apri qualcosa e non c'e' un modo rapido per tornare all'elenco.
-const SEZIONE_DI: { prefisso: string; base: string; nome: string; icona: string }[] = [
-  { prefisso: "/opera/", base: "/opere", nome: "Opere", icona: "opere" },
-  { prefisso: "/complesso/", base: "/opere", nome: "Opere", icona: "opere" },
-  { prefisso: "/artista/", base: "/artisti", nome: "Protagonisti", icona: "artisti" },
-  { prefisso: "/periodo/", base: "/timeline", nome: "Linea del tempo", icona: "timeline" },
-  { prefisso: "/luogo/", base: "/mappa", nome: "Mappa", icona: "mappa" },
+// `dimentica` azzera la memoria della sezione. Serve perche' questo comando
+// vuol dire «riportami all'indice», e senza la pulizia l'indice ti rimandava
+// subito all'ultima scheda aperta: si tornava indietro e si era di nuovo dove
+// si era. E' la stessa pulizia che fa il menu laterale quando si tocca due
+// volte la stessa voce. Tecniche e Glossario non hanno memoria, quindi niente.
+const SEZIONE_DI: {
+  prefisso: string; base: string; nome: string; icona: string; dimentica?: () => void;
+}[] = [
+  { prefisso: "/opera/", base: "/opere", nome: "Opere", icona: "opere", dimentica: clearLastOpera },
+  { prefisso: "/complesso/", base: "/opere", nome: "Opere", icona: "opere", dimentica: clearLastOpera },
+  { prefisso: "/artista/", base: "/artisti", nome: "Protagonisti", icona: "artisti", dimentica: clearLastArtista },
+  { prefisso: "/periodo/", base: "/timeline", nome: "Linea del tempo", icona: "timeline", dimentica: clearLastTimeline },
+  { prefisso: "/luogo/", base: "/mappa", nome: "Mappa", icona: "mappa", dimentica: clearLastMappa },
   { prefisso: "/tecnica/", base: "/tecniche", nome: "Tecniche", icona: "tecniche" },
   { prefisso: "/termine/", base: "/glossario", nome: "Glossario", icona: "glossario" },
 ];
@@ -842,7 +850,13 @@ export function BarraScheda({ azioni }: { azioni?: ReactNode }) {
           <>
             {!soloSezione && <span aria-hidden style={{ width: 1, background: "var(--line)" }} />}
             <button
-              onClick={() => nav(sezione.base)}
+              onClick={() => {
+                sezione.dimentica?.();
+                // Il menu laterale ascolta questo evento per aggiornare la voce
+                // che mostra dove si tornerebbe: senza, resterebbe indietro.
+                window.dispatchEvent(new CustomEvent("atlante:last-visited-changed"));
+                nav(sezione.base);
+              }}
               style={{ ...parte, padding: "0 14px" }}
               title={`Vai a ${sezione.nome}`}
               data-testid="button-section-home"

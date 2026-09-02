@@ -57,7 +57,10 @@ export interface Work {
   type: WorkType; technique_ids: string[]; materials: string[];
   location_city: string | null; location_place: string | null;
   lat: number | null; lon: number | null;
-  book: 1 | 2; chapter: number; page: number; source_file: string;
+  // `book` e' il numero della fonte da cui viene la scheda: vedi lib/fonti.ts.
+  // Non e' il numero del volume, ed era dichiarato 1|2 mentre nei dati c'e'
+  // anche un 8 — ventisei opere che il tipo diceva impossibili.
+  book: number; chapter: number; page: number; source_file: string;
   importance: 1 | 2 | 3; summary: string; analysis: string | null;
   innovations: string[]; term_ids: string[];
   image_url?: string; image_thumb?: string; image_source?: string;

@@ -46,7 +46,6 @@ export default function WorksInline({ works }: { works: Work[] }) {
               <span className="wi-txt">
                 <span className="wi-title">
                   {w.title}
-                  {w.importance === 3 && <span className="wi-star" title="Opera capitale"> ✦</span>}
                 </span>
                 <span className="wi-meta tnum">{[place, w.date_text].filter(Boolean).join(" · ")}</span>
               </span>

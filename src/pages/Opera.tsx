@@ -7,6 +7,7 @@ import { getOverrides, setOverride, clearOverride } from "../lib/imageOverrides"
 import { useStudied, toggleStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
 import { setLastOpera } from "../lib/lastVisited";
+import { citazione } from "../lib/fonti";
 import EditorDrawer from "../components/EditorDrawer";
 import {
   artistsOfWork, termsOfWork, techniquesOfWork, relatedWorks,
@@ -196,7 +197,6 @@ export default function Opera() {
         <div>
           <div style={{ display: "flex", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
             <span className="tag">{w.type}</span>
-            {w.importance === 3 && <span className="tag" style={{ color: "var(--gold-deep)", borderColor: "var(--gold-deep)" }}>✦ opera capitale</span>}
           </div>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
             <h1 style={{ fontSize: "clamp(28px,4.5vw,46px)", lineHeight: 1.04, letterSpacing: "-.02em", minWidth: 0 }}>{w.title}</h1>
@@ -227,6 +227,11 @@ export default function Opera() {
             {w.location_city && <><dt>Luogo</dt><dd>{w.location_place ? `${w.location_place}, ` : ""}<Link className="tlink" to={`/luogo/${encodeURIComponent(w.location_city)}`}>{w.location_city}</Link></dd></>}
             {techs.length > 0 && <><dt>Tecnica</dt><dd>{techs.map((t, i) => <span key={t.id}>{i > 0 && ", "}<EntityLink type="technique" id={t.id} label={t.name} /></span>)}</dd></>}
             {w.materials.length > 0 && <><dt>Materiali</dt><dd>{w.materials.join(", ")}</dd></>}
+            {/* Da dove viene la scheda. E' il dato che ha preso il posto di
+                «opera capitale»: dice un fatto invece di dare un voto. */}
+            {citazione(w.book, w.chapter, w.page) && (
+              <><dt>Fonte</dt><dd><Link className="tlink" to="/legal/crediti">{citazione(w.book, w.chapter, w.page)}</Link></dd></>
+            )}
           </dl>
 
           {incertezza && (

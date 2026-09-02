@@ -22,7 +22,15 @@ export default function PeriodDossier({ pid, variant = "timeline", onClose }:
   const data = useMemo(() => {
     if (!p) return null;
     const works = ix.ds.works.filter((w) => w.period_id === pid);
-    const capital = works.filter((w) => w.importance === 3).slice(0, 6);
+    // Sei opere per dare un'idea del periodo. Prima erano «le capitali», cioe'
+    // quelle a cui i manuali davano piu' spazio: un criterio che sembrava un
+    // giudizio sull'opera e non lo era. Ora si prendono quelle con
+    // un'immagine, in ordine di data — si vedono, e non pretendono una
+    // gerarchia che il catalogo non ha.
+    const capital = works
+      .filter((w) => w.image_thumb || w.image_url)
+      .sort((a, b) => (a.year_end ?? a.year_start ?? 0) - (b.year_end ?? b.year_start ?? 0))
+      .slice(0, 6);
     // artisti per numero di opere nel periodo
     const ac = new Map<string, number>();
     for (const w of works) for (const a of w.artist_ids ?? []) ac.set(a, (ac.get(a) ?? 0) + 1);
@@ -145,7 +153,7 @@ export default function PeriodDossier({ pid, variant = "timeline", onClose }:
 
       {isTL && data.capital.length > 0 && (
         <>
-          <div className="smallcaps dossier-label" style={{ marginTop: 18 }}>Opere capitali</div>
+          <div className="smallcaps dossier-label" style={{ marginTop: 18 }}>Opere del periodo</div>
           <div className="dossier-works">
             {data.capital.map((w) => (
               <Link key={w.id} to={`/opera/${w.id}`} className="dossier-work" title={w.title}>

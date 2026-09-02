@@ -210,11 +210,6 @@ export default function Dashboard() {
       .filter((x) => x[1] > 0).sort((a, b) => b[1] - a[1]).slice(0, 10);
   }, [works, ix]);
 
-  const imp = useMemo(() => {
-    const c = [0, 0, 0, 0]; works.forEach((w) => c[w.importance]++);
-    return c;
-  }, [works]);
-
   // ---- densità temporale: opere per bin (istogramma grande) ---------------
   const nBins = Math.max(1, Math.ceil((bounds.max - bounds.min) / BIN));
   const density = useMemo(() => {
@@ -391,15 +386,6 @@ export default function Dashboard() {
         <div>
           <div className="eyebrow" style={{ marginBottom: 16 }}>Opere per tipologia</div>
           <Bars data={byType} />
-          <div style={{ marginTop: 28 }} className="eyebrow">Opere per rilievo</div>
-          <div style={{ display: "flex", gap: 12, marginTop: 14 }}>
-            {[[3, "Capitali"], [2, "Rilevanti"], [1, "Citate"]].map(([i, l]: any) => (
-              <div className="stat" key={i} style={{ flex: 1, textAlign: "center" }}>
-                <div className="stat-num tnum" style={{ fontSize: 32 }}><CountUp value={imp[i]} /></div>
-                <div className="stat-lab">{l}</div>
-              </div>
-            ))}
-          </div>
         </div>
         <div>
           <div className="eyebrow" style={{ marginBottom: 16 }}>Tipi di connessione</div>

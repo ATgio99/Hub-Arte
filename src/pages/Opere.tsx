@@ -7,6 +7,8 @@ import { useFavorites } from "../lib/favorites";
 import { useStudied } from "../lib/studied";
 import { computeWorkGroups, workGroupMap } from "../lib/data";
 import { clearLastOpera } from "../lib/lastVisited";
+import { BottoneFiltri, FoglioFiltri, contaFiltri, StatoFiltri } from "../components/FiltriOpereFoglio";
+import { useIsNarrow } from "../lib/motion";
 import type { WorkType } from "../lib/types";
 
 const TYPES: WorkType[] = ["architettura", "pittura", "scultura", "mosaico", "miniatura", "oreficeria", "urbanistica", "altro"];
@@ -200,6 +202,28 @@ export default function Opere() {
   const studiedCount = useMemo(() => filtered.filter(w => studied.includes(w.id)).length, [filtered, studied]);
   const notStudiedCount = filtered.length - studiedCount;
 
+  // Sotto i 900px vale la stessa soglia del menu a scomparsa: dove sparisce la
+  // barra laterale i filtri non ci stanno piu' in riga.
+  const stretto = useIsNarrow(900);
+  const [filtriAperti, setFiltriAperti] = useState(false);
+
+  const azzeraFiltri = () => {
+    setQ(""); setType(""); setPeriod(""); setImp("");
+    setFavOnly(false); setStudiedFilter(""); setGrouped(false); setLimit(60);
+  };
+
+  const statoFiltri: StatoFiltri = {
+    type, setType: (v) => { setType(v); setLimit(60); }, tipi: TYPES,
+    period, setPeriod: (v) => { setPeriod(v); setLimit(60); },
+    periodOpts, senzaPeriodo, chiaveSenzaPeriodo: SENZA_PERIODO,
+    favOnly, setFavOnly: (v) => { setFavOnly(v); setLimit(60); }, nFav: favs.works.length,
+    studiedFilter, setStudiedFilter: (v) => { setStudiedFilter(v); setLimit(60); },
+    nStudiate: studiedCount, nDaStudiare: notStudiedCount,
+    grouped, setGrouped, nGruppi: groups.size,
+    onAzzera: azzeraFiltri,
+    quante: filtered.length,
+  };
+
   return (
     <div className="wrap page">
       <div className="page-head">
@@ -213,6 +237,11 @@ export default function Opere() {
       <div className="filterbar" style={{ marginBottom: 8 }}>
         <input ref={searchRef} className="input" placeholder="Cerca per titolo o luogo…" value={q}
           onChange={(e) => { setQ(e.target.value); setLimit(60); }} data-testid="input-search" style={{ flex: "1 1 240px" }} />
+        {/* Su schermo stretto i sei filtri prendevano quattro righe e la prima
+            opera finiva sotto la piega. Restano fuori la ricerca e un tasto che
+            dice quanti filtri sono accesi; il resto sale dal basso. */}
+        {stretto && <BottoneFiltri attivi={contaFiltri(statoFiltri)} onApri={() => setFiltriAperti(true)} />}
+        {!stretto && <>
         <select className="input" value={type} onChange={(e) => { setType(e.target.value); setLimit(60); }} data-testid="select-type">
           <option value="">Ogni tipo</option>
           {TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
@@ -223,13 +252,6 @@ export default function Opere() {
           {senzaPeriodo > 0 && (
             <option value={SENZA_PERIODO}>Senza periodo assegnato ({senzaPeriodo})</option>
           )}
-        </select>
-        <select className="input" value={imp} onChange={(e) => { setImp(e.target.value); setLimit(60); }} data-testid="select-imp"
-          title="Quanto spazio danno all'opera i manuali da cui nasce il catalogo. Non è un giudizio di valore sull'opera.">
-          <option value="">Ogni trattazione</option>
-          <option value="3">Trattate a lungo</option>
-          <option value="2">Trattate</option>
-          <option value="1">Solo citate</option>
         </select>
         <button className={`chip fav-chip ${favOnly ? "active" : ""}`} onClick={() => { setFavOnly((v) => !v); setLimit(60); }} data-testid="works-fav-only"
           title={favs.works.length === 0 ? "Nessuna opera preferita: usa la ★ sulle schede" : ""}>
@@ -258,7 +280,10 @@ export default function Opere() {
           title={groups.size === 0 ? "Nessun gruppo disponibile" : "Raggruppa opere dello stesso complesso"}>
           ⛨ Complessi{groups.size > 0 ? ` (${groups.size})` : ""}
         </button>
+        </>}
       </div>
+
+      {stretto && <FoglioFiltri aperto={filtriAperti} onChiudi={() => setFiltriAperti(false)} s={statoFiltri} />}
 
       <div style={{ display: "flex", alignItems: "center", gap: 14, margin: "12px 0 22px", flexWrap: "wrap" }}>
         <div className="muted tnum" style={{ fontSize: 13 }} data-testid="text-count">

@@ -27,7 +27,7 @@ type FieldKey =
   | "title" | "summary" | "analysis" | "date_text" | "year_start" | "year_end"
   | "type" | "location_city" | "location_place" | "materials"
   | "image_url" | "image_thumb" | "image_source"
-  | "importance" | "artist" | "period" | "technique" | "term"
+  | "artist" | "period" | "technique" | "term"
   | "name" | "aka" | "birth" | "death" | "role" | "bio" | "innovations";
 
 const FIELD_LABELS: Record<FieldKey, string> = {
@@ -44,7 +44,6 @@ const FIELD_LABELS: Record<FieldKey, string> = {
   image_url: "URL immagine",
   image_thumb: "URL thumbnail",
   image_source: "Fonte immagine",
-  importance: "Importanza (1-3)",
   artist: "Autore / artisti",
   period: "Periodo",
   technique: "Tecnica",
@@ -62,7 +61,7 @@ const CAMPI_OPERA: FieldKey[] = [
   "title", "summary", "analysis", "date_text", "year_start", "year_end",
   "type", "location_city", "location_place", "materials",
   "image_url", "image_thumb", "image_source",
-  "importance", "artist", "period", "technique", "term",
+  "artist", "period", "technique", "term",
 ];
 
 const CAMPI_AUTORE: FieldKey[] = [

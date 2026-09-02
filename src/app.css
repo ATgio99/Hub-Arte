@@ -1049,12 +1049,12 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   .barra-scheda-nav { height: 42px; border-radius: 11px; box-shadow: var(--shadow-sm); background: rgba(251,248,241,.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
   .barra-scheda-nav button { height: 40px !important; }
   .barra-scheda-azioni .btn { height: 42px; border-radius: 11px; overflow: hidden; text-overflow: ellipsis; }
-  /* Lo sfondo chiaro vale solo per i tasti neutri. Applicato a tutti copriva
-     il fondo scuro del tasto «Modifica» degli amministratori, che diventava
-     testo chiaro su chiaro: illeggibile. */
+  /* Il fondo semitrasparente sfocato lo faceva sembrare sollevato sopra la
+     pagina, come il tasto della sezione che invece sopra ci sta davvero. Qui
+     serve il contrario: questo tasto appartiene alla pagina e con lei scorre,
+     quindi fondo pieno e nessuna sfocatura. */
   .barra-scheda-azioni .btn:not(.gold):not(.amber) {
-    background: rgba(251,248,241,.92);
-    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    background: var(--bg-1);
   }
 
   .sbx-scrim {
@@ -1349,6 +1349,29 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   font-size: 12.5px; color: var(--gold-deep); letter-spacing: .04em;
 }
 .fint-azzera:hover { text-decoration: underline; }
+
+/* ---------- Foglio dei filtri delle Opere ----------
+   Riusa il guscio del foglio dell'intervallo storico: stesso velo, stessa
+   salita dal basso, stessa maniglia. Cambia solo cio' che ci sta dentro, e i
+   campi vanno uno per riga perche' su un telefono due select affiancate
+   diventano due select strette. */
+.ffilt-corpo { display: flex; flex-direction: column; gap: 16px; padding: 4px 0 18px; }
+.ffilt-campo { display: flex; flex-direction: column; gap: 7px; }
+.ffilt-et {
+  font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-dim); font-weight: 600;
+}
+.ffilt-campo .input { width: 100%; height: 44px; }
+.ffilt-chip { display: flex; flex-wrap: wrap; gap: 8px; }
+.ffilt-chip .chip { height: 38px; }
+/* Il fondo resta visibile mentre si scorre l'elenco dei filtri: il tasto che
+   chiude dice anche quante opere restano, ed e' l'unica risposta che si sta
+   cercando mentre si tocca. */
+.ffilt-fondo {
+  position: sticky; bottom: 0; padding-top: 12px;
+  background: linear-gradient(180deg, transparent, var(--bg-1) 40%);
+}
+.ffilt-fondo .btn { height: 48px; }
 .fint-conto { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
 .fint-conto b { font-size: 16px; font-variant-numeric: tabular-nums; }
 .fint-conto span { font-size: 12.5px; color: var(--ink-dim); }

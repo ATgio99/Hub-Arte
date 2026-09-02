@@ -187,8 +187,11 @@ export default function ArtistTimeline({
             // Stagger verticale per evitare overlap quando ci sono più opere nello stesso anno
             const staggerY = (idx % 3) * 16 - 16;
             const isHovered = hoveredId === w.id;
-            const importance = w.importance || 1;
-            const size = importance === 3 ? 12 : importance === 2 ? 9 : 7;
+            // Tutti i pallini uguali: la grandezza codificava «l'importanza»
+            // dell'opera, che era poi lo spazio datole dai manuali. Quel dato
+            // non c'e' piu', e un pallino piu' grosso senza niente dietro
+            // direbbe una gerarchia che non abbiamo.
+            const size = 9;
             return (
               <div
                 key={w.id}
@@ -207,7 +210,7 @@ export default function ArtistTimeline({
                   width: size,
                   height: size,
                   borderRadius: "50%",
-                  background: importance === 3 ? "#b88a2e" : importance === 2 ? "#6b2d3e" : "var(--ink-dim)",
+                  background: "#8f6a1d",
                   border: "2px solid var(--bg)",
                   cursor: "pointer",
                   boxShadow: isHovered ? "0 0 0 2px var(--gold)" : "none",
@@ -263,16 +266,8 @@ export default function ArtistTimeline({
           color: "var(--ink-dim)", flexWrap: "wrap", justifyContent: "center",
         }}>
           <span>
-            <span style={{ display: "inline-block", width: 10, height: 10, borderRadius: "50%", background: "#b88a2e", marginRight: 4, verticalAlign: "middle" }} />
-            opera capitale
-          </span>
-          <span>
-            <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: "#6b2d3e", marginRight: 4, verticalAlign: "middle" }} />
-            opera importante
-          </span>
-          <span>
-            <span style={{ display: "inline-block", width: 6, height: 6, borderRadius: "50%", background: "var(--ink-dim)", marginRight: 4, verticalAlign: "middle" }} />
-            opera minore
+            <span style={{ display: "inline-block", width: 9, height: 9, borderRadius: "50%", background: "#8f6a1d", marginRight: 4, verticalAlign: "middle" }} />
+            opera
           </span>
           {lifeMin != null && lifeMax != null && (
             <span>
