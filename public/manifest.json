@@ -4,11 +4,14 @@
   "description": "Atlante di Storia dell'Arte open source: grafo 3D, timeline, mappa e quiz.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1a1a1a",
+  "background_color": "#f6f1e8",
   "theme_color": "#b88a2e",
   "orientation": "any",
   "lang": "it",
-  "categories": ["education", "books"],
+  "categories": [
+    "education",
+    "books"
+  ],
   "icons": [
     {
       "src": "icon-192.png",

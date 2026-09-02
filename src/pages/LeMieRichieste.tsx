@@ -98,7 +98,11 @@ export default function LeMieRichieste() {
       setEditSuggestions((editRes.data as EditSuggestionRow[]) || []);
       // Reset del contatore "visto" — l'utente sta visualizzando le richieste ora
       try { localStorage.setItem(`atlante:sugg-seen:${user.id}`, String(Date.now())); } catch {}
-      window.dispatchEvent(new Event("atlante:suggestions-changed"));
+      // Qui si annunciava «qualcosa e' cambiato», e il menu rispondeva
+      // rifacendo le due query per ricontare. Ma non c'e' niente da ricontare:
+      // l'utente ha appena guardato le sue richieste, quindi il numero da
+      // mostrare e' zero, e lo sappiamo senza chiedere niente al database.
+      window.dispatchEvent(new Event("atlante:richieste-viste"));
     } catch (e: any) {
       setError(e.message || "Errore caricamento richieste");
     } finally {

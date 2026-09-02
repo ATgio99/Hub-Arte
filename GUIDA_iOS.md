@@ -1,211 +1,134 @@
-# HUB Art — Guida all'installazione su iPhone (iOS)
+# HUB Arte su iPhone
 
-## Panoramica
+L'atlante gira su iPhone come app vera, non come pagina web salvata sulla home.
+Il catalogo è dentro l'app — 1.100 opere, immagini escluse — quindi **funziona
+anche senza rete**: in un museo, in metropolitana, in aula.
 
-HUB Art è stato convertito in un'app iOS nativa usando **Capacitor**. L'app funziona completamente offline e non richiede un server Python — tutte le operazioni CRUD sulle opere avvengono tramite localStorage del browser integrato.
-
----
-
-## Requisiti
-
-- **Mac** con macOS 13+ (Ventura o successivo)
-- **Xcode 15+** (gratis dal Mac App Store)
-- **Node.js 18+** (scarica da nodejs.org)
-- Il tuo **iPhone** con iOS 16+
-- Un **cavo USB** per collegare l'iPhone al Mac
-- Un **Apple ID** (gratis — non serve l'abbonamento sviluppatore per testare sul tuo dispositivo)
+Aggiornata a settembre 2026, per Capacitor 8.
 
 ---
 
-## Metodo 1: Installazione tramite Xcode (Consigliato)
+## Cosa serve
 
-### Passo 1: Installa le dipendenze
+- **Mac** con Xcode 15 o successivo (gratis dal Mac App Store)
+- **Node.js 18+**
+- Un **iPhone** con iOS 16+ e un cavo
+- Un **Apple ID** normale — per installare sul proprio telefono non serve
+  l'abbonamento da sviluppatore
 
-Apri il **Terminale** sul Mac e naviga nella cartella del progetto:
+**CocoaPods non serve più.** Capacitor 8 usa Swift Package Manager: Xcode
+scarica da sé quello che occorre alla prima apertura. Le guide che trovi in
+rete e parlano di `pod install` si riferiscono a versioni precedenti.
+
+---
+
+## Una volta sola: dire al Mac dove sta Xcode
+
+Se hai installato Xcode dopo gli strumenti da riga di comando, il Mac potrebbe
+puntare ancora a quelli. Si vede così:
 
 ```bash
-cd /percorso/alla/cartella/progetto
-npm install
+xcode-select -p
 ```
 
-### Passo 2: Compila il progetto web
+Se risponde `/Library/Developer/CommandLineTools`, correggi (chiede la tua
+password):
 
 ```bash
-npx vite build
+sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 ```
 
-### Passo 3: Sincronizza con iOS
+Deve rispondere `/Applications/Xcode.app/Contents/Developer`.
+
+---
+
+## Ogni volta che vuoi portare le modifiche sul telefono
 
 ```bash
-npx cap sync ios
+npm run ios:prepara
 ```
 
-### Passo 4: Apri Xcode
+Compila il sito e copia il risultato dentro il progetto iOS. Poi:
 
 ```bash
-npx cap open ios
+npm run ios:apri
 ```
 
-Questo apre Xcode con il progetto `App.xcworkspace`.
-
-### Passo 5: Configura il tuo Apple ID in Xcode
-
-1. In Xcode, vai su **Xcode → Settings (⌘,) → Accounts**
-2. Clicca **"+"** in basso a sinistra
-3. Seleziona **Apple ID** e accedi con il tuo ID Apple
-4. Nella lista dei team, vedrai il tuo "Personal Team"
-
-### Passo 6: Seleziona il tuo team di firma
-
-1. Nel navigator di sinistra di Xcode, clicca su **App** (il progetto principale)
-2. Nel tab **Signing & Capabilities**:
-   - Seleziona il tuo **Team** (Personal Team)
-   - Xcode genererà automaticamente un **Bundle Identifier** (es. `com.hubart.atlante`)
-   - Assicurati che **Automatically manage signing** sia attivo
-
-### Passo 7: Collega l'iPhone e installa
-
-1. Collega il tuo iPhone al Mac con il cavo USB
-2. Sull'iPhone, quando compare "Fidati di questo computer?", premi **Fidati**
-3. In Xcode, in alto al centro, nel menu a tendina dei dispositivi:
-   - Seleziona il tuo **iPhone** (dovrebbe apparire con il suo nome)
-4. Premi il pulsante **▶ Run** (o ⌘R) in Xcode
-5. L'app verrà compilata e installata sul tuo iPhone!
-
-### Passo 8: Autorizza lo sviluppatore sull'iPhone
-
-La prima volta che lanci l'app, iOS potrebbe bloccarla:
-
-1. Vai su **Impostazioni → Generali → VPN e gestione dispositivo**
-2. Trova il tuo Apple ID sotto "Sviluppatore app"
-3. Premi **Fidati di [tuo-nome]**
-4. Ora puoi aprire l'app HUB Art!
-
-> ⚠️ **Nota**: Le app firmate con un Apple ID gratuito scadono dopo **7 giorni**. Dovrai reinstallarle riaprendo Xcode e premendo ▶ Run. Per evitare questo, puoi iscriverti all'Apple Developer Program (€99/anno).
+Apre Xcode sul progetto.
 
 ---
 
-## Metodo 2: PWA — Aggiungi alla schermata Home (Senza Mac!)
+## La prima volta, dentro Xcode
 
-Se non hai un Mac, puoi usare l'app come **PWA (Progressive Web App)** direttamente da Safari:
+**1. Collega il tuo Apple ID.** `Xcode → Settings → Accounts → +`, scegli
+*Apple ID* ed entra. Basta quello normale, senza abbonamenti.
 
-### Passo 1: Ospita l'app su un server
+**2. Scegli chi firma l'app.** Nel pannello di sinistra clicca su **App**, poi
+sulla scheda **Signing & Capabilities**. Metti la spunta su *Automatically
+manage signing* e in *Team* scegli il tuo nome (comparirà come «Personal
+Team»).
 
-Puoi usare qualsiasi servizio di hosting gratuito:
-- **Netlify** (netlify.com) — trascina la cartella `dist/`
-- **Vercel** (vercel.com) — importa il progetto
-- **GitHub Pages** — carica la cartella `dist/`
-- Oppure avvia il server locale: `npx serve dist`
+Se Xcode si lamenta che l'identificativo è già usato, cambialo: in *Bundle
+Identifier* metti qualcosa di tuo, per esempio `com.tuonome.hubarte`.
 
-### Passo 2: Apri in Safari sull'iPhone
+**3. Collega l'iPhone** al Mac. La prima volta il telefono chiede se ti fidi
+del computer: rispondi di sì. Poi, in alto al centro in Xcode, scegli il tuo
+iPhone dall'elenco dei dispositivi.
 
-1. Apri **Safari** sull'iPhone
-2. Vai all'URL dell'app (es. `https://tuosito.netlify.app`)
+**4. Premi ▶** (o `⌘R`).
 
-### Passo 3: Aggiungi alla Home
-
-1. Premi il pulsante **Condividi** (icona quadrato con freccia ↑)
-2. Scorri e premi **"Aggiungi alla Home"**
-3. Dai un nome all'app (es. "HUB Art")
-4. Premi **Aggiungi**
-
-L'app apparirà come un'icona sulla tua Home e si aprirà a schermo intero senza la barra di Safari!
-
-> ✅ Questo metodo NON richiede un Mac, Xcode, o un abbonamento Apple Developer.
+**5. Sul telefono, autorizza l'app.** La prima installazione viene bloccata da
+iOS. Vai in *Impostazioni → Generali → VPN e gestione dispositivo*, tocca il
+tuo Apple ID e scegli *Autorizza*. Poi riapri l'app.
 
 ---
 
-## Struttura del progetto iOS
+## Cosa aspettarsi
 
-```
-progetto/
-├── ios/                        ← Progetto Xcode (generato da Capacitor)
-│   └── App/
-│       ├── App.xcworkspace     ← Apri QUESTO file in Xcode
-│       ├── App/
-│       │   ├── public/         ← I file web compilati (da dist/)
-│       │   └── Info.plist      ← Configurazione iOS
-│       └── Podfile
-├── src/                        ← Codice sorgente React
-├── dist/                       ← Build web (usato da Capacitor)
-├── capacitor.config.ts         ← Configurazione Capacitor
-└── package.json
-```
+**L'app scade dopo sette giorni.** Con un Apple ID gratuito è così: passata la
+settimana l'app non si apre più e va reinstallata da Xcode, ripetendo il
+passaggio 4. Per una discussione di laurea o una dimostrazione va bene; per
+tenerla sul telefono a tempo indeterminato serve l'abbonamento Apple Developer,
+99 € l'anno.
 
----
+**Il catalogo è quello del giorno in cui hai compilato.** L'app parte dai file
+che si porta dentro e poi chiede al database solo ciò che è cambiato dopo. Le
+correzioni fatte dalla dashboard si vedono quindi anche nell'app, appena c'è
+rete. Senza rete resta quello impacchettato, che è comunque completo.
 
-## Funzionalità nell'app iOS
+**Le email di conferma e di recupero password rimandano al sito.** Dentro
+l'app l'indirizzo di partenza è `capacitor://localhost`, che esiste solo nel
+telefono: un link di quel tipo, aperto dalla posta, non porterebbe da nessuna
+parte. Chi si registra dall'app conferma quindi su hubarte.it, poi torna
+nell'app e accede. È gestito in `src/lib/auth.tsx`.
 
-| Funzionalità | Stato | Note |
-|---|---|---|
-| 🔍 Navigazione completa | ✅ | Tutte le pagine funzionano |
-| 🗺️ Mappa interattiva | ✅ | Leaflet funziona su WKWebView |
-| 🎮 Animazione 3D Basilica | ✅ | Three.js/WebGL supportato |
-| 📊 Grafo neurale | ✅ | Force-graph 2D/3D |
-| 📅 Linea del tempo (periodi + artisti) | ✅ | Touch scroll e pinch zoom |
-| ✏️ CRUD opere | ✅ | Tramite pagina /admin.html (localStorage) |
-| 🎯 Quiz e test | ✅ | Funziona offline |
-| 📱 Offline | ✅ | I dati JSON sono inclusi nell'app |
-| 🔗 Font web | ⚠️ | Richiede connessione per i font la prima volta |
+**Lo scorrimento dal bordo non ruba più il gesto.** Sul sito, in Safari, lo
+scorrimento dal bordo sinistro torna indietro nella cronologia, e per questo
+l'intervallo storico si apre in un foglio dal basso. Dentro l'app quel gesto
+non c'è.
 
 ---
 
-## Comandi utili
+## Se qualcosa non va
 
-```bash
-# Ricompila dopo modifiche al codice sorgente
-npx vite build && npx cap sync ios
+**«Untrusted Developer» sul telefono** → è il passaggio 5 qui sopra.
 
-# Apri Xcode
-npx cap open ios
+**Xcode non vede l'iPhone** → sblocca il telefono, e se non compare il cavo
+potrebbe essere solo di ricarica: serve un cavo dati.
 
-# Solo sincronizzazione web → iOS (senza ricompilare il web)
-npx cap copy ios
+**Schermata bianca all'avvio** → non hai compilato prima di sincronizzare.
+Rilancia `npm run ios:prepara`.
 
-# Aggiorna i plugin nativi
-npx cap update ios
-```
+**Errori di firma** → cambia il *Bundle Identifier* con uno tuo, come al
+passaggio 2.
 
 ---
 
-## Personalizzazione
+## Portarla sull'App Store
 
-### Cambiare il nome dell'app
-Modifica `capacitor.config.ts`:
-```typescript
-appName: 'HUB Art',  // ← cambia qui
-```
-
-### Cambiare l'icona
-1. Prepara un'immagine 1024×1024 PNG
-2. Usa [App Icon Generator](https://www.appicon.co/) per generare tutti i formati
-3. In Xcode, vai su **Assets.xcassets → AppIcon** e trascina le icone
-
-### Cambiare il colore della splash screen
-Modifica `capacitor.config.ts`:
-```typescript
-plugins: {
-  SplashScreen: {
-    backgroundColor: '#1a1a1a',  // ← cambia qui
-  },
-}
-```
-
----
-
-## Risoluzione problemi
-
-### "Untrusted Developer" sull'iPhone
-Vai su **Impostazioni → Generali → VPN e gestione dispositivo** → fai fiducia del tuo Apple ID.
-
-### L'app non carica i font
-I font da fontshare.com richiedono una connessione internet la prima volta. Dopo il primo caricamento, il browser li memorizza nella cache. Per uso completamente offline, scarica i font e inseriscili localmente.
-
-### L'app si apre ma mostra schermata bianca
-Assicurati di aver eseguito `npx cap sync ios` dopo `npx vite build`. I file web devono essere copiati nella cartella iOS.
-
-### Errori di firma in Xcode
-Assicurati che il Bundle Identifier sia unico. Se `com.hubart.atlante` è già preso, cambialo in qualcosa come `com.tuonome.hubart`.
-
-### Le modifiche alle opere non si vedono
-Le modifiche fatte dalla pagina admin sono salvate in localStorage. Se l'app viene reinstallata, le modifiche vengono perse. Per renderle permanenti, modifica il file `public/data/works.json` prima di ricompilare.
+Serve l'abbonamento Apple Developer (99 € l'anno) e passare la revisione di
+Apple. Un punto da preparare: Apple respinge le app che sono solo un sito web
+impacchettato — è la regola 4.2, *minimum functionality*. HUB Arte ha un
+argomento serio a favore, e cioè che **funziona per intero senza rete** perché
+il catalogo è dentro l'app, ma va sostenuto nella scheda di presentazione, non
+dato per scontato.

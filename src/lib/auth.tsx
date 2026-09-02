@@ -41,11 +41,25 @@ export function isAdminEmail(email?: string | null): boolean {
 }
 
 // Determina il redirect URL dopo conferma email (deve essere l'URL corrente dell'app)
+/** Dove far tornare chi clicca il link ricevuto per email — conferma della
+ *  registrazione o recupero della password.
+ *
+ *  Sul sito e' semplicemente l'indirizzo del sito. Dentro l'app iOS pero'
+ *  `window.location.origin` vale `capacitor://localhost`, che esiste solo
+ *  dentro il telefono: un link con quell'indirizzo, aperto dalla posta, non
+ *  porta da nessuna parte. Si rimanda quindi al sito pubblico, che e' un
+ *  indirizzo vero e raggiungibile da qualunque programma di posta. */
+const SITO_PUBBLICO = "https://hubarte.it";
+
+export function dentroApp(): boolean {
+  if (typeof window === "undefined") return false;
+  const o = window.location.origin;
+  return o.startsWith("capacitor://") || o.startsWith("ionic://") || o === "file://";
+}
+
 function getRedirectTo(): string {
-  if (typeof window !== "undefined") {
-    return window.location.origin;
-  }
-  return "";
+  if (typeof window === "undefined") return "";
+  return dentroApp() ? SITO_PUBBLICO : window.location.origin;
 }
 
 let _passwordRecoveryActive = false;

@@ -8,7 +8,9 @@
     "build": "vite build",
     "typecheck": "tsc -b",
     "preview": "vite preview",
-    "esporta-catalogo": "node scripts/esporta-catalogo.mjs"
+    "esporta-catalogo": "node scripts/esporta-catalogo.mjs",
+    "ios:prepara": "npm run build && npx cap sync ios",
+    "ios:apri": "npx cap open ios"
   },
   "dependencies": {
     "@capacitor/cli": "^8.4.1",

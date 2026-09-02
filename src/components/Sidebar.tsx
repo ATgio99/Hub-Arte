@@ -179,13 +179,20 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
 
     controllaSeServe();
     const alRientro = () => { if (document.visibilityState === "visible") controllaSeServe(); };
+    // Una proposta appena inviata cambia davvero il conto: si ricontrolla.
     const suProposta = () => controllaSeServe(true);
+    // Aver *guardato* le proprie richieste no: il numero da mostrare e' zero e
+    // lo sappiamo gia'. Azzerare senza chiedere risparmia due query ogni volta
+    // che si apre la pagina dei contributi.
+    const suViste = () => setPendingReviewCount(0);
     document.addEventListener("visibilitychange", alRientro);
     window.addEventListener("atlante:suggestions-changed", suProposta);
+    window.addEventListener("atlante:richieste-viste", suViste);
     return () => {
       cancelled = true;
       document.removeEventListener("visibilitychange", alRientro);
       window.removeEventListener("atlante:suggestions-changed", suProposta);
+      window.removeEventListener("atlante:richieste-viste", suViste);
     };
   }, [user?.id]);
 
