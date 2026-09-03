@@ -1,5 +1,5 @@
 {
- "esportato_il": "2026-09-03T20:55:51.363Z",
+ "esportato_il": "2026-09-03T22:33:08.905Z",
  "tabelle": [
   {
    "file": "periods",
@@ -12,10 +12,10 @@
   {
    "file": "works",
    "totale": 1115,
-   "aggiornate": 309,
+   "aggiornate": 353,
    "aggiunte": 0,
    "rimosse": 0,
-   "conImmagine": 1
+   "conImmagine": 2
   },
   {
    "file": "artists",
