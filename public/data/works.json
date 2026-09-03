@@ -2143,15 +2143,16 @@
    "frontalita",
    "registri-parietali"
   ],
-  "image_url": "https://www.artesvelata.it/wp-content/uploads/2024/04/Processione-di-Vergini-561-68-ca.-Particolare.-Mosaico.-Ravenna-navata-maggiore-della-Basilica-di-SantApollinare-Nuovo-arte-svelata.webp",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Basilica_of_Sant%27_Apollinare_Nuovo._Ravenna%2C_Italy.jpg/960px-Basilica_of_Sant%27_Apollinare_Nuovo._Ravenna%2C_Italy.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Ravenna%2C_sant%27apollinare_nuovo_Sante_Vergini_%28seconda_met%C3%A0_del_VI_secolo%29.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Ravenna%2C_sant%27apollinare_nuovo_Sante_Vergini_%28seconda_met%C3%A0_del_VI_secolo%29.jpg/960px-Ravenna%2C_sant%27apollinare_nuovo_Sante_Vergini_%28seconda_met%C3%A0_del_VI_secolo%29.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "agnello-arcivescovo-ravenna"
   ],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "processione-santi-martiri-sant-apollinare-nuovo",
@@ -2189,15 +2190,16 @@
    "frontalita",
    "registri-parietali"
   ],
-  "image_url": "https://www.artesvelata.it/wp-content/uploads/2024/04/Processione-di-Martiri-561-68-ca.-Particolare.-Mosaico.-Ravenna-navata-maggiore-della-Basilica-di-SantApollinare-Nuovo-arte-svelata.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Basilica_of_Sant%27_Apollinare_Nuovo._Ravenna%2C_Italy.jpg/960px-Basilica_of_Sant%27_Apollinare_Nuovo._Ravenna%2C_Italy.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Ravenna%2C_sant%27apollinare_nuovo_Santi_Martiri_%28seconda_met%C3%A0_del_VI_secolo%29.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Ravenna%2C_sant%27apollinare_nuovo_Santi_Martiri_%28seconda_met%C3%A0_del_VI_secolo%29.jpg/960px-Ravenna%2C_sant%27apollinare_nuovo_Santi_Martiri_%28seconda_met%C3%A0_del_VI_secolo%29.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "agnello-arcivescovo-ravenna"
   ],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "mosaico-cristo-in-maesta-san-lorenzo-fuori-mura",
@@ -6128,14 +6130,15 @@
    "cantorum"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Dehio_212_Cluny.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/2/21/Cluny-Abtei-Ostfluegel-mtob.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Dehio_212_Cluny.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "ugo-di-semur"
   ],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "basilica-santambrogio-milano-romanica",
@@ -6952,13 +6955,14 @@
   "term_ids": [
    "architrave"
   ],
-  "image_url": "https://patrimoniomondiale.modena.it/wp-content/uploads/2024/10/porta-dei-principi-duomo-di-modena2.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Duomo_di_Modena_20.JPG/960px-Duomo_di_Modena_20.JPG",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Porta_dei_principi_01.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Porta_dei_principi_01.JPG/960px-Porta_dei_principi_01.JPG",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "ambone-epistola-ravello",
@@ -7820,15 +7824,16 @@
    "porfido",
    "spolia"
   ],
-  "image_url": "https://cdn.finestresullarte.info/rivista/immagini/2024/2595/aquila-di-sugerio.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Abt_Sugerius.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Vaso_in_porfido_%28egitto_o_roma_imperiale%29_e_aquila_di_suger%2C_ante_1147%2C_da_st._denis.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Vaso_in_porfido_%28egitto_o_roma_imperiale%29_e_aquila_di_suger%2C_ante_1147%2C_da_st._denis.JPG/960px-Vaso_in_porfido_%28egitto_o_roma_imperiale%29_e_aquila_di_suger%2C_ante_1147%2C_da_st._denis.JPG",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "suger-abate"
   ],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "cappella-palatina-palermo",
@@ -8457,13 +8462,14 @@
    "archivolto",
    "architrave"
   ],
-  "image_url": "https://patrimoniomondiale.modena.it/wp-content/uploads/2024/10/porta-della-pescheria-duomo-di-modena.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Duomo_di_Modena_20.JPG/960px-Duomo_di_Modena_20.JPG",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/50/Porta_della_pescheria_01.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Porta_della_pescheria_01.JPG/960px-Porta_della_pescheria_01.JPG",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "portale-saint-lazare-autun",
@@ -9522,12 +9528,13 @@
    "fusione-bronzo"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Duomo_di_trani%2C_facciata%2C_portale_con_copia_della_porta_di_barisano_da_trani.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Cattedrale_di_Trani%2C_facciata.jpg/960px-Cattedrale_di_Trani%2C_facciata.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Duomo_di_trani%2C_facciata%2C_portale_con_copia_della_porta_di_barisano_da_trani.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "torre-campanaria-pisa",
@@ -9692,13 +9699,14 @@
    "pilastro-a-fascio",
    "deambulatorio"
   ],
-  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Notre-Dame_de_Paris_2013-07-24.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Notre-Dame_de_Paris_2013-07-24.jpg/960px-Notre-Dame_de_Paris_2013-07-24.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Galleani_Luigi.Strasburgo%2C_La_Cattedrale_Di_Notre_Dame_27A127.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/0/04/Galleani_Luigi.Strasburgo%2C_La_Cattedrale_Di_Notre_Dame_27A127.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "cattedrale-sant-andrea-amalfi",
@@ -10336,13 +10344,14 @@
    "cappelle-radiali",
    "rosone"
   ],
-  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Chartres_cathedral_%28West_fa%C3%A7ade%29.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Chartres_cathedral_%28West_fa%C3%A7ade%29.jpg/960px-Chartres_cathedral_%28West_fa%C3%A7ade%29.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Cath%C3%A9drale_Notre-Dame_%28Chartres%29_%281%29.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Cath%C3%A9drale_Notre-Dame_%28Chartres%29_%281%29.jpg/960px-Cath%C3%A9drale_Notre-Dame_%28Chartres%29_%281%29.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "battistero-di-parma",
@@ -12659,14 +12668,15 @@
    "cupola"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Coppo_di_marcovaldo_%28attr.%29%2C_inferno%2C_dal_1225%2C_05.JPG",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Battistero_Firenze_2019.jpg/960px-Battistero_Firenze_2019.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Coppo_di_marcovaldo_%28attr.%29%2C_inferno%2C_dal_1225%2C_05.JPG",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "arte-di-calimala"
   ],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "nativita-nicola-pisano",
@@ -15118,13 +15128,14 @@
    "crocifissione",
    "strage-degli-innocenti"
   ],
-  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Giovanni%20pisano%2C%20pulpito%20di%20sant%27andrea%2C%201298-1301%2C%2005.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Giovanni%20pisano%2C%20pulpito%20di%20sant%27andrea%2C%201298-1301%2C%2005.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Pulpito_della_chiesa_di_Sant%E2%80%99Andrea_a_Pistoia.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Pulpito_della_chiesa_di_Sant%E2%80%99Andrea_a_Pistoia.jpg/960px-Pulpito_della_chiesa_di_Sant%E2%80%99Andrea_a_Pistoia.jpg",
   "image_source": "wikidata-artista",
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "palazzo-vecchio-firenze",
@@ -16224,12 +16235,13 @@
    "polittico"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Giotto_Ognissanti_Madonna.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Cinque_maestri_del_rinascimento_fiorentino%2C_XVI_sec%2C_giotto.JPG/960px-Cinque_maestri_del_rinascimento_fiorentino%2C_XVI_sec%2C_giotto.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Giotto_Ognissanti_Madonna.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "maesta-simone-martini",
@@ -16692,14 +16704,15 @@
    "predella"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Polittico_stefaneschi%2C_retro.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Cinque_maestri_del_rinascimento_fiorentino%2C_XVI_sec%2C_giotto.JPG/960px-Cinque_maestri_del_rinascimento_fiorentino%2C_XVI_sec%2C_giotto.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Polittico_stefaneschi%2C_retro.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "jacopo-stefaneschi"
   ],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "deposizione-cristo-croce-pietro-rimini",
@@ -18909,12 +18922,13 @@
    "contrapposto"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Donatello%2C_David%2C_1408-9%2C_1416%2C_Florence%2C_Bargello.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Donatello%20-%20David%20-%20Floren%C3%A7a.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Donatello%2C_David%2C_1408-9%2C_1416%2C_Florence%2C_Bargello.jpg",
   "image_source": "wikidata-artista",
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "san-giovanni-evangelista-donatello",
@@ -19178,15 +19192,16 @@
    "nicchia",
    "gruppo-scultoreo"
   ],
-  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Museo%20di%20orsanmichele%2C%20nanni%20di%20banco%2C%20quattro%20santi%20coronati%2C%2001.JPG",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Museo%20di%20orsanmichele%2C%20nanni%20di%20banco%2C%20quattro%20santi%20coronati%2C%2001.JPG?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Firenze_-_Florence_-_Via_Orsanmichele_-_View_South_on_Quattro_Santi_Coronati_%28copy%29_1417_by_Nanni_di_Banco.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Firenze_-_Florence_-_Via_Orsanmichele_-_View_South_on_Quattro_Santi_Coronati_%28copy%29_1417_by_Nanni_di_Banco.jpg/960px-Firenze_-_Florence_-_Via_Orsanmichele_-_View_South_on_Quattro_Santi_Coronati_%28copy%29_1417_by_Nanni_di_Banco.jpg",
   "image_source": "wikidata",
   "committente_ids": [
    "arte-dei-maestri-di-pietra-e-legname"
   ],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "san-marco-ghiberti",
@@ -19909,14 +19924,15 @@
    "parasta"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Sagrestia_vecchia%2C_veduta_00.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Masaccio%2C_cappella_brancacci%2C_san_pietro_in_cattedra._ritratto_di_filippo_brunelleschi.jpg/960px-Masaccio%2C_cappella_brancacci%2C_san_pietro_in_cattedra._ritratto_di_filippo_brunelleschi.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Sagrestia_vecchia%2C_veduta_00.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "giovanni-di-bicci-de-medici"
   ],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "san-matteo-orsanmichele-ghiberti",
@@ -27018,14 +27034,15 @@
    "carro-trionfale"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/86/Piero_della_Francesca_044.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Piero%20della%20Francesca%20-%20Ritratti%20dei%20Duchi%20di%20Urbino%20Federico%20da%20Montefeltro%20e%20Battista%20Sforza%20-%20detail%20-03.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/8/86/Piero_della_Francesca_044.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "federico-da-montefeltro"
   ],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "madonna-nel-roseto",
@@ -29792,14 +29809,15 @@
    "schema-piramidale"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Leonardo_da_Vinci_Virgin_of_the_Rocks_%28National_Gallery_London%29.jpg/1920px-Leonardo_da_Vinci_Virgin_of_the_Rocks_%28National_Gallery_London%29.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Leonardo%20Da%20Vinci%20-%20Vergine%20delle%20Rocce%20%28Louvre%29.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Leonardo_da_Vinci_Virgin_of_the_Rocks_%28National_Gallery_London%29.jpg/1920px-Leonardo_da_Vinci_Virgin_of_the_Rocks_%28National_Gallery_London%29.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "confraternita-immacolata-concezione-milano"
   ],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "appartamento-borgia-osiride-iside",
@@ -31986,12 +32004,13 @@
    "disegno"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Leonardo_da_Vinci_Anghiarischlacht.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Peter%20Paul%20Ruben%27s%20copy%20of%20the%20lost%20Battle%20of%20Anghiari.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Leonardo_da_Vinci_Anghiarischlacht.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "wikidata-artista",
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "tre-filosofi-giorgione",
@@ -34612,14 +34631,15 @@
    "sacra-conversazione"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Fra_bartolomeo_07_Madonna_della_Misericordia.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Piero%20della%20Francesca%20-%20Polyptych%20of%20the%20Misericordia%20-%20WGA17446.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Fra_bartolomeo_07_Madonna_della_Misericordia.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "wikidata-alt",
   "committente_ids": [
    "convento-san-romano-lucca"
   ],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "melencolia-i-durer",
@@ -37013,14 +37033,15 @@
    "cappella-familiare"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Cappella_barbadori%2C_architettura_02.JPG?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Masaccio%2C_cappella_brancacci%2C_san_pietro_in_cattedra._ritratto_di_filippo_brunelleschi.jpg/960px-Masaccio%2C_cappella_brancacci%2C_san_pietro_in_cattedra._ritratto_di_filippo_brunelleschi.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Cappella_barbadori%2C_architettura_02.JPG?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "ludovico-capponi"
   ],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "madonna-di-san-girolamo-correggio",
@@ -37284,14 +37305,15 @@
    "verticalismo"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Parmigianino_-_The_Vision_of_St_Jerome_-_WGA17044.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/San_Giovanni_Evangelista_%28Parma%29_-_Dome.jpg/960px-San_Giovanni_Evangelista_%28Parma%29_-_Dome.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/b/be/Parmigianino_-_The_Vision_of_St_Jerome_-_WGA17044.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "maria-bufalini"
   ],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "adorazione-dei-pastori-la-notte-correggio",
