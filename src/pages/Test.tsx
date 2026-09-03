@@ -8,6 +8,7 @@ import {
   loadStats, recordSession, clearStats, AnswerLog,
 } from "../lib/quizStore";
 import { connectionsOf, resolveEntity, KIND_LABEL } from "../lib/data";
+import { citazione, fontiDi } from "../lib/fonti";
 import { WorkImage, CountUp, Reveal } from "../components/ui";
 import { useFavorites } from "../lib/favorites";
 import { useStudied } from "../lib/studied";
@@ -291,10 +292,14 @@ function OperaDrawer({ workId, open, onClose }: { workId: string | null; open: b
                 </div>
               )}
 
-              {/* Libro e pagina */}
-              <div style={{ fontSize: 12, color: "var(--ink-faint)", marginBottom: 16 }}>
-                Libro {work.book} · Cap. {work.chapter}{work.page ? ` · Pag. ${work.page}` : ""}
-              </div>
+              {/* Da quale libro viene la scheda. Prima diceva «Libro 2 · Cap. 8
+                  · Pag. 479»: il numero non significava niente per chi legge, e
+                  capitolo e pagina vengono dall'importazione e sono sbagliati. */}
+              {fontiDi(ix.ds, work).length > 0 && (
+                <div style={{ fontSize: 12, color: "var(--ink-faint)", marginBottom: 16 }}>
+                  {fontiDi(ix.ds, work).map(citazione).join(" · ")}
+                </div>
+              )}
 
               {/* Pulsante per aprire la pagina completa */}
               <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid var(--line-soft)" }}>
@@ -654,7 +659,9 @@ export default function Test() {
 
   const [kinds, setKinds] = useState<Set<QuizKind>>(() => loadKinds());
   const [periodIds, setPeriodIds] = useState<Set<string>>(() => loadPeriodIds());
-  const [book, setBook] = useState("");
+  // Il filtro per fonte: sostituisce il vecchio numero `book`. Non ha ancora un
+  // comando a schermo — resta pronto per quando le fonti saranno piu' d'una.
+  const [fonte, setFonte] = useState("");
   const [count, setCount] = useState(20);
   const [favOnly, setFavOnly] = useState(false);
   const [studiedOnly, setStudiedOnly] = useState(false);
@@ -854,7 +861,7 @@ export default function Test() {
         kinds: kindArr,
         periodIds: pids,
         yearRange: filteredMode ? activeYearRange : undefined,
-        book: book ? Number(book) : undefined,
+        fonte: fonte || undefined,
         count: 1000,  // "tutte" — il generatore si ferma quando esaurisce le opere
         seed: Date.now() % 1e9,
         favorites: favOnly ? { works: new Set(favs.works), artists: new Set(favs.artists) } : undefined,
@@ -888,7 +895,7 @@ export default function Test() {
       kinds: [...kinds],
       periodIds: pids,
       yearRange: filteredMode ? activeYearRange : undefined,
-      book: book ? Number(book) : undefined,
+      fonte: fonte || undefined,
       count,
       seed: Date.now() % 1e9,
       favorites: favOnly ? { works: new Set(favs.works), artists: new Set(favs.artists) } : undefined,

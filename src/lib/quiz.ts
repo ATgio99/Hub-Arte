@@ -148,7 +148,9 @@ export interface GenOpts {
   /** intervallo storico [min, max] — filtra opere/artisti/periodi per anno
    *  ATTENZIONE: ha precedenza su periodIds quando fornito. */
   yearRange?: { min: number; max: number };
-  book?: number;
+  /** Interroga solo sulle opere che vengono da un certo libro. Era `book`, il
+   *  numero storico; ora e' l'identificativo di una fonte. */
+  fonte?: string;
   count: number;
   seed?: number;
   /** se fornito, genera SOLO da questi item (modalità ripasso banca errori) */
@@ -206,12 +208,18 @@ export function generateQuiz(ix: Indexed, opts: GenOpts): Question[] {
     return hi >= yr.min && lo <= yr.max;
   };
 
-  // pool opere note (con preferiti/approfonditi il vincolo di importanza decade)
-  let workPool = isFiltered ? ds.works.filter((w) => isFavWork(w) && isStudiedWork(w)) : ds.works.filter((w) => w.importance >= 2);
+  // Il pool era ristretto a `importance >= 2`, cioe' alle opere a cui i manuali
+  // danno piu' spazio: 838 su 1115. Quel criterio non esiste piu' — misurava la
+  // bibliografia, non le opere — e con lui se ne andavano fuori dal quiz
+  // duecentosettantasette schede che il catalogo ha e su cui si potrebbe
+  // benissimo essere interrogati. Ora si parte da tutte, e a scartare quelle
+  // che non reggono una domanda ci pensa il tipo di domanda: chi chiede
+  // l'immagine vuole un'immagine, chi chiede il periodo vuole un periodo.
+  let workPool = isFiltered ? ds.works.filter((w) => isFavWork(w) && isStudiedWork(w)) : ds.works;
   if (periodOk) workPool = workPool.filter((w) => periodOk.has(w.period_id));
   // yearRange: filtra opere per anno (interseca [year_start, year_end] con [yr.min, yr.max])
   if (yr) workPool = workPool.filter((w) => yearInRange(w.year_start, w.year_end));
-  if (opts.book) workPool = workPool.filter((w) => w.book === opts.book);
+  if (opts.fonte) workPool = workPool.filter((w) => (w.fonte_ids ?? []).includes(opts.fonte!));
 
   let namedArtists = ds.artists.filter((a) => a.name && a.role);
   if (fav) {
@@ -240,7 +248,7 @@ export function generateQuiz(ix: Indexed, opts: GenOpts): Question[] {
   const allCities = [...new Set(ds.works.map((w) => w.location_city).filter(Boolean) as string[])];
   const allRegions = [...new Set(ds.periods.flatMap((p) => p.regions))];
   const samePeriodWorks = (w: Work) => ds.works.filter((x) => x.period_id === w.period_id && x.id !== w.id);
-  const worksOfArtist = (a: Artist) => ds.works.filter((w) => w.artist_ids.includes(a.id) && w.importance >= 2);
+  const worksOfArtist = (a: Artist) => ds.works.filter((w) => w.artist_ids.includes(a.id));
 
   const out: Question[] = [];
   const usedKey = new Set<string>();
@@ -475,7 +483,7 @@ export function generateQuiz(ix: Indexed, opts: GenOpts): Question[] {
       if (works.length === 0) return false;
       const correct = works[0].title;
       // distrattori: opere di altri artisti dello stesso periodo
-      const otherWorks = ds.works.filter((w) => w.period_id === (a.period_ids[0] ?? "") && !w.artist_ids.includes(a.id) && w.importance >= 2).map((w) => w.title);
+      const otherWorks = ds.works.filter((w) => w.period_id === (a.period_ids[0] ?? "") && !w.artist_ids.includes(a.id)).map((w) => w.title);
       const b = build(correct, uniqOptions(correct, [otherWorks, ds.works.map((w) => w.title)], rng), rng);
       if (!b) return false;
       return push({ kind: "artista-opera", refId: a.id, refHref: `/artista/${a.id}`, topicPeriodId: a.period_ids[0],

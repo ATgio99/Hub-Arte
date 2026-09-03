@@ -306,7 +306,10 @@ a.hero-stat:hover { background: var(--bg-2); }
 .opera-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 52px; align-items: start; }
 .opera-img { max-height: 72vh; display: flex; align-items: center; justify-content: center; background: var(--bg-2); cursor: zoom-in; }
 .opera-img img, .opera-img .img-placeholder { max-width: 100%; max-height: 72vh; width: auto; height: auto; object-fit: contain; }
-@media (max-width: 880px){ .opera-grid { grid-template-columns: 1fr; gap: 28px; } .opera-img { max-height: 60vh; } .opera-img img { max-height: 60vh; } }
+/* A una colonna il divario fra le due colonne diventa spazio verticale fra la
+   riga della fonte dell'immagine e la prima targhetta: ventotto pixel erano
+   una pausa che non separava niente. */
+@media (max-width: 880px){ .opera-grid { grid-template-columns: 1fr; gap: 12px; } .opera-img { max-height: 60vh; } .opera-img img { max-height: 60vh; } }
 .innov { margin: 0; padding-left: 0; list-style: none; }
 .innov li { padding: 8px 0 8px 22px; position: relative; color: var(--ink-soft); border-bottom: 1px solid var(--line-soft); font-size: 14.5px; }
 .innov li::before { content: "◆"; position: absolute; left: 0; color: var(--gold); font-size: 9px; top: 11px; }
@@ -684,8 +687,9 @@ a.hero-stat:hover { background: var(--bg-2); }
   position: fixed; left: var(--sbx-margin); top: calc(var(--sbx-margin) + var(--sat));
   bottom: calc(var(--sbx-margin) + var(--sab)); width: var(--sbx-w); z-index: 140;
   display: flex; flex-direction: column;
-  background: rgba(251,248,241,.74);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2);
+  background: rgba(var(--vetro-tinta), .84);
+  -webkit-backdrop-filter: blur(22px) saturate(var(--vetro-satura));
+  backdrop-filter: blur(22px) saturate(var(--vetro-satura));
   border: 1px solid var(--line); border-radius: 16px;
   box-shadow: 0 22px 60px -28px rgba(60,42,12,.5), 0 1px 0 rgba(255,255,255,.5) inset;
   padding: 16px 0 14px; overflow-y: auto; -webkit-overflow-scrolling: touch;
@@ -696,6 +700,13 @@ a.hero-stat:hover { background: var(--bg-2); }
    con le altre pagine. La regola .on-home è mantenuta come no-op (overrideata
    con i valori del tema chiaro) per sicurezza, ma non viene mai applicata
    perché il componente Sidebar ha isHome = false. */
+/* La riga di luce sul bordo alto: e' quella che fa leggere il pannello come
+   vetro e non come carta semitrasparente. */
+.sbx::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--vetro-luce) 20%, var(--vetro-luce) 80%, transparent);
+  pointer-events: none; z-index: 1;
+}
 .sbx.on-home {
   background: rgba(251,248,241,.92);
   border-color: var(--line);
@@ -1009,8 +1020,11 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
     display: flex; position: fixed; top: calc(14px + var(--sat)); left: 14px; z-index: 160;
     flex-direction: column; gap: 4px; width: 42px; height: 42px;
     align-items: center; justify-content: center;
-    background: rgba(251,248,241,.86); border: 1px solid var(--line); border-radius: 11px;
-    cursor: pointer; box-shadow: var(--shadow-sm); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    background: rgba(var(--vetro-tinta), var(--vetro-velo));
+    border: 1px solid var(--vetro-bordo); border-radius: 11px;
+    cursor: pointer; box-shadow: var(--vetro-ombra);
+    -webkit-backdrop-filter: blur(var(--vetro-sfoca)) saturate(var(--vetro-satura));
+    backdrop-filter: blur(var(--vetro-sfoca)) saturate(var(--vetro-satura));
   }
   .is-home .sbx-burger { background: rgba(251,248,241,.86); border-color: var(--line); }
   .sbx-burger span {
@@ -1042,11 +1056,23 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
      dipende da quanto padding ha il contenitore di turno e la barra si ferma
      qualche pixel piu' in basso su certe schede. */
   .wrap.page { padding-top: 0; }
+  /* La barra si trascina con lo scorrimento, come l'hamburger: i due comandi
+     — torna alla sezione, modifica — servono in fondo a una scheda lunga
+     tanto quanto in cima, e cercarli voleva dire risalire tutta la pagina.
+     E' `sticky` e non `fixed` per il motivo scritto qui sopra: un antenato
+     trasformato fa ancorare gli elementi fissi a lui invece che allo schermo.
+     Sticky quel problema non ce l'ha. */
   .barra-scheda {
-    position: relative; z-index: 5; gap: 8px;
+    position: sticky; top: calc(14px + var(--sat));
+    z-index: 156; gap: 8px;
     margin-top: -56px; margin-left: 50px;
   }
-  .barra-scheda-nav { height: 42px; border-radius: 11px; box-shadow: var(--shadow-sm); background: rgba(251,248,241,.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .barra-scheda-nav {
+    height: 42px; border-radius: 11px; box-shadow: var(--vetro-ombra);
+    background: rgba(var(--vetro-tinta), var(--vetro-velo)); border-color: var(--vetro-bordo);
+    -webkit-backdrop-filter: blur(var(--vetro-sfoca)) saturate(var(--vetro-satura));
+    backdrop-filter: blur(var(--vetro-sfoca)) saturate(var(--vetro-satura));
+  }
   .barra-scheda-nav button { height: 40px !important; }
   .barra-scheda-azioni .btn { height: 42px; border-radius: 11px; overflow: hidden; text-overflow: ellipsis; }
   /* Il fondo semitrasparente sfocato lo faceva sembrare sollevato sopra la
@@ -1061,12 +1087,18 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
     display: block; position: fixed; inset: 0; z-index: 158; background: rgba(33,28,20,.42);
     opacity: 0; pointer-events: none; transition: opacity .26s ease;
   }
-  .sbx-scrim.show { opacity: 1; pointer-events: auto; }
+  .sbx-scrim.show {
+    opacity: 1; pointer-events: auto;
+    -webkit-backdrop-filter: blur(6px) saturate(.9); backdrop-filter: blur(6px) saturate(.9);
+  }
 
   .sbx-drawer {
     display: flex; left: 0; top: 0; bottom: 0; width: 286px; border-radius: 0 16px 16px 0;
     transform: translateX(-104%); transition: transform .3s cubic-bezier(.2,.7,.2,1);
-    z-index: 9999; background: rgba(251,248,241,.98);
+    z-index: 9999;
+    background: rgba(var(--vetro-tinta), .9);
+    -webkit-backdrop-filter: blur(22px) saturate(var(--vetro-satura));
+    backdrop-filter: blur(22px) saturate(var(--vetro-satura));
     padding-top: var(--sat); padding-bottom: var(--sab);
     box-shadow: 4px 0 24px rgba(0,0,0,.15);
   }
@@ -1332,12 +1364,16 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 .fint-riga-val { display: block; font-size: 12.5px; color: var(--ink-soft); margin-top: 2px; }
 
 .fint-velo {
+  -webkit-backdrop-filter: blur(6px) saturate(.9); backdrop-filter: blur(6px) saturate(.9);
   position: fixed; inset: 0; z-index: 10000; background: rgba(33,28,20,.42);
   -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
 }
 .fint-foglio {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 10001;
-  background: var(--bg-1); border-top: 1px solid var(--line);
+  background: rgba(var(--vetro-tinta), .9);
+  -webkit-backdrop-filter: blur(22px) saturate(var(--vetro-satura));
+  backdrop-filter: blur(22px) saturate(var(--vetro-satura));
+  border-top: 1px solid var(--vetro-bordo);
   border-radius: 18px 18px 0 0; padding: 8px 20px calc(20px + var(--sab));
   box-shadow: 0 -8px 30px rgba(0,0,0,.18);
 }
