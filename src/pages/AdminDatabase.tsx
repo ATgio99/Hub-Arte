@@ -628,7 +628,7 @@ export default function AdminDatabase() {
 const WORK_DB_FIELDS_FOR_COMPLEX = [
   "id", "title", "artist_ids", "period_id", "date_text", "year_start", "year_end",
   "type", "technique_ids", "materials", "location_city", "location_place",
-  "lat", "lon", "book", "chapter", "page", "source_file", "importance",
+  "lat", "lon", "book", "chapter", "page", "source_file", "importance", "fonte_ids",
   "summary", "analysis", "innovations", "term_ids",
   "image_url", "image_thumb", "image_source", "image_gallery",
 ] as const;
@@ -1035,7 +1035,6 @@ const FIELD_LABELS_IT: Record<string, string> = {
   chapter: "Capitolo",
   page: "Pagina",
   source_file: "File sorgente",
-  importance: "Importanza",
   analysis: "Analisi",
   term_ids: "Termini glossario",
   image_url: "URL immagine",
@@ -1058,7 +1057,6 @@ const SELECT_OPTIONS: Record<string, string[]> = {
     "oreficeria", "urbanistica", "tela", "tavola", "polittico", "rilievo",
     "affresco", "altro"],
   "works.book": ["1", "2"],
-  "works.importance": ["1", "2", "3"],
   "periods.type": ["epoca", "corrente", "scuola"],
   "terms.category": ["architettura", "pittura", "scultura", "iconografia", "generale"],
   "events.kind": ["politico", "religioso", "culturale", "tecnologico"],

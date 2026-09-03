@@ -37,7 +37,9 @@ export default function Artista() {
   // fra gli autori non restituirebbe nulla, perche' non compare in artist_ids.
   const committente = isCommittente(a);
   const allWorks = (committente ? worksByCommittente(ix.ds, a.id) : worksByArtist(ix.ds, a.id))
-    .sort((x, y) => y.importance - x.importance);
+    // In ordine di tempo: si legge la carriera invece di una classifica.
+    .sort((x, y) => (x.year_end ?? x.year_start ?? 9999) - (y.year_end ?? y.year_start ?? 9999)
+      || x.id.localeCompare(y.id));
   const works = allWorks.filter(workIn);
   const periods = a.period_ids.map((pid) => ix.periodById.get(pid)).filter(Boolean) as any[];
   const conns = connectionsOf(ix.ds, "artist", a.id);

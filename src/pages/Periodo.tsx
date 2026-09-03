@@ -82,7 +82,9 @@ export default function Periodo() {
 
   if (!p) return <div className="wrap page"><Empty msg="Periodo non trovato." /></div>;
 
-  const allWorks = worksByPeriod(ix.ds, p.id).sort((a, b) => b.importance - a.importance);
+  const allWorks = worksByPeriod(ix.ds, p.id)
+    .sort((a, b) => (a.year_end ?? a.year_start ?? 9999) - (b.year_end ?? b.year_start ?? 9999)
+      || a.id.localeCompare(b.id));
   const works = allWorks.filter(workIn);
   const hasChildren = ix.ds.periods.some((x) => x.parent_id === p.id);
   const artists = ix.ds.artists.filter((a) => a.period_ids.includes(p.id));

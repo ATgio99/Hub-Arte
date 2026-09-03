@@ -461,8 +461,18 @@ export function computeWorkGroups(ds: Dataset): Map<string, WorkGroup> {
     if (unique.length < 2) continue;
 
     // Determina l'opera "capofila": prima architettura con importanza massima
-    const arch = unique.filter(w => w.type === "architettura").sort((a, b) => b.importance - a.importance || a.title.length - b.title.length);
-    const parent = arch[0] ?? unique.reduce((a, b) => a.importance > b.importance ? a : b);
+    // Chi da' il nome al gruppo: l'architettura col titolo piu' corto.
+    //
+    // Prima si prendeva quella con `importance` piu' alta, cioe' il numero che
+    // diceva quanto spazio le davano i manuali. Ci azzeccava, ma per caso: non
+    // e' che la cattedrale valga piu' della sua navata, e' che una e' l'edificio
+    // e l'altra un suo dettaglio. Il titolo lo dice da se' — «Cattedrale di
+    // Santa Maria Assunta» e' piu' corto di «Navata centrale della cattedrale
+    // di Santa Maria Assunta», perche' l'insieme si chiama sempre piu' corto
+    // del particolare che contiene.
+    const piuCorto = (a: Work, b: Work) => a.title.length - b.title.length || a.id.localeCompare(b.id);
+    const arch = unique.filter(w => w.type === "architettura").sort(piuCorto);
+    const parent = arch[0] ?? [...unique].sort(piuCorto)[0];
 
     // Determina il nome del gruppo: usa il titolo dell'opera architettonica principale,
     // o il location_place più frequente
@@ -489,7 +499,9 @@ export function computeWorkGroups(ds: Dataset): Map<string, WorkGroup> {
         if (b.id === parent.id) return 1;
         if (a.type === "architettura" && b.type !== "architettura") return -1;
         if (b.type === "architettura" && a.type !== "architettura") return 1;
-        return b.importance - a.importance || (a.year_end ?? 0) - (b.year_end ?? 0);
+        // Dentro il complesso: prima l'edificio, poi in ordine di tempo.
+        return (a.year_end ?? a.year_start ?? 0) - (b.year_end ?? b.year_start ?? 0)
+            || a.id.localeCompare(b.id);
       }),
     });
   }

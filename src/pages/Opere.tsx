@@ -56,7 +56,6 @@ export default function Opere() {
   const [q, setQ] = useState(() => sessionStorage.getItem("atlante:opere-search") || "");
   const [type, setType] = useState<string>(sp.get("type") ?? "");
   const [period, setPeriod] = useState<string>(sp.get("p") ?? "");
-  const [imp, setImp] = useState<string>(() => sessionStorage.getItem("atlante:opere-imp") || "");
   const [favOnly, setFavOnly] = useState(false);
   const [studiedFilter, setStudiedFilter] = useState<"" | "studied" | "not-studied">("");
   const [grouped, setGrouped] = useState(false);
@@ -70,10 +69,6 @@ export default function Opere() {
     if (q) sessionStorage.setItem("atlante:opere-search", q);
     else sessionStorage.removeItem("atlante:opere-search");
   }, [q]);
-  useEffect(() => {
-    if (imp) sessionStorage.setItem("atlante:opere-imp", imp);
-    else sessionStorage.removeItem("atlante:opere-imp");
-  }, [imp]);
 
   // Il filtro dei periodi mostrava tutte le voci in fila, ordinate per anno:
   // epoche, correnti e scuole mescolate, oltre duecento righe senza gerarchia,
@@ -155,7 +150,7 @@ export default function Opere() {
       if (period === SENZA_PERIODO) {
         if (w.period_id && periodById.has(w.period_id)) return false;
       } else if (period && !discendenti.get(period)?.has(w.period_id)) return false;
-      if (imp && String(w.importance) !== imp) return false;
+
       if (studiedFilter === "studied" && !studied.includes(w.id)) return false;
       if (studiedFilter === "not-studied" && studied.includes(w.id)) return false;
       if (qq) {
@@ -164,8 +159,12 @@ export default function Opere() {
         if (!keywords.every(kw => hay.includes(kw))) return false;
       }
       return true;
-    }).sort((a, b) => b.importance - a.importance || (a.year_end ?? 9999) - (b.year_end ?? 9999));
-  }, [inTime, q, type, period, imp, favOnly, favs, studiedFilter, studied, discendenti, periodById]);
+    // In ordine di tempo. Prima veniva per «importanza», cioe' per quanto
+    // spazio davano i manuali: la prima schermata del catalogo era una classifica
+    // travestita da elenco.
+    }).sort((a, b) => (a.year_end ?? a.year_start ?? 9999) - (b.year_end ?? b.year_start ?? 9999)
+        || a.id.localeCompare(b.id));
+  }, [inTime, q, type, period, favOnly, favs, studiedFilter, studied, discendenti, periodById]);
 
   // in modalità raggruppata, separa le opere in "singole" e "raggruppate"
   const { singleWorks, groupedWorks } = useMemo(() => {
@@ -208,7 +207,7 @@ export default function Opere() {
   const [filtriAperti, setFiltriAperti] = useState(false);
 
   const azzeraFiltri = () => {
-    setQ(""); setType(""); setPeriod(""); setImp("");
+    setQ(""); setType(""); setPeriod("");
     setFavOnly(false); setStudiedFilter(""); setGrouped(false); setLimit(60);
   };
 
@@ -291,9 +290,9 @@ export default function Opere() {
           {filtered.length !== ds.works.length ? ` su ${ds.works.length}` : ""}
         </div>
         {active && <FilterNote total={ds.works.length} shown={inTime.length} noun="opere nell'arco scelto" />}
-        {(q || type || period || imp || favOnly || studiedFilter) && (
+        {(q || type || period || favOnly || studiedFilter) && (
           <button className="btn ghost sm" data-testid="reset-filtri"
-            onClick={() => { setQ(""); setType(""); setPeriod(""); setImp(""); setFavOnly(false); setStudiedFilter(""); setLimit(60); }}>
+            onClick={() => { setQ(""); setType(""); setPeriod(""); setFavOnly(false); setStudiedFilter(""); setLimit(60); }}>
             Azzera i filtri
           </button>
         )}
