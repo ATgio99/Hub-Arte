@@ -7,7 +7,7 @@ import { getOverrides, setOverride, clearOverride } from "../lib/imageOverrides"
 import { useStudied, toggleStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
 import { setLastOpera } from "../lib/lastVisited";
-import { citazione } from "../lib/fonti";
+import { citazione, fontiDi } from "../lib/fonti";
 import EditorDrawer from "../components/EditorDrawer";
 import {
   artistsOfWork, termsOfWork, techniquesOfWork, relatedWorks,
@@ -229,8 +229,15 @@ export default function Opera() {
             {w.materials.length > 0 && <><dt>Materiali</dt><dd>{w.materials.join(", ")}</dd></>}
             {/* Da dove viene la scheda. E' il dato che ha preso il posto di
                 «opera capitale»: dice un fatto invece di dare un voto. */}
-            {citazione(w.book, w.chapter, w.page) && (
-              <><dt>Fonte</dt><dd><Link className="tlink" to="/legal/crediti">{citazione(w.book, w.chapter, w.page)}</Link></dd></>
+            {fontiDi(ix.ds, w).length > 0 && (
+              <>
+                <dt>{fontiDi(ix.ds, w).length > 1 ? "Fonti" : "Fonte"}</dt>
+                <dd>{fontiDi(ix.ds, w).map((f, i) => (
+                  <span key={f.id}>{i > 0 && "; "}
+                    <Link className="tlink" to="/legal/crediti">{citazione(f)}</Link>
+                  </span>
+                ))}</dd>
+              </>
             )}
           </dl>
 

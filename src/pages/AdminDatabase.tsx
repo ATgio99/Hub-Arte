@@ -26,9 +26,9 @@ import { useData } from "../lib/store";
 import { computeWorkGroups, workGroupMap, entityLabel, ENTITY_LABEL, KIND_LABEL } from "../lib/data";
 import EditorDrawer from "../components/EditorDrawer";
 import EntitySelector from "../components/EntitySelector";
-import type { Work, Artist, Period, Technique, Term, ArtEvent, Connection, Dataset } from "../lib/types";
+import type { Work, Artist, Period, Technique, Term, ArtEvent, Connection, Dataset, Fonte } from "../lib/types";
 
-type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" | "connections" | "complessi";
+type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" | "connections" | "complessi" | "fonti";
 
 const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "works", label: "Opere", icon: "🖼️" },
@@ -39,6 +39,7 @@ const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "events", label: "Eventi", icon: "⚡" },
   { id: "connections", label: "Connessioni", icon: "🔗" },
   { id: "complessi", label: "Complessi", icon: "🏛️" },
+  { id: "fonti", label: "Fonti", icon: "📖" },
 ];
 
 function slugify(s: string): string {
@@ -124,6 +125,7 @@ export default function AdminDatabase() {
       case "terms": arr = ix.ds.terms; break;
       case "events": arr = ix.ds.events; break;
       case "connections": arr = ix.ds.connections; break;
+      case "fonti": arr = ix.ds.fonti; break;
       case "complessi": arr = []; break; // gestito da ComplessiView
     }
     // Filtro search
@@ -466,6 +468,38 @@ export default function AdminDatabase() {
                   <td style={tdStyle} onClick={() => openEdit(t.id)}>{(t.definition || "").slice(0, 80)}{(t.definition || "").length > 80 ? "…" : ""}</td>
                   <td style={tdStyle}>{dbBadge(t.id)}</td>
                   <td style={tdStyle}>{actions(t.id)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : tab === "fonti" ? (
+          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <thead>
+              <tr>
+                <th style={thStyle}>Titolo</th>
+                <th style={thStyle}>Autori</th>
+                <th style={thStyle}>Editore</th>
+                <th style={thStyle}>Opere</th>
+                <th style={thStyle}>Fonte</th>
+                <th style={thStyle}>Azioni</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentData.slice(0, 200).map((f: Fonte) => (
+                <tr key={f.id} style={{ cursor: "pointer" }} onMouseEnter={(e) => e.currentTarget.style.background = "var(--bg-2)"} onMouseLeave={(e) => e.currentTarget.style.background = ""}>
+                  <td style={tdStyle} onClick={() => openEdit(f.id)}>
+                    <div style={{ fontWeight: 500 }}>{f.titolo}{f.volume ? `, vol. ${f.volume}` : ""}</div>
+                    <div style={{ fontSize: 11, color: "var(--ink-dim)", fontFamily: "ui-monospace, monospace" }}>{f.id}</div>
+                  </td>
+                  <td style={tdStyle} onClick={() => openEdit(f.id)}>{f.autori || "—"}</td>
+                  <td style={tdStyle} onClick={() => openEdit(f.id)}>{[f.editore, f.anno].filter(Boolean).join(", ") || "—"}</td>
+                  {/* Quante schede citano questo libro: e' il numero che dice
+                      se una fonte serve ancora o se e' rimasta orfana. */}
+                  <td style={tdStyle} onClick={() => openEdit(f.id)} className="tnum">
+                    {ix.ds.works.filter((w) => (w.fonte_ids ?? []).includes(f.id)).length}
+                  </td>
+                  <td style={tdStyle}>{dbBadge(f.id)}</td>
+                  <td style={tdStyle}>{actions(f.id)}</td>
                 </tr>
               ))}
             </tbody>

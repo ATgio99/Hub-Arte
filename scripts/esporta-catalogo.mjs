@@ -44,6 +44,7 @@ const TABELLE = {
   terms: "terms",
   events: "events",
   connections: "connections",
+  fonti: "fonti",
 };
 
 // Supabase restituisce al massimo mille righe per volta: qui le prendiamo tutte.

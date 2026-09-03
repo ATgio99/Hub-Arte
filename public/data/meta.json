@@ -1,5 +1,5 @@
 {
- "esportato_il": "2026-08-31T20:12:22.379Z",
+ "esportato_il": "2026-09-03T07:12:25.037Z",
  "tabelle": [
   {
    "file": "periods",
@@ -12,7 +12,7 @@
   {
    "file": "works",
    "totale": 1115,
-   "aggiornate": 286,
+   "aggiornate": 287,
    "aggiunte": 0,
    "rimosse": 0,
    "conImmagine": 1
@@ -53,6 +53,14 @@
    "file": "connections",
    "totale": 648,
    "aggiornate": 322,
+   "aggiunte": 0,
+   "rimosse": 0,
+   "conImmagine": 0
+  },
+  {
+   "file": "fonti",
+   "totale": 2,
+   "aggiornate": 2,
    "aggiunte": 0,
    "rimosse": 0,
    "conImmagine": 0

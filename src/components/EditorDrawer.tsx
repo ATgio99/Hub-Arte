@@ -17,7 +17,7 @@ import { fonteImmagine } from "../lib/data";
 import { useAuth } from "../lib/auth";
 import { useData } from "../lib/store";
 import EntitySelector from "./EntitySelector";
-import type { Work, Artist, Period, Technique, Term, Dataset } from "../lib/types";
+import type { Work, Artist, Period, Technique, Term, Dataset, Fonte } from "../lib/types";
 
 const WORK_TYPES = ["architettura", "pittura", "scultura", "mosaico", "miniatura", "oreficeria", "urbanistica", "tavola", "tela", "polittico", "rilievo", "affresco", "altro"];
 
@@ -58,7 +58,7 @@ function Field({ label, children, required }: { label: string; children: React.R
 const WORK_DB_FIELDS = [
   "id", "title", "artist_ids", "committente_ids", "period_id", "date_text", "year_start", "year_end",
   "type", "technique_ids", "materials", "location_city", "location_place",
-  "lat", "lon", "book", "chapter", "page", "source_file", "importance",
+  "lat", "lon", "book", "chapter", "page", "source_file", "importance", "fonte_ids",
   "summary", "analysis", "innovations", "term_ids",
   "image_url", "image_thumb", "image_source", "image_gallery", "modified_by",
 ];
@@ -239,6 +239,7 @@ function EditorDrawerInner({
   // Entità create localmente (durante la sessione di editing)
   const [localArtists, setLocalArtists] = useState<Artist[]>([]);
   const [localPeriods, setLocalPeriods] = useState<Period[]>([]);
+  const [localFonti, setLocalFonti] = useState<Fonte[]>([]);
   const [localTechniques, setLocalTechniques] = useState<Technique[]>([]);
   const [localTerms, setLocalTerms] = useState<Term[]>([]);
 
@@ -257,7 +258,7 @@ function EditorDrawerInner({
         id: workId, title: "", artist_ids: [], period_id: "", date_text: "",
         year_start: null, year_end: null, type: "pittura", technique_ids: [],
         materials: [], location_city: null, location_place: null, lat: null, lon: null,
-        book: 1, chapter: 0, page: 0, source_file: "", importance: 2,
+        book: 1, chapter: 0, page: 0, source_file: "", importance: 2, fonte_ids: [],
         summary: "", analysis: null, innovations: [], term_ids: [],
         image_url: "", image_thumb: "", image_source: "commons", image_gallery: [],
       };
@@ -303,6 +304,7 @@ function EditorDrawerInner({
     [allArtists]
   );
   const allPeriods = useMemo(() => [...dataset.periods, ...localPeriods], [dataset.periods, localPeriods]);
+  const allFonti = useMemo(() => [...dataset.fonti, ...localFonti], [dataset.fonti, localFonti]);
   const allTechniques = useMemo(() => [...dataset.techniques, ...localTechniques], [dataset.techniques, localTechniques]);
   const allTerms = useMemo(() => [...dataset.terms, ...localTerms], [dataset.terms, localTerms]);
   const allCities = useMemo(() => {
@@ -373,6 +375,21 @@ function EditorDrawerInner({
     const { error } = await supabase.from("periods").upsert({ ...newPeriod, modified_by: userEmail }, { onConflict: "id" });
     if (error) throw new Error(error.message);
     setLocalPeriods(prev => [...prev, newPeriod]);
+    notifyAppChanged();
+    return id;
+  };
+
+  // Il titolo del libro si scrive una volta sola: da qui in poi si sceglie da
+  // un elenco. Scriverlo a mano su ogni scheda vorrebbe dire ritrovarsi
+  // «Con gli occhi dell'arte» e «Con gli occhi dell arte» come due libri.
+  const createFonte = async (titolo: string): Promise<string> => {
+    const id = slugify(titolo);
+    const nuova: Fonte = {
+      id, titolo, autori: null, editore: null, anno: null, volume: null, note: null,
+    };
+    const { error } = await supabase.from("fonti").upsert({ ...nuova, modified_by: userEmail }, { onConflict: "id" });
+    if (error) throw new Error(error.message);
+    setLocalFonti(prev => [...prev, nuova]);
     notifyAppChanged();
     return id;
   };
@@ -550,6 +567,23 @@ function EditorDrawerInner({
                   allowCreate={true}
                   onCreate={createPeriod}
                   createLabel="Nuovo periodo"
+                />
+              </Field>
+
+              <Field label="Fonti">
+                <EntitySelector
+                  mode="multi"
+                  options={allFonti.map(f => ({
+                    id: f.id,
+                    label: f.volume ? `${f.titolo}, vol. ${f.volume}` : f.titolo,
+                    subtitle: [f.autori, f.editore].filter(Boolean).join(" — ") || undefined,
+                  }))}
+                  selected={work.fonte_ids ?? []}
+                  onChange={(v) => set("fonte_ids", (v as string[]) || [])}
+                  placeholder="Cerca il libro…"
+                  allowCreate={true}
+                  onCreate={createFonte}
+                  createLabel="Nuovo libro"
                 />
               </Field>
 

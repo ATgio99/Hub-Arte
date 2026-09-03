@@ -1,73 +1,44 @@
 // ============================================================================
-// fonti — da quale libro viene ogni opera.
+// fonti — da quale libro viene ogni scheda.
 //
-// Prende il posto di `importance`, il numero 1-3 che diceva quanto spazio i
-// manuali dedicassero a un'opera e che il sito mostrava come «opera capitale».
-// Erano due cose diverse impacchettate in una: da dove viene la scheda, che e'
-// un fatto verificabile, e quanto conta l'opera, che non lo e'. Erano anche gli
-// stessi manuali che non nominano nemmeno un'artista a decidere cosa fosse
-// capitale, quindi la parola firmava un canone spacciandolo per una proprieta'
-// delle cose.
+// Ha preso il posto di `works.importance`, il numero 1-3 che il sito mostrava
+// come «opera capitale». Erano due cose impacchettate in una: la provenienza,
+// che e' un fatto verificabile, e l'importanza, che non lo e'. Il numero
+// misurava lo spazio che i manuali danno all'opera — e sono gli stessi manuali
+// che non nominano nemmeno un'artista, quindi la parola firmava un canone
+// facendolo sembrare una proprieta' delle cose.
 //
-// Qui resta solo il fatto: quale libro, quale capitolo, quale pagina. Quando i
-// manuali saranno piu' d'uno questo diventa una bibliografia vera, e si potra'
-// dire «questa scheda viene di qui» invece di «questa opera vale tanto».
+// Le fonti stanno in una tabella e non in un testo libero: il titolo di un
+// manuale scritto a mano cinquanta volte diventa cinquanta titoli leggermente
+// diversi, e una bibliografia con cinquanta voci per due libri non serve a
+// niente. `works.fonte_ids` e' un elenco, come `artist_ids`: la stessa opera
+// puo' stare in piu' manuali.
 //
-// Il numero in `works.book` e' storico e non corrisponde al volume: 1 e 2 sono
-// due volumi dello stesso manuale.
+// Capitolo e pagina il catalogo li ha in `chapter` e `page`, ma vengono
+// dall'importazione e sono sbagliati: non si stampano. Una citazione precisa e
+// falsa e' peggio di una generica e vera, perche' chi la usa va a cercare
+// quella pagina.
 // ============================================================================
+import type { Dataset, Fonte, Work } from "./types";
 
-export interface Fonte {
-  titolo: string;
-  autori: string;
-  editore: string;
-  anno?: number;
-  volume?: string;
+/** «Con gli occhi dell'arte, vol. 2» */
+export function citazione(f: Fonte): string {
+  return f.volume ? `${f.titolo}, vol. ${f.volume}` : f.titolo;
 }
 
-export const FONTI: Record<number, Fonte> = {
-  1: {
-    titolo: "Con gli occhi dell'arte",
-    autori: "E. Demartini, C. Gatti, E. Tonetti, E. P. Villa",
-    editore: "Rizzoli Education",
-    anno: 2022,
-    volume: "2",
-  },
-  2: {
-    titolo: "Con gli occhi dell'arte",
-    autori: "E. Demartini, C. Gatti, E. Tonetti, E. P. Villa",
-    editore: "Rizzoli Education",
-    anno: 2022,
-    volume: "3",
-  },
-  // L'8 e' lo stesso volume del 2: ventisei schede entrate con un altro numero
-  // in un'importazione a parte. Si mappano tutte e due sulla stessa fonte
-  // invece di riscrivere i dati, cosi' il numero storico resta leggibile.
-  8: {
-    titolo: "Con gli occhi dell'arte",
-    autori: "E. Demartini, C. Gatti, E. Tonetti, E. P. Villa",
-    editore: "Rizzoli Education",
-    anno: 2022,
-    volume: "3",
-  },
-};
-
-export function fonteDi(book: number | null | undefined): Fonte | null {
-  return book == null ? null : FONTI[book] ?? null;
+/** «E. Demartini… — Rizzoli Education, 2022» */
+export function riferimento(f: Fonte): string {
+  return [f.autori, [f.editore, f.anno].filter(Boolean).join(", ")]
+    .filter(Boolean).join(" — ");
 }
 
-/** «Con gli occhi dell'arte, vol. 2 · cap. 6, p. 31» */
-export function citazione(
-  book: number | null | undefined,
-  chapter?: number | null,
-  page?: number | null,
-): string | null {
-  const f = fonteDi(book);
-  if (!f) return null;
-  let t = f.titolo;
-  if (f.volume) t += `, vol. ${f.volume}`;
-  const dove: string[] = [];
-  if (chapter) dove.push(`cap. ${chapter}`);
-  if (page) dove.push(`p. ${page}`);
-  return dove.length ? `${t} · ${dove.join(", ")}` : t;
+export function fontiDi(ds: Dataset, w: Work): Fonte[] {
+  const voluti = w.fonte_ids ?? [];
+  if (voluti.length === 0) return [];
+  return ds.fonti.filter((f) => voluti.includes(f.id));
+}
+
+/** Quante opere cita ogni fonte: serve all'editor e alla pagina dei crediti. */
+export function opereDiFonte(ds: Dataset, fonteId: string): Work[] {
+  return ds.works.filter((w) => (w.fonte_ids ?? []).includes(fonteId));
 }

@@ -61,6 +61,9 @@ export interface Work {
   // Non e' il numero del volume, ed era dichiarato 1|2 mentre nei dati c'e'
   // anche un 8 — ventisei opere che il tipo diceva impossibili.
   book: number; chapter: number; page: number; source_file: string;
+  /** I libri da cui viene la scheda. Elenco, come `artist_ids`: la stessa
+   *  opera puo' comparire in piu' manuali. Ha preso il posto di `importance`. */
+  fonte_ids: string[];
   importance: 1 | 2 | 3; summary: string; analysis: string | null;
   innovations: string[]; term_ids: string[];
   image_url?: string; image_thumb?: string; image_source?: string;
@@ -95,5 +98,21 @@ export interface ArtEvent {
 export interface Dataset {
   periods: Period[]; artists: Artist[]; works: Work[];
   techniques: Technique[]; terms: Term[];
-  connections: Connection[]; events: ArtEvent[];
+  connections: Connection[]; events: ArtEvent[]; fonti: Fonte[];
+}
+
+/** Un libro da cui vengono delle schede.
+ *
+ *  E' una tabella e non un testo libero perche' il titolo di un manuale
+ *  scritto a mano cinquanta volte diventa cinquanta titoli leggermente
+ *  diversi, e una bibliografia con cinquanta voci per due libri non e' una
+ *  bibliografia. */
+export interface Fonte {
+  id: string;
+  titolo: string;
+  autori: string | null;
+  editore: string | null;
+  anno: number | null;
+  volume: string | null;
+  note: string | null;
 }
