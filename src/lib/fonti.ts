@@ -35,7 +35,28 @@ export function riferimento(f: Fonte): string {
 export function fontiDi(ds: Dataset, w: Work): Fonte[] {
   const voluti = w.fonte_ids ?? [];
   if (voluti.length === 0) return [];
-  return ds.fonti.filter((f) => voluti.includes(f.id));
+  return ds.fonti.filter((f) => voluti.includes(f.id)).sort(perNumero);
+}
+
+/** L'ordine della bibliografia: per numero, e chi non ce l'ha in fondo. */
+export function perNumero(a: Fonte, b: Fonte): number {
+  const x = a.numero ?? 9999, y = b.numero ?? 9999;
+  return x !== y ? x - y : a.titolo.localeCompare(b.titolo);
+}
+
+/** Tutte le fonti in ordine di bibliografia. */
+export function bibliografia(ds: Dataset): Fonte[] {
+  return [...(ds.fonti ?? [])].sort(perNumero);
+}
+
+/** Il prossimo numero libero: si assegna alla creazione e non cambia piu'. */
+export function prossimoNumero(ds: Dataset): number {
+  return Math.max(0, ...(ds.fonti ?? []).map((f) => f.numero ?? 0)) + 1;
+}
+
+/** L'ancora della voce nella pagina dei crediti. */
+export function ancoraFonte(f: Fonte): string {
+  return `fonte-${f.numero ?? f.id}`;
 }
 
 /** Quante opere cita ogni fonte: serve all'editor e alla pagina dei crediti. */

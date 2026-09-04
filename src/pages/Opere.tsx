@@ -150,9 +150,15 @@ export default function Opere() {
   const groups = useMemo(() => computeWorkGroups(ds), [ds]);
   const byGroup = useMemo(() => workGroupMap(groups), [groups]);
 
+  // Dalla bibliografia si arriva qui con ?fonte=<id>: le schede che vengono da
+  // quel libro. Non e' un filtro dell'interfaccia — non ha una pastiglia — ma
+  // un rimando, quindi vive nell'indirizzo e non nello stato.
+  const fonteChiesta = sp.get("fonte");
+
   const filtered = useMemo(() => {
     const qq = q.trim().toLowerCase();
     return inTime.filter((w) => {
+      if (fonteChiesta && !(w.fonte_ids ?? []).includes(fonteChiesta)) return false;
       if (favOnly && !favs.works.includes(w.id)) return false;
       if (type && w.type !== type) return false;
       if (period === SENZA_PERIODO) {
@@ -174,7 +180,7 @@ export default function Opere() {
     }).sort((a, b) => (a.year_end ?? a.year_start ?? 9999) - (b.year_end ?? b.year_start ?? 9999)
         || a.id.localeCompare(b.id));
   }, [inTime, q, type, period, favOnly, favs, studiedFilter, studied, discendenti, periodById,
-      soloDaVerificare, verificata]);
+      soloDaVerificare, verificata, fonteChiesta]);
 
   // in modalità raggruppata, separa le opere in "singole" e "raggruppate"
   const { singleWorks, groupedWorks } = useMemo(() => {

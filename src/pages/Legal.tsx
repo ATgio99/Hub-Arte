@@ -6,6 +6,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { CONTACT_EMAIL } from "../lib/auth";
 import PaginaModificabile from "../components/PaginaModificabile";
+import Bibliografia from "../components/Bibliografia";
 import { BannerGitHub } from "../components/ui";
 import { SCORCIATOIE } from "../lib/scorciatoie";
 import { useData } from "../lib/store";
@@ -489,22 +490,11 @@ export default function Legal() {
         <H2>Testi di riferimento</H2>
         <P>
           Datazioni, attribuzioni, contesti: quasi tutto quello che c'è nel catalogo l'ho
-          imparato da questi due manuali. Le schede però sono riscritte, non ricopiate. Che il
-          Tributo sia di Masaccio e stia al Carmine è un fatto, e i fatti non sono di nessuno;
-          il modo di raccontarli sì, e quello è mio. Se qualcuno dei due editori ritiene che
-          da qualche parte abbia passato il segno, mi scriva e correggo.
-        </P>
-        <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
-          <li>
-            G. Dorfles, A. Vettese, E. Princi, <i>Civiltà d'arte</i>, Atlas, Bergamo — vol. 3.
-          </li>
-          <li>
-            E. Demartini, C. Gatti, E. Tonetti, E. P. Villa, <i>Con gli occhi dell'arte</i>,
-            Rizzoli Education (Mondadori Education), Milano 2022 — voll. 2, 3, 4.
-          </li>
-        </ul>
-        <P>
-          Se un riferimento è incompleto o attribuito male, scrivimi a{" "}
+          imparato dai manuali elencati qui sotto in bibliografia. Le schede però sono
+          riscritte, non ricopiate. Che il Tributo sia di Masaccio e stia al Carmine è un
+          fatto, e i fatti non sono di nessuno; il modo di raccontarli sì, e quello è mio. Se
+          qualcuno degli editori ritiene che da qualche parte abbia passato il segno, mi
+          scriva e correggo. Se un riferimento è incompleto o attribuito male, scrivimi a{" "}
           <Mailto subject="Correzione crediti" /> e lo sistemo.
         </P>
 
@@ -534,6 +524,10 @@ export default function Legal() {
           <Link to="/legal/contatti" className="tlink">Contatti</Link>.
         </P>
         </PaginaModificabile>
+
+        {/* Fuori dal blocco riscrivibile: l'elenco si genera dalla tabella
+            delle fonti, e un testo personalizzato non deve poterlo nascondere. */}
+        <Bibliografia />
       </div></div>
     );
   }

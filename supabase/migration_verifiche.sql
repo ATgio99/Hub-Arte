@@ -54,3 +54,27 @@ create policy "Gli amministratori tolgono le verifiche"
   );
 
 create index if not exists idx_verifiche_tipo on public.verifiche(entity_type);
+
+-- ============================================================================
+-- La bibliografia prende i numeri, e nasce l'Antichità classica.
+--
+-- `fonti.numero` è il numero con cui un libro compare in bibliografia e nel
+-- pallino accanto al titolo delle opere: è un dato e non l'ordine di una
+-- query, perché se cambiasse a ogni caricamento il rimando non varrebbe nulla.
+--
+-- Il periodo `antichita-classica` esiste perché il catalogo cominciava con la
+-- Tarda Antichità (284 d.C.): per un bronzo ellenistico non c'era posto, e lo
+-- Spinario stava sotto l'Umanesimo fiorentino perché è lì che il manuale lo
+-- cita. Il periodo diceva dove il libro ne parla, non quando l'opera è stata
+-- fatta.
+-- ============================================================================
+alter table public.fonti add column if not exists numero int;
+alter table public.fonti add column if not exists modified_by text;
+alter table public.fonti add column if not exists created_at timestamptz not null default now();
+
+update public.fonti f set numero = n.riga
+  from (select id, row_number() over (order by titolo, volume nulls first, id) as riga
+        from public.fonti) n
+ where f.id = n.id and f.numero is null;
+
+create unique index if not exists idx_fonti_numero on public.fonti(numero);

@@ -3,7 +3,7 @@
   "id": "spinario",
   "title": "Ragazzo che si toglie una spina dal piede (Spinario)",
   "artist_ids": [],
-  "period_id": "umanesimo-fiorentino",
+  "period_id": "antichita-classica",
   "date_text": "III-I secolo a.C.",
   "year_start": -300,
   "year_end": -100,
@@ -36,16 +36,17 @@
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "arrotino",
   "title": "Uomo che affila un coltello (Arrotino)",
   "artist_ids": [],
-  "period_id": "umanesimo-fiorentino",
+  "period_id": "antichita-classica",
   "date_text": "II secolo a.C.",
-  "year_start": 200,
-  "year_end": 200,
+  "year_start": -200,
+  "year_end": -100,
   "type": "scultura",
   "technique_ids": [
    "scultura-in-marmo"
@@ -170,7 +171,7 @@
   "id": "ritratto-femminile-encausto",
   "title": "Ritratto femminile",
   "artist_ids": [],
-  "period_id": "quattrocento",
+  "period_id": "antichita-classica",
   "date_text": "I secolo",
   "year_start": 1,
   "year_end": 100,
@@ -281,7 +282,7 @@
   "id": "marco-aurelio-campidoglio",
   "title": "Marco Aurelio in Campidoglio",
   "artist_ids": [],
-  "period_id": "rinascimento",
+  "period_id": "antichita-classica",
   "date_text": "II secolo",
   "year_start": 161,
   "year_end": 180,
@@ -312,13 +313,15 @@
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "analysis": null,
+  "image_gallery": []
  },
  {
   "id": "sarcofago-fedra-ippolito-pisa",
   "title": "Sarcofago decorato con Storie di Fedra e Ippolito (particolare)",
   "artist_ids": [],
-  "period_id": "gotico-italiano",
+  "period_id": "antichita-classica",
   "date_text": "inizio del III secolo d.C.",
   "year_start": 200,
   "year_end": 225,
@@ -338,7 +341,7 @@
   "page": 39,
   "source_file": "Libro1.4-giu-2026-1",
   "importance": 1,
-  "summary": "Sarcofago romano con Storie di Fedra e Ippolito (inizio III secolo d.C., marmo, Pisa, Camposanto monumentale), conservato nel Camposanto di Pisa. Nicola Pisano lo conobbe e lo usò come modello iconografico: la Vergine nel pannello della Natività sembra una copia della Fedra del cosiddetto Sarcofago di Ippolito.",
+  "summary": "Sarcofago romano con Storie di Fedra e Ippolito (inizio III secolo d.C., marmo, Pisa, Camposanto monumentale), conservato nel Camposanto di Pisa. Nicola Pisano lo conobbe e lo usò come modello iconografico: la Vergine nel pannello della Natività sembra una copia della Fedra del cosiddetto Sarcofago di Fedra e Ippolito.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -351,7 +354,8 @@
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "tondo-vitreo-croce-desiderio",

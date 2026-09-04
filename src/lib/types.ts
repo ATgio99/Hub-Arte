@@ -123,6 +123,10 @@ export interface Incertezza {
  *  bibliografia. */
 export interface Fonte {
   id: string;
+  /** Il numero con cui compare in bibliografia e nei pallini sulle schede.
+   *  E' un dato e non l'ordine di una query: se cambiasse a ogni caricamento,
+   *  il rimando non varrebbe niente. */
+  numero: number | null;
   titolo: string;
   autori: string | null;
   editore: string | null;

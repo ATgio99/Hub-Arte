@@ -2438,5 +2438,27 @@
    "Teatralità",
    "Coinvolgimento dello spettatore"
   ]
+ },
+ {
+  "id": "antichita-classica",
+  "name": "Antichità classica",
+  "type": "epoca",
+  "year_start": -400,
+  "year_end": 284,
+  "regions": [
+   "Grecia",
+   "Italia",
+   "Egitto",
+   "Mediterraneo"
+  ],
+  "summary": "Arte greca, ellenistica e romana d'età imperiale. Nell'atlante compare per le opere che i manuali portano come antecedenti — il modello antico che una bottega del Quattrocento ha davanti agli occhi — e che senza questa fascia finivano archiviate nel secolo che le cita invece che nel proprio.",
+  "historical_context": "Dall'età classica greca alla riforma di Diocleziano (284), che apre la Tarda Antichità. È il serbatoio di forme a cui il Medioevo attinge per citazione e il Rinascimento per imitazione dichiarata.",
+  "parent_id": null,
+  "key_innovations": [
+   "contrapposto",
+   "ritratto naturalistico",
+   "encausto",
+   "rilievo storico continuo"
+  ]
  }
 ]

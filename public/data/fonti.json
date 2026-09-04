@@ -6,7 +6,8 @@
   "editore": "Rizzoli Education",
   "anno": 2022,
   "volume": "2",
-  "note": null
+  "note": null,
+  "numero": 1
  },
  {
   "id": "occhi-arte-3",
@@ -15,6 +16,7 @@
   "editore": "Rizzoli Education",
   "anno": 2022,
   "volume": "3",
-  "note": null
+  "note": null,
+  "numero": 2
  }
 ]

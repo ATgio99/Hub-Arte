@@ -18,6 +18,7 @@ import { useAuth } from "../lib/auth";
 import { useData } from "../lib/store";
 import EntitySelector from "./EntitySelector";
 import type { Work, Artist, Period, Technique, Term, Dataset, Fonte, Incertezza } from "../lib/types";
+import { prossimoNumero, citazione } from "../lib/fonti";
 
 const WORK_TYPES = ["architettura", "pittura", "scultura", "mosaico", "miniatura", "oreficeria", "urbanistica", "tavola", "tela", "polittico", "rilievo", "affresco", "altro"];
 
@@ -396,8 +397,11 @@ function EditorDrawerInner({
   // «Con gli occhi dell'arte» e «Con gli occhi dell arte» come due libri.
   const createFonte = async (titolo: string): Promise<string> => {
     const id = slugify(titolo);
+    // Il numero e' quello con cui il libro comparira' in bibliografia e nei
+    // pallini sulle schede: si assegna adesso e non cambia piu'.
     const nuova: Fonte = {
-      id, titolo, autori: null, editore: null, anno: null, volume: null, note: null,
+      id, numero: prossimoNumero({ ...dataset, fonti: allFonti } as any),
+      titolo, autori: null, editore: null, anno: null, volume: null, note: null,
     };
     const { error } = await supabase.from("fonti").upsert({ ...nuova, modified_by: userEmail }, { onConflict: "id" });
     if (error) throw new Error(error.message);
@@ -603,7 +607,9 @@ function EditorDrawerInner({
                   mode="multi"
                   options={allFonti.map(f => ({
                     id: f.id,
-                    label: f.volume ? `${f.titolo}, vol. ${f.volume}` : f.titolo,
+                    // Il numero davanti: e' quello che comparira' nel pallino
+                    // sulla scheda, e va visto mentre si sceglie.
+                    label: `${f.numero ? `[${f.numero}] ` : ""}${citazione(f)}`,
                     subtitle: [f.autori, f.editore].filter(Boolean).join(" — ") || undefined,
                   }))}
                   selected={work.fonte_ids ?? []}

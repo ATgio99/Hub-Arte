@@ -478,6 +478,7 @@ export default function AdminDatabase() {
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
               <tr>
+                <th style={thStyle}>N.</th>
                 <th style={thStyle}>Titolo</th>
                 <th style={thStyle}>Autori</th>
                 <th style={thStyle}>Editore</th>
@@ -489,6 +490,9 @@ export default function AdminDatabase() {
             <tbody>
               {currentData.slice(0, 200).map((f: Fonte) => (
                 <tr key={f.id} style={{ cursor: "pointer" }} onMouseEnter={(e) => e.currentTarget.style.background = "var(--bg-2)"} onMouseLeave={(e) => e.currentTarget.style.background = ""}>
+                  {/* Il numero della bibliografia: e' quello che compare nel
+                      pallino accanto al titolo delle opere. */}
+                  <td style={tdStyle} onClick={() => openEdit(f.id)} className="tnum">{f.numero ?? "—"}</td>
                   <td style={tdStyle} onClick={() => openEdit(f.id)}>
                     <div style={{ fontWeight: 500 }}>{f.titolo}{f.volume ? `, vol. ${f.volume}` : ""}</div>
                     <div style={{ fontSize: 11, color: "var(--ink-dim)", fontFamily: "ui-monospace, monospace" }}>{f.id}</div>
@@ -1685,7 +1689,7 @@ const NEW_ROW_TEMPLATES: Record<Tab, () => any> = {
   }),
   complessi: () => ({ id: "", name: "", works: [] }),
   // Una fonte nuova: il libro da cui viene una scheda.
-  fonti: () => ({ id: "", titolo: "", autori: null, editore: null, anno: null, isbn: null, note: null }),
+  fonti: () => ({ id: "", numero: null, titolo: "", autori: null, editore: null, anno: null, volume: null, note: null }),
   // Un'attribuzione aperta nuova: l'id e' quello dell'opera a cui si riferisce.
   incertezze: () => ({ id: "", tema: "committenza", nota: "", fonte: null }),
 };

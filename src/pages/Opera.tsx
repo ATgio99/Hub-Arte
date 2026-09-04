@@ -7,13 +7,14 @@ import { getGlobalOverrides, setOverride, clearOverride } from "../lib/imageOver
 import { useStudied, toggleStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
 import { setLastOpera } from "../lib/lastVisited";
-import { citazione, fontiDi } from "../lib/fonti";
+import { citazione, riferimento, fontiDi, ancoraFonte } from "../lib/fonti";
+import type { Fonte } from "../lib/types";
 import { useVerifiche, commutaVerifica } from "../lib/verifiche";
 import EditorDrawer from "../components/EditorDrawer";
 import {
   artistsOfWork, termsOfWork, techniquesOfWork, relatedWorks,
   connectionsOf, workYears, entityLabel, ENTITY_LABEL, KIND_LABEL,
-  computeWorkGroups, workGroupMap, fonteImmagine,
+  computeWorkGroups, workGroupMap, fonteImmagine, committentiOfWork,
 } from "../lib/data";
 
 // --- editor immagine personalizzata: URL manuale, anteprima, ripristino ----
@@ -115,6 +116,8 @@ export default function Opera() {
   if (!w) return <div className="wrap page"><Empty msg="Opera non trovata." /></div>;
 
   const artists = artistsOfWork(ix, w);
+  const committenti = committentiOfWork(ix, w);
+  const fonti = fontiDi(ix.ds, w);
   const terms = termsOfWork(ix, w);
   const techs = techniquesOfWork(ix, w);
   const period = ix.periodById.get(w.period_id);
@@ -194,7 +197,10 @@ export default function Opera() {
             <span className="tag">{w.type}</span>
           </div>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
-            <h1 style={{ fontSize: "clamp(28px,4.5vw,46px)", lineHeight: 1.04, letterSpacing: "-.02em", minWidth: 0 }}>{w.title}</h1>
+            <h1 style={{ fontSize: "clamp(28px,4.5vw,46px)", lineHeight: 1.04, letterSpacing: "-.02em", minWidth: 0 }}>
+              {w.title}
+              <PalliniFonti fonti={fonti} />
+            </h1>
             <div style={{ display: "flex", gap: 6, flexShrink: 0, alignSelf: "center", height: 28 }}>
               <StudiedCheck id={w.id} size={24} />
               <FavStar type="work" id={w.id} size={24} />
@@ -219,21 +225,16 @@ export default function Opera() {
               compare qui perche' e' gia' accanto all'autore, sopra. */}
           <dl className="meta" style={{ marginTop: 22 }}>
             {period && <><dt>Periodo</dt><dd><EntityLink type="period" id={period.id} label={period.name} /></dd></>}
+            {/* Chi l'ha voluta. Compare sempre, anche quando non si sa: un'opera
+                l'ha commissionata qualcuno, e «sconosciuto» e' un'informazione —
+                lo spazio vuoto invece sembrava una dimenticanza. */}
+            <dt>Committente</dt>
+            <dd>{committenti.length > 0
+              ? committenti.map((a, i) => <span key={a.id}>{i > 0 && ", "}<EntityLink type="artist" id={a.id} label={a.name} /></span>)
+              : <span className="muted">Sconosciuto</span>}</dd>
             {w.location_city && <><dt>Luogo</dt><dd>{w.location_place ? `${w.location_place}, ` : ""}<Link className="tlink" to={`/luogo/${encodeURIComponent(w.location_city)}`}>{w.location_city}</Link></dd></>}
             {techs.length > 0 && <><dt>Tecnica</dt><dd>{techs.map((t, i) => <span key={t.id}>{i > 0 && ", "}<EntityLink type="technique" id={t.id} label={t.name} /></span>)}</dd></>}
             {w.materials.length > 0 && <><dt>Materiali</dt><dd>{w.materials.join(", ")}</dd></>}
-            {/* Da dove viene la scheda. E' il dato che ha preso il posto di
-                «opera capitale»: dice un fatto invece di dare un voto. */}
-            {fontiDi(ix.ds, w).length > 0 && (
-              <>
-                <dt>{fontiDi(ix.ds, w).length > 1 ? "Fonti" : "Fonte"}</dt>
-                <dd>{fontiDi(ix.ds, w).map((f, i) => (
-                  <span key={f.id}>{i > 0 && "; "}
-                    <Link className="tlink" to="/legal/crediti">{citazione(f)}</Link>
-                  </span>
-                ))}</dd>
-              </>
-            )}
           </dl>
 
           {incertezza && (
@@ -452,5 +453,43 @@ function SpuntaVerifica({ workId, email }: { workId: string; email: string | nul
     >
       {ok ? "✓ Verificata" : "Verifica"}
     </button>
+  );
+}
+
+// ============================================================================
+// I pallini della bibliografia.
+//
+// La provenienza stava in fondo alla scheda tecnica, scritta per esteso: una
+// riga di prosa che diceva da quale manuale viene la scheda. Da lontano non si
+// vedeva, e con tre libri diventava un paragrafo.
+//
+// Un numero accanto al titolo si legge a colpo d'occhio — quante fonti ha
+// questa scheda, e quali — e porta alla voce in bibliografia. E' il modo in cui
+// funzionano le note nei libri, che e' esattamente il posto da cui questo
+// catalogo viene.
+// ============================================================================
+function PalliniFonti({ fonti }: { fonti: Fonte[] }) {
+  if (fonti.length === 0) return null;
+  return (
+    <sup style={{ marginLeft: 8, display: "inline-flex", gap: 4, verticalAlign: "super" }}>
+      {fonti.map((f) => (
+        <Link
+          key={f.id}
+          to={`/legal/crediti#${ancoraFonte(f)}`}
+          title={`${citazione(f)}${f.autori ? ` — ${f.autori}` : ""} · vai alla bibliografia`}
+          data-testid={`pallino-fonte-${f.numero ?? f.id}`}
+          style={{
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            width: 22, height: 22, borderRadius: "50%",
+            border: "1px solid var(--gold)", color: "var(--gold-deep)",
+            background: "color-mix(in srgb, var(--gold) 10%, transparent)",
+            fontSize: 11.5, fontWeight: 600, lineHeight: 1, textDecoration: "none",
+            fontFamily: "var(--font-ui, inherit)",
+          }}
+        >
+          {f.numero ?? "?"}
+        </Link>
+      ))}
+    </sup>
   );
 }
