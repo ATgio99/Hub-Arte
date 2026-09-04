@@ -329,7 +329,7 @@ function WorkCardBase({ work, subtitle, showStudied, group }: { work: Work; subt
         <WorkImage work={work} />
         {period && (
           <span className="workcard-badge">
-            <span className="badge-period">{period.name}</span>
+            <span className="badge-period" title={period.name}>{period.name}</span>
           </span>
         )}
         {isStudied && <span className="workcard-studied-badge" title="Approfondita"><SegnoApprofondita size={12} /></span>}
@@ -388,7 +388,7 @@ export function WorkGroupCard({ group, expanded, onToggle }: { group: WorkGroup;
         <WorkImage work={group.parent} />
         {period && (
           <span className="workcard-badge">
-            <span className="badge-period">{period.name}</span>
+            <span className="badge-period" title={period.name}>{period.name}</span>
           </span>
         )}
         <span className="workgroup-count">{group.works.length} opere</span>

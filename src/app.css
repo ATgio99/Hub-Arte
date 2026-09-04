@@ -116,7 +116,16 @@ main { flex: 1; min-height: 60vh; }
 .workcard-img { position: relative; aspect-ratio: 4/3; background: var(--bg-2); overflow: hidden; }
 .workcard-img img { width:100%; height:100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); display:block; }
 .workcard:hover .workcard-img img { transform: scale(1.045); }
-.workcard-badge { position: absolute; top: 10px; left: 10px; }
+/* Il badge non deve mai coprire la fotografia: certe scuole hanno nomi lunghi
+   una riga intera («Cantieri medicei fiorentini del tardo Cinquecento…») e in
+   una scheda da 300 pixel arrivavano da un bordo all'altro. Al massimo due
+   terzi della larghezza, poi si taglia — il nome per intero resta nel titolo
+   del segnaposto e nella scheda dell'opera. */
+.workcard-badge { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; }
+.workcard-badge .badge-period {
+  max-width: min(100%, 66%);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
 /* sopra le immagini il badge deve restare leggibile: fondo carta quasi pieno */
 .workcard-badge .badge-period { background: rgba(247,243,236,.93); border-color: rgba(184,138,46,.5); backdrop-filter: blur(2px); }
 .workcard-imp { position: absolute; top: 10px; right: 12px; color: var(--gold-2); font-size: 13px; text-shadow: 0 1px 3px rgba(0,0,0,.4); }

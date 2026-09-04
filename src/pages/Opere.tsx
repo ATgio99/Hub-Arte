@@ -124,6 +124,22 @@ export default function Opere() {
     [ds, periodById]
   );
 
+  // Il periodo si sceglie in due passi. Centoquindici voci in un menu solo, con
+  // le scuole rientrate sotto le correnti, erano una lista lunga tre schermate
+  // in cui non si trovava niente: prima l'epoca, poi — e solo allora — la
+  // corrente o la scuola che ci sta dentro.
+  const epocaScelta = useMemo(() => {
+    if (!period || period === SENZA_PERIODO) return "";
+    let corrente: string | undefined = period;
+    while (corrente) {
+      const p = periodById.get(corrente);
+      if (!p) return "";
+      if (p.type === "epoca" || !p.parent_id) return p.id;
+      corrente = p.parent_id ?? undefined;
+    }
+    return "";
+  }, [period, periodById]);
+
   const periodOpts = useMemo(() => {
     const totale = (id: string) => {
       let n = 0;
@@ -142,6 +158,39 @@ export default function Opere() {
     scendi("", 0);
     return out;
   }, [figliDi, discendenti, perPeriodo]);
+
+  /** Le epoche, con quante opere contengono in tutto. */
+  const epocheOpts = useMemo(() => {
+    const totale = (id: string) => {
+      let n = 0;
+      for (const x of discendenti.get(id) ?? []) n += perPeriodo.get(x) ?? 0;
+      return n;
+    };
+    return (figliDi.get("") ?? [])
+      .map((p) => ({ id: p.id, label: p.name, n: totale(p.id) }))
+      .filter((o) => o.n > 0);
+  }, [figliDi, discendenti, perPeriodo]);
+
+  /** Quello che sta dentro l'epoca scelta: correnti e, rientrate, le scuole. */
+  const sottoOpts = useMemo(() => {
+    if (!epocaScelta) return [] as { id: string; label: string; n: number }[];
+    const totale = (id: string) => {
+      let n = 0;
+      for (const x of discendenti.get(id) ?? []) n += perPeriodo.get(x) ?? 0;
+      return n;
+    };
+    const out: { id: string; label: string; n: number }[] = [];
+    const scendi = (id: string, livello: number) => {
+      for (const f of figliDi.get(id) ?? []) {
+        const n = totale(f.id);
+        if (n === 0) continue;
+        out.push({ id: f.id, label: "\u00a0\u00a0".repeat(livello) + (livello ? "› " : "") + f.name, n });
+        scendi(f.id, livello + 1);
+      }
+    };
+    scendi(epocaScelta, 0);
+    return out;
+  }, [epocaScelta, figliDi, discendenti, perPeriodo]);
 
   // opere visibili nell'intervallo temporale globale (prima dei filtri locali)
   const inTime = useMemo(() => ds.works.filter(workIn), [ds, workIn]);
@@ -269,6 +318,7 @@ export default function Opere() {
     type, setType: (v) => { setType(v); setLimit(60); }, tipi: TYPES,
     period, setPeriod: (v) => { setPeriod(v); setLimit(60); },
     periodOpts, senzaPeriodo, chiaveSenzaPeriodo: SENZA_PERIODO,
+    epocaScelta, epocheOpts, sottoOpts,
     favOnly, setFavOnly: (v) => { setFavOnly(v); setLimit(60); }, nFav: favs.works.length,
     studiedFilter, setStudiedFilter: (v) => { setStudiedFilter(v); setLimit(60); },
     nStudiate: studiedCount, nDaStudiare: notStudiedCount,
@@ -299,12 +349,27 @@ export default function Opere() {
           <option value="">Ogni tipo</option>
           {TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
         </select>
-        <select className="input" value={period} onChange={(e) => { setPeriod(e.target.value); setLimit(60); }} data-testid="select-period">
-          <option value="">Ogni periodo</option>
-          {periodOpts.map((p) => <option key={p.id} value={p.id}>{p.label} ({p.n})</option>)}
+        {/* Prima l'epoca, poi la corrente o la scuola che ci sta dentro: in un
+            menu solo erano centoquindici voci, tre schermate di elenco. */}
+        <select className="input"
+          value={period === SENZA_PERIODO ? SENZA_PERIODO : epocaScelta}
+          onChange={(e) => { setPeriod(e.target.value); setLimit(60); }}
+          data-testid="select-epoca">
+          <option value="">Ogni epoca</option>
+          {epocheOpts.map((p) => <option key={p.id} value={p.id}>{p.label} ({p.n})</option>)}
           {senzaPeriodo > 0 && (
             <option value={SENZA_PERIODO}>Senza periodo assegnato ({senzaPeriodo})</option>
           )}
+        </select>
+        <select className="input"
+          value={period === epocaScelta ? "" : period}
+          disabled={!epocaScelta}
+          onChange={(e) => { setPeriod(e.target.value || epocaScelta); setLimit(60); }}
+          data-testid="select-period"
+          title={epocaScelta ? "Corrente o scuola dentro l'epoca scelta" : "Scegli prima un'epoca"}
+          style={{ opacity: epocaScelta ? 1 : 0.5 }}>
+          <option value="">{epocaScelta ? "Tutta l'epoca" : "Corrente o scuola"}</option>
+          {sottoOpts.map((p) => <option key={p.id} value={p.id}>{p.label} ({p.n})</option>)}
         </select>
         <button className={`chip fav-chip ${favOnly ? "active" : ""}`} onClick={() => { setFavOnly((v) => !v); setLimit(60); }} data-testid="works-fav-only"
           title={favs.works.length === 0 ? "Nessuna opera preferita: usa la ★ sulle schede" : ""}>
@@ -373,11 +438,24 @@ export default function Opere() {
       ) : (
         <>
           {inCima.length > 0 && !grouped && (
-            <div style={{ marginBottom: 26 }} data-testid="piu-pertinenti">
-              <div className="eyebrow" style={{ marginBottom: 10 }}>
-                {inCima.length === 1 ? "Corrispondenza migliore" : "Corrispondenze migliori"}
-                <span className="faint" style={{ textTransform: "none", letterSpacing: 0, marginLeft: 8, fontSize: 12 }}>
-                  sotto, tutte in ordine di tempo
+            <div
+              data-testid="piu-pertinenti"
+              style={{
+                marginBottom: 28, padding: "14px 16px 18px", borderRadius: 14,
+                border: "1px solid var(--gold)",
+                background: "color-mix(in srgb, var(--gold) 6%, transparent)",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginBottom: 12 }}>
+                <span style={{
+                  fontSize: 11, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase",
+                  color: "var(--gold-deep)", border: "1px solid var(--gold)", borderRadius: 999,
+                  padding: "3px 10px", background: "var(--bg-0, #fff)",
+                }}>
+                  {inCima.length === 1 ? "Corrispondenza esatta" : `Le ${inCima.length} corrispondenze migliori`}
+                </span>
+                <span className="muted" style={{ fontSize: 13 }}>
+                  per «{q.trim()}»
                 </span>
               </div>
               <div className="grid-works">
@@ -386,6 +464,15 @@ export default function Opere() {
                     subtitle={[w.location_city, periodById.get(w.period_id)?.name].filter(Boolean).join(" · ")} />
                 ))}
               </div>
+            </div>
+          )}
+
+          {inCima.length > 0 && !grouped && (
+            <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "0 0 16px" }}>
+              <span className="eyebrow" style={{ whiteSpace: "nowrap" }}>
+                Le altre {restanti.length}, in ordine di tempo
+              </span>
+              <span style={{ flex: 1, height: 1, background: "var(--line)" }} />
             </div>
           )}
 

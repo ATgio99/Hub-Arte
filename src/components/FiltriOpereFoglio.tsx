@@ -23,6 +23,9 @@ export type StatoApprofondite = "" | "studied" | "not-studied";
 export interface StatoFiltri {
   type: string; setType: (v: string) => void; tipi: string[];
   period: string; setPeriod: (v: string) => void;
+  epocaScelta: string;
+  epocheOpts: { id: string; label: string; n: number }[];
+  sottoOpts: { id: string; label: string; n: number }[];
   periodOpts: { id: string; label: string; n: number }[];
   senzaPeriodo: number; chiaveSenzaPeriodo: string;
   favOnly: boolean; setFavOnly: (v: boolean) => void; nFav: number;
@@ -108,15 +111,29 @@ export function FoglioFiltri({ aperto, onChiudi, s }:
                 </select>
               </label>
 
+              {/* Prima l'epoca, poi quello che ci sta dentro: centoquindici
+                  voci in un menu solo non si leggono. */}
               <label className="ffilt-campo">
-                <span className="ffilt-et">Periodo</span>
-                <select className="input" value={s.period} onChange={(e) => s.setPeriod(e.target.value)}
-                  data-testid="foglio-select-period">
-                  <option value="">Ogni periodo</option>
-                  {s.periodOpts.map((p) => <option key={p.id} value={p.id}>{p.label} ({p.n})</option>)}
+                <span className="ffilt-et">Epoca</span>
+                <select className="input" value={s.period === s.chiaveSenzaPeriodo ? s.chiaveSenzaPeriodo : s.epocaScelta}
+                  onChange={(e) => s.setPeriod(e.target.value)}
+                  data-testid="foglio-select-epoca">
+                  <option value="">Ogni epoca</option>
+                  {s.epocheOpts.map((p) => <option key={p.id} value={p.id}>{p.label} ({p.n})</option>)}
                   {s.senzaPeriodo > 0 && (
                     <option value={s.chiaveSenzaPeriodo}>Senza periodo assegnato ({s.senzaPeriodo})</option>
                   )}
+                </select>
+              </label>
+
+              <label className="ffilt-campo">
+                <span className="ffilt-et">Corrente o scuola</span>
+                <select className="input" value={s.period === s.epocaScelta ? "" : s.period}
+                  disabled={!s.epocaScelta}
+                  onChange={(e) => s.setPeriod(e.target.value || s.epocaScelta)}
+                  data-testid="foglio-select-period">
+                  <option value="">{s.epocaScelta ? "Tutta l'epoca" : "Scegli prima un'epoca"}</option>
+                  {s.sottoOpts.map((p) => <option key={p.id} value={p.id}>{p.label} ({p.n})</option>)}
                 </select>
               </label>
 
