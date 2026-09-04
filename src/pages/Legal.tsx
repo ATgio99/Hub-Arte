@@ -258,14 +258,67 @@ export default function Legal() {
 
         <H2>Ascoltare le schede</H2>
         <P>
-          Le schede delle opere, dei protagonisti e dei periodi si possono ascoltare: in basso a
-          destra c'è un pulsante con le cuffie, e il tasto <b>L</b> fa la stessa cosa. La voce è
-          quella installata sul dispositivo — il testo non esce da qui e non serve la rete — e si
-          sceglie fra quelle che ci sono, insieme alla velocità. Su Mac e iPhone se ne scaricano
-          di molto migliori: cerca quelle <b>migliorate</b> o <b>premium</b> in Impostazioni →
-          Accessibilità → Contenuto pronunciato → Voci → Italiano.
+          Le schede delle opere, dei protagonisti e dei periodi si possono ascoltare. La funzione
+          è spenta: si accende qui, e da quel momento in basso a destra compare un pulsante con
+          le cuffie — il tasto <b>L</b> fa la stessa cosa. Legge il titolo, chi e quando, dove si
+          trova, e poi la sintesi, la lettura dell'opera e le novità, annunciando ogni sezione;
+          il paragrafo in corso si illumina appena, e la frase che si sente è scritta anche nel
+          riquadro, per chi la segue con gli occhi o non può alzare il volume.
         </P>
         <InterruttoreLettura />
+        <P>
+          La voce è quella installata sul dispositivo: <b>il testo non esce da qui</b>, non passa
+          da nessun servizio e funziona anche senza rete. Il rovescio è che la qualità non
+          dipende dal sito ma da quali voci hai installato — e quelle che i sistemi mettono di
+          serie sono spesso le peggiori che hanno.
+        </P>
+
+        <H2>Mettere una voce migliore</H2>
+        <P>
+          Vale la pena farlo una volta sola: sono gratis, si scaricano dal sistema operativo e
+          poi valgono per tutto — non solo per questo sito. Le voci buone si riconoscono dalla
+          parola <b>migliorata</b>, <b>premium</b>, <b>naturale</b> o <b>neurale</b> nel nome.
+          Dopo averle installate, ricarica la pagina: l'elenco delle voci si legge all'avvio.
+        </P>
+        <ul style={{ fontSize: 16, lineHeight: 1.75, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
+          <li>
+            <b>iPhone e iPad</b> — Impostazioni → Accessibilità → Contenuto pronunciato → Voci →
+            Italiano. Tocca una voce e poi la nuvoletta per scaricarla: quelle marcate
+            «Premium» o «Migliorata» pesano qualche decina di megabyte e cambiano tutto. Le voci
+            di Siri, invece, restano riservate al sistema: nessun sito può usarle.
+          </li>
+          <li>
+            <b>Mac</b> — Impostazioni di Sistema → Accessibilità → Contenuto pronunciato → accanto
+            a «Voce di sistema» apri il menu e scegli <i>Gestisci voci…</i> → Italiano. Scarica
+            <i>Alice (Migliorata)</i> o una delle Premium. Le voci come Rocko, Grandma o Shelley
+            sono voci di carattere per gli avvisi: qui le trovi in fondo all'elenco, sotto la
+            loro etichetta.
+          </li>
+          <li>
+            <b>Android</b> — Impostazioni → Accessibilità → Output sintesi vocale (in certe
+            versioni sta sotto «Gestione generale» o «Lingua e inserimento»). Come motore scegli
+            <i>Sintesi vocale di Google</i>, poi Installa dati vocali → Italiano e prendi una
+            voce ad alta qualità. Chrome usa quelle.
+          </li>
+          <li>
+            <b>Windows 11</b> — Impostazioni → Accessibilità → Assistente vocale → Aggiungi voci
+            naturali: sono le migliori che Windows abbia, e una volta installate le vede anche il
+            browser. Le altre stanno in Impostazioni → Ora e lingua → Voce → Gestisci voci.
+            Su Edge, in più, sono disponibili delle voci di rete Microsoft, che però richiedono
+            la connessione.
+          </li>
+          <li>
+            <b>Linux</b> — la sintesi passa da <code>speech-dispatcher</code>, e la voce che
+            quasi tutte le distribuzioni installano di serie è <code>espeak-ng</code>, che è
+            comprensibile ma metallica. Per l'italiano si sente molto meglio <b>RHVoice</b>
+            (pacchetto <code>rhvoice</code> più la voce italiana), oppure <code>festival</code>
+            con le voci MBROLA. Dopo l'installazione riavvia il browser, non solo la pagina.
+          </li>
+        </ul>
+        <P>
+          Se sul tuo dispositivo non c'è nessuna voce italiana, il pannello te lo dice invece di
+          leggere con l'accento sbagliato.
+        </P>
 
         <H2>Il resto della tastiera</H2>
         <P>
@@ -612,7 +665,7 @@ function InterruttoreLettura() {
         data-testid="interruttore-lettura"
       />
       <span style={{ fontSize: 15, color: "var(--ink-soft)" }}>
-        Mostra il pulsante per l'ascolto sulle schede
+        <b>Attiva l'ascolto ad alta voce</b> — aggiunge il pulsante con le cuffie sulle schede
       </span>
     </label>
   );

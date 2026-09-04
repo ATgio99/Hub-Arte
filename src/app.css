@@ -1542,6 +1542,7 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   transition: transform .18s cubic-bezier(.2,.7,.2,1), border-color .18s;
 }
 .lettore-bolla:hover { transform: translateY(-2px); border-color: var(--gold); }
+.lettore-bolla:active { transform: scale(.93); }
 .lettore-bolla:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .lettore-bolla.legge { border-color: var(--gold); }
 
@@ -1555,13 +1556,30 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 @keyframes lettore-respira { 0%,100% { transform: scaleY(.5); } 50% { transform: scaleY(1); } }
 @media (prefers-reduced-motion: reduce) { .lettore-onda i { animation: none; } }
 
+/* Vetro come il drawer del menu, e non un rettangolo bianco appiccicato
+   sopra la pagina: è lo stesso materiale di tutti i comandi che galleggiano. */
 .lettore-scheda {
   position: fixed; right: 18px; bottom: calc(18px + var(--sab, 0px)); z-index: 140;
   width: min(310px, calc(100vw - 36px));
-  background: var(--bg-0, #fff);
-  border: 1px solid color-mix(in srgb, var(--gold) 40%, var(--line));
-  border-radius: 14px; box-shadow: 0 14px 34px -10px rgba(0,0,0,.28);
-  padding: 10px 12px 12px;
+  background: rgba(var(--vetro-tinta), .9);
+  -webkit-backdrop-filter: blur(22px) saturate(var(--vetro-satura));
+  backdrop-filter: blur(22px) saturate(var(--vetro-satura));
+  border: 1px solid var(--vetro-bordo);
+  border-radius: 16px; box-shadow: 0 14px 34px -10px rgba(0,0,0,.28);
+  padding: 12px 14px 14px;
+  transform-origin: bottom right;
+  animation: lettore-apri .34s cubic-bezier(.16,.84,.28,1.12);
+}
+
+/* Nasce dall'angolo dove stava l'icona, non compare e basta: chi guarda deve
+   capire che quella scheda è il pulsante che si è aperto. */
+@keyframes lettore-apri {
+  from { opacity: 0; transform: scale(.72) translate(14px, 14px); }
+  60%  { opacity: 1; }
+  to   { opacity: 1; transform: scale(1) translate(0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lettore-scheda { animation: none; }
 }
 .lettore-testa { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .lettore-titolo {
@@ -1573,8 +1591,8 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   background: none; border: 0; cursor: pointer; color: var(--ink-dim);
   font-size: 18px; line-height: 1; padding: 2px 6px; border-radius: 6px;
 }
-.lettore-chiudi:hover { background: var(--bg-2); }
-.lettore-barra { height: 3px; border-radius: 2px; background: var(--bg-2); margin: 9px 0 7px; overflow: hidden; }
+.lettore-chiudi:hover { background: rgba(0,0,0,.06); }
+.lettore-barra { height: 3px; border-radius: 2px; background: rgba(0,0,0,.09); margin: 9px 0 7px; overflow: hidden; }
 .lettore-barra span { display: block; height: 100%; background: var(--gold); transition: width .3s linear; }
 .lettore-frase {
   font-size: 12.5px; line-height: 1.5; color: var(--ink-soft); margin: 0 0 9px;
@@ -1592,11 +1610,11 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 .lettore-t-grande { border-color: var(--gold); color: var(--gold-deep); min-width: 44px; }
 .lettore-t-fine { margin-left: auto; }
 .lettore-t.acceso { background: color-mix(in srgb, var(--gold) 14%, transparent); }
-.lettore-opzioni { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 10px; display: grid; gap: 10px; }
+.lettore-opzioni { border-top: 1px solid var(--vetro-bordo); margin-top: 10px; padding-top: 10px; display: grid; gap: 10px; }
 .lettore-campo { display: grid; gap: 4px; font-size: 12px; color: var(--ink-dim); }
 .lettore-campo select {
-  padding: 7px 9px; border-radius: 8px; border: 1px solid var(--line);
-  background: var(--bg-1); font-size: 13px; color: var(--ink); width: 100%;
+  padding: 7px 9px; border-radius: 8px; border: 1px solid var(--vetro-bordo);
+  background: rgba(255,255,255,.55); font-size: 13px; color: var(--ink); width: 100%;
 }
 .lettore-campo input[type="range"] { width: 100%; }
 .lettore-nota { font-size: 11.5px; color: var(--ink-dim); line-height: 1.5; margin: 0; }

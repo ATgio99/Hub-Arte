@@ -52,11 +52,11 @@ export const LETTURA_ATTIVA = "atlante:lettura-attiva";
 
 const CHIAVE_ATTIVA = "atlante.lettura.attiva";
 
-/** Se il pulsante dell'ascolto debba comparire. Acceso di suo — è una funzione
- *  di accessibilità, e una funzione di accessibilità spenta non aiuta nessuno —
- *  ma si spegne dalla pagina Accessibilità e la scelta resta. */
+/** Se il pulsante dell'ascolto debba comparire. Spento finché non lo si
+ *  accende dalla pagina Accessibilità: un comando in più su ogni scheda lo
+ *  deve avere chi lo ha chiesto, non tutti. */
 export function letturaAttiva(): boolean {
-  try { return localStorage.getItem(CHIAVE_ATTIVA) !== "no"; } catch { return true; }
+  try { return localStorage.getItem(CHIAVE_ATTIVA) === "si"; } catch { return false; }
 }
 
 export function accendiLettura(si: boolean) {
