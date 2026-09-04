@@ -434,12 +434,13 @@ export default function Legal() {
           tempestivamente.
         </P>
 
-        <H2>5. Immagini personalizzate dagli utenti</H2>
+        <H2>5. Sostituzione delle immagini</H2>
         <P>
-          Gli utenti autenticati possono sostituire temporaneamente le immagini delle opere con
-          URL personalizzati (funzione "Cambia immagine"). Queste modifiche sono locali al
-          browser dell'utente e, se sincronizzate, sono visibili solo al proprio account.
-          L'utente è responsabile delle immagini caricate e deve rispettare i diritti d'autore.
+          Le fotografie delle opere possono essere sostituite solo dagli amministratori, e la
+          sostituzione vale per tutti: entra nel catalogo. Chi trova un'immagine sbagliata può
+          segnalarla dalla scheda dell'opera con "Richiedi modifica". Fino a settembre 2026
+          esisteva anche una sostituzione privata, visibile al solo account che l'aveva fatta:
+          non è più possibile, e quelle correzioni non vengono più applicate.
         </P>
 
         <H2>6. Responsabilità</H2>

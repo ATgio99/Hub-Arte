@@ -9,7 +9,7 @@ import { supabase } from "../lib/supabase";
 import { fullSync } from "../lib/sync";
 import { getFavorites, setFavorites, clearAllFavorites } from "../lib/favorites";
 import { getStudied, setStudied, clearAllStudied } from "../lib/studied";
-import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "../lib/imageOverrides";
+import { getGlobalOverrides, setGlobalOverrides } from "../lib/imageOverrides";
 
 function Accesso() {
   const { signIn, signUp, signOut, user, loading, resetPassword, updateNewPassword, passwordRecoveryActive } = useAuth();
@@ -53,16 +53,15 @@ function Accesso() {
   }
 
   // ---- EXPORT: genera JSON con tutti i dati locali e scarica un file ----
-  // Include: preferiti, approfondite, override immagini PRIVATI e GLOBALI.
-  // NOTA: i globali di solito vengono riscaricati dal cloud al login, ma
-  // li esportiamo comunque per backup completo (utile se l'utente è admin
-  // o per ripristinare su un altro browser senza attendere il sync).
+  // Include: preferiti, approfondite e le fotografie sostituite dagli
+  // amministratori. Di solito queste ultime si riscaricano da sole al login,
+  // ma nel salvataggio ci vanno lo stesso, per ripristinare su un altro
+  // browser senza aspettare la sincronizzazione.
   const handleExport = () => {
     const data = {
       favorites: getFavorites(),
       studied: getStudied(),
-      imageOverrides: getOverrides(),           // privati dell'utente
-      globalImageOverrides: getGlobalOverrides(), // globali (admin o scaricati dal cloud)
+      globalImageOverrides: getGlobalOverrides(),
       exportedAt: new Date().toISOString(),
       version: 2, // versione del formato JSON (per futuri upgrade)
     };
@@ -79,10 +78,9 @@ function Accesso() {
     const counts = {
       favs: data.favorites.works.length + data.favorites.artists.length,
       studied: data.studied.length,
-      priv: Object.keys(data.imageOverrides).length,
-      glob: Object.keys(data.globalImageOverrides).length,
+      foto: Object.keys(data.globalImageOverrides).length,
     };
-    setSyncResult(`✓ Backup scaricato! ${counts.favs} preferiti, ${counts.studied} approfondite, ${counts.priv} immagini private, ${counts.glob} globali.`);
+    setSyncResult(`✓ Backup scaricato! ${counts.favs} preferiti, ${counts.studied} approfondite, ${counts.foto} fotografie sostituite.`);
   };
 
   // ---- IMPORT: carica JSON nella nuova versione ----
@@ -137,26 +135,8 @@ function Accesso() {
       }
 
       // Import immagini PRIVATE (merge — non sovrascive esistenti)
-      if (data.imageOverrides && typeof data.imageOverrides === "object") {
-        const current = getOverrides();
-        let added = 0;
-        for (const [k, v] of Object.entries(data.imageOverrides as any)) {
-          if (!current[k]) {
-            const entry: any = typeof v === "object" && v !== null
-              ? { ...v, isGlobal: false }
-              : { url: String(v), setAt: new Date().toISOString(), isGlobal: false };
-            // Assicurati che i campi obbligatori ci siano
-            if (typeof entry.url === "string" && entry.url.trim()) {
-              current[k] = entry;
-              added++;
-            }
-          }
-        }
-        if (added > 0) {
-          setOverrides(current);
-          imported += added;
-        }
-      }
+      // I salvataggi vecchi portano anche una lista di correzioni private:
+      // si ignora, quel modo di correggere le immagini non esiste piu'.
 
       // Import immagini GLOBALI (merge — non sovrascive esistenti)
       // NOTA: di solito i globali vengono riscaricati dal cloud al login,
@@ -238,7 +218,7 @@ function Accesso() {
   if (user) {
     const favs = getFavorites();
     const studied = getStudied();
-    const overrides = getOverrides();
+    const overrides = getGlobalOverrides();
 
     const handleSync = async () => {
       setSyncing(true);

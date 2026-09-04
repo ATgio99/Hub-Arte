@@ -46,3 +46,18 @@ begin
   end loop;
   raise notice 'regole aggiornate: %', quante;
 end $$;
+
+-- ============================================================================
+-- Via le correzioni private.
+--
+-- Sostituire la fotografia di un'opera e' cosa da amministratore, e vale per
+-- tutti. La «correzione privata» — visibile al solo account che l'aveva fatta
+-- — non esiste piu' nel sito: le regole che permettevano di scriverne una non
+-- servono a nessuna funzione, restano solo a lasciare una porta aperta.
+--
+-- La lettura resta: le righe gia' scritte servono ancora, sono l'elenco delle
+-- fotografie sbagliate da controllare una per una.
+-- ============================================================================
+drop policy if exists "Users can insert own private image overrides" on public.image_overrides;
+drop policy if exists "Users can update own private image overrides" on public.image_overrides;
+drop policy if exists "Users can delete own private image overrides" on public.image_overrides;

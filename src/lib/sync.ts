@@ -28,7 +28,7 @@
 import { supabase } from "./supabase";
 import { getFavorites, setFavorites, filterTombstoned, getPendingAddsFor, eNostraEco } from "./favorites";
 import { getStudied, setStudied, filterTombstonedStudied, getPendingAddsStudied, eNostraEcoStudied } from "./studied";
-import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "./imageOverrides";
+import { getGlobalOverrides, setGlobalOverrides } from "./imageOverrides";
 import type { OverrideMap } from "./imageOverrides";
 import type { User } from "@supabase/supabase-js";
 import { isAdminEmail } from "./auth";
@@ -159,21 +159,17 @@ export async function pushToCloud(user: User): Promise<void> {
     console.log("[sync] No local studied to push");
   }
 
-  // 3) Image overrides PRIVATI (is_global=false)
-  // NON spingiamo i globali: sono gestiti dal modulo imageOverrides tramite
-  // l'API setOverride (che sa se l'utente è admin e salva di conseguenza).
-  const overrides = getOverrides();
-  const overrideEntries = Object.entries(overrides);
-  if (overrideEntries.length > 0) {
-    const imgRows = overrideEntries.map(([work_id, ov]) => ({
-      user_id: uid,
-      work_id,
-      url: ov.url,
-      is_global: false,
-      modified_by: null,
-    }));
-    await supabase.from("image_overrides").upsert(imgRows, { onConflict: "user_id,work_id" });
-  }
+  // 3) Le correzioni alle immagini non si spingono piu'.
+  //
+  // Qui si rispediva la mappa locale delle correzioni private. Quella mappa
+  // vive nel browser, non nell'account: chiunque entrasse da questo browser se
+  // la ritrovava caricata a proprio nome, ed e' il modo in cui le stesse 186
+  // correzioni sono finite duplicate sotto tre account. Peggio: le righe
+  // partivano con `is_global: false` esplicito, quindi una correzione appena
+  // resa pubblica tornava privata alla sincronizzazione successiva.
+  //
+  // Cambiare un'immagine e' cosa da amministratore e vale per tutti: passa da
+  // `setOverride`, che scrive in `works` e in `image_overrides` come globale.
 
   // 4) Quiz errors — push solo se ci sono errori locali
   try {
@@ -271,25 +267,10 @@ export async function pullFromCloud(user: User): Promise<void> {
 //   - Al focus del tab (l'utente torna attivo)
 // Questo riduce drasticamente le richieste a image_overrides
 // (prima erano 169/ora = ~125k/mese, ora ~288/giorno = ~8.6k/mese).
-export async function pullImageOverrides(user: User): Promise<void> {
-  // 1) Image overrides PRIVATI dell'utente — merge (locale ha precedenza)
-  const { data: imgRows, error: imgErr } = await supabase
-    .from("image_overrides")
-    .select("work_id, url")
-    .eq("user_id", user.id)
-    .eq("is_global", false);
+export async function pullImageOverrides(_user: User): Promise<void> {
+  // Le correzioni private non esistono piu': si leggono solo le globali, che
+  // valgono per tutti e sono le uniche che il catalogo applica.
 
-  if (!imgErr && imgRows && imgRows.length > 0) {
-    const map = getOverrides();
-    for (const r of imgRows) {
-      if (!map[r.work_id]) {
-        map[r.work_id] = { url: r.url, setAt: new Date().toISOString(), isGlobal: false };
-      }
-    }
-    setOverrides(map);
-  }
-
-  // 2) Image overrides GLOBALI — per tutti gli utenti
   await pullGlobalImageOverrides();
 }
 
@@ -494,25 +475,6 @@ export function subscribeToRealtime(user: User): () => void {
           if (!vecchio || !vecchio.work_id) { chiediRilettura(user); return; }
           const ids = getStudied().filter(id => id !== vecchio.work_id);
           setStudied(ids);
-        }
-      }
-    )
-    .on("postgres_changes",
-      // Ascolta i cambiamenti agli override PRIVATI dell'utente corrente
-      { event: "*", schema: "public", table: "image_overrides", filter: `user_id=eq.${user.id}` },
-      (payload) => {
-        if (payload.eventType === "INSERT" || payload.eventType === "UPDATE") {
-          // Aggiorna solo se è un override privato (is_global=false)
-          const row = payload.new as any;
-          if (row.is_global === false || row.is_global === null) {
-            const map = getOverrides();
-            map[row.work_id] = { url: row.url, setAt: new Date().toISOString(), isGlobal: false };
-            setOverrides(map);
-          }
-        } else if (payload.eventType === "DELETE") {
-          const map = getOverrides();
-          delete map[(payload.old as any).work_id];
-          setOverrides(map);
         }
       }
     )

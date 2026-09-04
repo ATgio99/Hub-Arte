@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useData, useTimeRange } from "../lib/store";
 import { Section, FilterNote, CountUp } from "../components/ui";
-import { getOverrides, clearAllOverrides, clearOverride, exportOverrides, importOverrides } from "../lib/imageOverrides";
+import { getGlobalOverrides, clearOverride, exportOverrides, importOverrides } from "../lib/imageOverrides";
 import { workSortYear } from "../lib/data";
 import { useStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
@@ -413,16 +413,14 @@ export default function Dashboard() {
         <p className="muted" style={{ marginTop: 40, textAlign: "center" }}>Nessuna opera nell'arco {range.min}–{range.max}.</p>
       )}
 
-      <Section eyebrow="Personalizzazioni" title="Immagini personalizzate">
-        {isAdmin ? (
+      {/* Sostituire una fotografia e' cosa da amministratore: a chi non lo e'
+          la sezione non compare affatto, invece di comparire vuota con dentro
+          scritto che non puo' usarla. */}
+      {isAdmin && (
+        <Section eyebrow="Fotografie" title="Immagini sostituite a mano">
           <OverridesManager />
-        ) : (
-          <p className="muted" style={{ fontSize: 13.5, maxWidth: 640, lineHeight: 1.55 }}>
-            La gestione delle immagini personalizzate è riservata agli amministratori.
-            Se sei un utente e vuoi suggerire una modifica a un'immagine, usa il pulsante “✎ Richiedi modifica” sulla scheda dell'opera.
-          </p>
-        )}
-      </Section>
+        </Section>
+      )}
     </div>
   );
 }
@@ -432,7 +430,7 @@ function OverridesManager() {
   const ix = useData();
   const [, force] = useState(0);
   const fileRef = useRef<HTMLInputElement>(null);
-  const map = getOverrides();
+  const map = getGlobalOverrides();
   const entries = Object.entries(map);
 
   const doExport = () => {
@@ -453,22 +451,17 @@ function OverridesManager() {
   return (
     <div>
       <p className="muted" style={{ fontSize: 13.5, maxWidth: 640, lineHeight: 1.55, marginBottom: 14 }}>
-        Da ogni scheda opera puoi sostituire l'immagine con "Cambia immagine". Le personalizzazioni vivono in questo
-        browser: esportale in JSON per conservarle o per chiedermi di integrarle nel dataset in modo permanente.
+        Da ogni scheda opera puoi sostituire la fotografia con "Cambia immagine": la sostituzione entra nel catalogo
+        e la vedono tutti. Da qui puoi rivederle in blocco, esportarle in JSON o rimettere l'immagine originale.
       </p>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
         <button className="btn ghost sm" onClick={doExport} disabled={!entries.length} data-testid="ov-export">Esporta JSON ({entries.length})</button>
         <button className="btn ghost sm" onClick={() => fileRef.current?.click()} data-testid="ov-import">Importa JSON</button>
         <input ref={fileRef} type="file" accept="application/json" style={{ display: "none" }}
           onChange={(e) => { const f = e.target.files?.[0]; if (f) doImport(f); e.currentTarget.value = ""; }} />
-        {entries.length > 0 && (
-          <button className="btn ghost sm" onClick={() => { if (confirm("Ripristinare le immagini originali per tutte le opere?")) { clearAllOverrides(); force((x) => x + 1); } }} data-testid="ov-clear">
-            Ripristina tutte
-          </button>
-        )}
-      </div>
+</div>
       {entries.length === 0
-        ? <p className="faint" style={{ fontSize: 13 }}>Nessuna immagine personalizzata al momento.</p>
+        ? <p className="faint" style={{ fontSize: 13 }}>Nessuna fotografia sostituita a mano.</p>
         : (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(230px,1fr))", gap: 10 }}>
             {entries.map(([wid, ov]) => {
