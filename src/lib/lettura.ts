@@ -48,6 +48,22 @@ const CHIAVE_VOCE = "atlante.lettura.voce";
 const CHIAVE_VELOCITA = "atlante.lettura.velocita";
 
 export const EVENTO_LETTURA = "atlante:lettura-cambiata";
+export const LETTURA_ATTIVA = "atlante:lettura-attiva";
+
+const CHIAVE_ATTIVA = "atlante.lettura.attiva";
+
+/** Se il pulsante dell'ascolto debba comparire. Acceso di suo — è una funzione
+ *  di accessibilità, e una funzione di accessibilità spenta non aiuta nessuno —
+ *  ma si spegne dalla pagina Accessibilità e la scelta resta. */
+export function letturaAttiva(): boolean {
+  try { return localStorage.getItem(CHIAVE_ATTIVA) !== "no"; } catch { return true; }
+}
+
+export function accendiLettura(si: boolean) {
+  try { localStorage.setItem(CHIAVE_ATTIVA, si ? "si" : "no"); } catch { /* ignore */ }
+  if (!si) lettore.ferma();
+  window.dispatchEvent(new CustomEvent(LETTURA_ATTIVA));
+}
 
 class Lettore {
   blocchi: BloccoLettura[] = [];
@@ -95,15 +111,24 @@ class Lettore {
   // cambiano da sistema a sistema (Enhanced, Premium, Natural, Siri) ma la
   // parola c'è quasi sempre, e la differenza si sente. Le voci locali vengono
   // prima di quelle di rete, che si interrompono quando la linea va giù.
+  /** Le voci che macOS installa per scherzo o per gli avvisi: leggono una
+   *  scheda di storia dell'arte come leggerebbero una filastrocca. */
+  vocePerModoDiDire(v: SpeechSynthesisVoice): boolean {
+    return /^(eddy|flo|grandma|grandpa|reed|rocko|sandy|shelley|bahh|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|albert|good news|bad news)\b/i
+      .test(v.name.trim());
+  }
+
   voci(): SpeechSynthesisVoice[] {
     if (!this.disponibile) return [];
     const tutte = window.speechSynthesis.getVoices();
     const italiane = tutte.filter((v) => v.lang.toLowerCase().startsWith("it"));
     const punteggio = (v: SpeechSynthesisVoice) => {
       let p = 0;
-      if (/enhanced|premium|natural|neural|siri/i.test(v.name)) p -= 10;
+      if (/migliorata|enhanced|premium|natural|neural|siri/i.test(v.name)) p -= 20;
+      if (/alice|federica|luca|paola|elsa|cosimo/i.test(v.name)) p -= 8;
       if (v.localService) p -= 3;
       if (/compact|eloquence/i.test(v.name)) p += 5;
+      if (this.vocePerModoDiDire(v)) p += 30;
       return p;
     };
     return italiane.sort((a, b) => punteggio(a) - punteggio(b) || a.name.localeCompare(b.name));

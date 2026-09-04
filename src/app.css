@@ -1525,48 +1525,81 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 .ricerca-divisorio { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; }
 .ricerca-divisorio > span:last-child { flex: 1; height: 1px; background: var(--line); }
 
-/* ── La barra dell'ascolto ────────────────────────────────────────────────
-   In fondo alla finestra, sopra tutto ma sotto i pannelli: chi ascolta deve
-   poterla raggiungere senza cercarla, e chi legge non deve inciamparci. */
-.lettore {
-  position: fixed; left: 50%; transform: translateX(-50%);
-  bottom: 18px; z-index: 60;
-  width: min(680px, calc(100vw - 32px));
+/* ── L'ascolto ────────────────────────────────────────────────────────────
+   Un pulsante tondo in basso a destra, dove il pollice arriva e dove non c'è
+   nient'altro. Sotto il menu (9999) e sotto la barra della scheda: se copre
+   qualcosa, quel qualcosa è più importante di lui. */
+.lettore-bolla {
+  position: fixed; right: 18px; bottom: calc(18px + var(--sab, 0px)); z-index: 140;
+  width: 50px; height: 50px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--gold-deep); cursor: pointer;
+  background: rgba(var(--vetro-tinta), var(--vetro-velo));
+  border: 1px solid var(--vetro-bordo);
+  box-shadow: var(--vetro-ombra);
+  -webkit-backdrop-filter: blur(var(--vetro-sfoca)) saturate(var(--vetro-satura));
+  backdrop-filter: blur(var(--vetro-sfoca)) saturate(var(--vetro-satura));
+  transition: transform .18s cubic-bezier(.2,.7,.2,1), border-color .18s;
+}
+.lettore-bolla:hover { transform: translateY(-2px); border-color: var(--gold); }
+.lettore-bolla:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.lettore-bolla.legge { border-color: var(--gold); }
+
+/* Tre stanghette che respirano: dice che sta leggendo senza dover scrivere
+   «sto leggendo» sopra un pulsante da cinquanta pixel. */
+.lettore-onda { position: absolute; bottom: 7px; display: flex; gap: 2px; align-items: flex-end; height: 9px; }
+.lettore-onda i { width: 2px; background: var(--gold); border-radius: 1px; animation: lettore-respira 1s ease-in-out infinite; }
+.lettore-onda i:nth-child(1) { height: 4px; animation-delay: -.2s; }
+.lettore-onda i:nth-child(2) { height: 9px; }
+.lettore-onda i:nth-child(3) { height: 6px; animation-delay: -.5s; }
+@keyframes lettore-respira { 0%,100% { transform: scaleY(.5); } 50% { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) { .lettore-onda i { animation: none; } }
+
+.lettore-scheda {
+  position: fixed; right: 18px; bottom: calc(18px + var(--sab, 0px)); z-index: 140;
+  width: min(310px, calc(100vw - 36px));
   background: var(--bg-0, #fff);
   border: 1px solid color-mix(in srgb, var(--gold) 40%, var(--line));
-  border-radius: 14px;
-  box-shadow: 0 10px 30px -8px rgba(0,0,0,.22);
-  padding: 8px 10px;
+  border-radius: 14px; box-shadow: 0 14px 34px -10px rgba(0,0,0,.28);
+  padding: 10px 12px 12px;
 }
-.lettore-riga { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.lettore-tasto {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: none; border: 1px solid var(--line); border-radius: 10px;
-  padding: 8px 12px; font-size: 13.5px; cursor: pointer; color: var(--ink);
-  min-height: 40px; transition: background .15s, border-color .15s;
+.lettore-testa { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.lettore-titolo {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--gold-deep);
 }
-.lettore-tasto:hover { background: color-mix(in srgb, var(--gold) 10%, transparent); }
-.lettore-tasto:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-.lettore-tasto-primo { flex: 1; justify-content: flex-start; border-color: var(--gold); font-weight: 500; }
-.lettore-tasto-impostazioni { margin-left: auto; }
-.lettore-durata { color: var(--ink-dim); font-weight: 400; }
-.lettore-avanzamento { font-size: 12px; color: var(--ink-dim); padding: 0 4px; }
+.lettore-chiudi {
+  background: none; border: 0; cursor: pointer; color: var(--ink-dim);
+  font-size: 18px; line-height: 1; padding: 2px 6px; border-radius: 6px;
+}
+.lettore-chiudi:hover { background: var(--bg-2); }
+.lettore-barra { height: 3px; border-radius: 2px; background: var(--bg-2); margin: 9px 0 7px; overflow: hidden; }
+.lettore-barra span { display: block; height: 100%; background: var(--gold); transition: width .3s linear; }
 .lettore-frase {
-  font-size: 13.5px; line-height: 1.5; color: var(--ink-soft);
-  padding: 8px 4px 2px; border-top: 1px solid var(--line); margin-top: 8px;
+  font-size: 12.5px; line-height: 1.5; color: var(--ink-soft); margin: 0 0 9px;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.lettore-impostazioni {
-  border-top: 1px solid var(--line); margin-top: 8px; padding-top: 10px;
-  display: grid; gap: 10px;
+.lettore-comandi { display: flex; align-items: center; gap: 4px; margin-top: 8px; }
+.lettore-t {
+  background: none; border: 1px solid transparent; border-radius: 9px;
+  min-width: 36px; height: 36px; cursor: pointer; color: var(--ink);
+  font-size: 13px; display: inline-flex; align-items: center; justify-content: center;
 }
-.lettore-campo { display: grid; gap: 4px; font-size: 12.5px; color: var(--ink-dim); }
-.lettore-campo select, .lettore-campo input[type="range"] { width: 100%; }
+.lettore-t:hover:not(:disabled) { background: color-mix(in srgb, var(--gold) 12%, transparent); }
+.lettore-t:disabled { opacity: .35; cursor: default; }
+.lettore-t:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+.lettore-t-grande { border-color: var(--gold); color: var(--gold-deep); min-width: 44px; }
+.lettore-t-fine { margin-left: auto; }
+.lettore-t.acceso { background: color-mix(in srgb, var(--gold) 14%, transparent); }
+.lettore-opzioni { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 10px; display: grid; gap: 10px; }
+.lettore-campo { display: grid; gap: 4px; font-size: 12px; color: var(--ink-dim); }
 .lettore-campo select {
   padding: 7px 9px; border-radius: 8px; border: 1px solid var(--line);
-  background: var(--bg-1); font-size: 13.5px; color: var(--ink);
+  background: var(--bg-1); font-size: 13px; color: var(--ink); width: 100%;
 }
-.lettore-nota { font-size: 12px; color: var(--ink-dim); line-height: 1.5; }
+.lettore-campo input[type="range"] { width: 100%; }
+.lettore-nota { font-size: 11.5px; color: var(--ink-dim); line-height: 1.5; margin: 0; }
 
 /* Il paragrafo che si sta ascoltando: si illumina appena, quanto basta a
    ritrovare il segno con gli occhi senza che la pagina diventi una lampada. */
@@ -1577,6 +1610,17 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   border-radius: 2px;
 }
 @media (max-width: 700px) {
-  .lettore { bottom: 10px; padding: 7px 8px; }
-  .lettore-tasto { padding: 8px 10px; font-size: 13px; }
+  .lettore-bolla, .lettore-scheda { right: 12px; bottom: calc(12px + var(--sab, 0px)); }
+}
+
+/* Il titolo dell'opera e i suoi segni: la stella e la spunta non devono
+   toccare il pallino della bibliografia, che è un rimando e non un comando. */
+.opera-titolo-riga { display: flex; align-items: flex-start; gap: 16px; }
+.opera-titolo-segni {
+  display: flex; gap: 8px; flex-shrink: 0; align-self: center; height: 28px;
+  padding-left: 14px; border-left: 1px solid var(--line);
+}
+@media (max-width: 700px) {
+  .opera-titolo-riga { gap: 12px; }
+  .opera-titolo-segni { padding-left: 10px; gap: 10px; }
 }

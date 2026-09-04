@@ -1,3 +1,4 @@
+import { useState } from "react";
 // ============================================================================
 // Pagine informative: Progetto, Privacy, Cookie, Termini, Crediti, Contatti.
 // Rotte: /legal/progetto, /legal/privacy, /legal/cookie, /legal/termini,
@@ -7,6 +8,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { CONTACT_EMAIL } from "../lib/auth";
 import PaginaModificabile from "../components/PaginaModificabile";
 import Bibliografia from "../components/Bibliografia";
+import { letturaAttiva, accendiLettura } from "../lib/lettura";
 import { BannerGitHub } from "../components/ui";
 import { SCORCIATOIE } from "../lib/scorciatoie";
 import { useData } from "../lib/store";
@@ -253,6 +255,17 @@ export default function Legal() {
             </table>
           </div>
         ))}
+
+        <H2>Ascoltare le schede</H2>
+        <P>
+          Le schede delle opere, dei protagonisti e dei periodi si possono ascoltare: in basso a
+          destra c'è un pulsante con le cuffie, e il tasto <b>L</b> fa la stessa cosa. La voce è
+          quella installata sul dispositivo — il testo non esce da qui e non serve la rete — e si
+          sceglie fra quelle che ci sono, insieme alla velocità. Su Mac e iPhone se ne scaricano
+          di molto migliori: cerca quelle <b>migliorate</b> o <b>premium</b> in Impostazioni →
+          Accessibilità → Contenuto pronunciato → Voci → Italiano.
+        </P>
+        <InterruttoreLettura />
 
         <H2>Il resto della tastiera</H2>
         <P>
@@ -580,4 +593,27 @@ export default function Legal() {
   // sezione non riconosciuta → redirect alla home
   nav("/");
   return null;
+}
+
+// Un interruttore, non una pagina di impostazioni: la funzione è una sola e
+// chi la vuole spegnere la trova dove è spiegata.
+function InterruttoreLettura() {
+  const [attiva, setAttiva] = useState(letturaAttiva());
+  return (
+    <label style={{
+      display: "flex", alignItems: "center", gap: 10, margin: "6px 0 18px",
+      padding: "10px 14px", border: "1px solid var(--line)", borderRadius: 10,
+      background: "var(--bg-1)", cursor: "pointer", maxWidth: "56ch",
+    }}>
+      <input
+        type="checkbox"
+        checked={attiva}
+        onChange={(e) => { accendiLettura(e.target.checked); setAttiva(e.target.checked); }}
+        data-testid="interruttore-lettura"
+      />
+      <span style={{ fontSize: 15, color: "var(--ink-soft)" }}>
+        Mostra il pulsante per l'ascolto sulle schede
+      </span>
+    </label>
+  );
 }

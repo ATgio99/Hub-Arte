@@ -229,12 +229,15 @@ export default function Opera() {
           <div style={{ display: "flex", gap: 8, marginBottom: 14, flexWrap: "wrap" }}>
             <span className="tag">{w.type}</span>
           </div>
-          <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
+          <div className="opera-titolo-riga">
             <h1 style={{ fontSize: "clamp(28px,4.5vw,46px)", lineHeight: 1.04, letterSpacing: "-.02em", minWidth: 0 }}>
               {w.title}
               <PalliniFonti fonti={fonti} />
             </h1>
-            <div style={{ display: "flex", gap: 6, flexShrink: 0, alignSelf: "center", height: 28 }}>
+            {/* Staccati dal numero della bibliografia da un filo verticale:
+                su telefono il pallino della fonte finiva a contatto con la
+                spunta, e sembravano tre comandi in fila. */}
+            <div className="opera-titolo-segni">
               <StudiedCheck id={w.id} size={24} />
               <FavStar type="work" id={w.id} size={24} />
             </div>
