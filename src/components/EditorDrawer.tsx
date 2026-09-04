@@ -320,6 +320,25 @@ function EditorDrawerInner({
   const allFonti = useMemo(() => [...(dataset.fonti ?? []), ...localFonti], [dataset.fonti, localFonti]);
   const allTechniques = useMemo(() => [...dataset.techniques, ...localTechniques], [dataset.techniques, localTechniques]);
   const allTerms = useMemo(() => [...dataset.terms, ...localTerms], [dataset.terms, localTerms]);
+  // I luoghi gia' scritti nel catalogo, con quante opere stanno in ognuno.
+  // Servono a non riscrivere «Basilica di San Marco» in cinque modi diversi:
+  // i complessi si formano confrontando questa stringa, e un refuso spacca un
+  // edificio in due.
+  const luoghiNoti = useMemo(() => {
+    const conto = new Map<string, { quante: number; citta: Set<string> }>();
+    for (const w of dataset.works) {
+      const l = (w.location_place ?? "").trim();
+      if (!l) continue;
+      if (!conto.has(l)) conto.set(l, { quante: 0, citta: new Set() });
+      const r = conto.get(l)!;
+      r.quante++;
+      if (w.location_city) r.citta.add(w.location_city);
+    }
+    return [...conto.entries()]
+      .map(([luogo, r]) => ({ luogo, quante: r.quante, citta: [...r.citta] }))
+      .sort((a, b) => a.luogo.localeCompare(b.luogo));
+  }, [dataset.works]);
+
   const allCities = useMemo(() => {
     const s = new Set<string>();
     for (const w of dataset.works) if (w.location_city) s.add(w.location_city);
@@ -681,7 +700,12 @@ function EditorDrawerInner({
               </Field>
 
               <Field label="Luogo / edificio">
-                <input type="text" defaultValue={work.location_place || ""} onChange={(e) => set("location_place", e.target.value || null)} style={inputStyle} placeholder="Basilica di San Pietro" />
+                <CampoLuogo
+                  valore={work.location_place || ""}
+                  citta={work.location_city}
+                  noti={luoghiNoti}
+                  onChange={(v) => set("location_place", v || null)}
+                />
               </Field>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
@@ -937,6 +961,127 @@ function CampoIncertezza({ riferimento }: {
               style={inputStyle}
             />
           </Field>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ============================================================================
+// Il luogo, scegliendolo invece di riscriverlo.
+//
+// I complessi non sono un dato: si formano confrontando questa stringa. Due
+// opere nella stessa basilica finiscono insieme se il luogo e' scritto uguale,
+// e in due edifici diversi se una ha una maiuscola di piu'. Scrivere a mano
+// «Basilica di San Marco» cinquanta volte e' il modo sicuro di ritrovarsi
+// cinquanta basiliche.
+//
+// Quindi qui si sceglie da quelli che gia' esistono — prima quelli della
+// stessa citta', che e' dove il refuso fa danno — e scriverne uno nuovo resta
+// possibile, ma dichiarato: si vede che e' nuovo, e si vede se somiglia a uno
+// che c'e' gia'.
+// ============================================================================
+function normalizzaLuogo(t: string): string {
+  return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s*\([^)]*\)/g, "").split(",")[0].replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function CampoLuogo({ valore, citta, noti, onChange }: {
+  valore: string;
+  citta: string | null;
+  noti: { luogo: string; quante: number; citta: string[] }[];
+  onChange: (v: string) => void;
+}) {
+  const [testo, setTesto] = useState(valore);
+  const [aperto, setAperto] = useState(false);
+
+  const scritto = normalizzaLuogo(testo);
+  const esatto = noti.some((n) => n.luogo === testo.trim());
+
+  const suggeriti = useMemo(() => {
+    const q = normalizzaLuogo(testo);
+    const punteggio = (n: { luogo: string; citta: string[] }) => {
+      const suo = normalizzaLuogo(n.luogo);
+      let p = 0;
+      if (citta && n.citta.includes(citta)) p -= 100;   // stessa citta' in cima
+      if (q && suo.startsWith(q)) p -= 10;
+      return p;
+    };
+    return noti
+      .filter((n) => !q || normalizzaLuogo(n.luogo).includes(q))
+      .sort((a, b) => punteggio(a) - punteggio(b) || a.luogo.localeCompare(b.luogo))
+      .slice(0, 12);
+  }, [noti, testo, citta]);
+
+  // Un luogo che si scrive quasi come uno esistente: quasi sempre e' un refuso,
+  // e la conseguenza non e' un dettaglio — e' un complesso spaccato in due.
+  const somiglianti = useMemo(() => {
+    if (!scritto || esatto) return [];
+    return noti.filter((n) => normalizzaLuogo(n.luogo) === scritto && n.luogo !== testo.trim());
+  }, [noti, scritto, esatto, testo]);
+
+  return (
+    <div style={{ position: "relative" }}>
+      <input
+        type="text"
+        value={testo}
+        onChange={(e) => { setTesto(e.target.value); onChange(e.target.value); setAperto(true); }}
+        onFocus={() => setAperto(true)}
+        onBlur={() => setTimeout(() => setAperto(false), 150)}
+        style={inputStyle}
+        placeholder="Basilica di San Pietro"
+        data-testid="campo-luogo"
+      />
+
+      {testo.trim() && (
+        <div style={{ fontSize: 11, marginTop: 4, color: esatto ? "var(--gold-deep)" : "var(--ink-dim)" }}>
+          {esatto
+            ? `✓ luogo già in catalogo — ${noti.find((n) => n.luogo === testo.trim())?.quante} opere`
+            : "nuovo luogo: nessun'altra opera lo usa"}
+        </div>
+      )}
+
+      {somiglianti.length > 0 && (
+        <div style={{ fontSize: 11.5, marginTop: 6, padding: "8px 10px", borderRadius: 8,
+                      border: "1px solid #a8483f", color: "#a8483f", background: "color-mix(in srgb, #a8483f 6%, transparent)" }}>
+          Quasi identico a un luogo che esiste già — con due scritture diverse il complesso si spacca in due:
+          {somiglianti.map((n) => (
+            <button key={n.luogo} type="button"
+              onClick={() => { setTesto(n.luogo); onChange(n.luogo); }}
+              style={{ display: "block", marginTop: 4, background: "none", border: 0, padding: 0,
+                       cursor: "pointer", color: "#a8483f", textDecoration: "underline", fontSize: 11.5 }}>
+              usa «{n.luogo}» ({n.quante} opere)
+            </button>
+          ))}
+        </div>
+      )}
+
+      {aperto && suggeriti.length > 0 && (
+        <div style={{
+          position: "absolute", zIndex: 40, top: "100%", left: 0, right: 0, marginTop: 4,
+          maxHeight: 260, overflowY: "auto", background: "var(--bg-0, #fff)",
+          border: "1px solid var(--line)", borderRadius: 10, boxShadow: "0 8px 24px rgba(0,0,0,.12)",
+        }}>
+          {suggeriti.map((n) => (
+            <button
+              key={n.luogo}
+              type="button"
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={() => { setTesto(n.luogo); onChange(n.luogo); setAperto(false); }}
+              style={{
+                display: "block", width: "100%", textAlign: "left", padding: "8px 11px",
+                background: "none", border: 0, borderBottom: "1px solid var(--line)",
+                cursor: "pointer", fontSize: 13.5,
+              }}
+            >
+              <div>{n.luogo}</div>
+              <div style={{ fontSize: 11, color: "var(--ink-dim)" }}>
+                {n.quante} {n.quante === 1 ? "opera" : "opere"}
+                {n.citta.length > 0 && ` · ${n.citta.join(", ")}`}
+                {citta && n.citta.includes(citta) ? " · stessa città" : ""}
+              </div>
+            </button>
+          ))}
         </div>
       )}
     </div>

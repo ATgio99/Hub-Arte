@@ -723,6 +723,14 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
     return allWorkOptions.filter(o => !inGroup.has(o.id));
   }, [allWorkOptions, groups]);
 
+  // Tutti i luoghi gia' scritti nel catalogo, per suggerirli invece di
+  // farli riscrivere: i complessi si formano confrontando questa stringa.
+  const luoghiNoti = useMemo(() => {
+    const s = new Set<string>();
+    for (const w of ix.ds.works) if (w.location_place) s.add(w.location_place.trim());
+    return [...s].sort((a, b) => a.localeCompare(b));
+  }, [ix.ds.works]);
+
   // Anteprima live: opere che hanno GIÀ il luogo digitato (match esatto case-insensitive)
   const matchingPlaceWorks = useMemo(() => {
     const place = newPlace.trim().toLowerCase();
@@ -849,14 +857,20 @@ function ComplessiView({ ix, search, openEdit }: { ix: ReturnType<typeof useData
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             <div>
               <label style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", textTransform: "uppercase", letterSpacing: "0.04em", display: "block", marginBottom: 4 }}>Nome del luogo *</label>
+              {/* Suggeriti i luoghi che gia' esistono: e' scrivendo a mano lo
+                  stesso edificio in due modi che un complesso si spacca in due. */}
               <input
                 type="text"
                 placeholder="es. Basilica di San Francesco"
                 value={newPlace}
                 onChange={(e) => setNewPlace(e.target.value)}
+                list="luoghi-noti"
                 style={{ width: "100%", padding: "8px 10px", border: "1px solid var(--line)", borderRadius: 6, fontSize: 13, background: "var(--bg)" }}
                 autoFocus
               />
+              <datalist id="luoghi-noti">
+                {luoghiNoti.map((l) => <option key={l} value={l} />)}
+              </datalist>
             </div>
 
             {/* Anteprima live: opere con lo stesso luogo */}
@@ -1192,6 +1206,19 @@ function GenericEditorDrawerInner({
   // Stato mutabile tramite ref: l'oggetto row viene modificato in place.
   // Solo quando cambiano initialRow/rowId, viene ricreato da zero.
   const rowRef = useRef<any>(initialRow ? { ...initialRow } : { id: rowId });
+
+  // Luoghi e citta' gia' in catalogo: si suggeriscono invece di farli
+  // riscrivere. Un edificio scritto in due modi diventa due complessi.
+  const luoghiEditor = useMemo(() => {
+    const s = new Set<string>();
+    for (const w of dataset.works ?? []) if (w.location_place) s.add(String(w.location_place).trim());
+    return [...s].sort((a, b) => a.localeCompare(b));
+  }, [dataset.works]);
+  const cittaEditor = useMemo(() => {
+    const s = new Set<string>();
+    for (const w of dataset.works ?? []) if (w.location_city) s.add(String(w.location_city).trim());
+    return [...s].sort((a, b) => a.localeCompare(b));
+  }, [dataset.works]);
   // Version counter: si incrementa quando vogliamo forzare il re-render
   // (es. dopo un salvataggio riuscito, per aggiornare il titolo nell'header).
   const [, forceRender] = useState(0);
@@ -1581,6 +1608,12 @@ function GenericEditorDrawerInner({
               );
             }
 
+            // Luogo e citta' si scelgono fra quelli che gia' esistono: i
+            // complessi si formano confrontando queste stringhe, e lo stesso
+            // edificio scritto in due modi diventa due edifici.
+            const elenco = field === "location_place" ? "gen-luoghi"
+                         : field === "location_city" ? "gen-citta" : undefined;
+
             // Null (campo vuoto)
             if (isNull) {
               return (
@@ -1589,6 +1622,7 @@ function GenericEditorDrawerInner({
                     type="text"
                     defaultValue=""
                     placeholder="(vuoto)"
+                    list={elenco}
                     onChange={(e) => setField(field, e.target.value || null)}
                     style={genInputStyle}
                   />
@@ -1602,12 +1636,21 @@ function GenericEditorDrawerInner({
                 <input
                   type="text"
                   defaultValue={String(value)}
+                  list={elenco}
                   onChange={(e) => setField(field, e.target.value)}
                   style={genInputStyle}
                 />
               </GenField>
             );
           })}
+
+          {/* Gli elenchi dei suggerimenti: uno solo per tutto il modulo. */}
+          <datalist id="gen-luoghi">
+            {luoghiEditor.map((l) => <option key={l} value={l} />)}
+          </datalist>
+          <datalist id="gen-citta">
+            {cittaEditor.map((c) => <option key={c} value={c} />)}
+          </datalist>
         </div>
 
         {/* Footer */}
