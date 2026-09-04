@@ -35,7 +35,7 @@ export function riferimento(f: Fonte): string {
 export function fontiDi(ds: Dataset, w: Work): Fonte[] {
   const voluti = w.fonte_ids ?? [];
   if (voluti.length === 0) return [];
-  return ds.fonti.filter((f) => voluti.includes(f.id)).sort(perNumero);
+  return (ds.fonti ?? []).filter((f) => voluti.includes(f.id)).sort(perNumero);
 }
 
 /** L'ordine della bibliografia: per numero, e chi non ce l'ha in fondo. */

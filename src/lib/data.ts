@@ -27,6 +27,23 @@ async function fetchJson<T>(name: string): Promise<T> {
   return res.json();
 }
 
+/** Sempre un elenco, qualunque cosa arrivi.
+ *
+ *  I file di `public/data` stanno in cache un'ora, mentre il codice cambia
+ *  indirizzo a ogni pubblicazione: per un'ora dopo un rilascio un browser puo'
+ *  avere il programma nuovo e i dati vecchi. Le incertezze erano una mappa
+ *  «id → voce» e sono diventate un elenco: chi aveva il file vecchio si e'
+ *  ritrovato una scheda che chiamava `.find` su un oggetto, e la pagina
+ *  moriva. Qui le due forme si accettano entrambe. */
+function comeElenco<T>(v: unknown): T[] {
+  if (Array.isArray(v)) return v as T[];
+  if (v && typeof v === "object") {
+    return Object.entries(v as Record<string, any>)
+      .map(([id, voce]) => (voce && typeof voce === "object" ? { id, ...voce } : { id, valore: voce })) as T[];
+  }
+  return [];
+}
+
 let _cache: Promise<Dataset> | null = null;
 
 /** Clear the dataset cache so next loadDataset() re-fetches everything */
@@ -164,8 +181,9 @@ export function loadDataset(): Promise<Dataset> {
         fetchJson<Connection[]>("connections"),
         fetchJson<ArtEvent[]>("events"),
       ]);
-    const fonti = await fetchJson<Fonte[]>("fonti").catch(() => [] as Fonte[]);
-    const incertezze = await fetchJson<Incertezza[]>("incertezze").catch(() => [] as Incertezza[]);
+    const fonti = comeElenco<Fonte>(await fetchJson<unknown>("fonti").catch(() => []));
+    const incertezze = comeElenco<Incertezza>(
+      await fetchJson<unknown>("incertezze").catch(() => []));
 
     // Merge localStorage work overrides (legacy admin.html)
     try {
@@ -194,7 +212,7 @@ export function loadDataset(): Promise<Dataset> {
         connections: filterHidden(mergeArrays(connections, dbData.connections as Connection[])),
         events: filterHidden(mergeArrays(events, dbData.events as ArtEvent[])),
         fonti: filterHidden(mergeArrays(fonti, dbData.fonti as Fonte[])),
-        incertezze: mergeArrays(incertezze, dbData.incertezze as Incertezza[]),
+        incertezze: mergeArrays(incertezze, comeElenco<Incertezza>(dbData.incertezze)),
       };
     } catch { /* ignore DB errors, use JSON only */ }
 

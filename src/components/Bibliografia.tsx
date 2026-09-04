@@ -55,13 +55,7 @@ export default function Bibliografia() {
   }, [puntata, voci.length]);
 
   return (
-    <div style={{ marginTop: 34 }}>
-      <h2 style={{ fontSize: 22, marginBottom: 6, fontFamily: "var(--font-display)" }}>Bibliografia</h2>
-      <p className="muted" style={{ fontSize: 14.5, lineHeight: 1.6, maxWidth: "64ch", marginBottom: 18 }}>
-        I numeri sono quelli dei pallini accanto al titolo delle opere: ogni scheda dice da quale
-        libro viene. Le schede però sono riscritte, non ricopiate.
-      </p>
-
+    <div style={{ margin: "10px 0 20px" }}>
       {voci.length === 0 && (
         <p className="faint" style={{ fontSize: 13.5 }}>Nessun titolo in bibliografia.</p>
       )}

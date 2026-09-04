@@ -43,12 +43,20 @@ function inline(t: string, k: string): ReactNode[] {
   return out;
 }
 
-function Reso({ testo }: { testo: string }) {
+// I blocchi vivi: una riga che contiene solo `{{nome}}` viene sostituita da un
+// pezzo di pagina vero — la bibliografia, per esempio, che si genera dalla
+// tabella delle fonti. Serve perche' certi elenchi non sono prosa: scritti a
+// mano nel testo invecchiano, e diventano una seconda verita' accanto ai dati.
+function Reso({ testo, blocchi: vivi }: { testo: string; blocchi?: Record<string, ReactNode> }) {
   const blocchi = testo.replace(/\r/g, "").split(/\n{2,}/);
   return (
     <>
       {blocchi.map((b, i) => {
         const righe = b.split("\n");
+        const vivo = b.trim().match(/^\{\{(\w+)\}\}$/);
+        if (vivo && vivi && vivi[vivo[1]]) {
+          return <div key={i} data-blocco={vivo[1]}>{vivi[vivo[1]]}</div>;
+        }
         if (righe[0].startsWith("## ")) {
           return (
             <h2 key={i} style={{ fontSize: 22, marginTop: 28, marginBottom: 10, fontFamily: "var(--font-display)" }}>
@@ -126,6 +134,11 @@ function daPaginaATesto(radice: HTMLElement, valori: Record<string, string>): st
 
   const pezzi: string[] = [];
   radice.querySelectorAll(":scope > *").forEach((el) => {
+    // Un blocco vivo torna a essere il suo segnaposto: se lo si leggesse come
+    // testo, la bibliografia verrebbe congelata in prosa al primo salvataggio
+    // e da li' in poi non seguirebbe piu' i dati.
+    const blocco = (el as HTMLElement).dataset?.blocco;
+    if (blocco) { pezzi.push(`{{${blocco}}}`); return; }
     const tag = el.tagName.toLowerCase();
     if (tag === "h2") {
       const t = riga(el);
@@ -145,8 +158,9 @@ function daPaginaATesto(radice: HTMLElement, valori: Record<string, string>): st
   return pezzi.join("\n\n");
 }
 
-export default function PaginaModificabile({ id, titolo, valori, children }:
-  { id: string; titolo?: ReactNode; valori?: Record<string, string>; children: ReactNode }) {
+export default function PaginaModificabile({ id, titolo, valori, blocchi, children }:
+  { id: string; titolo?: ReactNode; valori?: Record<string, string>;
+    blocchi?: Record<string, ReactNode>; children: ReactNode }) {
   const { isAdmin, user } = useAuth();
   const [testo, setTesto] = useState<string | null>(null);
   const [caricato, setCaricato] = useState(false);
@@ -194,7 +208,9 @@ export default function PaginaModificabile({ id, titolo, valori, children }:
 
   // Finche' non si sa se esiste un testo salvato si mostra il predefinito:
   // evita che la pagina lampeggi a ogni apertura.
-  const contenuto = caricato && testo ? <Reso testo={applicaSegnaposto(testo, seg)} /> : children;
+  const contenuto = caricato && testo
+    ? <Reso testo={applicaSegnaposto(testo, seg)} blocchi={blocchi} />
+    : children;
 
   return (
     <>

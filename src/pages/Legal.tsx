@@ -463,7 +463,8 @@ export default function Legal() {
   if (section === "crediti") {
     return (
       <div className="wrap page"><div>
-        <PaginaModificabile id="crediti" valori={segnapostoCatalogo(c)} titolo={<H1>Crediti</H1>}>
+        <PaginaModificabile id="crediti" valori={segnapostoCatalogo(c)} titolo={<H1>Crediti</H1>}
+          blocchi={{ bibliografia: <Bibliografia /> }}>
 
         <H2>Progetto</H2>
         <P>
@@ -487,16 +488,19 @@ export default function Legal() {
           <li><b>Capacitor</b> — packaging iOS (PWA)</li>
         </ul>
 
+
+
         <H2>Testi di riferimento</H2>
         <P>
           Datazioni, attribuzioni, contesti: quasi tutto quello che c'è nel catalogo l'ho
-          imparato dai manuali elencati qui sotto in bibliografia. Le schede però sono
-          riscritte, non ricopiate. Che il Tributo sia di Masaccio e stia al Carmine è un
-          fatto, e i fatti non sono di nessuno; il modo di raccontarli sì, e quello è mio. Se
-          qualcuno degli editori ritiene che da qualche parte abbia passato il segno, mi
-          scriva e correggo. Se un riferimento è incompleto o attribuito male, scrivimi a{" "}
+          imparato da questi manuali. I numeri sono quelli dei pallini accanto al titolo delle
+          opere, così ogni scheda dice da dove viene. Le schede però sono riscritte, non
+          ricopiate: che il Tributo sia di Masaccio e stia al Carmine è un fatto, e i fatti non
+          sono di nessuno; il modo di raccontarli sì, e quello è mio. Se un riferimento è
+          incompleto o attribuito male, scrivimi a{" "}
           <Mailto subject="Correzione crediti" /> e lo sistemo.
         </P>
+        <Bibliografia />
 
         <H2>Immagini</H2>
         <P>
@@ -524,10 +528,6 @@ export default function Legal() {
           <Link to="/legal/contatti" className="tlink">Contatti</Link>.
         </P>
         </PaginaModificabile>
-
-        {/* Fuori dal blocco riscrivibile: l'elenco si genera dalla tabella
-            delle fonti, e un testo personalizzato non deve poterlo nascondere. */}
-        <Bibliografia />
       </div></div>
     );
   }

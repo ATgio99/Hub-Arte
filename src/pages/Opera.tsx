@@ -131,8 +131,10 @@ export default function Opera() {
   const siblings = group ? group.works.filter(sw => sw.id !== w.id) : [];
 
   const isStudied = studied.includes(w.id);
+  // `Array.isArray` non e' pignoleria: i dati stanno in cache un'ora e il
+  // codice no, quindi qui puo' arrivare la forma vecchia di quel file.
   const incertezza = useMemo(
-    () => ix.ds.incertezze?.find((i) => i.id === w.id) ?? null,
+    () => (Array.isArray(ix.ds.incertezze) ? ix.ds.incertezze.find((i) => i.id === w.id) : null) ?? null,
     [ix.ds.incertezze, w.id]);
 
   return (
