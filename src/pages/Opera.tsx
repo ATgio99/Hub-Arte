@@ -10,6 +10,7 @@ import { setLastOpera } from "../lib/lastVisited";
 import { citazione, riferimento, fontiDi, ancoraFonte } from "../lib/fonti";
 import type { Fonte } from "../lib/types";
 import { useVerifiche, commutaVerifica } from "../lib/verifiche";
+import { useTestoLeggibile, useBloccoLetto } from "../lib/lettura";
 import EditorDrawer from "../components/EditorDrawer";
 import {
   artistsOfWork, termsOfWork, techniquesOfWork, relatedWorks,
@@ -131,11 +132,41 @@ export default function Opera() {
   const siblings = group ? group.works.filter(sw => sw.id !== w.id) : [];
 
   const isStudied = studied.includes(w.id);
+
+
   // `Array.isArray` non e' pignoleria: i dati stanno in cache un'ora e il
   // codice no, quindi qui puo' arrivare la forma vecchia di quel file.
   const incertezza = useMemo(
     () => (Array.isArray(ix.ds.incertezze) ? ix.ds.incertezze.find((i) => i.id === w.id) : null) ?? null,
     [ix.ds.incertezze, w.id]);
+
+  // Che cosa si sente quando si preme «Ascolta». L'ordine è quello di chi
+  // leggerebbe la scheda a voce alta a qualcuno: che cos'è e di chi, dove sta,
+  // poi la sintesi, la lettura dell'opera e le novità.
+  const daLeggere = useMemo(() => {
+    const b: { id: string; occhiello?: string; testo: string }[] = [];
+    const dati = [
+      artists.length > 0 ? `di ${artists.map((a) => a.name).join(", ")}` : "di autore ignoto",
+      workYears(w),
+      period ? `Periodo: ${period.name}` : "",
+      committenti.length > 0 ? `Committente: ${committenti.map((a) => a.name).join(", ")}` : "",
+      w.location_city ? `Si trova a ${w.location_city}${w.location_place ? `, ${w.location_place}` : ""}` : "",
+      techs.length > 0 ? `Tecnica: ${techs.map((t) => t.name).join(", ")}` : "",
+    ].filter(Boolean).join(". ");
+    // La virgola invece del punto: letto ad alta voce, «Palazzo Te. di Giulio
+    // Romano» suona come due frasi mozze.
+    b.push({ id: "titolo", testo: `${w.title}, ${dati}.` });
+    if (incertezza) b.push({ id: "incertezza", occhiello: `Attribuzione aperta, ${incertezza.tema}`, testo: incertezza.nota });
+    if (w.summary) b.push({ id: "sintesi", occhiello: "Sintesi", testo: w.summary });
+    if (w.analysis) b.push({ id: "analisi", occhiello: "Lettura dell'opera", testo: w.analysis });
+    if (w.innovations.length > 0) {
+      b.push({ id: "novita", occhiello: "Novità", testo: w.innovations.join(". ") });
+    }
+    return b;
+  }, [w, artists, committenti, period, techs, incertezza]);
+
+  useTestoLeggibile(w.title, daLeggere);
+  const inLettura = useBloccoLetto();
 
   return (
     <div className="wrap page">
@@ -255,12 +286,13 @@ export default function Opera() {
             </div>
           )}
 
-          <p className="prose" style={{ marginTop: 26, fontSize: 17 }}><RichText text={w.summary || ""} /></p>
+          <p className={`prose ${inLettura === "sintesi" ? "in-lettura" : ""}`}
+             style={{ marginTop: 26, fontSize: 17 }}><RichText text={w.summary || ""} /></p>
 
           {w.innovations.length > 0 && (
             <div style={{ marginTop: 24 }}>
               <div className="eyebrow" style={{ marginBottom: 10 }}>Innovazioni</div>
-              <ul className="innov">{w.innovations.map((x, i) => <li key={i}>{x}</li>)}</ul>
+              <ul className={`innov ${inLettura === "novita" ? "in-lettura" : ""}`}>{w.innovations.map((x, i) => <li key={i}>{x}</li>)}</ul>
             </div>
           )}
         </div>
@@ -268,7 +300,8 @@ export default function Opera() {
 
       {w.analysis && (
         <Section eyebrow="Analisi" title="Lettura dell'opera">
-          <div className="prose" style={{ maxWidth: "72ch", fontSize: 17 }}>
+          <div className={`prose ${inLettura === "analisi" ? "in-lettura" : ""}`}
+               style={{ maxWidth: "72ch", fontSize: 17 }}>
             {w.analysis.split(/\n+/).map((p, i) => <p key={i}><RichText text={p} /></p>)}
           </div>
         </Section>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTestoLeggibile } from "../lib/lettura";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { useIsNarrow } from "../lib/motion";
@@ -54,6 +55,11 @@ export default function Artista() {
   // Verifica se ci sono opere datate (per mostrare la timeline)
   const datedWorks = allWorks.filter((w) => (w.year_start ?? w.year_end) != null);
   const showTimeline = datedWorks.length >= 2;
+
+  useTestoLeggibile(a?.name ?? "", a ? [
+    { id: "chi", testo: [a.name, a.role, a.birth != null ? `${a.birth}–${a.death ?? ""}` : "", a.location_city].filter(Boolean).join(". ") },
+    ...(a.bio ? [{ id: "bio", occhiello: "Biografia", testo: a.bio }] : []),
+  ] : []);
 
   return (
     <div className="wrap page">

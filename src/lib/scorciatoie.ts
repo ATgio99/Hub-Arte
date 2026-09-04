@@ -46,6 +46,16 @@ export const SCORCIATOIE: { gruppo: string; voci: Scorciatoia[] }[] = [
     ],
   },
   {
+    gruppo: "Ascoltare la pagina",
+    voci: [
+      { tasti: "L", cosa: "Leggi ad alta voce, o metti in pausa" },
+      { tasti: "⇧ L", cosa: "Ferma la lettura" },
+      { tasti: ".", cosa: "Paragrafo successivo" },
+      { tasti: ",", cosa: "Paragrafo precedente" },
+      { tasti: "+ / −", cosa: "Più veloce, più lenta" },
+    ],
+  },
+  {
     gruppo: "Comandi",
     voci: [
       { tasti: "/", cosa: "Vai alla barra di ricerca" },

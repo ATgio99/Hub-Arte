@@ -21,6 +21,7 @@ import Tecniche from "./pages/Tecniche";
 import Test from "./pages/Test";
 import Login from "./pages/Login";
 import Landing from "./pages/Landing";
+import Lettore from "./components/Lettore";
 import Legal from "./pages/Legal";
 import Suggerisci from "./pages/Suggerisci";
 import SuggerisciModifica from "./pages/SuggerisciModifica";
@@ -144,6 +145,9 @@ export default function App() {
     <div className={`shell3d ${isHome ? "is-home" : ""}`}>
       {/* Sidebar moderna su TUTTE le pagine (home inclusa) */}
       <Sidebar />
+
+      {/* Compare da sé quando la pagina ha del testo da leggere. */}
+      <Lettore />
 
       <div className="content3d">
         {isHome ? (

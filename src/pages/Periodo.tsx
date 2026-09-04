@@ -10,6 +10,7 @@ import PeriodDossier from "../components/PeriodDossier";
 import { setLastTimeline } from "../lib/lastVisited";
 import { useIsNarrow } from "../lib/motion";
 import type { Period } from "../lib/types";
+import { useTestoLeggibile } from "../lib/lettura";
 
 const TYPE_COLOR: Record<string, string> = { epoca: "#b88a2e", corrente: "#b9692c", scuola: "#4f7d72" };
 
@@ -90,6 +91,12 @@ export default function Periodo() {
   const artists = ix.ds.artists.filter((a) => a.period_ids.includes(p.id));
   const conns = connectionsOf(ix.ds, "period", p.id);
   const trail = periodAncestry(ix, p.id);
+
+  useTestoLeggibile(p?.name ?? "", p ? [
+    { id: "che", testo: `${p.name}. ${p.type}, dal ${fmtYear(p.year_start)} al ${fmtYear(p.year_end)}.` },
+    ...(p.summary ? [{ id: "sommario", occhiello: "In breve", testo: p.summary }] : []),
+    ...(p.historical_context ? [{ id: "contesto", occhiello: "Contesto storico", testo: p.historical_context }] : []),
+  ] : []);
 
   return (
     <div className="wrap page">
