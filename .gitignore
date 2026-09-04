@@ -13,3 +13,7 @@ supabase/lavoro_consolidamento/
 
 # Copie pronte da pubblicare, rigenerabili in qualsiasi momento.
 esportazione/
+
+# Copie di sicurezza dei file prima di una modifica: il posto in cui si
+# ritrova una versione precedente e la cronologia, non questa cartella.
+supabase/storico/backup_*/

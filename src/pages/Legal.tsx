@@ -267,6 +267,13 @@ export default function Legal() {
         </P>
         <InterruttoreLettura />
         <P>
+          <b>Sul telefono, se non si sente nulla</b>, quasi sempre non è il sito: la voce del
+          browser segue l'interruttore del silenzioso, quello sul fianco dell'iPhone. Toglilo e
+          alza il volume mentre la lettura è in corso. Se anche così resta muta, chiudi e
+          riapri la scheda del browser: iOS ogni tanto lascia il sintetizzatore in un vicolo
+          cieco, e il sito prova a rimediare da solo ma non sempre ci riesce.
+        </P>
+        <P>
           La voce è quella installata sul dispositivo: <b>il testo non esce da qui</b>, non passa
           da nessun servizio e funziona anche senza rete. Il rovescio è che la qualità non
           dipende dal sito ma da quali voci hai installato — e quelle che i sistemi mettono di

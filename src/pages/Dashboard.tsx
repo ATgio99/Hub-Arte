@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useData, useTimeRange } from "../lib/store";
 import { Section, FilterNote, CountUp } from "../components/ui";
 import { getGlobalOverrides, clearOverride, exportOverrides, importOverrides } from "../lib/imageOverrides";
-import { workSortYear } from "../lib/data";
+import { workSortYear, fonteImmagine } from "../lib/data";
 import { useStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
 import { useVerifiche } from "../lib/verifiche";
@@ -504,12 +504,28 @@ function StatoVerifiche() {
   const ix = useData();
   const { pronte, verificata, dettaglio } = useVerifiche();
   const [cerca, setCerca] = useState("");
-  const [mostra, setMostra] = useState<"da-fare" | "fatte">("da-fare");
+  const [mostra, setMostra] = useState<"da-fare" | "fatte" | "immagini">("da-fare");
   const [quante, setQuante] = useState(60);
 
   const opere = ix.ds.works;
   const fatte = useMemo(() => opere.filter((w) => verificata(w.id)), [opere, verificata]);
   const daFare = useMemo(() => opere.filter((w) => !verificata(w.id)), [opere, verificata]);
+
+  // La terza lista non riguarda il testo ma la fotografia. Un indirizzo che
+  // punta alla copia temporanea di un motore di ricerca — Google, Bing, Brave,
+  // Pinterest — non dichiara ne' autore ne' licenza e smette di rispondere nel
+  // giro di qualche mese: e' lo stesso segnale che ha fatto venire a galla le
+  // immagini sbagliate, e qui si guarda tutto insieme invece che una scheda
+  // per volta. L'indirizzo e' quello mostrato davvero, sostituzioni comprese.
+  const scambi = getGlobalOverrides();
+  const immaginiDaRivedere = useMemo(
+    () => opere
+      .map((w) => ({ w, f: fonteImmagine(scambi[w.id]?.url || w.image_url) }))
+      .filter((r) => r.f && !r.f.affidabile),
+    [opere, scambi]);
+  const fonteInstabile = useMemo(
+    () => new Map(immaginiDaRivedere.map((r) => [r.w.id, r.f!.href])),
+    [immaginiDaRivedere]);
 
   // Per periodo, in ordine di tempo: è l'ordine in cui si rivede.
   const perPeriodo = useMemo(() => {
@@ -528,7 +544,9 @@ function StatoVerifiche() {
   }, [opere, verificata, ix]);
 
   const elenco = useMemo(() => {
-    const base = mostra === "fatte" ? fatte : daFare;
+    const base = mostra === "fatte" ? fatte
+      : mostra === "immagini" ? immaginiDaRivedere.map((r) => r.w)
+      : daFare;
     const q = cerca.trim().toLowerCase();
     const filtrate = q
       ? base.filter((w) => w.title.toLowerCase().includes(q)
@@ -536,7 +554,7 @@ function StatoVerifiche() {
           || (ix.periodById.get(w.period_id)?.name ?? "").toLowerCase().includes(q))
       : base;
     return [...filtrate].sort((a, b) => workSortYear(a) - workSortYear(b));
-  }, [mostra, fatte, daFare, cerca, ix]);
+  }, [mostra, fatte, daFare, immaginiDaRivedere, cerca, ix]);
 
   if (!pronte) return <p className="faint" style={{ fontSize: 13 }}>Leggo le verifiche…</p>;
 
@@ -580,6 +598,10 @@ function StatoVerifiche() {
                   onClick={() => { setMostra("da-fare"); setQuante(60); }}>Da verificare ({daFare.length})</button>
           <button className={mostra === "fatte" ? "on" : ""}
                   onClick={() => { setMostra("fatte"); setQuante(60); }}>Verificate ({fatte.length})</button>
+          <button className={mostra === "immagini" ? "on" : ""}
+                  title="Immagini prese dalla copia temporanea di un motore di ricerca: niente licenza dichiarata, e l'indirizzo scade."
+                  onClick={() => { setMostra("immagini"); setQuante(60); }}
+                  data-testid="seg-immagini">Immagini da rivedere ({immaginiDaRivedere.length})</button>
         </div>
         <input value={cerca} onChange={(e) => { setCerca(e.target.value); setQuante(60); }}
                placeholder="Filtra per titolo, città o periodo"
@@ -605,6 +627,12 @@ function StatoVerifiche() {
                         .filter(Boolean).join(" · ")}
                       {v?.verificata_il && ` · ✓ ${new Date(v.verificata_il).toLocaleDateString("it-IT")}`}
                     </div>
+                    {mostra === "immagini" && (
+                      <div style={{ fontSize: 11.5, marginTop: 3, color: "#a8483f" }}>
+                        {(() => { try { return new URL(fonteInstabile.get(w.id)!).hostname.replace(/^www\./, ""); }
+                                  catch { return "indirizzo temporaneo"; } })()}
+                      </div>
+                    )}
                   </Link>
                 );
               })}

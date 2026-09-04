@@ -55,6 +55,28 @@ function Cuffie({ size = 20 }: { size?: number }) {
   );
 }
 
+// I comandi erano scritti con i caratteri ⏮ ▶ ⏹ ⚙: sul telefono il sistema li
+// sostituisce con le sue emoji a colori, e quattro faccine colorate dentro una
+// scheda di vetro non sono un lettore. Disegnarli costa dieci righe e li rende
+// uguali su tutti i dispositivi, della stessa tinta del resto.
+function Icona({ children, size = 17 }: { children: React.ReactNode; size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"
+      aria-hidden="true">{children}</svg>
+  );
+}
+const IcoIndietro = () => <Icona><path d="M19 5.5v13L9.5 12z" fill="currentColor" stroke="none" /><path d="M6 5.5v13" /></Icona>;
+const IcoAvanti   = () => <Icona><path d="M5 5.5v13L14.5 12z" fill="currentColor" stroke="none" /><path d="M18 5.5v13" /></Icona>;
+const IcoLeggi    = () => <Icona size={19}><path d="M7 4.5v15L20 12z" fill="currentColor" stroke="none" /></Icona>;
+const IcoPausa    = () => <Icona size={19}><rect x="7" y="4.5" width="4" height="15" rx="1.2" fill="currentColor" stroke="none" /><rect x="13" y="4.5" width="4" height="15" rx="1.2" fill="currentColor" stroke="none" /></Icona>;
+const IcoFerma    = () => <Icona><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor" stroke="none" /></Icona>;
+// Non un ingranaggio (che vuol dire «impostazioni» in generale) e nemmeno un
+// sole: due cursori, che e' esattamente quello che c'e' sotto — la voce e la
+// velocita' che si spostano.
+const IcoVoce     = () => <Icona><path d="M4 7.5h9M17 7.5h3M4 16.5h3M11 16.5h9" /><circle cx="15" cy="7.5" r="2.1" /><circle cx="9" cy="16.5" r="2.1" /></Icona>;
+const IcoChiudi   = () => <Icona size={16}><path d="M6 9.5 12 15.5 18 9.5" /></Icona>;
+
 export default function Lettore() {
   const l = usaLettore();
   const [aperto, setAperto] = useState(false);
@@ -118,7 +140,7 @@ export default function Lettore() {
           {legge ? "Sto leggendo" : l.stato === "pausa" ? "In pausa" : "Ascolta la pagina"}
         </span>
         <button className="lettore-chiudi" onClick={() => setAperto(false)}
-          title="Riduci a icona" aria-label="Riduci a icona" data-testid="lettore-riduci">⌄</button>
+          title="Riduci a icona" aria-label="Riduci a icona" data-testid="lettore-riduci"><IcoChiudi /></button>
       </div>
 
       {l.stato === "ferma" ? (
@@ -132,18 +154,26 @@ export default function Lettore() {
 
       <div className="lettore-comandi">
         <button className="lettore-t" onClick={() => l.saltaBlocco(-1)} disabled={l.stato === "ferma"}
-          title="Paragrafo precedente · tasto ," aria-label="Paragrafo precedente">⏮</button>
+          title="Paragrafo precedente · tasto ," aria-label="Paragrafo precedente"><IcoIndietro /></button>
         <button className="lettore-t lettore-t-grande" onClick={() => l.leggi()}
           title="Leggi o metti in pausa · tasto L" aria-label={legge ? "Metti in pausa" : "Leggi"}
-          data-testid="lettore-leggi">{legge ? "⏸" : "▶"}</button>
+          data-testid="lettore-leggi">{legge ? <IcoPausa /> : <IcoLeggi />}</button>
         <button className="lettore-t" onClick={() => l.saltaBlocco(1)} disabled={l.stato === "ferma"}
-          title="Paragrafo successivo · tasto ." aria-label="Paragrafo successivo">⏭</button>
+          title="Paragrafo successivo · tasto ." aria-label="Paragrafo successivo"><IcoAvanti /></button>
         <button className="lettore-t" onClick={() => l.ferma()} disabled={l.stato === "ferma"}
-          title="Ferma · ⇧L" aria-label="Ferma" data-testid="lettore-ferma">⏹</button>
+          title="Ferma · ⇧L" aria-label="Ferma" data-testid="lettore-ferma"><IcoFerma /></button>
         <button className={`lettore-t lettore-t-fine ${impostazioni ? "acceso" : ""}`}
           onClick={() => setImpostazioni((v) => !v)} aria-expanded={impostazioni}
-          title="Voce e velocità" aria-label="Voce e velocità" data-testid="lettore-impostazioni">⚙</button>
+          title="Voce e velocità" aria-label="Voce e velocità" data-testid="lettore-impostazioni"><IcoVoce /></button>
       </div>
+
+      {/* Sul telefono la causa piu' frequente del silenzio non e' un errore del
+          sito: e' l'interruttore laterale. La voce del browser lo segue come
+          una suoneria, e nessuno lo sospetta finche' non glielo si dice. */}
+      <p className="lettore-muto">
+        Non si sente? Alza il volume e, su iPhone, togli il silenzioso: la voce
+        segue quell'interruttore.
+      </p>
 
       {impostazioni && (
         <div className="lettore-opzioni">
@@ -171,10 +201,25 @@ export default function Lettore() {
             )}
           </label>
 
+          {/* Il cursore di serie e' una righina grigia con un pallino da tre
+              pixel: sul telefono non si prende. Qui la traccia si riempie fino
+              al punto in cui si sta, e la pallina e' grande quanto un dito.
+              La voce riparte quando il dito si alza, non a ogni pixel. */}
           <label className="lettore-campo">
             <span>Velocità <b className="tnum">{l.velocita.toFixed(1)}×</b></span>
-            <input type="range" min={0.5} max={2} step={0.1} value={l.velocita}
-              onChange={(e) => l.cambiaVelocita(Number(e.target.value))} data-testid="lettore-velocita" />
+            <input
+              className="lettore-cursore"
+              type="range" min={0.5} max={2} step={0.1} value={l.velocita}
+              style={{ ["--riempito" as any]: `${((l.velocita - 0.5) / 1.5) * 100}%` }}
+              onChange={(e) => l.cambiaVelocita(Number(e.target.value), false)}
+              onPointerUp={() => l.cambiaVelocita(l.velocita)}
+              onKeyUp={() => l.cambiaVelocita(l.velocita)}
+              onBlur={() => l.cambiaVelocita(l.velocita)}
+              aria-label={`Velocità di lettura, ${l.velocita.toFixed(1)} volte`}
+              data-testid="lettore-velocita" />
+            <span className="lettore-estremi" aria-hidden="true">
+              <i>lenta</i><i>svelta</i>
+            </span>
           </label>
 
           <p className="lettore-nota">

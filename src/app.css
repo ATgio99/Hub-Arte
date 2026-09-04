@@ -1589,7 +1589,8 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 }
 .lettore-chiudi {
   background: none; border: 0; cursor: pointer; color: var(--ink-dim);
-  font-size: 18px; line-height: 1; padding: 2px 6px; border-radius: 6px;
+  line-height: 0; padding: 4px 6px; border-radius: 6px;
+  display: inline-flex; align-items: center; justify-content: center;
 }
 .lettore-chiudi:hover { background: rgba(0,0,0,.06); }
 .lettore-barra { height: 3px; border-radius: 2px; background: rgba(0,0,0,.09); margin: 9px 0 7px; overflow: hidden; }
@@ -1616,8 +1617,65 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   padding: 7px 9px; border-radius: 8px; border: 1px solid var(--vetro-bordo);
   background: rgba(255,255,255,.55); font-size: 13px; color: var(--ink); width: 100%;
 }
-.lettore-campo input[type="range"] { width: 100%; }
+
+/* Il cursore della velocita'. Il controllo di serie e' diverso su ogni
+   browser — azzurro di sistema su iPhone, grigio su Windows — e con una
+   pallina che il dito non prende: si ridisegna, e la traccia si colora fino
+   al punto in cui si e' arrivati, che e' l'unico modo per leggerlo a colpo
+   d'occhio senza guardare il numero. */
+.lettore-cursore {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; margin: 2px 0; background: none; cursor: pointer;
+  height: 20px; display: block;
+}
+.lettore-cursore::-webkit-slider-runnable-track {
+  height: 5px; border-radius: 3px;
+  background: linear-gradient(90deg,
+    var(--gold) var(--riempito, 33%), rgba(0,0,0,.13) var(--riempito, 33%));
+}
+.lettore-cursore::-moz-range-track {
+  height: 5px; border-radius: 3px;
+  background: linear-gradient(90deg,
+    var(--gold) var(--riempito, 33%), rgba(0,0,0,.13) var(--riempito, 33%));
+}
+.lettore-cursore::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 18px; height: 18px; border-radius: 50%; margin-top: -6.5px;
+  background: #fff; border: 1.5px solid var(--gold);
+  box-shadow: 0 1px 3px rgba(0,0,0,.22);
+  transition: transform .12s ease;
+}
+.lettore-cursore::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--gold);
+  background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.22);
+}
+.lettore-cursore:active::-webkit-slider-thumb { transform: scale(1.12); }
+.lettore-cursore:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 4px; }
+.lettore-estremi {
+  display: flex; justify-content: space-between;
+  font-size: 10.5px; color: var(--ink-dim); font-style: normal;
+}
+.lettore-estremi i { font-style: normal; }
 .lettore-nota { font-size: 11.5px; color: var(--ink-dim); line-height: 1.5; margin: 0; }
+
+/* Il promemoria del silenzioso serve dove esiste un silenzioso: su un
+   computer col mouse sarebbe solo una riga in piu' da leggere. */
+.lettore-muto { display: none; }
+@media (pointer: coarse) {
+  .lettore-muto {
+    display: block; margin: 8px 0 0; font-size: 11.5px; line-height: 1.45;
+    color: var(--ink-dim);
+  }
+  /* Il dito non ha la punta del cursore: i comandi crescono fino alla misura
+     minima che si tocca senza sbagliare bottone. */
+  .lettore-t { min-width: 44px; height: 44px; }
+  .lettore-cursore { height: 34px; }
+  .lettore-cursore::-webkit-slider-runnable-track { height: 6px; }
+  .lettore-cursore::-webkit-slider-thumb { width: 26px; height: 26px; margin-top: -10px; }
+  .lettore-cursore::-moz-range-thumb { width: 26px; height: 26px; }
+  .lettore-t-grande { min-width: 54px; }
+  .lettore-bolla { width: 56px; height: 56px; }
+}
 
 /* Il paragrafo che si sta ascoltando: si illumina appena, quanto basta a
    ritrovare il segno con gli occhi senza che la pagina diventi una lampada. */

@@ -78,6 +78,9 @@ class Lettore {
    *  faceva avanzare l'indice mentre la nuova era già partita, e saltando un
    *  paragrafo la lettura scivolava fino in fondo da sola. */
   private turno = 0;
+  /** Diventa falso quando si scopre che imporre la voce fa ammutolire questo
+   *  dispositivo: da lì in poi si lascia decidere il sistema. */
+  private imponiVoce = true;
 
   constructor() {
     if (typeof window === "undefined") return;
@@ -142,15 +145,21 @@ class Lettore {
 
   scegliVoce(voiceURI: string) {
     this.voceScelta = voiceURI;
+    this.imponiVoce = true;
     try { localStorage.setItem(CHIAVE_VOCE, voiceURI); } catch { /* ignore */ }
     if (this.stato === "legge") { const i = this.indice; this.ferma(); this.parti(i); }
     this.avvisa();
   }
 
-  cambiaVelocita(v: number) {
+  /** `riparti` a falso mentre si trascina il cursore: rifare la coda a ogni
+   *  pixel spezzetterebbe la voce in singhiozzi. Si riparte quando il dito si
+   *  alza, che e' anche l'unico momento in cui il telefono ci lascia parlare. */
+  cambiaVelocita(v: number, riparti = true) {
     this.velocita = Math.min(2, Math.max(0.5, Number(v.toFixed(2))));
     try { localStorage.setItem(CHIAVE_VELOCITA, String(this.velocita)); } catch { /* ignore */ }
-    if (this.stato === "legge") { const i = this.indice; this.ferma(); this.parti(i); }
+    if (riparti && this.stato === "legge") {
+      const i = this.indice; this.ferma(); this.parti(i);
+    }
     this.avvisa();
   }
 
@@ -204,6 +213,14 @@ class Lettore {
   }
 
   // ── I comandi ─────────────────────────────────────────────────────────
+  //
+  // Sul telefono la voce parte solo se gliela si chiede *dentro* il tocco.
+  // Safari su iPhone concede la parola nel giro di codice che nasce da un dito
+  // sullo schermo, e basta un'attesa — una promessa, un `setTimeout`, la frase
+  // successiva chiesta dentro l'`onend` di quella prima — perché il permesso
+  // sia già scaduto: non si sente niente, e non arriva nemmeno un errore.
+  // Per questo le frasi si mettono in coda tutte insieme, nello stesso istante
+  // del tocco: la coda poi è del browser, e da lì in avanti va da sola.
   leggi() {
     if (!this.disponibile || this.pezzi.length === 0) return;
     if (this.stato === "legge") { this.pausa(); return; }
@@ -213,36 +230,63 @@ class Lettore {
 
   private parti(da: number) {
     this.turno++;
-    window.speechSynthesis.cancel();
+    const turno = this.turno;
+    const ss = window.speechSynthesis;
+    // `cancel()` a vuoto lascia muto Safari finché non si ricarica la pagina:
+    // si azzera solo se c'è davvero qualcosa da azzerare.
+    if (ss.speaking || ss.pending) ss.cancel();
     this.indice = Math.max(0, Math.min(da, this.pezzi.length - 1));
     this.stato = "legge";
+    this.accoda(turno);
     this.avvisa();
-    this.dilloDa(this.indice, this.turno);
+    this.controlla(turno);
   }
 
-  private dilloDa(i: number, turno: number) {
-    if (turno !== this.turno) return;
-    if (i >= this.pezzi.length) { this.ferma(); return; }
-    const u = new SpeechSynthesisUtterance(this.pezzi[i].testo);
-    const v = this.voce();
-    if (v) u.voice = v;
-    u.lang = v?.lang ?? "it-IT";
-    u.rate = this.velocita;
-    u.pitch = 1;
-    u.onend = () => {
-      // La frase interrotta da `cancel()` arriva qui lo stesso: se non è più
-      // il suo turno non deve toccare niente.
+  /** Dalla frase corrente alla fine, in coda in una volta sola. */
+  private accoda(turno: number) {
+    const ss = window.speechSynthesis;
+    const v = this.imponiVoce ? this.voce() : undefined;
+    for (let i = this.indice; i < this.pezzi.length; i++) {
+      const u = new SpeechSynthesisUtterance(this.pezzi[i].testo);
+      if (v) u.voice = v;
+      u.lang = v?.lang ?? "it-IT";
+      u.rate = this.velocita;
+      u.pitch = 1;
+      u.volume = 1;
+      // È l'inizio della frase a dire dove siamo, non la fine: con la coda già
+      // consegnata al browser è l'unico momento che si può credere.
+      u.onstart = () => {
+        if (turno !== this.turno) return;
+        this.indice = i;
+        this.avvisa();
+      };
+      u.onend = () => {
+        if (turno !== this.turno) return;
+        if (i >= this.pezzi.length - 1) this.ferma();
+      };
+      u.onerror = (e) => {
+        if (turno !== this.turno) return;
+        // Interrotta da noi: è quello che succede a ogni stop e a ogni salto.
+        const motivo = (e as SpeechSynthesisErrorEvent).error;
+        if (motivo === "interrupted" || motivo === "canceled") return;
+        this.ferma();
+      };
+      ss.speak(u);
+    }
+  }
+
+  /** Se dopo mezzo secondo non è partito niente si riprova una volta sola,
+   *  senza imporre la voce: su certi telefoni una voce scelta ma non ancora
+   *  scaricata fa fallire la lettura in silenzio, senza dire perché. */
+  private controlla(turno: number) {
+    window.setTimeout(() => {
       if (turno !== this.turno || this.stato !== "legge") return;
-      this.indice = i + 1;
-      if (this.indice >= this.pezzi.length) { this.ferma(); return; }
-      this.avvisa();
-      this.dilloDa(this.indice, turno);
-    };
-    u.onerror = () => {
-      if (turno !== this.turno || this.stato !== "legge") return;
-      this.ferma();
-    };
-    window.speechSynthesis.speak(u);
+      const ss = window.speechSynthesis;
+      if (ss.speaking || ss.pending) return;
+      if (!this.imponiVoce) return;
+      this.imponiVoce = false;
+      this.accoda(turno);
+    }, 600);
   }
 
   pausa() {
@@ -250,7 +294,8 @@ class Lettore {
     this.turno++;
     // `pause()` su alcune versioni di Chrome non riprende mai: si ferma la
     // frase in corso e si riparte da quella, che è indistinguibile all'orecchio.
-    window.speechSynthesis.cancel();
+    const ss = window.speechSynthesis;
+    if (ss.speaking || ss.pending) ss.cancel();
     this.stato = "pausa";
     this.avvisa();
   }
@@ -263,7 +308,8 @@ class Lettore {
   ferma() {
     if (!this.disponibile) return;
     this.turno++;
-    window.speechSynthesis.cancel();
+    const ss = window.speechSynthesis;
+    if (ss.speaking || ss.pending) ss.cancel();
     this.stato = "ferma";
     this.indice = 0;
     this.avvisa();
