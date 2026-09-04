@@ -7,7 +7,7 @@ import { useFavorites } from "../lib/favorites";
 import { useStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
 import { useVerifiche } from "../lib/verifiche";
-import { computeWorkGroups, workGroupMap } from "../lib/data";
+import { computeWorkGroups, workGroupMap, rilevanzaTitolo, pulisciPerRicerca, SOGLIA_RILEVANZA } from "../lib/data";
 import { clearLastOpera } from "../lib/lastVisited";
 import { BottoneFiltri, FoglioFiltri, contaFiltri, StatoFiltri } from "../components/FiltriOpereFoglio";
 import { useIsNarrow } from "../lib/motion";
@@ -16,7 +16,7 @@ import type { WorkType } from "../lib/types";
 const TYPES: WorkType[] = ["architettura", "pittura", "scultura", "mosaico", "miniatura", "oreficeria", "urbanistica", "altro"];
 
 export default function Opere() {
-  const { ds, periodById } = useData();
+  const { ds, periodById, artistById } = useData();
   const { workIn, active } = useTimeRange();
   const [sp] = useSearchParams();
 
@@ -169,9 +169,15 @@ export default function Opere() {
       if (studiedFilter === "not-studied" && studied.includes(w.id)) return false;
       if (soloDaVerificare && verificata(w.id)) return false;
       if (qq) {
+        // Tutte le parole devono trovarsi, ma possono stare in campi diversi:
+        // «palazzo te mantova» è il titolo più la città. Fra i campi c'è anche
+        // l'autore, che prima non c'era: cercare «masaccio» non dava niente.
         const keywords = qq.split(/\s+/).filter(Boolean);
-        const hay = (w.title + " " + (w.location_city ?? "") + " " + (w.location_place ?? "") + " " + (w.type ?? "")).toLowerCase();
-        if (!keywords.every(kw => hay.includes(kw))) return false;
+        const autori = (w.artist_ids ?? []).map((id) => artistById.get(id)?.name ?? "").join(" ");
+        const hay = pulisciPerRicerca(
+          [w.title, w.location_city, w.location_place, w.type, autori,
+           periodById.get(w.period_id)?.name].filter(Boolean).join(" "));
+        if (!keywords.every(kw => hay.includes(pulisciPerRicerca(kw)))) return false;
       }
       return true;
     // In ordine di tempo. Prima veniva per «importanza», cioe' per quanto
@@ -180,7 +186,34 @@ export default function Opere() {
     }).sort((a, b) => (a.year_end ?? a.year_start ?? 9999) - (b.year_end ?? b.year_start ?? 9999)
         || a.id.localeCompare(b.id));
   }, [inTime, q, type, period, favOnly, favs, studiedFilter, studied, discendenti, periodById,
-      soloDaVerificare, verificata, fonteChiesta]);
+      artistById, soloDaVerificare, verificata, fonteChiesta]);
+
+  // Le corrispondenze nette salgono in cima, e sotto l'elenco resta in ordine
+  // di tempo: cercando «palazzo te» il Palazzo Te era fra gli ultimi, perché è
+  // del 1525. Ordinare tutto per pertinenza avrebbe rotto la cronologia, che è
+  // il modo in cui questo atlante si guarda; così invece si tiene tutt'e due.
+  const { inCima, restanti } = useMemo(() => {
+    const qq = q.trim();
+    if (!qq) return { inCima: [] as typeof filtered, restanti: filtered };
+    const conPunteggio = filtered
+      .map((w) => ({
+        w,
+        p: rilevanzaTitolo(w.title, qq, [
+          w.location_city, w.location_place, w.type,
+          ...(w.artist_ids ?? []).map((id) => artistById.get(id)?.name ?? ""),
+          periodById.get(w.period_id)?.name,
+        ].filter(Boolean).join(" ")),
+      }))
+      .filter((x) => x.p >= SOGLIA_RILEVANZA)
+      .sort((a, b) => b.p - a.p)
+      .slice(0, 5);
+    // Se le migliori sono tutto il risultato, il blocchetto non aggiunge nulla.
+    if (conPunteggio.length === 0 || conPunteggio.length === filtered.length) {
+      return { inCima: [] as typeof filtered, restanti: filtered };
+    }
+    const scelte = new Set(conPunteggio.map((x) => x.w.id));
+    return { inCima: conPunteggio.map((x) => x.w), restanti: filtered.filter((w) => !scelte.has(w.id)) };
+  }, [filtered, q, artistById, periodById]);
 
   // in modalità raggruppata, separa le opere in "singole" e "raggruppate"
   const { singleWorks, groupedWorks } = useMemo(() => {
@@ -339,6 +372,23 @@ export default function Opere() {
         )
       ) : (
         <>
+          {inCima.length > 0 && !grouped && (
+            <div style={{ marginBottom: 26 }} data-testid="piu-pertinenti">
+              <div className="eyebrow" style={{ marginBottom: 10 }}>
+                {inCima.length === 1 ? "Corrispondenza migliore" : "Corrispondenze migliori"}
+                <span className="faint" style={{ textTransform: "none", letterSpacing: 0, marginLeft: 8, fontSize: 12 }}>
+                  sotto, tutte in ordine di tempo
+                </span>
+              </div>
+              <div className="grid-works">
+                {inCima.map((w) => (
+                  <WorkCard key={w.id} work={w}
+                    subtitle={[w.location_city, periodById.get(w.period_id)?.name].filter(Boolean).join(" · ")} />
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="grid-works">
             {/* Opere raggruppate (solo in modalità raggruppata) */}
             {grouped && groupedWorks.map((w) => {
@@ -356,7 +406,7 @@ export default function Opere() {
             })}
 
             {/* Opere singole */}
-            {(grouped ? singleWorks : filtered).slice(0, limit).map((w) => (
+            {(grouped ? singleWorks : restanti).slice(0, limit).map((w) => (
               <WorkCard key={w.id} work={w}
                 group={grouped ? byGroup.get(w.id) : undefined}
                 subtitle={[w.location_city, periodById.get(w.period_id)?.name].filter(Boolean).join(" · ")} />

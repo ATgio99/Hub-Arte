@@ -431,7 +431,12 @@ export interface WorkGroup {
 // chiudeva ogni voce con \b, quindi «galleri\b» non stava dentro «Gallerie»
 // (plurale) e gli Uffizi finivano per diventare un complesso, con capofila
 // un'opera qualsiasi. Le radici restano aperte a destra.
-const MUSEUM_RE = /\b(mus(eo|ei|ée|eum)|galleri|gallery|galleries|pinacotec|collezion|kunst|national)/i;
+//
+// La radice `galleri` copre l'italiano e l'inglese ma non le lingue che la
+// scrivono con una elle sola: la Gemäldegalerie di Berlino non veniva
+// riconosciuta come museo e diventava un complesso architettonico — per giunta
+// spaccato in due, perche' in una scheda l'accento mancava.
+const MUSEUM_RE = /\b(mus(eo|ei|ée|eum)|galleri|galerie|galeria|gallery|galleries|gem[äa]lde|kunst|pinacotec|collezion|national|hermitage)/i;
 
 function isGroupablePlace(place: string): boolean {
   // Escludi solo musei/gallerie (contenitori generici, non complessi architettonici).
@@ -602,6 +607,73 @@ export function fonteImmagine(url?: string | null): FonteImmagine | null {
 // la tabella nasce per le opere e ha una sola colonna work_id. Gli id di opere
 // e autori non si sovrappongono mai, quindi il tipo si ricava cercando l'id
 // nei due indici.
+// ============================================================================
+// Quanto un titolo risponde a quello che si è scritto.
+//
+// La ricerca filtra e basta, e l'elenco resta in ordine di tempo: cercando
+// «palazzo te» il Palazzo Te compariva fra gli ultimi, perché è del 1525 e
+// prima di lui c'è mille anni di catalogo. Ordinare tutto per pertinenza
+// però romperebbe la cronologia, che è il modo in cui questo atlante si
+// guarda.
+//
+// Quindi non si sceglie: le poche corrispondenze forti — il titolo che
+// contiene per intero quello che si è scritto — salgono in cima in un
+// blocchetto a parte, e sotto l'elenco resta in ordine di tempo com'è sempre
+// stato.
+// ============================================================================
+export function pulisciPerRicerca(t: string): string {
+  return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim();
+}
+
+/** Zero se il titolo non risponde; più è alto, più la corrispondenza è netta.
+ *
+ *  Le parole che non stanno nel titolo ma in un altro campo — «palazzo te
+ *  mantova»: il titolo è «Palazzo Te», Mantova è la città — non affondano il
+ *  risultato: si tolgono dalla domanda e il titolo viene confrontato con
+ *  quello che resta.
+ *
+ *  Poi si guarda quanta parte del titolo è coperta. Senza, cercare «madonna»
+ *  metterebbe in cima cinque Madonne a caso fra le centoventi che cominciano
+ *  così: sono tutte corrispondenze legittime, e proprio per questo nessuna
+ *  merita di scavalcare l'ordine cronologico. */
+export function rilevanzaTitolo(titolo: string, query: string, altrove = ""): number {
+  const t = pulisciPerRicerca(titolo);
+  const tuttoIlResto = pulisciPerRicerca(altrove);
+  const parole = pulisciPerRicerca(query).split(" ").filter(Boolean);
+  if (parole.length === 0 || !t) return 0;
+
+  // Le parole che il titolo non ha, ma che si spiegano con gli altri campi.
+  const nelTitolo = parole.filter((p) => t.includes(p));
+  const spiegate = parole.filter((p) => !t.includes(p) && tuttoIlResto.includes(p));
+  if (nelTitolo.length === 0) return 0;
+  if (nelTitolo.length + spiegate.length < parole.length) return 0;
+
+  const q = nelTitolo.join(" ");
+  const copertura = q.length / t.length;
+
+  let punti = 0;
+  if (t === q) punti = 1000;
+  else if (t.startsWith(q)) punti = 800 - Math.min(t.length, 200) / 10;
+  else {
+    const dove = t.indexOf(q);
+    if (dove >= 0) punti = 600 - Math.min(dove, 200) / 2 - Math.min(t.length, 200) / 20;
+    else {
+      // Tutte le parole, ognuna all'inizio di una parola del titolo.
+      const tutte = nelTitolo.every((p) =>
+        new RegExp(`(^|\\s|\\()${p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`).test(t));
+      punti = tutte && nelTitolo.length > 1 ? 400 - Math.min(t.length, 200) / 20 : 0;
+    }
+  }
+  if (punti === 0) return 0;
+
+  // Il titolo dev'essere quasi tutto lì: se no è una parola in comune, non una
+  // corrispondenza. Il titolo identico passa comunque.
+  if (punti < 1000 && copertura < 0.5) return 0;
+  return punti;
+}
+
+export const SOGLIA_RILEVANZA = 400;
+
 export function rottaDiScheda(ix: Indexed, id: string): string {
   if (ix.artistById.has(id)) return `/artista/${id}`;
   return `/opera/${id}`;
