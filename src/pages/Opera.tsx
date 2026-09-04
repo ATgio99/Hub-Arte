@@ -3,11 +3,12 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useData } from "../lib/store";
 import { useIsNarrow } from "../lib/motion";
 import { WorkImage, WorkCard, WorkGallery, Section, Empty, EntityLink, FavStar, StudiedCheck, RichText, BarraScheda, SegnoApprofondita } from "../components/ui";
-import { getOverrides, setOverride, clearOverride } from "../lib/imageOverrides";
+import { getGlobalOverrides, setOverride, clearOverride } from "../lib/imageOverrides";
 import { useStudied, toggleStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
 import { setLastOpera } from "../lib/lastVisited";
 import { citazione, fontiDi } from "../lib/fonti";
+import { useVerifiche, commutaVerifica } from "../lib/verifiche";
 import EditorDrawer from "../components/EditorDrawer";
 import {
   artistsOfWork, termsOfWork, techniquesOfWork, relatedWorks,
@@ -22,7 +23,7 @@ function ImageEditor({ workId }: { workId: string }) {
   const [url, setUrl] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
-  const hasOverride = !!getOverrides()[workId];
+  const hasOverride = !!getGlobalOverrides()[workId];
 
   const save = async () => {
     const u = url.trim();
@@ -144,15 +145,18 @@ export default function Opera() {
     <div className="wrap page">
       <BarraScheda azioni={
         isAdmin ? (
-          <button
-            onClick={() => setEditorOpen(true)}
-            className="btn gold sm"
-            style={{ fontSize: 13, padding: "8px 14px", whiteSpace: "nowrap" }}
-            title="Modifica i metadati dell'opera nel database (solo admin)"
-            data-testid="btn-admin-edit"
-          >
-            ✎ Modifica
-          </button>
+          <>
+            <SpuntaVerifica workId={w.id} email={user?.email ?? null} />
+            <button
+              onClick={() => setEditorOpen(true)}
+              className="btn gold sm"
+              style={{ fontSize: 13, padding: "8px 14px", whiteSpace: "nowrap" }}
+              title="Modifica i metadati dell'opera nel database (solo admin)"
+              data-testid="btn-admin-edit"
+            >
+              ✎ Modifica
+            </button>
+          </>
         ) : user ? (
           <Link
             to={`/suggerisci-modifica?work=${encodeURIComponent(w.id)}`}
@@ -175,7 +179,7 @@ export default function Opera() {
             {(() => {
               // La fonte si legge dall'indirizzo dell'immagine mostrata: non e'
               // un campo da compilare, quindi non puo' essere sbagliata o vecchia.
-              const mostrata = getOverrides()[w.id]?.url || w.image_url;
+              const mostrata = getGlobalOverrides()[w.id]?.url || w.image_url;
               const f = fonteImmagine(mostrata);
               if (!f) return null;
               return (
@@ -413,5 +417,49 @@ export default function Opera() {
         onClose={() => setEditorOpen(false)}
       />
     </div>
+  );
+}
+
+// ============================================================================
+// La spunta «verificata».
+//
+// Serve a una cosa sola: sapere quali schede sono state lette per intero e
+// controllate. Sta accanto al tasto di modifica perche' e' li' che si guarda
+// quando si sta rivedendo un'opera, e la vedono solo gli amministratori — a
+// tutti gli altri non direbbe niente.
+// ============================================================================
+function SpuntaVerifica({ workId, email }: { workId: string; email: string | null }) {
+  const { pronte, verificata, dettaglio } = useVerifiche();
+  const [inCorso, setInCorso] = useState(false);
+  const ok = verificata(workId);
+  const v = dettaglio(workId);
+
+  const quando = v?.verificata_il
+    ? new Date(v.verificata_il).toLocaleDateString("it-IT", { day: "numeric", month: "short", year: "numeric" })
+    : null;
+
+  return (
+    <button
+      onClick={async () => {
+        setInCorso(true);
+        await commutaVerifica(workId, { email });
+        setInCorso(false);
+      }}
+      disabled={!pronte || inCorso}
+      className="btn ghost sm"
+      style={{
+        fontSize: 13, padding: "8px 12px", whiteSpace: "nowrap",
+        borderColor: ok ? "var(--c-technique)" : "var(--line)",
+        color: ok ? "var(--c-technique)" : "var(--ink-soft)",
+        background: ok ? "color-mix(in srgb, var(--c-technique) 10%, transparent)" : undefined,
+        opacity: pronte ? 1 : 0.5,
+      }}
+      title={ok
+        ? `Scheda verificata${quando ? ` il ${quando}` : ""}${v?.verificata_da ? ` da ${v.verificata_da}` : ""} — togli la spunta`
+        : "Segna questa scheda come letta e controllata"}
+      data-testid="btn-verifica"
+    >
+      {ok ? "✓ Verificata" : "Verifica"}
+    </button>
   );
 }

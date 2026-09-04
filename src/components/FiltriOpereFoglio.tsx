@@ -18,13 +18,16 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
+export type StatoApprofondite = "" | "studied" | "not-studied";
+
 export interface StatoFiltri {
   type: string; setType: (v: string) => void; tipi: string[];
   period: string; setPeriod: (v: string) => void;
   periodOpts: { id: string; label: string; n: number }[];
   senzaPeriodo: number; chiaveSenzaPeriodo: string;
   favOnly: boolean; setFavOnly: (v: boolean) => void; nFav: number;
-  studiedFilter: string; setStudiedFilter: (v: string) => void;
+  /** "" nessun filtro, "studied" solo approfondite, "not-studied" solo da fare. */
+  studiedFilter: StatoApprofondite; setStudiedFilter: (v: StatoApprofondite) => void;
   nStudiate: number; nDaStudiare: number;
   grouped: boolean; setGrouped: (v: boolean) => void; nGruppi: number;
   onAzzera: () => void;

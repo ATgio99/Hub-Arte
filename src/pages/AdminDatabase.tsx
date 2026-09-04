@@ -1651,6 +1651,8 @@ const NEW_ROW_TEMPLATES: Record<Tab, () => any> = {
     target_type: "work", target_id: "", description: "",
   }),
   complessi: () => ({ id: "", name: "", works: [] }),
+  // Una fonte nuova: il libro da cui viene una scheda.
+  fonti: () => ({ id: "", titolo: "", autori: null, editore: null, anno: null, isbn: null, note: null }),
 };
 
 // OUTER: legge ix, congel initialRow quando il drawer è aperto
@@ -1692,6 +1694,7 @@ function GenericEditorDrawer({
             case "terms": arr = ix.ds.terms; break;
             case "events": arr = ix.ds.events; break;
             case "connections": arr = ix.ds.connections; break;
+            case "fonti": arr = ix.ds.fonti; break;
           }
           const existing = arr.find(r => r.id === rowId);
           setFrozenRow(existing || null);
@@ -1705,6 +1708,7 @@ function GenericEditorDrawer({
           works: ix.ds.works,
           events: ix.ds.events,
           connections: ix.ds.connections,
+          fonti: ix.ds.fonti,
         });
       }
     } else {
@@ -1725,7 +1729,7 @@ function GenericEditorDrawer({
       userEmail={user?.email || null}
       initialRow={frozenRow}
       isNew={isNew}
-      dataset={frozenDataset || { periods: [], artists: [], techniques: [], terms: [], works: [], events: [], connections: [] }}
+      dataset={frozenDataset || { periods: [], artists: [], techniques: [], terms: [], works: [], events: [], connections: [], fonti: [] }}
     />
   );
 }

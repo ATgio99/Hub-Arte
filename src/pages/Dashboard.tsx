@@ -7,6 +7,7 @@ import { getGlobalOverrides, clearOverride, exportOverrides, importOverrides } f
 import { workSortYear } from "../lib/data";
 import { useStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
+import { useVerifiche } from "../lib/verifiche";
 import { useInViewOnce, EASE_OUT, usePrefersReducedMotion } from "../lib/motion";
 
 // ---- Barre orizzontali (clickable) ----------------------------------------
@@ -413,6 +414,12 @@ export default function Dashboard() {
         <p className="muted" style={{ marginTop: 40, textAlign: "center" }}>Nessuna opera nell'arco {range.min}–{range.max}.</p>
       )}
 
+      {isAdmin && (
+        <Section eyebrow="Revisione" title="Schede verificate">
+          <StatoVerifiche />
+        </Section>
+      )}
+
       {/* Sostituire una fotografia e' cosa da amministratore: a chi non lo e'
           la sezione non compare affatto, invece di comparire vuota con dentro
           scritto che non puo' usarla. */}
@@ -480,6 +487,135 @@ function OverridesManager() {
               );
             })}
           </div>
+        )}
+    </div>
+  );
+}
+
+// ============================================================================
+// A che punto è la revisione.
+//
+// Non un numero solo: quello direbbe «ne mancano 900» e non aiuterebbe a
+// cominciare. Serve sapere *dove* mancano — per periodo — perché si rivede per
+// capitoli, non a caso, e perché un periodo finito è un pezzo di catalogo di
+// cui ci si può fidare.
+// ============================================================================
+function StatoVerifiche() {
+  const ix = useData();
+  const { pronte, verificata, dettaglio } = useVerifiche();
+  const [cerca, setCerca] = useState("");
+  const [mostra, setMostra] = useState<"da-fare" | "fatte">("da-fare");
+  const [quante, setQuante] = useState(60);
+
+  const opere = ix.ds.works;
+  const fatte = useMemo(() => opere.filter((w) => verificata(w.id)), [opere, verificata]);
+  const daFare = useMemo(() => opere.filter((w) => !verificata(w.id)), [opere, verificata]);
+
+  // Per periodo, in ordine di tempo: è l'ordine in cui si rivede.
+  const perPeriodo = useMemo(() => {
+    const m = new Map<string, { totale: number; fatte: number }>();
+    for (const w of opere) {
+      const k = w.period_id || "—";
+      if (!m.has(k)) m.set(k, { totale: 0, fatte: 0 });
+      const r = m.get(k)!;
+      r.totale++;
+      if (verificata(w.id)) r.fatte++;
+    }
+    return [...m.entries()]
+      .map(([id, r]) => ({ id, nome: ix.periodById.get(id)?.name ?? id,
+                           anno: ix.periodById.get(id)?.year_start ?? 9999, ...r }))
+      .sort((a, b) => a.anno - b.anno || a.nome.localeCompare(b.nome));
+  }, [opere, verificata, ix]);
+
+  const elenco = useMemo(() => {
+    const base = mostra === "fatte" ? fatte : daFare;
+    const q = cerca.trim().toLowerCase();
+    const filtrate = q
+      ? base.filter((w) => w.title.toLowerCase().includes(q)
+          || (w.location_city ?? "").toLowerCase().includes(q)
+          || (ix.periodById.get(w.period_id)?.name ?? "").toLowerCase().includes(q))
+      : base;
+    return [...filtrate].sort((a, b) => workSortYear(a) - workSortYear(b));
+  }, [mostra, fatte, daFare, cerca, ix]);
+
+  if (!pronte) return <p className="faint" style={{ fontSize: 13 }}>Leggo le verifiche…</p>;
+
+  const perc = opere.length ? Math.round((fatte.length / opere.length) * 100) : 0;
+
+  return (
+    <div>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap", marginBottom: 10 }}>
+        <div style={{ fontSize: 34, fontWeight: 300 }}>
+          <CountUp value={fatte.length} /><span className="muted" style={{ fontSize: 20 }}>/{opere.length}</span>
+        </div>
+        <b style={{ color: "var(--gold-deep)" }}>{perc}%</b>
+        <span className="muted" style={{ fontSize: 13.5 }}>
+          {daFare.length === 0 ? "catalogo controllato per intero" : `${daFare.length} schede ancora da leggere`}
+        </span>
+      </div>
+      <div style={{ height: 6, borderRadius: 3, background: "var(--bg-2)", overflow: "hidden", marginBottom: 22 }}>
+        <div style={{ width: `${perc}%`, height: "100%", background: "var(--c-technique)" }} />
+      </div>
+
+      <div className="eyebrow" style={{ marginBottom: 10 }}>Per periodo</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(240px,1fr))", gap: 8, marginBottom: 26 }}>
+        {perPeriodo.map((p) => {
+          const fatto = p.fatte === p.totale;
+          return (
+            <Link key={p.id} to={`/periodo/${p.id}`} className="card hover"
+                  style={{ padding: "9px 12px", display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ flex: 1, minWidth: 0, fontSize: 13, whiteSpace: "nowrap",
+                             overflow: "hidden", textOverflow: "ellipsis" }}>{p.nome}</span>
+              <span style={{ fontSize: 12, color: fatto ? "var(--c-technique)" : "var(--ink-dim)" }}>
+                {fatto ? "✓ " : ""}{p.fatte}/{p.totale}
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+
+      <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginBottom: 12 }}>
+        <div className="seg">
+          <button className={mostra === "da-fare" ? "on" : ""}
+                  onClick={() => { setMostra("da-fare"); setQuante(60); }}>Da verificare ({daFare.length})</button>
+          <button className={mostra === "fatte" ? "on" : ""}
+                  onClick={() => { setMostra("fatte"); setQuante(60); }}>Verificate ({fatte.length})</button>
+        </div>
+        <input value={cerca} onChange={(e) => { setCerca(e.target.value); setQuante(60); }}
+               placeholder="Filtra per titolo, città o periodo"
+               style={{ flex: "1 1 220px", minWidth: 200, padding: "8px 12px", borderRadius: 8,
+                        border: "1px solid var(--line)", background: "var(--bg-1)", fontSize: 13.5 }} />
+      </div>
+
+      {elenco.length === 0
+        ? <p className="faint" style={{ fontSize: 13 }}>Nessuna scheda.</p>
+        : (
+          <>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: 8 }}>
+              {elenco.slice(0, quante).map((w) => {
+                const v = dettaglio(w.id);
+                return (
+                  <Link key={w.id} to={`/opera/${w.id}`} className="card hover"
+                        style={{ padding: "9px 12px", display: "block" }}>
+                    <div style={{ fontSize: 13.5, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                      {w.title}
+                    </div>
+                    <div className="faint" style={{ fontSize: 11.5, marginTop: 2 }}>
+                      {[ix.periodById.get(w.period_id)?.name, w.date_text, w.location_city]
+                        .filter(Boolean).join(" · ")}
+                      {v?.verificata_il && ` · ✓ ${new Date(v.verificata_il).toLocaleDateString("it-IT")}`}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            {elenco.length > quante && (
+              <button className="btn ghost sm" style={{ marginTop: 12 }}
+                      onClick={() => setQuante((n) => n + 120)}>
+                Mostra altre ({elenco.length - quante})
+              </button>
+            )}
+          </>
         )}
     </div>
   );

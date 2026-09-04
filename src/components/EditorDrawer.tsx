@@ -85,6 +85,7 @@ interface DatasetSnapshot {
   techniques: Technique[];
   terms: Term[];
   works: Work[];  // per coordinate città
+  fonti: Fonte[];
 }
 
 // ---- MentionTextarea: textarea con autocomplete @nome ----------------------
@@ -304,7 +305,7 @@ function EditorDrawerInner({
     [allArtists]
   );
   const allPeriods = useMemo(() => [...dataset.periods, ...localPeriods], [dataset.periods, localPeriods]);
-  const allFonti = useMemo(() => [...dataset.fonti, ...localFonti], [dataset.fonti, localFonti]);
+  const allFonti = useMemo(() => [...(dataset.fonti ?? []), ...localFonti], [dataset.fonti, localFonti]);
   const allTechniques = useMemo(() => [...dataset.techniques, ...localTechniques], [dataset.techniques, localTechniques]);
   const allTerms = useMemo(() => [...dataset.terms, ...localTerms], [dataset.terms, localTerms]);
   const allCities = useMemo(() => {
@@ -806,6 +807,9 @@ export default function EditorDrawer({
           techniques: ix.ds.techniques,
           terms: ix.ds.terms,
           works: ix.ds.works,
+          // Mancava, e il drawer moriva prima di comparire: il selettore delle
+          // fonti apriva `dataset.fonti`, che qui non c'era.
+          fonti: ix.ds.fonti,
         });
       }
     } else {
