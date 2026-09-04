@@ -31,6 +31,7 @@ import { getStudied, setStudied, filterTombstonedStudied, getPendingAddsStudied,
 import { getOverrides, setOverrides, getGlobalOverrides, setGlobalOverrides } from "./imageOverrides";
 import type { OverrideMap } from "./imageOverrides";
 import type { User } from "@supabase/supabase-js";
+import { isAdminEmail } from "./auth";
 
 // ---------- PULL GLOBAL IMAGE OVERRIDES (per tutti, anche anonimi) ----------
 // Questa funzione può essere chiamata anche senza utente (utente anonimo).
@@ -76,10 +77,10 @@ export async function pullGlobalImageOverrides(): Promise<void> {
         console.error("[sync] Fallback also failed:", res.error.message);
         return;
       }
-      // Filtra lato client: considera globali quelli con modified_by admin
-      data = (res.data || []).filter((r: any) =>
-        r.modified_by && ["hubarte@proton.me", "atgio@proton.me"].includes(r.modified_by.toLowerCase())
-      );
+      // Filtra lato client: considera globali quelli con modified_by admin.
+      // L'elenco sta in un posto solo (auth.tsx): copiato qui, dimenticava
+      // l'alias corto della casella e faceva sparire delle correzioni.
+      data = (res.data || []).filter((r: any) => isAdminEmail(r.modified_by));
     }
 
     if (!data || data.length === 0) {

@@ -29,7 +29,13 @@ let _ultimoUtente: string | null = null;
 // Email degli amministratori (può modificare i metadati delle opere direttamente).
 // Questi indirizzi NON vengono mai mostrati nella UI: sono usati solo lato codice
 // (per determinare isAdmin) e lato database (nelle RLS policies di Supabase).
-export const ADMIN_EMAILS = ["hubarte@proton.me", "atgio@proton.me"];
+//
+// `hubarte@pm.me` e `hubarte@proton.me` sono la stessa casella — pm.me e'
+// l'alias corto di ProtonMail — ma qui il confronto e' fra stringhe, e finche'
+// l'alias non c'era, entrando con quello si lavorava da utente qualunque: 185
+// correzioni alle fotografie sono rimaste private, visibili solo a chi le
+// aveva fatte. Vanno elencate tutte e due, qui e nelle policy del database.
+export const ADMIN_EMAILS = ["hubarte@proton.me", "hubarte@pm.me", "atgio@proton.me"];
 // Email di contatto PUBBLICA (mostrata nei contatti, nei footer, nei form).
 // Alias ProtonMail breve.
 export const CONTACT_EMAIL = "hubarte@pm.me";

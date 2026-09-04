@@ -68,6 +68,21 @@ export async function setOverride(workId: string, url: string) {
     map[workId] = { url: cleanUrl, setAt: new Date().toISOString(), isGlobal: true, modifiedBy: user?.email };
     persistGlobal(map);
 
+    // Via dalla mappa privata, se ci fosse finita prima. Non e' pulizia: la
+    // sincronizzazione rispedisce quella mappa scrivendo `is_global: false`
+    // esplicito (sync.ts), quindi una voce rimasta li' riporterebbe privata la
+    // correzione appena resa pubblica, a ogni sincronizzazione, per sempre.
+    const privati = getOverrides();
+    if (privati[workId]) {
+      delete privati[workId];
+      persistPrivate(privati);
+      if (user) {
+        await supabase.from("image_overrides")
+          .delete()
+          .eq("user_id", user.id).eq("work_id", workId).eq("is_global", false);
+      }
+    }
+
     if (user) {
       // 1) AGGIORNA DIRETTAMENTE la tabella works — tutti gli utenti vedono
       //    l'immagine al primo fetch perché works ha SELECT pubblica.
