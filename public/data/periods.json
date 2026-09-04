@@ -262,7 +262,7 @@
  },
  {
   "id": "mosaici-eta-pasquale-i",
-  "name": "Mosaici romani dell'eta di papa Pasquale I",
+  "name": "Cantiere di Pasquale I",
   "type": "scuola",
   "year_start": 817,
   "year_end": 826,
@@ -270,7 +270,7 @@
    "Roma",
    "Lazio"
   ],
-  "summary": "Il breve pontificato di Pasquale I concentra a Roma una delle più coerenti campagne musive dell'alto Medioevo. Le maestranze lavorano con figure allungate e frontali, contorni marcati, campiture cromatiche piatte e vasti fondi d'oro, rinunciando all'illusionismo tardoantico a favore di una solennità astratta e ieratica. Il repertorio iconografico riprende consapevolmente i grandi absidi paleocristiani romani, riproposti come segno di continuità con la Chiesa delle origini; nella cappella di San Zenone il mosaico invade per intero pareti e volta, trasformando l'ambiente in uno scrigno luminoso.",
+  "summary": "Il breve pontificato di Pasquale I concentra a Roma una delle più coerenti campagne musive dell'alto Medioevo. Le maestranze lavorano con figure allungate e frontali, contorni marcati, campiture cromatiche piatte e vasti fondi d'oro, rinunciando all'illusionismo tardoantico a favore di una solennità astratta e ieratica. Il repertorio iconografico riprende consapevolmente i grandi absidi paleocristiani romani, riproposti come segno di continuità con la Chiesa delle origini; nella cappella di San Zenone il mosaico invade per intero pareti e volta, trasformando l'ambiente in uno scrigno luminoso. Il nome esteso della scuola nel catalogo era «Mosaici romani dell'eta di papa Pasquale I».",
   "historical_context": "Il papa promuove la traslazione in città delle reliquie dei martiri sepolti nelle catacombe suburbane, ormai insicure, e ricostruisce le basiliche destinate ad accoglierle. È il momento in cui il papato romano, appoggiato all'impero carolingio, rivendica la propria autorità richiamandosi esplicitamente all'età costantiniana e paleocristiana.",
   "parent_id": "eta-carolingia",
   "key_innovations": [
@@ -282,7 +282,7 @@
  },
  {
   "id": "bottega-vuolvinio-santambrogio",
-  "name": "Bottega carolingia di Sant'Ambrogio (Vuolvinio)",
+  "name": "Bottega di Vuolvinio",
   "type": "scuola",
   "year_start": 824,
   "year_end": 850,
@@ -291,7 +291,7 @@
    "Lombardia",
    "Italia settentrionale"
   ],
-  "summary": "La bottega attiva per la basilica milanese di Sant'Ambrogio realizza uno dei massimi capolavori dell'oreficeria altomedievale. L'altare è interamente rivestito di lamine sbalzate — oro sul fronte, argento dorato sui fianchi e sul retro — arricchite da smalti a cloisonné, filigrane e gemme, con le storie sacre organizzate in riquadri entro una fitta partitura ornamentale. Le figure, allungate e dai gesti ampi, uniscono il linearismo carolingio a una viva capacità narrativa; sopra l'altare il ciborio, sorretto da colonne di reimpiego, presenta figure a stucco che ne completano l'apparato liturgico.",
+  "summary": "La bottega attiva per la basilica milanese di Sant'Ambrogio realizza uno dei massimi capolavori dell'oreficeria altomedievale. L'altare è interamente rivestito di lamine sbalzate — oro sul fronte, argento dorato sui fianchi e sul retro — arricchite da smalti a cloisonné, filigrane e gemme, con le storie sacre organizzate in riquadri entro una fitta partitura ornamentale. Le figure, allungate e dai gesti ampi, uniscono il linearismo carolingio a una viva capacità narrativa; sopra l'altare il ciborio, sorretto da colonne di reimpiego, presenta figure a stucco che ne completano l'apparato liturgico. Il nome esteso della scuola nel catalogo era «Bottega carolingia di Sant'Ambrogio (Vuolvinio)».",
   "historical_context": "L'opera è promossa dall'arcivescovo di Milano, che intende dare degna sistemazione alle reliquie di sant'Ambrogio e affermare il prestigio della sede episcopale entro l'impero carolingio. Sul retro dell'altare committente e maestro orafo compaiono raffigurati e nominati, testimonianza rara e precoce del riconoscimento pubblico dell'artefice.",
   "parent_id": "eta-carolingia",
   "key_innovations": [
@@ -553,7 +553,7 @@
  },
  {
   "id": "cattedrale-santiago-scuola",
-  "name": "Bottega scultorea della cattedrale di Santiago de Compostela",
+  "name": "Cantiere di Santiago",
   "type": "scuola",
   "year_start": 1075,
   "year_end": 1211,
@@ -562,7 +562,7 @@
    "Galizia",
    "Spagna settentrionale"
   ],
-  "summary": "Il cantiere della cattedrale compostellana raccoglie per oltre un secolo generazioni di scultori e lapicidi, dando forma al modello più compiuto di chiesa di pellegrinaggio: pianta a croce latina con navate laterali, tribune continue e deambulatorio con cappelle radiali, pensati per far scorrere le folle attorno alla tomba dell'apostolo. La decorazione scolpita passa da un primo linguaggio di rilievi assemblati sulle facciate laterali, dal segno duro e incisivo, alla piena maturità raggiunta con Maestro Matteo, autore del portico occidentale, dove le figure di profeti e apostoli acquistano peso corporeo, volti individuati e un'espressività quasi conversativa.",
+  "summary": "Il cantiere della cattedrale compostellana raccoglie per oltre un secolo generazioni di scultori e lapicidi, dando forma al modello più compiuto di chiesa di pellegrinaggio: pianta a croce latina con navate laterali, tribune continue e deambulatorio con cappelle radiali, pensati per far scorrere le folle attorno alla tomba dell'apostolo. La decorazione scolpita passa da un primo linguaggio di rilievi assemblati sulle facciate laterali, dal segno duro e incisivo, alla piena maturità raggiunta con Maestro Matteo, autore del portico occidentale, dove le figure di profeti e apostoli acquistano peso corporeo, volti individuati e un'espressività quasi conversativa. Il nome esteso della scuola nel catalogo era «Bottega scultorea della cattedrale di Santiago de Compostela».",
   "historical_context": "L'impresa è promossa dai vescovi di Compostela, in particolare da Diego Gelmírez, e sostenuta dalle offerte del pellegrinaggio e dalla monarchia di Castiglia e León. Il cammino verso la tomba di san Giacomo mette la Galizia in contatto diretto con i cantieri della Francia meridionale, favorendo la circolazione di maestranze e di modelli.",
   "parent_id": "romanico-iberico",
   "key_innovations": [
@@ -1112,7 +1112,7 @@
  },
  {
   "id": "bottega-nicola-pisano",
-  "name": "Bottega di Nicola Pisano e Giovanni Pisano",
+  "name": "Bottega dei Pisano",
   "type": "scuola",
   "year_start": 1255,
   "year_end": 1278,
@@ -1123,7 +1123,7 @@
    "Pistoia",
    "Toscana"
   ],
-  "summary": "La bottega dei Pisano fonda la scultura monumentale italiana su due impulsi successivi. Nicola guarda ai sarcofagi romani conservati a Pisa e ne ricava figure ampie, avvolte in panneggi solenni, disposte in rilievi affollati che riempiono ogni spazio disponibile; il suo strumento tipico è il pulpito poligonale, sorretto da colonne su leoni stilofori e rivestito di storie continue. Giovanni, cresciuto in quella stessa officina, introduce il ritmo nervoso della scultura gotica d'oltralpe: le figure si torcono, i volti si contraggono nel dolore, il rilievo si scava in profondi contrasti di luce e ombra. Con lui la statua si stacca dall'architettura e dialoga con lo spettatore dalla facciata della cattedrale.",
+  "summary": "La bottega dei Pisano fonda la scultura monumentale italiana su due impulsi successivi. Nicola guarda ai sarcofagi romani conservati a Pisa e ne ricava figure ampie, avvolte in panneggi solenni, disposte in rilievi affollati che riempiono ogni spazio disponibile; il suo strumento tipico è il pulpito poligonale, sorretto da colonne su leoni stilofori e rivestito di storie continue. Giovanni, cresciuto in quella stessa officina, introduce il ritmo nervoso della scultura gotica d'oltralpe: le figure si torcono, i volti si contraggono nel dolore, il rilievo si scava in profondi contrasti di luce e ombra. Con lui la statua si stacca dall'architettura e dialoga con lo spettatore dalla facciata della cattedrale. Il nome esteso della scuola nel catalogo era «Bottega di Nicola Pisano e Giovanni Pisano».",
   "historical_context": "I committenti sono le grandi istituzioni cittadine dell'Italia comunale: le fabbriche delle cattedrali e dei battisteri di Pisa, Siena e Pistoia, e i governi cittadini, come quello di Perugia che celebra con una fontana monumentale l'arrivo dell'acqua in piazza. In questo quadro l'opera scultorea diventa insieme arredo liturgico e affermazione dell'orgoglio civico, e gli artefici cominciano a firmare le proprie imprese con iscrizioni elogiative.",
   "parent_id": "gotico-italiano",
   "key_innovations": [
@@ -1371,7 +1371,7 @@
  },
  {
   "id": "scuola-avignonese-papale",
-  "name": "Scuola avignonese della corte papale (Simone Martini, Matteo Giovannetti)",
+  "name": "Corte papale di Avignone",
   "type": "scuola",
   "year_start": 1340,
   "year_end": 1353,
@@ -1380,7 +1380,7 @@
    "Provenza",
    "Francia"
   ],
-  "summary": "Ad Avignone, attorno alla corte pontificia, si forma un ambiente artistico cosmopolita in cui la tradizione senese incontra il gusto gotico d'oltralpe: è uno dei crogioli da cui nascerà il gotico internazionale. La componente italiana porta la linea sinuosa e melodica, i colori chiari e cangianti, la capacità di dare misura e sentimento alle figure; l'ambiente francese offre in cambio una vocazione alla narrazione profana e mondana. Accanto alle immagini devozionali di piccolo formato, destinate alla contemplazione privata, e alla miniatura d'autore per committenti letterati, si sviluppa così la decorazione degli appartamenti papali, dove scene di caccia, di pesca e di svago si distendono su fondali di verzura fitta e popolata, senza intento sacro.",
+  "summary": "Ad Avignone, attorno alla corte pontificia, si forma un ambiente artistico cosmopolita in cui la tradizione senese incontra il gusto gotico d'oltralpe: è uno dei crogioli da cui nascerà il gotico internazionale. La componente italiana porta la linea sinuosa e melodica, i colori chiari e cangianti, la capacità di dare misura e sentimento alle figure; l'ambiente francese offre in cambio una vocazione alla narrazione profana e mondana. Accanto alle immagini devozionali di piccolo formato, destinate alla contemplazione privata, e alla miniatura d'autore per committenti letterati, si sviluppa così la decorazione degli appartamenti papali, dove scene di caccia, di pesca e di svago si distendono su fondali di verzura fitta e popolata, senza intento sacro. Il nome esteso della scuola nel catalogo era «Scuola avignonese della corte papale (Simone Martini, Matteo Giovannetti)».",
   "historical_context": "Trasferita ad Avignone dal 1309, la sede pontificia diventa in pochi decenni una capitale europea: i papi vi costruiscono un immenso palazzo fortificato e chiamano artisti italiani e francesi per decorarne cappelle e sale di rappresentanza. Attorno alla curia gravita una società di cardinali, funzionari e letterati, e proprio la presenza di questo pubblico colto favorisce commissioni raffinate e di soggetto anche laico.",
   "parent_id": "gotico-cortese",
   "key_innovations": [
@@ -1619,7 +1619,7 @@
  },
  {
   "id": "monumenti-funebri-napoletani-carbonara",
-  "name": "Monumenti funebri tardogotici napoletani (San Giovanni a Carbonara)",
+  "name": "San Giovanni a Carbonara",
   "type": "scuola",
   "year_start": 1414,
   "year_end": 1430,
@@ -1627,7 +1627,7 @@
    "Napoli",
    "Campania"
   ],
-  "summary": "Nella chiesa di San Giovanni a Carbonara si concentra la stagione più ambiziosa della scultura funeraria napoletana del primo Quattrocento, esito dell'incontro fra la tradizione locale, erede di Tino di Camaino, e le maestranze toscane e centro-italiane attirate dalla corte. Il tipo dominante è il sepolcro a parete sviluppato in altezza per registri sovrapposti: basamento con virtù e figure di corte, sarcofago con il defunto giacente, baldacchino e coronamento, fino alla statua equestre del sovrano che chiude la macchina architettonica. Il linguaggio resta gotico nel gusto per la decorazione minuta e per le figure allungate, ma la scala monumentale e la ricerca di somiglianza nei ritratti annunciano una nuova concezione celebrativa del monumento.",
+  "summary": "Nella chiesa di San Giovanni a Carbonara si concentra la stagione più ambiziosa della scultura funeraria napoletana del primo Quattrocento, esito dell'incontro fra la tradizione locale, erede di Tino di Camaino, e le maestranze toscane e centro-italiane attirate dalla corte. Il tipo dominante è il sepolcro a parete sviluppato in altezza per registri sovrapposti: basamento con virtù e figure di corte, sarcofago con il defunto giacente, baldacchino e coronamento, fino alla statua equestre del sovrano che chiude la macchina architettonica. Il linguaggio resta gotico nel gusto per la decorazione minuta e per le figure allungate, ma la scala monumentale e la ricerca di somiglianza nei ritratti annunciano una nuova concezione celebrativa del monumento. Il nome esteso della scuola nel catalogo era «Monumenti funebri tardogotici napoletani (San Giovanni a Carbonara)».",
   "historical_context": "La committenza è quella della dinastia angioino-durazzesca e dell'aristocrazia di seggio che le gravita attorno: la regina Giovanna II fa erigere il sepolcro del fratello Ladislao, mentre i grandi ufficiali del regno commissionano per sé cappelle e tombe nella stessa chiesa. Il monumento funebre diventa così uno strumento di legittimazione dinastica e di affermazione del rango familiare.",
   "parent_id": "tardogotico",
   "key_innovations": [
@@ -1685,7 +1685,7 @@
  },
  {
   "id": "ciclo-castello-della-manta",
-  "name": "Ciclo pittorico del Castello della Manta",
+  "name": "Castello della Manta",
   "type": "scuola",
   "year_start": 1420,
   "year_end": 1425,
@@ -1694,7 +1694,7 @@
    "Saluzzo",
    "Piemonte"
   ],
-  "summary": "Gli affreschi della sala baronale del castello della Manta, opera di un anonimo maestro di cultura franco-borgognona attivo in Piemonte attorno al 1420, sono uno dei più alti cicli profani del gotico internazionale in Italia. Su una parete sfila la schiera dei Nove Prodi e delle Nove Eroine, figure quasi al naturale disposte come una teoria di ritratti di corte, ciascuna accompagnata dal proprio cartiglio e vestita con abiti sontuosi rigorosamente contemporanei; sulla parete opposta si dispiega la Fontana della giovinezza, racconto continuo dei vecchi che si spogliano, si immergono e riemergono ringiovaniti. Il maestro unisce alla linea elegante e al gusto araldico un'attenzione minuziosa alle stoffe, ai gioielli e alle specie vegetali del fondo fiorito.",
+  "summary": "Gli affreschi della sala baronale del castello della Manta, opera di un anonimo maestro di cultura franco-borgognona attivo in Piemonte attorno al 1420, sono uno dei più alti cicli profani del gotico internazionale in Italia. Su una parete sfila la schiera dei Nove Prodi e delle Nove Eroine, figure quasi al naturale disposte come una teoria di ritratti di corte, ciascuna accompagnata dal proprio cartiglio e vestita con abiti sontuosi rigorosamente contemporanei; sulla parete opposta si dispiega la Fontana della giovinezza, racconto continuo dei vecchi che si spogliano, si immergono e riemergono ringiovaniti. Il maestro unisce alla linea elegante e al gusto araldico un'attenzione minuziosa alle stoffe, ai gioielli e alle specie vegetali del fondo fiorito. Il nome esteso della scuola nel catalogo era «Ciclo pittorico del Castello della Manta».",
   "historical_context": "Il ciclo è voluto dal signore della Manta, ramo cadetto dei marchesi di Saluzzo, in una sala di rappresentanza destinata a ricevere ospiti e vassalli. Il programma deriva da un poema cavalleresco composto in ambiente saluzzese, e permette al committente di iscrivere se stesso e la propria consorte nella genealogia ideale degli eroi, in un momento in cui la piccola signoria cerca di affermare il proprio prestigio.",
   "parent_id": "gotico-cortese",
   "key_innovations": [
@@ -1707,7 +1707,7 @@
  },
  {
   "id": "cantiere-san-petronio-bologna",
-  "name": "Cantiere del portale maggiore di San Petronio a Bologna (Jacopo della Quercia)",
+  "name": "Cantiere di San Petronio",
   "type": "scuola",
   "year_start": 1425,
   "year_end": 1438,
@@ -1715,7 +1715,7 @@
    "Bologna",
    "Emilia-Romagna"
   ],
-  "summary": "Il portale maggiore di San Petronio, cui Jacopo della Quercia lavora negli ultimi tredici anni di vita, è il cantiere in cui la scultura tardogotica italiana raggiunge una monumentalità nuova. Sugli stipiti corrono le formelle con le Storie della Genesi, dalla creazione dei progenitori al fratricidio di Caino, mentre sull'architrave si dispongono le scene dell'infanzia di Cristo e nella lunetta la Madonna con il Bambino tra i santi protettori della città. Il senese riduce ogni racconto a poche figure di corporatura possente, colte in gesti ampi e trattenuti, e sacrifica il paesaggio e gli aneddoti a favore del solo peso plastico dei corpi: un nudo eroico e solenne che colpirà profondamente le generazioni successive, Michelangelo compreso.",
+  "summary": "Il portale maggiore di San Petronio, cui Jacopo della Quercia lavora negli ultimi tredici anni di vita, è il cantiere in cui la scultura tardogotica italiana raggiunge una monumentalità nuova. Sugli stipiti corrono le formelle con le Storie della Genesi, dalla creazione dei progenitori al fratricidio di Caino, mentre sull'architrave si dispongono le scene dell'infanzia di Cristo e nella lunetta la Madonna con il Bambino tra i santi protettori della città. Il senese riduce ogni racconto a poche figure di corporatura possente, colte in gesti ampi e trattenuti, e sacrifica il paesaggio e gli aneddoti a favore del solo peso plastico dei corpi: un nudo eroico e solenne che colpirà profondamente le generazioni successive, Michelangelo compreso. Il nome esteso della scuola nel catalogo era «Cantiere del portale maggiore di San Petronio a Bologna (Jacopo della Quercia)».",
   "historical_context": "L'opera è commissionata dalla fabbriceria di San Petronio, la basilica civica voluta dal Comune di Bologna e non dal vescovo, e finanziata dalla città come simbolo della propria identità. I lavori procedono a rilento, tra difficoltà di approvvigionamento della pietra d'Istria e le tensioni politiche che attraversano Bologna in quegli anni, e restano incompiuti alla morte dello scultore.",
   "parent_id": "tardogotico",
   "key_innovations": [
@@ -1727,7 +1727,7 @@
  },
  {
   "id": "corte-cardinale-branda-castiglioni",
-  "name": "Masolino da Panicale alla corte del cardinale Branda Castiglioni (Roma - Castiglione Olona)",
+  "name": "Corte di Castiglione Olona",
   "type": "scuola",
   "year_start": 1427,
   "year_end": 1435,
@@ -1736,7 +1736,7 @@
    "Castiglione Olona",
    "Lombardia"
   ],
-  "summary": "Il lungo rapporto tra Masolino da Panicale e il cardinale Branda Castiglioni dà vita a una delle imprese pittoriche più originali del secondo quarto del Quattrocento, divisa tra Roma e il borgo lombardo di Castiglione Olona. Masolino conserva l'eleganza cortese della sua formazione — figure snelle, colori chiari e preziosi, gesti misurati — ma la innesta su architetture costruite in prospettiva e su paesaggi ampi e digradanti, in cui aria e luce danno profondità alla scena. Ne nasce un linguaggio di equilibrio, meno drammatico di quello masaccesco ma capace di misurare lo spazio e di ambientare il racconto sacro in scenari di grande respiro.",
+  "summary": "Il lungo rapporto tra Masolino da Panicale e il cardinale Branda Castiglioni dà vita a una delle imprese pittoriche più originali del secondo quarto del Quattrocento, divisa tra Roma e il borgo lombardo di Castiglione Olona. Masolino conserva l'eleganza cortese della sua formazione — figure snelle, colori chiari e preziosi, gesti misurati — ma la innesta su architetture costruite in prospettiva e su paesaggi ampi e digradanti, in cui aria e luce danno profondità alla scena. Ne nasce un linguaggio di equilibrio, meno drammatico di quello masaccesco ma capace di misurare lo spazio e di ambientare il racconto sacro in scenari di grande respiro. Il nome esteso della scuola nel catalogo era «Masolino da Panicale alla corte del cardinale Branda Castiglioni (Roma - Castiglione Olona)».",
   "historical_context": "Branda Castiglioni è un prelato di formazione umanistica, legato pontificio in Ungheria e in Germania, che investe le proprie risorse nella cappella di famiglia a Roma e nella trasformazione del paese natale in un piccolo centro ideale, dotato di collegiata, battistero, palazzo e scuola. La chiamata di un pittore toscano in Lombardia risponde a questo progetto di autorappresentazione culturale.",
   "parent_id": "gotico-cortese",
   "key_innovations": [
@@ -1768,7 +1768,7 @@
  },
  {
   "id": "corte-viscontea-tardogotica",
-  "name": "Arte tardogotica alla corte dei Visconti (Milano, Pavia, Monza, Cremona)",
+  "name": "Corte viscontea",
   "type": "scuola",
   "year_start": 1441,
   "year_end": 1447,
@@ -1779,7 +1779,7 @@
    "Cremona",
    "Lombardia"
   ],
-  "summary": "Nella Lombardia della prima metà del Quattrocento il gotico cortese sopravvive a lungo, alimentato dal gusto fastoso della corte ducale, mentre altrove si afferma già il linguaggio rinascimentale. La pittura di questo ambiente predilige superfici preziose: fondi e dettagli in oro, rilievi a pastiglia, applicazioni metalliche che imitano armature e gioielli, abiti alla moda descritti con fedeltà di cronaca. Le storie del passato vengono raccontate come cerimonie contemporanee, con cortei di cavalieri e dame, cavalli bardati e architetture eleganti disposti in registri continui. Lo stesso repertorio raffinato si riversa negli oggetti di lusso della corte, dalle decorazioni di sale di svago alle carte da gioco dipinte a mano una per una come piccole tavole.",
+  "summary": "Nella Lombardia della prima metà del Quattrocento il gotico cortese sopravvive a lungo, alimentato dal gusto fastoso della corte ducale, mentre altrove si afferma già il linguaggio rinascimentale. La pittura di questo ambiente predilige superfici preziose: fondi e dettagli in oro, rilievi a pastiglia, applicazioni metalliche che imitano armature e gioielli, abiti alla moda descritti con fedeltà di cronaca. Le storie del passato vengono raccontate come cerimonie contemporanee, con cortei di cavalieri e dame, cavalli bardati e architetture eleganti disposti in registri continui. Lo stesso repertorio raffinato si riversa negli oggetti di lusso della corte, dalle decorazioni di sale di svago alle carte da gioco dipinte a mano una per una come piccole tavole. Il nome esteso della scuola nel catalogo era «Arte tardogotica alla corte dei Visconti (Milano, Pavia, Monza, Cremona)».",
   "historical_context": "Sotto l'ultimo duca visconteo la corte usa le arti per costruire la propria memoria dinastica, richiamandosi anche alle radici longobarde del regno d'Italia attraverso la figura della regina Teodolinda. Accanto alla committenza ducale operano il capitolo delle grandi chiese lombarde e le famiglie aristocratiche milanesi, che fanno decorare le proprie residenze con scene di giochi e passatempi signorili.",
   "parent_id": "gotico-cortese",
   "key_innovations": [
@@ -1832,7 +1832,7 @@
  },
  {
   "id": "corte-di-tours-fouquet",
-  "name": "Jean Fouquet e la corte reale di Tours",
+  "name": "Corte reale di Tours",
   "type": "scuola",
   "year_start": 1450,
   "year_end": 1455,
@@ -1841,7 +1841,7 @@
    "Val della Loira",
    "Francia"
   ],
-  "summary": "Jean Fouquet è il maggiore pittore francese del Quattrocento e opera a Tours, nel cuore della valle della Loira dove risiede la corte reale. Dopo un soggiorno in Italia che gli fa conoscere la prospettiva e l'architettura all'antica, elabora una sintesi personalissima tra la costruzione geometrica dei volumi di matrice italiana e la resa levigata, smaltata e minuziosa della tradizione fiamminga. I suoi ritratti, di implacabile verità fisionomica, e le sue immagini devozionali, dove le figure sono ridotte a forme quasi geometriche e i colori a contrasti netti, hanno una freddezza solenne che non trova paragoni altrove; la stessa mano è attiva anche nella miniatura, che rinnova con inquadrature spaziali di grande audacia.",
+  "summary": "Jean Fouquet è il maggiore pittore francese del Quattrocento e opera a Tours, nel cuore della valle della Loira dove risiede la corte reale. Dopo un soggiorno in Italia che gli fa conoscere la prospettiva e l'architettura all'antica, elabora una sintesi personalissima tra la costruzione geometrica dei volumi di matrice italiana e la resa levigata, smaltata e minuziosa della tradizione fiamminga. I suoi ritratti, di implacabile verità fisionomica, e le sue immagini devozionali, dove le figure sono ridotte a forme quasi geometriche e i colori a contrasti netti, hanno una freddezza solenne che non trova paragoni altrove; la stessa mano è attiva anche nella miniatura, che rinnova con inquadrature spaziali di grande audacia. Il nome esteso della scuola nel catalogo era «Jean Fouquet e la corte reale di Tours».",
   "historical_context": "Fouquet lavora per Carlo VII e per la cerchia dei grandi ufficiali della corona, in particolare per il tesoriere di Francia Étienne Chevalier, committente del dittico e di un celebre libro d'ore. Sono gli anni della ricostruzione del regno dopo la guerra dei Cent'anni, in cui la monarchia e la sua alta burocrazia usano le arti per affermare la ritrovata autorità.",
   "parent_id": "tardogotico",
   "key_innovations": [
@@ -1934,7 +1934,7 @@
  },
  {
   "id": "corte-montefeltresca-urbino",
-  "name": "Corte di Federico da Montefeltro a Urbino",
+  "name": "Corte di Urbino",
   "type": "scuola",
   "year_start": 1459,
   "year_end": 1482,
@@ -1942,7 +1942,7 @@
    "Urbino",
    "Marche"
   ],
-  "summary": "La corte urbinate è il luogo in cui la prospettiva matematica di scuola toscana incontra la minuzia luminosa della pittura fiamminga. Piero della Francesca vi porta composizioni governate da rapporti geometrici, luce chiara e uniforme, volumi ridotti a forme elementari; pittori venuti dal Nord e dalla Spagna aggiungono la resa analitica dei tessuti, dei metalli e dei volti. La stessa cultura regola l'architettura del palazzo, ordinata per proporzioni modulari attorno a un cortile a portico, e la decorazione lignea dello studiolo, dove la tarsia costruisce finte prospettive di oggetti e ripiani. Ne nasce uno stile di corte limpido e intellettuale, diffuso poi in tutta l'Italia centrale.",
+  "summary": "La corte urbinate è il luogo in cui la prospettiva matematica di scuola toscana incontra la minuzia luminosa della pittura fiamminga. Piero della Francesca vi porta composizioni governate da rapporti geometrici, luce chiara e uniforme, volumi ridotti a forme elementari; pittori venuti dal Nord e dalla Spagna aggiungono la resa analitica dei tessuti, dei metalli e dei volti. La stessa cultura regola l'architettura del palazzo, ordinata per proporzioni modulari attorno a un cortile a portico, e la decorazione lignea dello studiolo, dove la tarsia costruisce finte prospettive di oggetti e ripiani. Ne nasce uno stile di corte limpido e intellettuale, diffuso poi in tutta l'Italia centrale. Il nome esteso della scuola nel catalogo era «Corte di Federico da Montefeltro a Urbino».",
   "historical_context": "Federico da Montefeltro, capitano di ventura fra i più pagati d'Europa e duca dal 1474, investe i proventi delle condotte militari in una residenza descritta dai contemporanei come una città in forma di palazzo, dotata di biblioteca e di un programma decorativo che celebra le virtù del principe. La rete di rapporti diplomatici e commerciali della corte spiega la presenza stabile di artisti fiamminghi e spagnoli accanto a quelli italiani.",
   "parent_id": "quattrocento",
   "key_innovations": [
@@ -1955,7 +1955,7 @@
  },
  {
   "id": "cossa-de-roberti-bologna",
-  "name": "Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)",
+  "name": "Bottega di Cossa e de' Roberti",
   "type": "scuola",
   "year_start": 1472,
   "year_end": 1481,
@@ -1964,7 +1964,7 @@
    "Ferrara",
    "Emilia-Romagna"
   ],
-  "summary": "Il trasferimento di Francesco del Cossa da Ferrara a Bologna innesta nella città emiliana il linguaggio tagliente della cultura ferrarese: contorni incisi come metallo, colori squillanti e smaltati, prospettive spinte fino allo scorcio ardito, paesaggi di roccia scheggiata che salgono alle spalle delle figure. Il grande polittico per una cappella cittadina applica questa maniera a un'impaginazione ancora gotica di scomparti sovrapposti, animandola con santi di plastica durezza. Ercole de' Roberti, che vi collabora dipingendo la predella, spinge oltre la componente narrativa e drammatica, e nella pala d'altare più tarda riunisce le figure sotto un'unica architettura dipinta di impianto monumentale, in dialogo con lo spazio reale della chiesa.",
+  "summary": "Il trasferimento di Francesco del Cossa da Ferrara a Bologna innesta nella città emiliana il linguaggio tagliente della cultura ferrarese: contorni incisi come metallo, colori squillanti e smaltati, prospettive spinte fino allo scorcio ardito, paesaggi di roccia scheggiata che salgono alle spalle delle figure. Il grande polittico per una cappella cittadina applica questa maniera a un'impaginazione ancora gotica di scomparti sovrapposti, animandola con santi di plastica durezza. Ercole de' Roberti, che vi collabora dipingendo la predella, spinge oltre la componente narrativa e drammatica, e nella pala d'altare più tarda riunisce le figure sotto un'unica architettura dipinta di impianto monumentale, in dialogo con lo spazio reale della chiesa. Il nome esteso della scuola nel catalogo era «Francesco del Cossa ed Ercole de' Roberti a Bologna (Polittico Griffoni e Pala Portuense)».",
   "historical_context": "Cossa lascia la corte estense intorno al 1470 in cerca di un riconoscimento economico e professionale che a Ferrara non aveva ottenuto, e a Bologna trova la committenza di famiglie mercantili e canonicali interessate a dotare di pale le proprie cappelle. Il passaggio segna il momento in cui il linguaggio elaborato nelle corti padane diventa disponibile anche a una committenza cittadina.",
   "parent_id": "quattrocento",
   "key_innovations": [
@@ -2007,7 +2007,7 @@
  },
  {
   "id": "rinascimento-maturo-italia-settentrionale",
-  "name": "Rinascimento maturo nell'Italia settentrionale",
+  "name": "Rinascimento padano",
   "type": "scuola",
   "year_start": 1490,
   "year_end": 1550,
@@ -2017,7 +2017,7 @@
    "Emilia-Romagna",
    "Marche"
   ],
-  "summary": "Fase di piena maturazione del Rinascimento nelle regioni settentrionali italiane, caratterizzata dal tonalismo veneziano, dalla diffusione dell'influenza leonardesca in Lombardia e dallo sviluppo di centri artistici autonomi come Brescia, Bergamo, Parma e Cremona. Protagonisti principali sono Giorgione, Tiziano, Dürer, Lorenzo Lotto, Bramantino e Correggio.",
+  "summary": "Fase di piena maturazione del Rinascimento nelle regioni settentrionali italiane, caratterizzata dal tonalismo veneziano, dalla diffusione dell'influenza leonardesca in Lombardia e dallo sviluppo di centri artistici autonomi come Brescia, Bergamo, Parma e Cremona. Protagonisti principali sono Giorgione, Tiziano, Dürer, Lorenzo Lotto, Bramantino e Correggio. Il nome esteso della scuola nel catalogo era «Rinascimento maturo nell'Italia settentrionale».",
   "historical_context": "Il periodo è segnato dalle guerre d'Italia (1494-1559): la Repubblica di Venezia si espande sulla terraferma e subisce la sconfitta di Agnadello (1509) per mano della Lega di Cambrai; il Ducato di Milano cambia più volte di mano tra Sforza, Francia e Asburgo. La Riforma protestante di Lutero (1517) genera inquietudine religiosa che si riflette nell'arte devozionale di Brescia e Bergamo.",
   "parent_id": "rinascimento-maturo",
   "key_innovations": [
@@ -2219,7 +2219,7 @@
  },
  {
   "id": "corte-cosimo-i-firenze",
-  "name": "Corte di Cosimo I de' Medici a Firenze (Bronzino, Cellini, Bandinelli, Pontormo)",
+  "name": "Corte di Cosimo I",
   "type": "scuola",
   "year_start": 1537,
   "year_end": 1553,
@@ -2227,7 +2227,7 @@
    "Firenze",
    "Toscana"
   ],
-  "summary": "Attorno al primo duca di Firenze si costituisce un sistema artistico di corte in cui pittura, scultura e oreficeria servono un unico programma di immagine. In pittura domina il ritratto di stato di Bronzino: figure immobili e distanti, incarnati levigati come smalto, luce fredda, resa minuziosa di armature, gioielli e velluti che valgono come insegne di rango; accanto ad esso, le allegorie profane costruiscono rebus eruditi destinati a un pubblico ristretto. In scultura convivono la ricerca virtuosistica di Cellini, che misura la propria fama sulla difficoltà tecnica della grande fusione in bronzo, e la statuaria celebrativa di Bandinelli, che riprende dall'antico la formula del busto imperiale. Comune a tutti è una eleganza calcolata e una superficie di finitezza assoluta.",
+  "summary": "Attorno al primo duca di Firenze si costituisce un sistema artistico di corte in cui pittura, scultura e oreficeria servono un unico programma di immagine. In pittura domina il ritratto di stato di Bronzino: figure immobili e distanti, incarnati levigati come smalto, luce fredda, resa minuziosa di armature, gioielli e velluti che valgono come insegne di rango; accanto ad esso, le allegorie profane costruiscono rebus eruditi destinati a un pubblico ristretto. In scultura convivono la ricerca virtuosistica di Cellini, che misura la propria fama sulla difficoltà tecnica della grande fusione in bronzo, e la statuaria celebrativa di Bandinelli, che riprende dall'antico la formula del busto imperiale. Comune a tutti è una eleganza calcolata e una superficie di finitezza assoluta. Il nome esteso della scuola nel catalogo era «Corte di Cosimo I de' Medici a Firenze (Bronzino, Cellini, Bandinelli, Pontormo)».",
   "historical_context": "Salito al potere nel 1537 dopo l'assassinio del duca Alessandro, Cosimo I consolida il principato mediceo e usa sistematicamente le arti come strumento di legittimazione dinastica, affiancato da Eleonora di Toledo. Le commissioni sono governate direttamente dalla corte, che stipendia gli artisti, controlla i cantieri pubblici della Piazza della Signoria e trasforma il palazzo di governo in residenza principesca.",
   "parent_id": "manierismo",
   "key_innovations": [
@@ -2259,7 +2259,7 @@
  },
  {
   "id": "cantieri-medicei-firenze-tardo-500",
-  "name": "Cantieri medicei fiorentini del tardo Cinquecento (Ammannati, Vasari, Buontalenti, Giambologna)",
+  "name": "Cantieri medicei fiorentini",
   "type": "scuola",
   "year_start": 1550,
   "year_end": 1593,
@@ -2268,7 +2268,7 @@
    "Pratolino",
    "Toscana"
   ],
-  "summary": "Nella Firenze granducale architettura, scultura e pittura vengono coordinate in un unico apparato al servizio della dinastia. Il linguaggio è quello della maniera: bugnati rustici e licenze anticlassiche nelle facciate e nei giardini, invenzioni bizzarre negli arredi, e in scultura la figura serpentinata, costruita per essere girata attorno e priva di un punto di vista privilegiato. Giambologna porta a compimento il gruppo a più figure avvitato in altezza; Buontalenti sperimenta grotte artificiali, giochi d'acqua e ambienti da meraviglia; Vasari organizza i cantieri, progetta edifici di funzione nuova e fissa nelle Vite la memoria degli artisti. La corte diventa così anche luogo di elaborazione teorica, con l'Accademia del Disegno e il primato assegnato al disegno stesso.",
+  "summary": "Nella Firenze granducale architettura, scultura e pittura vengono coordinate in un unico apparato al servizio della dinastia. Il linguaggio è quello della maniera: bugnati rustici e licenze anticlassiche nelle facciate e nei giardini, invenzioni bizzarre negli arredi, e in scultura la figura serpentinata, costruita per essere girata attorno e priva di un punto di vista privilegiato. Giambologna porta a compimento il gruppo a più figure avvitato in altezza; Buontalenti sperimenta grotte artificiali, giochi d'acqua e ambienti da meraviglia; Vasari organizza i cantieri, progetta edifici di funzione nuova e fissa nelle Vite la memoria degli artisti. La corte diventa così anche luogo di elaborazione teorica, con l'Accademia del Disegno e il primato assegnato al disegno stesso. Il nome esteso della scuola nel catalogo era «Cantieri medicei fiorentini del tardo Cinquecento (Ammannati, Vasari, Buontalenti, Giambologna)».",
   "historical_context": "Cosimo I de' Medici, duca e poi granduca di Toscana, accentra l'amministrazione dello Stato e ne traduce l'ordinamento in forme costruite: la nuova sede unificata delle magistrature, il collegamento privato fra il palazzo di governo e la residenza di famiglia, la sistemazione della piazza pubblica con fontane e statue. Con Francesco I la committenza si sposta verso l'ambito privato e collezionistico, fra studioli, ville suburbane e apparati per feste dinastiche.",
   "parent_id": "manierismo",
   "key_innovations": [
