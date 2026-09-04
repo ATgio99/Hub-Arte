@@ -26,9 +26,9 @@ import { useData } from "../lib/store";
 import { computeWorkGroups, workGroupMap, entityLabel, ENTITY_LABEL, KIND_LABEL } from "../lib/data";
 import EditorDrawer from "../components/EditorDrawer";
 import EntitySelector from "../components/EntitySelector";
-import type { Work, Artist, Period, Technique, Term, ArtEvent, Connection, Dataset, Fonte } from "../lib/types";
+import type { Work, Artist, Period, Technique, Term, ArtEvent, Connection, Dataset, Fonte, Incertezza } from "../lib/types";
 
-type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" | "connections" | "complessi" | "fonti";
+type Tab = "works" | "artists" | "periods" | "techniques" | "terms" | "events" | "connections" | "complessi" | "fonti" | "incertezze";
 
 const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "works", label: "Opere", icon: "🖼️" },
@@ -40,6 +40,7 @@ const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: "connections", label: "Connessioni", icon: "🔗" },
   { id: "complessi", label: "Complessi", icon: "🏛️" },
   { id: "fonti", label: "Fonti", icon: "📖" },
+  { id: "incertezze", label: "Attribuzioni aperte", icon: "❓" },
 ];
 
 function slugify(s: string): string {
@@ -126,6 +127,7 @@ export default function AdminDatabase() {
       case "events": arr = ix.ds.events; break;
       case "connections": arr = ix.ds.connections; break;
       case "fonti": arr = ix.ds.fonti; break;
+      case "incertezze": arr = ix.ds.incertezze ?? []; break;
       case "complessi": arr = []; break; // gestito da ComplessiView
     }
     // Filtro search
@@ -502,6 +504,37 @@ export default function AdminDatabase() {
                   <td style={tdStyle}>{actions(f.id)}</td>
                 </tr>
               ))}
+            </tbody>
+          </table>
+        ) : tab === "incertezze" ? (
+          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <thead>
+              <tr>
+                <th style={thStyle}>Opera</th>
+                <th style={thStyle}>Su che cosa</th>
+                <th style={thStyle}>Perché non si sa</th>
+                <th style={thStyle}>Fonte</th>
+                <th style={thStyle}>Azioni</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentData.slice(0, 200).map((i: Incertezza) => {
+                // L'id di un'incertezza e' l'id dell'opera: se quell'opera non
+                // esiste piu', la riga e' rimasta orfana e va vista.
+                const opera = ix.workById.get(i.id);
+                return (
+                  <tr key={i.id} style={{ cursor: "pointer" }} onMouseEnter={(e) => e.currentTarget.style.background = "var(--bg-2)"} onMouseLeave={(e) => e.currentTarget.style.background = ""}>
+                    <td style={tdStyle} onClick={() => openEdit(i.id)}>
+                      <div style={{ fontWeight: 500 }}>{opera?.title ?? <span style={{ color: "#a8483f" }}>opera non trovata</span>}</div>
+                      <div style={{ fontSize: 11, color: "var(--ink-dim)", fontFamily: "ui-monospace, monospace" }}>{i.id}</div>
+                    </td>
+                    <td style={tdStyle} onClick={() => openEdit(i.id)}>{i.tema}</td>
+                    <td style={tdStyle} onClick={() => openEdit(i.id)}>{(i.nota || "").slice(0, 90)}{(i.nota || "").length > 90 ? "…" : ""}</td>
+                    <td style={tdStyle} onClick={() => openEdit(i.id)}>{(i.fonte || "—").slice(0, 40)}</td>
+                    <td style={tdStyle}>{actions(i.id)}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         ) : tab === "events" ? (
@@ -1653,6 +1686,8 @@ const NEW_ROW_TEMPLATES: Record<Tab, () => any> = {
   complessi: () => ({ id: "", name: "", works: [] }),
   // Una fonte nuova: il libro da cui viene una scheda.
   fonti: () => ({ id: "", titolo: "", autori: null, editore: null, anno: null, isbn: null, note: null }),
+  // Un'attribuzione aperta nuova: l'id e' quello dell'opera a cui si riferisce.
+  incertezze: () => ({ id: "", tema: "committenza", nota: "", fonte: null }),
 };
 
 // OUTER: legge ix, congel initialRow quando il drawer è aperto
@@ -1695,6 +1730,7 @@ function GenericEditorDrawer({
             case "events": arr = ix.ds.events; break;
             case "connections": arr = ix.ds.connections; break;
             case "fonti": arr = ix.ds.fonti; break;
+            case "incertezze": arr = ix.ds.incertezze ?? []; break;
           }
           const existing = arr.find(r => r.id === rowId);
           setFrozenRow(existing || null);
@@ -1709,6 +1745,7 @@ function GenericEditorDrawer({
           events: ix.ds.events,
           connections: ix.ds.connections,
           fonti: ix.ds.fonti,
+          incertezze: ix.ds.incertezze ?? [],
         });
       }
     } else {

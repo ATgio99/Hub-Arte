@@ -17,7 +17,7 @@ import { fonteImmagine } from "../lib/data";
 import { useAuth } from "../lib/auth";
 import { useData } from "../lib/store";
 import EntitySelector from "./EntitySelector";
-import type { Work, Artist, Period, Technique, Term, Dataset, Fonte } from "../lib/types";
+import type { Work, Artist, Period, Technique, Term, Dataset, Fonte, Incertezza } from "../lib/types";
 
 const WORK_TYPES = ["architettura", "pittura", "scultura", "mosaico", "miniatura", "oreficeria", "urbanistica", "tavola", "tela", "polittico", "rilievo", "affresco", "altro"];
 
@@ -86,6 +86,7 @@ interface DatasetSnapshot {
   terms: Term[];
   works: Work[];  // per coordinate città
   fonti: Fonte[];
+  incertezze: Incertezza[];
 }
 
 // ---- MentionTextarea: textarea con autocomplete @nome ----------------------
@@ -241,6 +242,16 @@ function EditorDrawerInner({
   const [localArtists, setLocalArtists] = useState<Artist[]>([]);
   const [localPeriods, setLocalPeriods] = useState<Period[]>([]);
   const [localFonti, setLocalFonti] = useState<Fonte[]>([]);
+
+  // L'attribuzione aperta e' una riga di un'altra tabella, non un campo
+  // dell'opera: si tiene a parte e si salva insieme.
+  const incertezzaIniziale = (dataset.incertezze ?? []).find(i => i.id === workId) ?? null;
+  const incertezzaRef = useRef({
+    attiva: !!incertezzaIniziale,
+    tema: incertezzaIniziale?.tema ?? "committenza",
+    nota: incertezzaIniziale?.nota ?? "",
+    fonte: incertezzaIniziale?.fonte ?? "",
+  });
   const [localTechniques, setLocalTechniques] = useState<Technique[]>([]);
   const [localTerms, setLocalTerms] = useState<Term[]>([]);
 
@@ -431,6 +442,22 @@ function EditorDrawerInner({
     try {
       const { error } = await supabase.from("works").upsert(payload, { onConflict: "id" });
       if (error) throw error;
+
+      // L'attribuzione aperta vive in `incertezze`: si scrive se c'e' una nota,
+      // si toglie se la spunta e' stata levata. Una spunta senza nota non e'
+      // un'incertezza dichiarata, e' di nuovo un campo vuoto.
+      const inc = incertezzaRef.current;
+      if (inc.attiva && inc.nota.trim()) {
+        const { error: e2 } = await supabase.from("incertezze").upsert({
+          id: finalId, tema: inc.tema.trim() || "attribuzione",
+          nota: inc.nota.trim(), fonte: inc.fonte.trim() || null,
+        }, { onConflict: "id" });
+        if (e2) throw e2;
+      } else if (incertezzaIniziale) {
+        const { error: e2 } = await supabase.from("incertezze").delete().eq("id", finalId);
+        if (e2) throw e2;
+      }
+
       setOk(true);
       notifyAppChanged();
       workRef.current = { ...currentWork, id: finalId, title: currentWork.title.trim() };
@@ -626,6 +653,8 @@ function EditorDrawerInner({
                 />
               </Field>
 
+              <CampoIncertezza riferimento={incertezzaRef} />
+
               <Field label="Città (auto-coordinate)">
                 <input
                   type="text"
@@ -810,6 +839,7 @@ export default function EditorDrawer({
           // Mancava, e il drawer moriva prima di comparire: il selettore delle
           // fonti apriva `dataset.fonti`, che qui non c'era.
           fonti: ix.ds.fonti,
+          incertezze: ix.ds.incertezze ?? [],
         });
       }
     } else {
@@ -833,5 +863,76 @@ export default function EditorDrawer({
       dataset={frozenDataset}
       initialWork={frozenWork}
     />
+  );
+}
+
+// ============================================================================
+// L'attribuzione aperta.
+//
+// Una spunta e tre campi. Serve per le opere in cui la ricerca non ha una
+// risposta sola — chi l'ha voluta, chi l'ha fatta, quando — e dove scrivere un
+// nome qualsiasi sarebbe peggio che dichiarare l'incertezza: la nota spiega
+// perche' non si sa, la fonte dice chi lo dice.
+//
+// Il valore vive in un `ref` come il resto del modulo: il drawer non
+// ridisegna a ogni tasto premuto, e un `useState` qui farebbe perdere il
+// cursore mentre si scrive.
+// ============================================================================
+function CampoIncertezza({ riferimento }: {
+  riferimento: React.MutableRefObject<{ attiva: boolean; tema: string; nota: string; fonte: string }>;
+}) {
+  const [attiva, setAttiva] = useState(riferimento.current.attiva);
+
+  return (
+    <div style={{
+      border: "1px solid var(--line)", borderLeft: `3px solid ${attiva ? "var(--gold)" : "var(--line)"}`,
+      borderRadius: 10, padding: "12px 14px", background: "var(--bg-1)",
+    }}>
+      <label style={{ display: "flex", alignItems: "center", gap: 9, cursor: "pointer", fontSize: 13.5 }}>
+        <input
+          type="checkbox"
+          checked={attiva}
+          onChange={(e) => { riferimento.current.attiva = e.target.checked; setAttiva(e.target.checked); }}
+          data-testid="chk-incertezza"
+        />
+        <span style={{ fontWeight: 500 }}>Attribuzione aperta</span>
+        <span className="faint" style={{ fontSize: 12 }}>— la ricerca non ha una risposta sola</span>
+      </label>
+
+      {attiva && (
+        <div style={{ display: "grid", gap: 10, marginTop: 12 }}>
+          <Field label="Su che cosa">
+            <select
+              defaultValue={riferimento.current.tema}
+              onChange={(e) => { riferimento.current.tema = e.target.value; }}
+              style={inputStyle}
+            >
+              <option value="committenza">committenza</option>
+              <option value="attribuzione">attribuzione</option>
+              <option value="datazione">datazione</option>
+              <option value="luogo">luogo</option>
+              <option value="identificazione">identificazione del soggetto</option>
+            </select>
+          </Field>
+          <Field label="Perché non si sa">
+            <textarea
+              defaultValue={riferimento.current.nota}
+              onChange={(e) => { riferimento.current.nota = e.target.value; }}
+              placeholder="Quali sono le posizioni in campo e perché non se ne può scegliere una…"
+              style={{ ...inputStyle, minHeight: 90, resize: "vertical" }}
+            />
+          </Field>
+          <Field label="Fonti consultate">
+            <input
+              type="text"
+              defaultValue={riferimento.current.fonte}
+              onChange={(e) => { riferimento.current.fonte = e.target.value; }}
+              placeholder="Schede museali, bibliografia, voci enciclopediche…"
+              style={inputStyle}
+            />
+          </Field>
+        </div>
+      )}
+    </div>
   );
 }

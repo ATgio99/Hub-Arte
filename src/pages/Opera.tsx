@@ -89,20 +89,9 @@ function ImageEditor({ workId }: { workId: string }) {
 // Le attribuzioni che restano aperte non spariscono in un campo vuoto: si
 // dichiarano, con la fonte che dice perche' non si sa. Un'incertezza motivata
 // e' un'informazione; un campo vuoto e' solo un'assenza.
-interface Incertezza { tema: string; fonte: string; nota: string; }
-let _incertezze: Record<string, Incertezza> | null = null;
-function useIncertezza(workId: string): Incertezza | null {
-  const [dati, setDati] = useState<Record<string, Incertezza> | null>(_incertezze);
-  useEffect(() => {
-    if (_incertezze) return;
-    const base = (import.meta as any).env?.BASE_URL ?? "/";
-    fetch(`${base}data/incertezze.json`)
-      .then((r) => (r.ok ? r.json() : {}))
-      .then((j) => { _incertezze = j; setDati(j); })
-      .catch(() => { _incertezze = {}; setDati({}); });
-  }, []);
-  return dati?.[workId] ?? null;
-}
+//
+// Stavano in un file statico che nessuna interfaccia sapeva modificare: ora
+// sono una tabella come le altre, e arrivano col resto del catalogo.
 
 export default function Opera() {
   const { id } = useParams();
@@ -139,7 +128,9 @@ export default function Opera() {
   const siblings = group ? group.works.filter(sw => sw.id !== w.id) : [];
 
   const isStudied = studied.includes(w.id);
-  const incertezza = useIncertezza(w.id);
+  const incertezza = useMemo(
+    () => ix.ds.incertezze?.find((i) => i.id === w.id) ?? null,
+    [ix.ds.incertezze, w.id]);
 
   return (
     <div className="wrap page">

@@ -175,35 +175,31 @@
   "year_start": 1,
   "year_end": 100,
   "type": "pittura",
-  "technique_ids": [
-   "encausto"
-  ],
-  "materials": [
-   "cera d'api",
-   "tavola"
-  ],
+  "technique_ids": [],
+  "materials": [],
   "location_city": "Il Cairo",
   "location_place": "Museo Egizio",
-  "lat": 30.05,
-  "lon": 31.24,
+  "lat": null,
+  "lon": null,
   "book": 2,
   "chapter": 6,
   "page": 54,
   "source_file": "Libro2.4-giu-2026-6",
-  "importance": 1,
+  "importance": 2,
   "summary": "Ritratto femminile del I secolo (31 × 22 cm, pittura a encausto su tavola) al Museo Egizio del Cairo. Citato nel libro come esempio di tecnica dell'encausto antico, che Leonardo tenta di applicare alla Battaglia di Anghiari.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
    "encausto"
   ],
-  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Nofretete_Neues_Museum.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Nofretete_Neues_Museum.jpg/960px-Nofretete_Neues_Museum.jpg",
-  "image_source": "it.wikipedia",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Woman%2C_Hawara_%28poss.%29%2C_AD_60-70_%28Cairo%2C_Egyptian_Museum%2C_CG_33223%29.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/3/37/Woman%2C_Hawara_%28poss.%29%2C_AD_60-70_%28Cairo%2C_Egyptian_Museum%2C_CG_33223%29.JPG",
+  "image_source": "commons",
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
+  ],
+  "image_gallery": []
  },
  {
   "id": "castel-santangelo",

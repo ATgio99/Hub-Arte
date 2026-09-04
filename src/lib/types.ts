@@ -99,6 +99,20 @@ export interface Dataset {
   periods: Period[]; artists: Artist[]; works: Work[];
   techniques: Technique[]; terms: Term[];
   connections: Connection[]; events: ArtEvent[]; fonti: Fonte[];
+  incertezze: Incertezza[];
+}
+
+/** Un'attribuzione che resta aperta.
+ *
+ *  Non un campo vuoto ma una dichiarazione: «non si sa chi l'ha voluta, e
+ *  questa e' la ragione». `id` e' l'id dell'opera — una scheda, un'incertezza.
+ */
+export interface Incertezza {
+  id: string;
+  /** Su che cosa: committenza, attribuzione, datazione… */
+  tema: string;
+  nota: string;
+  fonte: string | null;
 }
 
 /** Un libro da cui vengono delle schede.

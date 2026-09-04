@@ -14,7 +14,7 @@
 
 import type {
   Dataset, Period, Artist, Work, Technique, Term, Connection, ArtEvent,
-  EntityType, Fonte,
+  EntityType, Fonte, Incertezza,
 } from "./types";
 import { supabase } from "./supabase";
 
@@ -95,7 +95,7 @@ async function loadDbOverrides(): Promise<Partial<Dataset>> {
       return dopo ? base.gt("updated_at", dopo) : base;
     };
 
-    const [periodsRes, worksRes, artistsRes, techRes, termsRes, eventsRes, fontiRes, connsRes, hiddenRes] = await Promise.all([
+    const [periodsRes, worksRes, artistsRes, techRes, termsRes, eventsRes, fontiRes, incertRes, connsRes, hiddenRes] = await Promise.all([
       q("periods"),
       q("works"),
       q("artists"),
@@ -103,6 +103,7 @@ async function loadDbOverrides(): Promise<Partial<Dataset>> {
       q("terms"),
       q("events"),
       q("fonti"),
+      q("incertezze"),
       dopo
         ? supabase.from("connections").select("*").gt("updated_at", dopo).order("sort_order")
         : supabase.from("connections").select("*").order("sort_order"),
@@ -124,6 +125,7 @@ async function loadDbOverrides(): Promise<Partial<Dataset>> {
       events: eventsRes.error ? undefined : (eventsRes.data as any) ?? [],
       connections: connsRes.error ? undefined : (connsRes.data as any) ?? [],
       fonti: fontiRes.error ? undefined : (fontiRes.data as any) ?? [],
+      incertezze: incertRes.error ? undefined : (incertRes.data as any) ?? [],
     };
     salvaDelta(risultato, nascosti);
     return risultato;
@@ -163,6 +165,7 @@ export function loadDataset(): Promise<Dataset> {
         fetchJson<ArtEvent[]>("events"),
       ]);
     const fonti = await fetchJson<Fonte[]>("fonti").catch(() => [] as Fonte[]);
+    const incertezze = await fetchJson<Incertezza[]>("incertezze").catch(() => [] as Incertezza[]);
 
     // Merge localStorage work overrides (legacy admin.html)
     try {
@@ -191,10 +194,11 @@ export function loadDataset(): Promise<Dataset> {
         connections: filterHidden(mergeArrays(connections, dbData.connections as Connection[])),
         events: filterHidden(mergeArrays(events, dbData.events as ArtEvent[])),
         fonti: filterHidden(mergeArrays(fonti, dbData.fonti as Fonte[])),
+        incertezze: mergeArrays(incertezze, dbData.incertezze as Incertezza[]),
       };
     } catch { /* ignore DB errors, use JSON only */ }
 
-    return { periods, artists, works, techniques, terms, connections, events, fonti };
+    return { periods, artists, works, techniques, terms, connections, events, fonti, incertezze };
   })();
   return _cache;
 }

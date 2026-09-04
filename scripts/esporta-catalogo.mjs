@@ -45,6 +45,9 @@ const TABELLE = {
   events: "events",
   connections: "connections",
   fonti: "fonti",
+  // Le attribuzioni che restano aperte: erano un file scritto a mano, ora
+  // sono una tabella e si esportano come tutto il resto.
+  incertezze: "incertezze",
 };
 
 // Supabase restituisce al massimo mille righe per volta: qui le prendiamo tutte.

@@ -5,6 +5,8 @@ import { arrivatoDaTastiera } from "../lib/scorciatoie";
 import { WorkCard, WorkGroupCard, Empty, EmptyTimeRange, FilterNote } from "../components/ui";
 import { useFavorites } from "../lib/favorites";
 import { useStudied } from "../lib/studied";
+import { useAuth } from "../lib/auth";
+import { useVerifiche } from "../lib/verifiche";
 import { computeWorkGroups, workGroupMap } from "../lib/data";
 import { clearLastOpera } from "../lib/lastVisited";
 import { BottoneFiltri, FoglioFiltri, contaFiltri, StatoFiltri } from "../components/FiltriOpereFoglio";
@@ -58,11 +60,17 @@ export default function Opere() {
   const [period, setPeriod] = useState<string>(sp.get("p") ?? "");
   const [favOnly, setFavOnly] = useState(false);
   const [studiedFilter, setStudiedFilter] = useState<"" | "studied" | "not-studied">("");
+  // Solo per gli amministratori: le schede ancora da leggere e controllare.
+  // Sta qui e non solo in statistiche perche' la revisione si fa scorrendo il
+  // catalogo, non da un elenco a parte.
+  const [soloDaVerificare, setSoloDaVerificare] = useState(false);
   const [grouped, setGrouped] = useState(false);
   const [limit, setLimit] = useState(60);
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
   const favs = useFavorites();
   const studied = useStudied();
+  const { isAdmin } = useAuth();
+  const { verificata } = useVerifiche();
 
   // Salva la ricerca in sessionStorage quando cambia
   useEffect(() => {
@@ -153,6 +161,7 @@ export default function Opere() {
 
       if (studiedFilter === "studied" && !studied.includes(w.id)) return false;
       if (studiedFilter === "not-studied" && studied.includes(w.id)) return false;
+      if (soloDaVerificare && verificata(w.id)) return false;
       if (qq) {
         const keywords = qq.split(/\s+/).filter(Boolean);
         const hay = (w.title + " " + (w.location_city ?? "") + " " + (w.location_place ?? "") + " " + (w.type ?? "")).toLowerCase();
@@ -164,7 +173,8 @@ export default function Opere() {
     // travestita da elenco.
     }).sort((a, b) => (a.year_end ?? a.year_start ?? 9999) - (b.year_end ?? b.year_start ?? 9999)
         || a.id.localeCompare(b.id));
-  }, [inTime, q, type, period, favOnly, favs, studiedFilter, studied, discendenti, periodById]);
+  }, [inTime, q, type, period, favOnly, favs, studiedFilter, studied, discendenti, periodById,
+      soloDaVerificare, verificata]);
 
   // in modalità raggruppata, separa le opere in "singole" e "raggruppate"
   const { singleWorks, groupedWorks } = useMemo(() => {
@@ -200,6 +210,11 @@ export default function Opere() {
   // conta risultati per filtri
   const studiedCount = useMemo(() => filtered.filter(w => studied.includes(w.id)).length, [filtered, studied]);
   const notStudiedCount = filtered.length - studiedCount;
+  // Quante ne restano da controllare fra quelle in vista: e' il numero che
+  // dice quanto manca al capitolo che si sta rivedendo, non al catalogo.
+  const daVerificare = useMemo(
+    () => (isAdmin ? filtered.filter((w) => !verificata(w.id)).length : 0),
+    [isAdmin, filtered, verificata]);
 
   // Sotto i 900px vale la stessa soglia del menu a scomparsa: dove sparisce la
   // barra laterale i filtri non ci stanno piu' in riga.
@@ -275,6 +290,16 @@ export default function Opere() {
         >
           ○ Da approfondire{notStudiedCount > 0 ? ` (${notStudiedCount})` : ""}
         </button>
+        {isAdmin && (
+          <button
+            className={`chip fav-chip ${soloDaVerificare ? "active" : ""}`}
+            onClick={() => { setSoloDaVerificare((v) => !v); setLimit(60); }}
+            data-testid="toggle-da-verificare"
+            title="Solo le schede non ancora lette e controllate (visibile ai soli amministratori)"
+          >
+            ⚑ Da verificare{daVerificare > 0 ? ` (${daVerificare})` : ""}
+          </button>
+        )}
         <button className={`chip ${grouped ? "active" : ""}`} onClick={() => setGrouped(v => !v)} data-testid="toggle-grouped"
           title={groups.size === 0 ? "Nessun gruppo disponibile" : "Raggruppa opere dello stesso complesso"}>
           ⛨ Complessi{groups.size > 0 ? ` (${groups.size})` : ""}
@@ -290,9 +315,9 @@ export default function Opere() {
           {filtered.length !== ds.works.length ? ` su ${ds.works.length}` : ""}
         </div>
         {active && <FilterNote total={ds.works.length} shown={inTime.length} noun="opere nell'arco scelto" />}
-        {(q || type || period || favOnly || studiedFilter) && (
+        {(q || type || period || favOnly || studiedFilter || soloDaVerificare) && (
           <button className="btn ghost sm" data-testid="reset-filtri"
-            onClick={() => { setQ(""); setType(""); setPeriod(""); setFavOnly(false); setStudiedFilter(""); setLimit(60); }}>
+            onClick={() => { setQ(""); setType(""); setPeriod(""); setFavOnly(false); setStudiedFilter(""); setSoloDaVerificare(false); setLimit(60); }}>
             Azzera i filtri
           </button>
         )}

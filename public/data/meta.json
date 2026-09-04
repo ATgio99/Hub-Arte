@@ -1,5 +1,5 @@
 {
- "esportato_il": "2026-09-03T22:33:08.905Z",
+ "esportato_il": "2026-09-04T08:59:15.039Z",
  "tabelle": [
   {
    "file": "periods",
@@ -12,10 +12,10 @@
   {
    "file": "works",
    "totale": 1115,
-   "aggiornate": 353,
+   "aggiornate": 354,
    "aggiunte": 0,
    "rimosse": 0,
-   "conImmagine": 2
+   "conImmagine": 1
   },
   {
    "file": "artists",
@@ -61,6 +61,14 @@
    "file": "fonti",
    "totale": 2,
    "aggiornate": 2,
+   "aggiunte": 0,
+   "rimosse": 0,
+   "conImmagine": 0
+  },
+  {
+   "file": "incertezze",
+   "totale": 13,
+   "aggiornate": 13,
    "aggiunte": 0,
    "rimosse": 0,
    "conImmagine": 0
