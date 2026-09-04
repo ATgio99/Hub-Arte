@@ -1,8 +1,8 @@
 import { useMemo, useState, useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { arrivatoDaTastiera } from "../lib/scorciatoie";
-import { WorkCard, WorkGroupCard, Empty, EmptyTimeRange, FilterNote } from "../components/ui";
+import { WorkCard, WorkGroupCard, WorkImage, Empty, EmptyTimeRange, FilterNote } from "../components/ui";
 import { useFavorites } from "../lib/favorites";
 import { useStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
@@ -437,42 +437,41 @@ export default function Opere() {
         )
       ) : (
         <>
+          {/* Le opere che rispondono al titolo cercato non sono un secondo
+              catalogo: sono un rimando. Quindi non altre schede grandi come
+              quelle sotto — che raddoppiavano la pagina e su schermo largo
+              restavano spaiate — ma poche righe strette, con la miniatura e il
+              titolo, e subito sotto l'elenco vero in ordine di tempo. */}
           {inCima.length > 0 && !grouped && (
-            <div
-              data-testid="piu-pertinenti"
-              style={{
-                marginBottom: 28, padding: "14px 16px 18px", borderRadius: 14,
-                border: "1px solid var(--gold)",
-                background: "color-mix(in srgb, var(--gold) 6%, transparent)",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginBottom: 12 }}>
-                <span style={{
-                  fontSize: 11, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase",
-                  color: "var(--gold-deep)", border: "1px solid var(--gold)", borderRadius: 999,
-                  padding: "3px 10px", background: "var(--bg-0, #fff)",
-                }}>
-                  {inCima.length === 1 ? "Corrispondenza esatta" : `Le ${inCima.length} corrispondenze migliori`}
-                </span>
-                <span className="muted" style={{ fontSize: 13 }}>
-                  per «{q.trim()}»
-                </span>
+            <div className="ricerca-cima" data-testid="piu-pertinenti">
+              <div className="ricerca-cima-et">
+                In evidenza
+                <span> · il titolo corrisponde a «{q.trim()}»</span>
               </div>
-              <div className="grid-works">
-                {inCima.map((w) => (
-                  <WorkCard key={w.id} work={w}
-                    subtitle={[w.location_city, periodById.get(w.period_id)?.name].filter(Boolean).join(" · ")} />
-                ))}
-              </div>
+              {inCima.map((w) => {
+                const autori = w.artist_ids
+                  .map((id) => ds.artists.find((a) => a.id === id)?.name)
+                  .filter(Boolean).join(", ");
+                return (
+                  <Link key={w.id} to={`/opera/${w.id}`} className="ricerca-cima-riga">
+                    <WorkImage work={w} className="ricerca-cima-img" />
+                    <span className="ricerca-cima-testo">
+                      <span className="ricerca-cima-titolo">{w.title}</span>
+                      <span className="ricerca-cima-meta">
+                        {[autori, w.location_city, w.date_text].filter(Boolean).join(" · ")}
+                      </span>
+                    </span>
+                    <span className="ricerca-cima-freccia">→</span>
+                  </Link>
+                );
+              })}
             </div>
           )}
 
           {inCima.length > 0 && !grouped && (
-            <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "0 0 16px" }}>
-              <span className="eyebrow" style={{ whiteSpace: "nowrap" }}>
-                Le altre {restanti.length}, in ordine di tempo
-              </span>
-              <span style={{ flex: 1, height: 1, background: "var(--line)" }} />
+            <div className="ricerca-divisorio">
+              <span className="eyebrow">Le altre {restanti.length}, in ordine di tempo</span>
+              <span />
             </div>
           )}
 

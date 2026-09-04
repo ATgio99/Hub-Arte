@@ -172,7 +172,7 @@
  },
  {
   "id": "longobardi-cividale-friuli",
-  "name": "Longobardi a Cividale del Friuli (eta di Ratchis)",
+  "name": "Longobardi a Cividale del Friuli",
   "type": "scuola",
   "year_start": 734,
   "year_end": 756,
@@ -180,7 +180,7 @@
    "Cividale del Friuli",
    "Friuli"
   ],
-  "summary": "A Cividale, capitale del più antico ducato longobardo, opera nella prima metà dell'VIII secolo un gruppo di maestranze capaci di fondere la tradizione ornamentale germanica con modelli tardoantichi e bizantini. La scultura in pietra procede per rilievo bassissimo e uniforme, con figure appiattite, teste sproporzionate, mani allargate e fondi saturati da girali, rosette e nastri: una rinuncia consapevole allo spazio naturalistico a favore del segno e del simbolo. Accanto alla pietra si sviluppa una straordinaria plastica in stucco, che nel Tempietto di Santa Maria in Valle raggiunge un modellato morbido e monumentale, di intonazione classicheggiante, del tutto diverso dal linearismo dei rilievi.",
+  "summary": "A Cividale, capitale del più antico ducato longobardo, opera nella prima metà dell'VIII secolo un gruppo di maestranze capaci di fondere la tradizione ornamentale germanica con modelli tardoantichi e bizantini. La scultura in pietra procede per rilievo bassissimo e uniforme, con figure appiattite, teste sproporzionate, mani allargate e fondi saturati da girali, rosette e nastri: una rinuncia consapevole allo spazio naturalistico a favore del segno e del simbolo. Accanto alla pietra si sviluppa una straordinaria plastica in stucco, che nel Tempietto di Santa Maria in Valle raggiunge un modellato morbido e monumentale, di intonazione classicheggiante, del tutto diverso dal linearismo dei rilievi. Il nome esteso della scuola nel catalogo era «Longobardi a Cividale del Friuli (eta di Ratchis)».",
   "historical_context": "La committenza è quella ducale e regia: Ratchis, duca del Friuli e poi re dei Longobardi, e l'aristocrazia legata alla corte finanziano altari e cappelle palatine in una città che, come Forum Iulii, controlla i valichi orientali del regno. La progressiva cristianizzazione della classe dirigente longobarda e i contatti con Ravenna e con il mondo bizantino orientano le scelte iconografiche verso repertori sacri di matrice mediterranea.",
   "parent_id": "eta-longobarda",
   "key_innovations": [
@@ -192,7 +192,7 @@
  },
  {
   "id": "longobardi-brescia-desideriana",
-  "name": "Brescia longobarda (eta desideriana, San Salvatore)",
+  "name": "Brescia longobarda",
   "type": "scuola",
   "year_start": 750,
   "year_end": 820,
@@ -201,7 +201,7 @@
    "Lombardia",
    "Italia settentrionale"
   ],
-  "summary": "Nella Brescia dell'ultima età longobarda il complesso monastico di San Salvatore diventa il laboratorio di una cultura figurativa che fonde eredità romana, gusto ornamentale germanico e suggestioni bizantine. L'architettura riutilizza colonne e capitelli antichi accanto a pezzi di nuova fattura, mentre le pareti si rivestono di stucchi a girali, cornici dipinte e cicli di affreschi distribuiti su registri sovrapposti. Le arti suntuarie raggiungono qui una densità eccezionale, con la croce gemmata che raccoglie pietre, cammei e paste vitree di epoche diverse in un unico oggetto di prestigio dinastico e liturgico.",
+  "summary": "Nella Brescia dell'ultima età longobarda il complesso monastico di San Salvatore diventa il laboratorio di una cultura figurativa che fonde eredità romana, gusto ornamentale germanico e suggestioni bizantine. L'architettura riutilizza colonne e capitelli antichi accanto a pezzi di nuova fattura, mentre le pareti si rivestono di stucchi a girali, cornici dipinte e cicli di affreschi distribuiti su registri sovrapposti. Le arti suntuarie raggiungono qui una densità eccezionale, con la croce gemmata che raccoglie pietre, cammei e paste vitree di epoche diverse in un unico oggetto di prestigio dinastico e liturgico. Il nome esteso della scuola nel catalogo era «Brescia longobarda (eta desideriana, San Salvatore)».",
   "historical_context": "Il monastero femminile è fondato dal duca Desiderio, di lì a poco re dei Longobardi, e dalla moglie Ansa, che vi insediano la figlia come badessa: è una fondazione di famiglia regia, pensata come mausoleo e strumento di legittimazione del potere. Dopo la conquista franca del regno il cenobio conserva il proprio prestigio e i cantieri proseguono in età carolingia, garantendo continuità alle maestranze attive in città.",
   "parent_id": "eta-longobarda",
   "key_innovations": [
@@ -239,7 +239,7 @@
  },
  {
   "id": "pittura-carolingia-retica",
-  "name": "Pittura carolingia retica (Mustair e Malles)",
+  "name": "Pittura carolingia retica",
   "type": "scuola",
   "year_start": 800,
   "year_end": 850,
@@ -250,7 +250,7 @@
    "Grigioni",
    "Rezia"
   ],
-  "summary": "Nelle valli alpine della Rezia si conserva uno dei nuclei più estesi di pittura murale di età carolingia. Gli interni delle chiese vengono rivestiti integralmente da cicli narrativi disposti su registri sovrapposti, che affiancano storie dell'Antico e del Nuovo Testamento a episodi agiografici e a grandi scene di Giudizio. Il linguaggio recupera la monumentalità tardoantica e paleocristiana: figure ampie e frontali, panneggi a fasce di colore, gesti dilatati e campiture chiare, con un disegno rapido e sintetico pensato per essere leggibile a distanza. A Malles compaiono inoltre figure di committenti a grandezza naturale, laici e religiosi, inserite nella decorazione sacra.",
+  "summary": "Nelle valli alpine della Rezia si conserva uno dei nuclei più estesi di pittura murale di età carolingia. Gli interni delle chiese vengono rivestiti integralmente da cicli narrativi disposti su registri sovrapposti, che affiancano storie dell'Antico e del Nuovo Testamento a episodi agiografici e a grandi scene di Giudizio. Il linguaggio recupera la monumentalità tardoantica e paleocristiana: figure ampie e frontali, panneggi a fasce di colore, gesti dilatati e campiture chiare, con un disegno rapido e sintetico pensato per essere leggibile a distanza. A Malles compaiono inoltre figure di committenti a grandezza naturale, laici e religiosi, inserite nella decorazione sacra. Il nome esteso della scuola nel catalogo era «Pittura carolingia retica (Mustair e Malles)».",
   "historical_context": "La Rezia è terra di cerniera fra il regno franco e l'Italia, attraversata dalle strade dei valichi alpini e organizzata attorno a fondazioni monastiche e pievi protette dal potere carolingio e dai vescovi di Coira. Sono le comunità monastiche e l'aristocrazia locale a promuovere questi cantieri, che traducono in periferia il programma di rinnovamento culturale e liturgico voluto dalla corte di Carlo Magno e dei suoi successori.",
   "parent_id": "eta-carolingia",
   "key_innovations": [
@@ -304,7 +304,7 @@
  },
  {
   "id": "cripta-di-epifanio-volturno",
-  "name": "Bottega della cripta di Epifanio (San Vincenzo al Volturno)",
+  "name": "Bottega della cripta di Epifanio",
   "type": "scuola",
   "year_start": 824,
   "year_end": 842,
@@ -313,7 +313,7 @@
    "Molise",
    "Italia meridionale"
   ],
-  "summary": "Gli affreschi della cripta di Epifanio rappresentano il vertice della pittura carolingia nell'Italia meridionale. Le maestranze combinano l'impaginazione ordinata e il linearismo di tradizione occidentale con la tavolozza chiara e gli incarnati rosati lumeggiati di bianco propri della cultura mediterranea e bizantina, entro un sistema di cornici e nastri policromi che scandisce le pareti dell'ambiente ipogeo. Le scene, dalla Crocifissione alle storie dei martiri, sono costruite per figure ferme e simmetriche, con gesti misurati e un forte accento sul valore devozionale dell'immagine.",
+  "summary": "Gli affreschi della cripta di Epifanio rappresentano il vertice della pittura carolingia nell'Italia meridionale. Le maestranze combinano l'impaginazione ordinata e il linearismo di tradizione occidentale con la tavolozza chiara e gli incarnati rosati lumeggiati di bianco propri della cultura mediterranea e bizantina, entro un sistema di cornici e nastri policromi che scandisce le pareti dell'ambiente ipogeo. Le scene, dalla Crocifissione alle storie dei martiri, sono costruite per figure ferme e simmetriche, con gesti misurati e un forte accento sul valore devozionale dell'immagine. Il nome esteso della scuola nel catalogo era «Bottega della cripta di Epifanio (San Vincenzo al Volturno)».",
   "historical_context": "L'abbazia di San Vincenzo al Volturno è in questi anni uno dei maggiori centri monastici d'Europa, sostenuta dai sovrani carolingi e in rapporto con i duchi longobardi di Benevento, con scriptorium, officine e un vastissimo patrimonio fondiario. La cripta è voluta dall'abate che vi fa raffigurare se stesso ai piedi della croce con il nimbo quadrato riservato ai vivi, secondo un uso che dichiara apertamente il ruolo del committente.",
   "parent_id": "eta-carolingia",
   "key_innovations": [
@@ -417,7 +417,7 @@
  },
  {
   "id": "scuola-di-treviri-ottoniana",
-  "name": "Scuola miniaturistica di Treviri (bottega del Registrum Gregorii)",
+  "name": "Scuola miniaturistica di Treviri",
   "type": "scuola",
   "year_start": 977,
   "year_end": 993,
@@ -426,7 +426,7 @@
    "Renania",
    "Germania"
   ],
-  "summary": "Attivo a Treviri nell'ultimo quarto del X secolo, l'anonimo miniatore convenzionalmente detto Maestro del Registrum Gregorii è la personalità più raffinata della miniatura ottoniana. Il suo linguaggio si distingue per il recupero consapevole dei modelli tardoantichi e carolingi: figure di volume solido avvolte in panneggi chiaroscurati, incarnati morbidi, ambientazioni architettoniche che ricostruiscono uno spazio credibile attorno al personaggio. Rispetto alla tendenza ottoniana all'astrazione e al fondo oro, la sua pittura conserva una misura classica e una compostezza monumentale che la rendono immediatamente riconoscibile.",
+  "summary": "Attivo a Treviri nell'ultimo quarto del X secolo, l'anonimo miniatore convenzionalmente detto Maestro del Registrum Gregorii è la personalità più raffinata della miniatura ottoniana. Il suo linguaggio si distingue per il recupero consapevole dei modelli tardoantichi e carolingi: figure di volume solido avvolte in panneggi chiaroscurati, incarnati morbidi, ambientazioni architettoniche che ricostruiscono uno spazio credibile attorno al personaggio. Rispetto alla tendenza ottoniana all'astrazione e al fondo oro, la sua pittura conserva una misura classica e una compostezza monumentale che la rendono immediatamente riconoscibile. Il nome esteso della scuola nel catalogo era «Scuola miniaturistica di Treviri (bottega del Registrum Gregorii)».",
   "historical_context": "Lo scriptorium lavora nell'orbita dell'arcivescovo Egberto di Treviri, prelato colto e vicino alla casa imperiale, che fa della sua sede uno dei centri librari più prestigiosi dell'impero. Le miniature nascono per manoscritti liturgici e di prestigio destinati alla cattedrale e al dono di corte, e servono anche a costruire l'immagine sacrale del sovrano ottoniano.",
   "parent_id": "arte-ottoniana",
   "key_innovations": [
@@ -575,7 +575,7 @@
  },
  {
   "id": "bottega-bernardus-gelduinus-tolosa",
-  "name": "Bottega di Bernardus Gelduinus (Saint-Sernin, Tolosa)",
+  "name": "Bottega di Bernardus Gelduinus",
   "type": "scuola",
   "year_start": 1080,
   "year_end": 1100,
@@ -584,7 +584,7 @@
    "Linguadoca",
    "Francia meridionale"
   ],
-  "summary": "Attorno al cantiere della basilica di Saint-Sernin si forma alla fine dell'XI secolo una delle prime botteghe scultoree pienamente romaniche d'Europa, il cui nome è legato a Bernardus Gelduinus, artefice che firma la mensa d'altare in marmo. Il gruppo lavora il marmo con un rilievo basso e nitido, di superficie levigata, che riprende dai sarcofagi tardoantichi l'impostazione frontale e la scansione regolare delle figure: il Cristo benedicente entro la mandorla, gli angeli e gli apostoli del deambulatorio ne sono l'esito più solenne. Nella generazione successiva, con i portali della basilica, il rilievo si fa più alto e narrativo e conquista il timpano, sperimentando l'organizzazione della scena sacra sopra l'ingresso.",
+  "summary": "Attorno al cantiere della basilica di Saint-Sernin si forma alla fine dell'XI secolo una delle prime botteghe scultoree pienamente romaniche d'Europa, il cui nome è legato a Bernardus Gelduinus, artefice che firma la mensa d'altare in marmo. Il gruppo lavora il marmo con un rilievo basso e nitido, di superficie levigata, che riprende dai sarcofagi tardoantichi l'impostazione frontale e la scansione regolare delle figure: il Cristo benedicente entro la mandorla, gli angeli e gli apostoli del deambulatorio ne sono l'esito più solenne. Nella generazione successiva, con i portali della basilica, il rilievo si fa più alto e narrativo e conquista il timpano, sperimentando l'organizzazione della scena sacra sopra l'ingresso. Il nome esteso della scuola nel catalogo era «Bottega di Bernardus Gelduinus (Saint-Sernin, Tolosa)».",
   "historical_context": "Saint-Sernin è una grande basilica di pellegrinaggio lungo la via che conduce a Compostela, retta da un capitolo di canonici e sostenuta dal flusso dei fedeli verso le reliquie di san Saturnino. La consacrazione dell'altare da parte del papa nel corso della sua discesa in Occitania segna il prestigio del cantiere e ne accelera l'attività.",
   "parent_id": "cluniacense",
   "key_innovations": [
@@ -659,7 +659,7 @@
  },
  {
   "id": "scuola-di-wiligelmo",
-  "name": "Scuola di Wiligelmo (Duomo di Modena)",
+  "name": "Scuola di Wiligelmo",
   "type": "scuola",
   "year_start": 1099,
   "year_end": 1184,
@@ -667,7 +667,7 @@
    "Modena",
    "Emilia-Romagna"
   ],
-  "summary": "Il cantiere della cattedrale modenese ospita la prima grande impresa scultorea del romanico padano. Wiligelmo scolpisce le lastre della Genesi come un fregio continuo che attraversa la facciata: figure tozze e possenti, teste grandi, gesti essenziali, un rilievo alto che stacca i corpi dal fondo con un plasticismo appreso dai rilievi antichi. Attorno a lui e dopo di lui operano altre maestranze — riconoscibili nei portali laterali, nelle metope dei contrafforti e nelle sculture profane — che allargano il repertorio a soggetti fantastici, allegorici e cavallereschi. L'architettura di Lanfranco, con le sue gallerie, i contrafforti e il rivestimento in pietra chiara, offre a questa scultura una struttura pensata per accoglierla.",
+  "summary": "Il cantiere della cattedrale modenese ospita la prima grande impresa scultorea del romanico padano. Wiligelmo scolpisce le lastre della Genesi come un fregio continuo che attraversa la facciata: figure tozze e possenti, teste grandi, gesti essenziali, un rilievo alto che stacca i corpi dal fondo con un plasticismo appreso dai rilievi antichi. Attorno a lui e dopo di lui operano altre maestranze — riconoscibili nei portali laterali, nelle metope dei contrafforti e nelle sculture profane — che allargano il repertorio a soggetti fantastici, allegorici e cavallereschi. L'architettura di Lanfranco, con le sue gallerie, i contrafforti e il rivestimento in pietra chiara, offre a questa scultura una struttura pensata per accoglierla. Il nome esteso della scuola nel catalogo era «Scuola di Wiligelmo (Duomo di Modena)».",
   "historical_context": "La costruzione è avviata nel 1099 su iniziativa della comunità cittadina attorno alle reliquie del santo patrono, in un periodo di contrasti fra papato e impero e di crescente autonomia dei comuni padani; un'epigrafe in facciata registra l'avvio dei lavori e celebra per nome lo scultore, cosa rara per l'epoca. La cattedrale funziona così tanto da chiesa vescovile quanto da simbolo dell'identità civica modenese.",
   "parent_id": "romanico-italiano",
   "key_innovations": [
@@ -744,7 +744,7 @@
  },
  {
   "id": "scuola-di-maestro-niccolo",
-  "name": "Scuola di Maestro Niccolò (Romanico veronese)",
+  "name": "Scuola di Maestro Niccolò",
   "type": "scuola",
   "year_start": 1120,
   "year_end": 1150,
@@ -752,7 +752,7 @@
    "Verona",
    "Veneto"
   ],
-  "summary": "Erede della cultura scultorea padana avviata da Wiligelmo, Maestro Niccolò guida a Verona un cantiere che fa del portale il fulcro visivo e ideologico dell'intera facciata. Il protiro sporgente su leoni stilofori, l'archivolto con i Mesi e il lavoro dell'uomo, la lunetta e le grandi lastre narrative addossate ai fianchi dell'ingresso compongono un dispositivo unitario in cui architettura, scultura e racconto si saldano. Le figure hanno volumi compatti, teste grandi e panneggi a solchi paralleli, con un rilievo netto pensato per reggere la luce radente. Accanto alla pietra, la porta è rivestita di formelle bronzee di rozza e potente immediatezza, appartenenti a fasi e mani diverse, che costituiscono uno dei più antichi cicli bronzei conservati in Italia.",
+  "summary": "Erede della cultura scultorea padana avviata da Wiligelmo, Maestro Niccolò guida a Verona un cantiere che fa del portale il fulcro visivo e ideologico dell'intera facciata. Il protiro sporgente su leoni stilofori, l'archivolto con i Mesi e il lavoro dell'uomo, la lunetta e le grandi lastre narrative addossate ai fianchi dell'ingresso compongono un dispositivo unitario in cui architettura, scultura e racconto si saldano. Le figure hanno volumi compatti, teste grandi e panneggi a solchi paralleli, con un rilievo netto pensato per reggere la luce radente. Accanto alla pietra, la porta è rivestita di formelle bronzee di rozza e potente immediatezza, appartenenti a fasi e mani diverse, che costituiscono uno dei più antichi cicli bronzei conservati in Italia. Il nome esteso della scuola nel catalogo era «Scuola di Maestro Niccolò (Romanico veronese)».",
   "historical_context": "Verona è nodo della strada del Brennero e conosce nel XII secolo una intensa stagione di ricostruzione dopo il terremoto del 1117. I grandi cantieri sono promossi dal monastero benedettino e dal capitolo cittadino, in un momento in cui il Comune nascente rivendica la propria identità: la lunetta del portale, con il santo patrono che consegna il vessillo alle milizie cittadine, ne è la traduzione figurativa.",
   "parent_id": "romanico-italiano",
   "key_innovations": [
@@ -764,7 +764,7 @@
  },
  {
   "id": "cantiere-di-saint-denis",
-  "name": "Cantiere di Saint-Denis (Abate Suger)",
+  "name": "Cantiere di Saint-Denis",
   "type": "scuola",
   "year_start": 1130,
   "year_end": 1151,
@@ -774,7 +774,7 @@
    "Île-de-France",
    "Francia"
   ],
-  "summary": "Il cantiere dell'abbaziale di Saint-Denis è il luogo in cui gli elementi già noti all'architettura romanica — arco a sesto acuto, volta a crociera costolonata, contrafforti esterni — vengono per la prima volta combinati in un sistema coerente. Il risultato è un coro con deambulatorio e cappelle radiali non più separate da muri, ma aperte l'una sull'altra e traforate da grandi vetrate, così che la parete si dissolve e lo spazio appare percorso da una luce continua. La facciata occidentale, con i tre portali, il rosone e le due torri, fissa uno schema destinato a diventare canonico nelle cattedrali gotiche.",
+  "summary": "Il cantiere dell'abbaziale di Saint-Denis è il luogo in cui gli elementi già noti all'architettura romanica — arco a sesto acuto, volta a crociera costolonata, contrafforti esterni — vengono per la prima volta combinati in un sistema coerente. Il risultato è un coro con deambulatorio e cappelle radiali non più separate da muri, ma aperte l'una sull'altra e traforate da grandi vetrate, così che la parete si dissolve e lo spazio appare percorso da una luce continua. La facciata occidentale, con i tre portali, il rosone e le due torri, fissa uno schema destinato a diventare canonico nelle cattedrali gotiche. Il nome esteso della scuola nel catalogo era «Cantiere di Saint-Denis (Abate Suger)».",
   "historical_context": "L'abate Suger, reggente del regno durante la seconda crociata e consigliere dei re capetingi, promuove la ricostruzione dell'abbazia che custodisce le reliquie del patrono di Francia ed è necropoli dei sovrani: l'impresa è insieme religiosa e politica. La sua teologia della luce, di matrice neoplatonica, giustifica lo sfarzo delle vetrate e dell'oreficeria come via anagogica alla contemplazione del divino, e legittima il rimontaggio di preziosi vasi antichi in nuove strutture liturgiche.",
   "parent_id": "gotico-francese",
   "key_innovations": [
@@ -831,7 +831,7 @@
  },
  {
   "id": "romanico-pisano",
-  "name": "Romanico pisano (Piazza dei Miracoli)",
+  "name": "Romanico pisano",
   "type": "scuola",
   "year_start": 1152,
   "year_end": 1350,
@@ -841,7 +841,7 @@
    "Cagliari",
    "Sardegna"
   ],
-  "summary": "Il romanico pisano elabora un linguaggio immediatamente riconoscibile, fondato sull'uso del marmo bianco e sulla scansione delle superfici mediante arcate cieche, tarsie geometriche bicrome e logge di colonnine sovrapposte che alleggeriscono i volumi. Su questa grammatica si costruiscono gli edifici della piazza episcopale, dove il battistero a impianto centrale e il campanile cilindrico ripetono il motivo delle gallerie fino a farne il segno distintivo della città. La scultura accompagna l'architettura con pulpiti e portali a rilievi narrativi, e nella seconda metà del Duecento accoglie il nuovo linguaggio gotico dei Pisano.",
+  "summary": "Il romanico pisano elabora un linguaggio immediatamente riconoscibile, fondato sull'uso del marmo bianco e sulla scansione delle superfici mediante arcate cieche, tarsie geometriche bicrome e logge di colonnine sovrapposte che alleggeriscono i volumi. Su questa grammatica si costruiscono gli edifici della piazza episcopale, dove il battistero a impianto centrale e il campanile cilindrico ripetono il motivo delle gallerie fino a farne il segno distintivo della città. La scultura accompagna l'architettura con pulpiti e portali a rilievi narrativi, e nella seconda metà del Duecento accoglie il nuovo linguaggio gotico dei Pisano. Il nome esteso della scuola nel catalogo era «Romanico pisano (Piazza dei Miracoli)».",
   "historical_context": "La produzione si lega alla stagione di massima potenza della repubblica marinara di Pisa, i cui successi militari e commerciali nel Mediterraneo finanziano i cantieri e mettono in circolo modelli islamici, bizantini e antichi. I lavori si prolungano per quasi due secoli, coinvolgendo generazioni di maestranze e diffondendo lo stile lungo le rotte pisane, in Sardegna e in Corsica.",
   "parent_id": "romanico-italiano",
   "key_innovations": [
@@ -854,7 +854,7 @@
  },
  {
   "id": "scuola-marciana-veneziana",
-  "name": "Scuola marciana (decorazione della Basilica di San Marco, Venezia)",
+  "name": "Scuola marciana",
   "type": "scuola",
   "year_start": 1172,
   "year_end": 1350,
@@ -862,7 +862,7 @@
    "Venezia",
    "Veneto"
   ],
-  "summary": "La decorazione di San Marco è il prodotto di un cantiere rimasto aperto per secoli, in cui maestranze veneziane formate su modelli bizantini acquistano via via un linguaggio proprio. I mosaici rivestono cupole, volte e atrio con fondi d'oro che annullano lo spazio reale e trasformano la luce in materia; le figure conservano l'impianto ieratico orientale, ma i cicli narrativi si dilatano e accolgono dettagli descrittivi di gusto occidentale. All'esterno la basilica si presenta come un rivestimento di marmi, colonne e sculture di provenienza diversa, montati insieme fino a comporre una facciata che è essa stessa un discorso sulla storia della città. Scultura architettonica e mosaico procedono di pari passo, fino all'innesto di forme gotiche nelle fasi più tarde.",
+  "summary": "La decorazione di San Marco è il prodotto di un cantiere rimasto aperto per secoli, in cui maestranze veneziane formate su modelli bizantini acquistano via via un linguaggio proprio. I mosaici rivestono cupole, volte e atrio con fondi d'oro che annullano lo spazio reale e trasformano la luce in materia; le figure conservano l'impianto ieratico orientale, ma i cicli narrativi si dilatano e accolgono dettagli descrittivi di gusto occidentale. All'esterno la basilica si presenta come un rivestimento di marmi, colonne e sculture di provenienza diversa, montati insieme fino a comporre una facciata che è essa stessa un discorso sulla storia della città. Scultura architettonica e mosaico procedono di pari passo, fino all'innesto di forme gotiche nelle fasi più tarde. Il nome esteso della scuola nel catalogo era «Scuola marciana (decorazione della Basilica di San Marco, Venezia)».",
   "historical_context": "San Marco non è la cattedrale cittadina ma la cappella del doge, e la sua decorazione è controllata direttamente dallo Stato: ogni scelta iconografica serve a fondare l'identità della Repubblica sul possesso delle reliquie dell'evangelista. Dopo la conquista di Costantinopoli del 1204 affluiscono a Venezia marmi, colonne e sculture d'Oriente, reimpiegati nella basilica come trofei visibili del nuovo ruolo mediterraneo della città.",
   "parent_id": "bizantino-italiano",
   "key_innovations": [
@@ -911,7 +911,7 @@
  },
  {
   "id": "bottega-antelami-parma",
-  "name": "Bottega di Benedetto Antelami (Parma)",
+  "name": "Bottega di Benedetto Antelami",
   "type": "scuola",
   "year_start": 1178,
   "year_end": 1230,
@@ -919,7 +919,7 @@
    "Parma",
    "Emilia"
   ],
-  "summary": "L'officina di Benedetto Antelami documenta il passaggio dalla scultura romanica a quella gotica nell'Italia padana. Nella lastra della Deposizione le figure sono ancora allineate come in un fregio, scandite da un ritmo simmetrico, con panneggi a pieghe incise e iscrizioni che accompagnano la lettura. Nel battistero, invece, le statue si staccano progressivamente dal fondo architettonico, occupano nicchie proprie e si organizzano in cicli — i Mesi, le Stagioni, i segni zodiacali — che legano il tempo liturgico a quello del lavoro contadino. È una scultura che conosce i modelli francesi e provenzali ma li traduce in un linguaggio di grande compostezza e di forte impianto architettonico.",
+  "summary": "L'officina di Benedetto Antelami documenta il passaggio dalla scultura romanica a quella gotica nell'Italia padana. Nella lastra della Deposizione le figure sono ancora allineate come in un fregio, scandite da un ritmo simmetrico, con panneggi a pieghe incise e iscrizioni che accompagnano la lettura. Nel battistero, invece, le statue si staccano progressivamente dal fondo architettonico, occupano nicchie proprie e si organizzano in cicli — i Mesi, le Stagioni, i segni zodiacali — che legano il tempo liturgico a quello del lavoro contadino. È una scultura che conosce i modelli francesi e provenzali ma li traduce in un linguaggio di grande compostezza e di forte impianto architettonico. Il nome esteso della scuola nel catalogo era «Bottega di Benedetto Antelami (Parma)».",
   "historical_context": "Le opere nascono per la cattedrale e per il battistero di Parma, promossi dal capitolo e dalla comunità cittadina in una fase di forte crescita del comune. Il battistero, rivestito di marmo rosso di Verona e costruito su pianta ottagonale, è concepito fin dall'origine come un'impresa unitaria in cui architettura e scultura rispondono a un unico programma iconografico.",
   "parent_id": "gotico-italiano",
   "key_innovations": [
@@ -932,7 +932,7 @@
  },
  {
   "id": "marmorari-romani",
-  "name": "Marmorari romani (Bottega dei Vassalletto)",
+  "name": "Bottega dei Vassalletto",
   "type": "scuola",
   "year_start": 1180,
   "year_end": 1230,
@@ -1308,7 +1308,7 @@
  },
  {
   "id": "arnolfo-di-cambio-firenze",
-  "name": "Arnolfo di Cambio a Firenze (cantiere di Santa Croce, Palazzo dei Priori e opere fiorentine)",
+  "name": "Arnolfo di Cambio a Firenze",
   "type": "scuola",
   "year_start": 1294,
   "year_end": 1310,
@@ -1316,7 +1316,7 @@
    "Firenze",
    "Toscana"
   ],
-  "summary": "Negli ultimi anni della sua carriera Arnolfo di Cambio è il capomaestro che dà forma alla Firenze comunale, operando insieme come architetto e scultore. La sua architettura interpreta il gotico in chiave italiana: spazi ampi e luminosi, muri continui, copertura a capriate lignee e proporzioni distese, pensati per accogliere grandi folle di fedeli attorno alla predicazione. Nell'edilizia civile traduce la medesima ricerca di solidità in un blocco compatto di pietra forte, coronato da ballatoio a sporgere e dominato dalla torre. La sua scultura mantiene volumi pieni e sintetici e un impianto frontale e solenne, con una ricerca di intensità realistica che lo porta a inserire nel marmo occhi di vetro colorato.",
+  "summary": "Negli ultimi anni della sua carriera Arnolfo di Cambio è il capomaestro che dà forma alla Firenze comunale, operando insieme come architetto e scultore. La sua architettura interpreta il gotico in chiave italiana: spazi ampi e luminosi, muri continui, copertura a capriate lignee e proporzioni distese, pensati per accogliere grandi folle di fedeli attorno alla predicazione. Nell'edilizia civile traduce la medesima ricerca di solidità in un blocco compatto di pietra forte, coronato da ballatoio a sporgere e dominato dalla torre. La sua scultura mantiene volumi pieni e sintetici e un impianto frontale e solenne, con una ricerca di intensità realistica che lo porta a inserire nel marmo occhi di vetro colorato. Il nome esteso della scuola nel catalogo era «Arnolfo di Cambio a Firenze (cantiere di Santa Croce, Palazzo dei Priori e opere fiorentine)».",
   "historical_context": "Firenze vive alla fine del Duecento una stagione di espansione economica e di riorganizzazione urbana, con la nuova cerchia di mura, la sede del governo popolare e i cantieri delle grandi chiese mendicanti. Committenti sono il Comune, l'Opera della cattedrale e gli ordini francescano e domenicano, sostenuti dalle famiglie mercantili che finanziano cappelle e sepolture; il papato di Bonifacio VIII e il Giubileo del 1300 fanno da sfondo alle commissioni celebrative.",
   "parent_id": "gotico-italiano",
   "key_innovations": [
@@ -1418,7 +1418,7 @@
  },
  {
   "id": "gotico-cortese",
-  "name": "Gotico cortese (Gotico internazionale)",
+  "name": "Gotico cortese",
   "type": "corrente",
   "year_start": 1370,
   "year_end": 1450,
@@ -1429,7 +1429,7 @@
    "Fiandre",
    "Italia settentrionale"
   ],
-  "summary": "Definizione che evidenzia il legame con le corti principesche e la produzione di manufatti preziosi (reliquiari, libri d'ore, arazzi, cassoni nuziali, tarocchi, gioielli). L'arte era utilizzata dai nuovi principi per affermare il proprio status e legittimare il potere.",
+  "summary": "Definizione che evidenzia il legame con le corti principesche e la produzione di manufatti preziosi (reliquiari, libri d'ore, arazzi, cassoni nuziali, tarocchi, gioielli). L'arte era utilizzata dai nuovi principi per affermare il proprio status e legittimare il potere. Il nome esteso della scuola nel catalogo era «Gotico cortese (Gotico internazionale)».",
   "historical_context": "La richiesta di lusso delle corti comportò un forte sviluppo della produzione di oggetti preziosi destinati ai corredi nuziali e agli scambi diplomatici. Firenze e i Comuni mercantili europei svilupparono varianti parallele con maggiore attenzione alla realtà naturale.",
   "parent_id": "tardogotico",
   "key_innovations": [
@@ -1791,7 +1791,7 @@
  },
  {
   "id": "mantegna-padova",
-  "name": "Andrea Mantegna a Padova (bottega dello Squarcione)",
+  "name": "Bottega dello Squarcione",
   "type": "scuola",
   "year_start": 1448,
   "year_end": 1460,
@@ -1799,7 +1799,7 @@
    "Padova",
    "Veneto"
   ],
-  "summary": "Nella Padova di metà Quattrocento il giovane Mantegna elabora, a partire dall'ambiente della bottega di Francesco Squarcione, una sintesi personalissima tra archeologia e prospettiva. Le sue figure hanno consistenza di pietra, ferme entro contorni incisivi, e si stagliano su paesaggi rocciosi e architetture all'antica popolate di rovine, epigrafi, rilievi e ornati studiati con precisione filologica. La costruzione prospettica è portata alle estreme conseguenze: il punto di vista si abbassa fino a collocare l'osservatore sotto la scena, e scorci arditi accentuano la profondità e la monumentalità dei corpi.",
+  "summary": "Nella Padova di metà Quattrocento il giovane Mantegna elabora, a partire dall'ambiente della bottega di Francesco Squarcione, una sintesi personalissima tra archeologia e prospettiva. Le sue figure hanno consistenza di pietra, ferme entro contorni incisivi, e si stagliano su paesaggi rocciosi e architetture all'antica popolate di rovine, epigrafi, rilievi e ornati studiati con precisione filologica. La costruzione prospettica è portata alle estreme conseguenze: il punto di vista si abbassa fino a collocare l'osservatore sotto la scena, e scorci arditi accentuano la profondità e la monumentalità dei corpi. Il nome esteso della scuola nel catalogo era «Andrea Mantegna a Padova (bottega dello Squarcione)».",
   "historical_context": "Padova è allora città universitaria e centro di studi umanistici e antiquari, con una fitta circolazione di reperti, epigrafi e monete antiche; la presenza di Donatello, impegnato per anni nei cantieri della basilica del Santo, mette a disposizione dei giovani pittori un modello scultoreo di riferimento. Le grandi cappelle funerarie delle famiglie cittadine offrono le prime occasioni monumentali, prima che il pittore accetti l'incarico di artista di corte presso i Gonzaga.",
   "parent_id": "quattrocento",
   "key_innovations": [
@@ -1811,7 +1811,7 @@
  },
  {
   "id": "corte-malatestiana-riminese",
-  "name": "Corte malatestiana di Rimini (Tempio Malatestiano)",
+  "name": "Corte malatestiana di Rimini",
   "type": "scuola",
   "year_start": 1450,
   "year_end": 1468,
@@ -1912,7 +1912,7 @@
  },
  {
   "id": "quattrocento-romano",
-  "name": "Quattrocento romano (cantiere pontificio)",
+  "name": "Cantiere pontificio",
   "type": "scuola",
   "year_start": 1455,
   "year_end": 1482,
@@ -1921,7 +1921,7 @@
    "Città del Vaticano",
    "Lazio"
   ],
-  "summary": "Il cantiere pontificio della seconda metà del Quattrocento non nasce da una tradizione locale ma dalla convocazione a Roma delle migliori botteghe toscane e umbre, chiamate a lavorare fianco a fianco su un progetto unitario. Nella cappella palatina i pittori dipingono due sequenze parallele — le storie di Mosè e quelle di Cristo — accordandosi su una fascia narrativa alla stessa quota, su paesaggi ampi e su architetture di impianto centrale che fanno da fondale. Accanto alla pittura lavorano scultori marmorei per le transenne e i cori, orafi e fonditori per i monumenti funebri in bronzo, architetti per i palazzi cardinalizi. Il risultato è uno stile di corte cosmopolita, che unisce il disegno fiorentino, la dolcezza umbra e il gusto antiquario romano.",
+  "summary": "Il cantiere pontificio della seconda metà del Quattrocento non nasce da una tradizione locale ma dalla convocazione a Roma delle migliori botteghe toscane e umbre, chiamate a lavorare fianco a fianco su un progetto unitario. Nella cappella palatina i pittori dipingono due sequenze parallele — le storie di Mosè e quelle di Cristo — accordandosi su una fascia narrativa alla stessa quota, su paesaggi ampi e su architetture di impianto centrale che fanno da fondale. Accanto alla pittura lavorano scultori marmorei per le transenne e i cori, orafi e fonditori per i monumenti funebri in bronzo, architetti per i palazzi cardinalizi. Il risultato è uno stile di corte cosmopolita, che unisce il disegno fiorentino, la dolcezza umbra e il gusto antiquario romano. Il nome esteso della scuola nel catalogo era «Quattrocento romano (cantiere pontificio)».",
   "historical_context": "Rientrato definitivamente il papato a Roma e superato lo scisma, i pontefici da Niccolò V a Sisto IV e Alessandro VI trasformano la città in un grande cantiere: nuove strade, ponti, palazzi e la cappella palatina vaticana servono a dare forma visibile all'autorità restaurata. La celebrazione dinastica delle famiglie papali — della Rovere, Borgia — orienta tanto i programmi iconografici quanto la scelta dei sepolcri monumentali.",
   "parent_id": "quattrocento",
   "key_innovations": [
@@ -2030,7 +2030,7 @@
  },
  {
   "id": "rinascimento-romano-giulio-leone",
-  "name": "Rinascimento romano di Giulio II e Leone X (cantiere vaticano)",
+  "name": "Cantiere vaticano",
   "type": "scuola",
   "year_start": 1505,
   "year_end": 1520,
@@ -2039,7 +2039,7 @@
    "Città del Vaticano",
    "Lazio"
   ],
-  "summary": "Nel breve arco di tre lustri il cantiere vaticano raduna nello stesso luogo Michelangelo, Raffaello e Bramante, e diventa il laboratorio della cosiddetta maniera moderna. Michelangelo costruisce sulla volta Sistina un repertorio di figure eroiche, dove l'anatomia e la torsione del corpo bastano a esprimere il racconto sacro; Raffaello nelle Stanze organizza folle di personaggi entro architetture dipinte di scala colossale, cercando l'equilibrio tra profondità prospettica e chiarezza dei gruppi. Attorno ai due protagonisti si muove una compagine di collaboratori e rivali — Sebastiano del Piombo con il colore appreso a Venezia, Giulio Romano, Giovanni da Udine specialista di grottesche — che diffonde questo linguaggio nella decorazione delle ville private. Il modello di riferimento comune è l'antico romano, studiato direttamente sui monumenti e sulle sculture riemerse dagli scavi.",
+  "summary": "Nel breve arco di tre lustri il cantiere vaticano raduna nello stesso luogo Michelangelo, Raffaello e Bramante, e diventa il laboratorio della cosiddetta maniera moderna. Michelangelo costruisce sulla volta Sistina un repertorio di figure eroiche, dove l'anatomia e la torsione del corpo bastano a esprimere il racconto sacro; Raffaello nelle Stanze organizza folle di personaggi entro architetture dipinte di scala colossale, cercando l'equilibrio tra profondità prospettica e chiarezza dei gruppi. Attorno ai due protagonisti si muove una compagine di collaboratori e rivali — Sebastiano del Piombo con il colore appreso a Venezia, Giulio Romano, Giovanni da Udine specialista di grottesche — che diffonde questo linguaggio nella decorazione delle ville private. Il modello di riferimento comune è l'antico romano, studiato direttamente sui monumenti e sulle sculture riemerse dagli scavi. Il nome esteso della scuola nel catalogo era «Rinascimento romano di Giulio II e Leone X (cantiere vaticano)».",
   "historical_context": "Giulio II della Rovere e Leone X de' Medici impiegano le arti come strumento politico, per affermare il primato del papato e presentare Roma come erede legittima dell'impero: a questo programma appartengono la ricostruzione della basilica di San Pietro, la decorazione degli appartamenti papali e la tomba monumentale progettata per Giulio II. Accanto alla committenza pontificia agisce quella dei grandi banchieri della curia, come Agostino Chigi, che nella sua villa suburbana fa dipingere soggetti mitologici tratti dalla poesia antica.",
   "parent_id": "rinascimento-maturo",
   "key_innovations": [
@@ -2070,7 +2070,7 @@
  },
  {
   "id": "scuola-di-parma",
-  "name": "Scuola di Parma (Correggio e Parmigianino)",
+  "name": "Scuola di Parma",
   "type": "scuola",
   "year_start": 1519,
   "year_end": 1540,
@@ -2079,7 +2079,7 @@
    "Fontanellato",
    "Emilia"
   ],
-  "summary": "A Parma, nel giro di due decenni, due artisti definiscono altrettante vie destinate a lunga fortuna. Correggio elabora una pittura di morbidezza estrema, dove il contorno si dissolve nella luce e gli incarnati sembrano cedere al tatto; nelle cupole affrescate sfonda la superficie con visioni viste rigorosamente dal basso, in un turbinio di corpi che salgono verso il centro luminoso, e nei soggetti mitologici raggiunge una sensualità senza precedenti. Parmigianino percorre la direzione opposta: allunga i corpi e i colli oltre ogni misura naturale, raffredda il colore, costruisce composizioni di studiata artificiosità in cui la grazia vale più della verosimiglianza. Insieme fanno della città un centro di sperimentazione tra i più liberi del secolo.",
+  "summary": "A Parma, nel giro di due decenni, due artisti definiscono altrettante vie destinate a lunga fortuna. Correggio elabora una pittura di morbidezza estrema, dove il contorno si dissolve nella luce e gli incarnati sembrano cedere al tatto; nelle cupole affrescate sfonda la superficie con visioni viste rigorosamente dal basso, in un turbinio di corpi che salgono verso il centro luminoso, e nei soggetti mitologici raggiunge una sensualità senza precedenti. Parmigianino percorre la direzione opposta: allunga i corpi e i colli oltre ogni misura naturale, raffredda il colore, costruisce composizioni di studiata artificiosità in cui la grazia vale più della verosimiglianza. Insieme fanno della città un centro di sperimentazione tra i più liberi del secolo. Il nome esteso della scuola nel catalogo era «Scuola di Parma (Correggio e Parmigianino)».",
   "historical_context": "La committenza è divisa fra le istituzioni religiose e la nobiltà del contado: il monastero benedettino e quello femminile della città, che affida a Correggio la decorazione profana di una camera privata, la fabbrica della cattedrale per la grande cupola, e i signori di un castello vicino per una sala mitologica. Ad alimentare la produzione mitologica interviene inoltre la committenza principesca padana, interessata a serie di soggetti tratti dalle metamorfosi antiche.",
   "parent_id": "manierismo",
   "key_innovations": [
@@ -2115,7 +2115,7 @@
  },
  {
   "id": "scuola-bresciana",
-  "name": "Scuola bresciana (Romanino, Moretto, Savoldo)",
+  "name": "Scuola bresciana",
   "type": "scuola",
   "year_start": 1521,
   "year_end": 1550,
@@ -2125,7 +2125,7 @@
    "Trento",
    "Val Camonica"
   ],
-  "summary": "La pittura bresciana del Cinquecento si colloca fra il colore veneto e l'attenzione lombarda al dato concreto, e da questo incrocio ricava un naturalismo insolito nel panorama italiano del tempo. Romanino racconta le storie sacre con accento popolare, figure massicce e una pennellata rapida e materica; Moretto lavora su gamme argentee e grigio-perla, con una devozione pacata e ambienti descritti con precisione; Savoldo indaga la luce artificiale e i notturni, misurando i riflessi sui tessuti. Nel ritratto, la scuola arriva a rappresentare a figura intera anche persone di condizione non aristocratica, colte nel proprio lavoro. Questa vocazione al vero costituisce uno degli antecedenti riconosciuti della pittura di Caravaggio.",
+  "summary": "La pittura bresciana del Cinquecento si colloca fra il colore veneto e l'attenzione lombarda al dato concreto, e da questo incrocio ricava un naturalismo insolito nel panorama italiano del tempo. Romanino racconta le storie sacre con accento popolare, figure massicce e una pennellata rapida e materica; Moretto lavora su gamme argentee e grigio-perla, con una devozione pacata e ambienti descritti con precisione; Savoldo indaga la luce artificiale e i notturni, misurando i riflessi sui tessuti. Nel ritratto, la scuola arriva a rappresentare a figura intera anche persone di condizione non aristocratica, colte nel proprio lavoro. Questa vocazione al vero costituisce uno degli antecedenti riconosciuti della pittura di Caravaggio. Il nome esteso della scuola nel catalogo era «Scuola bresciana (Romanino, Moretto, Savoldo)».",
   "historical_context": "Brescia appartiene alla Repubblica di Venezia e la sua committenza è composta soprattutto da confraternite, parrocchie cittadine e chiese dei paesi di valle, oltre che dalla borghesia mercantile che ordina ritratti. Alcuni dei pittori vengono chiamati anche fuori dal territorio, come nel caso della decorazione della residenza principesca di Trento, dove il linguaggio bresciano si misura con l'apparato di una corte vescovile.",
   "parent_id": "manierismo",
   "key_innovations": [
@@ -2155,7 +2155,7 @@
  },
  {
   "id": "palazzo-te-mantova",
-  "name": "Giulio Romano e Palazzo Te a Mantova (corte gonzaghesca)",
+  "name": "Corte gonzaghesca",
   "type": "scuola",
   "year_start": 1525,
   "year_end": 1535,
@@ -2163,7 +2163,7 @@
    "Mantova",
    "Lombardia"
   ],
-  "summary": "Erede diretto della bottega di Raffaello, Giulio Romano trasferisce a Mantova la grande maniera romana e la piega verso una libertà anticlassica che fa di lui uno dei padri del manierismo. In architettura conosce perfettamente le regole degli ordini e le infrange di proposito: bugnato rustico volutamente grezzo, chiavi che scivolano verso il basso, triglifi che sembrano cadere dalla trabeazione, ritmi resi irregolari per sorprendere l'occhio. In pittura porta all'estremo l'illusionismo, dissolvendo l'architettura reale della sala in un cataclisma dipinto che invade pareti e volta senza cornici né interruzioni, e alterna a questa violenza figurativa la sensualità colta e distesa delle favole mitologiche.",
+  "summary": "Erede diretto della bottega di Raffaello, Giulio Romano trasferisce a Mantova la grande maniera romana e la piega verso una libertà anticlassica che fa di lui uno dei padri del manierismo. In architettura conosce perfettamente le regole degli ordini e le infrange di proposito: bugnato rustico volutamente grezzo, chiavi che scivolano verso il basso, triglifi che sembrano cadere dalla trabeazione, ritmi resi irregolari per sorprendere l'occhio. In pittura porta all'estremo l'illusionismo, dissolvendo l'architettura reale della sala in un cataclisma dipinto che invade pareti e volta senza cornici né interruzioni, e alterna a questa violenza figurativa la sensualità colta e distesa delle favole mitologiche. Il nome esteso della scuola nel catalogo era «Giulio Romano e Palazzo Te a Mantova (corte gonzaghesca)».",
   "historical_context": "Federico II Gonzaga fa costruire nell'isola del Te, sede delle scuderie ducali, una villa suburbana destinata all'otium, alle feste e all'accoglienza degli ospiti illustri, fra cui l'imperatore Carlo V. Giulio Romano vi opera come artista unico, responsabile insieme di progetto architettonico, decorazione e apparati, secondo un modello di direzione totale del cantiere che la corte gonzaghesca gli riconosce.",
   "parent_id": "manierismo",
   "key_innovations": [
@@ -2176,7 +2176,7 @@
  },
  {
   "id": "scuola-di-fontainebleau",
-  "name": "Scuola di Fontainebleau (corte di Francesco I)",
+  "name": "Scuola di Fontainebleau",
   "type": "scuola",
   "year_start": 1528,
   "year_end": 1544,
@@ -2185,7 +2185,7 @@
    "Parigi",
    "Francia"
   ],
-  "summary": "La Scuola di Fontainebleau nasce dal trapianto del manierismo italiano in Francia e diventa il modello del gusto cortese europeo del Cinquecento. La sua invenzione più fortunata è un sistema decorativo misto, in cui i riquadri affrescati sono incorniciati da un'esuberante plastica in stucco: putti, ghirlande, festoni e soprattutto cartelle a bordi arrotolati che simulano il cuoio tagliato. Le figure sono allungate, dai contorni serpentinati e dai nudi levigati, immerse in soggetti mitologici e allegorici il cui significato celebra sempre il sovrano. Lo stesso repertorio elegante e prezioso passa nell'oreficeria e nella scultura, dove la ricerca di grazia si accompagna a un'abilità tecnica estrema.",
+  "summary": "La Scuola di Fontainebleau nasce dal trapianto del manierismo italiano in Francia e diventa il modello del gusto cortese europeo del Cinquecento. La sua invenzione più fortunata è un sistema decorativo misto, in cui i riquadri affrescati sono incorniciati da un'esuberante plastica in stucco: putti, ghirlande, festoni e soprattutto cartelle a bordi arrotolati che simulano il cuoio tagliato. Le figure sono allungate, dai contorni serpentinati e dai nudi levigati, immerse in soggetti mitologici e allegorici il cui significato celebra sempre il sovrano. Lo stesso repertorio elegante e prezioso passa nell'oreficeria e nella scultura, dove la ricerca di grazia si accompagna a un'abilità tecnica estrema. Il nome esteso della scuola nel catalogo era «Scuola di Fontainebleau (corte di Francesco I)».",
   "historical_context": "Francesco I trasforma un castello di caccia in residenza reale e chiama in Francia artisti italiani di primo piano, affidando l'architettura a maestranze francesi e la decorazione ai forestieri. Le imprese decorative celebrano il re e la sua cerchia, compresa la favorita duchessa d'Étampes, e la loro diffusione a stampa fa di Fontainebleau il centro di irradiazione dell'ornato manierista in tutta Europa.",
   "parent_id": "manierismo",
   "key_innovations": [
@@ -2198,7 +2198,7 @@
  },
  {
   "id": "fabbrica-san-pietro-cinquecento",
-  "name": "Fabbrica di San Pietro in Vaticano (progetti di Antonio da Sangallo il Giovane e Michelangelo)",
+  "name": "Fabbrica di San Pietro in Vaticano",
   "type": "scuola",
   "year_start": 1530,
   "year_end": 1564,
@@ -2207,7 +2207,7 @@
    "Roma",
    "Lazio"
   ],
-  "summary": "Il cantiere vaticano è, nel pieno Cinquecento, il campo in cui si misurano due idee opposte del tempio cristiano. Antonio da Sangallo il Giovane sviluppa il progetto bramantesco in senso analitico, moltiplicando ambulacri, cappelle e corpi aggiunti fino a un organismo complesso, documentato da un grande modello ligneo e completato da un avancorpo con torri di facciata. Michelangelo, subentrato alla direzione dei lavori, semplifica drasticamente l'impianto tornando alla croce greca compatta, unifica i prospetti esterni con un ordine gigante di paraste corinzie e concepisce la cupola come coronamento plastico dell'intero edificio, con tamburo a colonne binate, doppia calotta e costoloni in forte aggetto.",
+  "summary": "Il cantiere vaticano è, nel pieno Cinquecento, il campo in cui si misurano due idee opposte del tempio cristiano. Antonio da Sangallo il Giovane sviluppa il progetto bramantesco in senso analitico, moltiplicando ambulacri, cappelle e corpi aggiunti fino a un organismo complesso, documentato da un grande modello ligneo e completato da un avancorpo con torri di facciata. Michelangelo, subentrato alla direzione dei lavori, semplifica drasticamente l'impianto tornando alla croce greca compatta, unifica i prospetti esterni con un ordine gigante di paraste corinzie e concepisce la cupola come coronamento plastico dell'intero edificio, con tamburo a colonne binate, doppia calotta e costoloni in forte aggetto. Il nome esteso della scuola nel catalogo era «Fabbrica di San Pietro in Vaticano (progetti di Antonio da Sangallo il Giovane e Michelangelo)».",
   "historical_context": "La fabbrica è finanziata e diretta dal papato, che ne fa il simbolo della propria autorità nel momento più delicato del secolo, tra il sacco di Roma, la frattura protestante e l'avvio del concilio di Trento. La direzione del cantiere è un incarico di prestigio assoluto, affidato dai pontefici ai maggiori architetti del tempo; alla morte di Michelangelo i disegni della cupola guidano il completamento affidato ai suoi successori.",
   "parent_id": "manierismo",
   "key_innovations": [
@@ -2303,7 +2303,7 @@
  },
  {
   "id": "controriforma-milanese-borromea",
-  "name": "Controriforma milanese (età borromaica)",
+  "name": "Controriforma milanese",
   "type": "scuola",
   "year_start": 1565,
   "year_end": 1610,
@@ -2311,7 +2311,7 @@
    "Milano",
    "Lombardia"
   ],
-  "summary": "Fra il tardo Cinquecento e i primi decenni del Seicento Milano diventa il laboratorio più coerente dell'arte della Controriforma, sotto la guida dei due arcivescovi Borromeo. L'architettura sacra abbandona la complessità manierista per soluzioni sobrie e razionali, con navate uniche ampie e ben illuminate, pensate per la predicazione, per la visibilità dell'altare e per l'amministrazione dei sacramenti secondo le nuove norme. La pittura, con Cerano, Morazzone e Giulio Cesare Procaccini, punta invece sull'immediatezza emotiva: realismo dei volti e degli stracci, luce drammatica, gesti eloquenti che coinvolgono direttamente il fedele e trasformano la carità e il martirio in esperienza condivisa.",
+  "summary": "Fra il tardo Cinquecento e i primi decenni del Seicento Milano diventa il laboratorio più coerente dell'arte della Controriforma, sotto la guida dei due arcivescovi Borromeo. L'architettura sacra abbandona la complessità manierista per soluzioni sobrie e razionali, con navate uniche ampie e ben illuminate, pensate per la predicazione, per la visibilità dell'altare e per l'amministrazione dei sacramenti secondo le nuove norme. La pittura, con Cerano, Morazzone e Giulio Cesare Procaccini, punta invece sull'immediatezza emotiva: realismo dei volti e degli stracci, luce drammatica, gesti eloquenti che coinvolgono direttamente il fedele e trasformano la carità e il martirio in esperienza condivisa. Il nome esteso della scuola nel catalogo era «Controriforma milanese (età borromaica)».",
   "historical_context": "Carlo Borromeo, arcivescovo dopo il concilio di Trento, riorganizza la diocesi e detta precise istruzioni sulla costruzione delle chiese e sugli arredi liturgici, mentre gli ordini nuovi, gesuiti in testa, costruiscono le proprie sedi cittadine. Dopo la peste e la canonizzazione di Carlo, il cugino Federico Borromeo prosegue l'impresa promuovendo grandi cicli figurativi sulla vita del santo e fondando istituzioni per la formazione degli artisti.",
   "parent_id": "controriforma",
   "key_innovations": [
