@@ -35,14 +35,24 @@ import { isAdminEmail } from "./auth";
 
 // ---------- PULL GLOBAL IMAGE OVERRIDES (per tutti, anche anonimi) ----------
 // Questa funzione può essere chiamata anche senza utente (utente anonimo).
-// Scarica TUTTI gli override globali (is_global=true) e fa MERGE nel localStorage
-// sotto la chiave separata "atlante:image-overrides-global".
+// Scarica tutti gli override globali (is_global=true) e ALLINEA a quelli la
+// copia nel localStorage ("atlante:image-overrides-global").
 //
-// IMPORTANTE: fa MERGE, non REPLACE. Non cancella MAI gli override locali.
-// Motivo: se l'admin fa setOverride e poi il poll parte prima che la INSERT
-// cloud sia visibile (race condition, ritardo di replica, RLS che blocca),
-// il localStorage verrebbe svuotato e l'immagine tornerebbe al default.
-// Il MERGE preserva sempre i dati locali; cloud vince solo su URL diverso.
+// Prima faceva un MERGE che non cancellava mai niente, per paura di perdere
+// una sostituzione appena salvata e non ancora visibile sul server. Il prezzo
+// era piu' alto del rischio: ogni browser teneva per sempre ogni foto vista,
+// anche quando sul server era stata corretta o tolta. Cosi' l'amministratore
+// vedeva le sue immagini vecchie — un sarcofago di Fedra che non e' quello di
+// Pisa, un portale il cui indirizzo non risponde piu' — convinto che fossero
+// quelle di tutti, mentre il resto del mondo vedeva altro. Una copia che non
+// si puo' smentire non e' una copia: e' una seconda verita'.
+//
+// Ora vale il server. Delle voci locali che il server non ha si tengono solo
+// quelle salvate da meno di MARGINE_SCRITTURA: sono le scritture in volo, il
+// caso che il vecchio merge voleva proteggere. Passato il margine, se il
+// server non le ha vuol dire che non le ha salvate, e mostrarle sarebbe
+// mentire a chi le ha fatte.
+const MARGINE_SCRITTURA = 10 * 60 * 1000;
 
 // Le immagini scelte dagli amministratori valgono per tutti e cambiano di rado,
 // ma venivano richieste a ogni caricamento di pagina da ogni dispositivo: nel
@@ -83,33 +93,35 @@ export async function pullGlobalImageOverrides(): Promise<void> {
       data = (res.data || []).filter((r: any) => isAdminEmail(r.modified_by));
     }
 
-    if (!data || data.length === 0) {
-      // NON cancellare il localStorage! Potrebbe contenere override appena
-      // salvati dall'admin locale che non sono ancora visibili nel cloud
-      // (race condition, ritardo di replica, RLS che blocca la INSERT).
-      console.log("[sync] No global overrides in cloud, keeping local localStorage intact");
-      return;
-    }
-
-    // MERGE: cloud vince su conflitti (URL diverso), ma non rimuove mai entry locali
+    // Una risposta vuota senza errore e' una risposta: il server non ha
+    // sostituzioni. Un errore invece no, e in quel caso sopra si e' gia' usciti
+    // senza toccare niente.
     const localMap = getGlobalOverrides();
-    const merged: OverrideMap = { ...localMap };
-    let changed = false;
-    for (const r of data) {
-      const existing = merged[r.work_id];
-      const cloudUrl = r.url;
-      if (!existing || existing.url !== cloudUrl) {
-        merged[r.work_id] = {
-          url: cloudUrl,
-          setAt: r.updated_at ?? new Date().toISOString(),
-          isGlobal: true,
-          modifiedBy: r.modified_by ?? undefined,
-        };
-        changed = true;
-      }
+    const allineata: OverrideMap = {};
+    for (const r of data ?? []) {
+      const locale = localMap[r.work_id];
+      allineata[r.work_id] = locale && locale.url === r.url
+        ? locale
+        : {
+            url: r.url,
+            setAt: r.updated_at ?? new Date().toISOString(),
+            isGlobal: true,
+            modifiedBy: r.modified_by ?? undefined,
+          };
     }
-    if (changed) {
-      setGlobalOverrides(merged);
+    const adesso = Date.now();
+    let scartate = 0;
+    for (const [id, voce] of Object.entries(localMap)) {
+      if (allineata[id]) continue;
+      const eta = adesso - (Date.parse(voce.setAt) || 0);
+      if (eta < MARGINE_SCRITTURA) allineata[id] = voce;
+      else scartate++;
+    }
+    if (scartate > 0) {
+      console.log(`[sync] ${scartate} immagini note solo a questo browser tolte: il server non le ha`);
+    }
+    if (JSON.stringify(allineata) !== JSON.stringify(localMap)) {
+      setGlobalOverrides(allineata);
     }
   } catch {
     /* ignore */

@@ -113,8 +113,16 @@ async function main() {
     let conImmagine = 0;
     if (file === "works") {
       for (const opera of mappa.values()) {
+        // Indirizzo E miniatura: la griglia, le schede collegate e i quiz
+        // mostrano la miniatura, e aggiornando solo l'indirizzo 96 opere
+        // avevano nel JSON la foto nuova nella scheda e quella vecchia
+        // dappertutto altrove.
         const url = immagini.get(opera.id);
-        if (url && opera.image_url !== url) { opera.image_url = url; conImmagine++; }
+        if (url && (opera.image_url !== url || opera.image_thumb !== url)) {
+          opera.image_url = url;
+          opera.image_thumb = url;
+          conImmagine++;
+        }
       }
     }
 

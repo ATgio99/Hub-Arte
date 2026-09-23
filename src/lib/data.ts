@@ -27,6 +27,15 @@ async function fetchJson<T>(name: string): Promise<T> {
   return res.json();
 }
 
+/** L'immagine di ogni opera com'e' scritta nel file del catalogo, senza
+ *  niente sopra: ne' le righe corrette sul server, ne' le sostituzioni.
+ *  Serve alla dashboard per dire quali sostituzioni sono gia' entrate nel
+ *  JSON e quali aspettano la prossima esportazione. */
+export async function immaginiDelCatalogo(): Promise<Map<string, string | null>> {
+  const opere = await fetchJson<{ id: string; image_url?: string | null }[]>("works");
+  return new Map(opere.map((w) => [w.id, w.image_url ?? null]));
+}
+
 /** Sempre un elenco, qualunque cosa arrivi.
  *
  *  I file di `public/data` stanno in cache un'ora, mentre il codice cambia

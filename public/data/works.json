@@ -1251,10 +1251,11 @@
    "stile-animalistico"
   ],
   "committente_ids": [],
-  "image_url": "https://imgs.search.brave.com/A3PfqoUozImfpBMVuZqDhSuTBqvdPDSF5-ggLzUikdE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMud2l4c3RhdGlj/LmNvbS9tZWRpYS8w/NWQzNmRfNTMxMmY2/ZjJhZmUyNGIxOTli/NTQ1MmQ1Nzk2OWEy/Zjl-bXYyX2RfNDky/OF8zMjY0X3NfNF8y/LmpwZy92MS9maWxs/L3dfNDQ4LGhfMjk2/LGFsX2MscV84MCx1/c21fMC42Nl8xLjAw/XzAuMDEsZW5jX2F2/aWYscXVhbGl0eV9h/dXRvLzA1ZDM2ZF81/MzEyZjZmMmFmZTI0/YjE5OWI1NDUyZDU3/OTY5YTJmOX5tdjJf/ZF80OTI4XzMyNjRf/c180XzIuanBn",
+  "image_url": "https://static.wixstatic.com/media/05d36d_5312f6f2afe24b199b5452d57969a2f9~mv2_d_4928_3264_s_4_2.jpg/v1/fill/w_448,h_296,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/05d36d_5312f6f2afe24b199b5452d57969a2f9~mv2_d_4928_3264_s_4_2.jpg",
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_thumb": "https://static.wixstatic.com/media/05d36d_5312f6f2afe24b199b5452d57969a2f9~mv2_d_4928_3264_s_4_2.jpg/v1/fill/w_448,h_296,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/05d36d_5312f6f2afe24b199b5452d57969a2f9~mv2_d_4928_3264_s_4_2.jpg"
  },
  {
   "id": "fibula-visigota-aquila",
@@ -1379,8 +1380,8 @@
   "term_ids": [
    "registri-parietali"
   ],
-  "image_url": "https://imgs.search.brave.com/y8NpSu1-danueWshBzOO1SOxF8eqg4QDTnNq91M1u6s/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS1jZG4udHJpcGFk/dmlzb3IuY29tL21l/ZGlhL3Bob3RvLW8v/MDIvNjgvNTEvNmEv/ZmlsZW5hbWUtMjAx/Mi0zLTIzLXJhdmVu/bmEuanBn",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Seaport_in_Ravenna%2C_Italy.jpg/960px-Seaport_in_Ravenna%2C_Italy.jpg",
+  "image_url": "https://media-cdn.tripadvisor.com/media/photo-o/02/68/51/6a/filename-2012-3-23-ravenna.jpg",
+  "image_thumb": "https://media-cdn.tripadvisor.com/media/photo-o/02/68/51/6a/filename-2012-3-23-ravenna.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "teodorico-il-grande"
@@ -1553,8 +1554,8 @@
    "catino-absidale",
    "fondo-oro"
   ],
-  "image_url": "https://imgs.search.brave.com/DKXGRmkxAboQxvbYiY8owwgHh-TqjAUf1jGrCbyrEZo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sYW51/b3ZhYnEuaXQvc3Rv/cmFnZS9pbWdzL2Jh/c2lsaWNhLWRlaS1z/YW50aS1jb3NtYS1l/LWRhbWlhbm8tcm9t/YS1sYXJnZS5wbmc",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/DSC06842-Saints_Cosmas_and_Damian_inside.jpg/960px-DSC06842-Saints_Cosmas_and_Damian_inside.jpg",
+  "image_url": "https://lanuovabq.it/storage/imgs/basilica-dei-santi-cosma-e-damiano-roma-large.png",
+  "image_thumb": "https://lanuovabq.it/storage/imgs/basilica-dei-santi-cosma-e-damiano-roma-large.png",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "felice-iv"
@@ -2411,8 +2412,8 @@
    "cloisonne",
    "cammeo"
   ],
-  "image_url": "https://imgs.search.brave.com/z7qwdOqIIE5aehYMchYKZvJiQBi0Xq-Hgc__mktqrTY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YXJ0ZWd1aWRhdGEu/aXQvd29yZHByZXNz/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDE5/LzAyL0V2YW5nZWxp/YXJpby1kaS1UZW9k/b2xpbmRhLmpwZw",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Monza-Bandiera_%28v2%29.svg/960px-Monza-Bandiera_%28v2%29.svg.png",
+  "image_url": "https://www.arteguidata.it/wordpress/wp-content/uploads/2019/02/Evangeliario-di-Teodolinda.jpg",
+  "image_thumb": "https://www.arteguidata.it/wordpress/wp-content/uploads/2019/02/Evangeliario-di-Teodolinda.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "gregorio-magno"
@@ -2572,8 +2573,8 @@
    "encausto",
    "frontalita"
   ],
-  "image_url": "https://imgs.search.brave.com/IqtJgyxF4wyCV_X6mNOiLnle7Y7G6IRjmRIkNaLKhc4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bWVpc3RlcmRydWNr/ZS5pdC9rdW5zdHdl/cmtlLzEyNjBweC9J/dGFsaWFuX1NjaG9v/bF8tX0ljb25fb2Zf/dGhlX1Zpcmdpbl9v/Zl9DbGVtZW5jZV9v/cl9NYWRvbm5hX1Ro/ZW90b2tvc19QYWlu/dGluZ19hX2xlbmNh/dXN0aWNfZXRfdGVt/Xy1fKE1laXN0ZXJE/cnVja2UtODg0MzU3/KS5qcGc",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/01_Santa_Maria_in_Trastevere_Facade.jpg/960px-01_Santa_Maria_in_Trastevere_Facade.jpg",
+  "image_url": "https://www.meisterdrucke.it/kunstwerke/1260px/Italian_School_-_Icon_of_the_Virgin_of_Clemence_or_Madonna_Theotokos_Painting_a_lencaustic_et_tem_-_(MeisterDrucke-884357).jpg",
+  "image_thumb": "https://www.meisterdrucke.it/kunstwerke/1260px/Italian_School_-_Icon_of_the_Virgin_of_Clemence_or_Madonna_Theotokos_Painting_a_lencaustic_et_tem_-_(MeisterDrucke-884357).jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "giovanni-vii-papa"
@@ -2615,8 +2616,8 @@
    "bassorilievo",
    "horror-vacui"
   ],
-  "image_url": "https://imgs.search.brave.com/z-AToCaBfqzur02-x_R1qGUFNiDaewn7xt_0PipOg28/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvaXQvdGh1bWIv/Ny83OC9QbHV0ZW9f/Y29uX2dyaWZvbmlf/ZGVsbCdvcmF0b3Jp/b19kaV9zYW5fbWlj/aGVsZV9hbGxhX3B1/c3RlcmxhLF9pbml6/aW9fVklJSV9zZWNv/bG8sX3BhdmlhLF9t/dXNlb19jaXZpY29f/bWFsYXNwaW5hLF8x/Nzd4NjZfY20uanBn/Lzk2MHB4LVBsdXRl/b19jb25fZ3JpZm9u/aV9kZWxsJ29yYXRv/cmlvX2RpX3Nhbl9t/aWNoZWxlX2FsbGFf/cHVzdGVybGEsX2lu/aXppb19WSUlJX3Nl/Y29sbyxfcGF2aWEs/X211c2VvX2Npdmlj/b19tYWxhc3BpbmEs/XzE3N3g2Nl9jbS5q/cGc_Xz0yMDA3MDcw/OTEzMzM0MQ",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Flag_of_Pavia.svg/960px-Flag_of_Pavia.svg.png",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Oratorio_di_San_Michele_alla_Pusterla_a_Pavia_-_Pluteo.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Oratorio_di_San_Michele_alla_Pusterla_a_Pavia_-_Pluteo.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -2993,8 +2994,8 @@
   "term_ids": [
    "affresco"
   ],
-  "image_url": "https://imgs.search.brave.com/hxloSth9eJpiJ6wtAJqZzB04ArIOqowjA7D1Ftd6cHI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c3VlZHRpcm9sLmlu/Zm8vY29udGVudC9k/YW0vaWRtL2ltL2lt/YWdlcy9leHBlcmll/bmNlcy9wb2ktdHlw/ZS9zL3NfMi9zbWdw/b2llMGViMzJkNTli/ZTc0OTBhYjFmNzZk/OTZjNmJjNDExNy9G/MDVFMDAwOEQ2MDFC/MzUwNjhBQ0NGRDhC/QkQwNTc5NC5qcGVn",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/St_prokulus.jpg/960px-St_prokulus.jpg",
+  "image_url": "https://www.suedtirol.info/content/dam/idm/im/images/experiences/poi-type/s/s_2/smgpoie0eb32d59be7490ab1f76d96c6bc4117/F05E0008D601B35068ACCFD8BBD05794.jpeg",
+  "image_thumb": "https://www.suedtirol.info/content/dam/idm/im/images/experiences/poi-type/s/s_2/smgpoie0eb32d59be7490ab1f76d96c6bc4117/F05E0008D601B35068ACCFD8BBD05794.jpeg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -3300,8 +3301,8 @@
    "lumeggiatura",
    "scriptorium"
   ],
-  "image_url": "https://imgs.search.brave.com/borsHw_dYw5OdgCYreDyV-wLLlsfRCUxl50GNZ8yskg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hbmFt/YXJpYWJyYW5kb2xp/bmkud29yZHByZXNz/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAxOC8wOC9ldmFu/Z2VsYXJpby1kZS1n/b2Rlc2NhbGNvLmpw/Zz93PTQ3OQ",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Evangeliarium_-_%C3%A9vang%C3%A9liaire_dit_de_Charlemagne_ou_de_Godescalc_-_J%C3%A9sus-Christ_-_BNF_Gallica.jpg/960px-Evangeliarium_-_%C3%A9vang%C3%A9liaire_dit_de_Charlemagne_ou_de_Godescalc_-_J%C3%A9sus-Christ_-_BNF_Gallica.jpg",
+  "image_url": "https://anamariabrandolini.wordpress.com/wp-content/uploads/2018/08/evangelario-de-godescalco.jpg?w=479",
+  "image_thumb": "https://anamariabrandolini.wordpress.com/wp-content/uploads/2018/08/evangelario-de-godescalco.jpg?w=479",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "carlo-magno"
@@ -3849,8 +3850,8 @@
    "nimbo-rettangolare",
    "pantocratore"
   ],
-  "image_url": "https://imgs.search.brave.com/D9QkMIa7ERieR6KRrNCN0WCn7dEo85F63DpmIfjZ9qY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZXN0/YXVyYXJzLmFsdGVy/dmlzdGEub3JnL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDE2LzEw/L1NhbnRhLVByYXNz/ZWRlLTcyMHg1NDAu/anBn",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Santa_Prassede_Fa%C3%A7ade.jpg/960px-Santa_Prassede_Fa%C3%A7ade.jpg",
+  "image_url": "https://restaurars.altervista.org/wp-content/uploads/2016/10/Santa-Prassede-720x540.jpg",
+  "image_thumb": "https://restaurars.altervista.org/wp-content/uploads/2016/10/Santa-Prassede-720x540.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "pasquale-i"
@@ -3892,8 +3893,8 @@
    "mosaico",
    "nimbo-rettangolare"
   ],
-  "image_url": "https://imgs.search.brave.com/oe1uJ3ryGRzCFtFp5VAceCh75x65GYWAVJulk2rHhFo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hcnRl/cGl1LmluZm8vd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMTAv/U2FudGEtTWFyaWEt/RG9tbmljYS1Nb3Nh/aWNvLUFic2lkZS0z/LmpwZw",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/BentoXVI-30-10052007.jpg/960px-BentoXVI-30-10052007.jpg",
+  "image_url": "https://artepiu.info/wp-content/uploads/2020/10/Santa-Maria-Domnica-Mosaico-Abside-3.jpg",
+  "image_thumb": "https://artepiu.info/wp-content/uploads/2020/10/Santa-Maria-Domnica-Mosaico-Abside-3.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "pasquale-i"
@@ -3935,8 +3936,8 @@
    "mosaico",
    "clipeo"
   ],
-  "image_url": "https://imgs.search.brave.com/xGB28HVCLKz_Rh5UzsiMRlxtEweIafDfrG2pTZqtPJ0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aXN0YW50aWRpYmVs/bGV6emEuaXQvaW1h/Z2VzLzAyX0NyaXN0/by1QYW50b2NyYXRv/cl8yMl8wM18wNi0t/Rzc3MC0tLTEtLmpw/Zw",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Santa_Prassede_Fa%C3%A7ade.jpg/960px-Santa_Prassede_Fa%C3%A7ade.jpg",
+  "image_url": "https://www.istantidibellezza.it/images/02_Cristo-Pantocrator_22_03_06--G770---1-.jpg",
+  "image_thumb": "https://www.istantidibellezza.it/images/02_Cristo-Pantocrator_22_03_06--G770---1-.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "pasquale-i"
@@ -4155,8 +4156,8 @@
    "reliquiario",
    "ciborio"
   ],
-  "image_url": "https://imgs.search.brave.com/xbVAk95WOR9pDDCwvSIz5WBiu9b9lJaWsvEGIk7F5LM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTU3/NDEwNjQ1L2l0L2Zv/dG8vaXRhbHktZnJv/bnQtb2YtdGhlLWdv/bGRlbi1hbHRhci1v/ci1mcm9udGFsLTgy/NC04NjAtZW1ib3Nz/ZWQtZ29sZC13b3Jr/LWJ5LXZ1b2x2aW5v/LW9yLXZvbHZpbm8u/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PWJmSndYNzFaTUt4/THZ0c1NHc1JZclNl/Umh1TTZpQkxSZUpJ/VENsb29UM1E9",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Milan_Sant%27Ambrogio_016_4923.jpg/960px-Milan_Sant%27Ambrogio_016_4923.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Altare_d%27oro._Vuolvinio._850.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Altare_d%27oro._Vuolvinio._850.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "angilberto-ii"
@@ -4246,8 +4247,8 @@
    "deesis",
    "apocrifo"
   ],
-  "image_url": "https://imgs.search.brave.com/xeZKR0rOK81Bt79jcejPivlE4IWwdZjlgd8lopOGdAs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9saXZl/LnN0YXRpY2ZsaWNr/ci5jb20vNTAyNy81/NjY1OTczOTg2XzY2/ZWMyYjAyNGYuanBn",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Castelseprio%2C_area_archeologica%2C_santa_maria_foris_portas%2C_esterno_00.jpg/960px-Castelseprio%2C_area_archeologica%2C_santa_maria_foris_portas%2C_esterno_00.jpg",
+  "image_url": "https://live.staticflickr.com/5027/5665973986_66ec2b024f.jpg",
+  "image_thumb": "https://live.staticflickr.com/5027/5665973986_66ec2b024f.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -6227,8 +6228,8 @@
   "term_ids": [
    "quadriportico"
   ],
-  "image_url": "https://imgs.search.brave.com/SlZ-fl-20c4KlFgD8cgvp7llilRoWqXgmLBqFxcp1dU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YXJ0ZXN2ZWxhdGEu/aXQvd3AtY29udGVu/dC91cGxvYWRzLzIw/MjEvMDUvQmFzaWxp/Y2EtZGktU2FudEFt/YnJvZ2lvLWEtTWls/YW5vLXBhcnRpY29s/YXJlLWRpLXVuLWNh/cGl0ZWxsby1kZWwt/cXVhZHJpcG9ydGlj/by1hcnRlLXN2ZWxh/dGEtMi5qcGc",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Atrium_of_the_Basilica_of_Sant%27Ambrogio.jpg",
+  "image_url": "https://www.artesvelata.it/wp-content/uploads/2021/05/Basilica-di-SantAmbrogio-a-Milano-particolare-di-un-capitello-del-quadriportico-arte-svelata-2.jpg",
+  "image_thumb": "https://www.artesvelata.it/wp-content/uploads/2021/05/Basilica-di-SantAmbrogio-a-Milano-particolare-di-un-capitello-del-quadriportico-arte-svelata-2.jpg",
   "image_source": "commons",
   "committente_ids": [],
   "fonte_ids": [
@@ -8200,8 +8201,8 @@
    "trabeazione",
    "spolia"
   ],
-  "image_url": "https://imgs.search.brave.com/R8GhxbgHgHuWv8zH9kmangkP5NBI1zcHvv9Gp3kPvQM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9lYjNr/N2V3aW94by5leGFj/dGRuLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyMy8wMy9z/YW50YS1tYXJpYS1p/bi10cmFzdGV2ZXJl/LTMuanBnP3N0cmlw/PWFsbA",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Roma%20-%20Basilica%20di%20Santa%20Maria%20in%20Trastevere%2020231228-02.jpg?width=640",
+  "image_url": "https://eb3k7ewioxo.exactdn.com/wp-content/uploads/2023/03/santa-maria-in-trastevere-3.jpg?strip=all",
+  "image_thumb": "https://eb3k7ewioxo.exactdn.com/wp-content/uploads/2023/03/santa-maria-in-trastevere-3.jpg?strip=all",
   "image_source": "wikidata",
   "committente_ids": [
    "innocenzo-ii"
@@ -8526,8 +8527,8 @@
    "portale-strombato",
    "trumeau"
   ],
-  "image_url": "https://imgs.search.brave.com/iNx4EWrUnIBMYFmu92C2nlE5WIpWjjAXlonB-tYd_ME/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzgyL2M0/L2I0LzgyYzRiNDM2/MmZmMjA5ZGM4ZmFh/OWJjZDI1MjczMGI5/LmpwZw",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Cath%C3%A9drale_Autun_02.JPG/640px-Cath%C3%A9drale_Autun_02.JPG",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/01_Tympanum_Autun_Cathedral.png/960px-01_Tympanum_Autun_Cathedral.png",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/01_Tympanum_Autun_Cathedral.png/960px-01_Tympanum_Autun_Cathedral.png",
   "image_source": "en.wikipedia",
   "committente_ids": [
    "etienne-de-bage"
@@ -9385,8 +9386,8 @@
    "mosaico",
    "cupola"
   ],
-  "image_url": "https://imgs.search.brave.com/R6sW4EOKP5XbAmQwAP4O2zbplLp0QiGTWMu_ti-pBrE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/bW9zYWljLWluLWFz/Y2Vuc2lvbi1jdXBv/bGEtYmFzaWxpY2Et/b2Ytc3QtbWFyay12/ZW5pY2UtaXRhbHkt/djAtMDE3am1mNTdj/dXNlMS5qcGVnP3dp/ZHRoPTY0MCZjcm9w/PXNtYXJ0JmF1dG89/d2VicCZzPTMzZWE0/NjAyMTgzZDljNDI1/NWY0MGZkN2MxMWFh/ZjVjMTUzOTZiZjM",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Venezia_Basilica_di_San_Marco_Fassade_2.jpg/960px-Venezia_Basilica_di_San_Marco_Fassade_2.jpg",
+  "image_url": "https://preview.redd.it/mosaic-in-ascension-cupola-basilica-of-st-mark-venice-italy-v0-017jmf57cuse1.jpeg?width=640&crop=smart&auto=webp&s=33ea4602183d9c4255f40fd7c11aaf5c15396bf3",
+  "image_thumb": "https://preview.redd.it/mosaic-in-ascension-cupola-basilica-of-st-mark-venice-italy-v0-017jmf57cuse1.jpeg?width=640&crop=smart&auto=webp&s=33ea4602183d9c4255f40fd7c11aaf5c15396bf3",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -10112,8 +10113,8 @@
   "term_ids": [
    "mosaico"
   ],
-  "image_url": "https://imgs.search.brave.com/9w1bOQzcIWakuy0cOTtead2LWc_EDBXXmiafy3wAgx4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy82/LzYxL1ZlbmV6aWFf/QmFzaWxpY2FfZGlf/U2FuX01hcmNvX0Zh/c3NhZGVfMi5qcGc",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Cattedrale_di_Palermo._-_panoramio.jpg/960px-Cattedrale_di_Palermo._-_panoramio.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Unknown_artist_-_Agony_in_the_Garden_-_WGA16282.jpg/1280px-Unknown_artist_-_Agony_in_the_Garden_-_WGA16282.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Unknown_artist_-_Agony_in_the_Garden_-_WGA16282.jpg/1280px-Unknown_artist_-_Agony_in_the_Garden_-_WGA16282.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -11023,8 +11024,8 @@
    "mosaico",
    "cupola"
   ],
-  "image_url": "https://imgs.search.brave.com/cdp9tuOyOjS3CcPxPjnEiu4fzpX2tfDEBQU2azSCHuY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy82/LzZhL0Zsb3JlbmNl/X2JhcHRpc3Rlcnlf/Y2VpbGluZ19tb3Nh/aWNfNzI0N3B4Lmpw/Zw",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Venezia_Basilica_di_San_Marco_Fassade_2.jpg/960px-Venezia_Basilica_di_San_Marco_Fassade_2.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Unknown_artist_-_Cupola_of_Genesis_-_WGA16274.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Unknown_artist_-_Cupola_of_Genesis_-_WGA16274.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -11565,7 +11566,7 @@
    "monumento-equestre"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Bamberger_Reiter_BW_2.JPG/1920px-Bamberger_Reiter_BW_2.JPG?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Lucca_-_Cattedrale_di_San_Martino_01.JPG/960px-Lucca_-_Cattedrale_di_San_Martino_01.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Bamberger_Reiter_BW_2.JPG/1920px-Bamberger_Reiter_BW_2.JPG?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -11654,7 +11655,7 @@
    "statua-colonna"
   ],
   "image_url": "https://visionialdila.wordpress.com/wp-content/uploads/2020/01/1-il-portale-destro-della-facciata.jpg?w=748&h=997",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Nicasius_maryrdom_Louvre_OA6119.jpg/960px-Nicasius_maryrdom_Louvre_OA6119.jpg",
+  "image_thumb": "https://visionialdila.wordpress.com/wp-content/uploads/2020/01/1-il-portale-destro-della-facciata.jpg?w=748&h=997",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -13687,8 +13688,8 @@
    "gargolla",
    "crochet"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOJ9LedzViNKjd-JKaVmErjaSARJ0wJ3UYYtJkxwnECg&s=10",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Cattedrale_di_Palermo._-_panoramio.jpg/960px-Cattedrale_di_Palermo._-_panoramio.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Cathedrale_de_Sienne_%28Duomo_di_Siena%29.jpg/1280px-Cathedrale_de_Sienne_%28Duomo_di_Siena%29.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Cathedrale_de_Sienne_%28Duomo_di_Siena%29.jpg/1280px-Cathedrale_de_Sienne_%28Duomo_di_Siena%29.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "opera-del-duomo-siena"
@@ -16696,7 +16697,7 @@
    "affresco"
   ],
   "image_url": "https://www.firenze1903.it/wp-content/uploads/2017/10/Giotto_di_Bondone_060.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Cinque_maestri_del_rinascimento_fiorentino%2C_XVI_sec%2C_giotto.JPG/960px-Cinque_maestri_del_rinascimento_fiorentino%2C_XVI_sec%2C_giotto.JPG",
+  "image_thumb": "https://www.firenze1903.it/wp-content/uploads/2017/10/Giotto_di_Bondone_060.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -18090,7 +18091,7 @@
    "apocalisse"
   ],
   "image_url": "https://www.meisterdrucke.it/kunstwerke/1000px/Nicolas_Bataille_-_The_Beast_of_the_Sea_with_Seven_Heads_and_Ten_Crowns_no40_from_The_Apocalypse_of_-_(MeisterDrucke-266118).jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Tapisserie_de_l%27apocalypse.jpg/960px-Tapisserie_de_l%27apocalypse.jpg",
+  "image_thumb": "https://www.meisterdrucke.it/kunstwerke/1000px/Nicolas_Bataille_-_The_Beast_of_the_Sea_with_Seven_Heads_and_Ten_Crowns_no40_from_The_Apocalypse_of_-_(MeisterDrucke-266118).jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "luigi-i-dangio"
@@ -18275,7 +18276,7 @@
    "loggia"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Ciclo_dei_mesi_00.JPG?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/20110727_Trento_Buonconsiglio_Castle_6609.jpg/960px-20110727_Trento_Buonconsiglio_Castle_6609.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Ciclo_dei_mesi_00.JPG?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "giorgio-di-liechtenstein"
@@ -18319,7 +18320,7 @@
    "nudo-eroico"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Nanni_di_banco_%28attr.%29%2C_rilievo_con_ercole%2C_dalla_porta_della_mandorla%2C_1404-09%2C_01.JPG",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Porta_della_mandorla_02.JPG/640px-Porta_della_mandorla_02.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/1/14/Nanni_di_banco_%28attr.%29%2C_rilievo_con_ercole%2C_dalla_porta_della_mandorla%2C_1404-09%2C_01.JPG",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "opera-di-santa-maria-del-fiore"
@@ -18693,7 +18694,7 @@
    "annunciazione"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/78/Lorenzo_ghiberti_e_aiuti%2C_porta_nord_del_battistero_di_firenze%2C_cornici%2C_01_annunciazione.JPG?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Ghiberti.png/960px-Ghiberti.png",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/7/78/Lorenzo_ghiberti_e_aiuti%2C_porta_nord_del_battistero_di_firenze%2C_cornici%2C_01_annunciazione.JPG?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "arte-di-calimala"
@@ -18738,8 +18739,8 @@
    "formella",
    "colonna-corinzia"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3jOIjtgRACArgXukP1oCRfuvFHjX2jLIyquounG60xw&s=10",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Ghiberti.png/960px-Ghiberti.png",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Lorenzo_ghiberti_e_aiuti%2C_porta_nord_del_battistero_di_firenze%2C_15_flagellazione_2.jpg/1280px-Lorenzo_ghiberti_e_aiuti%2C_porta_nord_del_battistero_di_firenze%2C_15_flagellazione_2.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Lorenzo_ghiberti_e_aiuti%2C_porta_nord_del_battistero_di_firenze%2C_15_flagellazione_2.jpg/1280px-Lorenzo_ghiberti_e_aiuti%2C_porta_nord_del_battistero_di_firenze%2C_15_flagellazione_2.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "arte-di-calimala"
@@ -19868,8 +19869,8 @@
    "tamburo-ottagonale",
    "serraglio"
   ],
-  "image_url": "https://imgs.search.brave.com/eckbmmvktKPukgR_NJyHwv5GTq3nRWZlQSfTWaXHZ8Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9m/L2YxL0N1cG9sYV9k/aV9zYW50YV9tYXJp/YV9kZWxfZmlvcmVf/ZGFsX2NhbXBhbmls/ZV9kaV9naW90dG8s/XzAzLkpQRw",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Florence%20Duomo%20from%20Michelangelo%20hill.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Cupola_di_santa_maria_del_fiore_dal_campanile_di_giotto%2C_03.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Cupola_di_santa_maria_del_fiore_dal_campanile_di_giotto%2C_03.JPG",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "opera-di-santa-maria-del-fiore"
@@ -19916,8 +19917,8 @@
    "libro-dore",
    "iconografia-morte"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTsLPJyAw6KThcVoei2TV7ldfhDcL36DkkO15O9E4NNQ&s=10",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Michelangelo_Daniele_da_Volterra_%28dettaglio%29.jpg/960px-Michelangelo_Daniele_da_Volterra_%28dettaglio%29.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Le_Mort_devant_son_juge%2C_Maitre_de_Rohan.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Le_Mort_devant_son_juge%2C_Maitre_de_Rohan.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "yolanda-daragona"
@@ -20951,7 +20952,7 @@
    "architettura-scorciata"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Gentile_da_Fabriano_062.jpg/250px-Gentile_da_Fabriano_062.jpg?utm_source=it.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/5/52/GentileFabriano.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Gentile_da_Fabriano_062.jpg/250px-Gentile_da_Fabriano_062.jpg?utm_source=it.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "famiglia-quaratesi"
@@ -21084,7 +21085,7 @@
    "lunetta"
   ],
   "image_url": "https://www.altravistastudio.it/wp-content/uploads/2015/11/Portale-Maggiore.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/La_Chiesa_di_S._Francesco_e_le_tombe_dei_glossatori_in_Bologna_-_ristauri_dall%27anno_MDCCCLXXXVI_al_MDCCCIC_-_note_storiche_ed_illustrative_%28IA_lachiesadisfranc00rubb%29.pdf/page1-960px-thumbnail.pdf.jpg",
+  "image_thumb": "https://www.altravistastudio.it/wp-content/uploads/2015/11/Portale-Maggiore.jpg",
   "image_source": "commons",
   "committente_ids": [
    "fabbriceria-san-petronio-bologna"
@@ -21127,8 +21128,8 @@
    "formella",
    "architettura-prospettica"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnX81IHeLhzg8MI1k4BkrFSiVpRIE4mVrd2KBAQVMnkw9aR0Ha_xqfMf0&s=10",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Lorenzo_ghiberti%2C_porta_del_paradiso%2C_1425-52%2C_00.JPG/960px-Lorenzo_ghiberti%2C_porta_del_paradiso%2C_1425-52%2C_00.JPG",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Lorenzo_ghiberti%2C_porta_del_paradiso%2C_1425-52%2C_06_giuseppe_%28cropped%29.JPG/1280px-Lorenzo_ghiberti%2C_porta_del_paradiso%2C_1425-52%2C_06_giuseppe_%28cropped%29.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Lorenzo_ghiberti%2C_porta_del_paradiso%2C_1425-52%2C_06_giuseppe_%28cropped%29.JPG/1280px-Lorenzo_ghiberti%2C_porta_del_paradiso%2C_1425-52%2C_06_giuseppe_%28cropped%29.JPG",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "arte-di-calimala"
@@ -21585,7 +21586,7 @@
    "gotico-cortese"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Masolino%2C_santa_caterina_e_i_filosofi_di_alessandria%2C_san_clemente_roma.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3a/038_le_vite%2C_masolino_da_panicale.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Masolino%2C_santa_caterina_e_i_filosofi_di_alessandria%2C_san_clemente_roma.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail_unscaled",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "branda-castiglioni"
@@ -22344,7 +22345,7 @@
   "innovations": [],
   "term_ids": [],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/CdM%2C_presunto_autoritratto_di_leon_battista_alberti.jpg/250px-CdM%2C_presunto_autoritratto_di_leon_battista_alberti.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/CdM%2C_presunto_autoritratto_di_leon_battista_alberti.jpg/640px-CdM%2C_presunto_autoritratto_di_leon_battista_alberti.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/CdM%2C_presunto_autoritratto_di_leon_battista_alberti.jpg/250px-CdM%2C_presunto_autoritratto_di_leon_battista_alberti.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -22564,7 +22565,7 @@
    "cappella-laterale"
   ],
   "image_url": "https://www.basilicasantospirito.it/wp-content/uploads/2020/02/IMG_20200106_114806.jpeg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Chiesa%20Santo%20Spirito%2C%20Firenze.jpg?width=640",
+  "image_thumb": "https://www.basilicasantospirito.it/wp-content/uploads/2020/02/IMG_20200106_114806.jpeg",
   "image_source": "wikidata",
   "committente_ids": [],
   "fonte_ids": [
@@ -22732,8 +22733,8 @@
   "term_ids": [
    "lanterna"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRppHLUMUJxcXx--bhF03HSMssuCKFEZECeDjxC4xzjtw&s=10",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Florence%20Duomo%20from%20Michelangelo%20hill.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Filippo_brunelleschi_%28attr.%29%2C_modello_architettonico_della_lanterna_della_cupola%2C_1430-46.JPG/1280px-Filippo_brunelleschi_%28attr.%29%2C_modello_architettonico_della_lanterna_della_cupola%2C_1430-46.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Filippo_brunelleschi_%28attr.%29%2C_modello_architettonico_della_lanterna_della_cupola%2C_1430-46.JPG/1280px-Filippo_brunelleschi_%28attr.%29%2C_modello_architettonico_della_lanterna_della_cupola%2C_1430-46.JPG",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "opera-di-santa-maria-del-fiore"
@@ -22957,7 +22958,7 @@
    "composizione-simmetrica"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Entombment_of_Christ_%28Fra_Angelico%29.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Beato%20angelico%20e%20lorenzo%20monaco%2C%20pala%20di%20santa%20trinita%20%28deposizione%20e%20santi%29%2C%20ante%201432%2C%2001.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Entombment_of_Christ_%28Fra_Angelico%29.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "cosimo-de-medici"
@@ -23140,8 +23141,8 @@
    "sinopia",
    "composizione-paratattica"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU_CwSBaMtRYU0pytLLKNbU1_P_gg8_8U92Hp60FE6P8-44kTAmd1xemIE&s=10",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Pisanello%2C%20storie%20del%20ciclo%20bretone%20di%20lancillotto%2C%201436-42%20circa%2C%2002.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Pisanello%2C_torneo-battaglia_di_liuverzep_001.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/d/db/Pisanello%2C_torneo-battaglia_di_liuverzep_001.jpg",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "gianfrancesco-gonzaga"
@@ -23323,7 +23324,7 @@
    "architettura-scenografica"
   ],
   "image_url": "https://www.guidecampania.com/dellaragione/articolo96/4-02-Leonardo%20da%20Besozzo-Nascita%20di%20Maria.JPG",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Mystic_m.jpg/960px-Mystic_m.jpg",
+  "image_thumb": "https://www.guidecampania.com/dellaragione/articolo96/4-02-Leonardo%20da%20Besozzo-Nascita%20di%20Maria.JPG",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -23774,7 +23775,7 @@
    "azzurrite"
   ],
   "image_url": "https://www.storiadimilano.it/arte/giochiborromeo/palla1_small.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Basque_pelota_pictogram.svg/960px-Basque_pelota_pictogram.svg.png",
+  "image_thumb": "https://www.storiadimilano.it/arte/giochiborromeo/palla1_small.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "vitaliano-i-borromeo"
@@ -23817,7 +23818,7 @@
    "predella"
   ],
   "image_url": "https://cdn.finestresullarte.info/rivista/immagini/2023/2228/domenico-veneziano-miracolo-di-san-zanobi.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Andrea_della_robbia%2C_san_zanobi_tra_due_angeli%2C_1496.JPG/960px-Andrea_della_robbia%2C_san_zanobi_tra_due_angeli%2C_1496.JPG",
+  "image_thumb": "https://cdn.finestresullarte.info/rivista/immagini/2023/2228/domenico-veneziano-miracolo-di-san-zanobi.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -24475,7 +24476,7 @@
    "paesaggio-alla-fiamminga"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Rogier_van_der_Weyden_013.1.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/The_Magdalen_Reading_-_Rogier_van_der_Weyden.jpg/960px-The_Magdalen_Reading_-_Rogier_van_der_Weyden.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/6/69/Rogier_van_der_Weyden_013.1.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "cosimo-de-medici"
@@ -25579,7 +25580,7 @@
    "scarsella"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Cappella_dei_magi%2C_angeli_in_adorazione_sx_%28cropped%29.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Altar%20wall%2C%20Chapel%20of%20the%20Magi%2C%20Florence..jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Cappella_dei_magi%2C_angeli_in_adorazione_sx_%28cropped%29.jpg",
   "image_source": "commons",
   "committente_ids": [
    "piero-il-gottoso"
@@ -25761,7 +25762,7 @@
    "pala-d-altare"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Fra_Filippo_Lippi_-_The_Adoration_in_the_Forest_-_Google_Art_Project.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Lippi%2C%20adorazione%20di%20annalena.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Fra_Filippo_Lippi_-_The_Adoration_in_the_Forest_-_Google_Art_Project.jpg",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "piero-il-gottoso"
@@ -25891,7 +25892,7 @@
    "medaglione"
   ],
   "image_url": "https://live.staticflickr.com/345/18702969341_6dec7e794e_z.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Cappella_del_cardinale_di_portogallo_01.JPG/640px-Cappella_del_cardinale_di_portogallo_01.JPG",
+  "image_thumb": "https://live.staticflickr.com/345/18702969341_6dec7e794e_z.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "giacomo-di-lusitania"
@@ -25981,7 +25982,7 @@
    "virtu-cardinali"
   ],
   "image_url": "https://www.ilgiornaledellarte.com/Uploads/Articles/images/2021/10/IMG20211011132957117_1000.jpeg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Milan_Cathedral_from_Piazza_del_Duomo.jpg/960px-Milan_Cathedral_from_Piazza_del_Duomo.jpg",
+  "image_thumb": "https://www.ilgiornaledellarte.com/Uploads/Articles/images/2021/10/IMG20211011132957117_1000.jpeg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "giacomo-di-lusitania"
@@ -26025,7 +26026,7 @@
    "trattato-di-architettura"
   ],
   "image_url": "https://i.pinimg.com/736x/9f/b9/5a/9fb95af00cf60fae385fa7f57c0206ef.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Filarete%2C_trattato_di_architettura_01.jpg",
+  "image_thumb": "https://i.pinimg.com/736x/9f/b9/5a/9fb95af00cf60fae385fa7f57c0206ef.jpg",
   "image_source": "commons",
   "committente_ids": [
    "francesco-sforza"
@@ -26074,7 +26075,7 @@
    "trattato-di-architettura"
   ],
   "image_url": "https://pbs.twimg.com/media/GKI2OtsW4AAeecE.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Il_filarete%2C_autoritratto%2C_recto_160_ca.JPG/960px-Il_filarete%2C_autoritratto%2C_recto_160_ca.JPG",
+  "image_thumb": "https://pbs.twimg.com/media/GKI2OtsW4AAeecE.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "francesco-sforza"
@@ -26217,7 +26218,7 @@
    "prospettiva-albertiana"
   ],
   "image_url": "https://www.meisterdrucke.it/kunstwerke/1260px/Vincenzo_Foppa_-_The_miracle_of_the_cloud_-_%28MeisterDrucke-1052868%29.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f3/BookOfDurrowBeginMarkGospel.jpg",
+  "image_thumb": "https://www.meisterdrucke.it/kunstwerke/1260px/Vincenzo_Foppa_-_The_miracle_of_the_cloud_-_%28MeisterDrucke-1052868%29.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "pigello-portinari"
@@ -26259,8 +26260,8 @@
    "affresco",
    "ciclo-narrativo"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnXdSsa42KtYuFk9F2BifwLaUF76gHGmv4WJ7Ki37ztP7g0kQGxNL223_A&s=10",
-  "image_thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnXdSsa42KtYuFk9F2BifwLaUF76gHGmv4WJ7Ki37ztP7g0kQGxNL223_A&s=10",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Vincenzo_foppa%2C_cappella_poritnari%2C_miracolo_della_falsa_madonna.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/7/77/Vincenzo_foppa%2C_cappella_poritnari%2C_miracolo_della_falsa_madonna.jpg",
   "image_source": "commons",
   "committente_ids": [
    "pigello-portinari"
@@ -26349,7 +26350,7 @@
    "punto-di-vista-ribassato"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Pulpito_della_Resurrezione%2C_Martirio_di_San_Lorenzo.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Basilica_di_san_lorenzo_33.JPG/960px-Basilica_di_san_lorenzo_33.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Pulpito_della_Resurrezione%2C_Martirio_di_San_Lorenzo.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "cosimo-de-medici"
@@ -26447,8 +26448,8 @@
    "rampa-elicoidale",
    "loggia"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOzURhnwx37CdKI84T0-wKX_SMBELwNm1FcMl3ePiiGDu1FCJan-Nfk4M&s=10",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Paolo%20Monti%20-%20Servizio%20fotografico%20%28Fossombrone%2C%201981%29%20-%20BEIC%206354208.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Urbino%2C_palazzo_ducale%2C_facciata_dei_torricini_01.jpg/1280px-Urbino%2C_palazzo_ducale%2C_facciata_dei_torricini_01.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Urbino%2C_palazzo_ducale%2C_facciata_dei_torricini_01.jpg/1280px-Urbino%2C_palazzo_ducale%2C_facciata_dei_torricini_01.jpg",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "federico-da-montefeltro"
@@ -26680,7 +26681,7 @@
    "tre-quarti"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Petrus_Christus%2C_Portrait_of_a_young_girl.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Parmigianino%20-%20Portrait%20of%20a%20young%20woman%20called%20Antea.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Petrus_Christus%2C_Portrait_of_a_young_girl.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "wikidata-alt",
   "committente_ids": [],
   "fonte_ids": [
@@ -26920,8 +26921,8 @@
    "arco-trionfale",
    "monumento-funebre"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoFifegi2GpjW4Kz2yo8XBsHASAa1CUq83LQVXVbCX0_npX2NInrBaxaP9&s=10",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Bergamo%2C_Cappella_Colleoni_2021.jpg/960px-Bergamo%2C_Cappella_Colleoni_2021.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/CappellaColleoni5a.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/5/5d/CappellaColleoni5a.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "bartolomeo-colleoni"
@@ -27755,8 +27756,8 @@
    "rampa-elicoidale",
    "torrione"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEEIJEeOumAM7sUCwgAR29XpjKjT0HLECXdfCKaDkvfw_r9b8R8AINrsKi&s=10",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Torrione%20-%20Montegridolfo%202.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Urbino%2C_rampa_elicoidale.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Urbino%2C_rampa_elicoidale.jpg",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "federico-da-montefeltro"
@@ -28227,7 +28228,7 @@
    "ciclo-narrativo-biblico"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Pietro_Perugino_-_Baptism_of_Christ_-_Sistine_Chapel_-_cat13a.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Descrizione_completa_delle_Gallerie_di_pittura_nel_Pontificio_Palazzo_Vaticano_%28IA_descrizionecompl00vati%29.pdf/page1-500px-Descrizione_completa_delle_Gallerie_di_pittura_nel_Pontificio_Palazzo_Vaticano_%28IA_descrizionecompl00vati%29.pdf.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/3/33/Pietro_Perugino_-_Baptism_of_Christ_-_Sistine_Chapel_-_cat13a.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "commons",
   "committente_ids": [],
   "fonte_ids": [
@@ -28898,7 +28899,7 @@
   "innovations": [],
   "term_ids": [],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Bramantino_-_The_Adoration%2C_c._1485.jpg/1280px-Bramantino_-_The_Adoration%2C_c._1485.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20240115095415",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Bramantino%20-%20The%20Adoration%2C%20c.%201485.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Bramantino_-_The_Adoration%2C_c._1485.jpg/1280px-Bramantino_-_The_Adoration%2C_c._1485.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20240115095415",
   "image_source": "wikidata",
   "committente_ids": [],
   "fonte_ids": [
@@ -29030,7 +29031,7 @@
    "baldacchino"
   ],
   "image_url": "https://www.cassiciaco.it/navigazione/iconografia/pittori/quattrocento/pacher/images/pacher_pala.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Antonio%20vivarini%2C%20trittico%20dell%27accademia%2001.jpg?width=640",
+  "image_thumb": "https://www.cassiciaco.it/navigazione/iconografia/pittori/quattrocento/pacher/images/pacher_pala.jpg",
   "image_source": "wikidata-alt",
   "committente_ids": [
    "abbazia-agostiniana-novacella"
@@ -29271,7 +29272,7 @@
    "disegno-preparatorio"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Study_for_the_Sforza_Monument.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Leonardo%20da%20vinci%2C%20Manuscript%20page%20on%20the%20Sforza%20monument.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Study_for_the_Sforza_Monument.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "commons",
   "committente_ids": [
    "ludovico-il-moro"
@@ -29361,8 +29362,8 @@
    "affresco",
    "illusionismo"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy-vB0ESloNlVzzrpHgNnO89gTqAf1ygwXmOeTkHE46A&s=10",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bramante%2C_uomo_dall%27alabarda%2C_1486-87_brera.JPG/640px-Bramante%2C_uomo_dall%27alabarda%2C_1486-87_brera.JPG",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bramante%2C_uomo_dall%27alabarda%2C_1486-87_brera.JPG/1280px-Bramante%2C_uomo_dall%27alabarda%2C_1486-87_brera.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bramante%2C_uomo_dall%27alabarda%2C_1486-87_brera.JPG/1280px-Bramante%2C_uomo_dall%27alabarda%2C_1486-87_brera.JPG",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "gaspare-visconti"
@@ -29405,7 +29406,7 @@
    "composizione-simmetrica"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/01/Gian_Galeazzo_dona_alla_Madonna_la_Certosa.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Certosa_di_Pavia_29_%28cropped%29.jpg/960px-Certosa_di_Pavia_29_%28cropped%29.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/0/01/Gian_Galeazzo_dona_alla_Madonna_la_Certosa.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -29540,7 +29541,7 @@
    "planimetria"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Musei_civici_pavia33.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Duomo_di_pavia.jpg/960px-Duomo_di_pavia.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Musei_civici_pavia33.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "ascanio-sforza"
@@ -29720,8 +29721,8 @@
   "term_ids": [
    "espressivita-formale"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9S5xKA_O9qi3PANUEAOICOjStapvxn_TEbZ0mysxI4Q&s=10",
-  "image_thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9S5xKA_O9qi3PANUEAOICOjStapvxn_TEbZ0mysxI4Q&s=10",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Bramantino%2C_cristo_risorto%2C_1490_ca._01.jpg/1280px-Bramantino%2C_cristo_risorto%2C_1490_ca._01.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Bramantino%2C_cristo_risorto%2C_1490_ca._01.jpg/1280px-Bramantino%2C_cristo_risorto%2C_1490_ca._01.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "image_gallery": [],
@@ -29942,7 +29943,7 @@
    "tema-devozionale"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Sandro_Botticelli_016.jpg/960px-Sandro_Botticelli_016.jpg?utm_source=it.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Botticelli%2C%20compianto%20di%20milano.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Sandro_Botticelli_016.jpg/960px-Sandro_Botticelli_016.jpg?utm_source=it.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
   "image_source": "wikidata-artista",
   "committente_ids": [],
   "fonte_ids": [
@@ -29984,7 +29985,7 @@
    "programma-iconografico-papale"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Borgia_Apartment_002.jpeg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/2/29/Pinturicchio_self_%E2%80%93_detail_edited.png",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Borgia_Apartment_002.jpeg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "alessandro-vi-borgia"
@@ -30128,7 +30129,7 @@
    "virtu-teologali"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Monument_to_Innocentius_VIII_in_Saint_Peter%27s_Basilica.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/San_pietro_in_vincoli%2C_monumento_ai_fratelli_del_pollaiolo%2C_di_luigi_capponi%2C_antonio.JPG/960px-San_pietro_in_vincoli%2C_monumento_ai_fratelli_del_pollaiolo%2C_di_luigi_capponi%2C_antonio.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/8/82/Monument_to_Innocentius_VIII_in_Saint_Peter%27s_Basilica.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "lorenzo-cybo-de-mari"
@@ -30946,8 +30947,8 @@
    "parasta",
    "arco-a-tutto-sesto"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjNbae8wY0qSvWlVo0UfoysE-j9n40L0kIhPX1WzoClQ&s=10",
-  "image_thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjNbae8wY0qSvWlVo0UfoysE-j9n40L0kIhPX1WzoClQ&s=10",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Santa_maria_della_pace%2C_chiostro_del_bramante_01.JPG/1280px-Santa_maria_della_pace%2C_chiostro_del_bramante_01.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Santa_maria_della_pace%2C_chiostro_del_bramante_01.JPG/1280px-Santa_maria_della_pace%2C_chiostro_del_bramante_01.JPG",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "oliviero-carafa"
@@ -31032,7 +31033,7 @@
    "prospettiva-aerea"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Giovanni_Antonio_Boltraffio_-_Virgin_and_Child_with_Sts_John_the_Baptist_and_Sebastian_%28Pala_Casio%29_-_WGA2384.jpg/960px-Giovanni_Antonio_Boltraffio_-_Virgin_and_Child_with_Sts_John_the_Baptist_and_Sebastian_%28Pala_Casio%29_-_WGA2384.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Giovanni%20Antonio%20Boltraffio%20-%20Virgin%20and%20Child%20-%20WGA2391.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Giovanni_Antonio_Boltraffio_-_Virgin_and_Child_with_Sts_John_the_Baptist_and_Sebastian_%28Pala_Casio%29_-_WGA2384.jpg/960px-Giovanni_Antonio_Boltraffio_-_Virgin_and_Child_with_Sts_John_the_Baptist_and_Sebastian_%28Pala_Casio%29_-_WGA2384.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "girolamo-casio"
@@ -31300,7 +31301,7 @@
    "cupola"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Tempietto_di_San_Pietro_in_Montorio.jpg/960px-Tempietto_di_San_Pietro_in_Montorio.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/3/35/Donato_Bramante.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Tempietto_di_San_Pietro_in_Montorio.jpg/960px-Tempietto_di_San_Pietro_in_Montorio.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
   "image_source": "en.wikipedia",
   "committente_ids": [
    "re-cattolici-di-spagna"
@@ -31585,8 +31586,8 @@
    "non-finito",
    "tondo"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDI24Zr9RK28485w85h_ZWpHg2QX6GLI3SP7tUWLL-Ew&s=10",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Baccio%20bandinelli%2C%20san%20giovanni%20battista%2C%20forse%20copia%20da%20michelangelo%2C%20louvre2.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Michelangelo_Tondo_Pitti%2C_Bargello.jpg/1280px-Michelangelo_Tondo_Pitti%2C_Bargello.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Michelangelo_Tondo_Pitti%2C_Bargello.jpg/1280px-Michelangelo_Tondo_Pitti%2C_Bargello.jpg",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "bartolomeo-pitti"
@@ -31628,8 +31629,8 @@
    "non-finito",
    "tondo"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3t42zsdIMBcl1TLrASMWUsB2f1Gsc1IwxBb-oKTVrYQ&s=10",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Baccio%20bandinelli%2C%20san%20giovanni%20battista%2C%20forse%20copia%20da%20michelangelo%2C%20louvre2.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Taddei_Tondo.JPG/1280px-Taddei_Tondo.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Taddei_Tondo.JPG/1280px-Taddei_Tondo.JPG",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "taddeo-taddei"
@@ -32405,7 +32406,7 @@
    "impostazione-piramidale"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Raphael_-_Madonna_in_the_Meadow_-_Google_Art_Project.jpg/1920px-Raphael_-_Madonna_in_the_Meadow_-_Google_Art_Project.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/John%20the%20Baptist%20in%20the%20wilderness%20%28by%20Raffaello%20Sanzio%29%20%E2%80%93%20Tribuna%20degli%20Uffizi%2C%20Florence.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Raphael_-_Madonna_in_the_Meadow_-_Google_Art_Project.jpg/1920px-Raphael_-_Madonna_in_the_Meadow_-_Google_Art_Project.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "image_source": "wikidata-artista",
   "committente_ids": [],
   "fonte_ids": [
@@ -32753,7 +32754,7 @@
    "affresco"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Tiziano%2C_giustizia.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Fondaco_dei_Tedeschi_2012-05-13.jpg/960px-Fondaco_dei_Tedeschi_2012-05-13.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Tiziano%2C_giustizia.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -33132,7 +33133,7 @@
    "pittura-tonale"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Fiesta_campestre.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Tiziano%20Vecellio%20%28Pieve%20di%20Cadore%201490%20ca%20-%20Venezia%201576%29%20-%20Il%20Concerto%20-%20185%20-%20Galleria%20Palatina.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/6/61/Fiesta_campestre.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "wikidata-artista",
   "committente_ids": [],
   "fonte_ids": [
@@ -33322,7 +33323,7 @@
    "incisione"
   ],
   "image_url": "https://www.calcografica.it/stampe/server/files/S-FC93158.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Christus%20als%20Man%20van%20Smarten%2C%20bespot%20door%20een%20soldaat%20Passio%20domini%20nostri%20Jesu%20%28..%29%20%28titel%20op%20object%29%20De%20grote%20Passie%20%28serietitel%29%2C%20RP-P-OB-1293.jpg?width=640",
+  "image_thumb": "https://www.calcografica.it/stampe/server/files/S-FC93158.jpg",
   "image_source": "wikidata-artista",
   "committente_ids": [],
   "fonte_ids": [
@@ -33410,7 +33411,7 @@
    "ritratto"
   ],
   "image_url": "https://www.quotidianopiemontese.it/wp-content/uploads/2022/04/1280px-Titian_-_Portrait_of_a_man_with_a_quilted_sleeve-e1651079588617.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Tizian%20-%20Bildnis%20eines%20jungen%20Mannes%20-%20517%20-%20Bavarian%20State%20Painting%20Collections.jpg?width=640",
+  "image_thumb": "https://www.quotidianopiemontese.it/wp-content/uploads/2022/04/1280px-Titian_-_Portrait_of_a_man_with_a_quilted_sleeve-e1651079588617.jpg",
   "image_source": "wikidata",
   "committente_ids": [],
   "fonte_ids": [
@@ -33456,7 +33457,7 @@
    "prospettiva-aerea"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/L%C3%A9onard_de_Vinci%2C_sainte_Anne%2C_Louvre.jpg/1920px-L%C3%A9onard_de_Vinci%2C_sainte_Anne%2C_Louvre.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Leonardo%20da%20Vinci%20-%20Sainte%20Anne%2C%20la%20Vierge%20et%20l%27Enfant%2C%20RF%20460%2C%20Recto.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/L%C3%A9onard_de_Vinci%2C_sainte_Anne%2C_Louvre.jpg/1920px-L%C3%A9onard_de_Vinci%2C_sainte_Anne%2C_Louvre.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "image_source": "wikidata-artista",
   "committente_ids": [],
   "fonte_ids": [
@@ -33496,8 +33497,8 @@
    "disegno-preparatorio",
    "disegno"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnq3E1mTUQbERN7ZY00fIMqVWDph_gEw2DS8nbJEJ2siAhgPFpvlSCidVP&s=10",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/2/28/Leonardo_da_vinci%2C_Studies_of_Leda_and_a_horse.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/92/Leonardo_da_vinci%2C_Head_of_Leda.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/9/92/Leonardo_da_vinci%2C_Head_of_Leda.jpg",
   "image_source": "commons",
   "committente_ids": [],
   "fonte_ids": [
@@ -33636,7 +33637,7 @@
    "scorcio-prospettico"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Tiziano%2C_The_Miracle_of_the_Jealous_Husband.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Tizian%20023.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Tiziano%2C_The_Miracle_of_the_Jealous_Husband.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "wikidata",
   "committente_ids": [
    "scuola-del-santo-padova"
@@ -34136,8 +34137,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAEnRzLJS5Giz-Y3JQAFBc4tYVMIpmncRhi8L5N0iSWQ&s=10",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Style%20of%20Niccol%C3%B2%20Fiorentino%2C%20Lorenzo%20de%27%20Medici%2C%20il%20Magnifico%2C%201449-1492%2C%20c.%201485-1500%2C%20NGA%2044817.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Lorenzo_de%27_Medici_Washington.jpg/1280px-Lorenzo_de%27_Medici_Washington.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Lorenzo_de%27_Medici_Washington.jpg/1280px-Lorenzo_de%27_Medici_Washington.jpg",
   "image_source": "commons",
   "committente_ids": [],
   "fonte_ids": [
@@ -35344,7 +35345,7 @@
    "pergolato"
   ],
   "image_url": "https://www.foliamagazine.it/wp-content/uploads/2013/05/Villa-Farnesina-Loggia-di-Amore-e-Psiche-739x1024.jpg",
-  "image_thumb": "https://www.progettostoriadellarte.it/wp-content/uploads/2020/05/3%C2%B0-1.jpg",
+  "image_thumb": "https://www.foliamagazine.it/wp-content/uploads/2013/05/Villa-Farnesina-Loggia-di-Amore-e-Psiche-739x1024.jpg",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "agostino-chigi"
@@ -35392,7 +35393,7 @@
    "pala-d-altare"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/24/Andrea_del_Sarto_-_Madonna_of_the_Harpies_-_WGA00370.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Andrea%20del%20Sarto%20-%20Madonna%20of%20the%20Harpies%201517%20in%20Azerbaijan%20National%20Art%20Museum.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/2/24/Andrea_del_Sarto_-_Madonna_of_the_Harpies_-_WGA00370.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "monastero-san-francesco-dei-macci"
@@ -35710,7 +35711,7 @@
    "contrapposto"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Pala_Pucci.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Casa_vasari_FI%2C_salone%2C_ritratti_a%2C_rosso_fiorentino_frontal_view.jpg/960px-Casa_vasari_FI%2C_salone%2C_ritratti_a%2C_rosso_fiorentino_frontal_view.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/4/49/Pala_Pucci.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "francesco-pucci"
@@ -35756,7 +35757,7 @@
    "sacra-conversazione"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Rosso_Fiorentino_-_Spedalingo_Altarpiece_-_Google_Art_Project.jpg/1280px-Rosso_Fiorentino_-_Spedalingo_Altarpiece_-_Google_Art_Project.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Rosso%2C%20pala%20dei.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Rosso_Fiorentino_-_Spedalingo_Altarpiece_-_Google_Art_Project.jpg/1280px-Rosso_Fiorentino_-_Spedalingo_Altarpiece_-_Google_Art_Project.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "leonardo-buonafede"
@@ -35985,7 +35986,7 @@
    "espressivita-formale"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Golgotha-Il_Pordenone-Cremona_Cathedral.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/15th-century%20unknown%20painters%20-%20Crucifixion%20-%20WGA23564.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Golgotha-Il_Pordenone-Cremona_Cathedral.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "wikidata-alt",
   "committente_ids": [],
   "fonte_ids": [
@@ -36316,7 +36317,7 @@
   "innovations": [],
   "term_ids": [],
   "image_url": "https://www.artericerca.com/artisti_italiani_cinquecento/Girolamo%20di%20Romano%20detto%20il%20Romanino/Romanino_Messa%20di%20San%20Gregorio_San%20Giovanni%20Evangelista_1521-24.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/1/17/Lattanzio_Gambrara_Portrait_romanino_Budapest.jpg",
+  "image_thumb": "https://www.artericerca.com/artisti_italiani_cinquecento/Girolamo%20di%20Romano%20detto%20il%20Romanino/Romanino_Messa%20di%20San%20Gregorio_San%20Giovanni%20Evangelista_1521-24.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "confraternita-santissimo-sacramento-brescia"
@@ -36608,7 +36609,7 @@
    "affresco"
   ],
   "image_url": "https://www.culturacattolica.it/cm-files/img/2017/04/13/336-o.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Lotto_Lorenzo_%28attributed%29_presumably_self_portrait_31862-p.jpg/960px-Lotto_Lorenzo_%28attributed%29_presumably_self_portrait_31862-p.jpg",
+  "image_thumb": "https://www.culturacattolica.it/cm-files/img/2017/04/13/336-o.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "giovan-battista-suardi"
@@ -36781,7 +36782,7 @@
    "affresco"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Palazzo_te%2C_loggia_di_david%2C_10.jpg/1920px-Palazzo_te%2C_loggia_di_david%2C_10.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Palazzo%20te%2C%20loggia%20di%20david%2003.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Palazzo_te%2C_loggia_di_david%2C_10.jpg/1920px-Palazzo_te%2C_loggia_di_david%2C_10.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "federico-ii-gonzaga"
@@ -36831,8 +36832,8 @@
    "triglifi",
    "anticlassicismo"
   ],
-  "image_url": "https://imgs.search.brave.com/XHslmMH9SV5i0DwYB6yp0ygq4CQ87qnJrpKE-pafdjs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9m/L2Y0L1BhbGF6em9f/VGVfTWFudG92YV80/LmpwZw",
-  "image_thumb": "https://imgs.search.brave.com/XHslmMH9SV5i0DwYB6yp0ygq4CQ87qnJrpKE-pafdjs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9m/L2Y0L1BhbGF6em9f/VGVfTWFudG92YV80/LmpwZw",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Palazzo_Te_Mantova_4.jpg/1280px-Palazzo_Te_Mantova_4.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Palazzo_Te_Mantova_4.jpg/1280px-Palazzo_Te_Mantova_4.jpg",
   "image_source": "wikidata",
   "committente_ids": [
    "federico-ii-gonzaga"
@@ -37159,7 +37160,7 @@
   "innovations": [],
   "term_ids": [],
   "image_url": "https://upload.wikimedia.org/wikipedia/it/1/16/Michelangelo%2C_madonna_medici.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/La%20Madonna%20che%20Allatta%20il%20Figlio%20-%20Michelangelo%20Buonarroti.png?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/it/1/16/Michelangelo%2C_madonna_medici.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "clemente-vii-de-medici"
@@ -37442,7 +37443,7 @@
    "pieta"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Rosso_Fiorentino-Deposizione_di_Cristo.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Piet%C3%A0%20du%20Ch%C3%A2teau%20d%27Ecouen.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Rosso_Fiorentino-Deposizione_di_Cristo.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "wikidata",
   "committente_ids": [],
   "fonte_ids": [
@@ -37774,7 +37775,7 @@
    "mitologia"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Antonio_Allegri%2C_called_Correggio_-_The_Abduction_of_Ganymede_-_Google_Art_Project.jpg/250px-Antonio_Allegri%2C_called_Correggio_-_The_Abduction_of_Ganymede_-_Google_Art_Project.jpg?utm_source=it.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Correggio%2C_duomo_di_parma%2C_dettaglio_1.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Antonio_Allegri%2C_called_Correggio_-_The_Abduction_of_Ganymede_-_Google_Art_Project.jpg/250px-Antonio_Allegri%2C_called_Correggio_-_The_Abduction_of_Ganymede_-_Google_Art_Project.jpg?utm_source=it.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "federico-ii-gonzaga"
@@ -37872,7 +37873,7 @@
    "stile-espressivo"
   ],
   "image_url": "https://www.lombardiabeniculturali.it/assets/immagini/liv2/OA310RL/SC/OA/D0090/00/OA_D0090-00092_IMG-0000160905.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Romanino%2C%20cena%20in%20casa%20del%20fariseo%2C%20san%20giovanni%20evangelista%2C%20brescia.jpg?width=640",
+  "image_thumb": "https://www.lombardiabeniculturali.it/assets/immagini/liv2/OA310RL/SC/OA/D0090/00/OA_D0090-00092_IMG-0000160905.jpg",
   "image_source": "wikidata",
   "committente_ids": [],
   "fonte_ids": [
@@ -38041,7 +38042,7 @@
    "luce-fredda"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Lorenzo_Lotto_066.jpg/500px-Lorenzo_Lotto_066.jpg?utm_source=it.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Veronese%20-%20The%20Annunciation%2C%201583.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Lorenzo_Lotto_066.jpg/500px-Lorenzo_Lotto_066.jpg?utm_source=it.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
   "image_source": "wikidata",
   "committente_ids": [],
   "fonte_ids": [
@@ -38281,8 +38282,8 @@
    "cordonata",
    "pianta-centrale"
   ],
-  "image_url": "https://i.pinimg.com/736x/07/ea/83/07ea833b57a1cc70b220f8c6d6e62877.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Michelangelo_Daniele_da_Volterra_%28dettaglio%29.jpg/960px-Michelangelo_Daniele_da_Volterra_%28dettaglio%29.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Piazza_del_Campidoglio_%287848994650%29.jpg/1280px-Piazza_del_Campidoglio_%287848994650%29.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Piazza_del_Campidoglio_%287848994650%29.jpg/1280px-Piazza_del_Campidoglio_%287848994650%29.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "paolo-iii-farnese"
@@ -38325,7 +38326,7 @@
    "ritratto-di-corte"
   ],
   "image_url": "https://catalogo.fondazionezeri.unibo.it/foto/120000/86000/85802.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Storia_dell%27arte_italiana_%28IA_storiadellarteit95vent_0%29.pdf/page1-960px-Storia_dell%27arte_italiana_%28IA_storiadellarteit95vent_0%29.pdf.jpg",
+  "image_thumb": "https://catalogo.fondazionezeri.unibo.it/foto/120000/86000/85802.jpg",
   "image_source": "commons",
   "committente_ids": [],
   "fonte_ids": [
@@ -38367,7 +38368,7 @@
    "trattato-di-architettura"
   ],
   "image_url": "https://www.projekte.kunstgeschichte.uni-muenchen.de/arch_complete_vers/40-ren-barock-architektur/bilder/lektion_4/popup_images/popup_2/IV_3_20pp.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Basilica_Palladiana_%28Vicenza%29_-_facade_on_Piazza_dei_signori.jpg/960px-Basilica_Palladiana_%28Vicenza%29_-_facade_on_Piazza_dei_signori.jpg",
+  "image_thumb": "https://www.projekte.kunstgeschichte.uni-muenchen.de/arch_complete_vers/40-ren-barock-architektur/bilder/lektion_4/popup_images/popup_2/IV_3_20pp.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -38599,7 +38600,7 @@
    "chiaroscuro"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Titian_-_Crowning_with_Thorns_-_WGA22806.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Emmanuelle_Haim.jpg/960px-Emmanuelle_Haim.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/6/61/Titian_-_Crowning_with_Thorns_-_WGA22806.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "en.wikipedia",
   "committente_ids": [],
   "fonte_ids": [
@@ -38640,7 +38641,7 @@
    "chiaroscuro"
   ],
   "image_url": "https://www.meisterdrucke.it/kunstwerke/800px/Alessandro_Bonvicino_Moretto_-_Elijah_asleep_is_straightened_by_an_angel_Painting_by_Alessandro_Bonvicino_dit_i_-_(MeisterDrucke-969853).jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/it/thumb/3/3c/Che_Dio_ci_Aiuti_8.png/960px-Che_Dio_ci_Aiuti_8.png",
+  "image_thumb": "https://www.meisterdrucke.it/kunstwerke/800px/Alessandro_Bonvicino_Moretto_-_Elijah_asleep_is_straightened_by_an_angel_Painting_by_Alessandro_Bonvicino_dit_i_-_(MeisterDrucke-969853).jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "confraternita-santissimo-sacramento-brescia"
@@ -38685,7 +38686,7 @@
    "ritratto"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Portrait_of_Pope_Paul_III_Farnese_%28by_Titian%29_-_National_Museum_of_Capodimonte.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Titian%20%E2%80%93%20Portrait%20of%20Pope%20Paul%20III%20with%20his%20Grandsons%20%E2%80%93%20Google%20Art%20Project%20%E2%80%93%20edited.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Portrait_of_Pope_Paul_III_Farnese_%28by_Titian%29_-_National_Museum_of_Capodimonte.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "paolo-iii-farnese"
@@ -38727,8 +38728,8 @@
    "busto-ritratto",
    "ritratto-di-corte"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNEl5epnDWxutlvFVUYKDWwplbcjXauzL5nXy-HiSgYeUJ2NQPVVQ-15Xy&s=10",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Benvenuto%20cellini%2C%20busto%20di%20cosimo%20I%20de%27%20mnedici%2C%201545-48%2C%20dal%20forte%20di%20portoferraio%2C%2001.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Baccio_bandinelli%2C_busto_di_cosimo_I%2C_1544_ca._%28bargello%29.jpg/1280px-Baccio_bandinelli%2C_busto_di_cosimo_I%2C_1544_ca._%28bargello%29.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Baccio_bandinelli%2C_busto_di_cosimo_I%2C_1544_ca._%28bargello%29.jpg/1280px-Baccio_bandinelli%2C_busto_di_cosimo_I%2C_1544_ca._%28bargello%29.jpg",
   "image_source": "wikidata",
   "committente_ids": [],
   "fonte_ids": [
@@ -38908,7 +38909,7 @@
    "ritratto-di-corte"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Bronzino_-_Eleonora_di_Toledo_col_figlio_Giovanni_-_Google_Art_Project.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Alessandro_Allori%2C_santissima_trinit%C3%A0%2C_1567-1571_circa%2C_ritratto_dei_maestri%2C_bronzino_%28cropped%29.jpg/960px-Alessandro_Allori%2C_santissima_trinit%C3%A0%2C_1567-1571_circa%2C_ritratto_dei_maestri%2C_bronzino_%28cropped%29.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Bronzino_-_Eleonora_di_Toledo_col_figlio_Giovanni_-_Google_Art_Project.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "cosimo-i-de-medici"
@@ -38999,7 +39000,7 @@
    "pianta-a-croce-greca"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Basilica_di_San_Pietro_-_Schema_progetto_di_Michelangelo_-_Disegno_di_Etienne_-Li-.svg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Basilica%20di%20San%20Pietro%20in%20Vaticano%20September%202015-1a.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Basilica_di_San_Pietro_-_Schema_progetto_di_Michelangelo_-_Disegno_di_Etienne_-Li-.svg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "paolo-iii-farnese"
@@ -39358,7 +39359,7 @@
    "bizzarro"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Monster_in_Parco_dei_Mostri_%28Bomarzo%29.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Monster_in_Parco_dei_Mostri_%28Bomarzo%29.jpg/640px-Monster_in_Parco_dei_Mostri_%28Bomarzo%29.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Monster_in_Parco_dei_Mostri_%28Bomarzo%29.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "pier-francesco-orsini"
@@ -39727,7 +39728,7 @@
    "programma-iconografico"
   ],
   "image_url": "https://www.theartpostblog.com/wp-content/uploads/2023/07/img-Firenze-Salone-dei-Cinquecento.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Firenze-palazzo%20vecchio%2024.jpg?width=640",
+  "image_thumb": "https://www.theartpostblog.com/wp-content/uploads/2023/07/img-Firenze-Salone-dei-Cinquecento.jpg",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "cosimo-i-de-medici"
@@ -39773,7 +39774,7 @@
    "soffitto-dipinto"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Paolo_Veronese_-_The_Triumph_of_Mordecai_-_WGA24785.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Paolo_Veronese_008_-_selfportrait.jpg/960px-Paolo_Veronese_008_-_selfportrait.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/4/48/Paolo_Veronese_-_The_Triumph_of_Mordecai_-_WGA24785.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "bernardo-torlioni"
@@ -40125,7 +40126,7 @@
    "arco-trionfale"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Palazzo_Grimani_di_San_Luca_%28Venice%29.jpg/3840px-Palazzo_Grimani_di_San_Luca_%28Venice%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Right%20of%20volto%20santo.JPG?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Palazzo_Grimani_di_San_Luca_%28Venice%29.jpg/3840px-Palazzo_Grimani_di_San_Luca_%28Venice%29.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "image_source": "wikidata",
   "committente_ids": [
    "girolamo-grimani"
@@ -40172,7 +40173,7 @@
    "corridoio-vasariano"
   ],
   "image_url": "https://storage.googleapis.com/mytour-prod/blog/1662116917763_uffizi-gallery-7299966-1920-jpg.jpeg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Zucchi%2C_Jacopo_-_Vasari%2C_Giorgio_-_Uffizi_ICCD.jpg",
+  "image_thumb": "https://storage.googleapis.com/mytour-prod/blog/1662116917763_uffizi-gallery-7299966-1920-jpg.jpeg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "cosimo-i-de-medici"
@@ -40305,7 +40306,7 @@
   "innovations": [],
   "term_ids": [],
   "image_url": "https://josway.it/wp-content/uploads/2024/12/CorridoioLow.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Vasari%20corridor%20and%20Ponte%20Vecchio%20seen%20from%20the%20Uffizi.jpg?width=640",
+  "image_thumb": "https://josway.it/wp-content/uploads/2024/12/CorridoioLow.jpg",
   "image_source": "wikidata",
   "committente_ids": [
    "cosimo-i-de-medici"
@@ -40861,7 +40862,7 @@
    "fondale-teatrale"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/The_Feast_in_the_House_of_Levi_by_Paolo_Veronese_%28edited_2%29.jpg/3840px-The_Feast_in_the_House_of_Levi_by_Paolo_Veronese_%28edited_2%29.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Feast%20in%20the%20House%20of%20Levi%20by%20Paolo%20Veronese%20%28edited%202%29.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/The_Feast_in_the_House_of_Levi_by_Paolo_Veronese_%28edited_2%29.jpg/3840px-The_Feast_in_the_House_of_Levi_by_Paolo_Veronese_%28edited_2%29.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "convento-santi-giovanni-e-paolo-venezia"
@@ -40907,7 +40908,7 @@
    "allegoria-cristologica"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Podniesienie_w%C4%99%C5%BCa.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Facade_of_Santa_Maria_Gloriosa_dei_Frari_%28Venice%29.jpg/960px-Facade_of_Santa_Maria_Gloriosa_dei_Frari_%28Venice%29.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/0/08/Podniesienie_w%C4%99%C5%BCa.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "scuola-grande-di-san-rocco"
@@ -41365,7 +41366,7 @@
    "paesaggio-autonomo"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/17/Jacopo_tintoretto%2C_santa_maria_egiziaca%2C_1583-87.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Tintoretto-Santa_in_meditazione_1-Grande_di_San_Rocco.jpg/960px-Tintoretto-Santa_in_meditazione_1-Grande_di_San_Rocco.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/1/17/Jacopo_tintoretto%2C_santa_maria_egiziaca%2C_1583-87.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "scuola-grande-di-san-rocco"
@@ -41494,7 +41495,7 @@
    "pianta-a-croce-latina"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/San_pietro_in_vaticano_%28con_numeri%29_%28nero%29.png?utm_source=kw.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Basilica_di_San_Pietro_in_Vaticano_Sept_2015-1_%282%29.jpg?width=640",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f9/San_pietro_in_vaticano_%28con_numeri%29_%28nero%29.png?utm_source=kw.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "commons",
   "committente_ids": [],
   "fonte_ids": [
@@ -41699,7 +41700,7 @@
    "transenna"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Santa_Sabina_%28Rome%29_-_Interno.jpg/3840px-Santa_Sabina_%28Rome%29_-_Interno.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/RomaSSabinaPortaLigneaParticolare.JPG/960px-RomaSSabinaPortaLigneaParticolare.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Santa_Sabina_%28Rome%29_-_Interno.jpg/3840px-Santa_Sabina_%28Rome%29_-_Interno.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "image_source": "commons",
   "committente_ids": [
    "pietro-dilliria"
@@ -41744,7 +41745,7 @@
    "prospettiva-ribaltata"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Arch_of_Constantine_%28Rome%29_-_South_side%2C_from_Via_triumphalis.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Arco_di_Costantino_-_Roma_35.jpg/960px-Arco_di_Costantino_-_Roma_35.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Arch_of_Constantine_%28Rome%29_-_South_side%2C_from_Via_triumphalis.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "commons",
   "committente_ids": [
    "senato-romano"
@@ -42173,7 +42174,7 @@
    "edicola"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_%28cropped%29.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/The_Church_of_the_Holy_Sepulchre-Jerusalem.JPG/960px-The_Church_of_the_Holy_Sepulchre-Jerusalem.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_%28cropped%29.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "commons",
   "committente_ids": [
    "costantino-i"
@@ -42306,8 +42307,8 @@
    "sbalzo",
    "cesello"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr00kIGNITz5sNKGmigLRnLtPWTWvXta1YCfn-AokuWA&s=10",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/British_Museum_from_NE_2.JPG/960px-British_Museum_from_NE_2.JPG",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Arte_tardoantica_da_roma%2C_caschetto_di_projecta%2C_380_circa%2C_01.JPG/1280px-Arte_tardoantica_da_roma%2C_caschetto_di_projecta%2C_380_circa%2C_01.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Arte_tardoantica_da_roma%2C_caschetto_di_projecta%2C_380_circa%2C_01.JPG/1280px-Arte_tardoantica_da_roma%2C_caschetto_di_projecta%2C_380_circa%2C_01.JPG",
   "image_source": "commons",
   "committente_ids": [],
   "fonte_ids": [
@@ -42349,7 +42350,7 @@
    "avorio"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Diptych_Nicomachi-Symmachi_collated.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Dittico_dei_simmachi-nicomachi%2C_400_dc..JPG/960px-Dittico_dei_simmachi-nicomachi%2C_400_dc..JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/8/81/Diptych_Nicomachi-Symmachi_collated.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_source": "commons",
   "committente_ids": [
    "famiglie-nicomachi-simmachi"
@@ -42699,8 +42700,8 @@
    "damnatio-memoriae",
    "fornice"
   ],
-  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Forum_arch_of_septimius_severus.jpg/960px-Forum_arch_of_septimius_severus.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Forum_arch_of_septimius_severus.jpg/960px-Forum_arch_of_septimius_severus.jpg",
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Arco_di_settimio_severo_00.JPG/1920px-Arco_di_settimio_severo_00.JPG?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
+  "image_thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Arco_di_settimio_severo_00.JPG/1920px-Arco_di_settimio_severo_00.JPG?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
   "image_source": "commons",
   "committente_ids": [],
   "fonte_ids": [
@@ -42872,7 +42873,7 @@
    "ottagono"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Rom%2C_San_Giovanni_in_Laterano%2C_Baptisterium%2C_Au%C3%9Fenansicht_2.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/San_Giovanni_in_Laterano_-_Rome.jpg/960px-San_Giovanni_in_Laterano_-_Rome.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/6/65/Rom%2C_San_Giovanni_in_Laterano%2C_Baptisterium%2C_Au%C3%9Fenansicht_2.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "commons",
   "committente_ids": [
    "costantino-i"
@@ -43271,8 +43272,8 @@
    "Tempera",
    "Oro"
   ],
-  "location_city": "Washington",
-  "location_place": "Qashington, National Gallery Art",
+  "location_city": "Washington D.C.",
+  "location_place": "National Gallery of Art",
   "lat": 38.89,
   "lon": -77.02,
   "book": 1,
@@ -43286,8 +43287,8 @@
   "term_ids": [
    "tempera-su-tavola-termine"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCul9r4pQ-pAP3NHAdyXqkeWlUPa7jCtraBkgcD2Kf8A&s=10",
-  "image_thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCul9r4pQ-pAP3NHAdyXqkeWlUPa7jCtraBkgcD2Kf8A&s=10",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Carlo_Crivelli%2C_Madonna_and_Child_Enthroned_with_Donor%2C_1470%2C_NGA_41616.jpg/1280px-Carlo_Crivelli%2C_Madonna_and_Child_Enthroned_with_Donor%2C_1470%2C_NGA_41616.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Carlo_Crivelli%2C_Madonna_and_Child_Enthroned_with_Donor%2C_1470%2C_NGA_41616.jpg/1280px-Carlo_Crivelli%2C_Madonna_and_Child_Enthroned_with_Donor%2C_1470%2C_NGA_41616.jpg",
   "image_source": "commons",
   "image_gallery": [],
   "committente_ids": [],
@@ -44336,8 +44337,8 @@
    "Materializzazione dello spirito controriformista"
   ],
   "term_ids": [],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Uf6SvTKoEuvrQggsMcY0NpXcikyRiMSK-CD3xZKFkQ&s=10",
-  "image_thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Uf6SvTKoEuvrQggsMcY0NpXcikyRiMSK-CD3xZKFkQ&s=10",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monasterio_de_El_Escorial_en_Madrid.jpg/1280px-Monasterio_de_El_Escorial_en_Madrid.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monasterio_de_El_Escorial_en_Madrid.jpg/1280px-Monasterio_de_El_Escorial_en_Madrid.jpg",
   "image_source": "wikimedia-commons",
   "image_gallery": [],
   "committente_ids": [
@@ -46009,8 +46010,8 @@
    "olio-su-tavola",
    "annunciazione"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpLsX6B_d9r96_U6iGv5anrndIWC7tA47P-7_hlydxng&s=10",
-  "image_thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpLsX6B_d9r96_U6iGv5anrndIWC7tA47P-7_hlydxng&s=10",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Antonello_da_Messina%2C_Annunciata_di_Palermo%2C_circa_1475-77_-FG2.jpg/1280px-Antonello_da_Messina%2C_Annunciata_di_Palermo%2C_circa_1475-77_-FG2.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Antonello_da_Messina%2C_Annunciata_di_Palermo%2C_circa_1475-77_-FG2.jpg/1280px-Antonello_da_Messina%2C_Annunciata_di_Palermo%2C_circa_1475-77_-FG2.jpg",
   "image_source": null,
   "image_gallery": [],
   "committente_ids": [],
@@ -46142,8 +46143,8 @@
    "Schiere compatte e gerarchiche"
   ],
   "term_ids": [],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9QN0zUSys1b9fD3plVueHOA7KkKWmoptzPb3H_NHlgpiWWu0s52kKov8&s=10",
-  "image_thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9QN0zUSys1b9fD3plVueHOA7KkKWmoptzPb3H_NHlgpiWWu0s52kKov8&s=10",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Frescos_de_la_b%C3%B3veda_de_la_Real_Bas%C3%ADlica_de_San_Lorenzo_de_El_Escorial.jpg/1280px-Frescos_de_la_b%C3%B3veda_de_la_Real_Bas%C3%ADlica_de_San_Lorenzo_de_El_Escorial.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Frescos_de_la_b%C3%B3veda_de_la_Real_Bas%C3%ADlica_de_San_Lorenzo_de_El_Escorial.jpg/1280px-Frescos_de_la_b%C3%B3veda_de_la_Real_Bas%C3%ADlica_de_San_Lorenzo_de_El_Escorial.jpg",
   "image_source": null,
   "image_gallery": [],
   "committente_ids": [
@@ -46545,8 +46546,8 @@
    "affresco",
    "grisaille"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXPOkxPbfOvIBJNdGRxwPbfmYE5t8kidRq-IzzfTddLg&s=10",
-  "image_thumb": null,
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Andrea_mantegna%2C_camera_degli_sposi%2C_1465-74%2C_volta%2C_pennacchi_01_orfeo_incanta_le_forze_della_natura.jpg/1280px-Andrea_mantegna%2C_camera_degli_sposi%2C_1465-74%2C_volta%2C_pennacchi_01_orfeo_incanta_le_forze_della_natura.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Andrea_mantegna%2C_camera_degli_sposi%2C_1465-74%2C_volta%2C_pennacchi_01_orfeo_incanta_le_forze_della_natura.jpg/1280px-Andrea_mantegna%2C_camera_degli_sposi%2C_1465-74%2C_volta%2C_pennacchi_01_orfeo_incanta_le_forze_della_natura.jpg",
   "image_source": "commons",
   "image_gallery": [],
   "committente_ids": [
@@ -46828,8 +46829,8 @@
   "term_ids": [
    "polittico"
   ],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFRMaG754M0HOkWYDsPpfbx7PhjrCJF94d5D3Rl6IOHw&s=10",
-  "image_thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFRMaG754M0HOkWYDsPpfbx7PhjrCJF94d5D3Rl6IOHw&s=10",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Francesco_Squarcione_-_De_Lazara_Altarpiece_-_WGA21696.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Francesco_Squarcione_-_De_Lazara_Altarpiece_-_WGA21696.jpg",
   "image_source": "commons",
   "image_gallery": [],
   "committente_ids": [
@@ -47626,8 +47627,8 @@
    "Chiarezza e semplicità"
   ],
   "term_ids": [],
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTTrjexIl7N-4CZ8TAnq0MlKoy1Zx9wIpoH-yetVs5jH7KiEmvWz0nh8E&s=10",
-  "image_thumb": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTTrjexIl7N-4CZ8TAnq0MlKoy1Zx9wIpoH-yetVs5jH7KiEmvWz0nh8E&s=10",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Galleria_nazionale_delle_Marche_40.jpg/1280px-Galleria_nazionale_delle_Marche_40.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Galleria_nazionale_delle_Marche_40.jpg/1280px-Galleria_nazionale_delle_Marche_40.jpg",
   "image_source": null,
   "image_gallery": [],
   "committente_ids": [],

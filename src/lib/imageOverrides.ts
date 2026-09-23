@@ -224,22 +224,6 @@ export function exportOverrides(): string {
   return JSON.stringify(getGlobalOverrides(), null, 2);
 }
 
-export function importOverrides(json: string): number {
-  const data = JSON.parse(json);
-  if (typeof data !== "object" || data === null) throw new Error("JSON non valido");
-  const globMap = getGlobalOverrides();
-  let n = 0;
-  for (const [id, v] of Object.entries<any>(data)) {
-    const url = typeof v === "string" ? v : v?.url;
-    if (typeof url === "string" && url.trim()) {
-      globMap[id] = { url: url.trim(), setAt: v?.setAt ?? new Date().toISOString(), isGlobal: true };
-      n++;
-    }
-  }
-  persistGlobal(globMap);
-  return n;
-}
-
 /**
  * Applica al catalogo le fotografie sostituite dagli amministratori.
  * Conserva gli originali in `_orig_*` per poterli ripristinare.

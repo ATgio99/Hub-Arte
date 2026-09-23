@@ -9,7 +9,7 @@ import { supabase } from "../lib/supabase";
 import { fullSync } from "../lib/sync";
 import { getFavorites, setFavorites, clearAllFavorites } from "../lib/favorites";
 import { getStudied, setStudied, clearAllStudied } from "../lib/studied";
-import { getGlobalOverrides, setGlobalOverrides } from "../lib/imageOverrides";
+import { getGlobalOverrides } from "../lib/imageOverrides";
 
 function Accesso() {
   const { signIn, signUp, signOut, user, loading, resetPassword, updateNewPassword, passwordRecoveryActive } = useAuth();
@@ -134,51 +134,10 @@ function Accesso() {
         imported += added;
       }
 
-      // Import immagini PRIVATE (merge — non sovrascive esistenti)
-      // I salvataggi vecchi portano anche una lista di correzioni private:
-      // si ignora, quel modo di correggere le immagini non esiste piu'.
-
-      // Import immagini GLOBALI (merge — non sovrascive esistenti)
-      // NOTA: di solito i globali vengono riscaricati dal cloud al login,
-      // ma se l'utente sta importando un backup offline, li ripristiniamo.
-      if (data.globalImageOverrides && typeof data.globalImageOverrides === "object") {
-        const current = getGlobalOverrides();
-        let added = 0;
-        for (const [k, v] of Object.entries(data.globalImageOverrides as any)) {
-          if (!current[k]) {
-            const entry: any = typeof v === "object" && v !== null
-              ? { ...v, isGlobal: true }
-              : { url: String(v), setAt: new Date().toISOString(), isGlobal: true };
-            if (typeof entry.url === "string" && entry.url.trim()) {
-              current[k] = entry;
-              added++;
-            }
-          }
-        }
-        if (added > 0) {
-          setGlobalOverrides(current);
-          imported += added;
-        }
-      }
-
-      // Retrocompatibilità: vecchio formato salvava tutto in "imageOverrides"
-      // senza distinguere privati/globali. Se non c'è globalImageOverrides ma
-      // alcuni entry di imageOverrides hanno isGlobal=true, splittali.
-      if (!data.globalImageOverrides && data.imageOverrides) {
-        const globMap = getGlobalOverrides();
-        let moved = 0;
-        for (const [k, v] of Object.entries(data.imageOverrides as any)) {
-          const isGlob = typeof v === "object" && v !== null && (v as any).isGlobal === true;
-          if (isGlob && !globMap[k] && typeof (v as any).url === "string") {
-            globMap[k] = { ...(v as any), isGlobal: true };
-            moved++;
-          }
-        }
-        if (moved > 0) {
-          setGlobalOverrides(globMap);
-          imported += moved;
-        }
-      }
+      // Le fotografie sostituite non si ripristinano da un file: vivono sul
+      // server e da li' si riallineano da sole. Rimetterle qui le scriveva
+      // solo nella memoria di questo browser, e mostrava a chi ripristinava
+      // immagini che nessun altro vedeva.
 
       setImportResult(`✓ Importati ${imported} nuovi elementi! Se sei loggato, clicca "Sincronizza ora" per mandarli sul cloud.`);
       setImportJson("");

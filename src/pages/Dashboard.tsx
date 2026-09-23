@@ -1,10 +1,11 @@
-import { useMemo, useState, useRef } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useData, useTimeRange } from "../lib/store";
 import { Section, FilterNote, CountUp } from "../components/ui";
-import { getGlobalOverrides, clearOverride, exportOverrides, importOverrides } from "../lib/imageOverrides";
-import { workSortYear, fonteImmagine } from "../lib/data";
+import { getGlobalOverrides, clearOverride, exportOverrides, OVERRIDES_EVENT } from "../lib/imageOverrides";
+import { supabase } from "../lib/supabase";
+import { workSortYear, fonteImmagine, immaginiDelCatalogo } from "../lib/data";
 import { useStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
 import { useVerifiche } from "../lib/verifiche";
@@ -433,12 +434,62 @@ export default function Dashboard() {
 }
 
 // --- gestione immagini personalizzate: elenco, export/import, ripristino ----
+//
+// Ogni sostituzione vive in tre posti possibili, e l'elenco dice in quale:
+//
+//   nel JSON        entrata nel file del catalogo: chi scarica il repository
+//                   la vede, e non dipende piu' dal server;
+//   da esportare    salvata sul server, quindi la vedono tutti, ma il file non
+//                   la ha ancora: la porta dentro `npm run esporta-catalogo`;
+//   solo qui        la conosce soltanto questo browser. Nessun altro la vede.
+//
+// La terza e' quella che ha fatto credere per settimane che certe foto fossero
+// corrette per tutti, mentre in una finestra anonima comparivano le vecchie.
+type StatoSostituzione = "solo-qui" | "diversa" | "da-esportare" | "nel-json";
+const ORDINE_STATO: StatoSostituzione[] = ["solo-qui", "diversa", "da-esportare", "nel-json"];
+const ETICHETTA_STATO: Record<StatoSostituzione, { testo: string; colore: string; spiega: string }> = {
+  "solo-qui":     { testo: "solo in questo browser", colore: "#a8483f",
+                    spiega: "Il server non la ha: la vedi solo tu, da qui. Rifalla dalla scheda se è giusta." },
+  "diversa":      { testo: "diversa dal server", colore: "#a8483f",
+                    spiega: "Sul server c'è un'altra immagine: quella è la foto che vedono tutti." },
+  "da-esportare": { testo: "da portare nel JSON", colore: "var(--gold-deep)",
+                    spiega: "La vedono tutti. Entra nel file del catalogo alla prossima esportazione." },
+  "nel-json":     { testo: "nel JSON", colore: "var(--c-technique)",
+                    spiega: "È già nel file del catalogo." },
+};
+
 function OverridesManager() {
   const ix = useData();
   const [, force] = useState(0);
-  const fileRef = useRef<HTMLInputElement>(null);
   const map = getGlobalOverrides();
   const entries = Object.entries(map);
+
+  // Quello che c'e' davvero sul server e nel file, per confronto. Due letture
+  // sole, e solo qui: questa sezione la vede soltanto un amministratore.
+  const [server, setServer] = useState<Map<string, string> | null>(null);
+  const [catalogo, setCatalogo] = useState<Map<string, string | null> | null>(null);
+  useEffect(() => {
+    let vivo = true;
+    supabase.from("image_overrides").select("work_id, url").eq("is_global", true)
+      .then(({ data, error }) => {
+        if (vivo && !error) setServer(new Map((data ?? []).map((r: any) => [r.work_id, r.url])));
+      });
+    immaginiDelCatalogo().then((m) => { if (vivo) setCatalogo(m); }).catch(() => {});
+    const aggiorna = () => force((x) => x + 1);
+    window.addEventListener(OVERRIDES_EVENT, aggiorna);
+    return () => { vivo = false; window.removeEventListener(OVERRIDES_EVENT, aggiorna); };
+  }, []);
+
+  const statoDi = (wid: string, url: string): StatoSostituzione | null => {
+    if (!server || !catalogo) return null;
+    if (!server.has(wid)) return "solo-qui";
+    if (server.get(wid) !== url) return "diversa";
+    return catalogo.get(wid) === url ? "nel-json" : "da-esportare";
+  };
+  const conStato = entries
+    .map(([wid, ov]) => ({ wid, ov, stato: statoDi(wid, ov.url) }))
+    .sort((a, b) => (a.stato ? ORDINE_STATO.indexOf(a.stato) : 0) - (b.stato ? ORDINE_STATO.indexOf(b.stato) : 0));
+  const quante = (st: StatoSostituzione) => conStato.filter((e) => e.stato === st).length;
 
   const doExport = () => {
     const blob = new Blob([exportOverrides()], { type: "application/json" });
@@ -448,31 +499,37 @@ function OverridesManager() {
     a.click();
     URL.revokeObjectURL(a.href);
   };
-  const doImport = (f: File) => {
-    f.text().then((txt) => {
-      try { const n = importOverrides(txt); alert(`Importate ${n} immagini personalizzate.`); force((x) => x + 1); }
-      catch { alert("File non valido: atteso un JSON { \"id-opera\": { \"url\": \"…\" } }"); }
-    });
-  };
 
   return (
     <div>
       <p className="muted" style={{ fontSize: 13.5, maxWidth: 640, lineHeight: 1.55, marginBottom: 14 }}>
-        Da ogni scheda opera puoi sostituire la fotografia con "Cambia immagine": la sostituzione entra nel catalogo
-        e la vedono tutti. Da qui puoi rivederle in blocco, esportarle in JSON o rimettere l'immagine originale.
+        Da ogni scheda opera puoi sostituire la fotografia con "Cambia immagine": la sostituzione va sul server
+        e la vedono tutti. Qui accanto a ognuna c'è scritto dove si trova: se è già nel file del catalogo, se
+        aspetta la prossima esportazione, o se per qualche ragione la conosce solo questo browser.
       </p>
+      {server && catalogo && entries.length > 0 && (
+        <div style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: 13, marginBottom: 14 }} data-testid="ov-stati">
+          {ORDINE_STATO.filter((st) => quante(st) > 0).map((st) => (
+            <span key={st} title={ETICHETTA_STATO[st].spiega}>
+              <b style={{ color: ETICHETTA_STATO[st].colore }}>{quante(st)}</b> {ETICHETTA_STATO[st].testo}
+            </span>
+          ))}
+        </div>
+      )}
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
+        {/* Niente «Importa»: scriveva solo nella memoria di questo browser e
+            mai sul server, quindi faceva vedere a chi importava foto che
+            nessun altro vedeva. Una sostituzione si fa dalla scheda dell'opera,
+            e va sul server; l'esportazione resta per portarle nei JSON. */}
         <button className="btn ghost sm" onClick={doExport} disabled={!entries.length} data-testid="ov-export">Esporta JSON ({entries.length})</button>
-        <button className="btn ghost sm" onClick={() => fileRef.current?.click()} data-testid="ov-import">Importa JSON</button>
-        <input ref={fileRef} type="file" accept="application/json" style={{ display: "none" }}
-          onChange={(e) => { const f = e.target.files?.[0]; if (f) doImport(f); e.currentTarget.value = ""; }} />
-</div>
+      </div>
       {entries.length === 0
         ? <p className="faint" style={{ fontSize: 13 }}>Nessuna fotografia sostituita a mano.</p>
         : (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(230px,1fr))", gap: 10 }}>
-            {entries.map(([wid, ov]) => {
+            {conStato.map(({ wid, ov, stato }) => {
               const w = ix.workById.get(wid);
+              const etichetta = stato ? ETICHETTA_STATO[stato] : null;
               return (
                 <div key={wid} className="card" style={{ padding: 10, display: "flex", gap: 10, alignItems: "center" }}>
                   <img src={ov.url} alt="" style={{ width: 52, height: 40, objectFit: "cover", borderRadius: 6, border: "1px solid var(--line)" }} />
@@ -480,6 +537,11 @@ function OverridesManager() {
                     <Link className="tlink" to={`/opera/${wid}`} style={{ fontSize: 13, display: "block", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       {w?.title ?? wid}
                     </Link>
+                    {etichetta && (
+                      <div style={{ fontSize: 11, color: etichetta.colore }} title={etichetta.spiega}>
+                        {etichetta.testo}
+                      </div>
+                    )}
                     <button className="faint" style={{ fontSize: 11.5, background: "none", border: 0, padding: 0, cursor: "pointer", textDecoration: "underline" }}
                       onClick={() => { clearOverride(wid); force((x) => x + 1); }}>ripristina</button>
                   </div>
