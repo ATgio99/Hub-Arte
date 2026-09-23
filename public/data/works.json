@@ -18801,43 +18801,6 @@
   ]
  },
  {
-  "id": "crocifisso-santa-croce-brunelleschi",
-  "title": "Crocifisso di Santa Croce",
-  "artist_ids": [
-   "filippo-brunelleschi"
-  ],
-  "period_id": "umanesimo-fiorentino",
-  "date_text": "1406-1408",
-  "year_start": 1406,
-  "year_end": 1408,
-  "type": "scultura",
-  "technique_ids": [
-   "scultura-in-legno"
-  ],
-  "materials": [
-   "legno"
-  ],
-  "location_city": "Firenze",
-  "location_place": "Basilica di Santa Croce",
-  "lat": 43.768365,
-  "lon": 11.26302,
-  "book": 2,
-  "chapter": 2,
-  "page": 16,
-  "source_file": "Libro2.2-giu-2026-4",
-  "importance": 1,
-  "summary": "Crocifisso ligneo di Brunelleschi nella basilica di Santa Croce, citato nell'esercizio p.75 e nella Trinita (il volto di Cristo nella Trinita di Masaccio rimanda al Crocifisso di Brunelleschi).",
-  "innovations": [],
-  "term_ids": [],
-  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Filippo_brunelleschi%2C_crocifisso_di_santa_maria_novella%2C_1410-15_ca..JPG",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Filippo_brunelleschi%2C_crocifisso_di_santa_maria_novella%2C_1410-15_ca..JPG?width=640",
-  "image_source": "commons",
-  "committente_ids": [],
-  "fonte_ids": [
-   "occhi-arte-3"
-  ]
- },
- {
   "id": "crocifisso-santa-croce-donatello",
   "title": "Crocifisso",
   "artist_ids": [

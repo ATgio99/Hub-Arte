@@ -258,7 +258,7 @@ function componi({ ds, committenti, autori, nascosti }) {
   push("     con un numero progressivo:");
   push("");
   push("         cappella-palatina-aquisgrana  /  cappella-palatina-palermo");
-  push("         crocifisso-santa-croce-firenze  /  crocifisso-santa-croce-brunelleschi");
+  push("         deposizione-di-cristo-antelami  /  deposizione-cristo-lorenzetti-assisi");
   push("");
   push("     L'id non si cambia mai dopo che è stato creato: è l'indirizzo di una");
   push("     pagina, e i collegamenti delle altre schede puntano lì.");

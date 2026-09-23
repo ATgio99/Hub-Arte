@@ -6152,5 +6152,14 @@
   "kind": "autore",
   "description": "Cellini realizza la saliera per Francesco I, originariamente progettata per il cardinale Ippolito II d'Este.",
   "sort_order": 0
+ },
+ {
+  "id": "crocifisso-brunelleschi-trinita-masaccio",
+  "source_type": "work",
+  "source_id": "crocifisso-santa-maria-novella-brunelleschi",
+  "target_type": "work",
+  "target_id": "trinita-masaccio",
+  "kind": "influenza",
+  "description": "Il volto del Cristo nella Trinità di Masaccio rimanda al Crocifisso ligneo di Brunelleschi, conservato nella stessa basilica di Santa Maria Novella."
  }
 ]

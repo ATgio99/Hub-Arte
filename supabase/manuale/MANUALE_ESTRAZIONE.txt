@@ -18,11 +18,11 @@ non e' verificabile e i doppioni tornano.
 
 Contenuto del catalogo in questo momento:
 
-  opere                 1114
+  opere                 1113
   autori                 321
   committenti            302
   epoche/correnti/scuole 115
-  connessioni            648
+  connessioni            649
   tecniche               212
   termini di glossario   882
   eventi storici         275
@@ -138,7 +138,7 @@ PARTE 1 — LE REGOLE CHE VALGONO PER TUTTO
      con un numero progressivo:
 
          cappella-palatina-aquisgrana  /  cappella-palatina-palermo
-         crocifisso-santa-croce-firenze  /  crocifisso-santa-croce-brunelleschi
+         deposizione-di-cristo-antelami  /  deposizione-cristo-lorenzetti-assisi
 
      L'id non si cambia mai dopo che è stato creato: è l'indirizzo di una
      pagina, e i collegamenti delle altre schede puntano lì.
@@ -187,7 +187,7 @@ PARTE 1 — LE REGOLE CHE VALGONO PER TUTTO
 1.5  QUANDO NON SI SA
 
      Campo vuoto (NULL) e array vuoto sono risposte legittime e frequenti:
-     nel catalogo di oggi 282 opere su 1114 non hanno un autore, e non è
+     nel catalogo di oggi 282 opere su 1113 non hanno un autore, e non è
      un errore — sono anonime. Quello che non è legittimo è riempire il
      campo con un valore verosimile.
 
@@ -224,7 +224,7 @@ Legenda della colonna centrale:
 
 ------------------------------------------------------------------------------
 2.1  OPERA
-     tabella works · 1114 righe in catalogo
+     tabella works · 1113 righe in catalogo
 ------------------------------------------------------------------------------
 
   È l'unità del catalogo: un edificio, un dipinto, una scultura, un mosaico.
@@ -630,7 +630,7 @@ Legenda della colonna centrale:
 
 ------------------------------------------------------------------------------
 2.5  CONNESSIONE
-     tabella connections · 648 righe in catalogo
+     tabella connections · 649 righe in catalogo
 ------------------------------------------------------------------------------
 
   Il filo fra due entità qualsiasi: due opere, due autori, un'opera e un
@@ -660,7 +660,7 @@ Legenda della colonna centrale:
 
   kind         OBBLIGATORIO  vocabolario
                Uno fra:
-                 influenza        A lascia un segno su B (243)
+                 influenza        A lascia un segno su B (244)
                  maestro-allievo  A insegna a B (103)
                  rielaborazione   B riprende A cambiandolo (84)
                  committenza      A ha voluto B (72)
@@ -1033,7 +1033,7 @@ PARTE 5 — DIFETTI NOTI DEL REGISTRO
        Ferdinando I d'Aragona (Ferrante)  ->  ferdinando-i-daragona  +  ferdinando-i-daragona-ferrante
        Sebastiano Serlio  ->  sebastiano-serlio  +  serlio
 
-  C. 31 titoli di opere usati da più schede. Qui NON è un difetto:
+  C. 30 titoli di opere usati da più schede. Qui NON è un difetto:
      sono opere diverse con lo stesso nome, ed è la ragione per cui l'id si
      disambigua con la città o l'autore. Attenzione però quando si cerca:
      trovare il titolo non vuol dire aver trovato l'opera giusta.
@@ -1041,7 +1041,6 @@ PARTE 5 — DIFETTI NOTI DEL REGISTRO
        Basilica di San Lorenzo Maggiore  ->  basilica-san-lorenzo-maggiore-milano  ·  basilica-san-lorenzo-napoli
        Cappella Palatina  ->  cappella-palatina-aquisgrana  ·  cappella-palatina-palermo
        Deposizione di Cristo dalla croce  ->  deposizione-di-cristo-antelami  ·  deposizione-cristo-lorenzetti-assisi  ·  deposizione-cristo-croce-pietro-rimini
-       Crocifisso di Santa Croce  ->  crocifisso-santa-croce-firenze  ·  crocifisso-santa-croce-brunelleschi
        Creazione di Adamo  ->  creazione-di-adamo-assisi-torriti  ·  creazione-di-adamo
        Giudizio Universale  ->  giudizio-universale-santa-cecilia-cavallini  ·  giudizio-universale-scrovegni  ·  giudizio-universale
        Presentazione al Tempio  ->  presentazione-al-tempio-cavallini  ·  presentazione-al-tempio
@@ -1050,7 +1049,8 @@ PARTE 5 — DIFETTI NOTI DEL REGISTRO
        Annunciazione  ->  annunciazione-simone-memmi  ·  annunciazione-corridoio-nord-san-marco  ·  annunciazione-leonardo  ·  annunciazione-memling  ·  annunciazione-lotto-1534  ·  Annunciazione-PieroDF
        Martirio di san Lorenzo  ->  martirio-san-lorenzo-daddi  ·  martirio-di-san-lorenzo  ·  martirio-di-san-lorenzo-tiziano
        Nascita della Vergine  ->  nascita-vergine-pietro-lorenzetti  ·  nascita-della-vergine-ghirlandaio
-       … e altri 19
+       Natività di Maria  ->  nativita-maria-giovanni-da-milano  ·  nativita-di-maria-leonardo-da-besozzo
+       … e altri 18
 
   D. Nessuna scuola appesa direttamente a un'epoca: la gerarchia è sana.
 
@@ -2104,7 +2104,7 @@ F. CITTÀ  —  206 voci
   Dresda (4)               Durham (1)               El Escorial (3)         
   Fabriano (1)             Fanzolo di Vedelago (1)  Fénis (1)               
   Ferentillo (2)           Ferentino (1)            Ferrara (21)            
-  Firenze (236)            Fontainebleau (5)        Fontanellato (2)        
+  Firenze (235)            Fontainebleau (5)        Fontanellato (2)        
   Fort Worth (1)           Francoforte sul Meno (1) Galliano (1)            
   Gand (2)                 Genova (3)               Gernrode (2)            
   Gerusalemme (2)          Glees (4)                Gloucester (1)          
@@ -2182,7 +2182,7 @@ G. MATERIALI  —  213 voci
   intonaco bianco (1)      lamina d'argento (1)     lamina d'oro (3)        
   lamina di piombo e stagno (1) lamine metalliche sbalzate (1) lana (1)                
   lapislazzuli (1)         lastra metallica (1)     laterizio (18)          
-  lavaggio (1)             legno (11)               legno di ebano (1)      
+  lavaggio (1)             legno (10)               legno di ebano (1)      
   legno di noce (1)        legno di pero policromo (2) legno di quercia (1)    
   legno dorato (1)         legno intagliato e dipinto (1) legno intarsiato (1)    
   legno parzialmente dorato (1) madreperla (1)           maiolica policroma (1)  
@@ -3401,7 +3401,7 @@ I. EVENTI STORICI  —  275 voci
   2019   incendio-notre-dame-parigi-2019              | Incendio della cattedrale di Notre-Dame a Parigi | culturale
 
 ------------------------------------------------------------------------------
-L. OPERE  —  1114 voci
+L. OPERE  —  1113 voci
 ------------------------------------------------------------------------------
 
   In ordine alfabetico di titolo, che è l'ordine in cui si cerca se una
@@ -3753,7 +3753,6 @@ L. OPERE  —  1114 voci
   crocifisso-san-domenico-arezzo                     | Crocifisso di San Domenico ad Arezzo                   | 1260–1270        | Arezzo               | Bottega di Cimabue
   crocifisso-san-gimignano                           | Crocifisso di San Gimignano                            | 1260–1270        | San Gimignano        | Bottega di Coppo di Marcovaldo
   crocifisso-santa-croce-firenze                     | Crocifisso di Santa Croce                              | 1280–1289        | Firenze              | Bottega di Cimabue
-  crocifisso-santa-croce-brunelleschi                | Crocifisso di Santa Croce                              | 1406–1408        | Firenze              | Umanesimo fiorentino
   crocifisso-santa-maria-novella-giotto              | Crocifisso di Santa Maria Novella                      | 1290             | Firenze              | Bottega di Giotto di Bondone
   battistero-degli-ariani-cupola                     | Cupola del Battistero degli Ariani                     | 490–510          | Ravenna              | Regno ostrogoto d'Italia
   battistero-neoniano-cupola                         | Cupola del Battistero Neoniano o degli Ortodossi       | 440–460          | Ravenna              | Arte paleocristiana
