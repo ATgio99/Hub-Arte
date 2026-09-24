@@ -12157,7 +12157,9 @@
   ],
   "fonte_ids": [
    "occhi-arte-2"
-  ]
+  ],
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/40.7_Janus.png",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/d/d4/40.7_Janus.png"
  },
  {
   "id": "castel-del-monte",
@@ -18789,8 +18791,8 @@
    "formella",
    "porta-bronzea"
   ],
-  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Battisteria02.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Battisteria02.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Lorenzo_ghiberti_e_aiuti%2C_porta_nord_del_battistero_di_firenze%2C_01.JPG/1280px-Lorenzo_ghiberti_e_aiuti%2C_porta_nord_del_battistero_di_firenze%2C_01.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Lorenzo_ghiberti_e_aiuti%2C_porta_nord_del_battistero_di_firenze%2C_01.JPG/1280px-Lorenzo_ghiberti_e_aiuti%2C_porta_nord_del_battistero_di_firenze%2C_01.JPG",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "arte-di-calimala"
@@ -19123,7 +19125,7 @@
    "nanni-di-banco"
   ],
   "period_id": "umanesimo-fiorentino",
-  "date_text": "1411-1414",
+  "date_text": "1411-1414 circa",
   "year_start": 1411,
   "year_end": 1414,
   "type": "scultura",
@@ -19142,12 +19144,13 @@
   "page": 1,
   "source_file": "Libro2.2-giu-2026-4",
   "importance": 3,
-  "summary": "Gruppo marmoreo di Nanni di Banco per la nicchia esterna di Orsanmichele, raffigurante i quattro scultori martiri Castorio, Claudio, Sempronio e Nicostrato. Le quattro figure in vesti all'antica, ricavate da marmi gia abbozzati, sono disposte in semicerchio assecondando l'andamento curvilineo della nicchia, legate tra loro da un sapiente gioco di sguardi e gesti. Primo esempio di gruppo scultoreo della Firenze rinascimentale.",
+  "summary": "Gruppo marmoreo di Nanni di Banco per la nicchia esterna di Orsanmichele, raffigurante i quattro scultori martiri Castorio, Claudio, Sempronio e Nicostrato. Le quattro figure in vesti all'antica, ricavate da marmi gia abbozzati, sono disposte in semicerchio assecondando l'andamento curvilineo della nicchia, legate tra loro da un sapiente gioco di sguardi e gesti. Primo esempio di gruppo scultoreo della Firenze rinascimentale. Il gruppo fu commissionato dall'Arte dei Maestri di Pietra e Legname: quattro figure in una sola nicchia, che rappresentano i protomartiri dell'arte della scultura e dell'architettura. Nella nicchia esterna di Orsanmichele oggi c'è una copia; l'originale è nel Museo di Orsanmichele.",
   "analysis": "Nanni di Banco risolve il problema dello spazio ridotto della nicchia disponendo le quattro figure in cerchio, mettendole in relazione attraverso sguardi e gesti. Il riferimento alla statuaria romana imperiale si manifesta nel controllo formale, nell'equilibrio compositivo, nella volumetria delle teste e nella solenne staticita. Per i volti l'artista preferisce una caratterizzazione piu moderna e forse studiata dal vero. La sensazione prevalente di staticita contrasta con il dinamismo trattenuto del contemporaneo San Giorgio di Donatello.",
   "innovations": [
    "primo gruppo scultoreo rinascimentale a Firenze",
    "disposizione a semicerchio nella nicchia",
-   "recupero della statuaria romana imperiale"
+   "recupero della statuaria romana imperiale",
+   "gruppo di quattro figure in una singola nicchia"
   ],
   "term_ids": [
    "nicchia",
@@ -19156,51 +19159,6 @@
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Museo%20di%20orsanmichele%2C%20nanni%20di%20banco%2C%20quattro%20santi%20coronati%2C%2001.JPG",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Museo%20di%20orsanmichele%2C%20nanni%20di%20banco%2C%20quattro%20santi%20coronati%2C%2001.JPG?width=640",
-  "image_source": "wikidata",
-  "committente_ids": [
-   "arte-dei-maestri-di-pietra-e-legname"
-  ],
-  "fonte_ids": [
-   "occhi-arte-3"
-  ]
- },
- {
-  "id": "quattro-santi-coronati-nanni-di-banco",
-  "title": "Quattro Santi Coronati",
-  "artist_ids": [
-   "nanni-di-banco"
-  ],
-  "period_id": "umanesimo-fiorentino",
-  "date_text": "1411 circa",
-  "year_start": 1411,
-  "year_end": 1415,
-  "type": "scultura",
-  "technique_ids": [
-   "scultura-in-marmo"
-  ],
-  "materials": [
-   "marmo"
-  ],
-  "location_city": "Firenze",
-  "location_place": "Museo Nazionale del Bargello (originali), Orsanmichele (copie)",
-  "lat": 43.77,
-  "lon": 11.25,
-  "book": 2,
-  "chapter": 2,
-  "page": 50,
-  "source_file": "Libro-2.1-giu-2026-1",
-  "importance": 2,
-  "summary": "Quattro Santi Coronati (1411 circa) di Nanni di Banco, marmo, Orsanmichele (copie; originali al Bargello). Incarico dell'Arte dei Maestri di Pietra e Legname: quattro figure in una singola nicchia. Rappresentano i protomartiri dell'arte della scultura e dell'architettura.",
-  "analysis": null,
-  "innovations": [
-   "gruppo di quattro figure in una singola nicchia"
-  ],
-  "term_ids": [
-   "nicchia",
-   "gruppo-scultoreo"
-  ],
-  "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Firenze_-_Florence_-_Via_Orsanmichele_-_View_South_on_Quattro_Santi_Coronati_%28copy%29_1417_by_Nanni_di_Banco.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Firenze_-_Florence_-_Via_Orsanmichele_-_View_South_on_Quattro_Santi_Coronati_%28copy%29_1417_by_Nanni_di_Banco.jpg/960px-Firenze_-_Florence_-_Via_Orsanmichele_-_View_South_on_Quattro_Santi_Coronati_%28copy%29_1417_by_Nanni_di_Banco.jpg",
   "image_source": "wikidata",
   "committente_ids": [
    "arte-dei-maestri-di-pietra-e-legname"
@@ -22657,8 +22615,8 @@
    "biblioteca",
    "cella"
   ],
-  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Piazza_San_Marco_%28Florence%29_2.JPG",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Piazza_San_Marco_%28Florence%29_2.JPG/960px-Piazza_San_Marco_%28Florence%29_2.JPG",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Cloister_of_the_Convent_of_San_Marco%2C_15th_century%2C_Florence_%281%29.jpg/1280px-Cloister_of_the_Convent_of_San_Marco%2C_15th_century%2C_Florence_%281%29.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Cloister_of_the_Convent_of_San_Marco%2C_15th_century%2C_Florence_%281%29.jpg/1280px-Cloister_of_the_Convent_of_San_Marco%2C_15th_century%2C_Florence_%281%29.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
    "cosimo-de-medici"
@@ -36842,8 +36800,8 @@
    "non-finito",
    "allegoria"
   ],
-  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sagrestia%20Nuova%20at%20the%20Medici%20Chapel%20-%2048169937026.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sagrestia%20Nuova%20at%20the%20Medici%20Chapel%20-%2048169937026.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/La_tomba_di_Lorenzo_de%27_Medici_Duca_di_Urbino_opera_di_Michelangelo_Buonarroti.jpg/1280px-La_tomba_di_Lorenzo_de%27_Medici_Duca_di_Urbino_opera_di_Michelangelo_Buonarroti.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/La_tomba_di_Lorenzo_de%27_Medici_Duca_di_Urbino_opera_di_Michelangelo_Buonarroti.jpg/1280px-La_tomba_di_Lorenzo_de%27_Medici_Duca_di_Urbino_opera_di_Michelangelo_Buonarroti.jpg",
   "image_source": "wikidata",
   "committente_ids": [
    "clemente-vii-de-medici"
@@ -37263,8 +37221,8 @@
    "non-finito",
    "allegoria"
   ],
-  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sagrestia%20Nuova%20at%20the%20Medici%20Chapel%20-%2048170012017.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sagrestia%20Nuova%20at%20the%20Medici%20Chapel%20-%2048170012017.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Grabmal_von_Giuliano_II._de_Medici_%28Michelangelo%29_Cappelle_Medicee_Florenz-1.jpg/1280px-Grabmal_von_Giuliano_II._de_Medici_%28Michelangelo%29_Cappelle_Medicee_Florenz-1.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Grabmal_von_Giuliano_II._de_Medici_%28Michelangelo%29_Cappelle_Medicee_Florenz-1.jpg/1280px-Grabmal_von_Giuliano_II._de_Medici_%28Michelangelo%29_Cappelle_Medicee_Florenz-1.jpg",
   "image_source": "wikidata-artista",
   "committente_ids": [
    "clemente-vii-de-medici"
@@ -41238,8 +41196,8 @@
   "term_ids": [
    "tribuna"
   ],
-  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Palazzo%20della%20camera%20di%20commercio%20a%20Firenze%2C%20terrazza%20panoramica%2C%20vista%20uffizi%2C%20tribuna.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Palazzo%20della%20camera%20di%20commercio%20a%20Firenze%2C%20terrazza%20panoramica%2C%20vista%20uffizi%2C%20tribuna.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Florence%2C_Uffizi%2C_Tribuna-2.jpg/1280px-Florence%2C_Uffizi%2C_Tribuna-2.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Florence%2C_Uffizi%2C_Tribuna-2.jpg/1280px-Florence%2C_Uffizi%2C_Tribuna-2.jpg",
   "image_source": "wikidata",
   "committente_ids": [
    "francesco-i-de-medici"
@@ -41837,8 +41795,8 @@
    "deambulatorio",
    "cupola"
   ],
-  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Mausoleo_di_santa_costanza%2C_mosaici_03.jpg",
-  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/7/70/Mausoleo_di_santa_costanza%2C_mosaici_03.jpg",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Mausoleo_di_Santa_Costanza_-_interno.jpg/1280px-Mausoleo_di_Santa_Costanza_-_interno.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Mausoleo_di_Santa_Costanza_-_interno.jpg/1280px-Mausoleo_di_Santa_Costanza_-_interno.jpg",
   "image_source": "commons",
   "committente_ids": [
    "costantina-augusta"
@@ -42951,8 +42909,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/0_Quadrivio_degli_Angeli_-_Ferrara_01.jpg/1280px-0_Quadrivio_degli_Angeli_-_Ferrara_01.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/0_Quadrivio_degli_Angeli_-_Ferrara_01.jpg/1280px-0_Quadrivio_degli_Angeli_-_Ferrara_01.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -42988,8 +42946,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Ercole_de%27_Roberti%2C_Volto_di_Maria_Maddalena_piangente%2C_%281478-86%29_01.jpg/1280px-Ercole_de%27_Roberti%2C_Volto_di_Maria_Maddalena_piangente%2C_%281478-86%29_01.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Ercole_de%27_Roberti%2C_Volto_di_Maria_Maddalena_piangente%2C_%281478-86%29_01.jpg/1280px-Ercole_de%27_Roberti%2C_Volto_di_Maria_Maddalena_piangente%2C_%281478-86%29_01.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -43368,8 +43326,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Gutenberg_Bible%2C_Lenox_Copy%2C_New_York_Public_Library%2C_2009._Pic_01.jpg/1280px-Gutenberg_Bible%2C_Lenox_Copy%2C_New_York_Public_Library%2C_2009._Pic_01.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Gutenberg_Bible%2C_Lenox_Copy%2C_New_York_Public_Library%2C_2009._Pic_01.jpg/1280px-Gutenberg_Bible%2C_Lenox_Copy%2C_New_York_Public_Library%2C_2009._Pic_01.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [],
@@ -43403,8 +43361,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Constantinus_lascaris%2C_erotemata...%2C_edizione_di_aldo_manuzio%2C_1495.jpg/1280px-Constantinus_lascaris%2C_erotemata...%2C_edizione_di_aldo_manuzio%2C_1495.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Constantinus_lascaris%2C_erotemata...%2C_edizione_di_aldo_manuzio%2C_1495.jpg/1280px-Constantinus_lascaris%2C_erotemata...%2C_edizione_di_aldo_manuzio%2C_1495.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [],
@@ -43632,8 +43590,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Cosm%C3%A8_tura%2C_santi_paolo_e_maurelio_con_bartolomeo_roverella.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Cosm%C3%A8_tura%2C_santi_paolo_e_maurelio_con_bartolomeo_roverella.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [],
@@ -43737,8 +43695,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Accademia_-_Miracolo_della_reliquia_della_Croce_al_ponte_di_San_Lorenzo_-_Gentile_Bellini_-_cat.568.jpg/1280px-Accademia_-_Miracolo_della_reliquia_della_Croce_al_ponte_di_San_Lorenzo_-_Gentile_Bellini_-_cat.568.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Accademia_-_Miracolo_della_reliquia_della_Croce_al_ponte_di_San_Lorenzo_-_Gentile_Bellini_-_cat.568.jpg/1280px-Accademia_-_Miracolo_della_reliquia_della_Croce_al_ponte_di_San_Lorenzo_-_Gentile_Bellini_-_cat.568.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -44964,8 +44922,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Cappella_del_cardinale_di_portogallo_01.JPG/1280px-Cappella_del_cardinale_di_portogallo_01.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Cappella_del_cardinale_di_portogallo_01.JPG/1280px-Cappella_del_cardinale_di_portogallo_01.JPG",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [],
@@ -45052,41 +45010,6 @@
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/San_Michele_in_Isola%2C_Facade.jpg/3840px-San_Michele_in_Isola%2C_Facade.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/San_Michele_in_Isola%2C_Facade.jpg/3840px-San_Michele_in_Isola%2C_Facade.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
   "image_source": null,
-  "image_gallery": [],
-  "committente_ids": [],
-  "fonte_ids": [
-   "occhi-arte-2"
-  ]
- },
- {
-  "id": "madonna-col-bambino-in-trono-con-angeli-musicanti-e-santi-pietro-e-caterina",
-  "title": "Madonna col Bambino in trono con angeli musicanti e santi Pietro e Caterina",
-  "artist_ids": [
-   "giovanni-bellini"
-  ],
-  "period_id": "scuola-veneziana",
-  "date_text": "1505",
-  "year_start": 1505,
-  "year_end": null,
-  "type": "pittura",
-  "technique_ids": [],
-  "materials": [],
-  "location_city": "Venezia",
-  "location_place": "Chiesa di San Zaccaria",
-  "lat": 45.434713,
-  "lon": 12.343566,
-  "book": 1,
-  "chapter": 0,
-  "page": 0,
-  "source_file": "",
-  "importance": 3,
-  "summary": "Pala d'altare con composizione piramidale ispirata al Trittico di Piero della Francesca. Presenta nicchia con catino absidale in mosaico dorato, trono architettonico, angeli musicanti al centro, santi Pietro e Caterina ai lati. Caratterizzata da prospettiva costruita in pianta e alzato, pilastri dipinti corrispondenti a quelli reali, uso del colore sfumato e barbe raffinate.",
-  "analysis": null,
-  "innovations": [],
-  "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
-  "image_source": "",
   "image_gallery": [],
   "committente_ids": [],
   "fonte_ids": [
@@ -45545,8 +45468,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vittore_Carpaccio_014.jpg/1280px-Vittore_Carpaccio_014.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vittore_Carpaccio_014.jpg/1280px-Vittore_Carpaccio_014.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -45778,8 +45701,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Francesco_del_Cossa%2C_Saint_Florian%2C_c._1473-1474%2C_NGA_368.jpg/1280px-Francesco_del_Cossa%2C_Saint_Florian%2C_c._1473-1474%2C_NGA_368.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Francesco_del_Cossa%2C_Saint_Florian%2C_c._1473-1474%2C_NGA_368.jpg/1280px-Francesco_del_Cossa%2C_Saint_Florian%2C_c._1473-1474%2C_NGA_368.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -46387,8 +46310,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Cosm%C3%A8_Tura_-_Annunciation_-_WGA23144.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Cosm%C3%A8_Tura_-_Annunciation_-_WGA23144.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [],
@@ -46546,8 +46469,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Donatello%2C_Mary_Magdalene%2C_c1440-42%2C_Museo_dell%27Opera_del_Duomo.jpg/1280px-Donatello%2C_Mary_Magdalene%2C_c1440-42%2C_Museo_dell%27Opera_del_Duomo.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Donatello%2C_Mary_Magdalene%2C_c1440-42%2C_Museo_dell%27Opera_del_Duomo.jpg/1280px-Donatello%2C_Mary_Magdalene%2C_c1440-42%2C_Museo_dell%27Opera_del_Duomo.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [],
@@ -46709,8 +46632,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/CTura.jpg/1280px-CTura.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/CTura.jpg/1280px-CTura.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [],
@@ -46911,8 +46834,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ercole_de%27_roberti%2C_san_giorgio%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg/1280px-Ercole_de%27_roberti%2C_san_giorgio%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ercole_de%27_roberti%2C_san_giorgio%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg/1280px-Ercole_de%27_roberti%2C_san_giorgio%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -46948,8 +46871,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/The_Flight_into_Egypt_MET_DT7231.jpg/1280px-The_Flight_into_Egypt_MET_DT7231.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/The_Flight_into_Egypt_MET_DT7231.jpg/1280px-The_Flight_into_Egypt_MET_DT7231.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -47028,8 +46951,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Cosm%C3%A8_Tura_-_The_Adoration_of_the_Magi_-_1905.14_-_Fogg_Museum.jpg/1280px-Cosm%C3%A8_Tura_-_The_Adoration_of_the_Magi_-_1905.14_-_Fogg_Museum.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Cosm%C3%A8_Tura_-_The_Adoration_of_the_Magi_-_1905.14_-_Fogg_Museum.jpg/1280px-Cosm%C3%A8_Tura_-_The_Adoration_of_the_Magi_-_1905.14_-_Fogg_Museum.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [],
@@ -47099,8 +47022,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Cosm%C3%A8_Tura_-_The_Circumcision_-_P15s3_-_Isabella_Stewart_Gardner_Museum.jpg/1280px-Cosm%C3%A8_Tura_-_The_Circumcision_-_P15s3_-_Isabella_Stewart_Gardner_Museum.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Cosm%C3%A8_Tura_-_The_Circumcision_-_P15s3_-_Isabella_Stewart_Gardner_Museum.jpg/1280px-Cosm%C3%A8_Tura_-_The_Circumcision_-_P15s3_-_Isabella_Stewart_Gardner_Museum.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [],
@@ -47313,14 +47236,16 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Opera matura di Bellini, dipinta nel 1505 per la chiesa del ricco convento delle monache benedettine di San Zaccaria, che riprende e supera l’arcaica articolazione tripartita del Trittico dei Frari a favore di un’unica tavola continua. La pala mantiene la posizione del trono marmoreo in una nicchia con catino absidale in mosaico dorato, ma unifica la scena in uno spazio unico: ai piedi del trono si trovano al centro un angelo musicante, a sinistra i santi Pietro e Caterina, a destra Lucia e Gerolamo.",
-  "analysis": "L’architettura dipinta da Bellini assomiglia a quella reale in cui la pala è collocata: i pilastri istoriati dipinti corrispondono infatti a quelli marmorei della cornice e al resto dell’edificio progettato da Mauro Codussi. La proporzionalità, la chiarezza dell’impianto prospettico e l’uso della luce, oltre a dettagli come l’uovo sospeso sopra la Vergine, già ripreso da Mantegna nella Pala di San Zeno, rimandano a Piero della Francesca. Nell’uso del colore, nella resa sfumata delle barbe e nella raffigurazione degli scampoli di paesaggio al di là dei due pilastri istoriati di gusto classico, Bellini mostra invece di aver già assimilato il linguaggio tonale che caratterizza l’opera di Giorgione, affermatosi nei primissimi anni del secolo. Rispetto al Ritratto del doge Leonardo Loredan, opera eseguita pochi anni prima, la Pala di San Zaccaria mette in luce il versante pubblico e devozionale della produzione belliniana, quello legato alla grande pala d’altare, mentre nel ritratto Bellini applica gli stessi principi di proporzionalità, chiarezza luminosa e resa tonale a un soggetto individuale, dimostrando la coerenza del suo linguaggio pittorico attraverso generi diversi.",
+  "summary": "Opera matura di Bellini, dipinta nel 1505 per la chiesa del ricco convento delle monache benedettine di San Zaccaria, che riprende e supera l’arcaica articolazione tripartita del Trittico dei Frari a favore di un’unica tavola continua. La pala mantiene la posizione del trono marmoreo in una nicchia con catino absidale in mosaico dorato, ma unifica la scena in uno spazio unico: ai piedi del trono si trovano al centro un angelo musicante, a sinistra i santi Pietro e Caterina, a destra Lucia e Gerolamo. È nota anche come Madonna col Bambino in trono con angelo musicante e santi Pietro, Caterina, Lucia e Gerolamo. La composizione piramidale è ispirata al Trittico di Piero della Francesca.",
+  "analysis": "L’architettura dipinta da Bellini assomiglia a quella reale in cui la pala è collocata: i pilastri istoriati dipinti corrispondono infatti a quelli marmorei della cornice e al resto dell’edificio progettato da Mauro Codussi. La proporzionalità, la chiarezza dell’impianto prospettico e l’uso della luce, oltre a dettagli come l’uovo sospeso sopra la Vergine, già ripreso da Mantegna nella Pala di San Zeno, rimandano a Piero della Francesca. Nell’uso del colore, nella resa sfumata delle barbe e nella raffigurazione degli scampoli di paesaggio al di là dei due pilastri istoriati di gusto classico, Bellini mostra invece di aver già assimilato il linguaggio tonale che caratterizza l’opera di Giorgione, affermatosi nei primissimi anni del secolo. Rispetto al Ritratto del doge Leonardo Loredan, opera eseguita pochi anni prima, la Pala di San Zaccaria mette in luce il versante pubblico e devozionale della produzione belliniana, quello legato alla grande pala d’altare, mentre nel ritratto Bellini applica gli stessi principi di proporzionalità, chiarezza luminosa e resa tonale a un soggetto individuale, dimostrando la coerenza del suo linguaggio pittorico attraverso generi diversi. La prospettiva è costruita sia in pianta sia in alzato, e il trono architettonico domina la composizione dal centro della nicchia.",
   "innovations": [
    "Superamento dell’arcaica articolazione tripartita a favore di un’unica tavola continua",
    "Fusione completa tra spazio pittorico e spazio reale della chiesa",
    "Architettura dipinta in dialogo diretto con quella reale progettata da Mauro Codussi",
    "Assimilazione del linguaggio tonale di Giorgione nel colore e nella resa sfumata",
-   "Rimandi a Piero della Francesca e Mantegna nell’uso della prospettiva e in dettagli come l’uovo sospeso"
+   "Rimandi a Piero della Francesca e Mantegna nell’uso della prospettiva e in dettagli come l’uovo sospeso",
+   "Composizione piramidale ispirata al Trittico di Piero della Francesca",
+   "Prospettiva costruita in pianta e in alzato"
   ],
   "term_ids": [
    "madonna-con-bambino",
@@ -47334,7 +47259,8 @@
    "monastero-di-san-zaccaria"
   ],
   "fonte_ids": [
-   "occhi-arte-3"
+   "occhi-arte-3",
+   "occhi-arte-2"
   ]
  },
  {
@@ -47938,8 +47864,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Bellini%2CGiovanni_-_Agony_in_the_Garden_-_National_Gallery.jpg/1280px-Bellini%2CGiovanni_-_Agony_in_the_Garden_-_National_Gallery.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Bellini%2CGiovanni_-_Agony_in_the_Garden_-_National_Gallery.jpg/1280px-Bellini%2CGiovanni_-_Agony_in_the_Garden_-_National_Gallery.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [],
@@ -48474,8 +48400,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Ercole_de%27_roberti%2C_san_michele%2C_1473_ca._da_polittico_griffoni.JPG/1280px-Ercole_de%27_roberti%2C_san_michele%2C_1473_ca._da_polittico_griffoni.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Ercole_de%27_roberti%2C_san_michele%2C_1473_ca._da_polittico_griffoni.JPG/1280px-Ercole_de%27_roberti%2C_san_michele%2C_1473_ca._da_polittico_griffoni.JPG",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -48512,8 +48438,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Francesco_del_Cossa%2C_San_Pietro%2C_1470-73%2C_Pinacoteca_di_Brera%2C_Milano.jpg/1280px-Francesco_del_Cossa%2C_San_Pietro%2C_1470-73%2C_Pinacoteca_di_Brera%2C_Milano.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Francesco_del_Cossa%2C_San_Pietro%2C_1470-73%2C_Pinacoteca_di_Brera%2C_Milano.jpg/1280px-Francesco_del_Cossa%2C_San_Pietro%2C_1470-73%2C_Pinacoteca_di_Brera%2C_Milano.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -48629,8 +48555,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Francesco_del_Cossa%2C_St._Vincent_Ferrer%2C_1470-73%2C_National_Gallery_London.jpg/1280px-Francesco_del_Cossa%2C_St._Vincent_Ferrer%2C_1470-73%2C_National_Gallery_London.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Francesco_del_Cossa%2C_St._Vincent_Ferrer%2C_1470-73%2C_National_Gallery_London.jpg/1280px-Francesco_del_Cossa%2C_St._Vincent_Ferrer%2C_1470-73%2C_National_Gallery_London.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -48667,8 +48593,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Ercole_de%27_roberti%2C_sant%27apollonia%2C_1473_ca._da_polittico_griffoni.JPG/1280px-Ercole_de%27_roberti%2C_sant%27apollonia%2C_1473_ca._da_polittico_griffoni.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Ercole_de%27_roberti%2C_sant%27apollonia%2C_1473_ca._da_polittico_griffoni.JPG/1280px-Ercole_de%27_roberti%2C_sant%27apollonia%2C_1473_ca._da_polittico_griffoni.JPG",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -48705,8 +48631,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Ercole_de%27_roberti%2C_santa_caterina%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg/1280px-Ercole_de%27_roberti%2C_santa_caterina%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Ercole_de%27_roberti%2C_santa_caterina%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg/1280px-Ercole_de%27_roberti%2C_santa_caterina%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -48781,8 +48707,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Francesco_del_Cossa%2C_Saint_Lucy%2C_c._1473-1474%2C_NGA_369.jpg/1280px-Francesco_del_Cossa%2C_Saint_Lucy%2C_c._1473-1474%2C_NGA_369.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Francesco_del_Cossa%2C_Saint_Lucy%2C_c._1473-1474%2C_NGA_369.jpg/1280px-Francesco_del_Cossa%2C_Saint_Lucy%2C_c._1473-1474%2C_NGA_369.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -48819,8 +48745,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Ercole_de%27_roberti%2C_sant%27antonio_abate%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28rotterdam%2C_museo_boijmans_van_beuningen%29_01.jpg/1280px-Ercole_de%27_roberti%2C_sant%27antonio_abate%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28rotterdam%2C_museo_boijmans_van_beuningen%29_01.jpg",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Ercole_de%27_roberti%2C_sant%27antonio_abate%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28rotterdam%2C_museo_boijmans_van_beuningen%29_01.jpg/1280px-Ercole_de%27_roberti%2C_sant%27antonio_abate%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28rotterdam%2C_museo_boijmans_van_beuningen%29_01.jpg",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -48902,8 +48828,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Saint_George_by_Cosme_Tura%2C_Ferrara%2C_c._1475-1476%2C_oil_and_tempera_on_panel_-_San_Diego_Museum_of_Art_-_DSC06646.JPG/1280px-Saint_George_by_Cosme_Tura%2C_Ferrara%2C_c._1475-1476%2C_oil_and_tempera_on_panel_-_San_Diego_Museum_of_Art_-_DSC06646.JPG",
+  "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Saint_George_by_Cosme_Tura%2C_Ferrara%2C_c._1475-1476%2C_oil_and_tempera_on_panel_-_San_Diego_Museum_of_Art_-_DSC06646.JPG/1280px-Saint_George_by_Cosme_Tura%2C_Ferrara%2C_c._1475-1476%2C_oil_and_tempera_on_panel_-_San_Diego_Museum_of_Art_-_DSC06646.JPG",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
