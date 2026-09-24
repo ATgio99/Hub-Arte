@@ -15,7 +15,7 @@
   "target_type": "artist",
   "target_id": "piero-della-francesca",
   "kind": "influenza",
-  "description": "Piero della Francesca subisce l'influenza di Leon Battista Alberti a Rimini, condividendo la visione della realtà intesa come massa e volume e i principi della costruzione prospettica matematica."
+  "description": "Piero incontra Alberti a Rimini e trova nei suoi trattati il sostegno teorico alla propria visione della realtà come massa e volume e alla costruzione prospettica matematica, come mostra il San Sigismondo del Tempio Malatestiano."
  },
  {
   "id": "altare-ratchis-influenza-scultura-longobarda",
@@ -330,7 +330,7 @@
   "target_type": "artist",
   "target_id": "benozzo-gozzoli",
   "kind": "maestro-allievo",
-  "description": "Benozzo Gozzoli si forma come allievo di Beato Angelico, collaborando agli affreschi del convento di San Marco, e come apprendista orafo nella bottega di Ghiberti per la porta del battistero."
+  "description": "Secondo Vasari Benozzo Gozzoli si forma con Beato Angelico e gli fa da aiuto negli affreschi del convento di San Marco; lavora anche come apprendista orafo nella bottega di Ghiberti per la porta del battistero."
  },
  {
   "id": "berlinghiero-maniera-greca",
@@ -618,7 +618,7 @@
   "target_type": "work",
   "target_id": "cattedra-di-massimiano",
   "kind": "committenza",
-  "description": "L'arcivescovo Massimiano commissiona la Cattedra, dono probabilmente di Giustiniano, che porta inciso il proprio monogramma nella fascia traforata superiore."
+  "description": "La cattedra, con il monogramma di Massimiano al centro della fascia frontale, è un dono dell'imperatore Giustiniano al vescovo di Ravenna, suo amico e alleato politico."
  },
  {
   "id": "cattedrale-fiore-arnolfo-talenti",
@@ -1564,7 +1564,7 @@
   "target_type": "period",
   "target_id": "rinascimento-fiorentino",
   "kind": "influenza",
-  "description": "Il Paesaggio con fiume di Leonardo (1473) è il primo paesaggio autonomo datato della storia dell'arte italiana, aprendo la strada a un nuovo genere pittorico."
+  "description": "Se è un'opera autonoma e non uno studio per un dipinto, il Paesaggio con fiume del 1473 è il primo paesaggio indipendente dell'arte occidentale, nato dall'interesse di Leonardo per i fenomeni naturali."
  },
  {
   "id": "leonardo-santanna-cartone-tavola",
@@ -1807,7 +1807,7 @@
   "target_type": "work",
   "target_id": "assunta-tiziano",
   "kind": "rielaborazione",
-  "description": "Nella Pala Pesaro Tiziano prende ispirazione da Michelangelo per il leggero avvitamento della figura della Vergine e per la concitazione degli apostoli ai piedi del sepolcro."
+  "description": "Dalle invenzioni di Michelangelo, note attraverso le incisioni, Tiziano deriva la leggera torsione della Vergine e l'agitazione degli apostoli intorno al sepolcro."
  },
  {
   "id": "michelangelo-manierismo-apertura",
@@ -2260,15 +2260,6 @@
   "description": "Giulio Romano completa la Sala di Costantino dopo la morte di Raffaello seguendo i cartoni del maestro ma introducendo il proprio stile più drammatico e anticlassico."
  },
  {
-  "id": "raffaello-influenza-tiziano-pala-pesaro",
-  "source_type": "artist",
-  "source_id": "tiziano-vecellio",
-  "target_type": "work",
-  "target_id": "pala-pesaro-tiziano",
-  "kind": "rielaborazione",
-  "description": "Nella Pala Pesaro Tiziano deriva da Raffaello i vivacissimi angioletti che sorreggono le nubi, modelli conosciuti attraverso incisioni."
- },
- {
   "id": "raffaello-logge-giovanni-udine",
   "source_type": "artist",
   "source_id": "giovanni-da-udine",
@@ -2719,15 +2710,6 @@
   "description": "Teodorico commissiona la costruzione di Sant'Apollinare Nuovo come cappella palatina ariana (505), dotandola di un imponente ciclo musivo sulla navata centrale."
  },
  {
-  "id": "tiziano-assunta-ispirazione-michelangelo",
-  "source_type": "work",
-  "source_id": "assunta-tiziano",
-  "target_type": "artist",
-  "target_id": "tiziano-vecellio",
-  "kind": "influenza",
-  "description": "Per l'Assunta e la Pala Pesaro, Tiziano prende ispirazione da Michelangelo per l'avvitamento della Vergine e la concitazione degli apostoli, modelli conosciuti attraverso incisioni."
- },
- {
   "id": "tiziano-dissoluzione-forme-ultimo-periodo",
   "source_type": "work",
   "source_id": "punizione-di-marsia-tiziano",
@@ -2833,7 +2815,7 @@
   "target_type": "artist",
   "target_id": "leonardo-da-vinci",
   "kind": "maestro-allievo",
-  "description": "Leonardo si forma nella bottega di Verrocchio, collaborando al Battesimo di Cristo in cui dipinge l'angelo di sinistra superando qualitativamente il maestro."
+  "description": "Leonardo impara nella bottega di Verrocchio, insieme ad altri giovani, tecniche diverse; nel Battesimo di Cristo dipinge l'angelo di sinistra, superando il maestro."
  },
  {
   "id": "verrocchio-leonardo-battesimo-rielaborazione",
@@ -3985,16 +3967,6 @@
   "sort_order": 0
  },
  {
-  "id": "andrea-verrocchio-leonardo-da-vinci-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "andrea-verrocchio",
-  "target_type": "artist",
-  "target_id": "leonardo-da-vinci",
-  "kind": "maestro-allievo",
-  "description": "La bottega di Verrocchio ospita Leonardo, insieme ad altri giovani artisti che apprendono diverse tecniche artistiche.",
-  "sort_order": 0
- },
- {
   "id": "andrea-verrocchio-pietro-perugino-maestro-allievo",
   "source_type": "artist",
   "source_id": "andrea-verrocchio",
@@ -4032,16 +4004,6 @@
   "target_id": "benozzo-gozzoli",
   "kind": "collaborazione",
   "description": "Benozzo Gozzoli lavora con Beato Angelico nella decorazione della cappella Niccolina, insieme ad altri allievi e collaboratori.",
-  "sort_order": 0
- },
- {
-  "id": "beato-angelico-benozzo-gozzoli-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "beato-angelico",
-  "target_type": "artist",
-  "target_id": "benozzo-gozzoli",
-  "kind": "maestro-allievo",
-  "description": "Benozzo Gozzoli si forma, secondo Vasari, come allievo di Beato Angelico e collabora con lui agli affreschi del convento di San Marco.",
   "sort_order": 0
  },
  {
@@ -4572,16 +4534,6 @@
   "target_id": "giusto-di-gand",
   "kind": "influenza",
   "description": "Giusto di Gand si forma sulle opere di Jan van Eyck prima di trasferirsi a Roma e poi a Urbino.",
-  "sort_order": 0
- },
- {
-  "id": "leon-battista-alberti-piero-della-francesca-influenza",
-  "source_type": "artist",
-  "source_id": "leon-battista-alberti",
-  "target_type": "artist",
-  "target_id": "piero-della-francesca",
-  "kind": "influenza",
-  "description": "Nel San Sigismondo di Piero della Francesca le idee dell'artista trovano conferma e sostegno teorico nei trattati di Leon Battista Alberti; il testo evidenzia la condivisione della visione della realtà come massa e volume.",
   "sort_order": 0
  },
  {
@@ -6370,5 +6322,185 @@
   "target_id": "chiesa-di-sant-andrea-mantova",
   "kind": "collaborazione",
   "description": "Fancelli dirige con Ludovico Gonzaga il cantiere di Sant'Andrea, avviato due mesi dopo la morte di Alberti, e ne garantisce la fedeltà al disegno albertiano."
+ },
+ {
+  "id": "adorazione-leonardo-contrasto-adorazione-botticelli",
+  "source_type": "work",
+  "source_id": "adorazione-dei-magi-leonardo",
+  "target_type": "work",
+  "target_id": "adorazione-dei-magi-botticelli",
+  "kind": "contrasto",
+  "description": "Botticelli usa l'Adorazione per celebrare i Medici e la loro cerchia; Leonardo ne fa un'epifania, una manifestazione del divino davanti a una folla colta nelle reazioni più diverse."
+ },
+ {
+  "id": "raffaello-influenza-assunta-tiziano",
+  "source_type": "artist",
+  "source_id": "raffaello-sanzio",
+  "target_type": "work",
+  "target_id": "assunta-tiziano",
+  "kind": "influenza",
+  "description": "I putti che sostengono le nubi dell'Assunta vengono da Raffaello, che Tiziano conosce attraverso le stampe."
+ },
+ {
+  "id": "palazzo-rucellai-contrasto-palazzo-medici",
+  "source_type": "work",
+  "source_id": "palazzo-rucellai",
+  "target_type": "work",
+  "target_id": "palazzo-medici-riccardi",
+  "kind": "contrasto",
+  "description": "Stessa divisione in tre piani, due linguaggi opposti: al bugnato che si alleggerisce salendo di Michelozzo, Alberti oppone una superficie regolare scandita da lesene e ordini sovrapposti."
+ },
+ {
+  "id": "volta-sistina-influenza-visione-patmos",
+  "source_type": "work",
+  "source_id": "volta-cappella-sistina",
+  "target_type": "work",
+  "target_id": "visione-di-san-giovanni-evangelista-correggio",
+  "kind": "influenza",
+  "description": "Gli apostoli nudi e possenti che circondano l'imposta della cupola di Parma nascono dalle figure della volta sistina, ma Correggio li ammorbidisce con una luce che scorre e fonde i colori."
+ },
+ {
+  "id": "arnolfo-influenza-storie-isacco",
+  "source_type": "artist",
+  "source_id": "arnolfo-di-cambio",
+  "target_type": "work",
+  "target_id": "storie-di-isacco-assisi",
+  "kind": "influenza",
+  "description": "Le figure delle Storie di Isacco, compatte e dai panneggi fitti, riprendono la plasticità della statuaria di Arnolfo, al punto che qualcuno ha proposto lui stesso come autore."
+ },
+ {
+  "id": "croce-desiderio-evoluzione-evangeliario-teodolinda",
+  "source_type": "work",
+  "source_id": "croce-di-desiderio",
+  "target_type": "work",
+  "target_id": "evangeliario-di-teodolinda",
+  "kind": "evoluzione",
+  "description": "Dalla coperta gemmata donata da Teodolinda alla croce di Desiderio, l'oreficeria di corte longobarda mantiene lo stesso gusto per la superficie coperta di pietre, fino alle soglie dell'età carolingia."
+ },
+ {
+  "id": "ciborio-santa-cecilia-evoluzione-ciborio-san-paolo",
+  "source_type": "work",
+  "source_id": "ciborio-santa-cecilia-trastevere",
+  "target_type": "work",
+  "target_id": "ciborio-san-paolo-fuori-mura",
+  "kind": "evoluzione",
+  "description": "Otto anni dopo San Paolo, Arnolfo conserva lo schema dell'edicola su quattro colonne ma lo alleggerisce: archi più bassi e traforati, meno colonnine, cuspide e pinnacoli più misurati."
+ },
+ {
+  "id": "plutei-pavia-rielaborano-altare-ratchis",
+  "source_type": "work",
+  "source_id": "plutei-san-michele-pavia",
+  "target_type": "work",
+  "target_id": "altare-di-ratchis-cividale",
+  "kind": "rielaborazione",
+  "description": "A Pavia i motivi decorativi dell'Altare di Ratchis sono ripresi con più ordine e compostezza, in composizioni simmetriche di gusto tardoromano."
+ },
+ {
+  "id": "spedale-innocenti-rielabora-battistero-firenze",
+  "source_type": "work",
+  "source_id": "spedale-degli-innocenti",
+  "target_type": "work",
+  "target_id": "battistero-san-giovanni-firenze",
+  "kind": "rielaborazione",
+  "description": "Il loggiato dello Spedale, su colonne con capitelli corinzi e archi a tutto sesto, riprende lo schema del battistero di San Giovanni, letto da Brunelleschi come un modello antico."
+ },
+ {
+  "id": "bertoldo-influenza-battaglia-centauri",
+  "source_type": "artist",
+  "source_id": "bertoldo-di-giovanni",
+  "target_type": "work",
+  "target_id": "battaglia-di-centauri",
+  "kind": "influenza",
+  "description": "Il rilievo con la Battaglia tra romani e barbari di Bertoldo, maestro del giardino di San Marco, è con i sarcofagi antichi il modello della Battaglia di centauri del giovane Michelangelo."
+ },
+ {
+  "id": "sacrestia-nuova-rielabora-sacrestia-vecchia",
+  "source_type": "work",
+  "source_id": "sacrestia-nuova",
+  "target_type": "work",
+  "target_id": "sacrestia-vecchia-san-lorenzo",
+  "kind": "rielaborazione",
+  "description": "Michelangelo copia esattamente la pianta della sacrestia di Brunelleschi, sul lato opposto del transetto, ma ne rovescia lo spirito: membrature in aggetto, timpani spezzati, pareti modellate come sculture."
+ },
+ {
+  "id": "biblioteca-laurenziana-evoluzione-sacrestia-nuova",
+  "source_type": "work",
+  "source_id": "biblioteca-laurenziana",
+  "target_type": "work",
+  "target_id": "sacrestia-nuova",
+  "kind": "evoluzione",
+  "description": "Dopo la Sacrestia Nuova, sempre nel complesso di San Lorenzo e per un papa Medici, Clemente VII, Michelangelo progetta la Biblioteca Laurenziana, destinata alla grande raccolta di libri della famiglia."
+ },
+ {
+  "id": "logge-vaticane-collaborazione-loggia-psiche",
+  "source_type": "work",
+  "source_id": "logge-vaticane",
+  "target_type": "work",
+  "target_id": "loggia-di-psiche-farnesina",
+  "kind": "collaborazione",
+  "description": "Negli stessi anni la bottega di Raffaello lavora alle Logge Vaticane e alla Loggia di Psiche della Farnesina, dove Giovanni da Udine firma in entrambe le parti decorative, grottesche e stucchi da una parte, festoni vegetali dall'altra."
+ },
+ {
+  "id": "alberti-influenza-cappella-niccolina",
+  "source_type": "artist",
+  "source_id": "leon-battista-alberti",
+  "target_type": "work",
+  "target_id": "cappella-niccolina",
+  "kind": "influenza",
+  "description": "Gli edifici che fanno da scena alle storie di Stefano e Lorenzo mostrano che Beato Angelico, a Roma, guarda alle idee architettoniche di Alberti oltre che ai monumenti antichi."
+ },
+ {
+  "id": "cattedrale-leon-rielabora-reims",
+  "source_type": "work",
+  "source_id": "cattedrale-di-leon",
+  "target_type": "work",
+  "target_id": "cattedrale-notre-dame-reims",
+  "kind": "rielaborazione",
+  "description": "La pianta di León, con tre navate che diventano cinque dopo il transetto e un coro con deambulatorio e cappelle radiali, riprende quella di Reims, come l'alzato a tre livelli e la facciata armonica."
+ },
+ {
+  "id": "san-lorenzo-napoli-affinita-santa-croce",
+  "source_type": "work",
+  "source_id": "basilica-santa-croce-firenze",
+  "target_type": "work",
+  "target_id": "basilica-san-lorenzo-napoli",
+  "kind": "influenza",
+  "description": "Il presbiterio di Santa Croce, con l'arco trionfale acuto, il rosone e le bifore fra i costoloni della volta a raggiera, mostra affinità con il coro di San Lorenzo a Napoli; entrambi sono stati attribuiti ad Arnolfo di Cambio."
+ },
+ {
+  "id": "bernardo-chiaravalle-contrasto-cluny-iii",
+  "source_type": "artist",
+  "source_id": "bernardo-di-chiaravalle",
+  "target_type": "work",
+  "target_id": "abbazia-cluny-iii",
+  "kind": "contrasto",
+  "description": "Nell'Apologia del 1125 Bernardo di Chiaravalle condanna altezze, dimensioni e decorazioni delle chiese cluniacensi, che distraggono dalla preghiera: da qui nasce la sobrietà dell'architettura cistercense."
+ },
+ {
+  "id": "donatello-collaborazione-sacrestia-vecchia",
+  "source_type": "artist",
+  "source_id": "donatello",
+  "target_type": "work",
+  "target_id": "sacrestia-vecchia-san-lorenzo",
+  "kind": "collaborazione",
+  "description": "Donatello aggiunge alla sacrestia di Brunelleschi gli stucchi dipinti dei pennacchi e delle sovrapporte e le porte bronzee con santi e apostoli, decorazioni che ne alterano l'equilibrio e che, secondo la tradizione, Brunelleschi non gradì."
+ },
+ {
+  "id": "ginevra-benci-rielabora-dama-col-mazzolino",
+  "source_type": "work",
+  "source_id": "ritratto-ginevra-benci",
+  "target_type": "work",
+  "target_id": "dama-col-mazzolino",
+  "kind": "rielaborazione",
+  "description": "Nel ritratto di Ginevra, poi tagliato in basso, Leonardo doveva mostrare le mani incrociate sul petto come nella Dama col mazzolino del suo maestro Verrocchio."
+ },
+ {
+  "id": "miracolo-schiavo-rielabora-assunta-tiziano",
+  "source_type": "work",
+  "source_id": "miracolo-dello-schiavo-tintoretto",
+  "target_type": "work",
+  "target_id": "assunta-tiziano",
+  "kind": "rielaborazione",
+  "description": "Per il carnefice al centro del Miracolo dello schiavo Tintoretto parte dal grande apostolo in primo piano nell'Assunta di Tiziano."
  }
 ]

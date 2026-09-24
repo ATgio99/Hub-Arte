@@ -1875,20 +1875,24 @@
   "page": 30,
   "source_file": "Libro1.1-giu-2026",
   "importance": 3,
-  "summary": "Trono episcopale in avorio su anima in legno di ebano (h. 150 cm), donato dall'imperatrice a Massimiano, vescovo di Ravenna. La superficie è coperta da formelle d'avorio intagliate a bassorilievo (di 39 originarie, 27 superstiti), incorniciate da placche con racemi vegetali a cesellato. La fascia frontale reca il monogramma di Massimiano e raffigura i quattro evangelisti affiancati a San Giovanni Battista. I pannelli dell'Antico Testamento, opera di maestranze alessandrine, mostrano stile agitato e mosso; quelli del Nuovo Testamento hanno rilievo appiattito e riferimenti ai modelli costantinopolitani.",
-  "analysis": "La Cattedra è un manufatto assemblato probabilmente a Costantinopoli o a Ravenna da artigiani di varia provenienza. Ha la forma di una poltrona con seduta rettangolare, alti braccioli e spalliera concava. Rilievo molto appiattito dei pannelli del Nuovo Testamento con scansione degli spazi calibrata e dipendenza da modelli costantinopolitani (sfondi a nicchie). I pannelli dell'Antico Testamento, opera di maestranze alessandrine, hanno stile più mosso e agitato. La complessiva semplificazione delle figure riflette l'evoluzione del gusto contemporaneo verso la ieraticità bizantina. Data la fragilità della struttura, la cattedra non veniva probabilmente usata come seduta, ma aveva funzione simbolica e cerimoniale.",
+  "summary": "Trono vescovile (h. 150 cm) interamente rivestito di formelle d'avorio, dono dell'imperatore @Giustiniano I al vescovo di @Ravenna @Massimiano, suo amico e fedele interprete della politica imperiale. L'anima era in legno, oggi sostituito da materiale plastico. È costruita come un seggio a braccioli: sedile a pianta quadrangolare, fianchi rialzati e schienale incurvato. Delle trentanove formelle scolpite a bassorilievo ne restano ventisette, racchiuse da fasce decorate a rilievo e a traforo; sulla fronte, al centro della fascia superiore, spicca il monogramma di Massimiano.",
+  "analysis": "Gli intagli eburnei, beni preziosi rimasti a lungo fedeli alla grazia antica, nell'età di Giustiniano si piegano anch'essi alla solennità astratta che domina l'arte di Ravenna. Nelle fasce, girali di vite carichi di grappoli ospitano animali di grande varietà e vivacità, secondo una tradizione di matrice romana.\n\nLe formelle rivelano mani diverse. Gli episodi dell'Antico Testamento hanno un racconto mosso e concitato, probabilmente di maestranze alessandrine; quelli del Nuovo, montati sullo schienale, hanno un rilievo molto basso e una misurata distribuzione degli spazi che fa pensare a modelli siriaci. Nel pannello anteriore, chiuso sopra e sotto da bordure a giorno, il Battista, che fa da ponte fra l'antica e la nuova Alleanza, sta al centro con due evangelisti per parte: pose statiche e distaccate e fondi a nicchia rimandano direttamente alle botteghe di @Costantinopoli.\n\nLa cattedra fu dunque montata forse a Costantinopoli o nella stessa @Ravenna, dove lavoravano artigiani di diversa origine, ciascuno con i propri caratteri ma accomunati da un linguaggio di figure semplificate. Troppo delicata per reggere il peso di una persona, doveva servire soprattutto a sostenere il Vangelo aperto durante le celebrazioni.",
   "innovations": [
-   "assemblaggio di formelle d'avorio da maestranze diverse in un oggetto unico",
-   "raccordo tra tradizione alessandrina e costantinopolitana"
+   "Formelle di botteghe diverse, alessandrine, siriache e costantinopolitane, riunite in un unico arredo",
+   "Racconto biblico per episodi distribuito su tutte le superfici del trono",
+   "Trono cerimoniale usato come sostegno del libro sacro, non come seduta"
   ],
   "term_ids": [
    "avorio",
-   "bassorilievo"
+   "bassorilievo",
+   "cattedra-vescovile",
+   "traforo"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Throne_of_Maximian_%2852992740592%29_%28cropped%29.jpg/1280px-Throne_of_Maximian_%2852992740592%29_%28cropped%29.jpg",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Throne_of_Maximian_%2852992740592%29_%28cropped%29.jpg/1280px-Throne_of_Maximian_%2852992740592%29_%28cropped%29.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
+   "giustiniano-i",
    "massimiano-arcivescovo-ravenna"
   ],
   "fonte_ids": [
@@ -2617,9 +2621,13 @@
   "page": 42,
   "source_file": "Libro1.1-giu-2026",
   "importance": 2,
-  "summary": "Plutei (pannelli divisori) in marmo cipollino (66 x 177 x 4 cm) dall'oratorio di San Michele alla Pusterla presso il monastero di Santa Maria Teodote a Pavia, datati circa 735. Decorati con tralci di vite e grappoli d'uva che racchiudono composizioni araldiche: l'albero della vita affiancato da grifoni alati (rinnovamento spirituale), e pavoni che si abbeverano al calice sormontato dalla croce (immortalità dell'anima cristiana). La disposizione simmetrica degli elementi riflette il rinnovato interesse per la tradizione tardoromana dell'età liutprandea.",
-  "analysis": null,
-  "innovations": [],
+  "summary": "Coppia di lastre in cipollino (66 × 177 × 4 cm) che separavano gli spazi liturgici dell'oratorio pavese di San Michele alla Pusterla, annesso al cenobio di Santa Maria Teodote a @Pavia; oggi si trovano al Museo Civico Malaspina. Datati verso il 735, un'ampia cornice di tralci di vite con grappoli racchiude su ciascuno una composizione araldica: una coppia di grifi alati ai lati dell'albero della vita, e due pavoni che bevono da una coppa sovrastata dalla croce.",
+  "analysis": "Nella capitale del regno longobardo i motivi ornamentali dell'@altare-di-ratchis-cividale vengono ordinati e composti con maggiore misura, e ne guadagnano in eleganza senza perdere il loro carattere. Le figure si riducono a puro simbolo. I grifi che custodiscono l'albero rimandano al legno della croce, fonte di rinascita per l'anima del credente. I pavoni, la cui carne per un'antica credenza restava incorrotta, sono immagine dell'anima che, dissetata dal Vangelo, non muore. La simmetria rigorosa sembra riflettere il ritorno di interesse per la tradizione tardoromana che segna l'età di Liutprando.",
+  "innovations": [
+   "Animali affrontati in schemi speculari, ridotti a puri segni",
+   "Motivi longobardi ordinati secondo la compostezza tardoromana",
+   "Cornice di tralci di vite come elemento unificante delle lastre"
+  ],
   "term_ids": [
    "pluteo",
    "tralcio-vitato",
@@ -3130,15 +3138,18 @@
   "page": 39,
   "source_file": "Libro1.1-giu-2026",
   "importance": 2,
-  "summary": "Grande croce (27,5 x 99,5 cm) tradizionalmente attribuita a Desiderio, donata al monastero di San Salvatore e Santa Giulia a Brescia in occasione della sua fondazione (753). Di legno rivestito con lamina di piombo e stagno, la superficie è coperta a tappeto da pietre dure di reimpiego e paste vitree in alternanza cromatica, con i pezzi più grandi sugli assi e alle estremità. I bracci sono trapezoidali con lati lievemente incurvati; quello inferiore è raddoppiato a croce latina. Notissimo il tondo vitreo (III secolo) con ritratti in smalto e foglia d'oro riferiti (erroneamente) a Galla Placidia e ai figli.",
-  "analysis": null,
+  "summary": "Croce gemmata (27,5 × 99,5 cm) conservata nel Museo di Santa Giulia a @Brescia. Secondo una lunga tradizione la volle @desiderio-re-longobardi, l'ultimo re dei Longobardi, vinto da @Carlo Magno nel 774, come dono per il cenobio bresciano di San Salvatore e Santa Giulia, sorto nel 753 per volontà della regina Ansa. Resta aperto il problema della cronologia, collocata a cavallo fra VIII e IX secolo: non si esclude che sia nata al tramonto del regno e che le monache l'abbiano ricevuta solo quando, sotto i Carolingi, si rinnovò la @chiesa-san-salvatore-brescia.",
+  "analysis": "L'anima di legno è rivestita da una lamina in lega di piombo e stagno, fissata con piccoli chiodi; la brunitura del metallo esalta la luce delle pietre incastonate. Gemme, cammei romani riutilizzati e vetri colorati ne rivestono ogni centimetro, in una trama fitta dove le tinte si avvicendano e gli elementi più grandi segnano i bracci e le loro terminazioni. I bracci sono trapezi dai lati leggermente curvi; il braccio verticale, allungato in basso da un altro elemento trapezoidale, conferisce alla croce il profilo latino.\n\nNel punto d'incrocio sono stati aggiunti più tardi un Cristo in trono a sbalzo, nel X secolo, e un Crocifisso in bronzo fuso, nel XVI: segni della devozione che l'oggetto ha raccolto nei secoli. Il pezzo più celebre è il medaglione di vetro (@tondo-vitreo-croce-desiderio) con tre busti eseguiti in oro e smalto, che una leggenda priva di basi identificava con @Galla Placidia e i figli: si tratta invece di un vetro prodotto in Oriente nel III secolo, e la scritta in greco indica il padre di famiglia ritratto, non l'autore.\n\nDesiderio prosegue la rinascita promossa da Liutprando, che nell'VIII secolo aveva fuso gusto germanico e modelli romani. Il confronto con l'@evangeliario-di-teodolinda mostra l'altissimo livello dell'arte di corte longobarda, e la croce documenta anche il passaggio verso l'arte carolingia.",
   "innovations": [
-   "decorazione a tappeto di pietre e paste vitree su croce monumentale"
+   "Rivestimento a tappeto di pietre, cammei e paste vitree con alternanza calcolata di colori e misure",
+   "Metallo scurito che fa risaltare per contrasto la luce delle pietre",
+   "Reimpiego di cammei e vetri antichi in un oggetto di culto"
   ],
   "term_ids": [
    "cloisonne",
    "cammeo",
-   "croce-latina"
+   "croce-latina",
+   "reimpiego"
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Croce%20di%20Desiderio%20%28Santa%20Giulia%2C%20Brescia%29%20fronte.JPG",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Croce%20di%20Desiderio%20%28Santa%20Giulia%2C%20Brescia%29%20fronte.JPG?width=640",
@@ -4879,9 +4890,13 @@
   "page": 27,
   "source_file": "Libro1.2-giu-2026",
   "importance": 2,
-  "summary": "Paliotto d'altare (120 × 175 cm) in lamina d'oro sbalzata ornata con pietre preziose e perle, realizzato prima del 1024 probabilmente in un laboratorio di Fulda o Bamberga. Si articola in cinque arcate sostenute da colonne: quella centrale con il Cristo Pantocratore e le figurine dei committenti (l'imperatore Enrico II il Santo e la moglie Cunegonda); le arcate laterali con tre angeli e san Benedetto. L'insieme richiama i sarcofagi della tarda età imperiale e rivela eleganza compositiva ispirata ai modelli bizantini e tardoromani.",
-  "analysis": null,
-  "innovations": [],
+  "summary": "Rivestimento per la fronte di un altare (120 × 175 cm), in oro sbalzato arricchito di gemme e perle, anteriore al 1024 e uscito forse da un laboratorio di Fulda o di @Bamberga, e oggi a @Parigi, nel Musée National du Moyen Âge. L'opera documenta l'altissimo livello raggiunto dalle botteghe della Sassonia. Il campo è scandito da cinque archi su colonnine cinte da un collarino centrale: nell'arcata mediana, la più larga, domina il Pantocratore, e minuscoli ai suoi piedi si inchinano i donatori, @Enrico II il Santo e la consorte Cunegonda di Lussemburgo.",
+  "analysis": "Enrico II, sul trono dal 1014 al 1024, è l'ultimo imperatore della dinastia degli Ottoni; Cunegonda sarà beatificata dalla Chiesa. Nelle arcate laterali tre angeli e, a sinistra, san Benedetto recano offerte al Cristo.\n\nLa sequenza di arcate su colonne ricorda i sarcofagi della tarda età imperiale, e l'eleganza della composizione guarda apertamente ai modelli bizantini e tardoromani. Il modellato, però, ha una solidità plastica che è già pienamente romanica.",
+  "innovations": [
+   "Impaginazione ad arcate derivata dai sarcofagi tardoimperiali",
+   "Eleganza di modelli bizantini unita a una plastica già romanica",
+   "Ritratto dei committenti imperiali prostrati ai piedi di Cristo"
+  ],
   "term_ids": [
    "antependium",
    "pantocratore"
@@ -6153,19 +6168,20 @@
   "page": 22,
   "source_file": "Libro1.2-giu-2026",
   "importance": 3,
-  "summary": "Terza e più grande chiesa abbaziale di Cluny (Borgogna, Francia), avviata nel 1088 dall'abate Ugo e consacrata solennemente nel 1130. Era il monumento più grande dell'Europa medievale: 187 metri di lunghezza, cinque navate, doppio transetto, coro con deambulatorio e cappelle a raggiera, quattro torri. Quasi completamente demolita dopo la Rivoluzione francese. Oggi è visibile solo una piccola parte del braccio sud del transetto maggiore.",
-  "analysis": "La chiesa costituisce il modello architettonico per molte chiese di età romanica. L'ingresso era preceduto da un lungo nartece a cinque navate fiancheggiato da due torri, che immetteva in un enorme corpo longitudinale diviso in cinque navate come nella basilica costantiniana di San Pietro. Il corpo longitudinale aveva tredici campate con copertura a volta a botte nelle navate centrali, intersecato da doppio transetto; culminava nel coro con ampio deambulatorio e cappelle a raggiera. La decorazione plastica nacque a Cluny: i capitelli figurati mostrano sia la comprensione dei modelli antichi sia un nuovo dinamismo spaziale.",
+  "summary": "Terza chiesa abbaziale di @Cluny, in Borgogna, avviata nel 1088 dall'abate Ugo di Semur e consacrata solennemente nel 1130: con i suoi 187 metri fu l'edificio più grande dell'Europa medievale e il punto di riferimento della cristianità. L'ordine era nato nel 910 grazie al duca Guglielmo il Pio d'Aquitania, che aveva donato quelle terre all'abate Bernone, dopo Cluny I si era costruita Cluny II (955-1040). Soppresso l'ordine dopo la Rivoluzione francese, la chiesa fu quasi interamente demolita: ne sopravvive un frammento del transetto maggiore, sul lato sud, e l'aspetto originario si ricava da documenti e ricerche archeologiche.",
+  "analysis": "La regola cluniacense, fondata su quella benedettina ma più orientata alla preghiera che al lavoro manuale, scandiva il tempo con liturgie sontuose e solenni: da qui l'ampliamento degli spazi monastici e la scala eccezionale della chiesa. All'ingresso un vasto atrio a tre navate, fra due torri, conduceva a un corpo longitudinale a cinque navate, come nell'antica basilica costantiniana di San Pietro, a cui voleva alludere. Le tredici campate seguivano una proporzione doppia: a ogni vano rettangolare della nave maggiore, coperto a botte, corrispondevano due vani quadrati nelle navate minori, con crociere. Due transetti di ampiezza diversa, sormontati da quattro torri, lo intersecavano, e il coro terminava con un ampio deambulatorio e cappelle a raggiera.\n\nA @Cluny rinasce la scultura monumentale in pietra, legata a portali, fregi, nicchie e capitelli: dopo un lungo intervallo si torna a scolpire figure di grande formato, misurandosi con le giuste misure del corpo. I capitelli figurati, come quello dei Fiumi del Paradiso (@capitello-fiumi-paradiso-cluny), uniscono la comprensione dei modelli antichi a un nuovo dinamismo fra racconto e simbolo. Proprio contro questo lusso si leverà l'austerità cistercense, e @Bernardo di Chiaravalle nella sua Apologia del 1125 criticherà le dimensioni e le decorazioni delle chiese cluniacensi.",
   "innovations": [
-   "Modello per la diffusione del Romanico europeo",
-   "Rinascita della scultura monumentale in pietra nei capitelli",
-   "Programma iconografico elaborato in funzione della narrazione didascalica"
+   "Modello architettonico per molte chiese romaniche europee",
+   "Rinascita della scultura monumentale in pietra nei capitelli figurati",
+   "Campate modulari in rapporto 1 a 2 fra navata centrale e navatelle"
   ],
   "term_ids": [
    "deambulatorio",
    "campata",
    "nartece",
    "transetto",
-   "cantorum"
+   "volta-a-botte",
+   "sistema-alternato"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Dehio_212_Cluny.jpg",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Dehio_212_Cluny.jpg",
@@ -10796,11 +10812,12 @@
   "page": 5,
   "source_file": "Libro1.4-giu-2026-1",
   "importance": 2,
-  "summary": "La cattedrale di León (dal 1205, completata nel XV secolo) ricorda la cattedrale di Reims con le volte che si prolungano in cinque navate fino all'abside ornata da cappelle radiali e deambulatorio. L'interno propone lo schema gotico classico con triforio e altissimo claristorio. La facciata armonica con tre portali strombati a ogiva, vetrate, timpani finemente decorati, guglie e cuspidi la avvicina ai monumentali edifici francesi. Il lato destro della cattedrale presenta un magnifico insieme di contrafforti e archi rampanti.",
-  "analysis": null,
+  "summary": "Cattedrale di Santa María de Regla a @León, cantiere avviato nel XIII secolo e concluso solo nel XV, uno degli edifici in cui la Spagna guarda più da vicino ai modelli francesi. In pianta ricorda la cattedrale di @Reims: le tre navate, incontrando il transetto, diventano cinque fino all'abside, circondata da deambulatorio e sette cappelle radiali. La facciata armonica, con tre portali strombati ad arco acuto, vetrate, timpani finemente scolpiti, guglie e cuspidi, la avvicina ai grandi edifici di @Chartres e di Reims.",
+  "analysis": "I legami di commercio e di fede con i regni francesi portano l'architettura gotica in Spagna molto presto, dal XII secolo, dove si mescola agli influssi delle regioni meridionali, allora sotto dominio islamico; proprio quella presenza spinge forse ad adottarlo come stile della cristianità. I primi a diffonderla sono i centri lungo la strada dei pellegrini verso Compostela e le abbazie dei cistercensi, che ne esportano una variante austera.\n\nL'interno segue lo schema del Gotico classico: pilastri a fascio, crociere rettangolari sulla navata centrale, un triforio luminoso e un altissimo claristorio, a cui si aggiungono grandi bifore a vetrata aperte già ad altezza d'uomo. Sul fianco destro si affollano speroni e archi di spinta, e il fronte del transetto si alza fino alla quota della facciata principale. La leggerezza degli archi di sostegno e le grandi finestre circolari dimostrano che i costruttori conoscevano già la fase rayonnant del Gotico francese.",
   "innovations": [
-   "adattamento del Gotico francese alla Spagna",
-   "integrazione dello stile rayonnant"
+   "Adattamento in Spagna dell'impianto delle cattedrali di Reims e Chartres",
+   "Finestre istoriate che scendono fino al livello di chi guarda",
+   "Ricezione precoce dello stile rayonnant negli archi rampanti e nei rosoni"
   ],
   "term_ids": [
    "facciata-armonica",
@@ -10808,7 +10825,10 @@
    "deambulatorio",
    "triforio",
    "claristorio",
-   "arco-rampante"
+   "arco-rampante",
+   "cappelle-radiali",
+   "rosone",
+   "bifora"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Catedral_G%C3%B3tica_de_Le%C3%B3n.jpg",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Catedral_G%C3%B3tica_de_Le%C3%B3n.jpg",
@@ -13013,17 +13033,20 @@
   "page": 28,
   "source_file": "Libro1.4-giu-2026-1",
   "importance": 2,
-  "summary": "La basilica francescana di San Lorenzo Maggiore a Napoli (ricostruita dal 1270 circa, coro completato entro il quindicesimo anno) è riedificata sopra una chiesa paleocristiana. Si presenta come tipica chiesa ad aula con un'unica larga navata e piccole cappelle laterali con il transetto piuttosto largo. Su di esso si innesta il deambulatorio semicircolare con nove cappelle radiali coperte a raggiera, derivate da modelli francesi. In alzato il contrasto tra la navata (sapore cistercense) e il coro (aerea leggerezza dei modelli francesi) è evidente.",
-  "analysis": null,
+  "summary": "Chiesa dei frati minori a @Napoli: sorge dal 1270 circa sulle fondazioni di un edificio paleocristiano, e il coro, ultimo a essere innalzato, la conclude nel giro di circa quindici anni. Nel Sud, dove il Gotico civile si afferma con il programma edilizio di @Federico II di Svevia, sono gli ordini mendicanti a portarlo nell'architettura religiosa. Colpisce per la monumentalità e per l'innesto di elementi del Gotico d'Oltralpe sulla pianta tradizionale dei mendicanti: un'aula a navata unica, larga, con piccole cappelle laterali, un transetto appena sporgente e un coro semicircolare con deambulatorio e nove cappelle radiali di modello francese.",
+  "analysis": "In alzato il contrasto fra navata e coro è ancora più evidente. La navata ha un carattere cistercense: pilastri composti, archi a sesto acuto poco slanciati, alte finestre ogivali senza vetrate colorate e un monumentale arco trionfale ribassato all'ingresso del transetto. Il coro, favorito dalla monarchia angioina succeduta agli Svevi, ha invece la leggerezza dei modelli francesi: ampie aperture, snelle lancette fra i costoloni della volta a raggiera e un rosone sopra il secondo arco trionfale, questa volta a sesto acuto.\n\nPer spiegare lo scarto fra le due parti si sono fatti per il coro i nomi di @Nicola Pisano o di @Arnolfo di Cambio; l'ipotesi più convincente resta però quella di un progettista e di una squadra di costruttori francesi. Il coro presenta affinità con quello della @basilica-santa-croce-firenze, anch'esso attribuito ad Arnolfo.",
   "innovations": [
-   "innesto di elementi gotici d'Oltralpe sulla tipologia delle chiese degli ordini mendicanti nel Sud Italia"
+   "Coro con deambulatorio e cappelle radiali francesi innestato su una chiesa mendicante ad aula",
+   "Contrasto voluto fra navata di gusto cistercense e coro di gusto francese",
+   "Gotico d'Oltralpe portato nel Sud dalla monarchia angioina"
   ],
   "term_ids": [
    "volta-a-raggiera",
    "deambulatorio",
    "cappelle-radiali",
    "arco-trionfale",
-   "volta-a-crociera"
+   "volta-a-crociera",
+   "rosone"
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/San%20Lorenzo%20facciata.jpg",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/San%20Lorenzo%20facciata.jpg?width=640",
@@ -13302,6 +13325,7 @@
   ],
   "materials": [
    "marmo",
+   "pietra d'Assisi",
    "bronzo"
   ],
   "location_city": "Perugia",
@@ -13313,11 +13337,12 @@
   "page": 41,
   "source_file": "Libro1.4-giu-2026-1",
   "importance": 3,
-  "summary": "La Fontana Maggiore di Perugia (1278, marmo e bronzo) è realizzata in collaborazione da Nicola e Giovanni Pisano. Costituita da due vasche poligonali sovrapposte (quella inferiore con venticinque lati in marmo bianco ornati da due formelle istoriate ciascuno; quella superiore a dodici lati con sculture marmoree agli angoli) e da una terza vasca in bronzo al culmine di una colonna con tre portatrici d'acqua. I bassorilievi e le sculture illustrano una sorta di enciclopedia della storia dell'umanità attraverso cicli iconografici sacri e profani.",
-  "analysis": "La Fontana Maggiore di Perugia è il capolavoro della collaborazione tra Nicola e Giovanni Pisano, e uno dei vertici della scultura gotica italiana. La struttura a vasche sovrapposte con decorazione a formelle narrative rappresenta una sintesi enciclopedica del sapere medievale: Storie dell'Antico Testamento, Episodi di Storia romana, Zodiaco, Arti, Santi protettori, Personificazioni di Perugia. Aspetti marcatamente gotici sono presenti soprattutto nelle formelle a bassorilievo della vasca inferiore, mentre forme più sobriamente classicheggianti caratterizzano le figure allegoriche poste agli angoli della vasca superiore, che comunicano un'idea di forza e solenne nobiltà tipica dello stile di Nicola.",
+  "summary": "Grande fontana civica in marmo, pietra e bronzo voluta dal @Comune di Perugia: è l'estremo lavoro documentato di @Nicola Pisano, che la scolpisce insieme al figlio @Giovanni Pisano; nel 1278 è già in opera davanti al Palazzo dei Priori, dove risiedeva il governo di @Perugia. Su due bacini a più lati, uno sopra l'altro, si alza un fusto che regge un catino di bronzo, sormontato a sua volta da tre figure femminili in bronzo con le brocche; in origine lo coronavano il leone e il grifo, simboli della città. Rilievi e statue compongono una sorta di enciclopedia della storia umana, a gloria di Perugia.",
+  "analysis": "Il bacino basso, in marmo bianco, conta venticinque facce, ognuna con una coppia di rilievi, divise fra loro da colonnine scolpite. Quella superiore ha dodici lati concavi e lisci in pietra rosata di @Assisi, scanditi da ventiquattro statue collocate agli angoli.\n\nIl programma riunisce cicli sacri e profani: storie dell'Antico Testamento, episodi della storia di @Roma, lo Zodiaco, le Arti, i santi protettori e le personificazioni di @Perugia, che ne celebrano l'origine e la grandezza. Lo stile rivela le due mani. I tratti più apertamente gotici si concentrano nelle formelle della vasca bassa, mentre le figure allegoriche agli angoli di quella alta, come la Perusia Augusta, hanno forme più sobrie e classicheggianti e trasmettono la forza e la solenne nobiltà tipiche di Nicola.",
   "innovations": [
-   "fontana come enciclopedia iconografica pubblica",
-   "collaborazione padre-figlio in un'opera monumentale"
+   "Fontana pubblica come enciclopedia figurata della storia sacra e civile",
+   "Programma iconografico di celebrazione cittadina",
+   "Convivenza del gotico delle formelle con il classicismo delle statue angolari"
   ],
   "term_ids": [
    "bassorilievo",
@@ -14804,18 +14829,20 @@
   "page": 25,
   "source_file": "Libro1.5-giu-2026-2",
   "importance": 3,
-  "summary": "Le due Storie di Isacco nella basilica superiore di Assisi (1291-1295 circa, 300 x 300 cm ciascuna) rappresentano i momenti dell'inganno perpetrato dalla moglie Rebecca e dal figlio Giacobbe per far sì che quest'ultimo riceva la benedizione al posto di Esaù. I personaggi sono collocati in vani visti in spaccato la cui resa prospettica non ha precedenti: vere e proprie scatole spaziali che simulano con grande efficacia lo sviluppo in profondità. La luce coincide con quella proveniente dalla vetrata reale fra le due scene. Tecnica a giornate anziché a pontate.",
-  "analysis": null,
+  "summary": "Due affreschi (300 × 300 cm ciascuno) dipinti verso il 1291-1295 nella chiesa superiore della @basilica-san-francesco-assisi, nel secondo registro della seconda campata della parete destra. Narrano l'inganno ordito da Rebecca e dal figlio minore Giacobbe ai danni del vecchio e cieco Isacco, perché Giacobbe riceva al posto del primogenito Esaù la benedizione paterna, irrevocabile e destinata di norma al primo nato. Le stanze in cui si svolgono le scene, viste in sezione, sono vere scatole spaziali di una profondità senza precedenti.",
+  "analysis": "Nel primo riquadro il figlio minore, che si è rivestito le mani di pelle d'agnello per sembrare peloso come il gemello, serve il pasto al padre e viene benedetto; nella seconda il vero Esaù si presenta con il suo piatto, ma il padre, capito l'inganno, lo respinge senza poter revocare quanto ha concesso. La scena è ambientata in un interno domestico del tardo XIII secolo, con il giaciglio chiuso da spessi cortinaggi contro le correnti d'aria.\n\nLe ombre dei panni rivelano una fonte luminosa che coincide con la finestra vera posta tra i due riquadri, per cui il chiarore arriva dal lato destro nella scena di Giacobbe e dal sinistro in quella di Esaù. Le figure, solide e plastiche nei fitti panneggi, derivano dalla scultura di @Arnolfo di Cambio. Anche la tecnica è nuova: il pittore stende l'intonaco per giornate e non per pontate, come si faceva tradizionalmente.\n\nL'autore è stato a lungo discusso. Al cosiddetto Maestro di Isacco sono stati dati molti nomi, compreso quello dello stesso Arnolfo; per le @storie-di-san-francesco-assisi, invece, alcuni studiosi hanno pensato a Pietro Cavallini, l'artista più autorevole dell'ambiente romano. Oggi prevale l'attribuzione di entrambi i cicli a @Giotto di Bondone, ma resta molto verosimile, anche se non documentato, uno scambio o una collaborazione fra maestri fiorentini e romani nel grande cantiere di commissione papale, che richiamava artisti da tutta l'Italia centrale.",
   "innovations": [
-   "scatole spaziali prospettiche senza precedenti",
-   "luce coerente con la fonte luminosa reale (vetrata)",
-   "tecnica a giornate"
+   "Scatole spaziali in sezione di profondità mai raggiunta prima",
+   "Luce dipinta coerente con quella della vetrata reale",
+   "Affresco steso a giornate invece che a pontate"
   ],
   "term_ids": [
    "affresco",
    "prospettiva-empirica",
    "tecnica-a-giornate",
-   "spaccato-architettonico"
+   "spaccato-architettonico",
+   "scatola-spaziale",
+   "chiaroscuro"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Master_of_the_Isaac_Stories_-_Scenes_from_the_Old_Testament_-_Isaac_Blessing_Jacob_-_WGA14569.jpg",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Master_of_the_Isaac_Stories_-_Scenes_from_the_Old_Testament_-_Isaac_Blessing_Jacob_-_WGA14569.jpg",
@@ -14836,7 +14863,9 @@
   "year_start": 1293,
   "year_end": 1293,
   "type": "architettura",
-  "technique_ids": [],
+  "technique_ids": [
+   "intaglio-della-pietra"
+  ],
   "materials": [
    "marmi diversi",
    "mosaico",
@@ -14851,16 +14880,21 @@
   "page": 50,
   "source_file": "Libro1.4-giu-2026-1",
   "importance": 2,
-  "summary": "Il ciborio di Santa Cecilia in Trastevere (1293, marmi diversi, mosaico e dorature, h. 606 cm, Roma) di Arnolfo di Cambio presenta la medesima soluzione strutturale del precedente ma con proporzioni diverse. Colonne antiche con capitelli corinzi resi slanciate da dadi di mosaico, quattro arcate ogivali trilobate più ribassate con elegante lavorazione a traforo, senza colonnette d'angolo, pinnacoli e cuspide più proporzionati e armoniosi, frontoni a timpano più schiacciati. La leggera decorazione gotica si fonde con l'equilibrio classico e le decorazioni a mosaico cosmatesco.",
-  "analysis": null,
+  "summary": "Ciborio d'altare (h. 606 cm) in marmi diversi, mosaico e dorature, firmato da @Arnolfo di Cambio e datato 1293, nella chiesa di Santa Cecilia in Trastevere a @Roma. Riprende la struttura del @ciborio-san-paolo-fuori-mura del 1285, un'edicola retta da quattro colonne antiche, ma ne cambia le proporzioni: fusti slanciati da dadi a mosaico, arcate trilobate ad arco acuto più basse e traforate, nessuna colonnina accanto alle statue angolari, pinnacoli e cuspide più misurati, frontoni più schiacciati. Negli stessi anni @Pietro Cavallini affresca nella chiesa il @giudizio-universale-santa-cecilia-cavallini.",
+  "analysis": "Negli anni del lavoro umbro, a cui appartiene il @monumento-funebre-guillaume-de-braye, lo scultore rientra spesso a @Roma, dove riceve commissioni di primo piano. Con i cibori prende posizione su quanto spazio dare alla scultura rispetto alla struttura in un arredo sacro, e sceglie una via diversa da quella dei pulpiti pisaneschi: è la struttura a definire gli spazi delle parti scolpite, che vi si inseriscono con funzione soprattutto decorativa.\n\nA San Paolo, accanto a un ornato debitore del Gotico rayonnant, il reimpiego di marmi antichi rilavorati rivelava un gusto antiquario colto. A Santa Cecilia la ricerca si affina: la decorazione gotica si fa leggera e si fonde con proporzioni di impianto classico e con i mosaici cosmateschi, mentre il marmo bianco, arricchito d'oro, accresce la preziosità dell'insieme.",
   "innovations": [
-   "proporzioni più armoniche e gotico più sobrio rispetto al ciborio di San Paolo"
+   "Proporzioni più slanciate e armoniche rispetto al ciborio di San Paolo fuori le Mura",
+   "Gotico alleggerito dal traforo e fuso con un impianto classico e con il mosaico cosmatesco",
+   "Scultura subordinata alla struttura architettonica dell'arredo"
   ],
   "term_ids": [
    "ciborio",
    "cosmatesco",
    "traforo",
-   "gotico-rayonnant"
+   "gotico-rayonnant",
+   "pinnacolo",
+   "edicola",
+   "reimpiego"
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Arnolfo%20di%20cambio%2C%20ciborio%20di%20santa%20cecilia%20in%20trastevere%2C%201293%2C%2001.jpg",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Arnolfo%20di%20cambio%2C%20ciborio%20di%20santa%20cecilia%20in%20trastevere%2C%201293%2C%2001.jpg?width=640",
@@ -15847,18 +15881,19 @@
   "page": 35,
   "source_file": "Libro1.5-giu-2026-2",
   "importance": 3,
-  "summary": "Culmine patetico del ciclo padovano: attorno al corpo esangue di Cristo si dispongono Maria Maddalena (sorregge i piedi), san Giovanni Evangelista (si slancia in avanti), la Vergine (sorregge la testa). Due figure femminili accovacciate di schiena in primo piano (novità assoluta per un soggetto così sacro). Sullo sfondo paesaggio roccioso scabro con albero secco; in cielo angeli che si disperano con gesti diversi. Tutta la composizione converge sull'abbraccio Vergine-Cristo grazie alla direzione degli sguardi e alla linea diagonale del fianco della collina.",
-  "analysis": "Il Compianto è considerato il capolavoro assoluto di Giotto e uno dei vertici della storia dell'arte occidentale. La composizione è geometricamente organizzata: una linea diagonale che scende da destra in alto verso il gruppo centrale guida lo sguardo all'abbraccio tra Vergine e Cristo. Le due figure femminili di spalle in primo piano - novità assoluta nella storia di questo soggetto - creano una quinta teatrale che porta lo spettatore dentro la scena. Gli angeli nel cielo esprimono la disperazione attraverso gesti opposti: chi getta le braccia all'indietro per volare più veloce, chi le spinge in avanti per frenare e non guardare. Ogni personaggio è caratterizzato psicologicamente: lo strazio della Vergine, la desolazione della Maddalena, la tragica incredulità di san Giovanni.",
+  "summary": "Riquadro degli @affreschi-cappella-scrovegni a @Padova, dipinto da @Giotto di Bondone fra il 1303 e il 1305 su commissione di @Enrico Scrovegni: è il culmine patetico del ciclo. Il cadavere di Gesù, disteso a terra, è circondato da due gruppi di persone in lutto. Maria Maddalena gli sostiene i piedi, san Giovanni Evangelista si protende in un gesto disperato, la Vergine gli regge il capo e lo abbraccia; davanti a tutti due donne rannicchiate voltano la schiena a chi guarda, e dietro alcune donne col capo coperto assistono sgomente. Sopra, nel cielo, angeli disperati.",
+  "analysis": "Le due figure di spalle in primo piano sono una soluzione senza precedenti per un soggetto di così alta sacralità. Alle spalle dei dolenti si alza un costone di pietra spoglio, senza vegetazione, dove solo un alberello morto accentua il senso di abbandono. Nel cielo gli angeli si abbandonano al dolore con gesti opposti: alcuni gettano indietro le braccia per volare più in fretta, altri le spingono avanti come per fermarsi e non vedere.\n\nTutto converge sull'abbraccio fra la madre e il figlio: la direzione dei volti e degli sguardi, la disposizione delle figure e la diagonale del crinale, che divide idealmente la sfera terrena da quella celeste e sottolinea come nella morte di Cristo si compia la sua natura umana. @Giotto padroneggia ormai ogni sfumatura psicologica dell'espressione, e declina la disperazione in tutte le sue forme: lo strazio della Vergine, lo sconforto della Maddalena, lo slancio incredulo di san Giovanni.",
   "innovations": [
-   "figure di spalle in primo piano per coinvolgere lo spettatore",
-   "linea diagonale compositiva verso il centro emotivo",
-   "angeli con gesti opposti per esprimere disperazione",
-   "caratterizzazione psicologica individuale di ogni personaggio"
+   "Figure di spalle in primo piano in una scena di massima sacralità",
+   "Diagonale del paesaggio che guida lo sguardo al centro emotivo della scena",
+   "Angeli con gesti contrapposti per esprimere la disperazione",
+   "Caratterizzazione psicologica individuale di ogni dolente"
   ],
   "term_ids": [
    "affresco",
    "compianto",
-   "umanismo-giottesco"
+   "umanismo-giottesco",
+   "composizione-diagonale"
   ],
   "image_url": "https://www.abellarte.com/uploads/6/4/9/9/6499736/2365078_660.jpg",
   "image_thumb": "https://www.abellarte.com/uploads/6/4/9/9/6499736/2365078_660.jpg",
@@ -16810,15 +16845,18 @@
   "page": 39,
   "source_file": "Libro1.5-giu-2026-2",
   "importance": 3,
-  "summary": "Polittico di Giotto e aiuti (220 x 245 cm) commissionato dal cardinale Jacopo Stefaneschi per l'altare maggiore della basilica di San Pietro, oggi nella Pinacoteca Vaticana. Sei scomparti cuspidati (tre recto, tre verso) più due predelle di tre pannelli ciascuna. Recto: al centro San Pietro in trono fra angeli, santi e il donatore; laterali san Giacomo, san Paolo, sant'Andrea, san Giovanni Evangelista. Verso: al centro Cristo redentore in trono con donatore; laterali Crocifissione di san Pietro e Decapitazione di san Paolo. L'iconografia ribadisce il primato della sede papale romana durante la cattività avignonese.",
-  "analysis": "Il Polittico Stefaneschi è un'opera di eccezionale rilevanza teologica e iconografica. Il lato anteriore, visibile ai fedeli dalla navata, eleva san Pietro alla dignità di Cristo nel verso, affermando il primato della sede romana durante la cattività avignonese. Di notevole interesse è il dettaglio del cardinale Stefaneschi che offre a san Pietro il modellino dello stesso polittico (un caso di meta-pittura), la fuga prospettica dei motivi geometrici del pavimento, e la classicità del trono di san Pietro con riferimenti ai soffitti decorativi romani. L'opera è distante per gusto dall'eleganza di altri dipinti giotteschi ma mantiene l'impronta del grande pittore soprattutto nella ricerca volumetrica di san Pietro e del Redentore.",
+  "summary": "Grande complesso d'altare dipinto su entrambe le facce da @Giotto di Bondone con ampio ricorso alla bottega (220 × 245 cm, tempera e oro), custodito nella Pinacoteca Vaticana. Lo commissiona il cardinale @Jacopo Stefaneschi, che secondo i documenti lo paga ottocento fiorini, per l'altare maggiore della basilica di San Pietro a @Roma; un'iscrizione oggi scomparsa lo datava al 1320. Ogni faccia si articola in tre tavole a cuspide sopra un gradino suddiviso a sua volta in tre parti. Il prestigio e il costo dell'opera fanno pensare a una ricca carpenteria, andata perduta.",
+  "analysis": "La faccia rivolta alla navata ha al centro il principe degli apostoli in trono; attorno a lui angeli e santi, e in ginocchio il cardinale, che gli presenta una riproduzione in miniatura dell'opera stessa; nelle ante compaiono Giacomo e Paolo, Andrea e l'Evangelista Giovanni, mentre del gradino sottostante si è salvato un unico elemento, a sinistra, con tre busti di santi. Sull'altra faccia Cristo benedicente troneggia fra la corte celeste e di nuovo lo Stefaneschi, affiancato dai due martìri romani: Pietro crocifisso a testa in giù fra gli edifici antichi dell'Urbe e Paolo decapitato; il gradino di questo lato è integro e presenta la Vergine in trono con due angeli e, ai lati, il collegio apostolico.\n\nIl programma nasce nell'ambiente della curia. Collocando Pietro sul lato pubblico con lo stesso rango che il retro riserva a Cristo, l'opera difende, mentre i papi risiedono ad Avignone, la centralità di @Roma, bagnata dal sangue dei due apostoli fondatori, e l'autorità dei pontefici che da Pietro discendono.\n\nIl pavimento a motivi geometrici fugge in profondità e dà alla scena un'illusione di spazio reale; il trono di Pietro riprende l'ornato romano, quello di Cristo ha forme più gotiche. L'intervento degli aiuti è massiccio, e la ricchezza decorativa e cromatica, dovuta anche ai pigmenti preziosi, allontana l'opera dalla sobria eleganza di altri dipinti giotteschi. La mano del maestro si riconosce però nella ricerca volumetrica delle figure monumentali di Pietro e del Redentore e nella vivacità naturalistica delle due scene di martirio.",
   "innovations": [
-   "meta-pittura: il donatore offre al santo il modellino dell'opera stessa",
-   "fuga prospettica del pavimento geometrico"
+   "Committente ritratto mentre dona al santo una copia in scala del dipinto",
+   "Pavimento geometrico in scorcio che crea uno spazio realistico",
+   "Programma a doppia faccia che eguaglia Pietro a Cristo per affermare il primato romano"
   ],
   "term_ids": [
    "polittico",
-   "predella"
+   "predella",
+   "cuspide",
+   "tavola-cuspidata"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Polittico_stefaneschi%2C_retro.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Polittico_stefaneschi%2C_retro.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
@@ -19957,18 +19995,22 @@
   "page": 19,
   "source_file": "Libro2.2-giu-2026-4",
   "importance": 3,
-  "summary": "Cappella funeraria della famiglia Medici commissionata da Giovanni de' Medici a Brunelleschi nel 1419, nella basilica di San Lorenzo. Pianta a pianta centrale con vano maggiore cubico coperto da cupola emisferica a ombrello divisa in dodici spicchi, raccordata al formato quadrato attraverso quattro pennacchi sferici. Scarsella cupolata affiancata da due piccoli ambienti simmetrici. Espressione compiuta del principio del modulo quadrato e del cerchio.",
-  "analysis": "La Sacrestia Vecchia e elemento autonomo rispetto alla basilica di San Lorenzo, commissionata mentre la ricostruzione della chiesa era ancora in corso. Brunelleschi applica una sintesi tra forme classiche, modulo quadrato e proporzioni matematiche. La superficie piana delle pareti intonacate in colore chiaro e movimentata da arconi a tutto sesto in pietra serena. L'equilibrio visivo e oggi alterato dagli stucchi dipinti nei pennacchi e sulle sovrapporte opera di Donatello, autore anche delle porte bronzee con formelle raffiguranti santi.",
+  "summary": "Sacrestia della basilica di San Lorenzo a @Firenze, destinata a cappella funeraria dei Medici, che @Giovanni di Bicci de' Medici, padre di @Cosimo il Vecchio, commissiona a @Filippo Brunelleschi nel 1419; i lavori si chiudono nel 1428. Poiché la ricostruzione della chiesa paleocristiana procede molto più lentamente, la sacrestia nasce come un organismo autonomo. Si chiama Vecchia per distinguerla dalla @sacrestia-nuova che @Michelangelo costruirà un secolo dopo. Brunelleschi vi unisce forme classiche, modulo quadrato e proporzioni matematiche in un impianto a pianta centrale.",
+  "analysis": "Lo spazio rettangolare è diviso in due vani quadrati di misura diversa: il lato del minore è un terzo di quello del maggiore. Quello minore è la scarsella, un'abside quadrangolare, con ai lati due stanzini gemelli per il servizio liturgico. Il vano maggiore è un cubo, perché l'altezza delle pareti eguaglia la loro lunghezza, ed è coperto da una cupola emisferica a ombrello in dodici spicchi, raccordata alla pianta quadrata da quattro pennacchi.\n\nLe pareti lisce e chiare sono scandite da quattro arconi a tutto sesto in pietra serena, impostati su una trabeazione sorretta da paraste. Tutto è governato dal quadrato e dalla circonferenza che vi si iscrive, in un ordine geometrico senza incrinature, e il dialogo di grigio e bianco è lo stesso dello @spedale-degli-innocenti. L'armonia originaria è però turbata da interventi successivi, i tondi in stucco colorato dei pennacchi e i rilievi sopra le porte di @Donatello, che eseguì anche le porte in bronzo dei due ambienti laterali con formelle di santi, martiri, apostoli e Padri della Chiesa. Secondo la tradizione, proprio per contrasti su queste decorazioni, giudicate troppo espressive, Brunelleschi avrebbe poi preferito i Della Robbia a Donatello nella @cappella-pazzi.",
   "innovations": [
-   "pianta centrale con modulo quadrato e cerchio",
-   "raccordo con pennacchi sferici tra cupola e pianta quadrata"
+   "Pianta centrale costruita su quadrato e cerchio inscritto",
+   "Vano cubico coperto da cupola a ombrello raccordata da pennacchi sferici",
+   "Scarsella di un terzo del vano maggiore, secondo un rapporto modulare"
   ],
   "term_ids": [
    "pianta-centrale",
    "scarsella",
    "pennacchio-sferico",
    "cupola-a-ombrello",
-   "parasta"
+   "parasta",
+   "modulo-geometrico",
+   "trabeazione",
+   "pietra-serena"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Sagrestia_vecchia%2C_veduta_00.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Sagrestia_vecchia%2C_veduta_00.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
@@ -20054,19 +20096,22 @@
   "page": 17,
   "source_file": "Libro2.2-giu-2026-4",
   "importance": 3,
-  "summary": "Orfanotrofio commissionato dall'Arte della Seta a Brunelleschi nel 1419. Il complesso e organizzato attorno a un chiostro a pianta quadrata con due edifici a piu piani. Il loggiato di nove campate sulla piazza e sorretto da colonne lisce con capitelli che rimandano all'ordine corinzio e ampi archi a tutto sesto. Tutto e basato su un modulo quadrato di dieci braccia fiorentine (circa 6 m): misura dell'altezza delle colonne, del diametro dell'arco e dell'altezza del piano superiore.",
-  "analysis": "Lo Spedale degli Innocenti e il primo edificio pubblico interamente fondato sul principio del modulo geometrico quadrato brunelleschiano. Il loggiato corinzio riprende il Portico di Roma e il battistero di San Giovanni di Firenze. Le campate sono coperte da volte a vela (non ogivali). Le finestre del piano nobile con cornici lineari e timpani triangolari alternano pieno e vuoto in rapporto proporzionale. La bicromia grigio (pietra serena) e bianco (intonaco) diventa la cifra stilistica di Brunelleschi. I tondi in terracotta invetriata con trovatelli in fasce su sfondo azzurro sono aggiunti successivamente da Andrea della Robbia.",
+  "summary": "Orfanotrofio in piazza Santissima Annunziata a @Firenze, che l'@arte-della-seta commissiona a @Filippo Brunelleschi nel 1419 e che viene completato nel 1444. È la prima occasione concreta in cui l'architetto applica i principi del modulo geometrico, elaborati studiando matematica, geometria e architettura antica. Intorno a un chiostro quadrato si dispongono due corpi rettangolari destinati a chiesa, dormitorio, laboratori e scuola; sulla piazza si apre un loggiato di nove campate su colonne lisce, con capitelli di tipo corinzio e ampi archi a tutto sesto.",
+  "analysis": "Il recupero di elementi strutturali e stilistici dell'architettura romana produce un ordine e una simmetria che diventeranno il punto di partenza del Rinascimento. Lo schema del portico deriva dal Pantheon e dal @battistero-san-giovanni-firenze; al di sopra delle arcate si stende una fascia orizzontale profilata da cornici a gradini.\n\nL'unità di misura dell'intero edificio è un quadrato di lato pari a dieci braccia, cioè quasi sei metri: è l'altezza delle colonne, la luce degli archi e l'altezza del piano superiore, e se ne ricavano multipli e sottomultipli. Anche le campate del portico sono cubi a base quadrata, coperti da volte a vela invece che dalle volte a crociera ogivali usate fino ad allora. Sopra ogni arcata, al primo livello abitato, una finestra rettangolare incorniciata e coronata da un frontone a triangolo lascia percepire dall'esterno il dialogo fra il volume chiuso della sala e quello aperto del portico sottostante.\n\nAll'essenzialità della geometria corrisponde la semplicità dei materiali: per contenere le spese Brunelleschi usa la pietra serena per le membrature e un semplice intonaco per le pareti in mattoni. Il binomio di grigio e bianco, misurato e raffinato, diventa il suo marchio e avrà numerosi seguaci. Più tardi, nel 1487, @Andrea della Robbia vi inserisce i medaglioni in ceramica smaltata con i neonati fasciati su campo celeste.",
   "innovations": [
-   "modulo quadrato come principio organizzativo dell'architettura",
-   "prima sperimentazione sistematica della pietra serena come membratura",
-   "bicromia bianco-grigio come cifra stilistica"
+   "Primo edificio costruito interamente sulla ripetizione di un modulo quadrato",
+   "Campate cubiche coperte da volte a vela al posto delle crociere ogivali",
+   "Bicromia di pietra serena e intonaco bianco come cifra stilistica"
   ],
   "term_ids": [
    "modulo-geometrico",
    "pietra-serena",
    "loggiato",
    "volta-a-vela",
-   "colonna-corinzia"
+   "colonna-corinzia",
+   "trabeazione",
+   "terracotta-invetriata",
+   "tondo"
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Spedale%20innocenti%2C%20veduta%2001.JPG",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Spedale%20innocenti%2C%20veduta%2001.JPG?width=640",
@@ -24331,16 +24376,19 @@
   "page": 43,
   "source_file": "Libro2.2-giu-2026-4",
   "importance": 3,
-  "summary": "Ciclo di affreschi nella cappella privata di papa Niccolo V Parentucelli nel Palazzo Apostolico. Beato Angelico, con numerosi collaboratori tra cui Benozzo Gozzoli, decora le pareti con Storie di santo Stefano (registro superiore) e Storie di san Lorenzo (registro medio). La scelta iconografica (entrambi diaconi e martiri delle origini del cristianesimo) si lega al desiderio di Niccolo V di ribadire la legittimita storica del pontificato romano. Le architetture rivelano l'influenza di Leon Battista Alberti e dell'architettura romana classica.",
-  "analysis": "Gli affreschi della cappella Niccolina testimoniano la versatilita di Beato Angelico: qui si rivolge a un pubblico raffinato, la corte papale, con tono piu colto e monumentale rispetto ai precedenti fiorentini. I personaggi si muovono tra edifici che rivelano l'influenza di Alberti. Le simetrie tra i due cicli narrativi riprendono la classica legge delle corrispondenze. Sisto II (protagonista in due scene delle Storie di san Lorenzo) presenta i lineamenti di Niccolo V.",
+  "summary": "Piccola cappella privata di @niccolo-v-parentucelli, annessa agli appartamenti del Palazzo Apostolico in Vaticano, che @Beato Angelico affresca nel 1447-1448 con numerosi allievi, fra cui @Benozzo Gozzoli. Salito al soglio nel 1447, il papa, colto umanista legato da amicizia a @Cosimo de' Medici, gli commissiona prima la cappella e poi il proprio studiolo, andato perduto nel XVI secolo. L'ambiente, ricavato in una torre medievale di Innocenzo III, ha pianta rettangolare grazie a due arconi addossati alle pareti d'ingresso e di fondo. Sulle pareti corrono le Storie di santo Stefano, in alto, e le Storie di san Lorenzo, sotto.",
+  "analysis": "La crociera ospita nei quattro spicchi gli evangelisti su fondo stellato; negli archi voltati, quattro per parte, i Dottori della Chiesa entro edicole a cuspide di sapore ancora gotico. Le pareti hanno due registri narrativi divisi da un marcapiano, e sotto un alto zoccolo dipinto a tendaggi damascati. Sulla parete di fondo stava l'altare con una Deposizione dello stesso Angelico, perduta.\n\nIl racconto è armonioso ed efficace: figure in pose calibrate, gesti ed espressioni chiari. San Lorenzo riceve i tesori della Chiesa da papa Sisto II e poi distribuisce l'elemosina ai poveri; dietro di lui un portale fa da cornice e l'abside in fondo al colonnato lo trasforma quasi in una statua in una nicchia. Le scene rispondono a quelle di santo Stefano, inginocchiato davanti a san Pietro e intento anch'egli all'elemosina, secondo la legge classica delle corrispondenze cara al papa umanista. Il restauro degli anni Novanta del Novecento ha recuperato colori nitidi e leggeri, in una luce delicata; resti di oro e di finiture a secco oggi scomparse suggeriscono che all'origine lo splendore fosse perfino più intenso.\n\nLa scelta di due diaconi martiri delle origini cristiane serve forse a ribadire la legittimità storica del papato romano minacciato dagli scismi, o allude all'eloquenza e alla carità del committente; la funzione celebrativa è comunque esplicita, perché Sisto II ha i tratti di Niccolò V. Le architetture, diverse da quelle degli affreschi di San Marco a @Firenze, rivelano la lezione di @Leon Battista Alberti e dell'architettura romana antica e moderna, e il tono si fa più aulico e monumentale, adatto a un pubblico raffinato come la corte papale.",
   "innovations": [
-   "ciclo narrativo con funzione celebrativa del pontificato",
-   "architettura albertiana nella pittura"
+   "Ciclo narrativo con funzione celebrativa del pontificato romano",
+   "Architetture dipinte di ispirazione albertiana e romana",
+   "Corrispondenze calcolate fra le scene dei due santi diaconi"
   ],
   "term_ids": [
    "affresco",
    "ciclo-pittorico",
-   "registri-parietali"
+   "registri-parietali",
+   "volta-a-crociera",
+   "cornice-marcapiano"
   ],
   "image_url": "https://guideaurearoma.it/wp-content/uploads/2021/08/cappella-niccolini-palazzo-vaticano.jpg",
   "image_thumb": "https://guideaurearoma.it/wp-content/uploads/2021/08/cappella-niccolini-palazzo-vaticano.jpg",
@@ -24381,18 +24429,21 @@
   "page": 25,
   "source_file": "Libro2.3-giu-2026-2",
   "importance": 3,
-  "summary": "Palazzo commissionato da Giovanni Rucellai intorno al 1446, con la facciata progettata da Alberti e realizzata probabilmente da Bernardo Rossellino. La facciata è dominata da lesene con capitelli di ordini diversi (tuscanico, ionico, corinzio), arcate a tutto sesto, bifore e un paramento murario regolare. Costituisce un modello rivoluzionario per il palazzo rinascimentale basato su rigore geometrico, moduli proporzionali e recupero della classicità.",
-  "analysis": "Rispetto al coevo Palazzo Medici di Michelozzo, Alberti rinuncia all'effetto plastico del bugnato degradante a favore di un impianto ornamentale più complesso e raffinato basato su lesene, arcate e ordini sovrapposti. Il repertorio decorativo di matrice classica (opus reticulatum nel basamento, arcate a tutto sesto) e la progettazione incentrata su moduli e canoni proporzionali diventeranno il dato fondante di tutto il linguaggio architettonico albertiano.",
+  "summary": "Palazzo fiorentino in via della Vigna Nuova, nato intorno al 1446 quando @Giovanni Rucellai, mercante e raffinato umanista, decide di riunire alcuni edifici esistenti in un'unica dimora. Per la facciata si rivolge a @Leon Battista Alberti, che nel frattempo è tornato a @Roma: il progetto viene eseguito da un altro architetto, probabilmente @Bernardo Rossellino. Rucellai è il principale committente di Alberti a @Firenze e fra gli anni Quaranta e Sessanta gli affida anche la @cappella-rucellai e la @facciata-santa-maria-novella.",
+  "analysis": "Il confronto obbligato è con il @palazzo-medici-riccardi di via Larga, avviato pochi anni prima da Michelozzo. I due prospetti condividono la partizione in tre piani sovrapposti; ma dove Michelozzo gradua il rilievo delle bugne dal basso verso l'alto, Alberti stende una pietra uniforme e punta tutto su un apparato decorativo più articolato e sottile. A scandire il prospetto sono gli assi verticali: aperture quadrate al piano terra, bifore sopra e paraste piatte che cambiano ordine a ogni livello, dal tuscanico allo ionico fino al corinzio. Il cornicione aggettante chiude il prospetto, e gli stemmi dei Rucellai lo punteggiano.\n\nIl linguaggio antico si legge nello zoccolo lavorato a imitazione del reticolato romano e negli archi a pieno centro, mentre le finestre a due luci conservano un ricordo del Medioevo fiorentino. La griglia che ordina porte, finestre e membrature ripete lo stesso modulo con precisione matematica: è il frutto della lettura degli autori latini e dello studio diretto delle rovine romane, primo fra tutti l'anfiteatro Flavio. Il lessico decorativo antico e il progetto fondato su moduli e proporzioni diventeranno il fondamento di tutta l'architettura albertiana.",
   "innovations": [
-   "lesene sovrapposte con ordini progressivi sulla facciata di palazzo civile",
-   "rigore geometrico e ripetizione modulare",
-   "opus reticulatum imitato nel basamento"
+   "Ordini sovrapposti di lesene, dal tuscanico al corinzio, sulla facciata di un palazzo privato",
+   "Paramento regolare al posto del bugnato digradante di Palazzo Medici",
+   "Facciata costruita su una griglia modulare derivata dai monumenti romani"
   ],
   "term_ids": [
    "lesena",
    "opus-reticulatum",
    "ordini-architettonici",
-   "facciata-bipartita"
+   "bifora",
+   "cornicione",
+   "bugnato",
+   "modulo-geometrico"
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Via%20della%20Vigna%20Nuova%2018%2C%20palazzo%20rucellai%2C%2002%2C0.jpg",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Via%20della%20Vigna%20Nuova%2018%2C%20palazzo%20rucellai%2C%2002%2C0.jpg?width=640",
@@ -25648,7 +25699,8 @@
    "affresco",
    "ciclo-pittorico",
    "corteo-dei-magi",
-   "scarsella"
+   "scarsella",
+   "ciclo-narrativo"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Cappella_dei_magi%2C_corteo_con_lorenzo%2C_piero_e_giovanni_de%27_medici.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/0/09/Cappella_dei_magi%2C_corteo_con_lorenzo%2C_piero_e_giovanni_de%27_medici.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
@@ -25657,48 +25709,6 @@
    "piero-il-gottoso"
   ],
   "image_gallery": [],
-  "fonte_ids": [
-   "occhi-arte-3"
-  ]
- },
- {
-  "id": "corteo-dei-magi-gozzoli",
-  "title": "Corteo dei Magi (parete sud)",
-  "artist_ids": [],
-  "period_id": "umanesimo-fiorentino",
-  "date_text": "1459-1461",
-  "year_start": 1459,
-  "year_end": 1461,
-  "type": "pittura",
-  "technique_ids": [
-   "affresco"
-  ],
-  "materials": [
-   "intonaco",
-   "pigmenti"
-  ],
-  "location_city": "Firenze",
-  "location_place": "Palazzo Medici-Riccardi, cappella dei Magi",
-  "lat": 43.775267,
-  "lon": 11.255661,
-  "book": 2,
-  "chapter": 2,
-  "page": 32,
-  "source_file": "Libro-2.1-giu-2026-1",
-  "importance": 1,
-  "summary": "Corteo dei Magi (1459-1461) di Benozzo Gozzoli nella cappella dei Magi in Palazzo Medici-Riccardi a Firenze. Affresco della parete sud, citato come apertura visiva del Capitolo 2 sull'Umanesimo fiorentino.",
-  "analysis": null,
-  "innovations": [],
-  "term_ids": [
-   "affresco",
-   "ciclo-narrativo"
-  ],
-  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gozzoli_magi.jpg",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Gozzoli_magi.jpg?width=640",
-  "image_source": "commons",
-  "committente_ids": [
-   "piero-il-gottoso"
-  ],
   "fonte_ids": [
    "occhi-arte-3"
   ]
@@ -25730,17 +25740,19 @@
   "page": 42,
   "source_file": "Libro2.3-giu-2026-2",
   "importance": 3,
-  "summary": "Piccola tavola di 67,5 × 91 cm, probabilmente la più nota e al tempo stesso enigmatica opera di Piero. Non se ne conoscono committente, provenienza né datazione certa (ipotesi dal 1459 al 1470). La superficie è divisa verticalmente in due parti secondo il rapporto aureo: a sinistra la flagellazione in secondo piano in un vano classico, a destra tre personaggi contemporanei in primo piano. La figura di profilo osserva impassibile la scena con fattezze associate a Giovanni VIII Paleologo.",
-  "analysis": "La Flagellazione è un capolavoro assoluto dell'equilibrio compositivo, luministico e della costruzione spaziale. La piena padronanza delle regole prospettiche e dei principi di Alberti è evidente nella costruzione spaziale: le linee convergono in un punto di fuga ribassato in posizione intermedia tra le due scene. La flagellazione avviene in secondo piano, isolata e allontanata dallo spettatore per ridurre l'impatto drammatico. Il rigore prospettico unito a una lucidità descrittiva di ascendenza fiamminga suggerisce un senso di fissità atemporale.",
+  "summary": "Tavola a tempera (67,5 × 91 cm) di @Piero della Francesca, oggi nella Galleria Nazionale delle Marche a @Urbino. È forse la sua opera più celebre e insieme la più enigmatica: se ne ignorano committente, provenienza e data, che gli studiosi collocano fra il 1459 e il 1470. A sinistra, in secondo piano, Cristo è flagellato sotto lo sguardo impassibile di un personaggio di profilo, identificato con Pilato ma vestito e ritratto come l'imperatore d'Oriente Giovanni VIII Paleologo; a destra, in primo piano, tre uomini del tempo conversano, ma la loro identità resta ignota.",
+  "analysis": "La presenza di Piero a @Urbino è documentata dal 1469: invitato a completare una pala avviata da @Paolo Uccello, rifiuta l'incarico ma si stabilisce in città, a suo agio nel clima colto ed eclettico promosso da @Federico da Montefeltro. Sul significato del dipinto sono state avanzate molte ipotesi, storiche e dinastiche legate ai Montefeltro, oppure teologiche; c'è anche chi vi legge una denuncia dell'indifferenza del mondo contemporaneo davanti alla sofferenza di Cristo.\n\nLa costruzione dello spazio mostra una padronanza completa della prospettiva e dei principi codificati da @Leon Battista Alberti. La tavola è divisa in verticale in due parti secondo la sezione aurea: nella prima si svolge il supplizio, nella seconda due uomini parlano con un terzo che sta proprio sul confine fra i due campi. Il peso delle due scene è bilanciato dalla diversa profondità: il supplizio, arretrato in un'architettura di gusto classico, perde forza drammatica e coinvolgimento emotivo. Le mattonelle del pavimento scandiscono una prospettiva razionale che unifica tutto, con le linee che confluiscono in un punto di fuga ribassato, a metà fra i due gruppi. Rigore geometrico e nitidezza descrittiva di ascendenza fiamminga danno all'immagine un ordine perfetto e una sospensione fuori dal tempo.",
   "innovations": [
-   "divisione verticale secondo il rapporto aureo",
-   "scena sacra in secondo piano per riduzione dell'impatto drammatico",
-   "personaggi contemporanei in primo piano come mediatori dello spettatore"
+   "Superficie divisa in due parti secondo la sezione aurea",
+   "Scena sacra arretrata in secondo piano, che ne attenua l'impatto drammatico",
+   "Fuoco prospettico basso e comune a due episodi posti a distanze diverse"
   ],
   "term_ids": [
    "rapporto-aureo",
    "punto-di-fuga",
-   "prospettiva-lineare"
+   "prospettiva-lineare",
+   "punto-di-fuga-ribassato",
+   "pittura-fiamminga"
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Piero%20della%20Francesca%20Flagellazione-gndm-full.jpg",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Piero%20della%20Francesca%20Flagellazione-gndm-full.jpg?width=640",
@@ -26740,12 +26752,18 @@
   "page": 16,
   "source_file": "Libro2.3-giu-2026-2",
   "importance": 2,
-  "summary": "Ritratto di 44,1 × 33,7 cm facente parte di un trittico composto anche da una figura con Bambino al centro e dal ritratto della moglie Maria. Il taglio a mezzo busto è soluzione perfetta per il piccolo formato. Il viso emerge da uno sfondo scuro: la capigliatura, la pelle e l'ombreggiatura della barba sono di eccezionale realismo; lo sguardo esprime concentrazione e introspezione di un uomo in preghiera. L'opera arriva presto a Firenze, esposta nel palazzo Portinari e poi nell'Ospedale di Santa Maria Nuova dal 1544.",
-  "analysis": null,
-  "innovations": [],
+  "summary": "Piccolo ritratto a olio su tavola (44,1 × 33,7 cm) di @Hans Memling, verso il 1470-1480, oggi a @New York, al Metropolitan Museum. Faceva parte di un piccolo trittico: al centro la Vergine con il Figlio, sull'altra ala l'effigie della consorte Maria. Il committente, @Tommaso Portinari, guida a @Bruges gli affari della banca medicea: influente e colto collezionista, fa da ponte fra le Fiandre e @Firenze. Il dipinto arriva presto a Firenze: è esposto nel palazzo di famiglia e, dal 1544, nell'Ospedale di Santa Maria Nuova.",
+  "analysis": "Formatosi a @Bruxelles presso @Rogier van der Weyden, il pittore si stabilisce poi a Bruges, dove ritrae nobili e ricchi mercanti. La figura è vista di tre quarti e tagliata a mezzo busto: una soluzione ideale per il formato ridotto, destinata a grande fortuna.\n\nIl volto, illuminato con sapienza, emerge dal fondo scuro. Capelli, pelle e barba appena ricresciuta sono resi con un realismo straordinario, ma il vero centro dell'immagine è lo sguardo, che esprime il raccoglimento interiore di un uomo in preghiera. Pochi anni dopo sarà lo stesso Portinari a far arrivare a @Firenze il @trittico-portinari di @Hugo van der Goes, che inciderà profondamente sulla pittura fiorentina.",
+  "innovations": [
+   "Figura di tre quarti tagliata a mezzo busto, adatta al piccolo formato",
+   "Realismo minuzioso di pelle, capelli e barba",
+   "Sguardo assorto che esprime l'interiorità della preghiera"
+  ],
   "term_ids": [
    "ritratto",
-   "mezzo-busto"
+   "mezzo-busto",
+   "ritratto-di-tre-quarti",
+   "pittura-fiamminga"
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Memling%2C%20tommaso%20portinari%20e%20la%20moglie%2C%20metropolitan%20museum.jpg",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Memling%2C%20tommaso%20portinari%20e%20la%20moglie%2C%20metropolitan%20museum.jpg?width=640",
@@ -27192,14 +27210,18 @@
   "page": 41,
   "source_file": "Libro2.4-giu-2026-6",
   "importance": 2,
-  "summary": "Disegno datato 5 agosto 1473 (19,5 × 28,5 cm, penna e inchiostro su carta) raffigurante un paesaggio fluviale probabilmente nella zona di Montevettolini e Monsummano. Se si tratta di un disegno indipendente, sarebbe la prima opera raffigurante un paesaggio autonomo nella storia dell'arte occidentale. Il progressivo alleggerirsi del tratto nella rappresentazione degli alberi in secondo piano restituisce lo sfaldarsi dei contorni con la distanza e il movimento delle fronde.",
-  "analysis": null,
+  "summary": "Foglio (19,5 × 28,5 cm) tracciato a penna con inchiostri di due colori e datato 5 agosto 1473; appartiene agli Uffizi di @Firenze, Gabinetto dei Disegni e delle Stampe. @Leonardo da Vinci ritrae una valle percorsa dall'Arno, che si è proposto di riconoscere fra Montevettolini e Monsummano. Non si sa se sia uno studio per lo sfondo di un dipinto o un foglio autonomo: in questo secondo caso sarebbe il primo paesaggio indipendente dell'arte occidentale. Testimonia il profondo interesse del giovane artista per la natura e per i suoi fenomeni.",
+  "analysis": "L'attenzione di Leonardo per gli ambienti aperti è evidente fin dalle prime opere, come lo sfondo di fiume e alberi riflessi, velato da una nebbia azzurrina, del @ritratto-ginevra-benci. Nel disegno il tratto si fa via via più leggero negli alberi lontani: restituisce così il dissolversi apparente dei contorni con la distanza e insieme il tremare delle fronde mosse dal vento, mentre le linee restano più nette per gli elementi immobili come rocce e pietre.\n\nLe analisi scientifiche hanno mostrato che il foglio non è un rapido schizzo dal vero ma un disegno ripreso in un secondo momento: una prova di quanto, per Leonardo, l'osservazione della natura passi sempre attraverso una rielaborazione intellettuale.",
   "innovations": [
-   "possibile primo paesaggio autonomo nella storia dell'arte occidentale"
+   "Possibile primo paesaggio autonomo dell'arte occidentale",
+   "Tratto che si alleggerisce con la distanza per rendere l'atmosfera e il moto delle fronde",
+   "Disegno rielaborato in studio, non schizzo dal vero, secondo le analisi"
   ],
   "term_ids": [
    "paesaggio-autonomo",
-   "disegno-preparatorio"
+   "disegno-preparatorio",
+   "disegno",
+   "prospettiva-aerea"
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Paisagem%20do%20Arno%20-%20Leonardo%20da%20Vinci.jpg",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Paisagem%20do%20Arno%20-%20Leonardo%20da%20Vinci.jpg?width=640",
@@ -27459,11 +27481,12 @@
   "page": 17,
   "source_file": "Libro2.4-giu-2026-6",
   "importance": 3,
-  "summary": "La Dama col mazzolino di Verrocchio (h. 60 cm, marmo) propone un modello inedito di busto-ritratto femminile: abbassa il taglio all'altezza dell'ombelico (importando dalla pittura fiamminga), mette in evidenza le mani eleganti e affusolate che stringono un mazzolino di fiori, che diventa il perno visivo e l'espediente formale per includere le mani senza tagliare le braccia ai gomiti.",
-  "analysis": "Questa scultura segna una svolta nella storia del ritratto italiano in marmo. Verrocchio supera la rigidità formale dei busti tradizionali (tagliati all'altezza dei gomiti) a favore di una resa sentimentale e psicologica. La protagonista è ritratta con l'espressione assorta e le mani al petto che stringono il mazzolino: gli avambracci con le loro diverse inclinazioni imprimono movimento e vitalità all'intera figura. Il modello sarà ripreso da Leonardo nel Ritratto di Ginevra Benci.",
+  "summary": "Busto-ritratto in marmo (h. 60 cm) di @Andrea Verrocchio, verso il 1475, oggi a @Firenze, nel Museo Nazionale del Bargello. Nella sua bottega, che ospita giovani come Botticelli, Perugino, Ghirlandaio e Leonardo, le conquiste della generazione precedente vengono riprese e adattate a un gusto più incline alla sensibilità raffinata e alla dolcezza degli affetti. Con questo busto Verrocchio inventa una formula che la scultura marmorea italiana non conosceva: abbassa il taglio del busto all'altezza della vita, una soluzione presa dalla pittura fiamminga, e fa entrare nell'immagine le mani della dama.",
+  "analysis": "Del ritratto dell'ignota gentildonna Verrocchio mette in risalto il volto assorto e le mani lunghe ed eleganti, raccolte sul petto a stringere un mazzolino di fiori. Il piccolo bouquet è il perno visivo e il centro narrativo attorno a cui si concentra la vita interiore della figura, ma è anche lo stratagemma formale che permette di superare il consueto taglio delle braccia ai gomiti. Mani e avambracci, con inclinazioni diverse, danno movimento e vitalità a tutta la figura, pensata per stare al centro di uno spazio aperto.\n\nLa rigidità dei busti tradizionali lascia così il posto a una resa sentimentale e psicologica. La stessa posa delle mani incrociate si può immaginare nella parte inferiore, oggi tagliata, del @ritratto-ginevra-benci dipinto da Leonardo, allievo di Verrocchio.",
   "innovations": [
-   "taglio del busto all'altezza dell'ombelico con inclusione delle mani",
-   "resa psicologica e sentimentale del ritratto femminile in marmo"
+   "Busto tagliato in vita, con le mani, sul modello della pittura fiamminga",
+   "Mazzolino di fiori come centro visivo e psicologico della figura",
+   "Ritratto femminile in marmo di intonazione sentimentale e intima"
   ],
   "term_ids": [
    "busto-ritratto",
@@ -28206,17 +28229,19 @@
   "page": 42,
   "source_file": "Libro2.4-giu-2026-6",
   "importance": 3,
-  "summary": "L'Adorazione dei Magi (244 × 240 cm, olio e tempera su tavola) è commissionata nel 1481 dai canonici agostiniani di San Donato a Scopeto, rimasta incompiuta perché Leonardo parte per Milano nel 1482. Il soggetto sacro non è l'occasione per celebrare i Medici (come in Botticelli) ma una vera Epifania: intorno alle figure principali si dispone un folto gruppo con straordinaria varietà di atteggiamenti ed espressioni. Lo sfondo con la convulsa battaglia di cavalieri rimanda al disordine pre-cristiano.",
-  "analysis": "Quest'opera incompiuta mostra il metodo di lavoro di Leonardo: i disegni preparatori sulla tavola testimoniano la complessa genesi compositiva. Il soggetto è radicalmente diverso dall'interpretazione di Gozzoli e di Botticelli: non è celebrazione dei Medici ma vera teofania. L'alloro e la palma raccordano le due parti (gloria e resurrezione di Cristo); in alto a destra la battaglia di cavalieri rimanda al disordine pre-cristiano; l'architettura sul lato opposto allude alla distruzione del Tempio di Gerusalemme o alla caduta del mondo antico.",
+  "summary": "Pala di grandi dimensioni (244 × 240 cm, olio e tempera), conservata agli Uffizi: nel 1481 la ordinano a Leonardo da Vinci gli agostiniani di San Donato a Scopeto, il cui convento sarà demolito nel XVI secolo. Quando nel 1482 si trasferisce a @Milano, il pittore la consegna, non terminata, al banchiere Amerigo Benci, vicino alla sua famiglia e padre di Ginevra: sarà in quella casa che Giorgio Vasari potrà osservarla. Anche non finita è un'opera rivoluzionaria: l'adorazione non celebra più i Medici ma diventa una vera epifania, la manifestazione del divino sulla terra, fra una folla di figure dagli atteggiamenti e dalle espressioni variatissimi.",
+  "analysis": "Nella @Firenze del Quattrocento il tema era diffusissimo, e @Benozzo Gozzoli nel @corteo-dei-magi come @Sandro Botticelli nella sua @adorazione-dei-magi-botticelli ne avevano fatto un'occasione per esaltare la casata medicea. Leonardo lo ripensa. Nel fondo, scene che sembrano non avere a che fare con i Magi sono invece cariche di simboli: al centro un lauro e una palma saldano le due zone e annunciano il trionfo del Figlio di Dio e la sua vittoria sulla morte; la mischia di cavalieri in alto a destra evoca la violenza e il disordine del mondo prima del Salvatore; a sinistra un edificio in rovina è stato letto come il Tempio distrutto o come la fine dell'età pagana, che deve cadere perché sorga la Chiesa.\n\nProprio qui l'artista si misura con due problemi che aveva esplorato in numerosi fogli: cavalli e uomini colti in pieno moto, architetture viste in forte scorcio. Alcuni di questi tracciati restano visibili sulla tavola e documentano la lunga e complessa gestazione dell'opera. Per affinità con questa tavola parte della critica data verso il 1480 anche il @san-girolamo-leonardo, un altro dipinto non finito.",
   "innovations": [
-   "Adorazione come teofania, non come celebrazione medicea",
-   "uso del disegno preparatorio visibile sulla superficie"
+   "Adorazione concepita come epifania e non come celebrazione dinastica",
+   "Folla di figure con una varietà di pose ed espressioni senza precedenti",
+   "Disegno preparatorio lasciato visibile, che mostra il processo creativo"
   ],
   "term_ids": [
    "epifania",
    "disegno-preparatorio",
    "composizione-triangolare",
-   "opera-non-finita"
+   "opera-non-finita",
+   "scorcio"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Magi.jpg",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Leonardo_Magi.jpg/960px-Leonardo_Magi.jpg",
@@ -29057,17 +29082,20 @@
   "page": 20,
   "source_file": "Libro2.3-giu-2026-2",
   "importance": 3,
-  "summary": "Trittico di 216 × 382 cm realizzato per la chiesa dell'abbazia agostiniana di Novacella (vicino a Bressanone). La tavola centrale mostra i santi Agostino e Gregorio; i pannelli laterali i santi Girolamo (sinistra) e Ambrogio (destra). Sul retro dei pannelli laterali scene della vita di sant'Agostino. L'opera è importante novità per la pittura tedesca per l'uso di un unico cono ottico unificante tutti i pannelli.",
-  "analysis": "Il trittico testimonia la maturità stilistica di Pacher, che ha assorbito stimoli sia italiani che fiamminghi pur mantenendo eleganti retagi tardogotici come i baldacchini che rimandano alla tradizione tirolese. L'uso di un unico cono prospettico e dello scorcio del pavimento per unificare tutti i pannelli è un'importante novità per l'area tedesca. Notevoli anche la naturalezza della gestualità e l'espressività dei santi, lontani da ogni stereotipata rigidità.",
+  "summary": "Verso il 1483 @Michael Pacher realizza questo trittico su tavola (216 × 382 cm) per i canonici agostiniani di Novacella (@abbazia-agostiniana-novacella), presso @Bressanone; è conservato a @Monaco, all'Alte Pinakothek. Al centro i santi Agostino e Gregorio, a sinistra san Girolamo, a destra sant'Ambrogio; le facce esterne delle ante, con episodi agostiniani, sono state staccate e disperse. Nel mondo germanico è una svolta: i tre scomparti obbediscono a una sola costruzione prospettica.",
+  "analysis": "Il pittore, che lavora soprattutto intorno a Brunico, muove da un linguaggio tardogotico di radice tirolese e arriva a una rilettura dell'arte veneta, in particolare di @Andrea Mantegna e delle opere padovane di @Donatello. Gran parte della critica pensa che abbia visto a @Padova gli affreschi degli Eremitani, e forse anche @Mantova e altre città del Nord Italia; un viaggio fino a @Strasburgo e nelle Fiandre gli avrebbe affinato l'uso della luce.\n\nI santi laterali sono ruotati di tre quarti, a differenza di quelli centrali, per sottolineare la prospettiva centrale; il pavimento in forte scorcio, la colonnina con la colomba e la culla accanto ad Ambrogio legano ulteriormente i tre spazi. I gesti sono naturali e i volti espressivi, lontani da ogni rigidità, e il racconto è realistico, come nella tranquilla cittadina tirolese sullo sfondo, ma con accenti fantastici. Restano eleganti retaggi tardogotici nei baldacchini, che rimandano alla tradizione tirolese dell'intaglio ligneo e alla perizia dello stesso Pacher, anche scultore in legno. Per avvicinare il dipinto a chi guarda, Pacher inserisce davanti a papa @Gregorio Magno un personaggio visto da dietro e interrotto dal margine inferiore, che si rivolge al santo.",
   "innovations": [
-   "cono ottico unico per unificare più pannelli",
-   "naturalezza della gestualità dei santi",
-   "prospettiva di matrice italiana in area tedesca"
+   "Unico cono ottico che unifica i tre pannelli del trittico",
+   "Santi laterali ruotati di tre quarti per sottolineare la prospettiva centrale",
+   "Figura di spalle tagliata dal bordo che collega spazio reale e spazio dipinto"
   ],
   "term_ids": [
    "trittico",
    "prospettiva-lineare",
-   "baldacchino"
+   "baldacchino",
+   "scorcio",
+   "tardogotico",
+   "prospettiva-centrale"
   ],
   "image_url": "https://www.cassiciaco.it/navigazione/iconografia/pittori/quattrocento/pacher/images/pacher_pala.jpg",
   "image_thumb": "https://www.cassiciaco.it/navigazione/iconografia/pittori/quattrocento/pacher/images/pacher_pala.jpg",
@@ -29604,7 +29632,9 @@
   "year_start": 1490,
   "year_end": 1492,
   "type": "scultura",
-  "technique_ids": [],
+  "technique_ids": [
+   "altorilievo"
+  ],
   "materials": [
    "marmo"
   ],
@@ -29617,15 +29647,18 @@
   "page": 36,
   "source_file": "Libro2.5-giu-2026-7",
   "importance": 2,
-  "summary": "Rilievo marmoreo (80,5 × 88 cm) scolpito ad altorilievo per Lorenzo de' Medici. Ispirato nel tema e nelle forme ai rilievi dei sarcofagi romani e al Rilievo con una battaglia tra romani e barbari di Bertoldo di Giovanni. Una figura centrale con il braccio destro alzato genera un moto rotatorio che trascina tutta la composizione. Propone una concezione plastico-dinamica del corpo nello spazio con scorci, torsioni e grovigli, anticipando il non finito michelangiolesco.",
-  "analysis": null,
+  "summary": "Lastra di marmo (80,5 × 88 cm) scolpita ad altorilievo da @Michelangelo Buonarroti fra il 1490 e il 1492 per @lorenzo-de-medici, oggi a Casa Buonarroti a @Firenze. Nasce negli anni in cui il giovane artista frequenta la scuola di scultura del giardino di San Marco, dove sotto la guida di @Bertoldo di Giovanni, allievo di @Donatello, si copiano e si restaurano le statue antiche delle collezioni medicee. Il soggetto e il linguaggio vengono dalle casse funerarie antiche e da una scena di lotta fra legionari e barbari scolpita dallo stesso Bertoldo, ora nel Museo del Bargello.",
+  "analysis": "Al centro una figura alza il braccio destro e ruota il busto, generando un moto circolare che trascina l'intera composizione. Con la mischia dei centauri l'artista entra nel dibattito fiorentino sul corpo nudo, che attraversa l'intero secolo. Portandole a compimento, apre una strada nuova: il corpo diventa energia che si avvita nello spazio, fra membra in scorcio, busti ruotati e figure aggrovigliate, e la superficie oscilla di continuo fra parti finite e marmo appena sbozzato.\n\nNegli stessi anni la @madonna-della-scala mostra l'altro polo della sua formazione, l'omaggio allo stiacciato di @Donatello.",
   "innovations": [
-   "Concezione plastico-dinamica del corpo nello spazio con rotazione"
+   "Corpi in torsione e in scorcio che fanno del rilievo un vortice di energia",
+   "Moto rotatorio generato da una figura centrale che trascina tutta la scena",
+   "Contrasto fra superfici rifinite e materia lasciata allo stato grezzo"
   ],
   "term_ids": [
    "altorilievo",
    "sarcofago",
-   "non-finito"
+   "non-finito",
+   "nudo-maschile"
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Michelangelo%2C%20centauromachia%2C%201492%20ca.%2C%2001.JPG",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Michelangelo%2C%20centauromachia%2C%201492%20ca.%2C%2001.JPG?width=640",
@@ -35059,17 +35092,19 @@
   "page": 18,
   "source_file": "Libro2.6-giu-2026-8",
   "importance": 3,
-  "summary": "Pala monumentale di Tiziano (1516-1518, olio su tavola, 690 × 360 cm) per l'altare maggiore della basilica di Santa Maria Gloriosa dei Frari di Venezia, commissionata dal francescano Germano da Casale. È la più grande pala della tradizione veneziana, concepita come cesura definitiva rispetto alla pala d'altare tradizionale. La forte spinta ascensionale è ottenuta attraverso la varietà di gesti: scorci arditi degli apostoli, rotazione della Vergine con braccia e sguardo verso l'alto, gonfiarsi del manto, figura quasi incorporea di Dio Padre benedicente.",
-  "analysis": "L'Assunta segna il passaggio di consegne da Giovanni Bellini (morto nel 1516) a Tiziano come massimo pittore veneziano. La composizione è basata su un triangolo ascensionale, con i diversi livelli definiti da sezioni di circonferenza. In proporzione al monumentale presbiterio gotico, l'opera richiede lo slancio verticale sia nel formato che nella composizione. Il colore domina ancora: il contrasto tra la Madonna e il bagliore del Paradiso ha grande effetto drammatico, e il rosso carminio accomuna gli abiti degli apostoli centrali, della Vergine e il manto di Dio. Tiziano prende spunto dalla Michelangelo per l'avvitamento della Vergine e dalla concitazione degli apostoli, e da Raffaello per gli angioletti.",
+  "summary": "Tra il 1516 e il 1518 @Tiziano Vecellio dipinge a olio questa tavola monumentale (690 × 360 cm), commissionata dal frate minore @Germano da Casale per l'altar maggiore dei Frari, la chiesa francescana di Santa Maria Gloriosa a @Venezia. Il 1516 è l'anno della morte di @Giovanni Bellini, e l'opera segna di fatto il passaggio del primato pittorico veneziano dal vecchio maestro a Tiziano. La commissione ha un doppio scopo: ribadire il titolo mariano della basilica e festeggiare la pace dopo il conflitto contro la Lega di Cambrai, la coalizione che aveva unito contro la Serenissima Francia, Asburgo e pontefice.",
+  "analysis": "Pensata per il vasto coro gotico, la tavola si allunga in verticale fino a sfiorare i sette metri. Il moto ascendente non ha bisogno d'altro che dei corpi: gli apostoli, in basso, si agitano in scorci arditi e pose scomposte contro un cielo grigio e azzurro; la Vergine ruota su se stessa con braccia e sguardo levati, fra angeli in movimento e il manto che si gonfia; in cima Dio Padre, quasi immateriale, apre le braccia per accoglierla. Lo schema è un triangolo ascensionale, con i piani scanditi da archi di circonferenza.\n\nL'impianto piramidale deriva dall'Assunzione di @Andrea Mantegna nella cappella Ovetari a @Padova, ma i contemporanei colgono subito la rottura con la pala veneziana tradizionale, costruita dentro un'architettura dipinta. Tiziano rinuncia a ogni struttura e affida tutto alle figure: dalle invenzioni di @Michelangelo Buonarroti riprende la lieve torsione della Vergine e l'agitazione degli apostoli presso il sepolcro, da @Raffaello Sanzio i vivacissimi angioletti che reggono le nubi, modelli conosciuti attraverso le incisioni.\n\nIl racconto resta però affidato al colore. La Madonna si staglia contro il fulgore del Paradiso con forte effetto drammatico, e i cherubini si dissolvono nella luce dorata, che rende leggibile anche la parte alta nella chiesa luminosa. Per guidare lo sguardo il rosso carminio lega le vesti dei due apostoli al centro, disposti in diagonale, l'abito di Maria e il manto del Padre. Colori squillanti e ombre nette danno alle figure una concretezza e un vigore che coinvolgono emotivamente chi guarda.",
   "innovations": [
-   "Prima grande pala veneziana senza cornice architettonica illusionistica",
-   "Composizione ascensionale di straordinaria forza dinamica",
-   "Dimensioni colossali proporzionate all'architettura gotica"
+   "Pala d'altare senza alcuna cornice architettonica dipinta, costruita solo sulle figure",
+   "Spinta ascensionale affidata interamente ai gesti e alle torsioni dei corpi",
+   "Rimandi di rosso carminio che guidano la lettura di una tavola alta quasi sette metri"
   ],
   "term_ids": [
    "pala-d-altare",
    "spinta-ascensionale",
-   "cromatismo"
+   "cromatismo",
+   "composizione-piramidale",
+   "scorcio"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Venezia_-_Chiesa_dei_Frari%2C_pala_dell%27Assunta.jpg/1280px-Venezia_-_Chiesa_dei_Frari%2C_pala_dell%27Assunta.jpg",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Venezia_-_Chiesa_dei_Frari%2C_pala_dell%27Assunta.jpg/1280px-Venezia_-_Chiesa_dei_Frari%2C_pala_dell%27Assunta.jpg",
@@ -35111,15 +35146,17 @@
   "page": 27,
   "source_file": "Libro2.5-giu-2026-7",
   "importance": 2,
-  "summary": "Decorazione ad affresco e stucco delle logge del Palazzo Apostolico (progettate da Bramante), articolate su tre piani. La loggia di maggior interesse è quella al secondo piano: uno spazio lungo 65 metri scandito in 13 campate con volte a padiglione. Nelle volte storie bibliche ed evangeliche dialogano con una fittissima decorazione a grottesca derivata dalla Domus Aurea neroniana e dal Palazzo dei Cesari sul Palatino. Le parti a stucco sono eseguite da Giovanni da Udine. Raffaello concilia il tema religioso con un'antichità rievocata non solo nella forma ma anche nello spirito.",
-  "analysis": null,
+  "summary": "Le logge del palazzo papale, ideate da @Donato Bramante come un passeggio coperto su tre livelli aperto sul cortile di San Damaso e sul panorama di @Roma, ricevono una decorazione dipinta e in stucco per volere di @leone-x-de-medici. Dal 1516 al 1519 @Raffaello Sanzio fornisce i disegni e i suoi aiuti li traducono in tempi strettissimi; si parte dal secondo piano, contiguo alle stanze private del pontefice e più rilevante: un corridoio di una sessantina di metri, ritmato da tredici campate con volte a padiglione. Fra gli allievi hanno un ruolo di rilievo @Perin del Vaga e @Giovanni da Udine.",
+  "analysis": "Ogni volta ospita episodi biblici circondati da un tessuto minutissimo di grottesche, esemplate sulle pitture romane riemerse nelle grotte della Domus Aurea e nelle residenze imperiali del Palatino. È qui che questa soluzione trova la sua consacrazione e la sua codificazione, sia nelle parti dipinte sia negli stucchi, modellati da @Giovanni da Udine.\n\nIl soggetto sacro convive così con un mondo antico ripreso nei suoi motivi e, più ancora, nella sua libertà inventiva: l'obiettivo è reinventare il classico, non imitarlo. Negli stessi anni, con la bottega, decora a Villa Chigi la @loggia-di-psiche-farnesina, dove Giovanni da Udine dipinge i festoni vegetali, e prepara per Leone X i cartoni degli arazzi della Cappella Sistina.",
   "innovations": [
-   "Codificazione della grottesca come decorazione sistematica in edifici pontifici",
-   "Fusione tra tema religioso e decorazione classica antica"
+   "Consacrazione e codificazione della grottesca antica, dipinta e a stucco",
+   "Racconto biblico inserito in un sistema decorativo derivato dalla Domus Aurea",
+   "Progetto del maestro eseguito rapidamente da una bottega organizzata"
   ],
   "term_ids": [
    "grottesca",
-   "volta-a-padiglione"
+   "volta-a-padiglione",
+   "loggiato"
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Loge%20du%202%C3%A8me%20%C3%A9tage%20du%20palais%20apostolique%20du%20Vatican.jpg",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Loge%20du%202%C3%A8me%20%C3%A9tage%20du%20palais%20apostolique%20du%20Vatican.jpg?width=640",
@@ -36165,19 +36202,24 @@
   "page": 52,
   "source_file": "Libro2.5-giu-2026-7",
   "importance": 3,
-  "summary": "Cappella funeraria costruita all'interno del complesso di San Lorenzo, commissionata da Leone X per le tombe di quattro Medici. L'ambiente ripropone la pianta centrale della Sacrestia Vecchia di Brunelleschi, ma si differenzia per il forte aggetto delle membrature architettoniche e il contrasto cromatico tra grigio (pietra serena) e bianco (intonaco). Michelangelo esalta la cornice marcapiano dando alle pareti una chiara dimensione scultorea; innesta edicole con timpani semicircolari spezzati dalla cornice delle nicchie, violando il principio rinascimentale di distinzione dei volumi. La cupola è cassettonata in modo prospettico sul modello del Pantheon.",
-  "analysis": "La Sacrestia Nuova è la prima grande impresa architettonica di Michelangelo e anticipa tutti i temi del suo successivo anticlassicismo. Il dialogo con la Sacrestia Vecchia di Brunelleschi è dichiarato dalla stessa pianta, ma Michelangelo ne capovolge il senso: laddove Brunelleschi articola gli elementi con razionale chiarezza, Michelangelo accentua l'aggetto, rompe i timpani, ingrandisce le cornici, creando una tensione plastica che trasforma l'architettura in scultura. Le tombe medicee sono il nucleo del progetto: i defunti idealizzati (non ritratti), le allegorie scultoree sui sarcofagi (Giorno, Notte, Crepuscolo, Aurora), la Madonna al centro come fulcro spirituale, creano un sistema semantico complesso che riflette la filosofia neoplatonica del Tempo che consuma ma al quale l'arte contrappone la permanenza della forma.",
+  "summary": "Cappella funeraria nel complesso di San Lorenzo a @Firenze, che @leone-x-de-medici commissiona a @Michelangelo Buonarroti nel 1519 per le tombe di quattro Medici: due della generazione del Quattrocento, @lorenzo-de-medici e suo fratello Giuliano, e due dei loro discendenti, il duca d'Urbino Lorenzo, scomparso proprio nel 1519, e il duca di Nemours Giuliano. Costruita fra il 1520 e il 1534, è simmetrica alla @sacrestia-vecchia-san-lorenzo di Brunelleschi e ne riprende esattamente la pianta centrale. Dopo la morte di @giulio-ii-della-rovere Michelangelo è infatti diventato l'architetto e scultore ufficiale dei Medici; per @clemente-vii-de-medici progetterà poi la @biblioteca-laurenziana.",
+  "analysis": "Dove Brunelleschi disegnava le membrature quasi a filo della parete, @Michelangelo le fa sporgere con decisione e rende più aspro lo stacco fra pietra grigia e intonaco chiaro. Il marcapiano, reso più robusto, trasforma le pareti in un rilievo plastico, dove i volumi avanzano e arretrano come in una statua. Sulle otto porte sovrappone tabernacoli a nicchia, e ne interrompe il frontone curvo con la cornice della nicchia stessa: una violazione del principio rinascimentale di distinzione netta e razionale dei volumi. Il ritmo serrato delle membrature si scioglie nella chiarezza della cupola a lacunari in prospettiva, sul modello del Pantheon.\n\nI lavori procedono fra molte interruzioni, la più lunga fra il 1527 e il 1530, quando i Medici sono cacciati da @Firenze. Al ritorno della famiglia Michelangelo scolpisce la @tomba-giuliano-nemours e la @tomba-lorenzo-urbino; le altre non saranno mai eseguite. I duchi, seduti in nicchie profonde come antichi condottieri, sono figure idealizzate e non ritratti: Giuliano incarna l'azione, Lorenzo la riflessione, ed entrambi si volgono verso la Vergine. Distese sulle casse, due per tomba, stanno le personificazioni delle ore: il Giorno e la Notte sotto Giuliano, il Crepuscolo e l'Aurora sotto Lorenzo, a dire che la casata vince lo scorrere del tempo. Ispirate alle divinità fluviali romane, sono invenzioni nuovissime per torsioni, pose e potenza, e per il non finito del basamento della Notte e del volto del Giorno; le proporzioni, i gesti complessi e il loro scivolare dal coperchio ne rivelano l'essenza anticlassica. Fulcro spirituale della cappella è la @madonna-vergine-medicea, che raccoglie e placa le tensioni di tutte le altre sculture.",
   "innovations": [
-   "Architettura come scultura: elementi architettonici con funzione plastica non strutturale",
-   "Timpani spezzati come violazione consapevole delle regole classiche",
-   "Contrasto cromatico pietra serena/intonaco bianco esaltato",
-   "Cupola cassettonata prospetticamente sul modello del Pantheon"
+   "Membrature architettoniche trattate come masse scultoree in aggetto",
+   "Timpani spezzati dalla cornice delle nicchie, contro le regole rinascimentali",
+   "Allegorie del tempo non finite e anticlassiche adagiate sui sarcofagi",
+   "Cupola a lacunari in prospettiva sul modello del Pantheon"
   ],
   "term_ids": [
    "pietra-serena",
    "timpano",
    "edicola",
-   "anticlassicismo"
+   "anticlassicismo",
+   "pianta-centrale",
+   "cornice-marcapiano",
+   "lacunari",
+   "non-finito",
+   "sarcofago"
   ],
   "image_url": "https://www.finestresullarte.info/rivista/immagini/2019/1029/sagrestia-nuova-tomba-lorenzo.JPG",
   "image_thumb": "https://www.finestresullarte.info/rivista/immagini/2019/1029/sagrestia-nuova-tomba-lorenzo.JPG",
@@ -36265,16 +36307,18 @@
   "page": 42,
   "source_file": "Libro2.6-giu-2026-8",
   "importance": 3,
-  "summary": "Affresco di Correggio (dal 1520, 940 × 875 cm) nella cupola dell'abbazia benedettina di San Giovanni Evangelista a Parma. Cristo appare all'evangelista Giovanni nell'atto di scendere una seconda volta sulla Terra, circondato dagli apostoli. Correggio supera completamente il principio rinascimentale dello spazio delimitato da una finta architettura: lo spazio è creato solo dalle figure e dal gioco di luci e ombre.",
-  "analysis": "La Visione di San Giovanni Evangelista a Patmos è la prima cupola affrescata da Correggio, soluzione radicalmente nuova: Giovanni sporge appena dal bordo della cupola, ancorato al mondo terreno, mentre le figure della visione si librano nell'aria su cumuli di nuvole in una luce sfolgorante che dissolve anche le presenze angeliche. La nuda monumentalità degli apostoli che corrono lungo l'imposta della cupola richiama Michelangelo nella Cappella Sistina, ma attenuata dallo scorrere delicato della luce.",
+  "summary": "Affresco (940 × 875 cm) della cupola della chiesa abbaziale benedettina di San Giovanni Evangelista a @Parma, appena terminata, che @Correggio riceve in incarico nel 1520, lo stesso anno della @volta-camera-della-badessa-correggio nel monastero di San Paolo, dello stesso ordine. Il soggetto è la rivelazione concessa all'autore dell'Apocalisse: il Signore che torna dal cielo alla fine dei tempi, fra i dodici. Il pittore lascia da parte la consuetudine rinascimentale di delimitare l'illusione con membrature dipinte: a costruire lo spazio sono soltanto le figure e il gioco di luci e ombre.",
+  "analysis": "È la prima cupola dipinta da @Correggio, e la soluzione è del tutto nuova. L'evangelista, unico ancorato alla terra, spunta appena sull'orlo della cupola; sopra di lui gli apostoli e il Cristo galleggiano su masse di vapore, immerse in una luce abbagliante che scioglie perfino gli angeli, come avviene nell'@assunta-tiziano.\n\nGli apostoli, nudi e monumentali, si distendono lungo l'imposta della cupola e ricordano le invenzioni di @Michelangelo Buonarroti nella @volta-cappella-sistina. La loro forza è però addolcita dallo scorrere morbido della luce, che armonizza anche i colori più accesi. Qui Correggio sperimenta lo sfondato che porterà alle estreme conseguenze nella cupola del duomo.",
   "innovations": [
-   "Spazio creato solo dalle figure e dalla luce, senza finta architettura",
-   "Scorcio da sotto in su delle figure in volo"
+   "Spazio della cupola costruito solo dalle figure e dalla luce, senza architettura dipinta",
+   "Figure librate fra le nubi viste di sotto in su",
+   "Luce abbagliante che dissolve le presenze angeliche"
   ],
   "term_ids": [
    "sfondato",
    "sotto-in-su",
-   "affresco"
+   "affresco",
+   "cupola"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/San_Giovanni_Evangelista_%28Parma%29_-_Dome.jpg",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/San_Giovanni_Evangelista_%28Parma%29_-_Dome.jpg/960px-San_Giovanni_Evangelista_%28Parma%29_-_Dome.jpg",
@@ -38128,17 +38172,18 @@
   "page": 7,
   "source_file": "Libro2.7-giu-2026-9",
   "importance": 3,
-  "summary": "Commissionata nel 1534 dalla nobildonna Elena Baiardi Tagliaferri per la cappella di famiglia nella chiesa parmense di Santa Maria dei Servi. Rimasta incompiuta alla morte dell'artista (1540), con lo sfondo del lato destro non rifinito. Le figure allungate fino alla sproporzione si articolano secondo un astratto succedersi di linee curve, su sfondo lontano e non correlato. La Vergine di bellezza sofisticata è ispirata al Cantico dei Cantici e ai canoni neopetrarcheschi. La colonna simboleggia l'Immacolata Concezione.",
-  "analysis": "Uno dei vertici della ricerca antinaturalistica manierista: le figure sono allungate fino alla sproporzione, articolate secondo linee curve astratte. Lo sfondo appare troppo lontano rispetto alla scena principale, violando le regole compositive rinascimentali. La bellezza sofisticata della Vergine rimanda al Cantico dei cantici e alla poesia neopetrarchesca. Piena di significati simbolici: la colonna = Immacolata Concezione, il vaso con croce = grembo di Maria, il Bambino addormentato = prefigurazione della Pietà. L'opera era ancora incompiuta nello studio del pittore alla sua morte.",
+  "summary": "Tavola a olio (216,5 × 132,5 cm) conservata agli Uffizi: nel 1534 @Elena Baiardi Tagliaferri la ordina a @Parmigianino per l'altare della propria famiglia in Santa Maria dei Servi. Lasciata Roma dopo il Sacco, l'artista aveva vissuto a @Bologna e dal 1531 era di nuovo a @Parma: qui fonde in modo inedito la ricercatezza delle forme con un'intensa spiritualità. L'opera, meditata in ogni dettaglio, alla sua morte precoce, nel 1540, era ancora nello studio, con lo sfondo di destra non finito. È uno dei punti più alti della sua ricerca antinaturalistica.",
+  "analysis": "I corpi si stirano oltre ogni misura naturale e si concatenano in una sequenza di curve astratte; alle loro spalle si apre uno scorcio remoto, che non dialoga con il gruppo in primo piano. La bellezza sofisticata della Vergine, con il collo che dà il nome al dipinto, si ispira forse al Cantico dei Cantici e agli ideali femminili astratti della poesia neopetrarchesca.\n\nSotto l'eleganza mondana si nasconde un fitto tessuto di significati religiosi. La colonna allude all'Immacolata Concezione; l'anfora retta da un angelo a sinistra, con una piccola croce quasi invisibile, sarebbe figura del ventre della Vergine, dove prende carne il Dio che morirà crocifisso; e il Figlio che dorme, riverso sulle gambe di Maria, anticipa l'immagine del Cristo morto in grembo alla Madre.",
   "innovations": [
-   "sproporzione come valore estetico assoluto",
-   "linee curve astratte",
-   "sfondo slegato dalla scena principale"
+   "Proporzioni allungate fino alla sproporzione come scelta estetica",
+   "Composizione affidata a un ritmo astratto di linee curve",
+   "Sfondo lontano e slegato dalla scena, contro le regole rinascimentali"
   ],
   "term_ids": [
    "antinaturalismo",
    "neopetrarchismo",
-   "immacolata-concezione"
+   "immacolata-concezione",
+   "manierismo"
   ],
   "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Parmigianino%20-%20Madonna%20and%20Child%20with%20Angels%2C%20known%20as%20the%20Madonna%20with%20the%20Long%20Neck.jpg",
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Parmigianino%20-%20Madonna%20and%20Child%20with%20Angels%2C%20known%20as%20the%20Madonna%20with%20the%20Long%20Neck.jpg?width=640",
@@ -39088,17 +39133,19 @@
   "page": 35,
   "source_file": "Libro2.7-giu-2026-9",
   "importance": 3,
-  "summary": "Grande tela commissionata dalla Scuola Grande di San Marco nel 1547. San Marco appare a uno schiavo rendendolo invulnerabile alle torture del padrone. Il serrato gruppo di personaggi è collocato in primo piano su un piano autonomo rispetto alle architetture ridotte a fondale teatrale. Le figure disposte lungo diagonali convergenti focalizzano l'attenzione sull'asse centrale intersecato dal braccio del santo.",
-  "analysis": "Opera emblematica della prima maturità di Tintoretto: l'elemento architettonico è usato in funzione scenografica, il gruppo di figure occupa il primo piano autonomamente rispetto allo sfondo. La reiterazione cromatica di rossi, arancioni, verdi e azzurri è interrotta da squarci di bianco e nero. I due personaggi seduti a destra sono ispirati a prototipi michelangioleschi; la figura del carnefice al centro si basa sull'apostolo dell @Assunta  (dei Frari) di Tiziano.",
+  "summary": "Grande telero a olio (416 × 544 cm), oggi a @Venezia, alle Gallerie dell'Accademia, che la @Scuola Grande di San Marco commissiona a @Tintoretto nel 1547 e che egli termina nel 1548, con grande successo. L'evangelista piomba dal cielo in soccorso di un servo punito dal suo signore per aver reso omaggio alle reliquie, e rende vani i supplizi. La folla si accalca sul proscenio, staccata dagli edifici retrostanti, che valgono ormai solo come quinta di teatro.",
+  "analysis": "Verso il 1545 il linguaggio di @Tintoretto cambia: gli edifici diventano scenografia, e gesti e scorci si fanno estremi per caricare il dramma; alla grazia manierista preferisce ormai una retorica eroica e concitata. Le figure si dispongono lungo diagonali che convergono sull'asse centrale, attraversato dal braccio destro di san Marco che scende verso lo schiavo disteso in obliquo. L'aguzzino, fuori asse verso destra, rompe la simmetria alzando i ferri spezzati del supplizio.\n\nAnche il colore, limitato a pochi toni caldi e freddi, è attraversato di continuo da bagliori candidi e zone d'ombra cupa, e l'insieme vibra. Le invenzioni spettacolari uniscono suggestioni veneziane e centro-italiane: le due figure sedute in basso a destra derivano da prototipi di @Michelangelo, mentre il carnefice al centro riprende l'apostolo monumentale dell'@assunta-tiziano. Figlio di un tintore di seta, Tintoretto guida la sua bottega dal 1539; circa quindici anni dopo la stessa Scuola gli commissionerà altri teleri, fra cui il @ritrovamento-corpo-san-marco-tintoretto.",
   "innovations": [
-   "architettura come puro fondale teatrale",
-   "diagonali convergenti per focalizzare l'attenzione",
-   "fusione modelli veneziani e centro-italiani"
+   "Architettura ridotta a fondale teatrale, separata dal gruppo delle figure",
+   "Diagonali convergenti che concentrano lo sguardo sul gesto del santo",
+   "Colore spezzato da lampi di bianco e ombre nere per un effetto di movimento"
   ],
   "term_ids": [
    "prospettiva-obliqua",
    "chiaroscuro",
-   "fondale-teatrale"
+   "fondale-teatrale",
+   "telero",
+   "scorcio"
   ],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/Tintoretto_-_San_Marco_libera_uno_schiavo%2C_1547-1548%2C_42.jpg",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Tintoretto_-_San_Marco_libera_uno_schiavo%2C_1547-1548%2C_42.jpg/960px-Tintoretto_-_San_Marco_libera_uno_schiavo%2C_1547-1548%2C_42.jpg",
@@ -43118,14 +43165,21 @@
   "page": 479,
   "source_file": null,
   "importance": 3,
-  "summary": "Grande macchina d'altare con sportelli mobili: Crocifissione drammatica, Concerto di angeli e Natività.",
-  "analysis": "Quando è chiusa, la pala mostra una drammatica Crocifissione su fondo nero: Maria sviene tra le braccia di san Giovanni Evangelista, mentre san Giovanni Battista indica il corpo di Cristo straziato da piaghe. La pittura è stesa matericamente a evidenziare le forme anticlassiche. Nelle ante laterali le figure di san Sebastiano e sant'Antonio Abate. Aprendo i pannelli: un celestiale Concerto di angeli sotto un'elegante architettura tardogotica e una Natività in antitesi con la visione notturna della morte di Cristo. Sulle tavole laterali l'Annunciazione e una visionaria Resurrezione dal forte impatto luministico.",
+  "summary": "Grande macchina d'altare a sportelli mobili (376 × 668 cm da aperta), dipinta a olio su tavola da @Matthias Grünewald fra il 1512 e il 1516 su commissione del @antoniti-di-isenheim, in Alsazia, e oggi nel Musée d'Unterlinden a @Colmar. Aprendo e chiudendo le ante si variano le immagini offerte ai fedeli e si allarga o si riduce la superficie dipinta. È l'opera che meglio rivela la distanza fra il Rinascimento tedesco e quello italiano: una pittura visionaria ed espressiva, che arriva alla deformazione delle figure.",
+  "analysis": "Con gli sportelli serrati, il fedele ha davanti il Calvario stagliato sul buio. Da un lato la Madre crolla priva di sensi, sorretta dal discepolo prediletto; dall'altro il Precursore, magro e sproporzionato, punta il dito verso il Crocifisso, un corpo torturato, livido di ferite, contratto dallo spasimo. Grünewald stende il colore in modo materico e mette in risalto le forme anticlassiche del nudo. Sulle ante laterali san Sebastiano e sant'Antonio Abate, protettore dell'ordine, sono dipinti come statue su basamenti all'antica.\n\nQuando le ante centrali si schiudono, l'atmosfera si rovescia: angeli musicanti suonano sotto una raffinata architettura tardogotica accanto alla nascita di Gesù, tutta luce, in opposizione al buio del Calvario. Sulle tavole esterne di questa seconda apertura l'annuncio a Maria si svolge in una cappella gotica percorsa da raggi, e il Risorto si leva in un'esplosione di bagliori. Sorprendentemente moderna è la base: sotto un chiarore lunare i dolenti piangono il corpo di Gesù, costretti in una fascia bassa e angusta che somiglia già a una tomba.\n\nNativo di Würzburg e contemporaneo di @Albrecht Dürer, Grünewald muore nel 1528, prima che esploda lo scontro fra luterani e cattolici: in questo si distingue da @Lucas Cranach il Vecchio, che diventerà il pittore della Riforma.",
   "innovations": [
-   "Macchina d'altare a sportelli",
-   "Crocifissione visionaria e materica",
-   "Contrasto luce/tenebre"
+   "Macchina d'altare a sportelli che cambia le immagini mostrate ai fedeli",
+   "Crocifissione visionaria su fondo nero, con il corpo di Cristo deformato dalle piaghe",
+   "Contrasto fra la notte della morte e la luce della Natività e della Resurrezione",
+   "Lamentazione chiusa in un gradino stretto e notturno, simile a una tomba"
   ],
-  "term_ids": [],
+  "term_ids": [
+   "macchina-altare",
+   "predella",
+   "anticlassicismo",
+   "matericita",
+   "tardogotico"
+  ],
   "image_url": "https://www.scuoladomuspicturae.it/wp-content/uploads/2021/03/CROCEFISSIONE086-OK-Copia.jpg",
   "image_thumb": "https://www.scuoladomuspicturae.it/wp-content/uploads/2021/03/CROCEFISSIONE086-OK-Copia.jpg",
   "image_source": "wikimedia-commons",
