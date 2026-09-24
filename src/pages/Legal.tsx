@@ -451,6 +451,7 @@ export default function Legal() {
           <li><b>Supabase</b> (supabase.co): autenticazione e database.</li>
           <li><b>Fontshare</b> (api.fontshare.com): font tipografici (Boska, Zodiak, General Sans).</li>
           <li><b>OpenStreetMap</b> (tile.openstreetmap.org): rendering della mappa geografica.</li>
+          <li><b>Esri</b> (server.arcgisonline.com): sfondo cartografico della pagina Mappa (Light Gray Canvas).</li>
           <li><b>Wikimedia Commons</b> (upload.wikimedia.org): immagini delle opere.</li>
           <li><b>Netlify</b>: hosting statico; può usare cookie tecnici per il deploy.</li>
         </ul>

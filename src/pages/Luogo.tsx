@@ -9,10 +9,12 @@ import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, EntityLink, FilterNote, Empty, BarraScheda, Section } from "../components/ui";
 import { isCommittente, fmtYear, computeWorkGroups, workGroupMap, nomeBreveLuogo } from "../lib/data";
 import { setLastMappa } from "../lib/lastVisited";
+import { cittaAttuale, nomiStorici } from "../lib/menzioni";
 
 export default function Luogo() {
   const { name = "" } = useParams();
-  const city = decodeURIComponent(name);
+  const city = cittaAttuale(decodeURIComponent(name));
+  const storici = nomiStorici(city);
   const ix = useData();
   const nav = useNavigate();
   const { workIn } = useTimeRange();
@@ -151,6 +153,7 @@ export default function Luogo() {
       <div className="page-head">
         <div className="page-eyebrow"><span className="eyebrow" style={{ color: "#4f7d72" }}>Luogo</span></div>
         <h1 className="page-title">{city}</h1>
+        {storici.length > 0 && <p className="page-lead" style={{ marginBottom: 4 }}>Nei testi storici: {storici.join(", ")}</p>}
         <p className="page-lead">
           {allHere.length} opere del programma sono conservate qui{arco ? `, dal ${fmtYear(arco.da)} al ${fmtYear(arco.a)}` : ""}{cittaLegate.length > 1 ? `, con legami documentati verso ${cittaLegate.length} altre città` : ""}.
         </p>

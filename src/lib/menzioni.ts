@@ -21,6 +21,20 @@ export type IndiceMenzioni = { mappa: Map<string, Menzione>; chiavi: string[] };
 // altri, e non serve ricostruirlo per ognuno.
 const cache = new WeakMap<object, IndiceMenzioni>();
 
+// Nomi storici di una città che nel catalogo compare con il nome di oggi:
+// nei testi si scrive «Costantinopoli» dove è giusto storicamente, ma la
+// pagina della città è una sola.
+export const NOMI_STORICI: Record<string, string> = {
+  Costantinopoli: "Istanbul",
+  Bisanzio: "Istanbul",
+};
+
+/** Il nome con cui la città ha la sua pagina («Costantinopoli» → «Istanbul»). */
+export const cittaAttuale = (nome: string) => NOMI_STORICI[nome.trim()] ?? nome.trim();
+
+/** I nomi storici di una città («Istanbul» → Costantinopoli, Bisanzio). */
+export const nomiStorici = (citta: string) => Object.keys(NOMI_STORICI).filter((k) => NOMI_STORICI[k] === citta);
+
 export function indiceMenzioni(ds: Pick<Dataset, "artists" | "works">): IndiceMenzioni {
   const giaFatto = cache.get(ds.works);
   if (giaFatto && cache.get(ds.artists) === giaFatto) return giaFatto;
@@ -45,7 +59,10 @@ function costruisci(ds: Pick<Dataset, "artists" | "works">): IndiceMenzioni {
   // Le città vengono dopo opere e autori: a parità di nome vince la scheda.
   for (const r of [...ds.works, ...ds.artists] as { location_city?: string | null }[]) {
     const c = r.location_city?.trim();
-    if (c) metti(c, { type: "city", id: c, label: c });
+    if (c) metti(c, { type: "city", id: cittaAttuale(c), label: c });
+  }
+  for (const [storico, oggi] of Object.entries(NOMI_STORICI)) {
+    if (mappa.has(normalizza(oggi))) metti(storico, { type: "city", id: oggi, label: storico });
   }
   // Dal nome più lungo al più corto: «Santa Maria Novella» prima di «Santa Maria».
   const chiavi = [...mappa.keys()].sort((a, b) => b.length - a.length);

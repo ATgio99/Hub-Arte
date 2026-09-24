@@ -106,9 +106,14 @@ export default function Mappa() {
             borderRadius: isFull ? 0 : undefined,
           }} data-testid="map-stage">
             <MapContainer center={[43, 12]} zoom={5} style={{ height: "100%", width: "100%" }} scrollWheelZoom ref={mapRef}>
+              {/* Esri Light Gray: gratuito e senza chiave (CARTO ora chiede una chiave API). */}
               <TileLayer
-                url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-                attribution='&copy; OpenStreetMap, &copy; CARTO' />
+                url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+                attribution="Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors"
+                maxZoom={16} />
+              <TileLayer
+                url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}"
+                maxZoom={16} />
               <Resizer trigger={isFull} />
               <FitBounds cities={cities} />
               {flows.map((f, i) => (
