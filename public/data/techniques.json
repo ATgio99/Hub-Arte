@@ -451,8 +451,8 @@
  },
  {
   "id": "scultura-in-pietra",
-  "name": "Scultura in pietra serena",
-  "definition": "Lavorazione della pietra serena per sculture a rilievo o a tutto tondo. La pietra serena, piu tenera del marmo, permette dettagli fini ma e meno luminosa.",
+  "name": "Scultura in pietra",
+  "definition": "Lavorazione della pietra per sculture a rilievo o a tutto tondo e per l'ornato architettonico: calcari e arenarie locali come la pietra serena toscana, la pietra d'Istria o la pietra di Nanto. Rispetto al marmo sono in genere più tenere e meno luminose; la pietra serena, arenaria grigia, consente un intaglio molto fine.",
   "introduced_by": "tradizione classica romana",
   "first_period_id": "quattrocento",
   "evolution": "Nel romanico la scultura in pietra torna a rivestire ruolo monumentale integrata nell'architettura (portali, capitelli, facciate). Protagonisti: Wiligelmo a Modena, Gislebertus ad Autun, la bottega di Moissac.",

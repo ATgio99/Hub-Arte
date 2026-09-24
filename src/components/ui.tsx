@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import type { Work, EntityType } from "../lib/types";
 import { useData } from "../lib/store";
 import { entityLabel, resolveEntity, WorkGroup, ENTITY_LABEL, artistsOfWork } from "../lib/data";
+import { spezzaMenzioni, indiceMenzioni } from "../lib/menzioni";
 import { useCountUp, useInViewOnce, revealContainer, revealItem, revealItemSoft, EASE_OUT, usePrefersReducedMotion, useIsNarrow } from "../lib/motion";
 import { useFavorites, useIsFavorite, toggleFavorite, FavType } from "../lib/favorites";
 import IconaSezione from "./IconaSezione";
@@ -170,10 +171,11 @@ export function EntityLink({ type, id, label, className }: { type: EntityType; i
   return <Link to={entityHref(type, id)} className={className ?? "tlink"} data-testid={`elink-${type}-${id}`}>{txt}</Link>;
 }
 
-// ---- RichText: parsa @nome nel testo e lo trasforma in link cliccabili ----
-// Cerca @SeguitoDaParole e matcha contro opere e artisti del dataset.
-// Se matcha, crea un Link. Se non matcha, mostra il testo senza @.
-// Supporta anche @id-esatto (es. @andrea-mantegna) per matching preciso.
+// ---- RichText: le menzioni @nome diventano link cliccabili ----
+// «@Mantegna», «@andrea-mantegna», «@Basilica di Santa Maria Novella»: il
+// riconoscimento sta in lib/menzioni, che prende il nome più lungo noto al
+// catalogo e lascia intatto il testo che segue. Una menzione che non
+// corrisponde a niente si mostra senza chiocciola.
 export function RichText({ text }: { text: string }) {
   const ix = useData();
   const [popup, setPopup] = useState<{ type: EntityType; id: string } | null>(null);
@@ -181,25 +183,7 @@ export function RichText({ text }: { text: string }) {
   // Gestione null/undefined (alcune opere nel DB potrebbero avere summary/analysis null)
   const safeText = text ?? "";
 
-  const lookup = useMemo(() => {
-    const map = new Map<string, { type: EntityType; id: string; label: string }>();
-    for (const a of ix.ds.artists) {
-      map.set(a.name.toLowerCase(), { type: "artist", id: a.id, label: a.name });
-      map.set(a.id.toLowerCase(), { type: "artist", id: a.id, label: a.name });
-      for (const aka of a.aka) map.set(aka.toLowerCase(), { type: "artist", id: a.id, label: aka });
-    }
-    for (const w of ix.ds.works) {
-      map.set(w.title.toLowerCase(), { type: "work", id: w.id, label: w.title });
-      map.set(w.id.toLowerCase(), { type: "work", id: w.id, label: w.title });
-    }
-    return map;
-  }, [ix.ds.artists, ix.ds.works]);
-
-  // Split del testo mantenendo i @tag
-  // La regex cattura @ seguito da parole (lettere, numeri, apostrofi, trattini, spazi tra parole)
-  // ma si ferma alla punteggiatura (,.;:!?)]} newline) o fine stringa.
-  // Lo spazio finale viene trimmato nel matching.
-  const parts = safeText.split(/(@[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ](?:[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ\-. ]*[A-Za-z0-9'àéèìòùÀÉÈÌÒÙ\-.])?)/g);
+  const parts = useMemo(() => spezzaMenzioni(safeText, indiceMenzioni(ix.ds)), [safeText, ix.ds]);
 
   const closePopup = () => { setPopup(null); document.body.style.overflow = ""; };
 
@@ -214,22 +198,21 @@ export function RichText({ text }: { text: string }) {
   return (
     <>
       {parts.map((part, i) => {
-        if (!part.startsWith("@")) return <span key={i}>{part}</span>;
-        const query = part.slice(1).trim().toLowerCase();
-        let match = lookup.get(query);
-        if (!match) {
-          for (const [key, val] of lookup) {
-            if (key.startsWith(query) || query.startsWith(key)) { match = val; break; }
-          }
-        }
-        if (match) {
+        const match = part.menzione;
+        if (!match) return <span key={i}>{part.testo}</span>;
+        if (match.type === "city") {
           return (
-            <button key={i} onClick={() => setPopup({ type: match!.type, id: match!.id })} className="tlink" style={{ background: "none", border: 0, padding: 0, cursor: "pointer", font: "inherit", fontWeight: 500, textDecoration: "underline", textDecorationColor: "var(--gold)", textUnderlineOffset: "2px" }}>
+            <Link key={i} to={`/luogo/${encodeURIComponent(match.id)}`} className="tlink" style={{ color: "inherit", fontWeight: 500, textDecoration: "underline", textDecorationColor: "var(--gold)", textUnderlineOffset: "2px" }}>
               {match.label}
-            </button>
+            </Link>
           );
         }
-        return <span key={i}>{part.slice(1)}</span>;
+        const entita = match as { type: EntityType; id: string; label: string };
+        return (
+          <button key={i} onClick={() => setPopup({ type: entita.type, id: entita.id })} className="tlink" style={{ background: "none", border: 0, padding: 0, cursor: "pointer", font: "inherit", fontWeight: 500, textDecoration: "underline", textDecorationColor: "var(--gold)", textUnderlineOffset: "2px" }}>
+            {match.label}
+          </button>
+        );
       })}
       {popup && <EntityPopup type={popup.type} id={popup.id} onClose={closePopup} />}
     </>

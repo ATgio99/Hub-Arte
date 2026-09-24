@@ -141,7 +141,7 @@
   "target_type": "period",
   "target_id": "tarda-antichita",
   "kind": "rielaborazione",
-  "description": "La Deposizione di Antelami riprende dalla tradizione dei sarcofagi tardoantichi la struttura compositiva, i girali di acanto, le vittorie alate e i ritratti clipeati."
+  "description": "Antelami riprende dai sarcofagi tardoantichi lo schema della composizione e motivi come le vittorie alate, i ritratti entro medaglioni e i girali d'acanto."
  },
  {
   "id": "antichita-michelangelo-battaglia-centauri",
@@ -609,7 +609,7 @@
   "target_type": "period",
   "target_id": "gotico-cistercense",
   "kind": "influenza",
-  "description": "Il rigore geometrico e l'assenza di decorazioni scultoree o pittoriche di Castel del Monte mostrano l'influsso dell'interpretazione cistercense del Gotico francese."
+  "description": "La purezza geometrica di Castel del Monte e l'assenza di sculture e pitture sulla struttura mostrano l'influsso del Gotico francese nella versione cistercense."
  },
  {
   "id": "cattedra-massimiano-committenza",
@@ -798,7 +798,7 @@
   "target_type": "work",
   "target_id": "assunzione-della-vergine-correggio-duomo-parma",
   "kind": "evoluzione",
-  "description": "La Visione di san Giovanni Evangelista a Patmos anticipa e prepara la soluzione dello sfondato illusionistico della cupola del duomo di Parma, portando alle estreme conseguenze la libertà compositiva."
+  "description": "Nella cupola di San Giovanni Evangelista Correggio sperimenta lo sfondamento del cielo e una composizione libera, che nel duomo di Parma porterà fino in fondo."
  },
  {
   "id": "correggio-luce-leonardesca-camera-badessa",
@@ -852,7 +852,7 @@
   "target_type": "work",
   "target_id": "tres-riches-heures-duc-berry",
   "kind": "evoluzione",
-  "description": "I De Limbourg portano al sommo grado la tradizione miniatoria franco-fiamminga, evidenziata nella resa spaziale, nella profondità del cielo e nel colore delicatissimo."
+  "description": "Con le Très Riches Heures i De Limbourg portano al livello più alto la miniatura franco-fiamminga del gotico internazionale, per profondità dello spazio, luce del cielo e finezza del colore."
  },
  {
   "id": "decollazione-san-giorgio-da-bacio-giuda",
@@ -924,7 +924,7 @@
   "target_type": "work",
   "target_id": "marco-aurelio-campidoglio",
   "kind": "rielaborazione",
-  "description": "Donatello si confronta con il Marco Aurelio al Campidoglio come principale modello classico per il Gattamelata, adattandolo in modo da renderlo piu aderente al dato reale: ritratto del condottiero, tre punti di vista."
+  "description": "Il Marco Aurelio del Campidoglio è il modello antico del Gattamelata: Donatello ne riprende l'impianto e i tre punti di vista, ma dà al cavaliere il volto reale del condottiero."
  },
  {
   "id": "donatello-giuditta-cellini-perseo",
@@ -1150,7 +1150,7 @@
   "target_type": "work",
   "target_id": "cappella-portinari-interno",
   "kind": "autore",
-  "description": "Foppa decora con affreschi la cappella Portinari costruita da Guiniforte Solari, in una collaborazione tipica del cantiere milanese quattrocentesco."
+  "description": "Foppa dipinge tutta la decorazione della cappella costruita da Guiniforte Solari: i Miracoli di san Pietro Martire nelle lunette e il Paradiso nella cupola."
  },
  {
   "id": "fossanova-fontenay",
@@ -1366,7 +1366,7 @@
   "target_type": "work",
   "target_id": "sculture-saint-lazare-autun-gislebertus",
   "kind": "autore",
-  "description": "Gislebertus è il principale scultore di Autun; firma il Giudizio Universale nel timpano di Saint-Lazare con la celebre iscrizione 'Gislebertus hoc fecit'."
+  "description": "Gislebertus è il maestro della cattedrale di Autun: la sua firma, incisa sotto il Cristo giudice del timpano occidentale, è tra le prime rivendicazioni d'autore della scultura romanica."
  },
  {
   "id": "giulio-ii-michelangelo-committenza",
@@ -1825,16 +1825,7 @@
   "target_type": "work",
   "target_id": "pieta-rondanini",
   "kind": "contrasto",
-  "description": "Le due Pietà di Michelangelo rappresentano poli opposti della sua poetica: la Pietà vaticana (ideale classico, bellezza giovanile, forma finita) si contrappone alla Pietà Rondanini (dissoluzione della forma, non finito, meditazione sulla morte)."
- },
- {
-  "id": "michelangelo-sebastiano-collaborazione",
-  "source_type": "artist",
-  "source_id": "michelangelo-buonarroti",
-  "target_type": "artist",
-  "target_id": "sebastiano-del-piombo",
-  "kind": "maestro-allievo",
-  "description": "Michelangelo fornisce cartoni e studi per le opere di Sebastiano del Piombo, in particolare per la Pietà di Viterbo e la Resurrezione di Lazzaro."
+  "description": "Le due Pietà segnano i due estremi della scultura di Michelangelo: in quella vaticana la bellezza ideale e la forma compiuta, nella Rondanini la forma che si dissolve nel non finito e diventa meditazione sulla morte."
  },
  {
   "id": "michelangelo-sistina-influenza-manierismo",
@@ -1915,7 +1906,7 @@
   "target_type": "work",
   "target_id": "facciata-saint-gilles-du-gard",
   "kind": "influenza",
-  "description": "Il portale di Moissac, con il suo iconograficamente complesso timpano della Visione di San Giovanni, influenza la scultura della facciata di Saint-Gilles."
+  "description": "Moissac e Saint-Gilles sono due tappe della scultura romanica del Sud della Francia: Saint-Gilles risente dei maestri tolosani, di cui il portale di Moissac è uno dei risultati maggiori, ma guarda molto più apertamente all'arte romana."
  },
  {
   "id": "monreale-cappella-palatina",
@@ -1933,7 +1924,7 @@
   "target_type": "artist",
   "target_id": "donatello",
   "kind": "rielaborazione",
-  "description": "Verrocchio rielabora il modello donatelliano del Gattamelata (Padova, 1453) nel Monumento al Colleoni, accentuando la potenza aggressiva del cavallo e la tensione psicologica del cavaliere."
+  "description": "Verrocchio parte dal modello donatelliano del Gattamelata (Padova, 1453) e lo supera nel Colleoni, dando al cavallo più energia e al condottiero una posa più tesa e sprezzante."
  },
  {
   "id": "moretto-maestro-moroni",
@@ -2887,7 +2878,7 @@
   "target_type": "work",
   "target_id": "altare-santambrogio-vuolvinio",
   "kind": "autore",
-  "description": "L'altare di Vuolvinio è commissionato dall'arcivescovo Angilberto II di Milano all'orafo Vuolvinio, che firma il retro con la propria effigie."
+  "description": "Vuolvinio firma il retro dell'altare e vi si ritrae in abito da monaco davanti a sant'Ambrogio, accanto al ritratto del committente, l'arcivescovo Angilberto II."
  },
  {
   "id": "westminster-corona-becket",
@@ -3206,11 +3197,11 @@
  {
   "id": "pala-di-san-zeno-camera-degli-sposi-evoluzione",
   "source_type": "work",
-  "source_id": "pala-di-san-zeno-mantegna",
+  "source_id": "pala-di-san-zeno-polittico-di-san-zeno",
   "target_type": "work",
   "target_id": "decorazione-della-camera-degli-sposi",
   "kind": "evoluzione",
-  "description": "Evoluzione dell'impostazione architettonica dalla pala d'altare alla decorazione parietale complessa",
+  "description": "Dalla cornice architettonica della Pala di San Zeno, che prolunga nel dipinto lo spazio reale, Mantegna passa all'illusionismo della Camera degli Sposi, dove l'architettura dipinta avvolge un'intera stanza.",
   "sort_order": 0
  },
  {
@@ -4780,7 +4771,7 @@
   "target_type": "artist",
   "target_id": "sebastiano-del-piombo",
   "kind": "collaborazione",
-  "description": "Il rapporto tra Sebastiano del Piombo e Michelangelo si concretizza nella partecipazione diretta di Michelangelo alle opere di Sebastiano, con idee, cartoni e studi.",
+  "description": "Dal 1513 circa Michelangelo affianca Sebastiano del Piombo con idee, studi e cartoni: suo è il disegno della Pietà di Viterbo, e dalla Creazione di Adamo deriva il gesto di Cristo nella Resurrezione di Lazzaro.",
   "sort_order": 0
  },
  {
@@ -5004,36 +4995,6 @@
   "sort_order": 0
  },
  {
-  "id": "francesco-squarcione-marco-zoppo-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "francesco-squarcione",
-  "target_type": "artist",
-  "target_id": "marco-zoppo",
-  "kind": "maestro-allievo",
-  "description": "Marco Zoppo è indicato tra gli artisti formati nella bottega di Francesco Squarcione.",
-  "sort_order": 0
- },
- {
-  "id": "francesco-squarcione-giorgio-schiavone-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "francesco-squarcione",
-  "target_type": "artist",
-  "target_id": "giorgio-schiavone",
-  "kind": "maestro-allievo",
-  "description": "Giorgio Schiavone è documentato nell'ambiente di Squarcione a Padova e viene indicato tra i suoi allievi e collaboratori.",
-  "sort_order": 0
- },
- {
-  "id": "francesco-squarcione-dario-da-treviso-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "francesco-squarcione",
-  "target_type": "artist",
-  "target_id": "dario-da-treviso",
-  "kind": "maestro-allievo",
-  "description": "Dario da Treviso è indicato tra gli artisti formati nell'ambiente della bottega di Francesco Squarcione.",
-  "sort_order": 0
- },
- {
   "id": "rodolfo-ii-dasburgo-bartholomaeus-spranger-committenza",
   "source_type": "artist",
   "source_id": "rodolfo-ii-dasburgo",
@@ -5101,56 +5062,6 @@
   "target_id": "fra-bartolomeo",
   "kind": "maestro-allievo",
   "description": "Baccio della Porta, poi Fra Bartolomeo, si forma nella bottega di Cosimo Rosselli a partire dal 1485.",
-  "sort_order": 0
- },
- {
-  "id": "cosimo-rosselli-mariotto-albertinelli-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "cosimo-rosselli",
-  "target_type": "artist",
-  "target_id": "mariotto-albertinelli",
-  "kind": "maestro-allievo",
-  "description": "Mariotto Albertinelli si forma nella bottega di Cosimo Rosselli ed è condiscepolo di Baccio della Porta.",
-  "sort_order": 0
- },
- {
-  "id": "fra-bartolomeo-mariotto-albertinelli-collaborazione",
-  "source_type": "artist",
-  "source_id": "fra-bartolomeo",
-  "target_type": "artist",
-  "target_id": "mariotto-albertinelli",
-  "kind": "collaborazione",
-  "description": "Fra Bartolomeo e Mariotto Albertinelli, condiscepoli nella bottega di Cosimo Rosselli, collaborano successivamente nella stessa bottega.",
-  "sort_order": 0
- },
- {
-  "id": "fra-bartolomeo-fra-paolino-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "fra-bartolomeo",
-  "target_type": "artist",
-  "target_id": "fra-paolino",
-  "kind": "maestro-allievo",
-  "description": "Fra Paolino è legato alla bottega e alla maniera di Fra Bartolomeo, di cui prosegue la tradizione pittorica.",
-  "sort_order": 0
- },
- {
-  "id": "mariotto-albertinelli-jacopo-pontormo-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "mariotto-albertinelli",
-  "target_type": "artist",
-  "target_id": "jacopo-pontormo",
-  "kind": "maestro-allievo",
-  "description": "Pontormo si forma nella bottega di Mariotto Albertinelli prima di passare, nel 1512, alla bottega di Andrea del Sarto.",
-  "sort_order": 0
- },
- {
-  "id": "jacopo-pontormo-battista-naldini-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "jacopo-pontormo",
-  "target_type": "artist",
-  "target_id": "battista-naldini",
-  "kind": "maestro-allievo",
-  "description": "Pontormo ebbe tra i suoi principali scolari Battista Naldini; Naldini rimase nella sua bottega per otto anni, 1549-1557.",
   "sort_order": 0
  },
  {
@@ -5254,16 +5165,6 @@
   "sort_order": 0
  },
  {
-  "id": "antonio-badile-paolo-veronese-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "antonio-badile",
-  "target_type": "artist",
-  "target_id": "paolo-veronese",
-  "kind": "maestro-allievo",
-  "description": "Paolo Veronese si forma nella bottega di Antonio Badile.",
-  "sort_order": 0
- },
- {
   "id": "correggio-paolo-veronese-influenza",
   "source_type": "artist",
   "source_id": "correggio",
@@ -5284,23 +5185,13 @@
   "sort_order": 0
  },
  {
-  "id": "domenico-brusasorci-paolo-veronese-influenza",
-  "source_type": "artist",
-  "source_id": "domenico-brusasorci",
-  "target_type": "artist",
-  "target_id": "paolo-veronese",
-  "kind": "influenza",
-  "description": "Le prime opere di Paolo Veronese mostrano l’influenza di Domenico Brusasorci.",
-  "sort_order": 0
- },
- {
   "id": "gian-giorgio-trissino-andrea-palladio-influenza",
   "source_type": "artist",
   "source_id": "gian-giorgio-trissino",
   "target_type": "artist",
   "target_id": "andrea-palladio",
   "kind": "influenza",
-  "description": "Trissino induce Palladio ad approfondire lo studio dell’architettura antica.",
+  "description": "Trissino dà ad Andrea di Pietro il nome di Palladio e lo indirizza allo studio dell'architettura antica.",
   "sort_order": 0
  },
  {
@@ -5381,16 +5272,6 @@
   "target_id": "holbein-giovane",
   "kind": "influenza",
   "description": "Holbein assorbe lo sfumato leonardesco durante il soggiorno in Italia.",
-  "sort_order": 0
- },
- {
-  "id": "convito-in-casa-di-levi-ultima-cena-tiziano-evoluzione",
-  "source_type": "work",
-  "source_id": "convito-casa-levi-veronese",
-  "target_type": "work",
-  "target_id": "ultima-cena-tiziano-vecellio",
-  "kind": "evoluzione",
-  "description": "Il Convito in casa di Levi viene realizzato in sostituzione di un\\'Ultima cena di Tiziano andata perduta.",
   "sort_order": 0
  },
  {
@@ -5600,7 +5481,7 @@
   "target_type": "work",
   "target_id": "cantoria-donatello",
   "kind": "contrasto",
-  "description": "La cantoria di Luca della Robbia si contrappone a quella coeva di Donatello per la serena compostezza e l'austerita rispetto al frenetico dinamismo.",
+  "description": "Le due cantorie del duomo di Firenze sono quasi gemelle per misure, funzione e soggetto, ma opposte nello spirito: calma e composta, tutta in marmo, quella di Luca della Robbia; frenetica e ricca di materiali quella di Donatello.",
   "sort_order": 0
  },
  {
@@ -6044,46 +5925,6 @@
   "sort_order": 0
  },
  {
-  "id": "i-quattro-libri-dell-architettura-de-architectura-rielaborazione",
-  "source_type": "work",
-  "source_id": "quattro-libri-architettura-palladio",
-  "target_type": "work",
-  "target_id": "de-architectura",
-  "kind": "rielaborazione",
-  "description": "Il trattato di Palladio parte da Vitruvio e sviluppa una teoria delle proporzioni più complessa e articolata.",
-  "sort_order": 0
- },
- {
-  "id": "basilica-palladiana-teatro-di-marcello-influenza",
-  "source_type": "work",
-  "source_id": "basilica-palladiana-vicenza",
-  "target_type": "work",
-  "target_id": "teatro-di-marcello",
-  "kind": "influenza",
-  "description": "La Basilica Palladiana presenta una soluzione simile nell’aspetto all’antico Teatro di Marcello.",
-  "sort_order": 0
- },
- {
-  "id": "villa-barbaro-a-maser-tempio-di-portuno-influenza",
-  "source_type": "work",
-  "source_id": "villa-barbaro-maser-palladio",
-  "target_type": "work",
-  "target_id": "tempio-di-portuno",
-  "kind": "influenza",
-  "description": "Il fronte della Villa Barbaro presenta somiglianze con il Tempio di Portuno a Roma.",
-  "sort_order": 0
- },
- {
-  "id": "villa-barbaro-a-maser-villa-giulia-influenza",
-  "source_type": "work",
-  "source_id": "villa-barbaro-maser-palladio",
-  "target_type": "work",
-  "target_id": "villa-giulia",
-  "kind": "influenza",
-  "description": "Il progetto della Villa Barbaro si aggiorna anche alla luce delle coeve ville di campagna dell’aristocrazia pontificia, tra cui Villa Giulia.",
-  "sort_order": 0
- },
- {
   "id": "accademia-olimpica-teatro-olimpico-di-vicenza-committenza",
   "source_type": "artist",
   "source_id": "accademia-olimpica",
@@ -6091,16 +5932,6 @@
   "target_id": "teatro-olimpico-vicenza-palladio-scamozzi",
   "kind": "committenza",
   "description": "L’Accademia Olimpica è il committente del Teatro Olimpico di Vicenza.",
-  "sort_order": 0
- },
- {
-  "id": "teatro-olimpico-di-vicenza-de-architectura-rielaborazione",
-  "source_type": "work",
-  "source_id": "teatro-olimpico-vicenza-palladio-scamozzi",
-  "target_type": "work",
-  "target_id": "de-architectura",
-  "kind": "rielaborazione",
-  "description": "Il Teatro Olimpico ricostruisce un teatro antico sulla base della descrizione di Vitruvio nel De Architectura.",
   "sort_order": 0
  },
  {
@@ -6161,5 +5992,383 @@
   "target_id": "trinita-masaccio",
   "kind": "influenza",
   "description": "Il volto del Cristo nella Trinità di Masaccio rimanda al Crocifisso ligneo di Brunelleschi, conservato nella stessa basilica di Santa Maria Novella."
+ },
+ {
+  "id": "desiderio-da-settignano-colonna-david-donatello",
+  "source_type": "artist",
+  "source_id": "desiderio-da-settignano",
+  "target_type": "work",
+  "target_id": "david-bronzo-donatello",
+  "kind": "collaborazione",
+  "description": "Desiderio da Settignano scolpisce la colonna di marmi policromi, con foglie d'acanto e arpie alla base, su cui era collocato il David; la colonna è andata perduta."
+ },
+ {
+  "id": "altare-santambrogio-evoluzione-porta-bernoardo",
+  "source_type": "work",
+  "source_id": "altare-santambrogio-vuolvinio",
+  "target_type": "work",
+  "target_id": "porta-bernoardo-hildesheim",
+  "kind": "evoluzione",
+  "description": "La porta di Hildesheim riprende il racconto vivace della tradizione carolingia dell'altare di Sant'Ambrogio, ma al morbido sbalzo dell'oro sostituisce figure di bronzo dense e sporgenti."
+ },
+ {
+  "id": "trinita-masaccio-influenza-pala-di-brera",
+  "source_type": "work",
+  "source_id": "trinita-masaccio",
+  "target_type": "work",
+  "target_id": "pala-di-brera",
+  "kind": "influenza",
+  "description": "Dalla Trinità Piero riprende l'architettura dipinta che prolunga lo spazio reale e il committente rappresentato alla stessa scala delle figure sacre."
+ },
+ {
+  "id": "pala-santa-lucia-magnoli-influenza-pala-di-brera",
+  "source_type": "work",
+  "source_id": "pala-santa-lucia-de-magnoli",
+  "target_type": "work",
+  "target_id": "pala-di-brera",
+  "kind": "influenza",
+  "description": "La sacra conversazione di Domenico Veneziano, con i santi riuniti attorno alla Vergine in un unico spazio, è uno dei modelli da cui Piero parte per superare il polittico."
+ },
+ {
+  "id": "donatello-influenza-pala-di-brera-conchiglia",
+  "source_type": "artist",
+  "source_id": "donatello",
+  "target_type": "work",
+  "target_id": "pala-di-brera",
+  "kind": "influenza",
+  "description": "La conchiglia nella semicupola dell'abside dipinta riprende, con ogni probabilità, soluzioni già usate da Donatello."
+ },
+ {
+  "id": "san-lorenzo-milano-influenza-santi-sergio-e-bacco",
+  "source_type": "work",
+  "source_id": "basilica-san-lorenzo-maggiore-milano",
+  "target_type": "work",
+  "target_id": "chiesa-santi-sergio-e-bacco-costantinopoli",
+  "kind": "influenza",
+  "description": "L'ottagono dei Santi Sergio e Bacco, con le colonne che alternano esedre e trabeazioni, riprende un ritmo già presente nelle chiese milanesi dell'età di sant'Ambrogio come San Lorenzo."
+ },
+ {
+  "id": "santanna-metterza-rielaborazione-santanna-leonardo",
+  "source_type": "work",
+  "source_id": "sannna-metterza",
+  "target_type": "work",
+  "target_id": "santanna-madonna-bambino-agnello",
+  "kind": "rielaborazione",
+  "description": "Leonardo riprende l'iconografia fiorentina della Sant'Anna Metterza, con Anna, Maria e il Bambino uno sopra l'altro, ma la trasforma in una scena di affetti familiari immersa nel paesaggio."
+ },
+ {
+  "id": "andrea-mantegna-influenza-tre-crocifissi-foppa",
+  "source_type": "artist",
+  "source_id": "andrea-mantegna",
+  "target_type": "work",
+  "target_id": "tre-crocifissi-foppa",
+  "kind": "influenza",
+  "description": "L'arco classico ornato da medaglioni con imperatori romani, dietro cui Foppa colloca le croci, rimanda alla pittura di Mantegna e al primo Rinascimento padovano."
+ },
+ {
+  "id": "ospedale-maggiore-influenza-tre-crocifissi-foppa",
+  "source_type": "work",
+  "source_id": "ospedale-maggiore-milano",
+  "target_type": "work",
+  "target_id": "tre-crocifissi-foppa",
+  "kind": "influenza",
+  "description": "Alcune citazioni dall'antico dei Tre Crocifissi derivano dalle decorazioni dell'Ospedale Maggiore di Filarete, usate da Foppa in chiave soprattutto ornamentale."
+ },
+ {
+  "id": "gentile-da-fabriano-influenza-foppa-tre-crocifissi",
+  "source_type": "artist",
+  "source_id": "gentile-da-fabriano",
+  "target_type": "work",
+  "target_id": "tre-crocifissi-foppa",
+  "kind": "influenza",
+  "description": "Il boschetto lumeggiato d'oro e la città turrita dei Tre Crocifissi risentono forse degli studi giovanili di Foppa sulla cappella dipinta da Gentile da Fabriano a Brescia."
+ },
+ {
+  "id": "jacopo-bellini-influenza-foppa-tre-crocifissi",
+  "source_type": "artist",
+  "source_id": "jacopo-bellini",
+  "target_type": "work",
+  "target_id": "tre-crocifissi-foppa",
+  "kind": "influenza",
+  "description": "Gli elementi tardogotici del paesaggio dei Tre Crocifissi richiamano l'Annunciazione di Jacopo Bellini nella chiesa di Sant'Alessandro a Brescia."
+ },
+ {
+  "id": "san-lorenzo-milano-influenza-cappella-palatina",
+  "source_type": "work",
+  "source_id": "basilica-san-lorenzo-maggiore-milano",
+  "target_type": "work",
+  "target_id": "cappella-palatina-aquisgrana",
+  "kind": "influenza",
+  "description": "Oltre a San Vitale, la pianta ottagonale con deambulatorio della cappella di Aquisgrana guarda alle chiese milanesi dell'età di sant'Ambrogio come San Lorenzo."
+ },
+ {
+  "id": "portale-reale-chartres-influenza-deposizione-antelami",
+  "source_type": "work",
+  "source_id": "sara-abramo-agar-chartres",
+  "target_type": "work",
+  "target_id": "deposizione-di-cristo-antelami",
+  "kind": "influenza",
+  "description": "Le tre Marie della Deposizione, rigide e con il capo chino, e i loro panneggi a pieghe parallele riprendono le statue-colonna del Portale Reale di Chartres, conosciute da Antelami nel viaggio in Francia."
+ },
+ {
+  "id": "adorazione-foresta-lippi-collaborazione-corteo-magi",
+  "source_type": "work",
+  "source_id": "adorazione-nella-foresta-lippi",
+  "target_type": "work",
+  "target_id": "corteo-dei-magi",
+  "kind": "collaborazione",
+  "description": "La pala di Filippo Lippi, sull'altare della cappella, era la meta del corteo dipinto da Benozzo Gozzoli sulle pareti, e il suo bosco scuro prosegue il paesaggio degli affreschi."
+ },
+ {
+  "id": "sacrestia-vecchia-influenza-cappella-portinari",
+  "source_type": "work",
+  "source_id": "sacrestia-vecchia-san-lorenzo",
+  "target_type": "work",
+  "target_id": "cappella-portinari-interno",
+  "kind": "influenza",
+  "description": "I due vani quadrati coperti da cupola della cappella Portinari riprendono la Sacrestia Vecchia di Brunelleschi: una scelta che dichiara il legame del committente con i Medici."
+ },
+ {
+  "id": "portale-san-petronio-influenza-volta-sistina",
+  "source_type": "work",
+  "source_id": "portale-maggiore-san-petronio-jacopo",
+  "target_type": "work",
+  "target_id": "volta-cappella-sistina",
+  "kind": "influenza",
+  "description": "I nudi atletici delle formelle della Genesi di Jacopo della Quercia restano nella memoria di Michelangelo, che li rielabora negli affreschi della volta Sistina."
+ },
+ {
+  "id": "michelino-da-besozzo-influenza-incoronazione-bembo",
+  "source_type": "artist",
+  "source_id": "michelino-da-besozzo",
+  "target_type": "work",
+  "target_id": "incoronazione-cristo-maria-bembo",
+  "kind": "influenza",
+  "description": "Le figure sottili, le vesti sinuose e gli sguardi sognanti dell'Incoronazione di Bembo derivano dalla pittura cortese di Michelino da Besozzo."
+ },
+ {
+  "id": "famiglia-zavattari-influenza-incoronazione-bembo",
+  "source_type": "artist",
+  "source_id": "famiglia-zavattari",
+  "target_type": "work",
+  "target_id": "incoronazione-cristo-maria-bembo",
+  "kind": "influenza",
+  "description": "L'eleganza tardogotica dell'Incoronazione di Bembo, con i suoi colori morbidi e luminosi, è debitrice della bottega degli Zavattari."
+ },
+ {
+  "id": "cluny-iii-influenza-cattedrale-santiago",
+  "source_type": "work",
+  "source_id": "abbazia-cluny-iii",
+  "target_type": "work",
+  "target_id": "cattedrale-san-giacomo-santiago",
+  "kind": "influenza",
+  "description": "La pianta della cattedrale di Santiago, con navate proporzionate, grande transetto, deambulatorio e cappelle a raggiera, imita quella della chiesa abbaziale di Cluny."
+ },
+ {
+  "id": "sacrestia-vecchia-influenza-cappella-colleoni",
+  "source_type": "work",
+  "source_id": "sacrestia-vecchia-san-lorenzo",
+  "target_type": "work",
+  "target_id": "cappella-colleoni-facciata",
+  "kind": "influenza",
+  "description": "Il vano quadrato con cupola collegato a un sacello più piccolo, nella cappella Colleoni, riprende lo schema della Sacrestia Vecchia di Brunelleschi, sommerso però da una decorazione lombarda ricchissima."
+ },
+ {
+  "id": "consegna-chiavi-punizione-ribelli-sistina",
+  "source_type": "work",
+  "source_id": "consegna-delle-chiavi",
+  "target_type": "work",
+  "target_id": "punizione-dei-ribelli-botticelli",
+  "kind": "collaborazione",
+  "description": "Nel programma della Sistina la Punizione dei ribelli di Botticelli è collocata di fronte alla Consegna delle chiavi: all'investitura di Pietro risponde il castigo di chi rifiuta l'autorità sacerdotale."
+ },
+ {
+  "id": "colleoni-rielabora-gattamelata",
+  "source_type": "work",
+  "source_id": "monumento-equestre-bartolomeo-colleoni",
+  "target_type": "work",
+  "target_id": "monumento-equestre-gattamelata",
+  "kind": "rielaborazione",
+  "description": "Il Colleoni riprende il tipo del Gattamelata ma lo mette in movimento: cavallo sbilanciato in avanti, cavaliere in torsione e un gruppo da osservare girandogli intorno, non da pochi punti fissi."
+ },
+ {
+  "id": "pulpito-siena-evoluzione-pulpito-pisa",
+  "source_type": "work",
+  "source_id": "pulpito-cattedrale-siena-nicola-pisano",
+  "target_type": "work",
+  "target_id": "pulpito-battistero-pisa",
+  "kind": "evoluzione",
+  "description": "A Siena Nicola rielabora il proprio pulpito pisano: ottagono al posto dell'esagono, statue angolari al posto dei colonnini, scene più affollate e un linguaggio più apertamente gotico."
+ },
+ {
+  "id": "pulpito-pistoia-rielabora-pulpito-siena",
+  "source_type": "work",
+  "source_id": "pulpito-sanandrea-pistoia-giovanni-pisano",
+  "target_type": "work",
+  "target_id": "pulpito-cattedrale-siena-nicola-pisano",
+  "kind": "rielaborazione",
+  "description": "Giovanni Pisano prende dal pulpito senese del padre la decorazione continua e sovrabbondante che avvolge l'intera struttura, mentre per forma e misure guarda a quello pisano."
+ },
+ {
+  "id": "maesta-simone-rielabora-maesta-duccio",
+  "source_type": "work",
+  "source_id": "maesta-simone-martini",
+  "target_type": "work",
+  "target_id": "maesta-duccio",
+  "kind": "rielaborazione",
+  "description": "Simone riprende l'iconografia della Maestà di Duccio ma la trasforma: cielo azzurro al posto dell'oro, spazio in prospettiva, clima cortese e un messaggio civico al posto di quello della cattedrale."
+ },
+ {
+  "id": "facciata-smn-rielabora-battistero-firenze",
+  "source_type": "work",
+  "source_id": "facciata-santa-maria-novella",
+  "target_type": "work",
+  "target_id": "battistero-san-giovanni-firenze",
+  "kind": "rielaborazione",
+  "description": "Il rivestimento bianco e verde della facciata, avviato nel Trecento sull'esempio del battistero, viene esteso da Alberti a tutto il prospetto e ordinato secondo rapporti modulari."
+ },
+ {
+  "id": "facciata-smn-completa-basilica",
+  "source_type": "work",
+  "source_id": "facciata-santa-maria-novella",
+  "target_type": "work",
+  "target_id": "basilica-santa-maria-novella-firenze",
+  "kind": "rielaborazione",
+  "description": "Alberti conclude la fronte gotica della basilica senza demolirne avelli, portali e rosone, e la riveste di un ordine classico che la rende rinascimentale."
+ },
+ {
+  "id": "facciata-orvieto-rielabora-facciata-siena",
+  "source_type": "work",
+  "source_id": "facciata-duomo-orvieto",
+  "target_type": "work",
+  "target_id": "facciata-duomo-siena",
+  "kind": "rielaborazione",
+  "description": "Maitani parte dallo schema della facciata senese e lo rende più gotico: portali laterali stretti, strombature altissime, ghimberghe acute e un'accentuazione di colore e chiaroscuro."
+ },
+ {
+  "id": "porta-miegeville-influenza-portale-moissac",
+  "source_type": "work",
+  "source_id": "porta-miègeville-saint-sernin",
+  "target_type": "work",
+  "target_id": "portale-sud-saint-pierre-moissac",
+  "kind": "influenza",
+  "description": "Lo stile tolosano della bottega di Gelduinus, con i piani di modellato ridotti e i volumi nitidi, arriva a Moissac, dove la stilizzazione si fa ancora più marcata e il rilievo più piatto."
+ },
+ {
+  "id": "santa-costanza-influenza-galla-placidia",
+  "source_type": "work",
+  "source_id": "mausoleo-santa-costanza-roma",
+  "target_type": "work",
+  "target_id": "mausoleo-galla-placidia",
+  "kind": "influenza",
+  "description": "Il mausoleo di Costantina a Roma, unito a una chiesa, offre il modello del sepolcro collegato a una basilica: allo stesso modo il sacello ravennate era congiunto da un corridoio alla chiesa di Santa Croce."
+ },
+ {
+  "id": "madonna-denti-contaminazione-giotto",
+  "source_type": "work",
+  "source_id": "madonna-dei-denti-vitale-bologna",
+  "target_type": "artist",
+  "target_id": "giotto-di-bondone",
+  "kind": "contaminazione",
+  "description": "Vitale innesta su un impianto giottesco, con il trono di marmo solido e visto di fronte e i donatori ritratti dal vero, il linearismo e le pose flessuose della miniatura e della scultura francese."
+ },
+ {
+  "id": "simone-martini-lippo-memmi-collaborazione",
+  "source_type": "artist",
+  "source_id": "simone-martini",
+  "target_type": "artist",
+  "target_id": "lippo-memmi",
+  "kind": "collaborazione",
+  "description": "Lippo Memmi, cognato di Simone Martini, lavora con lui nella bottega senese: nell'Annunciazione del 1333 dipinge i santi Ansano e Massima degli scomparti laterali."
+ },
+ {
+  "id": "altare-santo-influenza-pala-san-zeno",
+  "source_type": "work",
+  "source_id": "altare-del-santo-padova",
+  "target_type": "work",
+  "target_id": "pala-di-san-zeno-polittico-di-san-zeno",
+  "kind": "influenza",
+  "description": "Nella Pala di San Zeno Mantegna dispone la Madonna e i santi come le statue dell'altare di Donatello, tanto che proprio il dipinto serve oggi a ricostruire l'assetto originale del complesso padovano."
+ },
+ {
+  "id": "san-filippo-dragone-contrasto-nascita-vergine",
+  "source_type": "work",
+  "source_id": "san-filippo-scaccia-dragone",
+  "target_type": "work",
+  "target_id": "nascita-della-vergine-ghirlandaio",
+  "kind": "contrasto",
+  "description": "Nelle cappelle vicine di Santa Maria Novella, Ghirlandaio divide le pareti in riquadri ordinati, mentre Filippino Lippi affida a ciascuna parete un solo episodio, in architetture di gusto romano."
+ },
+ {
+  "id": "spira-ii-influenza-santambrogio",
+  "source_type": "work",
+  "source_id": "cattedrale-spira-ii",
+  "target_type": "work",
+  "target_id": "basilica-santambrogio-milano-romanica",
+  "kind": "influenza",
+  "description": "Il sistema alternato di Spira, con pilastri maggiori e minori e una campata della navata centrale per due delle laterali, è la base della scansione interna di Sant'Ambrogio."
+ },
+ {
+  "id": "santambrogio-influenza-duomo-modena",
+  "source_type": "work",
+  "source_id": "basilica-santambrogio-milano-romanica",
+  "target_type": "work",
+  "target_id": "cattedrale-san-geminiano-modena",
+  "kind": "influenza",
+  "description": "La cattedrale di Modena guarda a Sant'Ambrogio e all'architettura paleocristiana, e diventa a sua volta un modello per le cattedrali della via Emilia."
+ },
+ {
+  "id": "pieta-tiziano-evoluzione-martirio-san-lorenzo",
+  "source_type": "work",
+  "source_id": "pieta-tiziano",
+  "target_type": "work",
+  "target_id": "martirio-di-san-lorenzo-tiziano",
+  "kind": "evoluzione",
+  "description": "Nella Pietà Tiziano riprende la composizione sbilanciata del Martirio di san Lorenzo, con il racconto relegato nella parte bassa della tela, e la porta all'estremo nella materia sfatta dell'ultimo periodo."
+ },
+ {
+  "id": "giulio-romano-influenza-pieta-tiziano",
+  "source_type": "artist",
+  "source_id": "giulio-romano",
+  "target_type": "work",
+  "target_id": "pieta-tiziano",
+  "kind": "influenza",
+  "description": "La grande nicchia che incombe sulle figure della Pietà rivela che Tiziano conosce le architetture di Giulio Romano, pesanti e drammatiche."
+ },
+ {
+  "id": "pieta-sebastiano-rielabora-pieta-vaticana",
+  "source_type": "work",
+  "source_id": "pieta-sebastiano-del-piombo-viterbo",
+  "target_type": "work",
+  "target_id": "pieta-vaticana",
+  "kind": "rielaborazione",
+  "description": "Il Cristo di Viterbo, disegnato su cartone di Michelangelo, riprende il corpo della Pietà vaticana ma lo separa dalla Madre e lo stende a terra, isolato."
+ },
+ {
+  "id": "ercole-anteo-bronzetto-rielabora-dipinto",
+  "source_type": "work",
+  "source_id": "ercole-e-anteo-pollaiolo-bronzetto",
+  "target_type": "work",
+  "target_id": "ercole-e-anteo-pollaiolo-dipinto",
+  "kind": "rielaborazione",
+  "description": "Pollaiolo riprende nel bronzo il soggetto della tavoletta: la lotta resa in pittura dal segno teso diventa un gruppo a tutto tondo da osservare girandogli intorno."
+ },
+ {
+  "id": "leon-battista-alberti-luca-fancelli-collaborazione",
+  "source_type": "artist",
+  "source_id": "leon-battista-alberti",
+  "target_type": "artist",
+  "target_id": "luca-fancelli",
+  "kind": "collaborazione",
+  "description": "A Mantova Fancelli è il principale collaboratore di Alberti e, dopo la sua morte, porta avanti il cantiere di Sant'Andrea nel rispetto del progetto."
+ },
+ {
+  "id": "luca-fancelli-sant-andrea-mantova-collaborazione",
+  "source_type": "artist",
+  "source_id": "luca-fancelli",
+  "target_type": "work",
+  "target_id": "chiesa-di-sant-andrea-mantova",
+  "kind": "collaborazione",
+  "description": "Fancelli dirige con Ludovico Gonzaga il cantiere di Sant'Andrea, avviato due mesi dopo la morte di Alberti, e ne garantisce la fedeltà al disegno albertiano."
  }
 ]

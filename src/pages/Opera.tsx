@@ -8,6 +8,7 @@ import { useStudied, toggleStudied } from "../lib/studied";
 import { useAuth } from "../lib/auth";
 import { setLastOpera } from "../lib/lastVisited";
 import { citazione, riferimento, fontiDi, ancoraFonte } from "../lib/fonti";
+import { senzaMenzioni, indiceMenzioni } from "../lib/menzioni";
 import type { Fonte } from "../lib/types";
 import { useVerifiche, commutaVerifica } from "../lib/verifiche";
 import { useTestoLeggibile, useBloccoLetto } from "../lib/lettura";
@@ -157,13 +158,15 @@ export default function Opera() {
     // Romano» suona come due frasi mozze.
     b.push({ id: "titolo", testo: `${w.title}, ${dati}.` });
     if (incertezza) b.push({ id: "incertezza", occhiello: `Attribuzione aperta, ${incertezza.tema}`, testo: incertezza.nota });
-    if (w.summary) b.push({ id: "sintesi", occhiello: "Sintesi", testo: w.summary });
-    if (w.analysis) b.push({ id: "analisi", occhiello: "Lettura dell'opera", testo: w.analysis });
+    // La voce legge il nome, non la chiocciola della menzione («@Mantegna»).
+    const piano = (t: string) => senzaMenzioni(t, indiceMenzioni(ix.ds));
+    if (w.summary) b.push({ id: "sintesi", occhiello: "Sintesi", testo: piano(w.summary) });
+    if (w.analysis) b.push({ id: "analisi", occhiello: "Lettura dell'opera", testo: piano(w.analysis) });
     if (w.innovations.length > 0) {
       b.push({ id: "novita", occhiello: "Novità", testo: w.innovations.join(". ") });
     }
     return b;
-  }, [w, artists, committenti, period, techs, incertezza]);
+  }, [w, artists, committenti, period, techs, incertezza, ix.ds]);
 
   useTestoLeggibile(w.title, daLeggere);
   const inLettura = useBloccoLetto();

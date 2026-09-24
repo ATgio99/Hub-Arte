@@ -2105,20 +2105,6 @@
   "location_city": "Perugia"
  },
  {
-  "id": "comune-di-siena",
-  "name": "Comune di Siena (Governo dei Nove)",
-  "aka": [],
-  "birth": null,
-  "death": null,
-  "period_ids": [],
-  "role": "governo comunale",
-  "bio": "",
-  "innovations": [],
-  "category": "committenti",
-  "is_collective": true,
-  "location_city": "Siena"
- },
- {
   "id": "comune-di-vicenza",
   "name": "Comune di Vicenza",
   "aka": [],
@@ -5231,7 +5217,9 @@
  {
   "id": "governo-dei-nove-siena",
   "name": "Governo dei Nove",
-  "aka": [],
+  "aka": [
+   "Comune di Siena (Governo dei Nove)"
+  ],
   "birth": "1287",
   "death": "1355",
   "period_ids": [],
@@ -6550,12 +6538,14 @@
  {
   "id": "ludovico-iii-gonzaga",
   "name": "Ludovico III Gonzaga",
-  "aka": [],
+  "aka": [
+   "Ludovico II Gonzaga"
+  ],
   "birth": 1412,
   "death": 1478,
   "period_ids": [],
   "role": "committente",
-  "bio": "Signore di Mantova dal 1444, committente della Camera degli Spati e protettore di artisti e umanisti. Rappresentato come figura centrale negli affreschi di Mantegna.",
+  "bio": "Signore di Mantova dal 1444, committente della Camera degli Sposi e protettore di artisti e umanisti. Rappresentato come figura centrale negli affreschi di Mantegna.",
   "innovations": [],
   "category": "committenti",
   "is_collective": false,
@@ -9835,5 +9825,35 @@
   "category": "committenti",
   "is_collective": false,
   "location_city": "Autun"
+ },
+ {
+  "id": "luca-fancelli",
+  "name": "Luca Fancelli",
+  "aka": [],
+  "birth": 1430,
+  "death": 1494,
+  "period_ids": [
+   "rinascimento-mantovano"
+  ],
+  "role": "architetto",
+  "bio": "Architetto fiorentino, allievo e collaboratore di @Filippo Brunelleschi. Nel 1450 si stabilisce a @Mantova, dove diventa il più stretto collaboratore di @Leon Battista Alberti al servizio di @ludovico-iii-gonzaga. Dopo la morte di Alberti guida con il marchese il cantiere della @chiesa-di-sant-andrea-mantova, vegliando sul rispetto del progetto. Secondo Vasari è lui a costruire a @Firenze il nucleo quattrocentesco di Palazzo Pitti, ideato da Brunelleschi. Le fonti ne collocano la morte nel 1494 o verso il 1495.",
+  "innovations": [],
+  "category": null,
+  "is_collective": false,
+  "location_city": "Mantova"
+ },
+ {
+  "id": "gian-giorgio-trissino",
+  "name": "Gian Giorgio Trissino",
+  "aka": [],
+  "birth": 1478,
+  "death": 1550,
+  "period_ids": [],
+  "role": "umanista",
+  "bio": "Umanista vicentino. Verso il 1538 conosce il giovane Andrea di Pietro della Gondola, a cui dà il nome di @Andrea Palladio, richiamo alla dea Pallade Atena, e lo spinge a studiare a fondo l'architettura antica. Il suo circolo è frequentato anche dai fratelli @Daniele Barbaro e @Marcantonio Barbaro, che vi maturano la stima per Palladio e gli affideranno la @villa-barbaro-maser-palladio.",
+  "innovations": [],
+  "category": "committenti",
+  "is_collective": false,
+  "location_city": "Vicenza"
  }
 ]

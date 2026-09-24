@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useTestoLeggibile } from "../lib/lettura";
+import { senzaMenzioni, indiceMenzioni } from "../lib/menzioni";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { useIsNarrow } from "../lib/motion";
-import { WorkCard, Section, Empty, EntityLink, FilterNote, FavStar, BarraScheda } from "../components/ui";
+import { WorkCard, Section, Empty, EntityLink, FilterNote, FavStar, BarraScheda, RichText } from "../components/ui";
 import ArtistMap from "../components/ArtistMap";
 import ArtistTimeline from "../components/ArtistTimeline";
 import ArtistEditorDrawer from "../components/ArtistEditorDrawer";
@@ -58,7 +59,7 @@ export default function Artista() {
 
   useTestoLeggibile(a?.name ?? "", a ? [
     { id: "chi", testo: [a.name, a.role, a.birth != null ? `${a.birth}–${a.death ?? ""}` : "", a.location_city].filter(Boolean).join(". ") },
-    ...(a.bio ? [{ id: "bio", occhiello: "Biografia", testo: a.bio }] : []),
+    ...(a.bio ? [{ id: "bio", occhiello: "Biografia", testo: senzaMenzioni(a.bio, indiceMenzioni(ix.ds)) }] : []),
   ] : []);
 
   return (
@@ -108,7 +109,7 @@ export default function Artista() {
             Non ha eseguito queste opere: le ha commissionate.
           </div>
         )}
-        <p className="page-lead">{a.bio}</p>
+        <p className="page-lead"><RichText text={a.bio} /></p>
       </div>
 
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 14 }}>
