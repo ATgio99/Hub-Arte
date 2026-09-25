@@ -330,7 +330,7 @@
   "target_type": "work",
   "target_id": "porta-miègeville-saint-sernin",
   "kind": "autore",
-  "description": "Bernardo Gelduinus e la sua bottega realizzano i rilievi della Porta Miégeville di Saint-Sernin a Tolosa, primo grande portale scolpito romanico."
+  "description": "Alla bottega di Bernardus Gelduinus, attiva a Saint-Sernin nell'ultimo decennio dell'XI secolo, si attribuiscono la Porta Miégeville e le lastre del deambulatorio."
  },
  {
   "id": "bologna-francese-romanica",
@@ -420,7 +420,7 @@
   "target_type": "artist",
   "target_id": "maestro-delle-ore-di-rohan",
   "kind": "maestro-allievo",
-  "description": "Il Maestro delle Ore di Rohan si forma a contatto con i maestri di Boucicaut e di Bedford."
+  "description": "Il Maestro delle Ore di Rohan compie la propria formazione accanto al Maestro del Maresciallo di Boucicaut, da cui eredita la stesura leggera del colore e la ricchezza dei passaggi di tono."
  },
  {
   "id": "bramante-influenza-bramantino",
@@ -991,15 +991,6 @@
   "description": "L'oreficeria e l'ornamentazione geometrizzante longobarda convive con la rinascenza carolingia nei territori italiani sotto dominio franco dopo il 774."
  },
  {
-  "id": "evangeliario-godescalco-a-incoronazione",
-  "source_type": "work",
-  "source_id": "evangeliario-di-godescalco",
-  "target_type": "work",
-  "target_id": "evangeliario-dell-incoronazione",
-  "kind": "evoluzione",
-  "description": "L'Evangeliario di Godescalco (781-783) inaugura la miniatura carolingia a corte con figure degli evangelisti su fondo purpureo, aprendo la strada all'Evangeliario dell'Incoronazione (793 circa), che raggiunge livelli ancora più raffinati."
- },
- {
   "id": "federico-ii-nicola-pisano",
   "source_type": "period",
   "source_id": "arte-federiciana",
@@ -1195,7 +1186,7 @@
   "target_type": "work",
   "target_id": "perseo-cellini",
   "kind": "rielaborazione",
-  "description": "Giambologna apprende da Cellini la ricerca sulla posa serpentinata e l'instabilita della posizione, portandola a compimento nel Mercurio e poi nel Ratto della Sabina."
+  "description": "Nel Mercurio Giambologna riprende dal Perseo di Cellini la posizione instabile e la torsione serpentinata della figura, unite al virtuosismo della fusione in bronzo."
  },
  {
   "id": "giorgione-influenza-lotto-enigma",
@@ -1331,15 +1322,6 @@
   "target_id": "cimabue",
   "kind": "influenza",
   "description": "Cimabue si forma sul modello della croce bolognese di Giunta Pisano, di cui il Crocifisso aretino è una rielaborazione critica con maggiori innovazioni naturalistiche."
- },
- {
-  "id": "giunta-coppo-crocifisso-gimignano",
-  "source_type": "work",
-  "source_id": "crocifisso-san-domenico-bologna",
-  "target_type": "work",
-  "target_id": "crocifisso-san-gimignano",
-  "kind": "rielaborazione",
-  "description": "Il Crocifisso di San Gimignano di Coppo recepisce le innovazioni giuntesche nell'inarcatura del corpo e nell'espressione di dolore, pur mantenendo convenzioni iconografiche più tradizionali."
  },
  {
   "id": "giunta-coppo-influenza",
@@ -1573,7 +1555,7 @@
   "target_type": "work",
   "target_id": "portico-della-gloria-santiago",
   "kind": "autore",
-  "description": "Il Maestro Matteo realizza il Portico della Gloria (1168-1188) della cattedrale di Santiago, uno dei capolavori della scultura romanica tarda."
+  "description": "Il Maestro Matteo esegue fra il 1168 e il 1188 circa il Portico della Gloria, il nartece della cattedrale di Santiago, e il ciclo scultoreo del suo portale interno."
  },
  {
   "id": "mantegna-influenza-correggio",
@@ -1684,15 +1666,6 @@
   "description": "Le figure in bronzo della Fontana del Nettuno di Ammannati sono una versione aggiornata e ingentilita degli Ignudi dipinti da Michelangelo nella volta della Sistina."
  },
  {
-  "id": "michelangelo-influenza-pordenone",
-  "source_type": "artist",
-  "source_id": "giovanni-antonio-pordenone",
-  "target_type": "work",
-  "target_id": "crocifissione-pordenone-cremona",
-  "kind": "rielaborazione",
-  "description": "Nella Crocifissione di Cremona, Pordenone aggiorna il realismo nordico (affinità con Romanino) sui modelli michelangioleschi, da cui derivano le torsioni e le espansioni muscolari delle figure."
- },
- {
   "id": "michelangelo-influenza-raffaello-figure",
   "source_type": "artist",
   "source_id": "michelangelo-buonarroti",
@@ -1762,7 +1735,7 @@
   "target_type": "artist",
   "target_id": "stefano-da-verona",
   "kind": "influenza",
-  "description": "Stefano da Verona riceve la prima formazione a fianco di Michelino da Besozzo; numerose consonanze stilistiche tra i due, al punto che l'attribuzione della Madonna del roseto oscilla tra loro."
+  "description": "Stefano da Verona si forma con ogni probabilità accanto a Michelino da Besozzo: le affinità fra i due sono tali che la Madonna del roseto viene attribuita ora all'uno ora all'altro."
  },
  {
   "id": "michelino-venezia-gentile-collaborazione",
@@ -2224,15 +2197,6 @@
   "description": "Pordenone subentra a Romanino nella decorazione del duomo di Cremona, condividendo con lui il realismo dei dettagli e il pathos, ma esasperandoli in un linguaggio ancora più violento e anticlassico."
  },
  {
-  "id": "rossellino-bruni-desiderio-marsuppini",
-  "source_type": "work",
-  "source_id": "monumento-funebre-leonardo-bruni",
-  "target_type": "work",
-  "target_id": "monumento-funebre-carlo-marsuppini",
-  "kind": "rielaborazione",
-  "description": "Desiderio da Settignano riprende il modello del Monumento di Bruni di Bernardo Rossellino per il Monumento Marsuppini, posto di fronte, ricercando pero una maggiore eleganza ritmica e decorativa."
- },
- {
   "id": "rossellino-bruni-tipo-sepolcrale",
   "source_type": "work",
   "source_id": "monumento-funebre-leonardo-bruni",
@@ -2447,15 +2411,6 @@
   "target_id": "giovanni-pisano",
   "kind": "autore",
   "description": "Capomastro della fabbrica senese fra il 1285 e il 1297, Giovanni Pisano disegna la nuova facciata sul modello francese e ne scolpisce le statue della parte bassa."
- },
- {
-  "id": "signorelli-cappella-san-brizio-michelangelo",
-  "source_type": "work",
-  "source_id": "resurrezione-della-carne-signorelli",
-  "target_type": "artist",
-  "target_id": "luca-signorelli",
-  "kind": "influenza",
-  "description": "La Resurrezione della carne di Signorelli, con la sua straordinaria resa di nudi maschili in movimento, anticipa direttamente il Giudizio Universale di Michelangelo nella stessa cappella Sistina."
  },
  {
   "id": "simone-da-duccio",
@@ -3961,16 +3916,6 @@
   "target_id": "bernardo-rossellino",
   "kind": "collaborazione",
   "description": "Desiderio da Settignano probabilmente inizia collaborando con i fratelli Rossellino.",
-  "sort_order": 0
- },
- {
-  "id": "desiderio-da-settignano-bernardo-rossellino-influenza",
-  "source_type": "artist",
-  "source_id": "desiderio-da-settignano",
-  "target_type": "artist",
-  "target_id": "bernardo-rossellino",
-  "kind": "influenza",
-  "description": "Nel Monumento funebre di Carlo Marsuppini, Desiderio da Settignano riprende il modello di Bernardo Rossellino.",
   "sort_order": 0
  },
  {
@@ -5480,7 +5425,7 @@
   "target_type": "artist",
   "target_id": "jacopo-vignola",
   "kind": "committenza",
-  "description": "La costruzione della chiesa del Gesù viene promossa dal cardinale Alessandro Farnese e affidata all'architetto Jacopo Barozzi detto Vignola.",
+  "description": "Il cardinale Alessandro Farnese commissiona a Vignola la chiesa madre dei gesuiti a Roma, il Gesù, e gli affida anche il progetto della sua residenza di Caprarola.",
   "sort_order": 0
  },
  {
@@ -5510,7 +5455,7 @@
   "target_type": "artist",
   "target_id": "tibaldi",
   "kind": "committenza",
-  "description": "Carlo Borromeo affida l'architettura religiosa a Pellegrino Tibaldi; nel 1569, sotto il suo patronato, Tibaldi progetta la chiesa di San Fedele a Milano.",
+  "description": "Il cardinale Carlo Borromeo fa di Pellegrino Tibaldi l'architetto delle sue imprese religiose a Milano: sotto la sua protezione Tibaldi disegna nel 1569 la chiesa gesuitica di San Fedele.",
   "sort_order": 0
  },
  {
@@ -5560,7 +5505,7 @@
   "target_type": "artist",
   "target_id": "cambiaso",
   "kind": "committenza",
-  "description": "Filippo II si rivolge a Luca Cambiaso per la decorazione dell'Escorial; nel 1583 l'artista giunge in Spagna e realizza la Gloria della Trinità.",
+  "description": "Filippo II chiama in Spagna il genovese Luca Cambiaso, che vi arriva nel 1583, e gli affida gli affreschi della volta del coro nella chiesa dell'Escorial.",
   "sort_order": 0
  },
  {
@@ -7624,5 +7569,689 @@
   "target_id": "agnolo-bronzino",
   "kind": "committenza",
   "description": "Dal 1539 Bronzino è pittore di corte di Cosimo I: decora la cappella di Eleonora in Palazzo Vecchio e dipinge i ritratti ufficiali della famiglia ducale."
+ },
+ {
+  "id": "pianta-san-pietro-raffaello-contrasto-progetto-bramante",
+  "source_type": "work",
+  "source_id": "pianta-san-pietro-raffaello",
+  "target_type": "work",
+  "target_id": "progetto-bramantesco-san-pietro",
+  "kind": "contrasto",
+  "description": "Al posto della croce greca inscritta in un quadrato ideata da Bramante, Raffaello propone un corpo longitudinale a croce latina, più funzionale alla liturgia e memore della basilica paleocristiana che il nuovo edificio sostituisce."
+ },
+ {
+  "id": "mosaico-santa-maria-domnica-contrasto-mosaici-santa-prassede",
+  "source_type": "work",
+  "source_id": "mosaico-absidale-santa-maria-domnica",
+  "target_type": "work",
+  "target_id": "mosaici-santa-prassede-roma",
+  "kind": "contrasto",
+  "description": "Commissionati entrambi da Pasquale I, i due mosaici absidali parlano lo stesso linguaggio lineare e ieratico e mostrano il papa come donatore, ma cambiano soggetto: Cristo fra i santi a Santa Prassede, la Vergine in trono fra gli angeli a Santa Maria in Domnica."
+ },
+ {
+  "id": "giotto-influenza-miracolo-pellegrini-san-nicola-gentile",
+  "source_type": "artist",
+  "source_id": "giotto-di-bondone",
+  "target_type": "work",
+  "target_id": "miracolo-pellegrini-san-nicola-gentile",
+  "kind": "influenza",
+  "description": "Per ambientare le storie di san Nicola, Gentile riprende da Giotto le architetture viste in scorcio, costruite a occhio e non con un metodo geometrico."
+ },
+ {
+  "id": "miracolo-san-nicola-gentile-evoluzione-adorazione-magi",
+  "source_type": "work",
+  "source_id": "miracolo-pellegrini-san-nicola-gentile",
+  "target_type": "work",
+  "target_id": "adorazione-dei-magi-gentile-fabriano",
+  "kind": "evoluzione",
+  "description": "Due anni dopo l'Adorazione dei Magi, nel Polittico Quaratesi Gentile rende il disegno più preciso e semplifica figure e scene, pur conservando la raffinatezza delle forme."
+ },
+ {
+  "id": "simone-martini-influenza-martirio-san-dionigi-bellechose",
+  "source_type": "artist",
+  "source_id": "simone-martini",
+  "target_type": "work",
+  "target_id": "martirio-san-dionigi-bellechose",
+  "kind": "influenza",
+  "description": "I volti affilati e la piccola architettura dipinta sulla sinistra della tavola di Bellechose derivano dai modelli di Simone Martini, conosciuti in Borgogna attraverso Avignone."
+ },
+ {
+  "id": "matteo-giovannetti-influenza-martirio-san-dionigi-bellechose",
+  "source_type": "artist",
+  "source_id": "matteo-giovannetti",
+  "target_type": "work",
+  "target_id": "martirio-san-dionigi-bellechose",
+  "kind": "influenza",
+  "description": "Nelle fisionomie aguzze e nel minuto edificio a sinistra Bellechose guarda anche alla pittura di Matteo Giovannetti, attivo alla corte papale di Avignone."
+ },
+ {
+  "id": "stanze-vaticane-influenza-madonna-misericordia-fra-bartolomeo",
+  "source_type": "work",
+  "source_id": "stanze-vaticane",
+  "target_type": "work",
+  "target_id": "madonna-della-misericordia-fra-bartolomeo",
+  "kind": "influenza",
+  "description": "Dopo il soggiorno romano del 1513-1514 Fra Bartolomeo trae dalle Stanze di Raffaello la varietà nella disposizione delle figure, che nella pala di Lucca combina però con ritmi più liberi e irregolari."
+ },
+ {
+  "id": "michelangelo-influenza-madonna-misericordia-fra-bartolomeo",
+  "source_type": "artist",
+  "source_id": "michelangelo-buonarroti",
+  "target_type": "work",
+  "target_id": "madonna-della-misericordia-fra-bartolomeo",
+  "kind": "influenza",
+  "description": "La Vergine al centro della pala, massiccia e percorsa da un movimento contenuto, mostra quanto Fra Bartolomeo abbia assimilato durante il soggiorno romano la plasticità delle figure di Michelangelo."
+ },
+ {
+  "id": "polittico-di-badia-contrasto-cimabue",
+  "source_type": "work",
+  "source_id": "polittico-di-badia",
+  "target_type": "artist",
+  "target_id": "cimabue",
+  "kind": "contrasto",
+  "description": "Nelle opere tarde di Cimabue i volti restano legati a formule fisse e a una tensione verso l'astrazione; nel Polittico di Badia Giotto dà invece a ciascun santo un volto individuale e un corpo concreto, modellato dalla luce."
+ },
+ {
+  "id": "filippo-lippi-influenza-madonna-del-magnificat",
+  "source_type": "artist",
+  "source_id": "filippo-lippi",
+  "target_type": "work",
+  "target_id": "madonna-del-magnificat",
+  "kind": "influenza",
+  "description": "I veli leggerissimi e trasparenti, ricamati d'oro, che scendono dalla corona della Vergine riprendono le stoffe impalpabili dipinte da Filippo Lippi, maestro di Botticelli."
+ },
+ {
+  "id": "corridoio-vasariano-evoluzione-uffizi",
+  "source_type": "work",
+  "source_id": "corridoio-vasariano",
+  "target_type": "work",
+  "target_id": "complesso-uffizi-vasari",
+  "kind": "evoluzione",
+  "description": "Nel 1565 Vasari prolunga il sistema degli Uffizi con un passaggio coperto al secondo piano che, scavalcando l'Arno sul Ponte Vecchio, collega il palazzo del governo alla residenza di Palazzo Pitti."
+ },
+ {
+  "id": "leonardo-influenza-adorazione-magi-cesare-da-sesto",
+  "source_type": "artist",
+  "source_id": "leonardo-da-vinci",
+  "target_type": "work",
+  "target_id": "adorazione-dei-magi-cesare-da-sesto",
+  "kind": "influenza",
+  "description": "Il volto sfumato della Vergine e le teste caratterizzate dei vecchi mostrano come Cesare da Sesto abbia fatto propri lo sfumato e gli studi di fisionomia di Leonardo."
+ },
+ {
+  "id": "raffaello-influenza-adorazione-magi-cesare-da-sesto",
+  "source_type": "artist",
+  "source_id": "raffaello-sanzio",
+  "target_type": "work",
+  "target_id": "adorazione-dei-magi-cesare-da-sesto",
+  "kind": "influenza",
+  "description": "Le figure sulla destra della pala, solide e atteggiate in pose complesse, rivelano ciò che Cesare da Sesto ha appreso a Roma dalla pittura di Raffaello."
+ },
+ {
+  "id": "michelangelo-influenza-adorazione-magi-cesare-da-sesto",
+  "source_type": "artist",
+  "source_id": "michelangelo-buonarroti",
+  "target_type": "work",
+  "target_id": "adorazione-dei-magi-cesare-da-sesto",
+  "kind": "influenza",
+  "description": "La forte plasticità e le torsioni dei personaggi sulla destra dell'Adorazione derivano dai modelli michelangioleschi conosciuti da Cesare da Sesto durante il soggiorno romano."
+ },
+ {
+  "id": "sala-fasti-farnesiani-contrasto-pieta-zuccari",
+  "source_type": "work",
+  "source_id": "sala-fasti-farnesiani",
+  "target_type": "work",
+  "target_id": "pieta-zuccari",
+  "kind": "contrasto",
+  "description": "Negli stessi anni e per lo stesso committente, Taddeo Zuccari dipinge per la cappella di Caprarola una Pietà semplice e devota, secondo le indicazioni tridentine, mentre nelle sale di rappresentanza sfoggia grottesche e scene celebrative di gusto classico."
+ },
+ {
+  "id": "resurrezione-signorelli-influenza-giudizio-michelangelo",
+  "source_type": "work",
+  "source_id": "resurrezione-della-carne-signorelli",
+  "target_type": "work",
+  "target_id": "giudizio-universale",
+  "kind": "influenza",
+  "description": "I nudi vigorosi che a Orvieto risorgono dalla terra al suono delle trombe anticipano il Giudizio Universale che Michelangelo affresca nella cappella Sistina oltre trent'anni dopo."
+ },
+ {
+  "id": "messa-san-gregorio-romanino-contrasto-moretto",
+  "source_type": "work",
+  "source_id": "messa-di-san-gregorio-romanino",
+  "target_type": "artist",
+  "target_id": "moretto",
+  "kind": "contrasto",
+  "description": "Nella cappella del Santissimo Sacramento di San Giovanni Evangelista, Romanino e il Moretto lavorano fianco a fianco: al linguaggio raffaellesco e alla precisione descrittiva del Moretto Romanino oppone un racconto realistico, uno spazio libero dalle regole e una pittura densa."
+ },
+ {
+  "id": "madonna-del-roseto-influenza-madonna-della-quaglia",
+  "source_type": "work",
+  "source_id": "madonna-del-roseto",
+  "target_type": "work",
+  "target_id": "madonna-della-quaglia-pisanello",
+  "kind": "influenza",
+  "description": "Nella Madonna della quaglia il giovane Pisanello riprende dalla Madonna del roseto attribuita a Michelino da Besozzo il prato fiorito popolato di uccelli e le linee morbide e sinuose delle figure."
+ },
+ {
+  "id": "evangeliario-incoronazione-contrasto-godescalco",
+  "source_type": "work",
+  "source_id": "evangeliario-dell-incoronazione",
+  "target_type": "work",
+  "target_id": "evangeliario-di-godescalco",
+  "kind": "contrasto",
+  "description": "Nell'Evangeliario di Godescalco le figure hanno proporzioni credibili ma colori stesi in campiture piatte; una decina d'anni dopo, i miniatori dell'Evangeliario dell'Incoronazione modellano gli evangelisti con il chiaroscuro e li immergono in sfondi illusionistici di tradizione ellenistica."
+ },
+ {
+  "id": "palladio-influenza-complesso-uffizi",
+  "source_type": "artist",
+  "source_id": "andrea-palladio",
+  "target_type": "work",
+  "target_id": "complesso-uffizi-vasari",
+  "kind": "influenza",
+  "description": "Per la loggia che chiude gli Uffizi verso l'Arno Vasari riprende il gioco di pieni e di vuoti e l'apertura a serliana resi celebri dalle architetture di Palladio."
+ },
+ {
+  "id": "michelozzo-influenza-annunciazione-san-marco",
+  "source_type": "artist",
+  "source_id": "michelozzo-michelozzi",
+  "target_type": "work",
+  "target_id": "annunciazione-corridoio-nord-san-marco",
+  "kind": "influenza",
+  "description": "Il portico in cui Beato Angelico ambienta l'Annunciazione riprende le forme sobrie delle architetture che Michelozzo stava costruendo nello stesso convento, così che i frati vi riconoscano gli spazi della loro vita quotidiana."
+ },
+ {
+  "id": "tondo-doni-influenza-visitazione-carmignano",
+  "source_type": "work",
+  "source_id": "tondo-doni",
+  "target_type": "work",
+  "target_id": "visitazione-pontormo-carmignano",
+  "kind": "influenza",
+  "description": "I rosa accesi e cangianti delle vesti nella Visitazione di Carmignano riprendono la gamma di colori che Michelangelo aveva usato nel Tondo Doni."
+ },
+ {
+  "id": "volta-sistina-influenza-visitazione-carmignano",
+  "source_type": "work",
+  "source_id": "volta-cappella-sistina",
+  "target_type": "work",
+  "target_id": "visitazione-pontormo-carmignano",
+  "kind": "influenza",
+  "description": "La grandezza delle quattro figure e le loro tinte intense e cangianti derivano dai modelli michelangioleschi della Sistina, che Pontormo reinterpreta in chiave manierista."
+ },
+ {
+  "id": "san-luca-nanni-contrasto-san-giovanni-donatello",
+  "source_type": "work",
+  "source_id": "san-luca-nanni-di-banco",
+  "target_type": "work",
+  "target_id": "san-giovanni-evangelista-donatello",
+  "kind": "contrasto",
+  "description": "Scolpiti negli stessi anni per le nicchie ai lati del portale centrale della cattedrale, i due evangelisti divergono: il San Luca di Nanni di Banco conserva l'impianto piatto e i panneggi ornamentali del Gotico, il San Giovanni di Donatello ha una solidità e una forza nuove."
+ },
+ {
+  "id": "cappella-ovetari-mantegna-influenza-miracolo-nube-foppa",
+  "source_type": "work",
+  "source_id": "martirio-e-trasporto-del-corpo-di-san-cristoforo",
+  "target_type": "work",
+  "target_id": "miracolo-della-nube-foppa",
+  "kind": "influenza",
+  "description": "Nelle storie di san Pietro Martire Foppa mette a frutto le soluzioni spaziali di Mantegna nella cappella Ovetari: architetture dipinte in prospettiva, su larga scala, che proseguono lo spazio reale."
+ },
+ {
+  "id": "crocifisso-san-gimignano-rielabora-crocifisso-san-domenico",
+  "source_type": "work",
+  "source_id": "crocifisso-san-gimignano",
+  "target_type": "work",
+  "target_id": "crocifisso-san-domenico-bologna",
+  "kind": "rielaborazione",
+  "description": "Coppo prende a modello il Cristo del Crocifisso bolognese di Giunta Pisano, con il fianco inarcato e il volto sofferente, ma lo inserisce in una croce di impianto più tradizionale, con storie della Passione e dolenti a figura intera."
+ },
+ {
+  "id": "francesco-i-medici-committenza-tribuna-uffizi",
+  "source_type": "artist",
+  "source_id": "francesco-i-de-medici",
+  "target_type": "work",
+  "target_id": "tribuna-uffizi-buontalenti",
+  "kind": "committenza",
+  "description": "Nel 1581 Francesco I de' Medici destina il secondo piano degli Uffizi a galleria delle raccolte di famiglia e commissiona a Buontalenti la Tribuna per le opere più preziose."
+ },
+ {
+  "id": "statuetta-carlo-magno-rielabora-marco-aurelio",
+  "source_type": "work",
+  "source_id": "statua-equestre-carlo-magno",
+  "target_type": "work",
+  "target_id": "marco-aurelio-campidoglio",
+  "kind": "rielaborazione",
+  "description": "La statuetta carolingia riprende in piccolo lo schema del Marco Aurelio, che nel Medioevo si credeva raffigurasse Costantino: il sovrano franco si presenta così come erede del primo imperatore cristiano."
+ },
+ {
+  "id": "sette-libri-serlio-influenza-palazzo-grimani",
+  "source_type": "work",
+  "source_id": "sette-libri-architettura-serlio",
+  "target_type": "work",
+  "target_id": "palazzo-grimani-sanmicheli",
+  "kind": "influenza",
+  "description": "La serliana codificata e diffusa dal trattato di Serlio torna nella facciata di Palazzo Grimani, dove Sanmicheli la fonde con lo schema a tre fornici dell'arco trionfale."
+ },
+ {
+  "id": "baldassarre-peruzzi-sebastiano-serlio-maestro-allievo",
+  "source_type": "artist",
+  "source_id": "baldassarre-peruzzi",
+  "target_type": "artist",
+  "target_id": "sebastiano-serlio",
+  "kind": "maestro-allievo",
+  "description": "Serlio si forma come allievo e collaboratore di Peruzzi, che lo porta con sé a Roma; molte incisioni dei suoi trattati derivano da disegni del maestro."
+ },
+ {
+  "id": "federico-borromeo-committenza-san-carlo-appestati",
+  "source_type": "artist",
+  "source_id": "federico-borromeo",
+  "target_type": "work",
+  "target_id": "san-carlo-appestati",
+  "kind": "committenza",
+  "description": "Per la beatificazione del cugino, Federico Borromeo promuove la serie dei Quadroni di san Carlo per il duomo di Milano, affidata a più pittori: Cerano ne esegue quattro, fra cui la visita agli appestati."
+ },
+ {
+  "id": "cosimo-i-committenza-salone-cinquecento",
+  "source_type": "artist",
+  "source_id": "cosimo-i-de-medici",
+  "target_type": "work",
+  "target_id": "salone-cinquecento-palazzo-vecchio-vasari",
+  "kind": "committenza",
+  "description": "Cosimo I affida a Vasari il rinnovamento di Palazzo Vecchio e la decorazione del Salone dei Cinquecento, trasformato da sala del governo repubblicano in luogo di rappresentanza e di celebrazione del duca."
+ },
+ {
+  "id": "martin-schongauer-albrecht-durer-influenza",
+  "source_type": "artist",
+  "source_id": "martin-schongauer",
+  "target_type": "artist",
+  "target_id": "albrecht-durer",
+  "kind": "influenza",
+  "description": "Accanto alla pratica di bottega, Dürer studia con predilezione le incisioni di Schongauer, che insieme a quelle di Mantegna sono alla base del suo linguaggio grafico."
+ },
+ {
+  "id": "mosaici-monreale-evoluzione-mosaici-cappella-palatina",
+  "source_type": "work",
+  "source_id": "mosaici-navate-cattedrale-monreale",
+  "target_type": "work",
+  "target_id": "mosaici-cappella-palatina-programma",
+  "kind": "evoluzione",
+  "description": "A Monreale i mosaicisti di Guglielmo II riprendono l'impianto della Cappella Palatina, con l'Antico Testamento lungo la navata centrale, e lo estendono a un ciclo di scala molto maggiore, con il Nuovo Testamento nelle navate laterali e nel presbiterio."
+ },
+ {
+  "id": "madonna-san-girolamo-contrasto-notte-correggio",
+  "source_type": "work",
+  "source_id": "madonna-di-san-girolamo-correggio",
+  "target_type": "work",
+  "target_id": "adorazione-dei-pastori-la-notte-correggio",
+  "kind": "contrasto",
+  "description": "Dipinte quasi negli stessi anni e note come Il Giorno e La Notte, le due pale mostrano due opposte ricerche sulla luce: diffusa e serena nella prima, soprannaturale e irradiata dal Bambino nella seconda."
+ },
+ {
+  "id": "savoldo-influenza-correggio",
+  "source_type": "artist",
+  "source_id": "giovan-girolamo-savoldo",
+  "target_type": "artist",
+  "target_id": "correggio",
+  "kind": "influenza",
+  "description": "Nelle ricerche sulla luce e negli accenti intimi delle pale della fine degli anni Venti, Correggio guarda alla pittura lombarda contemporanea, e in particolare a Savoldo."
+ },
+ {
+  "id": "romanino-influenza-correggio",
+  "source_type": "artist",
+  "source_id": "gerolamo-romanino",
+  "target_type": "artist",
+  "target_id": "correggio",
+  "kind": "influenza",
+  "description": "Correggio tiene conto della pittura lombarda del suo tempo, come quella di Romanino, nelle composizioni libere e anticlassiche del Giorno e della Notte."
+ },
+ {
+  "id": "altare-ratchis-influenza-affreschi-san-procolo",
+  "source_type": "work",
+  "source_id": "altare-di-ratchis-cividale",
+  "target_type": "work",
+  "target_id": "decorazione-san-procolo-naturno",
+  "kind": "influenza",
+  "description": "I volti degli affreschi di San Procolo ripetono l'impostazione delle figure scolpite sull'Altare di Ratchis: un indizio dell'attività di maestranze di tradizione longobarda."
+ },
+ {
+  "id": "san-cataldo-rielabora-san-giovanni-eremiti",
+  "source_type": "work",
+  "source_id": "chiesa-san-cataldo-palermo",
+  "target_type": "work",
+  "target_id": "chiesa-san-giovanni-eremiti-palermo",
+  "kind": "rielaborazione",
+  "description": "San Cataldo, commissionata dall'ammiraglio Maione di Bari a maestranze arabe, si ispira con ogni probabilità a San Giovanni degli Eremiti: ne riprende il volume compatto e le cupole rosse arabeggianti."
+ },
+ {
+  "id": "giudizio-universale-evoluzione-supplizio-aman",
+  "source_type": "work",
+  "source_id": "giudizio-universale",
+  "target_type": "work",
+  "target_id": "supplizio-di-aman",
+  "kind": "evoluzione",
+  "description": "Nel Giudizio Universale Michelangelo porta avanti le soluzioni sperimentate nel Supplizio di Aman: corpi nudi in pose innaturali e di scorcio, muscoli tesi da un'energia trattenuta."
+ },
+ {
+  "id": "portico-gloria-rielabora-portale-moissac",
+  "source_type": "work",
+  "source_id": "portico-della-gloria-santiago",
+  "target_type": "work",
+  "target_id": "portale-sud-saint-pierre-moissac",
+  "kind": "rielaborazione",
+  "description": "Nel timpano del Portico della Gloria il Maestro Matteo riprende la visione apocalittica del portale di Moissac, ma con figure in altorilievo e pose ieratiche vicine al classicismo borgognone."
+ },
+ {
+  "id": "madonna-garofano-evoluzione-madonna-melagrana",
+  "source_type": "work",
+  "source_id": "madonna-del-garofano",
+  "target_type": "work",
+  "target_id": "madonna-della-melagrana-leonardo",
+  "kind": "evoluzione",
+  "description": "Dopo la Madonna della melagrana, ancora verrocchiesca, nella Madonna del garofano Leonardo rende più intenso e naturale il dialogo muto fra la madre e il Bambino, che cerca goffamente di afferrare il fiore."
+ },
+ {
+  "id": "michelangelo-influenza-crocifissione-pordenone",
+  "source_type": "artist",
+  "source_id": "michelangelo-buonarroti",
+  "target_type": "work",
+  "target_id": "crocifissione-pordenone-cremona",
+  "kind": "influenza",
+  "description": "Nella Crocifissione di Cremona il realismo di tradizione lombarda si innesta sui modelli di Michelangelo, da cui Pordenone deriva i corpi in torsione e le muscolature dilatate."
+ },
+ {
+  "id": "cristo-risorto-bramantino-rielabora-cristo-colonna-bramante",
+  "source_type": "work",
+  "source_id": "cristo-risorto-bramantino",
+  "target_type": "work",
+  "target_id": "cristo-alla-colonna-bramante",
+  "kind": "rielaborazione",
+  "description": "Bramantino riprende il modello del Cristo alla colonna del suo maestro Bramante, ma esaspera i volumi regolari e indurisce la linea fino a renderla strumento espressivo del dolore."
+ },
+ {
+  "id": "francesco-i-medici-committenza-appennino",
+  "source_type": "artist",
+  "source_id": "francesco-i-de-medici",
+  "target_type": "work",
+  "target_id": "appennino-giambologna-pratolino",
+  "kind": "committenza",
+  "description": "Per il giardino della villa di Pratolino, costruita da Buontalenti, Francesco I de' Medici commissiona a Giambologna la statua colossale dell'Appennino."
+ },
+ {
+  "id": "gentiluomo-figura-intera-contrasto-sarto-moroni",
+  "source_type": "work",
+  "source_id": "ritratto-di-gentiluomo-a-figura-intera-moroni",
+  "target_type": "work",
+  "target_id": "il-sarto-moroni",
+  "kind": "contrasto",
+  "description": "Il gentiluomo giovanile è un ritratto aristocratico a figura intera, ambientato fra rovine; Il sarto, della maturità, ritrae un esponente della borghesia mercantile in un ambiente spoglio, con pochi colori e un dialogo diretto con lo spettatore."
+ },
+ {
+  "id": "ospedale-maggiore-contrasto-trattato-filarete-facciata",
+  "source_type": "work",
+  "source_id": "ospedale-maggiore-milano",
+  "target_type": "work",
+  "target_id": "trattato-architettura-filarete-facciata",
+  "kind": "contrasto",
+  "description": "La facciata disegnata da Filarete nel Trattato ha forme classiche; nell'edificio costruito le finestre ad arco dell'ultimo piano diventano bifore ogivali, e il cortile maggiore perde la chiesa centrale."
+ },
+ {
+  "id": "maestro-bedford-influenza-maestro-ore-rohan",
+  "source_type": "artist",
+  "source_id": "maestro-di-bedford",
+  "target_type": "artist",
+  "target_id": "maestro-delle-ore-di-rohan",
+  "kind": "influenza",
+  "description": "Il Maestro delle Ore di Rohan matura anche sull'esempio del Maestro di Bedford, di cui riprende l'amore per il colore e le sfumature, piegandoli però a un'espressività molto più drammatica."
+ },
+ {
+  "id": "medaglia-caradosso-rielabora-progetto-bramante-san-pietro",
+  "source_type": "work",
+  "source_id": "medaglia-san-pietro-caradosso",
+  "target_type": "work",
+  "target_id": "progetto-bramantesco-san-pietro",
+  "kind": "rielaborazione",
+  "description": "La medaglia di Caradosso riprende il progetto a croce greca documentato dal disegno degli Uffizi e ne mostra l'aspetto esterno, con le quattro torri angolari e il sistema di cupole e semicupole."
+ },
+ {
+  "id": "branda-castiglioni-committenza-masolino",
+  "source_type": "artist",
+  "source_id": "branda-castiglioni",
+  "target_type": "artist",
+  "target_id": "masolino-da-panicale",
+  "kind": "committenza",
+  "description": "Il cardinale Branda Castiglioni commissiona a Masolino prima gli affreschi della propria cappella in San Clemente a Roma, poi quelli del battistero della collegiata e del palazzo di famiglia a Castiglione Olona."
+ },
+ {
+  "id": "adorazione-magi-stefano-rielabora-michelino",
+  "source_type": "work",
+  "source_id": "adorazione-magi-stefano-da-verona",
+  "target_type": "artist",
+  "target_id": "michelino-da-besozzo",
+  "kind": "rielaborazione",
+  "description": "Nell'Adorazione dei Magi di Brera Stefano da Verona resta fedele al linguaggio di Michelino da Besozzo: linea sinuosa, colori preziosi e volti morbidamente modellati."
+ },
+ {
+  "id": "stanza-eliodoro-evoluzione-stanza-segnatura",
+  "source_type": "work",
+  "source_id": "stanza-di-eliodoro",
+  "target_type": "work",
+  "target_id": "stanza-della-segnatura",
+  "kind": "evoluzione",
+  "description": "Nella seconda stanza Raffaello abbandona la misura composta della Segnatura: le figure si fanno più agitate, i gesti più complessi e la luce diventa uno strumento drammatico."
+ },
+ {
+  "id": "sebastiano-del-piombo-influenza-stanza-eliodoro",
+  "source_type": "artist",
+  "source_id": "sebastiano-del-piombo",
+  "target_type": "work",
+  "target_id": "stanza-di-eliodoro",
+  "kind": "influenza",
+  "description": "I forti contrasti di luce e i bagliori della Stanza di Eliodoro nascono dall'attenzione di Raffaello per i pittori veneti attivi a Roma, e in particolare per Sebastiano del Piombo."
+ },
+ {
+  "id": "san-fedele-rielabora-chiesa-gesu",
+  "source_type": "work",
+  "source_id": "san-fedele-tibaldi",
+  "target_type": "work",
+  "target_id": "chiesa-gesu-vignola",
+  "kind": "rielaborazione",
+  "description": "San Fedele condivide con il Gesù di Roma l'impianto a navata unica pensato per la predicazione gesuita, ma riduce quasi a nulla le cappelle laterali e corona il presbiterio con un tiburio lombardo."
+ },
+ {
+  "id": "tibaldi-collaborazione-perin-del-vaga",
+  "source_type": "artist",
+  "source_id": "tibaldi",
+  "target_type": "artist",
+  "target_id": "perin-del-vaga",
+  "kind": "collaborazione",
+  "description": "Negli anni romani Pellegrino Tibaldi lavora al fianco di Perin del Vaga, esperienza decisiva per la sua formazione di pittore."
+ },
+ {
+  "id": "peruzzi-influenza-tibaldi",
+  "source_type": "artist",
+  "source_id": "baldassarre-peruzzi",
+  "target_type": "artist",
+  "target_id": "tibaldi",
+  "kind": "influenza",
+  "description": "Durante il soggiorno romano Tibaldi studia le architetture di Baldassarre Peruzzi, uno dei riferimenti della sua cultura di architetto."
+ },
+ {
+  "id": "serlio-influenza-tibaldi",
+  "source_type": "artist",
+  "source_id": "sebastiano-serlio",
+  "target_type": "artist",
+  "target_id": "tibaldi",
+  "kind": "influenza",
+  "description": "Fra i modelli su cui si forma l'architetto Pellegrino Tibaldi c'è l'opera di Sebastiano Serlio, studiata negli anni trascorsi a Roma."
+ },
+ {
+  "id": "portale-monreale-barisano-rielabora-portale-trani",
+  "source_type": "work",
+  "source_id": "portale-bronzeo-monreale-barisano",
+  "target_type": "work",
+  "target_id": "portale-barisano-trani",
+  "kind": "rielaborazione",
+  "description": "Per il portale settentrionale di Monreale Barisano riutilizza gli stampi già adoperati a Trani: molte figure e cornici ornamentali si ripetono identiche nei due portali."
+ },
+ {
+  "id": "portale-barisano-trani-contrasto-portale-san-zeno",
+  "source_type": "work",
+  "source_id": "portale-barisano-trani",
+  "target_type": "work",
+  "target_id": "portale-bronzeo-san-zeno",
+  "kind": "contrasto",
+  "description": "Rispetto alle formelle di San Zeno a Verona, quelle di Barisano hanno un rilievo molto più basso e un modellato di gusto bizantino, ispirato agli avori e all'oreficeria orientali."
+ },
+ {
+  "id": "madonna-belvedere-rielabora-cartone-santanna",
+  "source_type": "work",
+  "source_id": "madonna-del-belvedere",
+  "target_type": "work",
+  "target_id": "santanna-madonna-bambino-giovannino-cartone",
+  "kind": "rielaborazione",
+  "description": "Raffaello riprende dal cartone di Leonardo la struttura piramidale del gruppo e il dialogo serrato di gesti e sguardi, ma lo traduce in un clima più disteso e sereno."
+ },
+ {
+  "id": "bella-giardiniera-evoluzione-madonna-belvedere",
+  "source_type": "work",
+  "source_id": "bella-giardiniera",
+  "target_type": "work",
+  "target_id": "madonna-del-belvedere",
+  "kind": "evoluzione",
+  "description": "Nella Bella giardiniera Raffaello torna alla formula della Madonna del Belvedere, con il gruppo piramidale nel paesaggio, arricchendola di nuovi dettagli."
+ },
+ {
+  "id": "madonna-cardellino-evoluzione-madonna-belvedere",
+  "source_type": "work",
+  "source_id": "madonna-del-cardellino",
+  "target_type": "work",
+  "target_id": "madonna-del-belvedere",
+  "kind": "evoluzione",
+  "description": "La Madonna del cardellino varia lo schema della Madonna del Belvedere: il gruppo resta piramidale, ma il Bambino è in piedi fra le ginocchia della madre."
+ },
+ {
+  "id": "taddeo-taddei-committenza-raffaello",
+  "source_type": "artist",
+  "source_id": "taddeo-taddei",
+  "target_type": "artist",
+  "target_id": "raffaello-sanzio",
+  "kind": "committenza",
+  "description": "Il mecenate e umanista fiorentino Taddeo Taddei è con ogni probabilità il committente della Madonna del Belvedere, dipinta da Raffaello intorno al 1506."
+ },
+ {
+  "id": "ippolito-ii-deste-committenza-pirro-ligorio",
+  "source_type": "artist",
+  "source_id": "ippolito-ii-deste",
+  "target_type": "artist",
+  "target_id": "pirro-ligorio",
+  "kind": "committenza",
+  "description": "Il cardinale Ippolito II d'Este affida a Pirro Ligorio il progetto della sua villa di Tivoli e del grande giardino di fontane, grotte e giochi d'acqua che la circonda."
+ },
+ {
+  "id": "malles-contrasto-mustair",
+  "source_type": "work",
+  "source_id": "decorazione-san-benedetto-malles",
+  "target_type": "work",
+  "target_id": "decorazione-san-giovanni-mustair",
+  "kind": "contrasto",
+  "description": "Accostate di solito a quelle di Müstair, le pitture di Malles hanno in realtà un linguaggio diverso, più vicino alla miniatura classicheggiante di età carolingia."
+ },
+ {
+  "id": "sacrificio-noe-rielabora-tondo-doni",
+  "source_type": "work",
+  "source_id": "sacrificio-di-noe",
+  "target_type": "work",
+  "target_id": "tondo-doni",
+  "kind": "rielaborazione",
+  "description": "Negli ignudi seduti agli angoli del Sacrificio di Noè Michelangelo torna alle pose libere e dinamiche dei giovani nudi dipinti sullo sfondo del Tondo Doni."
+ },
+ {
+  "id": "marsuppini-rielabora-monumento-bruni",
+  "source_type": "work",
+  "source_id": "monumento-funebre-carlo-marsuppini",
+  "target_type": "work",
+  "target_id": "monumento-funebre-leonardo-bruni",
+  "kind": "rielaborazione",
+  "description": "Collocato di fronte al sepolcro di Bruni in Santa Croce, il monumento Marsuppini ne riprende lo schema ad arcosolio, ma lo rende più elegante e ricco di ornati, come le zampe leonine, i festoni e i putti reggiscudo."
+ },
+ {
+  "id": "bernardo-rossellino-influenza-desiderio-da-settignano",
+  "source_type": "artist",
+  "source_id": "bernardo-rossellino",
+  "target_type": "artist",
+  "target_id": "desiderio-da-settignano",
+  "kind": "influenza",
+  "description": "Il tipo di sepolcro umanistico messo a punto da Bernardo Rossellino per Leonardo Bruni diventa il punto di partenza di Desiderio da Settignano nella tomba di Carlo Marsuppini."
+ },
+ {
+  "id": "donatello-influenza-desiderio-da-settignano",
+  "source_type": "artist",
+  "source_id": "donatello",
+  "target_type": "artist",
+  "target_id": "desiderio-da-settignano",
+  "kind": "influenza",
+  "description": "Desiderio da Settignano si forma nell'orbita di Donatello e ne condivide l'attenzione per il vero, ma approda a una scultura dolce e aggraziata, lontana dal pathos drammatico dell'ultimo Donatello."
+ },
+ {
+  "id": "bacio-giuda-duccio-rielabora-bacio-giuda-scrovegni",
+  "source_type": "work",
+  "source_id": "bacio-giuda-duccio",
+  "target_type": "work",
+  "target_id": "bacio-di-giuda-scrovegni",
+  "kind": "rielaborazione",
+  "description": "Duccio riprende da Giotto la folla armata stretta attorno a Cristo, con aste e fiaccole levate, ma apre la scena su un paesaggio roccioso e la divide in due gruppi, con un ritmo più misurato."
+ },
+ {
+  "id": "studiolo-montefeltro-influenza-uomo-darme-bramante",
+  "source_type": "work",
+  "source_id": "studiolo-federico-da-montefeltro",
+  "target_type": "work",
+  "target_id": "uomo-darme-bramante",
+  "kind": "influenza",
+  "description": "Gli Uomini illustri dello studiolo di Urbino, dipinti da Berruguete e Giusto di Gand, offrono a Bramante sia il tema sia il realismo fiammingo dei volti che ritroviamo nell'Uomo d'arme."
+ },
+ {
+  "id": "gaspare-visconti-committenza-bramante",
+  "source_type": "artist",
+  "source_id": "gaspare-visconti",
+  "target_type": "artist",
+  "target_id": "donato-bramante",
+  "kind": "committenza",
+  "description": "Il poeta Gaspare Visconti commissiona a Bramante il ciclo degli Uomini illustri per la propria dimora milanese, intorno al 1486."
+ },
+ {
+  "id": "ubertino-da-carrara-committenza-guariento",
+  "source_type": "artist",
+  "source_id": "ubertino-da-carrara",
+  "target_type": "artist",
+  "target_id": "guariento-di-arpo",
+  "kind": "committenza",
+  "description": "Ubertino da Carrara affida a Guariento di Arpo, intorno al 1354, la decorazione della cappella della reggia carrarese di Padova, oggi distrutta."
+ },
+ {
+  "id": "scrovegni-influenza-guariento",
+  "source_type": "work",
+  "source_id": "affreschi-cappella-scrovegni",
+  "target_type": "artist",
+  "target_id": "guariento-di-arpo",
+  "kind": "influenza",
+  "description": "Guariento si forma sugli affreschi di Giotto nella cappella degli Scrovegni, da cui ricava la costruzione per piani prospettici e la cura dei dettagli, pur senza abbandonare l'eredità veneto-bizantina."
+ },
+ {
+  "id": "michelino-influenza-leonardo-da-besozzo",
+  "source_type": "artist",
+  "source_id": "michelino-da-besozzo",
+  "target_type": "artist",
+  "target_id": "leonardo-da-besozzo",
+  "kind": "influenza",
+  "description": "Dal padre Michelino il figlio Leonardo eredita il gusto lombardo per la narrazione minuta, da miniatore, e per le figure raffinate e sognanti, che trapianta nella Napoli del Quattrocento."
+ },
+ {
+  "id": "allegoria-cattivo-governo-contrasto-buon-governo",
+  "source_type": "work",
+  "source_id": "allegoria-cattivo-governo",
+  "target_type": "work",
+  "target_id": "allegoria-buon-governo-ambrogio",
+  "kind": "contrasto",
+  "description": "Le due allegorie della Sala dei Nove si fronteggiano con schemi speculari: al vecchio saggio circondato dalle Virtù risponde la Tirannide attorniata dai Vizi, con la Giustizia incatenata ai suoi piedi."
  }
 ]

@@ -459,15 +459,6 @@
   "category": "scultorea"
  },
  {
-  "id": "scultura-marmorea",
-  "name": "Scultura in marmo",
-  "definition": "Lavorazione del marmo per sottrazione di materia (scultura 'in levare'), utilizzando scalpelli, subbie e gradine. Richiede pianificazione precisa poiché gli errori sono irreversibili.",
-  "introduced_by": "antichità classica greca e romana",
-  "first_period_id": "rinascimento-maturo",
-  "evolution": "Michelangelo porta la scultura marmorea al suo apice rinascimentale con il David, i Prigioni e la Pietà Rondanini. Il non finito michelangiolesco diventa scelta espressiva consapevole.",
-  "category": "scultorea"
- },
- {
   "id": "sfumato",
   "name": "Sfumato",
   "definition": "Tecnica pittorica elaborata da Leonardo da Vinci che consiste nel rendere evanescenti i contorni delle figure e nel graduare le transizioni tonali, ottenendo morbidezza atmosferica, trasparenza e calda luminosità senza confini netti tra le forme.",
