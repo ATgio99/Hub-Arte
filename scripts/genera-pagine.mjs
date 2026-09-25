@@ -126,6 +126,11 @@ function taglia(testo, max = 158) {
   return corto.slice(0, Math.max(corto.lastIndexOf(" "), max - 20)).replace(/[,;:.\s]+$/, "") + "…";
 }
 
+// «Abside: spazio semicircolare…», non «Abside: Spazio…».
+const minuscola = (t) => t ? t[0].toLocaleLowerCase("it") + t.slice(1) : t;
+// A mano: in italiano toLocaleString non separa i numeri di quattro cifre (1107).
+const numero = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
 const anni = (a, b) => {
   const f = (x) => (x == null ? "" : x < 0 ? `${-x} a.C.` : String(x));
   if (a == null && b == null) return "";
@@ -206,6 +211,7 @@ async function main() {
   const { indiceMenzioni, spezzaMenzioni, senzaMenzioni, cittaAttuale } = await caricaMenzioni();
   const indice = indiceMenzioni(ds);
 
+  const meta = JSON.parse(await readFile(join(DATI, "meta.json"), "utf8").catch(() => "{}"));
   const indexHtml = await readFile(join(DIST, "index.html"), "utf8");
   MODELLO = modelloAssoluto(indexHtml);
 
@@ -282,7 +288,12 @@ async function main() {
   };
 
   const pagine = []; // { percorso, html }
-  const aggiungi = (percorso, opzioni) => pagine.push({ percorso, html: pagina({ percorso, ...opzioni }) });
+  const aggiungi = (percorso, opzioni) => pagine.push({ percorso, aggiornata: opzioni.aggiornata, html: pagina({ percorso, ...opzioni }) });
+  // La data vera dell'ultima modifica: updated_at dal database, altrimenti
+  // quella dell'ultimo export dei JSON. Google ignora le date che cambiano a
+  // ogni build, quindi non si usa la data di oggi.
+  const dataExport = (meta.esportato_il ?? "").slice(0, 10) || null;
+  const quando = (...righe) => righe.map((r) => (r?.updated_at ?? "").slice(0, 10)).filter(Boolean).sort().pop() || dataExport;
 
   // --- Opere ---------------------------------------------------------------
   for (const w of ds.works) {
@@ -342,7 +353,7 @@ async function main() {
       ...(periodo ? [{ name: periodo.name, item: `${SITO}${url.periodo(periodo.id)}` }] : []),
       { name: w.title, item: `${SITO}${url.opera(w.id)}` },
     ])];
-    aggiungi(url.opera(w.id), { titolo, descrizione: descr, rotta: `/opera/${w.id}`, corpo, jsonld, immagine: w.image_url });
+    aggiungi(url.opera(w.id), { aggiornata: quando(w), titolo, descrizione: descr, rotta: `/opera/${w.id}`, corpo, jsonld, immagine: w.image_url });
   }
 
   // --- Autori e committenti -------------------------------------------------
@@ -381,7 +392,7 @@ async function main() {
     };
     const img = fatte.find((w) => w.image_url)?.image_url ?? volute.find((w) => w.image_url)?.image_url;
     aggiungi(url.persona(a.id), {
-      titolo, descrizione: descr, rotta: `/artista/${a.id}`, corpo, immagine: img, tipoOg: "profile",
+      aggiornata: quando(a), titolo, descrizione: descr, rotta: `/artista/${a.id}`, corpo, immagine: img, tipoOg: "profile",
       jsonld: [persona, jsonBriciole([{ name: "Protagonisti", item: `${SITO}/artisti/` }, { name: a.name, item: `${SITO}${url.persona(a.id)}` }])],
     });
   }
@@ -410,7 +421,7 @@ async function main() {
       legami("period", p.id),
     ].join("\n");
     aggiungi(url.periodo(p.id), {
-      titolo, descrizione: descr, rotta: `/periodo/${p.id}`, corpo, immagine: opereP.find((w) => w.image_url)?.image_url,
+      aggiornata: quando(p), titolo, descrizione: descr, rotta: `/periodo/${p.id}`, corpo, immagine: opereP.find((w) => w.image_url)?.image_url,
       jsonld: [jsonBriciole([{ name: "Linea del tempo", item: `${SITO}/timeline/` }, { name: p.name, item: `${SITO}${url.periodo(p.id)}` }])],
     });
   }
@@ -420,7 +431,10 @@ async function main() {
     const storici = Object.entries({ Costantinopoli: "Istanbul", Bisanzio: "Istanbul" }).filter(([, o]) => o === c.nome).map(([s]) => s);
     const nomeCompleto = storici.length ? `${c.nome} (${storici.join(", ")})` : c.nome;
     const titolo = `Arte a ${c.nome}: opere e artisti | ${NOME}`;
-    const descr = taglia(`Le opere d'arte a ${nomeCompleto} nel catalogo di ${NOME}: ${c.opere.slice(0, 5).map((w) => w.title).join(", ")}${c.opere.length > 5 ? " e altre" : ""}.`);
+    // Nella descrizione le opere con la scheda piu' completa: autore, analisi, immagine.
+    const peso = (w) => (w.analysis ? 0 : 2) + ((w.artist_ids ?? []).length ? 0 : 1) + (w.image_url ? 0 : 1);
+    const insegne = [...c.opere].sort((a, b) => peso(a) - peso(b)).slice(0, 4).map((w) => w.title);
+    const descr = taglia(`${c.opere.length === 1 ? "Un'opera" : `${c.opere.length} opere`} d'arte a ${nomeCompleto}: ${insegne.join(", ")}${c.opere.length > 4 ? " e altre" : ""}. Autori, date e luoghi nel catalogo di ${NOME}.`);
     const perLuogo = new Map();
     for (const w of c.opere) { const k = w.location_place || "Altri luoghi"; if (!perLuogo.has(k)) perLuogo.set(k, []); perLuogo.get(k).push(w); }
     const corpo = [
@@ -432,7 +446,7 @@ async function main() {
       c.persone.length ? `<h2>Committenti e istituzioni</h2>${elenco(c.persone.map((a) => link.persona(a.id)))}` : "",
     ].join("\n");
     aggiungi(url.citta(c.nome), {
-      titolo, descrizione: descr, rotta: `/luogo/${encodeURIComponent(c.nome)}`, corpo, immagine: c.opere.find((w) => w.image_url)?.image_url,
+      aggiornata: quando(...c.opere), titolo, descrizione: descr, rotta: `/luogo/${encodeURIComponent(c.nome)}`, corpo, immagine: c.opere.find((w) => w.image_url)?.image_url,
       jsonld: [{ "@context": "https://schema.org", "@type": "Place", name: c.nome, alternateName: storici.length ? storici : undefined, url: `${SITO}${url.citta(c.nome)}` },
         jsonBriciole([{ name: "Mappa", item: `${SITO}/mappa/` }, { name: c.nome, item: `${SITO}${url.citta(c.nome)}` }])],
     });
@@ -442,7 +456,7 @@ async function main() {
   for (const t of ds.terms) {
     const conTermine = ds.works.filter((w) => (w.term_ids ?? []).includes(t.id));
     const titolo = `${t.term}: significato in storia dell'arte | ${NOME}`;
-    const descr = taglia(`${t.term}: ${piatto(t.definition)}`);
+    const descr = taglia(`${t.term}: ${minuscola(piatto(t.definition))}`);
     const corpo = [
       briciole(`<a href="/glossario/">Glossario</a>`),
       `<h1>${esc(t.term)}</h1>`,
@@ -453,7 +467,7 @@ async function main() {
       legami("term", t.id),
     ].join("\n");
     aggiungi(url.termine(t.id), {
-      titolo, descrizione: descr, rotta: `/glossario?t=${encodeURIComponent(t.id)}`, corpo,
+      aggiornata: quando(t), titolo, descrizione: descr, rotta: `/glossario?t=${encodeURIComponent(t.id)}`, corpo,
       jsonld: [{
         "@context": "https://schema.org", "@type": "DefinedTerm", name: t.term, description: piatto(t.definition),
         url: `${SITO}${url.termine(t.id)}`, inDefinedTermSet: { "@type": "DefinedTermSet", name: `Glossario di ${NOME}`, url: `${SITO}/glossario/` },
@@ -465,7 +479,7 @@ async function main() {
   for (const t of ds.techniques) {
     const conTecnica = ds.works.filter((w) => (w.technique_ids ?? []).includes(t.id));
     const titolo = `${t.name}: la tecnica artistica | ${NOME}`;
-    const descr = taglia(`${t.name}: ${piatto(t.definition)}`);
+    const descr = taglia(`${t.name}: ${minuscola(piatto(t.definition))}`);
     const corpo = [
       briciole(`<a href="/tecniche/">Tecniche</a>`),
       `<h1>${esc(t.name)}</h1>`,
@@ -478,7 +492,7 @@ async function main() {
       legami("technique", t.id),
     ].join("\n");
     aggiungi(url.tecnica(t.id), {
-      titolo, descrizione: descr, rotta: `/tecniche?t=${encodeURIComponent(t.id)}`, corpo, immagine: conTecnica.find((w) => w.image_url)?.image_url,
+      aggiornata: quando(t), titolo, descrizione: descr, rotta: `/tecniche?t=${encodeURIComponent(t.id)}`, corpo, immagine: conTecnica.find((w) => w.image_url)?.image_url,
       jsonld: [{ "@context": "https://schema.org", "@type": "DefinedTerm", name: t.name, description: piatto(t.definition), url: `${SITO}${url.tecnica(t.id)}` },
         jsonBriciole([{ name: "Tecniche", item: `${SITO}/tecniche/` }, { name: t.name, item: `${SITO}${url.tecnica(t.id)}` }])],
     });
@@ -495,7 +509,7 @@ async function main() {
   });
 
   sezione("/opere/", "Catalogo delle opere d'arte", "Opere",
-    `Il catalogo di ${NOME}: ${ds.works.length} opere dalla Tarda Antichità al Barocco, con autore, committente, datazione, luogo, analisi e innovazioni.`,
+    `Il catalogo di ${NOME}: ${numero(ds.works.length)} opere dalla Tarda Antichità al Barocco, con autore, committente, datazione, luogo, analisi e innovazioni.`,
     "/opere",
     periodiOrdinati.filter((p) => perPeriodo.has(p.id)).map((p) => `<h2>${link.periodo(p.id)}</h2>${elenco(perPeriodo.get(p.id).map((w) => link.opera(w.id)))}`).join("\n"));
 
@@ -538,7 +552,7 @@ async function main() {
     "/test", "");
 
   // --- Home -----------------------------------------------------------------
-  const descrHome = `${NOME} (già HUB Arte) è un atlante gratuito e open source per studiare storia dell'arte: ${ds.works.length} opere, ${ds.artists.length} artisti e committenti, periodi, glossario, mappa, grafo delle connessioni e quiz.`;
+  const descrHome = `${NOME} (già HUB Arte) è un atlante gratuito e open source per studiare storia dell'arte: ${numero(ds.works.length)} opere, ${numero(ds.artists.length)} artisti e committenti, periodi, glossario, mappa, grafo delle connessioni e quiz.`;
   const home = {
     titolo: `${NOME} — ${SOTTOTITOLO} (già HUB Arte)`,
     descrizione: taglia(descrHome, 170),
@@ -548,7 +562,7 @@ async function main() {
       `<p><b>${SOTTOTITOLO}.</b> Prima si chiamava HUB Arte: stesso atlante, nome e indirizzo nuovi.</p>`,
       `<p>${esc(descrHome)} Pensato per studenti e docenti, senza pubblicità.</p>`,
       elenco([
-        `<a href="/opere/">Opere</a> — ${ds.works.length} schede con analisi e innovazioni`,
+        `<a href="/opere/">Opere</a> — ${numero(ds.works.length)} schede con analisi e innovazioni`,
         `<a href="/artisti/">Protagonisti</a> — autori e committenti`,
         `<a href="/timeline/">Linea del tempo</a> — epoche, correnti e scuole`,
         `<a href="/mappa/">Mappa</a> — le città dell'arte`,
@@ -596,11 +610,10 @@ async function main() {
   await writeFile(join(DIST, "index.html"), htmlHome, "utf8");
   await writeFile(join(DIST, "404.html"), html404, "utf8");
 
-  const oggi = new Date().toISOString().slice(0, 10);
-  const urls = ["/", ...pagine.map((p) => p.percorso)];
+  const voci = [{ percorso: "/" }, ...pagine];
   await writeFile(join(DIST, "sitemap.xml"),
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-    urls.map((u) => `  <url><loc>${esc(SITO + encodeURI(u))}</loc><lastmod>${oggi}</lastmod></url>`).join("\n") +
+    voci.map((v) => `  <url><loc>${esc(SITO + encodeURI(v.percorso))}</loc>${v.aggiornata ? `<lastmod>${v.aggiornata}</lastmod>` : ""}</url>`).join("\n") +
     `\n</urlset>\n`, "utf8");
   await writeFile(join(DIST, "robots.txt"),
     `User-agent: *\nAllow: /\n\nSitemap: ${SITO}/sitemap.xml\n`, "utf8");
