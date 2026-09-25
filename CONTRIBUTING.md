@@ -1,4 +1,4 @@
-# Contribuire a BaseArte — Atlante Neuronale
+# Contribuire a BaseArte — Atlante di storia dell'arte
 
 Grazie per il tuo interesse nel contribuire al progetto! 🎨
 

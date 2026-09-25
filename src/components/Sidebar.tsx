@@ -218,7 +218,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
             <circle cx="12.7" cy="35.3" r="1.7" fill="var(--gold)" opacity=".7" />
           </svg>
           <span className="sbx-brand-txt">
-            <b>BaseArte</b><i>Atlante Neuronale</i>
+            <b>BaseArte</b><i>Storia dell'arte</i>
           </span>
         </Link>
         {/* Su telefono questo comando chiude il pannello, e allora porta una

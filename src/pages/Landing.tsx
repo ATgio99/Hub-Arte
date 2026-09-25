@@ -205,7 +205,7 @@ export default function Landing() {
             fontSize: "clamp(16px, 3vw, 20px)", color: "var(--ink-soft)",
             maxWidth: "52ch", margin: "0 auto 12px", lineHeight: 1.55,
           }}>
-            Atlante Neuronale di Storia dell'Arte — uno strumento di studio
+            Atlante di storia dell'arte — uno strumento di studio
             interattivo per esplorare opere, artisti e connessioni.
           </p>
           <p style={{

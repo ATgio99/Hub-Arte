@@ -29,7 +29,7 @@ if [ ! -d "node_modules" ]; then
   echo ""
 fi
 
-echo "🏛️  Avvio BaseArte — Atlante Neuronale"
+echo "🏛️  Avvio BaseArte — Atlante di storia dell'arte"
 echo "   Sito:       http://localhost:5173"
 echo "   Gestione:   http://localhost:5173/admin.html"
 echo "   Login:      http://localhost:5173/#/login"

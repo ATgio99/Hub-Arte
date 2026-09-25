@@ -104,7 +104,7 @@ Campi da compilare:
 | **Name** | Il tuo nome completo |
 | **E-mail associated with the Netlify account** | L'email usata per registrarti su Netlify |
 | **License of your project** | `MIT` |
-| **Project name** | `BaseArte — Atlante Neuronale` |
+| **Project name** | `BaseArte — Atlante di storia dell'arte` |
 | **Project URL** | L'URL del sito già deployato (es. `https://warm-cassata-b06e4d.netlify.app`) |
 | **Repository URL** | `https://github.com/<tuo-username>/hubart` |
 | **Project description** | Vedi testo pronto qui sotto ↓ |
@@ -114,7 +114,7 @@ Campi da compilare:
 Copia/incolla questo testo nel form:
 
 ```
-BaseArte — Atlante Neuronale è un atlante digitale open source di Storia dell'Arte
+BaseArte — Atlante di storia dell'arte è un atlante digitale open source di Storia dell'Arte
 pensato per studenti, docenti e appassionati. Combina in un'unica interfaccia:
 catalogo di 974 opere e 259 artisti, grafo neuronale 3D delle connessioni,
 timeline multilivello, mappa geografica, glossario di 672 termini, indice di

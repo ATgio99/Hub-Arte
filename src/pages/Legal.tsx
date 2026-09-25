@@ -367,7 +367,7 @@ export default function Legal() {
         <PaginaModificabile id="privacy" valori={segnapostoCatalogo(c)} titolo={<H1>Privacy Policy</H1>}>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
-          BaseArte — Atlante Neuronale ("il Servizio") è un atlante di studio di Storia dell'Arte
+          BaseArte ("il Servizio") è un atlante di studio di storia dell'arte
           che raccoglie opere, artisti, periodi, tecniche, luoghi e connessioni. Il Servizio è
           accessibile alla URL <code>https://hubarte.it</code>.
         </P>
@@ -430,7 +430,7 @@ export default function Legal() {
         <PaginaModificabile id="cookie" valori={segnapostoCatalogo(c)} titolo={<H1>Cookie Policy</H1>}>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
-          Questa Cookie Policy spiega quali cookie vengono utilizzati da BaseArte — Atlante Neuronale
+          Questa Cookie Policy spiega quali cookie vengono utilizzati da BaseArte — Atlante di storia dell'arte
           e come puoi gestirli. I cookie sono piccoli file di testo che il sito salva nel tuo browser
           per garantire il corretto funzionamento delle funzionalità.
         </P>
@@ -483,7 +483,7 @@ export default function Legal() {
 
         <H2>1. Oggetto</H2>
         <P>
-          I presenti Termini regolano l'utilizzo di BaseArte — Atlante Neuronale ("il Servizio"),
+          I presenti Termini regolano l'utilizzo di BaseArte — Atlante di storia dell'arte ("il Servizio"),
           un atlante di studio di Storia dell'Arte. Accedendo al Servizio accetti integralmente
           i presenti Termini.
         </P>
