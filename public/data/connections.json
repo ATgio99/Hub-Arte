@@ -24,7 +24,7 @@
   "target_type": "period",
   "target_id": "eta-longobarda",
   "kind": "evoluzione",
-  "description": "L'altare di Ratchis (734-744) rappresenta l'apice della scultura longobarda in pietra: i rilievi su pietra d'Istria mostrano un linguaggio che fonde tradizione classica, influenze orientali e stilizzazione germanica."
+  "description": "Con le sagome piatte, le pieghe grafiche e l'horror vacui, l'altare mostra il volto più autonomo della scultura longobarda in pietra, lontano dal recupero dell'antico voluto da Liutprando."
  },
  {
   "id": "altare-vuolvinio-influenza-oreficeria",
@@ -468,15 +468,6 @@
   "description": "Bramante introduce Raffaello alla cultura architettonica romana e lo raccomanda a Giulio II; Raffaello riprende i principi bramanteschi di monumentalità e pianta centrale nel progetto per San Pietro."
  },
  {
-  "id": "bramante-michelangelo-san-pietro",
-  "source_type": "work",
-  "source_id": "progetto-bramantesco-san-pietro",
-  "target_type": "work",
-  "target_id": "cupola-san-pietro",
-  "kind": "rielaborazione",
-  "description": "Michelangelo riprende esplicitamente il progetto bramantesco a pianta centrale per San Pietro, dichiarando di volersi rifare all'idea originale di Bramante pur rovesciando il rapporto pieni-vuoti."
- },
- {
   "id": "bramante-tempietto-san-pietro",
   "source_type": "work",
   "source_id": "tempietto-san-pietro-in-montorio",
@@ -519,7 +510,7 @@
   "target_type": "work",
   "target_id": "tentazione-adamo-eva-masolino",
   "kind": "contrasto",
-  "description": "La Cacciata di Masaccio e la Tentazione di Masolino, poste l'una di fronte all'altra sui pilastri della cappella Brancacci, esemplificano il contrasto tra i due stili: tragico realismo vs raffinata eleganza gotica."
+  "description": "Dipinte l'una di fronte all'altra sui pilastri d'ingresso della cappella Brancacci, le due scene mettono a confronto il realismo drammatico di Masaccio e l'eleganza ancora gotica, serena e senza peso, di Masolino."
  },
  {
   "id": "campin-weyden-maestro-allievo",
@@ -573,7 +564,7 @@
   "target_type": "work",
   "target_id": "sacrestia-vecchia-san-lorenzo",
   "kind": "rielaborazione",
-  "description": "La cappella Pazzi e una variazione sul tema della Sacrestia Vecchia di San Lorenzo: stessa struttura di base con pianta centrale, ma con pianta principale rettangolare anziche quadrata."
+  "description": "La cappella Pazzi riprende molti elementi della Sacrestia Vecchia, ma trasforma il vano principale da quadrato in rettangolare e lo copre con una cupola affiancata da due volte a botte."
  },
  {
   "id": "capua-classicita-gotico",
@@ -582,7 +573,7 @@
   "target_type": "period",
   "target_id": "arte-federiciana",
   "kind": "rielaborazione",
-  "description": "La porta di Capua fonde l'ispirazione a modelli classici nelle decorazioni con soluzioni strutturali e planimetriche derivate dai grandi cantieri del Gotico europeo."
+  "description": "La porta è un caso esemplare dell'arte voluta da Federico II: decorazione scultorea ispirata all'antico, montata su una struttura che conosce le soluzioni dei cantieri gotici europei."
  },
  {
   "id": "carolingio-influenza-ottoniano",
@@ -639,15 +630,6 @@
   "description": "La cattedrale pisana riprende l'impianto basilicale paleocristiano (cinque navate, transetto) aggiornandolo con il linguaggio bicromato del Romanico pisano e con influenze islamiche negli archi intrecciati e nella decorazione geometrica."
  },
  {
-  "id": "cavaliere-bamberga-reims",
-  "source_type": "work",
-  "source_id": "cavaliere-di-bamberga",
-  "target_type": "work",
-  "target_id": "portale-della-vergine-reims",
-  "kind": "influenza",
-  "description": "La formazione del maestro di Bamberga avvenne probabilmente a Reims, dove il Cavaliere è messo in relazione con lo stile ivi sviluppato."
- },
- {
   "id": "cavallini-arnolfo-santa-cecilia",
   "source_type": "artist",
   "source_id": "pietro-cavallini",
@@ -690,7 +672,7 @@
   "target_type": "period",
   "target_id": "gotico",
   "kind": "rielaborazione",
-  "description": "Il ciborio di San Paolo fuori le Mura di Arnolfo di Cambio mostra nel suo apparato decorativo un evidente debito nei confronti del Gotico rayonnant, pur integrando angeli e marmi antichi rilavorati."
+  "description": "Archi trilobati, pinnacoli e cuspide vengono dal repertorio del Gotico rayonnant francese, che Arnolfo combina con angeli e marmi antichi di reimpiego di gusto antiquario."
  },
  {
   "id": "cimabue-giotto-crocifisso-santa-croce",
@@ -771,7 +753,7 @@
   "target_type": "work",
   "target_id": "ultima-cena-tintoretto-san-giorgio",
   "kind": "contrasto",
-  "description": "Il Convito in casa di Levi di Veronese e l'Ultima cena di Tintoretto trattano lo stesso soggetto in modo antitetico: scenografia reale vs. spazio irreale, illuminazione naturale vs. violenti contrasti luministici, ambientazione signorile vs. contesto popolare."
+  "description": "Partendo da mezzi simili, prospettiva obliqua e architetture disposte a quinte, Veronese costruisce un banchetto luminoso, signorile e composto, Tintoretto una cena notturna e popolare immersa in uno spazio senza confini."
  },
  {
   "id": "corona-ferrea-simbolo-regalita-longobarda",
@@ -1139,7 +1121,7 @@
   "source_type": "artist",
   "source_id": "bernardo-di-chiaravalle",
   "target_type": "work",
-  "target_id": "abbazia-fontenay-borgogna",
+  "target_id": "chiesa-abbaziale-fontenay",
   "kind": "influenza",
   "description": "L'abbazia di Fontenay è il manifesto architettonico dell'ideale cistercense di Bernardo: sobrietà assoluta, assenza di decorazione figurata, luce come unico ornamento."
  },
@@ -1151,15 +1133,6 @@
   "target_id": "cappella-portinari-interno",
   "kind": "autore",
   "description": "Foppa dipinge tutta la decorazione della cappella costruita da Guiniforte Solari: i Miracoli di san Pietro Martire nelle lunette e il Paradiso nella cupola."
- },
- {
-  "id": "fossanova-fontenay",
-  "source_type": "work",
-  "source_id": "chiesa-abbaziale-fossanova",
-  "target_type": "period",
-  "target_id": "gotico-cistercense",
-  "kind": "rielaborazione",
-  "description": "L'abbazia di Fossanova riprende la pianta e l'alzato della chiesa-modello cistercense di Fontenay, modificandola con volte a crociera ogivale invece che a botte."
  },
  {
   "id": "fouquet-barthelemy-influenza",
@@ -1441,15 +1414,6 @@
   "description": "Giustiniano promuove la decorazione musiva di San Vitale a Ravenna con i pannelli che lo ritraggono con la propria corte, affermando la continuità dell'autorità imperiale sull'Italia riconquistata."
  },
  {
-  "id": "giustiniano-committenza-santa-sofia",
-  "source_type": "period",
-  "source_id": "eta-giustinianea",
-  "target_type": "work",
-  "target_id": "basilica-santa-sofia-costantinopoli",
-  "kind": "committenza",
-  "description": "Giustiniano commissiona la costruzione di Santa Sofia (532-537) agli architetti Antemio di Tralles e Isidoro di Mileto, realizzando la più grande chiesa della cristianità medievale."
- },
- {
   "id": "gotico-cortese-ars-nova",
   "source_type": "period",
   "source_id": "gotico-cortese",
@@ -1457,15 +1421,6 @@
   "target_id": "quattrocento-fiammingo",
   "kind": "evoluzione",
   "description": "L'ars nova fiamminga nasce dal terreno culturale del Gotico cortese, di cui riprende il linearismo, il cromatismo vivace e l'approccio lenticolare al dettaglio, traghettandoli in una pittura volumetricamente più salda."
- },
- {
-  "id": "investitura-san-martino-da-giotto-rinuncia",
-  "source_type": "work",
-  "source_id": "investitura-san-martino-simone",
-  "target_type": "artist",
-  "target_id": "giotto-di-bondone",
-  "kind": "rielaborazione",
-  "description": "La posizione del santo nell'Investitura di san Martino ricorda quella della Rinuncia ai beni di Giotto; la scatola prospettica è ispirata ai modelli giottesch."
  },
  {
   "id": "jacopo-michelangelo-influenza",
@@ -2176,7 +2131,7 @@
   "target_type": "period",
   "target_id": "gotico",
   "kind": "evoluzione",
-  "description": "Il Pilier des Anges di Strasburgo mostra la sintesi tra naturalismo francese e linearizzazione allungata tedesca, con una qualità attitudinale e realistica evidente nei volti e nelle ciocche dei capelli."
+  "description": "Nel Pilier des Anges il naturalismo della scultura gotica francese, giunto in Alsazia con le maestranze d'Oltralpe, si combina con un gusto tedesco per le linee allungate e i panneggi ritmati."
  },
  {
   "id": "pinturicchio-borgia-appartamento",
@@ -2312,15 +2267,6 @@
   "target_id": "controriforma",
   "kind": "contrasto",
   "description": "La Riforma protestante e il Concilio di Trento (1545-1563) impongono alla pittura religiosa un linguaggio di chiarezza narrativa e decenza, in contrapposizione alle complessità intellettualistiche e sensualità manieriste."
- },
- {
-  "id": "riforma-pittorica-desiderio-roma",
-  "source_type": "artist",
-  "source_id": "desiderio-abate-montecassino",
-  "target_type": "work",
-  "target_id": "affreschi-basilica-inferiore-san-clemente",
-  "kind": "committenza",
-  "description": "L'abate Desiderio di Montecassino commissiona gli affreschi della basilica inferiore di San Clemente introducendo maestranze bizantine a Roma e avviando la riforma pittorica che porta la maniera greca nella pittura murale romana."
  },
  {
   "id": "romanico-pisano-islamico",
@@ -2464,7 +2410,7 @@
   "target_type": "artist",
   "target_id": "antonio-da-sangallo-il-giovane",
   "kind": "rielaborazione",
-  "description": "Michelangelo riprende e trasforma il progetto di facciata di Antonio da Sangallo il Giovane per Palazzo Farnese, ispirato al Teatro di Marcello, ridisegnando il finestrone centrale e il cornicione."
+  "description": "Michelangelo eredita da Sangallo una facciata orizzontale e sobria, ispirata a un teatro romano, e la rende più viva con tre interventi: il finestrone centrale, il secondo piano rialzato, il grande cornicione."
  },
  {
   "id": "sant-angelo-formis-bizantino",
@@ -2629,22 +2575,13 @@
   "description": "La monumentalità quasi classica del Pozzo dei Profeti di Sluter anticipa autonomamente soluzioni scultoree che il Rinascimento fiorentino svilupperà in chiave più programmatica."
  },
  {
-  "id": "smn-alberti-facciata",
-  "source_type": "work",
-  "source_id": "basilica-santa-maria-novella-firenze",
-  "target_type": "artist",
-  "target_id": "leon-battista-alberti",
-  "kind": "evoluzione",
-  "description": "La facciata di Santa Maria Novella, originariamente spoglia, viene completata da Leon Battista Alberti su commissione dei Rucellai con una decorazione in marmi policromi."
- },
- {
   "id": "smn-cistercense-romanico",
   "source_type": "work",
   "source_id": "basilica-santa-maria-novella-firenze",
   "target_type": "period",
   "target_id": "gotico-cistercense",
   "kind": "rielaborazione",
-  "description": "Santa Maria Novella unisce stilemi cistercensi (archi a sesto acuto, volte a crociera, assenza di decorazioni plastiche) con la tradizione romanica toscana (bicromia di conci bianchi e verdi, muri massicci)."
+  "description": "Dei cistercensi la chiesa domenicana riprende la pianta e il lessico gotico spoglio, ma lo piega alla tradizione fiorentina: navata ampia come un'aula, muri pieni e archi bicromi di gusto romanico."
  },
  {
   "id": "spedale-innocenti-modulo-brunelleschi",
@@ -2654,15 +2591,6 @@
   "target_id": "sacrestia-vecchia-san-lorenzo",
   "kind": "evoluzione",
   "description": "Lo Spedale degli Innocenti e la Sacrestia Vecchia di San Lorenzo sono le due prime applicazioni del principio del modulo geometrico quadrato di Brunelleschi, fondamentale per lo sviluppo dell'architettura rinascimentale."
- },
- {
-  "id": "spira-influenza-romanico-tedesco",
-  "source_type": "work",
-  "source_id": "cattedrale-spira-i",
-  "target_type": "work",
-  "target_id": "chiesa-santa-maria-laach",
-  "kind": "influenza",
-  "description": "La cattedrale di Spira, con la sua massa imponente e la doppia abside, influenza la struttura e lo spazio di Santa Maria Laach."
  },
  {
   "id": "strasburgo-chartres-saint-denis",
@@ -2690,15 +2618,6 @@
   "target_id": "arte-paleocristiana",
   "kind": "evoluzione",
   "description": "La tarda antichità genera l'arte paleocristiana: le strutture imperiali romane (basilica forense, mausoleo, aula absidata) vengono rielaborate per le esigenze della nuova religione cristiana."
- },
- {
-  "id": "teodorico-committenza-ravenna",
-  "source_type": "period",
-  "source_id": "regno-ostrogoto",
-  "target_type": "work",
-  "target_id": "mausoleo-di-teodorico",
-  "kind": "committenza",
-  "description": "Teodorico commissiona il proprio mausoleo a Ravenna (520-526), un edificio unico nel suo genere che fonde tradizione romana del mausoleo imperiale con tecniche costruttive nordiche."
  },
  {
   "id": "teodorico-committenza-sant-apollinare",
@@ -2743,7 +2662,7 @@
   "target_type": "period",
   "target_id": "tarda-antichita",
   "kind": "rielaborazione",
-  "description": "La Torhalle di Lorsch (760-790) riprende le forme dell'arco trionfale romano nell'archivolto a tre fornici, ma le rielabora con un sistema decorativo a rombi policromi tipicamente carolingio."
+  "description": "Il portico a tre fornici della Torhalle rilegge l'arco trionfale romano, mentre il paramento a formelle di pietra bianca e rossa si ispira agli schemi dell'opus sectile antico."
  },
  {
   "id": "torriti-giotto-assisi",
@@ -5027,16 +4946,6 @@
   "sort_order": 0
  },
  {
-  "id": "nuovo-mt1m6yut",
-  "source_type": "work",
-  "source_id": "madonna-delle-arpie-andrea-del-sarto",
-  "target_type": "work",
-  "target_id": "pala-pucci-pontormo",
-  "kind": "contaminazione",
-  "description": "Madonna della Arpie funge da modello di riferimento al quale Pontromo guarda per la Pala Pucci",
-  "sort_order": 0
- },
- {
   "id": "giorgio-vasari-vincenzo-borghini-collaborazione",
   "source_type": "artist",
   "source_id": "giorgio-vasari",
@@ -5227,19 +5136,9 @@
   "sort_order": 0
  },
  {
-  "id": "convito-in-casa-di-levi-ultima-cena-tintoretto-evoluzione",
-  "source_type": "work",
-  "source_id": "convito-casa-levi-veronese",
-  "target_type": "work",
-  "target_id": "ultima-cena-tintoretto-san-giorgio",
-  "kind": "evoluzione",
-  "description": "Il Convito in casa di Levi e l\\'Ultima cena di Tintoretto sono presentati a confronto come due interpretazioni dello stesso soggetto, con soluzioni compositive comuni ma risultati differenti.",
-  "sort_order": 0
- },
- {
   "id": "conn-toledo-herrera",
   "source_type": "artist",
-  "source_id": "toledo",
+  "source_id": "juan-bautista-de-toledo",
   "target_type": "artist",
   "target_id": "herrera",
   "kind": "maestro-allievo",
@@ -6502,5 +6401,680 @@
   "target_id": "assunta-tiziano",
   "kind": "rielaborazione",
   "description": "Per il carnefice al centro del Miracolo dello schiavo Tintoretto parte dal grande apostolo in primo piano nell'Assunta di Tiziano."
+ },
+ {
+  "id": "cimabue-influenza-maesta-duccio",
+  "source_type": "artist",
+  "source_id": "cimabue",
+  "target_type": "work",
+  "target_id": "maesta-duccio",
+  "kind": "influenza",
+  "description": "Per la Vergine in trono del recto Duccio si rifà con ogni probabilità a una Maestà dipinta da Cimabue a Pisa verso il 1302, oggi perduta."
+ },
+ {
+  "id": "giovanni-pisano-influenza-maesta-duccio",
+  "source_type": "artist",
+  "source_id": "giovanni-pisano",
+  "target_type": "work",
+  "target_id": "maesta-duccio",
+  "kind": "influenza",
+  "description": "Nelle Storie della Passione sul verso della Maestà, i personaggi dai volti più cupi rivelano che Duccio guarda all'espressività elegante e tesa delle sculture di Giovanni Pisano."
+ },
+ {
+  "id": "incontro-porta-aurea-evoluzione-storie-francesco-assisi",
+  "source_type": "work",
+  "source_id": "incontro-gioacchino-anna-porta-aurea",
+  "target_type": "work",
+  "target_id": "storie-di-san-francesco-assisi",
+  "kind": "evoluzione",
+  "description": "A Padova Giotto porta più avanti la ricerca avviata ad Assisi: le figure diventano ancora più solide e monumentali e si inseriscono con maggiore naturalezza negli spazi architettonici."
+ },
+ {
+  "id": "fossanova-rielabora-chiesa-fontenay",
+  "source_type": "work",
+  "source_id": "chiesa-abbaziale-fossanova",
+  "target_type": "work",
+  "target_id": "chiesa-abbaziale-fontenay",
+  "kind": "rielaborazione",
+  "description": "Fossanova ripete pianta e alzato della chiesa borgognona, modello dell'ordine cistercense, ma sostituisce la botte ogivale con crociere ogivali e apre finestre sopra le arcate, guadagnando altezza e luce."
+ },
+ {
+  "id": "san-lorenzo-fuori-mura-evoluzione-cosma-damiano",
+  "source_type": "work",
+  "source_id": "mosaico-cristo-in-maesta-san-lorenzo-fuori-mura",
+  "target_type": "work",
+  "target_id": "mosaico-cristo-tra-cosma-e-damiano",
+  "kind": "evoluzione",
+  "description": "Dopo la fase di transizione dei Santi Cosma e Damiano, dove il cielo è ancora naturale, a San Lorenzo fuori le Mura il mosaico romano aderisce pienamente ai modelli bizantini: fondo oro, figure geometriche e nessuna profondità."
+ },
+ {
+  "id": "tondo-doni-influenza-pieta-capponi",
+  "source_type": "work",
+  "source_id": "tondo-doni",
+  "target_type": "work",
+  "target_id": "pieta-cappella-capponi-pontormo",
+  "kind": "influenza",
+  "description": "I colori chiari e acerbi della Pietà di Pontormo, azzurri e rosa cangianti, derivano da quelli sperimentati da Michelangelo nel Tondo Doni."
+ },
+ {
+  "id": "volta-sistina-influenza-pieta-capponi",
+  "source_type": "work",
+  "source_id": "volta-cappella-sistina",
+  "target_type": "work",
+  "target_id": "pieta-cappella-capponi-pontormo",
+  "kind": "influenza",
+  "description": "Anche gli affreschi della volta della Sistina sono per Pontormo una fonte della tavolozza luminosa e irreale della pala Capponi."
+ },
+ {
+  "id": "giustiniano-i-committenza-santa-sofia",
+  "source_type": "artist",
+  "source_id": "giustiniano-i",
+  "target_type": "work",
+  "target_id": "basilica-santa-sofia-costantinopoli",
+  "kind": "committenza",
+  "description": "Giustiniano affida la ricostruzione di Santa Sofia a Isidoro di Mileto e Antemio di Tralle: la grande cupola luminosa esprime l'idea dell'imperatore come intermediario di Dio in terra."
+ },
+ {
+  "id": "romanico-pisano-influenza-duomo-amalfi",
+  "source_type": "period",
+  "source_id": "romanico-pisano",
+  "target_type": "work",
+  "target_id": "cattedrale-sant-andrea-amalfi",
+  "kind": "influenza",
+  "description": "La facciata a fasce di due colori del duomo di Amalfi, città legata a Pisa, segue l'esempio dell'architettura romanica pisana."
+ },
+ {
+  "id": "romanico-normanno-siciliano-influenza-duomo-amalfi",
+  "source_type": "period",
+  "source_id": "romanico-normanno-siciliano",
+  "target_type": "work",
+  "target_id": "cattedrale-sant-andrea-amalfi",
+  "kind": "influenza",
+  "description": "Gli archi acuti intrecciati della facciata amalfitana arrivano con ogni probabilità dall'architettura arabo-normanna della Sicilia."
+ },
+ {
+  "id": "cimabue-influenza-sancta-sanctorum",
+  "source_type": "artist",
+  "source_id": "cimabue",
+  "target_type": "work",
+  "target_id": "affreschi-cappella-sancta-sanctorum",
+  "kind": "influenza",
+  "description": "Il realismo del ritratto di Niccolò III e il trono in volume del Cristo fanno pensare agli studiosi che i pittori del Sancta Sanctorum conoscessero le novità di Cimabue, presente a Roma in quegli anni."
+ },
+ {
+  "id": "arnolfo-influenza-sancta-sanctorum",
+  "source_type": "artist",
+  "source_id": "arnolfo-di-cambio",
+  "target_type": "work",
+  "target_id": "affreschi-cappella-sancta-sanctorum",
+  "kind": "influenza",
+  "description": "La solidità plastica delle figure del Sancta Sanctorum è stata messa in relazione con la scultura di Arnolfo di Cambio, attivo a Roma negli stessi anni."
+ },
+ {
+  "id": "palazzo-farnese-rielabora-sacrestia-nuova",
+  "source_type": "work",
+  "source_id": "palazzo-farnese-facciata",
+  "target_type": "work",
+  "target_id": "sacrestia-nuova",
+  "kind": "rielaborazione",
+  "description": "Per il finestrone centrale di Palazzo Farnese Michelangelo riprende il rilievo negativo già usato nelle membrature della Sacrestia Nuova."
+ },
+ {
+  "id": "madonna-benois-evoluzione-madonna-garofano",
+  "source_type": "work",
+  "source_id": "madonna-benois",
+  "target_type": "work",
+  "target_id": "madonna-del-garofano",
+  "kind": "evoluzione",
+  "description": "Dopo il gesto ancora goffo del Bambino nella Madonna del garofano, nella Madonna Benois lo scambio fra madre e figlio intorno al fiore diventa il centro psicologico e spaziale della scena."
+ },
+ {
+  "id": "liberazione-andromeda-evoluzione-morte-procri",
+  "source_type": "work",
+  "source_id": "liberazione-di-andromeda",
+  "target_type": "work",
+  "target_id": "morte-di-procri",
+  "kind": "evoluzione",
+  "description": "Nella Liberazione di Andromeda Piero di Cosimo riprende il paesaggio nebbioso e pieno di dettagli naturali già sperimentato nella Morte di Procri, qui al servizio di una scena più fantastica."
+ },
+ {
+  "id": "giovanni-da-udine-collabora-loggia-psiche",
+  "source_type": "artist",
+  "source_id": "giovanni-da-udine",
+  "target_type": "work",
+  "target_id": "loggia-di-psiche-farnesina",
+  "kind": "collaborazione",
+  "description": "Allievo di Raffaello, Giovanni da Udine dipinge i festoni del finto pergolato, con più di centosessanta specie vegetali, fra cui alcune appena giunte dall'America."
+ },
+ {
+  "id": "giulio-romano-collabora-loggia-psiche",
+  "source_type": "artist",
+  "source_id": "giulio-romano",
+  "target_type": "work",
+  "target_id": "loggia-di-psiche-farnesina",
+  "kind": "collaborazione",
+  "description": "Con Raffaellino del Colle e Penni, Giulio Romano esegue quasi per intero le scene della Storia di Amore e Psiche su progetto di Raffaello, permettendo di finire la loggia in tempo per le nozze di Chigi."
+ },
+ {
+  "id": "cluny-iii-influenza-capitelli-vezelay",
+  "source_type": "work",
+  "source_id": "abbazia-cluny-iii",
+  "target_type": "work",
+  "target_id": "capitelli-sainte-marie-madeleine-vezelay",
+  "kind": "influenza",
+  "description": "I capitelli di Vézelay mostrano chiaramente l'impronta degli scultori di Cluny: forme classiche, figure in movimento per raccontare, gusto per l'allegoria."
+ },
+ {
+  "id": "investitura-san-martino-rielabora-rinuncia-beni",
+  "source_type": "work",
+  "source_id": "investitura-san-martino-simone",
+  "target_type": "work",
+  "target_id": "san-francesco-rinuncia-beni",
+  "kind": "rielaborazione",
+  "description": "Nella cappella di San Martino Simone Martini riprende da Giotto la posa del protagonista e la divisione quasi simmetrica delle figure, ma le traduce in un clima cortese e raffinato."
+ },
+ {
+  "id": "pulpito-pisa-evoluzione-pulpito-pistoia",
+  "source_type": "work",
+  "source_id": "pulpito-cattedrale-pisa-giovanni-pisano",
+  "target_type": "work",
+  "target_id": "pulpito-sanandrea-pistoia-giovanni-pisano",
+  "kind": "evoluzione",
+  "description": "Pochi anni dopo Pistoia, Giovanni Pisano abbandona la pianta poligonale per una forma quasi circolare con lastre convesse e racconti ancora più affollati e drammatici."
+ },
+ {
+  "id": "cupola-san-pietro-rielabora-progetto-bramante",
+  "source_type": "work",
+  "source_id": "cupola-san-pietro",
+  "target_type": "work",
+  "target_id": "progetto-bramantesco-san-pietro",
+  "kind": "rielaborazione",
+  "description": "Nominato capomastro nel 1547, Michelangelo dichiara di voler tornare al progetto iniziale di Bramante e alla sua pianta centrale, abbandonata dopo il 1514."
+ },
+ {
+  "id": "duomo-pavia-influenza-progetto-san-pietro",
+  "source_type": "work",
+  "source_id": "modello-duomo-pavia",
+  "target_type": "work",
+  "target_id": "progetto-bramantesco-san-pietro",
+  "kind": "influenza",
+  "description": "L'alternanza di cupola centrale e cupole minori, di pilastri obliqui e pareti curve, che Bramante mette alla prova nel duomo di Pavia, torna amplificata nel progetto per San Pietro."
+ },
+ {
+  "id": "madonna-arpie-influenza-pala-pucci",
+  "source_type": "work",
+  "source_id": "madonna-delle-arpie-andrea-del-sarto",
+  "target_type": "work",
+  "target_id": "pala-pucci-pontormo",
+  "kind": "influenza",
+  "description": "Per la pala dipinta nel 1518 in San Michele Visdomini Pontormo prende come riferimento la Madonna delle Arpie del suo maestro, ma ne scompone l'equilibrio con diagonali e torsioni."
+ },
+ {
+  "id": "piero-di-cosimo-maestro-andrea-del-sarto",
+  "source_type": "artist",
+  "source_id": "piero-di-cosimo",
+  "target_type": "artist",
+  "target_id": "andrea-del-sarto",
+  "kind": "maestro-allievo",
+  "description": "Andrea del Sarto si forma nella bottega di Piero di Cosimo prima di aprire a Firenze una propria bottega di successo."
+ },
+ {
+  "id": "michelozzo-collaborazione-cappella-pazzi",
+  "source_type": "artist",
+  "source_id": "michelozzo-michelozzi",
+  "target_type": "work",
+  "target_id": "cappella-pazzi",
+  "kind": "collaborazione",
+  "description": "Michelozzo interviene con ogni probabilità nel completamento della cappella Pazzi, i cui lavori si protraggono ben oltre la morte di Brunelleschi."
+ },
+ {
+  "id": "luca-della-robbia-collaborazione-cappella-pazzi",
+  "source_type": "artist",
+  "source_id": "luca-della-robbia",
+  "target_type": "work",
+  "target_id": "cappella-pazzi",
+  "kind": "collaborazione",
+  "description": "La bottega dei Della Robbia esegue il fregio e i tondi in terracotta invetriata policroma che danno colore all'interno della cappella."
+ },
+ {
+  "id": "camera-etampes-contrasto-galleria-francesco-i",
+  "source_type": "work",
+  "source_id": "camera-duchessa-etampes",
+  "target_type": "work",
+  "target_id": "galleria-francesco-i",
+  "kind": "contrasto",
+  "description": "Nella camera della duchessa Primaticcio adotta un ornato simmetrico e ripetitivo, lontano dalle variazioni continue e complesse che Rosso aveva inventato per la Galleria di Francesco I."
+ },
+ {
+  "id": "antonello-influenza-belle-ferronniere",
+  "source_type": "artist",
+  "source_id": "antonello-da-messina",
+  "target_type": "work",
+  "target_id": "belle-ferronniere",
+  "kind": "influenza",
+  "description": "Leonardo prende da Antonello il fondo scuro e il parapetto in primo piano, ma rovescia lo sguardo diretto dei suoi personaggi in uno sguardo che evita l'osservatore."
+ },
+ {
+  "id": "tempietto-montorio-evoluzione-chiostro-pace",
+  "source_type": "work",
+  "source_id": "tempietto-san-pietro-in-montorio",
+  "target_type": "work",
+  "target_id": "chiostro-santa-maria-della-pace",
+  "kind": "evoluzione",
+  "description": "Dopo il chiostro della Pace, il tempietto sul Gianicolo porta a compimento la conversione di Bramante al linguaggio classico, questa volta nella forma antica del martyrion a pianta circolare."
+ },
+ {
+  "id": "placchetta-magdeburgo-contrasto-situla-gotofredo",
+  "source_type": "work",
+  "source_id": "ottone-presenta-modello-magdeburgo",
+  "target_type": "work",
+  "target_id": "situla-gotofredo",
+  "kind": "contrasto",
+  "description": "Due avori ottoniani quasi contemporanei mostrano stili opposti: figure tozze e geometriche su fondo traforato nella placchetta di Magdeburgo, volumi pieni e quasi a tutto tondo nella situla milanese."
+ },
+ {
+  "id": "leonardo-influenza-morte-di-procri",
+  "source_type": "artist",
+  "source_id": "leonardo-da-vinci",
+  "target_type": "work",
+  "target_id": "morte-di-procri",
+  "kind": "influenza",
+  "description": "La foschia che avvolge il lago e sfuma i piani lontani deriva dalla prospettiva aerea messa a punto da Leonardo."
+ },
+ {
+  "id": "procaccini-collaborazione-cerano",
+  "source_type": "artist",
+  "source_id": "procaccini-giulio",
+  "target_type": "artist",
+  "target_id": "cerano",
+  "kind": "collaborazione",
+  "description": "Pittori di Federico Borromeo, Procaccini e Cerano lavorano insieme ai Miracoli di san Carlo e, con Morazzone, al Quadro delle tre mani."
+ },
+ {
+  "id": "morazzone-collaborazione-cerano",
+  "source_type": "artist",
+  "source_id": "morazzone",
+  "target_type": "artist",
+  "target_id": "cerano",
+  "kind": "collaborazione",
+  "description": "Morazzone e Cerano, con Giulio Cesare Procaccini, dipingono a più mani il Martirio delle sante Rufina e Seconda per Scipione Toso."
+ },
+ {
+  "id": "morazzone-collaborazione-procaccini",
+  "source_type": "artist",
+  "source_id": "morazzone",
+  "target_type": "artist",
+  "target_id": "procaccini-giulio",
+  "kind": "collaborazione",
+  "description": "Nel Quadro delle tre mani Morazzone imposta forse l'intera composizione, mentre Procaccini dipinge la parte destra con santa Rufina in ginocchio."
+ },
+ {
+  "id": "disputa-santa-caterina-rielabora-arco-costantino",
+  "source_type": "work",
+  "source_id": "disputa-santa-caterina",
+  "target_type": "work",
+  "target_id": "arco-di-costantino-roma",
+  "kind": "rielaborazione",
+  "description": "Sul fondo della Disputa Pinturicchio dipinge un arco trionfale ricalcato su quello di Costantino, sormontato dal bue d'oro che allude allo stemma dei Borgia."
+ },
+ {
+  "id": "perugino-influenza-pinturicchio",
+  "source_type": "artist",
+  "source_id": "pietro-perugino",
+  "target_type": "artist",
+  "target_id": "pinturicchio",
+  "kind": "influenza",
+  "description": "Il giovane Pinturicchio assimila la pittura di Perugino e lo segue a Roma, dove lavora con lui nel cantiere della cappella Sistina."
+ },
+ {
+  "id": "crocifisso-brunelleschi-contrasto-crocifisso-donatello",
+  "source_type": "work",
+  "source_id": "crocifisso-santa-maria-novella-brunelleschi",
+  "target_type": "work",
+  "target_id": "crocifisso-santa-croce-donatello",
+  "kind": "contrasto",
+  "description": "Stesso soggetto, stesso legno e misure quasi uguali, ma esiti opposti: il Cristo di Donatello è disarmonico e dolente, quello di Brunelleschi idealizzato, dalle proporzioni classiche e dal dolore composto."
+ },
+ {
+  "id": "donatello-influenza-andrea-del-castagno",
+  "source_type": "artist",
+  "source_id": "donatello",
+  "target_type": "artist",
+  "target_id": "andrea-del-castagno",
+  "kind": "influenza",
+  "description": "Dalla scultura di Donatello Andrea del Castagno ricava la drammaticità e il realismo crudo delle sue figure, costruite come solidi dal contorno netto."
+ },
+ {
+  "id": "spira-ii-influenza-maria-laach",
+  "source_type": "work",
+  "source_id": "cattedrale-spira-ii",
+  "target_type": "work",
+  "target_id": "chiesa-santa-maria-laach",
+  "kind": "influenza",
+  "description": "La Spira romanica, modello per molte chiese dell'impero, diffonde il Westwerk anteposto alla navata, che a Maria Laach si conserva nella forma originaria."
+ },
+ {
+  "id": "cluny-iii-influenza-maria-laach",
+  "source_type": "work",
+  "source_id": "abbazia-cluny-iii",
+  "target_type": "work",
+  "target_id": "chiesa-santa-maria-laach",
+  "kind": "influenza",
+  "description": "Le figure che animano i girali dei capitelli del portico di Maria Laach hanno un dinamismo che rimanda ai capitelli di Cluny."
+ },
+ {
+  "id": "westwerk-corvey-evoluzione-centula",
+  "source_type": "work",
+  "source_id": "westwerk-corvey",
+  "target_type": "work",
+  "target_id": "chiesa-abbaziale-centula",
+  "kind": "evoluzione",
+  "description": "Il Westwerk di Corvey, unico esempio carolingio ancora leggibile, sviluppa il tipo di avancorpo con torri scalari e tribuna imperiale documentato per la prima volta a Centula."
+ },
+ {
+  "id": "san-matteo-ghiberti-evoluzione-san-giovanni-ghiberti",
+  "source_type": "work",
+  "source_id": "san-matteo-orsanmichele-ghiberti",
+  "target_type": "work",
+  "target_id": "san-giovanni-battista-orsanmichele-ghiberti",
+  "kind": "evoluzione",
+  "description": "Per l'Arte del Cambio, che lo vuole più alto del Battista dell'Arte di Calimala, Ghiberti fonde il San Matteo, dove i modelli classici prevalgono con decisione sui residui tardogotici."
+ },
+ {
+  "id": "teodorico-il-grande-committenza-mausoleo",
+  "source_type": "artist",
+  "source_id": "teodorico-il-grande",
+  "target_type": "work",
+  "target_id": "mausoleo-di-teodorico",
+  "kind": "committenza",
+  "description": "Il re ostrogoto fa costruire il proprio sepolcro a Ravenna negli ultimi anni di vita, in pietra d'Istria trasportata via mare, come segno del suo potere."
+ },
+ {
+  "id": "mausoleo-teodorico-rielabora-palazzo-diocleziano",
+  "source_type": "work",
+  "source_id": "mausoleo-di-teodorico",
+  "target_type": "work",
+  "target_id": "palazzo-diocleziano-split",
+  "kind": "rielaborazione",
+  "description": "Con la sua pianta centrale e la massa in pietra, il mausoleo di Teodorico si richiama al sepolcro che Diocleziano si era fatto erigere nel palazzo di Spalato, collegando il re goto alla tradizione imperiale."
+ },
+ {
+  "id": "porte-doree-rielabora-palazzo-ducale-urbino",
+  "source_type": "work",
+  "source_id": "fontainebleau-porte-doree",
+  "target_type": "work",
+  "target_id": "palazzo-ducale-urbino",
+  "kind": "rielaborazione",
+  "description": "Le Breton riprende la loggia sovrapposta della facciata dei Torricini di Urbino, ma la piega al gusto francese con finestre impilate e alti tetti a spiovente."
+ },
+ {
+  "id": "reims-influenza-cavaliere-bamberga",
+  "source_type": "work",
+  "source_id": "cattedrale-notre-dame-reims",
+  "target_type": "work",
+  "target_id": "cavaliere-di-bamberga",
+  "kind": "influenza",
+  "description": "La bottega che lavora a Bamberga intorno al 1230 è legata al cantiere della cattedrale di Reims, dove con ogni probabilità si è formato il maestro del Cavaliere."
+ },
+ {
+  "id": "uta-naumburg-evoluzione-cavaliere-bamberga",
+  "source_type": "work",
+  "source_id": "margravia-uta-naumburg",
+  "target_type": "work",
+  "target_id": "cavaliere-di-bamberga",
+  "kind": "evoluzione",
+  "description": "Vent'anni dopo il Cavaliere, le statue dei fondatori di Naumburg portano la rinascenza sveva al suo culmine, con un realismo che arriva a suggerire il carattere dei personaggi."
+ },
+ {
+  "id": "michelangelo-influenza-trionfo-galatea",
+  "source_type": "artist",
+  "source_id": "michelangelo-buonarroti",
+  "target_type": "work",
+  "target_id": "trionfo-di-galatea",
+  "kind": "influenza",
+  "description": "Raffaello si misura con le figure in torsione di Michelangelo, ma ne cambia il senso: al posto del tormento, un'armonia serena fra corpo e spirito."
+ },
+ {
+  "id": "porta-paradiso-evoluzione-porta-nord",
+  "source_type": "work",
+  "source_id": "porta-del-paradiso-ghiberti",
+  "target_type": "work",
+  "target_id": "porta-nord-battistero-firenze-ghiberti",
+  "kind": "evoluzione",
+  "description": "Nella seconda porta per il battistero Ghiberti lascia lo schema della Porta Nord per dieci grandi riquadri quadrati, dove più episodi convivono in spazi prospettici."
+ },
+ {
+  "id": "donatello-influenza-porta-paradiso",
+  "source_type": "artist",
+  "source_id": "donatello",
+  "target_type": "work",
+  "target_id": "porta-del-paradiso-ghiberti",
+  "kind": "influenza",
+  "description": "Il rilievo che si assottiglia dai primi piani, quasi a tutto tondo, fino alle figure appena incise dello sfondo segue le ricerche condotte da Donatello."
+ },
+ {
+  "id": "michelino-besozzo-influenza-polittico-valle-romita",
+  "source_type": "artist",
+  "source_id": "michelino-da-besozzo",
+  "target_type": "work",
+  "target_id": "polittico-valle-romita-gentile",
+  "kind": "influenza",
+  "description": "Le affinità con la pittura di Michelino da Besozzo, frequentato da Gentile a Venezia, sono l'argomento principale per collocare il polittico negli anni lagunari."
+ },
+ {
+  "id": "lanfranco-collaborazione-wiligelmo",
+  "source_type": "artist",
+  "source_id": "lanfranco",
+  "target_type": "artist",
+  "target_id": "wiligelmo",
+  "kind": "collaborazione",
+  "description": "Nel cantiere del duomo di Modena l'architetto Lanfranco e lo scultore Wiligelmo lavorano in stretta intesa: i rilievi esaltano le scelte architettoniche della facciata."
+ },
+ {
+  "id": "ciborio-san-paolo-contrasto-pulpito-battistero-pisa",
+  "source_type": "work",
+  "source_id": "ciborio-san-paolo-fuori-mura",
+  "target_type": "work",
+  "target_id": "pulpito-battistero-pisa",
+  "kind": "contrasto",
+  "description": "Arnolfo, allievo di Nicola Pisano, si allontana dal modello del pulpito pisano: nel ciborio è la struttura architettonica a ordinare e contenere i rilievi, che diventano parte della decorazione."
+ },
+ {
+  "id": "santa-maria-cosmedin-evoluzione-san-clemente",
+  "source_type": "work",
+  "source_id": "basilica-santa-maria-cosmedin-roma",
+  "target_type": "work",
+  "target_id": "basilica-san-clemente-roma",
+  "kind": "evoluzione",
+  "description": "La cadenza delle navate, introdotta a San Clemente con due soli pilastri isolati fra le colonne, diventa a Santa Maria in Cosmedin una regolare alternanza di tre colonne e un pilastro."
+ },
+ {
+  "id": "altare-ratchis-contrasto-santa-maria-in-valle",
+  "source_type": "work",
+  "source_id": "altare-di-ratchis-cividale",
+  "target_type": "work",
+  "target_id": "chiesa-santa-maria-in-valle-cividale",
+  "kind": "contrasto",
+  "description": "Nella Cividale dell'VIII secolo convivono due linguaggi: il recupero classicheggiante degli stucchi del Tempietto e la stilizzazione piatta e antinaturalistica dei rilievi dell'altare di Ratchis."
+ },
+ {
+  "id": "san-matteo-evoluzione-tondo-taddei",
+  "source_type": "work",
+  "source_id": "san-matteo-michelangelo",
+  "target_type": "work",
+  "target_id": "tondo-taddei",
+  "kind": "evoluzione",
+  "description": "Il non finito, già usato nel Tondo Taddei per graduare volumi e chiaroscuro, diventa nel San Matteo il tema stesso dell'opera: la figura che si sforza di uscire dal blocco."
+ },
+ {
+  "id": "san-matteo-evoluzione-tondo-pitti",
+  "source_type": "work",
+  "source_id": "san-matteo-michelangelo",
+  "target_type": "work",
+  "target_id": "tondo-pitti",
+  "kind": "evoluzione",
+  "description": "Nel Tondo Pitti Michelangelo sperimenta l'alternanza di superfici levigate e sbozzate che nel San Matteo trasforma in immagine della lotta fra forma e materia."
+ },
+ {
+  "id": "donatello-influenza-san-matteo",
+  "source_type": "artist",
+  "source_id": "donatello",
+  "target_type": "work",
+  "target_id": "san-matteo-michelangelo",
+  "kind": "influenza",
+  "description": "Le superfici lasciate grezze nelle ultime opere di Donatello, come i pergami di San Lorenzo, sono una delle possibili fonti del non finito michelangiolesco."
+ },
+ {
+  "id": "mesi-portale-san-marco-contrasto-pannelli-iconostasi",
+  "source_type": "work",
+  "source_id": "ciclo-mesi-portale-san-marco",
+  "target_type": "work",
+  "target_id": "san-marco-evangelista-pannello-facciata-nord",
+  "kind": "contrasto",
+  "description": "Nella stessa basilica le lastre dell'antica iconostasi seguono il linearismo degli avori bizantini, mentre i Mesi del portale maggiore adottano il naturalismo e la modellazione per piani della scultura emiliana e francese."
+ },
+ {
+  "id": "raffaello-influenza-camera-amore-psiche",
+  "source_type": "artist",
+  "source_id": "raffaello-sanzio",
+  "target_type": "work",
+  "target_id": "camera-di-amore-e-psiche",
+  "kind": "influenza",
+  "description": "Formato nella bottega romana di Raffaello, Giulio Romano parte dalla sua maniera per arrivare a Mantova a un linguaggio personale, più monumentale e dinamico."
+ },
+ {
+  "id": "adorazione-pastori-el-greco-rielabora-notte-correggio",
+  "source_type": "work",
+  "source_id": "adorazione-pastori-el-greco",
+  "target_type": "work",
+  "target_id": "adorazione-dei-pastori-la-notte-correggio",
+  "kind": "rielaborazione",
+  "description": "El Greco riprende da Correggio l'idea del Bambino come unica fonte di luce nella notte, ma la spinge verso un effetto visionario, fatto di bagliori improvvisi e figure che ondeggiano."
+ },
+ {
+  "id": "primaticcio-influenza-ninfa-fontainebleau",
+  "source_type": "artist",
+  "source_id": "primaticcio",
+  "target_type": "work",
+  "target_id": "ninfa-fontainebleau",
+  "kind": "influenza",
+  "description": "Il nudo allungato ed elegante della ninfa di Cellini adotta il canone femminile che Primaticcio aveva diffuso a Fontainebleau con gli stucchi e gli affreschi del castello."
+ },
+ {
+  "id": "niccolo-da-tolentino-rielabora-giovanni-acuto",
+  "source_type": "work",
+  "source_id": "monumento-equestre-niccolo-da-tolentino",
+  "target_type": "work",
+  "target_id": "monumento-equestre-giovanni-acuto",
+  "kind": "rielaborazione",
+  "description": "Vent'anni dopo Paolo Uccello, Andrea del Castagno ripete per volontà dei committenti la formula del finto monumento a monocromo, ma la anima con un contorno mosso e un'anatomia più naturale."
+ },
+ {
+  "id": "torhalle-lorsch-rielabora-arco-costantino",
+  "source_type": "work",
+  "source_id": "torhalle-lorsch",
+  "target_type": "work",
+  "target_id": "arco-di-costantino-roma",
+  "kind": "rielaborazione",
+  "description": "Il portico a tre fornici della Torhalle richiama l'arco di Costantino: una citazione con cui Carlo Magno si presenta come erede del primo imperatore cristiano."
+ },
+ {
+  "id": "san-giovanni-evangelista-evoluzione-david-marmo",
+  "source_type": "work",
+  "source_id": "san-giovanni-evangelista-donatello",
+  "target_type": "work",
+  "target_id": "david-marmo-donatello",
+  "kind": "evoluzione",
+  "description": "Pochi anni dopo il David in marmo, ancora legato alla linea sinuosa tardogotica, Donatello conquista nel San Giovanni una figura solida e meditativa, costruita per la visione dal basso."
+ },
+ {
+  "id": "rainaldo-influenza-pulpito-guglielmo",
+  "source_type": "artist",
+  "source_id": "rainaldo-architetto-pisa",
+  "target_type": "work",
+  "target_id": "pulpito-maestro-guglielmo-pisa",
+  "kind": "influenza",
+  "description": "Nel cantiere della cattedrale diretto da Rainaldo, Maestro Guglielmo assimila il gusto ornamentale orientaleggiante che ritorna nei fondi del suo pulpito."
+ },
+ {
+  "id": "saint-lazare-autun-rielabora-cluny-iii",
+  "source_type": "work",
+  "source_id": "cattedrale-saint-lazare-autun",
+  "target_type": "work",
+  "target_id": "abbazia-cluny-iii",
+  "kind": "rielaborazione",
+  "description": "Saint-Lazare assume la terza chiesa di Cluny come modello per le soluzioni costruttive e la ricchezza decorativa, pur modificandone la pianta con tre absidi affiancate."
+ },
+ {
+  "id": "saint-lazare-autun-contrasto-fontenay",
+  "source_type": "work",
+  "source_id": "cattedrale-saint-lazare-autun",
+  "target_type": "work",
+  "target_id": "chiesa-abbaziale-fontenay",
+  "kind": "contrasto",
+  "description": "Negli stessi anni in Borgogna la cattedrale di Autun, ricca di sculture secondo il gusto cluniacense, e l'abbazia cistercense di Fontenay, massiccia e priva di ornato, incarnano due opposte idee di chiesa."
+ },
+ {
+  "id": "palazzo-pubblico-siena-contrasto-palazzo-vecchio",
+  "source_type": "work",
+  "source_id": "palazzo-pubblico-siena",
+  "target_type": "work",
+  "target_id": "palazzo-vecchio-firenze",
+  "kind": "contrasto",
+  "description": "Al blocco compatto in bugnato di Palazzo Vecchio, che punta sulla forza del volume, il palazzo di Siena oppone corpi articolati, bicromia e un gioco di linee e colori sulla superficie."
+ },
+ {
+  "id": "giorgione-influenza-bernardino-luini",
+  "source_type": "artist",
+  "source_id": "giorgione",
+  "target_type": "artist",
+  "target_id": "bernardino-luini",
+  "kind": "influenza",
+  "description": "Accanto allo sfumato di Leonardo, Luini guarda al colore morbido e fuso di Giorgione, che contribuisce alla dolcezza serena della sua pittura."
+ },
+ {
+  "id": "sebastiano-del-piombo-influenza-deposizione-barocci",
+  "source_type": "artist",
+  "source_id": "sebastiano-del-piombo",
+  "target_type": "work",
+  "target_id": "deposizione-barocci",
+  "kind": "influenza",
+  "description": "Dalla pittura romana di Sebastiano del Piombo Barocci riprende figure solide e gesti drammatici, che nella Deposizione si sciolgono però in un colore vibrante."
+ },
+ {
+  "id": "michelangelo-influenza-deposizione-barocci",
+  "source_type": "artist",
+  "source_id": "michelangelo-buonarroti",
+  "target_type": "work",
+  "target_id": "deposizione-barocci",
+  "kind": "influenza",
+  "description": "I corpi possenti e le pose tese della Deposizione di Perugia mostrano lo studio di Michelangelo compiuto da Barocci durante il soggiorno romano."
+ },
+ {
+  "id": "masaccio-influenza-adorazione-lorenzo-monaco",
+  "source_type": "artist",
+  "source_id": "masaccio",
+  "target_type": "work",
+  "target_id": "adorazione-dei-magi-lorenzo-monaco",
+  "kind": "influenza",
+  "description": "Le ombre decise e il volume dei corpi nell'Adorazione di Lorenzo Monaco suggeriscono un contatto con la pittura di Masaccio, che il pittore camaldolese innesta però su un'eleganza ancora gotica."
+ },
+ {
+  "id": "schiavo-ribelle-influenza-polittico-averoldi",
+  "source_type": "work",
+  "source_id": "schiavo-ribelle",
+  "target_type": "work",
+  "target_id": "polittico-averoldi-tiziano",
+  "kind": "influenza",
+  "description": "La muscolatura possente e la torsione del San Sebastiano del Polittico Averoldi sembrano derivare dallo Schiavo ribelle di Michelangelo, che Tiziano conosceva da incisioni e copie."
+ },
+ {
+  "id": "raffaello-influenza-polittico-averoldi",
+  "source_type": "artist",
+  "source_id": "raffaello-sanzio",
+  "target_type": "work",
+  "target_id": "polittico-averoldi-tiziano",
+  "kind": "influenza",
+  "description": "Nell'Annunciazione degli scomparti superiori l'angelo dalle vesti candide e gonfie d'aria e il profilo della Vergine riprendono modelli di Raffaello."
  }
 ]

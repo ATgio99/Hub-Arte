@@ -295,16 +295,6 @@
   "is_archetype": true
  },
  {
-  "id": "arco-di-trionfo",
-  "term": "Arco di trionfo (schema architettonico)",
-  "definition": "Schema compositivo derivato dagli archi trionfali romani (Arco di Augusto a Rimini, Arco di Costantino a Roma), con arco centrale a tutto sesto affiancato da aperture rettangolari più piccole. Alberti lo usa come modello per la facciata del Tempio Malatestiano e della chiesa di Sant'Andrea.",
-  "category": "architettura",
-  "period_ids": [
-   "quattrocento"
-  ],
-  "is_archetype": true
- },
- {
   "id": "arco-rampante",
   "term": "Arco rampante",
   "definition": "Elemento architettonico gotico che scarica lateralmente il peso delle volte sulla muratura esterna, consentendo di aprire grandi finestre nelle pareti.",
@@ -327,7 +317,7 @@
  {
   "id": "arco-trionfale",
   "term": "Arco trionfale",
-  "definition": "Struttura architettonica derivata dall'arco di trionfo romano, con fornice centrale e due arcate laterali minori. Usato come elemento decorativo nelle facciate rinascimentali.",
+  "definition": "Arco monumentale a uno o tre fornici eretto dai Romani per celebrare vittorie e imperatori (Arco di Tito, di Settimio Severo, di Costantino). Nelle basiliche paleocristiane e medievali il nome passa all'arco che separa la navata dal presbiterio o dall'abside, spesso rivestito di mosaici. Dal Quattrocento lo schema a fornice centrale fiancheggiato da aperture minori torna nelle facciate: Alberti lo usa nel Tempio Malatestiano e in Sant'Andrea a Mantova.",
   "category": "architettura",
   "period_ids": [
    "quattrocento"
@@ -872,19 +862,10 @@
  {
   "id": "ciclo-dei-mesi",
   "term": "Ciclo dei Mesi",
-  "definition": "Serie iconografica dei dodici mesi dell'anno, rappresentati attraverso figure allegoriche o scene di lavori agricoli e attività stagionali. Nell'Aula Gotica dei Santi Quattro Coronati, il Mese di Gennaio è illustrato con Giano bifronte e una scena di vita quotidiana.",
+  "definition": "Serie iconografica dei dodici mesi dell'anno, rappresentati attraverso figure allegoriche o scene di lavori agricoli e attività stagionali. Nell'Aula Gotica dei Santi Quattro Coronati, il Mese di Gennaio è illustrato con Giano bifronte e una scena di vita quotidiana. Nel Tardogotico il tema si diffonde nei libri d'ore e nei cicli di affreschi delle residenze signorili.",
   "category": "iconografia",
   "period_ids": [
-   "duecento-italiano"
-  ],
-  "is_archetype": false
- },
- {
-  "id": "ciclo-mesi",
-  "term": "Ciclo dei Mesi",
-  "definition": "Ciclo iconografico che raffigura le dodici attività stagionali corrispondenti ai mesi dell'anno, spesso con il segno zodiacale. Tipico della cultura tardogotica sia in miniatura (libri d'ore) che in affresco (cicli residenziali).",
-  "category": "iconografia",
-  "period_ids": [
+   "duecento-italiano",
    "gotico-internazionale",
    "tardogotico"
   ],
@@ -1140,17 +1121,6 @@
   "category": "architettura",
   "period_ids": [
    "manierismo"
-  ],
-  "is_archetype": false
- },
- {
-  "id": "cornice-marcapiano",
-  "term": "Cornice marcapiano",
-  "definition": "Cornice orizzontale che corre lungo la facciata di un edificio all'altezza dei piani, separandoli visivamente e scandendo il ritmo verticale della composizione.",
-  "category": "architettura",
-  "period_ids": [
-   "manierismo",
-   "rinascimento-maturo"
   ],
   "is_archetype": false
  },
@@ -2550,10 +2520,12 @@
  {
   "id": "marcapiano",
   "term": "Marcapiano",
-  "definition": "Fascia orizzontale che segna il passaggio tra i piani di un edificio, elemento di scansione della facciata. Presente nelle facciate dell'Ospedale Maggiore e di Palazzo Venezia.",
+  "definition": "Fascia o cornice orizzontale che corre lungo la facciata all'altezza dei solai, segnando il passaggio tra i piani e scandendo la composizione. Presente nelle facciate dell'Ospedale Maggiore e di Palazzo Venezia.",
   "category": "architettura",
   "period_ids": [
-   "quattrocento"
+   "quattrocento",
+   "manierismo",
+   "rinascimento-maturo"
   ],
   "is_archetype": true
  },
@@ -3086,16 +3058,7 @@
   "definition": "Tecnica decorativa pavimentale o parietale che utilizza lastre di marmo o pietra colorata tagliate in forme geometriche o figurative.",
   "category": "architettura",
   "period_ids": [
-   "romanico"
-  ],
-  "is_archetype": false
- },
- {
-  "id": "opus-sectile-term",
-  "term": "Opus sectile",
-  "definition": "Decorazione a intarsio con lastre di marmo policromo o paste vitree tagliate in forme geometriche; tipica dei pavimenti e arredi liturgici cosmatesti.",
-  "category": "architettura",
-  "period_ids": [
+   "romanico",
    "romanico-italiano"
   ],
   "is_archetype": false
@@ -3230,7 +3193,7 @@
   "id": "pala-d-altare",
   "term": "Pala d'altare",
   "definition": "Dipinto o pannello dipinto destinato all'altare di una chiesa. Nel Quattrocento si passa dalla suddivisione tradizionale a polittico all'immagine unitaria con sacra conversazione, come nella Pala di Brera di Piero della Francesca.",
-  "category": "architettura",
+  "category": "pittura",
   "period_ids": [
    "manierismo",
    "quattrocento",
@@ -4407,20 +4370,11 @@
  {
   "id": "sfondato",
   "term": "Sfondato illusionistico",
-  "definition": "Dipinto che simula la presenza di un vano o apertura oltre la parete, creando un'illusione di profondità. Deriva dai Coretti di Giotto nella cappella degli Scrovegni (primo esempio moderno) e si sviluppa nei secoli successivi.",
+  "definition": "Dipinto che simula la presenza di un vano o apertura oltre la parete, creando un'illusione di profondità. Deriva dai Coretti di Giotto nella cappella degli Scrovegni (primo esempio moderno) e si sviluppa nei secoli successivi. Già Masaccio, nella Trinità, apre illusionisticamente la parete in uno spazio architettonico.",
   "category": "architettura",
   "period_ids": [
    "rinascimento-maturo-italia-settentrionale",
-   "trecento-italiano"
-  ],
-  "is_archetype": true
- },
- {
-  "id": "sfondato-illusionistico",
-  "term": "Sfondato illusionistico",
-  "definition": "Effetto ottico per cui la parete dipinta sembra aprirsi in profondita, creando uno spazio illusorio che continua oltre il limite fisico del muro. Realizzato da Masaccio nella Trinita.",
-  "category": "pittura",
-  "period_ids": [
+   "trecento-italiano",
    "quattrocento"
   ],
   "is_archetype": true
@@ -4599,17 +4553,6 @@
   "category": "architettura",
   "period_ids": [
    "romanico-italiano"
-  ],
-  "is_archetype": false
- },
- {
-  "id": "spolio",
-  "term": "Spolio (materiale di reimpiego)",
-  "definition": "Materiali architettonici (colonne, capitelli, basi, lastre) prelevati da edifici antichi demoliti o abbandonati e riutilizzati in nuove costruzioni. Pratica comune nell'architettura tardoantica e medievale.",
-  "category": "architettura",
-  "period_ids": [
-   "arte-paleocristiana",
-   "tarda-antichita"
   ],
   "is_archetype": false
  },
@@ -5199,19 +5142,10 @@
  {
   "id": "trompe-l-oeil",
   "term": "Trompe-l'oeil",
-  "definition": "Espediente pittorico illusionistico che inganna la vista del riguardante, creando la sensazione che quanto raffigurato sia reale. Nell'arte fiamminga include ombre dipinte, oggetti che sembrano sporgere dalla superficie, riflessioni su specchi.",
+  "definition": "Espediente pittorico illusionistico che inganna la vista del riguardante, creando la sensazione che quanto raffigurato sia reale. Nell'arte fiamminga include ombre dipinte, oggetti che sembrano sporgere dalla superficie, riflessioni su specchi. In Italia i Coretti di Giotto nella cappella degli Scrovegni ne sono il primo esempio moderno.",
   "category": "pittura",
   "period_ids": [
-   "quattrocento-fiammingo"
-  ],
-  "is_archetype": false
- },
- {
-  "id": "trompe-loeil",
-  "term": "Trompe-l'oeil",
-  "definition": "Tecnica pittorica che inganna la vista simulando la tridimensionalità di oggetti o spazi su una superficie piana. I Coretti della cappella degli Scrovegni di Giotto sono il primo esempio moderno di trompe-l'oeil nella storia dell'arte.",
-  "category": "pittura",
-  "period_ids": [
+   "quattrocento-fiammingo",
    "manierismo",
    "trecento-italiano"
   ],
@@ -7475,14 +7409,6 @@
   "is_archetype": false
  },
  {
-  "id": "pala-daltare",
-  "term": "Pala d'altare",
-  "definition": "Dipinto destinato a decorare l'altare di una chiesa, spesso di grandi dimensioni e complessità compositiva",
-  "category": "generale",
-  "period_ids": [],
-  "is_archetype": false
- },
- {
   "id": "impianto-prospettico",
   "term": "impianto prospettico",
   "definition": "Sistema di rappresentazione dello spazio tridimensionale su superficie bidimensionale mediante punti di fuga e linee convergenti",
@@ -8663,6 +8589,177 @@
   "definition": "Elementi stilistici residui (boschetti lumeggiati d'oro, sentiero che conduce alla scenografia) presenti nell'opera di Foppa accanto alle innovazioni rinascimentali",
   "category": "generale",
   "period_ids": [],
+  "is_archetype": false
+ },
+ {
+  "id": "aula-palatina",
+  "term": "Aula palatina",
+  "definition": "Grande sala di rappresentanza del palazzo imperiale, in cui l'imperatore riceveva e amministrava la giustizia: un unico vano rettangolare molto alto, spesso concluso da un'abside dove sedeva il sovrano. L'esempio meglio conservato è la basilica costantiniana di Treviri.",
+  "category": "architettura",
+  "period_ids": [
+   "tarda-antichita"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "buon-pastore",
+  "term": "Buon Pastore",
+  "definition": "Immagine di Cristo come giovane pastore che porta sulle spalle una pecora, tratta dalla parabola evangelica. Riprende un modello pagano (il crioforo) ed è uno dei soggetti più diffusi nelle catacombe, nei sarcofagi e nei primi luoghi di culto cristiani.",
+  "category": "iconografia",
+  "period_ids": [
+   "arte-paleocristiana"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "capsella",
+  "term": "Capsella",
+  "definition": "Piccolo contenitore, spesso in argento o avorio, destinato a custodire reliquie e collocato di norma sotto l'altare. Le capselle paleocristiane sono decorate a sbalzo o a incisione con scene e simboli cristiani.",
+  "category": "generale",
+  "period_ids": [
+   "arte-paleocristiana"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "cardo",
+  "term": "Cardo",
+  "definition": "Nella pianta delle città e degli accampamenti romani, la strada principale orientata da nord a sud, che si incrocia ad angolo retto con il decumano e organizza la griglia regolare dell'abitato.",
+  "category": "architettura",
+  "period_ids": [
+   "antichita-classica"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "decumano",
+  "term": "Decumano",
+  "definition": "Nella pianta delle città e degli accampamenti romani, la strada principale orientata da est a ovest, che incrocia il cardo e, insieme a esso, divide l'abitato in isolati regolari.",
+  "category": "architettura",
+  "period_ids": [
+   "antichita-classica"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "damnatio-memoriae",
+  "term": "Damnatio memoriae",
+  "definition": "Condanna con cui a Roma si cancellava il ricordo di una persona dichiarata nemica dello Stato: il suo nome veniva eraso dalle iscrizioni e le sue immagini distrutte o modificate. Ne restano tracce evidenti in molti monumenti pubblici.",
+  "category": "generale",
+  "period_ids": [
+   "antichita-classica"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "domus-ecclesiae",
+  "term": "Domus ecclesiae",
+  "definition": "Casa privata adattata a luogo di riunione e di culto delle prime comunità cristiane, prima che il culto potesse svolgersi in edifici pubblici. L'esempio più noto è quella di Dura Europos, in Siria, con il battistero affrescato.",
+  "category": "architettura",
+  "period_ids": [
+   "arte-paleocristiana"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "evangeliario",
+  "term": "Evangeliario",
+  "definition": "Libro liturgico che contiene i brani dei Vangeli letti durante la messa, ordinati secondo il calendario. Nell'alto Medioevo è spesso un codice di lusso, miniato e rilegato con coperte preziose.",
+  "category": "generale",
+  "period_ids": [
+   "eta-carolingia",
+   "arte-ottoniana"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "fornice",
+  "term": "Fornice",
+  "definition": "Apertura ad arco che attraversa uno spessore murario, come le porte urbiche o i passaggi degli archi di trionfo. Gli archi onorari romani possono avere un solo fornice o tre, con quello centrale più grande.",
+  "category": "architettura",
+  "period_ids": [
+   "antichita-classica"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "missorium",
+  "term": "Missorium",
+  "definition": "Grande piatto d'argento da parata, decorato a sbalzo e a cesello, che gli imperatori tardoantichi donavano a funzionari e dignitari in occasione di anniversari e celebrazioni ufficiali.",
+  "category": "generale",
+  "period_ids": [
+   "tarda-antichita"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "mosano",
+  "term": "Arte mosana",
+  "definition": "Produzione artistica fiorita tra XI e XIII secolo nella valle della Mosa (Liegi, Huy, Maastricht), celebre per l'oreficeria, gli smalti e le fusioni in bronzo, caratterizzati da un classicismo raffinato.",
+  "category": "generale",
+  "period_ids": [
+   "romanico"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "palinsesto",
+  "term": "Palinsesto",
+  "definition": "Superficie su cui strati successivi di pittura (o di scrittura) si sovrappongono a quelli precedenti, lasciandoli in parte visibili. In pittura murale permette di leggere in un solo punto diverse fasi decorative.",
+  "category": "pittura",
+  "period_ids": [
+   "alto-medioevo"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "paratico",
+  "term": "Paratico",
+  "definition": "Corporazione di mestiere delle città comunali dell'Italia settentrionale, in particolare in Lombardia ed Emilia. I paratici finanziano spesso opere nelle cattedrali, dove si fanno rappresentare con le immagini del proprio lavoro.",
+  "category": "generale",
+  "period_ids": [
+   "romanico-italiano"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "proskynesis",
+  "term": "Proskynesis",
+  "definition": "Gesto di omaggio che consiste nell'inchinarsi fino a terra davanti al sovrano o alla divinità. Nell'arte bizantina l'imperatore prostrato davanti a Cristo esprime la subordinazione del potere terreno a quello celeste.",
+  "category": "iconografia",
+  "period_ids": [
+   "arte-bizantina"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "rotonda",
+  "term": "Rotonda",
+  "definition": "Edificio a pianta circolare coperto da una cupola o da una volta anulare. Nel Medioevo la forma richiama spesso il Santo Sepolcro di Gerusalemme ed è usata per battisteri, cappelle funerarie e santuari di reliquie.",
+  "category": "architettura",
+  "period_ids": [
+   "romanico"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "salterio",
+  "term": "Salterio",
+  "definition": "Libro che raccoglie i centocinquanta Salmi, usato per la preghiera liturgica e privata. Nel mondo bizantino e nel Medioevo occidentale è spesso illustrato, anche con miniature a margine del testo.",
+  "category": "generale",
+  "period_ids": [
+   "arte-bizantina"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "tetrarchia",
+  "term": "Tetrarchia",
+  "definition": "Sistema di governo introdotto da Diocleziano nel 293, che divide l'impero fra due augusti e due cesari. Nell'arte si traduce in immagini dei sovrani quasi identiche e rigide, che esaltano la concordia del potere più che l'individuo.",
+  "category": "generale",
+  "period_ids": [
+   "tarda-antichita"
+  ],
   "is_archetype": false
  }
 ]

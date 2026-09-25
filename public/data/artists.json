@@ -6055,22 +6055,6 @@
   "location_city": null
  },
  {
-  "id": "toledo",
-  "name": "Juan Bautista de Toledo",
-  "aka": [],
-  "birth": 1515,
-  "death": 1567,
-  "period_ids": [
-   "controriforma"
-  ],
-  "role": "Architetto",
-  "bio": "Architetto spagnolo, dirige i lavori del monastero dell'Escorial dal 1563 fino alla morte nel 1567.",
-  "innovations": [],
-  "category": null,
-  "is_collective": false,
-  "location_city": null
- },
- {
   "id": "el-mudo",
   "name": "Juan Fernández de Navarrete",
   "aka": [
@@ -7447,20 +7431,6 @@
   "location_city": "Ravenna"
  },
  {
-  "id": "niccolo-iv",
-  "name": "Niccolo IV (Girolamo Masci)",
-  "aka": [],
-  "birth": 1227,
-  "death": 1292,
-  "period_ids": [],
-  "role": "papa",
-  "bio": "",
-  "innovations": [],
-  "category": "committenti",
-  "is_collective": false,
-  "location_city": "Roma"
- },
- {
   "id": "niccolo-roverella",
   "name": "Niccolo Roverella",
   "aka": [],
@@ -7532,7 +7502,11 @@
  {
   "id": "niccolo-iv-papa",
   "name": "Niccolò IV (Girolamo Masci)",
-  "aka": [],
+  "aka": [
+   "Niccolo IV",
+   "Niccolò IV",
+   "Girolamo Masci"
+  ],
   "birth": 1227,
   "death": 1292,
   "period_ids": [],
@@ -7767,23 +7741,12 @@
   "location_city": "Siena"
  },
  {
-  "id": "opera-di-santa-maria-del-fiore",
-  "name": "Opera di Santa Maria del Fiore",
-  "aka": [],
-  "birth": null,
-  "death": null,
-  "period_ids": [],
-  "role": "fabbriceria della cattedrale di Firenze",
-  "bio": "",
-  "innovations": [],
-  "category": "committenti",
-  "is_collective": true,
-  "location_city": "Firenze"
- },
- {
   "id": "opera-del-duomo-firenze",
-  "name": "Opera di Santa Maria del Fiore (Opera del Duomo)",
-  "aka": [],
+  "name": "Opera di Santa Maria del Fiore",
+  "aka": [
+   "Opera del Duomo",
+   "Opera di Santa Maria del Fiore (Opera del Duomo)"
+  ],
   "birth": null,
   "death": null,
   "period_ids": [],
@@ -9064,32 +9027,14 @@
   "period_ids": [
    "manierismo"
   ],
-  "role": "architetto, teorico",
-  "bio": "Architetto e teorico bolognese, allievo di Baldassarre Peruzzi. Approda a Venezia tra il 1527 e il 1528, dove si dedica principalmente all'attività teorica. Pubblica i Sette libri dell'architettura (dal 1537), codificando il linguaggio architettonico manierista e diffondendo la serliana.",
+  "role": "architetto e trattatista",
+  "bio": "Architetto e teorico bolognese, allievo di Baldassarre Peruzzi. Approda a Venezia tra il 1527 e il 1528, dove si dedica principalmente all'attività teorica. Pubblica i Sette libri dell'architettura (dal 1537), codificando il linguaggio architettonico manierista e diffondendo la serliana. Nel 1541 è chiamato alla corte di Francesco I, che lo nomina architetto del re e a cui dedica i primi volumi del trattato.",
   "innovations": [
    "codificazione della serliana",
    "repertorio architettonico illustrato per uso pratico",
-   "diffusione internazionale del linguaggio manierista"
+   "diffusione internazionale del linguaggio manierista",
+   "diffusione del classicismo italiano in Francia"
   ]
- },
- {
-  "id": "serlio",
-  "name": "Sebastiano Serlio",
-  "aka": [],
-  "birth": 1475,
-  "death": 1554,
-  "period_ids": [
-   "manierismo"
-  ],
-  "role": "Architetto e trattatista",
-  "bio": "Architetto bolognese chiamato a corte in Francia nel 1541. Nominato architetto del re, dedica a Francesco I i primi tre volumi del trattato 'Sette libri dell'architettura'. Esercita influenza soprattutto a livello teorico.",
-  "innovations": [
-   "Trattato Sette libri dell'architettura",
-   "Diffusione del classicismo italiano in Francia"
-  ],
-  "category": null,
-  "is_collective": false,
-  "location_city": null
  },
  {
   "id": "sebastiano-del-piombo",
@@ -9855,5 +9800,21 @@
   "category": "committenti",
   "is_collective": false,
   "location_city": "Vicenza"
+ },
+ {
+  "id": "juan-bautista-de-toledo",
+  "name": "Juan Bautista de Toledo",
+  "aka": [],
+  "birth": 1515,
+  "death": 1567,
+  "period_ids": [
+   "controriforma"
+  ],
+  "role": "Architetto",
+  "bio": "Architetto spagnolo, dirige i lavori del monastero dell'Escorial dal 1563 fino alla morte nel 1567.",
+  "innovations": [],
+  "category": null,
+  "is_collective": false,
+  "location_city": null
  }
 ]

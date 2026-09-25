@@ -1906,5 +1906,14 @@
   "first_period_id": "rinascimento",
   "evolution": "Nel Rinascimento viene usata per studi compositivi, copie, preparazioni e ricostruzioni di opere perdute.",
   "category": "altra"
+ },
+ {
+  "id": "smalto-champleve",
+  "name": "Smalto champlevé",
+  "definition": "Tecnica orafa in cui gli alveoli destinati allo smalto vengono scavati direttamente nello spessore della lastra, di solito di rame, lasciando in rilievo le linee del disegno che poi vengono dorate. Più economica del cloisonné, permette campiture ampie e robuste.",
+  "introduced_by": "orafi renani e mosani",
+  "first_period_id": "romanico",
+  "evolution": "Nel XII secolo è la tecnica tipica degli smalti mosani e renani e, dalla fine del secolo, della produzione seriale di Limoges.",
+  "category": "altra"
  }
 ]
