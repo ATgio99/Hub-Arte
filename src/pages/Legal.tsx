@@ -367,14 +367,14 @@ export default function Legal() {
         <PaginaModificabile id="privacy" valori={segnapostoCatalogo(c)} titolo={<H1>Privacy Policy</H1>}>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
-          HUB Arte — Atlante Neuronale ("il Servizio") è un atlante di studio di Storia dell'Arte
+          BaseArte — Atlante Neuronale ("il Servizio") è un atlante di studio di Storia dell'Arte
           che raccoglie opere, artisti, periodi, tecniche, luoghi e connessioni. Il Servizio è
           accessibile alla URL <code>https://hubarte.it</code>.
         </P>
 
         <H2>1. Titolare del trattamento</H2>
         <P>
-          Il titolare del trattamento dei dati è il responsabile del progetto HUB Arte.
+          Il titolare del trattamento dei dati è il responsabile del progetto BaseArte.
           Per qualsiasi richiesta relativa ai tuoi dati puoi scrivere a <Mailto subject="Privacy" />.
         </P>
 
@@ -430,7 +430,7 @@ export default function Legal() {
         <PaginaModificabile id="cookie" valori={segnapostoCatalogo(c)} titolo={<H1>Cookie Policy</H1>}>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
-          Questa Cookie Policy spiega quali cookie vengono utilizzati da HUB Arte — Atlante Neuronale
+          Questa Cookie Policy spiega quali cookie vengono utilizzati da BaseArte — Atlante Neuronale
           e come puoi gestirli. I cookie sono piccoli file di testo che il sito salva nel tuo browser
           per garantire il corretto funzionamento delle funzionalità.
         </P>
@@ -458,7 +458,7 @@ export default function Legal() {
 
         <H2>3. Niente cookie di profilazione</H2>
         <P>
-          HUB Arte non utilizza cookie di profilazione, retargeting o tracciamento pubblicitario.
+          BaseArte non utilizza cookie di profilazione, retargeting o tracciamento pubblicitario.
           Non collaboriamo con reti pubblicitarie né con piattaforme di analytics di terze parti
           (Google Analytics, Meta Pixel, ecc.).
         </P>
@@ -483,7 +483,7 @@ export default function Legal() {
 
         <H2>1. Oggetto</H2>
         <P>
-          I presenti Termini regolano l'utilizzo di HUB Arte — Atlante Neuronale ("il Servizio"),
+          I presenti Termini regolano l'utilizzo di BaseArte — Atlante Neuronale ("il Servizio"),
           un atlante di studio di Storia dell'Arte. Accedendo al Servizio accetti integralmente
           i presenti Termini.
         </P>
@@ -542,7 +542,7 @@ export default function Legal() {
 
         <H2>Progetto</H2>
         <P>
-          HUB Arte l'ho cominciato per studiare, e per un po' è servito solo a me. L'ho messo
+          BaseArte l'ho cominciato per studiare, e per un po' è servito solo a me. L'ho messo
           online quando mi sono accorto che le domande a cui rispondeva — chi ha pagato questa
           cappella, quale bottega stava dietro a questo cantiere — se le fa chiunque apra un
           manuale. Su come è costruito e su che cosa non contiene c'è una pagina a parte:{" "}

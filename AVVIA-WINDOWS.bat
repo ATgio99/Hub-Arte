@@ -23,7 +23,7 @@ if not exist "node_modules" (
   echo.
 )
 
-echo 🏛️  Avvio HUB Art — Atlante Neuronale
+echo 🏛️  Avvio BaseArte — Atlante Neuronale
 echo    Sito:       http://localhost:5173
 echo    Gestione:   http://localhost:5173/admin.html
 echo    Login:      http://localhost:5173/#/login

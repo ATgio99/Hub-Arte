@@ -200,8 +200,8 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
     <>
       {/* brand + collapse */}
       <div className="sbx-top">
-        <Link to="/" className="sbx-brand" data-testid="sbx-brand" onClick={onNavigate} aria-label="HUB Arte — home">
-          {/* stella neurale dorata (logo HUB Arte) */}
+        <Link to="/" className="sbx-brand" data-testid="sbx-brand" onClick={onNavigate} aria-label="BaseArte — home">
+          {/* stella neurale dorata (logo BaseArte) */}
           <svg className="sbx-mono" width="30" height="30" viewBox="0 0 48 48" fill="none" aria-hidden="true">
             <g stroke="var(--gold)" strokeWidth="2" strokeLinecap="round">
               <path d="M24 24 L24 7 M24 24 L24 41 M24 24 L8 24 M24 24 L40 24" />
@@ -218,7 +218,7 @@ function SidebarBody({ collapsed, onToggleCollapse, isHome, onNavigate }: {
             <circle cx="12.7" cy="35.3" r="1.7" fill="var(--gold)" opacity=".7" />
           </svg>
           <span className="sbx-brand-txt">
-            <b>HUB Arte</b><i>Atlante Neuronale</i>
+            <b>BaseArte</b><i>Atlante Neuronale</i>
           </span>
         </Link>
         {/* Su telefono questo comando chiude il pannello, e allora porta una

@@ -1,4 +1,4 @@
-# Contribuire a HUB Art — Atlante Neuronale
+# Contribuire a BaseArte — Atlante Neuronale
 
 Grazie per il tuo interesse nel contribuire al progetto! 🎨
 
@@ -60,7 +60,7 @@ npm run preview    # anteprima del build di produzione
 
 ### Variabili d'ambiente
 
-Copia `.env.example` in `.env` e personalizza i valori se vuoi usare un tuo progetto Supabase. I valori di default funzionano out-of-the-box con il progetto HUB Art ufficiale.
+Copia `.env.example` in `.env` e personalizza i valori se vuoi usare un tuo progetto Supabase. I valori di default funzionano out-of-the-box con il progetto BaseArte ufficiale.
 
 ```bash
 cp .env.example .env

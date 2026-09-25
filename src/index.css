@@ -145,7 +145,7 @@ a.chip { text-decoration: none; }
 a.tag { cursor: pointer; transition: all .16s ease; }
 a.tag:hover { border-color: var(--gold); color: var(--gold-deep); background: var(--bg-1); }
 
-/* badge periodo morbido (stile HubArt) */
+/* badge periodo morbido (stile BaseArte) */
 .badge-period {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600;
