@@ -52,12 +52,6 @@
   [headers.values]
     Cache-Control = "public, max-age=3600"
 
-# Texture (pesanti, cambiano raramente): cache 7 giorni
-[[headers]]
-  for = "/textures/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
 # HTML e manifest: sempre freschi
 [[headers]]
   for = "/index.html"
@@ -79,7 +73,7 @@
   status = 200
   force = false
   # Escludi file reali (assets, dati, icone) — servili direttamente
-  conditions = {Path = ["!/assets/*", "!/data/*", "!/textures/*", "!/*.png", "!/*.svg", "!/*.jpg", "!/*.json", "!/admin.html", "!/favicon.svg", "!/manifest.json"]}
+  conditions = {Path = ["!/assets/*", "!/data/*", "!/*.png", "!/*.svg", "!/*.jpg", "!/*.json", "!/favicon.svg", "!/manifest.json"]}
 
 # --- Plugin opzionali -----------------------------------------------------
 # Nessun plugin necessario: il build è vanilla Vite.

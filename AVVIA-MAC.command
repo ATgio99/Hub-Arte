@@ -31,7 +31,7 @@ fi
 
 echo "🏛️  Avvio Base Arte — Atlante di storia dell'arte"
 echo "   Sito:       http://localhost:5173"
-echo "   Gestione:   http://localhost:5173/admin.html"
+echo "   Gestione:   http://localhost:5173/#/admin"
 echo "   Login:      http://localhost:5173/#/login"
 echo ""
 echo "   Lascia aperta questa finestra."

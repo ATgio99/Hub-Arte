@@ -92,7 +92,6 @@ src/
 ├── components/    # Componenti riutilizzabili (Sidebar, ui, ecc.)
 ├── lib/           # Logica business (auth, supabase, sync, data, ecc.)
 ├── pages/         # Pagine/rotte React (Opere, Opera, Grafo, ecc.)
-├── three/         # Codice Three.js per la scena 3D della home
 ├── App.tsx        # Router principale
 ├── main.tsx       # Entry point
 ├── index.css      # Stili globali + variabili CSS

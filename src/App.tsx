@@ -31,7 +31,6 @@ import LeMieRichieste from "./pages/LeMieRichieste";
 import "./app.css";
 
 // La home 3D carica il modulo Three solo qui (lazy): le pagine interne non lo toccano.
-const Home3D = lazy(() => import("./pages/Home3D"));
 // Pagine "pesanti" lazy: Grafo (react-force-graph-3d → three) e Mappa (leaflet)
 // non devono entrare nel bundle iniziale della home.
 const Grafo = lazy(() => import("./pages/Grafo"));

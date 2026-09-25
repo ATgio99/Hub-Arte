@@ -214,14 +214,12 @@ Le istruzioni per allestire un proprio database sono in
 hubart/
 ├── public/
 │   ├── data/           # dataset JSON statici (works, artists, periods, ...)
-│   ├── textures/       # texture PBR per scena 3D
 │   ├── manifest.json   # PWA manifest
 │   └── _headers        # header Netlify (cache, security)
 ├── src/
 │   ├── components/     # componenti riutilizzabili (Sidebar, ui, CookieConsent, ...)
 │   ├── lib/            # logica business (auth, supabase, sync, data, store, ...)
 │   ├── pages/          # pagine React (Landing, Opere, Opera, Grafo, Mappa, ...)
-│   ├── three/          # scena 3D Three.js (cathedral.ts)
 │   ├── App.tsx         # router principale
 │   └── main.tsx        # entry point
 ├── supabase/           # migration SQL + README

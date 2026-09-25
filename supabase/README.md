@@ -61,12 +61,12 @@ Chi può amministrare è deciso in due punti che devono restare allineati:
 l'elenco di indirizzi in `src/lib/auth.tsx` e le regole di accesso scritte nei
 file qui sopra.
 
-## storico/
+## Le vecchie migrazioni una tantum
 
-Le migrazioni già applicate al database originale: correzioni di dati,
-riorganizzazioni della gerarchia dei periodi, importazioni una tantum. Non
-servono per una nuova installazione — i dati che producevano sono già nei JSON —
-e sono conservate solo come memoria di come il catalogo è cambiato.
+Correzioni di dati, riordini dei periodi e importazioni fatte una volta sola
+stavano in `storico/`. Non servivano per una nuova installazione, perché i dati
+che producevano sono già nei JSON, e sono state tolte. Chi vuole rileggerle le
+trova nella cronologia di git, prima del commit che le ha eliminate.
 
 ## lavoro_scuole/ e lavoro_committenti/
 

@@ -941,85 +941,16 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
 .sbx-scrim { display: none; }
 .sbx-drawer { display: none; }
 
-/* ============================================================
-   HOME 3D — Cattedrale monumentale (scena atmosferica)
-   ============================================================ */
-.home3d { position: relative; }
-.h3d-stage {
-  position: fixed; inset: 0; z-index: 1;
-  background: radial-gradient(130% 120% at 50% 42%, #efe2c8 0%, #d8c3a0 55%, #b89b73 100%);
-}
-.h3d-canvas { position: absolute; inset: 0; }
-.h3d-canvas canvas { display: block; }
-
-/* ---- HUD MONO agli angoli (italiano) ---- */
-.h3d-hud { position: fixed; inset: 0; z-index: 3; pointer-events: none; color: #f6ecd8; padding-top: var(--sat); padding-bottom: var(--sab); }
-.h3d-hud > div { position: absolute; }
-.h3d-hud b, .h3d-hud i, .h3d-hud span, .h3d-hud p { text-shadow: 0 1px 10px rgba(0,0,0,.55); }
-
-.h3d-hud-tr { right: 36px; top: 30px; text-align: right; max-width: 240px; }
-.h3d-hud-tag { font-family: var(--font-body); font-size: 9.5px; letter-spacing: .2em; color: rgba(255,236,200,.75); text-transform: uppercase; }
-.h3d-hud-tr p { font-family: var(--font-body); font-size: 11.5px; line-height: 1.7; letter-spacing: .04em; color: #f3e8d2; margin: 8px 0 0; }
-
-.h3d-hud-bl { left: calc(var(--sbx-w) + 40px); bottom: 30px; display: flex; flex-direction: column; gap: 6px; }
-.h3d-hud-scroll {
-  font-family: var(--font-body); font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
-  color: rgba(255,240,210,.85); transition: opacity .4s ease; animation: scrollnudge 2s ease-in-out infinite;
-}
-.h3d-hud-scroll.hide { opacity: 0; }
-@keyframes scrollnudge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
-
-.h3d-hud-br { right: 36px; bottom: 30px; text-align: right; display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
-.h3d-hud-fase-num { font-family: var(--font-body); font-variant-numeric: tabular-nums; font-size: 10px; letter-spacing: .2em; color: rgba(255,236,200,.8); }
-.h3d-hud-fase-txt { font-family: var(--font-body); font-size: 12px; letter-spacing: .06em; color: #fdf6e8; font-weight: 500; }
-.h3d-hud-reveal { width: 120px; height: 2px; background: rgba(255,236,200,.22); border-radius: 2px; overflow: hidden; }
-.h3d-hud-reveal i { display: block; height: 100%; background: linear-gradient(90deg,#b88a2e,#ffce7a); transition: width .15s ease; }
-
-/* ---- spazio di scroll che guida la materializzazione + discesa ---- */
-.h3d-scrollspace { position: relative; z-index: 2; pointer-events: none; }
-.h3d-section { min-height: 100vh; display: flex; align-items: center; padding: 0 44px; }
-.h3d-section--intro { min-height: 100vh; }
-.h3d-stepcard {
-  pointer-events: auto; max-width: 330px; margin-left: calc(var(--sbx-w) + 2vw); margin-right: auto;
-  background: rgba(20,14,7,.58); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,210,140,.22); border-radius: var(--radius-lg); padding: 20px 22px;
-  color: #f3e8d2;
-}
-.h3d-stepcard .eyebrow { color: #ffce7a; }
-.h3d-stepcard p { color: #e6d8be; font-size: 13.5px; line-height: 1.65; margin: 10px 0 0; }
-
-/* ---- LOADER ---- */
+/* ---- LOADER delle pagine (il nome viene dalla vecchia home 3D) ---- */
 .h3d-loader {
   position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 22px;
   background: radial-gradient(120% 120% at 50% 40%, #2a2013 0%, #1a130b 70%, #100b06 100%);
 }
-.h3d-loader-mono { color: #ffce7a; animation: monopulse 2.2s ease-in-out infinite; filter: drop-shadow(0 0 12px rgba(255,180,70,.4)); }
-@keyframes monopulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
-.h3d-loader-bar { width: 200px; height: 2px; background: rgba(255,210,140,.18); border-radius: 2px; overflow: hidden; }
-.h3d-loader-bar i { display: block; height: 100%; background: linear-gradient(90deg,#b88a2e,#ffce7a); transition: width .2s ease; }
-.h3d-loader-txt { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,236,200,.7); font-variant-numeric: tabular-nums; }
-
-/* ============================================================
-   FALLBACK senza WebGL
-   ============================================================ */
-.home3d-fallback { padding-top: 40px; padding-bottom: 60px; padding-left: 20px; }
-.h3d-fb-head { margin-bottom: 36px; }
-.h3d-fb-title { font-size: clamp(34px, 6vw, 64px); line-height: 1.0; letter-spacing: -.03em; margin-top: 14px; }
-.h3d-fb-title em { color: var(--rust); font-style: italic; }
-.h3d-fb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
-.h3d-fb-card { text-align: left; background: var(--bg-1); border: 0; border-right: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); padding: 22px 20px 30px; cursor: pointer; transition: background .18s; display: flex; flex-direction: column; gap: 7px; min-height: 130px; }
-.h3d-fb-card:hover { background: var(--bg-2); }
-.h3d-fb-num { font-variant-numeric: tabular-nums; font-size: 11px; letter-spacing: .12em; color: var(--gold-deep); font-weight: 700; }
-.h3d-fb-name { font-family: var(--font-display); font-size: 19px; color: var(--ink); }
-.h3d-fb-desc { font-size: 12px; color: var(--ink-dim); }
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 1024px) {
-  .h3d-fb-grid { grid-template-columns: repeat(2, 1fr); }
-}
 @media (max-width: 900px) {
   /* la sidebar flottante desktop sparisce: subentra il drawer da hamburger */
   .sbx:not(.sbx-drawer) { display: none; }
@@ -1116,18 +1047,8 @@ body:has(.sbx.collapsed) .page-host { padding-left: calc(var(--sbx-w-collapsed) 
   /* Scrim della sidebar sopra la mappa */
   .sbx-scrim { z-index: 9998; }
 }
-@media (max-width: 760px) {
-  .h3d-hud-tr { display: none; }
-  .h3d-hud-bl { left: 16px; bottom: 24px; }
-  .h3d-hud-br { right: 16px; bottom: 24px; }
-}
-@media (max-width: 520px) {
-  .h3d-fb-grid { grid-template-columns: 1fr; }
-}
-
 /* prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
-  .h3d-hud-scroll, .h3d-loader-mono { animation: none; }
   .sbx, .sbx-item, .sbx-underline, .sbx-drawer, .sbx-scrim { transition: none; }
 }
 

@@ -1,8 +1,7 @@
 // ============================================================================
-// Le 8 PIETRE-PAGINA — definizioni leggere (NESSUN import di three).
-// Questo modulo è importato sia da App.tsx (chrome/Indice) sia dalla scena 3D.
-// Tenendolo separato da three/cathedral.ts evitiamo di trascinare three.js
-// dentro al bundle principale: il 3D resta lazy-load solo in home.
+// Le pagine del sito, con numero, nome, sottotitolo e rotta. Le usano la barra
+// laterale e le scorciatoie da tastiera. Il nome "pietre" viene dalla vecchia
+// home 3D a forma di cattedrale, dove ogni pagina era una pietra.
 // ============================================================================
 
 export type StoneId =
