@@ -113,7 +113,7 @@ function componi({ ds, committenti, autori, nascosti }) {
 
   // ── testata ───────────────────────────────────────────────────────────────
   push(RIGA);
-  push("HUBARTE — MANUALE DI ESTRAZIONE DATI");
+  push("BASEARTE — MANUALE DI ESTRAZIONE DATI");
   push("Che cosa serve per riempire ogni tabella, e con quali nomi esatti.");
   push(RIGA);
   push("");
@@ -191,7 +191,7 @@ function componi({ ds, committenti, autori, nascosti }) {
   push("");
   push(riga);
   push("");
-  push("  Stai estraendo dati per HUBARTE, un atlante di storia dell'arte. Il");
+  push("  Stai estraendo dati per BASEARTE, un atlante di storia dell'arte. Il");
   push("  materiale che ti viene dato — un capitolo, una scheda, un elenco — va");
   push("  trasformato in righe di tabella, non in prosa.");
   push("");

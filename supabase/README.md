@@ -1,4 +1,4 @@
-# Il database di HUB Arte
+# Il database di BaseArte
 
 **Per far girare il sito non serve un database.** Il catalogo — opere, autori,
 committenti, periodi, tecniche, termini, connessioni, eventi — vive nei file

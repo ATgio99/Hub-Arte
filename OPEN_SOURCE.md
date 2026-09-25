@@ -1,6 +1,6 @@
 # Netlify Open Source Plan — Guida alla richiesta
 
-Questo documento contiene **tutte le informazioni** per richiedere il Netlify Open Source Plan per il progetto HUB Art.
+Questo documento contiene **tutte le informazioni** per richiedere il Netlify Open Source Plan per il progetto BaseArte.
 
 ## 📋 Requisiti di Netlify (ufficiali)
 
@@ -8,7 +8,7 @@ Netlify offre un **Open Source Plan gratuito** per progetti open source. I requi
 
 ### ✅ Criteri obbligatori
 
-1. **Licenza OSI-approved** — Il progetto deve avere una licenza approvata dalla Open Source Initiative (MIT, Apache 2.0, GPL, ecc.). HUB Art usa **MIT** ✓
+1. **Licenza OSI-approved** — Il progetto deve avere una licenza approvata dalla Open Source Initiative (MIT, Apache 2.0, GPL, ecc.). BaseArte usa **MIT** ✓
 2. **Repository pubblico** — Il codice sorgente deve essere pubblico su GitHub/GitLab/Bitbucket ✓
 3. **Code of Conduct** — Il progetto deve avere un Code of Conduct visibile ✓ (già creato in `CODE_OF_CONDUCT.md`)
 4. **Link a Netlify visibile** — Il sito pubblicato deve avere un link a Netlify visibile nella home page o in tutte le pagine interne ⚠️ (da aggiungere)
@@ -104,7 +104,7 @@ Campi da compilare:
 | **Name** | Il tuo nome completo |
 | **E-mail associated with the Netlify account** | L'email usata per registrarti su Netlify |
 | **License of your project** | `MIT` |
-| **Project name** | `HUB Art — Atlante Neuronale` |
+| **Project name** | `BaseArte — Atlante Neuronale` |
 | **Project URL** | L'URL del sito già deployato (es. `https://warm-cassata-b06e4d.netlify.app`) |
 | **Repository URL** | `https://github.com/<tuo-username>/hubart` |
 | **Project description** | Vedi testo pronto qui sotto ↓ |
@@ -114,7 +114,7 @@ Campi da compilare:
 Copia/incolla questo testo nel form:
 
 ```
-HUB Art — Atlante Neuronale è un atlante digitale open source di Storia dell'Arte
+BaseArte — Atlante Neuronale è un atlante digitale open source di Storia dell'Arte
 pensato per studenti, docenti e appassionati. Combina in un'unica interfaccia:
 catalogo di 974 opere e 259 artisti, grafo neuronale 3D delle connessioni,
 timeline multilivello, mappa geografica, glossario di 672 termini, indice di

@@ -1,5 +1,5 @@
 ==============================================================================
-HUBARTE — MANUALE DI ESTRAZIONE DATI
+BASEARTE — MANUALE DI ESTRAZIONE DATI
 Che cosa serve per riempire ogni tabella, e con quali nomi esatti.
 ==============================================================================
 
@@ -73,7 +73,7 @@ resto del manuale è il materiale a cui questa istruzione rimanda.
 
 ------------------------------------------------------------------------------
 
-  Stai estraendo dati per HUBARTE, un atlante di storia dell'arte. Il
+  Stai estraendo dati per BASEARTE, un atlante di storia dell'arte. Il
   materiale che ti viene dato — un capitolo, una scheda, un elenco — va
   trasformato in righe di tabella, non in prosa.
 
