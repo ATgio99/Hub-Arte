@@ -1,3 +1,13 @@
+# Vecchio dominio: hubarte.it resta registrato fino alla scadenza e porta tutto
+# su basearte.it, stesso percorso compreso. La parte dopo # (le pagine
+# dell'app) il server non la vede, ma il browser la conserva nel redirect:
+# hubarte.it/#/opere arriva su basearte.it/#/opere.
+# Stanno in cima perche' vince la prima regola che corrisponde.
+http://hubarte.it/*       https://basearte.it/:splat   301!
+https://hubarte.it/*      https://basearte.it/:splat   301!
+http://www.hubarte.it/*   https://basearte.it/:splat   301!
+https://www.hubarte.it/*  https://basearte.it/:splat   301!
+
 # Netlify SPA fallback — invia tutte le rotte non di file a index.html
 # (Base Arte usa HashRouter, quindi questo è una safety net)
 /*    /index.html   200
