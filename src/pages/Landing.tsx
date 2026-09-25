@@ -207,7 +207,7 @@ export default function Landing() {
             border: "1px solid var(--line)", borderRadius: 999,
             padding: "5px 14px", margin: "0 auto 16px", lineHeight: 1.4,
           }}>
-            Prima si chiamava HUB Arte: stesso atlante, nome nuovo. Presto anche l'indirizzo diventa <b>basearte.it</b>.
+            Prima si chiamava HUB Arte: stesso atlante, nome e indirizzo nuovi. Il vecchio hubarte.it porta qui.
           </p>
           <p style={{
             fontSize: "clamp(16px, 3vw, 20px)", color: "var(--ink-soft)",
