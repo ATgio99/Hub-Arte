@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect, type ReactNode, lazy, Suspense } from "react";
+import { useEffect, useRef, type ReactNode, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { pageVariants, usePrefersReducedMotion } from "./lib/motion";
 import { useScorciatoie } from "./lib/scorciatoie";
@@ -134,6 +134,16 @@ export default function App() {
     // E anche dopo 100ms (per pagine lazy-loaded)
     const t = setTimeout(scrollToTop, 100);
     return () => clearTimeout(t);
+  }, [loc.pathname, loc.search]);
+
+  // Chi arriva da una pagina generata per i motori di ricerca (/opera/…) ha
+  // nella scheda del browser il titolo di quella voce. Alla prima navigazione
+  // nell'app il titolo torna quello del sito, invece di restare sbagliato.
+  const primaRotta = useRef(`${loc.pathname}${loc.search}`);
+  useEffect(() => {
+    if (`${loc.pathname}${loc.search}` === primaRotta.current) return;
+    primaRotta.current = "";
+    document.title = "Base Arte — Atlante di storia dell'arte";
   }, [loc.pathname, loc.search]);
 
   // Sincronizza dal cloud al login

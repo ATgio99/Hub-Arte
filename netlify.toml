@@ -63,17 +63,5 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# --- SPA redirect (fallback) ----------------------------------------------
-# Base Arte usa HashRouter (URLs tipo /#/opere), quindi il server riceve
-# sempre richiede /index.html — questo redirect NON è strettamente necessario
-# ma è una safety net nel caso in futuro si passi a BrowserRouter.
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
-  # Escludi file reali (assets, dati, icone) — servili direttamente
-  conditions = {Path = ["!/assets/*", "!/data/*", "!/*.png", "!/*.svg", "!/*.jpg", "!/*.json", "!/favicon.svg", "!/manifest.json"]}
-
 # --- Plugin opzionali -----------------------------------------------------
 # Nessun plugin necessario: il build è vanilla Vite.

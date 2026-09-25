@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/genera-pagine.mjs",
     "typecheck": "tsc -b",
     "preview": "vite preview",
     "esporta-catalogo": "node scripts/esporta-catalogo.mjs",
-    "ios:prepara": "npm run build && npx cap sync ios",
+    "ios:prepara": "vite build && npx cap sync ios",
     "ios:apri": "npx cap open ios"
   },
   "dependencies": {

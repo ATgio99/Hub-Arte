@@ -8,6 +8,7 @@ https://hubarte.it/*      https://basearte.it/:splat   301!
 http://www.hubarte.it/*   https://basearte.it/:splat   301!
 https://www.hubarte.it/*  https://basearte.it/:splat   301!
 
-# Netlify SPA fallback — invia tutte le rotte non di file a index.html
-# (Base Arte usa HashRouter, quindi questo è una safety net)
-/*    /index.html   200
+# Niente rimando generico a index.html: l'app usa gli indirizzi col
+# cancelletto (/#/opere), e le pagine senza sono quelle generate per i motori
+# di ricerca. Un indirizzo che non esiste deve rispondere 404 (dist/404.html),
+# non con la home: altrimenti Google vede migliaia di pagine uguali.
