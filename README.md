@@ -10,7 +10,7 @@
 [![Vite](https://img.shields.io/badge/Vite-5-purple.svg)](https://vitejs.dev/)
 [![Supabase](https://img.shields.io/badge/Supabase-2-green.svg)](https://supabase.com/)
 
-🌐 **Sito live**: [hubarte.it](https://hubarte.it)
+🌐 **Sito live**: [basearte.it](https://basearte.it)
 
 ## 📖 Cos'è
 
@@ -249,7 +249,7 @@ Distribuito sotto licenza **MIT**. Vedi [LICENSE](./LICENSE) per dettagli.
 
 ## 📬 Contatti
 
-- 🌐 **Sito**: [hubarte.it](https://hubarte.it)
+- 🌐 **Sito**: [basearte.it](https://basearte.it)
 - 📧 **Email**: `hubarte@pm.me`
 - 🐛 **Bug report**: [GitHub Issues](../../issues)
 - 💬 **Discussioni**: [GitHub Discussions](../../discussions)

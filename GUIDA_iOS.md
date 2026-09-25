@@ -99,7 +99,7 @@ rete. Senza rete resta quello impacchettato, che è comunque completo.
 **Le email di conferma e di recupero password rimandano al sito.** Dentro
 l'app l'indirizzo di partenza è `capacitor://localhost`, che esiste solo nel
 telefono: un link di quel tipo, aperto dalla posta, non porterebbe da nessuna
-parte. Chi si registra dall'app conferma quindi su hubarte.it, poi torna
+parte. Chi si registra dall'app conferma quindi su basearte.it, poi torna
 nell'app e accede. È gestito in `src/lib/auth.tsx`.
 
 **Lo scorrimento dal bordo non ruba più il gesto.** Sul sito, in Safari, lo

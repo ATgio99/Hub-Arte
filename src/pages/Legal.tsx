@@ -369,7 +369,7 @@ export default function Legal() {
         <P>
           BaseArte ("il Servizio") è un atlante di studio di storia dell'arte
           che raccoglie opere, artisti, periodi, tecniche, luoghi e connessioni. Il Servizio è
-          accessibile alla URL <code>https://hubarte.it</code>.
+          accessibile alla URL <code>https://basearte.it</code>.
         </P>
 
         <H2>1. Titolare del trattamento</H2>
