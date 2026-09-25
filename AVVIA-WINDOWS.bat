@@ -23,7 +23,7 @@ if not exist "node_modules" (
   echo.
 )
 
-echo 🏛️  Avvio BASE Arte — Atlante di storia dell'arte
+echo 🏛️  Avvio Base Arte — Atlante di storia dell'arte
 echo    Sito:       http://localhost:5173
 echo    Gestione:   http://localhost:5173/admin.html
 echo    Login:      http://localhost:5173/#/login

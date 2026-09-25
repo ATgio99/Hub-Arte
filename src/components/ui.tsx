@@ -922,7 +922,7 @@ export function BannerGitHub({ compatto = false }: { compatto?: boolean }) {
       </div>
 
       <p style={{ fontSize: 14, lineHeight: 1.6, color: "var(--ink-soft)", margin: "0 auto 18px", maxWidth: 560 }}>
-        BASE Arte è gratuito, open source e cresce con chi lo usa. Il codice e il
+        Base Arte è gratuito, open source e cresce con chi lo usa. Il codice e il
         catalogo stanno su GitHub: chiunque può leggerli, correggerli e riusarli.
       </p>
 

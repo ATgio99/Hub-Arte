@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.hubart.atlante',
-  appName: 'BASE Arte',
+  appName: 'Base Arte',
   webDir: 'dist',
   server: {
     // No external server needed - everything is bundled

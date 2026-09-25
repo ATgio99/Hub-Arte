@@ -1,4 +1,4 @@
-# BASE Arte — atlante di storia dell'arte
+# Base Arte — atlante di storia dell'arte
 
 > Un atlante per studiare storia dell'arte guardando come le opere stanno fra
 > loro: chi le ha fatte, chi le ha pagate, in che periodo. Gratuito, senza
@@ -19,7 +19,7 @@ opere e non vedevo cosa le tenesse insieme. Chi aveva imparato da chi, quali cit
 contavano in un certo momento, chi tirava fuori i soldi perché una cappella
 venisse affrescata. Sui manuali c'è tutto, ma sparso su duecento pagine.
 
-BASE Arte prova a tenere insieme quelle cose:
+Base Arte prova a tenere insieme quelle cose:
 
 - 🏛️ **Catalogo opere** — oltre 1.100 schede con autore, committente, datazione, luogo, analisi e innovazioni
 - 👤 **Protagonisti** — oltre 600 schede fra autori e committenti, dai papi alle corporazioni di mestiere

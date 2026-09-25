@@ -102,7 +102,7 @@ function HomeNotice() {
             marginBottom: 16, lineHeight: 1.2,
             letterSpacing: "-.01em",
           }}>
-            Benvenutə in BASE Arte
+            Benvenutə in Base Arte
           </h2>
 
           {/* Corpo testo */}
@@ -117,7 +117,7 @@ function HomeNotice() {
               fontSize: 14.5, lineHeight: 1.65,
               color: "var(--ink-soft, #5b5550)", margin: "0 0 12px",
             }}>
-              Se qualcosa non funziona, oppure hai un'idea per migliorarlo, <b style={{ color: "var(--ink, #1a1a1a)", fontWeight: 600 }}>segnalacelo</b>. Ogni contributo è prezioso e ci aiuta a far crescere BASE Arte.
+              Se qualcosa non funziona, oppure hai un'idea per migliorarlo, <b style={{ color: "var(--ink, #1a1a1a)", fontWeight: 600 }}>segnalacelo</b>. Ogni contributo è prezioso e ci aiuta a far crescere Base Arte.
             </p>
             <p style={{
               fontSize: 14.5, lineHeight: 1.65,
@@ -199,7 +199,7 @@ export default function Landing() {
             fontFamily: "var(--font-display)", fontSize: "clamp(32px, 6vw, 52px)",
             lineHeight: 1.05, letterSpacing: "-.025em", marginBottom: 12,
           }}>
-            BASE Arte
+            Base Arte
           </h1>
           {/* Avviso del cambio di nome: da togliere quando hubarte.it scade. */}
           <p data-testid="avviso-nome" style={{

@@ -1,4 +1,4 @@
-# BASE Arte su iPhone
+# Base Arte su iPhone
 
 L'atlante gira su iPhone come app vera, non come pagina web salvata sulla home.
 Il catalogo è dentro l'app — 1.100 opere, immagini escluse — quindi **funziona
@@ -128,7 +128,7 @@ passaggio 2.
 
 Serve l'abbonamento Apple Developer (99 € l'anno) e passare la revisione di
 Apple. Un punto da preparare: Apple respinge le app che sono solo un sito web
-impacchettato — è la regola 4.2, *minimum functionality*. BASE Arte ha un
+impacchettato — è la regola 4.2, *minimum functionality*. Base Arte ha un
 argomento serio a favore, e cioè che **funziona per intero senza rete** perché
 il catalogo è dentro l'app, ma va sostenuto nella scheda di presentazione, non
 dato per scontato.

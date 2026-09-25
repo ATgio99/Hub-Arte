@@ -1,5 +1,5 @@
 # ============================================================================
-# Netlify configuration — BASE Arte — Atlante di storia dell'arte
+# Netlify configuration — Base Arte — Atlante di storia dell'arte
 # ============================================================================
 # Questo file dice a Netlify come buildare e servire il sito.
 # È sufficiente collegare il repo a Netlify: questo file viene letto
@@ -70,7 +70,7 @@
     Cache-Control = "public, max-age=0, must-revalidate"
 
 # --- SPA redirect (fallback) ----------------------------------------------
-# BASE Arte usa HashRouter (URLs tipo /#/opere), quindi il server riceve
+# Base Arte usa HashRouter (URLs tipo /#/opere), quindi il server riceve
 # sempre richiede /index.html — questo redirect NON è strettamente necessario
 # ma è una safety net nel caso in futuro si passi a BrowserRouter.
 [[redirects]]
