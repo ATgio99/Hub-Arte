@@ -55,7 +55,7 @@ export function isAdminEmail(email?: string | null): boolean {
  *  dentro il telefono: un link con quell'indirizzo, aperto dalla posta, non
  *  porta da nessuna parte. Si rimanda quindi al sito pubblico, che e' un
  *  indirizzo vero e raggiungibile da qualunque programma di posta. */
-const SITO_PUBBLICO = "https://hubarte.it";
+const SITO_PUBBLICO = "https://basearte.it";
 
 export function dentroApp(): boolean {
   if (typeof window === "undefined") return false;
