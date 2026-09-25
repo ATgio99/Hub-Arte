@@ -1,5 +1,5 @@
 # ============================================================================
-# Netlify configuration — BaseArte / Atlante Neuronale
+# Netlify configuration — BaseArte — Atlante di storia dell'arte
 # ============================================================================
 # Questo file dice a Netlify come buildare e servire il sito.
 # È sufficiente collegare il repo a Netlify: questo file viene letto
