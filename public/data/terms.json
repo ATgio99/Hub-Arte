@@ -461,8 +461,8 @@
  },
  {
   "id": "bicromia",
-  "term": "Bicromia marmorea",
-  "definition": "Effetto decorativo ottenuto alternando marmo bianco e marmo verde (o pietra scura) nelle facciate e negli interni di chiese romaniche toscane, liguri e pisane.",
+  "term": "Bicromia",
+  "definition": "Effetto decorativo ottenuto accostando materiali di due colori a fasce o a riquadri: marmo bianco e verde (o pietra scura) nel Romanico toscano, pietra e laterizio nei palazzi comunali, arenaria e pietra lavica nel Romanico renano.",
   "category": "architettura",
   "period_ids": [
    "romanico-italiano"
@@ -8759,6 +8759,16 @@
   "category": "generale",
   "period_ids": [
    "tarda-antichita"
+  ],
+  "is_archetype": false
+ },
+ {
+  "id": "volta-esapartita",
+  "term": "Volta esapartita",
+  "definition": "Volta a crociera costolonata divisa in sei spicchi da un costolone trasversale aggiunto alle due diagonali; copre di norma due campate delle navate laterali per ciascuna della navata centrale. È tipica del primo Gotico francese.",
+  "category": "architettura",
+  "period_ids": [
+   "gotico-francese"
   ],
   "is_archetype": false
  }

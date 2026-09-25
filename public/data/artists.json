@@ -6553,8 +6553,10 @@
  },
  {
   "id": "luigi-i-dangio",
-  "name": "Luigi I d'Angio",
-  "aka": [],
+  "name": "Luigi I d'Angiò",
+  "aka": [
+   "Luigi I d'Angio"
+  ],
   "birth": "1339",
   "death": "1384",
   "period_ids": [],
@@ -6935,8 +6937,10 @@
  },
  {
   "id": "marco-raverti",
-  "name": "Marco Raverti",
-  "aka": [],
+  "name": "Matteo Raverti",
+  "aka": [
+   "Marco Raverti"
+  ],
   "birth": null,
   "death": null,
   "period_ids": [
@@ -7459,8 +7463,10 @@
  },
  {
   "id": "niccolo-v-parentucelli",
-  "name": "Niccolo V (Tommaso Parentucelli)",
-  "aka": [],
+  "name": "Niccolò V (Tommaso Parentucelli)",
+  "aka": [
+   "Niccolo V (Tommaso Parentucelli)"
+  ],
   "birth": "1397",
   "death": "1455",
   "period_ids": [],
@@ -8649,8 +8655,10 @@
  },
  {
   "id": "renato-dangio",
-  "name": "Renato d'Angio (Rene d'Anjou)",
-  "aka": [],
+  "name": "Renato d'Angiò (René d'Anjou)",
+  "aka": [
+   "Renato d'Angio (Rene d'Anjou)"
+  ],
   "birth": 1409,
   "death": 1480,
   "period_ids": [],
@@ -8739,8 +8747,10 @@
  },
  {
   "id": "roberto-dangio",
-  "name": "Roberto d'Angio",
-  "aka": [],
+  "name": "Roberto d'Angiò",
+  "aka": [
+   "Roberto d'Angio"
+  ],
   "birth": "1277",
   "death": "1343",
   "period_ids": [],
@@ -9116,8 +9126,10 @@
  },
  {
   "id": "sismondo-pandolfo-malatesta",
-  "name": "Sismondo Pandolfo Malatesta",
-  "aka": [],
+  "name": "Sigismondo Pandolfo Malatesta",
+  "aka": [
+   "Sismondo Pandolfo Malatesta"
+  ],
   "birth": null,
   "death": null,
   "period_ids": [],
