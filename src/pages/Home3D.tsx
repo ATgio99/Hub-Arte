@@ -105,7 +105,7 @@ export default function Home3D() {
     return (
       <div className="home3d-fallback wrap">
         <header className="h3d-fb-head">
-          <div className="eyebrow">BaseArte — Atlante di storia dell'arte</div>
+          <div className="eyebrow">BASE Arte — Atlante di storia dell'arte</div>
           <h1 className="h3d-fb-title">La cattedrale<br />del <em>sapere</em>.</h1>
           <p className="muted" style={{ maxWidth: 560, marginTop: 16 }}>
             Otto vie per attraversare l'Atlante. La scena 3D non è disponibile su
