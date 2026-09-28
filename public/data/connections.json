@@ -99,31 +99,22 @@
   "description": "Bartolomeo Ammannati costruisce nel 1559 lo scalone del ricetto della Biblioteca Laurenziana seguendo il progetto di Michelangelo."
  },
  {
-  "id": "andrea-del-sarto-pontormo-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "andrea-del-sarto",
-  "target_type": "artist",
-  "target_id": "jacopo-pontormo",
-  "kind": "maestro-allievo",
-  "description": "Pontormo è allievo di Andrea del Sarto, con il quale collabora alle decorazioni del chiostrino dell'Annunziata e della camera Borgherini."
- },
- {
   "id": "andrea-del-sarto-rosso-fiorentino-scuola",
   "source_type": "artist",
   "source_id": "andrea-del-sarto",
   "target_type": "artist",
   "target_id": "rosso-fiorentino",
   "kind": "maestro-allievo",
-  "description": "Rosso Fiorentino si forma alla scuola di Andrea del Sarto, con il quale lavora agli affreschi della Vita della Vergine nel chiostrino dell'Annunziata."
+  "description": "Allievo di Andrea del Sarto, Rosso Fiorentino collabora con il maestro al ciclo con la Vita della Vergine nel chiostrino dell'Annunziata."
  },
  {
   "id": "andrea-pisano-prima-porta-battistero",
-  "source_type": "period",
-  "source_id": "gotico-internazionale",
-  "target_type": "artist",
-  "target_id": "lorenzo-ghiberti",
+  "source_type": "artist",
+  "source_id": "andrea-pisano",
+  "target_type": "work",
+  "target_id": "porta-nord-battistero-firenze-ghiberti",
   "kind": "influenza",
-  "description": "Ghiberti segue il modello compositivo della prima porta del battistero realizzata da Andrea Pisano (1330-1336) nell'impostazione della Porta Nord."
+  "description": "Nell'impostazione della Porta Nord, Ghiberti recupera l'impianto compositivo già impiegato da Andrea Pisano nella prima porta del battistero fiorentino (1330-1336), debitrice del linguaggio del Gotico internazionale."
  },
  {
   "id": "antelami-chartres",
@@ -168,16 +159,16 @@
   "target_type": "artist",
   "target_id": "giotto-di-bondone",
   "kind": "influenza",
-  "description": "Le figure delle Storie di Isacco mostrano una derivazione dalla statuaria di Arnolfo di Cambio per la loro solida plasticità; anche il ciborio nell'Assisi nel Presepe di Greccio cita esplicitamente quelli arnolfiani romani."
+  "description": "Le Storie di Isacco rivelano un debito nei confronti della statuaria di Arnolfo di Cambio per la solida resa plastica delle figure, mentre il ciborio raffigurato nel Presepe di Greccio ad Assisi riprende in modo esplicito i modelli arnolfiani di ambito romano."
  },
  {
   "id": "arnolfo-nicola",
   "source_type": "artist",
-  "source_id": "arnolfo-di-cambio",
+  "source_id": "nicola-pisano",
   "target_type": "artist",
-  "target_id": "nicola-pisano",
+  "target_id": "arnolfo-di-cambio",
   "kind": "maestro-allievo",
-  "description": "Arnolfo di Cambio si forma a fianco dei Pisano nel cantiere della cattedrale senese, assimilando sia il classicismo di Nicola sia le novità gotiche di Giovanni."
+  "description": "Nel cantiere della cattedrale di Siena, Arnolfo di Cambio lavora a fianco dei Pisano, assimilandone tanto il classicismo di Nicola quanto le soluzioni gotiche introdotte da Giovanni."
  },
  {
   "id": "arnolfo-statuaria-tardoantica",
@@ -204,7 +195,7 @@
   "target_type": "period",
   "target_id": "tarda-antichita",
   "kind": "rielaborazione",
-  "description": "La rinascenza carolingia persegue con ardore quasi filologico il recupero dei modelli tardoantichi, raggiungendo un livello di imitazione così preciso da creare problemi di datazione agli storici (es. Cattedra di Pietro)."
+  "description": "Gli artisti dell'età carolingia guardano ai modelli tardoantichi con un rigore quasi filologico, imitandoli con tale precisione che gli storici incontrano talvolta difficoltà nel datare le opere, come accade per la Cattedra di Pietro."
  },
  {
   "id": "arte-longobarda-oreficeria-cloisonne",
@@ -303,7 +294,7 @@
   "target_type": "work",
   "target_id": "festa-del-rosario-durer",
   "kind": "influenza",
-  "description": "La monumentalità compositiva e la profondità spaziale della Festa del Rosario di Dürer sono debiti della pittura di Giovanni Bellini, che Dürer chiaramente ben conosce."
+  "description": "Dürer, che conosce bene l'opera di Giovanni Bellini, ne recepisce la lezione nella Festa del Rosario, debitrice della pittura belliniana per l'impianto compositivo monumentale e per la resa della profondità spaziale."
  },
  {
   "id": "benozzo-allievo-beato-angelico",
@@ -411,7 +402,7 @@
   "target_type": "artist",
   "target_id": "maestro-di-bedford",
   "kind": "maestro-allievo",
-  "description": "Il Maestro di Bedford è forse collaboratore del Maestro di Boucicaut, dal quale prende le mosse stilisticamente."
+  "description": "Il Maestro di Bedford, forse attivo accanto al Maestro di Boucicaut, muove dal suo modo di usare il colore, fluido e ricco di sfumature, nelle pagine del Libro delle meraviglie."
  },
  {
   "id": "boucicaut-rohan-relazione",
@@ -421,15 +412,6 @@
   "target_id": "maestro-delle-ore-di-rohan",
   "kind": "maestro-allievo",
   "description": "Il Maestro delle Ore di Rohan compie la propria formazione accanto al Maestro del Maresciallo di Boucicaut, da cui eredita la stesura leggera del colore e la ricchezza dei passaggi di tono."
- },
- {
-  "id": "bramante-influenza-bramantino",
-  "source_type": "artist",
-  "source_id": "bramantino",
-  "target_type": "work",
-  "target_id": "pala-martinengo-lotto",
-  "kind": "influenza",
-  "description": "La Pala Martinengo di Lotto ambienta la scena in una chiesa dai caratteri bramanteschi con aperture circolari simili a quelle di Bramante in Santa Maria delle Grazie a Milano."
  },
  {
   "id": "bramante-influenza-lotto-pala-martinengo",
@@ -465,7 +447,7 @@
   "target_type": "artist",
   "target_id": "michelozzo-michelozzi",
   "kind": "influenza",
-  "description": "Michelozzo Michelozzi riprende da Brunelleschi la tendenza alla semplificazione dei volumi, il ruolo centrale della forma quadrata e la conversione classica di alcuni motivi gotici."
+  "description": "Dall'esempio di Brunelleschi, Michelozzo Michelozzi eredita la tendenza a semplificare i volumi, la centralità della forma quadrata e la traduzione in chiave classica di alcuni motivi ancora gotici."
  },
  {
   "id": "brunelleschi-masaccio-trinita",
@@ -501,16 +483,16 @@
   "target_type": "artist",
   "target_id": "rogier-van-der-weyden",
   "kind": "maestro-allievo",
-  "description": "Rogier van der Weyden si forma nella bottega di Robert Campin a Tournai, da cui riprende soprattutto l'attenzione per i volumi delle figure e la rappresentazione realistica degli spazi."
+  "description": "Nella bottega tournaisina di Robert Campin si forma Rogier van der Weyden, che ne assimila in particolare l'attenzione per la resa volumetrica delle figure e per la rappresentazione realistica dello spazio."
  },
  {
   "id": "canterbury-guillaume-de-sens",
-  "source_type": "work",
-  "source_id": "cattedrale-di-canterbury-interno",
-  "target_type": "artist",
-  "target_id": "guillaume-de-sens",
+  "source_type": "artist",
+  "source_id": "guillaume-de-sens",
+  "target_type": "work",
+  "target_id": "cattedrale-di-canterbury-interno",
   "kind": "autore",
-  "description": "La ricostruzione del coro della cattedrale di Canterbury dopo l'incendio del 1174 è opera di Guillaume de Sens, architetto francese che introduce il Gotico in Inghilterra."
+  "description": "Dopo l'incendio del 1174, il coro della cattedrale di Canterbury viene ricostruito su progetto di Guillaume de Sens, architetto francese a cui si deve l'introduzione del linguaggio gotico in Inghilterra."
  },
  {
   "id": "cappella-palatina-arte-byzantina",
@@ -627,7 +609,7 @@
   "target_type": "artist",
   "target_id": "giotto-di-bondone",
   "kind": "influenza",
-  "description": "L'incontro con Cavallini a Roma indica a Giotto la via del recupero dei valori classici; la coesistenza dei due artisti nel cantiere di Santa Cecilia in Trastevere è stata studiata come possibile scambio di influenze."
+  "description": "A Roma, il contatto con Cavallini apre a Giotto la strada verso il recupero dei valori classici; la presenza contemporanea dei due artisti nel cantiere di Santa Cecilia in Trastevere è stata più volte indagata dagli studiosi come possibile occasione di scambio reciproco."
  },
  {
   "id": "cellini-perseo-giambologna-mercurio",
@@ -636,7 +618,7 @@
   "target_type": "artist",
   "target_id": "giambologna",
   "kind": "influenza",
-  "description": "Giambologna fa tesoro delle invenzioni di Cellini: l'instabilità della posizione e la torsione aggraziata della posa serpentinata del Mercurio riprende le intuizioni del Perseo."
+  "description": "Giambologna trae profitto dalle invenzioni di Cellini: nel Mercurio, l'equilibrio instabile della figura e la torsione elegante della posa serpentinata sviluppano le soluzioni già sperimentate nel Perseo."
  },
  {
   "id": "chiesa-redentore-ex-voto-pestilenza",
@@ -753,7 +735,7 @@
   "target_type": "work",
   "target_id": "assunzione-della-vergine-correggio-duomo-parma",
   "kind": "evoluzione",
-  "description": "Con l'Assunzione della Vergine nel duomo di Parma, Correggio supera la prospettiva illusionistica rinascimentale e pone una premessa indispensabile per l'arte barocca."
+  "description": "Nell'Assunzione della Vergine per il duomo di Parma, Correggio va oltre la prospettiva illusionistica rinascimentale, gettando una premessa imprescindibile per gli sviluppi dell'arte barocca."
  },
  {
   "id": "correggio-cupola-san-giovanni-anticipa-duomo",
@@ -780,7 +762,7 @@
   "target_type": "artist",
   "target_id": "parmigianino",
   "kind": "influenza",
-  "description": "Parmigianino si forma a diretto contatto con Correggio e ne veicola l'eredità in direzione manierista."
+  "description": "A stretto contatto con Correggio si forma Parmigianino, che ne trasmette l'eredità orientandola verso esiti manieristi."
  },
  {
   "id": "cupola-della-roccia-modello-islamico",
@@ -790,15 +772,6 @@
   "target_id": "civilta-islamica",
   "kind": "evoluzione",
   "description": "La Cupola della Roccia (691) a Gerusalemme riprende la pianta centralizzata e la tecnica musiva dell'arte paleocristiana, rielaborandola in chiave islamica con decorazione calligrafica e geometrizzante."
- },
- {
-  "id": "daddi-da-giotto",
-  "source_type": "artist",
-  "source_id": "bernardo-daddi",
-  "target_type": "artist",
-  "target_id": "giotto-di-bondone",
-  "kind": "influenza",
-  "description": "Bernardo Daddi lavora nella cerchia giottesca fiorentina, ricevendo l'influenza stilistica del maestro."
  },
  {
   "id": "daniele-volterra-giudizio",
@@ -828,15 +801,6 @@
   "description": "Le lance nella Decollazione di san Giorgio rimandano alle fiaccole nel Bacio di Giuda della cappella degli Scrovegni di Giotto."
  },
  {
-  "id": "deposizione-volterra-pieta-sansepolcro-influenza",
-  "source_type": "work",
-  "source_id": "deposizione-volterra-rosso-fiorentino",
-  "target_type": "work",
-  "target_id": "pieta-sansepolcro-rosso-fiorentino",
-  "kind": "rielaborazione",
-  "description": "La Pietà di Sansepolcro cita esplicitamente le scale della Deposizione di Volterra sullo sfondo."
- },
- {
   "id": "domenico-veneziano-influenza-fiamminga",
   "source_type": "artist",
   "source_id": "domenico-veneziano",
@@ -859,9 +823,9 @@
   "source_type": "work",
   "source_id": "deposizione-nel-sepolcro-padova",
   "target_type": "period",
-  "target_id": "rinascimento",
+  "target_id": "antichita-classica",
   "kind": "rielaborazione",
-  "description": "Il modello compositivo della Deposizione di Cristo nel sepolcro padovana cita sarcofagi romani, ma l'esecuzione stravolge la pacatezza classica in favore di un assoluto predominio dell'espressività drammatica."
+  "description": "Nella Deposizione di Cristo nel sepolcro di Padova, l'impianto compositivo riprende i sarcofagi romani, ma l'esecuzione ne sovverte la compostezza classica a favore di un'espressività drammatica assoluta."
  },
  {
   "id": "donatello-gattamelata-rielabora-marco-aurelio",
@@ -911,11 +875,11 @@
  {
   "id": "duccio-aggiornamento-giottesco",
   "source_type": "artist",
-  "source_id": "duccio-di-buoninsegna",
+  "source_id": "giotto-di-bondone",
   "target_type": "artist",
-  "target_id": "giotto-di-bondone",
+  "target_id": "duccio-di-buoninsegna",
   "kind": "influenza",
-  "description": "Nel verso della Maestà Duccio dimostra di essere aggiornato sul linguaggio giottesco nelle architetture in scorcio e nella dovizia di dettagli quotidiani."
+  "description": "Nel verso della Maestà, Duccio rivela una conoscenza aggiornata del linguaggio di Giotto, evidente nelle architetture rese in scorcio e nella ricchezza di dettagli quotidiani."
  },
  {
   "id": "duccio-da-cimabue",
@@ -933,7 +897,7 @@
   "target_type": "period",
   "target_id": "gotico-italiano",
   "kind": "influenza",
-  "description": "Duccio si ispira al Gotico francese per l'eleganza lineare con cui definisce le figure, pur mantenendo schemi iconografici e compositivi bizantini."
+  "description": "Ancora legato, nella resa delle figure, a schemi bizantini, Duccio rinnova il proprio linguaggio assorbendo il gusto per la linea elegante tipico dell'arte gotica d'oltralpe: una sintesi che concorre a definire i tratti del Gotico italiano."
  },
  {
   "id": "durer-impara-da-mantegna-incisioni",
@@ -997,7 +961,7 @@
   "target_type": "artist",
   "target_id": "nicola-pisano",
   "kind": "influenza",
-  "description": "Nicola Pisano si forma nell'ambito della corte sveva di Federico II, da cui eredita l'interesse per la classicità romana e la tendenza al naturalismo."
+  "description": "Nicola Pisano matura la propria formazione nell'ambiente della corte sveva di Federico II, ereditandone l'interesse per la classicità romana e l'inclinazione al naturalismo."
  },
  {
   "id": "filarete-brunelleschi-influenza",
@@ -1024,7 +988,7 @@
   "target_type": "work",
   "target_id": "cappella-brancacci",
   "kind": "evoluzione",
-  "description": "Filippino Lippi completa nel 1481 la decorazione della cappella Brancacci, rimasta incompiuta dopo la morte di Masaccio e la partenza di Masolino, dopo la riammissione della famiglia Brancacci in citta."
+  "description": "Dopo il rientro in città della famiglia Brancacci, Filippino Lippi porta a termine nel 1481 il ciclo della cappella, rimasto incompiuto dopo la morte di Masaccio e la partenza di Masolino."
  },
  {
   "id": "filippino-masaccio-cappella-brancacci",
@@ -1078,7 +1042,7 @@
   "target_type": "artist",
   "target_id": "jean-fouquet",
   "kind": "influenza",
-  "description": "Jean Fouquet entra in contatto con l'ars nova principalmente attraverso Barthélemy d'Eyck."
+  "description": "È soprattutto grazie a Barthélemy d'Eyck che Jean Fouquet viene in contatto con l'ars nova."
  },
  {
   "id": "gaddi-dipende-giotto",
@@ -1132,7 +1096,7 @@
   "target_type": "period",
   "target_id": "umanesimo-fiorentino",
   "kind": "contaminazione",
-  "description": "Alcuni studiosi pongono San Giorgio e la principessa dopo il contatto di Pisanello con Piero della Francesca a Ferrara (1449), per l'atmosfera sospesa e la geometria di alcune forme."
+  "description": "Per l'atmosfera sospesa e la nitida geometria di alcune forme, parte della critica colloca San Giorgio e la principessa dopo il soggiorno ferrarese di Pisanello nel 1449, quando l'artista entra in contatto con Piero della Francesca."
  },
  {
   "id": "gentile-pisanello-maestro-allievo",
@@ -1141,7 +1105,7 @@
   "target_type": "artist",
   "target_id": "pisanello",
   "kind": "maestro-allievo",
-  "description": "Pisanello diviene collaboratore di Gentile da Fabriano quando l'artista marchigiano giunge a Venezia, ne eredita la bottega e i committenti (Gonzaga, Este)."
+  "description": "Quando Gentile da Fabriano giunge a Venezia, Pisanello ne diventa collaboratore, ereditandone in seguito sia la bottega sia i committenti, tra cui i Gonzaga e gli Este."
  },
  {
   "id": "ghiberti-donatello-michelozzo-bottega",
@@ -1150,7 +1114,7 @@
   "target_type": "artist",
   "target_id": "donatello",
   "kind": "maestro-allievo",
-  "description": "Donatello si forma nella bottega di Ghiberti tra il 1404 e il 1407, acquisendo i segreti dell'oreficeria e della fusione in bronzo."
+  "description": "Tra il 1404 e il 1407 Donatello compie il proprio apprendistato nella bottega di Ghiberti, dove apprende le tecniche dell'oreficeria e della fusione del bronzo."
  },
  {
   "id": "ghiberti-tardogotico-rinascimento",
@@ -1231,7 +1195,7 @@
   "target_type": "work",
   "target_id": "giudizio-universale-scrovegni",
   "kind": "influenza",
-  "description": "La figura di Lucifero nell'Inferno del Giudizio Universale degli Scrovegni è ispirata a quella della scena dell'Inferno del battistero di Firenze realizzata da Coppo di Marcovaldo."
+  "description": "Nel Giudizio Universale della cappella degli Scrovegni, la figura di Lucifero riprende quella ideata da Coppo di Marcovaldo per la scena dell'Inferno nel battistero di Firenze."
  },
  {
   "id": "giotto-eredita-pittura-fiorentina",
@@ -1249,7 +1213,7 @@
   "target_type": "artist",
   "target_id": "giorgione",
   "kind": "influenza",
-  "description": "Giorgione si forma probabilmente nella bottega di Giovanni Bellini o ne assimila lo stile attraverso Vincenzo Catena, sviluppando in sintonia con le sperimentazioni di Bellini la pittura tonale."
+  "description": "Non è certo se Giorgione abbia lavorato direttamente nella bottega di Giovanni Bellini o ne abbia assorbito la lezione tramite il pittore Vincenzo Catena; resta comunque il debito verso le ricerche belliniane da cui muove la sua originale tecnica, in seguito nota come tonalismo."
  },
  {
   "id": "giovanni-da-milano-da-giotto",
@@ -1330,7 +1294,7 @@
   "target_type": "artist",
   "target_id": "coppo-di-marcovaldo",
   "kind": "influenza",
-  "description": "Coppo di Marcovaldo considera Giunta Pisano un modello, come si vede nell'accentuata inarcatura del fianco destro e nell'intensa espressione di dolore del Crocifisso di San Gimignano."
+  "description": "Giunta Pisano costituisce un modello per Coppo di Marcovaldo, debito riconoscibile nel Crocifisso di San Gimignano, dove il fianco destro è inarcato con decisione e il volto reca un'intensa espressione di dolore."
  },
  {
   "id": "giustiniano-committenza-san-vitale",
@@ -1349,15 +1313,6 @@
   "target_id": "quattrocento-fiammingo",
   "kind": "evoluzione",
   "description": "L'ars nova fiamminga nasce dal terreno culturale del Gotico cortese, di cui riprende il linearismo, il cromatismo vivace e l'approccio lenticolare al dettaglio, traghettandoli in una pittura volumetricamente più salda."
- },
- {
-  "id": "jacopo-michelangelo-influenza",
-  "source_type": "artist",
-  "source_id": "jacopo-della-quercia",
-  "target_type": "period",
-  "target_id": "umanesimo-fiorentino",
-  "kind": "influenza",
-  "description": "Michelangelo rimarrà colpito dalle formelle del portale di San Petronio e ne farà tesoro per gli affreschi nella volta della cappella Sistina."
  },
  {
   "id": "jacopo-nicola-giovanni-pisano",
@@ -1393,7 +1348,7 @@
   "target_type": "artist",
   "target_id": "luciano-laurana",
   "kind": "influenza",
-  "description": "Luciano Laurana conosce l'architettura di Alberti a Mantova nel 1465, prima di arrivare a Urbino, dove applica i modelli albertiani e fiorentini per il cortile del Palazzo Ducale."
+  "description": "Prima di giungere a Urbino, Luciano Laurana viene a conoscenza dell'architettura di Alberti a Mantova nel 1465: applicherà poi quei modelli, insieme a soluzioni fiorentine, nel cortile del Palazzo Ducale."
  },
  {
   "id": "leon-reims-influenza",
@@ -1407,16 +1362,16 @@
  {
   "id": "leonardo-influenza-giorgione-sfumato",
   "source_type": "artist",
-  "source_id": "giorgione",
+  "source_id": "leonardo-da-vinci",
   "target_type": "work",
   "target_id": "la-tempesta-giorgione",
   "kind": "influenza",
-  "description": "Secondo Vasari, a Venezia Giorgione studia le opere di Leonardo, spiegando la vicinanza tra la sua pittura e lo sfumato toscano, ravvisabile negli effetti di prospettiva aerea della Tempesta."
+  "description": "Vasari racconta che a Venezia Giorgione studia alcuni lavori di Leonardo: un contatto che spiegherebbe l'affinità della sua pittura con lo sfumato toscano, percepibile negli effetti di prospettiva aerea della Tempesta."
  },
  {
   "id": "leonardo-influenza-raffaello-sfumato",
   "source_type": "artist",
-  "source_id": "donato-bramante",
+  "source_id": "leonardo-da-vinci",
   "target_type": "artist",
   "target_id": "raffaello-sanzio",
   "kind": "influenza",
@@ -1519,7 +1474,7 @@
   "target_type": "artist",
   "target_id": "lorenzo-lotto",
   "kind": "influenza",
-  "description": "Nei ritratti trevigiani Lotto si distanzia dal tonalismo e riprende la grande lezione di Antonello da Messina nell'impostazione solida e nell'indagine psicologica del soggetto."
+  "description": "Negli anni trevigiani, nei ritratti Lotto prende le distanze dal tonalismo e torna alla grande lezione di Antonello da Messina, di cui riprende l'impostazione solida delle figure e l'indagine psicologica del soggetto."
  },
  {
   "id": "lotto-influenza-arte-fiamminga",
@@ -1537,7 +1492,7 @@
   "target_type": "artist",
   "target_id": "luca-della-robbia",
   "kind": "influenza",
-  "description": "Lo stile di Luca della Robbia appare influenzato da Nanni di Banco e dall'eleganza delle linee di Lorenzo Ghiberti, di cui si ipotizza abbia frequentato le botteghe in gioventu."
+  "description": "Lo stile di Luca della Robbia risente di Nanni di Banco e dell'eleganza lineare di Lorenzo Ghiberti, delle cui botteghe si ipotizza abbia fatto esperienza in gioventù."
  },
  {
   "id": "maesta-louvre-santa-trinita-evoluzione",
@@ -1600,7 +1555,7 @@
   "target_type": "artist",
   "target_id": "filippo-lippi",
   "kind": "influenza",
-  "description": "Il plasticismo di Masaccio e la sua applicazione della prospettiva lineare esercitano una notevole influenza su Filippo Lippi fin dagli inizi della carriera."
+  "description": "Fin dagli esordi, Filippo Lippi risente in modo significativo del plasticismo di Masaccio e del suo uso della prospettiva lineare."
  },
  {
   "id": "maso-di-banco-da-giotto",
@@ -1618,25 +1573,16 @@
   "target_type": "period",
   "target_id": "umanesimo-fiorentino",
   "kind": "contaminazione",
-  "description": "Masolino viene a contatto diretto con Masaccio nella cappella Brancacci, evidenziando le diverse strade espressive presenti nella cultura fiorentina del primo Quattrocento."
- },
- {
-  "id": "mausoleo-galla-placidia-iconografia-celeste",
-  "source_type": "work",
-  "source_id": "mausoleo-galla-placidia",
-  "target_type": "work",
-  "target_id": "buon-pastore-mausoleo-galla-placidia",
-  "kind": "influenza",
-  "description": "Il programma decorativo del mausoleo di Galla Placidia, con fondo blu stellato e croce dorata in chiave di volta, costituisce il contesto cosmologico entro cui si inserisce il Buon Pastore nella lunetta."
+  "description": "Nella cappella Brancacci, Masolino entra in contatto diretto con Masaccio: un confronto che mette in luce le diverse direzioni espressive della cultura fiorentina del primo Quattrocento."
  },
  {
   "id": "menabuoi-da-giovanni-milano",
   "source_type": "artist",
-  "source_id": "giusto-de-menabuoi",
+  "source_id": "giovanni-da-milano",
   "target_type": "artist",
-  "target_id": "giovanni-da-milano",
+  "target_id": "giusto-de-menabuoi",
   "kind": "influenza",
-  "description": "Giusto de' Menabuoi nel ciclo del battistero si ispira anche a Giovanni da Milano per la qualità pastosa degli incarnati e le espressioni intense."
+  "description": "Nel ciclo del battistero, Giusto de' Menabuoi guarda anche a Giovanni da Milano, da cui riprende la resa pastosa degli incarnati e l'intensità delle espressioni."
  },
  {
   "id": "menabuoi-da-maso-banco",
@@ -1659,11 +1605,11 @@
  {
   "id": "michelangelo-ignudi-ammannati-fontana",
   "source_type": "work",
-  "source_id": "volta-cappella-sistina",
+  "source_id": "fontana-nettuno-ammannati",
   "target_type": "work",
-  "target_id": "fontana-nettuno-ammannati",
+  "target_id": "volta-cappella-sistina",
   "kind": "rielaborazione",
-  "description": "Le figure in bronzo della Fontana del Nettuno di Ammannati sono una versione aggiornata e ingentilita degli Ignudi dipinti da Michelangelo nella volta della Sistina."
+  "description": "Nella Fontana del Nettuno, le figure in bronzo di Ammannati rileggono in chiave aggiornata e più aggraziata gli Ignudi affrescati da Michelangelo sulla volta della Sistina."
  },
  {
   "id": "michelangelo-influenza-raffaello-figure",
@@ -1753,7 +1699,7 @@
   "target_type": "artist",
   "target_id": "famiglia-zavattari",
   "kind": "influenza",
-  "description": "La famiglia Zavattari riprende le atmosfere eleganti, le figure quasi senza peso e i colori tenui dello stile di Michelino da Besozzo."
+  "description": "Le atmosfere eleganti, la leggerezza quasi immateriale delle figure e i colori tenui dello stile di Michelino da Besozzo tornano nell'opera della famiglia Zavattari."
  },
  {
   "id": "miniatura-carolingia-modelli-tardoantichi",
@@ -1843,7 +1789,7 @@
   "target_type": "artist",
   "target_id": "giovanni-pisano",
   "kind": "maestro-allievo",
-  "description": "Giovanni Pisano si forma a fianco del padre Nicola prima a Pisa e poi a Siena, portando a compimento e superamento gotico la lezione classicista paterna."
+  "description": "Accanto al padre Nicola, prima a Pisa e poi a Siena, Giovanni Pisano compie la propria formazione, per poi condurre la lezione classicista paterna verso esiti gotici che la superano."
  },
  {
   "id": "nicola-pisano-arnolfo-maestro",
@@ -1861,7 +1807,7 @@
   "target_type": "period",
   "target_id": "tarda-antichita",
   "kind": "rielaborazione",
-  "description": "Nicola Pisano si forma nell'ambito della corte sveva di Federico II e riprende dalla scultura classica romana modelli iconografici diretti (la Vergine come Fedra del sarcofago di Ippolito, i Magi come Giove e Apollo)."
+  "description": "Formatosi nell'ambiente della corte sveva di Federico II, Nicola Pisano attinge direttamente a modelli iconografici della scultura classica romana, come la Vergine ripresa dalla Fedra del sarcofago di Ippolito o i Magi modellati su Giove e Apollo."
  },
  {
   "id": "nicolo-scultore-san-zeno-verona",
@@ -1883,10 +1829,10 @@
  },
  {
   "id": "orvieto-maitani-facciata",
-  "source_type": "work",
-  "source_id": "facciata-duomo-orvieto",
-  "target_type": "artist",
-  "target_id": "lorenzo-maitani",
+  "source_type": "artist",
+  "source_id": "lorenzo-maitani",
+  "target_type": "work",
+  "target_id": "facciata-duomo-orvieto",
   "kind": "autore",
   "description": "Lorenzo Maitani progetta la facciata del duomo di Orvieto a partire dal 1308 e realizza con la sua bottega le quattro grandi lastre marmoree scolpite nel basamento."
  },
@@ -1954,15 +1900,6 @@
   "description": "Pietro Perugino è il maestro di Raffaello a Perugia; il giovane Raffaello ne assimila la compostezza compositiva e il senso dello spazio aperto, poi superato nella maturità romana."
  },
  {
-  "id": "perugino-raffaello-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "pietro-perugino",
-  "target_type": "artist",
-  "target_id": "raffaello-sanzio",
-  "kind": "maestro-allievo",
-  "description": "Raffaello si forma nella bottega di Perugino a Perugia, assorbendo la sua maestria nella prospettiva centrale e nella dolcezza delle figure, prima di superarlo nel Rinascimento maturo romano."
- },
- {
   "id": "perugino-raffaello-sposalizio",
   "source_type": "work",
   "source_id": "sposalizio-della-vergine-perugino",
@@ -1978,7 +1915,7 @@
   "target_type": "period",
   "target_id": "eta-carolingia",
   "kind": "influenza",
-  "description": "La pianta ideale dell'abbazia di San Gallo (816-830) è il documento più importante per la comprensione del monastero carolingio: sistematizza ogni funzione monastica in un disegno razionale che rimarrà il riferimento per secoli."
+  "description": "Concepita tra l'816 e l'830, la pianta ideale dell'abbazia di San Gallo costituisce la fonte principale per comprendere l'organizzazione del monastero carolingio, poiché ordina in uno schema razionale ogni funzione monastica, restando un riferimento per i secoli successivi."
  },
  {
   "id": "piero-domenico-veneziano-maestro",
@@ -2000,12 +1937,12 @@
  },
  {
   "id": "piero-leggenda-croce-ghiberti-rielaborazione",
-  "source_type": "artist",
-  "source_id": "lorenzo-ghiberti",
+  "source_type": "work",
+  "source_id": "leggenda-della-vera-croce",
   "target_type": "work",
-  "target_id": "leggenda-della-vera-croce",
+  "target_id": "porta-del-paradiso-ghiberti",
   "kind": "rielaborazione",
-  "description": "Nel ciclo di Arezzo la scena dell'incontro tra la regina di Saba e Salomone allude alla riconciliazione tra la Chiesa d'Oriente e d'Occidente, come già la formella di analogo soggetto realizzata da Ghiberti per la Porta del Paradiso del battistero di San Giovanni a Firenze."
+  "description": "Anche nel ciclo aretino, l'incontro fra la regina di Saba e Salomone allude al riavvicinamento tra le Chiese d'Oriente e d'Occidente, tema già affrontato da Ghiberti nella formella corrispondente della Porta del Paradiso del battistero fiorentino."
  },
  {
   "id": "piero-masaccio-influenza",
@@ -2028,11 +1965,11 @@
  {
   "id": "pietro-lorenzetti-da-giotto",
   "source_type": "artist",
-  "source_id": "pietro-lorenzetti",
+  "source_id": "giotto-di-bondone",
   "target_type": "artist",
-  "target_id": "giotto-di-bondone",
+  "target_id": "pietro-lorenzetti",
   "kind": "influenza",
-  "description": "Pietro Lorenzetti è tra i più 'fiorentini' dei senesi: guarda con interesse all'estetica giottesca per la volumetria e la plasticità delle figure."
+  "description": "Pietro Lorenzetti, fra i senesi più vicino alla cultura fiorentina, guarda con attenzione al linguaggio di Giotto, da cui riprende il senso della volumetria e della plasticità delle figure."
  },
  {
   "id": "pilier-anges-classicismo-naturalismo",
@@ -2050,7 +1987,7 @@
   "target_type": "work",
   "target_id": "appartamento-borgia-osiride-iside",
   "kind": "autore",
-  "description": "Papa Alessandro VI Borgia commissiona a Pinturicchio la decorazione dell'Appartamento Borgia, integrando la mitologia egizia per collegare la stirpe aragonese del papa alla storia d'Egitto."
+  "description": "Per Alessandro VI Pinturicchio affresca le sale dell'appartamento Borgia, dove nelle vele della Sala dei Santi il mito egizio di Iside e Osiride celebra il papa come custode del sapere e della giustizia divina."
  },
  {
   "id": "polittico-misericordia-masaccio-donatello",
@@ -2093,7 +2030,7 @@
   "source_type": "work",
   "source_id": "porta-bernoardo-hildesheim",
   "target_type": "technique",
-  "target_id": "fusione-bronzo",
+  "target_id": "fusione-in-bronzo",
   "kind": "evoluzione",
   "description": "La Porta di Bernoardo è il primo grande esempio medievale di porta bronzea figurata fusa in un unico getto, inaugurando la tradizione delle porte bronzee."
  },
@@ -2104,7 +2041,7 @@
   "target_type": "work",
   "target_id": "porta-bronzea-novgorod",
   "kind": "influenza",
-  "description": "I battenti di Magdeburgo nascono sulla scia della produzione bronzea avviata a Hildesheim e ne ereditano il forte aggetto delle figure, ma sono composti da lastre separate fissate su legno invece che da un unico getto."
+  "description": "I battenti fusi a Magdeburgo, oggi a Novgorod, nascono sulla scia della produzione bronzea avviata a Hildesheim e ne ereditano il forte aggetto delle figure, ma sono composti da lastre separate fissate su legno invece che da un unico getto."
  },
  {
   "id": "processioni-sant-apollinare-classe-stile",
@@ -2145,11 +2082,11 @@
  {
   "id": "raffaello-modello-manierismo",
   "source_type": "period",
-  "source_id": "rinascimento",
-  "target_type": "period",
-  "target_id": "manierismo",
+  "source_id": "manierismo",
+  "target_type": "artist",
+  "target_id": "raffaello-sanzio",
   "kind": "rielaborazione",
-  "description": "Il Manierismo si sviluppa come rielaborazione - in senso opposto - dell'eredità di Raffaello: ne condivide il vocabolario formale, interpretandolo però in maniera anticlassica."
+  "description": "Pur condividendo il vocabolario formale di Raffaello, il Manierismo lo reinterpreta in chiave anticlassica, configurandosi come una rielaborazione, per molti versi rovesciata, della sua eredità."
  },
  {
   "id": "registrum-gregorii-maestro-influenza-miniatura",
@@ -2212,7 +2149,7 @@
   "target_type": "work",
   "target_id": "deposizione-volterra-rosso-fiorentino",
   "kind": "rielaborazione",
-  "description": "La Pieta di Sansepolcro cita esplicitamente sullo sfondo le scale della Deposizione di Volterra, saturando il primo piano con l'accumulo delle figure."
+  "description": "Le medesime scale già impiegate nella Deposizione di Volterra ricompaiono sullo sfondo della Pietà di Sansepolcro, il cui primo piano è invece fittamente occupato dalle figure."
  },
  {
   "id": "sacco-roma-diaspora-artisti",
@@ -2275,7 +2212,7 @@
   "target_type": "period",
   "target_id": "arte-bizantina",
   "kind": "rielaborazione",
-  "description": "La basilica di San Marco riprende la pianta a croce greca con cinque cupole della chiesa dei Santi Apostoli di Costantinopoli, adattando il modello byzantino alla funzione di cappella ducale veneziana."
+  "description": "La basilica di San Marco riprende la pianta a croce greca con cinque cupole della chiesa dei Santi Apostoli di Costantinopoli, adattando il modello bizantino alla funzione di cappella ducale veneziana."
  },
  {
   "id": "san-miniato-battistero-firenze",
@@ -2342,12 +2279,12 @@
  },
  {
   "id": "santa-croce-arnolfo",
-  "source_type": "work",
-  "source_id": "basilica-santa-croce-firenze",
-  "target_type": "artist",
-  "target_id": "arnolfo-di-cambio",
+  "source_type": "artist",
+  "source_id": "arnolfo-di-cambio",
+  "target_type": "work",
+  "target_id": "basilica-santa-croce-firenze",
   "kind": "autore",
-  "description": "Il progetto iniziale di Santa Croce è attribuito ad Arnolfo di Cambio, a cui è ascritta soprattutto la zona absidale."
+  "description": "Ad Arnolfo di Cambio si deve il progetto iniziale della basilica di Santa Croce, di cui gli si riconosce in particolare la zona absidale."
  },
  {
   "id": "santa-maria-valle-stucchi-innovazione",
@@ -2401,14 +2338,14 @@
   "target_type": "artist",
   "target_id": "martin-schongauer",
   "kind": "influenza",
-  "description": "Martin Schongauer si forma in ambiente permeato di influenze fiamminghe e compie viaggi in Borgogna e nelle Fiandre, dove ha modo di vedere opere di Jan van Eyck e Rogier van der Weyden."
+  "description": "I soggiorni di Martin Schongauer in Borgogna e nelle Fiandre, terre in cui la sua formazione è già segnata da influssi fiamminghi, gli permettono di osservare da vicino le opere di Jan van Eyck e di Rogier van der Weyden."
  },
  {
   "id": "siena-duomo-giovanni-pisano",
-  "source_type": "work",
-  "source_id": "facciata-duomo-siena",
-  "target_type": "artist",
-  "target_id": "giovanni-pisano",
+  "source_type": "artist",
+  "source_id": "giovanni-pisano",
+  "target_type": "work",
+  "target_id": "facciata-duomo-siena",
   "kind": "autore",
   "description": "Capomastro della fabbrica senese fra il 1285 e il 1297, Giovanni Pisano disegna la nuova facciata sul modello francese e ne scolpisce le statue della parte bassa."
  },
@@ -2428,7 +2365,7 @@
   "target_type": "period",
   "target_id": "gotico-italiano",
   "kind": "influenza",
-  "description": "Simone Martini assorbe profondamente il Gotico francese per il gusto dei dettagli decorativi, le atmosfere auliche e cortesi, la preziosità lineare e cromatica."
+  "description": "Il gusto per i dettagli decorativi, le atmosfere cortesi e auliche, la preziosità della linea e del colore rivelano quanto Simone Martini assorba in profondità il Gotico francese, contribuendo a definire i tratti del Gotico italiano."
  },
  {
   "id": "simone-martini-avignone-influenza",
@@ -2446,7 +2383,7 @@
   "target_type": "artist",
   "target_id": "matteo-giovannetti",
   "kind": "influenza",
-  "description": "Giovannetti parte dall'arte di Simone Martini sviluppando figure dall'esasperata esilità in abiti sontuosi, come dichiarato nel testo."
+  "description": "Partendo dal linguaggio di Simone Martini, Matteo Giovannetti elabora figure particolarmente slanciate ed esili, vestite di abiti preziosi."
  },
  {
   "id": "sluter-bellechose-borgogna",
@@ -2530,15 +2467,6 @@
   "description": "La Punizione di Marsia e la Pietà rappresentano la fase estrema della dissoluzione delle forme nell'ultimo Tiziano, con pennellata materica stesa con le dita e abbandono della prospettiva illusionista."
  },
  {
-  "id": "tiziano-venere-urbino-riprende-venere-dormiente",
-  "source_type": "work",
-  "source_id": "venere-dormiente-giorgione-tiziano",
-  "target_type": "work",
-  "target_id": "venere-di-urbino-tiziano",
-  "kind": "rielaborazione",
-  "description": "La Venere di Urbino di Tiziano riprende l'iconografia del nudo femminile disteso della Venere dormiente di Giorgione, traslandolo in un interno domestico cinquecentesco e conferendo alla figura una dimensione concreta e umana."
- },
- {
   "id": "torcello-paleocristiano",
   "source_type": "work",
   "source_id": "basilica-santa-maria-assunta-torcello",
@@ -2590,7 +2518,7 @@
   "target_type": "artist",
   "target_id": "domenico-ghirlandaio",
   "kind": "influenza",
-  "description": "Il Trittico Portinari di Hugo van der Goes ispira Domenico Ghirlandaio nei dipinti per la cappella Sassetti in Santa Trinita (1485), soprattutto nella resa naturalistica, nella natura morta dei vasi in primo piano e nelle figure dei pastori."
+  "description": "Domenico Ghirlandaio si ispira al Trittico Portinari di Hugo van der Goes nei dipinti della cappella Sassetti in Santa Trinita (1485): ne riprende il gusto per il dato naturalistico, percepibile sia nella composizione floreale collocata in primo piano, sia nel modo di raffigurare i pastori."
  },
  {
   "id": "van-eyck-barthelemy-maestro",
@@ -2599,7 +2527,7 @@
   "target_type": "artist",
   "target_id": "barthelemy-d-eyck",
   "kind": "maestro-allievo",
-  "description": "Barthélemy d'Eyck è allievo di Jan van Eyck, di cui riprende il realismo di insieme e l'interesse per gli elaborati panneggi, fondendo queste caratteristiche con un modellato plastico di matrice italiana."
+  "description": "Dal maestro Jan van Eyck, Barthélemy d'Eyck recepisce l'attenzione al dato realistico complessivo e ai panneggi minuziosamente articolati, elementi che nella sua pittura si combinano con una resa plastica e volumetrica debitrice della cultura italiana."
  },
  {
   "id": "van-eyck-christus-influenza",
@@ -2608,7 +2536,7 @@
   "target_type": "artist",
   "target_id": "petrus-christus",
   "kind": "maestro-allievo",
-  "description": "Petrus Christus si forma probabilmente accanto a Jan van Eyck, ereditandone la tecnica e i modelli del ritratto fiammingo."
+  "description": "Petrus Christus si forma con ogni probabilità al fianco di Jan van Eyck, da cui eredita la tecnica pittorica e i modelli del ritratto fiammingo."
  },
  {
   "id": "vasari-borghini-studiolo",
@@ -2689,7 +2617,7 @@
   "target_type": "artist",
   "target_id": "rogier-van-der-weyden",
   "kind": "influenza",
-  "description": "Il viaggio in Italia del 1450 porta Rogier van der Weyden a conoscere tra le altre la Deposizione di Beato Angelico, che rielabora nella propria versione del soggetto poi esposta agli Uffizi."
+  "description": "Durante il viaggio in Italia del 1450, Rogier van der Weyden conosce, fra le altre, la Deposizione del Beato Angelico, che rielabora in una propria versione del soggetto oggi conservata agli Uffizi."
  },
  {
   "id": "weyden-memling-influenza",
@@ -2899,16 +2827,6 @@
   "sort_order": 0
  },
  {
-  "id": "jean-fouquet-rogier-van-der-weyden-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "jean-fouquet",
-  "target_type": "artist",
-  "target_id": "rogier-van-der-weyden",
-  "kind": "maestro-allievo",
-  "description": "I cartoni della Passione di Cristo realizzati da Jean Fouquet a Napoli furono utilizzati da Rogier van der Weyden per la serie di arazzi",
-  "sort_order": 0
- },
- {
   "id": "antonio-rossellino-benedetto-da-maiano-influenza",
   "source_type": "artist",
   "source_id": "antonio-rossellino",
@@ -3041,7 +2959,7 @@
  {
   "id": "van-eyck-antonello-da-messina-influenza",
   "source_type": "artist",
-  "source_id": "van-eyck",
+  "source_id": "jan-van-eyck",
   "target_type": "artist",
   "target_id": "antonello-da-messina",
   "kind": "influenza",
@@ -3325,7 +3243,7 @@
   "target_type": "artist",
   "target_id": "cosme-tura",
   "kind": "influenza",
-  "description": "Tura entra in contatto con l'opera di Donatello durante il soggiorno veneziano (1450-1456)",
+  "description": "Durante il soggiorno veneziano tra il 1450 e il 1456, Cosmè Tura entra in contatto con l'opera di Donatello.",
   "sort_order": 0
  },
  {
@@ -3505,7 +3423,7 @@
   "target_type": "artist",
   "target_id": "filarete",
   "kind": "contrasto",
-  "description": "Il trattato di Filarete differisce da quello di Alberti (scritto circa dieci anni prima) perché non considera caratteri topografici del luogo prescelto, ma impone lo sviluppo della città su dati di natura astronomica e simbolica, mentre Alberti si basa su rapporti armonici ed estetici naturali.",
+  "description": "Il trattato di Filarete imposta lo sviluppo urbano su criteri astronomici e simbolici, senza tener conto dei caratteri topografici del sito prescelto; una scelta che lo allontana da quello di Alberti, di un decennio precedente, dove invece l'armonia tra costruito e ambiente naturale resta il principio guida.",
   "sort_order": 0
  },
  {
@@ -3573,19 +3491,9 @@
   "source_type": "artist",
   "source_id": "vincenzo-foppa",
   "target_type": "artist",
-  "target_id": "ambrogio-da-fossano-detto-il-bergognone",
+  "target_id": "bergognone",
   "kind": "influenza",
-  "description": "Il Bergognone dimostra una particolare conoscenza della pittura di Vincenzo Foppa, rielaborandola in chiave provanzale-ligure",
-  "sort_order": 0
- },
- {
-  "id": "gian-galeazzo-visconti-ambrogio-da-fossano-detto-il-bergognone-committenza",
-  "source_type": "artist",
-  "source_id": "gian-galeazzo-visconti",
-  "target_type": "artist",
-  "target_id": "ambrogio-da-fossano-detto-il-bergognone",
-  "kind": "committenza",
-  "description": "Committenza per la decorazione pittorica della Certosa di Pavia",
+  "description": "Il Bergognone rivela una conoscenza approfondita della pittura di Vincenzo Foppa, che rielabora in chiave provenzale-ligure.",
   "sort_order": 0
  },
  {
@@ -3659,23 +3567,13 @@
   "sort_order": 0
  },
  {
-  "id": "giovanni-bellini-giorgione-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "giovanni-bellini",
-  "target_type": "artist",
-  "target_id": "giorgione",
-  "kind": "influenza",
-  "description": "Bellini fu il principale punto di riferimento per i pittori della generazione successiva, influenzando lo sviluppo del colore tonale",
-  "sort_order": 5
- },
- {
   "id": "conn-msu92hhn-ajda",
   "source_type": "artist",
   "source_id": "domenico-ghirlandaio",
   "target_type": "artist",
   "target_id": "michelangelo-buonarroti",
   "kind": "maestro-allievo",
-  "description": "Michelangelo viene messo in bottega nella la \"scuola\" di scultura nel giardino di San Marco, presso Domenico Ghirlandaio, per un periodo di apprendistato a partire dal 1488.",
+  "description": "A partire dal 1488, Michelangelo compie il proprio apprendistato nella bottega di Domenico Ghirlandaio, prima di essere avviato, negli anni successivi, alla scuola di scultura del giardino di San Marco.",
   "sort_order": 0
  },
  {
@@ -3685,7 +3583,7 @@
   "target_type": "artist",
   "target_id": "bramantino",
   "kind": "maestro-allievo",
-  "description": "Bramantino si forma a Milano all'ombra dell'arte di DOnato Bramante, dal quale prende il soprannome",
+  "description": "A Milano, Bramantino si forma all'ombra dell'arte di Donato Bramante, da cui deriva anche il proprio soprannome.",
   "sort_order": 0
  },
  {
@@ -3735,7 +3633,7 @@
   "target_type": "artist",
   "target_id": "sebastiano-del-piombo",
   "kind": "committenza",
-  "description": "Sebastiano del Piombo è chiamato a Roma nel 1511 dal banchiere e mecenate Agostino Chigi e partecipa alla decorazione di villa Chigi detta Farnesina.",
+  "description": "Nel 1511 il banchiere e mecenate Agostino Chigi chiama a Roma Sebastiano del Piombo, che prende parte alla decorazione della sua villa, detta Farnesina.",
   "sort_order": 0
  },
  {
@@ -3775,7 +3673,7 @@
   "target_type": "artist",
   "target_id": "pietro-perugino",
   "kind": "maestro-allievo",
-  "description": "Pietro Perugino entra nella bottega di Andrea Verrocchio, dove sviluppa un disegno grafico più nitido attraverso lo studio dell'anatomia e del disegno dal vero.",
+  "description": "Nella bottega di Andrea Verrocchio, dove si forma, Pietro Perugino approda a un tratto disegnativo più preciso, esito dell'esercizio sull'anatomia umana e sull'osservazione diretta del modello dal vero.",
   "sort_order": 0
  },
  {
@@ -3785,7 +3683,7 @@
   "target_type": "artist",
   "target_id": "donato-bramante",
   "kind": "committenza",
-  "description": "Il Cristo alla colonna di Bramante è indicato come forse commissionato da Ascanio Sforza per l'abbazia di Chiaravalle.",
+  "description": "Per il Cristo alla colonna, attribuito a Bramante, si ipotizza una commissione di Ascanio Sforza destinata all'abbazia di Chiaravalle.",
   "sort_order": 0
  },
  {
@@ -3806,26 +3704,6 @@
   "target_id": "benozzo-gozzoli",
   "kind": "collaborazione",
   "description": "Benozzo Gozzoli lavora con Beato Angelico nella decorazione della cappella Niccolina, insieme ad altri allievi e collaboratori.",
-  "sort_order": 0
- },
- {
-  "id": "benvenuto-cellini-giambologna-influenza",
-  "source_type": "artist",
-  "source_id": "benvenuto-cellini",
-  "target_type": "artist",
-  "target_id": "giambologna",
-  "kind": "influenza",
-  "description": "Il Mercurio di Giambologna mostra di aver fatto tesoro delle invenzioni di Benvenuto Cellini, soprattutto nella posa instabile e nella torsione serpentinata e nel virtuosismo della fusione.",
-  "sort_order": 0
- },
- {
-  "id": "bergognone-vincenzo-foppa-influenza",
-  "source_type": "artist",
-  "source_id": "bergognone",
-  "target_type": "artist",
-  "target_id": "vincenzo-foppa",
-  "kind": "influenza",
-  "description": "Bergognone dimostra una particolare conoscenza della pittura di Vincenzo Foppa, arricchita dall'influenza dell'arte d'Oltralpe e provenzale-ligure.",
   "sort_order": 0
  },
  {
@@ -3865,7 +3743,7 @@
   "target_type": "artist",
   "target_id": "beato-angelico",
   "kind": "committenza",
-  "description": "L'interesse suscitato dal Tabernacolo dei Linaioli porta Cosimo de' Medici a rivolgersi a Beato Angelico per la realizzazione di alcune opere, tra cui probabilmente la Pala di Annalena.",
+  "description": "Il successo del Tabernacolo dei Linaioli richiama su Beato Angelico l'attenzione di Cosimo de' Medici, che gli commissiona alcune opere, tra le quali probabilmente la Pala di Annalena.",
   "sort_order": 0
  },
  {
@@ -3875,7 +3753,7 @@
   "target_type": "artist",
   "target_id": "filippo-lippi",
   "kind": "committenza",
-  "description": "Filippo Lippi diventa presto protetto di Cosimo de' Medici, dal quale riceve numerose commissioni.",
+  "description": "Filippo Lippi diventa ben presto uno dei pittori prediletti di Cosimo de' Medici, che gli affida numerose commissioni.",
   "sort_order": 0
  },
  {
@@ -3895,7 +3773,7 @@
   "target_type": "artist",
   "target_id": "piero-di-cosimo",
   "kind": "maestro-allievo",
-  "description": "Piero di Cosimo è ricordato come allievo di Cosimo Rosselli, del quale eredita uno stile permeato dal linearismo dei Pollaiolo e di Verrocchio.",
+  "description": "Il soprannome di Piero di Cosimo deriva dal suo apprendistato presso Cosimo Rosselli, che gli trasmette una maniera segnata, tra l'altro, dal gusto per la linea proprio dei Pollaiolo e di Verrocchio.",
   "sort_order": 0
  },
  {
@@ -3905,7 +3783,7 @@
   "target_type": "artist",
   "target_id": "antonio-rossellino",
   "kind": "collaborazione",
-  "description": "Desiderio da Settignano probabilmente inizia collaborando con i fratelli Rossellino.",
+  "description": "Ai primi passi della carriera, Desiderio da Settignano lavora verosimilmente al fianco di Antonio Rossellino, con cui condivide le origini settignanesi.",
   "sort_order": 0
  },
  {
@@ -3915,7 +3793,7 @@
   "target_type": "artist",
   "target_id": "bernardo-rossellino",
   "kind": "collaborazione",
-  "description": "Desiderio da Settignano probabilmente inizia collaborando con i fratelli Rossellino.",
+  "description": "Nella fase iniziale della propria attività, Desiderio da Settignano collabora con ogni probabilità anche con Bernardo Rossellino, accomunato a lui dalle origini settignanesi.",
   "sort_order": 0
  },
  {
@@ -4009,33 +3887,13 @@
   "sort_order": 0
  },
  {
-  "id": "filippo-brunelleschi-donatello-influenza",
-  "source_type": "artist",
-  "source_id": "filippo-brunelleschi",
-  "target_type": "artist",
-  "target_id": "donatello",
-  "kind": "influenza",
-  "description": "Durante il viaggio a Roma Donatello è a contatto con Brunelleschi; al suo rientro assimila anche le regole della costruzione prospettica apprese da lui.",
-  "sort_order": 0
- },
- {
-  "id": "filippo-brunelleschi-leon-battista-alberti-influenza",
-  "source_type": "artist",
-  "source_id": "filippo-brunelleschi",
-  "target_type": "artist",
-  "target_id": "leon-battista-alberti",
-  "kind": "influenza",
-  "description": "Alberti formalizza nel De pictura i principi matematico-geometrici della prospettiva lineare applicati da Brunelleschi, contribuendone alla diffusione.",
-  "sort_order": 0
- },
- {
   "id": "filippo-brunelleschi-luca-fancelli-maestro-allievo",
   "source_type": "artist",
   "source_id": "filippo-brunelleschi",
   "target_type": "artist",
   "target_id": "luca-fancelli",
   "kind": "maestro-allievo",
-  "description": "Luca Fancelli è indicato come allievo di Brunelleschi prima di diventare il principale collaboratore di Leon Battista Alberti a Mantova.",
+  "description": "Prima di diventare il principale collaboratore di Leon Battista Alberti a Mantova, Luca Fancelli è ricordato come allievo di Brunelleschi.",
   "sort_order": 0
  },
  {
@@ -4046,16 +3904,6 @@
   "target_id": "tiziano-vecellio",
   "kind": "committenza",
   "description": "Filippo II di Spagna eredita il rapporto privilegiato con Tiziano e gli commissiona almeno trenta dipinti, acquistando le opere che l'artista decide di inviargli.",
-  "sort_order": 0
- },
- {
-  "id": "filippo-lippi-masaccio-influenza",
-  "source_type": "artist",
-  "source_id": "filippo-lippi",
-  "target_type": "artist",
-  "target_id": "masaccio",
-  "kind": "influenza",
-  "description": "Il plasticismo di Masaccio e la sua applicazione della prospettiva lineare esercitano una notevole influenza su Filippo Lippi fin dagli inizi della carriera.",
   "sort_order": 0
  },
  {
@@ -4105,7 +3953,7 @@
   "target_type": "artist",
   "target_id": "el-greco",
   "kind": "influenza",
-  "description": "La pittura di El Greco risente dell'esempio dei maestri del Rinascimento e del Manierismo italiano, tra cui Raffaello.",
+  "description": "Tra i maestri rinascimentali e manieristi italiani di cui la pittura di El Greco reca il segno figura anche Raffaello.",
   "sort_order": 0
  },
  {
@@ -4145,7 +3993,7 @@
   "target_type": "artist",
   "target_id": "tiziano-vecellio",
   "kind": "maestro-allievo",
-  "description": "Tiziano entra nella bottega di Gentile e Giovanni Bellini, dove apprende la tecnica cromatica veneziana.",
+  "description": "Tiziano acquisisce i fondamenti della tavolozza veneziana lavorando nella bottega condivisa dai fratelli Gentile e Giovanni Bellini.",
   "sort_order": 0
  },
  {
@@ -4156,16 +4004,6 @@
   "target_id": "cosme-tura",
   "kind": "influenza",
   "description": "La fama della decorazione di Gentile da Fabriano a Brescia è tale che il duca di Ferrara invia Cosmè Tura a studiarla.",
-  "sort_order": 0
- },
- {
-  "id": "gentile-da-fabriano-pisanello-influenza",
-  "source_type": "artist",
-  "source_id": "gentile-da-fabriano",
-  "target_type": "artist",
-  "target_id": "pisanello",
-  "kind": "influenza",
-  "description": "Pisanello si indirizza verso l'arte di Gentile da Fabriano, del quale diviene collaboratore a Venezia; Gentile gli trasmette modelli stilistici e la bottega.",
   "sort_order": 0
  },
  {
@@ -4185,7 +4023,7 @@
   "target_type": "artist",
   "target_id": "tiziano-vecellio",
   "kind": "collaborazione",
-  "description": "Giorgione e il giovane Tiziano decorano insieme a fresco la facciata del Fondaco dei Tedeschi nel 1508-1509.",
+  "description": "Nel 1508-1509 Giorgione lavora fianco a fianco con il giovane Tiziano nella decorazione ad affresco della facciata del Fondaco dei Tedeschi.",
   "sort_order": 0
  },
  {
@@ -4215,17 +4053,7 @@
   "target_type": "artist",
   "target_id": "sebastiano-del-piombo",
   "kind": "influenza",
-  "description": "Sebastiano del Piombo entra nell'orbita di Giorgione, la cui influenza è riconoscibile nella sua produzione giovanile.",
-  "sort_order": 0
- },
- {
-  "id": "giorgione-tiziano-vecellio-influenza",
-  "source_type": "artist",
-  "source_id": "giorgione",
-  "target_type": "artist",
-  "target_id": "tiziano-vecellio",
-  "kind": "influenza",
-  "description": "Il confronto tra le due Veneri mostra che Tiziano riprende la Venere dormiente di Giorgione e ne rielabora il tema secondo una nuova concezione della pittura.",
+  "description": "Nella produzione giovanile di Sebastiano del Piombo si riconosce chiaramente l'ascendente di Giorgione, nella cui orbita l'artista entra a Venezia.",
   "sort_order": 0
  },
  {
@@ -4245,7 +4073,7 @@
   "target_type": "artist",
   "target_id": "lorenzo-lotto",
   "kind": "committenza",
-  "description": "Nel 1524 Giovan Battista Suardi incarica Lorenzo Lotto di affrescare l'oratorio della villa di famiglia a Trescore Balneario.",
+  "description": "Nel 1524 è Giovan Battista Suardi a incaricare Lorenzo Lotto degli affreschi per l'oratorio della villa di famiglia a Trescore Balneario.",
   "sort_order": 0
  },
  {
@@ -4255,7 +4083,7 @@
   "target_type": "artist",
   "target_id": "sebastiano-del-piombo",
   "kind": "maestro-allievo",
-  "description": "Sebastiano del Piombo si forma con ogni probabilità nella bottega di Giovanni Bellini prima di entrare nell'orbita di Giorgione.",
+  "description": "Ancora prima di legarsi a Giorgione, Sebastiano del Piombo compie verosimilmente il proprio apprendistato presso Giovanni Bellini.",
   "sort_order": 0
  },
  {
@@ -4265,7 +4093,7 @@
   "target_type": "artist",
   "target_id": "donato-bramante",
   "kind": "committenza",
-  "description": "A Roma Giulio II della Rovere nomina Bramante sovrintendente generale delle costruzioni papali e gli affida il progetto del nuovo edificio di San Pietro.",
+  "description": "A Roma, Giulio II della Rovere affida a Bramante la sovrintendenza generale delle fabbriche pontificie e, tra gli altri incarichi, la progettazione della nuova basilica vaticana di San Pietro.",
   "sort_order": 0
  },
  {
@@ -4315,7 +4143,7 @@
   "target_type": "artist",
   "target_id": "alessandro-vittoria",
   "kind": "maestro-allievo",
-  "description": "Alessandro Vittoria approda alla bottega di Jacopo Sansovino e assorbe da lui un approccio pittorico alla scultura attento ai valori tattili e chiaroscurali.",
+  "description": "Entrato nella bottega di Jacopo Sansovino, Alessandro Vittoria ne assimila un modo di scolpire quasi pittorico, sensibile ai valori tattili e agli effetti chiaroscurali.",
   "sort_order": 0
  },
  {
@@ -4325,7 +4153,7 @@
   "target_type": "artist",
   "target_id": "giusto-di-gand",
   "kind": "influenza",
-  "description": "Giusto di Gand si forma sulle opere di Jan van Eyck prima di trasferirsi a Roma e poi a Urbino.",
+  "description": "Prima di trasferirsi a Roma e poi a Urbino, Giusto di Gand matura la propria formazione sulle opere di Jan van Eyck.",
   "sort_order": 0
  },
  {
@@ -4359,16 +4187,6 @@
   "sort_order": 0
  },
  {
-  "id": "jan-van-eyck-barthelemy-deyck-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "jan-van-eyck",
-  "target_type": "artist",
-  "target_id": "barthelemy-d-eyck",
-  "kind": "maestro-allievo",
-  "description": "Barthélemy d'Eyck è indicato come allievo di Jan van Eyck.",
-  "sort_order": 0
- },
- {
   "id": "leonardo-da-vinci-giorgione-influenza",
   "source_type": "artist",
   "source_id": "leonardo-da-vinci",
@@ -4385,7 +4203,7 @@
   "target_type": "artist",
   "target_id": "giovan-girolamo-savoldo",
   "kind": "influenza",
-  "description": "Savoldo modifica ulteriormente il proprio stile anche sull'esempio di Leonardo, approdando a una pittura fondata su una luminosità intensa.",
+  "description": "Anche sull'esempio di Leonardo, Savoldo perfeziona ulteriormente il proprio linguaggio, giungendo a una pittura basata su una luce intensa.",
   "sort_order": 0
  },
  {
@@ -4409,16 +4227,6 @@
   "sort_order": 0
  },
  {
-  "id": "lorenzo-ghiberti-donatello-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "lorenzo-ghiberti",
-  "target_type": "artist",
-  "target_id": "donatello",
-  "kind": "maestro-allievo",
-  "description": "Donatello compie il proprio apprendistato nella bottega di Ghiberti tra il 1404 e il 1407, acquisendo i segreti dell'oreficeria e della fusione in bronzo.",
-  "sort_order": 0
- },
- {
   "id": "lorenzo-ghiberti-paolo-uccello-maestro-allievo",
   "source_type": "artist",
   "source_id": "lorenzo-ghiberti",
@@ -4429,23 +4237,13 @@
   "sort_order": 0
  },
  {
-  "id": "lorenzo-lotto-antonello-da-messina-influenza",
-  "source_type": "artist",
-  "source_id": "lorenzo-lotto",
-  "target_type": "artist",
-  "target_id": "antonello-da-messina",
-  "kind": "influenza",
-  "description": "Nei ritratti degli anni trevigiani Lorenzo Lotto si discosta dal tonalismo di Giorgione e pare riprendere la grande lezione di Antonello da Messina.",
-  "sort_order": 0
- },
- {
   "id": "luca-della-robbia-andrea-della-robbia-maestro-allievo",
   "source_type": "artist",
   "source_id": "luca-della-robbia",
   "target_type": "artist",
   "target_id": "andrea-della-robbia",
   "kind": "maestro-allievo",
-  "description": "La tecnica della terracotta invetriata sviluppata da Luca della Robbia viene ulteriormente sviluppata dal nipote Andrea della Robbia.",
+  "description": "La tecnica della terracotta invetriata, messa a punto da Luca della Robbia, trova nel nipote Andrea della Robbia un ulteriore sviluppo.",
   "sort_order": 0
  },
  {
@@ -4466,16 +4264,6 @@
   "target_id": "leonardo-da-vinci",
   "kind": "committenza",
   "description": "Ludovico il Moro affida a Leonardo la decorazione della Sala delle Asse e, tra il 1495 e il 1497, l'incarico di dipingere l'Ultima Cena nel refettorio di Santa Maria delle Grazie.",
-  "sort_order": 0
- },
- {
-  "id": "masaccio-beato-angelico-influenza",
-  "source_type": "artist",
-  "source_id": "masaccio",
-  "target_type": "artist",
-  "target_id": "beato-angelico",
-  "kind": "influenza",
-  "description": "La pittura di Beato Angelico mostra uno studio della fisicità delle figure derivato dai dipinti di Masaccio.",
   "sort_order": 0
  },
  {
@@ -4555,7 +4343,7 @@
   "target_type": "artist",
   "target_id": "benozzo-gozzoli",
   "kind": "committenza",
-  "description": "Piero il Gottoso chiama Benozzo Gozzoli a decorare la cappella del palazzo di famiglia tra il 1459 e il 1461.",
+  "description": "Il figlio di Cosimo de' Medici, Piero il Gottoso, affida a Benozzo Gozzoli, fra il 1459 e il 1461, la decorazione della cappella nel palazzo di famiglia.",
   "sort_order": 0
  },
  {
@@ -4569,16 +4357,6 @@
   "sort_order": 0
  },
  {
-  "id": "raffaello-sanzio-leonardo-da-vinci-influenza",
-  "source_type": "artist",
-  "source_id": "raffaello-sanzio",
-  "target_type": "artist",
-  "target_id": "leonardo-da-vinci",
-  "kind": "influenza",
-  "description": "Durante il soggiorno fiorentino Raffaello entra in contatto con l'opera di Leonardo; il confronto gli suggerisce nuove soluzioni compositive e contribuisce all'evoluzione del suo linguaggio.",
-  "sort_order": 0
- },
- {
   "id": "raffaello-sanzio-michelangelo-buonarroti-influenza",
   "source_type": "artist",
   "source_id": "raffaello-sanzio",
@@ -4589,23 +4367,13 @@
   "sort_order": 0
  },
  {
-  "id": "raffaello-sanzio-pietro-perugino-influenza",
-  "source_type": "artist",
-  "source_id": "raffaello-sanzio",
-  "target_type": "artist",
-  "target_id": "pietro-perugino",
-  "kind": "influenza",
-  "description": "Raffaello avvia una collaborazione con la bottega di Pietro Perugino e apprende da Perugino un'arte delicata, armoniosa e luminosa.",
-  "sort_order": 0
- },
- {
   "id": "raffaello-sanzio-rosso-fiorentino-influenza",
   "source_type": "artist",
   "source_id": "raffaello-sanzio",
   "target_type": "artist",
   "target_id": "rosso-fiorentino",
   "kind": "influenza",
-  "description": "Il confronto con gli affreschi di Raffaello contribuisce al ripiegamento di Rosso verso forme di astratta bellezza durante il periodo romano.",
+  "description": "A Roma, la vista degli affreschi di Raffaello concorre a orientare la pittura di Rosso Fiorentino verso esiti di astratta bellezza.",
   "sort_order": 0
  },
  {
@@ -4629,16 +4397,6 @@
   "sort_order": 0
  },
  {
-  "id": "raffaello-sanzio-giulio-romano-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "raffaello-sanzio",
-  "target_type": "artist",
-  "target_id": "giulio-romano",
-  "kind": "maestro-allievo",
-  "description": "Giulio Romano è uno dei principali allievi di Raffaello e lavora al suo fianco nella decorazione delle Stanze Vaticane.",
-  "sort_order": 0
- },
- {
   "id": "raffaello-sanzio-perin-del-vaga-maestro-allievo",
   "source_type": "artist",
   "source_id": "raffaello-sanzio",
@@ -4646,16 +4404,6 @@
   "target_id": "perin-del-vaga",
   "kind": "maestro-allievo",
   "description": "Perin del Vaga è indicato come allievo di Raffaello.",
-  "sort_order": 0
- },
- {
-  "id": "robert-campin-rogier-van-der-weyden-maestro-allievo",
-  "source_type": "artist",
-  "source_id": "robert-campin",
-  "target_type": "artist",
-  "target_id": "rogier-van-der-weyden",
-  "kind": "maestro-allievo",
-  "description": "Rogier van der Weyden si forma a Tournai nella bottega di Robert Campin e ne riprende l'attenzione per i volumi e la rappresentazione realistica degli spazi.",
   "sort_order": 0
  },
  {
@@ -4685,7 +4433,7 @@
   "target_type": "artist",
   "target_id": "paolo-veronese",
   "kind": "influenza",
-  "description": "Veronese dimostra di far tesoro di alcune soluzioni compositive di Tintoretto.",
+  "description": "Alcune soluzioni compositive elaborate da Tintoretto trovano un'eco evidente nell'opera di Veronese.",
   "sort_order": 0
  },
  {
@@ -4855,7 +4603,7 @@
   "target_type": "artist",
   "target_id": "giorgio-vasari",
   "kind": "committenza",
-  "description": "Cosimo I favorisce la carriera di Vasari a corte e gli affida il rinnovamento di Palazzo Vecchio.",
+  "description": "A corte, Cosimo I sostiene la carriera di Vasari, a cui affida anche il rinnovamento di Palazzo Vecchio.",
   "sort_order": 0
  },
  {
@@ -4975,7 +4723,7 @@
   "target_type": "artist",
   "target_id": "arcimboldo",
   "kind": "influenza",
-  "description": "L'interesse di Arcimboldo per la deformazione deriva dalla conoscenza degli studi fisionomici di Leonardo a Milano.",
+  "description": "Il gusto di Arcimboldo per la deformazione dei tratti fisionomici nasce anche dalla frequentazione, a Milano, degli studi sul volto umano condotti da Leonardo.",
   "sort_order": 0
  },
  {
@@ -4985,7 +4733,7 @@
   "target_type": "artist",
   "target_id": "barocci",
   "kind": "influenza",
-  "description": "L'armoniosa e morbida fusione dei toni di Barocci è derivata dalla conoscenza della pittura di Correggio.",
+  "description": "La conoscenza della pittura di Correggio è all'origine della morbida e armoniosa fusione tonale che caratterizza i colori di Barocci.",
   "sort_order": 0
  },
  {
@@ -5345,7 +5093,7 @@
   "target_type": "artist",
   "target_id": "jacopo-pontormo",
   "kind": "maestro-allievo",
-  "description": "Nel 1512 Pontormo entra nella bottega di Andrea del Sarto e ne assorbe soprattutto gli equilibrati schemi compositivi. Prende parte con lui alle decorazioni del chiostrino dell'Annunziata e della camera Borgherini.",
+  "description": "Nel 1512 Jacopo Pontormo entra a bottega da Andrea del Sarto: dal maestro riprende in particolare la misura degli impianti compositivi, e ne diventa collaboratore nei cantieri del chiostrino dell'Annunziata e della camera Borgherini.",
   "sort_order": 0
  },
  {
@@ -5355,7 +5103,7 @@
   "target_type": "artist",
   "target_id": "cosme-tura",
   "kind": "influenza",
-  "description": "Influenza della cultura padovana e della prospezione spaziale di Mantegna sull'opera di Tura, visibile nella sapienza antiquaria e nella ricerca di profondità spaziale nelle ante dell'organo. Tura entra in contatto con l'opera di Mantegna durante il soggiorno veneziano (1450-1456).",
+  "description": "Nelle ante d'organo dipinte da Tura, la sapienza antiquaria e la ricerca di profondità spaziale rivelano il peso della cultura padovana e della resa prospettica di Mantegna, con cui l'artista ferrarese entra in contatto durante il soggiorno veneziano del 1450-1456.",
   "sort_order": 0
  },
  {
@@ -5395,7 +5143,7 @@
   "target_type": "artist",
   "target_id": "el-greco",
   "kind": "influenza",
-  "description": "La Trinità di El Greco rivela la conoscenza della Pietà Bandini di Michelangelo; più in generale la sua pittura risente dell'esempio dei maestri del Rinascimento e del Manierismo italiano.",
+  "description": "La Trinità di El Greco tradisce la conoscenza della Pietà Bandini di Michelangelo, in linea con un debito più ampio verso i maestri rinascimentali e manieristi italiani.",
   "sort_order": 0
  },
  {
@@ -5435,7 +5183,7 @@
   "target_type": "artist",
   "target_id": "sandro-botticelli",
   "kind": "influenza",
-  "description": "Botticelli completa la propria formazione avvicinandosi alla bottega di Verrocchio e riprendendone la maggiore solidità delle figure.",
+  "description": "Avvicinatosi in seguito alla bottega di Verrocchio, Botticelli completa così la propria formazione, recependone la maggiore solidità plastica delle figure.",
   "sort_order": 0
  },
  {
@@ -5479,23 +5227,13 @@
   "sort_order": 0
  },
  {
-  "id": "filippo-brunelleschi-michelozzo-influenza",
-  "source_type": "artist",
-  "source_id": "filippo-brunelleschi",
-  "target_type": "artist",
-  "target_id": "michelozzo-michelozzi",
-  "kind": "influenza",
-  "description": "Michelozzo recupera principi rinascimentali appresi da Brunelleschi e ne riprende soluzioni architettoniche.",
-  "sort_order": 0
- },
- {
   "id": "filippo-ii-di-spagna-juan-fernandez-de-navarrete-committenza",
   "source_type": "artist",
   "source_id": "filippo-ii-di-spagna",
   "target_type": "artist",
   "target_id": "el-mudo",
   "kind": "committenza",
-  "description": "Nel 1576 Filippo II commissiona trentadue pale d'altare a Juan Fernández de Navarrete detto El Mudo.",
+  "description": "A Juan Fernández de Navarrete, detto El Mudo, Filippo II commissiona nel 1576 trentadue pale d'altare.",
   "sort_order": 0
  },
  {
@@ -5515,7 +5253,7 @@
   "target_type": "artist",
   "target_id": "tibaldi",
   "kind": "committenza",
-  "description": "Nella decorazione dell'Escorial Filippo II si rivolge anche a diversi artisti italiani, tra cui Pellegrino Tibaldi.",
+  "description": "Per la decorazione dell'Escorial, Filippo II si affida anche a diversi artisti italiani, fra cui Pellegrino Tibaldi.",
   "sort_order": 0
  },
  {
@@ -5525,7 +5263,7 @@
   "target_type": "artist",
   "target_id": "sandro-botticelli",
   "kind": "maestro-allievo",
-  "description": "Sandro Botticelli passa a bottega da Filippo Lippi, dal quale assorbe soluzioni iconografiche e uno stile dal linearismo marcato.",
+  "description": "Avviato a bottega presso Filippo Lippi, Sandro Botticelli ne assorbe le soluzioni iconografiche e un segno dal linearismo accentuato.",
   "sort_order": 0
  },
  {
@@ -5545,7 +5283,7 @@
   "target_type": "artist",
   "target_id": "jacopo-pontormo",
   "kind": "maestro-allievo",
-  "description": "Pontormo inizia la propria formazione nelle botteghe di Leonardo e di Piero di Cosimo.",
+  "description": "Ancor prima di legarsi ad Andrea del Sarto, il giovane Pontormo muove i primi passi come allievo nelle botteghe di Leonardo e di Piero di Cosimo.",
   "sort_order": 0
  },
  {
@@ -5555,7 +5293,7 @@
   "target_type": "artist",
   "target_id": "michelozzo-michelozzi",
   "kind": "maestro-allievo",
-  "description": "Michelozzo si forma nella bottega di Ghiberti, da cui recupera forme tardogotiche fiorentine aggiornandole in chiave classica.",
+  "description": "Michelozzo compie il proprio apprendistato nella bottega di Ghiberti, da cui riprende forme tardogotiche fiorentine, rinnovandole però in senso classico.",
   "sort_order": 0
  },
  {
@@ -5575,7 +5313,7 @@
   "target_type": "artist",
   "target_id": "albrecht-durer",
   "kind": "influenza",
-  "description": "Dürer affianca allo studio della natura quello delle incisioni dei maestri del suo tempo, con una predilezione per Andrea Mantegna e Martin Schongauer.",
+  "description": "Tra le incisioni dei maestri contemporanei che Dürer affianca allo studio dal vero, un posto di rilievo spetta a quelle di Andrea Mantegna e Martin Schongauer.",
   "sort_order": 0
  },
  {
@@ -5615,7 +5353,7 @@
   "target_type": "artist",
   "target_id": "el-mudo",
   "kind": "maestro-allievo",
-  "description": "Juan Fernández de Navarrete detto El Mudo si sarebbe formato in Italia presso Tiziano, secondo la tradizione riportata nel testo.",
+  "description": "Una tradizione vuole che Juan Fernández de Navarrete, detto El Mudo, abbia compiuto in Italia il proprio apprendistato accanto a Tiziano.",
   "sort_order": 0
  },
  {
@@ -5635,7 +5373,7 @@
   "target_type": "artist",
   "target_id": "tintoretto",
   "kind": "influenza",
-  "description": "La prima produzione di Tintoretto mostra una maggiore vicinanza ai modi di Pordenone e del Manierismo centro-italiano ed emiliano.",
+  "description": "Nelle opere giovanili, Tintoretto appare piuttosto vicino ai modi di Pordenone e del Manierismo dell'Italia centrale ed emiliana.",
   "sort_order": 0
  },
  {
@@ -5685,7 +5423,7 @@
   "target_type": "work",
   "target_id": "villa-barbaro-maser-palladio",
   "kind": "influenza",
-  "description": "Il progetto della Villa Barbaro si aggiorna anche alla luce delle coeve ville di campagna dell’aristocrazia pontificia, tra cui Villa d’Este.",
+  "description": "Frequentando Roma, Palladio e Daniele Barbaro fanno esperienza diretta delle residenze extraurbane care all'aristocrazia pontificia, come Villa d'Este a Tivoli, e ne tengono conto nell'ideare Villa Barbaro.",
   "sort_order": 0
  },
  {
@@ -8253,5 +7991,302 @@
   "target_id": "allegoria-buon-governo-ambrogio",
   "kind": "contrasto",
   "description": "Le due allegorie della Sala dei Nove si fronteggiano con schemi speculari: al vecchio saggio circondato dalle Virtù risponde la Tirannide attorniata dai Vizi, con la Giustizia incatenata ai suoi piedi."
+ },
+ {
+  "id": "sara-abramo-agar-chartres-influenza-tre-marie-antelami",
+  "source_type": "work",
+  "source_id": "sara-abramo-agar-chartres",
+  "target_type": "work",
+  "target_id": "tre-marie-antelami",
+  "kind": "influenza",
+  "description": "Le tre Marie di Antelami derivano dalle statue-colonna del portale sinistro di Chartres la posa irrigidita, il capo chino e il panneggio serrato in pieghe parallele che slancia le figure."
+ },
+ {
+  "id": "pisanello-influenza-maestro-giochi-borromeo",
+  "source_type": "artist",
+  "source_id": "pisanello",
+  "target_type": "artist",
+  "target_id": "maestro-dei-giochi-borromeo",
+  "kind": "influenza",
+  "description": "Il Maestro dei Giochi Borromeo guarda ai ritratti femminili di Pisanello, da cui riprende il profilo delicato dalla fronte bombata e le acconciature raffinate alla moda borgognona."
+ },
+ {
+  "id": "mosaico-san-zenone-rielabora-san-vitale",
+  "source_type": "work",
+  "source_id": "mosaico-cappella-san-zenone",
+  "target_type": "work",
+  "target_id": "basilica-san-vitale-ravenna",
+  "kind": "rielaborazione",
+  "description": "Nel sacello di San Zenone la volta con quattro angeli che sostengono un clipeo riprende lo schema della volta del presbiterio di San Vitale, dove però al centro compare l'Agnello e non il busto di Cristo."
+ },
+ {
+  "id": "basilica-treviri-influenza-san-giovanni-evangelista-ravenna",
+  "source_type": "work",
+  "source_id": "basilica-costantiniana-treviri",
+  "target_type": "work",
+  "target_id": "chiesa-san-giovanni-evangelista-ravenna",
+  "kind": "influenza",
+  "description": "La scansione delle pareti esterne di San Giovanni Evangelista, con lesene e archi che inquadrano le finestre, deriva attraverso le chiese milanesi dall'Aula Palatina costantiniana di Treviri."
+ },
+ {
+  "id": "cattedrale-spira-i-influenza-lessay",
+  "source_type": "work",
+  "source_id": "cattedrale-spira-i",
+  "target_type": "work",
+  "target_id": "chiesa-abbaziale-lessay",
+  "kind": "influenza",
+  "description": "A Lessay le pareti della navata sono ancora ritmate da pilastri compositi con alte semicolonne addossate, secondo il sistema che la prima cattedrale di Spira aveva sperimentato nella Renania."
+ },
+ {
+  "id": "croce-desiderio-reimpiega-tondo-vitreo",
+  "source_type": "work",
+  "source_id": "croce-di-desiderio",
+  "target_type": "work",
+  "target_id": "tondo-vitreo-croce-desiderio",
+  "kind": "rielaborazione",
+  "description": "Gli orafi della Croce di Desiderio incastonano fra le gemme il medaglione vitreo orientale del III secolo, trattando il ritratto antico come una pietra preziosa di reimpiego."
+ },
+ {
+  "id": "elia-moretto-contrasto-messa-san-gregorio-romanino",
+  "source_type": "work",
+  "source_id": "elia-svegliato-dallangelo-moretto",
+  "target_type": "work",
+  "target_id": "messa-di-san-gregorio-romanino",
+  "kind": "contrasto",
+  "description": "Nella stessa cappella bresciana l'Elia del Moretto, raccolto e armonioso nei colori di gusto raffaellesco, si oppone alla Messa di san Gregorio di Romanino, affollata di figure in abiti contemporanei e dipinta con materia densa."
+ },
+ {
+  "id": "battaglia-anghiari-evoluzione-studio-testa-guerriero",
+  "source_type": "work",
+  "source_id": "battaglia-di-anghiari",
+  "target_type": "work",
+  "target_id": "studio-testa-guerriero-anghiari",
+  "kind": "evoluzione",
+  "description": "Lo studio di Budapest è uno dei fogli con cui Leonardo mette a punto le teste dei combattenti, poi trasferite nella composizione della Battaglia di Anghiari."
+ },
+ {
+  "id": "ghiera-tralcio-vite-contrasto-teoria-sante-santa-maria-valle",
+  "source_type": "work",
+  "source_id": "ghiera-tralcio-vite-santa-maria-valle",
+  "target_type": "work",
+  "target_id": "teoria-sante-martiri-santa-maria-valle",
+  "kind": "contrasto",
+  "description": "Sulla stessa controfacciata di Santa Maria in Valle, il tralcio e gli ornati vegetali della ghiera hanno una resa naturalistica che contrasta con la stilizzazione lineare delle sante del fregio."
+ },
+ {
+  "id": "disputa-santa-caterina-contaminazione-mito-iside-osiride",
+  "source_type": "work",
+  "source_id": "disputa-santa-caterina",
+  "target_type": "work",
+  "target_id": "appartamento-borgia-osiride-iside",
+  "kind": "contaminazione",
+  "description": "Nella Sala dei Santi la Disputa di santa Caterina, martire in Egitto, fa da ponte fra le storie cristiane delle lunette e il mito di Iside e Osiride dipinto nelle vele della volta."
+ },
+ {
+  "id": "cosimo-de-medici-committenza-villa-cafaggiolo",
+  "source_type": "artist",
+  "source_id": "cosimo-de-medici",
+  "target_type": "work",
+  "target_id": "villa-medicea-cafaggiolo",
+  "kind": "committenza",
+  "description": "Cosimo de' Medici commissiona a Michelozzo la trasformazione del castello di famiglia a Cafaggiolo in una villa di campagna, conclusa nel 1451."
+ },
+ {
+  "id": "perugino-influenza-tre-grazie-raffaello",
+  "source_type": "artist",
+  "source_id": "pietro-perugino",
+  "target_type": "work",
+  "target_id": "tre-grazie-raffaello",
+  "kind": "influenza",
+  "description": "Nelle Tre Grazie Raffaello alleggerisce il modello statuario antico con la dolcezza di forme e la luminosità del colore apprese nella bottega di Perugino."
+ },
+ {
+  "id": "cappella-ovetari-mantegna-influenza-miracolo-falsa-madonna-foppa",
+  "source_type": "work",
+  "source_id": "martirio-e-trasporto-del-corpo-di-san-cristoforo",
+  "target_type": "work",
+  "target_id": "miracolo-falsa-madonna-foppa",
+  "kind": "influenza",
+  "description": "Anche in questa storia di san Pietro Martire Foppa riprende da Mantegna l'idea di un'architettura dipinta in prospettiva, di grande scala, che continua lo spazio reale della cappella."
+ },
+ {
+  "id": "madonna-certosino-contrasto-presentazione-certosa-bergognone",
+  "source_type": "work",
+  "source_id": "madonna-del-certosino",
+  "target_type": "work",
+  "target_id": "certosa-presentazione-bergognone",
+  "kind": "contrasto",
+  "description": "Due registri dello stesso pittore negli stessi anni: all'affresco simmetrico e celebrativo della chiesa della Certosa si oppone la tavoletta per la cella di un monaco, intima e dai colori smorzati."
+ },
+ {
+  "id": "piccola-passione-evoluzione-grande-passione-durer",
+  "source_type": "work",
+  "source_id": "piccola-passione-durer",
+  "target_type": "work",
+  "target_id": "grande-passione-durer-cattura-di-cristo",
+  "kind": "evoluzione",
+  "description": "Un anno dopo le ultime tavole della Grande Passione, Dürer torna sul racconto della Passione con la Piccola Passione, di formato minore ma più ricca di scene."
+ },
+ {
+  "id": "porta-bernoardo-influenza-crocifissione-san-zeno",
+  "source_type": "work",
+  "source_id": "porta-bernoardo-hildesheim",
+  "target_type": "work",
+  "target_id": "crocefissione-portale-bronzeo-san-zeno",
+  "kind": "influenza",
+  "description": "Il maestro sassone delle formelle più antiche di San Zeno porta a Verona il modellato plastico delle porte di Hildesheim, ben riconoscibile in questa Crocifissione."
+ },
+ {
+  "id": "cortile-pitti-ammannati-evoluzione-facciata-pitti",
+  "source_type": "work",
+  "source_id": "cortile-palazzo-pitti-ammannati",
+  "target_type": "work",
+  "target_id": "palazzo-pitti-ampliamento",
+  "kind": "evoluzione",
+  "description": "Sul lato del cortile Ammannati riprende il bugnato imponente della facciata di Palazzo Pitti e lo scioglie in un ordine rustico variato, di effetto teatrale."
+ },
+ {
+  "id": "torre-mangia-rielabora-palazzo-vecchio",
+  "source_type": "work",
+  "source_id": "torre-del-mangia-siena",
+  "target_type": "work",
+  "target_id": "palazzo-vecchio-firenze",
+  "kind": "rielaborazione",
+  "description": "La Torre del Mangia riprende l'idea della torre civica di Palazzo Vecchio, ma la traduce in forme più snelle, in mattoni con coronamento di travertino."
+ },
+ {
+  "id": "portale-monreale-barisano-contrasto-portale-bonanno",
+  "source_type": "work",
+  "source_id": "portale-bronzeo-monreale-barisano",
+  "target_type": "work",
+  "target_id": "portale-bronzeo-monreale-bonanno",
+  "kind": "contrasto",
+  "description": "Nella stessa cattedrale, a un anno di distanza: Bonanno racconta per scene e dà volume ai corpi con l'altorilievo, Barisano dispone figure isolate in un bassorilievo sottile di gusto bizantino."
+ },
+ {
+  "id": "guglielmo-ii-committenza-portale-monreale-barisano",
+  "source_type": "artist",
+  "source_id": "guglielmo-ii-altavilla",
+  "target_type": "work",
+  "target_id": "portale-bronzeo-monreale-barisano",
+  "kind": "committenza",
+  "description": "Per la cattedrale di Monreale, da lui fondata, Guglielmo II d'Altavilla commissiona a Barisano da Trani la porta bronzea del lato settentrionale."
+ },
+ {
+  "id": "battaglia-anghiari-evoluzione-studio-venezia",
+  "source_type": "work",
+  "source_id": "battaglia-di-anghiari",
+  "target_type": "work",
+  "target_id": "studio-battaglia-anghiari-venezia",
+  "kind": "evoluzione",
+  "description": "Nella pittura murale di Palazzo Vecchio Leonardo sviluppa le soluzioni provate negli schizzi di battaglia come questo foglio veneziano, dove fissa a penna l'intreccio dei combattenti."
+ },
+ {
+  "id": "girolamo-grimani-committenza-palazzo-grimani",
+  "source_type": "artist",
+  "source_id": "girolamo-grimani",
+  "target_type": "work",
+  "target_id": "palazzo-grimani-sanmicheli",
+  "kind": "committenza",
+  "description": "Girolamo Grimani commissiona a Michele Sanmicheli il palazzo di famiglia sul Canal Grande, iniziato nel 1559."
+ },
+ {
+  "id": "federico-ii-gonzaga-committenza-io-correggio",
+  "source_type": "artist",
+  "source_id": "federico-ii-gonzaga",
+  "target_type": "work",
+  "target_id": "io-correggio",
+  "kind": "committenza",
+  "description": "Federico II Gonzaga commissiona a Correggio il ciclo degli Amori di Giove, di cui Io fa parte insieme a Leda, Danae e Ganimede."
+ },
+ {
+  "id": "michelangelo-influenza-baccio-bandinelli",
+  "source_type": "artist",
+  "source_id": "michelangelo-buonarroti",
+  "target_type": "artist",
+  "target_id": "baccio-bandinelli",
+  "kind": "influenza",
+  "description": "Passato dalla pittura alla scultura, Bandinelli assume Michelangelo come riferimento costante: lo ammira, ma cerca anche di misurarsi con lui in una gara che non riesce a vincere."
+ },
+ {
+  "id": "san-domenico-crocifisso-contrasto-cristo-deriso-angelico",
+  "source_type": "work",
+  "source_id": "san-domenico-adorazione-crocifisso",
+  "target_type": "work",
+  "target_id": "cristo-deriso-beato-angelico",
+  "kind": "contrasto",
+  "description": "Nel convento di San Marco l'Angelico adatta le immagini a chi abita le celle: al modello semplice del santo in preghiera, pensato per i novizi, si contrappone il Cristo deriso, costruito con simboli più complessi per la meditazione dei chierici."
+ },
+ {
+  "id": "caduta-manna-tintoretto-evoluzione-erezione-serpente-bronzo",
+  "source_type": "work",
+  "source_id": "caduta-manna-tintoretto-sala-grande",
+  "target_type": "work",
+  "target_id": "erezione-serpente-bronzo-tintoretto",
+  "kind": "evoluzione",
+  "description": "La Caduta della manna estende al nutrimento eucaristico la lettura allegorica avviata con il serpente di bronzo, il riquadro centrale da cui Tintoretto fa crescere il programma del soffitto."
+ },
+ {
+  "id": "affreschi-pisogne-romanino-evoluzione-cena-fariseo",
+  "source_type": "work",
+  "source_id": "affreschi-santa-maria-della-neve-pisogne-romanino",
+  "target_type": "work",
+  "target_id": "cena-in-casa-del-fariseo-romanino",
+  "kind": "evoluzione",
+  "description": "A Pisogne Romanino spinge ancora più in là il linguaggio anticlassico e popolare sperimentato un paio d'anni prima nel refettorio di Rodengo Saiano, fatto di volti senza idealizzazione e di proporzioni forzate."
+ },
+ {
+  "id": "fibula-a-esse-vors-contrasto-fibula-a-staffa-pertica",
+  "source_type": "work",
+  "source_id": "fibula-a-esse-necropoli-vors",
+  "target_type": "work",
+  "target_id": "fibula-a-staffa-necropoli-pertica",
+  "kind": "contrasto",
+  "description": "Accanto alla fibula a «S», un tipo che condividono con gli altri Germani, i Longobardi adottano la fibula a staffa con corona di bottoni, più elaborata e decorata anche con motivi animalistici."
+ },
+ {
+  "id": "villa-madama-influenza-loggia-di-davide",
+  "source_type": "work",
+  "source_id": "villa-madama",
+  "target_type": "work",
+  "target_id": "loggia-di-davide",
+  "kind": "influenza",
+  "description": "Giulio Romano ricava dalla villa romana progettata da Raffaello l'idea della grande loggia a tre arcate aperta verso il giardino, che a Palazzo Te diventa la Loggia di Davide."
+ },
+ {
+  "id": "cimabue-influenza-cristo-trono-sancta-sanctorum",
+  "source_type": "artist",
+  "source_id": "cimabue",
+  "target_type": "work",
+  "target_id": "cristo-in-trono-sancta-sanctorum",
+  "kind": "influenza",
+  "description": "La salda costruzione del trono e il peso volumetrico della figura sono stati messi in relazione con la pittura di Cimabue, attivo a Roma negli stessi anni."
+ },
+ {
+  "id": "arnolfo-influenza-cristo-trono-sancta-sanctorum",
+  "source_type": "artist",
+  "source_id": "arnolfo-di-cambio",
+  "target_type": "work",
+  "target_id": "cristo-in-trono-sancta-sanctorum",
+  "kind": "influenza",
+  "description": "L'attenzione alla struttura spaziale del trono richiama la sensibilità plastica e architettonica di Arnolfo di Cambio, presente a Roma alla fine degli anni Settanta del Duecento."
+ },
+ {
+  "id": "schiavo-morente-contrasto-schiavo-ribelle",
+  "source_type": "work",
+  "source_id": "schiavo-morente",
+  "target_type": "work",
+  "target_id": "schiavo-ribelle",
+  "kind": "contrasto",
+  "description": "I due Prigioni del Louvre, nati per lo stesso progetto della tomba di Giulio II, mostrano due reazioni opposte alla prigionia: lo Schiavo ribelle lotta per liberarsi, lo Schiavo morente si abbandona e sembra cedere."
+ },
+ {
+  "id": "giotto-influenza-bernardo-daddi",
+  "source_type": "artist",
+  "source_id": "giotto-di-bondone",
+  "target_type": "artist",
+  "target_id": "bernardo-daddi",
+  "kind": "influenza",
+  "description": "Bernardo Daddi si forma nella cerchia di Giotto, da cui deriva la costruzione delle scene con linee convergenti sul protagonista, pur arricchendola con un colore brillante di gusto senese."
  }
 ]

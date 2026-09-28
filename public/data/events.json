@@ -67,7 +67,7 @@
   "year": 540,
   "year_end": null,
   "title": "Riconquista giustinianea di Ravenna",
-  "description": "Il generale Belisario riconquista Ravenna per conto di Giustiniano, che istituisce l'Esarcato d'Italia con capitale nella città. Ha inizio la fase di massimo splendore dell'arte ravennate.",
+  "description": "Il generale Belisario riconquista Ravenna per conto di Giustiniano, che istituisce l'Esarcato d'Italia con capitale nella città. Da questo momento l'arte ravennate vive la sua stagione più alta.",
   "kind": "politico",
   "period_id": "eta-giustinianea"
  },
@@ -184,7 +184,7 @@
   "year": 1007,
   "year_end": null,
   "title": "Consacrazione di San Vincenzo a Galliano",
-  "description": "La chiesa di San Vincenzo a Galliano viene consacrata nel 1007 per volere dell'arcivescovo Ariberto da Intimiano, dando avvio al ciclo di affreschi romanico-lombardi.",
+  "description": "Nel 1007 viene consacrata la basilica di San Vincenzo a Galliano; il ciclo di affreschi romanico-lombardi che la ricopre è commissionato da Ariberto da Intimiano, allora suddiacono e custode della basilica, dal 1018 arcivescovo di Milano.",
   "kind": "religioso",
   "period_id": "romanico-italiano"
  },
@@ -247,7 +247,7 @@
   "year": 1098,
   "year_end": null,
   "title": "Fondazione dell'ordine cistercense",
-  "description": "L'ordine cistercense, nato alla fine dell'XI secolo e fiorito in tutta Europa per opera di Bernardo di Chiaravalle, diffonde in Italia un'architettura religiosa spoglia e rigorosa che prepara il terreno per il Gotico.",
+  "description": "Nato alla fine dell'XI secolo per opera di Bernardo di Chiaravalle e diffusosi rapidamente in tutta Europa, l'ordine cistercense introduce in Italia un linguaggio architettonico religioso austero ed essenziale, presupposto del Gotico.",
   "kind": "religioso",
   "period_id": "gotico-cistercense"
  },
@@ -337,7 +337,7 @@
   "year": 1183,
   "year_end": null,
   "title": "Pace di Costanza",
-  "description": "Federico I Barbarossa riconosce l'autonomia dei Comuni dell'Italia settentrionale, che avevano resistito alle sue campagne militari con l'appoggio del papato e di Venezia.",
+  "description": "Con la pace di Costanza, Federico I Barbarossa concede autonomia ai Comuni dell'Italia settentrionale, che gli si erano opposti con le armi contando sul sostegno del papato e di Venezia.",
   "kind": "politico",
   "period_id": "gotico-italiano"
  },
@@ -364,7 +364,7 @@
   "year": 1215,
   "year_end": null,
   "title": "Promulgazione della Magna Charta Libertatum",
-  "description": "Il re Giovanni Plantageneto detto Senzaterra emana la Magna Charta Libertatum, costretto dai baroni inglesi a riconoscere loro libertà e privilegi. Una copia è conservata nella Sala Capitolare della cattedrale di Salisbury.",
+  "description": "Costretto dai baroni inglesi ad accordare loro libertà e privilegi, il re Giovanni Plantageneto detto Senzaterra promulga nel 1215 la Magna Charta Libertatum. Una copia è conservata nella Sala Capitolare della cattedrale di Salisbury.",
   "kind": "politico",
   "period_id": "early-english-gothic"
  },
@@ -409,7 +409,7 @@
   "year": 1244,
   "year_end": 1254,
   "title": "Innocenzo IV lascia Roma",
-  "description": "Papa Innocenzo IV Fieschi deve lasciare Roma nel 1244 per sfuggire alle minacce dell'imperatore Federico II di Svevia. Il cardinale Stefano Conti come vicario fa restaurare e ampliare la basilica dei Santi Quattro Coronati, commissionando gli affreschi dell'oratorio di San Silvestro e dell'Aula Gotica.",
+  "description": "Costretto a fuggire dalle minacce dell'imperatore Federico II di Svevia, papa Innocenzo IV Fieschi abbandona Roma nel 1244. Come suo vicario, il cardinale Stefano Conti commissiona il restauro e l'ampliamento della basilica dei Santi Quattro Coronati, oltre agli affreschi dell'oratorio di San Silvestro e dell'Aula Gotica.",
   "kind": "politico",
   "period_id": "duecento-italiano"
  },
@@ -427,7 +427,7 @@
   "year": 1260,
   "year_end": null,
   "title": "Battaglia di Montaperti",
-  "description": "Scontro tra i guelfi guidati da Firenze e i ghibellini sotto il comando di Siena (1260). Coppo di Marcovaldo, fiorentino, viene fatto prigioniero e trascorre alcuni mesi a Siena, dove esegue la Madonna del Bordone.",
+  "description": "Nel 1260 i guelfi guidati da Firenze si scontrano a Montaperti con i ghibellini comandati da Siena. Coppo di Marcovaldo, fiorentino, viene fatto prigioniero e trascorre alcuni mesi a Siena, dove esegue la Madonna del Bordone.",
   "kind": "politico",
   "period_id": "duecento-italiano"
  },
@@ -445,7 +445,7 @@
   "year": 1266,
   "year_end": null,
   "title": "Carlo d'Angiò ottiene il trono di Napoli",
-  "description": "Dopo l'uccisione dell'ultimo discendente della casata sveva, Carlo d'Angiò ottiene il trono di Napoli, riportando il Sud Italia nella sfera d'influenza francese e favorendo la diffusione del Gotico transalpino nel meridione.",
+  "description": "Estinta la casata sveva con l'uccisione del suo ultimo discendente, Carlo d'Angiò s'insedia nel 1266 sul trono di Napoli: il meridione rientra così nell'orbita francese, aprendo la strada alla diffusione del Gotico d'oltralpe.",
   "kind": "politico",
   "period_id": "gotico-italiano"
  },
@@ -454,7 +454,7 @@
   "year": 1268,
   "year_end": null,
   "title": "Battaglia di Tagliacozzo",
-  "description": "Sconfitta della casata di Svevia a opera di Carlo d'Angiò, che restituisce al papato forza e peso politico e innesca un rifiorire delle commissioni pontificie per le grandi basiliche romane.",
+  "description": "Carlo d'Angiò sconfigge la casata di Svevia a Tagliacozzo: la vittoria restituisce al papato forza e peso politico, innescando un rifiorire delle commissioni pontificie per le grandi basiliche romane.",
   "kind": "politico",
   "period_id": "duecento-italiano"
  },
@@ -472,7 +472,7 @@
   "year": 1287,
   "year_end": 1355,
   "title": "Governo dei Nove a Siena",
-  "description": "Il Governo dei Nove è il principale organo politico comunale senese, controllato dalla borghesia e osteggiato dagli aristocratici. Commissiona le Maestà del Palazzo Pubblico a Simone Martini e il ciclo del Buono e Cattivo Governo ad Ambrogio Lorenzetti.",
+  "description": "Espressione politica della borghesia cittadina e osteggiato dall'aristocrazia, il Governo dei Nove è il principale organo comunale di Siena. Commissiona la Maestà del Palazzo Pubblico a Simone Martini e il ciclo del Buono e Cattivo Governo ad Ambrogio Lorenzetti.",
   "kind": "politico",
   "period_id": "gotico-senese"
  },
@@ -490,7 +490,7 @@
   "year": 1296,
   "year_end": null,
   "title": "Inizio ricostruzione di Santa Maria del Fiore",
-  "description": "Dal 1296, tornato in Toscana, Arnolfo di Cambio viene ingaggiato per la ricostruzione della cattedrale di Santa Maria del Fiore a Firenze, per la quale progetta e realizza in parte anche una facciata (mai completata e smantellata nel XVI secolo).",
+  "description": "È il 1296 quando, di ritorno in Toscana, Arnolfo di Cambio assume la direzione dei lavori per la nuova cattedrale fiorentina di Santa Maria del Fiore: ne firma anche il progetto di facciata, realizzato solo in parte e in seguito demolito nel corso del XVI secolo.",
   "kind": "culturale",
   "period_id": "duecento-italiano"
  },
@@ -517,7 +517,7 @@
   "year": 1313,
   "year_end": 1377,
   "title": "Cattività avignonese",
-  "description": "Periodo compreso fra il 1313 e il 1377 durante il quale il papa e la sua corte si trasferiscono da Roma ad Avignone, in Francia. Il Polittico Stefaneschi di Giotto celebra il primato di Roma come luogo del martirio di Pietro e Paolo in risposta a questo trasferimento.",
+  "description": "Fra il 1313 e il 1377 la sede papale e la curia risiedono ad Avignone, in Francia, anziché a Roma. Il Polittico Stefaneschi di Giotto celebra il primato di Roma come luogo del martirio di Pietro e Paolo in risposta a questo trasferimento.",
   "kind": "politico",
   "period_id": "trecento-italiano"
  },
@@ -526,7 +526,7 @@
   "year": 1317,
   "year_end": null,
   "title": "Canonizzazione di san Ludovico da Tolosa",
-  "description": "San Ludovico da Tolosa è canonizzato nel 1317; in quell'anno Roberto d'Angiò commissiona a Simone Martini la tavola celebrativa destinata alla chiesa di San Lorenzo Maggiore a Napoli.",
+  "description": "San Ludovico da Tolosa viene canonizzato nel 1317, l'anno in cui Simone Martini riceve da Roberto d'Angiò la commissione della tavola celebrativa per la chiesa di San Lorenzo Maggiore a Napoli.",
   "kind": "religioso",
   "period_id": "gotico-senese"
  },
@@ -535,7 +535,7 @@
   "year": 1334,
   "year_end": null,
   "title": "Giotto nominato capomastro del duomo di Firenze",
-  "description": "Nel 1334 Giotto viene nominato capomastro dell'Opera della cattedrale di Santa Reparata (poi Santa Maria del Fiore) a Firenze, per la quale progetta il campanile.",
+  "description": "Nel 1334 l'Opera della cattedrale di Santa Reparata (futura Santa Maria del Fiore) a Firenze nomina Giotto capomastro, incaricandolo di progettare il campanile.",
   "kind": "culturale",
   "period_id": "trecento-italiano"
  },
@@ -544,7 +544,7 @@
   "year": 1336,
   "year_end": 1344,
   "title": "Soggiorno di Simone Martini ad Avignone",
-  "description": "Simone Martini si trasferisce ad Avignone intorno al 1336 come pittore ufficiale della corte papale; realizza numerose opere tra cui affreschi perduti di Notre-Dame-des-Doms e il ritratto di Laura commissionato da Petrarca.",
+  "description": "Intorno al 1336 Simone Martini lascia l'Italia per Avignone, dove assume il ruolo di pittore di corte del papato: qui nascono, fra le altre opere, le pitture murali oggi perdute di Notre-Dame-des-Doms e l'effigie di Laura eseguita su incarico di Petrarca.",
   "kind": "culturale",
   "period_id": "gotico-senese"
  },
@@ -562,7 +562,7 @@
   "year": 1348,
   "year_end": 1349,
   "title": "Epidemia di peste nera",
-  "description": "La peste nera tra il 1348 e il 1349 segna un drammatico spartiacque culturale, economico e demografico. Muoiono in quell'epidemia Pietro e Ambrogio Lorenzetti, Maso di Banco e Bernardo Daddi.",
+  "description": "Tra il 1348 e il 1349 la peste nera segna una cesura drammatica sul piano culturale, economico e demografico. Muoiono in quell'epidemia Pietro e Ambrogio Lorenzetti, Maso di Banco e Bernardo Daddi.",
   "kind": "culturale",
   "period_id": "gotico-senese"
  },
@@ -598,7 +598,7 @@
   "year": 1386,
   "year_end": null,
   "title": "Avvio della fabbrica del duomo di Milano",
-  "description": "Per volere di Gian Galeazzo Visconti viene avviata nel 1386 la fabbrica del duomo di Milano, ispirata alle grandi chiese gotiche europee. Il primo ingegnere-capo Simone d'Orsenigo viene poi sostituito dal francese Nicolas de Bonaventure.",
+  "description": "Per iniziativa di Gian Galeazzo Visconti viene avviata nel 1386 la fabbrica del duomo di Milano, ispirata alle grandi chiese gotiche europee. Il francese Nicolas de Bonaventure subentra poi al primo ingegnere capo, Simone d'Orsenigo.",
   "kind": "culturale",
   "period_id": "tardogotico"
  },
@@ -616,7 +616,7 @@
   "year": 1414,
   "year_end": 1418,
   "title": "Concilio di Costanza",
-  "description": "Concilio che trasforma Costanza in luogo di incontro tra le massime autorità politiche ed ecclesiastiche europee, favorendo la circolazione di artisti al seguito delle corti e delle ambasciate, con influenza sullo sviluppo dell'arte tedesca.",
+  "description": "Le sedute del Concilio di Costanza richiamano in città le più alte cariche politiche ed ecclesiastiche di tutta Europa: il conseguente andirivieni di artisti al seguito di corti e ambasciate lascia un segno anche sull'evoluzione dell'arte tedesca.",
   "kind": "religioso",
   "period_id": "quattrocento-fiammingo"
  },
@@ -625,7 +625,7 @@
   "year": 1416,
   "year_end": null,
   "title": "Morte dei fratelli De Limbourg per la pestilenza",
-  "description": "I fratelli De Limbourg cadono vittime della pestilenza del 1416 insieme al loro committente Jean de Berry, lasciando incompiute le Très Riches Heures, completate tra il 1485 e il 1489 da Jean Colombe.",
+  "description": "La pestilenza del 1416 uccide sia i fratelli De Limbourg sia il loro committente Jean de Berry, interrompendo i lavori sulle Très Riches Heures, che restano incompiute fino al completamento fra il 1485 e il 1489 per mano di Jean Colombe.",
   "kind": "culturale",
   "period_id": "gotico-internazionale"
  },
@@ -634,7 +634,7 @@
   "year": 1418,
   "year_end": 1418,
   "title": "Concorso per la cupola di Santa Maria del Fiore",
-  "description": "Nel 1418 l'Opera del Duomo bandisce il concorso per la realizzazione della cupola della cattedrale. Brunelleschi e Ghiberti partecipano presentando un progetto comune e vengono nominati capomastri del cantiere.",
+  "description": "L'Opera del Duomo apre nel 1418 le selezioni per l'incarico di realizzare la cupola della cattedrale. Brunelleschi e Ghiberti partecipano presentando un progetto comune e vengono nominati capomastri del cantiere.",
   "kind": "culturale",
   "period_id": "quattrocento"
  },
@@ -661,7 +661,7 @@
   "year": 1431,
   "year_end": 1449,
   "title": "Concilio di Basilea, Ferrara e Firenze",
-  "description": "Concilio iniziato a Basilea nel 1431, poi spostato a Ferrara e infine a Firenze. Favorisce il confronto tra le culture fiamminga e italiana e la riconciliazione con la Chiesa d'Oriente, evento celebrato da Piero della Francesca nel Battesimo di Cristo e nella Leggenda della vera Croce.",
+  "description": "Concilio iniziato a Basilea nel 1431, poi spostato a Ferrara e infine a Firenze. Il confronto fra la cultura fiamminga e quella italiana ne risulta favorito, così come l'avvicinamento con la Chiesa d'Oriente: un evento che Piero della Francesca celebra nel Battesimo di Cristo e nella Leggenda della vera Croce.",
   "kind": "religioso",
   "period_id": "quattrocento"
  },
@@ -679,7 +679,7 @@
   "year": 1433,
   "year_end": 1434,
   "title": "Esilio e ritorno di Cosimo de' Medici",
-  "description": "Nel 1433 Cosimo de' Medici viene esiliato da Firenze a causa dell'aspra contrapposizione tra l'oligarchia e i ceti popolari; l'anno successivo vi rientra trionfalmente e diviene il signore della citta.",
+  "description": "Nel 1433 Cosimo de' Medici viene esiliato da Firenze a causa dell'aspra contrapposizione tra l'oligarchia e i ceti popolari; l'anno seguente fa ritorno in trionfo, assumendo la signoria della città.",
   "kind": "politico",
   "period_id": "quattrocento"
  },
@@ -697,7 +697,7 @@
   "year": 1435,
   "year_end": null,
   "title": "Riavvicinamento politico tra Filippo di Borgogna e i Valois di Francia",
-  "description": "Dal 1435 Filippo III il Buono si riavvicina politicamente alla corte dei Valois, consentendo allo stile fiammingo di ampliare la propria influenza in Francia e favorendo la commistione tra artisti francesi e fiamminghi.",
+  "description": "A partire dal 1435 si avvia un riavvicinamento politico tra Filippo III il Buono e la corte dei Valois, che permette allo stile fiammingo di espandere la propria influenza in Francia e favorisce gli scambi tra artisti francesi e fiamminghi.",
   "kind": "politico",
   "period_id": "quattrocento-fiammingo"
  },
@@ -724,7 +724,7 @@
   "year": 1438,
   "year_end": 1439,
   "title": "Concilio a Ferrara e Firenze (1438-1439)",
-  "description": "Il Concilio tra la Chiesa d'Oriente e d'Occidente si tiene a Ferrara e poi a Firenze. Alberti vi partecipa, incontra Brunelleschi e inizia a elaborare il suo primo trattato teorico. A Ferrara arriva la dotta corte papale di Eugenio IV e i maggiori intellettuali bizantini.",
+  "description": "Il Concilio tra la Chiesa d'Oriente e d'Occidente si tiene a Ferrara e poi a Firenze. Alberti vi partecipa, incontra Brunelleschi e inizia a elaborare il suo primo trattato teorico. A Ferrara confluiscono in quell'occasione la dotta corte papale di Eugenio IV e i più importanti intellettuali bizantini.",
   "kind": "religioso",
   "period_id": "quattrocento"
  },
@@ -742,7 +742,7 @@
   "year": 1442,
   "year_end": null,
   "title": "Alfonso V d'Aragona conquista il regno di Napoli",
-  "description": "Nel 1442 il regno di Napoli passa sotto Alfonso V d'Aragona. Nonostante il principe sia umanista, il tardogotico continua a riscuotere grande fortuna; nel 1448 giunge Pisanello a Napoli.",
+  "description": "Dopo il 1442 il regno di Napoli entra sotto il dominio di Alfonso V d'Aragona. Pur trattandosi di un sovrano di cultura umanistica, nel regno lo stile tardogotico non perde terreno e resta assai apprezzato; nel 1448 Pisanello raggiunge Napoli.",
   "kind": "politico",
   "period_id": "tardogotico"
  },
@@ -751,7 +751,7 @@
   "year": 1443,
   "year_end": 1450,
   "title": "Donatello a Padova",
-  "description": "Dal 1443 al 1450 circa Donatello e a Padova, dove realizza l'Altare del Santo e il Monumento equestre al Gattamelata. La sua presenza influenza profondamente il Rinascimento padovano e dell'Italia settentrionale.",
+  "description": "Dal 1443 al 1450 circa Donatello è a Padova, dove realizza l'Altare del Santo e il Monumento equestre al Gattamelata. Il suo soggiorno lascia un'impronta duratura sul Rinascimento padovano e su quello dell'Italia settentrionale.",
   "kind": "culturale",
   "period_id": "quattrocento"
  },
@@ -760,7 +760,7 @@
   "year": 1447,
   "year_end": 1455,
   "title": "Pontificato di Niccolo V Parentucelli",
-  "description": "Nel 1447 diviene papa Niccolo V Parentucelli, raffinato umanista amico di Cosimo de' Medici. Incarica Beato Angelico di affrescare la cappella Niccolina negli appartamenti papali del Palazzo Apostolico.",
+  "description": "Umanista raffinato e amico di Cosimo de' Medici, Niccolò V Parentucelli diviene papa nel 1447; la cappella Niccolina, ricavata negli appartamenti papali del Palazzo Apostolico, viene affrescata su suo incarico da Beato Angelico.",
   "kind": "religioso",
   "period_id": "quattrocento"
  },
@@ -778,7 +778,7 @@
   "year": 1453,
   "year_end": null,
   "title": "Caduta di Costantinopoli",
-  "description": "L'assedio di Costantinopoli si conclude con la conquista turca, segnando la fine dell'impero romano d'Oriente. L'evento è evocato nel ciclo della Leggenda della vera Croce di Piero della Francesca attraverso la Battaglia di Eraclio e Cosroe.",
+  "description": "L'assedio si conclude con la conquista turca di Costantinopoli, che pone fine all'impero bizantino. L'evento è evocato nel ciclo della Leggenda della vera Croce di Piero della Francesca attraverso la Battaglia di Eraclio e Cosroe.",
   "kind": "politico",
   "period_id": "quattrocento"
  },
@@ -805,7 +805,7 @@
   "year": 1458,
   "year_end": 1458,
   "title": "Distruzione dei ritratti Brancacci",
-  "description": "Nel 1458 Cosimo de' Medici ordina che vengano distrutte tutte le immagini riferite alla famiglia Brancacci (esiliata come nemica della repubblica): i frati del Carmine cancellano i ritratti dipinti da Masaccio.",
+  "description": "Nel 1458 Cosimo de' Medici dispone la distruzione di ogni immagine legata alla famiglia Brancacci, esiliata come nemica della repubblica: i frati del Carmine provvedono così a far scomparire i ritratti dipinti da Masaccio.",
   "kind": "politico",
   "period_id": "quattrocento"
  },
@@ -850,7 +850,7 @@
   "year": 1474,
   "year_end": null,
   "title": "Federico da Montefeltro nominato duca di Urbino",
-  "description": "Federico da Montefeltro riceve il titolo ducale nel 1474, coronando le sue ambizioni politiche e culturali che aveva perseguito circondan dosi di intellettuali e artisti impegnati in speculazioni filosofiche e ricerche prospettiche.",
+  "description": "Nel 1474 Federico da Montefeltro ottiene il titolo ducale, coronamento di ambizioni politiche e culturali già perseguite attorniandosi di intellettuali e artisti dediti a speculazioni filosofiche e a ricerche prospettiche.",
   "kind": "politico",
   "period_id": "quattrocento"
  },
@@ -913,7 +913,7 @@
   "year": 1494,
   "year_end": 1495,
   "title": "Discesa di Carlo VIII in Italia",
-  "description": "Carlo VIII di Francia invade l'Italia; Venezia è l'unico Stato italiano capace di ostacolarlo, ottenendo in cambio il controllo di importanti città portuali pugliesi da Napoli.",
+  "description": "Carlo VIII di Francia invade l'Italia; sola fra gli Stati italiani, Venezia riesce a contrastarlo, ricevendo in cambio da Napoli il controllo di importanti città portuali pugliesi.",
   "kind": "politico",
   "period_id": "rinascimento-maturo-italia-settentrionale"
  },
@@ -949,7 +949,7 @@
   "year": 1495,
   "year_end": 1495,
   "title": "Cacciata dei Medici da Firenze (seconda)",
-  "description": "Nel 1495 il David in bronzo di Donatello viene trafugato dalla folla e trasportato in Palazzo Vecchio come simbolo della liberta repubblicana, in occasione della seconda cacciata dei Medici.",
+  "description": "Nel 1495, quando i Medici sono cacciati da Firenze per la seconda volta, il popolo sottrae il David in bronzo di Donatello e lo porta in Palazzo Vecchio quale emblema della libertà repubblicana.",
   "kind": "politico",
   "period_id": "quattrocento"
  },
@@ -1003,7 +1003,7 @@
   "year": 1510,
   "year_end": null,
   "title": "Morte di Giorgione per peste",
-  "description": "Giorgione muore di peste nell'ottobre 1510 ancora giovane, forse lasciando incompleta la Venere dormiente che sarà completata da Tiziano, in una sorta di passaggio di consegne tra i due artisti.",
+  "description": "Ancora giovane, Giorgione soccombe alla peste nell'ottobre 1510: lascia forse incompiuta la Venere dormiente, che sarà Tiziano a completare, quasi in un passaggio di consegne fra i due pittori.",
   "kind": "culturale",
   "period_id": "scuola-veneziana"
  },
@@ -1066,7 +1066,7 @@
   "year": 1521,
   "year_end": null,
   "title": "Carlo V conquista il ducato di Milano",
-  "description": "Carlo V prende Milano con l'appoggio di papa Leone X, inserendo il ducato nei propri domini. Dopo la morte di Francesco II Sforza (1535) lo annette direttamente, poi lo trasmette al figlio Filippo II di Spagna.",
+  "description": "Con l'appoggio di papa Leone X, Carlo V occupa Milano e ne incorpora il ducato nei propri domini. Dopo la morte di Francesco II Sforza (1535) lo annette direttamente, poi lo trasmette al figlio Filippo II di Spagna.",
   "kind": "politico",
   "period_id": "rinascimento-maturo-italia-settentrionale"
  },
@@ -1102,7 +1102,7 @@
   "year": 1545,
   "year_end": 1563,
   "title": "Concilio di Trento",
-  "description": "A Trento inizia il Concilio che definirà la risposta cattolica alla Riforma protestante, imponendo alle arti un orientamento devozionale controriformista più vicino alla pittura della periferia veneta che all'arte veneziana aulica.",
+  "description": "Ha inizio a Trento il Concilio destinato a formulare la risposta cattolica alla Riforma protestante: le sue direttive spingono le arti verso un registro devozionale controriformista, più affine alla pittura della periferia veneta che a quella aulica veneziana.",
   "kind": "religioso",
   "period_id": "rinascimento-maturo-italia-settentrionale"
  },
@@ -1111,7 +1111,7 @@
   "year": 1545,
   "year_end": 1563,
   "title": "Concilio di Trento",
-  "description": "Il Concilio di Trento (1545-1563) elabora la risposta cattolica alla Riforma protestante, raccomandando per l'arte chiarezza narrativa, correttezza dottrinale e decenza. Pone le basi dell'arte controriformista e del suo linguaggio didattico e devozionale.",
+  "description": "Aperto nel 1545 e chiuso nel 1563, il Concilio di Trento mette a punto la risposta cattolica alla Riforma protestante, indicando alle opere requisiti di chiarezza narrativa, correttezza dottrinale e decenza. Pone le basi dell'arte controriformista e del suo linguaggio didattico e devozionale.",
   "kind": "religioso",
   "period_id": "controriforma"
  },
@@ -1147,7 +1147,7 @@
   "year": 1581,
   "year_end": null,
   "title": "Istituzione della Galleria degli Uffizi",
-  "description": "Nel 1581 Francesco I de' Medici trasforma il secondo piano degli Uffizi in una galleria pubblica raccogliendo i tesori d'arte dei Medici, con la Tribuna ideata da Buontalenti come cuore del museo.",
+  "description": "Francesco I de' Medici decide, nel 1581, di adibire il secondo piano degli Uffizi a spazio museale aperto al pubblico per esporvi le collezioni d'arte di famiglia; la Tribuna disegnata da Buontalenti ne costituisce il fulcro.",
   "kind": "culturale",
   "period_id": "manierismo"
  },
@@ -1174,7 +1174,7 @@
   "year": 2010,
   "year_end": 2020,
   "title": "Restauro del Polittico dell'Agnello Mistico (2010-2020)",
-  "description": "Complesso restauro durato circa dieci anni che ha permesso di cogliere al meglio la tridimensionalità luministica della pittura e ha portato alla luce dettagli virtuosistici come una tela di ragno dipinta sopra le teste del committente e della moglie.",
+  "description": "Il restauro, protrattosi per circa un decennio, mette in luce con maggior nitidezza gli effetti di tridimensionalità luminosa dell'opera e svela dettagli sorprendenti, come una piccola ragnatela raffigurata proprio al di sopra dei volti del committente e della moglie.",
   "kind": "culturale",
   "period_id": "quattrocento-fiammingo"
  },
@@ -2461,7 +2461,7 @@
   "year": 1577,
   "year_end": null,
   "title": "Instructiones di Carlo Borromeo",
-  "description": "Carlo Borromeo pubblica le istruzioni per la costruzione e l'arredo delle chiese.",
+  "description": "Carlo Borromeo dà alle stampe un trattato con norme dettagliate su come progettare e arredare gli edifici ecclesiastici.",
   "kind": "religioso",
   "period_id": "controriforma"
  },

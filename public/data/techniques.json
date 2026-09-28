@@ -137,7 +137,7 @@
  {
   "id": "cloisonne",
   "name": "Cloisonné",
-  "definition": "Tecnica orafa che consiste nel saldare alla superficie da decorare sottili lamicine metalliche (in francese cloison) per ricavare celle (alveoli), ciascuna poi riempita da smalti, paste vitree o pietre preziose a taglio piatto. Crea contrasti tra il metallo e la brillantezza cromatica.",
+  "definition": "Tecnica orafa in cui sulla superficie da ornare vengono saldate sottili lamine metalliche, dette in francese cloison, che delimitano piccole celle; ciascuna cella accoglie poi smalto, pasta vitrea o pietre preziose tagliate a sezione piatta. Crea contrasti tra il metallo e la brillantezza cromatica.",
   "introduced_by": "oreficeria barbarica",
   "first_period_id": "eta-longobarda",
   "evolution": "Tecnica tipica dei popoli germanici (Goti, Longobardi, Franchi) adottata nelle fibule, nelle croci devozionali e negli oggetti di corredo funerario. Si combina con la tradizione orafa romana e bizantina nelle oreficerie longobarde d'Italia.",
@@ -173,43 +173,34 @@
  {
   "id": "doratura",
   "name": "Doratura",
-  "definition": "Tecnica pittorica per la realizzazione in oro di sfondi e parti delle figure, tramite doratura a conchiglia (oro in polvere), a guazzo o a mordente (oro in foglia).",
+  "definition": "Tecnica pittorica che realizza in oro sfondi e parti delle figure, ricorrendo alla doratura a conchiglia quando l'oro è in polvere, oppure a guazzo o a mordente quando è in foglia.",
   "introduced_by": null,
   "first_period_id": "gotico-senese",
-  "evolution": "La doratura a guazzo prevede l'applicazione del bolo prima della pittura; la doratura a mordente dopo. La superficie dorata può essere decorata con punzonatura, graffitura o pittura traslucida.",
+  "evolution": "Nella variante a guazzo il bolo viene steso prima di dipingere; in quella a mordente, dopo. La superficie così dorata si presta inoltre a essere lavorata con punzonatura, graffitura o velature traslucide di colore.",
   "category": "pittorica"
  },
  {
   "id": "encausto",
   "name": "Encausto",
-  "definition": "Tecnica pittorica antica che consiste nel mescolare i colori con cera d'api, resina o gomma calde e olio, stendendo poi l'impasto ancora caldo sul supporto (intonaco, legno, terracotta, marmo o tela); una volta stesi i colori, la superficie veniva sottoposta ad alte temperature per far penetrare la cera e fissare i pigmenti. Il nome deriva dal greco encaustòs, 'bruciato'.",
+  "definition": "Tecnica pittorica antica in cui i pigmenti vengono amalgamati con cera d'api, resina o gomma riscaldate insieme a olio, e l'impasto ancora caldo è steso sul supporto — intonaco, legno, terracotta, marmo o, più di rado, tela. Applicati i colori, la superficie veniva poi riscaldata per consentire alla cera di penetrare e fissare così i pigmenti. Il nome deriva dal greco encaustòs, 'bruciato'.",
   "introduced_by": "tradizione greco-ellenistica",
   "first_period_id": "tarda-antichita",
   "evolution": "Usato nell'antica Grecia e descritto da Plinio nella Naturalis Historia. Leonardo tenta di applicarla alla Battaglia di Anghiari (1503-1506) su grande scala murale, ma l'esperimento fallisce perché le dimensioni della parete rendono impossibile riscaldare uniformemente la superficie.",
   "category": "pittorica"
  },
  {
-  "id": "fusione-bronzo",
-  "name": "Fusione del bronzo a cera persa",
-  "definition": "Tecnica di fusione metallica in cui il modello in cera viene ricoperto da uno strato refrattario; la cera viene fusa via e sostituita dal metallo liquido.",
-  "introduced_by": "bronzisti ottoniani",
-  "first_period_id": "arte-ottoniana",
-  "evolution": "La Porta di Bernoardo (Hildesheim, 1015) è il primo esempio di porta bronzea fusa in un unico getto in epoca medievale. La tecnica continua con le porte di Novgorod (Riquinus e Wedissmuth) e il portale di Barisano da Trani.",
-  "category": "scultorea"
- },
- {
   "id": "fusione-in-bronzo",
   "name": "Fusione in bronzo",
-  "definition": "Tecnica scultorea che consiste nel versare bronzo fuso in uno stampo preparato, poi rifinire la superficie con lo scalpello e il cesello. Include la fusione a cera persa (scomparsa del modello in cera nell'operazione di fusione).",
+  "definition": "Tecnica scultorea che consiste nel versare bronzo fuso in uno stampo preparato, poi rifinire la superficie con lo scalpello e il cesello. Include la fusione a cera persa (scomparsa del modello in cera nell'operazione di fusione). Il procedimento più diffuso è quello a cera persa: il modello in cera, rivestito di terra refrattaria, si scioglie al calore e lascia il posto al metallo.",
   "introduced_by": "Maestranze renane e byzantine",
   "first_period_id": "umanesimo-fiorentino",
-  "evolution": "Ripresa nell'Umanesimo fiorentino da Ghiberti e Donatello dopo il lungo abbandono medievale. La fusione a cera persa, diffusa in età classica, viene reintrodotta da Ghiberti per il San Giovanni Battista di Orsanmichele.",
+  "evolution": "Ripresa nell'Umanesimo fiorentino da Ghiberti e Donatello dopo il lungo abbandono medievale. Ghiberti recupera per il San Giovanni Battista di Orsanmichele il procedimento della fusione a cera persa, già diffuso in epoca classica e poi caduto in disuso.",
   "category": "scultorea"
  },
  {
   "id": "incisione-a-bulino",
   "name": "Incisione a bulino su lastra metallica",
-  "definition": "Tecnica grafica che consiste nell'incidere direttamente una lastra metallica (rame o zinco) con uno strumento a punta (bulino), ricavando solchi che trattengono l'inchiostro. Si fonda sulla linea e garantisce la massima precisione del tratto.",
+  "definition": "Tecnica grafica che consiste nell'incidere direttamente una lastra metallica (rame o zinco) con uno strumento a punta (bulino), ricavando solchi che trattengono l'inchiostro. È tecnica di impianto lineare, capace di restituire il tratto con la massima precisione.",
   "introduced_by": "Paesi Bassi e area tedesca, metà del Quattrocento",
   "first_period_id": "rinascimento-maturo-italia-settentrionale",
   "evolution": "Tecnica proveniente dall'Europa settentrionale, sperimentata in Italia tra i primissimi da Antonio Pollaiolo e da Andrea Mantegna intorno al 1470. Pollaiolo la preferisce alla xilografia per la sua affinità con la tecnica della niellatura appresa come orafo.",
@@ -227,7 +218,7 @@
  {
   "id": "miniatura",
   "name": "Miniatura",
-  "definition": "Tecnica pittorica per la decorazione di manoscritti su pergamena o papiro. I pigmenti (finemente macinati e legati con albume d'uovo o gomma arabica) sono applicati in successive stesure per ottenere effetti di chiaroscuro; l'oro e l'argento impreziosiscono i dettagli.",
+  "definition": "Tecnica pittorica per la decorazione di manoscritti su pergamena o papiro. Attraverso più passaggi di colore, ottenuto macinando finemente i pigmenti e legandoli con albume d'uovo o gomma arabica, si costruiscono gradualmente gli effetti chiaroscurali; l'oro e l'argento impreziosiscono i dettagli.",
   "introduced_by": "tradizione tardoantica",
   "first_period_id": "eta-carolingia",
   "evolution": "Nasce nell'Antichità come decorazione dei rotuli. Nell'età carolingia raggiunge grande raffinatezza nelle scuole di corte e nei grandi scriptoria (Reims, Tours). La scuola di corte carolingia recupera i modelli tardoantichi e ellenistici.",
@@ -344,19 +335,10 @@
  {
   "id": "pastiglia",
   "name": "Pastiglia",
-  "definition": "Decorazioni a rilievo modellate in una pasta di gesso e colla applicate sulle tavole, poi dorate con foglia d'oro.",
+  "definition": "Rilievi ottenuti modellando una pasta a base di gesso e colla, applicati sulle tavole e rifiniti con una doratura in foglia.",
   "introduced_by": "pittori senesi",
   "first_period_id": "gotico-senese",
   "evolution": "Usata da Simone Martini nella Maestà del Palazzo Pubblico e nel San Ludovico di Tolosa per creare effetti di preziosismo materico.",
-  "category": "pittorica"
- },
- {
-  "id": "pastiglia-di-gesso",
-  "name": "Pastiglia di gesso",
-  "definition": "Impasto costituito da stucco con farine di frumento o di riso, con aggiunta di biacca, uovo e sostanze profumate; veniva modellato su una superficie (a mano o con pennelli, stecche e punzoni) e infine eventualmente dorato. Usato per creare effetti di rilievo su fondi di dipinti.",
-  "introduced_by": "pittura lombarda tardogotica",
-  "first_period_id": "tardogotico",
-  "evolution": "Usata da Michelino da Besozzo e da Stefano da Verona per i fondi dorati e i troni in rilievo. Crea effetti di luminosità e preziosità tipici dello stile tardogotico lombardo.",
   "category": "pittorica"
  },
  {
@@ -365,7 +347,7 @@
   "definition": "Tecnica pittorica in cui il legante dei pigmenti è un olio (di lino, noci o papavero). Permette velature successive, sfumature tonali graduali, superfici lucide e vivide e migliore resa delle trasparenze e della luce rispetto alla tempera.",
   "introduced_by": "pittori fiamminghi (perfezionata e sistematizzata)",
   "first_period_id": "quattrocento-fiammingo",
-  "evolution": "Nota fin dall'antichità (Plinio, Vitruvio) e attestata anche in Italia da Cennino Cennini, viene perfezionata nelle Fiandre nel primo Quattrocento e adottata sistematicamente con risultati rivoluzionari. Nella seconda metà del secolo si diffonde in tutta Europa; in Italia è introdotta, secondo la tradizione, da Antonello da Messina dopo la metà del secolo. Nel XVI secolo si estende alla tela.",
+  "evolution": "Nota fin dall'antichità (Plinio, Vitruvio) e attestata anche in Italia da Cennino Cennini, viene perfezionata nelle Fiandre nel primo Quattrocento e adottata sistematicamente con risultati rivoluzionari. Nella seconda metà del secolo si diffonde in tutta Europa; in Italia, come vuole la tradizione, a introdurla per primo è Antonello da Messina, poco dopo la metà del Quattrocento. Nel XVI secolo si estende alla tela.",
   "category": "pittorica"
  },
  {
@@ -380,7 +362,7 @@
  {
   "id": "prospettiva-aerea",
   "name": "Prospettiva aerea",
-  "definition": "Modalità di rappresentazione della profondità degli spazi fondata sulla progressiva sfocatura dei contorni e sulla graduazione dei toni cromatici in funzione della distanza, basandosi sull'osservazione che l'aria non è perfettamente trasparente e che i contorni appaiono meno nitidi e i colori più tenui e azzurrognoli a grande distanza.",
+  "definition": "Metodo di resa della profondità spaziale che gioca sulla progressiva perdita di nitidezza dei contorni e sull'attenuarsi dei toni cromatici con l'aumentare della distanza; si fonda sull'osservazione che l'aria non è perfettamente trasparente, per cui a grande distanza i contorni appaiono più sfumati e i colori più tenui e tendenti all'azzurro.",
   "introduced_by": "Leonardo da Vinci",
   "first_period_id": "rinascimento-fiorentino",
   "evolution": "Elaborata da Leonardo attraverso gli studi sugli elementi naturali, è già presente nell'Annunciazione (1472-75) e diventa strumento maturo nella Monna Lisa e nelle Vergini delle rocce. Influenza profondamente i pittori lombardi e veneziani (Giorgione).",
@@ -419,7 +401,7 @@
   "definition": "Scultura completamente autonoma dallo sfondo, realizzata per essere vista da tutti i lati. Nel Gotico acquista maggiore autonomia dall'architettura.",
   "introduced_by": "Tradizione classica",
   "first_period_id": "gotico",
-  "evolution": "Nel Gotico transalpino le sculture delle cattedrali acquistano autonomia pur restando concepite per essere viste frontalmente. Con Nicola e Giovanni Pisano in Italia diventa pienamente autonoma e psicologicamente caratterizzata.",
+  "evolution": "Nelle cattedrali del Gotico transalpino le sculture guadagnano una propria autonomia, pur restando pensate per una visione soltanto frontale. Con Nicola e Giovanni Pisano in Italia diventa pienamente autonoma e psicologicamente caratterizzata.",
   "category": "scultorea"
  },
  {
@@ -479,7 +461,7 @@
  {
   "id": "stiacciato",
   "name": "Stiacciato (rilievo schiacciato)",
-  "definition": "Tecnica scultorea inventata da Donatello basata su minime variazioni di spessore rispetto al fondo, che si presta perfettamente a rendere la profondità spaziale e a creare effetti pittorici. Le figure in primo piano hanno maggiore spessore, quelle lontane quasi solo incise.",
+  "definition": "Tecnica scultorea ideata da Donatello, fondata su variazioni minime di spessore rispetto al piano di fondo, ideale per restituire la profondità dello spazio e ottenere effetti pressoché pittorici. Lo spessore si riduce con l'allontanarsi delle figure: quelle in primo piano risultano più rilevate, quelle più lontane appena incise.",
   "introduced_by": "donatello",
   "first_period_id": "umanesimo-fiorentino",
   "evolution": "Inventata da Donatello nel basamento della statua di San Giorgio per Orsanmichele (1417-1418). Ripresa da Ghiberti nella Porta del Paradiso per i personaggi più lontani. Fondamentale nello sviluppo della scultura rinascimentale.",
@@ -500,7 +482,7 @@
   "definition": "Tecnica decorativa che utilizza lamine di legni di diversi colori accostati per creare figure geometriche o scene figurate ('tarsie pittoriche') con effetti di ombre e luci illusionistici.",
   "introduced_by": "artigiani italiani",
   "first_period_id": "quattrocento",
-  "evolution": "Si diffonde in Italia a partire dal Trecento sul modello degli intarsi in marmo. Ha particolare fortuna tra Quattrocento e Cinquecento. Nei progetti più ambiziosi gli intarsiatori lavorano su disegni di pittori e scultori per creare scene complesse con virtuosismi illusionistici, come nello studiolo del Palazzo Ducale di Urbino.",
+  "evolution": "In Italia questa pratica si afferma a partire dal Trecento, prendendo a modello gli intarsi marmorei, e conosce la sua massima fortuna fra Quattrocento e Cinquecento. Nei casi più elaborati gli intarsiatori si affidano a disegni forniti da pittori e scultori, componendo scene articolate e ricche di effetti illusionistici, come accade nello studiolo del Palazzo Ducale di Urbino.",
   "category": "altra"
  },
  {
@@ -524,7 +506,7 @@
  {
   "id": "tecnica-vetrata-grisaille",
   "name": "Grisaille (pittura su vetro)",
-  "definition": "Pittura monocroma basata su tonalità di grigio o bruno ottenute da miscele di polvere di vetro e limatura di metalli, usata per delineare i dettagli figurativi delle vetrate (volti, panneggi).",
+  "definition": "Pittura a un solo colore, nelle gradazioni del grigio o del bruno, ottenuta mescolando polvere di vetro e limatura di metalli; con essa si tracciano, sulle lastre di vetro, i tratti distintivi delle figure — i volti, le pieghe degli abiti.",
   "introduced_by": "Artigiani medievali",
   "first_period_id": "gotico",
   "evolution": "Tecnica essenziale per le vetrate istoriate gotiche; consente di rendere i dettagli sulle lastre di pasta vitrea colorata.",
@@ -560,7 +542,7 @@
  {
   "id": "tempera-su-tavola",
   "name": "Tempera su tavola",
-  "definition": "Tecnica pittorica tradizionale in cui il legante è costituito da sostanze quali albumi e tuorli d'uovo, latte, colla o cera. Dà colori più opachi ma caldi, con asciugatura rapida che non permette velature successive come l'olio.",
+  "definition": "Tecnica pittorica tradizionale che impiega come legante sostanze quali albume e tuorlo d'uovo, latte, colla o cera. Dà colori più opachi ma caldi, con asciugatura rapida che non permette velature successive come l'olio.",
   "introduced_by": "Tradizione medievale e rinascimentale italiana",
   "first_period_id": "pittura-romanica-italiana",
   "evolution": "La pittura su tavola si diffonde in Italia nel XIII secolo con la maniera greca (Berlinghiero, Coppo di Marcovaldo) e la pala agiografica francescana (Bonaventura Berlinghieri). Sarà la tecnica principale fino all'avvento della pittura a olio nel XV-XVI sec.",
@@ -569,7 +551,7 @@
  {
   "id": "terracotta-invetriata",
   "name": "Terracotta invetriata",
-  "definition": "Tecnica che consiste nell'applicare alla terracotta cotta uno smalto stannifero (a base di sabbia silicea e ossidi di stagno e piombo), che dopo una seconda cottura acquisisce un aspetto vetroso di straordinaria lucentezza con colori brillanti (azzurro, bianco, verde, giallo).",
+  "definition": "Smalto ottenuto mescolando ossidi di piombo e di stagno con sabbia silicea, steso sulla terracotta dopo la prima cottura: la seconda cottura lo rende una superficie quasi vetrosa e lucentissima, nei toni dell'azzurro, del bianco, del verde e del giallo.",
   "introduced_by": "Luca della Robbia",
   "first_period_id": "quattrocento",
   "evolution": "Perfezionata da Luca della Robbia intorno al 1440, sviluppata su scala quasi industriale dal nipote Andrea della Robbia. Permette policromia brillante e resistenza agli agenti atmosferici.",
@@ -578,7 +560,7 @@
  {
   "id": "vetrata-istoriata",
   "name": "Vetrata istoriata",
-  "definition": "Composizione di vetri colorati tenuti insieme da listelli di piombo montati su intelaiature di ferro, dipinti con grisaglia per i dettagli figurativi. Tecnica descritta nel De diversis artibus del monaco Teofilo (XII secolo).",
+  "definition": "Composizione di vetri colorati tenuti insieme da listelli di piombo montati su intelaiature di ferro, dipinti con grisaglia per i dettagli figurativi. Se ne trova descrizione, risalente al XII secolo, nelle pagine del De diversis artibus, opera del monaco Teofilo.",
   "introduced_by": "Tecnica romana, diffusa nel Romanico, perfezionata nel Gotico",
   "first_period_id": "gotico",
   "evolution": "Nel Romanico a figure semplici; nel Gotico si arricchisce di scene narrative affollate e di effetti cromatici sofisticati (blu di Chartres). Nel Gotico rayonnant le vetrate tendono a sostituire quasi totalmente le pareti murarie.",
@@ -623,10 +605,10 @@
  {
   "id": "volta-a-tiercerons",
   "name": "Volta a tiercerons",
-  "definition": "Volta a ogiva in cui alle nervature diagonali si aggiungono nervature ortogonali (liernes) e nervature più corte (tiercerons) che collegano le ortogonali ai pilastri di sostegno, creando la tipica forma a stella.",
+  "definition": "Volta a sesto acuto che, oltre alle nervature diagonali, integra nervature ortogonali - le liernes - e nervature più brevi, i tiercerons, incaricate di collegare queste ultime ai pilastri d'appoggio: il risultato, visto dal basso, è la caratteristica figura a stella.",
   "introduced_by": "Gotico inglese",
   "first_period_id": "early-english-gothic",
-  "evolution": "Usate per la prima volta nella cattedrale di Lincoln (fine XII secolo), diventano uno degli elementi caratterizzanti delle chiese inglesi del Duecento e del primo Trecento. Applicate sistematicamente nell'abbazia di Westminster.",
+  "evolution": "Fanno la loro comparsa nella cattedrale inglese di Lincoln, verso la fine del XII secolo; da lì si impongono come tratto ricorrente delle chiese britanniche del Duecento e dei primi decenni del Trecento, fino a un uso sistematico nell'abbazia di Westminster.",
   "category": "architettonica"
  },
  {
@@ -641,7 +623,7 @@
  {
   "id": "xilografia",
   "name": "Xilografia",
-  "definition": "Incisione a rilievo su supporto ligneo, realizzata con la sgorbia o il bulino. Tecnica di stampa che produce immagini con linee di spessore evidente e bordi lievemente smangiati.",
+  "definition": "Procedimento di incisione a rilievo praticato su una matrice di legno, lavorata con la sgorbia o con il bulino. Tecnica di stampa che produce immagini con linee di spessore evidente e bordi lievemente smangiati.",
   "introduced_by": "Europa settentrionale, diffusa nel XV secolo",
   "first_period_id": "rinascimento-maturo-italia-settentrionale",
   "evolution": "Elevata da Dürer a opera d'arte autonoma con la pubblicazione dell'Apocalisse (1498). Tecnica di grande diffusione attraverso la stampa.",
@@ -1062,15 +1044,6 @@
   "category": "architettonica"
  },
  {
-  "id": "disegno-a-penna-e-inchiostro",
-  "name": "Disegno a penna e inchiostro",
-  "definition": "Tecnica grafica utilizzata per i disegni architettonici e le illustrazioni dei trattati rinascimentali, eseguita con inchiostro bruno su carta",
-  "introduced_by": null,
-  "first_period_id": null,
-  "evolution": "",
-  "category": "altra"
- },
- {
   "id": "colonna-binata",
   "name": "Colonna binata",
   "definition": "Struttura architettonica costituita da due colonne accoppiate, spesso usata per enfatizzare l'importanza di un elemento architettonico come un portale o un'abside",
@@ -1298,7 +1271,7 @@
  {
   "id": "spazio-pittorico-reale",
   "name": "Spazio pittorico reale",
-  "definition": "Integrazione dello spazio dipinto con lo spazio architettonico reale in cui l'opera è collocata",
+  "definition": "Soluzione compositiva che fonde lo spazio rappresentato nel dipinto con lo spazio architettonico reale che lo accoglie, dando l'illusione di una loro continuità.",
   "introduced_by": null,
   "first_period_id": null,
   "evolution": "",

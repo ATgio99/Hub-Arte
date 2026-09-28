@@ -12,13 +12,13 @@
    "Oriente"
   ],
   "summary": "Periodo che va dalla riforma dioclezianea alla caduta dell'impero romano d'Occidente. Si caratterizza per la policentricità del potere imperiale, la progressiva cristianizzazione dello stato e la compresenza di modelli artistici romani, orientali e cristiani.",
-  "historical_context": "Diocleziano (284-305) reorganizza l'impero con la tetrarchia. Costantino (306-337) emana l'editto di tolleranza nel 313, segnando la fine delle persecuzioni anticristiane. Teodosio (379-395) sancisce la piena cristianizzazione dell'impero, dividendolo poi tra i figli Arcadio e Onorio.",
+  "historical_context": "Diocleziano (284-305) riorganizza l'impero con la tetrarchia. Nel 313 l'editto di tolleranza emanato da Costantino (306-337) pone termine alle persecuzioni anticristiane. Sotto Teodosio (379-395) il cristianesimo diventa a pieno titolo religione di stato, e l'impero viene poi diviso fra i figli Arcadio e Onorio.",
   "parent_id": null,
   "key_innovations": [
-   "architettura paleocristiana",
-   "mosaico parietale",
-   "battistero ottagonale",
-   "iconografia cristiana"
+   "Architettura paleocristiana",
+   "Mosaico parietale",
+   "Battistero ottagonale",
+   "Iconografia cristiana"
   ]
  },
  {
@@ -161,13 +161,13 @@
    "Asia Minore"
   ],
   "summary": "Civiltà nata dall'Islam nel VII secolo che si espande rapidamente nel Mediterraneo. In architettura riprende modelli romani e bizantini rielaborandoli in moschee; l'arte si concentra sulla calligrafia e su motivi ornamentali geometrizzanti e astratti per via dell'aniconismo.",
-  "historical_context": "All'inizio del VII secolo le tribù nomadi arabe, unite dalla fede islamica, occupano l'Africa settentrionale, la penisola iberica e contendono l'Asia Minore ai Bizantini. La civiltà islamica sviluppa una ricca cultura urbana con vivaci scambi commerciali.",
+  "historical_context": "Fin dai primi decenni del VII secolo le popolazioni arabe, unificate dalla nuova fede islamica, occupano l'Africa settentrionale e la penisola iberica, contendendo ai Bizantini il controllo dell'Asia Minore. La civiltà islamica sviluppa una ricca cultura urbana con vivaci scambi commerciali.",
   "parent_id": null,
   "key_innovations": [
-   "moschea",
-   "calligrafia",
-   "ornamentazione geometrizzante",
-   "mosaico non figurativo"
+   "Moschea",
+   "Calligrafia",
+   "Ornamentazione geometrizzante",
+   "Mosaico non figurativo"
   ]
  },
  {
@@ -295,11 +295,11 @@
   "historical_context": "L'opera è promossa dall'arcivescovo di Milano, che intende dare degna sistemazione alle reliquie di sant'Ambrogio e affermare il prestigio della sede episcopale entro l'impero carolingio. Sul retro dell'altare committente e maestro orafo compaiono raffigurati e nominati, testimonianza rara e precoce del riconoscimento pubblico dell'artefice.",
   "parent_id": "eta-carolingia",
   "key_innovations": [
-   "rivestimento integrale dell'altare in lamine d'oro e d'argento sbalzate",
-   "smalti a cloisonné, filigrane e gemme integrati nella struttura narrativa",
-   "ciclo agiografico dispiegato per riquadri su tutte le facce dell'arredo",
-   "firma e ritratto del maestro orafo accanto a quello del committente",
-   "ciborio a figure di stucco su colonne antiche di reimpiego"
+   "Intera superficie dell'altare rivestita da lamine sbalzate in oro e argento",
+   "Smalti a cloisonné, filigrane e gemme integrati nella struttura narrativa",
+   "Ciclo agiografico dispiegato per riquadri su tutte le facce dell'arredo",
+   "Firma e ritratto del maestro orafo accanto a quello del committente",
+   "Ciborio a figure di stucco su colonne antiche di reimpiego"
   ]
  },
  {
@@ -399,7 +399,7 @@
    "Scandinavia",
    "Spagna"
   ],
-  "summary": "Straordinaria fioritura artistica e architettonica che investe l'Europa tra gli inizi del X e la metà del XII secolo. Si caratterizza per l'imponenza delle chiese in pietra, la modularità basata sulla campata, lo stretto legame tra architettura, scultura e pittura, e la diffusione capillare grazie ai pellegrinaggi.",
+  "summary": "Tra gli inizi del X secolo e la metà del XII, l'Europa attraversa una fase di eccezionale fioritura artistica, soprattutto in ambito architettonico. Si caratterizza per l'imponenza delle chiese in pietra, la modularità basata sulla campata, lo stretto legame tra architettura, scultura e pittura, e la diffusione capillare grazie ai pellegrinaggi.",
   "historical_context": "Dopo le invasioni e le frammentazioni altomedievali, l'Europa conosce una ripresa economica e demografica. Emergono le istituzioni comunali in Italia, i regni feudali in Francia e il monachesimo cluniacense. I pellegrinaggi verso Roma e Santiago de Compostela diffondono modelli artistici lungo tutto il continente.",
   "parent_id": null,
   "key_innovations": [
@@ -408,11 +408,11 @@
    "Scultura monumentale integrata nell'architettura",
    "Sistema di scarico dei pesi con contrafforti e costoloni",
    "Portale monumentale con timpano istoriato",
-   "arco a tutto sesto",
-   "volta a botte",
-   "torre campanaria",
-   "scultura dei portali",
-   "cicli pittorici absidali"
+   "Arco a tutto sesto",
+   "Volta a botte",
+   "Torre campanaria",
+   "Scultura dei portali",
+   "Cicli pittorici absidali"
   ]
  },
  {
@@ -690,13 +690,13 @@
    "Europa"
   ],
   "summary": "Variante essenziale e luminosa del Gotico, espressione dell'ordine cistercense fondato da Bernardo di Chiaravalle. Si caratterizza per lo stile spoglio e rigoroso, senza decorazioni scultoree o pittoriche eccessive, con chiese simili tra loro.",
-  "historical_context": "L'ordine esprime le aspirazioni di rigorismo morale e pauperismo di una parte della Chiesa. In Italia fu introdotto a cavallo dei secoli XII-XIII soprattutto in area centro-meridionale e in Lombardia.",
+  "historical_context": "L'ordine dà voce alle istanze di rigore morale e povertà evangelica che attraversano un'ampia porzione della Chiesa del tempo. Il modello si afferma in Italia a partire dal passaggio fra XII e XIII secolo, soprattutto nelle regioni centro-meridionali e in Lombardia.",
   "parent_id": "gotico",
   "key_innovations": [
-   "purezza geometrica delle forme",
-   "assenza di decorazioni scultoree sovrastanti",
-   "luminosità sobria",
-   "uso del mattone"
+   "Purezza geometrica delle forme",
+   "Assenza di decorazioni scultoree sovrastanti",
+   "Luminosità sobria",
+   "Uso del mattone"
   ]
  },
  {
@@ -1007,11 +1007,11 @@
    "Catalogna",
    "Baleari"
   ],
-  "summary": "Variante del Gotico nella penisola iberica, diffusosi precocemente dal XII secolo grazie agli intensi rapporti commerciali e religiosi con la Francia, fondendosi con suggestioni islamiche. In Catalogna si sviluppò uno stile caratterizzato dalla ricerca di monumentalità nella semplicità strutturale.",
-  "historical_context": "La presenza araba nella penisola stimolò l'adozione del lessico gotico come stile della cristianità. Si diffuse lungo il cammino di Santiago di Compostela e nei luoghi cistercensi.",
+  "summary": "I fitti scambi commerciali e religiosi con la Francia portano il Gotico ad attecchire per tempo nella penisola iberica, già a partire dal XII secolo, in un intreccio con apporti di matrice islamica. In Catalogna prende forma una declinazione che persegue la monumentalità pur restando semplice nelle strutture.",
+  "historical_context": "È probabilmente la stessa presenza islamica nella penisola a favorire l'adozione del linguaggio gotico quale stile identitario della cristianità. Si diffuse lungo il cammino di Santiago di Compostela e nei luoghi cistercensi.",
   "parent_id": "gotico",
   "key_innovations": [
-   "integrazione di elementi islamici",
+   "Integrazione di elementi islamici",
    "Gotico catalano con monumentalità semplificata"
   ]
  },
@@ -1065,13 +1065,13 @@
    "Germania",
    "Italia meridionale"
   ],
-  "summary": "Fenomeno culturale e artistico legato all'intenso sviluppo dell'economia europea agli inizi del XIII secolo e al consolidamento del potere imperiale. Nella scultura si manifesta come recupero del naturalismo classico con influenze gotiche, culminando nell'opera del Maestro di Naumburg.",
-  "historical_context": "Coincide con il regno di Federico II di Svevia, che riconobbe nella classicità un potenziale di legittimazione imperiale, come già avevano fatto le rinascenze carolingia e ottoniana.",
+  "summary": "Fenomeno artistico e culturale che accompagna la forte crescita economica europea di inizio Duecento e il rafforzamento dell'autorità imperiale. Nella scultura si manifesta come recupero del naturalismo classico con influenze gotiche, culminando nell'opera del Maestro di Naumburg.",
+  "historical_context": "Si sviluppa durante il regno di Federico II di Svevia, che, come già le rinascenze carolingia e ottoniana, individua nel richiamo all'antichità classica un mezzo di legittimazione del potere imperiale.",
   "parent_id": "gotico-tedesco",
   "key_innovations": [
-   "scultura naturalistica equestre (Cavaliere di Bamberga)",
-   "ritrattistica idealizzata",
-   "conservazione della policromia"
+   "Scultura naturalistica equestre (Cavaliere di Bamberga)",
+   "Ritrattistica idealizzata",
+   "Conservazione della policromia"
   ]
  },
  {
@@ -1090,24 +1090,24 @@
    "Emilia-Romagna",
    "Campania"
   ],
-  "summary": "Versione 'temperata' del Gotico francese sviluppatasi in Italia, frutto dell'innesto di elementi gotici su un substrato saldamente romanico. Si caratterizza per un'identità poliedrica: religioso e laico, imperiale e comunale, settentrionale e meridionale. Evita di accentuare lo slancio verticale e la vocazione ornamentale tipici del Gotico d'Oltralpe.",
-  "historical_context": "Il Gotico italiano si sviluppa in un'epoca di affermazione dei comuni e delle signorie, con la crescita del ceto mercantile e la moltiplicazione delle committenze laiche. Il successo degli ordini mendicanti (francescani e domenicani) promuove una nuova produzione artistica narrativa e concreta. La sconfitta degli Svevi da parte di Carlo d'Angiò (1268) rafforza il papato e rilancia le commissioni romane.",
+  "summary": "Nato dall'incontro tra le soluzioni costruttive d'Oltralpe e la solida tradizione romanica della penisola, il Gotico italiano assume una forma 'temperata' rispetto al modello francese. La sua fisionomia è multiforme: convive nell'ambito ecclesiastico e in quello civile, al servizio tanto dell'impero quanto dei Comuni, e si declina in modo diverso al Nord e al Sud. Rispetto al Gotico d'Oltralpe, rinuncia a enfatizzare lo sviluppo in altezza e il gusto decorativo.",
+  "historical_context": "Il Gotico italiano si sviluppa in un'epoca di affermazione dei comuni e delle signorie, con la crescita del ceto mercantile e la moltiplicazione delle committenze laiche. L'affermazione degli ordini mendicanti, francescani e domenicani, alimenta una produzione artistica dal taglio narrativo e concreto. La sconfitta degli Svevi da parte di Carlo d'Angiò (1268) rafforza il papato e rilancia le commissioni romane.",
   "parent_id": "gotico",
   "key_innovations": [
    "Gotico civile nei palazzi comunali",
-   "scultura di Nicola e Giovanni Pisano",
-   "sintesi tra classicismo e naturalismo gotico",
-   "architettura degli ordini mendicanti",
-   "sviluppo dell'affresco in cicli di ampio respiro",
-   "pittura su tavola come complemento dell'affresco",
-   "abbandono progressivo dei modelli bizantini",
-   "approccio narrativo e naturalistico alla figura umana",
-   "prospettiva empirica e illusionismo spaziale",
-   "pittura a soggetto civile",
-   "prospettiva architettonica",
-   "naturalismo delle figure",
-   "cangiantismo cromatico",
-   "polittico a pannelli multipli"
+   "Scultura di Nicola e Giovanni Pisano",
+   "Sintesi tra classicismo e naturalismo gotico",
+   "Architettura degli ordini mendicanti",
+   "Sviluppo dell'affresco in cicli di ampio respiro",
+   "Pittura su tavola come complemento dell'affresco",
+   "Abbandono progressivo dei modelli bizantini",
+   "Approccio narrativo e naturalistico alla figura umana",
+   "Prospettiva empirica e illusionismo spaziale",
+   "Pittura a soggetto civile",
+   "Prospettiva architettonica",
+   "Naturalismo delle figure",
+   "Cangiantismo cromatico",
+   "Polittico a pannelli multipli"
   ]
  },
  {
@@ -1190,13 +1190,13 @@
    "Toscana"
   ],
   "summary": "La scuola senese del Trecento si distingue per la raffinata eleganza lineare, la ricchezza cromatica con largo uso dell'oro e dei pigmenti preziosi (lapislazzulo), e per una definizione bidimensionale delle figure in contrasto con il plasticismo giottesco. Duccio, Simone Martini e i Lorenzetti ne sono i massimi esponenti.",
-  "historical_context": "Siena è acerrima nemica di Firenze: nonostante l'ostilità fra i due Comuni, le scuole pittoriche senese e fiorentina comunicano tra loro. Il Governo dei Nove, organo politico borghese, è il principale committente delle opere pubbliche senesi.",
+  "historical_context": "Siena è acerrima nemica di Firenze, eppure, al di là del conflitto tra i due Comuni, le rispettive scuole pittoriche non cessano di dialogare. Il Governo dei Nove, organo politico borghese, è il principale committente delle opere pubbliche senesi.",
   "parent_id": "gotico-italiano",
   "key_innovations": [
-   "linearismo elegante di derivazione gotico-francese",
-   "uso dell'oro punzonato e a pastiglia",
-   "polittico monumentale bifronte",
-   "pittura civile allegorica"
+   "Linearismo elegante di derivazione gotico-francese",
+   "Uso dell'oro punzonato e a pastiglia",
+   "Polittico monumentale bifronte",
+   "Pittura civile allegorica"
   ]
  },
  {
@@ -1231,13 +1231,13 @@
   "regions": [
    "Inghilterra"
   ],
-  "summary": "Seconda fase del Gotico inglese, sviluppatasi dal XIV secolo. Si caratterizza per la crescente complessità delle volte a ogiva che assumono forme a stella con l'aumento delle nervature. L'abbazia di Westminster ne è un esempio emblematico.",
+  "summary": "Seconda fase del Gotico inglese, sviluppatasi dal XIV secolo. Le volte a crociera si fanno via via più elaborate: il moltiplicarsi delle nervature dà loro un profilo a stella. L'abbazia di Westminster ne è un esempio emblematico.",
   "historical_context": "Si sviluppa in un periodo di consolidamento della monarchia inglese e di crescita economica. L'abbazia di Westminster a Londra, avviata nel 1245, rappresenta uno dei massimi esempi.",
   "parent_id": "gotico-inglese",
   "key_innovations": [
-   "volte a tiercerons",
-   "volte a stella",
-   "uso di stacchi cromatici fra membrature e muratura"
+   "Volte a tiercerons",
+   "Volte a stella",
+   "Contrasto cromatico tra membrature architettoniche e muratura"
   ]
  },
  {
@@ -1360,13 +1360,13 @@
    "Padova",
    "Veneto"
   ],
-  "summary": "A Padova la lezione di Giotto viene assimilata da pittori attivi presso la corte dei da Carrara. Guariento di Arpo, Giusto de' Menabuoi e Altichiero reinterpretano il modello giottesco inserendo stilemi veneziani e tardogotici.",
+  "summary": "La lezione di Giotto giunge a Padova e viene rielaborata dai pittori legati alla corte dei da Carrara. Guariento di Arpo, Giusto de' Menabuoi e Altichiero reinterpretano il modello giottesco inserendo stilemi veneziani e tardogotici.",
   "historical_context": "I da Carrara, signori di Padova, sono i principali committenti. La scuola padovana assorbe influssi sia dalla tradizione fiorentina sia dalle correnti artistiche del Gotico d'Oltralpe che si diffondono nel Nord Italia.",
   "parent_id": "gotico-italiano",
   "key_innovations": [
-   "fusione giottismo e stilemi veneti",
-   "cicli pittorici monumentali nei battisteri e negli oratori",
-   "preziosismo cromatico tardogotico"
+   "Fusione tra giottismo e stilemi veneti",
+   "Cicli pittorici monumentali nei battisteri e negli oratori",
+   "Preziosismo cromatico tardogotico"
   ]
  },
  {
@@ -1405,15 +1405,15 @@
    "Spagna",
    "Inghilterra"
   ],
-  "summary": "Fase finale del Gotico che si diffonde dalla seconda metà del XIV ai primi decenni del XV secolo. Convive con l'avvio dell'Umanesimo e poi del Rinascimento, protraendosi in Europa centrale e settentrionale fino al XVI secolo. Caratterizzato da figure esili e slanciate, linea flessuosa, cromie luminose e grande attenzione al dettaglio.",
+  "summary": "Stadio conclusivo del linguaggio gotico, diffuso fra la seconda metà del Trecento e i primi decenni del Quattrocento. Si sovrappone cronologicamente alla nascita dell'Umanesimo e poi del Rinascimento, e si protrae più a lungo, fino al Cinquecento inoltrato, nei territori dell'Europa centrale e settentrionale. Le figure si allungano e si assottigliano, la linea si fa flessuosa, i colori si schiariscono e ogni dettaglio viene reso con estrema cura.",
   "historical_context": "Il periodo è segnato dalla crisi del papato avignonese, dalle grandi epidemie di peste, dalla centralità delle corti principesche e dall'emergere della classe mercantile. L'arte risponde alle esigenze di rappresentatività e prestigio delle corti europee, sviluppando un linguaggio comune internazionale veicolato da rapporti diplomatici e commerciali.",
   "parent_id": "gotico",
   "key_innovations": [
-   "internazionalizzazione dello stile",
-   "attenzione al dettaglio naturalistico",
-   "sviluppo delle arti minori (miniatura, arazzo, oreficeria)",
-   "figure esili e slanciate con linea flessuosa",
-   "cromie trasparenti e luminose"
+   "Internazionalizzazione dello stile",
+   "Attenzione al dettaglio naturalistico",
+   "Sviluppo delle arti minori (miniatura, arazzo, oreficeria)",
+   "Figure esili e slanciate con linea flessuosa",
+   "Cromie trasparenti e luminose"
   ]
  },
  {
@@ -1429,17 +1429,17 @@
    "Fiandre",
    "Italia settentrionale"
   ],
-  "summary": "Definizione che evidenzia il legame con le corti principesche e la produzione di manufatti preziosi (reliquiari, libri d'ore, arazzi, cassoni nuziali, tarocchi, gioielli). L'arte era utilizzata dai nuovi principi per affermare il proprio status e legittimare il potere. Il nome esteso della scuola nel catalogo era «Gotico cortese (Gotico internazionale)».",
-  "historical_context": "La richiesta di lusso delle corti comportò un forte sviluppo della produzione di oggetti preziosi destinati ai corredi nuziali e agli scambi diplomatici. Firenze e i Comuni mercantili europei svilupparono varianti parallele con maggiore attenzione alla realtà naturale.",
+  "summary": "Definizione che evidenzia il legame con le corti principesche e la produzione di manufatti preziosi (reliquiari, libri d'ore, arazzi, cassoni nuziali, tarocchi, gioielli). L'arte diventa per i nuovi principi uno strumento per manifestare il proprio rango e consolidare la propria autorità. Il nome esteso della scuola nel catalogo era «Gotico cortese (Gotico internazionale)».",
+  "historical_context": "Le corti, assetate di lusso, alimentano una fiorente produzione di manufatti preziosi pensati per corredi nuziali e doni diplomatici. Firenze e i Comuni mercantili europei svilupparono varianti parallele con maggiore attenzione alla realtà naturale.",
   "parent_id": "tardogotico",
   "key_innovations": [
-   "arti del lusso per le corti",
-   "oggetti portabili e commerciabili",
-   "minuzie decorative di derivazione miniaturistica",
-   "linearismo elegante",
-   "miniatura di alta qualità",
-   "raffinatezza decorativa",
-   "approccio lenticolare al dettaglio"
+   "Arti del lusso per le corti",
+   "Oggetti portabili e commerciabili",
+   "Minuzie decorative di derivazione miniaturistica",
+   "Linearismo elegante",
+   "Miniatura di alta qualità",
+   "Raffinatezza decorativa",
+   "Approccio lenticolare al dettaglio"
   ]
  },
  {
@@ -1451,13 +1451,13 @@
   "regions": [
    "Europa"
   ],
-  "summary": "Denominazione che sottolinea la diffusione capillare del nuovo stile in tutta Europa secondo forme simili o identiche. La circolazione avveniva grazie ai rapporti dinastici tra le corti e ai commerci. Le corti francesi di Digione, Bourges e Parigi erano i principali poli.",
-  "historical_context": "La Francia era polo di attrazione culturale imprescindibile, con la presenza della sede papale ad Avignone. I principati europei erano legati ai centri di potere francesi. I commerci e i matrimoni principeschi favorivano la circolazione di opere d'arte e artisti.",
+  "summary": "Denominazione che pone l'accento sulla capillare diffusione dello stile in tutta Europa, con esiti per lo più simili se non identici da un paese all'altro. La circolazione avveniva grazie ai rapporti dinastici tra le corti e ai commerci. Le corti francesi di Digione, Bourges e Parigi erano i principali poli.",
+  "historical_context": "La Francia era polo di attrazione culturale imprescindibile, con la presenza della sede papale ad Avignone. I diversi principati d'Europa gravitano, a vario titolo, nell'orbita dei poteri francesi. Sono gli scambi commerciali e le alleanze matrimoniali fra le case regnanti a mettere in moto opere e artisti da una corte all'altra.",
   "parent_id": "tardogotico",
   "key_innovations": [
-   "unificazione stilistica europea",
-   "circolazione di artisti tra corti",
-   "sviluppo dell'arte cortese e del lusso"
+   "Unificazione stilistica europea",
+   "Circolazione di artisti tra corti",
+   "Sviluppo dell'arte cortese e del lusso"
   ]
  },
  {
@@ -1471,13 +1471,13 @@
    "Fiandre",
    "Inghilterra"
   ],
-  "summary": "Denominazione che evidenzia le caratteristiche formali di un'arte basata sul lusso e sull'ornamentazione esasperata, ispirata a elementi vegetali stilizzati. Il marcato verticalismo è suggerito da pinnacoli, guglie, edicole e torricini; la linea è sinuosa e flessuosa.",
-  "historical_context": "Si sviluppa soprattutto nell'architettura delle Fiandre e dell'Inghilterra, dove persiste fino al XVI secolo. Detto anche 'Flamboyant' in Francia per le linee dei costoloni e delle finestre ogivali che si innalzano come fiammate.",
+  "summary": "Denominazione che pone l'accento sui tratti formali di un linguaggio artistico portato al lusso e a un'ornamentazione a tratti eccessiva, di ispirazione vegetale e stilizzata. Pinnacoli, guglie, edicole e torricini accentuano lo slancio verticale delle architetture, mentre la linea si piega in andamenti sinuosi e flessuosi.",
+  "historical_context": "Si sviluppa soprattutto nell'architettura delle Fiandre e dell'Inghilterra, dove persiste fino al XVI secolo. In Francia la stessa temperie prende il nome di 'Flamboyant', per il disegno dei costoloni e delle finestre ogivali, che si arrampicano verso l'alto come lingue di fuoco.",
   "parent_id": "tardogotico",
   "key_innovations": [
-   "verticalismo esasperato",
-   "decorazione vegetale stilizzata",
-   "linea fiammeggiante nelle finestre ogivali"
+   "Verticalismo esasperato",
+   "Decorazione vegetale stilizzata",
+   "Linea fiammeggiante nelle finestre ogivali"
   ]
  },
  {
@@ -1603,18 +1603,18 @@
    "Italia"
   ],
   "summary": "Movimento culturale nato a Firenze nel primo Quattrocento che pone al centro l'uomo e il recupero dell'antichità classica. Nell'arte visiva si traduce nella codifica della prospettiva lineare, nello studio dell'anatomia, nel recupero dei modelli scultorei antichi e in un nuovo rapporto razionale con lo spazio.",
-  "historical_context": "Firenze, dopo la crisi della peste nera del 1348 e le lotte civili culminate con il tumulto dei Ciompi (1378), conosce una significativa ripresa economica nell'ultimo scorcio del XIV secolo. L'affermazione politica della classe mercantile promuove grandi opere pubbliche come occasione di celebrazione civica.",
+  "historical_context": "Dopo la crisi legata alla peste nera del 1348 e ai disordini civili sfociati nel tumulto dei Ciompi (1378), Firenze conosce sul finire del Trecento una decisa ripresa economica. L'affermazione politica della classe mercantile promuove grandi opere pubbliche come occasione di celebrazione civica.",
   "parent_id": "quattrocento",
   "key_innovations": [
-   "prospettiva lineare",
-   "studio anatomico del corpo umano",
-   "recupero dell'antichità classica",
-   "storiografia artistica",
-   "rilievo schiacciato (stiacciato)",
-   "centralita dell'uomo",
-   "studio dell'antico",
-   "prospettiva come scienza",
-   "trattati teorici sull'arte"
+   "Prospettiva lineare",
+   "Studio anatomico del corpo umano",
+   "Recupero dell'antichità classica",
+   "Storiografia artistica",
+   "Rilievo schiacciato (stiacciato)",
+   "Centralità dell'uomo",
+   "Studio dell'antico",
+   "Prospettiva come scienza",
+   "Trattati teorici sull'arte"
   ]
  },
  {
@@ -1823,11 +1823,11 @@
   "historical_context": "Il promotore è Sigismondo Pandolfo Malatesta, condottiero e signore di Rimini, che chiama attorno a sé letterati, umanisti e medaglisti e usa il cantiere come strumento di autocelebrazione dinastica, disseminandolo di imprese araldiche e di iniziali intrecciate. La sua rottura con il papato e la condanna pubblica che ne segue interrompono i lavori, che restano incompiuti.",
   "parent_id": "quattrocento",
   "key_innovations": [
-   "facciata di chiesa impostata sullo schema dell'arco di trionfo romano",
-   "fianchi ad arcate profonde concepiti come sepolcreto degli umanisti di corte",
-   "rilievo schiacciato con repertorio astrologico e allegorico all'antica",
-   "ritratto di profilo del signore inserito nell'affresco votivo",
-   "medaglia commemorativa come strumento di autorappresentazione"
+   "Prospetto marmoreo che richiama l'arco onorario dell'antichità romana",
+   "Fianchi ad arcate profonde concepiti come sepolcreto degli umanisti di corte",
+   "Rilievo schiacciato con repertorio astrologico e allegorico all'antica",
+   "Ritratto di profilo del signore inserito nell'affresco votivo",
+   "Medaglia commemorativa come strumento di autorappresentazione"
   ]
  },
  {
@@ -2059,13 +2059,13 @@
   "regions": [
    "Toscana"
   ],
-  "summary": "Prima fase manierista che si apre a Firenze negli anni dieci del Cinquecento, quando la crisi dei valori rinascimentali spinge verso nuove formule espressive anticlassiche. Ruota attorno alla 'scuola della Santissima Annunziata' con Andrea del Sarto, Pontormo e Rosso Fiorentino.",
-  "historical_context": "La fine della repubblica fiorentina (1512) e l'elezione di Leone X de' Medici (1513) segnano il contesto politico. Il ritorno di Michelangelo a Firenze è uno stimolo artistico fondamentale.",
+  "summary": "Si apre a Firenze, negli anni dieci del Cinquecento, la prima fase manierista: la crisi dei valori rinascimentali fa da detonatore a soluzioni espressive di segno anticlassico. Ruota attorno alla 'scuola della Santissima Annunziata' con Andrea del Sarto, Pontormo e Rosso Fiorentino.",
+  "historical_context": "Nel 1512 crolla la repubblica fiorentina; l'anno seguente, nel 1513, Leone X de' Medici sale al soglio pontificio. Il ritorno di Michelangelo a Firenze è uno stimolo artistico fondamentale.",
   "parent_id": "manierismo",
   "key_innovations": [
-   "linguaggio anticlassico",
-   "colori intensi e dissonanti",
-   "abbandono della prospettiva razionale"
+   "Linguaggio anticlassico",
+   "Colori intensi e dissonanti",
+   "Abbandono della prospettiva razionale"
   ]
  },
  {
@@ -2249,7 +2249,7 @@
    "Spagna"
   ],
   "summary": "La crisi del Rinascimento e la risposta cattolica: il Concilio di Trento stabilisce i principi dell'arte sacra controriformista.",
-  "historical_context": "Il Concilio di Trento (1545-1563) stabilisce che l'arte sacra deve essere chiara, didattica e devozionale. Carlo Borromeo promuove i valori controriformisti a Milano. Nascono nuove tipologie architettoniche (chiesa a navata unica con cappelle laterali).",
+  "historical_context": "Il Concilio di Trento (1545-1563) stabilisce che l'arte sacra deve essere chiara, didattica e devozionale. Carlo Borromeo promuove i valori controriformisti a Milano. Prendono forma tipologie ecclesiali inedite, come la chiesa a navata unica affiancata da cappelle laterali.",
   "parent_id": "manierismo",
   "key_innovations": [
    "Chiesa a navata unica",
@@ -2407,7 +2407,7 @@
    "Inghilterra"
   ],
   "summary": "L'arte della Riforma: in Europa protestante, la pittura religiosa perde la funzione didattica e si affermano ritratto, natura morta e paesaggio.",
-  "historical_context": "La Riforma protestante (Zwingli, Calvino, Lutero) vieta l'arte religiosa considerata idolatria. L'iconoclastia distrugge dipinti e sculture sacre. Il rigorismo morale calvinista vieta sensualità e ostentazione, determinando l'affermazione di generi come natura morta e paesaggio.",
+  "historical_context": "La Riforma protestante (Zwingli, Calvino, Lutero) vieta l'arte religiosa considerata idolatria. L'iconoclastia distrugge dipinti e sculture sacre. Il rigorismo etico dei calvinisti, che condanna ogni sfarzo e sensualità, spinge pittori e committenti verso generi come la natura morta e il paesaggio.",
   "parent_id": "rinascimento",
   "key_innovations": [
    "Ritratto realistico",

@@ -58,7 +58,7 @@
  {
   "id": "adventus",
   "term": "Adventus",
-  "definition": "La cerimonia dell'ingresso (in latino 'arrivo') di un imperatore romano in una città: processione che terminava in un luogo pubblico dove il sovrano si mostrava ai sudditi seduto in trono con le più alte cariche cittadine. L'iconografia dell'adventus viene adottata nell'arte longobarda (Lamina di Agilulfo).",
+  "definition": "Cerimonia con cui un imperatore romano faceva il proprio ingresso in una città (dal latino 'adventus', arrivo): un corteo che si concludeva in uno spazio pubblico, dove il sovrano compariva in trono davanti ai sudditi, affiancato dalle più alte cariche cittadine. Nell'arte longobarda questa iconografia viene ripresa, come mostra la Lamina di Agilulfo.",
   "category": "iconografia",
   "period_ids": [
    "eta-longobarda",
@@ -307,7 +307,7 @@
  {
   "id": "arco-rampante-term",
   "term": "Arco rampante",
-  "definition": "Arco asimmetrico con le imposte a quote diverse che funge da contrafforte esterno, scaricando le spinte laterali delle volte gotiche lontano dalla muratura.",
+  "definition": "Elemento strutturale esterno degli edifici gotici, costituito da un arco asimmetrico le cui imposte si trovano a quote differenti: funge da contrafforte, trasferendo lontano dalla muratura le spinte laterali generate dalle volte.",
   "category": "architettura",
   "period_ids": [
    "gotico-francese"
@@ -348,7 +348,7 @@
  {
   "id": "arti-liberali",
   "term": "Arti liberali",
-  "definition": "Le sette arti del sapere medievale-rinascimentale in cui predomina il lavoro intellettuale: il trivio (grammatica, dialettica, retorica) e il quadrivio (aritmetica, geometria, astronomia, musica).",
+  "definition": "Nella cultura medievale e rinascimentale, l'insieme delle sette discipline fondate sull'esercizio intellettuale anziché su abilità manuali, ripartite in un gruppo di tre materie — grammatica, retorica e dialettica — che compone il trivio, e in un gruppo di quattro — musica, aritmetica, geometria e astronomia — che compone il quadrivio.",
   "category": "generale",
   "period_ids": [
    "rinascimento"
@@ -504,7 +504,7 @@
  {
   "id": "broletto",
   "term": "Broletto",
-  "definition": "Palazzo municipale dell'Italia settentrionale medievale. Il nome deriva da 'brolo' (campo recintato) e designa la sede delle assemblee pubbliche e dell'amministrazione comunale.",
+  "definition": "Palazzo municipale tipico dei comuni dell'Italia settentrionale in età medievale. Il termine proviene da 'brolo', che indicava in origine un campo recintato: da questo spazio, destinato alle riunioni pubbliche, il nome passa a designare l'edificio sede delle assemblee cittadine e dell'amministrazione comunale.",
   "category": "architettura",
   "period_ids": [],
   "is_archetype": true
@@ -546,7 +546,7 @@
  {
   "id": "bulino",
   "term": "Bulino",
-  "definition": "Strumento d'acciaio a forma di asticciola con becco affilato per incidere superfici metalliche. Per estensione, la tecnica dell'incisione mediante questo strumento su lastre di rame.",
+  "definition": "Piccolo utensile d'acciaio, affilato a becco e dalla forma allungata, usato per incidere superfici metalliche; per estensione, il termine designa anche la tecnica d'incisione eseguita con questo strumento su lastre di rame.",
   "category": "generale",
   "period_ids": [
    "rinascimento-maturo-italia-settentrionale"
@@ -749,7 +749,7 @@
  {
   "id": "catafalco",
   "term": "Catafalco",
-  "definition": "Nel monumento funerario gotico, struttura sopraelevata che sorregge il sarcofago con la statua del defunto giacente. Nella tipologia codificata da Arnolfo di Cambio, è addossato alla parete ed è sormontato da un baldacchino.",
+  "definition": "Nel monumento funerario gotico, struttura sopraelevata che sorregge il sarcofago con la statua del defunto giacente. Arnolfo di Cambio fissa una tipologia in cui questo elemento è addossato alla parete e coronato da un baldacchino.",
   "category": "architettura",
   "period_ids": [
    "duecento-italiano"
@@ -782,7 +782,7 @@
  {
   "id": "cenotafio",
   "term": "Cenotafio",
-  "definition": "Monumento funebre privo del corpo del defunto, eretto in sua memoria. Il basamento del Gattamelata svolge questa funzione.",
+  "definition": "Monumento commemorativo che, pur avendo forma di sepolcro, non contiene le spoglie del defunto a cui è dedicato. Nel monumento equestre al Gattamelata questa funzione è assolta dal basamento.",
   "category": "architettura",
   "period_ids": [
    "quattrocento"
@@ -938,7 +938,7 @@
  {
   "id": "clipeo",
   "term": "Clipeo",
-  "definition": "Medaglione circolare usato come cornice per busti o ritratti. Nella volta a botte della cappella degli Scrovegni, Giotto dipinge clipei con Cristo benedicente, Madonna con Bambino, san Giovanni Battista e profeti.",
+  "definition": "Medaglione di forma circolare usato come cornice per busti o ritratti. Un esempio si trova sulla volta a botte della cappella degli Scrovegni, dove Giotto colloca entro clipei le figure di Cristo benedicente, della Madonna con il Bambino, di san Giovanni Battista e di profeti.",
   "category": "architettura",
   "period_ids": [
    "quattrocento",
@@ -1147,7 +1147,7 @@
  {
   "id": "corona-di-becket",
   "term": "Corona di Becket",
-  "definition": "Cappella terminale della cattedrale di Canterbury, a forma di corona, che ospita le reliquie dell'arcivescovo Thomas Becket, canonizzato nel 1173. Costituisce uno degli elementi originali del progetto di Guillaume de Sens.",
+  "definition": "Nella cattedrale di Canterbury, la cappella terminale a pianta di corona: vi sono conservate le reliquie di Thomas Becket, l'arcivescovo proclamato santo nel 1173. È uno degli elementi originali ideati da Guillaume de Sens nel progetto della cattedrale.",
   "category": "architettura",
   "period_ids": [
    "early-english-gothic"
@@ -1157,7 +1157,7 @@
  {
   "id": "corpus-domini",
   "term": "Corpus Domini",
-  "definition": "Tema iconografico che raffigura il corpo di Cristo come simbolo dell'Eucarestia. Molto enfatizzato nella pittura controriformista.",
+  "definition": "Soggetto iconografico incentrato sul corpo di Cristo, assunto a simbolo dell'Eucaristia: un tema su cui la pittura della Controriforma insiste con particolare enfasi.",
   "category": "iconografia",
   "period_ids": [
    "controriforma"
@@ -1167,7 +1167,7 @@
  {
   "id": "corridoio-vasariano",
   "term": "Corridoio vasariano",
-  "definition": "Lungo passaggio coperto progettato da Vasari nel 1565 che collega al secondo piano Palazzo Vecchio, gli Uffizi e Palazzo Pitti attraversando il fiume Arno appoggiandosi agli edifici del Ponte Vecchio.",
+  "definition": "Passaggio coperto ideato da Vasari nel 1565, che unisce al secondo piano Palazzo Vecchio, gli Uffizi e Palazzo Pitti; lungo il tragitto supera il fiume Arno, poggiando sulle costruzioni che si affacciano sul Ponte Vecchio.",
   "category": "architettura",
   "period_ids": [
    "manierismo"
@@ -1209,7 +1209,7 @@
  {
   "id": "cosmati",
   "term": "Cosmati",
-  "definition": "Famiglia di marmorari romani attivi tra XII e XIII secolo, celebri per pavimenti e arredi liturgici in opus sectile con marmi policromi e paste vitree. Il termine 'cosmatesco' indica questo stile decorativo.",
+  "definition": "Bottega di marmorari attiva a Roma tra XII e XIII secolo, nota per pavimenti e arredi liturgici realizzati in opus sectile con marmi policromi e paste vitree; da essa deriva l'aggettivo 'cosmatesco', riferito a questo stile decorativo.",
   "category": "generale",
   "period_ids": [
    "romanico-italiano"
@@ -1350,7 +1350,7 @@
  {
   "id": "dado",
   "term": "Dado",
-  "definition": "Blocco cuboide tra il capitello di una colonna e l'imposta dell'arco, usato da Brunelleschi in San Lorenzo e Santo Spirito per accentuare la visione prospettica.",
+  "definition": "Elemento a forma di blocco cubico interposto fra il capitello della colonna e l'imposta dell'arco; Brunelleschi lo impiega in San Lorenzo e in Santo Spirito per rafforzare l'effetto della visione prospettica.",
   "category": "architettura",
   "period_ids": [
    "quattrocento"
@@ -1396,7 +1396,7 @@
  {
   "id": "deesis",
   "term": "Déesis",
-  "definition": "Iconografia byzantina che raffigura Cristo giudice in trono tra la Vergine e san Giovanni Battista, che intercedono per l'umanità.",
+  "definition": "Schema iconografico di origine bizantina in cui Cristo, assiso in trono nel ruolo di giudice, è affiancato dalla Vergine e da san Giovanni Battista, raffigurati nell'atto di intercedere per l'umanità.",
   "category": "iconografia",
   "period_ids": [
    "arte-bizantina"
@@ -1406,7 +1406,7 @@
  {
   "id": "deposizione",
   "term": "Deposizione",
-  "definition": "Iconografia cristiana che raffigura il momento in cui il corpo di Cristo viene deposto dalla croce.",
+  "definition": "Tema dell'iconografia cristiana raffigurante l'istante in cui il corpo esanime di Cristo viene rimosso dalla croce.",
   "category": "iconografia",
   "period_ids": [
    "manierismo",
@@ -1417,7 +1417,7 @@
  {
   "id": "devotio-moderna",
   "term": "Devotio moderna",
-  "definition": "Movimento spirituale dai tratti mistici nato nelle Fiandre nel XIII secolo, diffuso nell'area tedesca fino al XVI. Invita a seguire un modello di vita basato sull'imitazione di Cristo, su un rapporto diretto e soggettivo tra l'anima e Dio fondato sulla preghiera interiore, riducendo il ruolo della liturgia e del clero.",
+  "definition": "Corrente spirituale dai tratti mistici, sorta nei Paesi Bassi settentrionali nel corso del XIV secolo e radicatasi, nel secolo successivo, anche nei territori di lingua tedesca. Propone un modello di vita ispirato all'imitazione di Cristo, fondato su un rapporto diretto e personale tra l'anima e Dio costruito attraverso la preghiera interiore, con un ridimensionamento del ruolo della liturgia e del clero.",
   "category": "iconografia",
   "period_ids": [
    "quattrocento-fiammingo"
@@ -1467,7 +1467,7 @@
  {
   "id": "disegno",
   "term": "Disegno",
-  "definition": "Per Vasari, massima espressione della natura intellettuale dell'attività artistica: si forma nella mente dell'artista e solo dopo viene trasferito sulla carta; è quindi espressione dell'idea e origine prima dell'arte.",
+  "definition": "Per Vasari, il disegno rappresenta il vertice della componente intellettuale dell'attività artistica: prende forma anzitutto nel pensiero di chi crea, per poi passare sul foglio soltanto in un secondo tempo; è per questo manifestazione dell'idea e principio da cui muove ogni arte.",
   "category": "generale",
   "period_ids": [
    "manierismo"
@@ -1549,7 +1549,7 @@
  {
   "id": "eleousa",
   "term": "Vergine Eleousa",
-  "definition": "Iconografia byzantina della Madonna 'misericordiosa' che abbraccia teneramente il Bambino avvicinandolo al volto. Variante espressiva della Hodigitria più intima.",
+  "definition": "Tipo iconografico bizantino della Madonna 'misericordiosa', che stringe il Bambino in un abbraccio affettuoso accostandone il volto al proprio. Variante più intima ed espressiva dell'Hodigitria.",
   "category": "iconografia",
   "period_ids": [
    "arte-bizantina",
@@ -1635,7 +1635,7 @@
  {
   "id": "exultet",
   "term": "Exultet",
-  "definition": "Rotolo di pergamena su cui è scritto il canto liturgico pasquale 'Exultet' (Esulti il coro degli angeli), eseguito durante la veglia del Sabato Santo. I rotoli erano illustrati con miniature che si dispiegavano verso il basso durante la lettura.",
+  "definition": "Manufatto in forma di rotolo di pergamena che riporta il testo del canto liturgico pasquale 'Exultet' (Esulti il coro degli angeli), intonato durante la veglia del Sabato Santo; i rotoli erano corredati da miniature che, durante la lettura, si svolgevano rivolte verso il basso, in direzione dei fedeli.",
   "category": "generale",
   "period_ids": [
    "romanico-italiano"
@@ -1781,17 +1781,6 @@
   "is_archetype": false
  },
  {
-  "id": "fusione-bronzo",
-  "term": "Fusione in bronzo",
-  "definition": "Tecnica metallurgica per la realizzazione di opere in bronzo tramite fusione in stampo o a cera persa; nell'arte ottoniana produce le prime grandi porte in unico getto.",
-  "category": "scultura",
-  "period_ids": [
-   "arte-ottoniana",
-   "romanico"
-  ],
-  "is_archetype": false
- },
- {
   "id": "fusione-in-bronzo",
   "term": "Fusione in bronzo",
   "definition": "Tecnica scultorea che prevede la fusione del metallo (lega di rame e stagno) in forme ricavate da modelli in cera (cera persa). Fondamentale per la scultura rinascimentale: Verrocchio fonde il Colleoni, Pollaiolo i monumenti papali.",
@@ -1804,7 +1793,7 @@
  {
   "id": "gargolla",
   "term": "Gargolla",
-  "definition": "Condotto di scarico dell'acqua piovana realizzato in forme bizzarre e mostruose, tipico elemento decorativo gotico. Giovanni Pisano li utilizza nella facciata del duomo di Siena.",
+  "definition": "Elemento gotico che funge da condotto per lo scarico dell'acqua piovana, modellato con forme bizzarre e mostruose dal forte valore decorativo. Giovanni Pisano le impiega nella facciata del duomo di Siena.",
   "category": "architettura",
   "period_ids": [
    "gotico"
@@ -1867,7 +1856,7 @@
  {
   "id": "gotico-fiammeggiante",
   "term": "Gotico fiammeggiante (Flamboyant)",
-  "definition": "Dal francese flamboyant: stile architettonico in cui le linee dei costoloni e delle finestre ogivali si innalzano e si intrecciano come fiammate che salgono verso il cielo. Diffuso soprattutto in Francia, Fiandre, Inghilterra e Spagna.",
+  "definition": "Dal francese flamboyant: definizione che designa uno stile architettonico le cui linee — quelle dei costoloni e delle finestre ogivali — si sviluppano intrecciandosi verso l'alto, evocando lingue di fuoco che si protendono al cielo. Diffuso soprattutto in Francia, Fiandre, Inghilterra e Spagna.",
   "category": "architettura",
   "period_ids": [
    "gotico-fiorito"
@@ -1887,7 +1876,7 @@
  {
   "id": "gotico-internazionale",
   "term": "Gotico internazionale",
-  "definition": "Denominazione che esalta la diffusione capillare del nuovo stile tardogotico in tutta Europa secondo forme simili o identiche, grazie ai rapporti dinastici tra le corti e ai commerci.",
+  "definition": "Definizione che pone l'accento sulla capacità del nuovo stile tardogotico di diffondersi in modo pervasivo in tutta Europa, assumendo forme fra loro simili se non identiche grazie ai legami dinastici fra le corti e agli scambi commerciali.",
   "category": "generale",
   "period_ids": [
    "gotico-internazionale"
@@ -1982,7 +1971,7 @@
  {
   "id": "hanchement",
   "term": "Hanchement",
-  "definition": "Artificio compositivo gotico che enfatizza la curvatura del bacino nella direzione della gamba portante, determinando una posizione curvata del busto e un andamento a serpentina della figura, rendendola più elegante.",
+  "definition": "Espediente compositivo tipico del Gotico che accentua l'inclinazione del bacino verso il lato della gamba d'appoggio: ne derivano un'incurvatura del busto e un profilo sinuoso della figura, resa così più elegante.",
   "category": "scultura",
   "period_ids": [
    "gotico"
@@ -2368,7 +2357,7 @@
  {
   "id": "luce-zenitale",
   "term": "Luce zenitale",
-  "definition": "Luce proveniente dall'alto (dallo zenit, cioè dal sole a mezzogiorno) che annulla le ombre portate ed esalta la monumentalità delle figure. Tratto caratteristico della pittura di Piero della Francesca.",
+  "definition": "Illuminazione che scende verticalmente dall'alto — dallo zenit, come il sole nell'ora meridiana — capace di eliminare le ombre portate e di accrescere la monumentalità delle figure. Tratto caratteristico della pittura di Piero della Francesca.",
   "category": "pittura",
   "period_ids": [
    "quattrocento"
@@ -2378,7 +2367,7 @@
  {
   "id": "lumeggiatura",
   "term": "Lumeggiatura",
-  "definition": "Tecnica pittorica che consiste nello schiarire il tono delle zone in luce rispetto al colore di base, per accentuare il rilievo volumetrico senza ricorrere al chiaroscuro classico. Tipica della pittura longobarda e carolingia.",
+  "definition": "Procedimento pittorico che schiarisce, rispetto al colore di fondo, le zone colpite dalla luce, in modo da suggerire il rilievo dei volumi senza impiegare il chiaroscuro in senso classico. Tipica della pittura longobarda e carolingia.",
   "category": "pittura",
   "period_ids": [
    "duecento-italiano",
@@ -2390,7 +2379,7 @@
  {
   "id": "lunetta",
   "term": "Lunetta",
-  "definition": "Specchio semicircolare o a mezza luna sopra un portale o una finestra, spazio privilegiato per la scultura o il mosaico nei portali delle cattedrali gotiche. La Madonna dagli occhi di vetro era destinata alla lunetta del portale centrale di Santa Maria del Fiore.",
+  "definition": "Specchio semicircolare o a mezza luna sopra un portale o una finestra, spazio privilegiato per la scultura o il mosaico nei portali delle cattedrali gotiche. Nella lunetta del portale centrale di Santa Maria del Fiore trovava posto la Madonna dagli occhi di vetro.",
   "category": "architettura",
   "period_ids": [
    "duecento-italiano",
@@ -2414,7 +2403,7 @@
  {
   "id": "madonna-del-parto",
   "term": "Madonna del parto",
-  "definition": "Iconografia mariana che rappresenta la Vergine incinta, diffusa soprattutto in Toscana nel XIV-XV secolo. La Madonna è di solito sola, con un volume dell'Antico Testamento appoggiato al ventre (allusione al Verbo incarnato). Piero della Francesca ne dà un'interpretazione innovativa eliminando il libro e ogni attributo tranne l'aureola.",
+  "definition": "Iconografia mariana che rappresenta la Vergine incinta, diffusa soprattutto in Toscana nel XIV-XV secolo. Di norma la Vergine compare da sola, con un libro dell'Antico Testamento accostato al ventre, ad alludere al Verbo che si è fatto carne. Piero della Francesca ne dà un'interpretazione innovativa eliminando il libro e ogni attributo tranne l'aureola.",
   "category": "iconografia",
   "period_ids": [
    "quattrocento"
@@ -2681,7 +2670,7 @@
  {
   "id": "mitra",
   "term": "Mitra",
-  "definition": "Copricapo prezioso indossato dai vescovi in occasione di celebrazioni liturgiche solenni; ha forma schiacciata bicuspidale con due fasce che ricadono sulle spalle.",
+  "definition": "Copricapo di pregio riservato ai vescovi per le celebrazioni liturgiche più solenni, dalla foggia appiattita e bipartita a due punte, con due fasce pendenti sulle spalle.",
   "category": "iconografia",
   "period_ids": [
    "gotico-senese"
@@ -2732,7 +2721,7 @@
  {
   "id": "monumento-funebre",
   "term": "Monumento funebre/celebrativo",
-  "definition": "Complessa struttura architettonica e scultorea che celebra la memoria di un defunto illustre. Nel tardogotico assume i caratteri di monumento celebrativo della dinastia di appartenenza, con statue allegoriche, sarcofago e statua del defunto.",
+  "definition": "Complessa struttura architettonica e scultorea che celebra la memoria di un defunto illustre. In età tardogotica si carica di significati dinastici, divenendo celebrazione del casato del defunto attraverso la combinazione di sarcofago, effigie del defunto e figure allegoriche.",
   "category": "scultura",
   "period_ids": [
    "quattrocento",
@@ -2931,7 +2920,7 @@
  {
   "id": "non-finito",
   "term": "Non finito",
-  "definition": "Procedimento scultoreo (e pittorico) michelangiolesco in cui parti dell'opera rimangono intenzionalmente allo stadio grezzo o sbozzato, lasciando emergere la forma dalla materia come processo irrisolto. Esprime la lotta dello spirito che tenta di liberarsi dalla prigione del corpo.",
+  "definition": "Procedimento scultoreo (e pittorico) michelangiolesco in cui parti dell'opera rimangono intenzionalmente allo stadio grezzo o sbozzato, lasciando emergere la forma dalla materia come processo irrisolto. Dà forma visibile al conflitto fra lo spirito, che cerca di emanciparsi, e la materia corporea che lo trattiene.",
   "category": "scultura",
   "period_ids": [
    "manierismo",
@@ -3004,7 +2993,7 @@
  {
   "id": "offerta-eucaristica",
   "term": "Offerta eucaristica",
-  "definition": "Il pane e il vino che vengono trasformati nel corpo e nel sangue di Cristo durante la messa. Nei mosaici di San Vitale, Giustiniano porta il pane e Teodora il vino, partecipando simbolicamente alla consacrazione.",
+  "definition": "Nel rito della messa, pane e vino divengono corpo e sangue di Cristo. Nei mosaici di San Vitale, Giustiniano porta il pane e Teodora il vino, partecipando simbolicamente alla consacrazione.",
   "category": "iconografia",
   "period_ids": [
    "eta-giustinianea"
@@ -3066,7 +3055,7 @@
  {
   "id": "ordine-gigante",
   "term": "Ordine gigante",
-  "definition": "Sistema di pilastri o colonne che si estendono per più piani dell'edificio, ignorando i piani intermedi. Introdotto da Michelangelo nella piazza del Campidoglio; diventa elemento fondamentale dell'architettura manierista e barocca.",
+  "definition": "Soluzione architettonica in cui pilastri o colonne si sviluppano ininterrottamente lungo più piani dell'edificio, scavalcando i livelli intermedi. Introdotto da Michelangelo nella piazza del Campidoglio; diventa elemento fondamentale dell'architettura manierista e barocca.",
   "category": "architettura",
   "period_ids": [
    "manierismo",
@@ -3088,7 +3077,7 @@
  {
   "id": "ostensione",
   "term": "Ostensione",
-  "definition": "Esposizione ai fedeli di un oggetto sacro, dell'ostia consacrata o di reliquie. Nella Madonna del parto di Piero, la Madonna incinta è presentata come un tabernacolo che 'contiene' il corpo di Cristo.",
+  "definition": "Atto con cui un oggetto sacro — l'ostia consacrata o una reliquia — viene mostrato ai fedeli. Nella Madonna del parto di Piero, la Madonna incinta è presentata come un tabernacolo che 'contiene' il corpo di Cristo.",
   "category": "iconografia",
   "period_ids": [
    "quattrocento"
@@ -3298,7 +3287,7 @@
  {
   "id": "passage-remois",
   "term": "Passage rémois (sageretto)",
-  "definition": "Passaggio praticabile che corre alla base delle finestre e attraversa i contrafforti interni, tipico dell'architettura borgognona e della Champagne. Presente nella chiesa superiore di Assisi.",
+  "definition": "Stretto corridoio praticabile ricavato al piede delle finestre, che taglia trasversalmente lo spessore dei contrafforti interni: tratto tipico dell'architettura della Borgogna e della Champagne. Presente nella chiesa superiore di Assisi.",
   "category": "architettura",
   "period_ids": [
    "gotico"
@@ -3318,7 +3307,7 @@
  {
   "id": "pastiglia",
   "term": "Pastiglia",
-  "definition": "Decorazioni a rilievo modellate in una pasta di gesso e colla applicate su tavole e poi dorate; creano effetti plastici preziosi.",
+  "definition": "Rilievi ottenuti modellando una pasta a base di gesso e colla, applicati sulle tavole e in seguito dorati; creano effetti plastici preziosi. Nel Rinascimento veneto e ferrarese la pasta, a base di biacca e farine con aggiunta di sostanze profumate, si modella anche in piccoli rilievi a stampo per cofanetti.",
   "category": "pittura",
   "period_ids": [
    "gotico-senese"
@@ -3326,19 +3315,9 @@
   "is_archetype": false
  },
  {
-  "id": "pastiglia-di-gesso",
-  "term": "Pastiglia di gesso",
-  "definition": "Impasto di stucco con farine di frumento o di riso, biacca, uovo e sostanze profumate, modellato su una superficie e dorato. Usato nella pittura lombarda tardogotica per creare rilievi dorati su fondi di dipinti.",
-  "category": "pittura",
-  "period_ids": [
-   "tardogotico"
-  ],
-  "is_archetype": false
- },
- {
   "id": "pastorale",
   "term": "Pastorale",
-  "definition": "Lungo bastone dall'estremità superiore ricurva e spesso decorata, consegnato al vescovo nel rito di ordinazione come 'pastore' delle anime dei fedeli.",
+  "definition": "Insegna liturgica a forma di lungo bastone, ricurvo e spesso ornato nella parte alta, che il vescovo riceve al momento dell'ordinazione quale segno del proprio compito di guida spirituale, il 'pastore' delle anime a lui affidate.",
   "category": "iconografia",
   "period_ids": [
    "gotico-senese"
@@ -3518,7 +3497,7 @@
  {
   "id": "pilier-des-anges",
   "term": "Pilier des Anges",
-  "definition": "Grande pilastro polilobato nella cattedrale di Notre-Dame a Strasburgo (ca. 1230), che sostiene la volta del transetto. Distribuisce su tre piani le figure dei quattro evangelisti, quattro angeli tubicinari e il Cristo giudice.",
+  "definition": "Grande pilastro polilobato nella cattedrale di Notre-Dame a Strasburgo (ca. 1230), che sostiene la volta del transetto. Fra le quattro colonne che lo compongono si dispongono, su tre livelli, gli evangelisti, quattro angeli musicanti con le trombe e il Cristo nel ruolo di giudice.",
   "category": "scultura",
   "period_ids": [
    "gotico-tedesco"
@@ -3558,7 +3537,7 @@
  {
   "id": "piviale",
   "term": "Piviale",
-  "definition": "Ampio mantello liturgico per celebrazioni solenni realizzato in stoffa pregiata e fissato sul petto con un fermaglio.",
+  "definition": "Mantello liturgico di ampio taglio, riservato alle celebrazioni più solenni, confezionato in tessuto pregiato e chiuso sul petto da un fermaglio.",
   "category": "iconografia",
   "period_ids": [
    "gotico-senese"
@@ -3600,16 +3579,6 @@
   "period_ids": [
    "romanico-italiano",
    "romanico-normanno-siciliano"
-  ],
-  "is_archetype": true
- },
- {
-  "id": "porta-strombata",
-  "term": "Portale strombato",
-  "definition": "Portale la cui apertura si allarga progressivamente verso l'esterno mediante una serie di arcate concentriche sfalsate, tipico dell'architettura romanica e gotica. Le strombature sono spesso decorate con statue-colonna.",
-  "category": "architettura",
-  "period_ids": [
-   "gotico"
   ],
   "is_archetype": true
  },
@@ -3692,7 +3661,7 @@
  {
   "id": "procuratie",
   "term": "Procuratie",
-  "definition": "Edifici che ospitavano i Procuratori di San Marco a Venezia, funzionari responsabili dell'amministrazione delle entrate pubbliche e dei beni della basilica di San Marco.",
+  "definition": "A Venezia, gli edifici che davano sede ai Procuratori di San Marco, i funzionari incaricati di amministrare le entrate pubbliche e il patrimonio della basilica di San Marco.",
   "category": "architettura",
   "period_ids": [
    "manierismo"
@@ -3787,7 +3756,7 @@
  {
   "id": "prospettiva-aerea",
   "term": "Prospettiva aerea",
-  "definition": "Modalità di rappresentazione della profondità basata sulla progressiva sfocatura dei contorni e sulla graduazione dei toni cromatici con la distanza. Leonardo la teorizza osservando che l'aria non è perfettamente trasparente.",
+  "definition": "Metodo per restituire la profondità dello spazio facendo perdere via via nitidezza ai contorni e attenuando i toni del colore man mano che aumenta la distanza. Leonardo la teorizza osservando che l'aria non è perfettamente trasparente.",
   "category": "pittura",
   "period_ids": [
    "rinascimento",
@@ -3949,7 +3918,7 @@
  {
   "id": "quadrilobato",
   "term": "Quadrilobato",
-  "definition": "Forma geometrica composta da un rombo sui cui quattro lati uguali sono impostati quattro semicerchi, oppure un quadrifoglio sul quale è innestato un rombo. Usata per le formelle della prima e seconda porta del battistero di Firenze.",
+  "definition": "Figura geometrica ottenuta impostando quattro semicerchi sui quattro lati uguali di un rombo, oppure sovrapponendo un rombo a un quadrifoglio. Usata per le formelle della prima e seconda porta del battistero di Firenze.",
   "category": "architettura",
   "period_ids": [
    "umanesimo-fiorentino"
@@ -4073,7 +4042,7 @@
  {
   "id": "renovatio-imperii",
   "term": "Renovatio Imperii",
-  "definition": "Formula politico-culturale carolingia (letteralmente 'rinnovamento dell'impero') che sintetizza il progetto di Carlo Magno di ricostituire l'autorità dell'impero romano d'Occidente. Si traduce nell'imitazione dei modelli costantiniani e nell'uso dei simboli imperiali romani.",
+  "definition": "Espressione (letteralmente 'rinnovamento dell'impero') con cui si designa, in ambito carolingio, il disegno politico e culturale di Carlo Magno volto a far rivivere l'autorità dell'impero romano d'Occidente. Si traduce nell'imitazione dei modelli costantiniani e nell'uso dei simboli imperiali romani.",
   "category": "generale",
   "period_ids": [
    "arte-ottoniana",
@@ -4190,7 +4159,7 @@
  {
   "id": "rotulo",
   "term": "Rotulo",
-  "definition": "La più antica forma del libro, costituito da fogli di papiro incollati a formare una lunga striscia arrotolata attorno a supporti cilindrici. In età medievale viene progressivamente sostituito dal codice.",
+  "definition": "Forma libraria più antica: una sequenza di fogli di papiro uniti fino a formare una striscia continua, avvolta su supporti a forma di cilindro. Con il passare dei secoli il Medioevo lo abbandona progressivamente a favore del codice.",
   "category": "generale",
   "period_ids": [
    "arte-paleocristiana",
@@ -4350,7 +4319,7 @@
  {
   "id": "serliana",
   "term": "Serliana",
-  "definition": "Elemento architettonico codificato da Sebastiano Serlio: arco a tutto sesto affiancato da due aperture simmetriche sormontate da architrave su pilastri. Derivato dalle province orientali dell'Impero romano, diffuso da Serlio nei suoi trattati.",
+  "definition": "Motivo architettonico messo a punto da Sebastiano Serlio: un varco centrale a tutto sesto affiancato da due vani simmetrici più bassi, chiusi in alto da un architrave retto da pilastri. Derivato dalle province orientali dell'Impero romano, diffuso da Serlio nei suoi trattati.",
   "category": "architettura",
   "period_ids": [
    "manierismo"
@@ -4370,7 +4339,7 @@
  {
   "id": "sfondato",
   "term": "Sfondato illusionistico",
-  "definition": "Dipinto che simula la presenza di un vano o apertura oltre la parete, creando un'illusione di profondità. Deriva dai Coretti di Giotto nella cappella degli Scrovegni (primo esempio moderno) e si sviluppa nei secoli successivi. Già Masaccio, nella Trinità, apre illusionisticamente la parete in uno spazio architettonico.",
+  "definition": "Soluzione pittorica che finge, oltre il piano della parete, un ambiente o un varco inesistente, generando un effetto illusorio di sfondamento prospettico. Deriva dai Coretti di Giotto nella cappella degli Scrovegni (primo esempio moderno) e si sviluppa nei secoli successivi. Già Masaccio, nella Trinità, apre illusionisticamente la parete in uno spazio architettonico.",
   "category": "architettura",
   "period_ids": [
    "rinascimento-maturo-italia-settentrionale",
@@ -4382,7 +4351,7 @@
  {
   "id": "sforzinda",
   "term": "Sforzinda",
-  "definition": "Città ideale progettata da Filarete nel suo Trattato di architettura, con pianta a stella a otto punte inscritta in un cerchio. I vertici esterni ospitano torri, gli angoli interni le porte; strade radiali convergono al centro dove si trova la grande piazza con il palazzo del principe, il duomo e l'arcivescovado.",
+  "definition": "Città ideale concepita da Filarete nel suo Trattato di architettura: il tracciato planimetrico si sviluppa come una circonferenza entro cui si iscrive una stella a otto punte. I vertici esterni ospitano torri, gli angoli interni le porte; il nucleo della città è occupato dalla piazza maggiore e dagli edifici del potere civile e religioso — il palazzo del principe, il duomo, l'arcivescovado — da cui muovono verso l'esterno le strade a raggiera.",
   "category": "architettura",
   "period_ids": [
    "quattrocento"
@@ -4404,7 +4373,7 @@
  {
   "id": "simbolismo-degli-oggetti",
   "term": "Simbolismo degli oggetti",
-  "definition": "Pratica pittorica fiamminga per cui gli oggetti quotidiani nella scena (candele, fiori, animali, suppellettili) assumono significati simbolici e spirituali, permettendo di individuare una dimensione sacra anche negli aspetti apparentemente neutri della realtà, in accordo con i principi della Devotio moderna.",
+  "definition": "Pratica pittorica fiamminga in cui oggetti della vita di ogni giorno — candele, fiori, animali, suppellettili — si caricano di un significato simbolico e spirituale, rivelando una dimensione sacra anche negli aspetti più feriali della realtà, in sintonia con i principi della Devotio moderna.",
   "category": "iconografia",
   "period_ids": [
    "quattrocento-fiammingo"
@@ -4457,7 +4426,7 @@
  {
   "id": "soggolo",
   "term": "Soggolo",
-  "definition": "Nell'abbigliamento femminile medievale e rinascimentale, è una striscia di velo o di tela che avvolge il collo e il viso congiungendosi alla sommità della testa.",
+  "definition": "Elemento dell'abbigliamento femminile fra Medioevo e Rinascimento: una fascia di velo o di tela che cinge il collo e il volto, per poi riunirsi sulla sommità del capo.",
   "category": "generale",
   "period_ids": [
    "gotico-italiano",
@@ -4569,7 +4538,7 @@
  {
   "id": "stiacciato",
   "term": "Stiacciato",
-  "definition": "Tecnica scultorea di rilievo schiacciato inventata da Donatello: minime variazioni di spessore rispetto al fondo creano effetti pittorici di profondità spaziale. Le figure in primo piano hanno maggiore spessore, quelle lontane sembrano quasi incise.",
+  "definition": "Tecnica scultorea di rilievo schiacciato inventata da Donatello, che sfrutta variazioni minime di spessore rispetto al piano di fondo per ottenere effetti quasi pittorici di profondità spaziale. Le figure in primo piano hanno maggiore spessore, quelle lontane sembrano quasi incise.",
   "category": "scultura",
   "period_ids": [
    "quattrocento",
@@ -4581,7 +4550,7 @@
  {
   "id": "stile-animalistico",
   "term": "Stile animalistico",
-  "definition": "Repertorio decorativo germanico caratterizzato da animali stilizzati che si intrecciano con forme geometriche. Tipico dell'oreficeria longobarda, visigota e franca tra V e VIII secolo.",
+  "definition": "Repertorio ornamentale di ambito germanico in cui figure animali stilizzate si intrecciano a motivi geometrici. Tipico dell'oreficeria longobarda, visigota e franca tra V e VIII secolo.",
   "category": "generale",
   "period_ids": [
    "eta-longobarda"
@@ -4704,7 +4673,7 @@
  {
   "id": "tardogotico",
   "term": "Tardogotico",
-  "definition": "Denominazione generica che indica la fase finale del Gotico (seconda metà XIV - primi decenni XV secolo), che convive con l'avvio dell'Umanesimo. Caratterizzato da figure esili, linea flessuosa, cromie luminose, attenzione al dettaglio.",
+  "definition": "Denominazione generica che indica la fase finale del Gotico (seconda metà XIV - primi decenni XV secolo), che convive con l'avvio dell'Umanesimo. Si distingue per figure allungate ed esili, per un tratto sinuoso, per colori chiari e luminosi e per una spiccata cura del dettaglio.",
   "category": "generale",
   "period_ids": [
    "tardogotico"
@@ -4805,7 +4774,7 @@
  {
   "id": "telamone",
   "term": "Telamone (o Atlante)",
-  "definition": "Figura maschile scolpita che funge da elemento portante (equivalente maschile della cariatide). Nei pulpiti di Nicola Pisano i telamoni alla base simboleggiano la brutalità della materia e la dimensione terrena e peccaminosa della natura umana.",
+  "definition": "Figura maschile scolpita che funge da elemento portante (equivalente maschile della cariatide). Nei pulpiti di Nicola Pisano, i telamoni posti alla base alludono alla rozzezza della materia e alla natura umana, terrena e segnata dal peccato.",
   "category": "scultura",
   "period_ids": [
    "gotico-italiano",
@@ -4956,7 +4925,7 @@
  {
   "id": "tomba-ad-arcosolio",
   "term": "Tomba ad arcosolio",
-  "definition": "Tipologia funeraria con sarcofago inserito in una nicchia ad arco nella parete; diffusa nel Trecento, riformulata da Rossellino in chiave pienamente rinascimentale.",
+  "definition": "Tipologia funeraria in cui il sarcofago trova posto entro una nicchia ad arco ricavata nella parete; diffusa nel Trecento, riformulata da Rossellino in chiave pienamente rinascimentale.",
   "category": "scultura",
   "period_ids": [
    "quattrocento"
@@ -4990,7 +4959,7 @@
  {
   "id": "torricino",
   "term": "Torricino",
-  "definition": "Piccola torre, elemento architettonico della facciata del Palazzo Ducale di Urbino: due slanciati torrini cuspidati racchiudono lateralmente tre logge sovrapposte che riprendono lo schema dell'arco di trionfo romano.",
+  "definition": "Piccola torre, elemento architettonico della facciata del Palazzo Ducale di Urbino: ai suoi lati si ergono due torrini slanciati e cuspidati, fra i quali si aprono tre logge, l'una sull'altra, secondo uno schema che rimanda all'arco di trionfo romano.",
   "category": "architettura",
   "period_ids": [
    "quattrocento"
@@ -5065,7 +5034,7 @@
  {
   "id": "trattato-di-architettura",
   "term": "Trattato di architettura",
-  "definition": "Opera teorica scritta da Filarete a partire dal 1451 in ventiquattro libri: ventuno descrivono la fondazione di Sforzinda (città ideale), tre sono di carattere tecnico (ottica, disegno, pittura), e uno aggiunto dopo il rientro a Firenze descrive le raccolte d'arte dei Medici.",
+  "definition": "Opera teorica scritta da Filarete a partire dal 1451, articolata in ventiquattro libri: i primi ventuno ricostruiscono la fondazione della città ideale di Sforzinda, altri tre affrontano questioni tecniche — ottica, disegno, pittura —, mentre un ultimo libro, aggiunto dopo il ritorno dell'autore a Firenze, illustra le collezioni d'arte della famiglia Medici.",
   "category": "generale",
   "period_ids": [
    "quattrocento"
@@ -5075,7 +5044,7 @@
  {
   "id": "tre-quarti",
   "term": "Ritratto di tre quarti",
-  "definition": "Posa del soggetto nel ritratto in cui la testa e il busto sono girati a circa 45 gradi rispetto all'asse frontale, mostrando tre quarti del viso. Diffusa dal ritratto fiammingo come soluzione ottimale per cogliere il personaggio nella completezza anatomica e psicologica.",
+  "definition": "Posa del soggetto nel ritratto in cui la testa e il busto sono girati a circa 45 gradi rispetto all'asse frontale, mostrando tre quarti del viso. Il ritratto fiammingo ne generalizza l'uso, ritenendola la soluzione più efficace per restituire il soggetto nella sua interezza, tanto fisionomica quanto psicologica.",
   "category": "pittura",
   "period_ids": [
    "quattrocento-fiammingo"
@@ -5164,7 +5133,7 @@
  {
   "id": "trono-di-grazia",
   "term": "Trono di Grazia",
-  "definition": "Iconografia della Trinita in cui Dio Padre regge la croce sulla quale e inchiodato Gesu Cristo, con la colomba dello Spirito Santo tra i due.",
+  "definition": "Iconografia della Trinità in cui Dio Padre sorregge la croce a cui è inchiodato Gesù Cristo, con la colomba dello Spirito Santo raffigurata fra i due.",
   "category": "iconografia",
   "period_ids": [
    "quattrocento"
@@ -5214,7 +5183,7 @@
  {
   "id": "uovo-di-struzzo",
   "term": "Uovo di struzzo",
-  "definition": "Simbolo di eterna rinascita e del concepimento virginale che porta alla nascita di Gesù. Nella Pala di Brera di Piero della Francesca è il punto focale compositivo, appeso dall'incavo dell'arco absidale.",
+  "definition": "Elemento che allude all'eterna rinascita e, forse, al concepimento verginale da cui nasce Gesù. Nella Pala di Brera di Piero della Francesca è il punto focale compositivo, appeso dall'incavo dell'arco absidale.",
   "category": "iconografia",
   "period_ids": [
    "quattrocento"
@@ -5235,7 +5204,7 @@
  {
   "id": "vasca-battesimale",
   "term": "Vasca battesimale",
-  "definition": "Grande vasca al centro del battistero nella quale i catecumeni erano immersi per ricevere il battesimo. In origine separata dall'aula da colonne, è elemento architettonico centrale del battistero paleocristiano.",
+  "definition": "Ampia vasca collocata al centro del battistero, in cui i catecumeni venivano immersi per ricevere il sacramento del battesimo. In origine separata dall'aula da colonne, è elemento architettonico centrale del battistero paleocristiano.",
   "category": "architettura",
   "period_ids": [
    "arte-paleocristiana"
@@ -5309,7 +5278,7 @@
  {
   "id": "vetrata-istoriata",
   "term": "Vetrata istoriata",
-  "definition": "Vetrata policroma composta da pezzi di pasta vitrea tenuti insieme da listelli di piombo su intelaiature di ferro, che rappresenta scene narrative o figure sacre. La tecnica è descritta nel trattato De diversis artibus del monaco Teofilo (XII sec.).",
+  "definition": "Vetrata a più colori, ottenuta assemblando frammenti di pasta vitrea tenuti insieme da un reticolo di listelli in piombo montato su intelaiature di ferro, con cui si raffigurano scene narrative o figure sacre. Il procedimento è descritto, nel XII secolo, dal monaco Teofilo nel trattato De diversis artibus.",
   "category": "pittura",
   "period_ids": [
    "gotico"
@@ -5339,7 +5308,7 @@
  {
   "id": "villa-extraurbana",
   "term": "Villa extraurbana",
-  "definition": "Residenza di campagna destinata ad attivita agricole e allo svago, tipica del mecenatismo mediceo. Michelozzo adatta le ville medievali al gusto rinascimentale conservando elementi difensivi come decorazione.",
+  "definition": "Dimora rurale destinata sia alle attività agricole sia allo svago, diffusa nell'ambito del mecenatismo mediceo. Michelozzo adatta le ville medievali al gusto rinascimentale conservando elementi difensivi come decorazione.",
   "category": "architettura",
   "period_ids": [
    "quattrocento"
@@ -5441,7 +5410,7 @@
  {
   "id": "volta-a-tiercerons",
   "term": "Volta a tiercerons",
-  "definition": "Volta a ogiva in cui alle nervature diagonali principali si aggiungono nervature ortogonali (liernes) e nervature più corte (tiercerons) che collegano quelle ortogonali ai pilastri di sostegno, creando una forma a stella. Usata per la prima volta nella cattedrale di Lincoln.",
+  "definition": "Volta costolonata a sesto acuto in cui, oltre alle diagonali principali, compaiono nervature ortogonali (dette liernes) e nervature più brevi, i tiercerons, incaricate di collegare le prime ai pilastri d'appoggio: ne risulta, guardando verso l'alto, un disegno a stella. Usata per la prima volta nella cattedrale di Lincoln.",
   "category": "architettura",
   "period_ids": [
    "decorated-english-gothic"
@@ -5461,7 +5430,7 @@
  {
   "id": "voluta",
   "term": "Voluta",
-  "definition": "Elemento decorativo a spirale tipico del capitello ionico, usato da Alberti nella facciata di Santa Maria Novella come raccordo tra le basse navate laterali e il corpo centrale più alto, nascondendo le falde del tetto.",
+  "definition": "Motivo ornamentale a forma di spirale, proprio del capitello ionico; Alberti lo impiega nella facciata di Santa Maria Novella per raccordare le navate laterali, più basse, al corpo centrale, più alto, occultando al tempo stesso le falde del tetto.",
   "category": "architettura",
   "period_ids": [
    "quattrocento"
@@ -5471,7 +5440,7 @@
  {
   "id": "westwerk",
   "term": "Westwerk",
-  "definition": "Avancorpo occidentale delle chiese carolinge e ottoniane, costituito da un nucleo centrale a più piani affiancato da torri scalari (Glockenturm). La loggia superiore era riservata all'imperatore. Letteralmente 'opera occidentale' (in tedesco).",
+  "definition": "Corpo di fabbrica addossato al lato occidentale delle chiese di età carolingia e ottoniana, formato da un blocco centrale sviluppato su più livelli e affiancato da torri scalari, dette Glockenturm. La loggia superiore era riservata all'imperatore. Letteralmente 'opera occidentale' (in tedesco).",
   "category": "architettura",
   "period_ids": [
    "arte-ottoniana",
@@ -6006,7 +5975,7 @@
  {
   "id": "colonnato",
   "term": "Colonnato",
-  "definition": "Serie di colonne disposte in fila, sorrette o sormontate da una trabeazione, che forma un portico o definisce la divisione interna di un edificio; elemento tipico dell'architettura classica romana e paleocristiana.",
+  "definition": "Serie di colonne disposte in fila, sorrette o sormontate da una trabeazione, che forma un portico o definisce la divisione interna di un edificio; ricorre come elemento caratteristico sia nell'architettura classica romana sia in quella paleocristiana.",
   "category": "architettura",
   "period_ids": [],
   "is_archetype": true
@@ -7579,7 +7548,7 @@
  {
   "id": "iconoclastia",
   "term": "Iconoclastia",
-  "definition": "Distruzione di immagini sacre considerate idolatriche. Nel Cinquecento protestante, la distruzione di dipinti e sculture a tema sacro.",
+  "definition": "Distruzione di immagini sacre considerate idolatriche: nell'Europa protestante del Cinquecento si traduce nella distruzione sistematica di dipinti e sculture di soggetto religioso.",
   "category": "generale",
   "period_ids": [
    "rinasc-nordico"
@@ -7589,7 +7558,7 @@
  {
   "id": "macchina-altare",
   "term": "Macchina d'altare",
-  "definition": "Grande struttura pittorica con sportelli mobili che permettono di variare le immagini offerte ai fedeli.",
+  "definition": "Grande apparato pittorico dotato di sportelli mobili, che consente di modificare le immagini mostrate ai fedeli a seconda delle esigenze liturgiche.",
   "category": "architettura",
   "period_ids": [
    "rinasc-nordico"
@@ -7619,7 +7588,7 @@
  {
   "id": "mirabilia",
   "term": "Mirabilia",
-  "definition": "Oggetti meritevoli di essere guardati, capaci di suscitare meraviglia. Comprendono artificialia (creati dall'uomo) e naturalia (curiosità della natura).",
+  "definition": "Oggetti che meritano di essere osservati perché in grado di destare stupore in chi li guarda. Comprendono artificialia (creati dall'uomo) e naturalia (curiosità della natura).",
   "category": "generale",
   "period_ids": [
    "manierismo"
@@ -7649,7 +7618,7 @@
  {
   "id": "scuola-danubiana",
   "term": "Scuola Danubiana",
-  "definition": "Corrente pittorica fiorita tra Austria e Baviera nel primo Cinquecento, caratterizzata da nuova attenzione per il paesaggio naturale e approccio realistico-espressivo.",
+  "definition": "Tendenza pittorica sviluppatasi fra Austria e Baviera nei primi decenni del Cinquecento, segnata da un rinnovato interesse per il paesaggio naturale e da una resa insieme realistica ed espressiva delle figure.",
   "category": "pittura",
   "period_ids": [
    "rinasc-nordico"
@@ -7864,7 +7833,7 @@
  {
   "id": "strapwork",
   "term": "Strapwork",
-  "definition": "Decorazione che imita i riccioli e le volute di una striscia di cuoio, tipica del Manierismo di Fontainebleau.",
+  "definition": "Motivo decorativo che riproduce l'andamento arricciato e avvolto di una striscia di cuoio, diffuso nel Manierismo della scuola di Fontainebleau.",
   "category": "architettura",
   "period_ids": [
    "manierismo"
@@ -8090,7 +8059,7 @@
  {
   "id": "sviluppo-piramidale",
   "term": "sviluppo piramidale",
-  "definition": "Composizione che si inquadra nella geometria classica di un arco trionfale, elemento ripreso dai modelli sepolc quattrocenteschi di gusto rinascimentale",
+  "definition": "Impostazione compositiva che richiama la geometria classica dell'arco di trionfo, ripresa dai modelli delle sepolture fiorentine del Quattrocento di gusto rinascimentale.",
   "category": "pittura",
   "period_ids": [],
   "is_archetype": false
@@ -8765,7 +8734,7 @@
  {
   "id": "volta-esapartita",
   "term": "Volta esapartita",
-  "definition": "Volta a crociera costolonata divisa in sei spicchi da un costolone trasversale aggiunto alle due diagonali; copre di norma due campate delle navate laterali per ciascuna della navata centrale. È tipica del primo Gotico francese.",
+  "definition": "Volta a crociera costolonata divisa in sei spicchi da un costolone trasversale aggiunto alle due diagonali; le navate laterali sono scandite, di norma, da due campate per ciascuna campata della navata centrale. È tipica del primo Gotico francese.",
   "category": "architettura",
   "period_ids": [
    "gotico-francese"
