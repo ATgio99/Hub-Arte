@@ -34,7 +34,7 @@ const COORD_SEDI: Record<string, [number, number]> = {
   "Polisy": [48.0706, 4.3717], "Reggio Emilia": [44.6983, 10.6312],
 };
 
-function FitBounds({ cities }: { cities: City[] }) {
+function FitBounds({ cities }: { cities: { lat: number; lon: number }[] }) {
   const map = useMap();
   useEffect(() => {
     if (!cities.length) return;
@@ -165,7 +165,7 @@ export default function Mappa() {
                 url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}"
                 maxZoom={16} />
               <Resizer trigger={isFull} />
-              <FitBounds cities={cities} />
+              <FitBounds cities={modo === "opere" ? cities : sedi} />
               {modo === "opere" && flows.map((f, i) => (
                 <Polyline key={i} positions={[[f.a.lat, f.a.lon], [f.b.lat, f.b.lon]]}
                   pathOptions={{ color: "#b88a2e", weight: 0.7 + Math.min(f.n, 4) * 0.5, opacity: 0.55, dashArray: "4 4" }} />
