@@ -684,15 +684,15 @@
    "marmo"
   ],
   "location_city": "Roma",
-  "location_place": "Musei Capitolini",
-  "lat": 41.892666,
-  "lon": 12.482201,
+  "location_place": "Musei Capitolini, Palazzo Nuovo, Sala degli Imperatori",
+  "lat": 41.893594,
+  "lon": 12.483164,
   "book": 1,
   "chapter": 1,
   "page": 2,
   "source_file": "Libro1.1-giu-2026",
   "importance": 1,
-  "summary": "Testa in marmo di grandi dimensioni (h. 67 cm) raffigurante l'imperatore Onorio (395-423), figlio di Teodosio e sovrano dell'impero romano d'Occidente. Esemplare della ritrattistica tardoimperiale.",
+  "summary": "Testa in marmo di grandi dimensioni (h. 67 cm) identificata con l'imperatore Onorio (395-423), figlio di Teodosio e sovrano dell'impero romano d'Occidente. Esemplare della ritrattistica tardoimperiale. L'identificazione con Onorio non è certa: una parte degli studi vi riconosce l'imperatore Valente.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -49748,41 +49748,6 @@
   "committente_ids": [],
   "fonte_ids": [
    "occhi-arte-3"
-  ]
- },
- {
-  "id": "polittico-porta-romana",
-  "title": "Polittico Porta Romana",
-  "artist_ids": [
-   "pietro-di-giovanni-dambrogio"
-  ],
-  "period_id": "quattrocento",
-  "date_text": "1479-1481",
-  "year_start": 1479,
-  "year_end": 1481,
-  "type": "pittura",
-  "technique_ids": [],
-  "materials": [],
-  "location_city": "Siena",
-  "location_place": null,
-  "lat": 43.317795,
-  "lon": 11.32909,
-  "book": 1,
-  "chapter": 0,
-  "page": 0,
-  "source_file": "",
-  "importance": 1,
-  "summary": "Opera citata come riferimento per la struttura porticata adottata da Ercole de' Roberti nella Pala Portuense.",
-  "analysis": null,
-  "innovations": [],
-  "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
-  "image_source": "",
-  "image_gallery": [],
-  "committente_ids": [],
-  "fonte_ids": [
-   "occhi-arte-2"
   ]
  },
  {
