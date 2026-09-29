@@ -518,7 +518,7 @@
   "page": 1,
   "source_file": "Libro1.1-giu-2026",
   "importance": 1,
-  "summary": "Colonnato di marmo di Musso ancora esistente davanti alla basilica di San Lorenzo Maggiore a Milano. Apparteneva a templi pagani del III secolo, in gran parte demoliti, e venne riutilizzato come accesso monumentale al portico della basilica. Testimonia il reimpiego di materiali antichi nella costruzione paleocristiana.",
+  "summary": "Colonnato di marmo di Musso ancora esistente davanti alla basilica di San Lorenzo Maggiore a Milano. Proveniva da templi pagani dei secoli II e III, già in gran parte smantellati, e fu riutilizzato come accesso monumentale al portico della basilica. Testimonia il reimpiego di materiali antichi nella costruzione paleocristiana.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -538,9 +538,9 @@
   "title": "Teodosio offre il lauro della vittoria (decorazione del basamento dell'obelisco di Teodosio)",
   "artist_ids": [],
   "period_id": "tarda-antichita",
-  "date_text": "388 d.C.",
-  "year_start": 388,
-  "year_end": 388,
+  "date_text": "390 d.C.",
+  "year_start": 390,
+  "year_end": 390,
   "type": "scultura",
   "technique_ids": [
    "scultura-in-marmo"
@@ -561,8 +561,8 @@
   "analysis": null,
   "innovations": [],
   "term_ids": [],
-  "image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Obelisco%20de%20Teodosio%2C%20Estambul%2C%20Turqu%C3%ADa%2C%202024-09-28%2C%20DD%20129.jpg?width=640",
-  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Obelisco%20de%20Teodosio%2C%20Estambul%2C%20Turqu%C3%ADa%2C%202024-09-28%2C%20DD%20129.jpg?width=640",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Dado_di_teodosio%2C_390_ca.%2C_lato_est%2C_teodosio_dal_palco_imperiale_offre_la_corona_d%27alloro_al_vincitore_dei_giochi%2C_01.jpg",
+  "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Dado%20di%20teodosio%2C%20390%20ca.%2C%20lato%20est%2C%20teodosio%20dal%20palco%20imperiale%20offre%20la%20corona%20d%27alloro%20al%20vincitore%20dei%20giochi%2C%2001.jpg?width=640",
   "image_source": "commons",
   "committente_ids": [
    "teodosio-i"
@@ -648,10 +648,10 @@
   "page": 7,
   "source_file": "Libro1.1-giu-2026",
   "importance": 2,
-  "summary": "Mosaico nel catino absidale meridionale destro del sacello di Sant'Aquilino nella basilica di San Lorenzo Maggiore a Milano. Cristo, imberbe alla maniera occidentale, siede su una roccia tra gli apostoli togati con la mano alzata nell'atto dell'adlocutio, tenendo in mano un rotulo. Il tema del Cristo in trono tra gli apostoli assimila l'iconografia imperiale del sovrano in maestà.",
-  "analysis": "Il mosaico ben conservato del catino absidale meridionale del sacello di Sant'Aquilino è uno dei più importanti esempi di arte paleocristiana a Milano. Cristo siede su una roccia con la mano destra alzata nell'adlocutio (gesto oratorio tipico degli imperatori) e regge nella sinistra un rotulo, probabilmente il libro della Legge (Vangelo). Ai lati siedono gli apostoli togati, seduti; ai loro piedi rotuli dell'Antico e del Nuovo Testamento in un contenitore cilindrico. I fiumi del Paradiso ai piedi degli apostoli simboleggiano la promessa della vita eterna. Il fondo oro simboleggia la luce divina e la dimensione trascendente. Il tema del Cristo in maestà si sviluppa nella seconda metà del IV secolo assimilando l'iconografia imperiale.",
+  "summary": "Mosaico nel catino absidale meridionale destro del sacello di Sant'Aquilino nella basilica di San Lorenzo Maggiore a Milano. Al centro Cristo, giovane e senza barba secondo la tradizione occidentale, è seduto su un rilievo roccioso fra gli apostoli in toga: alza la destra nel gesto dell'adlocutio e stringe un rotulo. Il tema del Cristo in trono tra gli apostoli assimila l'iconografia imperiale del sovrano in maestà.",
+  "analysis": "Il mosaico ben conservato del catino absidale meridionale del sacello di Sant'Aquilino è uno dei più importanti esempi di arte paleocristiana a Milano. Cristo siede su una roccia con la mano destra alzata nell'adlocutio (gesto oratorio tipico degli imperatori) e regge nella sinistra un rotulo, probabilmente il libro della Legge (Vangelo). Ai lati siedono gli apostoli in toga; ai loro piedi rotuli dell'Antico e del Nuovo Testamento in un contenitore cilindrico. Più in basso scorrono i fiumi del Paradiso, allusione alla vita eterna promessa ai fedeli. Il fondo oro simboleggia la luce divina e la dimensione trascendente. È nella seconda metà del IV secolo che l'immagine di Cristo in maestà prende forma, facendo propria l'iconografia del potere imperiale.",
   "innovations": [
-   "assimilazione dell'iconografia imperiale all'iconografia di Cristo",
+   "Assimilazione dell'iconografia imperiale all'iconografia di Cristo",
    "Cristo imberbe in postura di adlocutio"
   ],
   "term_ids": [
@@ -922,7 +922,7 @@
   "page": 8,
   "source_file": "Libro1.1-giu-2026",
   "importance": 1,
-  "summary": "Capitello e pulvino di una colonna della navata centrale della chiesa di San Giovanni Evangelista a Ravenna. Il pulvino a forma di tronco di piramide rovesciato è tipico dell'architettura orientale e qui rappresenta una delle prime introduzioni di questo elemento nell'architettura ravennate.",
+  "summary": "Capitello e pulvino di una colonna della navata centrale della basilica di San Giovanni Evangelista a Ravenna. Il pulvino a forma di tronco di piramide rovesciato è tipico dell'architettura orientale e qui rappresenta una delle prime introduzioni di questo elemento nell'architettura ravennate.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -1112,7 +1112,7 @@
   "source_file": "Libro1.1-giu-2026",
   "importance": 3,
   "summary": "Decorazione musiva della cupola del Battistero degli Ariani a Ravenna, costruito da Teodorico. Presenta la medesima iconografia della cupola del Battistero Neoniano (battesimo di Cristo, corteo degli apostoli) ma in maniera più ieratica e astratta, con sole due fasce concentriche anziché tre, fondo oro invece di azzurro, panneggi rigidi e figure stereotipate. Riflette i precetti dell'arianesimo, che esalta la natura umana di Cristo.",
-  "analysis": "Il confronto con la cupola del Battistero Neoniano evidenzia due sistemi figurativi diversi: il battistero ariano ha una composizione più semplificata (due fasce invece di tre), con palme stilizzate invece di candelabre, fondo oro invece di cielo azzurro, panneggi rigidi e volti stereotipati. L'etimasia al centro del corteo è sormontata da una croce gemmata e da un drappo purpureo, simboli della sofferenza di Cristo come uomo, esaltata dall'arianesimo (che nega la divinità di Cristo). Giovanni Battista si trova alla sinistra di Cristo (non alla destra come nel Battistero Neoniano) e la personificazione del Giordano è seduta a sinistra, visibile da capo a piedi con due chele di granchio sul capo.",
+  "analysis": "Il confronto con la cupola del Battistero Neoniano evidenzia due sistemi figurativi diversi: il battistero ariano ha una composizione più semplificata (due fasce invece di tre), con palme stilizzate invece di candelabre, fondo oro invece di cielo azzurro, panneggi rigidi e volti stereotipati. L'etimasia all'inizio e alla fine del corteo degli apostoli, sormontata da una croce gemmata e da un drappo purpureo. Giovanni Battista si trova alla sinistra di Cristo (non alla destra come nel Battistero Neoniano) e la personificazione del Giordano è seduta a sinistra, visibile da capo a piedi con due chele di granchio sul capo.",
   "innovations": [
    "semplificazione iconografica in senso ariano",
    "bidimensionalità più marcata rispetto al Battistero Neoniano"
@@ -1323,8 +1323,7 @@
   ],
   "materials": [
    "oro",
-   "pasta vitrea",
-   "a cloisonné"
+   "pasta vitrea"
   ],
   "location_city": "Madrid",
   "location_place": "Museo Arqueológico Nacional",
@@ -2028,7 +2027,7 @@
   "source_file": "Libro1.1-giu-2026",
   "importance": 2,
   "summary": "Pannello musivo nel presbiterio di San Vitale a Ravenna, parete sud, datato 546-547. Ritrae l'imperatrice Teodora con le dame di corte nell'atto di portare il calice con il vino come offerta eucaristica. Il manto di Teodora è ricamato con i Re Magi. La fontana e il tendaio sullo sfondo sono resi realisticamente nonostante la prevalenza dello stile astratto.",
-  "analysis": "Il pannello con Teodora occupa la parete sud del presbiterio di San Vitale (546-547), in dialogo con quello di Giustiniano sulla parete nord. L'imperatrice, riconoscibile per il diadema imperiale, il collare di perle e la clamide purpurea, è ritratta nell'atto di offrire il calice aureo. Il pannello dell'orlo del mantello è decorato con la scena dei Re Magi che portano doni a Cristo, alludendo simbolicamente all'offerta stessa dell'imperatrice. Le dame di corte a destra indossano abiti di seta broccata, testimonianza del lusso dei tessuti costantinopolitani del VI secolo. La disposizione frontale delle figure, l'assenza di profondità spaziale e la gerarchia proporzionale (Teodora è più alta delle dame) sono tratti caratteristici dello stile ieratico byzantino. Il nimbo dorato intorno alla testa dell'imperatrice la equipara iconograficamente alla santità, esprimendo la concezione teocrática del potere imperiale.",
+  "analysis": "Il pannello con Teodora occupa la parete sud del presbiterio di San Vitale (546-547), in dialogo con quello di Giustiniano sulla parete nord. L'imperatrice, riconoscibile per il diadema imperiale, il collare di perle e la clamide purpurea, è ritratta nell'atto di offrire il calice aureo. Il pannello dell'orlo del mantello è decorato con la scena dei Re Magi che portano doni a Cristo, alludendo simbolicamente all'offerta stessa dell'imperatrice. Le dame di corte a destra indossano abiti di seta broccata, testimonianza del lusso dei tessuti costantinopolitani del VI secolo. La disposizione frontale delle figure, l'assenza di profondità spaziale e la gerarchia proporzionale (Teodora è più alta delle dame) sono tratti caratteristici dello stile ieratico byzantino. Il nimbo dorato intorno alla testa dell'imperatrice la equipara iconograficamente alla santità, esprimendo la concezione teocratica del potere imperiale.",
   "innovations": [],
   "term_ids": [
    "offerta-eucaristica",
@@ -2590,7 +2589,6 @@
   "year_end": 692,
   "type": "architettura",
   "technique_ids": [
-   "costruzione-in-pietra",
    "mosaico-parietale"
   ],
   "materials": [
@@ -4951,7 +4949,7 @@
  },
  {
   "id": "cristo-pantocrator-hosios-lukas",
-  "title": "Cristo Pantocatore",
+  "title": "Cristo Pantocratore",
   "artist_ids": [],
   "period_id": "arte-bizantina",
   "date_text": "XI secolo",
@@ -4966,7 +4964,7 @@
    "oro"
   ],
   "location_city": "Daphni",
-  "location_place": "Monastero di Hosios Lukas (Grecia)",
+  "location_place": "Monastero di Dafni (Grecia)",
   "lat": 38.4,
   "lon": 23.36,
   "book": 1,
@@ -4974,7 +4972,7 @@
   "page": 32,
   "source_file": "Libro1.1-giu-2026",
   "importance": 1,
-  "summary": "Mosaico del XI secolo nella cupola del monastero di Hosios Lukas a Daphni (Grecia), raffigurante il Cristo Pantocrator. Esemplifica la codificazione del programma decorativo bizantino: il Cristo barbuto e autoritario sovrasta la corte celeste, distribuita gerarchicamente sulle pareti.",
+  "summary": "Mosaico del XI secolo nella cupola del monastero di Dafni (Grecia), raffigurante il Cristo Pantocrator. Esemplifica la codificazione del programma decorativo bizantino: il Cristo barbuto e autoritario sovrasta la corte celeste, distribuita gerarchicamente sulle pareti.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -5154,7 +5152,7 @@
   "analysis": null,
   "innovations": [
    "doppio transetto e doppia abside",
-   "soffitto diperto dell'Albero di Iesse",
+   "soffitto dipinto dell'Albero di Iesse",
    "portale di bronzo bernwardiano"
   ],
   "term_ids": [
@@ -6564,7 +6562,7 @@
   "type": "architettura",
   "technique_ids": [],
   "materials": [
-   "arenaria sacra"
+   "arenaria"
   ],
   "location_city": "Pavia",
   "location_place": "Basilica di San Michele Maggiore",
@@ -12846,8 +12844,8 @@
   "title": "Pianta di Castel del Monte",
   "artist_ids": [],
   "period_id": "arte-federiciana",
-  "date_text": "dal 1247",
-  "year_start": 1247,
+  "date_text": "dal 1240",
+  "year_start": 1240,
   "year_end": null,
   "type": "architettura",
   "technique_ids": [],
@@ -12861,7 +12859,7 @@
   "page": 20,
   "source_file": "Libro1.4-giu-2026-1",
   "importance": 1,
-  "summary": "Pianta di Castel del Monte che mostra la struttura ottagonale con otto torri ottagonali agli angoli e le sedici stanze ottagonali a pianta quadrata attorno al cortile centrale.",
+  "summary": "Pianta di Castel del Monte che mostra la struttura ottagonale con otto torri ottagonali agli angoli e le sedici stanze trapezoidali attorno al cortile centrale.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -21380,7 +21378,7 @@
   "page": 28,
   "source_file": "Libro2.2-giu-2026-4",
   "importance": 3,
-  "summary": "Prima opera certa di Masaccio, datata 23 aprile 1422, il trittico (pannello centrale 108 × 65 cm) fu realizzato per la chiesa di Sant'Ambrogio a Cascia, presso Reggello. Al centro è raffigurata la Madonna col Bambino in trono, affiancata da quattro santi: san Bartolomeo, apostolo riconoscibile dal coltello, simbolo del suo martirio; san Biagio, vescovo e martire, associato alla guarigione dalle malattie della gola; san Giovenale, vescovo e titolare della dedicazione che dà il nome al trittico; e sant’Antonio Abate, eremita protettore degli animali e raffigurato con il bastone a tau e la campanella. Nonostante la struttura tradizionale a trittico con cuspidi e fondo oro, Masaccio rinuncia al decorativismo tardogotico e costruisce le figure attraverso una rigorosa prospettiva lineare e una solida resa volumetrica.",
+  "summary": "Prima opera certa di Masaccio, datata 23 aprile 1422, il trittico (pannello centrale 108 × 65 cm) fu realizzato per la chiesa di San Giovenale a Cascia, presso Reggello. Al centro è raffigurata la Madonna col Bambino in trono, affiancata da quattro santi: san Bartolomeo, apostolo riconoscibile dal coltello, simbolo del suo martirio; san Biagio, vescovo e martire, associato alla guarigione dalle malattie della gola; san Giovenale, vescovo e titolare della dedicazione che dà il nome al trittico; e sant’Antonio Abate, eremita protettore degli animali e raffigurato con il bastone a tau e la campanella. Nonostante la struttura tradizionale a trittico con cuspidi e fondo oro, Masaccio rinuncia al decorativismo tardogotico e costruisce le figure attraverso una rigorosa prospettiva lineare e una solida resa volumetrica.",
   "analysis": "Il Trittico di San Giovenale conserva la forma tradizionale della pala gotica, ma introduce un modo completamente nuovo di costruire lo spazio. Le linee prospettiche del pavimento e del trono convergono verso il volto della Madonna, unificando le tre tavole in un unico ambiente coerente.\n\nLe figure dei santi sono disposte secondo diversi piani di profondità e acquistano una consistenza volumetrica nuova, lontana dalla bidimensionalità e dalla ricchezza ornamentale del tardogotico. Anche i due angeli inginocchiati e rappresentati di spalle ai piedi del trono contribuiscono a rendere più credibile lo spazio.\n\nParticolarmente significativo è il Bambino, la cui posa e fisicità mostrano l'interesse di Masaccio per la scultura contemporanea, in particolare per Donatello. L'opera segna così uno dei primi momenti in cui la prospettiva e la solidità delle figure diventano strumenti fondamentali per costruire una pittura pienamente rinascimentale.",
   "innovations": [
    "primo esempio di prospettiva lineare sistematica nella pittura",
@@ -24361,7 +24359,7 @@
   "page": 3,
   "source_file": "Libro-2.1-giu-2026-1",
   "importance": 1,
-  "summary": "Cappella Reale del King's College di Cambridge, costruita tra il 1441 e il 1544, caratteristica del Gotico fiammeggiante inglese. Il soffitto a ventaglio è opera di Jean Bornoy, John Wastell e Jacob van Tienen.",
+  "summary": "Cappella Reale del King's College di Cambridge, costruita tra il 1441 e il 1544, caratteristica del Gotico fiammeggiante inglese. Il soffitto a ventaglio è opera di Jean Bornoy e John Wastell.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -24405,7 +24403,7 @@
   "source_file": "Libro-2.1-giu-2026-1",
   "importance": 2,
   "summary": "Il ritratto raffigura Leonello d’Este di profilo, secondo una formula vicina ai modelli delle medaglie e dei cammei antichi. Il volto, nitidamente delineato, emerge davanti a uno sfondo vegetale ricco di dettagli, mentre la resa minuziosa dei capelli, dell’abito e dei tratti fisionomici restituisce una forte attenzione alla caratterizzazione individuale. L’opera appartiene alla serie di ritratti di profilo realizzati da Pisanello per importanti corti italiane, tra cui gli Este di Ferrara e i Gonzaga di Mantova.",
-  "analysis": "Il Ritratto di Leonello d’Este mostra il legame tra la ritrattistica del Quattrocento e il recupero dell'antico. Il profilo netto del duca richiama direttamente la tradizione delle monete, delle medaglie e dei cammei, nei quali il volto del personaggio era isolato e facilmente riconoscibile.\n\nPisanello mantiene questa impostazione fortemente idealizzata, ma la combina con un'attenta osservazione dei caratteri fisionomici di Leonello. Il profilo diventa così uno strumento per rendere immediatamente riconoscibile il personaggio e, allo stesso tempo, per celebrarne il prestigio.\n\nIl raffinato sfondo vegetale, fitto di particolari, appartiene invece alla sensibilità tardogotica e crea un contrasto interessante con la nitidezza quasi scultorea del volto. L'opera mostra quindi l'incontro tra tradizione cortese, attenzione naturalistica e recupero dell'arte antica, caratteristiche tipiche della cultura delle corti italiane del Quattrocento.",
+  "analysis": "Il Ritratto di Leonello d’Este mostra il legame tra la ritrattistica del Quattrocento e il recupero dell'antico. Il profilo netto del marchese richiama direttamente la tradizione delle monete, delle medaglie e dei cammei, nei quali il volto del personaggio era isolato e facilmente riconoscibile.\n\nPisanello mantiene questa impostazione fortemente idealizzata, ma la combina con un'attenta osservazione dei caratteri fisionomici di Leonello. Il profilo diventa così uno strumento per rendere immediatamente riconoscibile il personaggio e, allo stesso tempo, per celebrarne il prestigio.\n\nIl raffinato sfondo vegetale, fitto di particolari, appartiene invece alla sensibilità tardogotica e crea un contrasto interessante con la nitidezza quasi scultorea del volto. L'opera mostra quindi l'incontro tra tradizione cortese, attenzione naturalistica e recupero dell'arte antica, caratteristiche tipiche della cultura delle corti italiane del Quattrocento.",
   "innovations": [
    "Profilo netto e medaglistico, ispirato all'antichità classica",
    "Naturalismo fisionomico, con attenzione ai tratti individuali",
@@ -24922,7 +24920,7 @@
   "page": 54,
   "source_file": "Libro2.2-giu-2026-4",
   "importance": 2,
-  "summary": "Pala d'altare di Domenico Veneziano per la chiesa di Santa Lucia de' Magnoli a Firenze (ora agli Uffizi). La tavola principale raffigura una sacra conversazione: la Vergine, il Bambino e quattro santi (Giovanni Battista, Zenobio, Francesco e Lucia) disposti in primo piano in un rivestimento murato che occupa la profondita spaziale. Un portico leggero e arioso con archi ogivali su esili colonnine occupa il secondo piano.",
+  "summary": "Pala d'altare di Domenico Veneziano per la chiesa di Santa Lucia de' Magnoli a Firenze (ora agli Uffizi). La tavola principale raffigura una sacra conversazione: la Vergine, il Bambino e quattro santi (Giovanni Battista, Zenobio, Francesco e Lucia) disposti in primo piano in un recinto murato che occupa la profondità spaziale. Un portico leggero e arioso con archi ogivali su esili colonnine occupa il secondo piano.",
   "analysis": "La Pala di Santa Lucia de' Magnoli e una delle opere fondatrici della sacra conversazione rinascimentale. Domenico Veneziano introduce una nuova concezione dello spazio luminoso e aereo, ispirata dalla pittura fiamminga. Il portico con archi ogivali crea un'architettura leggera ed ariosa. La luce uniforme e radente elimina le ombre dense e crea una gamma cromatica chiara e brillante. La predella e dispersa in vari musei europei.",
   "innovations": [
    "nuova concezione della luce in chiave sacra",
@@ -26928,7 +26926,7 @@
    "terracotta invetriata"
   ],
   "location_city": "Firenze",
-  "location_place": "Chiesa di San Miniato al Monte",
+  "location_place": "Chiesa abbaziale di San Miniato al Monte",
   "lat": 43.759432,
   "lon": 11.265143,
   "book": 2,
@@ -27377,7 +27375,7 @@
   "page": 23,
   "source_file": "Libro2.3-giu-2026-2",
   "importance": 1,
-  "summary": "Ciclo di affreschi di Andrea Mantegna nel castello di San Giorgio a Mantova, commissionato da Ludovico II Gonzaga. Nel capitolo è citato il particolare dell'oculo come testimonianza dell'arte di corte gonzaghesca nel Quattrocento.",
+  "summary": "Ciclo di affreschi di Andrea Mantegna nel castello di San Giorgio a Mantova, commissionato da Ludovico III Gonzaga. Nel capitolo è citato il particolare dell'oculo come testimonianza dell'arte di corte gonzaghesca nel Quattrocento.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -32735,7 +32733,7 @@
    "tavola"
   ],
   "location_city": "Parigi",
-  "location_place": "Musée du Louvre (collocazione originaria: studio dell'artista a Blois, poi castello di Fontainebleau)",
+  "location_place": "Musée du Louvre (collocazione originaria: il Clos Lucé, presso Amboise, poi castello di Fontainebleau)",
   "lat": 48.86,
   "lon": 2.34,
   "book": 2,
@@ -33955,7 +33953,7 @@
   "page": 14,
   "source_file": "Libro2.5-giu-2026-7",
   "importance": 3,
-  "summary": "Olio su tavola (174,5 × 178,5 cm), commissionato da Atlanta Baglioni in memoria del figlio Grifonetto, per la cappella di famiglia nella chiesa di San Francesco a Perugia (collocata nel 1507). Il soggetto principale — il trasporto del Cristo morto — deriva da un sarcofago romano con il trasporto di Meleagro, mentre il Laocoonte ispira la postura di dolore di Nicodemo. Da @Michelangelo Buonarroti,  deriva la monume,ntalità del Cristo (richiamo alla Pietà vaticana) e la posa di Maria Maddalena (dalla Vergine del Tondo Doni). Il paesaggio sullo sfondo è leonardesco.",
+  "summary": "Olio su tavola (174,5 × 178,5 cm), commissionato da Atalanta Baglioni in memoria del figlio Grifonetto, per la cappella di famiglia nella chiesa di San Francesco a Perugia (collocata nel 1507). Il soggetto principale — il trasporto del Cristo morto — deriva da un sarcofago romano con il trasporto di Meleagro, mentre il Laocoonte ispira la postura di dolore di Nicodemo. Da @Michelangelo Buonarroti,  deriva la monumentalità del Cristo (richiamo alla Pietà vaticana) e la posa di Maria Maddalena (dalla Vergine del Tondo Doni). Il paesaggio sullo sfondo è leonardesco.",
   "analysis": "La Pala Baglioni è la sintesi più ambiziosa del periodo fiorentino di Raffaello: un compendio di influenze classiche, leonardesche e michelangiolesche fuse in un'opera di straordinaria intensità espressiva. La soluzione compositiva definitiva sostituisce una prima idea (Cristo appoggiato al suolo sul sepolcro, secondo un prototipo peruginesco) con il trasporto dinamico del corpo, aggiornato alle ricerche sulla statuaria antica. Il sarcofago romano di Meleagro è scelto non casualmente: la storia di Meleagro (uccisione dei fratelli, condanna a morte dalla madre) presenta assonanze con la vicenda di Grifonetto Baglioni. La composizione divisa in gruppi riprende schemi michelangioleschi ma l'intensità emotiva rimanda alla tradizione leonardesca sulla raffigurazione dei sentimenti.",
   "innovations": [
    "Fusione di modelli classici, leonardeschi e michelangioleschi",
@@ -35792,7 +35790,7 @@
    "marmo"
   ],
   "location_city": "Roma",
-  "location_place": "Chiesa di San Pietro in Vincoli",
+  "location_place": "Basilica di San Pietro in Vincoli",
   "lat": 41.89,
   "lon": 12.49,
   "book": 2,
@@ -40313,7 +40311,7 @@
   "page": 2,
   "source_file": "Libro2.7-giu-2026-9",
   "importance": 1,
-  "summary": "Ritratto di Cosimo I de' Medici in armatura da guerra, opera di Bronzino datata circa 1545. Raffigura il duca con i tratti della sua autorità militare, veicolo di significati dynastici medicei tipici della ritrattistica di corte bronzinesca.",
+  "summary": "Ritratto di Cosimo I de' Medici in armatura da guerra, opera di Bronzino datata circa 1545. Raffigura il duca con i tratti della sua autorità militare, veicolo di significati dinastici medicei tipici della ritrattistica di corte bronzinesca.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -40596,7 +40594,7 @@
    "tela"
   ],
   "location_city": "Venezia",
-  "location_place": "Basilica di Santa Maria Gloriosa dei Frari",
+  "location_place": "Chiesa dei Gesuiti (Santa Maria Assunta)",
   "lat": 45.436872,
   "lon": 12.326225,
   "book": 2,
@@ -40862,9 +40860,9 @@
    "pirro-ligorio"
   ],
   "period_id": "manierismo",
-  "date_text": "1552-1563",
+  "date_text": "1552-1585",
   "year_start": 1552,
-  "year_end": 1563,
+  "year_end": 1585,
   "type": "scultura",
   "technique_ids": [],
   "materials": [
@@ -40879,7 +40877,7 @@
   "page": 30,
   "source_file": "Libro2.7-giu-2026-9",
   "importance": 1,
-  "summary": "Scultura mostruosa nel Sacro bosco (o Parco dei Mostri) di Bomarzo, realizzato tra il 1552 e il 1580 per il principe Pier Francesco Vicino Orsini. Una delle numerose statue fantastiche e figure mitologiche che popolano il giardino, probabile opera di Simone Moschino. Il giardino è archetipo del giardino manierista con significati magico-simbolici.",
+  "summary": "Scultura mostruosa nel Sacro bosco (o Parco dei Mostri) di Bomarzo, realizzato tra il 1552 e il 1585 per il principe Pier Francesco Vicino Orsini. Una delle numerose statue fantastiche e figure mitologiche che popolano il giardino, probabile opera di Simone Moschino. Il giardino è archetipo del giardino manierista con significati magico-simbolici.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -43200,8 +43198,8 @@
   "page": 0,
   "source_file": "Libro-1.1-giu-2026-1",
   "importance": 3,
-  "summary": "La Pala d'oro è il retablo d'oro e smalto che ornamento l'altare maggiore della Basilica di San Marco a Venezia. Commissionata inizialmente dal doge Ordelafo Falier nel 1105, fu in gran parte realizzata a Costantinopoli da maestri orafi bizantini, e poi ampliata e rimaneggiata fino al 1345. È composta da 83 smalti cloisonné bizantini, 117 pietre preziose e numerose figure in bassorilievo, racchiuse in una cornice gotica di Paolo e Zambono Veneziano.",
-  "analysis": "La Pala d'oro rappresenta uno dei capolavori assoluti dell'oreficeria medievale europea, sintesi mirabile tra la tradizione bizantina degli smalti cloisonné e il gotico veneziano. La composizione si articola su più registri: nella parte superiore l'arcangelo Michele, al centro il Cristo Pantocratore tra la Vergine e san Marco, e nei registri inferiori le storie di san Marco e le scene evangeliche. Gli smalti più antichi risalgono al X secolo e furono probabilmente realizzati per l'imperatore bizantino; quelli del XII secolo furono commissionati dal doge Falier dopo il saccheggio di Costantinopoli del 1204. La cornice gotica, con le sue arcate traforate e i pinnacoli, fu eseguita dai veneziani Paolo e Zambono nel 1345, creando un continuum stilistico tra Oriente e Occidente che riflette la posizione peculiare di Venezia tra i due mondi.",
+  "summary": "La Pala d'oro è il retablo d'oro e smalto che ornamento l'altare maggiore della Basilica di San Marco a Venezia. Commissionata inizialmente dal doge Pietro I Orseolo nel 976 e poi ampliata dal doge Ordelafo Falier nel 1105, fu in gran parte realizzata a Costantinopoli da maestri orafi bizantini, e poi ampliata e rimaneggiata fino al 1345. È composta da 83 smalti cloisonné bizantini, 117 pietre preziose e numerose figure in bassorilievo, racchiuse in una cornice gotica di Gian Paolo Boninsegna.",
+  "analysis": "La Pala d'oro rappresenta uno dei capolavori assoluti dell'oreficeria medievale europea, sintesi mirabile tra la tradizione bizantina degli smalti cloisonné e il gotico veneziano. La composizione si articola su più registri: nella parte superiore l'arcangelo Michele, al centro il Cristo Pantocratore tra la Vergine e san Marco, e nei registri inferiori le storie di san Marco e le scene evangeliche. Gli smalti più antichi risalgono al X secolo e furono probabilmente realizzati per l'imperatore bizantino; quelli del XII secolo furono commissionati dal doge Falier, mentre altri furono aggiunti nel Duecento dal doge Pietro Ziani dopo il saccheggio di Costantinopoli del 1204. La cornice gotica, con le sue arcate traforate e i pinnacoli, fu eseguita dal veneziano Gian Paolo Boninsegna nel 1345, creando un continuum stilistico tra Oriente e Occidente che riflette la posizione peculiare di Venezia tra i due mondi.",
   "innovations": [
    "sintesi stilistica bizantino-gotica",
    "smalto cloisonné su larga scala",
@@ -43333,11 +43331,11 @@
   "source_file": "Libro-2.1-giu-2026-1",
   "importance": 3,
   "summary": "L'Arco di Costantino fu eretto nel 315 d.C. dal Senato romano per commemorare la vittoria di Costantino su Massenzio nella battaglia di Ponte Milvio (312). È il più grande arco trionfale romano giuntoci intatto e si distingue per l'impiego massiccio di spolia — rilievi e sculture reimpiegate da monumenti di Traiano, Adriano e Marco Aurelio — accanto a rilievi ex novo di fattura costantiniana, che mostrano una drastica semplificazione formale rispetto ai modelli classici.",
-  "analysis": "L'Arco di Costantino è un documento cruciale per la storia dell'arte tardoromana e per il dibattito sul passaggio dall'arte classica a quella medievale. I rilievi ex novo — come l'Oratio e la Liberalitas dell'attico e i medaglioni laterali — presentano figure ieratiche, proporzioni ribaltate, prospettiva schiacciata e un trattamento superficiale molto sintetico che Alois Riegl interpretò come espressione della Kunstwollen tardoromana, orientata verso la visione d'insieme piuttosto che verso il dettaglio naturalistico. La reimpiego dei rilievi traianei, adrianei e aureliani (i cosiddetti spolia) è stato letto sia come segno di declino artigianale sia come choice ideologica: Costantino si presentava come erede dei grandi imperatori del passato.",
+  "analysis": "L'Arco di Costantino è un documento cruciale per la storia dell'arte tardoromana e per il dibattito sul passaggio dall'arte classica a quella medievale. I rilievi ex novo — come l'Oratio e la Liberalitas dell'attico e i medaglioni laterali — presentano figure ieratiche, proporzioni ribaltate, prospettiva schiacciata e un trattamento superficiale molto sintetico che Alois Riegl interpretò come espressione della Kunstwollen tardoromana, orientata verso la visione d'insieme piuttosto che verso il dettaglio naturalistico. La reimpiego dei rilievi traianei, adrianei e aureliani (i cosiddetti spolia) è stato letto sia come segno di declino artigianale sia come scelta ideologica: Costantino si presentava come erede dei grandi imperatori del passato.",
   "innovations": [
    "impiego sistematico di spolia",
    "rilievi ex novo con prospettiva ribaltata",
-   "iscrizione dedicatoria al Sol Invictus"
+   "iscrizione dedicatoria con formula religiosa volutamente neutra (instinctu divinitatis)"
   ],
   "term_ids": [
    "spolia",
@@ -43406,7 +43404,7 @@
   "year_end": 305,
   "type": "scultura",
   "technique_ids": [
-   "fusione-in-bronzo"
+   "scultura-in-pietra"
   ],
   "materials": [
    "porfido rosso"
@@ -43759,7 +43757,7 @@
   "page": 0,
   "source_file": "Libro-2.1-giu-2026-1",
   "importance": 3,
-  "summary": "La Rotonda dell'Anastasis, costruita da Costantino sul luogo del sepolcro di Cristo a Gerusalemme intorno al 335, è il nucleo originario della Basilica del Santo Sepolcro. La grande cupola che sovrasta il edificio circolare racchiude l'edicola del Santo Sepolcro. Il complesso costantiniano comprendeva anche una basilica a cinque navate (il Martyrium) e un cortile porticato che collegava le due strutture.",
+  "summary": "La Rotonda dell'Anastasis, costruita da Costantino sul luogo del sepolcro di Cristo a Gerusalemme intorno al 335, è il nucleo originario della Basilica del Santo Sepolcro. La grande cupola che sovrasta l'edificio circolare racchiude l'edicola del Santo Sepolcro. Il complesso costantiniano comprendeva anche una basilica a cinque navate (il Martyrium) e un cortile porticato che collegava le due strutture.",
   "analysis": null,
   "innovations": [
    "edificio a pianta centrale sopra il sepolcro",
@@ -43970,7 +43968,7 @@
    "argento"
   ],
   "location_city": "Madrid",
-  "location_place": "Museo Archeologico Nazionale",
+  "location_place": "Real Academia de la Historia",
   "lat": 40.4138,
   "lon": -3.6921,
   "book": 1,
@@ -44412,7 +44410,7 @@
   "page": 0,
   "source_file": "Libro-2.1-giu-2026-1",
   "importance": 3,
-  "summary": "Il Battistero Lateranense, noto anche come battistero di San Giovanni in Fonte, fu fatto costruire da Costantino intorno al 315-330 accanto alla basilica del Laterano. A pianta ottagonale con otto colonne di porfido, è il più antico battistero cristiano di Roma e servì da modello per tutti i battisteri successivi. La vasca battesimale centrale in basalto verde, i mosaici e il rivestimento marmoreo testimoniano la ricchezza della committenza costantiniana.",
+  "summary": "Il Battistero Lateranense, noto anche come battistero di San Giovanni in Fonte, fu fatto costruire da Costantino intorno al 315-330 accanto alla basilica del Laterano. Rifatto a pianta ottagonale con otto colonne di porfido da papa Sisto III nel V secolo, è il più antico battistero cristiano di Roma e servì da modello per tutti i battisteri successivi. La vasca battesimale centrale in basalto verde, i mosaici e il rivestimento marmoreo testimoniano la ricchezza della committenza costantiniana.",
   "analysis": null,
   "innovations": [
    "pianta ottagonale del battistero",
@@ -45081,7 +45079,7 @@
   "page": 0,
   "source_file": null,
   "importance": 2,
-  "summary": "Raffigura la musa Calliope (della poesia epica) o Erato (della poesia amorosa), dipinta per lo studio dei Belfiore. L'opera mostra figure trasformate in forme scultoree, modellate nel bronzo, sbalzate a cellole e incastonate con pietre preziose, con un realismo crudo che richiama la fontaniera ma controllato da classici modelli toscani.",
+  "summary": "Raffigura la musa Calliope (della poesia epica) o Erato (della poesia amorosa), dipinta per lo studio dei Belfiore. Le figure sembrano trasformate in sculture, come modellate nel bronzo o lavorate a sbalzo e incastonate di pietre preziose, con un realismo crudo temperato dai modelli classici toscani.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -45116,7 +45114,7 @@
   "technique_ids": [
    "affresco",
    "olio-tela",
-   "scultura-marmo"
+   "scultura-in-marmo"
   ],
   "materials": [
    "affresco",
@@ -45184,7 +45182,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Borso d’Este decide di ampliare il trecentesco Palazzo Schifanoia, “delizia” situata ai margini della città antica in cui i signori di Ferrara si dedicavano a incontri, giochi, ricevimenti e balli. Nel 1465 affida all’architetto Pietro Benvenuto degli Ordini, (1448-1483) il compito di sopraelevare di un piano l’edificio e di ricavarvi un nuovo appartamento ducale, dominato da un salone d’onore un tempo collegato al giardino da una scala monumentale. Tra il 1467 e il 1470 questo salone viene rivestito da un ciclo ad affresco e tempera a secco, con pareti di 500×320 cm ciascuna, tuttora conservato a Ferrara, a Palazzo Schifanoia. Il programma iconografico è ideato da Pellegrino Prisciani, professore di astronomia all’università di Ferrara e bibliotecario degli Este.",
+  "summary": "Borso d’Este decide di ampliare il trecentesco Palazzo Schifanoia, “delizia” situata ai margini della città antica in cui i signori di Ferrara si dedicavano a incontri, giochi, ricevimenti e balli. Nel 1465 affida all’architetto Pietro Benvenuto degli Ordini (1448-1483) il compito di sopraelevare di un piano l’edificio e di ricavarvi un nuovo appartamento ducale, dominato da un salone d’onore un tempo collegato al giardino da una scala monumentale. Tra il 1467 e il 1470 questo salone viene rivestito da un ciclo ad affresco e tempera a secco, con pareti di 500×320 cm ciascuna, tuttora conservato a Ferrara, a Palazzo Schifanoia. Il programma iconografico è ideato da Pellegrino Prisciani, professore di astronomia all’università di Ferrara e bibliotecario degli Este.",
   "analysis": "Le pareti sono divise in dodici sezioni, una per mese, separate da finti pilastri su basi marmoree; ciascuna sezione è a sua volta suddivisa in tre ordini sovrapposti: in alto il trionfo della divinità pagana del mese, al centro il segno zodiacale con le personificazioni allegoriche dei decani su fondo blu, in basso, nel registro più ampio, momenti della vita di corte con Borso protagonista. L’esecuzione viene affidata a più pittori che lavorano contemporaneamente, appartenenti per lo più alla cerchia di @Cosmè Tura, (probabile direttore dell’opera): tra essi @Francesco del Cossa, firma Marzo, Aprile e Maggio, mentre @Ercole de’ Roberti, allora giovanissimo, realizza Settembre; altre mani restano ignote, come il cosiddetto Maestro degli occhi spalancati, autore di Giugno. Le pareti sud e ovest sono quasi interamente perdute e note solo tramite descrizioni letterarie e copie. Nel complesso il ciclo mira a glorificare Borso associando il tema del tempo, impersonato da Zodiaco e divinità pagane, al buon governo del duca, con una solidità volumetrica e prospettica pienamente rinascimentale che supera sia l’eleganza gotico-cortese sia l’iconografia medievale dei mesi legata alle sole attività agricole.",
   "innovations": [
    "Fusione tra astrologia colta e propaganda del buon governo signorile",
@@ -45229,7 +45227,7 @@
   "page": 0,
   "source_file": "",
   "importance": 2,
-  "summary": "Scomparto laterale del Politico Roverella",
+  "summary": "Scomparto laterale del Polittico Roverella",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -45334,7 +45332,7 @@
   "page": 0,
   "source_file": "",
   "importance": 2,
-  "summary": "Ciclo di dieci teleri (tre dei quali dipinti da Gentile) realizzati per l'Oraorio della Scuola Grande di San Giovanni Evangelista, che coinvolse anche altri artisti nella realizzazione.",
+  "summary": "Ciclo di dieci teleri (tre dei quali dipinti da Gentile) realizzati per l'Oratorio della Scuola Grande di San Giovanni Evangelista, che coinvolse anche altri artisti nella realizzazione.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -45398,7 +45396,7 @@
  },
  {
   "id": "trionfi-di-cesare-in-gallia",
-  "title": "Trionfi di Cesare in Gallia",
+  "title": "Trionfi di Cesare",
   "artist_ids": [
    "andrea-mantegna"
   ],
@@ -45640,7 +45638,7 @@
   "innovations": [
    "Tenebrismo",
    "Dinamismo diagonale",
-   "Autorepresentazione dell'artista",
+   "Autorappresentazione dell'artista",
    "Teatralità del martirio"
   ],
   "term_ids": [
@@ -45940,7 +45938,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Telerio che raffigura un miracoloso evento legato alla reliquia della Vera Croce avvenuto a Rialto. L'opera presenta una veduta urbana di grande vivacità, con l'Inghilterra medievale descritta mediante torri, rocche e cinte murarie immaginarie a sinistra, e la Bretagna rinascimentale caratterizzata da edifici non dissimili dalle architetture veneziane a destra. Il protagonista è la città con le sue architetture.",
+  "summary": "Telero che raffigura un miracoloso evento legato alla reliquia della Vera Croce avvenuto a Rialto. L'opera presenta una veduta urbana di grande vivacità, con il ponte di Rialto, ancora ligneo, che attraversa il Canal Grande fra i palazzi veneziani, mentre i confratelli si affaccendano per recuperare dal canale la reliquia della Vera Croce. Il protagonista è la città con le sue architetture.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -46171,7 +46169,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Opera di stile tardo-gotico per l'abbondanza di ori nell'ornato della pedana e dell'architettura merlata che incornicia la scena, ma presenta anche elementi tecnici moderni come la precoce esecuzione su sostante le dimensioni notevoli e la ricerca efficace e unitaria dello spazio pittorico che superare la suddivisione in tre pannelli.",
+  "summary": "Opera di stile tardo-gotico per l'abbondanza di ori nell'ornato della pedana e dell'architettura merlata che incornicia la scena, ma presenta anche elementi tecnici moderni come la precoce esecuzione su tela, le dimensioni notevoli e la ricerca efficace e unitaria dello spazio pittorico che supera la suddivisione in tre pannelli.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -46212,7 +46210,7 @@
   "page": 0,
   "source_file": null,
   "importance": 2,
-  "summary": "Figura delle Muse realizzata da Angelo Maccagnino per lo studiolo di Belriguardo. Raffigura probabilmente Urania (o Apollo), musa/guida delle Muse, seduta in trono con attributi musicali o astronomici.",
+  "summary": "Figura delle Muse realizzata da Angelo Maccagnino per lo studiolo di Belfiore. Raffigura probabilmente Urania (o Apollo), musa/guida delle Muse, seduta in trono con attributi musicali o astronomici.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -46345,7 +46343,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "La parete principale (nord) mostra il marchese Ludovico Gonzaga in conversazione con la moglie Barbara di Brandeburgo e la corte, circondati da figli, cani e segretari. Scena di vita quotidiana elevata a cerimoniale attraverso la composizione rigorosa e l'uso della prospettiva.\nI ritratti di Vittore da Feltre, Umanista e precursore dei principi pedagogici presenti nell'opera e Leon Battista Alberti compaiono sullo sfondo.",
+  "summary": "La parete principale (nord) mostra il marchese Ludovico Gonzaga in conversazione con la moglie Barbara di Brandeburgo e la corte, circondati da figli, cani e segretari. Scena di vita quotidiana elevata a cerimoniale attraverso la composizione rigorosa e l'uso della prospettiva.\nI ritratti di Vittorino da Feltre, Umanista e precursore dei principi pedagogici presenti nell'opera e Leon Battista Alberti compaiono sullo sfondo.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -46762,7 +46760,7 @@
   "page": 0,
   "source_file": null,
   "importance": 2,
-  "summary": "Edificio residenziale dell'Addizione Erculea, costruito per Sigismondo d'Este. Facciata caratterizzata da bugnato a diamantate (blocchi a forma di diamante) in marmo rosa, l'angolo rivolto sul quadriio è impreziosito da un balcone a candelabre classicheggianti di Gabriele Frisoni, soluzioni planimetriche articolate.\n\nIl pianterreno è occupato dagli appartamenti estivi, il primo piano ospita la Sala Grande, i salotti e gli appartamenti invernali, il mezzanino posto tra il piano terra e quello superiore è riservato agli studioli, all'archivio, alla biblioteca.\nRispetta la tradizione dell'architettura ferrarese, con uno sviluppo orizzontale intorno a diversi cortili in succesione.",
+  "summary": "Edificio residenziale dell'Addizione Erculea, costruito per Sigismondo d'Este. Facciata caratterizzata da bugnato diamantato (blocchi a forma di diamante) in marmo rosa, l'angolo rivolto sul quadrivio è impreziosito da un balcone a candelabre classicheggianti di Gabriele Frisoni, soluzioni planimetriche articolate.\n\nIl pianterreno è occupato dagli appartamenti estivi, il primo piano ospita la Sala Grande, i salotti e gli appartamenti invernali, il mezzanino posto tra il piano terra e quello superiore è riservato agli studioli, all'archivio, alla biblioteca.\nRispetta la tradizione dell'architettura ferrarese, con uno sviluppo orizzontale intorno a diversi cortili in successione.",
   "analysis": null,
   "innovations": [],
   "term_ids": [
@@ -46840,7 +46838,7 @@
   "page": 0,
   "source_file": null,
   "importance": 2,
-  "summary": "Intervento architettonico di ristrutturazione e ampliamento del palazzo per trasformarlo in residenza di rappresentanza deglì Ordini, con creazione di un nuovo appartamento ducale e salone d'onore rettangolare.",
+  "summary": "Intervento architettonico di ristrutturazione e ampliamento del palazzo per trasformarlo in residenza di rappresentanza ducale, con creazione di un nuovo appartamento ducale e salone d'onore rettangolare.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -46878,7 +46876,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Combina elementi tipicamente lagunari con un gusto plastico e pittorico rinascimentale di matrice lombarda giocato sui colori dei materiali e la raffinatezza dell'intaglio delle pietre. La struttura rimanda a prototipi bizantini, mentre la facciata rivela influssi toscani nella scansione spaziale. Le paraste e l'architrave sono richieggiati da motivi decorativi a croce; gli archi ciechi coronano il secondo ordine ripetendo la curva del timpano e le forme circolari degli oculi. La copertura policroma costituisce una ripresa della maniera antica.",
+  "summary": "Combina elementi tipicamente lagunari con un gusto plastico e pittorico rinascimentale di matrice lombarda giocato sui colori dei materiali e la raffinatezza dell'intaglio delle pietre. La struttura rimanda a prototipi bizantini, mentre la facciata rivela influssi toscani nella scansione spaziale. Le paraste e l'architrave sono riquadrati da motivi decorativi a croce; gli archi ciechi coronano il secondo ordine ripetendo la curva del timpano e le forme circolari degli oculi. La copertura policroma costituisce una ripresa della maniera antica.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -46952,7 +46950,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Ciclo di nove teleri dedicati alle Storie di sant'Orsola, principessa vergine e martire vissuta nel IV secolo. L'artista inserisce più episodi in modo calibrato e leggibile in ciascun telerio, arricchendo le scene con numerosi dettagli che impressioniscono il racconto. La narrazione ha un carattere fiabesco asseente nel ciclo dei Mincoli della vera Croce.",
+  "summary": "Ciclo di nove teleri dedicati alle Storie di sant'Orsola, principessa vergine e martire vissuta nel IV secolo. L'artista inserisce più episodi in modo calibrato e leggibile in ciascun telerio, arricchendo le scene con numerosi dettagli che impreziosiscono il racconto. La narrazione ha un carattere fiabesco assente nel ciclo dei Miracoli della vera Croce.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -46989,7 +46987,7 @@
   "page": 0,
   "source_file": null,
   "importance": 2,
-  "summary": "Scena raffigurante l'incontro tra Ludovico Gonzaga, l'imperatore Federico III d'Asburgo, il figlio cardinale Federico Gonzaga e Cristiano di Danimarca. La scena presenta una solennità ufficiale con personaggi maschili in posa formale.\nFederico Gonzaga (figlio di Ludovico) e il cardinale Francesco Gonzaga, con il segretario Cristoforo da Dianquè. dialogo politico e familiare reso con rigore compositivo.",
+  "summary": "Scena raffigurante l'incontro tra Ludovico Gonzaga, l'imperatore Federico III d'Asburgo, il figlio cardinale Francesco Gonzaga e Cristiano di Danimarca. La scena presenta una solennità ufficiale con personaggi maschili in posa formale.\nFederico Gonzaga (figlio di Ludovico) e il cardinale Francesco Gonzaga, con il segretario Cristoforo da Dianquè. dialogo politico e familiare reso con rigore compositivo.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -47104,7 +47102,7 @@
   "page": 0,
   "source_file": "",
   "importance": 2,
-  "summary": "Tavola devozionale privata di piccolo formato (46 x 40,5 cm) che rappresenta la Madonna col Bambino con santi (probabilmente Santa Caterina d'Alessandria e San Francesco). Opera caratterizzata da cromie spente, sfumato trasportato devozionale e maggiore valenza narrativa rispetto agli affreschi.",
+  "summary": "Tavola devozionale privata di piccolo formato (46 x 40,5 cm) che rappresenta la Madonna col Bambino con santi (probabilmente Santa Caterina d'Alessandria e San Francesco). Opera caratterizzata da cromie spente, sfumato, trasporto devozionale e maggiore valenza narrativa rispetto agli affreschi.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -47131,7 +47129,7 @@
   "technique_ids": [],
   "materials": [],
   "location_city": "Venezia",
-  "location_place": "Scuola Grande di San Giovanni Evangelista",
+  "location_place": "Scuola di San Giorgio degli Schiavoni",
   "lat": null,
   "lon": null,
   "book": 1,
@@ -47139,7 +47137,7 @@
   "page": 0,
   "source_file": "",
   "importance": 2,
-  "summary": "Teleri dipinti da Carpaccio nella Scuola Grande di San Giovanni Evangelista in un contesto che reca l'impronta di Gentile Bellini. Opera di committenza profana, rapida e fastosa, poco adatta allo scopo devozionale.",
+  "summary": "Teleri dipinti da Carpaccio nella Scuola di San Giorgio degli Schiavoni in un contesto che reca l'impronta di Gentile Bellini. Opera di committenza profana, rapida e fastosa, poco adatta allo scopo devozionale.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -47740,7 +47738,7 @@
  },
  {
   "id": "politico-griffoni",
-  "title": "Politico Griffoni",
+  "title": "Polittico Griffoni",
   "artist_ids": [
    "francesco-del-cossa"
   ],
@@ -47760,7 +47758,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Polittico commissionato da Floriano Griffoni, membro di una delle caste bolognesi più colte e potenti, per la cappella di famiglia nella basilica di San Petronio. Secondo ricostruzioni, la zona centrale del politico Griffoni era occupata dalla figura di San Ludovico di Tolosa, affiancato dalle tavole con San Pietro e San Giacomo Battista. Nella parte superiore si trovava tondo con la Crocifissione, mentre i plastroni interni ospitavano scomparti con santi di dimensioni ridotte. Nella parte alta del politico l'artista prova a superare il limite imposto dall'arco a tutto sesto o rotondo raffigurando parapetti in pietra che conferiscono un senso di profondità prospettica",
+  "summary": "Polittico commissionato da Floriano Griffoni, membro di una delle caste bolognesi più colte e potenti, per la cappella di famiglia nella basilica di San Petronio. Secondo ricostruzioni, la zona centrale del polittico Griffoni era occupata dalla figura di San Vincenzo Ferrer, affiancato dalle tavole con San Pietro e San Giovanni Battista. Nella parte superiore si trovava tondo con la Crocifissione, mentre i plastroni interni ospitavano scomparti con santi di dimensioni ridotte. Nella parte alta del polittico l'artista prova a superare il limite imposto dall'arco a tutto sesto o rotondo raffigurando parapetti in pietra che conferiscono un senso di profondità prospettica",
   "analysis": "Polittico composto da 109 pannelli (ipotesi ricostruttiva) con figure di santi in nicchie architettoniche, Crocifissione centrale e predella con storie di santi. Opera caratterizzata da unificante della politica griffoniana, figure di vigore plastico e illuminazione laterale.",
   "innovations": [],
   "term_ids": [
@@ -47779,7 +47777,7 @@
  },
  {
   "id": "politico-roverella",
-  "title": "Politico Roverella",
+  "title": "Polittico Roverella",
   "artist_ids": [
    "cosme-tura"
   ],
@@ -47840,7 +47838,7 @@
   "page": 0,
   "source_file": null,
   "importance": 2,
-  "summary": "Opera destinata alla Scuola dei Tagliapietre dove si notano i segni distintivi della bottega ma anche l'energia e il carattere individuale di Bartolomeo, con attenzione ai confronti del linguaggio rinascimentale e influenza della lezione padovana (Mantenga) nelle forme plastiche, solidità volumetrica e linea grafica.",
+  "summary": "Opera destinata alla Scuola dei Tagliapietre dove si notano i segni distintivi della bottega ma anche l'energia e il carattere individuale di Bartolomeo, con attenzione ai confronti del linguaggio rinascimentale e influenza della lezione padovana (Mantegna) nelle forme plastiche, solidità volumetrica e linea grafica.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -47879,7 +47877,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Tavola che raffigura san Francesco attorniato da due gruppi di monaci e clarisse. L'opera è stilisticamente vicina alla pittura aragonese, meno attenta alla resa realistica degli spazi e più rigida nelle figure, ma risente delle novità fiamminghe nei tratti fisionomici delle clarisse, nel fondo oro bulinato, nelle aureole traforate e nella prospettiva ribaltata del pavimento. Le piastrelle riprendono i tipici azulejos spagnoli con motivi geometrici e floreali alternati agli stemmi di Alfonso d'Aragona.",
+  "summary": "Tavola che raffigura san Francesco attorniato da due gruppi di frati e clarisse. L'opera è stilisticamente vicina alla pittura aragonese, meno attenta alla resa realistica degli spazi e più rigida nelle figure, ma risente delle novità fiamminghe nei tratti fisionomici delle clarisse, nel fondo oro bulinato, nelle aureole traforate e nella prospettiva ribaltata del pavimento. Le piastrelle riprendono i tipici azulejos spagnoli con motivi geometrici e floreali alternati agli stemmi di Alfonso d'Aragona.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -48200,7 +48198,7 @@
   "page": 0,
   "source_file": null,
   "importance": 2,
-  "summary": "San Gerolamo nello studiolo, Padre e Dottre della chiesa, vissuto tra il IV e V secolo. Dipinta da Colantonio intorno al 1445 su commissione di re Alfonso il Magnanimo, la tavola apparteneva a un polittico oggi smembrato, di cui faceva parte anche il San Francesco consegna la regola agli ordini francescani. Era destinata alla chiesa di San Lorenzo Maggiore a Napoli ed è oggi conservata al Museo e Gallerie Nazionali di Capodimonte. Il santo indossa l’umile abito francescano invece delle vesti cardinalizie.",
+  "summary": "San Gerolamo nello studiolo, Padre e Dottore della Chiesa, vissuto tra il IV e V secolo. Dipinta da Colantonio intorno al 1445 su commissione di re Alfonso il Magnanimo, la tavola apparteneva a un polittico oggi smembrato, di cui faceva parte anche il San Francesco consegna la regola agli ordini francescani. Era destinata alla chiesa di San Lorenzo Maggiore a Napoli ed è oggi conservata al Museo e Gallerie Nazionali di Capodimonte. Il santo indossa l’umile abito francescano invece delle vesti cardinalizie.",
   "analysis": "Colantonio ambienta il santo in uno spazio chiuso, uno studiolo minuziosamente descritto: ripiani colmi di libri, cartigli e strumenti rendono tangibile la sua profonda cultura. Il pittore però non rinuncia agli aspetti più fiabeschi dell’agiografia, raffigurando il santo mentre estrae una spina dalla zampa del leone, episodio che la leggenda colloca durante le meditazioni nel deserto e che qui viene invece trasportato dentro l’ambiente domestico dello studio. Il rango cardinalizio, tradizionalmente attribuito al santo, è richiamato solo dal cappello appoggiato sul tavolo. Sul piano stilistico l’opera mostra ancora incertezze nella prospettiva, una relativa semplicità nell’ambientazione architettonica e un unico punto di illuminazione: rispetto ad Antonello, l’impianto risulta più arcaico, con il leone e il gesto narrativo ancora centrali rispetto alla costruzione razionale dello spazio.",
   "innovations": [
    "Introduce a Napoli l’iconografia “dotta” del santo studioso, alternativa a quella del santo in meditazione nel deserto",
@@ -48355,7 +48353,7 @@
   ],
   "materials": [],
   "location_city": "Vienna",
-  "location_place": "Kunsthistorsches Museum - Vienna",
+  "location_place": "Kunsthistorisches Museum, Vienna",
   "lat": 48.2,
   "lon": 16.37,
   "book": 1,
@@ -48565,7 +48563,7 @@
   "page": 0,
   "source_file": "",
   "importance": 2,
-  "summary": "Scomparto del Politico Roverella",
+  "summary": "Scomparto del Polittico Roverella",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -48584,7 +48582,8 @@
   "id": "resurrezione-del-figlio-di-teofilo",
   "title": "Resurrezione del figlio di Teofilo e san Pietro in cattedra",
   "artist_ids": [
-   "masolino-da-panicale"
+   "masaccio",
+   "filippino-lippi"
   ],
   "period_id": "umanesimo-fiorentino",
   "date_text": "1427",
@@ -48645,7 +48644,7 @@
   "page": 0,
   "source_file": "",
   "importance": 2,
-  "summary": "Scomparto del Politico Roverella",
+  "summary": "Scomparto del Polittico Roverella",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -48696,7 +48695,7 @@
  },
  {
   "id": "circonscisione",
-  "title": "Circonscisione",
+  "title": "Circoncisione",
   "artist_ids": [
    "cosme-tura"
   ],
@@ -48716,7 +48715,7 @@
   "page": 0,
   "source_file": "",
   "importance": 2,
-  "summary": "Scomparto del Politico Roverella",
+  "summary": "Scomparto del Polittico Roverella",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -48753,7 +48752,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Il telero, datato 1496, raffigura la festa religiosa del 1444 durante la quale avvenne la guarigione miracolosa di un devoto bresciano, giunto appositamente in laguna per venerare il frammento della vera Croce donato alla confraternita nel 1369 da Philippe de Méziéres, cancelliere del regno di Gerusalemme. L’opera è oggi conservata alle Gallerie dell’Accademia di Venezia.",
+  "summary": "Il telero, datato 1496, raffigura la festa religiosa del 1444 durante la quale avvenne la guarigione miracolosa di un devoto bresciano, giunto appositamente in laguna per venerare il frammento della vera Croce donato alla confraternita nel 1369 da Philippe de Méziéres, cancelliere del Regno di Cipro. L’opera è oggi conservata alle Gallerie dell’Accademia di Venezia.",
   "analysis": "Gentile sceglie un punto di vista rialzato, che gli consente di dare ampio risalto a piazza San Marco e di inquadrare la processione nel pieno del suo svolgimento, come evento collettivo, senza però rinunciare alla caratterizzazione dei singoli soggetti: abiti e accessori permettono infatti allo spettatore dell’epoca di riconoscere il doge, i committenti dell’opera e i membri della Scuola Grande di San Giovanni Evangelista che reggono i ceri. La serenità trasmessa dal disciplinato corteo di nobili, patrizi, religiosi e popolani, ritratti con accurata precisione, allude chiaramente all’armonia e all’ordine garantiti dal governo della Serenissima. La piazza, sede del potere religioso e civile, è resa con una cura topografica inedita: il campanile viene spostato lateralmente in modo da rendere visibili la facciata di San Marco, ancora ricoperta di mosaici bizantini, il Palazzo Ducale e la Porta della Carta con i marmi ricoperti di dorature. Nel complesso la pittura di Gentile appare oggettiva, fondata sul rigore formale dei tagli prospettici, su una linea di contorno agile ed essenziale e su un colore netto e ben definito, adatto alla descrizione calligrafica e puntuale degli avvenimenti raccontati.",
   "innovations": [
    "Punto di vista rialzato che permette di inquadrare la processione come evento collettivo nel suo pieno svolgimento",
@@ -48934,7 +48933,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Opera matura di Bellini, dipinta nel 1505 per la chiesa del ricco convento delle monache benedettine di San Zaccaria, che riprende e supera l’arcaica articolazione tripartita del Trittico dei Frari a favore di un’unica tavola continua. La pala mantiene la posizione del trono marmoreo in una nicchia con catino absidale in mosaico dorato, ma unifica la scena in uno spazio unico: ai piedi del trono si trovano al centro un angelo musicante, a sinistra i santi Pietro e Caterina, a destra Lucia e Gerolamo. È nota anche come Madonna col Bambino in trono con angelo musicante e santi Pietro, Caterina, Lucia e Gerolamo. La composizione piramidale è ispirata al Trittico di Piero della Francesca.",
+  "summary": "Opera matura di Bellini, dipinta nel 1505 per la chiesa del ricco monastero delle monache benedettine di San Zaccaria, che riprende e supera l’arcaica articolazione tripartita del Trittico dei Frari a favore di un’unica tavola continua. La pala mantiene la posizione del trono marmoreo in una nicchia con catino absidale in mosaico dorato, ma unifica la scena in uno spazio unico: ai piedi del trono si trovano al centro un angelo musicante, a sinistra i santi Pietro e Caterina, a destra Lucia e Gerolamo. È nota anche come Madonna col Bambino in trono con angelo musicante e santi Pietro, Caterina, Lucia e Gerolamo. La composizione piramidale è ispirata alla Pala di Brera di Piero della Francesca.",
   "analysis": "L’architettura dipinta da Bellini assomiglia a quella reale in cui la pala è collocata: i pilastri istoriati dipinti corrispondono infatti a quelli marmorei della cornice e al resto dell’edificio progettato da Mauro Codussi. La proporzionalità, la chiarezza dell’impianto prospettico e l’uso della luce, oltre a dettagli come l’uovo sospeso sopra la Vergine, già ripreso da Mantegna nella Pala di San Zeno, rimandano a Piero della Francesca. Nell’uso del colore, nella resa sfumata delle barbe e nella raffigurazione degli scampoli di paesaggio al di là dei due pilastri istoriati di gusto classico, Bellini mostra invece di aver già assimilato il linguaggio tonale che caratterizza l’opera di Giorgione, affermatosi nei primissimi anni del secolo. Rispetto al Ritratto del doge Leonardo Loredan, opera eseguita pochi anni prima, la Pala di San Zaccaria mette in luce il versante pubblico e devozionale della produzione belliniana, quello legato alla grande pala d’altare, mentre nel ritratto Bellini applica gli stessi principi di proporzionalità, chiarezza luminosa e resa tonale a un soggetto individuale, dimostrando la coerenza del suo linguaggio pittorico attraverso generi diversi. La prospettiva è costruita sia in pianta sia in alzato, e il trono architettonico domina la composizione dal centro della nicchia.",
   "innovations": [
    "Superamento dell’arcaica articolazione tripartita a favore di un’unica tavola continua",
@@ -48942,7 +48941,7 @@
    "Architettura dipinta in dialogo diretto con quella reale progettata da Mauro Codussi",
    "Assimilazione del linguaggio tonale di Giorgione nel colore e nella resa sfumata",
    "Rimandi a Piero della Francesca e Mantegna nell’uso della prospettiva e in dettagli come l’uovo sospeso",
-   "Composizione piramidale ispirata al Trittico di Piero della Francesca",
+   "Composizione piramidale ispirata alla Pala di Brera di Piero della Francesca",
    "Prospettiva costruita in pianta e in alzato"
   ],
   "term_ids": [
@@ -49611,7 +49610,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Pala d'altare monumentale realizzata per la chiesa di San Francesco nella città di Pesaro.\n\n\nQuesta tavola rappresenta la prima opera a olio realizzata da Bellini ed è un momento fondamentale nel passaggio dei pittori veneziani dal polittico gotico al formato unitario tipico del Rinascimento toscano, pur mantenendo le parti dipinte inserite in una cornice architettonica lignea scolpita e dorata.\n.\nComposta da un pannello centrale con la Coronazione della Vergine tra i santi Francesco, Paolo, Pietro e Girolama, una cimasa con il Cristo morto sorretto dalla Vergine e santi, predella con storie della vita di Cristo, e cornice architettonica intagliata. Opera che segna l'evoluzione verso uno spazio unitario e luminoso.\n\nIl pannello centrale della Pala di Pesaro, dipinto tra il 1470 e il 1475, raffigura l’Incoronazione della Vergine da parte di Cristo, entrambi seduti su un imponente trono marmoreo, con ai lati i santi Pietro e Paolo da un lato, Gerolamo e Francesco dall’altro, mentre dal cielo, illuminato dalla colomba dello Spirito Santo, si affacciano cherubini e serafini. ",
+  "summary": "Pala d'altare monumentale realizzata per la chiesa di San Francesco nella città di Pesaro.\n\n\nQuesta tavola rappresenta la prima opera a olio realizzata da Bellini ed è un momento fondamentale nel passaggio dei pittori veneziani dal polittico gotico al formato unitario tipico del Rinascimento toscano, pur mantenendo le parti dipinte inserite in una cornice architettonica lignea scolpita e dorata.\n.\nComposta da un pannello centrale con la Coronazione della Vergine tra i santi Francesco, Paolo, Pietro e Girolamo, una cimasa con il Cristo morto sorretto dalla Vergine e santi, predella con storie della vita di Cristo, e cornice architettonica intagliata. Opera che segna l'evoluzione verso uno spazio unitario e luminoso.\n\nIl pannello centrale della Pala di Pesaro, dipinto tra il 1470 e il 1475, raffigura l’Incoronazione della Vergine da parte di Cristo, entrambi seduti su un imponente trono marmoreo, con ai lati i santi Pietro e Paolo da un lato, Gerolamo e Francesco dall’altro, mentre dal cielo, illuminato dalla colomba dello Spirito Santo, si affacciano cherubini e serafini. ",
   "analysis": "Sul piano compositivo, Bellini dimostra un padroneggiamento perfetto della prospettiva illusionistica: la fuga prospettica non converge sulle teste di Cristo e della Madonna, ma prosegue oltre lo schienale del trono, invitando lo sguardo dello spettatore a concentrarsi sul paesaggio roccioso alle spalle, resa con estrema cura tonale e una luminosità solare e atmosferica, tanto che nello sfondo è riconoscibile la rocca di Gradara. Il trono si apre così come un vero e proprio “quadro nel quadro”, un effetto illusionistico che per l’epoca costituiva una novità assoluta. L’impaginazione dell’insieme è ordinata, nitida e quasi simmetrica, con i quattro santi disposti in coppie simmetriche ai lati del trono, gli sguardi rivolti verso il basso tranne quello di San Paolo che fissa lo spettatore, creando un contrappunto emotivo alla calma generale della scena.",
   "innovations": [
    "Prima opera a olio di Bellini, che sostituisce la tempera tradizionale",
@@ -49940,7 +49939,7 @@
   "page": 0,
   "source_file": null,
   "importance": 3,
-  "summary": "Dipinto ascrivibile con certezza alla committenza gonzaghesca, donato come regalo per il nozze Gilbert de Bourbon. Il santo è in primo piano, la rovina è circodata da fregi. Rispetto alla versione precedente della bellezza quattuoraria, appare nuovamente rigido, all'espressività germinale ribassata. La postura meno contratta e serpentina suggerisce uno schema classico, la maggiore carica del santo pronta a resistere. L'accenno espressiva del volto, i smi dei tratti somatici degli arceri, in la minuta descrizione degli elementi in paesaggio sullo sfondo riceve una influenza nordici assimilati dall'artista.",
+  "summary": "Tela a tempera che @Andrea Mantegna esegue in ambito gonzaghesco intorno al 1480-1485; secondo l'ipotesi più accreditata fu inviata ad Aigueperse, in Alvernia, in occasione delle nozze di Chiara Gonzaga con Gilbert de Bourbon-Montpensier (1481). Il santo, legato a una colonna fra rovine classiche ornate di fregi, occupa in scala monumentale il primo piano; in basso a destra affiorano i volti di due arcieri. Rispetto alla versione giovanile di Vienna la figura è più statica e solenne, costruita su uno schema classico, mentre la resa minuziosa del paesaggio sullo sfondo rivela l'assimilazione di modelli nordici.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -50062,7 +50061,7 @@
   "year_end": 1620,
   "type": "scultura",
   "technique_ids": [
-   "scultura-marmo"
+   "scultura-in-marmo"
   ],
   "materials": [
    "marmo"
@@ -50173,7 +50172,7 @@
  },
  {
   "id": "san-pietronio",
-  "title": "San Pietronio",
+  "title": "San Petronio",
   "artist_ids": [
    "francesco-del-cossa",
    "ercole-de-roberti"
@@ -50233,8 +50232,8 @@
   "page": 0,
   "source_file": null,
   "importance": 2,
-  "summary": "Il santo campeggia seminudo legato ad un albero al centro di una via su cui si affacciano alcuni edifici probabilmente attribuibili a Venezia che, scorciati in prospettiva, incorniciano la sua figura e ne esaltano la monumentalità, grazie anche al punto di vista ribassato. Al centro si trova un passaggio sospeso su una doppia arcata, oltre la quale campeggia un sereno cielo azzurrino.\nL'opera segna il progressivo abbandono della radice fiamminga a favore di una impostazione italiana, appresa da Piero della Francesca e Mantenga ma traformata da Antonello da Messina.",
-  "analysis": "Realizzato per la Scuola dei Santi Rocco e Niccolo della parrocchia di San Zulian a Venezia, l'opera faceva parte di un trittico composto da San Cristoforo e San Rocco, andati perduti.\nLa bellezze ideale del nudo, definito per masse e volumi perfettamente proporzionati rispetta i canoni della statuaria classica.\n",
+  "summary": "Il santo campeggia seminudo legato ad un albero al centro di una via su cui si affacciano alcuni edifici probabilmente attribuibili a Venezia che, scorciati in prospettiva, incorniciano la sua figura e ne esaltano la monumentalità, grazie anche al punto di vista ribassato. Al centro si trova un passaggio sospeso su una doppia arcata, oltre la quale campeggia un sereno cielo azzurrino.\nL'opera segna il progressivo abbandono della radice fiamminga a favore di una impostazione italiana, appresa da Piero della Francesca e Mantegna ma traformata da Antonello da Messina.",
+  "analysis": "Realizzato per la Scuola dei Santi Rocco e Niccolò della parrocchia di San Zulian a Venezia, l'opera faceva parte di un trittico composto da San Cristoforo e San Rocco, andati perduti.\nLa bellezze ideale del nudo, definito per masse e volumi perfettamente proporzionati rispetta i canoni della statuaria classica.\n",
   "innovations": [],
   "term_ids": [
    "san-sebastiano"
@@ -50355,44 +50354,6 @@
   "term_ids": [],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Ercole_de%27_roberti%2C_santa_caterina%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg/1280px-Ercole_de%27_roberti%2C_santa_caterina%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg",
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Ercole_de%27_roberti%2C_santa_caterina%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg/1280px-Ercole_de%27_roberti%2C_santa_caterina%2C_da_polittico_griffoni_in_san_petronio%2C_1472-73_%28ve%2C_fond._cini%29_01.jpg",
-  "image_source": "",
-  "image_gallery": [],
-  "committente_ids": [
-   "floriano-griffoni"
-  ],
-  "fonte_ids": [
-   "occhi-arte-2"
-  ]
- },
- {
-  "id": "santa-caterina-dalessandria",
-  "title": "Santa Caterina d'Alessandria",
-  "artist_ids": [
-   "francesco-del-cossa",
-   "ercole-de-roberti"
-  ],
-  "period_id": "cossa-de-roberti-bologna",
-  "date_text": "1470-1473",
-  "year_start": 1470,
-  "year_end": 1473,
-  "type": "pittura",
-  "technique_ids": [],
-  "materials": [],
-  "location_city": "Milano",
-  "location_place": "Pinacoteca di Brera",
-  "lat": 45.472242,
-  "lon": 9.188407,
-  "book": 1,
-  "chapter": 0,
-  "page": 0,
-  "source_file": "",
-  "importance": 2,
-  "summary": "Pannello del Polittico Griffoni raffigurante Santa Caterina d'Alessandria.",
-  "analysis": null,
-  "innovations": [],
-  "term_ids": [],
-  "image_url": "",
-  "image_thumb": "",
   "image_source": "",
   "image_gallery": [],
   "committente_ids": [
@@ -50529,7 +50490,7 @@
  },
  {
   "id": "testa-di-santi-giorgio",
-  "title": "Testa di santi Giorgio",
+  "title": "Testa di San Giorgio",
   "artist_ids": [
    "cosme-tura"
   ],
@@ -50549,7 +50510,7 @@
   "page": 0,
   "source_file": "",
   "importance": 2,
-  "summary": "Testa di santo dal Politico Roverella",
+  "summary": "Testa di santo dal Polittico Roverella",
   "analysis": null,
   "innovations": [],
   "term_ids": [],

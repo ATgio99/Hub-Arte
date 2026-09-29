@@ -8200,8 +8200,10 @@
  },
  {
   "id": "pietro-benvogliente",
-  "name": "Pietro Benvogliente",
-  "aka": [],
+  "name": "Pietro Benvenuto degli Ordini",
+  "aka": [
+   "Pietro Benvogliente"
+  ],
   "birth": null,
   "death": null,
   "period_ids": [],
@@ -9601,23 +9603,11 @@
   "location_city": null
  },
  {
-  "id": "vittore-da-feltre",
-  "name": "Vittore da Feltre",
-  "aka": [],
-  "birth": 1378,
-  "death": 1446,
-  "period_ids": [],
-  "role": "umanista, pedagogo",
-  "bio": "Fondatore della scuola Ca' Zoiosa (Gioiosa) a Mantova, precursore dell'educazione umanistica. I suoi principi pedagogici influenzarono la cultura della corte gonzaghesca.",
-  "innovations": [],
-  "category": null,
-  "is_collective": false,
-  "location_city": null
- },
- {
   "id": "vittorino-da-feltre",
   "name": "Vittorino da Feltre",
-  "aka": [],
+  "aka": [
+   "Vittore da Feltre"
+  ],
   "birth": 1378,
   "death": 1446,
   "period_ids": [],

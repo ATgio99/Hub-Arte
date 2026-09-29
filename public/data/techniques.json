@@ -1539,15 +1539,6 @@
   "category": "scultorea"
  },
  {
-  "id": "scultura-marmo",
-  "name": "Scultura in marmo",
-  "definition": "Tecnica scultorea basata sulla lavorazione sottrattiva del marmo per ottenere figure e gruppi a tutto tondo.",
-  "introduced_by": null,
-  "first_period_id": "antichita",
-  "evolution": "Nel Rinascimento e nel Manierismo romano il marmo torna a essere il principale materiale per grandi sculture religiose e mitologiche.",
-  "category": "scultorea"
- },
- {
   "id": "tratto-inciso-e-sicuro",
   "name": "Tratto inciso e sicuro",
   "definition": "Caratteristica stilistica derivante dall'influenza di Donatello, che conferisce alle figure un'impostazione salda e monumentale.",
