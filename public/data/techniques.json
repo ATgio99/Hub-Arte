@@ -57,7 +57,7 @@
   "id": "apparato-musivo",
   "name": "Apparato musivo",
   "definition": "Sistema decorativo integrato che utilizza il mosaico per rivestire intere superfici architettoniche (absidi, cupole, volte, pareti) secondo un programma iconografico coerente.",
-  "introduced_by": "Tradizione paleocristiana e byzantina",
+  "introduced_by": "Tradizione paleocristiana e bizantina",
   "first_period_id": "arte-bizantina",
   "evolution": "Nel Romanico normanno siciliano l'apparato musivo raggiunge la sua massima estensione (Cappella Palatina, Cefalù, Monreale). A San Marco di Venezia si mantiene vivo fino al XIV-XV secolo.",
   "category": "musiva"
@@ -192,7 +192,7 @@
   "id": "fusione-in-bronzo",
   "name": "Fusione in bronzo",
   "definition": "Tecnica scultorea che consiste nel versare bronzo fuso in uno stampo preparato, poi rifinire la superficie con lo scalpello e il cesello. Include la fusione a cera persa (scomparsa del modello in cera nell'operazione di fusione). Il procedimento più diffuso è quello a cera persa: il modello in cera, rivestito di terra refrattaria, si scioglie al calore e lascia il posto al metallo.",
-  "introduced_by": "Maestranze renane e byzantine",
+  "introduced_by": "Maestranze renane e bizantine",
   "first_period_id": "umanesimo-fiorentino",
   "evolution": "Ripresa nell'Umanesimo fiorentino da Ghiberti e Donatello dopo il lungo abbandono medievale. Ghiberti recupera per il San Giovanni Battista di Orsanmichele il procedimento della fusione a cera persa, già diffuso in epoca classica e poi caduto in disuso.",
   "category": "scultorea"
@@ -239,7 +239,7 @@
   "definition": "Tecnica decorativa basata sull'accostamento di tessere di vetro (smalti), pietra o altri materiali per comporre immagini su pareti, soffitti o pavimenti. A Roma rimane largamente in uso nel Duecento, diversamente dal resto d'Europa.",
   "introduced_by": "tradizione romana e paleocristiana",
   "first_period_id": "duecento-italiano",
-  "evolution": "Il mosaico paleocristiano e byzantino con fondo oro diventa il principale strumento decorativo delle chiese medievali. Il Romanico italiano lo impiega nelle absidi e nelle volte (San Clemente, Torcello, San Marco); il Romanico normanno siciliano lo usa sistematicamente per rivestire interi edifici. A Venezia continua fino al XVII secolo.",
+  "evolution": "Il mosaico paleocristiano e bizantino con fondo oro diventa il principale strumento decorativo delle chiese medievali. Il Romanico italiano lo impiega nelle absidi e nelle volte (San Clemente, Torcello, San Marco); il Romanico normanno siciliano lo usa sistematicamente per rivestire interi edifici. A Venezia continua fino al XVII secolo.",
   "category": "musiva"
  },
  {
@@ -1262,7 +1262,7 @@
  {
   "id": "formato-unitario",
   "name": "formato unitario",
-  "definition": "Struttura compositiva tipica della pala rinascimentale toscana, in contrapposizione al politico gotico",
+  "definition": "Struttura compositiva tipica della pala rinascimentale toscana, in contrapposizione al polittico gotico",
   "introduced_by": null,
   "first_period_id": null,
   "evolution": "",
@@ -1307,7 +1307,7 @@
  {
   "id": "pedana-ottagonale",
   "name": "Pedana ottagonale",
-  "definition": "Base ottagonale su cui si innesta la struttura architettonica della pala, soluzione originale adottata da Roberti nella Pala Portonese.",
+  "definition": "Base ottagonale su cui si innesta la struttura architettonica della pala, soluzione originale adottata da Roberti nella Pala Portuense.",
   "introduced_by": null,
   "first_period_id": null,
   "evolution": "",
@@ -1424,7 +1424,7 @@
  {
   "id": "vele",
   "name": "Vele",
-  "definition": "Elemento architettonico decorativo a forma di vela o drappo",
+  "definition": "Superficie curva triangolare, così chiamata per la sua forma a vela gonfia, compresa tra i costoloni di una volta a crociera o tra i pennacchi di una cupola",
   "introduced_by": null,
   "first_period_id": null,
   "evolution": "",
@@ -1847,7 +1847,7 @@
  {
   "id": "polittico",
   "name": "polittico",
-  "definition": "Opera d'arte composta da più pannelli, qui con tappera fondamentale, legno scolpito e dorato, piastre laterali",
+  "definition": "Opera d'arte composta da più pannelli, qui con tempera fondamentale, legno scolpito e dorato, piastre laterali",
   "introduced_by": null,
   "first_period_id": null,
   "evolution": "",

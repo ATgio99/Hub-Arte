@@ -180,8 +180,8 @@
   "materials": [],
   "location_city": "Il Cairo",
   "location_place": "Museo Egizio",
-  "lat": null,
-  "lon": null,
+  "lat": 30.0444,
+  "lon": 31.2357,
   "book": 2,
   "chapter": 6,
   "page": 54,
@@ -1114,8 +1114,8 @@
   "summary": "Decorazione musiva della cupola del Battistero degli Ariani a Ravenna, costruito da Teodorico. Presenta la medesima iconografia della cupola del Battistero Neoniano (battesimo di Cristo, corteo degli apostoli) ma in maniera più ieratica e astratta, con sole due fasce concentriche anziché tre, fondo oro invece di azzurro, panneggi rigidi e figure stereotipate. Riflette i precetti dell'arianesimo, che esalta la natura umana di Cristo.",
   "analysis": "Il confronto con la cupola del Battistero Neoniano evidenzia due sistemi figurativi diversi: il battistero ariano ha una composizione più semplificata (due fasce invece di tre), con palme stilizzate invece di candelabre, fondo oro invece di cielo azzurro, panneggi rigidi e volti stereotipati. L'etimasia all'inizio e alla fine del corteo degli apostoli, sormontata da una croce gemmata e da un drappo purpureo. Giovanni Battista si trova alla sinistra di Cristo (non alla destra come nel Battistero Neoniano) e la personificazione del Giordano è seduta a sinistra, visibile da capo a piedi con due chele di granchio sul capo.",
   "innovations": [
-   "semplificazione iconografica in senso ariano",
-   "bidimensionalità più marcata rispetto al Battistero Neoniano"
+   "Semplificazione iconografica in senso ariano",
+   "Bidimensionalità più marcata rispetto al Battistero Neoniano"
   ],
   "term_ids": [
    "etimasia",
@@ -2027,7 +2027,7 @@
   "source_file": "Libro1.1-giu-2026",
   "importance": 2,
   "summary": "Pannello musivo nel presbiterio di San Vitale a Ravenna, parete sud, datato 546-547. Ritrae l'imperatrice Teodora con le dame di corte nell'atto di portare il calice con il vino come offerta eucaristica. Il manto di Teodora è ricamato con i Re Magi. La fontana e il tendaio sullo sfondo sono resi realisticamente nonostante la prevalenza dello stile astratto.",
-  "analysis": "Il pannello con Teodora occupa la parete sud del presbiterio di San Vitale (546-547), in dialogo con quello di Giustiniano sulla parete nord. L'imperatrice, riconoscibile per il diadema imperiale, il collare di perle e la clamide purpurea, è ritratta nell'atto di offrire il calice aureo. Il pannello dell'orlo del mantello è decorato con la scena dei Re Magi che portano doni a Cristo, alludendo simbolicamente all'offerta stessa dell'imperatrice. Le dame di corte a destra indossano abiti di seta broccata, testimonianza del lusso dei tessuti costantinopolitani del VI secolo. La disposizione frontale delle figure, l'assenza di profondità spaziale e la gerarchia proporzionale (Teodora è più alta delle dame) sono tratti caratteristici dello stile ieratico byzantino. Il nimbo dorato intorno alla testa dell'imperatrice la equipara iconograficamente alla santità, esprimendo la concezione teocratica del potere imperiale.",
+  "analysis": "Il pannello con Teodora occupa la parete sud del presbiterio di San Vitale (546-547), in dialogo con quello di Giustiniano sulla parete nord. L'imperatrice, riconoscibile per il diadema imperiale, il collare di perle e la clamide purpurea, è ritratta nell'atto di offrire il calice aureo. Il pannello dell'orlo del mantello è decorato con la scena dei Re Magi che portano doni a Cristo, alludendo simbolicamente all'offerta stessa dell'imperatrice. Le dame di corte a destra indossano abiti di seta broccata, testimonianza del lusso dei tessuti costantinopolitani del VI secolo. La disposizione frontale delle figure, l'assenza di profondità spaziale e la gerarchia proporzionale (Teodora è più alta delle dame) sono tratti caratteristici dello stile ieratico bizantino. Il nimbo dorato intorno alla testa dell'imperatrice la equipara iconograficamente alla santità, esprimendo la concezione teocratica del potere imperiale.",
   "innovations": [],
   "term_ids": [
    "offerta-eucaristica",
@@ -3142,9 +3142,9 @@
   "summary": "La chiesa di Santa Sofia a Benevento fu fondata dal duca longobardo Arechi II intorno al 760 come cappella palatina annessa al suo palazzo. Si tratta di un edificio a pianta centrale con sei colonne che sostengono una cupola su tamburo, circondato da un deambulatorio anulare coperto da volte. È uno dei più importanti monumenti dell'architettura longobarda e riflette influenze bizantine nella pianta centrale.",
   "analysis": null,
   "innovations": [
-   "pianta centrale longobarda",
-   "deambulatorio anulare",
-   "cappella palatina ducale"
+   "Pianta centrale longobarda",
+   "Deambulatorio anulare",
+   "Cappella palatina ducale"
   ],
   "term_ids": [
    "pianta-centrale",
@@ -5151,9 +5151,9 @@
   "summary": "La chiesa di San Michele a Hildesheim è una basilica a doppio transetto e doppia abside, fondata dal vescovo Bernoardo (Bernward) di Hildesheim intorno al 1010 e consacrata nel 1033. È uno dei capolavori dell'architettura ottoniana, celebre per il suo soffitto dipinto in legno con l'Albero di Iesse e per la porta di bronzo commissionata da Bernoardo.",
   "analysis": null,
   "innovations": [
-   "doppio transetto e doppia abside",
-   "soffitto dipinto dell'Albero di Iesse",
-   "portale di bronzo bernwardiano"
+   "Doppio transetto e doppia abside",
+   "Soffitto dipinto dell'Albero di Iesse",
+   "Portale di bronzo bernwardiano"
   ],
   "term_ids": [
    "sistema-alternato",
@@ -5781,9 +5781,9 @@
   "summary": "La cattedrale pisana è il monumento che più sintetizza il Romanico pisano nella sua complessità eclettica. L'architetto Rainaldo, completando la fabbrica avviata con pianta a croce latina con transetto, navata centrale a capriate e finti matronei, assembla influenze lombarde (presbiterio profondo, cupola sul transetto), emiliane (alzato a tre ordini), bizantine (matronei anche nei bracci del transetto), islamiche (cupola ellittica con coronamento a bulbo, paramenti a fasce bianche e nere) e classiche. La facciata a salienti con logge su quattro ordini dà leggerezza all'edificio. Il ciclo decorativo interno comprende sculture di Maestro Guglielmo, Bonanno Pisano e Nicola Pisano.",
   "analysis": "Il Duomo di Pisa è il fulcro del complesso dei Miracoli (con battistero, torre campanaria e camposanto) e il manifesto del Romanico pisano. L'alzato della navata centrale su tre livelli (arcate, finti matronei con bifore, finestre del claristorio) mutua il modello emiliano con varianti islamiche nelle fasce bicrome. La facciata di Rainaldo, con logge aperte su quattro ordini nella parte superiore e arcate cieche con semicolonne e losanghe islamiche in basso, diventa modello per le chiese toscane. La commistione di influssi classici, paleocristiani, lombardi, bizantini e islamici fa della cattedrale il più complesso sincretismo dell'architettura romanica italiana.",
   "innovations": [
-   "facciata a salienti con logge aperte su quattro ordini",
-   "reinterpretazione delle arcate cieche lombarde con losanghe islamiche",
-   "alzato a tre ordini con finti matronei"
+   "Facciata a salienti con logge aperte su quattro ordini",
+   "Reinterpretazione delle arcate cieche lombarde con losanghe islamiche",
+   "Alzato a tre ordini con finti matronei"
   ],
   "term_ids": [
    "matroneo",
@@ -6380,7 +6380,7 @@
   "page": 61,
   "source_file": "Libro1.2-giu-2026",
   "importance": 3,
-  "summary": "Basilica di San Nicola a @Bari (1087-1197), costruita per accogliere le reliquie di san Nicola traslate da Myra nel 1087. Pianta a croce commissa con tre navate che terminano in abside maggiore e due absidiole, transetto con abside maggiore e absidiole, presbiterio sopraelevato su cripta. Sette campate scandiscono le navate, ritmate da colonne binate, mentre in alzato si susseguono arcate, un triforio dalla funzione di finto matroneo e un claristorio, secondo lo schema romanico normanno. La possente facciata con aspetto di fortezza, due torri diseguali e muro rettilineo che maschera le absidi riflette la tradizione islamica dell'architettura barese (Bari sotto dominio arabo tra IX e X secolo).",
+  "summary": "Basilica di San Nicola a @Bari (1087-1197), costruita per accogliere le reliquie di san Nicola traslate da Myra nel 1087. Pianta a croce commissa: il corpo a tre navate si innesta in un transetto tripartito, chiuso da un'abside maggiore e da due absidiole; il presbiterio è sopraelevato sulla cripta. Sei campate dividono le navate, con sostegni che alternano colonne binate, pilastri compositi e colonne, mentre in alzato si susseguono arcate, un triforio dalla funzione di finto matroneo e un claristorio, secondo lo schema romanico normanno. La mole massiccia, dall'aspetto di fortezza, accentuato dal muro rettilineo che nasconde le absidi e dalle due torri diseguali ai lati della facciata, è forse un ricordo dell'architettura islamica (Bari fu sede di un emirato arabo fra l'847 e l'871).",
   "analysis": "La basilica di San Nicola è il modello per tutta l'architettura romanica pugliese. La fusione di tradizioni arabe, classiche, paleocristiane, normanne e padane crea un linguaggio originale. L'apparato decorativo del @Maestro di Elia (metà XII secolo) comprende il protiro e portale maggiore con decorazioni a bassorilievo (temi eucaristici e salvifici, tralci di vite con scene di vendemmia e lotta tra cavalieri), e la cattedra di Elia, trono elegantemente traforato sorretto da tre telamoni in pose contorte con smorfie espressive.",
   "innovations": [
    "Modello per l'architettura romanica pugliese",
@@ -8513,9 +8513,9 @@
   "summary": "La chiesa abbaziale di Saint-Denis è la capostipite del Gotico. Fra il 1132 e il 1144, sotto la guida dell'abate @Suger (1122-1151), si interviene dapprima sul fronte occidentale, definito da una facciata armonica fra due torri, rosone centrale, e finestre e arcate cieche dal marcato slancio verticale; segue poi il coro, dotato di abside, doppio deambulatorio e sette cappelle radiali, illuminato da ampie finestre ogivali con vetrate policrome - il primo impiego sistematico su larga scala di questa tecnica nell'architettura gotica. Dal 1231, sotto Luigi IX, il corpo della basilica viene rifatto nelle forme del Gotico rayonnant, con pareti trasformate in un intreccio di finestre e aperture circolari polilobate.",
   "analysis": "Saint-Denis è il luogo di nascita del Gotico: Suger crea qui due innovazioni fondamentali. La facciata armonica con rosone centrale, elemento raro nel Romanico francese ma frequente in quello italiano, diventa da questo prototipo il segno distintivo del Gotico d'Oltralpe. Il coro con doppio deambulatorio e cappelle radiali illuminate da vetrate policrome traduce in architettura la teologia della luce di Suger (la contemplazione della bellezza materiale come ascesa alla divina): le vetrate commissionateci da Suger stesso sono i primi grandi cicli pittorici in vetro dell'architettura gotica. La ricostruzione in stile rayonnant (dal 1231) introduce il traforo delle pareti con complessi sistemi di finestre.",
   "innovations": [
-   "capostipite del Gotico con rosone in facciata",
-   "primo grande uso sistematico di vetrate policrome",
-   "primo esempio di volta a raggiera nel coro"
+   "Capostipite del Gotico con rosone in facciata",
+   "Primo grande uso sistematico di vetrate policrome",
+   "Primo esempio di volta a raggiera nel coro"
   ],
   "term_ids": [
    "facciata-armonica",
@@ -9154,7 +9154,7 @@
   "summary": "Prime grandi vetrate policrome dell'architettura gotica, commissionate dall'abate Suger per l'abside di Saint-Denis (1144-1151). Rappresentano il punto di partenza della teologia della luce applicata all'architettura: la luce colorata che si irradia attraverso le vetrate è concepita come manifestazione divina e strumento di ascesa spirituale.",
   "analysis": null,
   "innovations": [
-   "prime grandi vetrate policrome figurative nell'architettura gotica"
+   "Prime grandi vetrate policrome figurative nell'architettura gotica"
   ],
   "term_ids": [],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Basilique_Saint-Denis_-_Vitrail_de_l%27Enfance_du_Christ_-_Suger.JPG/1280px-Basilique_Saint-Denis_-_Vitrail_de_l%27Enfance_du_Christ_-_Suger.JPG",
@@ -12588,7 +12588,7 @@
   "summary": "Il rosone della Sainte-Chapelle di Parigi (1241-1248 circa) è una vetrata rayonnant arditissima a forma di fiore, nei cui petali sono inserite vivaci e affollate Storie dell'Apocalisse. Rappresenta uno degli esempi più alti di vetrata gotica rayonnant.",
   "analysis": null,
   "innovations": [
-   "vetrata rayonnant a forma di fiore con ciclo apocalittico"
+   "Vetrata rayonnant a forma di fiore con ciclo apocalittico"
   ],
   "term_ids": [
    "gotico-rayonnant",
@@ -12730,7 +12730,7 @@
   "summary": "Ciclo di affreschi degli anni Quaranta del Duecento nell'Aula Gotica dei Santi Quattro Coronati (sala per ricevimenti e amministrazione della giustizia del cardinale Stefano Conti). Raffigurano i dodici Mesi, le Arti, le Stagioni e Re Salomone con Virtù e Vizi. Mixano iconografia allegorica italiana e d'Oltralpe con riferimenti alla cultura classica (Giano bifronte per Gennaio) e scene di vita quotidiana.",
   "analysis": null,
   "innovations": [
-   "programma iconografico secolare-allegorico con scene di vita quotidiana"
+   "Programma iconografico secolare-allegorico con scene di vita quotidiana"
   ],
   "term_ids": [
    "affresco",
@@ -14268,10 +14268,10 @@
   "summary": "Capolavoro della maturità di Arnolfo di Cambio, commissionato dal cardinale francese Guillaume de Braye per la chiesa di San Domenico a Orvieto verso il 1282. Codifica la nuova tipologia del monumento funerario gotico con catafalco addossato alla parete e baldacchino. L'opera, alta 628 cm, fonde modelli classici (la statua della Madonna è un reperto antico raffigurante forse Giunone), linguaggio gotico e preziosismo medievale romano con mosaici cosmateschi.",
   "analysis": "Il monumento, oggi in posizione parzialmente ricomposta dopo lo spostamento dalla navata principale (abbattuta nel 1932), presenta una struttura stratificata: in basso un basamento a due ordini decorato da cassette rettangolari con mosaici cosmateschi e colonnette tortili; al centro il catafalco marmoreo con la statua del cardinale giacente (D) sollevato dal tendaggio da due diaconi (E); in alto tre edicole decrescenti, di cui rimangono due frammenti, raffiguranti la Madonna in trono (A), San Marco che presenta il cardinale (B) e San Domenico (C). La statua della Vergine è un reperto classico romano (forse Giunone) a cui Arnolfo ha aggiunto braccia e il Bambino, esemplificando la sua metodologia di reimpiego dell'antico. L'estetica gotica emerge nel movimento drammatico dei diaconi e nel panneggio angolare della cortina. Il volto del defunto è probabilmente desunto da una maschera funeraria in cera, rivelando un realismo ritrattistico eccezionale per l'epoca. Le decorazioni cosmatesche raccordano le tre direttrici stilistiche dell'opera: classicismo, goticismo e arte medievale romana.",
   "innovations": [
-   "nuova tipologia del monumento funerario a catafalco con baldacchino",
-   "reimpiego di scultura classica pagana in contesto cristiano",
-   "realismo del volto da maschera funeraria",
-   "integrazione di mosaico cosmatesco nel monumento"
+   "Nuova tipologia del monumento funerario a catafalco con baldacchino",
+   "Reimpiego di scultura classica pagana in contesto cristiano",
+   "Realismo del volto da maschera funeraria",
+   "Integrazione di mosaico cosmatesco nel monumento"
   ],
   "term_ids": [
    "monumento-funebre",
@@ -14733,7 +14733,7 @@
   "summary": "Affresco sulla vela meridionale della crociera centrale della basilica superiore di Assisi (1288-1290), l'unica salvata dal sisma del 1997. Raffigura san Marco con una veduta simbolica di Roma in cui si riconoscono il Pantheon, Castel Sant'Angelo e la Torre delle Milizie. Testimonia il soggiorno romano di Cimabue e la sua conoscenza degli edifici antichi.",
   "analysis": null,
   "innovations": [
-   "veduta urbana con riconoscibili monumenti antichi romani"
+   "Veduta urbana con riconoscibili monumenti antichi romani"
   ],
   "term_ids": [
    "evangelista",
@@ -14776,8 +14776,8 @@
   "summary": "Mosaici della facciata di Santa Maria Maggiore a Roma (1288-1297), con Storie della fondazione della basilica e il Cristo benedicente firmato da Filippo Rusuti. Il Cristo benedicente è di particolare interesse: riprende la classica figura di un'icona bizantina con Cristo assiso di tre quarti, ma il naturalismo del volto del Redentore, la fluidità del panneggio e il nuovo senso di spazialità lo rendono un'opera innovativa.",
   "analysis": null,
   "innovations": [
-   "naturalismo del volto e fluidità del panneggio nel Cristo benedicente",
-   "firma dell'artista come testimonianza del raggiunto prestigio"
+   "Naturalismo del volto e fluidità del panneggio nel Cristo benedicente",
+   "Firma dell'artista come testimonianza del raggiunto prestigio"
   ],
   "term_ids": [
    "mosaico",
@@ -15963,7 +15963,7 @@
   "summary": "Il Palazzo Vecchio di Firenze (1299-1314), progettato da Arnolfo di Cambio, ha un aspetto quasi militare con facciata a bugnato rustico nella parte inferiore e bifore gotiche negli ordini superiori. Coronato da una merlatura (con merli quadrati), presenta una torre campanaria spostata a destra rispetto all'asse della facciata che poggia direttamente sul ballatoio. La solida volumetria e la monumentalità dell'edificio rispecchiano l'estetica verticale del tempo, con finestre bifore gotiche.",
   "analysis": null,
   "innovations": [
-   "tipo del palazzo pubblico con torre spostata rispetto all'asse"
+   "Tipo del palazzo pubblico con torre spostata rispetto all'asse"
   ],
   "term_ids": [
    "bugnato-rustico",
@@ -18711,7 +18711,7 @@
   "summary": "Il Palazzo Davanzati di Firenze (metà XIV secolo), costruito dalla famiglia Davizzi unendo alcune case-torri di proprietà, è un esempio della tendenza della borghesia mercantile a prediligere forme più aggraziate. Al pianterreno con portico (botteghe e magazzini) si sovrappongono piani con grandi finestre a sesto ribassato, mentre la loggia (costruita successivamente) incornicia la sommità. Non vi è traccia di fortezza o austerità.",
   "analysis": null,
   "innovations": [
-   "palazzo privato borghese gotico senza carattere difensivo"
+   "Palazzo privato borghese gotico senza carattere difensivo"
   ],
   "term_ids": [
    "loggia",
@@ -21381,8 +21381,8 @@
   "summary": "Prima opera certa di Masaccio, datata 23 aprile 1422, il trittico (pannello centrale 108 × 65 cm) fu realizzato per la chiesa di San Giovenale a Cascia, presso Reggello. Al centro è raffigurata la Madonna col Bambino in trono, affiancata da quattro santi: san Bartolomeo, apostolo riconoscibile dal coltello, simbolo del suo martirio; san Biagio, vescovo e martire, associato alla guarigione dalle malattie della gola; san Giovenale, vescovo e titolare della dedicazione che dà il nome al trittico; e sant’Antonio Abate, eremita protettore degli animali e raffigurato con il bastone a tau e la campanella. Nonostante la struttura tradizionale a trittico con cuspidi e fondo oro, Masaccio rinuncia al decorativismo tardogotico e costruisce le figure attraverso una rigorosa prospettiva lineare e una solida resa volumetrica.",
   "analysis": "Il Trittico di San Giovenale conserva la forma tradizionale della pala gotica, ma introduce un modo completamente nuovo di costruire lo spazio. Le linee prospettiche del pavimento e del trono convergono verso il volto della Madonna, unificando le tre tavole in un unico ambiente coerente.\n\nLe figure dei santi sono disposte secondo diversi piani di profondità e acquistano una consistenza volumetrica nuova, lontana dalla bidimensionalità e dalla ricchezza ornamentale del tardogotico. Anche i due angeli inginocchiati e rappresentati di spalle ai piedi del trono contribuiscono a rendere più credibile lo spazio.\n\nParticolarmente significativo è il Bambino, la cui posa e fisicità mostrano l'interesse di Masaccio per la scultura contemporanea, in particolare per Donatello. L'opera segna così uno dei primi momenti in cui la prospettiva e la solidità delle figure diventano strumenti fondamentali per costruire una pittura pienamente rinascimentale.",
   "innovations": [
-   "primo esempio di prospettiva lineare sistematica nella pittura",
-   "eliminazione del decorativismo tardogotico in struttura tradizionale"
+   "Primo esempio di prospettiva lineare sistematica nella pittura",
+   "Eliminazione del decorativismo tardogotico in struttura tradizionale"
   ],
   "term_ids": [
    "trittico",
@@ -22303,8 +22303,8 @@
   ],
   "location_city": "Londra",
   "location_place": "National Gallery (tavola centrale); le altre parti sono a Napoli, Los Angeles, Pisa e Berlino",
-  "lat": null,
-  "lon": null,
+  "lat": 51.529912,
+  "lon": -0.127692,
   "book": 2,
   "chapter": 2,
   "page": 30,
@@ -23158,11 +23158,11 @@
   "importance": 3,
   "summary": "Il Tabernacolo dei Linaioli è un complesso con ante ripiegabili, commissionato nel 1433 dall’Arte dei Linaioli. Al centro è raffigurata la Madonna con il Bambino in trono, circondata da una fascia di angeli musicanti; sulle ante compaiono san Giovanni Battista e san Giovanni Evangelista. Il tabernacolo unisce la tradizione gotica alla nuova sensibilità rinascimentale, mostrando l'interesse di Angelico per la monumentalità, la prospettiva e la chiarezza spaziale.",
   "innovations": [
-   "sintesi tra monumentalita masaccesca e devozione gotica",
-   "Struttura architettonica del tabernacolo integrata nella composizione pittorica.",
-   "Maggiore monumentalità delle figure rispetto alla tradizione gotica.",
-   "Fusione tra tradizione gotica e linguaggio rinascimentale.",
-   "Riferimenti alla scultura contemporanea, in particolare alle figure di Ghiberti per Orsanmichele."
+   "Sintesi tra monumentalita masaccesca e devozione gotica",
+   "Struttura architettonica del tabernacolo integrata nella composizione pittorica",
+   "Maggiore monumentalità delle figure rispetto alla tradizione gotica",
+   "Fusione tra tradizione gotica e linguaggio rinascimentale",
+   "Riferimenti alla scultura contemporanea, in particolare alle figure di Ghiberti per Orsanmichele"
   ],
   "term_ids": [
    "tabernacolo",
@@ -23574,7 +23574,7 @@
    "tavola",
    "foglia d'argento"
   ],
-  "location_city": "disperso",
+  "location_city": null,
   "location_place": "Londra (National Gallery), Firenze (Gallerie degli Uffizi), Parigi (Musee du Louvre)",
   "lat": null,
   "lon": null,
@@ -23985,7 +23985,7 @@
   "summary": "Medaglia di Giovanni VIII Paleologo (1438) di Pisanello, bronzo, diametro 10,2 cm. Si ritiene che sia la prima medaglia modellata dall'artista. Realizzata in occasione del Concilio di Ferrara (1438) durante il quale l'imperatore di Bisanzio Giovanni VIII Paleologo era presente. Inizia la tradizione moderna della medaglia come ritratto.",
   "analysis": null,
   "innovations": [
-   "prima medaglia della tradizione moderna rinascimentale"
+   "Prima medaglia della tradizione moderna rinascimentale"
   ],
   "term_ids": [
    "medaglia",
@@ -24923,8 +24923,8 @@
   "summary": "Pala d'altare di Domenico Veneziano per la chiesa di Santa Lucia de' Magnoli a Firenze (ora agli Uffizi). La tavola principale raffigura una sacra conversazione: la Vergine, il Bambino e quattro santi (Giovanni Battista, Zenobio, Francesco e Lucia) disposti in primo piano in un recinto murato che occupa la profondità spaziale. Un portico leggero e arioso con archi ogivali su esili colonnine occupa il secondo piano.",
   "analysis": "La Pala di Santa Lucia de' Magnoli e una delle opere fondatrici della sacra conversazione rinascimentale. Domenico Veneziano introduce una nuova concezione dello spazio luminoso e aereo, ispirata dalla pittura fiamminga. Il portico con archi ogivali crea un'architettura leggera ed ariosa. La luce uniforme e radente elimina le ombre dense e crea una gamma cromatica chiara e brillante. La predella e dispersa in vari musei europei.",
   "innovations": [
-   "nuova concezione della luce in chiave sacra",
-   "portico architettonico che integra sacra conversazione e paesaggio"
+   "Nuova concezione della luce in chiave sacra",
+   "Portico architettonico che integra sacra conversazione e paesaggio"
   ],
   "term_ids": [
    "sacra-conversazione",
@@ -24971,8 +24971,8 @@
   "summary": "Commissionato alla @Confraternita della Misericordia di Borgo Sansepolcro, il grande polittico (273 × 330 cm) viene avviato nel 1445 ma richiede quasi vent'anni, fino al completamento nel 1462. Composto da 23 pannelli (compresi pilastrini e predella) con fondo oro, impostato sul modello tardogotico con cornice ad archi poi perduta. La Madonna della Misericordia domina la tavola centrale offrendo protezione ai fedeli sotto il mantello. Nonostante i limiti dei committenti, lo stile di Piero rivela influenze di @Masaccio e delle sculture donatelliane.",
   "analysis": "Primo grande lavoro di @Piero della Francesca, il polittico mostra la tensione tra le esigenze conservative della committenza e le innovazioni del giovane artista. Il volume essenziale della Vergine, di ascendenza masaccesca, è accentuato dalla resa prospettica della scena, ottenuta attraverso lo scorcio dei fedeli inginocchiati. La modernità emerge nell'unificazione dello spazio della tavola centrale con i quattro pannelli adiacenti tramite il basamento di pietra continuo e i panneggi che sconfinano da uno scomparto all'altro.",
   "innovations": [
-   "unificazione dello spazio del polittico attraverso basamento continuo e panneggi sconfinanti",
-   "monumentalità plastica masaccesca entro schema tardogotico"
+   "Unificazione dello spazio del polittico attraverso basamento continuo e panneggi sconfinanti",
+   "Monumentalità plastica masaccesca entro schema tardogotico"
   ],
   "term_ids": [
    "polittico",
@@ -25832,9 +25832,9 @@
   "summary": "Ad @Arezzo, nella chiesa di San Francesco, la cappella maggiore conserva l'unico ciclo pittorico di Piero giunto fino a noi per intero: fu commissionato da @Giovanni Bacci. I lavori iniziano nel 1447 con @Bicci di Lorenzo, poi Piero subentra nel 1452 e conclude nel 1466. Il ciclo racconta la Leggenda della vera Croce secondo la Legenda aurea di Jacopo da Varagine, dalla morte di Adamo all'Esaltazione della vera Croce da parte dell'imperatore Eraclio. Il restauro concluso nel 2000 ha restituito la tavolozza originale.",
   "analysis": "Il ciclo è l'opera più ambiziosa e compiuta di Piero. La narrazione non segue un ordine cronologico ma tematico, basato su principi di simmetria e logiche compositive. La luce simulata coincide con quella reale proveniente dall'unica finestra della cappella. Il Sogno di Costantino nella parete di fondo è una delle prime rappresentazioni notturne (o dell'alba) della storia della pittura. Le figure femminili e la cura per i dettagli preziosi rimandano ancora a influenze tardogotiche (Gentile da Fabriano) ma in una concezione rinascimentale di pittura con citazioni classiche, razionalità degli spazi, scorci prospettici. La Battaglia di Costantino e Massenzio e la Battaglia di Eraclio e Cosroe nelle scene in basso rappresentano vittorie nel segno della Croce; la rappresentazione di Eraclio fa riferimento alla caduta di Costantinopoli del 1453.",
   "innovations": [
-   "luce simulata che coincide con la luce reale della finestra",
-   "prima grande rappresentazione di scena notturna/dell'alba",
-   "prospettiva ribassata adattata al punto di vista dello spettatore"
+   "Luce simulata che coincide con la luce reale della finestra",
+   "Prima grande rappresentazione di scena notturna/dell'alba",
+   "Prospettiva ribassata adattata al punto di vista dello spettatore"
   ],
   "term_ids": [
    "affresco",
@@ -26030,9 +26030,9 @@
   "summary": "Gruppo bronzeo di 236 cm realizzato da Donatello tra il 1454 e il 1457 su commissione di Cosimo il Vecchio per il cortile di Palazzo Medici. Pensata originariamente come fontana, con quattro ugelli agli angoli del cuscino basale, la scultura è organizzata in una composizione piramidale a base triangolare, ornata da bassorilievi. Rappresenta Giuditta nell'atto di decapitare Oloferne, il generale assiro che aveva minacciato la città di Betulia: Donatello concentra nel gruppo il momento culminante del racconto, trasformando il gesto eroico di Giuditta in un'immagine della vittoria della virtù sulla tirannia. La scultura fu successivamente trasferita in Piazza della Signoria e infine collocata a Palazzo Vecchio.",
   "analysis": "La Giuditta e Oloferne appartiene alla fase anticlassica e drammatica di Donatello, posteriore al ritorno da Padova. La composizione piramidale a base triangolare prevede l'osservazione da piu punti di vista. Il contrasto tra la postura decisa dell'eroina e le braccia e le gambe abbandonate di Oloferne crea un'efficacissima sintesi narrativa. I bassorilievi della base decorano ulteriormente l'opera pensata per uso come fontana.",
   "innovations": [
-   "composizione piramidale per visione plurangolare",
-   "anticlassicismo drammatico",
-   "fontana scultorea"
+   "Composizione piramidale per visione plurangolare",
+   "Anticlassicismo drammatico",
+   "Fontana scultorea"
   ],
   "term_ids": [
    "composizione-piramidale",
@@ -28880,7 +28880,7 @@
   "summary": "Scala elicoidale inserita in un imponente torrione circolare con funzione difensiva, che collega il palazzo allo spiazzo di Mercatale (sede del mercato). Progettata da Francesco di Giorgio Martini, è percorribile anche a cavallo.",
   "analysis": null,
   "innovations": [
-   "rampa elicoidale percorribile a cavallo all'interno di un torrione"
+   "Rampa elicoidale percorribile a cavallo all'interno di un torrione"
   ],
   "term_ids": [
    "rampa-elicoidale",
@@ -31896,8 +31896,8 @@
   "summary": "Il ciclo di affreschi della cappella di San Brizio nella @Cattedrale di Santa Maria Assunta di Orvieto  (1499-1502) è il capolavoro di Luca Signorelli: rappresenta scene dell'Apocalisse, del Giudizio Universale, della Resurrezione della carne, dell'Inferno e del Paradiso. Il ciclo, completato dopo una prima campagna di @Beato Angelico , si distingue per la straordinaria resa anatomica dei corpi nudi in movimento che anticipa la Cappella Sistina di Michelangelo.",
   "analysis": null,
   "innovations": [
-   "resa sistematica dei nudi maschili in pose complesse e dinamiche",
-   "anticipazione del linguaggio michelangiolesco"
+   "Resa sistematica dei nudi maschili in pose complesse e dinamiche",
+   "Anticipazione del linguaggio michelangiolesco"
   ],
   "term_ids": [
    "ciclo-narrativo-biblico",
@@ -32381,8 +32381,8 @@
   "summary": "Dipinto di Botticelli del 1501 (108,6 × 74,9 cm, tempera su tavola) che riflette il risultato della fase savonaroliana: abbandona la prospettiva illusionistica per recuperare una pittura quasi bidimensionale prerenaimentale. Le figure degli angeli sembrano ritagliate e aderenti allo sfondo senza effetto plastico; le linee dure e spezzate sostituiscono la fluidità del tratto precedente; i rapporti dimensionali gerarchici prevalgono sulla proporzionalità naturalistica con la Vergine dominante su tutto.",
   "analysis": null,
   "innovations": [
-   "ritorno deliberato al prerenaimentale come atto spirituale",
-   "proporzionalità gerarchica vs naturalistica"
+   "Ritorno deliberato al prerenaimentale come atto spirituale",
+   "Proporzionalità gerarchica vs naturalistica"
   ],
   "term_ids": [
    "prereanaimentale",
@@ -32744,9 +32744,9 @@
   "summary": "La Monna Lisa (77 × 53 cm, olio su tavola), commissionata probabilmente da Francesco del Giocondo o da Giuliano de' Medici, ritrae forse Lisa Gherardini. Leonardo lavora all'opera dal secondo soggiorno fiorentino fino al soggiorno francese. La figura femminile di tre quarti con busto e testa ruotati in sensi diversi crea lievi squilibri; la fusione tra figura e paesaggio è ottenuta tramite sfumato. L'identità enigmatica della protagonista, la mancanza di gioielli identificativi e l'irriconoscibile paesaggio primordiale alle spalle alimentano l'aura di mistero che ha reso quest'opera un'icona assoluta.",
   "analysis": "La Monna Lisa è il compimento del modello di ritratto elaborato da Leonardo a partire dalla Dama con l'ermellino: busto di tre quarti, paesaggio di sfondo, sfumato atmosferico. Il quadro rivoluziona il canone del ritratto rinascimentale: la fusione tra figura e paesaggio tramite sfumato dissolve il confine tra soggetto e contesto, creando un'unità ambientale. Il ritratto sarà ripreso immediatamente da Raffaello per i coniugi Doni. La tavola ha perso parte dell'incorniciatura architettonica originale (di cui rimane una base sulla sinistra e il bracciolo della sedia).",
   "innovations": [
-   "fusione tra figura e paesaggio tramite sfumato atmosferico",
-   "lievi asimmetrie e squilibri compositivi come elemento espressivo",
-   "ritratto-paesaggio come nuovo archetipo del ritratto occidentale"
+   "Fusione tra figura e paesaggio tramite sfumato atmosferico",
+   "Lievi asimmetrie e squilibri compositivi come elemento espressivo",
+   "Ritratto-paesaggio come nuovo archetipo del ritratto occidentale"
   ],
   "term_ids": [
    "sfumato",
@@ -32900,7 +32900,7 @@
  },
  {
   "id": "battaglia-di-cascina-cartone",
-  "title": "Battaglia di Càscina (cartone preparatorio, perduto)",
+  "title": "Battaglia di Cascina (cartone preparatorio, perduto)",
   "artist_ids": [
    "michelangelo-buonarroti"
   ],
@@ -32922,7 +32922,7 @@
   "page": 40,
   "source_file": "Libro2.5-giu-2026-7",
   "importance": 2,
-  "summary": "Cartone preparatorio per il mai realizzato affresco della Battaglia di Càscina in Palazzo Vecchio a @Firenze, commissionato nel 1504 da @Pier Soderini. Fissava l'attimo in cui i soldati fiorentini, colti di sorpresa mentre si riposavano sulle rive dell'Arno, ricevono l'allarme e corrono frettolosamente alle armi. Perduto; ne restano copie, tra cui quella di @Aristotile da Sangallo (1542). Come nel David, @Michelangelo sceglie il momento che precede l'azione, privilegiando la tensione interiore rispetto alla battaglia in pieno svolgimento.",
+  "summary": "Cartone preparatorio per il mai realizzato affresco della Battaglia di Cascina in Palazzo Vecchio a @Firenze, commissionato nel 1504 da @Pier Soderini. Fissava l'attimo in cui i soldati fiorentini, colti di sorpresa mentre si riposavano sulle rive dell'Arno, ricevono l'allarme e corrono frettolosamente alle armi. Perduto; ne restano copie, tra cui quella di @Aristotile da Sangallo (1542). Come nel David, @Michelangelo sceglie il momento che precede l'azione, privilegiando la tensione interiore rispetto alla battaglia in pieno svolgimento.",
   "analysis": null,
   "innovations": [
    "Momento pre-agonale come alternativa alla battaglia in corso"
@@ -33161,7 +33161,7 @@
   "page": 43,
   "source_file": "Libro2.5-giu-2026-7",
   "importance": 2,
-  "summary": "Statua in marmo alta 271 cm, oggi alla Galleria dell'Accademia di Firenze. L'@opera-del-duomo-firenze affida nel 1503 a @Michelangelo Buonarroti una serie di dodici apostoli per i pilastri su cui poggia la cupola del Duomo, ma l'artista, occupato dal David, poi dal cartone della Battaglia di Càscina e infine chiamato dal papa a @Bologna (1507) e a @Roma (1508), ne affronta uno solo. Avviato fra il 1504 e il 1505 e ripreso al ritorno a @Firenze nel 1506, il San Matteo resta incompiuto secondo le convenzioni del tempo, benché lo scultore lo considerasse concluso.",
+  "summary": "Statua in marmo alta 271 cm, oggi alla Galleria dell'Accademia di Firenze. L'@opera-del-duomo-firenze affida nel 1503 a @Michelangelo Buonarroti una serie di dodici apostoli per i pilastri su cui poggia la cupola del Duomo, ma l'artista, occupato dal David, poi dal cartone della Battaglia di Cascina e infine chiamato dal papa a @Bologna (1507) e a @Roma (1508), ne affronta uno solo. Avviato fra il 1504 e il 1505 e ripreso al ritorno a @Firenze nel 1506, il San Matteo resta incompiuto secondo le convenzioni del tempo, benché lo scultore lo considerasse concluso.",
   "analysis": "La novità dell'opera sta nell'impressione che l'apostolo si stia liberando dalla pietra grezza. La posa raccoglie tutta la fatica di questo emergere, e il contrasto fra la vitalità della figura e l'inerzia del blocco trasforma lo sforzo fisico nel simbolo della forma che lotta per sottrarsi al peso della materia.\n\nPer la sua forza il San Matteo è il punto di partenza di ogni riflessione sul «non finito» michelangiolesco, cioè sull'incompiutezza che accomuna molte sculture dell'artista. La critica ne discute ancora: talvolta l'interruzione dipende da cause esterne, altre volte appare voluta, una sosta deliberata in quel lavoro «del levare» con cui @Michelangelo toglieva il marmo in eccesso per scoprire la figura che, secondo il pensiero neoplatonico, è già viva dentro il blocco.\n\nLa scelta affonda le radici nella visione neoplatonica della natura, divisa fra la purezza della forma ideale e la pesantezza della materia, ma anche nel non finito dell'ultimo @Donatello, come nei pergami di San Lorenzo, e nello studio delle statue antiche mutile, che rivelano il fascino del frammento. Il procedimento, con il suo gioco fra parti rifinite e parti sbozzate a vari gradi, compare già nei due tondi marmorei del 1503-1504: @tondo-pitti e @tondo-taddei.",
   "innovations": [
    "Figura che sembra emergere dal blocco grezzo come in una lotta contro la materia",
@@ -33870,10 +33870,10 @@
   "summary": "Olio su tavola (122 × 80 cm). Ripropone il modello della Madonna del Belvedere rendendolo più armonioso e arricchendolo di citazioni e dettagli. Il piede del Bambino sovrapposto a quello della madre accomuna questa opera alla Madonna del cardellino.",
   "analysis": "La Bella giardiniera sviluppa il modello della Madonna del Belvedere, riproponendo la Vergine con il Bambino e san Giovannino all'interno di un paesaggio naturale. Raffaello organizza le tre figure secondo un equilibrio compositivo che rende la scena stabile e armoniosa.\n\nIl rapporto tra umanità e natura è centrale: il paesaggio digrada delicatamente verso il fondo e contribuisce alla sensazione di calma che caratterizza la scena. La composizione combina così la grazia delle figure con un ambiente naturale costruito con attenzione.\n\nL'opera mostra inoltre la capacità di Raffaello di rielaborare modelli precedenti, introducendo variazioni e dettagli senza perdere l'armonia dell'insieme. Il confronto con la Madonna del Belvedere e la Madonna del cardellino mostra la continuità della sua ricerca sulle Madonne, fondata su equilibrio, dolcezza e rapporto tra figura e paesaggio.",
   "innovations": [
-   "Composizione piramidale: le tre figure sono unite in un equilibrio stabile e armonioso.",
-   "Rapporto tra figure e natura: il paesaggio diventa parte integrante della composizione.",
-   "Sintesi di influenze ideali rinascimentali di grazia e armonia con motivi derivati dalla tradizione leonardesca.",
-   "Dolcezza espressiva: il rapporto tra Maria e i bambini crea un'immagine di forte equilibrio umano e affettivo."
+   "Composizione piramidale: le tre figure sono unite in un equilibrio stabile e armonioso",
+   "Rapporto tra figure e natura: il paesaggio diventa parte integrante della composizione",
+   "Sintesi di influenze ideali rinascimentali di grazia e armonia con motivi derivati dalla tradizione leonardesca",
+   "Dolcezza espressiva: il rapporto tra Maria e i bambini crea un'immagine di forte equilibrio umano e affettivo"
   ],
   "term_ids": [
    "impostazione-piramidale"
@@ -34276,7 +34276,7 @@
   "page": 17,
   "source_file": "Libro2.5-giu-2026-7",
   "importance": 3,
-  "summary": "Ciclo di affreschi commissionato da Giulio II (e poi Leone X) per quattro stanze rettangolari del Palazzo Apostolico in Vaticano. Le stanze — Stanza della Segnatura, Stanza di Eliodoro, Stanza dell'Incendio di Borgo, Sala di Costantino — costituiscono il capolavoro assoluto di Raffaello, un programma iconografico che celebra Roma cristiana come erede della classicità. Giulio II licenziò tutti i pittori già al lavoro (tra cui Sodoma, Bramantino, Perugino, Lorenzo Lotto) dopo aver visto il primo affresco di Raffaello.",
+  "summary": "Ciclo di affreschi commissionato da Giulio II (e poi Leone X) per quattro stanze rettangolari del Palazzo Apostolico in Vaticano. Le stanze — Stanza della Segnatura, Stanza di Eliodoro, Stanza dell'Incendio di Borgo, Sala di Costantino — sono una delle imprese maggiori di Raffaello, un programma iconografico che celebra Roma cristiana come erede della classicità. Giulio II licenziò tutti i pittori già al lavoro (tra cui Sodoma, Bramantino, Perugino, Lorenzo Lotto) dopo aver visto il primo affresco di Raffaello.",
   "analysis": "Le Stanze Vaticane rappresentano la più alta realizzazione della pittura del Rinascimento maturo. Il programma iconografico — elaborato da Giulio II, da Raffaello e da teologi come Egidio da Viterbo — celebra Roma cristiana come sintesi e apice di una millenaria tradizione che parte dall'antichità classica. Il ciclo si sviluppa dalle quattro discipline universitarie (Teologia, Filosofia, Giurisprudenza, Poesia) simboleggiate nelle volte alle scene storiche e religiose sulle pareti, in un progetto di affermazione di autorità e continuità storica voluta da Dio. L'evoluzione stilistica di Raffaello nel corso del ciclo è evidente: dalla serena armonia della Segnatura all'intensità drammatica della Stanza di Eliodoro, all'anticlassicismo della Stanza dell'Incendio.",
   "innovations": [
    "Programma iconografico unitario che abbraccia scienza, religione, diritto, arte",
@@ -34292,7 +34292,8 @@
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg/960px-%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg",
   "image_source": "it.wikipedia",
   "committente_ids": [
-   "giulio-ii-della-rovere"
+   "giulio-ii-della-rovere",
+   "leone-x-de-medici"
   ],
   "fonte_ids": [
    "occhi-arte-3"
@@ -35204,7 +35205,8 @@
   "image_thumb": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Cacciata_di_eliodoro_dal_tempio_01.jpg?utm_source=it.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
   "image_source": "wikidata-artista",
   "committente_ids": [
-   "giulio-ii-della-rovere"
+   "giulio-ii-della-rovere",
+   "leone-x-de-medici"
   ],
   "image_gallery": [
    "https://www.meisterdrucke.it/kunstwerke/1260px/Raphael%201483-1520%20Raphael%201483-1520%20-%20The%20Liberation%20of%20St%20Peter%20in%20the%20Stanza%20DEliodoro%201512-14%20%20-%20%28MeisterDrucke-599876%29.jpg",
@@ -35525,11 +35527,11 @@
   "summary": "Affresco nella Stanza di Eliodoro. L'affresco rappresenta il miracoloso incontro tra papa Leone Magno e Attila, avvenuto secondo la tradizione nel 452 d.C. presso il Mincio. L'intervento del papa avrebbe convinto Attila a rinunciare all'invasione dell'Italia. La scena appartiene al ciclo della Stanza di Eliodoro, dedicato alla protezione divina della Chiesa e all'autorità del papato.",
   "analysis": "Raffaello trasforma l'incontro tra Leone Magno e Attila in una scena fortemente drammatica, nella quale la storia viene presentata come manifestazione della protezione divina della Chiesa. Al centro, il papa avanza con atteggiamento fermo mentre Attila e il suo seguito appaiono agitati e minacciosi.\n\nIl momento decisivo è rappresentato dall'apparizione di san Pietro e san Paolo, che intervengono dall'alto armati di spade. Il miracolo rende visibile la volontà divina e spiega la rinuncia di Attila all'invasione.\n\nL'affresco assume così anche un evidente valore politico: la vicenda antica viene collegata alla funzione contemporanea del papato e alla sua capacità di difendere Roma. La scena unisce quindi racconto storico, miracolo e celebrazione dell'autorità pontificia, secondo il programma complessivo della Stanza di Eliodoro.",
   "innovations": [
-   "Drammatizzazione del miracolo: l'apparizione dei santi Pietro e Paolo rende visibile l'intervento divino.",
-   "Movimento e dinamismo: cavalli, gesti e diagonali accentuano la tensione della scena.",
-   "Contrasto tra le figure: la violenza del seguito di Attila si oppone alla fermezza di Leone Magno.",
-   "Autorità del papato: l'episodio storico diventa celebrazione del potere spirituale e politico della Chiesa.",
-   "Integrazione con lo spazio: l'architettura amplifica la monumentalità e la teatralità dell'evento."
+   "Drammatizzazione del miracolo: l'apparizione dei santi Pietro e Paolo rende visibile l'intervento divino",
+   "Movimento e dinamismo: cavalli, gesti e diagonali accentuano la tensione della scena",
+   "Contrasto tra le figure: la violenza del seguito di Attila si oppone alla fermezza di Leone Magno",
+   "Autorità del papato: l'episodio storico diventa celebrazione del potere spirituale e politico della Chiesa",
+   "Integrazione con lo spazio: l'architettura amplifica la monumentalità e la teatralità dell'evento"
   ],
   "term_ids": [
    "affresco"
@@ -35586,7 +35588,8 @@
   "image_thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Deliveranceofstpeter.jpg?width=640",
   "image_source": "wikidata-artista",
   "committente_ids": [
-   "giulio-ii-della-rovere"
+   "giulio-ii-della-rovere",
+   "leone-x-de-medici"
   ],
   "fonte_ids": [
    "occhi-arte-3"
@@ -38765,8 +38768,8 @@
   "summary": "Pala d'altare eseguita prima del Sacco del 1527 per la chiesa romana di San Salvatore in Lauro. Formato slanciato con costruzione dall'accentuato verticalismo: in primo piano san Gerolamo dormiente, in secondo la Vergine con Bambino indicata dal Battista. Composizione instabile con figure una sopra l'altra, fisicità del Bambino e il suo sguardo ammiccante di derivazione michelangiolesca.",
   "analysis": null,
   "innovations": [
-   "verticalismo compositivo accentuato",
-   "fisicità dirompente e sensualità anticheggiante del Bambino"
+   "Verticalismo compositivo accentuato",
+   "Fisicità dirompente e sensualità anticheggiante del Bambino"
   ],
   "term_ids": [
    "pala-d-altare",
@@ -38940,10 +38943,10 @@
   "materials": [
    "olio su tela"
   ],
-  "location_city": null,
-  "location_place": null,
-  "lat": null,
-  "lon": null,
+  "location_city": "Roma",
+  "location_place": "Galleria Borghese",
+  "lat": 41.914113,
+  "lon": 12.492105,
   "book": 2,
   "chapter": 7,
   "page": 44,
@@ -38982,8 +38985,8 @@
   ],
   "location_city": "Vienna",
   "location_place": "Kunsthistorisches Museum",
-  "lat": null,
-  "lon": null,
+  "lat": 48.203739,
+  "lon": 16.361782,
   "book": 2,
   "chapter": 7,
   "page": 44,
@@ -39027,16 +39030,16 @@
   "materials": [
    "olio su tela"
   ],
-  "location_city": null,
-  "location_place": null,
-  "lat": null,
-  "lon": null,
+  "location_city": "Berlino",
+  "location_place": "Gemäldegalerie",
+  "lat": 52.508513,
+  "lon": 13.364749,
   "book": 2,
   "chapter": 7,
   "page": 44,
   "source_file": "Libro2.6-giu-2026-8",
   "importance": 1,
-  "summary": "Parte del ciclo Amori di Giove commissionato da Federico II Gonzaga duca di Mantova. Correggio trasforma la mitologia ovidiana in scene di grande sensualita umana, segnando un passaggio fondamentale per la pittura rinascimentale.",
+  "summary": "Parte del ciclo Amori di Giove commissionato da Federico II Gonzaga duca di Mantova. Correggio trasforma la mitologia ovidiana in scene di grande sensualità umana, segnando un passaggio fondamentale per la pittura rinascimentale.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -39222,7 +39225,7 @@
   "page": 45,
   "source_file": "Libro2.6-giu-2026-8",
   "importance": 2,
-  "summary": "Olio su tela di @Correggio (1531-1532, 163,5 × 70,5 cm), Kunsthistorisches Museum di Vienna. Fa parte del ciclo degli Amori di Giove commissionato da @Federico Gonzaga duca di @Mantova. Giove, assunte le sembianze di un'aquila, rapisce il giovane pastore troiano Ganimede per condurlo sull'Olimpo, dove diverrà coppiere degli dèi. Una delle primissime raffigurazioni di tema omoerotico nella pittura rinascimentale (nel contesto mitico pagano). Il cane in primo piano pare sconfinare nello spazio reale.",
+  "summary": "Olio su tela di @Correggio (1531-1532, 163,5 × 70,5 cm), Kunsthistorisches Museum di Vienna. Fa parte del ciclo degli Amori di Giove commissionato da @federico-ii-gonzaga, duca di @Mantova. Giove, assunte le sembianze di un'aquila, rapisce il giovane pastore troiano Ganimede per condurlo sull'Olimpo, dove diverrà coppiere degli dèi. Una delle primissime raffigurazioni di tema omoerotico nella pittura rinascimentale (nel contesto mitico pagano). Il cane in primo piano pare sconfinare nello spazio reale.",
   "analysis": null,
   "innovations": [
    "Trasposizione umana e corporea del mito: sensualità e carnalità delle divinità"
@@ -39963,7 +39966,7 @@
  },
  {
   "id": "copia-cascina-sangallo",
-  "title": "Copia dalla Battaglia di Càscina di Michelangelo",
+  "title": "Copia dalla Battaglia di Cascina di Michelangelo",
   "artist_ids": [
    "aristotile-da-sangallo"
   ],
@@ -39979,16 +39982,16 @@
    "olio",
    "tela"
   ],
-  "location_city": null,
-  "location_place": "Norfolk, Holkham Hall, Collezione Leicester",
-  "lat": null,
-  "lon": null,
+  "location_city": "Holkham",
+  "location_place": "Holkham Hall, Collezione Leicester (Norfolk)",
+  "lat": 52.9516,
+  "lon": 0.8034,
   "book": 2,
   "chapter": 6,
   "page": 41,
   "source_file": "Libro2.5-giu-2026-7",
   "importance": 1,
-  "summary": "Olio su tela (75,5 × 130 cm), copia parziale della Battaglia di Càscina di Michelangelo eseguita da Aristotile da Sangallo nel 1542. Principale testimonianza visiva del cartone perduto di Michelangelo.",
+  "summary": "Olio su tela (75,5 × 130 cm), copia parziale della Battaglia di Cascina di Michelangelo eseguita da Aristotile da Sangallo nel 1542. Principale testimonianza visiva del cartone perduto di Michelangelo.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -40694,7 +40697,7 @@
   "summary": "Prima grande opera di Palladio, vince il concorso del 1549 per la ricostruzione del Palazzo del Comune di Vicenza. Due ordini di arcate in pietra racchiudono la struttura medievale. Il risultato finale è simile al Teatro di Marcello e alla Libreria di Sansovino, ma con forma più rigorosamente classica: niente sovrapposizioni scultoree, solo la struttura architettonica per gli effetti plastici.",
   "analysis": null,
   "innovations": [
-   "rigorosa purezza classica senza ornamenti scultorei sovrapposti"
+   "Rigorosa purezza classica senza ornamenti scultorei sovrapposti"
   ],
   "term_ids": [
    "serliana",
@@ -40830,8 +40833,8 @@
   ],
   "location_city": "Firenze",
   "location_place": null,
-  "lat": null,
-  "lon": null,
+  "lat": 43.76873,
+  "lon": 11.25359,
   "book": 2,
   "chapter": 8,
   "page": 23,
@@ -41900,9 +41903,9 @@
   "summary": "Immensa tela in cui il Cristo crocifisso costituisce l'asse centrale della composizione, stagliandosi contro il cielo sopra il gruppo della Madonna dolente. Una luce innaturale si diffonde dalla croce, mentre le diagonali delle figure costruiscono una struttura a rombo intorno a Cristo. Ai lati, le crocifissioni dei due ladroni, rappresentate in momenti e punti di vista differenti, ampliano la narrazione dello stesso evento.",
   "analysis": "Tintoretto rompe l'impostazione tradizionale della Crocifissione costruendo una scena estremamente dinamica, nella quale Cristo domina la composizione attraverso la sua posizione centrale e la luce che si irradia dalla croce.\n\nLe diagonali organizzano lo spazio in una struttura a rombo e guidano lo sguardo verso Cristo, mentre le figure dei personaggi sottolineano la complessità e la drammaticità dell'evento. La scena non viene quindi costruita secondo un unico punto di vista, ma attraverso una molteplicità di direzioni e momenti.\n\nLa luce soprannaturale assume un significato spirituale: non illumina semplicemente la scena, ma rende visibile la dimensione divina del sacrificio di Cristo e il suo trionfo sulla morte. Le crocifissioni dei ladroni ampliano infine la narrazione, trasformando l'episodio centrale in una rappresentazione più ampia dell'atto della Redenzione.",
   "innovations": [
-   "composizione a rombo intorno alla figura centrale",
-   "luce soprannaturale simbolica",
-   "moltiplicazione dei punti di vista narrativi"
+   "Composizione a rombo intorno alla figura centrale",
+   "Luce soprannaturale simbolica",
+   "Moltiplicazione dei punti di vista narrativi"
   ],
   "term_ids": [
    "chiaroscuro",
@@ -42043,9 +42046,9 @@
   "summary": "La più famosa villa palladiana: progettata per il canonico Paolo Almerico a sud di Vicenza (dal 1566), completata da Vincenzo Scamozzi. Quattro pronai identici verso i quattro punti cardinali, cupola riservata fino ad allora agli edifici sacri. Pianta che combina cerchio e quadrato come espressione di armonia superiore. Villa suburbana senza funzione agricola, luogo di raffinata conversazione umanistica e contemplazione.",
   "analysis": "La Rotonda è l'opera palladiana che meglio esemplifica l'ideale architettonico della perfezione geometrica: i quattro pronai identici creano una pianta a croce, la cupola rimanda alla volta celeste riservata agli edifici sacri. Il rigore geometrico che nasce dall'incontro fra cerchio e quadrato traduce in forma un'armonia superiore, quasi un ideale astratto reso visibile. L'opera avrà enorme fortuna nell'architettura settecentesca inglese e americana (palladianesimo).",
   "innovations": [
-   "quattro pronai identici su tutti i lati",
-   "cupola su villa residenziale",
-   "geometria assoluta come espressione di perfezione"
+   "Quattro pronai identici su tutti i lati",
+   "Cupola su villa residenziale",
+   "Geometria assoluta come espressione di perfezione"
   ],
   "term_ids": [
    "pronao",
@@ -42235,8 +42238,8 @@
   ],
   "location_city": "Venezia",
   "location_place": null,
-  "lat": null,
-  "lon": null,
+  "lat": 45.43,
+  "lon": 12.34,
   "book": 2,
   "chapter": 8,
   "page": 44,
@@ -42671,8 +42674,8 @@
   "summary": "Chiesa votiva edificata in adempimento di un voto del Senato veneziano durante la pestilenza del 1575-1576. Concetto compiuto del coordinamento tra impianto centralizzato con cupola, navata longitudinale fiancheggiata da cappelle e un corpo separato da grandi colonne (presbiterio). La facciata con pronao sovrapposto e breve scalinata richiama il tempio antico, risolvendo il problema albertiano di armonizzare il tempio classico con la struttura a navate cristiana.",
   "analysis": null,
   "innovations": [
-   "soluzione definitiva del problema albertiano tempio/chiesa",
-   "sobria purezza per i padri cappuccini"
+   "Soluzione definitiva del problema albertiano tempio/chiesa",
+   "Sobria purezza per i padri cappuccini"
   ],
   "term_ids": [
    "navata",
@@ -43201,9 +43204,9 @@
   "summary": "La Pala d'oro è il retablo d'oro e smalto che ornamento l'altare maggiore della Basilica di San Marco a Venezia. Commissionata inizialmente dal doge Pietro I Orseolo nel 976 e poi ampliata dal doge Ordelafo Falier nel 1105, fu in gran parte realizzata a Costantinopoli da maestri orafi bizantini, e poi ampliata e rimaneggiata fino al 1345. È composta da 83 smalti cloisonné bizantini, 117 pietre preziose e numerose figure in bassorilievo, racchiuse in una cornice gotica di Gian Paolo Boninsegna.",
   "analysis": "La Pala d'oro rappresenta uno dei capolavori assoluti dell'oreficeria medievale europea, sintesi mirabile tra la tradizione bizantina degli smalti cloisonné e il gotico veneziano. La composizione si articola su più registri: nella parte superiore l'arcangelo Michele, al centro il Cristo Pantocratore tra la Vergine e san Marco, e nei registri inferiori le storie di san Marco e le scene evangeliche. Gli smalti più antichi risalgono al X secolo e furono probabilmente realizzati per l'imperatore bizantino; quelli del XII secolo furono commissionati dal doge Falier, mentre altri furono aggiunti nel Duecento dal doge Pietro Ziani dopo il saccheggio di Costantinopoli del 1204. La cornice gotica, con le sue arcate traforate e i pinnacoli, fu eseguita dal veneziano Gian Paolo Boninsegna nel 1345, creando un continuum stilistico tra Oriente e Occidente che riflette la posizione peculiare di Venezia tra i due mondi.",
   "innovations": [
-   "sintesi stilistica bizantino-gotica",
-   "smalto cloisonné su larga scala",
-   "riuso di smalti imperiali bizantini"
+   "Sintesi stilistica bizantino-gotica",
+   "Smalto cloisonné su larga scala",
+   "Riuso di smalti imperiali bizantini"
   ],
   "term_ids": [
    "pala-d-altare",
@@ -43247,8 +43250,8 @@
   "summary": "Il complesso di affreschi dell'abbazia di San Pietro in Valle a Ferentillo comprende pitture murarie di epoca longobarda e carolingia, tra cui l'iscrizione dedicatoria di Ilderico Dagileopa. Gli affreschi rappresentano uno dei rari esempi di pittura monumentale altomedievale nell'Italia centrale, con scene bibliche e figure di santi che mostrano influssi bizantini e longobardi.",
   "analysis": null,
   "innovations": [
-   "iscrizione dedicatoria di Ilderico Dagileopa",
-   "pittura monumentale longobarda"
+   "Iscrizione dedicatoria di Ilderico Dagileopa",
+   "Pittura monumentale longobarda"
   ],
   "term_ids": [
    "affresco"
@@ -43288,9 +43291,9 @@
   "summary": "La basilica di Santa Sabina all'Aventino fu edificata dal presbitero Pietro d'Illiria durante il pontificato di Celestino I (422-432). È il più antico esempio di basilica cristiana a Roma conservata nella sua struttura originaria. Celebri sono la porta lignea con pannelli scolpiti del V secolo, il mosaico dell'arco trionfale con l'iscrizione musiva che commemora il donatore, e le finestre con lastre di marmo traforato (transenne).",
   "analysis": "Santa Sabina rappresenta il modello tipologico della basilica cristiana a tre navate senza transetto, con arcate su colonne di reimpiego e soffitto a capriate lignee. La porta lignea, con i suoi 18 pannelli superstite dei 28 originari, è uno dei capolavori della scultura su legno tardoromana: tra le scene più celebri la Crocifissione (una delle più antiche rappresentazioni note) e la Traditio Legis. L'iscrizione musiva dell'arco trionfale, con la coppia di figure femminili 'Ecclesia ex circumcisione' ed 'Ecclesia ex gentibus', riflette la teologia dell'universalità della Chiesa promossa da Celestino I.",
   "innovations": [
-   "porta lignea scolpita del V secolo",
-   "iscrizione musiva Ecclesia ex circumcisione / ex gentibus",
-   "transenne marmoree traforate"
+   "Porta lignea scolpita del V secolo",
+   "Iscrizione musiva Ecclesia ex circumcisione / ex gentibus",
+   "Transenne marmoree traforate"
   ],
   "term_ids": [
    "basilica",
@@ -43333,9 +43336,9 @@
   "summary": "L'Arco di Costantino fu eretto nel 315 d.C. dal Senato romano per commemorare la vittoria di Costantino su Massenzio nella battaglia di Ponte Milvio (312). È il più grande arco trionfale romano giuntoci intatto e si distingue per l'impiego massiccio di spolia — rilievi e sculture reimpiegate da monumenti di Traiano, Adriano e Marco Aurelio — accanto a rilievi ex novo di fattura costantiniana, che mostrano una drastica semplificazione formale rispetto ai modelli classici.",
   "analysis": "L'Arco di Costantino è un documento cruciale per la storia dell'arte tardoromana e per il dibattito sul passaggio dall'arte classica a quella medievale. I rilievi ex novo — come l'Oratio e la Liberalitas dell'attico e i medaglioni laterali — presentano figure ieratiche, proporzioni ribaltate, prospettiva schiacciata e un trattamento superficiale molto sintetico che Alois Riegl interpretò come espressione della Kunstwollen tardoromana, orientata verso la visione d'insieme piuttosto che verso il dettaglio naturalistico. La reimpiego dei rilievi traianei, adrianei e aureliani (i cosiddetti spolia) è stato letto sia come segno di declino artigianale sia come scelta ideologica: Costantino si presentava come erede dei grandi imperatori del passato.",
   "innovations": [
-   "impiego sistematico di spolia",
-   "rilievi ex novo con prospettiva ribaltata",
-   "iscrizione dedicatoria con formula religiosa volutamente neutra (instinctu divinitatis)"
+   "Impiego sistematico di spolia",
+   "Rilievi ex novo con prospettiva ribaltata",
+   "Iscrizione dedicatoria con formula religiosa volutamente neutra (instinctu divinitatis)"
   ],
   "term_ids": [
    "spolia",
@@ -43377,8 +43380,8 @@
   "summary": "L'Arco di Tito fu eretto intorno all'81 d.C. dall'imperatore Domiziano in onore del fratello Tito, per celebrare la conquista di Gerusalemme del 70 d.C. È il primo arco trionfale romano a un solo fornice e custodisce nei due grandi rilievi interni scene del trionfo: il corteo con la Menorah e gli oggetti del Tempio di Gerusalemme e Tito sul carro trionfale accompagnato dalla Vittoria.",
   "analysis": null,
   "innovations": [
-   "primo arco a fornice singolo",
-   "rilievo del corteo con la Menorah"
+   "Primo arco a fornice singolo",
+   "Rilievo del corteo con la Menorah"
   ],
   "term_ids": [
    "arco-trionfale",
@@ -43421,8 +43424,8 @@
   "summary": "Il Gruppo dei Tetrarchi è una scultura in porfido rosso egiziano che rappresenta quattro figure maschili abbracciate a due a due, simbolo del sistema di governo della Tetrarchia istituito da Diocleziano nel 293. Originariamente collocato a Costantinopoli nel Philadelphion, fu portato a Venezia dopo la Quarta Crociata (1204) e incastonato nell'angolo della Basilica di San Marco. La scultura esprime con forza l'ideale tetrarchico dell'unità e della concordia del potere imperiale.",
   "analysis": null,
   "innovations": [
-   "iconografia della concordia tetrarchica",
-   "porfido come materiale simbolico imperiale"
+   "Iconografia della concordia tetrarchica",
+   "Porfido come materiale simbolico imperiale"
   ],
   "term_ids": [
    "tetrarchia",
@@ -43463,9 +43466,9 @@
   "summary": "Il Mausoleo di Santa Costanza, originariamente mausoleo di Costantina (o Costanza), figlia di Costantino, fu costruito intorno al 340-360 lungo la Via Nomentana. A pianta circolare con deambulatorio anulare coperto da volta ad anello e cupola emisferica centrale su colonne, custodisce mosaici parietali di eccezionale qualità con motivi geometrici, scene di vendemmia e putti, che fondono la tradizione decorativa romana con il nuovo simbolismo cristiano.",
   "analysis": null,
   "innovations": [
-   "pianta centrale con deambulatorio",
-   "mosaici parietali profani e cristiani",
-   "volta anulare"
+   "Pianta centrale con deambulatorio",
+   "Mosaici parietali profani e cristiani",
+   "Volta anulare"
   ],
   "term_ids": [
    "mausoleo-dinastico",
@@ -43509,8 +43512,8 @@
   "summary": "Il Mausoleo di Elena, detto Tor Pignattara dal nome del quartiere, fu fatto costruire da Costantino per la madre Elena intorno al 326-330 sulla Via Casilina. A pianta circolare con deambulatorio, è caratterizzato dalla tecnica costruttiva a pignatte (vasetti fittili) inserite nella volta per alleggerire la struttura. Il sarcofago di porfido rosso, ora ai Musei Vaticani, era originariamente collocato al suo interno.",
   "analysis": null,
   "innovations": [
-   "tecnica a pignatte nella volta",
-   "pianta circolare con deambulatorio costantiniano"
+   "Tecnica a pignatte nella volta",
+   "Pianta circolare con deambulatorio costantiniano"
   ],
   "term_ids": [
    "mausoleo-dinastico",
@@ -43553,8 +43556,8 @@
   "summary": "Il sarcofago di Giunio Basso, prefetto di Roma morto nel 359, è uno dei più importanti sarcofagi paleocristiani a figure. Conservato nei Musei Vaticani, presenta su tre lati scene dell'Antico e del Nuovo Testamento disposte su due registri, con un linguaggio formale che mescola la tradizione classica con la nuova iconografia cristiana. Le scene includono il Sacrificio di Isacco, la Passione di Pietro, la Cattura di Cristo e il Giudizio di Pilato.",
   "analysis": null,
   "innovations": [
-   "sarcofago a doppio registro con scene bibliche",
-   "mescolanza stile classico e iconografia cristiana"
+   "Sarcofago a doppio registro con scene bibliche",
+   "Mescolanza stile classico e iconografia cristiana"
   ],
   "term_ids": [
    "sarcofago"
@@ -43594,7 +43597,7 @@
   "summary": "Il Colosso di Barletta è una statua bronzea di 5,11 metri raffigurante un imperatore romano tardoantico, probabilmente Teodosio II o Leone I, risalente al V secolo. Fu rinvenuta dopo il 1303, probabilmente proveniente da Costantinopoli, e trasportata a Barletta da navi veneziane. La statua, priva di parti delle gambe che furono reintegrate in marmo, è uno dei rari esempi di statuaria bronzea monumentale tardoromana.",
   "analysis": null,
   "innovations": [
-   "statuaria bronzea monumentale tardoromana"
+   "Statuaria bronzea monumentale tardoromana"
   ],
   "term_ids": [
    "ritratto-imperiale"
@@ -43633,9 +43636,9 @@
   "summary": "Santa Maria Antiqua è una chiesa paleocristiana nel Foro Romano, edificata all'interno di edifici imperiali romani preesistenti nel VI secolo e decorata con cicli di affreschi tra il VI e l'VIII secolo per iniziativa di diversi papi. Celebri sono gli affreschi commissionati da papa Giovanni VII (705-707) e la Cappella di Teodoto, affrescata durante il pontificato di Zaccaria (741-752). La chiesa fu abbandonata dopo un terremoto nell'847 e sepolta dai crolli, conservando gli affreschi come un eccezionale palinsesto pittorico.",
   "analysis": "Santa Maria Antiqua è il più importante palinsesto pittorico di Roma altomedievale: i suoi affreschi, disposti su più strati sovrapposti, documentano l'evoluzione della pittura romana tra il VI e l'VIII secolo, dalla tradizione tardoclassica alle influenze bizantine fino al rinascimento papale del VIII secolo. La Cappella di Teodoto mostra scene della Passione di Cristo e della Vergine con uno stile che prefigura l'iconografia medievale successiva. Gli affreschi di Giovanni VII, tra cui il ciclo di scene evangeliche, furono staccati e in parte dispersi durante gli scavi ottocenteschi.",
   "innovations": [
-   "palinsesto pittorico altomedievale",
+   "Palinsesto pittorico altomedievale",
    "Cappella di Teodoto con scene della Passione",
-   "ciclo musivo di Giovanni VII"
+   "Ciclo musivo di Giovanni VII"
   ],
   "term_ids": [
    "affresco",
@@ -43676,9 +43679,9 @@
   "summary": "La domus ecclesiae di Doura Europos, scoperta nel 1932, è il più antico edificio cristiano conosciuto, databile intorno al 245 d.C. Si tratta di una casa privata adattata al culto cristiano, contenente un battistero con affreschi che rappresentano il Buon Pastore, Adamo ed Eva, la Samaritana al pozzo e scene di guarigioni miracolose. Gli affreschi combinano il linguaggio figurativo tardoantico con il simbolismo cristiano primitivo.",
   "analysis": null,
   "innovations": [
-   "più antico edificio cristiano conosciuto",
-   "adattamento domestico per culto",
-   "battistero con ciclo pittorico"
+   "Più antico edificio cristiano conosciuto",
+   "Adattamento domestico per culto",
+   "Battistero con ciclo pittorico"
   ],
   "term_ids": [
    "domus-ecclesiae",
@@ -43718,8 +43721,8 @@
   "summary": "L'Aula Palatina (o Basilica di Costantino) a Treviri è una grandiosa sala trionfale costruita intorno al 310 d.C. come sala delle udienze imperiali nel palazzo di Costantino. Con i suoi 67 m di lunghezza, 27,5 m di larghezza e 33 m di altezza, è il più grande edificio a sala unica dell'antichità giuntoci. La struttura in mattoni con enormi finestre ad arco e absidi semicircolari fu convertita in chiesa nel XIX secolo.",
   "analysis": null,
   "innovations": [
-   "sala trionfale a navata unica di dimensioni eccezionali",
-   "tecnica costruttiva in laterizio"
+   "Sala trionfale a navata unica di dimensioni eccezionali",
+   "Tecnica costruttiva in laterizio"
   ],
   "term_ids": [
    "basilica",
@@ -43760,9 +43763,9 @@
   "summary": "La Rotonda dell'Anastasis, costruita da Costantino sul luogo del sepolcro di Cristo a Gerusalemme intorno al 335, è il nucleo originario della Basilica del Santo Sepolcro. La grande cupola che sovrasta l'edificio circolare racchiude l'edicola del Santo Sepolcro. Il complesso costantiniano comprendeva anche una basilica a cinque navate (il Martyrium) e un cortile porticato che collegava le due strutture.",
   "analysis": null,
   "innovations": [
-   "edificio a pianta centrale sopra il sepolcro",
-   "cupola su tamburo",
-   "complesso basilica + rotonda"
+   "Edificio a pianta centrale sopra il sepolcro",
+   "Cupola su tamburo",
+   "Complesso basilica + rotonda"
   ],
   "term_ids": [
    "anastasis",
@@ -43807,8 +43810,8 @@
   "summary": "La Capsella di Samagher è un reliquiario d'argento con decorazione a niello, rinvenuto presso Pola (l'antica Pietas Iulia) in Istria e oggi conservato nel Museo Archeologico Nazionale di Venezia. Sulle pareti sono rappresentate scene dell'Antico e Nuovo Testamento, tra cui il Traditio Legis, la Traditio Clavium, la Crocifissione e scene profane con figure imperiali, che riflettono la commistione tra simbolismo cristiano e iconografia imperiale tipica del V secolo.",
   "analysis": null,
   "innovations": [
-   "iconografia imperiale cristianizzata",
-   "niello su argento"
+   "Iconografia imperiale cristianizzata",
+   "Niello su argento"
   ],
   "term_ids": [
    "capsella",
@@ -43849,8 +43852,8 @@
   "summary": "Il Palazzo di Diocleziano a Spalato è un vasto complesso palaziale fortificato costruito intorno al 295-305 come residenza per la pensione dell'imperatore Diocleziano. La pianta rettangolare (215 × 180 m) è organizzata come un accampamento militare romano con due vie principali (cardo e decumano) che si incrociano al centro, e comprende un mausoleo, un tempio di Giove, terme e un peristilio. Molti elementi furono reimpiegati nella città medievale e moderna che si sviluppò all'interno delle mura.",
   "analysis": null,
   "innovations": [
-   "palazzo fortificato come castrum",
-   "mausoleo e tempio all'interno del palazzo"
+   "Palazzo fortificato come castrum",
+   "Mausoleo e tempio all'interno del palazzo"
   ],
   "term_ids": [
    "peristilio",
@@ -43894,8 +43897,8 @@
   "summary": "Il Cofanetto di Proiecta è un oggetto in argento sbalzato e cesellato, rinvenuto nel tesoro di Esquilino a Roma e conservato al British Museum. Databile alla fine del IV secolo, presenta sul coperchio la figura di Proiecta (forse la nobildonna citata nel 384 da san Gerolamo) tra figure allegoriche, e sulle pareti laterali scene mitologiche e rituali. È un capolavoro dell'argenteria tardoromana che fonde la cultura pagana con i nuovi valori cristiani.",
   "analysis": null,
   "innovations": [
-   "fusione iconografia pagana e cristiana",
-   "argenteria tardoromana di lusso"
+   "Fusione iconografia pagana e cristiana",
+   "Argenteria tardoromana di lusso"
   ],
   "term_ids": [
    "cesello"
@@ -43935,8 +43938,8 @@
   "summary": "Il dittico dei Nicomachi e dei Simmachi è un dittico consolare in avorio della fine del IV secolo, commissionato dalle due grandi famiglie senatorie romane per celebrare le nozze tra le due casate. Le due valve superstiti, oggi divise tra il Musée de Cluny a Parigi e il Victoria and Albert Museum di Londra, mostrano scene di sacrificio pagano con figure femminili e sacerdotali di alta qualità classica. È un documento della resistenza dell'aristocrazia senatoria pagana di fronte alla cristianizzazione dell'Impero.",
   "analysis": null,
   "innovations": [
-   "dittico con iconografia pagana tardiva",
-   "resistenza aristocratica alla cristianizzazione"
+   "Dittico con iconografia pagana tardiva",
+   "Resistenza aristocratica alla cristianizzazione"
   ],
   "term_ids": [
    "dittico",
@@ -43979,8 +43982,8 @@
   "summary": "Il Missorium di Teodosio è un grande piatto d'argento sbalzato e dorato (diam. 74 cm), realizzato a Costantinopoli nel 388 per commemorare il decennale dell'imperatore Teodosio I. L'imperatore è raffigurato al centro in trono, affiancato dai co-imperatori Arcadio e Valentiniano II, in un'-iconografia che esprime la concordia imperiale. Il piatto fu rinvenuto in Spagna e testimonia la circolazione di oggetti di lusso imperiali nelle province.",
   "analysis": null,
   "innovations": [
-   "iconografia della concordia imperiale",
-   "piatto cerimoniale in argento dorato"
+   "Iconografia della concordia imperiale",
+   "Piatto cerimoniale in argento dorato"
   ],
   "term_ids": [
    "missorium",
@@ -44024,8 +44027,8 @@
   "summary": "Le formelle dei Paratici della cattedrale di Piacenza sono rilievi scolpiti che rappresentano le corporazioni delle arti e dei mestieri (i 'paratici') della città, collocati sulla fascia inferiore della facciata e dei fianchi. Ogni formella ritrae gli artigiani al lavoro — fabbri, vasai, muratori, mercanti — con strumenti e prodotti tipici della loro attività. Costituiscono un raro documento della società comunale e dell'economia urbana del XII secolo.",
   "analysis": null,
   "innovations": [
-   "rappresentazione delle corporazioni urbane",
-   "iconografia laica e quotidiana"
+   "Rappresentazione delle corporazioni urbane",
+   "Iconografia laica e quotidiana"
   ],
   "term_ids": [
    "paratico",
@@ -44065,9 +44068,9 @@
   "summary": "La basilica di Sant'Andrea a Vercelli fu fondata dal cardinale Guala Bicchieri nel 1219 e consacrata nel 1227. È uno dei primi edifici gotici in Italia, costruito da maestranze lombarde e francesi che introdussero elementi gotici transalpini — come l'arco a sesto acuto, il rosone e i contrafforti — nella tradizione romanica padana. La facciata a salienti, la pianta a due torri e il tiburio ottagonale sulla crociera ne fanno un unicum architettonico.",
   "analysis": null,
   "innovations": [
-   "primo edificio gotico in Italia",
-   "facciata a salienti con rosone",
-   "tiburio ottagonale"
+   "Primo edificio gotico in Italia",
+   "Facciata a salienti con rosone",
+   "Tiburio ottagonale"
   ],
   "term_ids": [
    "gotico",
@@ -44109,8 +44112,8 @@
   "summary": "La chiesa di Saint-Bénigne a Digione fu ricostruita dall'abate Guglielmo da Volpiano a partire dal 1001. Il progetto originario prevedeva una rotonda di tre piani (il 'gioiello' ottagonale) annessa alla basilica, ispirata ai modelli paleocristiani come il Santo Sepolcro e San Vitale. La rotonda fu demolita nel XVIII secolo, ma la chiesa romanica sopravvive con la sua cripta e il campanile. Guglielmo vi introdusse modelli architettonici che influenzarono la Normandia e l'Inghilterra.",
   "analysis": null,
   "innovations": [
-   "rotonda di tre piani ispirata al Santo Sepolcro",
-   "influenza normanna"
+   "Rotonda di tre piani ispirata al Santo Sepolcro",
+   "Influenza normanna"
   ],
   "term_ids": [
    "rotonda",
@@ -44154,8 +44157,8 @@
   "summary": "Placca semicircolare in rame dorato decorata a smalto champlevé, eseguita verso il 1150 e oggi al British Museum di @Londra insieme a una seconda placca con due angeli. Vi compare, inginocchiato, il committente @Enrico di Blois, vescovo di Winchester e fratello del re Stefano; le iscrizioni latine lungo il bordo ne lodano la generosità verso l'arte. Lo stile è quello degli smalti mosani, fioriti nella valle della Mosa, fra gli attuali Belgio e Paesi Bassi: l'opera testimonia la circolazione di orafi e modelli fra il continente e l'Inghilterra normanna.",
   "analysis": null,
   "innovations": [
-   "smalto champlevé di gusto mosano nell'Inghilterra normanna",
-   "ritratto del committente inserito nell'oggetto liturgico"
+   "Smalto champlevé di gusto mosano nell'Inghilterra normanna",
+   "Ritratto del committente inserito nell'oggetto liturgico"
   ],
   "term_ids": [
    "mosano"
@@ -44198,8 +44201,8 @@
   "summary": "Il Codex Egberti è un evangeliario miniato commissionato dall'arcivescovo Egberto di Treviri tra il 980 e il 993, realizzato nello scriptorium del monastero di Reichenau. Contiene 51 miniature a piena pagina con scene della vita di Cristo, eseguite dai maestri Keraldus e Heribertus. È uno dei capolavori della miniatura ottoniana, con figure ieratiche su fondi dorati che combinano la tradizione bizantina con la sensibilità lineare ottoniana.",
   "analysis": null,
   "innovations": [
-   "ciclo cristologico miniato su fondi dorati",
-   "firma dei miniatori Keraldus e Heribertus"
+   "Ciclo cristologico miniato su fondi dorati",
+   "Firma dei miniatori Keraldus e Heribertus"
   ],
   "term_ids": [
    "evangeliario",
@@ -44284,8 +44287,8 @@
   "summary": "Il mosaico della porta imperiale di Santa Sofia a Costantinopoli raffigura l'imperatore Leone VI il Saggio in proskynesis (atto di prosternazione) davanti a Cristo Pantocratore seduto su trono, con un medaglione con la Vergine e l'arcangelo Gabriele ai lati. Realizzato alla fine del IX secolo dopo la fine dell'iconoclastia, è uno dei primi mosaici figurativi restaurati nella grande chiesa giustinianea e testimonia la riaffermazione delle immagini sacre dopo la crisi iconoclasta.",
   "analysis": null,
   "innovations": [
-   "imperatore in proskynesis davanti a Cristo",
-   "primo mosaico post-iconoclasta di Santa Sofia"
+   "Imperatore in proskynesis davanti a Cristo",
+   "Primo mosaico post-iconoclasta di Santa Sofia"
   ],
   "term_ids": [
    "proskynesis",
@@ -44329,7 +44332,7 @@
   "summary": "Il Salterio Chludov (Mosca, Museo Storico di Stato) è un manoscritto miniato bizantino databile al periodo della crisi iconoclasta o immediatamente successivo (ca. 850-875). Le miniature, di stile monocromo e rapido, illustrano i Salmi con scene che talvolta alludono polemicamente alla distruzione delle immagini da parte degli iconoclasti, come la miniatura del c. 67r che mostra la distruzione di un'immagine di Cristo accanto alla scena della Crocifissione.",
   "analysis": null,
   "innovations": [
-   "miniatura con allusione polemica anti-iconoclasta"
+   "Miniatura con allusione polemica anti-iconoclasta"
   ],
   "term_ids": [
    "iconoclastia",
@@ -44373,7 +44376,7 @@
   "summary": "La Madonna di San Luca è un mosaico sulla facciata di Santa Maria Maggiore a Roma, tradizionalmente attribuito a Filippo Rusuti, che vi appose la firma 'Filippus Rusuti pinxit'. L'opera, databile intorno al 1296, rappresenta la Vergine col Bambino in trono tra angeli e santi. La firma dell'artista è un caso raro e prezioso nel Medioevo romano e testimonia l'emergere della figura individuale dell'artista.",
   "analysis": null,
   "innovations": [
-   "firma dell'artista nel mosaico medievale"
+   "Firma dell'artista nel mosaico medievale"
   ],
   "term_ids": [
    "mosaico"
@@ -44413,8 +44416,8 @@
   "summary": "Il Battistero Lateranense, noto anche come battistero di San Giovanni in Fonte, fu fatto costruire da Costantino intorno al 315-330 accanto alla basilica del Laterano. Rifatto a pianta ottagonale con otto colonne di porfido da papa Sisto III nel V secolo, è il più antico battistero cristiano di Roma e servì da modello per tutti i battisteri successivi. La vasca battesimale centrale in basalto verde, i mosaici e il rivestimento marmoreo testimoniano la ricchezza della committenza costantiniana.",
   "analysis": null,
   "innovations": [
-   "pianta ottagonale del battistero",
-   "modello per tutti i battisteri cristiani"
+   "Pianta ottagonale del battistero",
+   "Modello per tutti i battisteri cristiani"
   ],
   "term_ids": [
    "battistero",
@@ -44457,10 +44460,10 @@
   "summary": "Il riquadro raffigura in un'unica composizione i due momenti fondamentali della Caduta dell'uomo narrati nella Genesi: a sinistra Adamo ed Eva colgono il frutto dell'albero della conoscenza, mentre a destra l'angelo li scaccia dal Paradiso terrestre.\n\nAl centro della scena si trova l'albero attorno al quale si avvolge la serpente con busto femminile, secondo una tradizione iconografica medievale. Michelangelo organizza i due episodi intorno all'albero, trasformandolo nel principale elemento compositivo e creando una forte contrapposizione tra la condizione dell'uomo prima e dopo il peccato.",
   "analysis": "La Caduta e Cacciata dei progenitori costituisce uno dei momenti più complessi del programma della volta della Cappella Sistina. Michelangelo concentra nello stesso spazio due episodi consecutivi della Genesi, creando una narrazione che si sviluppa da sinistra verso destra: prima la tentazione e il peccato, poi la perdita del Paradiso.\n\nL'albero collocato al centro ha una funzione fondamentale. Non è soltanto l'elemento intorno al quale si svolge l'episodio della tentazione, ma diventa anche un vero e proprio asse di separazione tra due condizioni dell'umanità. A sinistra Adamo ed Eva appaiono ancora immersi in una dimensione di armonia; a destra, dopo il peccato, i loro corpi si contraggono e assumono atteggiamenti carichi di paura e sofferenza.\n\nLa figura della serpente con busto femminile riprende una tradizione iconografica già presente nell'arte medievale e rinascimentale. Questa soluzione non nasce quindi con Michelangelo, ma viene da lui reinterpretata all'interno di un linguaggio figurativo completamente nuovo. Il tentatore assume quasi l'aspetto di una figura umana seducente, accentuando il carattere ambivalente della tentazione.\n\nUno degli elementi più potenti dell'opera è il contrasto psicologico e fisico tra le due metà della composizione. Prima della Caduta, Adamo ed Eva mostrano corpi equilibrati e relativamente distesi; dopo la cacciata, Michelangelo li rappresenta rannicchiati, piegati e vulnerabili. La trasformazione spirituale viene quindi tradotta direttamente nella forma dei corpi.\n\nL'angelo che caccia i progenitori introduce nella scena una forte energia diagonale. La sua presenza rende improvviso e irrevocabile il passaggio dalla condizione paradisiaca alla condizione terrena. La drammaticità non deriva soltanto dall'episodio narrato, ma dalla stessa costruzione delle figure e dalla loro relazione nello spazio.\n\nLa scena assume così un significato più ampio rispetto alla semplice illustrazione della Genesi: il peccato originale diventa una riflessione sulla condizione umana, sulla perdita dell'armonia originaria e sulla conseguente separazione dell'uomo da Dio.",
   "innovations": [
-   "Due episodi in un'unica scena: la Caduta e la Cacciata dal Paradiso sono rappresentate nello stesso riquadro.",
-   "Albero come elemento compositivo: l'albero centrale separa e contemporaneamente collega i due momenti narrativi.",
-   "Serpente femminile: Michelangelo riprende una tradizione iconografica medievale che raffigurava il tentatore con sembianze femminili.",
-   "Contrasto espressivo: alla serenità e alla sicurezza della scena di sinistra si contrappongono la deformazione dei corpi e la disperazione della scena di destra.",
+   "Due episodi in un'unica scena: la Caduta e la Cacciata dal Paradiso sono rappresentate nello stesso riquadro",
+   "Albero come elemento compositivo: l'albero centrale separa e contemporaneamente collega i due momenti narrativi",
+   "Serpente femminile: Michelangelo riprende una tradizione iconografica medievale che raffigurava il tentatore con sembianze femminili",
+   "Contrasto espressivo: alla serenità e alla sicurezza della scena di sinistra si contrappongono la deformazione dei corpi e la disperazione della scena di destra",
    "Monumentalità delle figure: i protagonisti sono costruiti attraverso corpi possenti e una forte tensione anatomica, trasformando un episodio biblico in una scena di intensa drammaticità"
   ],
   "term_ids": [
@@ -44490,8 +44493,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Ferrara",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -44525,8 +44528,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Ferrara",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -44701,8 +44704,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Museo della Cattedrale Ferrara",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 2,
   "chapter": 0,
   "page": 0,
@@ -44949,8 +44952,8 @@
   "materials": [],
   "location_city": "Magonza",
   "location_place": null,
-  "lat": null,
-  "lon": null,
+  "lat": 49.9929,
+  "lon": 8.2473,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -44984,8 +44987,8 @@
   "materials": [],
   "location_city": "Venezia",
   "location_place": "Stamperia di Aldo Manuzio",
-  "lat": null,
-  "lon": null,
+  "lat": 45.43,
+  "lon": 12.34,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -45175,8 +45178,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Palazzo Schifanoia, Salone d'onore",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 2,
   "chapter": 0,
   "page": 0,
@@ -45220,8 +45223,8 @@
   "materials": [],
   "location_city": "Roma",
   "location_place": "Collezione Colonna",
-  "lat": null,
-  "lon": null,
+  "lat": 41.892666,
+  "lon": 12.482201,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -45255,8 +45258,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Palazzo dei Diamanti",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -45325,8 +45328,8 @@
   "materials": [],
   "location_city": "Venezia",
   "location_place": "Scuola Grande di San Giovanni Evangelista",
-  "lat": null,
-  "lon": null,
+  "lat": 45.43,
+  "lon": 12.34,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -45409,8 +45412,8 @@
   "materials": [],
   "location_city": "Londra",
   "location_place": "Hampton Court Palace",
-  "lat": null,
-  "lon": null,
+  "lat": 51.529912,
+  "lon": -0.127692,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -45458,7 +45461,7 @@
   "summary": "Esempio dei numerosi ritratti realizzati dall'artista durante la sua carriera, caratterizzati dalla precisione nordica per il dettaglio derivata dal contatto con le opere fiamminghe.",
   "analysis": null,
   "innovations": [
-   "Riprende le soluzioni compositive fiamminghe introdotte da Petrus Christus."
+   "Riprende le soluzioni compositive fiamminghe introdotte da Petrus Christus"
   ],
   "term_ids": [],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Antonello_da_Messina_-_Portrait_of_a_Man_-_National_Gallery_London.jpg",
@@ -45763,8 +45766,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Palazzo Schifanoia, Salone dei Mesi, Parete Nord",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -45845,8 +45848,8 @@
   "materials": [],
   "location_city": "Città del Vaticano",
   "location_place": "Chiesa di San Petronio (originale); Musei Vaticani, Pinacoteca",
-  "lat": null,
-  "lon": null,
+  "lat": 41.902157,
+  "lon": 12.45371,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -46063,8 +46066,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Palazzo Schifanoia",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 2,
   "chapter": 0,
   "page": 0,
@@ -46203,8 +46206,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Palazzo dei Diamanti",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -46453,8 +46456,8 @@
   "materials": [],
   "location_city": "Palermo",
   "location_place": "Galleria Regionale della Sicilia, Palazzo Abatellis",
-  "lat": null,
-  "lon": null,
+  "lat": 38.110884,
+  "lon": 13.353512,
   "book": 2,
   "chapter": 0,
   "page": 0,
@@ -46664,8 +46667,8 @@
   "materials": [],
   "location_city": "Venezia",
   "location_place": "Isola di San Michele",
-  "lat": null,
-  "lon": null,
+  "lat": 45.43,
+  "lon": 12.34,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -46716,10 +46719,10 @@
   "summary": "Grande pala d'altare con struttura architettonica che incornicia le figure sacre in uno spazio unico. Al centro Madonna col Bambino in trono, affiancata da santi in nicchie architettoniche. Predella con tre scene della Passione. Composizione ispirata all'Altare del Santo di Donatello.",
   "analysis": "Mantegna supera il tradizionale polittico medievale creando un unico spazio continuo in cui tutti i personaggi condividono lo stesso ambiente. La scena è ambientata sotto una loggia classica, dipinta con una rigorosa prospettiva che prolunga idealmente l’architettura della chiesa. La cornice sembra fondersi con lo spazio dipinto, aumentando l’effetto illusionistico. Anche la luce contribuisce al realismo, poiché proviene dalla stessa direzione della luce reale della basilica. L’opera rivela l’influenza dell’arte classica, di Donatello e delle teorie prospettiche di Leon Battista Alberti, unendo monumentalità delle figure, precisione geometrica e armonia compositiva.",
   "innovations": [
-   "Sacra Conversazione in uno spazio unico, senza divisioni tra i santi.",
-   "Prospettiva rigorosa con un unico punto di fuga.",
-   "Integrazione tra architettura reale e dipinta, creando un effetto illusionistico.",
-   "Luce coerente con quella reale della chiesa, che aumenta il senso di realismo."
+   "Sacra Conversazione in uno spazio unico, senza divisioni tra i santi",
+   "Prospettiva rigorosa con un unico punto di fuga",
+   "Integrazione tra architettura reale e dipinta, creando un effetto illusionistico",
+   "Luce coerente con quella reale della chiesa, che aumenta il senso di realismo"
   ],
   "term_ids": [
    "pala",
@@ -46753,8 +46756,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Palazzo dei Diamanti",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -46831,8 +46834,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Palazzo Schifanoia",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -46943,8 +46946,8 @@
   "materials": [],
   "location_city": "Venezia",
   "location_place": "Scuola di Sant'Orsola",
-  "lat": null,
-  "lon": null,
+  "lat": 45.43,
+  "lon": 12.34,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -47130,8 +47133,8 @@
   "materials": [],
   "location_city": "Venezia",
   "location_place": "Scuola di San Giorgio degli Schiavoni",
-  "lat": null,
-  "lon": null,
+  "lat": 45.43,
+  "lon": 12.34,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -47474,8 +47477,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Villa di Belriguardo (distrutta)",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -47751,8 +47754,8 @@
   "materials": [],
   "location_city": "Bologna",
   "location_place": "Chiesa di San Petronio (originale); varie sedi museali (attuale), Bologna",
-  "lat": null,
-  "lon": null,
+  "lat": 44.494764,
+  "lon": 11.335646,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -47792,8 +47795,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Monastero di San Giorgio fuori le mura",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -47870,8 +47873,8 @@
   "materials": [],
   "location_city": "Napoli",
   "location_place": "Museo e Gallerie Nazionali di Capodimonte",
-  "lat": null,
-  "lon": null,
+  "lat": 40.85092,
+  "lon": 14.25804,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -47987,16 +47990,16 @@
    "cosme-tura"
   ],
   "period_id": "scuola-ferrarese",
-  "date_text": "",
-  "year_start": null,
-  "year_end": null,
+  "date_text": "1469",
+  "year_start": 1469,
+  "year_end": 1469,
   "type": "pittura",
   "technique_ids": [],
   "materials": [],
-  "location_city": null,
-  "location_place": null,
-  "lat": null,
-  "lon": null,
+  "location_city": "Ferrara",
+  "location_place": "Museo della Cattedrale",
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -48067,10 +48070,10 @@
   "type": "pittura",
   "technique_ids": [],
   "materials": [],
-  "location_city": "Cefalù (Palermo)",
+  "location_city": "Cefalù",
   "location_place": "Museo della Fondazione Mandralisca",
-  "lat": null,
-  "lon": null,
+  "lat": 38.0386,
+  "lon": 14.0223,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -48079,7 +48082,7 @@
   "summary": "Ritratto virile conservato a Cefalù, il più antico tra quelli giunti fino a noi, probabilmente raffigurante Francesco Vitale da Noja, personaggio legato alla corte aragonese e poi vescovo di Cefalù. Opera che testimonia l'approccio antonelliano alla ritrattistica",
   "analysis": null,
   "innovations": [
-   "Riprende le soluzioni compositive fiamminghe introdotte da Petrus Christus."
+   "Riprende le soluzioni compositive fiamminghe introdotte da Petrus Christus"
   ],
   "term_ids": [],
   "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Antonello_da_Messina_080.jpg?utm_source=it.wikipedia.org&utm_campaign=index&utm_content=original",
@@ -48287,7 +48290,7 @@
   "summary": "Nell’opera, Maria è seduta direttamente sul terreno, riprendendo lo schema iconografico medievale della cosiddetta Madonna dell’umiltà, mentre il Bambino, addormentato sulle sue gambe, anticipa nella posa e nell’atteggiamento l’iconografia nordica della Pietà. Sullo sfondo si apre una campagna veneta, completata da un piccolo borgo cinto da mura, che circonda la struttura chiusa e piramidale formata dalla Madre con il Bambino, creando un netto distacco visivo tra il gruppo sacro in primo piano e il paesaggio circostante.",
   "analysis": "Nonostante l’isolamento compositivo del gruppo sacro rispetto all’ambiente, Bellini costruisce una corrispondenza profonda tra l’intima concentrazione della donna in preghiera, il sonno profondo del Bambino e la pace che regna nella natura circostante, unendo così la dimensione umana a quella del paesaggio. Nella resa della campagna, i dettagli realistici si fondono con elementi simbolici, come il corvo e l’albero secco, entrambi allusivi alla futura morte di Cristo in croce, caricando la scena apparentemente serena di un significato prefigurante e drammatico. Ancora una volta, come già osservato in altre opere di Bellini, l’uniformità compositiva dell’insieme è affidata alla potenza unificante della luce naturale, il cui chiarore mattutino fa risaltare i colori degli abiti, degli incarnati, del paesaggio e del cielo, diventando la caratteristica principale della pittura veneta del Rinascimento.",
   "innovations": [
-   "rompe lo schema iconografico medievale della cosiddetta Madonna dell’umiltà"
+   "Rompe lo schema iconografico medievale della cosiddetta Madonna dell’umiltà"
   ],
   "term_ids": [
    "madonna-con-bambino",
@@ -48637,8 +48640,8 @@
   "materials": [],
   "location_city": "Cambridge",
   "location_place": "Massachusetts, Harvard University, Fogg Art Museum",
-  "lat": null,
-  "lon": null,
+  "lat": 52.204083,
+  "lon": 0.114839,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -48673,8 +48676,8 @@
   "materials": [],
   "location_city": "Venezia",
   "location_place": "Museo di Palazzo Cà d'Oro (Galleria Giorgio Franchetti)",
-  "lat": null,
-  "lon": null,
+  "lat": 45.43,
+  "lon": 12.34,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -48975,8 +48978,8 @@
   "materials": [],
   "location_city": "Napoli",
   "location_place": null,
-  "lat": null,
-  "lon": null,
+  "lat": 40.85092,
+  "lon": 14.25804,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -49014,8 +49017,8 @@
   "materials": [],
   "location_city": "Pesaro",
   "location_place": "Musei Civici, Pala di Pesaro",
-  "lat": null,
-  "lon": null,
+  "lat": 43.9098,
+  "lon": 12.9131,
   "book": 2,
   "chapter": 0,
   "page": 0,
@@ -49524,8 +49527,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Palazzo Schifanoia, Salone dei Mesi",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 2,
   "chapter": 0,
   "page": 0,
@@ -49564,10 +49567,10 @@
   "type": "pittura",
   "technique_ids": [],
   "materials": [],
-  "location_city": null,
-  "location_place": null,
-  "lat": null,
-  "lon": null,
+  "location_city": "Londra",
+  "location_place": "National Gallery",
+  "lat": 51.508881,
+  "lon": -0.128383,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -49603,8 +49606,8 @@
   "materials": [],
   "location_city": "Pesaro",
   "location_place": "Musei Civici, Pala di Pesaro",
-  "lat": null,
-  "lon": null,
+  "lat": 43.9098,
+  "lon": 12.9131,
   "book": 2,
   "chapter": 0,
   "page": 0,
@@ -49670,7 +49673,7 @@
  },
  {
   "id": "pala-portonese-madonna-col-bambino-e-santi",
-  "title": "Pala Portonese (Madonna col Bambino e santi)",
+  "title": "Pala Portuense (Madonna col Bambino e santi)",
   "artist_ids": [
    "ercole-de-roberti"
   ],
@@ -49762,14 +49765,14 @@
   "materials": [],
   "location_city": "Siena",
   "location_place": null,
-  "lat": null,
-  "lon": null,
+  "lat": 43.317795,
+  "lon": 11.32909,
   "book": 1,
   "chapter": 0,
   "page": 0,
   "source_file": "",
   "importance": 1,
-  "summary": "Opera citata come riferimento per la struttura porticata adottata da Ercole de' Roberti nella Pala Portonese.",
+  "summary": "Opera citata come riferimento per la struttura porticata adottata da Ercole de' Roberti nella Pala Portuense.",
   "analysis": null,
   "innovations": [],
   "term_ids": [],
@@ -49967,8 +49970,8 @@
   "materials": [],
   "location_city": "Venezia",
   "location_place": "Santa Maria Gloriosa dei Frari",
-  "lat": null,
-  "lon": null,
+  "lat": 45.43,
+  "lon": 12.34,
   "book": 2,
   "chapter": 0,
   "page": 0,
@@ -50110,8 +50113,8 @@
   "materials": [],
   "location_city": "Lione",
   "location_place": "Musée des Beaux-Arts",
-  "lat": null,
-  "lon": null,
+  "lat": 45.764,
+  "lon": 4.8357,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -50186,8 +50189,8 @@
   "materials": [],
   "location_city": "Ferrara",
   "location_place": "Pinacoteca Nazionale",
-  "lat": null,
-  "lon": null,
+  "lat": 44.8381,
+  "lon": 11.6198,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -50503,8 +50506,8 @@
   "materials": [],
   "location_city": "San Diego",
   "location_place": "Fine Arts Gallery",
-  "lat": null,
-  "lon": null,
+  "lat": 32.7157,
+  "lon": -117.1611,
   "book": 1,
   "chapter": 0,
   "page": 0,
@@ -50688,11 +50691,11 @@
   "summary": "La decorazione del soffitto della Stanza della Segnatura costituisce la struttura superiore del programma affidato a Raffaello negli appartamenti vaticani. La superficie è organizzata attraverso riquadri geometrici, tondi, cornici dorate, grottesche e motivi ornamentali, entro i quali compaiono personificazioni delle quattro facoltà del sapere — Teologia, Filosofia, Giurisprudenza e Poesia — e piccoli episodi biblici e allegorici.\n\nL'impianto decorativo fu iniziato da Sodoma e successivamente rielaborato da Raffaello, che ne mantenne la struttura generale adattandola al programma iconografico destinato alla stanza.\nNegli spazi angolari compaiono episodi esemplari — Apollo e Marsia, Adamo ed Eva, il Giudizio di Salomone e il Primo moto — mentre la decorazione integra e rielabora l'impianto architettonico già predisposto da Sodoma.",
   "analysis": "Il soffitto della Stanza della Segnatura non è una semplice decorazione ornamentale, ma costituisce il livello superiore del programma concettuale della stanza. La suddivisione geometrica organizza lo spazio in una serie di riquadri e medaglioni nei quali le allegorie delle quattro facoltà del sapere si collegano direttamente alle grandi scene dipinte sulle pareti.\n\nLa decorazione unisce quindi ornamento, allegoria e architettura. Le grottesche e i motivi ispirati all'antico creano una cornice preziosa, mentre le immagini figurative introducono un contenuto intellettuale preciso. Il soffitto contribuisce così a trasformare l'ambiente in uno spazio dedicato alla rappresentazione ordinata del sapere.\n\nIl ruolo di Sodoma è importante perché l'impianto decorativo precede l'intervento di Raffaello. Quest'ultimo non lo sostituisce completamente, ma lo rielabora e lo integra nel nuovo programma della Stanza della Segnatura. La continuità della struttura e il cambiamento del contenuto mostrano quindi il passaggio da una decorazione prevalentemente ornamentale a un sistema iconografico più articolato.\n\nNel complesso, soffitto e pareti sono pensati come un'unica macchina visiva: la volta introduce le grandi categorie del sapere, mentre le pareti le sviluppano attraverso composizioni monumentali. Questa relazione è uno degli aspetti fondamentali dell'organizzazione rinascimentale dello spazio e del programma decorativo di Raffaello.\nLe scene inserite negli spazi angolari — Adamo ed Eva, Apollo e Marsia, il Giudizio di Salomone e il Primo moto — traducono questi ambiti del sapere in episodi biblici e mitologici. La decorazione crea così un sistema unitario nel quale allegoria, narrazione e architettura collaborano alla rappresentazione di un ideale rinascimentale di conoscenza ordinata e armonica.\n\nRaffaello mantiene la struttura geometrica già predisposta da Sodoma, ma la rielabora inserendovi un programma iconografico completamente nuovo. La volta diventa quindi non soltanto una decorazione, ma una vera mappa visiva del sapere che organizza e collega tutte le immagini della stanza.",
   "innovations": [
-   "Sistema unitario tra soffitto e pareti: la decorazione superiore anticipa e collega i temi sviluppati sulle pareti.",
-   "Integrazione tra ornamento e allegoria: grottesche, medaglioni e riquadri figurativi assumono anche una funzione concettuale.",
-   "Rielaborazione dell'impianto di Sodoma: Raffaello conserva la struttura preesistente trasformandone il significato.",
-   "Organizzazione del sapere: le immagini delle quattro facoltà introducono una visione ordinata e armonica della conoscenza.",
-   "Ornamento come parte del programma: la decorazione non è soltanto decorativa, ma contribuisce alla costruzione dell'intero significato della stanza."
+   "Sistema unitario tra soffitto e pareti: la decorazione superiore anticipa e collega i temi sviluppati sulle pareti",
+   "Integrazione tra ornamento e allegoria: grottesche, medaglioni e riquadri figurativi assumono anche una funzione concettuale",
+   "Rielaborazione dell'impianto di Sodoma: Raffaello conserva la struttura preesistente trasformandone il significato",
+   "Organizzazione del sapere: le immagini delle quattro facoltà introducono una visione ordinata e armonica della conoscenza",
+   "Ornamento come parte del programma: la decorazione non è soltanto decorativa, ma contribuisce alla costruzione dell'intero significato della stanza"
   ],
   "term_ids": [
    "affresco"

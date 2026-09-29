@@ -5,7 +5,8 @@ import { useData, useTimeRange } from "../lib/store";
 import { FilterNote } from "../components/ui";
 import Fullscreen from "../components/Fullscreen";
 import TimeRangeSlider from "../components/TimeRangeSlider";
-import type { Work } from "../lib/types";
+import type { Work, Artist } from "../lib/types";
+import { isCommittente } from "../lib/data";
 
 // invalida la dimensione della mappa quando si entra/esce dal fullscreen
 // E anche al mount iniziale (Leaflet ha bisogno di sapere le dimensioni reali)
@@ -22,6 +23,16 @@ function Resizer({ trigger }: { trigger: boolean }) {
 }
 
 interface City { name: string; lat: number; lon: number; works: Work[]; }
+interface SedeCommittenti { name: string; lat: number; lon: number; committenti: { a: Artist; n: number }[]; }
+
+// Sedi di committenti in citta' dove il catalogo non ha opere con coordinate:
+// senza queste i loro mecenati sparirebbero dalla mappa.
+const COORD_SEDI: Record<string, [number, number]> = {
+  "Augusta": [48.3705, 10.8978], "Bourges": [47.081, 2.3988], "Bressanone": [46.715, 11.656], "Bruges": [51.2093, 3.2247],
+  "Chieri": [45.0126, 7.8247], "Città di Castello": [43.457, 12.2405], "Fabriano": [43.3363, 12.9046], "Ferrara": [44.8381, 11.6198],
+  "Isenheim": [47.9167, 7.2667], "Magdeburgo": [52.1205, 11.6276], "Melun": [48.5421, 2.6554], "Montecassino": [41.49, 13.8139],
+  "Polisy": [48.0706, 4.3717], "Reggio Emilia": [44.6983, 10.6312],
+};
 
 function FitBounds({ cities }: { cities: City[] }) {
   const map = useMap();
@@ -48,6 +59,8 @@ export default function Mappa() {
   const [isFull, setIsFull] = useState(false);
   const [cityQ, setCityQ] = useState("");
   const mapRef = useRef<any>(null);
+  // Opere: dove sono le opere oggi. Committenti: dove avevano sede quelli che le hanno commissionate.
+  const [modo, setModo] = useState<"opere" | "committenti">("opere");
 
   const works = useMemo(() => ix.ds.works.filter(workIn), [ix, workIn]);
 
@@ -63,6 +76,33 @@ export default function Mappa() {
   }, [works]);
 
   const cityByName = useMemo(() => new Map(cities.map((c) => [c.name, c])), [cities]);
+
+  // Le coordinate di una citta' vengono dalle opere del catalogo (tutte, non
+  // solo quelle nel periodo scelto): la sede di un committente puo' non avere
+  // opere nell'intervallo pur restando un luogo reale.
+  const coordCitta = useMemo(() => {
+    const m = new Map<string, [number, number]>(Object.entries(COORD_SEDI));
+    for (const w of ix.ds.works) if (w.lat != null && w.lon != null && w.location_city && !m.has(w.location_city)) m.set(w.location_city, [w.lat, w.lon]);
+    return m;
+  }, [ix]);
+
+  // Un committente compare se nel periodo scelto ha almeno un'opera commissionata.
+  const sedi = useMemo<SedeCommittenti[]>(() => {
+    const opere = new Map<string, number>();
+    for (const w of works) for (const cid of w.committente_ids ?? []) opere.set(cid, (opere.get(cid) ?? 0) + 1);
+    const m = new Map<string, SedeCommittenti>();
+    for (const a of ix.ds.artists) {
+      const n = opere.get(a.id) ?? 0;
+      if (!n || !a.location_city || !isCommittente(a)) continue;
+      const c = coordCitta.get(a.location_city);
+      if (!c) continue;
+      if (!m.has(a.location_city)) m.set(a.location_city, { name: a.location_city, lat: c[0], lon: c[1], committenti: [] });
+      m.get(a.location_city)!.committenti.push({ a, n });
+    }
+    for (const s of m.values()) s.committenti.sort((x, y) => (x.a.birth ?? x.a.death ?? 9999) - (y.a.birth ?? y.a.death ?? 9999));
+    return [...m.values()].sort((a, b) => b.committenti.length - a.committenti.length);
+  }, [works, ix, coordCitta]);
+  const maxCommittenti = Math.max(...sedi.map((s) => s.committenti.length), 1);
 
   const flows = useMemo(() => {
     const out: { a: City; b: City; n: number }[] = [];
@@ -87,13 +127,23 @@ export default function Mappa() {
       <div className="page-head">
         <div className="page-eyebrow"><span className="eyebrow">Visualizzazione</span></div>
         <h1 className="page-title">Mappa & contaminazioni</h1>
-        <p className="page-lead">I luoghi che custodiscono le opere e i flussi di influenza che li collegano. La dimensione di ogni cerchio riflette il numero di opere; gli archi uniscono opere connesse in città diverse. Clicca un cerchio o il nome di un centro per aprire la scheda del luogo.</p>
+        <p className="page-lead">{modo === "opere"
+          ? "I luoghi che custodiscono le opere e i flussi di influenza che li collegano. La dimensione di ogni cerchio riflette il numero di opere; gli archi uniscono opere connesse in città diverse. Clicca un cerchio o il nome di un centro per aprire la scheda del luogo."
+          : "Le città in cui avevano sede i committenti: papi, sovrani, signori, confraternite. La dimensione di ogni cerchio riflette il numero di committenti; nel riquadro si vede quante opere ha commissionato ciascuno nel periodo scelto."}</p>
       </div>
       <div className="page-rule" />
 
       <div className="filterbar" style={{ marginBottom: 14 }}>
-        <FilterNote total={ix.ds.works.filter((w) => w.location_city).length} shown={works.filter((w) => w.location_city).length} noun="opere localizzate" />
-        <span className="muted tnum" style={{ fontSize: 13, marginLeft: "auto" }}>{cities.length} città · {flows.length} flussi</span>
+        <div className="seg" data-testid="mappa-modo">
+          <button className={`seg-btn ${modo === "opere" ? "on" : ""}`} onClick={() => setModo("opere")}>Opere</button>
+          <button className={`seg-btn ${modo === "committenti" ? "on" : ""}`} onClick={() => setModo("committenti")}>Committenti</button>
+        </div>
+        {modo === "opere"
+          ? <FilterNote total={ix.ds.works.filter((w) => w.location_city).length} shown={works.filter((w) => w.location_city).length} noun="opere localizzate" />
+          : null}
+        <span className="muted tnum" style={{ fontSize: 13, marginLeft: "auto" }}>{modo === "opere"
+          ? `${cities.length} città · ${flows.length} flussi`
+          : `${sedi.length} città · ${sedi.reduce((t, s) => t + s.committenti.length, 0)} committenti`}</span>
       </div>
 
       <Fullscreen title="Mappa & contaminazioni" controls={null} showSlider={false} onChange={setIsFull}>
@@ -116,11 +166,30 @@ export default function Mappa() {
                 maxZoom={16} />
               <Resizer trigger={isFull} />
               <FitBounds cities={cities} />
-              {flows.map((f, i) => (
+              {modo === "opere" && flows.map((f, i) => (
                 <Polyline key={i} positions={[[f.a.lat, f.a.lon], [f.b.lat, f.b.lon]]}
                   pathOptions={{ color: "#b88a2e", weight: 0.7 + Math.min(f.n, 4) * 0.5, opacity: 0.55, dashArray: "4 4" }} />
               ))}
-              {cities.map((c) => {
+              {modo === "committenti" && sedi.map((s) => {
+                const r = 5 + (s.committenti.length / maxCommittenti) * 22;
+                return (
+                  <CircleMarker key={"c-" + s.name} center={[s.lat, s.lon]} radius={r}
+                    pathOptions={{ color: "#6e3326", fillColor: "#b5654f", fillOpacity: 0.55, weight: 1.2 }}>
+                    <Popup>
+                      <div style={{ minWidth: 200 }}>
+                        <Link to={`/luogo/${encodeURIComponent(s.name)}`} style={{ fontSize: 15, fontFamily: "Zodiak, serif", fontWeight: 600, color: "#211c14", textDecoration: "none", borderBottom: "1px solid #b5654f" }}>{s.name}</Link>
+                        <div style={{ color: "#837a66", fontSize: 12, margin: "4px 0 8px" }}>{s.committenti.length} {s.committenti.length === 1 ? "committente" : "committenti"}</div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 4, maxHeight: 200, overflow: "auto" }}>
+                          {s.committenti.map(({ a, n }) => (
+                            <Link key={a.id} to={`/artista/${a.id}`} style={{ color: "#6e3326", fontSize: 13, textDecoration: "none" }}>· {a.name} <span style={{ color: "#837a66" }}>({n} {n === 1 ? "opera" : "opere"})</span></Link>
+                          ))}
+                        </div>
+                      </div>
+                    </Popup>
+                  </CircleMarker>
+                );
+              })}
+              {modo === "opere" && cities.map((c) => {
                 const r = 5 + (c.works.length / maxWorks) * 22;
                 return (
                   <CircleMarker key={c.name} center={[c.lat, c.lon]} radius={r}
@@ -147,7 +216,7 @@ export default function Mappa() {
           {/* Colonna destra: ricerca Centri + (in fullscreen) slider temporale */}
           <div className="gf-side">
             <div className="panel" style={{ marginBottom: 12 }}>
-              <div className="panel-title">Centri</div>
+              <div className="panel-title">{modo === "opere" ? "Centri" : "Sedi dei committenti"}</div>
               <input
                 type="text"
                 value={cityQ}
@@ -161,7 +230,24 @@ export default function Mappa() {
                 }}
               />
               <div style={{ maxHeight: 580, overflowY: "auto", margin: "0 -4px", paddingRight: 4 }}>
-                {(() => {
+                {modo === "committenti" ? (() => {
+                  const q = cityQ.trim().toLowerCase();
+                  const filtered = q ? sedi.filter((s) => s.name.toLowerCase().includes(q)) : sedi.slice(0, 24);
+                  if (!filtered.length) return <div style={{ padding: "16px 0", textAlign: "center", color: "var(--ink-dim)", fontSize: 13 }}>Nessuna città trovata per "{cityQ}".</div>;
+                  return filtered.map((s) => (
+                    <div key={s.name} style={{ padding: "10px 0", borderBottom: "1px solid var(--line-soft)" }}>
+                      <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                        <Link className="tlink" to={`/luogo/${encodeURIComponent(s.name)}`} style={{ fontFamily: "Zodiak, serif", fontSize: 16 }}>{s.name}</Link>
+                        <span className="badge-period" style={{ fontSize: 9.5, padding: "3px 8px" }}>{s.committenti.length} {s.committenti.length === 1 ? "committente" : "committenti"}</span>
+                      </div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 7 }}>
+                        {s.committenti.slice(0, 4).map(({ a }) => (
+                          <Link key={a.id} to={`/artista/${a.id}`} className="tlink" style={{ fontSize: 12 }}>{a.name.length > 26 ? a.name.slice(0, 24) + "…" : a.name}</Link>
+                        ))}
+                      </div>
+                    </div>
+                  ));
+                })() : (() => {
                   const q = cityQ.trim().toLowerCase();
                   const filtered = q
                     ? cities.filter(c => c.name.toLowerCase().includes(q))
@@ -188,7 +274,7 @@ export default function Mappa() {
                   ));
                 })()}
               </div>
-              {!cityQ.trim() && cities.length > 24 && (
+              {modo === "opere" && !cityQ.trim() && cities.length > 24 && (
                 <div style={{ padding: "8px 0 0", fontSize: 11, color: "var(--ink-dim)", textAlign: "center" }}>
                   +{cities.length - 24} altre città — usa la ricerca per trovarle
                 </div>

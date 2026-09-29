@@ -121,7 +121,7 @@
   "year": 800,
   "year_end": null,
   "title": "Incoronazione di Carlo Magno a imperatore",
-  "description": "Papa Leone III incorona Carlo Magno imperatore del Sacro Romano Impero nella Basilica di San Pietro a Roma la notte di Natale dell'800, avviando la Renovatio Imperii.",
+  "description": "Papa Leone III incorona Carlo Magno imperatore dei Romani nella Basilica di San Pietro a Roma la notte di Natale dell'800, avviando la Renovatio Imperii.",
   "kind": "politico",
   "period_id": "eta-carolingia"
  },
@@ -137,7 +137,7 @@
  {
   "id": "pontificato-pasquale-i-817-826",
   "year": 817,
-  "year_end": 826,
+  "year_end": 824,
   "title": "Pontificato di Pasquale I",
   "description": "Papa Pasquale I promuove un vasto programma di rinnovamento delle chiese romane con mosaici paleocristiani rinnovati, includendo Santa Prassede, Santa Maria in Domnica e Santa Cecilia.",
   "kind": "religioso",
@@ -265,7 +265,7 @@
   "year": 1099,
   "year_end": null,
   "title": "Inizio costruzione del duomo di Modena",
-  "description": "Il vescovo Anselmo di Baggio pone la prima pietra del duomo di Modena nel 1099, con Lanfranco come architetto e Wiligelmo come scultore principale.",
+  "description": "Nel 1099 viene posta la prima pietra del duomo di Modena, su iniziativa del capitolo e della comunità cittadina, con Lanfranco come architetto e Wiligelmo come scultore principale.",
   "kind": "culturale",
   "period_id": "romanico"
  },
@@ -985,7 +985,7 @@
   "year": 1503,
   "year_end": 1513,
   "title": "Pontificato di Giulio II",
-  "description": "Papa Giulio II della Rovere (1503-1513) è il grande mecenate del Rinascimento romano: commissions la ricostruzione di San Pietro, la decorazione della Sistina a Michelangelo, le Stanze Vaticane a Raffaello.",
+  "description": "Papa Giulio II della Rovere (1503-1513) è il grande mecenate del Rinascimento romano: commissiona la ricostruzione di San Pietro, la decorazione della Sistina a Michelangelo, le Stanze Vaticane a Raffaello.",
   "kind": "politico",
   "period_id": "rinascimento-maturo"
  },
@@ -1354,7 +1354,7 @@
   "year": 1465,
   "year_end": null,
   "title": "Affidamento Camera degli Sposi",
-  "description": "Ludovico affida a Andrea Mantegna anche la decorazione di una piccola stanza nel torzione di nord-est del castello di San Giorgio (Camera degli Sposi)",
+  "description": "Ludovico affida a Andrea Mantegna anche la decorazione di una piccola stanza nel torrione di nord-est del castello di San Giorgio (Camera degli Sposi)",
   "kind": "culturale",
   "period_id": null
  },
@@ -1651,7 +1651,7 @@
   "year": 1445,
   "year_end": null,
   "title": "Realizzazione delle opere di Colantonio per San Lorenzo Maggiore",
-  "description": "Nel periodo aragonese, attorno al 1445, Colantonio realizza il capolavoro comprendente San Gerolamo nello studio e San Francesco consegna la regola agli ordini francescani per la chiesa franciscana di San Lorenzo Maggiore a Napoli",
+  "description": "Nel periodo aragonese, attorno al 1445, Colantonio realizza il capolavoro comprendente San Gerolamo nello studio e San Francesco consegna la regola agli ordini francescani per la basilica francescana di San Lorenzo Maggiore a Napoli",
   "kind": "culturale",
   "period_id": null
  },
@@ -1768,7 +1768,7 @@
   "year": null,
   "year_end": null,
   "title": "Collocazione originale del San Gerolamo",
-  "description": "L'opera era originariamente collocata nella chiesa di San Lorenzo Maggiore a Napoli di ordine francescano",
+  "description": "L'opera era originariamente collocata nella basilica di San Lorenzo Maggiore a Napoli di ordine francescano",
   "kind": "culturale",
   "period_id": null
  },
@@ -1777,7 +1777,7 @@
   "year": 1468,
   "year_end": null,
   "title": "Arrivo di Mauro Codussi a Venezia",
-  "description": "Mauro Codussi, formatosi a Ravenna, approda a Venezia alla fine degli anni sessanta del Quattrocento portando nuove influenze architettoniche",
+  "description": "Mauro Codussi, originario della bergamasca e già attivo a Ravenna per i camaldolesi di Classe, approda a Venezia alla fine degli anni sessanta del Quattrocento portando nuove influenze architettoniche",
   "kind": "culturale",
   "period_id": null
  },
@@ -2092,7 +2092,7 @@
   "year": null,
   "year_end": null,
   "title": "Danneggiamento del Politico Roverella",
-  "description": "Il Politico Roverella viene danneggiato da un colpo di cannone",
+  "description": "Il Polittico Roverella viene danneggiato da un colpo di cannone",
   "kind": "culturale",
   "period_id": null
  },
@@ -2128,7 +2128,7 @@
   "year": 1470,
   "year_end": null,
   "title": "Trasferimento a Bologna",
-  "description": "Dopo la rottura con la corte ferrarese, Francesco del Cossa si trasferisce a Bologna dove lavora al Politico Griffoni",
+  "description": "Dopo la rottura con la corte ferrarese, Francesco del Cossa si trasferisce a Bologna dove lavora al Polittico Griffoni",
   "kind": "culturale",
   "period_id": null
  },
@@ -2245,7 +2245,7 @@
   "year": 1351,
   "year_end": null,
   "title": "Composizione dei Trionfi di Petrarca",
-  "description": "Completamento dell'opera poetica dei Trionfi di Francesco Petrarca, che diventerà fonte iconografica essenziale per l'arte rinascimentale italiana",
+  "description": "Inizio della composizione dei Trionfi di Francesco Petrarca, che diventerà fonte iconografica essenziale per l'arte rinascimentale italiana",
   "kind": "culturale",
   "period_id": null
  },
@@ -2263,7 +2263,7 @@
   "year": 1450,
   "year_end": null,
   "title": "Arrivo di Filarete a Milano",
-  "description": "Filarete viene chiamato a Milano dal Duca Francesco Sforza per lavorare alla ricostruzione e modernizzazione architecttonica del ducato, segnando l'incontro tra cultura fiorentina e tradizione lombarda.",
+  "description": "Filarete viene chiamato a Milano dal Duca Francesco Sforza per lavorare alla ricostruzione e modernizzazione architettonica del ducato, segnando l'incontro tra cultura fiorentina e tradizione lombarda.",
   "kind": "culturale",
   "period_id": null
  },
@@ -2398,7 +2398,7 @@
   "year": 1488,
   "year_end": null,
   "title": "Inizio del Monumento funebre di Colleoni a Venezia",
-  "description": "Inizio dei lavori per il monumento funebre equestre nella chiesa dei Santi Giovanni e Paolo a Venezia, con la statua bronzea del Verrocchio e il basamento dell'Amadeo",
+  "description": "Inizio dei lavori per il monumento funebre equestre nella basilica dei Santi Giovanni e Paolo a Venezia, con la statua bronzea del Verrocchio e il basamento dell'Amadeo",
   "kind": "culturale",
   "period_id": null
  },

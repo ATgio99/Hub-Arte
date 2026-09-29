@@ -151,7 +151,7 @@
  {
   "id": "anastasis",
   "term": "Anàstasis",
-  "definition": "Iconografia byzantina della Resurrezione: Cristo risorto scende agli Inferi e trae da essi Adamo ed Eva, reggendo la croce astata.",
+  "definition": "Iconografia bizantina della Resurrezione: Cristo risorto scende agli Inferi e trae da essi Adamo ed Eva, reggendo la croce astata.",
   "category": "iconografia",
   "period_ids": [
    "arte-bizantina"
@@ -327,7 +327,7 @@
  {
   "id": "arianesimo",
   "term": "Arianesimo",
-  "definition": "Movimento fondato dal vescovo Ario (256-336), che nega la piena natura divina di Cristo. Condannato nel Concilio di Nicea (325), ebbe largo seguito presso i popoli germanici (Ostrogoti, Longobardi). La benedizione con due dita invece di tre nella scultura longobarda è risposta simbolica all'arianesimo.",
+  "definition": "Movimento fondato dal sacerdote Ario (256-336), che nega la piena natura divina di Cristo. Condannato nel Concilio di Nicea (325), ebbe largo seguito presso i popoli germanici (Ostrogoti, Longobardi). La benedizione con due dita invece di tre nella scultura longobarda è risposta simbolica all'arianesimo.",
   "category": "iconografia",
   "period_ids": [
    "eta-longobarda",
@@ -668,7 +668,7 @@
  {
   "id": "cappella-familiare",
   "term": "Cappella familiare",
-  "definition": "Cappella privata all'interno di una chiesa, finanziata e decorata da una famiglia nobile o mercantile come luogo di culto, memoria e sepoltura. La cappella Portinari, Colleoni, Sistina e Tornabuoni sono esempi significativi.",
+  "definition": "Cappella privata all'interno di una chiesa, finanziata e decorata da una famiglia nobile o mercantile come luogo di culto, memoria e sepoltura. La cappella Portinari, Colleoni e Tornabuoni sono esempi significativi.",
   "category": "architettura",
   "period_ids": [
    "quattrocento"
@@ -949,7 +949,7 @@
  {
   "id": "cloisonne",
   "term": "Cloisonné",
-  "definition": "Tecnica orafa (già registrata in 'techniques') che consiste nel delimitare con lamicine metalliche degli alveoli riempiti di smalto, paste vitree o pietre preziose. Deriva dal francese cloison, 'setto'.",
+  "definition": "Tecnica orafa (già registrata in 'techniques') che consiste nel delimitare con lamine metalliche degli alveoli riempiti di smalto, paste vitree o pietre preziose. Deriva dal francese cloison, 'setto'.",
   "category": "generale",
   "period_ids": [
    "arte-ottoniana",
@@ -1177,7 +1177,7 @@
  {
   "id": "corteo-dei-magi",
   "term": "Corteo dei Magi",
-  "definition": "Iconografia che rappresenta il viaggio dei tre Re Magi verso la Nativity di Betlemme, con lunga processione di personaggi, animali e paesaggio. Celebrata a Firenze con una processione annuale il giorno dell'Epifania.",
+  "definition": "Iconografia che rappresenta il viaggio dei tre Re Magi verso la Natività di Betlemme, con lunga processione di personaggi, animali e paesaggio. Celebrata a Firenze con una processione annuale il giorno dell'Epifania.",
   "category": "iconografia",
   "period_ids": [
    "quattrocento"
@@ -1991,7 +1991,7 @@
  {
   "id": "hodigitria",
   "term": "Vergine Hodigitria",
-  "definition": "Iconografia byzantina della Madonna che regge il Bambino sul braccio sinistro e indica con la destra, nel senso di 'colei che mostra la via'. Tipo codificato diffuso in Italia nel XIII secolo.",
+  "definition": "Iconografia bizantina della Madonna che regge il Bambino sul braccio sinistro e indica con la destra, nel senso di 'colei che mostra la via'. Tipo codificato diffuso in Italia nel XIII secolo.",
   "category": "iconografia",
   "period_ids": [
    "arte-bizantina",
@@ -2479,7 +2479,7 @@
  {
   "id": "maniera-greca",
   "term": "Maniera greca",
-  "definition": "Stile pittorico italobizantino del XIII secolo che deriva dall'iconografia e dalle tecniche pittoriche byzantine, caratterizzato da frontalità, fondo oro, lumeggiature a segno d'oro (criselefantina), pieghe convenzionali e grande ieraticità.",
+  "definition": "Stile pittorico italobizantino del XIII secolo che deriva dall'iconografia e dalle tecniche pittoriche bizantine, caratterizzato da frontalità, fondo oro, lumeggiature a segno d'oro (crisografia), pieghe convenzionali e grande ieraticità.",
   "category": "pittura",
   "period_ids": [
    "pittura-romanica-italiana"
@@ -3244,7 +3244,7 @@
  {
   "id": "pantocratore",
   "term": "Cristo Pantocratore",
-  "definition": "Iconografia byzantina che raffigura Cristo benedicente a mezzo busto con il Vangelo aperto nell'altra mano e aureola cruciforme su fondo oro. Collocato nel catino absidale.",
+  "definition": "Iconografia bizantina che raffigura Cristo benedicente a mezzo busto con il Vangelo aperto nell'altra mano e aureola cruciforme su fondo oro. Collocato nel catino absidale.",
   "category": "iconografia",
   "period_ids": [
    "arte-bizantina",
@@ -3574,7 +3574,7 @@
  {
   "id": "porta-bronzea",
   "term": "Porta bronzea",
-  "definition": "Portale monumentale in bronzo fuso con formelle narrative o decorative, tipico delle cattedrali romaniche italiane (Pisa, Monreale) e derivato dalla tradizione byzantina e renana.",
+  "definition": "Portale monumentale in bronzo fuso con formelle narrative o decorative, tipico delle cattedrali romaniche italiane (Pisa, Monreale) e derivato dalla tradizione bizantina e renana.",
   "category": "scultura",
   "period_ids": [
    "romanico-italiano",
@@ -3907,7 +3907,7 @@
  {
   "id": "putto",
   "term": "Putto (pl. putti)",
-  "definition": "Figura di bambino alato di ispirazione classica, usata come elemento decorativo. Arnolfo di Cambio lo riprende nei motivi vegetali degli affreschi di Assisi come riferimento ai modelli antichi romani.",
+  "definition": "Figura di bambino alato di ispirazione classica, usata come elemento decorativo. Compare nei motivi vegetali degli affreschi duecenteschi della basilica superiore di Assisi come riferimento ai modelli antichi romani.",
   "category": "iconografia",
   "period_ids": [
    "duecento-italiano",
@@ -3959,7 +3959,7 @@
  {
   "id": "quincunx",
   "term": "Quincunx",
-  "definition": "Disposizione di cinque elementi (tipicamente cupole) a formare una croce greca: una al centro e una in ciascuna delle quattro braccia. Tipica dell'architettura byzantina e veneziana (San Marco).",
+  "definition": "Disposizione di cinque elementi (tipicamente cupole) a formare una croce greca: una al centro e una in ciascuna delle quattro braccia. Tipica dell'architettura bizantina e veneziana (San Marco).",
   "category": "architettura",
   "period_ids": [
    "arte-bizantina",
@@ -4182,7 +4182,7 @@
  {
   "id": "salvator-mundi",
   "term": "Salvator Mundi",
-  "definition": "Iconografia del Cristo benedicente di fronte con la mano alzata in gesto benedicente e l'orbe nella mano sinistra, di tradizione byzantina.",
+  "definition": "Iconografia del Cristo benedicente di fronte con la mano alzata in gesto benedicente e l'orbe nella mano sinistra, di tradizione bizantina.",
   "category": "iconografia",
   "period_ids": [
    "rinascimento"
@@ -4905,7 +4905,7 @@
  {
   "id": "tierceron",
   "term": "Tierceron",
-  "definition": "Nervatura breve nelle volte a tiercerons gotiche inglesi, che collega le nervature ortogonali (liernes) ai pilastri di sostegno, creando la forma a stella.",
+  "definition": "Nervatura supplementare delle volte gotiche inglesi che, come le nervature diagonali principali, si diparte dai pilastri di sostegno ma termina in un costolone intermedio senza raggiungere il colmo; sono invece le liernes, nervature brevi che non toccano i piedritti, a collegare fra loro le altre nervature creando la forma a stella.",
   "category": "architettura",
   "period_ids": [
    "decorated-english-gothic"
@@ -5534,7 +5534,7 @@
  {
   "id": "avorio",
   "term": "Avorio",
-  "definition": "Materiale ricavato dalle zanne di elefante o altri animali, impiegato nell'intaglio di lastre, placche e oggetti di pregio fin dall'antichità. Nell'arte medievale e rinascimentale è usato per cattedre vescovili, ditticidiptici, cofanetti e arredi liturgici di alto valore simbolico e materiale.",
+  "definition": "Materiale ricavato dalle zanne di elefante o altri animali, impiegato nell'intaglio di lastre, placche e oggetti di pregio fin dall'antichità. Nell'arte medievale e rinascimentale è usato per cattedre vescovili, dittici, cofanetti e arredi liturgici di alto valore simbolico e materiale.",
   "category": "scultura",
   "period_ids": [
    "eta-carolingia",
@@ -5893,7 +5893,7 @@
  {
   "id": "scenografia",
   "term": "Scenografia",
-  "definition": "Arte della progettazione e realizzazione dello sfondo visivo di un spettacolo teatrale; nel Teatro Olimpico di Vicenza Vincenzo Scamozzi realizza le prospettive lignee fisse (1585) che simulano tre strade di una città antica con effetto illusionistico di profondità, diventando il prototipo della scenografia prospettica rinascimentale.",
+  "definition": "Arte della progettazione e realizzazione dello sfondo visivo di un spettacolo teatrale; nel Teatro Olimpico di Vicenza Vincenzo Scamozzi realizza le prospettive lignee fisse (1585) che simulano le sette vie della città di Tebe con effetto illusionistico di profondità, diventando il prototipo della scenografia prospettica rinascimentale.",
   "category": "architettura",
   "period_ids": [
    "manierismo"
@@ -5983,7 +5983,7 @@
  {
   "id": "riforma-paleocristiana",
   "term": "Riforma paleocristiana",
-  "definition": "Movimento di rinnovamento artistico e liturgico dell'XI-XII secolo a Roma, che riscopre e reinterpreta il repertorio iconografico e formale delle basiliche paleocristiane (mosaici absidali con tralci d'acanto, cicli narrativi), come attestato dagli affreschi di San Clemente al Laterano.",
+  "definition": "Movimento di rinnovamento artistico e liturgico dell'XI-XII secolo a Roma, che riscopre e reinterpreta il repertorio iconografico e formale delle basiliche paleocristiane (mosaici absidali con tralci d'acanto, cicli narrativi), come attestato dal mosaico absidale di San Clemente al Laterano.",
   "category": "generale",
   "period_ids": [
    "romanico-italiano"
@@ -7140,7 +7140,7 @@
  {
   "id": "impostazioni-geometriche-e-prospettiche",
   "term": "Impostazioni geometriche e prospettiche",
-  "definition": "Caratteristica delle opere di Antonello dopo il viaggio a Roma del 1459, che conferisce alle figure saldezza volumetrica e monumentale.",
+  "definition": "Caratteristica delle opere mature di Antonello da Messina: una costruzione geometrica e prospettica rigorosa conferisce alle figure saldezza volumetrica e monumentale.",
   "category": "generale",
   "period_ids": [],
   "is_archetype": false
@@ -7907,7 +7907,7 @@
  {
   "id": "abito-francescano",
   "term": "Abito francescano",
-  "definition": "Vestito cardinalizio indossato da san Gerolamo che richiama l'umiltà francescana, scelta legata alla destinazione originaria dell'opera nella chiesa di San Lorenzo Maggiore a Napoli",
+  "definition": "Abito grigio francescano indossato da san Gerolamo al posto della consueta veste cardinalizia rossa, a richiamare l'umiltà, scelta legata alla destinazione originaria dell'opera nella chiesa di San Lorenzo Maggiore a Napoli",
   "category": "iconografia",
   "period_ids": [],
   "is_archetype": false
@@ -7939,7 +7939,7 @@
  {
   "id": "unzione-di-cristo",
   "term": "Unzione di Cristo",
-  "definition": "Episodio della vita di Cristo raffigurato nella Pala di Pesaro con tono della cimasa aperta",
+  "definition": "Episodio della vita di Cristo raffigurato nella cimasa della Pala di Pesaro",
   "category": "iconografia",
   "period_ids": [],
   "is_archetype": false
@@ -8347,7 +8347,7 @@
  {
   "id": "quattrocento",
   "term": "Quattrocento",
-  "definition": "Il XV secolo italiano (1401-1500), periodo fondamentale del Rinascimento early",
+  "definition": "Il XV secolo italiano (1401-1500), periodo fondamentale del primo Rinascimento",
   "category": "generale",
   "period_ids": [],
   "is_archetype": false
@@ -8491,7 +8491,7 @@
  {
   "id": "compostezza-classica",
   "term": "Compostezza classica",
-  "definition": "Qualità delle figure di Roberti nella Pala Portonese, derivate dallo studio dell'arte antica e contemporanea di Giovanni Bellini.",
+  "definition": "Qualità delle figure di Roberti nella Pala Portuense, derivate dallo studio dell'arte antica e contemporanea di Giovanni Bellini.",
   "category": "generale",
   "period_ids": [],
   "is_archetype": false
@@ -8508,14 +8508,6 @@
   "id": "buon-governo",
   "term": "Buon governo",
   "definition": "Concetto politico-ideologico rappresentato nel ciclo di affreschi per legittimare il potere di Borso d'Este, associato alle virtù celesti e alla prosperità del territorio",
-  "category": "generale",
-  "period_ids": [],
-  "is_archetype": false
- },
- {
-  "id": "virtusimusi",
-  "term": "Virtusimusi",
-  "definition": "Termine che indica le virtù proprietarie di Mantegna, richiamate nel testo come modello di riferimento per la rappresentazione delle figure virtuose nella fascia inferiore",
   "category": "generale",
   "period_ids": [],
   "is_archetype": false
