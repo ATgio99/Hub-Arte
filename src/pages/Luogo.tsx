@@ -3,13 +3,14 @@
 // rappresentati, i collegamenti con le altre città. Raggiungibile dal grafo,
 // dalla mappa (marker e lista centri) e dalle schede opera.
 // ============================================================================
-import { useMemo, useEffect } from "react";
+import { useMemo, useEffect, useCallback } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useData, useTimeRange } from "../lib/store";
 import { WorkCard, EntityLink, FilterNote, Empty, BarraScheda, Section } from "../components/ui";
 import { isCommittente, fmtYear, computeWorkGroups, workGroupMap, nomeBreveLuogo } from "../lib/data";
 import { setLastMappa } from "../lib/lastVisited";
 import { cittaAttuale, nomiStorici } from "../lib/menzioni";
+import MappaCitta from "../components/MappaCitta";
 
 export default function Luogo() {
   const { name = "" } = useParams();
@@ -77,6 +78,7 @@ export default function Luogo() {
   // aprire il complesso invece di restare fermi su un'etichetta morta.
   const gruppi = useMemo(() => computeWorkGroups(ix.ds), [ix.ds]);
   const gruppoDiOpera = useMemo(() => workGroupMap(gruppi), [gruppi]);
+  const complessoDi = useCallback((w: { id: string }) => gruppoDiOpera.get(w.id)?.parent.id ?? null, [gruppoDiOpera]);
   const edifici = useMemo(() => {
     // Chiave minuscola per non spezzare in due lo stesso edificio quando il
     // catalogo scrive «Basilica di Santa Croce» e «basilica di Santa Croce».
@@ -175,6 +177,8 @@ export default function Luogo() {
         ))}
       </div>
 
+      <MappaCitta city={city} works={works} complessoDi={complessoDi} />
+
       <div className="filterbar" style={{ marginBottom: 18 }}>
         <FilterNote total={allHere.length} shown={works.length} noun="opere" />
       </div>
@@ -222,19 +226,6 @@ export default function Luogo() {
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {edifici.length > 0 && (
-        <Section eyebrow="Topografia" title={`Dove si trovano, in città (${edifici.length})`}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
-            {edifici.map(({ nome, n, complessoId }) => complessoId ? (
-              <Link key={nome} to={`/complesso/${complessoId}`} className="chip sm"
-                title={`Apri il complesso: ${nome}`}>{nome} · {n}</Link>
-            ) : (
-              <span key={nome} className="chip sm" style={{ cursor: "default" }}>{nome} · {n}</span>
             ))}
           </div>
         </Section>
