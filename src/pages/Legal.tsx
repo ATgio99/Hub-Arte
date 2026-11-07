@@ -128,6 +128,18 @@ export default function Legal() {
           sono escluse.
         </P>
 
+        <H2>Posizione e scelte</H2>
+        <P>
+          Ho iniziato questo lavoro come studente che cercava un modo per collegare le
+          informazioni dei manuali. Ho scelto le fonti, le categorie e i legami da rendere
+          visibili. Queste scelte non sono neutrali: i modelli mi hanno assistito in alcuni
+          passaggi, ma la responsabilità dei contenuti resta mia.
+        </P>
+        <P>
+          Il progetto è partito da due volumi. Nei materiali consultabili non è documentato
+          un confronto sistematico con altri manuali o fonti.
+        </P>
+
         <H2>Che cosa aggiunge il progetto</H2>
         <P>
           Base Arte non propone nuove attribuzioni né nuove scoperte storico-artistiche.
@@ -189,6 +201,18 @@ export default function Legal() {
           Nel sito e nei materiali del repository consultabili non è documentata una prova
           d'uso con un gruppo di studio. Non posso quindi affermare che l'utilità didattica
           dell'interfaccia sia stata valutata con chi la usa.
+        </P>
+
+        <H2>Verifica d'uso</H2>
+        <P>
+          Il sito e i materiali consultabili non documentano prove d'uso o un confronto
+          strutturato con chi studia storia dell'arte. Non presento quindi l'efficacia
+          didattica come un risultato verificato. Per valutarla servirebbe osservare se le
+          persone riescono a trovare e interpretare i legami che il catalogo propone.
+        </P>
+        <P>
+          Non descrivo come partecipazione un processo di co-progettazione che non è
+          documentato in questi materiali.
         </P>
 
         <H2>Limiti dei modelli e del catalogo</H2>
