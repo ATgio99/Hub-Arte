@@ -80,7 +80,7 @@ export default function CookieConsent() {
             Cookie e privacy
           </div>
           <p style={{ fontSize: 13, lineHeight: 1.55, color: "var(--ink-soft, #5b5550)", margin: 0 }}>
-            Usiamo solo cookie tecnici necessari al funzionamento (login, preferiti) e cookie di terze parti per autenticazione (Supabase), font (Fontshare) e mappe (OpenStreetMap). Niente cookie di profilazione. Leggi la{" "}
+            Base Arte usa cookie tecnici per alcune funzioni e salva preferenze nel browser. Il sito carica inoltre servizi esterni per autenticazione, font e mappe. Leggi la{" "}
             <Link to="/legal/cookie" style={{ color: "var(--gold-deep, #b88a2e)", textDecoration: "underline" }}>Cookie Policy</Link>
             {" "}e la{" "}
             <Link to="/legal/privacy" style={{ color: "var(--gold-deep, #b88a2e)", textDecoration: "underline" }}>Privacy Policy</Link>.
