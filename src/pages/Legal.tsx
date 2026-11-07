@@ -391,7 +391,7 @@ export default function Legal() {
     return (
       <div className="wrap page"><div>
         <PaginaModificabile id="privacy" valori={segnapostoCatalogo(c)} titolo={<H1>Informativa sulla privacy</H1>}>
-        <P>Ultimo aggiornamento: luglio 2026.</P>
+        <P>Ultimo aggiornamento: novembre 2026.</P>
         <P>
           Base Arte ("il Servizio") è un atlante di studio di storia dell'arte
           che raccoglie opere, artisti, periodi, tecniche, luoghi e connessioni. Il Servizio è
@@ -400,7 +400,7 @@ export default function Legal() {
 
         <H2>1. Titolare del trattamento</H2>
         <P>
-          Il titolare del trattamento dei dati è il responsabile del progetto Base Arte.
+          Il titolare del trattamento è Giovanni Anselmi Tamburini, responsabile del progetto Base Arte.
           Per qualsiasi richiesta relativa ai tuoi dati puoi scrivere a <Mailto subject="Privacy" />.
         </P>
 
