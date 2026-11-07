@@ -167,7 +167,7 @@ export default function Legal() {
 
         <H2>Come ho usato l'intelligenza artificiale</H2>
         <P>
-          Nell'estate del 2026 ho usato modelli Claude di Anthropic per organizzare alcuni dati
+          Nel 2026 ho usato modelli Claude di Anthropic e GLM 5.2/5.3 per organizzare alcuni dati
           già presenti, preparare prime stesure di alcune descrizioni e raccogliere informazioni
           su attribuzioni incerte.
         </P>
