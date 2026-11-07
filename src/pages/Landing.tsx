@@ -111,13 +111,13 @@ function HomeNotice() {
               fontSize: 14.5, lineHeight: 1.65,
               color: "var(--ink-soft, #5b5550)", margin: "0 0 12px",
             }}>
-              Questo progetto è in <b style={{ color: "var(--ink, #1a1a1a)", fontWeight: 600 }}>continua evoluzione</b>: potresti incontrare piccoli errori o funzioni ancora in sviluppo.
+              Base Arte è in evoluzione: alcune schede possono contenere errori e alcune funzioni sono ancora in sviluppo.
             </p>
             <p style={{
               fontSize: 14.5, lineHeight: 1.65,
               color: "var(--ink-soft, #5b5550)", margin: "0 0 12px",
             }}>
-              Se qualcosa non funziona, oppure hai un'idea per migliorarlo, <b style={{ color: "var(--ink, #1a1a1a)", fontWeight: 600 }}>segnalacelo</b>. Ogni contributo è prezioso e ci aiuta a far crescere Base Arte.
+              Se noti un problema o hai una proposta, segnalacelo. Il tuo contributo aiuta a migliorare il progetto.
             </p>
             <p style={{
               fontSize: 14.5, lineHeight: 1.65,
@@ -165,9 +165,9 @@ export default function Landing() {
 
   const features = [
     { icon: "🖼️", title: "Catalogo opere", desc: "Schede dettagliate con immagini, analisi e innovazioni", to: "/opere" },
-    { icon: "🕸️", title: "Grafo neuronale", desc: "Visualizza le connessioni tra opere, artisti e periodi in 3D", to: "/grafo" },
-    { icon: "📅", title: "Timeline multilivello", desc: "Periodi, eventi e artisti su una linea del tempo navigabile", to: "/timeline" },
-    { icon: "🗺️", title: "Mappa geografica", desc: "Esplora i luoghi che custodiscono le opere", to: "/mappa" },
+    { icon: "🕸️", title: "Grafo delle connessioni", desc: "Esplora in tre dimensioni i legami tra opere, protagonisti e periodi", to: "/grafo" },
+    { icon: "📅", title: "Linea del tempo", desc: "Esplora periodi, eventi e protagonisti in ordine cronologico", to: "/timeline" },
+    { icon: "🗺️", title: "Mappa", desc: "Visualizza i luoghi in cui si trovano oggi le opere", to: "/mappa" },
     { icon: "🎯", title: "Quiz interattivo", desc: "Mettiti alla prova con 18 tipi di domanda generati dal dataset", to: "/test" },
     { icon: "📚", title: "Glossario", desc: "Termini tecnici e definizioni sempre a portata di mano", to: "/glossario" },
   ];
@@ -207,14 +207,13 @@ export default function Landing() {
             border: "1px solid var(--line)", borderRadius: 999,
             padding: "5px 14px", margin: "0 auto 16px", lineHeight: 1.4,
           }}>
-            Prima si chiamava HUB Arte: stesso atlante, nome e indirizzo nuovi. Il vecchio hubarte.it porta qui.
+            Base Arte si chiamava HUB Arte. L’atlante è lo stesso; sono cambiati il nome e l’indirizzo. Il vecchio dominio porta qui.
           </p>
           <p style={{
             fontSize: "clamp(16px, 3vw, 20px)", color: "var(--ink-soft)",
             maxWidth: "52ch", margin: "0 auto 12px", lineHeight: 1.55,
           }}>
-            Atlante di storia dell'arte — uno strumento di studio
-            interattivo per esplorare opere, artisti e connessioni.
+            Atlante interattivo per studiare opere, protagonisti, periodi e connessioni nella storia dell’arte.
           </p>
           <p style={{
             fontSize: "clamp(14px, 2.5vw, 16px)", color: "var(--gold-deep)",

@@ -88,120 +88,146 @@ export default function Legal() {
   if (section === "progetto") {
     return (
       <div className="wrap page"><div>
-        <PaginaModificabile id="progetto" valori={segnapostoCatalogo(c)} titolo={<H1>Il progetto, e come è stato costruito</H1>}>
-        <P>Ultimo aggiornamento: agosto 2026.</P>
+        <PaginaModificabile id="progetto" valori={segnapostoCatalogo(c)} titolo={<H1>Il progetto: fonti, metodo e limiti</H1>}>
+        <P>Ultimo aggiornamento: novembre 2026.</P>
 
-        <H2>Perché l'ho fatto</H2>
+        <H2>Domanda e obiettivo</H2>
         <P>
-          Studiando storia dell'arte mi capitava sempre la stessa cosa: sapevo le singole opere
-          e non vedevo cosa le tenesse insieme. Che Masaccio e Masolino avessero dipinto nella
-          stessa cappella lo sapevo; che a pagarla fosse stato un mercante di seta che si
-          chiamava Felice Brancacci, no. Sui manuali c'è, ma tre capitoli più in là.
+          Base Arte nasce da una difficoltà incontrata studiando storia dell'arte: conoscere le
+          singole opere non bastava a vedere i legami tra chi le realizzava, chi le commissionava
+          e i contesti in cui prendevano forma.
         </P>
         <P>
-          Da qui l'idea di un catalogo tenuto insieme dalle relazioni invece che dall'ordine
-          delle pagine. I periodi si contengono l'uno dentro l'altro su tre livelli — {num(c.epoche)} epoche, {num(c.correnti)} correnti, {num(c.scuole)} fra scuole e botteghe —
-          e un'opera sta nel più stretto che la contiene: non nel «Quattrocento», ma nella
-          bottega di Giotto o nel cantiere di Santa Maria del Fiore. Ogni opera è legata a chi
-          l'ha eseguita e, dove risulta, a chi l'ha pagata. La linea del tempo, la mappa e il
-          grafo interrogano lo stesso materiale in tre modi diversi.
-        </P>
-        <P>
-          È gratuito, non ha pubblicità, non chiede di registrarsi per leggere, e il codice è
-          pubblico con licenza MIT.
+          La domanda da cui parte il progetto è questa: che cosa diventa visibile quando le opere
+          si esplorano attraverso le loro relazioni, oltre che attraverso l'ordine del manuale?
+          L'obiettivo è offrire a chi studia storia dell'arte un modo per orientarsi tra opere,
+          persone, periodi e luoghi.
         </P>
 
-        <H2>Da dove vengono i dati</H2>
+        <H2>Fonti e perimetro</H2>
         <P>
-          {num(c.opere)} opere, {num(c.protagonisti)} schede fra autori e committenti,
-          {" "}{num(c.periodi)} periodi, {num(c.termini)} voci di glossario,
-          {" "}{num(c.connessioni)} legami documentati fra le une e gli altri.
+          Il catalogo comprende {num(c.opere)} opere, {num(c.protagonisti)} schede tra autori e
+          committenti, {num(c.periodi)} periodi, {num(c.termini)} voci di glossario e
+          {" "}{num(c.connessioni)} connessioni. La base principale sono due manuali:
+          <i> Con gli occhi dell'arte</i>, volumi 2 e 3 (E. Demartini, C. Gatti, E. Tonetti,
+          E. P. Villa, Rizzoli Education, 2022). I riferimenti sono elencati nella pagina
+          <Link to="/legal/crediti" className="tlink">Crediti</Link>; le schede sono rielaborate,
+          non trascritte.
         </P>
         <P>
-          Il grosso l'ho ricavato da due manuali di storia dell'arte, e il catalogo ne eredita
-          i confini: dalla Tarda Antichità al Barocco, e un'Europa in cui l'Italia pesa più di
-          tutto il resto messo insieme — Firenze da sola vale 185 opere, quante Parigi, Londra,
-          Madrid, Vienna e Berlino sommate. Non è un panorama dell'arte. È il perimetro di un
-          programma di studio, con i buchi che quel perimetro si porta dietro: niente arte
-          islamica se non di sponda, niente Asia, niente Africa, niente America precolombiana.
+          I periodi sono articolati in {num(c.epoche)} epoche, {num(c.correnti)} correnti e
+          {num(c.scuole)} scuole o botteghe. Un'opera è assegnata al livello più specifico
+          disponibile. La mappa, la linea del tempo e il grafo consentono di esplorare lo stesso
+          catalogo da prospettive diverse.
+        </P>
+        <P>
+          Questo perimetro riflette le fonti e il programma di studio da cui il progetto è
+          partito. Il percorso va dalla Tarda Antichità al Barocco e dedica all'Italia più spazio
+          che ad altre aree. Base Arte non è una ricognizione complessiva delle storie dell'arte:
+          l'arte islamica è presente solo marginalmente; Asia, Africa e America precolombiana
+          sono escluse.
+        </P>
+
+        <H2>Posizione e scelte</H2>
+        <P>
+          Ho iniziato questo lavoro come studente che cercava un modo per collegare le
+          informazioni dei manuali. Ho scelto le fonti, le categorie e i legami da rendere
+          visibili. Queste scelte non sono neutrali: i modelli mi hanno assistito in alcuni
+          passaggi, ma la responsabilità dei contenuti resta mia.
+        </P>
+        <P>
+          Il progetto è partito da due volumi. Nei materiali consultabili non è documentato
+          un confronto sistematico con altri manuali o fonti.
+        </P>
+
+        <H2>Che cosa aggiunge il progetto</H2>
+        <P>
+          Base Arte non propone nuove attribuzioni né nuove scoperte storico-artistiche.
+          Il suo contributo è nell'organizzazione e nell'esplorazione dei dati: rende navigabili
+          alcuni legami che nei manuali si trovano in sezioni diverse. Questa utilità è una
+          scelta di progetto, non un risultato didattico misurato.
         </P>
 
         <H2>Chi manca</H2>
         <P>
-          Fra i {num(c.autori)} autori censiti <b>non c'è nemmeno una donna</b>. Le uniche
-          donne nel catalogo — {c.donne.length} — compaiono come committenti:{" "}
-          {c.donne.map((d) => d.name).join(", ")}.
+          Fra i {num(c.autori)} autori censiti non compare nessuna donna. Le {c.donne.length}
+          donne presenti nel catalogo figurano come committenti: {c.donne.map((d) => d.name).join(", ")}.
         </P>
         <P>
-          Non è una mia dimenticanza, ed è peggio così: i manuali da cui ho lavorato le artiste
-          non le nominano, e io ho ricopiato quel silenzio senza accorgermene finché non ho
-          contato. Anguissola, Fontana, Gentileschi non ci sono perché non c'erano nel libro.
-          Scriverlo qui non lo risolve — serve solo a non far passare l'assenza per un dato di
-          realtà. Rimediare vuol dire aprire altre fonti e rifare il lavoro, e non l'ho fatto.
+          I manuali di partenza non includono artiste come Sofonisba Anguissola, Lavinia Fontana
+          e Artemisia Gentileschi. Non ho ancora ampliato il corpus con altre fonti per
+          documentare queste assenze e correggerle. Segnalare la lacuna non la colma, ma evita
+          di confondere il perimetro delle fonti con la realtà storica.
         </P>
         <P>
-          C'è poi una cosa da sapere sulla mappa. Il luogo di ogni scheda è{" "}
-          <b>dove l'opera si trova adesso</b>, non dove è stata fatta. Quaranta opere risultano
-          a Londra e quindici a New York: nessuna delle due città le ha prodotte. Quella è la
-          geografia dei musei, e in trasparenza la storia di come ci sono finite.
+          La mappa indica dove si trova oggi un'opera, non dove è stata realizzata. Rappresenta
+          quindi la distribuzione attuale delle collezioni. Non va letta come una mappa dei
+          luoghi di produzione.
         </P>
 
-        <H2>Dove ho usato l'intelligenza artificiale</H2>
+        <H2>Come ho usato l'intelligenza artificiale</H2>
         <P>
-          In diversi punti, e mi sembra giusto dire quali. Ho lavorato con i modelli Claude di
-          Anthropic, nell'estate del 2026.
+          Nell'estate del 2026 ho usato modelli Claude di Anthropic per organizzare alcuni dati
+          già presenti, preparare prime stesure di alcune descrizioni e raccogliere informazioni
+          su attribuzioni incerte.
         </P>
         <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
-          <li>
-            <b>Riordinare dati che c'erano già.</b> Assegnare le opere ai periodi giusti e
-            trovare i committenti ha voluto dire passare le schede una per una. Quasi sempre
-            il nome del committente era già scritto nel testo della scheda («fu commissionata
-            da…»): andava tirato fuori e messo in un campo, non inventato.
-          </li>
-          <li>
-            <b>Buttare giù le prime stesure.</b> Le descrizioni di alcune scuole e di buona
-            parte dei committenti nascono da un modello, a partire dai dati del catalogo. Qui
-            non si riordina niente, si scrive: è la parte di cui mi fido meno.
-          </li>
-          <li>
-            <b>Sciogliere i dubbi.</b> Per le attribuzioni incerte ho fatto controllare le
-            fonti — Louvre, Musei Vaticani, Opificio delle Pietre Dure, Treccani, National
-            Gallery. Quando neanche il museo si sbilancia, il campo è rimasto vuoto: su 42 casi
-            esaminati, 13 sono ancora aperti, e nelle schede si vede che lo sono.
-          </li>
+          <li><b>Organizzazione dei dati.</b> Ho esaminato le schede per collegare le opere ai periodi e individuare i committenti. Nella maggior parte dei casi, il committente era già nominato nel testo della scheda.</li>
+          <li><b>Prime stesure.</b> Le descrizioni di alcune scuole e di diversi committenti sono state preparate a partire dai dati del catalogo. Una formulazione plausibile non equivale a una verifica storica.</li>
+          <li><b>Attribuzioni incerte.</b> Ho consultato le informazioni di istituzioni come Louvre, Musei Vaticani, Opificio delle Pietre Dure, Treccani e National Gallery. Quando il dato resta incerto, la scheda lo segnala.</li>
         </ul>
 
-        <H2>Che cosa ho controllato davvero</H2>
+        <H2>Che cosa ho verificato</H2>
         <P>
-          Nessuna proposta è finita dritta nel catalogo. Il lavoro usciva ogni volta come un
-          elenco da approvare, e l'ho letto voce per voce prima di applicarlo; le motivazioni
-          di ogni scelta sono nel repository, chiunque può andarsele a vedere. Poi ho fatto
-          girare dei controlli automatici, che hanno pescato cose che a occhio non avevo visto:
-          venti committenti citati da qualche opera ma senza una scheda propria, cinque
-          mecenati finiti per sbaglio fra gli autori delle opere che avevano pagato, un Cosimo
-          I con la data di morte sbagliata di trentasette anni.
+          Ho esaminato le proposte prima di applicarle e ho usato controlli automatici per
+          individuare incoerenze nei dati. Tra i problemi trovati: committenti citati ma privi
+          di una scheda, mecenati classificati come autori e un errore nella data di morte di
+          Cosimo I. I materiali di lavoro e le motivazioni delle scelte sono disponibili nel
+          repository GitHub.
         </P>
         <P>
-          Quello che <b>non</b> ho fatto è riaprire i manuali per ciascuna delle{" "}
-          {num(c.opere)} schede. Ho guardato la struttura, la coerenza interna, se una cosa
-          stesse in piedi storicamente, e sono andato a fondo solo dove qualcosa non tornava.
+          Non ho ricontrollato ciascuna delle {num(c.opere)} schede confrontandola di nuovo con
+          i manuali. Ho verificato la struttura e la coerenza interna del catalogo e ho
+          approfondito i casi che presentavano dubbi. Questo controllo non equivale a una
+          verifica completa delle fonti.
+        </P>
+        <P>
+          Nel modello dati pubblicato, le connessioni non hanno sempre un riferimento
+          bibliografico puntuale associato alla singola relazione. Perciò la presenza di un
+          collegamento nel grafo non è, da sola, una prova documentaria. Consideralo un
+          orientamento da verificare sulle fonti.
+        </P>
+        <P>
+          Nel sito e nei materiali del repository consultabili non è documentata una prova
+          d'uso con un gruppo di studio. Non posso quindi affermare che l'utilità didattica
+          dell'interfaccia sia stata valutata con chi la usa.
         </P>
 
-        <H2>Un problema che riguarda i modelli</H2>
+        <H2>Verifica d'uso</H2>
         <P>
-          Un modello linguistico non sbaglia solo le date. Restituisce lo sguardo dei testi su
-          cui è stato addestrato, quindi ripete il canone che quei testi danno per scontato e
-          lascia ai margini quello che ai margini c'era già. Su un catalogo che parte da due
-          manuali il rischio è di ritrovarsi gli stessi silenzi, con in più l'aria di essere
-          neutrali. Rileggere serve a controllare i fatti, ma soprattutto a stare attenti a
-          questo — che è la parte difficile, perché quello che manca non ti avvisa.
+          Il sito e i materiali consultabili non documentano prove d'uso o un confronto
+          strutturato con chi studia storia dell'arte. Non presento quindi l'efficacia
+          didattica come un risultato verificato. Per valutarla servirebbe osservare se le
+          persone riescono a trovare e interpretare i legami che il catalogo propone.
+        </P>
+        <P>
+          Non descrivo come partecipazione un processo di co-progettazione che non è
+          documentato in questi materiali.
         </P>
 
-        <H2>Quello che il sito non fa</H2>
+        <H2>Limiti dei modelli e del catalogo</H2>
+        <P>
+          I modelli linguistici possono riprodurre le gerarchie e le omissioni dei testi da cui
+          apprendono. Se lavorano su un catalogo già basato su due manuali, possono ripeterne i
+          limiti dando alle informazioni un'apparenza di neutralità. Rileggere aiuta a
+          controllare i fatti; non basta però a individuare tutto ciò che le fonti escludono.
+        </P>
+
+        <H2>Che cosa fa il sito mentre lo consulti</H2>
         <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
-          <li><b>Mentre lo consulti non gira nessun modello.</b> Le pagine sono file già scritti: cercare, aprire una scheda, spostarsi da una sezione all'altra non manda niente a un servizio di intelligenza artificiale.</li>
-          <li><b>I quiz non li scrive un modello.</b> Li costruisce un programma che pesca dal catalogo con regole fisse. Se una domanda è sbagliata, è sbagliato il dato.</li>
-          <li><b>Quello che fai qui non addestra niente.</b> Preferiti, opere approfondite e risultati dei quiz restano tuoi: vedi la <Link to="/legal/privacy" className="tlink">Privacy Policy</Link>.</li>
+          <li><b>Non attiva modelli di intelligenza artificiale.</b> Le pagine e le schede sono già scritte; consultarle non invia richieste a un modello.</li>
+          <li><b>I quiz seguono regole fisse.</b> Le domande sono composte a partire dai dati del catalogo, non generate da un modello.</li>
+          <li><b>I dati personali sono descritti nella <Link to="/legal/privacy" className="tlink">Privacy Policy</Link>.</b></li>
         </ul>
 
         <H2>Errori e segnalazioni</H2>
@@ -224,11 +250,11 @@ export default function Legal() {
       <div className="wrap page"><div>
         <PaginaModificabile id="accessibilita" valori={segnapostoCatalogo(c)} titolo={<H1>Accessibilità e scorciatoie</H1>}>
         <P>
-          L'atlante si può usare interamente da tastiera. Le scorciatoie qui sotto valgono su
+          Puoi usare la maggior parte dell'atlante da tastiera. Il grafo tridimensionale è l'eccezione descritta più avanti. Le scorciatoie qui sotto valgono su
           computer; su telefono e tablet non sono attive.
         </P>
         <P>
-          I numeri sono gli stessi che vedi accanto a ogni voce del menu: <b>2</b> porta ai
+          I numeri corrispondono a quelli accanto alle voci del menu: <b>2</b> porta ai
           Protagonisti perché nel menu quella voce è la 02. Un tasto non fa mai niente mentre
           stai scrivendo in un campo di testo.
         </P>
@@ -277,10 +303,10 @@ export default function Legal() {
           La voce è quella installata sul dispositivo: <b>il testo non esce da qui</b>, non passa
           da nessun servizio e funziona anche senza rete. Il rovescio è che la qualità non
           dipende dal sito ma da quali voci hai installato — e quelle che i sistemi mettono di
-          serie sono spesso le peggiori che hanno.
+          serie possono avere una qualità meno naturale.
         </P>
 
-        <H2>Mettere una voce migliore</H2>
+        <H2>Installare una voce di sintesi più naturale</H2>
         <P>
           Vale la pena farlo una volta sola: sono gratis, si scaricano dal sistema operativo e
           poi valgono per tutto — non solo per questo sito. Le voci buone si riconoscono dalla
@@ -364,7 +390,7 @@ export default function Legal() {
   if (section === "privacy") {
     return (
       <div className="wrap page"><div>
-        <PaginaModificabile id="privacy" valori={segnapostoCatalogo(c)} titolo={<H1>Privacy Policy</H1>}>
+        <PaginaModificabile id="privacy" valori={segnapostoCatalogo(c)} titolo={<H1>Informativa sulla privacy</H1>}>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
           Base Arte ("il Servizio") è un atlante di studio di storia dell'arte
@@ -427,7 +453,7 @@ export default function Legal() {
   if (section === "cookie") {
     return (
       <div className="wrap page"><div>
-        <PaginaModificabile id="cookie" valori={segnapostoCatalogo(c)} titolo={<H1>Cookie Policy</H1>}>
+        <PaginaModificabile id="cookie" valori={segnapostoCatalogo(c)} titolo={<H1>Cookie e dati salvati nel browser</H1>}>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
           Questa Cookie Policy spiega quali cookie vengono utilizzati da Base Arte — Atlante di storia dell'arte
@@ -435,7 +461,7 @@ export default function Legal() {
           per garantire il corretto funzionamento delle funzionalità.
         </P>
 
-        <H2>1. Cookie tecnici (sempre attivi)</H2>
+        <H2>1. Memorie tecniche del browser</H2>
         <P>
           Sono necessari per il funzionamento del Servizio e non possono essere disattivati.
           Comprendono:
@@ -445,8 +471,8 @@ export default function Legal() {
           <li>localStorage per preferiti, opere studiate, override immagini, impostazioni dell'interfaccia.</li>
         </ul>
 
-        <H2>2. Cookie di terze parti</H2>
-        <P>Il Servizio interagisce con i seguenti domini di terze parti, che possono impostare cookie:</P>
+        <H2>2. Servizi esterni</H2>
+        <P>Il sito carica i seguenti servizi esterni. Possono usare cookie o ricevere dati tecnici necessari alla richiesta:</P>
         <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
           <li><b>Supabase</b> (supabase.co): autenticazione e database.</li>
           <li><b>Fontshare</b> (api.fontshare.com): font tipografici (Boska, Zodiak, General Sans).</li>
@@ -463,12 +489,9 @@ export default function Legal() {
           (Google Analytics, Meta Pixel, ecc.).
         </P>
 
-        <H2>4. Gestione dei cookie</H2>
+        <H2>4. Preferenze e dati salvati nel browser</H2>
         <P>
-          Puoi sempre bloccare i cookie dalle impostazioni del tuo browser, ma alcune funzionalità
-          (login, sincronizzazione preferiti) potrebbero non funzionare correttamente. La scelta
-          espressa nel banner iniziale è conservata nel <code>localStorage</code> sotto la chiave
-          <code> atlante.cookie.choice</code> e può essere modificata cancellando tale voce.
+          La scelta espressa nel banner e alcuni dati d'uso sono salvati nel browser tramite localStorage, una memoria distinta dai cookie. Se cancelli i dati di Base Arte dalle impostazioni del browser, potresti dover accedere di nuovo e perdere preferiti non sincronizzati.
         </P>
         </PaginaModificabile>
       </div></div>
