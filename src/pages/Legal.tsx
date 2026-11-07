@@ -226,11 +226,11 @@ export default function Legal() {
       <div className="wrap page"><div>
         <PaginaModificabile id="accessibilita" valori={segnapostoCatalogo(c)} titolo={<H1>Accessibilità e scorciatoie</H1>}>
         <P>
-          L'atlante si può usare interamente da tastiera. Le scorciatoie qui sotto valgono su
+          Puoi usare la maggior parte dell'atlante da tastiera. Il grafo tridimensionale è l'eccezione descritta più avanti. Le scorciatoie qui sotto valgono su
           computer; su telefono e tablet non sono attive.
         </P>
         <P>
-          I numeri sono gli stessi che vedi accanto a ogni voce del menu: <b>2</b> porta ai
+          I numeri corrispondono a quelli accanto alle voci del menu: <b>2</b> porta ai
           Protagonisti perché nel menu quella voce è la 02. Un tasto non fa mai niente mentre
           stai scrivendo in un campo di testo.
         </P>
@@ -279,10 +279,10 @@ export default function Legal() {
           La voce è quella installata sul dispositivo: <b>il testo non esce da qui</b>, non passa
           da nessun servizio e funziona anche senza rete. Il rovescio è che la qualità non
           dipende dal sito ma da quali voci hai installato — e quelle che i sistemi mettono di
-          serie sono spesso le peggiori che hanno.
+          serie possono avere una qualità meno naturale.
         </P>
 
-        <H2>Mettere una voce migliore</H2>
+        <H2>Installare una voce di sintesi più naturale</H2>
         <P>
           Vale la pena farlo una volta sola: sono gratis, si scaricano dal sistema operativo e
           poi valgono per tutto — non solo per questo sito. Le voci buone si riconoscono dalla
@@ -366,7 +366,7 @@ export default function Legal() {
   if (section === "privacy") {
     return (
       <div className="wrap page"><div>
-        <PaginaModificabile id="privacy" valori={segnapostoCatalogo(c)} titolo={<H1>Privacy Policy</H1>}>
+        <PaginaModificabile id="privacy" valori={segnapostoCatalogo(c)} titolo={<H1>Informativa sulla privacy</H1>}>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
           Base Arte ("il Servizio") è un atlante di studio di storia dell'arte
@@ -429,7 +429,7 @@ export default function Legal() {
   if (section === "cookie") {
     return (
       <div className="wrap page"><div>
-        <PaginaModificabile id="cookie" valori={segnapostoCatalogo(c)} titolo={<H1>Cookie Policy</H1>}>
+        <PaginaModificabile id="cookie" valori={segnapostoCatalogo(c)} titolo={<H1>Cookie e dati salvati nel browser</H1>}>
         <P>Ultimo aggiornamento: luglio 2026.</P>
         <P>
           Questa Cookie Policy spiega quali cookie vengono utilizzati da Base Arte — Atlante di storia dell'arte
@@ -437,7 +437,7 @@ export default function Legal() {
           per garantire il corretto funzionamento delle funzionalità.
         </P>
 
-        <H2>1. Cookie tecnici (sempre attivi)</H2>
+        <H2>1. Memorie tecniche del browser</H2>
         <P>
           Sono necessari per il funzionamento del Servizio e non possono essere disattivati.
           Comprendono:
@@ -447,8 +447,8 @@ export default function Legal() {
           <li>localStorage per preferiti, opere studiate, override immagini, impostazioni dell'interfaccia.</li>
         </ul>
 
-        <H2>2. Cookie di terze parti</H2>
-        <P>Il Servizio interagisce con i seguenti domini di terze parti, che possono impostare cookie:</P>
+        <H2>2. Servizi esterni</H2>
+        <P>Il sito carica i seguenti servizi esterni. Possono usare cookie o ricevere dati tecnici necessari alla richiesta:</P>
         <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
           <li><b>Supabase</b> (supabase.co): autenticazione e database.</li>
           <li><b>Fontshare</b> (api.fontshare.com): font tipografici (Boska, Zodiak, General Sans).</li>
@@ -465,12 +465,9 @@ export default function Legal() {
           (Google Analytics, Meta Pixel, ecc.).
         </P>
 
-        <H2>4. Gestione dei cookie</H2>
+        <H2>4. Preferenze e dati salvati nel browser</H2>
         <P>
-          Puoi sempre bloccare i cookie dalle impostazioni del tuo browser, ma alcune funzionalità
-          (login, sincronizzazione preferiti) potrebbero non funzionare correttamente. La scelta
-          espressa nel banner iniziale è conservata nel <code>localStorage</code> sotto la chiave
-          <code> atlante.cookie.choice</code> e può essere modificata cancellando tale voce.
+          La scelta espressa nel banner e alcuni dati d'uso sono salvati nel browser tramite localStorage, una memoria distinta dai cookie. Se cancelli i dati di Base Arte dalle impostazioni del browser, potresti dover accedere di nuovo e perdere preferiti non sincronizzati.
         </P>
         </PaginaModificabile>
       </div></div>
