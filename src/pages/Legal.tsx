@@ -91,90 +91,86 @@ export default function Legal() {
         <PaginaModificabile id="progetto" valori={segnapostoCatalogo(c)} titolo={<H1>Il progetto</H1>}>
         <P>Ultimo aggiornamento: novembre 2026.</P>
 
-        <P>Ultimo aggiornamento: novembre 2026.</P>
-
         <H2>Perché l'ho fatto</H2>
         <P>
-          Studiando storia dell'arte, mi capitava di conoscere le singole opere senza vedere
-          bene i legami tra chi le aveva realizzate, chi le aveva commissionate e i luoghi in
-          cui si trovavano. Ho iniziato Base Arte per esplorare questi legami nello stesso posto.
-        </P>
-        <P>
-          Il catalogo raccoglie {num(c.opere)} opere, {num(c.protagonisti)} schede tra autori e
-          committenti, {num(c.periodi)} periodi, {num(c.termini)} voci di glossario e
-          {num(c.connessioni)} connessioni.
+          Studiando storia dell'arte, mi capitava di conoscere le opere una per una senza
+          riuscire a vedere bene i legami tra chi le aveva realizzate, chi le aveva
+          commissionate e i luoghi in cui si trovavano. Ho iniziato Base Arte per raccogliere
+          queste informazioni e poterle esplorare insieme.
         </P>
 
         <H2>Come si esplora</H2>
         <P>
-          I periodi sono organizzati in {num(c.epoche)} epoche, {num(c.correnti)} correnti e
-          {num(c.scuole)} scuole o botteghe. Ogni opera è collegata al periodo più specifico
-          disponibile, a chi l'ha realizzata e, quando è noto, a chi l'ha commissionata.
-          Puoi seguire questi legami nel catalogo, sulla mappa, nella linea del tempo e nel grafo.
+          Il catalogo raccoglie {num(c.opere)} opere, {num(c.protagonisti)} schede tra autori e
+          committenti, {num(c.periodi)} periodi, {num(c.termini)} voci di glossario e
+          {num(c.connessioni)} connessioni. I periodi sono divisi in {num(c.epoche)} epoche,
+          {num(c.correnti)} correnti e {num(c.scuole)} scuole o botteghe.
         </P>
         <P>
-          La mappa mostra dove si trova oggi un'opera, non dove è stata realizzata. Rappresenta
-          quindi la distribuzione attuale delle collezioni.
+          Ogni opera è collegata al periodo più specifico disponibile, a chi l'ha realizzata e,
+          quando è noto, a chi l'ha commissionata. Puoi esplorare questi legami nel catalogo,
+          sulla mappa, nella linea del tempo e nel grafo. La mappa mostra dove si trova oggi
+          l'opera: rappresenta la distribuzione attuale delle collezioni, non i luoghi in cui
+          è stata realizzata.
         </P>
 
-        <H2>I limiti del catalogo</H2>
+        <H2>Un catalogo con dei limiti</H2>
         <P>
           Il percorso va dalla Tarda Antichità al Barocco e dedica più spazio all'arte italiana.
-          Alcune aree sono poco presenti o assenti: l'arte islamica compare solo marginalmente;
-          Asia, Africa e America precolombiana non sono trattate. Base Arte non è una ricognizione
-          completa delle storie dell'arte.
+          L'arte islamica compare solo marginalmente; Asia, Africa e America precolombiana non
+          sono trattate. Base Arte non rappresenta tutte le storie dell'arte: rispecchia le
+          scelte e le fonti da cui è partito il progetto.
         </P>
         <P>
-          Tra i {num(c.autori)} autori del catalogo, al momento non compare nessuna donna.
-          Le {c.donne.length} donne presenti sono registrate come committenti:
-          {" "}{c.donne.map((d) => d.name).join(", ")}. È una mancanza che voglio rendere
-          visibile, ma che questa pagina non risolve.
+          Tra i {num(c.autori)} autori presenti nel catalogo non compare al momento nessuna
+          donna. Le {c.donne.length} donne censite sono committenti:
+          {" "}{c.donne.map((d) => d.name).join(", ")}. Indicare questa assenza non basta a
+          colmarla; per farlo dovrei ampliare il catalogo e documentare le nuove schede.
         </P>
 
         <H2>Come ho usato l'intelligenza artificiale</H2>
         <P>
-          Nel 2026 ho lavorato con modelli Claude di Anthropic e GLM 5.2/5.3. Mi hanno aiutato
-          a riordinare alcuni dati, preparare prime stesure di testi e raccogliere informazioni
-          sulle attribuzioni incerte.
+          Nel 2026 ho usato modelli Claude di Anthropic e GLM 5.2/5.3 per alcuni passaggi del
+          lavoro: riordinare dati già presenti, preparare prime stesure di testi e raccogliere
+          informazioni sulle attribuzioni incerte.
         </P>
         <ul style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px 22px" }}>
-          <li><b>Riordino dei dati.</b> Ho controllato le schede per collegare le opere ai periodi e individuare i committenti. Spesso il committente era già nominato nel testo.</li>
-          <li><b>Prime stesure.</b> Alcune descrizioni di scuole e committenti sono partite da una proposta del modello. Le ho rilette e sistemate; una frase plausibile, da sola, non dimostra che un dato sia corretto.</li>
-          <li><b>Attribuzioni incerte.</b> Per i casi dubbi ho consultato le informazioni pubblicate da musei e istituzioni. Se l'attribuzione resta aperta, la scheda lo segnala.</li>
+          <li><b>Riordino dei dati.</b> Ho esaminato le schede per collegare le opere ai periodi e individuare i committenti. Spesso il committente era già nominato nella scheda.</li>
+          <li><b>Prime stesure.</b> Alcune descrizioni di scuole e committenti sono partite da una proposta del modello. Le ho riviste e sistemate; una frase plausibile non basta a confermare un dato storico.</li>
+          <li><b>Attribuzioni incerte.</b> Per i casi dubbi ho consultato le informazioni pubblicate da musei e istituzioni. Quando l'attribuzione resta incerta, la scheda lo segnala.</li>
         </ul>
         <P>
-          Quando consulti Base Arte, invece, non viene avviato alcun modello: le schede sono già
-          scritte. Anche i quiz seguono regole fisse e usano i dati del catalogo.
+          Navigare il sito non avvia modelli di intelligenza artificiale: le pagine e le schede
+          sono già scritte. Anche i quiz seguono regole fisse e usano i dati del catalogo.
         </P>
 
         <H2>Controlli e correzioni</H2>
         <P>
-          Ho riletto le schede e ho corretto i testi e i dati quando trovavo errori o passaggi
-          da chiarire. Ho usato anche controlli automatici per individuare incoerenze e collegamenti
-          mancanti. La revisione non garantisce che ogni informazione sia esatta: possono restare
-          errori, comprese discrepanze dovute alla sincronizzazione degli aggiornamenti.
+          Ho rivisto tutte le schede inserite e ho corretto testi e dati quando trovavo errori
+          o punti da chiarire. Possono comunque essere rimasti errori, anche per disallineamenti
+          nella sincronizzazione degli aggiornamenti. Se ne trovi uno, scrivimi: ogni
+          segnalazione mi aiuta a correggere il catalogo.
         </P>
         <P>
-          Le connessioni del grafo non sempre riportano un riferimento bibliografico puntuale.
-          Considerale uno spunto per orientarti e verifica i singoli dati sulle fonti.
-        </P>
-        <P>
-          Non ho ancora fatto prove strutturate con un gruppo di persone che usa il sito.
-          Perciò non posso dire che la sua efficacia didattica sia stata verificata.
+          Nel grafo, alcune connessioni non hanno un riferimento bibliografico associato alla
+          singola relazione. Un collegamento può aiutare a orientarsi, ma va verificato sulle
+          fonti. Non ho ancora condotto prove strutturate con chi studia storia dell'arte, quindi
+          non posso dire che l'efficacia didattica del sito sia stata misurata.
         </P>
 
-        <H2>Una scelta di cui sono responsabile</H2>
+        <H2>Le scelte sono mie</H2>
         <P>
-          Ho scelto come organizzare il catalogo e quali legami mettere in evidenza. I modelli
-          mi hanno aiutato in alcuni passaggi, ma le decisioni e la responsabilità dei contenuti
-          restano mie. Anche la selezione delle opere e dei protagonisti riflette un punto di vista
-          e può lasciare fuori storie importanti.
+          Ho deciso come organizzare il catalogo e quali legami rendere visibili. In alcuni
+          passaggi mi sono fatto aiutare da modelli linguistici, ma le decisioni e la
+          responsabilità dei contenuti restano mie. Possono esserci errori di datazione,
+          attribuzione o descrizione: per un lavoro di ricerca, controlla le informazioni sulle
+          fonti indicate nelle schede.
         </P>
 
         <H2>Segnalazioni</H2>
         <P>
-          Se trovi un errore o una discrepanza, aiutami a correggerli: puoi proporre una modifica
-          dalla scheda dell'opera oppure scrivermi a <Mailto subject="Segnalazione errore nel catalogo" />.
+          Se trovi un errore o una discrepanza, puoi segnalarlo dalla scheda dell'opera oppure
+          scrivermi a <Mailto subject="Segnalazione errore nel catalogo" />.
         </P>
         </PaginaModificabile>
       </div></div>
